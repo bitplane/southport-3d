@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.st-georges-church",
+  "name": "St George\u2019s Church \u2014 Lord Street",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "five-bay-nave",
+    "sandstone-buttresses",
+    "gothic-windows",
+    "gabled-entrances",
+    "three-stage-tower",
+    "paired-belfry-louvres",
+    "pierced-parapet",
+    "broach-spire",
+    "lucarnes",
+    "pinnacles",
+    "rear-brick-hall",
+    "side-tower-lancets-and-rose"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "St George\u2019s exterior architecture. No interiors. Gardens and shared public realm belong to the separate church-gardens asset. Heights and hidden rear details are estimated."
+}

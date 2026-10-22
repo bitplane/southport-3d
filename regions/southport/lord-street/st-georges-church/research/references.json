@@ -1,0 +1,105 @@
+{
+  "accessed": "2026-10-22",
+  "rights": "Reference links only; no external photographs or downloaded pixels in source or materials. OSM contributors data supplies registration. All geometry and textures authored.",
+  "references": [
+    {
+      "id": "listing",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379676",
+      "observed": "1873\u201374 Gothic Revival church; three-stage tower and broach spire, corner pinnacles, triple niche, paired two-light belfry openings, arcaded frieze and pierced parapet, two lucarne tiers, five-bay nave with three-light plate tracery."
+    },
+    {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/51826176",
+      "observed": "Retained local extract provides simplified 18.25 by 35.55 metre footprint. Tower projection and nave front division are photographic estimates."
+    },
+    {
+      "id": "gardens-aerial",
+      "url": "https://www.google.com/maps/@53.64965,-3.0026,19z",
+      "capture": "Acquisition date unknown; saved Google satellite screenshot inspected",
+      "observed": "Long pitched nave roof and projecting street tower; relationship to Sainsbury\u2019s and rear parking. Saved output/st-georges-from-main-road.png."
+    },
+    {
+      "id": "commons-2021-1",
+      "url": "https://commons.wikimedia.org/wiki/File:St_George%27s_United_Reformed_Church,_St_George%27s_Place,_Southport_(NHLE_Code_1379676)_(September_2021)_(1).JPG",
+      "capture": "September 2021",
+      "attribution": "Hassocks5489 / Wikimedia Commons; source page governs image rights; no pixels republished",
+      "observed": "Actual photo pixels inspected. Front/oblique tower, sandstone colour, portal and flanking entrances, belfry louvres, frieze, parapet, spire proportions, two lucarne tiers. Photo 2 provides close frontal door and tracery evidence."
+    },
+    {
+      "id": "commons-2021-2",
+      "url": "https://commons.wikimedia.org/wiki/File:St_George%27s_United_Reformed_Church,_St_George%27s_Place,_Southport_(NHLE_Code_1379676)_(September_2021)_(2).JPG",
+      "capture": "September 2021",
+      "attribution": "Hassocks5489 / Wikimedia Commons; source page governs image rights; no pixels republished",
+      "observed": "Actual photo pixels inspected. Front/oblique tower, sandstone colour, portal and flanking entrances, belfry louvres, frieze, parapet, spire proportions, two lucarne tiers. Photo 2 provides close frontal door and tracery evidence."
+    },
+    {
+      "id": "commons-2021-3",
+      "url": "https://commons.wikimedia.org/wiki/File:St_George%27s_United_Reformed_Church,_St_George%27s_Place,_Southport_(NHLE_Code_1379676)_(September_2021)_(3).JPG",
+      "capture": "September 2021",
+      "attribution": "Hassocks5489 / Wikimedia Commons; source page governs image rights; no pixels republished",
+      "observed": "Actual photo pixels inspected. Front/oblique tower, sandstone colour, portal and flanking entrances, belfry louvres, frieze, parapet, spire proportions, two lucarne tiers. Photo 2 provides close frontal door and tracery evidence."
+    },
+    {
+      "id": "commons-2021-4",
+      "url": "https://commons.wikimedia.org/wiki/File:St_George%27s_United_Reformed_Church,_St_George%27s_Place,_Southport_(NHLE_Code_1379676)_(September_2021)_(4).JPG",
+      "capture": "September 2021",
+      "attribution": "Hassocks5489 / Wikimedia Commons; source page governs image rights; no pixels republished",
+      "observed": "Actual photo pixels inspected. Front/oblique tower, sandstone colour, portal and flanking entrances, belfry louvres, frieze, parapet, spire proportions, two lucarne tiers. Photo 2 provides close frontal door and tracery evidence."
+    },
+    {
+      "id": "commons-2021-5",
+      "url": "https://commons.wikimedia.org/wiki/File:St_George%27s_United_Reformed_Church,_St_George%27s_Place,_Southport_(NHLE_Code_1379676)_(September_2021)_(5).JPG",
+      "capture": "September 2021",
+      "attribution": "Hassocks5489 / Wikimedia Commons; source page governs image rights; no pixels republished",
+      "observed": "Actual photo pixels inspected. Front/oblique tower, sandstone colour, portal and flanking entrances, belfry louvres, frieze, parapet, spire proportions, two lucarne tiers. Photo 2 provides close frontal door and tracery evidence."
+    },
+    {
+      "id": "commons-2021-6",
+      "url": "https://commons.wikimedia.org/wiki/File:St_George%27s_United_Reformed_Church,_St_George%27s_Place,_Southport_(NHLE_Code_1379676)_(September_2021)_(6).JPG",
+      "capture": "September 2021",
+      "attribution": "Hassocks5489 / Wikimedia Commons; source page governs image rights; no pixels republished",
+      "observed": "Actual photo pixels inspected. Front/oblique tower, sandstone colour, portal and flanking entrances, belfry louvres, frieze, parapet, spire proportions, two lucarne tiers. Photo 2 provides close frontal door and tracery evidence."
+    },
+    {
+      "id": "commons-2021-7",
+      "url": "https://commons.wikimedia.org/wiki/File:St_George%27s_United_Reformed_Church,_St_George%27s_Place,_Southport_(NHLE_Code_1379676)_(September_2021)_(7).JPG",
+      "capture": "September 2021",
+      "attribution": "Hassocks5489 / Wikimedia Commons; source page governs image rights; no pixels republished",
+      "observed": "Actual photo pixels inspected. Front/oblique tower, sandstone colour, portal and flanking entrances, belfry louvres, frieze, parapet, spire proportions, two lucarne tiers. Photo 2 provides close frontal door and tracery evidence."
+    },
+    {
+      "id": "street-front-2024",
+      "url": "https://www.google.com/maps/@53.6495285,-3.0026584,9a,85y,85h,105t/data=!3m7!1e1!3m5!1ssj28ZK5n8z_QZXVdm3fDPw!2e0!7i16384!8i8192",
+      "capture": "August 2024",
+      "attribution": "Google Street View",
+      "observed": "Full panorama pixels verified in isolated offscreen Chrome. Sainsbury-facing tower wall has two lower-stage lancets above a quatrefoil round window; paired belfry and triple niche above. Nave flank and slate roof visible."
+    },
+    {
+      "id": "street-side-2020",
+      "url": "https://www.google.com/maps/@53.6497189,-3.001807,10a,90y,240h,100t/data=!3m7!1e1!3m5!1sfBRRqXrmuFei8bTFDMx4-Q!2e0!7i16384!8i8192",
+      "capture": "November 2020",
+      "attribution": "Google Street View",
+      "observed": "Car-park view: nave north elevation with alternating three-light tracery, buttresses and closed slate slope. Rear brick hall north gable has three upper windows, two ground windows and red door with stone surround; pale string courses."
+    },
+    {
+      "id": "street-hall-2020",
+      "url": "https://www.google.com/maps/@53.649487,-3.0014926,10a,90y,250h,95t/data=!3m7!1e1!3m5!1sUdpbMCAe0xoozVwbVdTi3A!2e0!7i16384!8i8192",
+      "capture": "November 2020",
+      "attribution": "Google Street View",
+      "observed": "Rear car-park view: hall ridge perpendicular to nave, approximately six tall rear sashes, lower connector, plain high church rear gable. Hall dimensions and hidden south face estimated."
+    },
+    {
+      "id": "aerial-current",
+      "url": "https://www.google.com/maps/@53.64957,-3.00217,20z/data=!3m1!1e3",
+      "capture": "Acquisition date unknown; accessed 2026-10-22",
+      "attribution": "Google Maps / Airbus",
+      "observed": "Satellite pixels verified. Church roof and rear hall footprint aligned against mapped nave. Hall rectangle estimated at site x159.55..178.2,y-68.6..-53.1. Hall ridge perpendicular to nave. 3D Earth unavailable in this session."
+    }
+  ],
+  "uncertainties": [
+    "All heights and small metric projections are visually calibrated, not surveyed.",
+    "Main nave rear gable corroborated plain by car-park imagery; hall south elevation and exact hall footprint remain estimated.",
+    "Fine foliage/crockets and plate tracery are interpreted geometry; no claimed scan equivalence.",
+    "Name identifies the historic building; 2021 URC signage is not a claim of present occupancy or worship programme."
+  ]
+}

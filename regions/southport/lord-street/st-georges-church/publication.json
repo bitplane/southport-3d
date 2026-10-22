@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/st-georges-church.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street",
+  "status": "St George\u2019s exterior and rear brick hall: 2021 photos, verified 2020/2024 Street View and aerial footprint. Dimensions, fine carving and hidden hall face estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "nave",
+      "name": "Five-bay nave, entrances and rear brick hall",
+      "collection": "nave"
+    },
+    {
+      "id": "tower",
+      "name": "Three-stage tower and open belfry",
+      "collection": "tower"
+    },
+    {
+      "id": "spire",
+      "name": "Broach spire, lucarnes and pinnacles",
+      "collection": "spire"
+    }
+  ],
+  "views": [
+    {
+      "name": "Church",
+      "position": [
+        119,
+        31,
+        -8
+      ],
+      "target": [
+        168,
+        22,
+        31
+      ]
+    },
+    {
+      "name": "Entrance",
+      "position": [
+        160,
+        6,
+        5
+      ],
+      "target": [
+        168,
+        5,
+        17
+      ]
+    },
+    {
+      "name": "Tower",
+      "position": [
+        151,
+        25,
+        1
+      ],
+      "target": [
+        168,
+        19,
+        19
+      ]
+    },
+    {
+      "name": "Spire",
+      "position": [
+        145,
+        40,
+        5
+      ],
+      "target": [
+        168,
+        35,
+        20
+      ]
+    },
+    {
+      "name": "Nave side",
+      "position": [
+        137,
+        9,
+        36
+      ],
+      "target": [
+        160,
+        6,
+        36
+      ]
+    },
+    {
+      "name": "Church roof",
+      "position": [
+        132,
+        55,
+        10
+      ],
+      "target": [
+        168,
+        12,
+        35
+      ]
+    },
+    {
+      "name": "Rear hall",
+      "position": [
+        205,
+        27,
+        98
+      ],
+      "target": [
+        168,
+        8,
+        56
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      168,
+      2.3,
+      11
+    ],
+    "target": [
+      168,
+      6,
+      17
+    ]
+  },
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^(Envelope|Buttress|Course|Door|Portal|Roof|Silhouette|Parapet|Lucarne|Niche) |^Window (?!stone (?:nave-|front-flank|bell))",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain low-cost architectural envelope, true openings, stepped buttresses, sloping roofs, entrance recess and landmark silhouette."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain low-cost architectural envelope, true openings, stepped buttresses, sloping roofs, entrance recess and landmark silhouette."
+      }
+    },
+    {
+      "id": "leaded-glazing",
+      "match": "^Glazing panel ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep fine diamond lead came for close walking views."
+      },
+      "district": {
+        "strategy": "replace",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.12,
+        "max_sampled_error_m": 0.08,
+        "reason": "Bake shallow lead came onto a separate recessed rectangular glass receiver; retain surrounding stone tracery and pointed arch cap as geometry."
+      }
+    },
+    {
+      "id": "louvres",
+      "match": "^Louvre blades ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain low-cost architectural envelope, true openings, stepped buttresses, sloping roofs, entrance recess and landmark silhouette."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Explicit louvre gaps and shadows identify the belfry and remain cheap compared with new per-window textures."
+      }
+    },
+    {
+      "id": "ornament",
+      "match": "^Ornament ",
+      "walk": {
+        "strategy": "decimate",
+        "ratio": 0.6,
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reduce small organic crocket/capital curves while preserving main finials and pier silhouettes."
+      },
+      "district": {
+        "strategy": "decimate",
+        "ratio": 0.25,
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep coarse sculpted finial/frieze silhouettes; opaque stone colour remains consistent."
+      }
+    },
+    {
+      "id": "small-fittings",
+      "match": "^Fitting ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain low-cost architectural envelope, true openings, stepped buttresses, sloping roofs, entrance recess and landmark silhouette."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Small gutters, rainwater pipes and door boarding are subpixel at district distance; primary doors and wall/roof volumes remain."
+      }
+    },
+    {
+      "id": "window-nave-0",
+      "match": "^Window stone nave-0(?:\\.|$)",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:reduced_window",
+        "settings": {
+          "curve_scale": 0.55,
+          "radius": 1.35,
+          "bottom": 2.45,
+          "spring": 5.75,
+          "lights": 3,
+          "style": 0
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Rebuild the same pointed arch, mullions and quatrefoil tracery with fewer curve samples; retain every architectural opening and stone profile, avoiding arbitrary collapse."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:reduced_window",
+        "settings": {
+          "curve_scale": 0.27,
+          "radius": 1.35,
+          "bottom": 2.45,
+          "spring": 5.75,
+          "lights": 3,
+          "style": 0
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Rebuild the same pointed arch, mullions and quatrefoil tracery with fewer curve samples; retain every architectural opening and stone profile, avoiding arbitrary collapse."
+      }
+    },
+    {
+      "id": "window-nave-1",
+      "match": "^Window stone nave-1(?:\\.|$)",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:reduced_window",
+        "settings": {
+          "curve_scale": 0.55,
+          "radius": 1.35,
+          "bottom": 2.45,
+          "spring": 5.75,
+          "lights": 3,
+          "style": 1
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Rebuild the same pointed arch, mullions and quatrefoil tracery with fewer curve samples; retain every architectural opening and stone profile, avoiding arbitrary collapse."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:reduced_window",
+        "settings": {
+          "curve_scale": 0.27,
+          "radius": 1.35,
+          "bottom": 2.45,
+          "spring": 5.75,
+          "lights": 3,
+          "style": 1
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Rebuild the same pointed arch, mullions and quatrefoil tracery with fewer curve samples; retain every architectural opening and stone profile, avoiding arbitrary collapse."
+      }
+    },
+    {
+      "id": "window-front-flank",
+      "match": "^Window stone front-flank(?:\\.|$)",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:reduced_window",
+        "settings": {
+          "curve_scale": 0.55,
+          "radius": 0.94,
+          "bottom": 5.25,
+          "spring": 7.6,
+          "lights": 2,
+          "style": 0
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Rebuild the same pointed arch, mullions and quatrefoil tracery with fewer curve samples; retain every architectural opening and stone profile, avoiding arbitrary collapse."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:reduced_window",
+        "settings": {
+          "curve_scale": 0.27,
+          "radius": 0.94,
+          "bottom": 5.25,
+          "spring": 7.6,
+          "lights": 2,
+          "style": 0
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Rebuild the same pointed arch, mullions and quatrefoil tracery with fewer curve samples; retain every architectural opening and stone profile, avoiding arbitrary collapse."
+      }
+    },
+    {
+      "id": "window-bell",
+      "match": "^Window stone bell(?:\\.|$)",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:reduced_window",
+        "settings": {
+          "curve_scale": 0.55,
+          "radius": 0.89,
+          "bottom": 15.45,
+          "spring": 18.75,
+          "lights": 2,
+          "style": 0
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Rebuild the same pointed arch, mullions and quatrefoil tracery with fewer curve samples; retain every architectural opening and stone profile, avoiding arbitrary collapse."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:reduced_window",
+        "settings": {
+          "curve_scale": 0.27,
+          "radius": 0.89,
+          "bottom": 15.45,
+          "spring": 18.75,
+          "lights": 2,
+          "style": 0
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Rebuild the same pointed arch, mullions and quatrefoil tracery with fewer curve samples; retain every architectural opening and stone profile, avoiding arbitrary collapse."
+      }
+    },
+    {
+      "id": "pinnacles",
+      "match": "^Pinnacle ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:reduced_pinnacle",
+        "settings": {},
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain closed tapered pinnacle body and terminal finial while omitting small crocket foliage; collapse would destroy the thin landmark silhouette."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:reduced_pinnacle",
+        "settings": {},
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain closed tapered pinnacle body and terminal finial while omitting small crocket foliage; collapse would destroy the thin landmark silhouette."
+      }
+    }
+  ]
+}

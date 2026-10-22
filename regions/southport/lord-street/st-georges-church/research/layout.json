@@ -1,0 +1,50 @@
+{
+  "origin": [
+    53.6486555,
+    -3.0043401
+  ],
+  "rotation": 43.5293,
+  "osm_way": 51826176,
+  "osm_site_outline": [
+    [
+      159.14,
+      -16.92
+    ],
+    [
+      177.4,
+      -16.42
+    ],
+    [
+      178.37,
+      -51.95
+    ],
+    [
+      160.13,
+      -52.45
+    ]
+  ],
+  "centre_x": 168.7,
+  "nave_width": 18.25,
+  "nave_front_y": -21.7,
+  "rear_y": -52.2,
+  "base_z": 0.57,
+  "eaves": 9.7,
+  "ridge": 17.3,
+  "tower_width": 5.9,
+  "tower_front_y": -16.65,
+  "tower_back_y": -23.2,
+  "tower_parapet": 23.1,
+  "spire_tip": 47.2,
+  "status": "Nave footprint registered to retained OSM extract; small skew simplified. Heights, tower projection and ornamental dimensions visually calibrated estimates. Rear hall volume and cross-gable observed, footprint estimated from aerial.",
+  "rear_hall": {
+    "bounds_xy": [
+      159.55,
+      178.2,
+      -68.6,
+      -53.1
+    ],
+    "eaves": 6.15,
+    "ridge": 11.3,
+    "evidence": "November 2020 car-park panoramas and 2026-accessed aerial; dimensions estimated"
+  }
+}
