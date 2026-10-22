@@ -117,3 +117,25 @@ The Glebe Place rear snag exposed a coplanar roof-slab end on the outside rear
 wall. The slab now stops behind the wall's inner face. Rear-facing probes through
 the full slab-height strip require the wall to be the visible surface; this
 removes the flickering strip without changing the estimated rear envelope.
+
+## Independent surface audit
+
+The retained close Mamma Mia reference and all three exported viewing levels
+were checked from front, roof and Glebe Place. The earlier rear slab separation
+remains effective; the plain hidden rear is still an explicitly estimated
+envelope. Existing main openings, recessed doors and roof silhouette are retained.
+
+The sloping Mamma Mia awning and ATM hood previously used two opposing faces
+at identical coordinates. They now have thin closed shells (18 mm fabric
+allowance and 15 mm hood allowance, both estimates) so double-sided rendering
+does not rely on duplicate coplanar surfaces. Validation checks closed edges,
+positive signed volume and absence of duplicate triangles. The awning stays
+at all levels; the small ATM hood follows the existing Detail/Walk fittings
+policy (omitted at District). Lettering typefaces, green stone pattern and service roof features
+remain interpretations rather than exact reproductions.
+
+Full builds and validators passed after the audit. Re-published Detail, Walk
+and District GLBs were rendered from front, close and roof/rear viewpoints;
+colour and major silhouettes remain stable. A combined Walk comparison with
+public-realm ground checked the frontage and entrance approaches. Live browser
+inspection was unavailable; these checks used imported exported GLBs.

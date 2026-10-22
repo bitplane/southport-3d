@@ -111,7 +111,11 @@ def build_frontages(D,box,finish,sign,frame,mats,material):
    finish(m,'shopfront',[dark,bulb],frame)
   if mamma:
    m=Mesh('Awning mamma-mia');depth=.85
-   m.add([(a,3.62,0),(b,3.62,0),(b,3.28,depth),(a,3.28,depth)],[(0,1,2,3),(3,2,1,0)])
+   # Thin closed fabric shell: opposing duplicate planes can flicker under
+   # double-sided rendering. Local Y is height; preserve the photographed pitch.
+   top=[(a,3.62,0),(b,3.62,0),(b,3.28,depth),(a,3.28,depth)]
+   m.add(top+[(x,y-.018,z) for x,y,z in top],
+         [(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
    m.box((u,3.20,depth),(w,.16,.035));finish(m,'shopfront',[dark],frame)
    sign(name+' awning','Mamma Mia',a+w*.24,3.20,w*.36,.14,dark,cream,out=depth+.025,script=True)
    sign(name+' awning phone','01704 540259',a+w*.70,3.20,w*.49,.14,dark,cream,out=depth+.025)

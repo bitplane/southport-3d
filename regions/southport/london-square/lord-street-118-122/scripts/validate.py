@@ -48,3 +48,19 @@ for x in [D['x_far']+1,(D['x_far']+D['x_near'])/2,D['x_near']-1]:
   hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(deps,Vector((x,D['rear_y']-2,z)),Vector((0,1,0)),distance=3)
   assert hit and ob.name=='Envelope rear and party walls',(x,z,ob.name if ob else None)
 print('Glebe rear wall owns the full roof-level strip without coplanar slab faces')
+
+# Thin awning/hood surfaces need closed, outward shells rather than opposing
+# triangles at identical coordinates; double-sided materials conceal that defect.
+for name in ['Awning mamma-mia','Fine ATM controls']:
+ ob=bpy.data.objects[name];seen=set();edges={}
+ for f in ob.data.polygons:
+  key=tuple(sorted(tuple(round(x,7) for x in ob.data.vertices[i].co) for i in f.vertices))
+  assert key not in seen,(name,'duplicate surface triangle')
+  seen.add(key)
+  for a,b in zip(f.vertices,(*f.vertices[1:],f.vertices[0])):
+   edge=tuple(sorted((a,b)));edges[edge]=edges.get(edge,0)+1
+ assert all(n==2 for n in edges.values()),(name,'open sheet')
+ # Each independent primitive is closed; summed signed volume must be positive.
+ volume=sum(ob.data.vertices[f.vertices[0]].co.dot(ob.data.vertices[f.vertices[1]].co.cross(ob.data.vertices[f.vertices[2]].co))/6 for f in ob.data.polygons)
+ assert volume>0,(name,'inward shell',volume)
+print('Awning and ATM hood have closed non-duplicate outward surfaces')
