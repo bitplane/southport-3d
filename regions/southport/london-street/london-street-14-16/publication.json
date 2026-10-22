@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/london-street-14-16.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "Betfred exterior from May 2011 front, November 2020 Glebe and undated aerial; dimensions and hidden roof junctions estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Six-bay brick frontage",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Stepped rear roof decks",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Betfred frontage",
+      "collection": "shopfront"
+    },
+    {
+      "id": "rear",
+      "name": "Glebe service elevations",
+      "collection": "rear"
+    }
+  ],
+  "views": [
+    {
+      "name": "Building",
+      "position": [
+        8,
+        19,
+        58
+      ],
+      "target": [
+        -18,
+        5,
+        75
+      ]
+    },
+    {
+      "name": "Front",
+      "position": [
+        12,
+        6,
+        74.5
+      ],
+      "target": [
+        -12,
+        5.5,
+        74.5
+      ]
+    },
+    {
+      "name": "Glebe side",
+      "position": [
+        -27,
+        12,
+        53
+      ],
+      "target": [
+        -19,
+        5,
+        69
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -34,
+        28,
+        61
+      ],
+      "target": [
+        -19,
+        6,
+        75
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -7,
+      2.49,
+      74.5
+    ],
+    "target": [
+      -12,
+      2.49,
+      74.5
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep coarse stepped envelope, tall blank parapet and recessed shop entry; inexpensive physical silhouette."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Keep low-cost envelope and roof steps rather than flattening the distinctive tall front into a box."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain thin frames and real apertures at pedestrian distance."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Bake repeated front and side casements onto shallow receivers while retaining apertures.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake hand-authored Betfred lettering onto fascia panels to retain shop identity at reduced geometry.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Bake hand-authored Betfred lettering onto fascia panels to retain shop identity at reduced geometry.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain small drainage, dish brackets and entrance fittings for close street inspection."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit tiny hardware, satellite dishes and fine granite joints below useful screen size."
+      }
+    }
+  ]
+}

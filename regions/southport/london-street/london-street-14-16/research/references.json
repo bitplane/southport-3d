@@ -1,0 +1,49 @@
+{
+  "sources": [
+    {
+      "url": "https://www.google.com/maps/@53.6482245,-3.0035065,3a,90y,210h,100t/data=!3m4!1e1!3m2!1saST9WwnFs8VIYyz_tQDXWw!2e0",
+      "capture_date": "May 2011",
+      "attribution": "Google Street View",
+      "observations": [
+        "Six rectangular upper windows, narrow pale frames and transoms; substantial blank upper red-brick face with thin dark coping.",
+        "Granite shop piers, red mullions, recessed entrance and blue/red Betfred fascia."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6480775,-3.0039067,3a,90y,100h,100t/data=!3m4!1e1!3m2!1suQXeADpPMwK5hHzPll2JzA!2e0",
+      "capture_date": "November 2020",
+      "attribution": "Google Street View",
+      "observations": [
+        "Glebe elevation tall blank brick front return, stepped lower upper wall with small casements and satellite dishes.",
+        "Low rear flat-roof/service wall, timber service door and continuous coping."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64803,-3.00377,88m/data=!3m1!1e3",
+      "capture_date": "Undated aerial inspected 2026-10-22",
+      "attribution": "Google Maps / Airbus",
+      "observations": [
+        "Short frontage roof zone and lower pale rear decks; roof changes in depth."
+      ]
+    },
+    {
+      "url": "https://www.acuitus.co.uk/uploads/82-3880/16.pdf?dt=20200622130125",
+      "attribution": "Acuitus auction brochure 2020",
+      "observations": [
+        "Neighbouring 18 London Street frontage gives complementary wider view of 14\u201316 and relative parapet/window scale."
+      ]
+    },
+    {
+      "url": "https://www.openstreetmap.org/way/371203985",
+      "attribution": "\u00a9 OpenStreetMap contributors, ODbL 1.0",
+      "observations": [
+        "Whole urban block envelope; individual parcel subdivisions not surveyed."
+      ]
+    }
+  ],
+  "limitations": [
+    "Mixed dated observations; historical Betfred signage rather than claim of current fitout.",
+    "Hidden south party elevation and precise rooftop pitch/levels estimated. No interiors or advertising posters reconstructed.",
+    "Rear bay locations and unobserved rear elevation are conservative estimates, not a full measured survey."
+  ]
+}
