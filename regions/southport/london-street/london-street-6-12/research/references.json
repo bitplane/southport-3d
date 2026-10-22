@@ -1,0 +1,89 @@
+{
+  "reviewed": "2026-10-22",
+  "sources": [
+    {
+      "id": "osm-block",
+      "url": "https://www.openstreetmap.org/way/371203985",
+      "capture": "OSM extract retrieved 2026-10-21",
+      "attribution": "© OpenStreetMap contributors; ODbL 1.0",
+      "observations": [
+        "Whole urban-block footprint registers the London Street face and Glebe corner. It does not split number 6 from 8–12 or distinguish the low rear extension."
+      ]
+    },
+    {
+      "id": "user-aerial",
+      "url": "https://www.google.com/maps/@53.64838,-3.00416,20z/data=!3m1!1e3",
+      "capture": "Date not displayed; user supplied screenshot 2026-10-22",
+      "author": "Google Maps imagery; individual imagery suppliers not readable in capture",
+      "private_reference": "screenshot-20261022-103944.png",
+      "observations": [
+        "Continuous red-brick three-storey block between Prezzo terminal bay and Glebe Place. Pitched slate roof with hipped southern end and lower rear roof/rooflight. Rear parking lies between the London Street and Lord Street wings."
+      ]
+    },
+    {
+      "id": "rear-2020",
+      "url": "https://www.google.com/maps/@53.6480488,-3.0041471,3a,75y,350.3h,104.58t/data=!3m4!1e1!3m2!1smnlr3P-VeOWNjzTBAxwdfA!2e0",
+      "capture": "November 2020 displayed",
+      "author": "Google Street View",
+      "private_reference": "screenshot-20261022-103956.png and output/prezzo-rear-streetview-pan.png",
+      "observations": [
+        "Red brick rear wall with varied white casement windows, security bars, prominent chimney, rainwater pipes. Low rear extension with flat roof, pyramidal glazed rooflight, open pale metal guardrail and caged access ladder. Low pale rendered boundary wall with dark coping separates the building yard from parking. Dimensions and concealed lower faces are estimates."
+      ]
+    },
+    {
+      "id": "daylight-aerial",
+      "url": "https://www.openrent.co.uk/property-to-rent/southport/2-bed-flat-lord-street-pr8/2628751",
+      "image_url": "https://imagescdn.openrent.co.uk/listings/2453435/o_1iov0javbikr1vup6fbgq618du2.JPG",
+      "capture": "Unknown",
+      "author": "OpenRent listing; photographer unidentified",
+      "private_reference": "output/prezzo-london-extension-reference.png",
+      "observations": [
+        "Oblique view establishes regular white-surrounded sash window rows, continuous red-brick facade, projecting sill courses and eaves. Number 6 shop adjoins Prezzo narrow terminal bay."
+      ]
+    },
+    {
+      "id": "halifax-identity",
+      "url": "https://www.cbre.co.uk/property-search/retail-space/listings/details/GB-Plus-514561/812-london-street-southport-merseyside-pr9-0uz",
+      "capture": "Listing capture date unknown",
+      "observations": [
+        "Supplementary listing identifies Halifax as 8/12 London Street. Image-search result located but original photographic pixels not yet inspected; no geometry inferred from its generated description."
+      ]
+    },
+    {
+      "id": "front-2024-live",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=YeSzBF0fODi5EzMzQuwDRg&heading=245&pitch=12&fov=110",
+      "capture": "August2024 displayed",
+      "author": "Google Street View",
+      "private_reference": "output/halifax-full-front.png, output/halifax-number6.png",
+      "observations": [
+        "Live pixels inspected2026-10-22. Twelve windows each upper row, hood mouldings at every third first-floor window, segmental top heads. Nine bays over Halifax, three over number6. Continuous dentilled eaves, white surrounds, fine plain brick vents.",
+        "Halifax ground has grey granite piers, central recessed double entrance, two ATMs to its right, full blue fascia with raised white word and striped crossed bands, projecting side signs. Number6 has dark shopfront surround, Post & Packing fascia and separate dark access door. No current occupancy is asserted."
+      ]
+    },
+    {
+      "id": "glebe-side-live",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=wtXuGzJWtBrbQewdKJUirw&heading=252&pitch=0&fov=75",
+      "capture": "November2020 displayed",
+      "author": "Google Street View",
+      "private_reference": "output/glebe-mouth-reference.png, output/halifax-glebe-side.png",
+      "observations": [
+        "Brick Glebe side has two small casements, bricked upper openings and low louvre. Granite/glazed shop corner and blank blue fascia wrap onto the side. Narrow kerb strips follow the wall."
+      ]
+    },
+    {
+      "id": "roof-overhead-live",
+      "url": "https://www.google.com/maps/@53.64824,-3.00412,21z/data=!3m1!1e3",
+      "capture": "Date not displayed; inspected2026-10-22",
+      "author": "Google Maps satellite imagery",
+      "private_reference": "output/halifax-roof-reference.png",
+      "observations": [
+        "Hipped southern end, ridge towards frontage, broad rear slate slopes with service notch around lower glazed rooflight. Individual roof pitches and setback depths remain visually estimated."
+      ]
+    }
+  ],
+  "scope": "Exterior architectural reconstruction, not interiors or current occupancy certification. Reference pixels remain private; source and published materials are authored.",
+  "uncertainties": [
+    "All metric dimensions visually calibrated against mapped block outline, not surveyed.",
+    "2020 rear imagery predates reported 2025 planning changes to number 6 rear access. Do not present the observed historic arrangement as a verified current condition."
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/glebe-place.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Glebe Place",
+  "status": "November2020 service lane and parking; OSM registered, widths/heights and parking dimensions estimated. Missing terrace rear wing is not part of ground.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "lane-ground",
+      "name": "Glebe mouth and lane",
+      "collection": "lane-ground",
+      "ground": true
+    },
+    {
+      "id": "court-ground",
+      "name": "Rear parking courts",
+      "collection": "court-ground",
+      "ground": true
+    },
+    {
+      "id": "furniture",
+      "name": "Yard walls and furnishings",
+      "collection": "furniture"
+    }
+  ],
+  "views": [
+    {
+      "name": "Overview",
+      "position": [
+        -4,
+        38,
+        87
+      ],
+      "target": [
+        -29,
+        1,
+        61
+      ]
+    },
+    {
+      "name": "Mouth",
+      "position": [
+        2,
+        13,
+        75
+      ],
+      "target": [
+        -9,
+        1,
+        66.4
+      ]
+    },
+    {
+      "name": "Parking",
+      "position": [
+        -50,
+        17,
+        73
+      ],
+      "target": [
+        -36,
+        1,
+        53
+      ]
+    },
+    {
+      "name": "Walk lane",
+      "position": [
+        -8,
+        2.4,
+        66.4
+      ],
+      "target": [
+        -32,
+        2.4,
+        66.4
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -12,
+      2.36,
+      66.4
+    ],
+    "target": [
+      -32,
+      2.36,
+      66.4
+    ]
+  },
+  "rules": [
+    {
+      "id": "surfaces",
+      "match": "^(Surface|Wall|Envelope|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep low-cost authored surface topology, raised mouth, exact shared boundary and wall/enclosure silhouettes at every level; maps downsample per level."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Keep low-cost authored surface topology, raised mouth, exact shared boundary and wall/enclosure silhouettes at every level; maps downsample per level."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep low-cost authored surface topology, raised mouth, exact shared boundary and wall/enclosure silhouettes at every level; maps downsample per level."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit timber board joints below district sampling; retain enclosure volume and door fittings."
+      }
+    },
+    {
+      "id": "bollards",
+      "match": "^Furniture ",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Reduce bollard ribs and profile rings while keeping its tapered local shape and height.",
+        "generator": "lod:street_furniture",
+        "settings": {
+          "kind": "bollard",
+          "level": "walk"
+        },
+        "bake": false,
+        "uv": "smart"
+      },
+      "district": {
+        "strategy": "generator",
+        "reason": "Reduce bollard ribs and profile rings while keeping its tapered local shape and height.",
+        "generator": "lod:street_furniture",
+        "settings": {
+          "kind": "bollard",
+          "level": "district"
+        },
+        "bake": false,
+        "uv": "smart"
+      }
+    }
+  ]
+}

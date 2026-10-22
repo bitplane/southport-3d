@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "southport.glebe-place.public-realm",
+  "name": "Glebe Place — lane and rear parking",
+  "region": "southport",
+  "area": "glebe-place",
+  "status": "researched-public-realm-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "raised-mouth",
+    "narrow-service-lane",
+    "rear-parking",
+    "boundary-walls",
+    "utility-enclosure"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Ground, marked parking, low walls and furnishings behind London Street and Lord Street. Existing building assets own architecture; missing terrace rear wing remains deferred."
+}

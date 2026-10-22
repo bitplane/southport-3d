@@ -1,0 +1,21 @@
+{
+  "base_z": 0.7845,
+  "front_x": -9.83,
+  "south_y": -63.5,
+  "north_y": -41.2,
+  "rear_x": -29.9,
+  "upper_rear_x": -24.8,
+  "eaves_height": 9.35,
+  "rear_eaves_height": 8.65,
+  "ridge_height": 11.5,
+  "ridge_x": -15.8,
+  "ridge_end_y": -57.7,
+  "upper_bays": 12,
+  "halifax_bays": 9,
+  "first_window": [4.02, 6.30],
+  "second_window": [7.01, 8.79],
+  "window_width": 1.20,
+  "scope": "6–12 London Street continuous architectural block including Halifax frontage and former Post & Packing unit. Exterior only, no interior reconstruction.",
+  "registration": "OSM way371203985 fixes frontage and southern corner; north party boundary matches existing Prezzo terminal bay at Y=-41.2. Individual rear setbacks, heights and openings visually estimated from August2024 frontage, November2020 rear and undated overhead imagery.",
+  "uncertainties": "Metric dimensions, rear roof pitch/notch, concealed ground-floor rear access and window spacing are visually calibrated estimates. Current occupancy and post-2024 conversion works are not asserted."
+}

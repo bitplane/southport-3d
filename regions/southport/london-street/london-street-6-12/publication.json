@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/london-street-6-12.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "6–12 London Street exterior; August2024 front and November2020 rear, estimated dimensions. Historical Halifax signage; current occupancy not asserted.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Twelve-bay red-brick block",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Hipped slate roof",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Halifax and number six frontages",
+      "collection": "shopfront"
+    },
+    {
+      "id": "rear",
+      "name": "Glebe rear service elevations",
+      "collection": "rear"
+    }
+  ],
+  "views": [
+    {
+      "name": "Building",
+      "position": [
+        14,
+        20,
+        78
+      ],
+      "target": [
+        -19,
+        6,
+        52
+      ]
+    },
+    {
+      "name": "Front",
+      "position": [
+        12,
+        7,
+        52
+      ],
+      "target": [
+        -10,
+        6,
+        52
+      ]
+    },
+    {
+      "name": "Shopfront",
+      "position": [
+        0,
+        3.5,
+        55
+      ],
+      "target": [
+        -10,
+        2.7,
+        55
+      ]
+    },
+    {
+      "name": "Glebe return",
+      "position": [
+        -16,
+        12,
+        79
+      ],
+      "target": [
+        -20,
+        5,
+        63
+      ]
+    },
+    {
+      "name": "Rear",
+      "position": [
+        -46,
+        10,
+        52
+      ],
+      "target": [
+        -26,
+        5,
+        52
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -39,
+        32,
+        70
+      ],
+      "target": [
+        -20,
+        9,
+        52
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -6.5,
+      2.49,
+      52
+    ],
+    "target": [
+      -10,
+      2.49,
+      52
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain authored wall openings, distinctive hood spacing, roof silhouette, rear rooflight notch, open access guardrail and recessed bank entrance; low-cost structural geometry."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Keep independently authored roof, rear projections, wall openings and coarse shopfront masses. Open guardrail/ladder remain inexpensive silhouette geometry, not a solid proxy."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve sash depth and security bars at walking distance; repeated front prototypes share mesh data."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Bake each repeated sash/barred-window module onto a shared shallow receiver; wall apertures and surrounding hood geometry remain physical.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake raised lettering and hand-authored striped Halifax emblem onto sign receivers, retaining identity without glyph triangles.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Retain reduced-resolution frontage identity on simple panels.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Nearby eaves dentils, granite joints, handles, drainage and ATM controls remain visible for walking inspection."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit eaves dentils, tiny controls, joints and minor pipes below useful district screen size; retain roof and entrance envelopes."
+      }
+    }
+  ]
+}

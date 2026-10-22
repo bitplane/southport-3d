@@ -1,0 +1,42 @@
+{
+  "reviewed": "2026-10-22",
+  "sources": [
+    {
+      "url": "https://www.openstreetmap.org/way/51826174",
+      "attribution": "© OpenStreetMap contributors, ODbL1.0",
+      "observations": [
+        "Service-road L-shaped centreline. Building envelope from whole block way371203985."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=wtXuGzJWtBrbQewdKJUirw&heading=50&pitch=-15&fov=100",
+      "capture": "November2020 displayed",
+      "author": "Google Street View",
+      "observations": [
+        "Live pixels inspected: narrow asphalt lane and kerb strips, double yellows following rounded mouth, raised dark sett apron, two buff tactile pads, ribbed black bollards."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=mnlr3P-VeOWNjzTBAxwdfA&heading=12&pitch=-12&fov=95",
+      "capture": "November2020 displayed",
+      "author": "Google Street View",
+      "observations": [
+        "Parking row against low white rendered wall with dark coping; timber utility enclosure at its southern end; patched asphalt and drains. Bay lengths/count and lane widths visually estimated."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64824,-3.00412,21z/data=!3m1!1e3",
+      "capture": "Date not shown; inspected2026-10-22",
+      "author": "Google satellite imagery",
+      "observations": [
+        "Rear parking row, turning space and southern service return."
+      ]
+    }
+  ],
+  "uncertainties": [
+    "No surveyed heights or kerb dimensions. Shared local datum inherits London Square .7845m paving/.6645m road.",
+    "Parking markings are worn/interpreted; no current restrictions or private allocation claimed.",
+    "Rear wing of118–122LordStreet not yet modelled; ground stops at mapped outline and leaves architectural refinement to its asset.",
+    "No vehicles or interiors modelled. Published maps are authored, no reference-image pixels."
+  ]
+}
