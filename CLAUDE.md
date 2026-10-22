@@ -1,0 +1,1 @@
+Read and follow [AGENTS.md](AGENTS.md). Modelling workflow: [.agents/skills/model-southport/SKILL.md](.agents/skills/model-southport/SKILL.md). Setup and optional MCP instructions: [docs/SETUP.md](docs/SETUP.md).

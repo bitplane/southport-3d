@@ -4,6 +4,7 @@ blender -b --factory-startup --python scripts/build_memorial.py -- --preview
 The script is deterministic and does not require network access or an MCP.
 """
 import bpy
+import os
 import sys
 import json
 import math
@@ -88,7 +89,7 @@ LIGHT_HOUSING=material('Pale metal obelisk light housings',(.56,.59,.58),.40)
 LIGHT_HOUSING.node_tree.nodes.get('Principled BSDF').inputs['Metallic'].default_value=.45
 GRILLE_METAL=material('Weathered obelisk grille metal',(.12,.14,.12),.65)
 GRILLE_METAL.node_tree.nodes.get('Principled BSDF').inputs['Metallic'].default_value=.30
-FONT=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf')
+FONT=bpy.data.fonts.load(os.environ.get('SOUTHPORT_FONT', '/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf'))
 INSCRIPTION_LOG=[]
 RELIEF_APPROXIMATION_LOG=[]
 COLUMN_TEMPLATE=None

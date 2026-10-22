@@ -1,0 +1,11 @@
+{
+  "name": "southport-reference-browser",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "probe": "node probe.mjs"
+  },
+  "dependencies": {
+    "@playwright/mcp": "0.0.83"
+  }
+}

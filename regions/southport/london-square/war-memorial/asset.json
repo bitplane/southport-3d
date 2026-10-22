@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "southport.london-square.war-memorial",
+  "name": "Southport War Memorial",
+  "region": "southport",
+  "area": "london-square",
+  "status": "researched-exterior-master",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "obelisk",
+    "colonnade-north-east",
+    "colonnade-south-west",
+    "clustered-lamps"
+  ],
+  "lods": [
+    "master"
+  ],
+  "build": {
+    "prepare": "author_obelisk_surfaces.py",
+    "geometry": "build_memorial.py",
+    "export": "export_assets.py",
+    "validate": "validate_assets.py",
+    "render": "render_views.py"
+  },
+  "source_catalog": "research/reference_catalog.json",
+  "scope": "Exteriors; interiors and names deferred. Dimensions and hidden details include documented estimates.",
+  "licensing": "See repository RIGHTS.md; source-photo licences do not transfer to authored assets."
+}
