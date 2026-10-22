@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/bhf.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Square",
+  "status": "British Heart Foundation exterior on Lord Street. Photographic facade, approximate metric dimensions and rear envelope; no interiors.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "White facade and green-grey window grid",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Flat roof and parapets",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "British Heart Foundation shopfront",
+      "collection": "shopfront"
+    }
+  ],
+  "views": [
+    {
+      "name": "Building",
+      "position": [
+        -43,
+        17,
+        2
+      ],
+      "target": [
+        -64,
+        6.5,
+        30
+      ]
+    },
+    {
+      "name": "Front",
+      "position": [
+        -64,
+        8,
+        0
+      ],
+      "target": [
+        -64,
+        6.5,
+        24
+      ]
+    },
+    {
+      "name": "Entrance",
+      "position": [
+        -62.7,
+        2.6,
+        17
+      ],
+      "target": [
+        -62.7,
+        3,
+        25
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -42,
+        38,
+        22
+      ],
+      "target": [
+        -64,
+        10,
+        46
+      ]
+    },
+    {
+      "name": "Church side",
+      "position": [
+        -89,
+        16,
+        7
+      ],
+      "target": [
+        -71,
+        7,
+        30
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -62.7,
+      2.8,
+      21
+    ],
+    "target": [
+      -62.7,
+      2.8,
+      25
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep low-cost walls, actual entrance recess and threshold steps, large piers and roof silhouette."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Authored coarse envelope preserves shopfront recess, white surround and red piers at district range."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain slim window divisions and spandrel depth in the repeated inexpensive module."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Replace each repeated window/spandrel module with one shared baked panel; white surround remains physical.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.35
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake glyph geometry onto authored sign panels, retaining readable names.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.35
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Retain frontage identity with lower resolution sign textures.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.35
+      }
+    },
+    {
+      "id": "fittings",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain door handles and entrance downlights visible nearby."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit small handles, downlights and fixings; retain entrance envelope."
+      }
+    }
+  ]
+}

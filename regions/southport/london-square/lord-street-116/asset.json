@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "southport.london-square.lord-street-116",
+  "name": "116 Lord Street \u2014 British Heart Foundation",
+  "region": "southport",
+  "area": "london-square",
+  "status": "researched-street-elevations-estimated-rear",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "white-clad-frame-and-spandrel-grid",
+    "recessed-red-shopfront",
+    "flat-roof-envelope"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "British Heart Foundation exterior on Lord Street. Photographic facade, approximate metric dimensions and rear envelope; no interiors.",
+  "publication_checks": [
+    "check_package.py"
+  ]
+}

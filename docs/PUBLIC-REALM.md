@@ -123,3 +123,9 @@ southwest garden ground parts now carry the same widened approach out to site
 X -52, with a taper to the earlier estimate at X -55. Kerbs and yellow lines
 follow that edge; building assets add no duplicate floor. The kerb position is
 visually estimated and can be refined with the next Lord Street frontage.
+
+## 116 Lord Street approach
+
+The same approach now extends past British Heart Foundation to X -77, tapering
+to the prior ground estimate at X -80 by Christ Church. Building-specific steps
+remain inside the recessed doorway. Kerb offsets remain photographic estimates.

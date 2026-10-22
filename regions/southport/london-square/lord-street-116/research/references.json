@@ -1,0 +1,93 @@
+{
+  "reviewed": "2026-10-22",
+  "sources": [
+    {
+      "id": "front-day",
+      "url": "https://www.southportguide.co.uk/shopping",
+      "image_url": "https://www.southportguide.co.uk/images/businesses/british-heart-foundation-home-store.webp",
+      "author": "Southport Guide; individual photographer not identified",
+      "capture": "Unknown",
+      "observations": [
+        "Broad white surround, continuous slim white window grid with green-grey aggregate spandrels, three broad ground zones, separate red name/furniture signs and central heart emblem. Far upper end partly hidden by foliage."
+      ]
+    },
+    {
+      "id": "entrance",
+      "url": "https://standupforsouthport.com/second-hand-september-is-a-great-time-a-rethink-our-shopping-habits-and-support-local-charity-shops/",
+      "image_url": "https://standupforsouthport.com/wp-content/uploads/2024/04/BritishHeartFoundation-1.jpg",
+      "author": "Bertie Cunningham / Southport BID, credited by Andrew Brown",
+      "capture": "Unknown; article updated 2025-08-27; image URL April 2024",
+      "observations": [
+        "Deep central recess, glazed returns, red tiled piers and door frames, black plinth and dark steps, soffit downlights, raised white fascia lettering. WELCOME to BHF Southport above doors."
+      ]
+    },
+    {
+      "id": "aerial",
+      "url": "https://www.google.com/maps/@53.6486722,-3.004327,3a,40y,355h,72t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIC_ssfc0gE!2e10",
+      "author": "Niko S. via Google Maps",
+      "capture": "Jan 2025 displayed",
+      "observations": [
+        "BHF parapet above adjoining terrace, long flat roof behind front elevation, church immediately beyond southwest edge. Roof details unresolved."
+      ]
+    },
+    {
+      "id": "ground",
+      "url": "https://www.google.com/maps/@53.6488147,-3.004116,3a,35y,224h,95t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgID486XpYw!2e10",
+      "author": "Jomo via Google Maps",
+      "capture": "Jan 2018 displayed",
+      "observations": [
+        "Wider street-level relation to terrace, church tower, memorial and ground approach."
+      ]
+    },
+    {
+      "id": "wide",
+      "url": "https://www.southportvisiter.co.uk/whats-on/whats-on-news/southport-getting-woolworths-store-back-12934687",
+      "image_url": "https://i2-prod.southportvisiter.co.uk/incoming/article9960831.ece/ALTERNATES/s615b/NINETYSIX.jpg",
+      "capture": "Unknown",
+      "observations": [
+        "Frontage opposite garden service return; foliage partly obscures upper grid."
+      ]
+    },
+    {
+      "id": "geograph",
+      "url": "https://www.geograph.org.uk/photo/2567476",
+      "author": "Gerald England",
+      "licence": "CC BY-SA 2.0 reference photograph, not redistributed",
+      "observations": [
+        "Alternate ground angle confirms white surround, grid and shopfront piers; foliage obscures centre."
+      ]
+    },
+    {
+      "id": "address",
+      "url": "https://www.bhf.org.uk/what-we-do/find-bhf-near-you/southport-furniture-electrical-store",
+      "observations": [
+        "Official store listing: 116 Lord Street."
+      ]
+    },
+    {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/371203985",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0; https://www.openstreetmap.org/copyright",
+      "retrieved": "2026-10-21",
+      "observations": [
+        "Whole block envelope, not a separately surveyed BHF boundary; church way 371202092 sets southwest edge; BHF POI node 3747894059."
+      ]
+    },
+    {
+      "id": "mapillary-context",
+      "url": "https://www.mapillary.com/app/?pKey=3872094862903705&focus=photo",
+      "author": "davidsong",
+      "capture": "2019-07-31",
+      "observations": [
+        "Previously inspected neighbourhood frame faces London Street; does not resolve BHF. No BHF detail inferred from it."
+      ]
+    }
+  ],
+  "limitations": [
+    "No reference photographs or photo-derived maps distributed. Procedural textures and hand-authored emblem interpretation only; BHF identity remains its trademark.",
+    "Mixed-date exterior reconstruction, not a current survey.",
+    "All metric dimensions, fourteen-module count at obscured far end, rear envelope and roof features approximate.",
+    "No interiors, stock displays or unreadable notices; opaque glazing.",
+    "Church garden and exact side-wall attachment deferred to church pass."
+  ]
+}
