@@ -1,0 +1,863 @@
+{
+  "grade": {
+    "origin_z": -0.0075,
+    "dz_dy": -0.022,
+    "road_drop": 0.12,
+    "source": "Memorial ground_grade_study.json, inherited estimated plane; not surveyed"
+  },
+  "extent": [
+    -48,
+    -36,
+    48,
+    36
+  ],
+  "courts": {
+    "ne": [
+      [
+        13,
+        -11
+      ],
+      [
+        14,
+        -13
+      ],
+      [
+        18,
+        -14.8
+      ],
+      [
+        48,
+        -14.8
+      ],
+      [
+        48,
+        21
+      ],
+      [
+        18,
+        21
+      ],
+      [
+        14,
+        19
+      ],
+      [
+        13,
+        16
+      ]
+    ],
+    "sw": [
+      [
+        -13,
+        -11
+      ],
+      [
+        -14,
+        -13
+      ],
+      [
+        -18,
+        -14.8
+      ],
+      [
+        -48,
+        -14.8
+      ],
+      [
+        -48,
+        21
+      ],
+      [
+        -18,
+        21
+      ],
+      [
+        -14,
+        19
+      ],
+      [
+        -13,
+        16
+      ]
+    ]
+  },
+  "island": {
+    "width": 15.2,
+    "length": 34.2
+  },
+  "patterns": {
+    "court_centres_x": [
+      17,
+      22.5,
+      28
+    ],
+    "square_size": 4.5,
+    "inner_size": 2.1,
+    "panel_y_half_width": 6.8,
+    "panel_x_min": 13.5,
+    "panel_x_max": 30.3,
+    "source": "aerial-2025; dimensions visually calibrated against colonnade span"
+  },
+  "furniture": [
+    {
+      "kind": "bench",
+      "xy": [
+        23.104,
+        4.845
+      ],
+      "yaw": 0,
+      "source": "OSM node 3752906467",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        16.359,
+        4.958
+      ],
+      "yaw": 0,
+      "source": "OSM node 3752906468",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        22.39,
+        -4.472
+      ],
+      "yaw": 180,
+      "source": "OSM node 3752906469",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        16.133,
+        -4.439
+      ],
+      "yaw": 180,
+      "source": "OSM node 3752906470",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bin",
+      "xy": [
+        27.14,
+        -4.731
+      ],
+      "yaw": 180,
+      "source": "OSM node 3752906471",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bin",
+      "xy": [
+        27.834,
+        5.158
+      ],
+      "yaw": 0,
+      "source": "OSM node 3752906472",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -17,
+        -5.0
+      ],
+      "yaw": 180,
+      "source": "aerial-2025, estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -17,
+        5.0
+      ],
+      "yaw": 0,
+      "source": "aerial-2025, estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -23,
+        -5.0
+      ],
+      "yaw": 180,
+      "source": "aerial-2025, estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -23,
+        5.0
+      ],
+      "yaw": 0,
+      "source": "aerial-2025, estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bin",
+      "xy": [
+        -27,
+        -5.2
+      ],
+      "yaw": 0,
+      "source": "aerial-2025, estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bin",
+      "xy": [
+        -27,
+        5.2
+      ],
+      "yaw": 0,
+      "source": "aerial-2025, estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        15,
+        -12
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        13.5,
+        -9
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        13.5,
+        -6
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        13.5,
+        -3
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        13.5,
+        0
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        13.5,
+        3
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        13.5,
+        6
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        13.5,
+        9
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        13.5,
+        15
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        18,
+        -14
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        18,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        22,
+        -14
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        22,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        26,
+        -14
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        26,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        30,
+        -14
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        30,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.95,
+        -10
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.95,
+        -7.5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.95,
+        -5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.95,
+        -2.5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.95,
+        0
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.95,
+        2.5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.95,
+        5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.95,
+        7.5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.95,
+        10
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "pedestrian",
+      "xy": [
+        13.6,
+        13.7
+      ],
+      "yaw": 90,
+      "source": "street-2018, mapillary-2019, aerial-2025; positions/orientation estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "pedestrian",
+      "xy": [
+        6.1,
+        13.7
+      ],
+      "yaw": -90,
+      "source": "street-2018, mapillary-2019, aerial-2025; positions/orientation estimated",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "signal",
+      "xy": [
+        13.8,
+        17
+      ],
+      "yaw": 0,
+      "source": "street-2018, mapillary-2019, aerial-2025; positions/orientation estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "signal",
+      "xy": [
+        5,
+        15
+      ],
+      "yaw": 0,
+      "source": "street-2018, mapillary-2019, aerial-2025; positions/orientation estimated",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "streetlight",
+      "xy": [
+        15,
+        19.5
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; curved road-light family, dimensions estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "streetlight",
+      "xy": [
+        27,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; curved road-light family, dimensions estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -15,
+        -12
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -13.5,
+        -9
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -13.5,
+        -6
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -13.5,
+        -3
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -13.5,
+        0
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -13.5,
+        3
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -13.5,
+        6
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -13.5,
+        9
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -13.5,
+        15
+      ],
+      "yaw": 0,
+      "source": "street-2018/aerial-2025; count and spacing estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -18,
+        -14
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -18,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -22,
+        -14
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -22,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -26,
+        -14
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -26,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -30,
+        -14
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -30,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.95,
+        -10
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.95,
+        -7.5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.95,
+        -5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.95,
+        -2.5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.95,
+        0
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.95,
+        2.5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.95,
+        5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.95,
+        7.5
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.95,
+        10
+      ],
+      "yaw": 0,
+      "source": "street-2018; estimated spacing",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "pedestrian",
+      "xy": [
+        -13.6,
+        13.7
+      ],
+      "yaw": -90,
+      "source": "street-2018, mapillary-2019, aerial-2025; positions/orientation estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "pedestrian",
+      "xy": [
+        -6.1,
+        13.7
+      ],
+      "yaw": 90,
+      "source": "street-2018, mapillary-2019, aerial-2025; positions/orientation estimated",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "signal",
+      "xy": [
+        -13.8,
+        17
+      ],
+      "yaw": 180,
+      "source": "street-2018, mapillary-2019, aerial-2025; positions/orientation estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "signal",
+      "xy": [
+        -5,
+        15
+      ],
+      "yaw": 180,
+      "source": "street-2018, mapillary-2019, aerial-2025; positions/orientation estimated",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "streetlight",
+      "xy": [
+        -15,
+        19.5
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; curved road-light family, dimensions estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "streetlight",
+      "xy": [
+        -27,
+        20
+      ],
+      "yaw": 0,
+      "source": "aerial-2025; curved road-light family, dimensions estimated",
+      "part": "sw-furniture"
+    }
+  ]
+}

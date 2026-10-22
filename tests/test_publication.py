@@ -22,7 +22,10 @@ class PublicationTests(unittest.TestCase):
 
     def test_recipe_has_complete_level_decisions(self):
         source=ROOT/'regions/southport/london-square/war-memorial/publication.json'
-        self.assertEqual(len(load_publication(source)['parts']),5)
+        self.assertEqual(len(load_publication(source)['parts']),4)
+        ground=load_publication(ROOT/'regions/southport/london-square/public-realm/publication.json')
+        self.assertEqual(sum(p.get('ground',False) for p in ground['parts']),5)
+        self.assertFalse(any(p['id']=='ground' for p in load_publication(source)['parts']))
         data=json.loads(source.read_text())
         del data['rules'][0]['walk']['reason']
         with tempfile.TemporaryDirectory() as directory:

@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Square",
+  "status": "Researched paving, roads and furnishings; tile sizes and most placements estimated from 2018\u20132025 imagery. Outer continuity paving remains approximate. Vegetation and surrounding buildings deferred.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "ne-ground",
+      "name": "North-east forecourt paving",
+      "collection": "ne-ground",
+      "ground": true
+    },
+    {
+      "id": "sw-ground",
+      "name": "South-west forecourt paving",
+      "collection": "sw-ground",
+      "ground": true
+    },
+    {
+      "id": "island-ground",
+      "name": "Memorial island paving",
+      "collection": "island-ground",
+      "ground": true
+    },
+    {
+      "id": "roads",
+      "name": "Roads and crossing markings",
+      "collection": "roads",
+      "ground": true
+    },
+    {
+      "id": "perimeter",
+      "name": "Perimeter continuity paving \u2014 approximate",
+      "collection": "perimeter",
+      "ground": true
+    },
+    {
+      "id": "ne-furniture",
+      "name": "North-east street furniture",
+      "collection": "ne-furniture"
+    },
+    {
+      "id": "sw-furniture",
+      "name": "South-west street furniture",
+      "collection": "sw-furniture"
+    },
+    {
+      "id": "island-furniture",
+      "name": "Island bollards and signals",
+      "collection": "island-furniture"
+    }
+  ],
+  "views": [
+    {
+      "name": "The square",
+      "position": [
+        65,
+        48,
+        65
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Paving",
+      "position": [
+        23,
+        10,
+        10
+      ],
+      "target": [
+        23,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Crossing",
+      "position": [
+        3,
+        2,
+        -15
+      ],
+      "target": [
+        14,
+        1,
+        -12
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      19,
+      1.7,
+      9
+    ],
+    "target": [
+      23,
+      1.7,
+      0
+    ]
+  },
+  "rules": [
+    {
+      "id": "surfaces",
+      "match": "^(Surface|Kerb|Pattern|Marking|Tactile|Cover) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already coarse surfaces; preserve kerb silhouette and large paving motifs. Tile joints live in shared authored maps."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain ground continuity and recognisable paving/road pattern; reduce map resolution rather than collapse the outline."
+      }
+    },
+    {
+      "id": "chains",
+      "match": "^Chain ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Low-sided sagging cable retains the barrier line without individual links."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Thin chains disappear at district scale; retain their bollards."
+      }
+    },
+    {
+      "id": "rails",
+      "match": "^Guardrail ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Open safety rail silhouette remains visible across the square."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Fine pickets add little at district scale; ground edge and signals remain."
+      }
+    },
+    {
+      "id": "bollard",
+      "match": "^Furniture bollard ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bollard",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bollard",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "bench",
+      "match": "^Furniture bench ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "bin",
+      "match": "^Furniture bin ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bin",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bin",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "signal",
+      "match": "^Furniture signal ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "signal",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "signal",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "pedestrian",
+      "match": "^Furniture pedestrian ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "pedestrian",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "pedestrian",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "streetlight",
+      "match": "^Furniture streetlight ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "streetlight",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "streetlight",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    }
+  ]
+}

@@ -67,7 +67,7 @@ node --test viewer/tests/*.test.js
 
 Current limitations: no regional tiling, full collision physics, KTX2/mesh compression, GPU instance batching across parts, or automatic visual-quality certification. District deliberately retains some architectural envelopes and openings while reducing/omitting heavy detail; it is not the tiny whole-town proxy discussed for future regional views.
 
-## First memorial package measurements (2026-10-22)
+## First memorial package measurements (2026-10-22, before separate ground asset)
 
 These totals include the fixed District ground and embedded textures, in decimal MB. They describe all placed geometry, not just triangles visible in one camera view.
 
@@ -80,3 +80,5 @@ These totals include the fixed District ground and embedded textures, in decimal
 Part splitting duplicates some resources across GLBs; Detail therefore exceeds the earlier single-file 131 MB master. Walk introduces baked maps and can have more image bytes despite much less geometry. Further envelope simplification, shared textures and compression remain worthwhile. These are working inspection levels, not final town-scale budgets.
 
 Validation: the master build and its existing export checks passed; all 13 part/level GLBs passed publication inspection. All 307 nonempty physical meshes have declared part/rule coverage, with the survey guide explicitly excluded. Python contract tests, JavaScript policy tests and syntax checks passed. A second publication reused the checked packages. Browser checks exercised all five parts, forced Walk/District, automatic close-up Detail, viewpoint changes, walking movement, orbit/overview and wireframe toggling without asset errors. Walk and District colonnade screenshots were inspected; openings and column silhouettes remain present, with loss of fine carving at District expected. Full visual equivalence, pointer lock and hardware performance have not been certified; the agent browser's low frame rate is not a useful desktop GPU benchmark.
+
+The separate public-realm asset now replaces the memorial’s old ground part in the combined scene. See [public-realm ownership, spatial parts and evidence limits](PUBLIC-REALM.md). The table above remains the historical first-package measurement.

@@ -1,0 +1,55 @@
+{
+  "reviewed": "2026-10-22",
+  "sources": [
+    {
+      "id": "aerial-2025",
+      "url": "https://www.google.com/maps/@53.6486722,-3.004327,3a,90y,215h,35t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIC_ssfc0gE!2e10",
+      "author": "Niko S. via Google Maps",
+      "capture": "Jan 2025 (displayed)",
+      "observations": [
+        "Three square motifs aligned from each road edge towards its colonnade, with checker detail at the colonnade end and pale lateral bars.",
+        "Dark forecourt panels bordered by pale strips; mixed buff/grey rectangular paving outside.",
+        "Benches flank the patterned panels; black posts follow curved kerb edges.",
+        "Red/brown surface on island side carriageways; double yellow edge markings."
+      ]
+    },
+    {
+      "id": "street-2018",
+      "url": "https://www.google.com/maps/@53.6487698,-3.0044932,3a,90y,100h,65t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgID485XlTg!2e10",
+      "author": "Jomo via Google Maps",
+      "capture": "Jun 2018 (displayed)",
+      "observations": [
+        "Tapered rectangular dark ribbed bollards; silver sagging chains on island rows.",
+        "Grey signal posts with black pedestrian heads and yellow-edged push-button boxes.",
+        "Pale kerbs, crossing studs, rectangular paving joints, curved black pedestrian guardrails."
+      ]
+    },
+    {
+      "id": "mapillary-2019",
+      "url": "https://www.mapillary.com/app/?pKey=309216997402181&focus=photo",
+      "author": "davidsong via Mapillary",
+      "capture": "Jul 31, 2019 (displayed)",
+      "observations": [
+        "Pedestrian head, pole and push-button arrangement corroborated.",
+        "Island chains and contrasting paving corroborated."
+      ]
+    },
+    {
+      "id": "osm",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-3.0065,53.6473,-3.0024,53.6501",
+      "retrieved": "2026-10-21",
+      "attribution": "\u00a9 OpenStreetMap contributors, ODbL 1.0; https://www.openstreetmap.org/copyright",
+      "observations": [
+        "Existing road centrelines and monument/colonnade registration.",
+        "Bench and waste-basket node positions used where present. Traffic-signal nodes are junction positions, not surveyed pole positions."
+      ]
+    }
+  ],
+  "limitations": [
+    "Images span 2018\u20132025; this is a coherent reconstruction, not a verified October 2026 inventory.",
+    "No photographs or extracted photograph textures published. Material maps are authored procedurally.",
+    "Kerb geometry, tile sizes, signal orientations, pole count and unrecorded furnishings are photographic estimates, typically 0.5\u20132 m placement uncertainty.",
+    "Tactile patches, access covers and drainage locations are interpreted where imagery cannot resolve exact layouts; do not treat as an accessibility or highway survey.",
+    "Perimeter beyond core forecourts/island remains approximate and is identified separately."
+  ]
+}

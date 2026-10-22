@@ -21,13 +21,6 @@
   },
   "parts": [
     {
-      "id": "ground",
-      "name": "Square and street placeholders",
-      "collection": "00 Site registration and approximate paving",
-      "ground": true,
-      "fixed_level": "district"
-    },
-    {
       "id": "obelisk",
       "name": "Obelisk",
       "collection": "01 Obelisk exterior"
@@ -617,6 +610,10 @@
     {
       "name": "99 Survey guides \u2014 hidden in renders",
       "reason": "Modelling north arrow and scale are authoring guides, not physical features."
+    },
+    {
+      "name": "00 Site registration and approximate paving",
+      "reason": "Superseded in the combined viewer by southport.london-square.public-realm; retain original study context in the standalone memorial source."
     }
   ]
 }

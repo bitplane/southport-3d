@@ -123,7 +123,6 @@ def build(args):
     if fresh:
         run(spec['build']['prepare'])
         run(spec['build']['geometry'], True, ('--no-render', '--no-export'))
-        stamp.write_text(signature + '\n')
     if args.stage in ('all', 'export'):
         run(spec['build']['export'], True)
     if args.stage in ('all', 'validate'):
@@ -133,6 +132,8 @@ def build(args):
     if args.stage == 'render':
         run(spec['build']['render'], True, ('--final', *args.views))
         run('contact_sheet.py')
+    if fresh:
+        stamp.write_text(signature + '\n')
     print(f'Finished: {runtime}')
 
 

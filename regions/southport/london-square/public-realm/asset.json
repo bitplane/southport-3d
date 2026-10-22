@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "southport.london-square.public-realm",
+  "name": "London Square paving and street furniture",
+  "region": "southport",
+  "area": "london-square",
+  "status": "researched-core-with-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "paving",
+    "kerbs",
+    "carriageways",
+    "markings",
+    "bollards",
+    "chains",
+    "signals",
+    "benches",
+    "bins",
+    "guardrails",
+    "street-lights"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "London Square core, between the two colonnades and adjoining carriageways. Perimeter footways are continuity surfaces, not a completed survey; vegetation, surrounding buildings and outer bus stops are not included.",
+  "licensing": "See RIGHTS.md. OSM-derived layout attribution retained; no reference imagery embedded."
+}
