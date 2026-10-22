@@ -1,16 +1,40 @@
 {
-  "schema_version":1,
-  "id":"southport.london-square.natwest",
-  "name":"NatWest — 130 Lord Street",
-  "region":"southport",
-  "area":"london-square",
-  "status":"researched-exterior-estimated-dimensions",
-  "units":"metres",
-  "origin_wgs84_lat_lon":[53.6486555,-3.0043401],
-  "site_rotation_from_east_degrees":43.5293,
-  "components":["rusticated-street-elevations","arched-openings","dutch-gables","oculi-and-foliage","strapwork-parapet","balconies","slate-roof","chimneys","bank-signs-and-atms"],
-  "lods":["detail","walk","district"],
-  "build":{"prepare":"prepare.py","geometry":"build.py","export":"export.py","validate":"validate.py","render":"render.py"},
-  "source_catalog":"research/references.json",
-  "scope":"Exterior of the bank at Lord Street/London Street; no interiors, temporary scaffold or adjacent Posting House. Rear envelope and fine sculpture interpreted where hidden."
+  "schema_version": 1,
+  "id": "southport.london-square.natwest",
+  "name": "NatWest \u2014 130 Lord Street",
+  "region": "southport",
+  "area": "london-square",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "rusticated-street-elevations",
+    "arched-openings",
+    "dutch-gables",
+    "oculi-and-foliage",
+    "strapwork-parapet",
+    "balconies",
+    "slate-roof",
+    "chimneys",
+    "bank-signs-and-atms",
+    "boundary-wall-gate-and-telephone-kiosk"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Exterior of the bank at Lord Street/London Street; no interiors, temporary scaffold or adjacent Posting House. Rear envelope and fine sculpture interpreted where hidden. Includes the boundary wall, gate and red telephone kiosk in the frontage gap beside Posting House."
 }

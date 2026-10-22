@@ -86,3 +86,11 @@ The front plinth and lowest tread extend below the inherited estimated pavement
 grade, closing the previously visible air gap without moving the building. The
 main glazed entry has two taller panels per leaf, an arched sign backing and
 its own threshold; the black-door fanlight has a central mullion.
+
+The frontage gap beside Posting House contains a sandstone boundary wall with
+circular frieze, a recessed black door and semicircular pediment, plus a red
+glazed telephone kiosk. These follow the private photo in snag
+171970328d6b4a53838ac8cb8ef044ca. Proportions are visually estimated within the
+existing mapped gap; hidden rear rooms and unreadable notices are omitted.
+The wall and door remain simple solids at every level; the kiosk generator
+reduces crown segments and glazing bars at distance, omitting fine lettering.

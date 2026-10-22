@@ -54,6 +54,13 @@
     {
       "url": "https://www.google.com/maps/@53.64856,-3.0037259,44m/data=!3m1!1e3",
       "use": "Close satellite view compared with published model2026-10-22: unequal roof ranges, broader LondonStreet hip and short corner saddle. Recalibrated widths/ridges are visual estimates. 3DEarth unavailable; no 3Dsurvey claimed."
+    },
+    {
+      "id": "user-boundary-photo",
+      "title": "Private photo attached to snag 171970328d6b4a53838ac8cb8ef044ca",
+      "capture_date": null,
+      "use": "Sandstone boundary, black door, circular frieze, semicircular pediment and red kiosk; dimensions estimated within mapped frontage gap.",
+      "rights": "Private reference only; no image pixels distributed."
     }
   ],
   "uncertainty": [

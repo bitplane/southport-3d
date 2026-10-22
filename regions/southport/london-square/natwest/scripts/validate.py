@@ -56,7 +56,7 @@ assert len(front_heads)==3
 assert all(max(abs(v.co.x) for v in o.data.vertices)<3.35/2 for o in front_heads), 'Upper hoods overlap'
 points=[ob.matrix_world@v.co for ob in meshes for v in ob.data.vertices]
 assert min(p.x for p in points)>D['x_min']-1.3
-assert max(p.x for p in points)<D['x_max']+1
+assert max(p.x for p in points)<33.2  # Boundary stops at Posting House; kiosk trim projects 2 cm.
 assert min(p.y for p in points)>D['rear_y']-.5
 assert max(p.y for p in points)<D['front_y']+1.5
 # Wall backing must close the strip between cornice and open parapet.

@@ -298,6 +298,30 @@
         "strategy": "omit",
         "reason": "Omit tiny iron curls, handles and pots; structural balcony rails and chimney stacks remain."
       }
+    },
+    {
+      "id": "telephone-kiosk",
+      "match": "^Kiosk boundary ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "boundary:build_lod",
+        "settings": {
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep red frame, glazing grid and curved crown with fewer crown segments."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "boundary:build_lod",
+        "settings": {
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Coarse curved crown and reduced grid preserve the kiosk silhouette; omit handle and fine lettering."
+      }
     }
   ]
 }

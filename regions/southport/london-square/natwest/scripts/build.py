@@ -11,6 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh, face_matrix, text_object
 from roof import joined_roof
+from boundary import build_boundary, kiosk
 from frontage import cash_machine, entrance_steps
 from components import rectangle, arch_outline, wall, upper_window, low_side_window, arched_window, gable, foliage, parapet, urn, finial, arc, partition_window
 D=json.loads((ROOT/'research/layout.json').read_text())
@@ -307,6 +308,21 @@ for i,(x,y,w,d,h,pots) in enumerate([(20.5,yf-3.8,.95,.85,18.0,1),(29.0,yr,1.25,
         m.lathe((x+(j-(pots-1)/2)*.38,y),[(z0+h+.08,.14),(z0+h+.18,.16),(z0+h+.53,.13),(z0+h+.59,.17)],segments=16)
         finish(m,'roof',[plain[1]])
 for x,y in [(24,-39),(26,-46)]:box('Roof estimated service upstand',(x,y,z0+10.55),(1.2,1.8,.45),'roof',lead)
+# The narrow frontage gap belongs to this boundary, not to Posting House.
+length=math.hypot(30.4-33.12,-23.16+22.8)
+ux,uy=(30.4-33.12)/length,(-23.16+22.8)/length
+boundary_frame=Matrix(((ux,0,uy,33.12),(uy,0,-ux,-22.8),(0,1,0,z0),(0,0,0,1)))
+build_boundary(boundary_frame,finish,stone,plain,black,red,glass,white)
+kiosk_frame=boundary_frame@Matrix.Translation((.43,0,.58))
+finish(kiosk(),'bank-frontage',[red,black,glass,white],kiosk_frame)
+label=text_object('Temporary telephone label','TELEPHONE',(0,2.27,.459),(0,0,1),.105,.67,font,black,extrude=.001)
+bpy.ops.object.select_all(action='DESELECT');label.select_set(True)
+bpy.context.view_layer.objects.active=label;bpy.ops.object.convert(target='MESH')
+lettering=Mesh('Fine telephone lettering')
+lettering.add([tuple(label.matrix_world@v.co) for v in label.data.vertices],[tuple(f.vertices) for f in label.data.polygons])
+bpy.data.objects.remove(label,do_unlink=True)
+finish(lettering,'bank-frontage',[black],kiosk_frame)
+
 for image in bpy.data.images:
     if image.source=='FILE':image.pack()
 s.render.engine='CYCLES';s.cycles.samples=24;s.cycles.use_denoising=True
