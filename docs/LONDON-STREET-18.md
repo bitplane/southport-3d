@@ -27,3 +27,11 @@ The final package has12 classified part/level GLBs. Combined exported-GLB front,
 These are this building's four streaming parts, not town-wide totals. The two window prototypes share baked maps across each row. Textures include authored brick/slate and baked sign/windows; no downloaded photographic pixels are embedded.
 
 Independent paired audit with 20 on 22 October 2026 removed coplanar party-wall end caps from the outer rear-wall plane. The former black rear junction stripes disappear in rebuilt all-level combined renders. The roof seam, ridge cap, frontage and parcel registration are unchanged; see the independent audit in [20 London Street](LONDON-STREET-20.md).
+
+The first local viewer snag exposed gaps above the fascia and beside the recessed
+entrance. The shopfront now has a continuous fascia infill, closed side returns
+and soffit, and the narrow right sidelight visible in the same 2020 auction
+photograph. Stone end piers meet the head cladding. These closure surfaces remain
+at every LoD; no interior room was added. A grid of exterior rays checks the
+opening within the front half-metre so missing panels cannot pass by hitting a
+remote rear wall. Exported views are checked from the report's saved camera.

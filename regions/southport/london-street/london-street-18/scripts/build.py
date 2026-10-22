@@ -173,7 +173,7 @@ box('Roof rear rooflight curb',(0,0,0),(1.1,1.35,.10),roofmetal,'roof',rl)
 box('Roof rear rooflight glass',(0,0,.065),(.94,1.19,.025),glass,'roof',rl)
 # Buff ground storey cladding: flat piers and head, subtle panel joints.
 for u in [.19,width-.19]:
- elevation_box('Shop stone pier',u,1.8,.38,3.60,.34,-.03,stone,'shopfront')
+ elevation_box('Shop stone pier',u,3.695/2,.38,3.695,.34,-.03,stone,'shopfront')
  for h in [.7,1.4,2.1,2.8]:elevation_box('Fine stone pier joint',u,h,.375,.009,.008,.145,black,'shopfront')
 elevation_box('Shop stone fascia surround',width/2,3.99,width,.59,.31,-.03,stone,'shopfront')
 for i in range(1,9):elevation_box('Fine fascia stone joint',width*i/9,4.0,.009,.57,.008,.13,black,'shopfront')
@@ -184,7 +184,7 @@ for a,b in [(left,left+1.1),(left+1.48,door-.55),(door-.5,right)]:
  for u in [a,b]:elevation_box('Shop blue glazing stile',u,1.4,.055,shopheight+.1,.12,-.10,blue,'shopfront')
  for h in [.04,2.78]:elevation_box('Shop blue glazing rail',(a+b)/2,h,b-a,.06,.12,-.10,blue,'shopfront')
 # Pale solid dividing pier, clearly visible in auction frontage.
-elevation_box('Shop pale dividing pier',left+1.29,1.45,.32,2.9,.28,-.055,cream,'shopfront')
+elevation_box('Shop pale dividing pier',left+1.29,1.45,.38,2.9,.28,-.055,cream,'shopfront')
 elevation_box('Shop frosted side pane',left+.55,1.35,.99,2.15,.025,-.145,roofmetal,'shopfront')
 # Main shop glazing mullions and horizontal base rails; blank interior panels only.
 for u in [3.10,4.28,5.46]:elevation_box('Shop main glazing mullion',u,1.4,.045,2.73,.085,-.115,blue,'shopfront')
@@ -197,6 +197,15 @@ for u in [door-.48,door+.48]:elevation_box('Shop door blue frame',u,1.2,.045,2.4
 for h in [.04,2.38]:elevation_box('Shop door blue rail',door,h,1,.055,.07,-.30,blue,'shopfront')
 elevation_box('Fine door pull',door+.30,1.14,.025,.34,.06,-.24,metal,'shopfront')
 elevation_box('Shop threshold',door,.035,1.04,.07,.48,-.18,stone,'shopfront')
+# Close the exterior recess, not an invented interior. The dated frontage photo
+# shows a narrow right sidelight and a continuous fascia between its stone piers.
+elevation_box('Shop fascia infill',width/2,3.25,width-.76,.92,.30,-.13,blue,'shopfront')
+elevation_box('Shop front sill',width/2,.025,width-.76,.05,.12,-.16,blue,'shopfront')
+for a,b in [(door-.55,door-.48),(door+.48,right)]:
+ elevation_box('Shop recessed side glazing',(a+b)/2,1.39,b-a,2.78,.04,-.35,glass,'shopfront')
+for u in [door-.55,right]:
+ elevation_box('Shop entry side reveal',u,1.39,.055,2.78,.35,-.255,blue,'shopfront')
+elevation_box('Shop entry soffit',(door-.55+right)/2,2.79,right-(door-.55),.05,.46,-.21,blue,'shopfront')
 # Long sign has raised source lettering with baked lower LoDs.
 sign('Skipton bank fascia','SKIPTON BUILDING SOCIETY',width/2,3.21,width-.85,.65,background=white,foreground=blue,out=.16,logo=True)
 for h in [2.84,3.58]:elevation_box('Trim blue sign edge',width/2,h,width-.75,.045,.09,.175,blue,'shopfront')
