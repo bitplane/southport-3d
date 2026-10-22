@@ -1,0 +1,622 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/london-square-exterior.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Square",
+  "status": "Exterior research model. Detail supports close inspection; Walk and District use reviewed replacement families. Interiors and names deferred. District retains architectural envelopes; regional tiles are deferred.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "ground",
+      "name": "Square and street placeholders",
+      "collection": "00 Site registration and approximate paving",
+      "ground": true,
+      "fixed_level": "district"
+    },
+    {
+      "id": "obelisk",
+      "name": "Obelisk",
+      "collection": "01 Obelisk exterior"
+    },
+    {
+      "id": "north-east",
+      "name": "North-east colonnade",
+      "collection": "02 North-east colonnade exterior"
+    },
+    {
+      "id": "south-west",
+      "name": "South-west colonnade",
+      "collection": "03 South-west colonnade exterior"
+    },
+    {
+      "id": "lamps",
+      "name": "Clustered lamps",
+      "collection": "04 Clustered lamp standards \u2014 placement provisional"
+    }
+  ],
+  "views": [
+    {
+      "name": "The square",
+      "position": [
+        65,
+        36,
+        70
+      ],
+      "target": [
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "name": "Obelisk",
+      "position": [
+        -7,
+        4,
+        2
+      ],
+      "target": [
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "name": "NE colonnade",
+      "position": [
+        19,
+        6,
+        22
+      ],
+      "target": [
+        33,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "SW colonnade",
+      "position": [
+        -19,
+        6,
+        22
+      ],
+      "target": [
+        -34,
+        2,
+        0
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      10,
+      1.7,
+      12
+    ],
+    "target": [
+      0,
+      2,
+      0
+    ]
+  },
+  "rules": [
+    {
+      "id": "columns",
+      "match": "^(NE|SW) fluted Doric column ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "column_geometry:build_lod",
+        "uv": "smart",
+        "reason": "Retain 20 geometric flutes and the capital silhouette; reduce axial sampling and omit bevels.",
+        "settings": {
+          "radial_segments": 80,
+          "shaft_rings": 13,
+          "moulding_segments": 32,
+          "flutes": 20,
+          "small_mouldings": true
+        },
+        "bake": true,
+        "cage_extrusion_m": 0.025,
+        "max_sampled_error_m": 0.025
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "column_geometry:build_lod",
+        "uv": "smart",
+        "reason": "Retain tapered shaft, broad base, capital and square abacus. Flutes move to normals; tiny neck annulus is omitted.",
+        "settings": {
+          "radial_segments": 16,
+          "shaft_rings": 5,
+          "moulding_segments": 16,
+          "flutes": 0,
+          "small_mouldings": false
+        },
+        "max_sampled_error_m": 0.03,
+        "cage_extrusion_m": 0.04,
+        "bake": true
+      }
+    },
+    {
+      "id": "victory",
+      "match": "^Victory Britannia",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/victory.npz",
+        "grid": [
+          160,
+          280
+        ],
+        "trim_empty": false,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.25,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "mourning",
+      "match": "^Mourning figure",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/mourning.npz",
+        "grid": [
+          160,
+          280
+        ],
+        "trim_empty": false,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.25,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "arms",
+      "match": "^Southport arms",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/southport-arms.npz",
+        "grid": [
+          160,
+          160
+        ],
+        "trim_empty": false,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.25,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "salute",
+      "match": "^Salute laurel wreath",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/salute-wreath.npz",
+        "grid": [
+          160,
+          160
+        ],
+        "trim_empty": true,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "generator",
+        "reason": "Retain the open wreath silhouette with a coarse trimmed heightfield; bake the leaves instead of filling the open centre with a panel.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/salute-wreath.npz",
+        "grid": [
+          64,
+          64
+        ],
+        "trim_empty": true,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      }
+    },
+    {
+      "id": "trophy-victory",
+      "match": "^Classical trophy victory",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/trophy-victory.npz",
+        "grid": [
+          240,
+          80
+        ],
+        "trim_empty": false,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.25,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "trophy-pelta",
+      "match": "^Classical trophy pelta",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/trophy-pelta.npz",
+        "grid": [
+          240,
+          80
+        ],
+        "trim_empty": false,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.25,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "trophy-wreath",
+      "match": "^Classical trophy wreath",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/trophy-wreath.npz",
+        "grid": [
+          240,
+          80
+        ],
+        "trim_empty": false,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.25,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "torches",
+      "match": "^Crossed inverted torches",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/crossed-torches.npz",
+        "grid": [
+          96,
+          160
+        ],
+        "trim_empty": false,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.25,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "foliage",
+      "match": "^Frieze foliage",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/frieze-foliage.npz",
+        "grid": [
+          96,
+          48
+        ],
+        "trim_empty": true,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "This small repeated ornament is insignificant at district scale."
+      }
+    },
+    {
+      "id": "rosette",
+      "match": "^Architectural rosette",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/architectural-rosette.npz",
+        "grid": [
+          48,
+          48
+        ],
+        "trim_empty": true,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "This small repeated ornament is insignificant at district scale."
+      }
+    },
+    {
+      "id": "lion",
+      "match": "^Cornice lion mask",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain a coarse carved surface and bake fine detail; regular grids avoid folded collapse faces.",
+        "generator": "heightfield",
+        "source_npz": "research/relief-data/cornice-lion.npz",
+        "grid": [
+          64,
+          64
+        ],
+        "trim_empty": true,
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.08,
+        "max_sampled_error_m": 0.08
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "This small repeated ornament is insignificant at district scale."
+      }
+    },
+    {
+      "id": "inscription",
+      "match": "^Obelisk SW WWII inscribed circular insert$",
+      "walk": {
+        "strategy": "replace",
+        "shape": "lathe",
+        "profile": [
+          [
+            -0.003,
+            0.513
+          ],
+          [
+            0.031,
+            0.515
+          ],
+          [
+            0.035,
+            0.513
+          ]
+        ],
+        "segments": 96,
+        "uv": "lathe",
+        "reason": "Replace boolean-cut lettering with a solid circular insert; bake lettering and keep the circular edge.",
+        "bake": true,
+        "cage_extrusion_m": 0.012,
+        "max_sampled_error_m": 0.012
+      },
+      "district": {
+        "strategy": "replace",
+        "shape": "lathe",
+        "profile": [
+          [
+            -0.003,
+            0.513
+          ],
+          [
+            0.031,
+            0.515
+          ],
+          [
+            0.035,
+            0.513
+          ]
+        ],
+        "segments": 48,
+        "uv": "lathe",
+        "reason": "Replace boolean-cut lettering with a solid circular insert; bake lettering and keep the circular edge.",
+        "bake": true,
+        "cage_extrusion_m": 0.012,
+        "max_sampled_error_m": 0.012
+      }
+    },
+    {
+      "id": "pedestal",
+      "match": "^Square obelisk pedestal$",
+      "walk": {
+        "strategy": "decimate",
+        "ratio": 0.2,
+        "uv": "smart",
+        "reason": "Retain the block outline and shallow joints while reducing bevel topology; tested only on this closed masonry piece.",
+        "bake": true,
+        "cage_extrusion_m": 0.03,
+        "max_sampled_error_m": 0.03
+      },
+      "district": {
+        "strategy": "replace",
+        "shape": "box",
+        "uv": "box",
+        "reason": "The plain pedestal becomes its local bounding box. Bake shallow masonry joints and wear; retain silhouette and cast-shadow volume.",
+        "bake": true,
+        "cage_extrusion_m": 0.03,
+        "max_sampled_error_m": 0.03
+      }
+    },
+    {
+      "id": "lamp-single",
+      "match": "^Bromsgrove single-globe standard",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Preserve globe count, pole and open arms; omit acanthus, beads and small casting details. Retain the original metal/globe materials.",
+        "generator": "lamp_lod:build_lod",
+        "settings": {
+          "kind": "single",
+          "segments": 24
+        },
+        "uv": "smart",
+        "bake": false
+      },
+      "district": {
+        "strategy": "generator",
+        "reason": "Preserve globe count, pole and open arms; omit acanthus, beads and small casting details. Retain the original metal/globe materials.",
+        "generator": "lamp_lod:build_lod",
+        "settings": {
+          "kind": "single",
+          "segments": 12
+        },
+        "uv": "smart",
+        "bake": false
+      }
+    },
+    {
+      "id": "lamp-cluster",
+      "match": "^Bromsgrove five-globe clustered standard",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Preserve globe count, pole and open arms; omit acanthus, beads and small casting details. Retain the original metal/globe materials.",
+        "generator": "lamp_lod:build_lod",
+        "settings": {
+          "kind": "cluster",
+          "segments": 24
+        },
+        "uv": "smart",
+        "bake": false
+      },
+      "district": {
+        "strategy": "generator",
+        "reason": "Preserve globe count, pole and open arms; omit acanthus, beads and small casting details. Retain the original metal/globe materials.",
+        "generator": "lamp_lod:build_lod",
+        "settings": {
+          "kind": "cluster",
+          "segments": 12
+        },
+        "uv": "smart",
+        "bake": false
+      }
+    },
+    {
+      "id": "small-fixtures",
+      "match": "^Obelisk (SE|SW|NW) (cornice linear light|recessed pyramid grille)",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Tiny modern fittings do not define the monument at this level; close inspection uses the original detail asset."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Tiny modern fittings do not define the monument at this level; close inspection uses the original detail asset."
+      }
+    },
+    {
+      "id": "paving-grid",
+      "match": "^Paving grid",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Keep the paving surface; individual provisional grid strips do not need geometry at these scales."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Keep the paving surface; individual provisional grid strips do not need geometry at these scales."
+      }
+    },
+    {
+      "id": "architectural-envelope",
+      "match": "(?:^(NE|SW) chamber ashlar )|(?:^(NE|SW) stepped )|(?:^(NE|SW) central entrance steps)|(?:^(NE|SW) chamber vertical plinth)|(?:^(NE|SW)_(SE|NW) carved panel)|(?:^Obelisk (NW|SE|SW) roundel border)|(?:^Obelisk SW WWII radial reeding)|(?:^Obelisk (front date block|shaft |base mouldings|pedestal cornice|pyramid with))|(?:^Tapered obelisk shaft)|(?:^End (elevation|lower panel|trophy recessed))|(?:^Window )|(?:^Trophy recessed)|(?:^Chamber structural floor)|(?:^Recessed stepped roof)|(?:^Bromsgrove lamp stone plinth)|(?:^Island bollards)|(?:^Central monument island)|(?:^Continuous paving)|(?:^Working site ground)|(?:^(London Square|London Street|Lord Street|Nevill Street) road placeholder)",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve measured placement, openings, steps, roof and major profiles with their source materials. Further envelope reduction is deferred until visual comparisons in the viewer justify it."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Preserve measured placement, openings, steps, roof and major profiles with their source materials. Further envelope reduction is deferred until visual comparisons in the viewer justify it."
+      }
+    }
+  ],
+  "excluded_collections": [
+    {
+      "name": "99 Survey guides \u2014 hidden in renders",
+      "reason": "Modelling north arrow and scale are authoring guides, not physical features."
+    }
+  ]
+}

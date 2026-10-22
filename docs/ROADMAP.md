@@ -1,10 +1,20 @@
 # Roadmap
 
-1. Keep the first master reproducible and document uncertain dimensions. Add a second building to prove the geographic layout and shared geometry interface.
-2. Extend the tested component LOD pilot to full asset coverage. Classify omissions, simple-envelope replacements, generator controls and selective decimation. Parameterise detail by meaningful feature: column radial segments, mouldings, relief representation, small fixtures and lettering. Preserve silhouettes and defining architecture. Use decimation selectively and review it visually.
-3. Build explicit LOD meshes from the same recipes. Bake high-detail normals and selected material channels onto UV-mapped lower-detail meshes. Height maps alone do not preserve silhouettes; retain geometry where it matters. Scale texture resolution separately from mesh detail.
-4. Add publication validation for bounds, alignment, triangle/material budgets, texture sizes and missing resources. Generate compressed GLBs and GPU-friendly textures, plus a versioned manifest containing bounds, origin, LOD errors, hashes and attribution. Keep the master out of routine browser downloads.
-5. Build a viewer that selects detail by projected screen size, with hysteresis, request cancellation, memory limits and gradual replacement. Geographic chunks provide discovery and culling; per-building LODs supply detail. Test on ordinary phones and slow connections.
-6. Publish asset packages and the website through a reproducible release pipeline. Start CI with cheap source checks. Heavy Blender builds need a controlled worker; never automatically execute untrusted fork PR code on a contributor's always-on desktop.
+Implemented foundations:
 
-The component bake pilot is implemented; these steps describe its expansion to complete assets and publication. Before public asset distribution, choose code and asset licences and resolve provenance questions. Reference images remain local unless their licences explicitly permit distribution and the project chooses to include them.
+- Source-only geographic asset layout, shared primitives and isolated master builds.
+- Reasoned component LOD recipes: omit, replace, parameterise or selectively decimate.
+- Shared-prototype baking and complete memorial streaming assembly, preserving explicit architectural envelopes.
+- Local publication with content-addressed GLBs, source signatures, resource measurements and a discoverable catalog.
+- Browser orbit/walking inspection, per-part Detail/Walk/District switching, manual comparison controls and a bounded inactive-resource cache.
+
+Next work is driven by inspection in the viewer:
+
+1. Tune the three levels and switching bands against visible differences, performance and transfer size. Correct seams, silhouettes and texture density before adding more reduction.
+2. Add a second building using its manifest and publication recipe, without special-casing the viewer. Improve shared generator interfaces where that creates a useful second consumer.
+3. Add compressed geometry/textures, shared facade atlases and better prototype batching. Establish target device budgets and validate on ordinary phones and slower links.
+4. Improve navigation with collision geometry, accessible/touch walking controls, saved viewpoints and selection. Tune visibility/request scheduling as asset count grows.
+5. Deploy the static viewer and asset packages through a trusted release pipeline after selecting code/asset licences and resolving distribution provenance.
+6. When there are hundreds of buildings, add geographic tile aggregation and region-level baked textures for very distant views. These are deliberately not prerequisites for the current viewer.
+
+CI runs cheap source and policy tests. Heavy Blender builds need a controlled worker: never automatically execute untrusted fork PR code on a contributor's always-on desktop. Reference photographs remain outside Git.

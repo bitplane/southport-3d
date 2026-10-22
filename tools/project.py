@@ -26,7 +26,7 @@ def assets():
             raise ValueError(f'Invalid or duplicate asset ID: {key}')
         if spec['units'] != 'metres':
             raise ValueError(f'Expected metric asset: {key}')
-        for script in spec['build'].values():
+        for script in [*spec['build'].values(), *spec.get('validation_checks', [])]:
             if Path(script).name != script or not (path.parent / 'scripts' / script).is_file():
                 raise ValueError(f'Invalid build script: {script}')
         found[key] = (path.parent, spec)
@@ -62,6 +62,9 @@ def check():
         recipe_path = source / 'lod.json'
         if recipe_path.exists():
             load_recipe(recipe_path)
+        if (source / 'publication.json').exists():
+            from publication import load_publication
+            load_publication(source / 'publication.json')
     print(f'Checked {len(entries)} asset(s) and {len(list(filter(None, tracked)))} tracked files.')
 
 
@@ -69,9 +72,14 @@ def fingerprint(source):
     digest = hashlib.sha256()
     for base in (source, ROOT / 'lib'):
         for path in sorted(base.rglob('*')):
-            if path.is_file() and '__pycache__' not in path.parts and path.name not in {'lod.json', 'lod.py'}:
+            if path.is_file() and '__pycache__' not in path.parts and path.name not in {'lod.json', 'lod.py', 'publication.json'}:
                 digest.update(str(path.relative_to(ROOT)).encode())
-                digest.update(path.read_bytes())
+                if path == source / 'asset.json':
+                    metadata = json.loads(path.read_text())
+                    metadata.pop('validation_checks', None)
+                    digest.update((json.dumps(metadata, indent=2) + '\n').encode())
+                else:
+                    digest.update(path.read_bytes())
     return digest.hexdigest()
 
 
@@ -120,8 +128,8 @@ def build(args):
         run(spec['build']['export'], True)
     if args.stage in ('all', 'validate'):
         run(spec['build']['validate'], True)
-        run('check_obelisk_surface_export.py')
-        run('check_exterior_weathering_export.py')
+        for script in spec.get('validation_checks', []):
+            run(script)
     if args.stage == 'render':
         run(spec['build']['render'], True, ('--final', *args.views))
         run('contact_sheet.py')
@@ -177,12 +185,19 @@ def main():
     lodder.add_argument('asset')
     lodder.add_argument('--threads', type=int, default=12)
     lodder.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))
+    publisher = sub.add_parser('publish', help='Build all publication recipes and prepare the local viewer')
+    publisher.add_argument('--rebuild', action='store_true')
+    publisher.add_argument('--threads', type=int, default=12)
+    publisher.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))
     args = parser.parse_args()
     if args.command == 'list':
         for key in assets():
             print(key)
     elif args.command == 'check':
         check()
+    elif args.command == 'publish':
+        from publish_viewer import publish
+        publish(args, assets, fingerprint, build)
     elif args.command == 'lod':
         lod(args)
     else:

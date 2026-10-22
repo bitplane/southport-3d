@@ -29,5 +29,9 @@
   },
   "source_catalog": "research/reference_catalog.json",
   "scope": "Exteriors; interiors and names deferred. Dimensions and hidden details include documented estimates.",
-  "licensing": "See repository RIGHTS.md; source-photo licences do not transfer to authored assets."
+  "licensing": "See repository RIGHTS.md; source-photo licences do not transfer to authored assets.",
+  "validation_checks": [
+    "check_obelisk_surface_export.py",
+    "check_exterior_weathering_export.py"
+  ]
 }

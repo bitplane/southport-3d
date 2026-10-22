@@ -99,6 +99,12 @@ def reduce(high, name, action, level, asset_dir):
             faces = [(j*nx+i+nx,j*nx+i+nx+1,j*nx+i+1,j*nx+i) for j in range(ny-1) for i in range(nx-1)]
             mesh = Mesh(name); mesh.add(verts, faces)
             obj = mesh.finish([], smooth=True)
+            if action.get('trim_empty'):
+                import bmesh
+                bm=bmesh.new();bm.from_mesh(obj.data)
+                empty=[f for f in bm.faces if max(v.co.z for v in f.verts)<.00115]
+                bmesh.ops.delete(bm,geom=empty,context='FACES')
+                bm.to_mesh(obj.data);bm.free();obj.data.update()
         else:
             sys.path.insert(0, str(asset_dir / 'scripts'))
             module, function = action['generator'].split(':')

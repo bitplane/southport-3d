@@ -61,3 +61,7 @@ Projection distances are feature-specific. Too small misses carving; too large c
 5. Include source recipes, reasoning and review findings in the PR. Generated GLBs/maps/renders stay out of Git. A new building is not LOD-complete while components are unclassified; document any agreed deferral explicitly.
 
 The manifest records decisions, source/recipe/baker hashes, Blender version, bounds, file sizes, textures and sampled distances. GLBs retain placement with glTF Y-up conversion; report bounds are Blender world Z-up metres. Sampled distances are not conservative error bounds. Do not infer guaranteed screen-space switching distances from them. Compression, aggregate instance assembly, screen-space thresholds and publication remain subsequent stages.
+
+## Streaming assembly
+
+The commands above retain the original component experiment. For the complete viewer build, use `python tools/project.py publish` and the [publication contract](VIEWER.md). publication.json groups compatible instances, classifies every exported object, retains explicit architectural envelopes where appropriate, and assembles Detail/Walk/District streaming parts. Regional tiles remain deferred.
