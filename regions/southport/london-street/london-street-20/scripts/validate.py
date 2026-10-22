@@ -30,5 +30,18 @@ repo=Path(__import__('os').environ['SOUTHPORT_REPO_ROOT'])
 nd=json.loads((repo/'regions/southport/london-street'/('london-street-'+other)/'research/layout.json').read_text())
 for field in ['front_x','main_depth','ridge_height','base_z','registration_pivot','registration_radians']:assert D[field]==nd[field],field
 assert (D['south_y']==nd['north_y'] if other=='20' else D['north_y']==nd['south_y'])
+# Check the actual authored cross-section, not just matching layout settings.
+roof=bpy.data.objects['Roof common main shell']
+rv=[reg.inverted()@roof.matrix_world@v.co for v in roof.data.vertices]
+section={tuple(round(v[i],4) for i in range(3)) for v in rv if abs(v.y-D['north_y'])<.001}
+xe=D['front_x']-.20;xb=D['front_x']-D['main_depth']+.15
+expected={(round(x,4),round(D['north_y'],4),round(z,4)) for x,h in [(xe,10.40),(xb,10.40),((xe+xb)/2,D['ridge_height'])] for z in [D['base_z']+h,D['base_z']+h-.14]}
+assert section==expected,(section,expected)
+infill=bpy.data.objects['Shop entrance dividing infill']
+centre=sum((v.co for v in infill.data.vertices),Vector())/len(infill.data.vertices)
+origin=infill.matrix_world@(centre+Vector((0,0,1)))
+direction=(infill.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
+assert hit and found==infill,'Shop entrance dividing strip must close the aperture'
 report={'mesh_objects':len(meshes),'front_windows':len(windows),'checks':'Finite UV meshes, packed authored maps, eight unobscured upper window apertures, manifold common roof shell, bounds respecting neighbour division.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

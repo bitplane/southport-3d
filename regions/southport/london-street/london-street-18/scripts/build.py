@@ -141,8 +141,8 @@ elevation_box('Trim parapet cap',width/2,10.64,width+.03,.12,.41,-.12,cream)
 elevation_box('Trim shop stringcourse',width/2,4.34,width,.11,.15,.015,cream)
 # Side/party walls are plain. Main rear upper elevation is conservative: no invented window grid.
 mainrear=xf-D['main_depth'];rearframe=face_matrix((mainrear,yn,base),(-1,0,0))
-for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((mainrear,ys,base),(0,-1,0)))]:
- wall_with_openings('party '+label,frame,D['main_depth']-.36,10.40,[],mat=brick)
+for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((mainrear+.36,ys,base),(0,-1,0)))]:
+ wall_with_openings('party '+label,frame,D['main_depth']-.72,10.40,[],mat=brick)
 wall_with_openings('main rear',rearframe,width,10.4,[],'rear',brick)
 # Northern half of the common18–20 hipped roof; southern boundary is a matching roof section.
 xe=xf-.20;xb=mainrear+.15;ridge=(xe+xb)/2

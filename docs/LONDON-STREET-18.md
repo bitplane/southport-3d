@@ -25,3 +25,5 @@ The final package has12 classified part/level GLBs. Combined exported-GLB front,
 | district | 1,658 | 430,092 | 173,079 |
 
 These are this building's four streaming parts, not town-wide totals. The two window prototypes share baked maps across each row. Textures include authored brick/slate and baked sign/windows; no downloaded photographic pixels are embedded.
+
+Independent paired audit with 20 on 22 October 2026 removed coplanar party-wall end caps from the outer rear-wall plane. The former black rear junction stripes disappear in rebuilt all-level combined renders. The roof seam, ridge cap, frontage and parcel registration are unchanged; see the independent audit in [20 London Street](LONDON-STREET-20.md).

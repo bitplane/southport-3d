@@ -18,6 +18,14 @@ Combined exported-GLB front, oblique and rear comparisons with18 were inspected 
 
 | Level | Placed triangles | GLB bytes, including textures | Embedded image bytes |
 | --- | ---: | ---: | ---: |
-| detail | 3,032 | 1,574,892 | 1,163,348 |
-| walk | 2,280 | 1,590,672 | 1,220,093 |
-| district | 1,680 | 556,764 | 294,787 |
+| detail | 3,044 | 1,577,048 | 1,163,348 |
+| walk | 2,292 | 1,592,828 | 1,220,093 |
+| district | 1,692 | 558,920 | 294,787 |
+
+## Independent audit, 22 October 2026
+
+Compared the retained May 2011 panorama and 2020 Acuitus frontage against the three exported levels. The narrow strip between the bank entrance and flats pier was missing: a cream infill now closes it, with a ray check ensuring that the shop aperture cannot expose brick behind it.
+
+Combined rear renders revealed black vertical stripes at the 18/20 wall junction. The rear walls met correctly, but the party-wall end caps overlapped their outer faces. Both assets now stop those side walls at the inner rear-wall face. Rebuilt exported renders confirm the stripes are gone. The common roof's six section vertices and ridge-cap corners match across both assets; validation now checks the actual authored roof section, rather than only matching layout parameters. No roof silhouette or frontage registration changed.
+
+Full builds, validation and all 24 GLBs across both assets passed. Combined front, oblique and rear renders were reviewed at Detail, Walk and District. Review images are generated locally under `output/london-street-20-audit/`, outside Git. Rear architecture and frontage dimensions retain the stated estimation limits.

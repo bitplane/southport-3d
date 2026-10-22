@@ -146,7 +146,7 @@ elevation_box('Trim frieze',width/2,10.00,width,.23,.13,.015,cream)
 for i in range(37):elevation_box('Fine cornice dentil',.13+i*(width-.26)/36,10.29,.09,.13,.17,.13,cream)
 # Plain party surfaces and a closed conservative rear facade.
 mainrear=xf-D['main_depth'];rearframe=face_matrix((mainrear,yn,base),(-1,0,0))
-for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((mainrear,ys,base),(0,-1,0)))]:wall_with_openings('party '+label,frame,D['main_depth']-.36,10.4,[],mat=brick)
+for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((mainrear+.36,ys,base),(0,-1,0)))]:wall_with_openings('party '+label,frame,D['main_depth']-.72,10.4,[],mat=brick)
 wall_with_openings('main rear',rearframe,width,10.4,[],'rear',brick)
 # Southern end of the common18–20 hipped roof. The northern cross-section meets18.
 xe=xf-.20;xb=mainrear+.15;ridge=(xe+xb)/2;ze=base+10.40;zr=base+D['ridge_height'];hip=2.15
@@ -167,6 +167,10 @@ box('Roof rear rooflight pane',(wingrear+4.2,(ys+wingnorth)/2,base+wh+.22),(1.23
 # Vacant2020 shop: white signboard, pale covered display and separate north flats door.
 shopright=width-1.35;shopdoor=shopright-.58
 for u in [.14,shopright+.17,width-.14]:elevation_box('Shop pale cladding pier',u,1.65,.28,3.30,.31,-.025,cream,'shopfront')
+# Close the cream masonry strip between bank entrance and flats pier.
+# Without this infill the large shop aperture exposes an unintended brick slit.
+gap_left=shopdoor+.50;gap_right=shopright+.17-.14
+elevation_box('Shop entrance dividing infill',(gap_left+gap_right)/2,1.42,gap_right-gap_left+.02,2.84,.31,-.025,cream,'shopfront')
 elevation_box('Shop plain fascia lower backing',width/2,3.10,width,.52,.16,.045,white,'shopfront')
 elevation_box('Shop blank fascia',width/2,3.81,width,.91,.16,.045,white,'shopfront')
 elevation_box('Trim fascia top',width/2,4.30,width,.08,.27,.08,cream,'shopfront')
