@@ -1,0 +1,18 @@
+{
+  "part_boundaries_y": [
+    260,
+    350
+  ],
+  "grade": {
+    "start_y": 260,
+    "top_y": 350,
+    "start_z": 2.2,
+    "top_z": 2.2
+  },
+  "bounds_x": [
+    22,
+    85
+  ],
+  "marine_end_y": 310,
+  "uncertainty": "Mapped centrelines; width/pavement/grade estimates; flat shared 2.2m datum, not surveyed."
+}

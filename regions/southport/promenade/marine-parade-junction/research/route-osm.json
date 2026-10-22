@@ -1,0 +1,457 @@
+{
+  "attribution": "\u00a9 OpenStreetMap contributors, ODbL 1.0",
+  "url": "https://www.openstreetmap.org/copyright",
+  "retrieved": "2026-10-22",
+  "ways": {
+    "24475645": {
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "maxspeed": "30 mph",
+        "name": "The Promenade",
+        "not:name": "Promenade",
+        "oneway": "yes",
+        "ref": "B5245",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          355.45,
+          347.09
+        ],
+        [
+          346.4,
+          349.45
+        ],
+        [
+          341.78,
+          349.72
+        ],
+        [
+          291.52,
+          338.12
+        ],
+        [
+          252.58,
+          329.96
+        ],
+        [
+          223.96,
+          323.95
+        ],
+        [
+          187.39,
+          316.81
+        ],
+        [
+          178.33,
+          314.89
+        ],
+        [
+          146.51,
+          307.82
+        ],
+        [
+          132.4,
+          304.44
+        ],
+        [
+          89.64,
+          295.07
+        ],
+        [
+          57.33,
+          287.33
+        ],
+        [
+          39.58,
+          283.13
+        ]
+      ]
+    },
+    "24943783": {
+      "tags": {
+        "highway": "tertiary",
+        "lanes": "1",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Marine Parade",
+        "oneway": "yes",
+        "sidewalk": "no",
+        "source": "Landsat, yahoo aerial imagery",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          20.27,
+          351.62
+        ],
+        [
+          21.27,
+          339.26
+        ],
+        [
+          32.2,
+          304.54
+        ],
+        [
+          33.0,
+          301.89
+        ],
+        [
+          36.66,
+          289.88
+        ]
+      ]
+    },
+    "24950547": {
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "The Promenade",
+        "oneway": "yes",
+        "ref": "B5245",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          27.86,
+          287.2
+        ],
+        [
+          36.66,
+          289.88
+        ]
+      ]
+    },
+    "271811305": {
+      "tags": {
+        "highway": "tertiary",
+        "maxspeed": "30 mph",
+        "name": "Marine Parade",
+        "oneway": "yes",
+        "source": "Landsat, yahoo aerial imagery"
+      },
+      "xy": [
+        [
+          36.66,
+          289.88
+        ],
+        [
+          36.43,
+          287.2
+        ],
+        [
+          34.7,
+          284.4
+        ]
+      ]
+    },
+    "271811307": {
+      "tags": {
+        "highway": "tertiary",
+        "lanes": "1",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Marine Parade",
+        "oneway": "yes",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "no",
+        "source": "Landsat, yahoo aerial imagery",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          9.3,
+          376.9
+        ],
+        [
+          14.78,
+          364.99
+        ],
+        [
+          20.27,
+          351.62
+        ],
+        [
+          37.14,
+          303.04
+        ],
+        [
+          39.74,
+          300.76
+        ],
+        [
+          41.4,
+          298.78
+        ],
+        [
+          43.9,
+          296.75
+        ],
+        [
+          51.79,
+          293.29
+        ]
+      ]
+    },
+    "271811309": {
+      "tags": {
+        "highway": "tertiary",
+        "lanes": "1",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Marine Parade",
+        "oneway": "yes",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "no",
+        "source": "Landsat, yahoo aerial imagery",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          27.86,
+          287.2
+        ],
+        [
+          29.56,
+          292.01
+        ],
+        [
+          29.91,
+          294.56
+        ],
+        [
+          29.82,
+          297.65
+        ],
+        [
+          29.43,
+          301.11
+        ],
+        [
+          26.62,
+          308.95
+        ],
+        [
+          11.35,
+          361.79
+        ],
+        [
+          9.3,
+          376.9
+        ]
+      ]
+    },
+    "271811311": {
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "maxspeed": "30 mph",
+        "name": "The Promenade",
+        "oneway": "yes",
+        "ref": "B5245",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          36.66,
+          289.88
+        ],
+        [
+          51.79,
+          293.29
+        ]
+      ]
+    },
+    "424590089": {
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "The Promenade",
+        "not:name": "Promenade",
+        "oneway": "yes",
+        "ref": "B5245",
+        "sidewalk:both": "separate",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          -61.51,
+          257.15
+        ],
+        [
+          -45.73,
+          264.77
+        ],
+        [
+          -39.8,
+          266.44
+        ],
+        [
+          -22.68,
+          270.98
+        ],
+        [
+          -10.54,
+          274.35
+        ],
+        [
+          -8.49,
+          274.92
+        ],
+        [
+          9.85,
+          280.94
+        ],
+        [
+          27.86,
+          287.2
+        ]
+      ]
+    },
+    "1487546956": {
+      "tags": {
+        "highway": "tertiary",
+        "maxspeed": "30 mph",
+        "name": "Marine Parade",
+        "oneway": "yes",
+        "source": "Landsat, yahoo aerial imagery"
+      },
+      "xy": [
+        [
+          34.7,
+          284.4
+        ],
+        [
+          31.69,
+          280.78
+        ]
+      ]
+    },
+    "1487546958": {
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "maxspeed": "30 mph",
+        "name": "The Promenade",
+        "not:name": "Promenade",
+        "oneway": "yes",
+        "ref": "B5245",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          39.58,
+          283.13
+        ],
+        [
+          31.69,
+          280.78
+        ]
+      ]
+    },
+    "1487546959": {
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "maxspeed": "30 mph",
+        "name": "The Promenade",
+        "oneway": "yes",
+        "ref": "B5245",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          51.79,
+          293.29
+        ],
+        [
+          55.29,
+          294.26
+        ],
+        [
+          87.69,
+          302.73
+        ],
+        [
+          107.5,
+          307.84
+        ],
+        [
+          128.2,
+          312.53
+        ],
+        [
+          143.56,
+          316.19
+        ],
+        [
+          176.41,
+          323.74
+        ],
+        [
+          222.02,
+          333.04
+        ],
+        [
+          251.95,
+          339.14
+        ],
+        [
+          288.84,
+          346.65
+        ],
+        [
+          299.71,
+          348.86
+        ],
+        [
+          349.01,
+          362.75
+        ]
+      ]
+    },
+    "1487546960": {
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "maxspeed": "30 mph",
+        "name": "The Promenade",
+        "not:name": "Promenade",
+        "oneway": "yes",
+        "ref": "B5245",
+        "sidewalk:both": "separate",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          31.69,
+          280.78
+        ],
+        [
+          -7.96,
+          267.17
+        ],
+        [
+          -21.2,
+          263.73
+        ],
+        [
+          -37.99,
+          259.94
+        ],
+        [
+          -44.93,
+          258.37
+        ],
+        [
+          -61.51,
+          257.15
+        ]
+      ]
+    }
+  }
+}

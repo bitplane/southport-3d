@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Marine Parade junction",
+  "status": "OSM-registered bounded road extension; widths, grade and paving estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "junction-ground",
+      "name": "Promenade and Marine Parade mouth",
+      "collection": "junction-ground",
+      "ground": true
+    }
+  ],
+  "views": [
+    {
+      "name": "Marine Parade junction",
+      "position": [
+        115,
+        65,
+        -248
+      ],
+      "target": [
+        49,
+        2.2,
+        -301
+      ]
+    },
+    {
+      "name": "Promenade seam",
+      "position": [
+        15,
+        12,
+        -256
+      ],
+      "target": [
+        35,
+        2.2,
+        -285
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      48,
+      3.8,
+      -275
+    ],
+    "target": [
+      70,
+      3.8,
+      -280
+    ]
+  },
+  "rules": [
+    {
+      "id": "surfaces",
+      "match": "^(Surface|Kerb) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Authored low-poly corridor preserves pavement widths, side-road mouths, crossing ramps and grade; surface joints use repeating PBR maps."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain the bounded inexpensive ground envelope and navigable crossings, reducing repeating map sizes rather than decimating shared seams."
+      }
+    }
+  ]
+}

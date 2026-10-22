@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "southport.promenade.marine-parade-junction",
+  "name": "Promenade \u2014 Marine Parade junction",
+  "region": "southport",
+  "area": "promenade",
+  "status": "mapped-corridor-with-estimated-widths-and-grade",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "carriageways",
+    "footways",
+    "kerbs",
+    "junction-islands"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Bounded extension northeast from Funland crossing X22 to X85; Marine Parade mouth to Y310. Estimated widths and flat grade; no buildings or furniture.",
+  "licensing": "OSM-derived layout, OpenStreetMap contributors ODbL 1.0; photographic reference links only, all maps procedurally authored."
+}

@@ -1,0 +1,35 @@
+{
+  "sources": [
+    {
+      "url": "https://www.openstreetmap.org/copyright",
+      "retrieved": "2026-10-22",
+      "attribution": "\u00a9 OpenStreetMap contributors, ODbL 1.0",
+      "use": "Selected highway centrelines and crossing footways, derived metric geometry."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6508861,-3.0068323,19z/data=!3m1!1e3",
+      "viewed": "2026-10-22",
+      "attribution": "Google Maps satellite, imagery copyright Airbus/Maxar as displayed",
+      "use": "Private reference only: broad pale paving, Marine Parade entry curvature, narrow traffic islands, crossing paths. Capture date unresolved; no image pixels published."
+    },
+    {
+      "url": "https://yourseftonyoursay.sefton.gov.uk/investment-programmes-and-infrastructure/southport-promenade/supporting_documents/ltds-phase-2-consultation-easy-readpdf",
+      "use": "Proposed highway alterations are not assumed built."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6508787,-3.006858,3a,90y,270h,90t/data=!3m4!1e1!3m2!1sBe0G_-QIAA1VdLDMzgLqVw!2e0",
+      "capture": "July 2026",
+      "viewed": "2026-10-22",
+      "attribution": "Google Street View",
+      "use": "Headings45,119.25,270: broad continuous central refuge and Marine Parade splitter; pale slabs; red crossing cut-throughs; hotel-side double-yellow curve. Private reference only; no pixels published."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6507997,-3.0069363,3a,75y,270h,90t/data=!3m4!1e1!3m2!1sh-9q346Mr5CdGwY7uXsN5A!2e0",
+      "capture": "July 2026",
+      "viewed": "2026-10-22",
+      "attribution": "Google Street View",
+      "use": "Adjacent viewpoint resolves two long narrow splitter islands in Marine Parade entrance; pavement and lowered crossing profile."
+    }
+  ],
+  "limits": "Metric road centrelines from OSM; widths, corner radii, road markings and pavement grade visually estimated. No current traffic restriction claim. No signals, railings, buildings or hotel plaza detail in this road pass."
+}
