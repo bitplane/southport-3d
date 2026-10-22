@@ -49,9 +49,9 @@ lighting. Walk textures cap at 512 pixels; District caps at 256.
 
 | Level | Placed triangles | GLB bytes including textures | Embedded image bytes |
 | --- | ---: | ---: | ---: |
-| Detail | 212,097 | 10,317,316 | 1,216,294 |
-| Walk | 48,827 | 3,720,668 | 1,065,921 |
-| District | 14,207 | 2,030,796 | 428,985 |
+| Detail | 214,140 | 10,629,588 | 1,216,294 |
+| Walk | 50,450 | 3,976,988 | 1,065,936 |
+| District | 15,820 | 2,270,188 | 457,105 |
 
 These are the building's three-part totals, excluding the street and memorial.
 Walk's similar download size reflects retained architecture and baked-map cost;
@@ -71,7 +71,7 @@ dormer/sign/chimney counts, and casts rays at all 44 window fronts. The ray chec
 guards against the error where a plausible window is obscured by a solid dormer
 body. The final dormers have open cheeks and a recessed back, so glazing remains
 visible. Meshes are triangulated before UV assignment/export for stable tangents.
-All 200 meshes are classified at every level, and all nine publication GLBs pass
+All 209 meshes are classified at every level, and all nine publication GLBs pass
 inspection. The model is rendered from both streets, the corner and above the
 roof; the adjusted public realm also receives its normal full build and renders.
 
@@ -181,3 +181,37 @@ close/overview renders, browser level review and 13 Python tests pass.
 The relief bake check requires 99.5% colour coverage inside the receiver UV
 rectangle, excluding unused atlas borders; this catches unbacked strips at the
 projecting coping ends.
+
+## Coordinated London elevation review
+
+The enlarged property photograph revealed that the London Street ground bay
+away from the corner is not full-height glazing. It now has two three-light
+registers, a broad stone spandrel between them, and a raised recessed apron.
+The corner-adjacent glazed bay stays full height. The two central Ionic pilasters
+now stand clear of the opening edges rather than overlapping their frames.
+
+The menu is a narrow, tall dark display in a real shallow wall pocket, with a
+separate smaller framed display below. The former brass-coloured surround has
+been replaced by restrained dark joinery and stepped stone reveals. Its unreadable
+copy remains blank. First-floor sash surrounds on both streets and the chamfer
+now continue into inset aprons down to the belt course; the inappropriate
+projecting sills at this level have been removed. Higher-storey sills remain.
+
+These are visually calibrated proportions, not surveyed dimensions. The carving
+above the menu remains approximate because the source cannot resolve its subject.
+Roof stacks, pot directions, dormers and slates were compared with the existing
+aerial/oblique references and did not need another change in this pass.
+
+The pocket backs, reveals, spandrel, stone frames and pilaster placements remain
+at every level. Walk retains the two glazing registers; District bakes their
+joinery and spandrel together into the window receiver, while the larger stone
+apron and opening stay separate geometry. Existing fine-bead and pilaster
+sampling rules still apply. New validation rays check that pilasters do not hide
+shop glazing near its edges and that the first-floor apron backs are recessed.
+The **London ground floor** bookmark and `renders/london-ground.png` expose the
+whole corrected arrangement; `london-menu.png` shows the central pier closely.
+
+The coordinated three-building publication passed all nine GLBs for this asset
+and its bake checks. Browser review covered automatic close-up Detail and forced
+Walk/District front and oblique views. All 31 combined scene parts loaded without
+asset errors. Thirteen Python tests and the viewer policy test pass.

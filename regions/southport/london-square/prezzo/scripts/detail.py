@@ -70,12 +70,12 @@ def arch_stones(cx,spring,inner,outer,name='Dressings arch voussoirs'):
     return m
 
 
-def architrave(width,height,name):
+def architrave(width,height,name,sill=True):
     m=Mesh(name);w=width/2;h=height/2
     for off,thick,out in [(.04,.04,.085),(.10,.045,.12),(.16,.045,.085)]:
         for x in [-w-off,w+off]:m.box((x,0,out),(thick,height+.12,.065))
         m.box((0,h+off,out),(width+2*off+thick,thick,.065))
-    stone(m,(-w-.17,-h-.15,w+.17,-h-.03),.18,.20,.012)
+    if sill:stone(m,(-w-.17,-h-.15,w+.17,-h-.03),.18,.20,.012)
     return m
 
 

@@ -62,12 +62,16 @@ def elevation(label,a,b,centres):
   fbox(shell,length/2,(head+high)/2,length,high-head)
   previous=0
   for u in ([2.8,10.0] if label=='London Street' and floor==0 else centres):
-   if u-width/2>previous:fbox(shell,(previous+u-width/2)/2,(sill+head)/2,u-width/2-previous,head-sill)
+   # The bay away from the corner is a shorter, raised-sill shop window.
+   sill=1.55 if label=='London Street' and floor==0 and u==2.8 else levels[floor][2]
+   if sill>low and label=='London Street' and floor==0 and u==2.8:
+    fbox(shell,u,(.70+sill)/2,width,sill-.70)
+   if u-width/2>previous:fbox(shell,(previous+u-width/2)/2,(levels[floor][2]+head)/2,u-width/2-previous,head-levels[floor][2])
    previous=u+width/2
-   style=('shop-london' if label=='London Street' else 'shop') if floor==0 else ['','lower','middle','upper'][floor]
+   style=('shop-london-raised' if u==2.8 else 'shop-london') if label=='London Street' and floor==0 else 'shop' if floor==0 else ['','lower','middle','upper'][floor]
    openings.append((u-width/2-.015,sill-.015,u+width/2+.015,head+.015))
    matrix=frame@Matrix.Translation((u,(sill+head)/2,0))
-   instance(style,window(width,head-sill,'detail','Window '+style+' '+label), 'shopfront' if floor==0 else 'architecture',matrix,shopmats if floor==0 else mats)
+   instance(style,window(width,head-sill,'detail','Window '+style+' '+label,shop_override=floor==0,raised_shop=style=='shop-london-raised',apron_window=floor==1), 'shopfront' if floor==0 else 'architecture',matrix,shopmats if floor==0 else mats)
    # Stone architraves remain real geometry around the receiving window panels.
    trimmesh=Mesh('Dressings '+label)
    for x in [u-width/2-.105,u+width/2+.105]:fbox(trimmesh,x,(sill+head)/2,.15,head-sill+.25,.12,.025)
@@ -76,7 +80,7 @@ def elevation(label,a,b,centres):
     fbox(trimmesh,u,head+.26,.24,.35,.22,.11)
    finish(trimmesh,'architecture',[stone],frame)
    if floor:
-    instance('architrave-'+str(floor),architrave(width,head-sill,'Ornament architrave '+label),'architecture',matrix,[stone])
+    instance('architrave-'+str(floor),architrave(width,head-sill,'Ornament architrave '+label,sill=floor!=1),'architecture',matrix,[stone])
     if floor==1:
      key=Mesh('Ornament carved keystone '+label)
      key.add([(-.14,head+.05,.10),(.14,head+.05,.10),(.10,head+.46,.10),(-.10,head+.46,.10),(-.12,head+.07,.23),(.12,head+.07,.23),(.08,head+.43,.23),(-.08,head+.43,.23)],[(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7),(4,5,6,7)])
@@ -88,6 +92,20 @@ def elevation(label,a,b,centres):
   for cy,h in [(1.40,2.80),(3.95,.70)]:
    shell.cut_box_from_ashlar((length-.50,cy,-.225),(.80,h,.60))
    openings.append((length-.90,cy-h/2,length-.10,cy+h/2))
+ if label=='London Street':
+  # Actual shallow pockets, not raised boxes pretending to be recesses.
+  for u,cy,w,h in [(6.45,2.18,.84,1.68),(6.45,.99,.94,.67),(2.8,1.05,2.72,.62)]:
+   shell.cut_box_from_ashlar((u,cy,-.025),(w,h,.25))
+   openings.append((u-w/2,cy-h/2,u+w/2,cy+h/2))
+ # First-storey sash surrounds continue as shallow inset aprons to the belt.
+ for u in centres:
+  shell.cut_box_from_ashlar((u,5.73,-.025),(1.35,.54,.25))
+  openings.append((u-.675,5.46,u+.675,6.0))
+  apron=Mesh('Dressings first floor inset '+label)
+  apron.box((u,5.73,-.135),(1.35,.54,.025))
+  for x in [u-.755,u+.755]:apron.box((x,5.76,.025),(.08,.69,.10))
+  apron.box((u,5.445,.025),(1.59,.06,.10))
+  finish(apron,'architecture',[stone],frame)
  finish(shell,'architecture',[wallstone],frame)
  finish(coursed_surface(length,openings,'Stonework '+label),'architecture',ashlar,frame)
  # Main cornices are swept once around the corner below.
@@ -100,7 +118,7 @@ def elevation(label,a,b,centres):
  for u in [.25,length-.25]:
   for i in range(24):fbox(quoins,u,5.75+i*.39,.48,.35,.10,.025)
  finish(quoins,'architecture',[stone],frame)
- for u in [.43]+[(a+b)/2 for a,b in zip(centres,centres[1:])]+[length-.43]:
+ for u in ([.43,4.93,7.87,length-.43] if label=='London Street' else [.43]+[(a+b)/2 for a,b in zip(centres,centres[1:])]+[length-.43]):
   instance('pilaster',pilaster('detail','Pilaster '+label),'shopfront',frame@Matrix.Translation((u,.76,0)),[stone])
  pl=Mesh('Envelope plinth '+label);fbox(pl,length/2,.32,length,.64,.54,-.21)
  if label=='Lord Street':pl.cut_box_from_ashlar((length-.5,.32,-.21),(.80,.65,.60))
@@ -109,8 +127,16 @@ def elevation(label,a,b,centres):
 
 front,flen=elevation('Lord Street',(-12.8,-23.4),(-32,-23.4),[2.05,5.8,9.55,13.3,17.05])
 side,slen=elevation('London Street',(-9.6,-39.0),(-9.6,-26.1),[2.35,6.45,10.55])
-m=Mesh('Dressings London plaque');m.box((6.45,2.65,.055),(.68,1.05,.12),0);m.box((6.45,2.65,.125),(.44,.76,.03),3);finish(m,'shopfront',mats,side)
-finish(london_menu_stonework(),'architecture',[stone],side@Matrix.Translation((6.45,4.05,0)))
+m=Mesh('Dressings London recessed panels')
+for u,cy,w,h in [(6.45,2.18,.84,1.68),(6.45,.99,.94,.67),(2.8,1.05,2.72,.62)]:
+ m.box((u,cy,-.135),(w,h,.025),0)
+ rectangle_frame(m,u,cy,w+.16,h+.16,.08,.025,.10,0)
+ rectangle_frame(m,u,cy,w-.035,h-.035,.035,-.052,.08,0)
+# Blank dark menu and lower display: no fabricated unreadable copy.
+m.box((6.45,2.18,-.065),(.46,1.40,.045),3)
+m.box((6.45,.99,-.065),(.49,.43,.045),3)
+finish(m,'shopfront',mats,side)
+finish(london_menu_stonework(),'architecture',[stone],side@Matrix.Translation((6.45,3.88,0)))
 # Chamfered entrance corner, with a true arched opening and upper windows.
 a=(-9.6,-26.1);b=(-12.8,-23.4);normal=Vector((b[1]-a[1],a[0]-b[0],0)).normalized();L=math.dist(a,b);corner=face_matrix((*a,z0),normal)
 m=Mesh('Envelope corner');doorw=1.65;spring=3.35;radius=doorw/2
@@ -146,12 +172,18 @@ for low,high,sill,head in [(5.3,9,6,8.35),(9,12.4,9.65,11.8),(12.4,15.6,13.1,14.
  m=Mesh('Envelope corner upper')
  for x in [corner_pier/2,L-corner_pier/2]:m.box((x,(low+high)/2,-.225),(corner_pier,high-low,.45))
  for aa,bb in [(low,sill),(head,high)]:m.box((L/2,(aa+bb)/2,-.225),(corner_width,bb-aa,.45))
+ if low==5.3:m.cut_box_from_ashlar((L/2,5.73,-.025),(corner_width+.06,.54,.25))
  finish(m,'architecture',[stone],corner)
- style='corner-'+str(low);instance(style,window(corner_width,head-sill,'detail','Window corner '+str(low)),'architecture',corner@Matrix.Translation((L/2,(sill+head)/2,0)))
-corner_openings=[(L/2-.79,lo-.04,L/2+.79,hi+.06) for lo,hi in [(6,8.35),(9.65,11.8),(13.1,14.7)]]
+ style='corner-'+str(low);instance(style,window(corner_width,head-sill,'detail','Window corner '+str(low),apron_window=low==5.3),'architecture',corner@Matrix.Translation((L/2,(sill+head)/2,0)))
+apron=Mesh('Dressings corner first floor inset')
+apron.box((L/2,5.73,-.135),(corner_width+.06,.54,.025))
+for x in [L/2-corner_width/2-.11,L/2+corner_width/2+.11]:apron.box((x,5.76,.025),(.08,.69,.10))
+apron.box((L/2,5.445,.025),(corner_width+.30,.06,.10))
+finish(apron,'architecture',[stone],corner)
+corner_openings=[(L/2-corner_width/2-.03,5.46,L/2+corner_width/2+.03,6.0)]+[(L/2-.79,lo-.04,L/2+.79,hi+.06) for lo,hi in [(6,8.35),(9.65,11.8),(13.1,14.7)]]
 finish(rusticated_corner(L,corner_openings,spring,radius+.28),'architecture',[stone],corner)
 for sill,head in [(6,8.35),(9.65,11.8),(13.1,14.7)]:
- finish(architrave(corner_width,head-sill,'Ornament corner surround'),'architecture',[stone],corner@Matrix.Translation((L/2,(sill+head)/2,0)))
+ finish(architrave(corner_width,head-sill,'Ornament corner surround',sill=sill!=6),'architecture',[stone],corner@Matrix.Translation((L/2,(sill+head)/2,0)))
 # Segmental pediment hood and its two projecting console supports.
 m=Mesh('Dressings corner hood')
 for r,zc,depth,rad in [(1.10,8.54,.20,.07),(1.18,8.57,.25,.055)]:

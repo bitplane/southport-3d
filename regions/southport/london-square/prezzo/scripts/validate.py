@@ -57,3 +57,14 @@ for ob in [o for o in meshes if o.name.startswith('Sign ')]:
 assert len([o for o in meshes if o.name.startswith('Cornice continuous')])==2
 assert len([o for o in meshes if o.name.startswith('Stonework ')])==2
 print('Lower dormer glazing, sign visibility and continuous cornice checks passed')
+
+# London shop bays have distinct glazing registers; pilasters must not cross them.
+for ob in [o for o in windows if 'shop-london' in o.name]:
+ for x,y in [(-1.35,1.0),(1.35,1.0),(-1.35,-.85),(1.35,-.85)]:
+  hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,ob.matrix_world@Vector((x,y,1)),(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized(),distance=2)
+  assert hit and found==ob,(ob.name,'bay edge obstructed',found.name if found else None)
+for ob in [o for o in windows if o.name.startswith('Window lower ')]:
+ hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,ob.matrix_world@Vector((.35,-1.475,1)),(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized(),distance=2)
+ assert hit and found.name.startswith('Dressings first floor inset'),(ob.name,'inset apron missing',found.name if found else None)
+ assert (ob.matrix_world.inverted()@p).z<-.10,(ob.name,'apron is not recessed')
+print('London glazing edges clear of pilasters; first-floor aprons genuinely recessed')

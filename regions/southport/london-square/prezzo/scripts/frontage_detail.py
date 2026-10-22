@@ -40,10 +40,10 @@ def add_frontage(finish,front,side,corner,flen,slen,L,mats,brass,lantern,root):
         m.add([(u-.15,2.49,.17),(u+.15,2.49,.17),(u+.15,2.49,.40),(u-.15,2.49,.40),(u,2.60,.28)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4)],0)
         finish(m,'shopfront',[brass,lantern],corner)
     # London Street's framed wall display: retain the frame but no unreadable copy.
-    m=Mesh('Hardware London menu frame');rectangle_frame(m,6.45,2.65,.68,1.05,.045,.17,.06,0)
-    for y in [2.25,3.05]:
-        for x in [6.17,6.73]:m.box((x,y,.215),(.02,.02,.012),0)
-    finish(m,'shopfront',[brass],side)
+    m=Mesh('Hardware London menu frame');rectangle_frame(m,6.45,2.18,.50,1.44,.025,-.024,.035,0)
+    for y in [1.53,2.83]:
+        for x in [6.23,6.67]:m.box((x,y,.002),(.015,.015,.009),0)
+    finish(m,'shopfront',[dark],side)
     # Small end doorway seen on the Lord Street oblique photograph.
     u=flen-.50;m=Mesh('Entrance end door')
     m.box((u,1.4,-.10),(.80,2.8,.06),3)

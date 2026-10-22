@@ -16,13 +16,26 @@ def rectangle_frame(m,cx,cy,width,height,border,out,depth,material=1):
         m.box((x,cy,out),(border,height-2*border,depth),material)
 
 
-def window(width,height,level='detail',name='Window'):
-    m=Mesh(name);w=width/2;h=height/2;shop=width>2.2 and height>3
+def window(width,height,level='detail',name='Window',shop_override=False,raised_shop=False,apron_window=False):
+    m=Mesh(name);w=width/2;h=height/2;shop=shop_override or (width>2.2 and height>3)
     # The backing extends under sill/architrave so distant receivers are covered.
     m.box((0,-.06,-.205),(width+.27,height+.12,.025),0)
     rectangle_frame(m,0,0,width,height,.10,.015,.15)
-    m.box((0,-h-.06,.055),(width+.27,.12,.13),0)
+    if not apron_window:m.box((0,-h-.06,.055),(width+.27,.12,.13),0)
     iw=width-.20;ih=height-.20
+    if raised_shop:
+        # Two separate glazing registers with a broad stone spandrel between.
+        # Heights are calibrated from the oblique property photograph.
+        m.box((0,.25,-.015),(width-.20,.90,.12),0)
+        for lo,hi in [(-h,-.20),(.70,h)]:
+            cy=(lo+hi)/2;hh=hi-lo
+            m.box((0,cy,-.12),(width-.20,hh-.14,.025),2)
+            rectangle_frame(m,0,cy,width,hh,.085,.015,.15)
+            for x in [-width/6,width/6]:
+                m.box((x,cy,.005),(.055,hh-.17,.12),1)
+            if lo<0:
+                m.box((0,cy+.30,.007),(width-.17,.055,.12),1)
+        return m
     if shop:
         m.box((0,0,-.12),(iw,ih,.025),2)
         transom=h-.67

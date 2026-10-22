@@ -140,6 +140,19 @@
         4.6,
         32.55
       ]
+    },
+    {
+      "name": "London ground floor",
+      "position": [
+        2.0,
+        4.1,
+        33.5
+      ],
+      "target": [
+        -9.6,
+        3.0,
+        32.55
+      ]
     }
   ],
   "walk_spawn": {
