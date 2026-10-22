@@ -88,6 +88,45 @@
         16,
         31
       ]
+    },
+    {
+      "name": "Entrance detail",
+      "position": [
+        -4.5,
+        3.5,
+        19
+      ],
+      "target": [
+        -11.3,
+        3,
+        24.8
+      ]
+    },
+    {
+      "name": "Pilasters",
+      "position": [
+        -20,
+        4,
+        18
+      ],
+      "target": [
+        -22,
+        3.7,
+        23.4
+      ]
+    },
+    {
+      "name": "Upper stonework",
+      "position": [
+        -20,
+        10,
+        17
+      ],
+      "target": [
+        -22,
+        10,
+        23.4
+      ]
     }
   ],
   "walk_spawn": {
@@ -105,7 +144,7 @@
   "rules": [
     {
       "id": "envelopes",
-      "match": "^(Envelope|Cornice|Dressings|Quoins|Entrance|Roof|Pots) ",
+      "match": "^(Envelope|Cornice|Dressings|Quoins|Rustication|Entrance|Roof|Pots) ",
       "walk": {
         "strategy": "keep",
         "reason": "Coarse authored walls, real openings, moulding profiles, roof forms and chimney silhouettes remain visible at walking distance."
@@ -171,7 +210,7 @@
       "match": "^Pilaster ",
       "walk": {
         "strategy": "generator",
-        "reason": "Retain Ionic scrolls, bases and shaft; omit fine flute ribs and reduce scroll sampling.",
+        "reason": "Reduce fluted shaft sampling and volute curves, omit egg-and-dart and small beads; preserve real concave flute relief at walking range.",
         "generator": "components:build_lod",
         "settings": {
           "kind": "pilaster",
@@ -190,6 +229,42 @@
         },
         "uv": "smart",
         "bake": false
+      }
+    },
+    {
+      "id": "stonework",
+      "match": "^Stonework ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Fine bevelled ashlar skins give way to the retained coursed wall material; openings and broad corner rustication remain geometry."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Sub-centimetre bevels do not affect district silhouette; retain the coarse wall envelope and authored stone map."
+      }
+    },
+    {
+      "id": "ornament",
+      "match": "^Ornament ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Fine architrave beads, carved keystone strokes, small console curves and flashing lips are close-inspection detail; coarse surrounds and cornice profiles remain."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit small moulding subdivisions and decorative strokes; retain major surrounds, pediment and silhouette."
+      }
+    },
+    {
+      "id": "hardware",
+      "match": "^Hardware ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Door handles, corner lanterns and sign bracket remain useful entrance cues nearby."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Small fittings vanish at district range; entrances and sign faces remain."
       }
     }
   ]

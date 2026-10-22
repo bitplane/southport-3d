@@ -98,5 +98,31 @@
   "registration": "Street corner follows OSM way 371203985 (whole urban block), nodes around (-12.76,-23.36),(-9.56,-26.03). Rear lot division and dimensions visually estimated from satellite; OSM does not separately map this building.",
   "dimensions_status": "All heights estimated by storey/window proportions; five Lord Street bays, three London Street bays plus one corner confirmed in photographs. Rear wall/service enclosure and rear roof slopes simplified, not surveyed.",
   "datum": "Level building floors; base .58m on the square\u2019s estimated sloping ground. No surveyed vertical datum.",
-  "roof_review": "Wider January 2018 ground panorama and January 2025 aerial show three tall pot groups and three capped stacks. Lord Street rows run into roof (site Y); London Street row runs into roof (site X). Corner stack follows chamfer. Four London pots and five on each Lord group interpreted from imagery; concealed flues and exact dimensions remain uncertain."
+  "roof_review": "Wider January 2018 ground panorama and January 2025 aerial show three tall pot groups and three capped stacks. Lord Street rows run into roof (site Y); London Street row runs into roof (site X). Corner stack follows chamfer. Four London pots and five on each Lord group interpreted from imagery; concealed flues and exact dimensions remain uncertain.",
+  "detail_controls": {
+    "ashlar_course_m": 0.39,
+    "ashlar_block_m": 0.92,
+    "ashlar_joint_m": 0.004,
+    "ashlar_front_relief_m": 0.018,
+    "corner_rustication_course_m": 0.4,
+    "pilaster_flutes": 7,
+    "detail_shaft_grid": [
+      112,
+      36
+    ],
+    "walk_shaft_grid": [
+      28,
+      8
+    ],
+    "district_shaft_grid": [
+      1,
+      1
+    ],
+    "sash_lights": "three across, two rows per sash",
+    "dimensions_status": "All visually calibrated interpretations; fine ashlar skins omitted at Walk and District while coarse coursed material remains.",
+    "dormer_window_m": [
+      1.35,
+      1.3
+    ]
+  }
 }

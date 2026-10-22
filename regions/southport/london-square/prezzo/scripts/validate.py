@@ -6,7 +6,7 @@ meshes=[o for o in bpy.context.scene.objects if o.type=='MESH']
 assert all(o.data.polygons and o.data.uv_layers for o in meshes)
 assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.co)
 assert len([o for o in meshes if o.name.startswith('Window dormer')])==9
-assert len([o for o in meshes if o.name.startswith('Sign ')])==6
+assert len([o for o in meshes if o.name.startswith('Sign ')])==11
 assert len([o for o in meshes if o.name.startswith('Roof chimney')])==6
 assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
 points=[o.matrix_world@v.co for o in meshes for v in o.data.vertices]
@@ -44,3 +44,16 @@ for f in roof.data.polygons:
   expected=(z-recipe['base_z']-15.7)*math.hypot(1.8,2.6)/2.6/2.4
   assert abs(uv[li].uv.y-expected)<1e-5
 print('Chimney orientation/pot groups and horizontal slate courses validated')
+
+# Additional probes catch roof slopes crossing the lower dormer glazing.
+for ob in windows:
+ if 'dormer' not in ob.name:continue
+ for xy in [(-.25,-.30),(.25,-.30),(-.25,.30),(.25,.30)]:
+  hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,ob.matrix_world@Vector((*xy,1)),(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized(),distance=2)
+  assert hit and found==ob,(ob.name,xy,found.name if found else None)
+for ob in [o for o in meshes if o.name.startswith('Sign ')]:
+ hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,ob.matrix_world@Vector((0,0,.8)),(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized(),distance=1.2)
+ assert hit and found==ob,(ob.name,'sign obscured',found.name if found else None)
+assert len([o for o in meshes if o.name.startswith('Cornice continuous')])==2
+assert len([o for o in meshes if o.name.startswith('Stonework ')])==2
+print('Lower dormer glazing, sign visibility and continuous cornice checks passed')

@@ -38,20 +38,20 @@ Three streaming parts separate architecture, roof and shopfront. Walls and their
 actual openings, corner arch, roof silhouette, dormers and chimneys are retained
 at all levels. Shared mesh prototypes cover repeated windows, pilasters and signs.
 
-Walk retains the small sash meshes, reduces pilaster scroll sampling, omits fine
-flute ribs, and bakes raised lettering onto sign panels. District removes tiny
+Walk retains the sash meshes, reduces pilaster shaft/scroll sampling and omits
+fine masonry skins and ornamental beads, and bakes raised lettering onto sign panels. District removes tiny
 cornice dentils and pilaster scrolls, while replacing window detail with baked
 planar receivers. Stone surrounds and wall openings remain independent geometry.
-Window receivers deliberately flatten up to 0.27 m of frame/sill/backing depth;
+Window receivers deliberately flatten about 0.34 m of frame/sill/backing depth;
 this is a geometric approximation, not a screen-space error guarantee. Their
 base colour, tangent normal and roughness maps are baked without directional
 lighting. Walk textures cap at 512 pixels; District caps at 256.
 
 | Level | Placed triangles | GLB bytes including textures | Embedded image bytes |
 | --- | ---: | ---: | ---: |
-| Detail | 30,392 | 2,234,836 | 588,992 |
-| Walk | 22,132 | 2,156,364 | 609,415 |
-| District | 10,304 | 1,414,340 | 315,761 |
+| Detail | 210,510 | 10,078,716 | 1,216,294 |
+| Walk | 48,825 | 3,496,288 | 843,452 |
+| District | 14,205 | 1,959,556 | 359,515 |
 
 These are the building's three-part totals, excluding the street and memorial.
 Walk's similar download size reflects retained architecture and baked-map cost;
@@ -71,7 +71,7 @@ dormer/sign/chimney counts, and casts rays at all 44 window fronts. The ray chec
 guards against the error where a plausible window is obscured by a solid dormer
 body. The final dormers have open cheeks and a recessed back, so glazing remains
 visible. Meshes are triangulated before UV assignment/export for stable tangents.
-All 137 meshes are classified at every level, and all nine publication GLBs pass
+All 199 meshes are classified at every level, and all nine publication GLBs pass
 inspection. The model is rendered from both streets, the corner and above the
 roof; the adjusted public realm also receives its normal full build and renders.
 
@@ -83,7 +83,7 @@ a 0.6 m cage reaches the recessed backing and gives about 98.4% coverage. A regr
 test reproduces the missed-colour-ray case. Failure prevents catalog replacement.
 The unreadable London Street wall plaque is represented without invented text.
 
-Browser review loaded all 25 combined scene parts without errors, exercised
+The initial browser review loaded all 25 combined scene parts without errors, exercised
 forced Walk and District, and switched architecture/shopfront to Detail on a
 close approach, then verified automatic roof Detail selection. The catalog includes the building without viewer-code edits.
 Twelve host-Python tests and the viewer policy tests pass. A repeated publication
@@ -108,3 +108,57 @@ with a dominant world-axis UV projection. Validation checks stack orientations,
 pot groups and the slate course coordinates, alongside existing window rays.
 Updated corner/roof renders and browser Walk/District comparisons are in the
 ignored build renders directory.
+
+
+## Close exterior detail pass
+
+The official Prezzo frontage photograph and a daylight OpenRent aerial now
+supplement the original property photographs and Mapillary view. Source links
+and credits are recorded in the research catalogue; no images are included in
+Git or projected onto the building.
+
+Detail now has individually bevelled ashlar faces, broad corner rustication,
+radial entrance stones and a keystone, layered window mouldings and interpreted
+keystone relief, six-over-six sash divisions with separate rails and beads,
+concave seven-flute pilasters with volutes and small egg-and-dart interpretations,
+profiled bases and cornices, eaves brackets, a deeper double entrance with handles,
+lanterns, an end doorway/transom, projecting sign and red window script.
+Dormer windows are taller, with wedge cheeks and lead cap/sill flashings.
+These are geometric interpretations of the visible architecture, not measured
+carving reproductions. The rendered rear/service block remains schematic.
+
+The close view has about 210,000 placed triangles and 10.08 MB across three GLBs.
+Walk reduces the pilaster grid from 112×36 to 28×8 and removes fine ashlar skins,
+small moulding subdivisions and ornamental strokes; the retained shell carries
+the authored coursed stone map. District uses a flat pilaster shaft, omits small
+hardware and bakes the window prototypes. All nine GLBs and the window-bake
+coverage checks pass. The table above contains the new measured totals.
+
+### Coincident surfaces
+
+The cornices now form continuous mitred sweeps rather than overlapping facade
+ends. Window rails are laid out without crossed front faces. Component-local
+coplanar clipping in `surface_cleanup.py` removes duplicate same-facing patches,
+preserving material ownership and prototype placement; it does not decimate or
+move surfaces. Ground-contact underside caps are omitted because the public
+realm supplies the floor. Rear/party wall ends are kept inside the street faces.
+Dormer fronts now sit ahead of the mansard rather than intersecting its lower
+window panes.
+
+An independent triangle-intersection/ray audit reduced potentially exterior
+coplanar overlaps from 91 to one roughly 4 mm² numerical sliver on a rear-wall
+top edge; no street-face cases remained in that audit. This is a geometric check,
+not a guarantee for every rendering device. A checked-in Blender regression checks union
+area, material ownership, winding and idempotence on flat and tilted planes,
+and preserves adjacent/opposite-facing surfaces. Validation also probes the lower and upper dormer
+panes and all eleven sign centres to catch hidden glazing or lettering.
+
+Use the new **Entrance detail**, **Pilasters** and **Upper stonework** bookmarks
+with automatic detail, or force levels in View settings. Close-up PNGs are
+`renders/entrance.png`, `renders/pilasters.png` and `renders/stonework.png` under
+the Prezzo build directory, alongside the four-view contact sheet.
+
+The revised build passes 13 Python tests (including the Blender surface ownership
+regression), viewer policy tests, source checks and all publication checks.
+Browser review compares forced Walk/District and automatic close-up Detail for
+the entrance, upper stonework and roof, with no asset errors across 31 scene parts.

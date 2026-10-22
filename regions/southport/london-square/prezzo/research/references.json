@@ -64,6 +64,26 @@
         "Three tall pot groups, three capped stacks; front pot rows run back into the roof. Pot counts interpreted as five per Lord Street group and four on London Street; concealed flues uncertain.",
         "Slate courses follow horizontal eaves on each roof slope, including the chamfer."
       ]
+    },
+    {
+      "id": "official-entrance-detail",
+      "url": "https://www.prezzo.co.uk/restaurants/",
+      "image_url": "https://www.prezzo.co.uk/media/hx5fyz0l/20230613_173556445_ios.jpg",
+      "author": "Prezzo; individual photographer not identified",
+      "capture": "Filename suggests 2023-06-13; capture date not independently verified",
+      "observations": [
+        "Close exterior view: recessed black double entrance, radial arch stones and broad horizontal corner rustication, two small lanterns, concave fluted Ionic pilasters, large sash-like restaurant panes and narrow sidelights, projecting black sign, red Pasta/Pizza/Vino window script. No interior reconstruction."
+      ]
+    },
+    {
+      "id": "daylight-aerial-detail",
+      "url": "https://www.openrent.co.uk/property-to-rent/southport/2-bed-flat-lord-street-pr8/2628751",
+      "image_url": "https://imagescdn.openrent.co.uk/listings/2453435/o_1iov0javbikr1vup6fbgq618du2.JPG",
+      "author": "OpenRent listing; individual photographer not identified",
+      "capture": "Unknown",
+      "observations": [
+        "Daylight aerial resolves roof deck, dormer cheek/cap shape and flashings; broad corner stone courses and upper sash divisions. Rear service structure remains approximate."
+      ]
     }
   ],
   "limitations": [
@@ -73,5 +93,6 @@
     "Glazing is opaque blue-grey shading; interiors and realistic reflections not modelled.",
     "Capitals, keystones and mouldings are geometric interpretations, not exact ornamental tracings.",
     "Imagery spans dates; signage represents observed PREZZO identity, not a verified current branding survey."
-  ]
+  ],
+  "detail_review": "2026-10-22: existing property photos and Mapillary re-opened, supplemented by official close frontage and daylight aerial. Three lights across each upper sash; two rows per sash. Fine relief, moulding dimensions, capital carving and end doorway proportions interpreted, not surveyed. Sign and lettering styles approximate."
 }
