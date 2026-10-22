@@ -1,0 +1,75 @@
+{
+  "sources": [
+    {
+      "url": "https://www.openstreetmap.org/way/371202092",
+      "attribution": "OpenStreetMap contributors, ODbL",
+      "use": "Numeric footprint from existing church-gardens OSM extract; metre registration retained."
+    },
+    {
+      "url": "https://www.southporttownscape.org.uk/the-project/built-on-sand-exhibition/built-on-sand-christ-church",
+      "attribution": "Southport Townscape Heritage Project / The Atkinson",
+      "use": "Building history: 1862 stone front/tower, spire removed in 1950s, rebuilt behind retained facade."
+    },
+    {
+      "url": "https://www.geograph.org.uk/photo/7531455",
+      "attribution": "Stephen Craven, Geograph",
+      "capture_date": "2023-06-26",
+      "use": "Tower side, projecting stair turret, paired louvres, parapet and adjacent modern hall roof."
+    },
+    {
+      "url": "https://www.geograph.org.uk/photo/3563010",
+      "attribution": "Jeff Buck, CC BY-SA 2.0",
+      "capture_date": "2013-07-18",
+      "use": "South flank: red-brick hall with tall rectangular windows; clock on tower side; retained Gothic frontage."
+    },
+    {
+      "url": "https://www.minube.net/place/christian-church--a660841",
+      "attribution": "Photograph watermark Sue Adair 2010",
+      "capture_date": "2010",
+      "use": "Clear winter frontal composition, gables, traceried windows, clock and doorway."
+    },
+    {
+      "url": "https://www.tripadvisor.fr/Attraction_Review-g191255-d23565486-Reviews-Christ_Church-Southport_Merseyside_England.html",
+      "attribution": "Tripadvisor contributor photograph, date unknown",
+      "use": "Close cafe-side elevation, blocked tower window, bell tracery and brick entrance canopy."
+    },
+    {
+      "url": "https://christchurchsouthport.org.uk/",
+      "attribution": "Christ Church Southport",
+      "use": "Church and Cafe 1821 identity."
+    },
+    {
+      "url": "https://www.google.com/maps/search/Christ+Church+Southport/",
+      "attribution": "Google Maps / imagery providers",
+      "capture_date": "2026-07 street approach; aerial date unknown",
+      "use": "Existing locally saved church-gardens satellite and street approach captures, checked visually. Aerial establishes modern roof masses and setback."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6481634,-3.0048942,9a,75y,184.93h,90t/data=!3m4!1e1!3m2!1sUMES6ZQ9XWueLZMDGyNXqQ!2e0",
+      "attribution": "Google Street View",
+      "capture_date": "2024-08",
+      "use": "Fresh independently isolated browser inspection: cafe side, blocked tower window, bell openings, cafe 1821 sign and timber gabled porch."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6477398,-3.0049757,88m/data=!3m1!1e3",
+      "attribution": "Google / Airbus / Maxar Technologies",
+      "capture_date": "Aerial date unknown; inspected 2026-10-22",
+      "use": "Fresh aerial: confirmed main hall hip, corrected eastern annex to three stepped flat roofs and visible rooflight arrays. Heights remain estimates; 3D Earth unavailable."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6476993,-3.0054519,16a,85y,65h,105t/data=!3m4!1e1!3m2!1sxblOwKB3T_a7ldR6VDIUlA!2e0",
+      "attribution": "Google Street View",
+      "capture_date": "2011-05",
+      "use": "Fresh south garden approach: modern hall brick side and tall windows, tower clock diamond surround; some facade obscured by trees."
+    }
+  ],
+  "uncertainty": [
+    "Metric heights and facade depths are calibrated estimates, not measured surveys.",
+    "Fine Gothic tracery reconstructed from visible patterns, not traced/photogrammetric sculpture.",
+    "No historic spire: model depicts retained square battlemented tower.",
+    "Tower middle window is blocked masonry on cafe side; frontal window follows visible stained glazing.",
+    "Hidden modern rear openings and interiors omitted.",
+    "Reference images remain private local files and are not embedded in model or Git.",
+    "Rear street-view query snapped to Cambridge Arcade; no direct rear elevation claimed. Annex heights are calibrated estimates from roof overlaps and cafe-side view."
+  ]
+}

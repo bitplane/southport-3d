@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.christ-church",
+  "name": "Christ Church \u2014 Lord Street",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "retained-gothic-facade",
+    "battlemented-bell-tower",
+    "clock-and-louvres",
+    "traceried-windows",
+    "corner-buttresses",
+    "stair-turret",
+    "rebuilt-red-brick-hall",
+    "cafe-entrance-and-canopy",
+    "slate-roofs"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Exterior only: retained Victorian front and tower, rebuilt hall and cafe envelope. Gardens belong to church-gardens. No vanished spire or inferred interiors."
+}

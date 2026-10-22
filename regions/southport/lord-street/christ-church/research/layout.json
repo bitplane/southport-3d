@@ -1,0 +1,98 @@
+{
+  "origin": [
+    53.6486555,
+    -3.0043401
+  ],
+  "rotation": 43.5293,
+  "osm_way": 371202092,
+  "mapped_footprint": [
+    [
+      -87.12,
+      -29.448
+    ],
+    [
+      -99.743,
+      -29.295
+    ],
+    [
+      -100.074,
+      -23.607
+    ],
+    [
+      -105.304,
+      -23.46
+    ],
+    [
+      -104.966,
+      -29.14
+    ],
+    [
+      -112.262,
+      -29.425
+    ],
+    [
+      -111.209,
+      -52.075
+    ],
+    [
+      -113.86,
+      -52.136
+    ],
+    [
+      -114.462,
+      -61.928
+    ],
+    [
+      -89.832,
+      -60.728
+    ],
+    [
+      -89.926,
+      -71.739
+    ],
+    [
+      -76.272,
+      -71.382
+    ],
+    [
+      -76.684,
+      -25.666
+    ],
+    [
+      -82.47,
+      -25.913
+    ],
+    [
+      -83.961,
+      -26.707
+    ],
+    [
+      -84.317,
+      -27.858
+    ],
+    [
+      -84.374,
+      -29.278
+    ],
+    [
+      -87.12,
+      -29.448
+    ]
+  ],
+  "tower": {
+    "centre_x": -102.69,
+    "front_y": -23.5,
+    "back_y": -29.3,
+    "width": 5.23,
+    "parapet_z": 22.2,
+    "corner_top_z": 23.0
+  },
+  "base_z": 0.58,
+  "facade_y": -29.3,
+  "facade_x": [
+    -112.26,
+    -93.12
+  ],
+  "height_status": "Plan registered to OSM; all heights, openings and relief depths visually estimated. Retained tower approximately 22 m, not survey measurement.",
+  "hall_status": "Rebuilt modern envelope follows mapped outline and visible red-brick side wall/aerial pitched roofs; concealed rear fenestration omitted."
+}

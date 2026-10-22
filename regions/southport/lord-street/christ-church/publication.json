@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/christ-church.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street",
+  "status": "Retained Gothic facade and tower with rebuilt hall; estimated metric heights and hidden roof details. No interiors.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "historic-front",
+      "name": "Gothic tower and retained frontage",
+      "collection": "historic-front"
+    },
+    {
+      "id": "modern-hall",
+      "name": "Rebuilt hall and cafe",
+      "collection": "modern-hall"
+    },
+    {
+      "id": "roofs",
+      "name": "Church and cafe roofs",
+      "collection": "roofs"
+    }
+  ],
+  "views": [
+    {
+      "name": "Church front",
+      "position": [
+        -102,
+        14,
+        -12
+      ],
+      "target": [
+        -102,
+        11,
+        27
+      ]
+    },
+    {
+      "name": "Church and garden",
+      "position": [
+        -136,
+        28,
+        -12
+      ],
+      "target": [
+        -98,
+        9,
+        41
+      ]
+    },
+    {
+      "name": "Church tower",
+      "position": [
+        -118,
+        20,
+        4
+      ],
+      "target": [
+        -102,
+        15,
+        26
+      ]
+    },
+    {
+      "name": "Cafe entrance",
+      "position": [
+        -77,
+        4,
+        20
+      ],
+      "target": [
+        -91,
+        3,
+        28
+      ]
+    },
+    {
+      "name": "Church roof",
+      "position": [
+        -135,
+        66,
+        4
+      ],
+      "target": [
+        -97,
+        7,
+        45
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -101,
+      2.2,
+      18
+    ],
+    "target": [
+      -103,
+      7,
+      24
+    ]
+  },
+  "rules": [
+    {
+      "id": "structure",
+      "match": "^(Envelope|Roof|Trim|Pier|Buttress|Turret|Door|Parapet) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep architectural envelopes, actual Gothic openings, battlements, porch and roof silhouette."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Coarse wall, buttress and roof geometry preserves silhouette, voids and setbacks; no filled box substitution."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Fine quoin skins, millimetre leading and minor rainwater pipes give way to coursed wall material and window mullions."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Fine diamond leading and small fittings are subpixel; major stone mullions and window openings remain."
+      }
+    },
+    {
+      "id": "ornament",
+      "match": "^Ornament ",
+      "walk": {
+        "strategy": "decimate",
+        "ratio": 0.5,
+        "uv": "smart",
+        "bake": false,
+        "reason": "Simplify the small irregular entrance crockets while retaining the actual pointed door surround."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Small entrance buds are subpixel; arch orders and cross remain represented by their coarse geometry."
+      }
+    },
+    {
+      "id": "belfry",
+      "match": "^Louvre ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 1.6,
+          "bottom": 15.15,
+          "spring": 18.45,
+          "window_kind": "louvre",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 1.6,
+          "bottom": 15.15,
+          "spring": 18.45,
+          "window_kind": "louvre",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      }
+    },
+    {
+      "id": "tower-blocked",
+      "match": "^Window tower left",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 1.92,
+          "bottom": 7.4,
+          "spring": 9.4,
+          "window_kind": "blocked",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 1.92,
+          "bottom": 7.4,
+          "spring": 9.4,
+          "window_kind": "blocked",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      }
+    },
+    {
+      "id": "tower-glass",
+      "match": "^Window tower front",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 1.92,
+          "bottom": 7.4,
+          "spring": 9.4,
+          "window_kind": "glass",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 1.92,
+          "bottom": 7.4,
+          "spring": 9.4,
+          "window_kind": "glass",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      }
+    },
+    {
+      "id": "wing-inner",
+      "match": "^Window Gothic wing inner",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 2.0,
+          "bottom": 3.5,
+          "spring": 6.15,
+          "window_kind": "glass",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 2.0,
+          "bottom": 3.5,
+          "spring": 6.15,
+          "window_kind": "glass",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      }
+    },
+    {
+      "id": "wing-outer",
+      "match": "^Window Gothic wing outer",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 2.0,
+          "bottom": 4.35,
+          "spring": 6.75,
+          "window_kind": "glass",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "window",
+          "width": 2.0,
+          "bottom": 4.35,
+          "spring": 6.75,
+          "window_kind": "glass",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+      }
+    },
+    {
+      "id": "modern-windows",
+      "match": "^Window (modern|cafe|annex|turret) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already simple inset rectangular glazing and frames."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Low-cost planes and frames preserve large visible glazing areas."
+      }
+    },
+    {
+      "id": "clocks",
+      "match": "^Clock ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "clock",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reduce circular sampling while retaining diamond stone surround, face and actual hands."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "clock",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reduce circular sampling while retaining diamond stone surround, face and actual hands."
+      }
+    }
+  ]
+}

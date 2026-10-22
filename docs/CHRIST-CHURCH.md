@@ -1,0 +1,57 @@
+# Christ Church, Lord Street
+
+Asset `southport.lord-street.christ-church` registers to the existing church-gardens
+frame, using OSM way 371202092. It contains architecture only. Garden paving,
+walling, trees and street furniture remain in the separate gardens asset.
+
+The present building retains a Gothic stone frontage and a square battlemented
+tower. The former spire is deliberately absent. The model includes paired
+pointed belfry openings and louvres, geometric tracery, diamond clock surrounds,
+recessed pointed doors, stepped buttresses, a projecting octagonal stair turret,
+flanking gables and the rebuilt red-brick hall/cafe behind the historic front.
+The cafe-side middle tower window is blocked masonry, as visible in the close
+reference photograph. The front middle window retains muted glazing.
+
+Source links and image dates are in `research/references.json`. The footprint is
+mapped; heights, roof pitches, opening sizes and relief depths are calibrated
+estimates. Photographs establish the frontal composition, modern tall side
+windows and the turret. Fresh satellite inspection establishes the main hall hip and three stepped flat cafe/annex roofs with rooflight arrays. Concealed
+rear openings are omitted; no interior has been invented. Reference photographs
+are not stored in Git or embedded in textures. Stone, brick and slate maps are
+deterministically authored materials.
+
+The structural envelope, roof slopes, battlements, buttresses, window recesses
+and coarse mullions stay geometric at all levels. Walk and District regenerate
+Gothic curves and clock circles with fewer samples. Fine diamond leadwork,
+small quoin skins and downpipes are omitted in the reduced levels. Tiny entrance
+crockets are selectively simplified at Walk and omitted at District. No global
+decimation is applied, and no solid-box proxy fills Gothic openings. The opaque
+materials are shared with the master, so curve simplification does not replace
+stone with a differently coloured bake. District reduces authored texture sizes
+to 256 pixels; Walk uses 512.
+
+Build and render:
+
+```sh
+python3 tools/project.py build southport.lord-street.christ-church
+python3 tools/project.py build southport.lord-street.christ-church --stage render
+```
+
+The geometry validator checks all four tower walls have actual window openings,
+eight belfry windows, three clocks, an open main doorway in the masonry, a closed
+tower roof deck, five tall modern side windows, finite UV meshes and site bounds.
+Fresh isolated-browser inspection checked August 2024 cafe-side Street View, May 2011 south garden Street View and satellite roof coverage. It corrected the initially inferred annex hip to stepped flat roofs. Google 3D Earth was unavailable, and no direct rear elevation was obtained. Global publication and combined-viewer placement are coordinated by the root agent during parallel work.
+
+The standalone streaming package preflight classifies every mesh for all three
+levels. Exported front and oblique renders were inspected at Detail, Walk and
+District: openings, battlements, clocks, stepped roof silhouette and material
+colours remain consistent. The package is approximately 70k / 43k / 34k placed
+triangles and 4.8 / 3.3 / 3.0 MB (embedded textures included). These are building
+levels for the current viewer, not a town-distance proxy; a later regional bake
+can reduce the still-geometric Gothic window tracery further.
+
+Fresh browser setup also exposed two issues fixed before handoff: the cafe sign
+needed an explicit installed font to avoid missing-glyph boxes, and the old high
+annex gutter had to be removed after replacing its pitched roof. Cafe side-wall
+closure and three flat-roof/15-rooflight checks protect the revised silhouette.
+The sign uses DejaVu Sans from the existing system font installation.
