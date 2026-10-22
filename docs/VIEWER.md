@@ -19,6 +19,8 @@ python3 tools/serve.py
 
 `publish` discovers asset publication.json files, rebuilds stale masters, assembles levels, verifies GLBs, and writes the local static viewer to dist/. It does **not** deploy to the internet. Unchanged checked model packages are reused, so changing viewer code normally only refreshes static files/catalog. `--rebuild` explicitly regenerates masters and packages.
 
+During concurrent modelling, use `publish --asset <asset-id>` (repeat the option for several assets) to update completed assets while retaining every other asset at its last published version. This locks only the catalog and selected assets; another worker can continue its build. Unpublished drafts are not added. Omitting `--asset` still performs the full catalog build. A partial publication intentionally does not claim that retained models match their currently edited source.
+
 Open http://127.0.0.1:8765. If the server is on another machine, forward it:
 
 ```sh

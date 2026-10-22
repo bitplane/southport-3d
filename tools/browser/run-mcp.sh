@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 browser_tools_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+browser_cli="${SOUTHPORT_BROWSER_CLI:-$browser_tools_dir/node_modules/@playwright/mcp/cli.js}"
+if [[ ! -f "$browser_cli" ]]; then
+  echo "Missing browser dependencies. Run npm ci --ignore-scripts --prefix $browser_tools_dir on the host." >&2
+  exit 1
+fi
+mkdir -p "$browser_tools_dir/output"
+browser_session_dir="$(mktemp -d "$browser_tools_dir/output/session.XXXXXXXX")"
 case "${SOUTHPORT_BROWSER_MODE:-offscreen}" in
   offscreen) browser_mode_args=(--config "$browser_tools_dir/offscreen.json") ;;
   headless) browser_mode_args=(--headless) ;;
@@ -12,8 +19,8 @@ case "${SOUTHPORT_BROWSER_MODE:-offscreen}" in
     browser_mode_args=() ;;
   *) echo 'SOUTHPORT_BROWSER_MODE must be offscreen, headed or headless.' >&2; exit 1 ;;
 esac
-exec node "$browser_tools_dir/node_modules/@playwright/mcp/cli.js" \
+exec node "$browser_cli" \
   --browser chrome "${browser_mode_args[@]}" --sandbox --caps vision \
   --viewport-size 1440,1000 \
-  --user-data-dir "$browser_tools_dir/profile" \
-  --output-dir "$browser_tools_dir/output"
+  --isolated --idle-timeout 300000 --timeout-navigation 30000 \
+  --output-dir "$browser_session_dir"

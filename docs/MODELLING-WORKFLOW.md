@@ -26,6 +26,8 @@ Run a complete build and the asset's declared geometry checks after geometry cha
 
 Keep parallel contributors on separate asset directories. Coordinate shared-library, catalog and viewer changes separately. Shared-library edits currently invalidate every asset conservatively, so schedule a complete rebuild for those changes. More selective dependencies and regional texture atlases can wait until their cost justifies the added machinery.
 
+Before adding a new `asset.json`, create every file it declares: discovery validates the whole registry, so an incomplete manifest blocks other agents' builds. Assign one coordinator to local publication after the participating assets are ready. Each browser MCP process must use the isolated launcher described in [SETUP.md](SETUP.md); a shared disk profile prevents simultaneous browser sessions. Keep screenshots under the owning asset's ignored references directory or let MCP choose a filename in its unique session output directory.
+
 ## Submit source, not workspace history
 
 Stage recipes, code, source links and meaningful checks. Exclude local reference images, generated scenes, baked textures, screenshots and browser state. Run `python3 tools/project.py check` after staging, plus the relevant tests. Explain the visible change, evidence and validation in the commit or PR; distinguish observed details from estimates. Use `master`. Public hosting is a separate step from generating the local viewer.

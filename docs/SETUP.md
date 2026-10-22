@@ -12,6 +12,7 @@ The checked-in browser tool pins @playwright/mcp through package-lock.json. It r
 
 ```sh
 npm ci --ignore-scripts --no-audit --no-fund --prefix tools/browser
+node tools/browser/probe-concurrency.mjs
 node tools/browser/probe.mjs
 ```
 
@@ -24,7 +25,11 @@ codex mcp add southport-browser -- /absolute/path/southport-3d/tools/browser/run
 claude mcp add --transport stdio southport-browser -- /absolute/path/southport-3d/tools/browser/run-mcp.sh
 ```
 
-Choose the command for your agent. The launcher runs normal Chrome on its offscreen Ozone display backend with its sandbox enabled and stores its profile and output in ignored directories. It does not need an X-forwarded desktop. If the agent environment cannot launch Chrome, the MCP process needs host execution permission or an administrator-configured external MCP connection; a repository script cannot grant that permission. Do not use an arbitrary remote-debugging endpoint or expose a personal browser profile. Local MCP registrations and credentials stay out of Git.
+Choose the command for your agent. For Codex, `tools/browser/setup-codex.sh` runs the dependency installation, concurrency test and registration together. Run it in the host SSH shell, then reload the MCP connection (or restart/resume the client) to replace existing server processes. See the [Codex MCP configuration documentation](https://learn.chatgpt.com/docs/extend/mcp).
+
+The launcher runs normal Chrome on its offscreen Ozone display backend with its sandbox enabled. Every MCP process uses `--isolated`, with no shared disk profile, and a unique ignored `tools/browser/output/session.*` directory. Concurrent agents therefore have independent cookies, pages and tabs. Do not add a shared `--user-data-dir` or `--shared-browser-context`. Closing a browser clears that session's state; five idle minutes also closes it, so navigate again when returning to research. Explicit screenshot paths must still be unique to the owning agent/asset. The concurrency probe starts two real MCP servers, checks separate cookies and pages, and verifies that closing one leaves the other working. Results and screenshots go in `probe-output/`; a successful probe establishes local isolation, not access to external sites.
+
+The launcher does not need an X-forwarded desktop. If the agent environment cannot launch Chrome, the MCP process needs host execution permission or an administrator-configured external MCP connection; a repository script cannot grant that permission. Do not use an arbitrary remote-debugging endpoint or expose a personal browser profile. Local MCP registrations and credentials stay out of Git. `SOUTHPORT_BROWSER_CLI` can explicitly select an already installed Playwright MCP CLI for local diagnostics; normal setup uses the repository's pinned installation.
 
 For a genuine headed-browser comparison on a host without a desktop, install
 Xvfb and run the existing probe with a virtual display:

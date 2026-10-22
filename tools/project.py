@@ -200,6 +200,7 @@ def main():
     lodder.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))
     publisher = sub.add_parser('publish', help='Build all publication recipes and prepare the local viewer')
     publisher.add_argument('--rebuild', action='store_true')
+    publisher.add_argument('--asset', action='append', default=[], help='Publish only this asset (repeatable), retaining other assets at their last published versions')
     publisher.add_argument('--threads', type=int, default=12)
     publisher.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))
     args = parser.parse_args()

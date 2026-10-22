@@ -22,16 +22,27 @@ def publish(args, assets, fingerprint, build):
     from build_lock import asset_lock
 
     inventory = assets()
+    selected = set(getattr(args, 'asset', []) or [])
+    if selected:
+        unknown = selected - inventory.keys()
+        if unknown:raise ValueError('Unknown publication assets: '+', '.join(sorted(unknown)))
+        inventory = {key:value for key,value in inventory.items() if key in selected}
+        if any(not (source/'publication.json').is_file() for source,_ in inventory.values()):
+            raise ValueError('Selected asset has no publication recipe')
     with ExitStack() as locks:
         locks.enter_context(asset_lock(ROOT, "catalog"))
         for key in sorted(inventory):
             locks.enter_context(asset_lock(ROOT, key))
-        return _publish(args, lambda: inventory, fingerprint, build)
+        retained=[]
+        catalog=ROOT/'dist/catalog.json'
+        if selected and catalog.exists():
+            retained=[entry for entry in json.loads(catalog.read_text())['assets'] if entry['id'] not in selected]
+        return _publish(args, lambda: inventory, fingerprint, build, retained)
 
 
-def _publish(args, assets, fingerprint, build):
+def _publish(args, assets, fingerprint, build, retained=()):
     world=json.loads((ROOT/'viewer/world.json').read_text())
-    entries=[]
+    entries=list(retained)
     for key,(source,asset) in assets().items():
         config=source/'publication.json'
         if not config.exists():
@@ -111,13 +122,16 @@ def _publish(args, assets, fingerprint, build):
     for entry in entries:
         for part in entry['parts']:
             for record in part['levels'].values():
+                if 'source_path' not in record:
+                    if not (dist/record['uri']).is_file():raise ValueError('Missing retained published asset: '+record['uri'])
+                    continue
                 source=Path(record.pop('source_path'));destination=dist/record['uri'];destination.parent.mkdir(parents=True,exist_ok=True)
                 if not destination.exists():
                     try:os.link(source,destination)
                     except OSError:shutil.copy2(source,destination)
     for name in ('index.html','style.css','app.js','lod.js','streamer.js'):
         target=dist/(name+'.tmp');shutil.copy2(ROOT/'viewer'/name,target);target.replace(dist/name)
-    catalog={'schema_version':1,'worldOrigin':world['origin_wgs84_lat_lon'],'coordinateSystem':'East, up, south (metres)','lodPolicy':world['lodPolicy'],'assets':entries}
+    catalog={'schema_version':1,'worldOrigin':world['origin_wgs84_lat_lon'],'coordinateSystem':'East, up, south (metres)','lodPolicy':world['lodPolicy'],'assets':sorted(entries,key=lambda entry:entry['id'])}
     temporary=dist/'catalog.json.tmp';temporary.write_text(json.dumps(catalog,indent=2)+'\n');temporary.replace(dist/'catalog.json')
     # Keep one previous catalog's resources for open browser tabs; bound disk growth.
     history=dist/'previous-catalog.json'
