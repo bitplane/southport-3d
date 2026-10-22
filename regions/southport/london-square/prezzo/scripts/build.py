@@ -125,12 +125,29 @@ finish(m,'architecture',[stone],corner)
 # Simple party/rear envelopes explicitly not researched as finished elevations.
 m=Mesh('Envelope rear estimate');m.box((-20.8,-39.0,z0+7.8),(22.4,.45,15.6));m.box((-32,-31.2,z0+7.8),(.45,15.6,15.6));finish(m,materials=[brick])
 # Mansard envelope: calibrated street silhouette, coarse unobserved rear slopes.
-poly=D['footprint'];cx=-21;cy=-31.6;inner=[(cx+(x-cx)*.80,cy+(y-cy)*.73) for x,y in poly]
+poly=D['footprint']
+# Parallel inset edges keep the chamfer planar and every eave at the same pitch.
+inner=[]
+for i,p in enumerate(poly):
+ before=Vector(poly[i-1]);here=Vector(p);after=Vector(poly[(i+1)%len(poly)])
+ t0=(here-before).normalized();t1=(after-here).normalized()
+ n0=Vector((-t0.y,t0.x));n1=Vector((-t1.y,t1.x))
+ offset=(n0+n1)*(1.8/(1+n0.dot(n1)))
+ inner.append(tuple(here+offset))
 m=Mesh('Roof mansard')
 for i,a in enumerate(poly):
  j=(i+1)%len(poly);b=poly[j];aa=inner[i];bb=inner[j]
  m.add([(a[0],a[1],z0+15.7),(b[0],b[1],z0+15.7),(bb[0],bb[1],z0+18.3),(aa[0],aa[1],z0+18.3)],[(0,1,2,3)])
-m.add([(x,y,z0+18.3) for x,y in inner],[tuple(range(len(inner)))],1);finish(m,'roof',[slate,lead])
+m.add([(x,y,z0+18.3) for x,y in inner],[tuple(range(len(inner)))],1)
+roof=finish(m,'roof',[slate,lead])
+# Per-face eave/slope coordinates, independent of triangulation or world axes.
+# The old dominant-axis projection turned courses vertically on the chamfer.
+for f in roof.data.polygons:
+ if f.material_index:continue
+ tangent=Vector((-f.normal.y,f.normal.x,0)).normalized()
+ for li in f.loop_indices:
+  v=roof.data.vertices[roof.data.loops[li].vertex_index].co
+  roof.data.uv_layers.active.data[li].uv=(v.dot(tangent)/2.4,(v.z-z0-15.7)*math.hypot(1.8,2.6)/2.6/2.4)
 # Dormer cheeks, frames and flat lead caps; front and London counts corroborated.
 for label,frame,centres in [('Lord',front,[2.05,5.8,9.55,13.3,17.05]),('London',side,[2.35,6.45,10.55]),('corner',corner,[L/2])]:
  for u in centres:
@@ -142,11 +159,21 @@ for label,frame,centres in [('Lord',front,[2.05,5.8,9.55,13.3,17.05]),('London',
 # Chimneys and terracotta pot groups; rear service structure is an estimated envelope.
 m=Mesh('Roof service enclosure');m.box((-24,-34,z0+19.1),(4.2,3.5,1.6));finish(m,'roof',[brick])
 instance('dormer',Mesh('Window rear service estimate'),'roof',face_matrix((-24,-32.10,z0+19.15),(0,1,0)))
-for i,(x,y) in enumerate(D['chimneys']):
- m=Mesh('Roof chimney '+str(i));m.box((x,y,z0+18.1),(1.05,.65,3.5));m.box((x,y,z0+19.9),(1.2,.8,.15));finish(m,'roof',[stone])
- m=Mesh('Pots '+str(i))
- for j in range(4):m.lathe((x-.36+j*.24,y),[(z0+19.97,.085),(z0+20.65,.075),(z0+20.70,.095)],16)
- finish(m,'roof',[red])
+for spec in D['chimneys']:
+ x,y=spec['centre'];length=spec['length'];width=spec['width']
+ matrix=Matrix.Translation((x,y,z0))@Matrix.Rotation(math.radians(spec['yaw_degrees']),4,'Z')
+ m=Mesh('Roof chimney '+spec['id'])
+ m.box((0,0,18.55),(length,width,2.7))
+ m.box((0,0,19.91),(length+.18,width+.18,.16))
+ finish(m,'roof',[stone],matrix)
+ # Dark weathered coping and hollow, collared terracotta pots.
+ m=Mesh('Roof coping '+spec['id']);m.box((0,0,20.005),(length+.22,width+.22,.07));finish(m,'roof',[lead],matrix)
+ if spec['pots']:
+  m=Mesh('Pots '+spec['id']);count=spec['pots']
+  for j in range(count):
+   u=(j-(count-1)/2)*(length-.30)/(count-1)
+   m.lathe((u,0),[(20.04,.12),(20.14,.12),(20.16,.10),(21.12,.095),(21.15,.115),(21.22,.115),(21.22,.075),(20.96,.075)],12)
+  finish(m,'roof',[red],matrix)
 # One authored text prototype, projected onto a panel at distant LOD.
 font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf')
 t=text_object('Temporary lettering','PREZZO',(0,0,.035),(0,0,1),.20,1.1,font,white)

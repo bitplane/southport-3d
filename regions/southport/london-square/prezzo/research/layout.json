@@ -28,32 +28,75 @@
     ]
   ],
   "chimneys": [
-    [
-      -30,
-      -25.3
-    ],
-    [
-      -22,
-      -25.3
-    ],
-    [
-      -14.8,
-      -25.3
-    ],
-    [
-      -11.2,
-      -30.5
-    ],
-    [
-      -11.2,
-      -37
-    ],
-    [
-      -29.8,
-      -36.5
-    ]
+    {
+      "id": "lord-near",
+      "centre": [
+        -19.0,
+        -26.45
+      ],
+      "yaw_degrees": 90,
+      "length": 1.8,
+      "width": 0.85,
+      "pots": 5
+    },
+    {
+      "id": "lord-middle-capped",
+      "centre": [
+        -26.1,
+        -26.45
+      ],
+      "yaw_degrees": 90,
+      "length": 1.65,
+      "width": 0.8,
+      "pots": 0
+    },
+    {
+      "id": "lord-far",
+      "centre": [
+        -30.3,
+        -26.45
+      ],
+      "yaw_degrees": 90,
+      "length": 2.05,
+      "width": 0.9,
+      "pots": 5
+    },
+    {
+      "id": "london-far",
+      "centre": [
+        -12.6,
+        -36.5
+      ],
+      "yaw_degrees": 0,
+      "length": 1.65,
+      "width": 0.85,
+      "pots": 4
+    },
+    {
+      "id": "london-middle-capped",
+      "centre": [
+        -12.6,
+        -31.0
+      ],
+      "yaw_degrees": 0,
+      "length": 1.45,
+      "width": 0.75,
+      "pots": 0
+    },
+    {
+      "id": "corner-capped",
+      "centre": [
+        -14.1,
+        -26.3
+      ],
+      "yaw_degrees": 139.84,
+      "length": 1.8,
+      "width": 0.85,
+      "pots": 0
+    }
   ],
   "registration": "Street corner follows OSM way 371203985 (whole urban block), nodes around (-12.76,-23.36),(-9.56,-26.03). Rear lot division and dimensions visually estimated from satellite; OSM does not separately map this building.",
   "dimensions_status": "All heights estimated by storey/window proportions; five Lord Street bays, three London Street bays plus one corner confirmed in photographs. Rear wall/service enclosure and rear roof slopes simplified, not surveyed.",
-  "datum": "Level building floors; base .58m on the square\u2019s estimated sloping ground. No surveyed vertical datum."
+  "datum": "Level building floors; base .58m on the square\u2019s estimated sloping ground. No surveyed vertical datum.",
+  "roof_review": "Wider January 2018 ground panorama and January 2025 aerial show three tall pot groups and three capped stacks. Lord Street rows run into roof (site Y); London Street row runs into roof (site X). Corner stack follows chamfer. Four London pots and five on each Lord group interpreted from imagery; concealed flues and exact dimensions remain uncertain."
 }

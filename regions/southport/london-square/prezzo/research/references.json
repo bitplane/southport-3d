@@ -53,6 +53,17 @@
       "observations": [
         "Urban-block footprint establishes street corner; no separate Prezzo plot polygon. Restaurant node 3747894065 identifies site."
       ]
+    },
+    {
+      "id": "ground-roof-review",
+      "url": "https://www.google.com/maps/@53.6488147,-3.004116,3a,40y,190h,105t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgID486XpYw!2e10",
+      "author": "Jomo via Google Maps",
+      "capture": "Jan 2018 (displayed)",
+      "observations": [
+        "View from farther across London Square reveals capped corner stack, tall terracotta pot groups and their differing directions. Cross-checked against daylight property photo and January 2025 aerial.",
+        "Three tall pot groups, three capped stacks; front pot rows run back into the roof. Pot counts interpreted as five per Lord Street group and four on London Street; concealed flues uncertain.",
+        "Slate courses follow horizontal eaves on each roof slope, including the chamfer."
+      ]
     }
   ],
   "limitations": [

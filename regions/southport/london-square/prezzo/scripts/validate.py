@@ -26,3 +26,21 @@ for o in windows:
  hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(depsgraph,origin,direction,distance=2)
  assert hit and ob==o,(o.name,'glazing obstructed by',ob.name if ob else None)
 print('All 44 window fronts visible from outside, including dormers')
+
+# Roof-specific review guards: do not restore identical pot groups or UV axes.
+recipe=json.loads((ROOT/'research/layout.json').read_text())
+assert len([o for o in meshes if o.name.startswith('Pots ')])==3
+for spec in recipe['chimneys']:
+ ob=bpy.data.objects['Roof chimney '+spec['id']]
+ assert abs(ob.rotation_euler.z-math.radians(spec['yaw_degrees']))<1e-5
+ pot=bpy.data.objects.get('Pots '+spec['id'])
+ assert bool(pot)==bool(spec['pots'])
+ if pot:assert len(pot.data.vertices)==spec['pots']*8*12
+roof=bpy.data.objects['Roof mansard'];uv=roof.data.uv_layers.active.data
+for f in roof.data.polygons:
+ if f.material_index:continue
+ for li in f.loop_indices:
+  z=roof.data.vertices[roof.data.loops[li].vertex_index].co.z
+  expected=(z-recipe['base_z']-15.7)*math.hypot(1.8,2.6)/2.6/2.4
+  assert abs(uv[li].uv.y-expected)<1e-5
+print('Chimney orientation/pot groups and horizontal slate courses validated')
