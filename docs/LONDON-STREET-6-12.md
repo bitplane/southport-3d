@@ -1,5 +1,9 @@
 # 6–12 London Street
 
+The Halifax/Post & Packing dividing pier has one granite lower face, with the
+dark shop surround continuing above it. A duplicate coplanar dark pier caused
+flickering in the viewer; the frontage ray checks now cover that shared face.
+
 `southport.london-street.london-street-6-12` owns the continuous red-brick building between Prezzo’s narrow London Street terminal bay and Glebe Place. Halifax occupies nine of its twelve upper bays; number six occupies the other three. The architectural asset therefore covers the whole block, rather than treating the bank shop unit as a separate building.
 
 The front follows verified August 2024 Street View: two rows of twelve sash windows, a hood over every third first-floor window, shallow segmental second-floor heads, dentilled eaves, granite shop piers, recessed bank entrance, two ATMs, blue fascia and the number-six shop/office frontage. The Halifax and Post & Packing names represent that dated evidence, not a statement about current trading. There are no interiors.

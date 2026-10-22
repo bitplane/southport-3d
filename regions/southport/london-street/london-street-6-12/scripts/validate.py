@@ -37,7 +37,9 @@ assert len(doors)==2
 assert all(max((obj.matrix_world@v.co).x for v in obj.data.vertices)<D['front_x']-.5 for obj in doors)
 # No coincident exterior faces on the Glebe wall or its corner cap. These
 # samples exposed overlapping return boxes as black patches in the render.
-for origin,direction in [(Vector((-28,D['south_y']-1,D['base_z']+2)),Vector((0,1,0))),
+shared_pier_u=(D['north_y']-D['south_y'])/D['upper_bays']*D['halifax_bays']+.10
+for origin,direction in [(Vector((D['front_x']+1,D['south_y']+shared_pier_u,D['base_z']+1.1)),Vector((-1,0,0))),
+                         (Vector((-28,D['south_y']-1,D['base_z']+2)),Vector((0,1,0))),
                          (Vector((D['front_x']+1,D['south_y']+.16,D['base_z']+6.6)),Vector((-1,0,0)))]:
     distances=[]
     for obj in meshes:

@@ -357,8 +357,10 @@ elevation_box('Shop Glebe return glass',side_width-1.33,1.52,1.78,2.98,.03,-.18,
 elevation_box('Shop Glebe fascia return',side_width-1.33,3.57,2.66,.78,.25,.03,blue,'shopfront',side)
 # Number six: dark surround, lower shop fascia, side access door to offices.
 shop6=width-hw
-for u in [hw+.10,width-.10]:
-    elevation_box('Shop six stone pier',u,1.8,.24,3.6,.44,-.08,charcoal,'shopfront')
+# The granite pier owns the shared lower face; a second full-height dark
+# pier here placed two different materials on exactly the same plane.
+elevation_box('Shop six shared pier head',hw+.10,3.42,.24,.36,.44,-.08,charcoal,'shopfront')
+elevation_box('Shop six stone pier',width-.10,1.8,.24,3.6,.44,-.08,charcoal,'shopfront')
 elevation_box('Shop six upper dark fascia',hw+shop6/2,3.57,shop6,.78,.32,.03,charcoal,'shopfront')
 elevation_box('Shop six glazing',hw+shop6*.40,1.44,shop6*.72,2.78,.035,-.20,glass,'shopfront')
 for u in [hw+.3,hw+shop6*.72]:
