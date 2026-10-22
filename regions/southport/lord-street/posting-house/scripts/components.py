@@ -32,9 +32,11 @@ def sash(name,width,height,arched=False):
     if arched:m.outline(opening(0,-h,h-w,w,w),-.24,-.21,0)
     else:m.box((0,0,-.23),(width,height,.04),0)
     for sign in (-1,1):m.box((sign*(w-.045),-w/2 if arched else 0,-.10),(.09,height-w if arched else height,.13),1)
-    for y in [-h,0] + ([] if arched else [h]):m.box((0,y,-.10),(width,.09,.13),1)
+    for y in [-h,0] + ([] if arched else [h]):m.box((0,y,-.10),(width-.18,.09,.13),1)
     for x in [-w/3,w/3]:m.box((x,-w/2 if arched else 0,-.13),(.032,height-w if arched else height,.08),1)
-    for y in [-h/2,h/2]:m.box((0,y,-.13),(width-.1,.03,.08),1)
+    for y in [-h/2,h/2]:
+        for a,b in [(-w+.09,-w/3-.016),(-w/3+.016,w/3-.016),(w/3+.016,w-.09)]:
+            m.box(((a+b)/2,y,-.13),(b-a,.03,.08),1)
     if arched:ellipse_band(m,0,h-w,w-.09,w-.09,.09,-.035,steps=28,mat=1)
     return m
 
@@ -53,7 +55,7 @@ def surround(name,width,height,transom=True):
 def cross_window(name,width,height):
     """Painted frame, one timber sash transom; stone cross is separate geometry."""
     m=Mesh(name);w=width/2;h=height/2
-    m.box((0,0,-.23),(width,height,.04),0)
-    for x in [-w+.035,w-.035]:m.box((x,0,-.12),(.07,height,.12),1)
-    for y in [-h,h,-.35]:m.box((0,y,-.12),(width,.07,.12),1)
+    m.box((0,0,-.23),(width+.04,height+.04,.04),0)
+    for x in [-w+.035,w-.035]:m.box((x,0,-.12),(.09,height,.12),1)
+    for y in [-h,h,-.35]:m.box((0,y,-.12),(width-.16,.07,.12),1)
     return m

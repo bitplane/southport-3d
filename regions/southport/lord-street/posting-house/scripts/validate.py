@@ -55,3 +55,37 @@ hit,point,normal,index,target,matrix=bpy.context.scene.ray_cast(deps,p,Vector((0
 assert hit and point.z<1.5,('Courtyard filled',target.name if target else None,point)
 report={'meshes':len(meshes),'roof_samples':roof_samples,'clear_windows':windows,'checks':'finite meshes and UVs, packed textures, landmark counts, closed single-skin intersecting roof, clear glazing rays, alley bounds, open courtyard'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# Every dormer pane remains in front of the main slope at low and high samples.
+for ob in meshes:
+ if ob.name.startswith('Glazing dormer sash'):
+  for y in [-.68,-.45,.20,.68]:
+   origin=ob.matrix_world@Vector((.12,y,.5))
+   direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+   hit,p,n,i,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1)
+   assert hit and target==ob,(ob.name,y,'Roof obscures dormer',target.name if target else None)
+ if ob.name.startswith('Window upper sash'):
+  origin=ob.matrix_world@Vector((.615,.24,.5));direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+  distances=[]
+  for other in meshes:
+   inverse=other.matrix_world.inverted();hit,p,n,i=other.ray_cast(inverse@origin,(inverse.to_3x3()@direction).normalized(),distance=2)
+   if hit:distances.append(((other.matrix_world@p-origin).length,other.name))
+  distances.sort()
+  assert distances[0][1]==ob.name,(ob.name,'Window edge obscured',distances[:3])
+  assert sum(abs(t-distances[0][0])<1e-5 for t,name in distances)==1,(ob.name,'Coincident reveal',distances[:3])
+# Canted aprons meet the sill ledges without a view through to the wall behind.
+for c in [D['historic_start']*(j+.5)/3 for j in range(3)]:
+ for z in [5.46,9.46]:
+  for dx in [-.65,.13,.65]:
+   origin=front@Vector((c+dx,z,1.2));direction=(front.to_3x3()@Vector((0,0,-1))).normalized()
+   hit,p,n,i,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1.3)
+   assert hit and (front.inverted()@p).z>.70,('Open bay apron',c,z,dx,target.name if target else None)
+# The 132 roof is a thin closed shell, not a filled triangular attic end.
+ob=bpy.data.objects['Roof 132 main gable'];bm=bmesh.new();bm.from_mesh(ob.data)
+assert all(e.is_manifold for e in bm.edges),'132 roof shell is open'
+bm.free()
+origin=front@Vector((D['historic_start']+1,17.5,-D['main_depth']/2))
+direction=(front.to_3x3()@Vector((-1,0,0))).normalized();inverse=ob.matrix_world.inverted()
+hit,p,n,i=ob.ray_cast(inverse@origin,(inverse.to_3x3()@direction).normalized(),distance=2)
+assert not hit,'Solid roof end duplicates 132 brick gable'
+print('Dormer panes, sash-edge ownership, canted apron joins and thin 132 roof verified')

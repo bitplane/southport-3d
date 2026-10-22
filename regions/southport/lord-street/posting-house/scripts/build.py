@@ -234,12 +234,23 @@ m=Mesh('Roof ridge cap');m.tube([site(start,depth/2,ridge+.045),site(width,depth
 
 # Three steep hipped dormers occupy the recessed first, centre and fifth bays.
 for i in (0,2,4):
-    c=bays[i];f=front@Matrix.Translation((c,0,-1.1));z=16.55
+    c=bays[i];f=front@Matrix.Translation((c,0,-1.1));z=eave+(ridge-eave)*1.1/(depth/2)+.08
     hole=rect(-.69,z+.12,.69,z+1.75)
-    finish(wall('Dormer cheek front '+str(i),rect(-.88,z,.88,z+1.92),[hole],-.24,.04),'roof',[plain],f)
+    finish(wall('Dormer cheek front '+str(i),rect(-.88,z-.12,.88,z+1.92),[hole],-.24,.04),'roof',[plain],f)
     instance('dormer',sash('Glazing dormer sash',1.38,1.63),f@Matrix.Translation((0,z+.935,0)),'roof',[glass,white])
+    # Cut the main slope behind the glazing; it formerly obscured the lower
+    # panes. Solid cheeks close the opening back into the existing roof.
+    cutter_mesh=Mesh('Temporary dormer opening')
+    cutter_mesh.box((c,z+.96,-2.55),(1.40,1.92,2.9))
+    cutter=cutter_mesh.finish([]);cutter.matrix_world=front
+    bpy.context.view_layer.objects.active=roof
+    mod=roof.modifiers.new('Dormer aperture','BOOLEAN');mod.operation='DIFFERENCE';mod.solver='EXACT';mod.object=cutter
+    bpy.ops.object.modifier_apply(modifier=mod.name);bpy.data.objects.remove(cutter,do_unlink=True)
+    for side in [-1,1]:
+        box('Dormer closed side cheek',(side*.79,z+.96,-1.45),(.18,1.92,2.9),'roof',plain,f)
+    box('Dormer sill',(0,z+.09,-.04),(1.82,.14,.42),'roof',plain,f)
     m=Mesh('Roof dormer hip '+str(i))
-    m.add([(-1.03,z+1.91,.18),(1.03,z+1.91,.18),(1.03,z+1.91,-2.9),(-1.03,z+1.91,-2.9),(0,z+3.6,-1.1)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4)])
+    m.add([(-1.03,z+1.91,.18),(1.03,z+1.91,.18),(1.03,z+1.91,-2.9),(-1.03,z+1.91,-2.9),(0,z+3.6,-1.1)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4),(3,2,1,0)])
     finish(m,'roof',[slate],f)
     m=Mesh('Ornament dormer finial');m.tube([(0,z+3.52,-1.1),(0,z+4.18,-1.1)],.045,sides=10);m.ellipsoid((0,z+3.93,-1.1),(.12,.15,.12),segments=12,rings=8)
     finish(m,'roof',[lead],f)

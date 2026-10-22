@@ -38,3 +38,19 @@ prominent tall central opening/bay. The current regular historic-rear sash rows
 remain an approximation, not a verified reconstruction of that photograph.
 Rear fenestration and exact bay registration need a further calibrated pass;
 this audit does not certify them. Ground joins need combined-viewer inspection.
+
+## Saved-view join and dormer audit
+
+Four viewer reports identified sash edges sharing masonry reveal planes, thin
+slits/overlapping panel ends on 132's canted bays, a duplicate slate/brick gable
+face, and main-roof slate covering the lower dormer panes. Timber frames now
+extend slightly into their surrounding masonry; the bays use continuous closed
+aprons and corner posts, with timber kept close to the glass. The 132 roof is a
+thin closed shell meeting its brick gable rather than a filled attic volume with
+a duplicate end triangle. Its silhouette is retained.
+
+The main slope is cut behind each dormer window, with side cheeks and sills
+closing the openings. The dormer hips have underside closures. Validation probes
+cover low/high dormer panes, unique sash-edge hits, bay apron/sill joins and the
+132 roof volume. All levels retain these structural corrections; existing
+selective detail reduction and sign/glazing bakes still apply.

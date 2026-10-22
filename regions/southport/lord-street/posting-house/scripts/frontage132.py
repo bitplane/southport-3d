@@ -5,6 +5,14 @@ from southport3d.geometry import Mesh
 from components import rect, wall, opening, ellipse_band, sash
 
 
+def bay_sash(width):
+    mesh=sash('Window 132 bay sash',width,3.0)
+    # Keep timber close to the glazing, so canted corners meet their aprons.
+    timber={i for face,mat in zip(mesh.faces,mesh.indices) if mat==1 for i in face}
+    mesh.vertices=[(x,y,z-.13 if i in timber else z) for i,(x,y,z) in enumerate(mesh.vertices)]
+    return mesh
+
+
 def build_132(g):
     front=g['front'];finish=g['finish'];box=g['box'];instance=g['instance']
     brick=g['brick'];black=g['black'];white=g['white'];glass=g['glass'];slate=g['slate']
@@ -38,7 +46,7 @@ def build_132(g):
             for (x0,d0),(x1,d1) in zip(outline,outline[1:]):
                 length=math.hypot(x1-x0,d1-d0);angle=-math.atan2(d1-d0,x1-x0)
                 f=front@Matrix.Translation((c+(x0+x1)/2,z,(d0+d1)/2))@Matrix.Rotation(angle,4,'Y')
-                instance('132-bay-'+str(round(length,4)),sash('Window 132 bay sash',length-.15,3.0),f@Matrix.Translation((0,0,.19)),mats=[glass,white])
+                instance('132-bay-'+str(round(length,4)),bay_sash(length-.08),f@Matrix.Translation((0,0,.19)),mats=[glass,white])
                 m=Mesh('Trim 132 arched upper lights')
                 count=3 if length>1.5 else 1
                 for j in range(count):
@@ -47,14 +55,22 @@ def build_132(g):
                 finish(m,mats=[white],frame=f)
                 box('Trim 132 window head',(0,1.56,.06),(length+.08,.13,.24),mat=black,frame=f)
                 box('Trim 132 window sill',(0,-1.53,.08),(length+.12,.13,.25),mat=black,frame=f)
-                box('Envelope 132 white apron',(0,-1.97,0),(length,.74,.14),mat=white,frame=f)
+
+            # One closed apron across the whole canted plan avoids overlapping
+            # white panel ends and closes the former slit below the sill.
+            m=Mesh('Envelope 132 white apron')
+            v=[(c+x,h,d) for h in [z-2.34,z-1.47] for x,d in outline]
+            m.add(v,[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
+            finish(m,mats=[white],frame=front)
+            for x,d in outline:
+                box('Trim 132 corner post',(c+x,z,d),(.10,3.15,.12),mat=black,frame=front)
             # Thin roof ledges close canted bay tops and bottoms in plan.
             for h in [z+1.65,z-1.58]:
                 m=Mesh('Roof 132 bay ledge');m.add([(c+x,h,d) for x,d in outline]+[(c+x,h+.10,d) for x,d in outline],[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
                 finish(m,mats=[black],frame=front)
         # The top row is four plain vertical casements, not a Georgian sash grid.
         m=Mesh('Window 132 upper casement');m.box((0,0,-.23),(2.5,1.65,.04),0)
-        for x in [-1.215,-.625,0,.625,1.215]:m.box((x,0,-.10),(.055,1.65,.13),1)
+        for x in [-1.215,-.625,0,.625,1.215]:m.box((x,0,-.10),(.055,1.54,.13),1)
         for z in [-.7975,.7975]:m.box((0,z,-.10),(2.5,.055,.13),1)
         instance('132-top-casement',m,front@Matrix.Translation((c,14.75,0)),mats=[glass,white])
         for h in [13.72,15.75,16.17]:box('Trim 132 black band',(c,h,.07),(w/3,.14,.23),mat=black,frame=front)
@@ -63,10 +79,13 @@ def build_132(g):
         m=Mesh('Trim 132 gable barge');m.tube([(c-1.47,16.31,.13),(c,18.14,.13),(c+1.47,16.31,.13)],.10,sides=8)
         finish(m,mats=[black],frame=front)
     # Closed pitched roof and brick end returns. Exact rear bay layout unobserved.
-    m=Mesh('Roof 132 main gable');m.add([(0,16.3,0),(w,16.3,0),(w,16.3,-depth),(0,16.3,-depth),(0,19.1,-depth/2),(w,19.1,-depth/2)],[(0,1,5,4),(1,2,5),(2,3,4,5),(3,0,4),(3,2,1,0)])
+    m=Mesh('Roof 132 main gable')
+    section=[(16.3,0),(19.1,-depth/2),(16.3,-depth),(16.14,-depth),(18.94,-depth/2),(16.14,0)]
+    m.add([(u,h,d) for u in [0,w] for h,d in section],
+          [tuple(reversed(range(6))),tuple(range(6,12))]+[(i,(i+1)%6,(i+1)%6+6,i+6) for i in range(6)])
     finish(m,'roof',[slate],front)
     for u in [0,w]:
         f=front@Matrix.Translation((u,0,0))@Matrix.Rotation(math.pi/2,4,'Y')
-        finish(wall('Envelope 132 side',[(0,0),(depth,0),(depth,16.3),(depth/2,19.1),(0,16.3)],[]),mats=[brick],frame=f)
+        finish(wall('Envelope 132 side',[(0,0),(depth,0),(depth,16.14),(depth/2,18.94),(0,16.14)],[]),mats=[brick],frame=f)
     back=front@Matrix.Translation((w,0,-depth))@Matrix.Rotation(math.pi,4,'Y')
     finish(wall('Envelope 132 rear',rect(0,0,w,16.3),[]),mats=[brick],frame=back)
