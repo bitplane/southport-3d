@@ -186,3 +186,25 @@ August 2024 panorama, replacing its single diagonal cut. The slab apron, red
 carriageway boundary and paired yellow lines use the same sampled curve; the
 London Street neck joins tangentially. The estimated 6.2 m radius retains the
 existing terrace registration. Combined close renders check both elevations.
+
+## Post Office Avenue and Anchor Street expansion
+
+The independently streamed `rear-streets-ground` part connects Post Office Avenue
+from the St George’s frontage strip at Y=-27 to Anchor Street. Anchor continues
+from the prior X=25 stub to X=160, covering the rear of the growing block. Centreline
+bends come from the retained OSM extract in `research/corridor-extension.json`;
+carriageway/pavement widths and grades remain estimates from retained aerials.
+The junction cuts pavements out of the carriageway rather than layering them.
+No kerb or paint crosses either open route or the outer ownership cut.
+
+London Street footways extend to the registered frontages at14–20. The old
+St George’s Place placeholder cut through the new Mansions/Sainsbury’s frontage;
+its shop apron and opposite garden edge now follow those mapped elevations.
+The garden’s south lawn/edging moves behind the corrected service-road footway.
+The existing crossing follows the new kerbs; exact current parking restrictions
+and additional street furniture are deferred rather than invented. Private rear
+yards are outside this ground pass.
+
+All levels retain the low-poly street outlines and physical kerbs; Walk/District
+reduce texture resolution through the existing pipeline. `New street coverage`
+is the viewer overview bookmark. No reference imagery is published.

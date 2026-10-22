@@ -1,0 +1,69 @@
+{
+  "source": "https://www.openstreetmap.org/copyright",
+  "attribution": "\u00a9 OpenStreetMap contributors, ODbL 1.0; retained extract retrieved2026-10-21",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "yaw_from_east_degrees": 43.5293,
+  "ways": {
+    "24479612": {
+      "tags": {
+        "highway": "unclassified",
+        "lane_markings": "no",
+        "name": "Anchor Street",
+        "oneway": "yes",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          1.891,
+          -82.988
+        ],
+        [
+          49.817,
+          -85.631
+        ],
+        [
+          67.658,
+          -87.563
+        ],
+        [
+          150.579,
+          -95.244
+        ],
+        [
+          159.105,
+          -96.894
+        ],
+        [
+          223.91,
+          -95.688
+        ]
+      ]
+    },
+    "24943581": {
+      "tags": {
+        "highway": "residential",
+        "maxspeed": "20 mph",
+        "name": "Post Office Avenue"
+      },
+      "xy": [
+        [
+          67.658,
+          -87.563
+        ],
+        [
+          68.235,
+          -17.114
+        ]
+      ]
+    }
+  },
+  "scope": "Anchor Street X25..160; Post Office Avenue from frontage strip Y-27 to Anchor junction; approximate widths4m/8m with pavement1.1\u20132.5m. Existing Anchor stub9m retained at X25 then tapered. No invented parking restrictions or street furniture on unverified portions.",
+  "imagery": [
+    "https://www.google.com/maps/@53.64902,-3.00312,20z/data=!3m1!1e3"
+  ],
+  "local_reference": "st-georges-place-terrace/references/aerial.png; london-street-14-16/references/aerial.png",
+  "limits": "Street widths, grades and setback estimates visually calibrated. Rear private yards remain unmodelled; building geometry excluded from ground ownership. StGeorges approach follows mapped building fronts with estimated2m apron and approximately6m service carriageway."
+}

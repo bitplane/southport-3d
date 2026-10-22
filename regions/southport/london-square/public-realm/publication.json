@@ -119,6 +119,12 @@
       "id": "london-3-furniture",
       "name": "London Street section 3 \u2014 furniture",
       "collection": "london-3-furniture"
+    },
+    {
+      "id": "rear-streets-ground",
+      "name": "Post Office Avenue and Anchor Street",
+      "collection": "rear-streets-ground",
+      "ground": true
     }
   ],
   "views": [
@@ -263,6 +269,19 @@
         0,
         0,
         76
+      ]
+    },
+    {
+      "name": "New street coverage",
+      "position": [
+        100,
+        125,
+        130
+      ],
+      "target": [
+        65,
+        0,
+        65
       ]
     }
   ],

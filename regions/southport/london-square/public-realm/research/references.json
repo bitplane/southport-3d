@@ -138,6 +138,20 @@
         "output/prezzo-detail-reference-lord.png",
         "output/natwest-junction-reference.png"
       ]
+    },
+    {
+      "id": "corridor-extension-aerial",
+      "url": "https://www.google.com/maps/@53.64902,-3.00312,20z/data=!3m1!1e3",
+      "capture": "Retained2026session satellite; capture date not shown",
+      "observations": [
+        "Post Office Avenue joins St Georges Place to Anchor Street between Posting House and St Georges Mansions.",
+        "Anchor Street continues behind the block towards the rear of Sainsburys. London footways continue along14\u201320 frontages.",
+        "Road centreline coordinates from retained OpenStreetMap extract; widths/grades and street-facing setbacks visually estimated."
+      ],
+      "local_reference_files": [
+        "st-georges-place-terrace/references/aerial.png",
+        "london-street-14-16/references/aerial.png"
+      ]
     }
   ],
   "limitations": [

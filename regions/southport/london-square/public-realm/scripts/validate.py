@@ -121,3 +121,21 @@ for x,y in [(-7.5,-23),(-5.8,-28)]:
  ob,p=ground_hit(x,y)
  assert ob and not any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(x,y,'Prezzo paving extends into carriageway')
 print('Rounded Prezzo pavement and open carriageway validated')
+
+# New routes must be continuous driveable surfaces, including their shared
+# T-junction and the existing stub. These rays exclude building models.
+for x,y in [(25,-83.5),(40,-84.8),(67.66,-87.56),(100,-90.55),(150,-95.2),(68.1,-28),(68,-50),(67.8,-75),(67.7,-83)]:
+ ob,p=ground_hit(x,y)
+ assert ob and any(m.name=='Authored asphalt' for m in ob.data.materials),(x,y,'Road extension blocked or missing')
+for x,y in [(40,-79),(80,-83.5),(110,-86.3),(80,-94.4),(65.1,-40),(70.8,-45),(-11,-80),(-11,-90),(85,-20),(125,-18.5)]:
+ ob,p=ground_hit(x,y)
+ assert ob and any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(x,y,ob.name if ob else None,'New frontage pavement missing')
+print('Post Office / Anchor connection and new frontage paving validated')
+
+for y in [-79.18,-79.36,-87.82,-87.64]:
+ left,lp=ground_hit(24.985,y);right,rp=ground_hit(25.015,y)
+ assert left and right and all(any(m.name=='Faded yellow road marking' for m in o.data.materials) for o in [left,right]),(y,'Anchor yellow pair does not meet across ownership seam')
+ assert abs(lp.z-rp.z)<.0005
+print('Anchor Street ownership seam has continuous road-edge paint')
+
+assert all(f.area>=1e-8 for o in bpy.data.collections['rear-streets-ground'].objects for f in o.data.polygons),'Degenerate corridor faces'

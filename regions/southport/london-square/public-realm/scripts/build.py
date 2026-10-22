@@ -270,8 +270,9 @@ for part,collection in collections.items():
 for ob in collections['ne-garden-ground'].objects:
  if ob.name.startswith('Surface Sainsbury ramp') or ob.name.startswith('Tactile Sainsbury'):
   south='south' in ob.name
+  low=min(v.co.y for v in ob.data.vertices);high=max(v.co.y for v in ob.data.vertices)
   for vertex in ob.data.vertices:
-   fraction=max(0,min(1,(vertex.co.y+24.6) if south else (-13.8-vertex.co.y)))
+   fraction=max(0,min(1,(vertex.co.y-low)/(high-low) if south else (high-vertex.co.y)/(high-low)))
    vertex.co.z=grade(vertex.co.y)-.12*fraction
 
 # Drop the London Street landing edge to road level; keep adjoining footway level.
@@ -328,6 +329,14 @@ for name,mesh in compiled.items():
   for loop in face.loop_indices:
    v=ob.data.vertices[ob.data.loops[loop].vertex_index].co
    uv.data[loop].uv=(v.x/3.6,v.y/3.6)
+# Clipping meeting road strips can leave zero-area slivers after float conversion.
+# Remove those faces in the new corridor rather than exporting invalid normals.
+import bmesh
+for ob in collections['rear-streets-ground'].objects:
+ bm=bmesh.new();bm.from_mesh(ob.data)
+ bad=[f for f in bm.faces if f.calc_area()<1e-8]
+ if bad:bmesh.ops.delete(bm,geom=bad,context='FACES_ONLY')
+ bm.to_mesh(ob.data);bm.free();ob.data.update()
 (ROOT/'research/conform.json').write_text(json.dumps(report,indent=2))
 
 # Pack generated images for self-contained source output; no external reference pixels.
