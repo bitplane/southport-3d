@@ -107,3 +107,9 @@ for obj in service_windows+side_windows:
     assert hit and found==obj,(obj.name,'service window obscured',found.name if found else None)
 assert D['rear_eaves_height']<D['eaves_height']-1.5,'Lost lower rear roof level'
 print('Eight courtyard windows, two plain Glebe casements and lower rear eave checked')
+
+# The aerial's pale southern service deck is exposed, not buried in pitched slate.
+for y in [-57.5,-60,-62.5]:
+ origin=Vector((-27.5,y,20))
+ hit,p,n,i,found,matrix=bpy.context.scene.ray_cast(deps,origin,Vector((0,0,-1)),distance=20)
+ assert hit and found.name.startswith('Roof south wing flat deck'),('Southern deck obscured',y,found.name if found else None)

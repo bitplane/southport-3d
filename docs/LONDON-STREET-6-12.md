@@ -55,3 +55,19 @@ comparisons. Their roof silhouette and material colour stay consistent; only
 small fittings and baked sash depth simplify. The normal front composition is
 preserved. The exact rear pitch still needs confirmation when live imagery is
 available; the reconstruction does not claim a surveyed roof profile.
+
+## Independent southern deck review
+
+A second comparison with the retained Google aerial and November 2020 Glebe
+panorama found the southern flat service deck still covered by the main hip.
+The pitched roof now stops at the recessed upper rear line throughout the south
+end, exposing the pale deck through to Glebe Place. The upper brick return closes
+to the actual hip underside; hip flashing and drainage stop at that roof edge.
+The southern side wall steps down to the flat deck. This matches the visible
+roof arrangement, while the exact setback width and elevations remain estimates.
+
+The two windows on the lower southern rear wing are now wide, shallow barred
+casements, matching the ground view instead of repeating a narrow portrait unit.
+Their sizes and sill heights remain visually calibrated. A validation ray checks
+that the southern deck is exposed at three positions, in addition to the existing
+closed-roof, window-clearance and neighbouring-stair checks.
