@@ -144,6 +144,23 @@
       "observations": [
         "Oblique aerial corroborates projecting white-brick rear wings, recesses, roof levels and relation to main corniced street mass. It is a distorted 3D reconstruction, not a dimension survey."
       ]
+    },
+    {
+      "id": "glebe-stair-plan-review",
+      "url": "https://www.google.com/maps/@53.6480108,-3.0040244,3a,28y,334h,112t/data=!3m4!1e1!3m2!1sAyJ9yz8uLvo9PuWs0Sf2UA!2e0",
+      "author": "Google Street View",
+      "capture": "Nov 2020 (displayed)",
+      "reviewed": "2026-10-22",
+      "private_captures": [
+        "prezzo-west-stair-side-angle.png",
+        "prezzo-rear-streetview-close.png",
+        "prezzo-rear-streetview-pan.png"
+      ],
+      "observations": [
+        "Fresh navigated views from 1 and 2 Glebe Place show narrow parallel flights running along the projecting depth, rising towards the outer platforms. Previous across-facade diagonal flights and full balcony plates were incorrect.",
+        "Small projecting landings, slender supports and open stair wells; curved rail transitions are simplified to straight steel rails.",
+        "Flight width .85 m, 3.30 m run and .85 m outer landing are visual estimates. A separate side return lane provides a coherent route between parallel flights; exact hidden platform plan and low-level continuation remain uncertain. Neighbouring roofs obscure the foot; continuation to local ground datum includes an estimated half landing."
+      ]
     }
   ],
   "limitations": [

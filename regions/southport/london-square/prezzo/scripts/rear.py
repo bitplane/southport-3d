@@ -189,33 +189,73 @@ def roof_rail(finish,frame,width,depth,height,steel):
 
 
 def stairs(finish,frame,width,levels,steel,lead):
-    structure=Mesh('Envelope rear escape structure');fine=Mesh('Hardware rear escape balusters');grate=Mesh('Ornament rear escape grating')
-    for u in [.12,width-.12]:
-        for d in [.35,1.90]:beam(structure,(u,1.0,d),(u,levels[-1]+1.02,d),.075)
-    for y in levels:
-        structure.box((width/2,y-.075,1.10),(width-.12,.15,1.80))
-        for u in [.12,width-.12]:
-            for h in [.50,1.02]:beam(structure,(u,y+h,.25),(u,y+h,1.97),.035)
-        # Front landing balustrade, with a gap at the stair head to allow passage.
-        for h in [.50,1.02]:beam(structure,(.12,y+h,1.97),(width-.12,y+h,1.97),.035)
-        for i in range(1,10):
-            u=.12+(width-.24)*i/10
-            beam(fine,(u,y+.04,1.97),(u,y+1.02,1.97),.018)
-        for i in range(1,16):
-            d=.25+1.7*i/16
-            grate.box((width/2,y+.006,d),(width-.15,.012,.014))
-    # Parallel single flights match the visible repeat; the full landing gives
-    # an external return path between their opposite ends.
-    for bottom,top in zip([1.4]+levels[:-1],levels):
-        n=18;a=.25;b=width-.25;run=(b-a)/n;rise=(top-bottom)/n
+    """Parallel depth-wise flights with open wells and a separate return lane.
+
+    The visible photo supports narrow flights and small projecting landings.
+    Exact plan dimensions and the concealed lower continuation are estimated.
+    """
+    structure=Mesh('Envelope rear escape structure')
+    fine=Mesh('Hardware rear escape balusters')
+    grate=Mesh('Ornament rear escape grating')
+    u0=width-2.05;flight_width=.85;divider=u0+.94;outer=u0+1.90
+    near,far=.95,4.25;front=5.10
+    # The extra lower half-landing resolves the previously suspended 1.4 m end.
+    floors=[0.0,levels[0]/2,*levels]
+
+    def rail(a,b,y):
+        for height in [.48,1.00]:beam(structure,(a[0],y+height,a[1]),(b[0],y+height,b[1]),.028)
+        n=max(1,math.ceil(math.dist(a,b)/.85))
+        for j in range(n+1):
+            t=j/n;u=a[0]+t*(b[0]-a[0]);d=a[1]+t*(b[1]-a[1])
+            beam(fine,(u,y+.04,d),(u,y+1.01,d),.023)
+
+    def deck(x0,x1,d0,d1,y):
+        structure.box(((x0+x1)/2,y-.035,(d0+d1)/2),(x1-x0,.07,d1-d0))
+        # Narrow surface strips stop at each deck edge; none span the open well.
+        n=max(1,math.ceil((d1-d0)/.12))
         for i in range(n):
-            u=a+(i+.5)*run;y=bottom+(i+1)*rise
-            structure.box((u,y-.025,1.10),(run+.015,.05,.90))
-            if i%2==0:
-                for d in [.64,1.56]:beam(fine,(u,y,d),(u,y+1.0,d),.018)
-        for d in [.61,1.59]:
-            beam(structure,(a,bottom-.07,d),(b,top-.07,d),.12,.055)
-            for h in [.50,1.02]:beam(structure,(a,bottom+h,d),(b,top+h,d),.032)
-    finish(structure,'architecture',[steel],frame)
+            d=d0+(i+.5)*(d1-d0)/n
+            grate.box(((x0+x1)/2,y+.004,d),(x1-x0-.02,.008,.012))
+
+    # Slender posts extend to the building datum instead of ending in midair.
+    for u in [u0-.04,outer]:
+        for d in [.12,front]:
+            beam(structure,(u,0,d),(u,floors[-1]+1.02,d),.055)
+            structure.box((u,.025,d),(.18,.05,.18))
+    for y in floors:
+        if y==0:
+            # Open wall-side edge is the estimated exit to the concealed rear yard.
+            deck(u0-.08,outer,.02,near,y)
+            rail((u0-.08,.02),(u0-.08,near),y)
+            rail((outer,.02),(outer,near),y)
+            continue
+        # U-shaped level surface: doorway bridge, return lane and outer landing.
+        # The stair lane between near/far stays empty so flights pass through it.
+        deck(.18,outer,.02,near,y)
+        deck(divider,outer,near,far,y)
+        deck(u0-.08,outer,far,front,y)
+        # No rail crosses either mouth of the stair lane. The side rail of the
+        # well protects the return walkway without blocking access at its ends.
+        rail((u0-.08,near),(u0-.08,front),y)
+        rail((divider,near),(divider,far),y)
+        rail((outer,.12),(outer,front),y)
+        rail((u0-.08,front),(outer,front),y)
+        if u0-.08>.18:rail((.18,near),(u0-.08,near),y)
+    for bottom,top in zip(floors,floors[1:]):
+        n=math.ceil((top-bottom)/.20);run=(far-near)/n;rise=(top-bottom)/n
+        for i in range(n):
+            d=near+(i+.5)*run;y=bottom+(i+1)*rise
+            structure.box((u0+flight_width/2,y-.025,d),(flight_width,.05,run+.006))
+            if i%3==0:
+                for u in [u0-.025,u0+flight_width+.025]:
+                    beam(fine,(u,y,d),(u,y+.98,d),.020)
+        for u in [u0-.025,u0+flight_width+.025]:
+            beam(structure,(u,bottom-.03,near),(u,top-.03,far),.085,.045)
+            for h in [.48,1.00]:beam(structure,(u,bottom+h,near),(u,top+h,far),.028)
+    ob=finish(structure,'architecture',[steel],frame)
+    ob['stair_floor_levels']=floors
+    ob['stair_lane_u']=u0+flight_width/2
+    ob['return_lane_u']=(divider+outer)/2
+    ob['stair_well_near']=near;ob['stair_well_far']=far
     finish(fine,'architecture',[steel],frame)
     finish(grate,'architecture',[lead],frame)

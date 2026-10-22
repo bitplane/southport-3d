@@ -111,3 +111,21 @@ hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,Vector((-16,-44,recipe[
 assert hit and found.name=='Envelope rear east upper gable',('rear soffit open',found.name if found else None)
 assert abs(p.z-recipe['base_z']-15.0)<1e-4,('rear soffit wrong height',tuple(p))
 print('Rear gable seam and offset soffit closed to horizontal and oblique rays')
+
+# Stair geometry must have an open well and an unobstructed level return path.
+# These rays catch the old solid landing decks and rails across stair mouths.
+for ob in [o for o in meshes if o.name.startswith('Envelope rear escape structure')]:
+ floors=list(ob['stair_floor_levels']);u=ob['stair_lane_u'];r=ob['return_lane_u']
+ near=ob['stair_well_near'];far=ob['stair_well_far']
+ matrix=ob.matrix_world;rot=matrix.to_3x3()
+ assert abs(min(v.co.y for v in ob.data.vertices))<.08,(ob.name,'does not reach datum')
+ for y in floors[1:]:
+  hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,matrix@Vector((u,y+.25,(near+far)/2)),(rot@Vector((0,-1,0))).normalized(),distance=3)
+  assert hit and (matrix.inverted()@p).y<y-.60,(ob.name,'landing closes stair well',y,found.name if found else None)
+  # Walk at chest height from front landing to the doorway bridge.
+  hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,matrix@Vector((r,y+.70,far+.30)),(rot@Vector((0,0,-1))).normalized(),distance=far-near+.55)
+  assert not hit,(ob.name,'return route blocked',y,found.name if found else None)
+  for d,direction in [(near-.15,1),(far+.15,-1)]:
+   hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,matrix@Vector((u,y+.45,d)),(rot@Vector((0,0,direction))).normalized(),distance=.35)
+   assert not hit,(ob.name,'rail across stair mouth',y,found.name if found else None)
+print('Escape stair wells open, return paths and access mouths clear, feet reach datum')

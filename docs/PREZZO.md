@@ -291,9 +291,9 @@ the duct and address plaque. Existing street-window, roof and bounds checks rema
 
 | Level | Placed triangles | GLB bytes including textures | Embedded image bytes |
 | --- | ---: | ---: | ---: |
-| detail | 249,285 | 14,187,208 | 1,552,866 |
-| walk | 79,489 | 6,999,560 | 1,294,664 |
-| district | 24,081 | 3,922,496 | 855,936 |
+| detail | 256,119 | 15,135,356 | 1,552,866 |
+| walk | 82,671 | 7,575,216 | 1,294,664 |
+| district | 25,715 | 4,157,068 | 855,914 |
 
 The east rear gable meets the recess at 15.00 m, with a 300 mm underside return
 between their offset planes. Horizontal and rising-oblique ray checks guard
@@ -305,3 +305,22 @@ with their bases close to the grey skirt face. Pilaster depth is reduced at all
 three levels so the base projects 0.06 m rather than 0.38 m; shaft, flutes and
 capital relief scale together while width and height remain unchanged. This
 projection is a visual estimate, not a measured dimension. The skirt is unchanged.
+
+
+### Rear escape correction (22 October 2026)
+
+Fresh November 2020 Street View angles from 1 and 2 Glebe Place show narrow,
+parallel flights running along the recess depth and rising towards projecting
+outer platforms. They replace the mistaken wide flights across the facade.
+The former full landing plates cut through the flights; these are now U-shaped
+landings with open stair wells and a separate side return route. Railings leave
+the heads and feet clear. The lower run reaches the local ground datum via an
+estimated half landing instead of ending suspended 1.4 m above it.
+
+The .85 m flight width, 3.30 m run, .85 m outer platform and concealed return
+route are visual estimates, not a surveyed stair plan. Adjacent roofs obscure
+the base. Curved rail transitions are simplified to straight members. Main
+flights, open landings, supports and rails remain at every LoD; fine balusters
+remain at Detail/Walk and surface grating at Detail only. Geometry rays now
+check open wells, clear return routes and clear stair mouths, alongside the
+existing rear-window and roof-seam tests. Publication figures above include this correction and all three packages pass validation.
