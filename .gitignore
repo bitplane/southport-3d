@@ -1,0 +1,25 @@
+# Build products and local evidence never belong in source history.
+/build/
+/dist/
+/.venv/
+**/__pycache__/
+*.py[cod]
+*.blend*
+*.glb
+*.gltf
+*.log
+**/references/
+**/models/
+**/renders/
+**/textures/
+**/checkpoints/
+**/node_modules/
+**/profile/
+**/output/
+**/probe-output/
+.env
+.env.*
+!.env.example
+.mcp.json
+.codex/config.toml
+.claude/settings.local.json

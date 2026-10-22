@@ -1,0 +1,148 @@
+{
+  "status": "Exploratory photographic estimate, not a calibrated survey",
+  "full_elevation": {
+    "source": "references/images/wmo-Southport_2.jpg",
+    "image_native_pixels": [
+      2084,
+      1389
+    ],
+    "landmark_coordinate_frame_pixels": [
+      1920,
+      1280
+    ],
+    "corners_pixels": [
+      [
+        218.0,
+        228.0
+      ],
+      [
+        612.0,
+        72.0
+      ],
+      [
+        619.0,
+        1220.0
+      ],
+      [
+        211.0,
+        1166.0
+      ]
+    ],
+    "assumed_world_corners_m": [
+      [
+        -2.45,
+        5.54
+      ],
+      [
+        2.45,
+        5.54
+      ],
+      [
+        2.45,
+        0.0
+      ],
+      [
+        -2.45,
+        0.0
+      ]
+    ],
+    "assumptions": [
+      "Published 4.9 m depth assigned to projected end width",
+      "Published 5.54 m height assigned to local ground-to-roof height",
+      "Cornice and wall faces treated as one plane; projection error is not compensated"
+    ],
+    "homography_image_to_metres": [
+      [
+        0.015976294707190933,
+        2.200132526855619e-05,
+        -6.319584126096169
+      ],
+      [
+        0.0009026063641778739,
+        -0.006819692529343923,
+        7.7613115463734825
+      ],
+      [
+        0.0006680090494285908,
+        4.466871548067184e-05,
+        1.0
+      ]
+    ],
+    "plaque_corners_pixels": [
+      [
+        366,
+        644
+      ],
+      [
+        445,
+        626
+      ],
+      [
+        453,
+        981
+      ],
+      [
+        365,
+        981
+      ]
+    ],
+    "projected_plaque_corners_m": [
+      [
+        -0.35977894694855206,
+        2.905761117442287
+      ],
+      [
+        0.6064169118056776,
+        2.938247488430904
+      ],
+      [
+        0.6975943757247136,
+        1.0992594761362162
+      ],
+      [
+        -0.36240879224690054,
+        1.087758142297256
+      ]
+    ],
+    "projected_width_range_m": [
+      0.9661958587542296,
+      1.0600031679716142
+    ],
+    "projected_height_range_m": [
+      1.818002975145031,
+      1.838988012294688
+    ]
+  },
+  "cross_checks": [
+    {
+      "source": "references/images/iwm-mont_9a.jpg",
+      "observation": "Near-frontal Mourning plaque about 243 x 500 px. Its aspect is close to 0.49. Main frieze and lower steps supply additional but incomplete vertical registration."
+    },
+    {
+      "source": "references/images/iwm-mont_8a.jpg",
+      "observation": "Remember plaque about 467 x 1048 px; near-frontal aspect about 0.45. Top/bottom crop and slight perspective mean this is an aspect constraint, not a metric measurement."
+    },
+    {
+      "source": "references/images/geo-1251934.jpg",
+      "observation": "Alternate NW end: figure plaque approximately 20 x 79 px, strongly foreshortened. Low resolution and people obscuring the datum prevent an independent precise metric solution."
+    }
+  ],
+  "selected_model_dimensions": {
+    "width_m": 0.94,
+    "height_m": 1.9,
+    "bottom_z_m": 1.2,
+    "confidence": "photographic estimate; approximately \u00b10.15 m width and \u00b10.35 m height",
+    "source": "research/colonnade_facade_calibration.json; IWM mont_9a and WMO full-end comparison",
+    "note": "Coupled revision with shorter column/roof stack; end sculpture aspect preserved. Not a measured survey."
+  },
+  "decision": "Coupled 0.11 revision: 0.94 x 1.90 m at z=1.20 m, preserving the near-frontal figure aspect and fitting revised frame/trophy bands. See colonnade_facade_calibration.json. Original WMO and IWM estimates differ; exact placement remains uncertain.",
+  "remaining": "Resolve longitudinal grade, true wall/cornice datums and camera geometry with measured/orthographic or better full end views. Do not treat reduced-mesh tolerances as real-world accuracy.",
+  "previous_selection": {
+    "width_m": 1.06,
+    "height_m": 2.15,
+    "bottom_z_m": 1.05,
+    "confidence": "photographic estimate; approximately \u00b10.15 m width and \u00b10.35 m height",
+    "source": "WMO Southport_2 full end projection; near-frontal IWM mont_9a / mont_8a panel aspect; geo-1251934 alternate end view",
+    "note": "Replaces oversized 1.76 x 2.61 m draft. Ground grade, projective foreshortening and corner/roof datum remain uncertain. Not a measured survey."
+  }
+}

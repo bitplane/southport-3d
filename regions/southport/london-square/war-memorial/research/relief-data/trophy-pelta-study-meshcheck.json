@@ -1,0 +1,16 @@
+{
+  "figure": "trophy-pelta study",
+  "original_triangles": 517482,
+  "retained_faces": 93014,
+  "ratio": 0.3,
+  "flat_backing_faces": 5470,
+  "samples": 13000,
+  "ray_misses": 0,
+  "rms_error_m": 4.339899638735541e-05,
+  "p99_error_m": 2.5882050395011915e-05,
+  "max_error_m": 0.004363762331195176,
+  "closest_surface_rms_m": 1.4588273595091252e-05,
+  "closest_surface_p99_m": 1.5462435912922968e-05,
+  "closest_surface_max_m": 0.001028139260597527,
+  "error_interpretation": "Vertical differences can be large at steep edges after tiny lateral changes; closest-surface distance measures positional approximation."
+}

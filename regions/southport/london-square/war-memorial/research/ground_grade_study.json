@@ -1,0 +1,73 @@
+{
+  "status": "Selected bounded approximation; not a measured survey",
+  "date": "2026-10-21",
+  "sources": [
+    {
+      "file": "references/images/flickr-7465690872.jpg",
+      "page": "https://www.flickr.com/photos/rossendalewadey/7465690872",
+      "capture_date": "2012-06-28",
+      "landmarks_native_pixels": {
+        "NW_lamp_plinth_top_ground_at_x_610": [
+          1280,
+          1361
+        ],
+        "SE_lamp_plinth_top_ground_at_x_2582": [
+          1255,
+          1285
+        ]
+      },
+      "scale_assumption": "About 145\u2013153 vertical px/m from previously estimated shaft heights; not independent calibration",
+      "inferred_exposures_m_approx": [
+        0.53,
+        0.21
+      ],
+      "difference_m_approx": 0.32,
+      "pier_separation_assumed_m": 15
+    },
+    {
+      "file": "references/images/commons-columns-2.jpg",
+      "capture_date": "2009-09-26",
+      "finding": "Opposite colonnade also exposes more base towards NW"
+    },
+    {
+      "file": "references/images/wmo-Southport_2.jpg",
+      "capture_date": null,
+      "finding": "Chamber has upright base with narrow foot/cap; broad treads lie in open portico"
+    },
+    {
+      "page": "https://historicengland.org.uk/listing/the-list/list-entry/1379604",
+      "finding": "Listing describes gentle ground slope, lower at northwest end"
+    }
+  ],
+  "selected": {
+    "site_gradient_dz_dy": -0.022,
+    "ground_at_site_origin_z_m": -0.07,
+    "grade_uncertainty_approx": 0.008,
+    "ground_datum_uncertainty_m": 0.12,
+    "portico_top_z_m": 0.32,
+    "step_top_z_m": [
+      -0.04,
+      0.14,
+      0.32
+    ],
+    "step_depths_m": [
+      5.9,
+      5.38,
+      4.9
+    ],
+    "central_step_width_m": 13.7,
+    "chamber_plinth_top_z_m": 0.58,
+    "foundation_bottom_z_m": -0.6,
+    "lamp_plinth_top_z_m": 0.35,
+    "lamp_vertical_shift_m": -0.13,
+    "flanking_paving_top_at_site_origin_z_m": -0.0075
+  },
+  "rationale": "0.32 m exposure difference over the assumed 15 m pier separation suggests approximately 2.1%; use 2.2% fall towards NW. Place the lamp cap near the column floor rather than 0.16 m above it. Bases remain level and descend below the sloped paving. Chamfer/foot dimensions and raised chamber plinth are visual estimates.",
+  "limits": [
+    "Single-plane grade extended over the small working site; crossfall/local drainage and current kerbs unmeasured",
+    "Inner-face lamp plinth exposures are approximately 0.53 / 0.20 m above the flanking paving grid, consistent with the source estimates; the lower working-ground plane is 62.5 mm beneath that paving. This agreement shares assumed scale and does not establish survey accuracy.",
+    "Chamber-plinth height and stair risers use visual relationships, not a calibrated 3D survey",
+    "No inaccessible views or imagery dates invented",
+    "Upper column, roof and relief geometry remains at checkpoint 0.12 datums"
+  ]
+}

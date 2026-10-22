@@ -1,0 +1,165 @@
+{
+  "status": "Photo-evidenced SW exterior text; dimensions and cutting profiles estimated",
+  "source_page": "https://www.instagram.com/p/DeCrg6mCXYO/?img_index=3",
+  "source_publication_date": "2026-10-03",
+  "capture_date": null,
+  "publisher": "@steppingthroughhistory2026",
+  "screenshot": "references/browser/2026-10-21/instagram-wwii-detail.png",
+  "context_view": "references/browser/2026-10-21/instagram-obelisk-sw-wide.png",
+  "orientation_source": "https://historicengland.org.uk/listing/the-list/list-entry/1379604",
+  "orientation": "SW faces the SW colonnade; its adjacent SE face bears the coat of arms. HE explicitly identifies the WWII face as SW and the NE face as plain.",
+  "historical_conflict": "Earlier IWM caption calls the WWII text erased. The supplied close photograph shows a legible separate circular insert. Capture date is unknown; no restoration date or chronology is inferred.",
+  "scope": "18 exterior dedication lines and short rule only. No soldier names or interior transcriptions.",
+  "transcript": [
+    "TO THE",
+    "MEN AND WOMEN",
+    "OF THIS COUNTY BOROUGH",
+    "WHO GAVE THEIR LIVES",
+    "FOR",
+    "THE LIBERTY OF THE WORLD",
+    "& THE SECURITY OF THIS REALM",
+    "IN THE WORLD WAR",
+    "1939 \u2014 1945",
+    "THEIR NAMES ARE RECORDED IN",
+    "THE BOOK OF REMEMBRANCE",
+    "WHICH LIES NEARBY IN THE KEEPING OF",
+    "CHRIST CHURCH",
+    "THE FOUNTAINS",
+    "ADDED TO THE MEMORIAL POOLS",
+    "ARE DEDICATED TO THEIR",
+    "HONOURED",
+    "MEMORY"
+  ],
+  "layout": {
+    "source": "research/wwii_roundel_study.json",
+    "face": "SW",
+    "diameter_m_estimate": 1.03,
+    "front_projection_m_estimate": 0.035,
+    "reed_count_estimate": 200,
+    "lines": [
+      {
+        "text": "TO THE",
+        "centre_v_m": 0.446333,
+        "height_m": 0.041,
+        "width_m": 0.2
+      },
+      {
+        "text": "MEN AND WOMEN",
+        "centre_v_m": 0.39655,
+        "height_m": 0.041,
+        "width_m": 0.54
+      },
+      {
+        "text": "OF THIS COUNTY BOROUGH",
+        "centre_v_m": 0.348483,
+        "height_m": 0.034,
+        "width_m": 0.65
+      },
+      {
+        "text": "WHO GAVE THEIR LIVES",
+        "centre_v_m": 0.300417,
+        "height_m": 0.04,
+        "width_m": 0.71
+      },
+      {
+        "text": "FOR",
+        "centre_v_m": 0.260933,
+        "height_m": 0.038,
+        "width_m": 0.105
+      },
+      {
+        "text": "THE LIBERTY OF THE WORLD",
+        "centre_v_m": 0.209433,
+        "height_m": 0.042,
+        "width_m": 0.88
+      },
+      {
+        "text": "& THE SECURITY OF THIS REALM",
+        "centre_v_m": 0.157933,
+        "height_m": 0.039,
+        "width_m": 0.94
+      },
+      {
+        "text": "IN THE WORLD WAR",
+        "centre_v_m": 0.10815,
+        "height_m": 0.04,
+        "width_m": 0.66
+      },
+      {
+        "text": "1939 \u2014 1945",
+        "centre_v_m": 0.054933,
+        "height_m": 0.055,
+        "width_m": 0.6
+      },
+      {
+        "text": "THEIR NAMES ARE RECORDED IN",
+        "centre_v_m": -0.006867,
+        "height_m": 0.041,
+        "width_m": 0.98
+      },
+      {
+        "text": "THE BOOK OF REMEMBRANCE",
+        "centre_v_m": -0.065233,
+        "height_m": 0.041,
+        "width_m": 0.91
+      },
+      {
+        "text": "WHICH LIES NEARBY IN THE KEEPING OF",
+        "centre_v_m": -0.115017,
+        "height_m": 0.036,
+        "width_m": 0.96
+      },
+      {
+        "text": "CHRIST CHURCH",
+        "centre_v_m": -0.163083,
+        "height_m": 0.044,
+        "width_m": 0.54
+      },
+      {
+        "text": "THE FOUNTAINS",
+        "centre_v_m": -0.224883,
+        "height_m": 0.038,
+        "width_m": 0.43
+      },
+      {
+        "text": "ADDED TO THE MEMORIAL POOLS",
+        "centre_v_m": -0.271233,
+        "height_m": 0.034,
+        "width_m": 0.81
+      },
+      {
+        "text": "ARE DEDICATED TO THEIR",
+        "centre_v_m": -0.321017,
+        "height_m": 0.041,
+        "width_m": 0.73
+      },
+      {
+        "text": "HONOURED",
+        "centre_v_m": -0.3708,
+        "height_m": 0.043,
+        "width_m": 0.38
+      },
+      {
+        "text": "MEMORY",
+        "centre_v_m": -0.4223,
+        "height_m": 0.043,
+        "width_m": 0.28
+      }
+    ],
+    "underline": {
+      "centre_v_m": -0.194,
+      "width_m": 0.2,
+      "height_m": 0.0025
+    }
+  },
+  "method": "Separate circular stone insert and annular radial reeding; Roman serif approximation cut 6 mm into the face. No photograph colour is embedded. Row proportions are manually estimated from an oblique photograph, not calibrated metric measurements.",
+  "dimensions_uncertain": [
+    "Insert diameter 1.03 m",
+    "Projection 35 mm",
+    "200 radial reeds",
+    "Reeding section and depth",
+    "Individual hand-cut letter shapes and spacing",
+    "Insert surface weathering"
+  ],
+  "masonry": "Existing wall and outer moulding joints are retained; the single insert has a continuous face without masonry seams."
+}

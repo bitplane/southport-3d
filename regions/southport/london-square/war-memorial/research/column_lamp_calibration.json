@@ -1,0 +1,201 @@
+{
+  "status": "Photographic proportion study; dimensions and deployment positions are estimates",
+  "date": "2026-10-21",
+  "units": "metres; source landmarks in native image pixels",
+  "columns": {
+    "silhouette_samples": [
+      {
+        "source": "flickr-7465690872",
+        "image_pixels": [
+          3072,
+          1836
+        ],
+        "shaft_top_bottom_y_approx": [
+          735,
+          1250
+        ],
+        "lower_x_envelope_approx": [
+          929,
+          1000
+        ],
+        "upper_x_envelope_approx": [
+          934,
+          990
+        ],
+        "lower_diameter_from_height_ratio_m": 0.492
+      },
+      {
+        "source": "commons-columns-1",
+        "image_pixels": [
+          3648,
+          2736
+        ],
+        "shaft_top_bottom_y_approx": [
+          1070,
+          1585
+        ],
+        "lower_x_envelope_approx": [
+          1149,
+          1218
+        ],
+        "upper_x_envelope_approx": [
+          1162,
+          1218
+        ],
+        "lower_diameter_from_height_ratio_m": 0.478
+      },
+      {
+        "source": "commons-columns-2",
+        "image_pixels": [
+          3648,
+          2736
+        ],
+        "inspection_coordinate_frame_pixels": [
+          1824,
+          1368
+        ],
+        "shaft_top_bottom_y_approx": [
+          360,
+          755
+        ],
+        "lower_x_envelope_approx": [
+          751,
+          810
+        ],
+        "lower_diameter_from_height_ratio_m": 0.533
+      }
+    ],
+    "method": "Manual whole-silhouette envelopes, including shaded edges; not a brightness threshold. Compare shaft height / apparent cylinder diameter across views. Circular shafts are not compressed like the facade plane in an oblique view. Values use the existing estimated shaft height, so they are not an independent survey.",
+    "selected_diameters_m": [
+      0.48,
+      0.4
+    ],
+    "uncertainty_m": 0.06,
+    "retained_pair_centres_m": [
+      -4.5,
+      -1.5,
+      1.5,
+      4.5
+    ],
+    "not_resolved": [
+      "Measured absolute shaft/column/chamber dimensions",
+      "Flute count around full circumference",
+      "Global facade camera calibration"
+    ],
+    "rejected_shortcut": "A four-corner homography using pavement as a level rectangle changed bay spacing inconsistently. The ground slopes and the cornice projects; that result was not adopted.",
+    "selected_pair_separation_m": 0.8,
+    "pair_spacing_reason": "Checkpoint 0.12 repeated-pattern study adopted 3.0 m bay pitch and 0.80 m pair separation; see colonnade_plan_projection_study.json",
+    "previous_vertical_datums_m": {
+      "shaft_bottom": 0.47,
+      "shaft_top": 4.04,
+      "abacus_top": 4.319
+    },
+    "selected_vertical_datums_m": {
+      "shaft_bottom": 0.47,
+      "shaft_top": 3.84,
+      "abacus_top": 4.142
+    },
+    "vertical_revision_reference": "research/colonnade_vertical_proportion_study.json and research/colonnade_facade_calibration.json",
+    "superseded_pair_spacing_reason": "Near-frontal first pair about 101 px centre-to-centre against roughly 71 px whole lower diameter: 1.42 diameters. Use 0.70 m spacing with 0.48 m shafts (0.22 m clear gap). Oblique views require foreshortening allowance; estimated uncertainty \u00b10.10 m. Keep the separate, less certain 3.5 m bay-centre pitch for now."
+  },
+  "cornice_masks": {
+    "count_per_long_face": 12,
+    "whole_ensemble_count": 48,
+    "source": "Flickr 7465690872 and Commons columns 1/2 show four central pairs plus two pairs above end piers. NE outer pair also visible in centenary-11; some outer areas remain tree screened.",
+    "flickr_native_head_centres_x_approx": [
+      542,
+      688,
+      957,
+      1060,
+      1346,
+      1453,
+      1740,
+      1842,
+      2127,
+      2230,
+      2495,
+      2630
+    ],
+    "model_extra_pair_centres_m": [
+      -7.5,
+      7.5
+    ],
+    "extra_pair_separation_m": 1.08,
+    "sculpt_method": "Rounded mane, brow, muzzle and recessed mouth, authored as one numeric surface. Source resolution does not establish individual locks, teeth or weathering."
+  },
+  "single_lamps": {
+    "count": 8,
+    "globe_diameter_m": 0.42,
+    "top_z_m": 3.03,
+    "stand_base_z_m": 0.35,
+    "stone_plinth_m": [
+      1.42,
+      1.06,
+      0.95
+    ],
+    "placement_local_xy_m": {
+      "x": [
+        -7.5,
+        7.5
+      ],
+      "y": [
+        -2.85,
+        2.85
+      ]
+    },
+    "observations": [
+      "Four outward-curved black feet with clearance underneath",
+      "Ivory acanthus foot and fine fluted stem",
+      "Wide turned cup and dark tapered globe seat",
+      "Stone plinth is visibly wider than the black feet",
+      "Lamp centres approximately align below end-bay frieze ornaments"
+    ],
+    "dimension_uncertainty": "About 0.2 m lamp height and 0.2 m plinth width; buried foot extends to z=-0.60 m. Exposed height follows the estimated grade.",
+    "ground_reference": "research/ground_grade_study.json"
+  },
+  "clustered_lamps": {
+    "count_source": "Historic England listing 1379604",
+    "count": 4,
+    "globes_each": 5,
+    "top_z_m": 5.748,
+    "globe_diameter_m": 0.55,
+    "radial_arm_reach_m": 0.66,
+    "reference_images": [
+      "commons-columns-1",
+      "flickr-7465683304",
+      "commons-6935225",
+      "iwm-sport_mont._aerial"
+    ],
+    "observations": [
+      "One upright globe on a turned central stem",
+      "Four lower globes suspended below cross arms",
+      "Small urn finials at four arm tips",
+      "Moulded beams with diagonal casting ridges",
+      "Scroll brackets beneath arms",
+      "Fluted shaft, acanthus base and square black pedestal"
+    ],
+    "placements_site_xy_m": [
+      [
+        -18,
+        -9
+      ],
+      [
+        -18,
+        9
+      ],
+      [
+        18,
+        -9
+      ],
+      [
+        18,
+        9
+      ]
+    ],
+    "placement_confidence": "Provisional flanking-pavement layout, approximately \u00b13 m. Street and older aerial photographs show the tall standards off the central island; current exact coordinates remain to be verified.",
+    "height_uncertainty_m": 0.6,
+    "paint_state": "Ivory / black with pale opaque globes, following 2009 Commons views. Globes appear darker in the 2012 Flickr image; uniform current condition is not claimed.",
+    "deferred": "Architect / sculptor inscription on a lamp base is described by HE; exact face, layout and present legibility need a close photograph.",
+    "paving_support": "Horizontal provisional pads and upright lamps translated onto the estimated longitudinal grade; actual local heights and positions remain unmeasured."
+  }
+}

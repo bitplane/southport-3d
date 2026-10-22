@@ -1,0 +1,81 @@
+{
+  "status": "Photographic exterior interpretation, not measured dimensions or an electrical survey",
+  "reconstruction_evidence_dates": "2009-2013; current condition needs a live survey",
+  "pyramid": {
+    "base_z_m": 19.2,
+    "tip_z_m": 20.574,
+    "base_width_m": 1.35,
+    "published_anchor": "Total obelisk height 67 ft 6 in; other pyramid dimensions remain estimates",
+    "opening_width_m": 0.62,
+    "opening_height_along_face_m": 0.065,
+    "opening_centre_z_m": 19.36,
+    "opening_centre_z_uncertainty_m": 0.08,
+    "recess_depth_normal_to_face_m": 0.08,
+    "bar_count_modelled": 24,
+    "bar_width_m": 0.007,
+    "bar_count_confidence": "Estimated spacing only; individual bars are near the original photographs' pixel limit",
+    "confirmed_opening_faces": {
+      "SE": {
+        "source": "commons-obelisk-2",
+        "pixel_inspection_bounds": [
+          1546,
+          483,
+          1664,
+          533
+        ]
+      },
+      "NW": {
+        "source": "commons-war-memorial",
+        "pixel_inspection_bounds": [
+          1360,
+          445,
+          1465,
+          480
+        ]
+      }
+    },
+    "plain_face_evidence": {
+      "SW": "commons-3563087 shows no resolved opening on its broad SW triangle"
+    },
+    "unverified_face": "NE; left plain pending a useful photograph",
+    "limits": "Opening position, dimensions, exact bars, frame section and hidden depth are estimates. Purpose is unverified; do not identify these as vents or light fittings. Only the two photographed faces receive openings."
+  },
+  "linear_lights": {
+    "housing_length_m": 2.2,
+    "housing_radius_m": 0.049,
+    "housing_vertical_radius_factor": 0.96,
+    "centre_outward_from_axis_m": 1.28,
+    "centre_z_m": 4.65,
+    "cornice_top_z_m": 4.56,
+    "foot_u_m": [
+      -0.55,
+      0.55
+    ],
+    "foot_size_m": [
+      0.16,
+      0.14,
+      0.008
+    ],
+    "collar_u_m": 0.4,
+    "confirmed_faces": {
+      "SE": [
+        "commons-obelisk-1",
+        "commons-obelisk-2",
+        "commons-3563087"
+      ],
+      "SW": [
+        "commons-3563087",
+        "commons-war-memorial"
+      ],
+      "NW": [
+        "commons-war-memorial"
+      ]
+    },
+    "unverified_face": "NE; no fixture repeated there without a useful reference",
+    "proportion_basis": "Visible housing spans approximately three quarters of the cornice face in the SE and SW originals. Two feet, longitudinal seams, a collar near two thirds of the length and dark end details are resolved in commons-3563087.",
+    "length_uncertainty_m": 0.2,
+    "limits": "Shared exterior profile is an approximation. Exact optical section, manufacturer, cabling and electrical unit count are unresolved and not reconstructed. Pale finish is interpreted; no measured reflectance or emitted light is claimed."
+  },
+  "shaft_courses": "Superseded by checkpoint 0.9: 36 photo-registered courses and distinct SE/NW/SW bonds; see shaft_masonry_calibration.json. Exact dimensions and surface aging remain estimates.",
+  "reference_pixel_handling": "Original photographs remain unchanged. Temporary nearest-neighbour pixel magnifiers were used for inspection; no source colour is embedded in the model."
+}

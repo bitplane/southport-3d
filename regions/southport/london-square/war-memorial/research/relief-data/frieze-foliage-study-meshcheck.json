@@ -1,0 +1,17 @@
+{
+  "figure": "frieze-foliage study",
+  "original_triangles": 368018,
+  "retained_faces": 60913,
+  "ratio": 0.3,
+  "flat_backing_faces": 5742,
+  "samples": 9180,
+  "ray_misses": 0,
+  "rms_error_m": 2.2103433907527545e-05,
+  "p99_error_m": 1.658918336033821e-07,
+  "max_error_m": 0.0013104547979310155,
+  "closest_surface_rms_m": 6.735111267875812e-06,
+  "closest_surface_p99_m": 6.891787052154541e-08,
+  "closest_surface_max_m": 0.00028493351419456303,
+  "error_interpretation": "Vertical differences can be large at steep edges after tiny lateral changes; closest-surface distance measures positional approximation.",
+  "empty_background_faces_removed": 5742
+}

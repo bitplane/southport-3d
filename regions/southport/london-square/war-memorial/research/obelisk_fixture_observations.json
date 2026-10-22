@@ -1,0 +1,62 @@
+{
+  "status": "Exterior fixture geometry implemented, exported and inspected in checkpoint 0.8; dimensional and unobserved-face limits retained",
+  "sources": [
+    "commons-obelisk-1",
+    "commons-obelisk-2",
+    "commons-3563087",
+    "commons-war-memorial",
+    "commons-monument-260909"
+  ],
+  "observations": [
+    {
+      "subject": "Linear lighting at pedestal cornice",
+      "source": "commons-3563087",
+      "native_pixel_inspection_bounds": [
+        2160,
+        5190,
+        3380,
+        5680
+      ],
+      "finding": "Long pale metal housings stand on small dark feet above the cornice, in front of the shaft foot. A narrow longitudinal seam, dark end, joint/collar and support brackets are visible. Both SW and SE housings are resolved in this view.",
+      "limits": "Do not infer the light manufacturer, lens profile, number of electrical units, exact length or hidden-face arrangements from the bright front surface."
+    },
+    {
+      "subject": "Pyramid and upper shaft",
+      "source": "commons-3563087",
+      "native_pixel_inspection_bounds": [
+        2350,
+        780,
+        3070,
+        1380
+      ],
+      "finding": "Pyramid edge weathering and shaft mortar beds are visible. No dark horizontal opening is resolved on the broad SW-facing triangle in this view.",
+      "limits": "An upper dark horizontal slot is visible in other SE photographs; map the face and dates before repeating it on all sides or treating it as a confirmed vent."
+    },
+    {
+      "subject": "Shaft courses",
+      "source": "commons-3563087",
+      "finding": "Individual bed heights and vertical bonds are clearly visible over much of the shaft. Current uniform courses / repeated vertical bond pattern should be compared to these originals.",
+      "limits": "Colour changes alone do not prove mortar joints. Perspective and variable face depth require registration before assigning world heights."
+    },
+    {
+      "subject": "Two barred pyramid openings",
+      "source": "commons-obelisk-2 / commons-war-memorial",
+      "finding": "SE and NW faces have narrow barred openings just above the shaft-to-pyramid junction. SW appears plain in commons-3563087. NE is unresolved.",
+      "limits": "Purpose, exact spacing and depths are not established; estimates are documented in fixture calibration."
+    }
+  ],
+  "capture_dates": {
+    "commons-monument-260909": "2009-09-26",
+    "commons-war-memorial": "2011-07-30",
+    "commons-obelisk-1": "2013-02-02",
+    "commons-obelisk-2": "2013-02-02",
+    "commons-3563087": "2013-07-18"
+  },
+  "next_steps": [
+    "Refine absolute shaft dimensions and individual surface aging after the 36-course registration in checkpoint 0.9",
+    "Obtain a useful NE-facing view before copying fixtures to that face",
+    "Confirm current fixture condition and dimensions; available close photographs span 2009-2013"
+  ],
+  "inspection_method": "Temporary nearest-neighbour pixel magnifiers in /tmp; original photographs unchanged. No generated detail or source colour added to model textures.",
+  "implementation": "research/obelisk_fixture_calibration.json; scripts/obelisk_fixtures.py"
+}

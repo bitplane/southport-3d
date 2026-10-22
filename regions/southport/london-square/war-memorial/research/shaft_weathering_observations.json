@@ -1,0 +1,95 @@
+{
+  "status": "Authored block classes and pyramid stains implemented for checkpoint 0.10; fine patterns remain procedural estimates",
+  "registration": "research/shaft_masonry_calibration.json; course indices start at 0 below the pyramid",
+  "sources": [
+    "commons-3563087",
+    "commons-obelisk-2",
+    "commons-war-memorial"
+  ],
+  "observations": [
+    {
+      "face": "SW",
+      "source": "commons-3563087",
+      "courses_top_down": [
+        5,
+        9,
+        33,
+        35
+      ],
+      "field": "wide central stone",
+      "finding": "Broad, comparatively pale and smooth central fields contrast with adjacent darker or pitted corner stones. These are visible within one consistently lit face.",
+      "limits": "Paleness alone does not establish a repair date or stone composition."
+    },
+    {
+      "face": "SW",
+      "source": "commons-3563087",
+      "courses_top_down": [
+        7,
+        11,
+        27
+      ],
+      "field": "left corner stone",
+      "finding": "Small pale corner fields stand out from their wider central neighbours."
+    },
+    {
+      "face": "SW",
+      "source": "commons-3563087",
+      "courses_top_down": [
+        20,
+        28
+      ],
+      "field": "left of central bond",
+      "finding": "A relatively pale left stone lies beside a darker or more textured right stone."
+    },
+    {
+      "face": "SW",
+      "source": "commons-3563087",
+      "courses_top_down": [
+        21,
+        23,
+        30,
+        32
+      ],
+      "field": "stone face",
+      "finding": "Irregular pits and rough patches are resolved in the large original. A flat colour change would omit this surface character.",
+      "limits": "Pit depth is not measured from the photograph; any numeric surface profile must remain bounded and explicitly interpreted."
+    },
+    {
+      "face": "SE",
+      "source": "commons-obelisk-2",
+      "courses_top_down": [
+        18
+      ],
+      "field": "left corner stone",
+      "finding": "A small very pale stone contrasts strongly with the adjoining warm-coloured face; use this as a cross-face registration landmark."
+    },
+    {
+      "face": "SE",
+      "source": "commons-obelisk-2",
+      "courses_top_down": [
+        34
+      ],
+      "field": "wide central stone",
+      "finding": "The central field is comparatively pale near the bottom of the shaft."
+    },
+    {
+      "face": "NW",
+      "source": "commons-war-memorial",
+      "finding": "Several darker and lighter fields are visible, but this face is in different illumination from the 2013 SE/SW originals. Absolute RGB or brightness must not be compared directly across the photographs."
+    },
+    {
+      "face": "pyramid",
+      "source": "commons-obelisk-2 / commons-3563087",
+      "finding": "Yellow-orange discoloration descends from near the apex, with grey streaks elsewhere. The shape differs by face.",
+      "limits": "Substance and cause are unverified; do not label it rust, lichen or another specific material without evidence."
+    }
+  ],
+  "surface_method_constraints": [
+    "Keep source photographs as references, not embedded colour maps",
+    "Author tone, roughness and bounded pit profiles; distinguish interpretation from measured geometry",
+    "Avoid painting lighting shadows into albedo",
+    "Maintain a documented reference-state date and flag the older NW view",
+    "Check actual embedded base, normal and roughness maps: authored obelisk materials have separate metric maps; legacy materials retain their generic shared micro-normal."
+  ],
+  "continuing_limit": "Fifteen documented pale/pitted landmarks receive their evidenced class. Fine pit positions, albedo, depth and roughness are interpreted; NW/NE block-by-block contrasts and other masonry weathering remain unresolved."
+}

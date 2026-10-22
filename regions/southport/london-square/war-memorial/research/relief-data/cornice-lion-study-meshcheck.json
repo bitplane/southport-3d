@@ -1,0 +1,17 @@
+{
+  "figure": "cornice-lion study",
+  "original_triangles": 140378,
+  "retained_faces": 27426,
+  "ratio": 0.3,
+  "flat_backing_faces": 667,
+  "samples": 3510,
+  "ray_misses": 0,
+  "rms_error_m": 2.083844587055979e-05,
+  "p99_error_m": 7.687618955969802e-05,
+  "max_error_m": 0.0004109391011297703,
+  "closest_surface_rms_m": 8.098435466393279e-06,
+  "closest_surface_p99_m": 2.5992074097302897e-05,
+  "closest_surface_max_m": 0.00014202340389601886,
+  "error_interpretation": "Vertical differences can be large at steep edges after tiny lateral changes; closest-surface distance measures positional approximation.",
+  "empty_background_faces_removed": 667
+}

@@ -1,0 +1,16 @@
+{
+  "figure": "southport-arms study",
+  "original_triangles": 1341522,
+  "retained_faces": 229183,
+  "ratio": 0.3,
+  "flat_backing_faces": 7751,
+  "samples": 33620,
+  "ray_misses": 0,
+  "rms_error_m": 2.249536632627185e-05,
+  "p99_error_m": 6.09084963798523e-07,
+  "max_error_m": 0.0023326744558289647,
+  "closest_surface_rms_m": 1.3209446305160123e-05,
+  "closest_surface_p99_m": 2.134409205609673e-05,
+  "closest_surface_max_m": 0.0006553317070938647,
+  "error_interpretation": "Vertical differences can be large at steep edges after tiny lateral changes; closest-surface distance measures positional approximation."
+}

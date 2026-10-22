@@ -1,0 +1,695 @@
+{
+  "scope": "London Square war memorial: obelisk, two colonnades and their chamber exteriors. No interior memorials, names, trees or surrounding buildings.",
+  "reference_state": "Post-2008 architectural/paved setting; broad stone condition chiefly follows dated 2009\u20132013 photographs. SW WWII insert follows the supplied Instagram photograph, published 2026-10-03 but captured on an unknown date. Live 2018 Street View and 2019 Mapillary views corroborate the ensemble. This documented composite reference state is not a claim of exact condition on a single day.",
+  "units": "metres",
+  "primary_sources": {
+    "iwm": "https://memorials.iwm.org.uk/memorial/1228",
+    "historic_england": "https://historicengland.org.uk/listing/the-list/list-entry/1379604",
+    "wmo": "https://www.warmemorialsonline.org.uk/memorial/140024",
+    "artuk": "https://artuk.org/discover/artworks/southport-war-memorial-301862",
+    "instagram": "https://www.instagram.com/p/DeCrg6mCXYO/"
+  },
+  "dimensions": {
+    "colonnade_length": {
+      "value": 24.6,
+      "source": "IWM component measurements",
+      "confidence": "published"
+    },
+    "colonnade_depth": {
+      "value": 4.9,
+      "source": "IWM component measurements; OSM wall polygon depth 4.38, probably excludes cornice",
+      "confidence": "published"
+    },
+    "colonnade_height": {
+      "value": 5.54,
+      "source": "IWM component measurements",
+      "confidence": "published"
+    },
+    "obelisk_height": {
+      "value": 20.574,
+      "source": "Historic England 67 feet 6 inches; IWM rounds to 21 metres",
+      "confidence": "published, datum not explicit"
+    },
+    "obelisk_base_width": {
+      "value": 3.65,
+      "source": "IWM; assigned to principal lower square block after comparison to front elevation",
+      "confidence": "published dimension, interpretation estimated"
+    },
+    "column_flute_count": {
+      "value": 20,
+      "source": "Estimated from visible front half of WMO Southport_4 and IWM mont_6; awaiting closer circumferential view",
+      "confidence": "provisional"
+    },
+    "column_shaft_diameter_lower": {
+      "value": 0.48,
+      "source": "Silhouette / shaft-height ratios in Commons columns 1/2 and Flickr 7465690872; see column_lamp_calibration.json",
+      "confidence": "photographic estimate, approximately \u00b10.06 m; perspective and vertical datum unresolved"
+    },
+    "column_shaft_diameter_upper": {
+      "value": 0.4,
+      "source": "Silhouette / shaft-height ratios in Commons columns 1/2 and Flickr 7465690872; see column_lamp_calibration.json",
+      "confidence": "photographic estimate, approximately \u00b10.06 m; perspective and vertical datum unresolved"
+    },
+    "chamber_length": {
+      "value": 4.4,
+      "source": "HE square chambers, estimated wall envelope within IWM overall dimensions",
+      "confidence": "Estimated external wall size, excluding anta projections and cornices"
+    },
+    "carving_depth": {
+      "value_range": [
+        0.006,
+        0.09
+      ],
+      "source": "Photographic shadow and silhouette; no measured relief survey",
+      "confidence": "estimated"
+    },
+    "exterior_end_plaque": {
+      "width_m": 0.94,
+      "height_m": 1.9,
+      "bottom_z_m": 1.2,
+      "confidence": "photographic estimate; approximately \u00b10.15 m width and \u00b10.35 m height",
+      "source": "research/colonnade_facade_calibration.json; IWM mont_9a and WMO full-end comparison",
+      "note": "Coupled revision with shorter column/roof stack; end sculpture aspect preserved. Not a measured survey."
+    },
+    "horizontal_trophy_field": {
+      "width_m": 1.85,
+      "height_m": 0.42,
+      "centre_z_m": 3.75,
+      "confidence": "Conditional photographic fit; field dimensions and depth estimated",
+      "source": "research/colonnade_facade_calibration.json",
+      "note": "Revised together with colonnade vertical datums; numeric source surfaces are scaled at placement.",
+      "recess_depth_m": 0.062,
+      "recess_note": "62 mm estimated shallow recess is cut into ashlar; relief rises from its stone backing. Depth is not measured."
+    },
+    "cornice_lion_count": {
+      "value": 48,
+      "per_long_face": 12,
+      "source": "Commons columns 1/2, Flickr 7465690872 and centenary-11; four extra masks over end bays on each face",
+      "confidence": "inner faces clear; outer repeat partly screened"
+    },
+    "single_lamp_stone_plinth": {
+      "width_m": 1.42,
+      "depth_m": 1.06,
+      "top_z_m": 0.35,
+      "source": "Proportion to globe diameter in Commons columns 1/2 and Flickr near-frontal elevation",
+      "confidence": "Photographic estimate; ground follows estimated 2.2% NW fall. See ground_grade_study.json."
+    },
+    "clustered_lamp": {
+      "count": 4,
+      "globes_each": 5,
+      "height_m": 5.748,
+      "spread_m": 1.87,
+      "height_uncertainty_m": 0.6,
+      "source": "HE count; Commons columns 1 and Flickr 7465683304 geometry",
+      "placement": "Four provisional flanking-pavement positions at site (\u00b118, \u00b19) m, approximately \u00b13 m uncertainty; not central-island fixtures"
+    },
+    "column_pair_separation": {
+      "value": 0.8,
+      "source": "Repeated mask-pair spacing in Flickr 7465690872 and Commons columns 1",
+      "confidence": "Photographic estimate; shared bay-pitch scale assumption"
+    },
+    "exterior_window": {
+      "width_m": 1.04,
+      "bottom_z_m": 1.2,
+      "top_z_m": 3.1,
+      "height_m": 1.9,
+      "jamb_centre_offset_m": 0.71,
+      "jamb_width_m": 0.38,
+      "confidence": "Photographic estimate, approximately \u00b10.15 m width and \u00b10.25 m vertical dimensions; published ground datum unresolved",
+      "source": "research/colonnade_facade_calibration.json; conditional whole-facade registration",
+      "note": "Two separate moulded jamb capitals. Rosette band spans the opening; no lower continuous beam. Jambs extend down beside the blank apron.",
+      "lintel_band_width_m": 2.3,
+      "lintel_band_height_m": 0.21999999999999975,
+      "lintel_band_bottom_z_m": 3.1,
+      "lintel_band_top_z_m": 3.32
+    }
+  },
+  "exterior_inscriptions": {
+    "NE_inner_SW": "TELL \u00b7 BRITAIN \u00b7 YE \u00b7 WHO \u00b7 MARK \u00b7 THIS \u00b7 MONUMENT",
+    "NE_outer_NE": "THEIR \u00b7 PORTION \u00b7 IS \u00b7 WITH \u00b7 THE \u00b7 ETERNAL",
+    "SW_inner_NE": "FAITHFUL \u00b7 TO \u00b7 HER \u00b7 WE \u00b7 FELL \u00b7 AND \u00b7 REST \u00b7 CONTENT",
+    "SW_outer_SW": "TO \u00b7 FAMOUS \u00b7 MEN \u00b7 ALL \u00b7 EARTH \u00b7 IS \u00b7 SEPULCHRE",
+    "NE_NW_date": "MCMXIV",
+    "SW_NW_date": "MCMXVIII",
+    "NE_SE_panel": [
+      "THEY \u00b7 DIED",
+      "THAT \u00b7 WE \u00b7 MIGHT \u00b7 LIVE",
+      "WE \u00b7 LIVE",
+      "ONLY \u00b7 AS \u00b7 WE",
+      "SAFEGUARD \u00b7 THE \u00b7 IDEALS",
+      "FOR \u00b7 WHICH \u00b7 THEY \u00b7 DIED",
+      "FREEDOM \u00b7 JUSTICE \u00b7 MERCY",
+      "SO \u00b7 LET \u00b7 US \u00b7 LIVE",
+      "THAT \u00b7 WE \u00b7 MAY \u00b7 SHARE",
+      "WITH \u00b7 THEM \u00b7 THE \u00b7 LIFE",
+      "ETERNAL"
+    ],
+    "SW_SE_panel": [
+      "REMEMBER",
+      "THAT \u00b7 THE \u00b7 MEN",
+      "WHOSE \u00b7 NAMES",
+      "LIVE \u00b7 ON \u00b7 THESE \u00b7 WALLS",
+      "DIED",
+      "IN \u00b7 YOUTH \u00b7 OR \u00b7 PRIME",
+      "THAT \u00b7 FUTURE \u00b7 GENERATIONS",
+      "MIGHT \u00b7 INHERIT",
+      "A \u00b7 HAPPIER \u00b7 WORLD",
+      "AND \u00b7 A \u00b7 HUMAN \u00b7 SOCIETY",
+      "MORE \u00b7 RIGHTEOUS",
+      "AND \u00b7 MORE \u00b7 LOVING",
+      "THAN \u00b7 THOSE \u00b7 BRAVE \u00b7 MEN",
+      "AND \u00b7 THEIR \u00b7 GENERATION",
+      "KNEW"
+    ],
+    "obelisk_NW": [
+      "LOOK",
+      "UPWARD",
+      "STANDING",
+      "\u2014 MUTE. \u2014",
+      "SALUTE.",
+      "\u2014"
+    ],
+    "obelisk_NW_date": "MCMXIV \u00b7 MCMXVIII",
+    "obelisk_SE_motto": "SALVS POPVLI",
+    "obelisk_SW": [
+      "TO THE",
+      "MEN AND WOMEN",
+      "OF THIS COUNTY BOROUGH",
+      "WHO GAVE THEIR LIVES",
+      "FOR",
+      "THE LIBERTY OF THE WORLD",
+      "& THE SECURITY OF THIS REALM",
+      "IN THE WORLD WAR",
+      "1939 \u2014 1945",
+      "THEIR NAMES ARE RECORDED IN",
+      "THE BOOK OF REMEMBRANCE",
+      "WHICH LIES NEARBY IN THE KEEPING OF",
+      "CHRIST CHURCH",
+      "THE FOUNTAINS",
+      "ADDED TO THE MEMORIAL POOLS",
+      "ARE DEDICATED TO THEIR",
+      "HONOURED",
+      "MEMORY"
+    ]
+  },
+  "resolved_conflicts": [
+    "IWM mont_8 and mont_8a captions reverse the two south-east ends. Follow HE and IWM prose: THEY DIED on NE, REMEMBER on SW. WMO Southport_2 also confirms REMEMBER at SW colonnade.",
+    "SW panel says THOSE BRAVE MEN in photograph, despite one transcription giving THESE.",
+    "IWM compass directions simplified; use true NE/SW buildings and NW/SE ends per HE and map.",
+    "NE NW chamber end has the pelta trophy, while its NE garden-facing window has the winged-Victory medallion. Do not repeat a chamber-end motif over every window.",
+    "The supplied Instagram carousel photograph 3 clearly shows a legible WWII insert; HE locates it on SW. This supersedes the prior blank-roundel interpretation based on the IWM erased-inscription caption. Photograph capture date and chronology of any removal/reinstatement remain unknown; NE stays plain.",
+    "Art UK gives estimated 24.40 x 5.10 x 7.00 m for a colonnade; retain IWM 24.60 x 4.90 x 5.54 m because its height is more consistent with reviewed photographs. No common measurement datum is established."
+  ],
+  "relief_inventory": [
+    {
+      "id": "trophy_pelta",
+      "reference": "iwm-mont_13",
+      "location": "NE NW end confirmed; former automatic repetition to window faces was unsupported",
+      "motifs": "Pelta shield with palmette, lion terminal heads, horizontal swords and rods, palm fronds and paired braziers"
+    },
+    {
+      "id": "trophy_wreath",
+      "reference": "iwm-mont_13a",
+      "location": "SW NW and SE chambers confirmed on end/side views",
+      "motifs": "Crossed swords, flowered wreath, festoons and paired braziers"
+    },
+    {
+      "id": "trophy_victory",
+      "reference": "iwm-mont_13b",
+      "location": "NE NW chamber, NE garden-facing window confirmed in centenary-11 / mont_4; remaining assignments pending",
+      "motifs": "Winged Victory medallion, opposing helmets, inverted fluted torches and floral festoon"
+    },
+    {
+      "id": "victory",
+      "reference": "iwm-mont_9",
+      "location": "NE NW end",
+      "motifs": "Standing helmeted Britannia with spear and shield, holding small winged Victory"
+    },
+    {
+      "id": "mourning",
+      "reference": "iwm-mont_9a",
+      "location": "SW NW end",
+      "motifs": "Draped woman laying garland over helmet; PATRIA lion standard"
+    },
+    {
+      "id": "crossed_torches",
+      "reference": "iwm-mont_8, iwm-mont_8a, wmo-Southport_6",
+      "location": "Both SE ends",
+      "motifs": "Inverted flaming torches with ring handles and tassels, wreath and suspension medallion"
+    },
+    {
+      "id": "southport_arms",
+      "reference": "iwm-mont_3a",
+      "location": "Obelisk SE",
+      "motifs": "Roundel, SALVS POPVLI ribbon, three cross-crosslets fitchee, fess dancettee, galley/lymphad, naval crown, cross-crosslet entwined by a serpent",
+      "identification_reference": "Southport RFC crest history, 2021-12-29; see supplemental source documents"
+    }
+  ],
+  "deferred_by_user": [
+    "interior detailing",
+    "soldier name panels",
+    "trees and vegetation"
+  ],
+  "open_checks": [
+    "Current imagery date",
+    "Figure depth and facial features",
+    "Roof build-up",
+    "Exact column flute count",
+    "Carving panel assignment at NE SE chamber",
+    "Road and kerb edges",
+    "Small architect/sculptor inscription on SW inner lamp plinth",
+    "Absolute ground datum, crossfall and local drainage; 2.2% longitudinal fall is a photographic estimate",
+    "Absolute vertical and plan dimensions share published-height/chamber assumptions; full camera calibration remains unresolved",
+    "Google Earth 3D unavailable in host browser; Google satellite/Street View, Mapillary and source photographs inspected instead. Fine roof surfaces and hidden sides remain uncertain."
+  ],
+  "trophy_panel_map": {
+    "NE_NW_end": {
+      "motif": "pelta",
+      "confidence": "confirmed in close photograph",
+      "evidence": "iwm-mont_9.jpg; commons-Southport_War_Memorial_1.jpg"
+    },
+    "NE_NW_NE": {
+      "motif": "victory",
+      "confidence": "identified in wide photographs; small details resolved by mont_13b",
+      "evidence": "centenary-11.jpg right (NW) window; iwm-mont_4.jpg right window: central medallion and opposing helmets"
+    },
+    "NE_NW_SW": {
+      "motif": "pelta",
+      "confidence": "identified in dated elevation photograph; fine detail checked against IWM close-ups",
+      "evidence": "commons-columns-1.jpg left window: pelta shield, palmette and braziers"
+    },
+    "NE_SE_end": {
+      "motif": "victory",
+      "confidence": "provisional",
+      "evidence": "No sufficiently clear face-specific photograph located; do not infer verification from repetition"
+    },
+    "NE_SE_NE": {
+      "motif": "victory",
+      "confidence": "provisional",
+      "evidence": "No sufficiently clear face-specific photograph located; do not infer verification from repetition"
+    },
+    "NE_SE_SW": {
+      "motif": "victory",
+      "confidence": "identified in dated elevation photograph; fine detail checked against IWM close-ups",
+      "evidence": "commons-columns-1.jpg right window: Victory medallion, torches and helmets"
+    },
+    "SW_NW_end": {
+      "motif": "wreath",
+      "confidence": "confirmed in close photograph",
+      "evidence": "iwm-mont_9a.jpg"
+    },
+    "SW_NW_NE": {
+      "motif": "wreath",
+      "confidence": "identified in dated elevation photograph; fine detail checked against IWM close-ups",
+      "evidence": "commons-columns-2.jpg right window; geo-4580967.jpg right window"
+    },
+    "SW_NW_SW": {
+      "motif": "wreath",
+      "confidence": "identified in dated elevation photograph; fine detail checked against IWM close-ups",
+      "evidence": "geo-4580972.jpg left window"
+    },
+    "SW_SE_end": {
+      "motif": "wreath",
+      "confidence": "confirmed in corner photograph",
+      "evidence": "wmo-Southport_2.jpg left end elevation"
+    },
+    "SW_SE_NE": {
+      "motif": "wreath",
+      "confidence": "confirmed in corner photograph",
+      "evidence": "wmo-Southport_2.jpg window on inner long fa\u00e7ade"
+    },
+    "SW_SE_SW": {
+      "motif": "wreath",
+      "confidence": "identified in wide photograph, partly screened; reconfirm close details",
+      "evidence": "geo-4580972.jpg right window, partially screened by tree"
+    }
+  },
+  "figure_surface_method": "Continuous relief surfaces: traced silhouettes and authored depth layers, bounded 7\u20138 mm single-view shading-gradient residual for fine carving, explicitly incised PATRIA; depths remain estimated, not photogrammetry.",
+  "traced_exterior_reliefs": {
+    "figures": "Continuous hand-traced depth layers from centenary-03, cross-checked against IWM",
+    "torches": "IWM mont_8a; 0.94 x 0.84 m numeric field, estimated depths up to 61 mm, source shading residual bounded before 0.70 depth scaling",
+    "wreath_trophy": "IWM mont_13a; 2.0 x 0.55 m numeric field, estimated depths up to 59 mm, source shading residual bounded before 0.75 depth scaling",
+    "warning": "Single-view interpretation, not a measured scan. No source colour included. Local variations and erosion between repeated panels are not reconstructed.",
+    "pelta_trophy": "IWM mont_13; 2.0 x 0.52 m field with lion terminals, straps, palmette, weapons, palm fronds and braziers; estimated maximum depth 60 mm",
+    "victory_trophy": "IWM mont_13b; 2.0 x 0.52 m field with winged Victory, open helmet notches, floral swags, torches, palm and trumpet; estimated maximum depth 47 mm",
+    "southport_arms": "IWM mont_3a; 1.30 m square numeric field buried into the pedestal; separate existing roundel mouldings; 11 glyphs incised 3.5 mm along the ribbon. Estimated relief depth about 35 mm.",
+    "salute_wreath": "IWM mont_1a; two traced branches with 63 pointed leaves and an inner moulding, 1.34 m numeric canvas. Estimated maximum depth 23 mm; mortar beds cut consistently with pedestal. No inferred ribbon blocks."
+  },
+  "heraldry_corrections": [
+    "Crest is a cross-crosslet entwined by a serpent; earlier bell interpretation removed",
+    "Crown shows ships and sterns (naval crown); earlier supporting-animal forms removed",
+    "Shield band is a fess dancettee; earlier chevron description corrected",
+    "Lower shield vessel is a single-masted galley/lymphad with oars; earlier three-mast proxy removed",
+    "SALVS POPVLI letters are incised into the ribbon; former floating glyphs removed"
+  ],
+  "exterior_flora": {
+    "frieze": {
+      "count": 8,
+      "data": "research/relief-data/frieze-foliage-traces.json",
+      "recess_width_height_depth_m": [
+        0.82,
+        0.275,
+        0.018
+      ],
+      "centre_flower_petals": 8,
+      "confidence": "Photo-derived outline; dimensions and depth estimated"
+    },
+    "rosettes": {
+      "count": 24,
+      "data": "research/relief-data/architectural-rosette-traces.json",
+      "petals": 12,
+      "diameter_m": 0.17,
+      "maximum_depth_m": 0.0205,
+      "confidence": "Twelve flared petals supported by IWM mont_8a; repeated design at other ends and windows inferred"
+    },
+    "settings": "Window band 2.30 x 0.22 m, rosettes aligned to separately capped jambs at \u00b10.71 m. End band 2.32 x 0.22 m; photographic dimensions estimated.",
+    "limits": "Individual erosion, very small carved veins and exact chamber-frame geometry remain unresolved"
+  },
+  "pedestal_coursework": {
+    "data": "research/pedestal_joint_layout.json",
+    "method": "Shallow channels in pedestal, matching physical gaps in roundel borders and numeric arms; shared horizontal levels on four faces",
+    "limits": "SE/NW photographed vertical bonds only; NE/SW vertical bonds unresolved; course scale and 4 mm width / 3 mm depth estimated",
+    "salute_underline": "Single 90 x 6 mm dash, now positioned from the source image above the lower visible mortar bed"
+  },
+  "salute_lettering_layout": {
+    "source": "references/images/iwm-mont_1a.jpg",
+    "method": "Approximate visible glyph bounds registered with the same masonry beds as the wreath; fit serif font to each line bounding rectangle",
+    "lines": [
+      {
+        "text": "LOOK",
+        "source_bounds_px": [
+          418,
+          364,
+          501,
+          383
+        ],
+        "centre_u_m": 0.0,
+        "centre_z_m": 3.3416083562901746,
+        "height_m": 0.08894261928071057,
+        "width_m": 0.3934139194139194
+      },
+      {
+        "text": "UPWARD",
+        "source_bounds_px": [
+          400,
+          388,
+          524,
+          407
+        ],
+        "centre_u_m": 0.01184981684981685,
+        "centre_z_m": 3.2256188101905607,
+        "height_m": 0.09194385629396873,
+        "width_m": 0.5877509157509158
+      },
+      {
+        "text": "STANDING",
+        "source_bounds_px": [
+          387,
+          413,
+          533,
+          432
+        ],
+        "centre_u_m": 0.00236996336996337,
+        "centre_z_m": 3.1046400519090227,
+        "height_m": 0.09194385629396917,
+        "width_m": 0.6920293040293041
+      },
+      {
+        "text": "\u2014 MUTE. \u2014",
+        "source_bounds_px": [
+          395,
+          438,
+          524,
+          457
+        ],
+        "centre_u_m": 0.0,
+        "centre_z_m": 2.9836612936274847,
+        "height_m": 0.09194385629396917,
+        "width_m": 0.6114505494505494
+      },
+      {
+        "text": "SALUTE.",
+        "source_bounds_px": [
+          408,
+          462,
+          510,
+          482
+        ],
+        "centre_u_m": -0.00236996336996337,
+        "centre_z_m": 2.865102110511577,
+        "height_m": 0.09678300662523043,
+        "width_m": 0.48347252747252745
+      },
+      {
+        "text": "\u2014",
+        "source_bounds_px": [
+          449,
+          490,
+          468,
+          492
+        ],
+        "centre_u_m": -0.00473992673992674,
+        "centre_z_m": 2.7731582542176083,
+        "height_m": 0.006,
+        "width_m": 0.09
+      }
+    ],
+    "limits": "Roman serif font approximates original letter shapes. Full stops after MUTE and SALUTE are visible. The mark above/right of UPWARD is ambiguous and is not transcribed as punctuation. The short underline retains estimated 90 x 6 mm dimensions."
+  },
+  "obelisk_fixtures": {
+    "source_detail": "research/obelisk_fixture_calibration.json",
+    "barred_pyramid_openings": [
+      "NW",
+      "SE"
+    ],
+    "linear_housing_faces": [
+      "NW",
+      "SE",
+      "SW"
+    ],
+    "geometry": "Solid pyramid with real recessed openings, inset shared grille meshes and separate shared linear housing mesh with two support feet per face",
+    "limits": "Fixture and pyramid dimensions, grille spacing and cross sections estimated. NE arrangement unverified. No internal electrical or optical design claimed. Shaft coursework is now registered separately in shaft_masonry_calibration.json."
+  },
+  "shaft_masonry": {
+    "source_detail": "research/shaft_masonry_calibration.json",
+    "course_count": 36,
+    "observed_vertical_bond_faces": [
+      "SE",
+      "NW",
+      "SW"
+    ],
+    "unverified_face": "NE",
+    "method": "Photo-registered horizontal levels and separately traced bonds, with closed stone faces over a solid tapered backing. Estimated seams are 3 mm wide and 4 mm deep.",
+    "limits": "Conditional photographic fit; registration spread about 0.12 m within the assumed envelope, not a bound on absolute dimensional error. Lateral bond picks are approximate to 0.04 m. Topmost band vertical streaks are unresolved. Surface aging remains pending."
+  },
+  "obelisk_surfaces": {
+    "calibration": "research/shaft_weathering_observations.json",
+    "material_recipes": "research/obelisk_surface_materials.json",
+    "shaft": "Three authored metric surface classes with 11 pale landmarks and 12 pitted blocks; remaining blocks use a general aged class",
+    "pyramid": "SE/SW yellow and NW grey-green central streaks; NE kept generic because a close reference is lacking",
+    "method": "Procedural numeric fields and bounded pit profiles; normal/roughness maps and base colour export as embedded PBR images; source photographs are not embedded",
+    "normal_depth_limit_m": 0.004,
+    "reference_condition": "Close surface details follow 2011\u20132013 photographs; present-day condition has not been verified",
+    "limits": "Fine shapes and absolute albedo/roughness/depth are interpreted, not measured; weathering of the colonnades and pedestal remains generic"
+  },
+  "colonnade_vertical_datums": {
+    "shaft_bottom": 0.47,
+    "shaft_top": 3.84,
+    "annulus_top": 3.883,
+    "neck_top": 3.985,
+    "abacus_bottom": 4.06,
+    "abacus_top": 4.142,
+    "frieze_bottom": 4.42,
+    "cornice_underside": 4.9,
+    "parapet_bottom": 5.13,
+    "parapet_top": 5.54
+  },
+  "colonnade_plan": {
+    "bay_pitch": 3.0,
+    "column_pair_separation": 0.8,
+    "pier_pair_separation": 1.08,
+    "column_pair_centres": [
+      -4.5,
+      -1.5,
+      1.5,
+      4.5
+    ],
+    "pier_centres": [
+      -7.5,
+      7.5
+    ],
+    "pier_width": 1.3,
+    "window_centres": [
+      -9.85,
+      9.85
+    ],
+    "central_to_chamber_setback": 0.12,
+    "central_roof_break_x": 8.15,
+    "chamber_side_wall_centre_y": 2.02,
+    "chamber_side_wall_depth": 0.36,
+    "pier_outer_y": 2.32,
+    "end_wall_centre_x": 11.87,
+    "entrance_wall_centre_x": 7.83,
+    "chamber_outer_x": 12.05,
+    "chamber_entrance_x": 7.65,
+    "side_wall_inner_tip_x": 6.85,
+    "lamp_y": 2.85,
+    "maximum_text_width": 12.7,
+    "confidence": "Photographic estimate: repeated cornice pairs support 3.0 m pitch conditional on square 4.4 m chambers; pitch roughly +/-0.15 m. Roof setback and pier dimensions estimated.",
+    "source": "research/colonnade_plan_projection_study.json"
+  },
+  "ground_and_bases": {
+    "site_gradient_dz_dy": -0.022,
+    "ground_at_site_origin_z_m": -0.07,
+    "grade_uncertainty_approx": 0.008,
+    "ground_datum_uncertainty_m": 0.12,
+    "portico_top_z_m": 0.32,
+    "step_top_z_m": [
+      -0.04,
+      0.14,
+      0.32
+    ],
+    "step_depths_m": [
+      5.9,
+      5.38,
+      4.9
+    ],
+    "central_step_width_m": 13.7,
+    "chamber_plinth_top_z_m": 0.58,
+    "foundation_bottom_z_m": -0.6,
+    "lamp_plinth_top_z_m": 0.35,
+    "lamp_vertical_shift_m": -0.13,
+    "flanking_paving_top_at_site_origin_z_m": -0.0075,
+    "reference": "research/ground_grade_study.json",
+    "confidence": "Photographic estimate; ground datum \u00b10.12 m and gradient \u00b10.008",
+    "end_frame_foot_centre_z_m": 0.66
+  },
+  "colonnade_pedestal_weathering": {
+    "reference": "research/exterior_weathering_materials.json",
+    "method": "Authored broad vertex-colour multiplier over portable stone maps",
+    "evidence": "Darker lower stone and sheltered cornice/parapet streaking in saved photographs",
+    "limits": "Exact marks, hue/intensity and present-day condition unverified; repeated details share patina"
+  },
+  "wwii_roundel": {
+    "source": "research/wwii_roundel_study.json",
+    "face": "SW",
+    "diameter_m_estimate": 1.03,
+    "front_projection_m_estimate": 0.035,
+    "reed_count_estimate": 200,
+    "lines": [
+      {
+        "text": "TO THE",
+        "centre_v_m": 0.446333,
+        "height_m": 0.041,
+        "width_m": 0.2
+      },
+      {
+        "text": "MEN AND WOMEN",
+        "centre_v_m": 0.39655,
+        "height_m": 0.041,
+        "width_m": 0.54
+      },
+      {
+        "text": "OF THIS COUNTY BOROUGH",
+        "centre_v_m": 0.348483,
+        "height_m": 0.034,
+        "width_m": 0.65
+      },
+      {
+        "text": "WHO GAVE THEIR LIVES",
+        "centre_v_m": 0.300417,
+        "height_m": 0.04,
+        "width_m": 0.71
+      },
+      {
+        "text": "FOR",
+        "centre_v_m": 0.260933,
+        "height_m": 0.038,
+        "width_m": 0.105
+      },
+      {
+        "text": "THE LIBERTY OF THE WORLD",
+        "centre_v_m": 0.209433,
+        "height_m": 0.042,
+        "width_m": 0.88
+      },
+      {
+        "text": "& THE SECURITY OF THIS REALM",
+        "centre_v_m": 0.157933,
+        "height_m": 0.039,
+        "width_m": 0.94
+      },
+      {
+        "text": "IN THE WORLD WAR",
+        "centre_v_m": 0.10815,
+        "height_m": 0.04,
+        "width_m": 0.66
+      },
+      {
+        "text": "1939 \u2014 1945",
+        "centre_v_m": 0.054933,
+        "height_m": 0.055,
+        "width_m": 0.6
+      },
+      {
+        "text": "THEIR NAMES ARE RECORDED IN",
+        "centre_v_m": -0.006867,
+        "height_m": 0.041,
+        "width_m": 0.98
+      },
+      {
+        "text": "THE BOOK OF REMEMBRANCE",
+        "centre_v_m": -0.065233,
+        "height_m": 0.041,
+        "width_m": 0.91
+      },
+      {
+        "text": "WHICH LIES NEARBY IN THE KEEPING OF",
+        "centre_v_m": -0.115017,
+        "height_m": 0.036,
+        "width_m": 0.96
+      },
+      {
+        "text": "CHRIST CHURCH",
+        "centre_v_m": -0.163083,
+        "height_m": 0.044,
+        "width_m": 0.54
+      },
+      {
+        "text": "THE FOUNTAINS",
+        "centre_v_m": -0.224883,
+        "height_m": 0.038,
+        "width_m": 0.43
+      },
+      {
+        "text": "ADDED TO THE MEMORIAL POOLS",
+        "centre_v_m": -0.271233,
+        "height_m": 0.034,
+        "width_m": 0.81
+      },
+      {
+        "text": "ARE DEDICATED TO THEIR",
+        "centre_v_m": -0.321017,
+        "height_m": 0.041,
+        "width_m": 0.73
+      },
+      {
+        "text": "HONOURED",
+        "centre_v_m": -0.3708,
+        "height_m": 0.043,
+        "width_m": 0.38
+      },
+      {
+        "text": "MEMORY",
+        "centre_v_m": -0.4223,
+        "height_m": 0.043,
+        "width_m": 0.28
+      }
+    ],
+    "underline": {
+      "centre_v_m": -0.194,
+      "width_m": 0.2,
+      "height_m": 0.0025
+    }
+  }
+}

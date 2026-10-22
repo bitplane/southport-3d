@@ -1,0 +1,16 @@
+{
+  "figure": "trophy-victory study",
+  "original_triangles": 626430,
+  "retained_faces": 115758,
+  "ratio": 0.3,
+  "flat_backing_faces": 6066,
+  "samples": 15675,
+  "ray_misses": 0,
+  "rms_error_m": 6.166064601100676e-05,
+  "p99_error_m": 8.603211492300042e-05,
+  "max_error_m": 0.0036806203424930573,
+  "closest_surface_rms_m": 2.5995987562668704e-05,
+  "closest_surface_p99_m": 4.5937045069877156e-05,
+  "closest_surface_max_m": 0.0014232000103220344,
+  "error_interpretation": "Vertical differences can be large at steep edges after tiny lateral changes; closest-surface distance measures positional approximation."
+}

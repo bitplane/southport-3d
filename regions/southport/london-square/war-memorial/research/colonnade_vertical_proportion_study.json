@@ -1,0 +1,335 @@
+{
+  "status": "Conditional three-view proportional study; coupled revision applied and verified in checkpoint 0.11",
+  "date": "2026-10-21",
+  "coordinate_frame": "Native original photograph pixels; all y values increase downward",
+  "anchors": {
+    "parapet_top_m": 5.54,
+    "shaft_bottom_m": 0.47,
+    "top_source": "IWM component height; its physical ground datum is not stated",
+    "base_source": "Existing model estimate; not an independently measured height"
+  },
+  "method": "Use local vertical differences at one photographed column per source. Map the roof-to-flute-base interval affinely to the two existing anchors. This is a proportion diagnostic, not a full camera solution. Source planes differ slightly in depth.",
+  "sources": [
+    {
+      "source": "flickr-7465690872",
+      "column_axis_x_px": 957,
+      "image_pixels": [
+        3072,
+        1836
+      ],
+      "landmarks_y_px": {
+        "parapet_top": 475,
+        "parapet_bottom": 539,
+        "cornice_underside": 575,
+        "frieze_bottom": 649,
+        "abacus_top": 691,
+        "abacus_bottom": 703,
+        "echinus_bottom": 716,
+        "neck_lower_annulus": 731,
+        "shaft_top": 739,
+        "shaft_bottom": 1253,
+        "column_foot": 1270
+      },
+      "pixel_pick_uncertainty": 3,
+      "upper_stack_to_fluted_shaft_ratio": 0.5136186770428015,
+      "conditional_landmark_z_m": {
+        "parapet_top": 5.54,
+        "parapet_bottom": 5.12293059125964,
+        "cornice_underside": 4.888329048843187,
+        "frieze_bottom": 4.406092544987147,
+        "abacus_top": 4.132390745501286,
+        "abacus_bottom": 4.054190231362468,
+        "echinus_bottom": 3.9694730077120823,
+        "neck_lower_annulus": 3.8717223650385604,
+        "shaft_top": 3.8195886889460153,
+        "shaft_bottom": 0.47,
+        "column_foot": 0.35921593830334186
+      }
+    },
+    {
+      "source": "commons-columns-1",
+      "column_axis_x_px": 1180,
+      "image_pixels": [
+        3648,
+        2736
+      ],
+      "landmarks_y_px": {
+        "parapet_top": 814,
+        "parapet_bottom": 878,
+        "cornice_underside": 910,
+        "frieze_bottom": 987,
+        "abacus_top": 1025,
+        "abacus_bottom": 1038,
+        "echinus_bottom": 1051,
+        "neck_lower_annulus": 1062,
+        "shaft_top": 1072,
+        "shaft_bottom": 1584,
+        "column_foot": 1603
+      },
+      "pixel_pick_uncertainty": 4,
+      "upper_stack_to_fluted_shaft_ratio": 0.50390625,
+      "conditional_landmark_z_m": {
+        "parapet_top": 5.54,
+        "parapet_bottom": 5.118597402597403,
+        "cornice_underside": 4.907896103896103,
+        "frieze_bottom": 4.400896103896104,
+        "abacus_top": 4.150688311688311,
+        "abacus_bottom": 4.06509090909091,
+        "echinus_bottom": 3.9794935064935064,
+        "neck_lower_annulus": 3.907064935064935,
+        "shaft_top": 3.8412207792207793,
+        "shaft_bottom": 0.47,
+        "column_foot": 0.34489610389610387
+      }
+    },
+    {
+      "source": "commons-columns-2",
+      "column_axis_x_px": 1560,
+      "image_pixels": [
+        3648,
+        2736
+      ],
+      "landmarks_y_px": {
+        "parapet_top": 318,
+        "parapet_bottom": 403,
+        "cornice_underside": 471,
+        "frieze_bottom": 584,
+        "abacus_top": 650,
+        "abacus_bottom": 668,
+        "echinus_bottom": 695,
+        "neck_lower_annulus": 713,
+        "shaft_top": 725,
+        "shaft_bottom": 1535,
+        "column_foot": 1550
+      },
+      "pixel_pick_uncertainty": 5,
+      "upper_stack_to_fluted_shaft_ratio": 0.5024691358024691,
+      "conditional_landmark_z_m": {
+        "parapet_top": 5.54,
+        "parapet_bottom": 5.185891536565324,
+        "cornice_underside": 4.902604765817585,
+        "frieze_bottom": 4.431848808545604,
+        "abacus_top": 4.156894001643386,
+        "abacus_bottom": 4.08190632703369,
+        "echinus_bottom": 3.9694248151191456,
+        "neck_lower_annulus": 3.8944371405094493,
+        "shaft_top": 3.844445357436319,
+        "shaft_bottom": 0.47,
+        "column_foot": 0.4075102711585867
+      }
+    },
+    {
+      "source": "flickr-7465690872",
+      "column_axis_x_px": 2230,
+      "image_pixels": [
+        3072,
+        1836
+      ],
+      "role": "Additional far-pair cross-check, same photograph, not an independent source",
+      "landmarks_y_px": {
+        "parapet_top": 470,
+        "shaft_top": 731,
+        "shaft_bottom": 1242,
+        "abacus_top": 683,
+        "column_foot": 1256
+      },
+      "pixel_pick_uncertainty": 3,
+      "upper_stack_to_fluted_shaft_ratio": 0.5107632093933464,
+      "conditional_landmark_z_m": {
+        "parapet_top": 5.54,
+        "shaft_top": 3.8259196891191714,
+        "shaft_bottom": 0.47,
+        "abacus_top": 4.141152849740933,
+        "column_foot": 0.37805699481865285
+      }
+    }
+  ],
+  "conditional_summary": {
+    "abacus_bottom": {
+      "mean_m": 4.067062489162356,
+      "range_m": [
+        4.054190231362468,
+        4.08190632703369
+      ],
+      "sample_count": 3
+    },
+    "abacus_top": {
+      "mean_m": 4.145281477143479,
+      "range_m": [
+        4.132390745501286,
+        4.156894001643386
+      ],
+      "sample_count": 4
+    },
+    "column_foot": {
+      "mean_m": 0.3724198270441713,
+      "range_m": [
+        0.34489610389610387,
+        0.4075102711585867
+      ],
+      "sample_count": 4
+    },
+    "cornice_underside": {
+      "mean_m": 4.899609972852292,
+      "range_m": [
+        4.888329048843187,
+        4.907896103896103
+      ],
+      "sample_count": 3
+    },
+    "echinus_bottom": {
+      "mean_m": 3.9727971097749113,
+      "range_m": [
+        3.9694248151191456,
+        3.9794935064935064
+      ],
+      "sample_count": 3
+    },
+    "frieze_bottom": {
+      "mean_m": 4.412945819142951,
+      "range_m": [
+        4.400896103896104,
+        4.431848808545604
+      ],
+      "sample_count": 3
+    },
+    "neck_lower_annulus": {
+      "mean_m": 3.891074813537648,
+      "range_m": [
+        3.8717223650385604,
+        3.907064935064935
+      ],
+      "sample_count": 3
+    },
+    "parapet_bottom": {
+      "mean_m": 5.142473176807456,
+      "range_m": [
+        5.118597402597403,
+        5.185891536565324
+      ],
+      "sample_count": 3
+    },
+    "parapet_top": {
+      "mean_m": 5.54,
+      "range_m": [
+        5.54,
+        5.54
+      ],
+      "sample_count": 4
+    },
+    "shaft_bottom": {
+      "mean_m": 0.47,
+      "range_m": [
+        0.47,
+        0.47
+      ],
+      "sample_count": 4
+    },
+    "shaft_top": {
+      "mean_m": 3.8327936286805713,
+      "range_m": [
+        3.8195886889460153,
+        3.844445357436319
+      ],
+      "sample_count": 4
+    }
+  },
+  "delivered_datums_m": {
+    "shaft_top": 4.04,
+    "abacus_top": 4.319,
+    "frieze_bottom": 4.62,
+    "cornice_underside": 5.01,
+    "parapet_bottom": 5.215,
+    "parapet_top": 5.54
+  },
+  "delivered_upper_stack_to_fluted_shaft_ratio": 0.4201680672268907,
+  "candidate_datums_m": {
+    "shaft_bottom": 0.47,
+    "shaft_top": 3.84,
+    "annulus_top": 3.883,
+    "neck_top": 3.985,
+    "abacus_bottom": 4.06,
+    "abacus_top": 4.142,
+    "frieze_bottom": 4.42,
+    "cornice_underside": 4.9,
+    "parapet_bottom": 5.13,
+    "parapet_top": 5.54
+  },
+  "capital_findings": "All three close-ups show a lower annulus, a visibly plain cylindrical neck, a spreading echinus, then a square abacus. The current stack of three rings occupies the neck instead.",
+  "roof_findings": "Historic IWM aerial supports a recessed flat roof within a narrow perimeter rim. It predates the current pavement arrangement and cannot establish present membrane details or roof condition.",
+  "dimension_cross_check": {
+    "OSM_long_edges_m": {
+      "SW": [
+        24.458,
+        24.458
+      ],
+      "NE": [
+        24.616,
+        24.624
+      ]
+    },
+    "published_length_m": 24.6,
+    "interpretation": "Independent mapped plan length broadly agrees with published length. Neither proves roof height, ground datum or individual chamber division."
+  },
+  "remaining_checks": [
+    "Full metric camera calibration, absolute height datum and depth offsets remain unresolved",
+    "Bay spacing and chamber plan subdivision need stronger evidence",
+    "Roof construction, drainage and present condition lack clear elevated views"
+  ],
+  "limits": [
+    "The small cross-view spread is conditional on the shared anchors and affine assumption; it is not real-world dimensional accuracy",
+    "Do not use apparent planar widths as metric widths without accounting for foreshortening",
+    "The previous delivered master is preserved as checkpoint 0.10; the coupled 0.11 revision remains a conditional photographic fit."
+  ],
+  "access_notes": {
+    "host_browser": "Still no callable southport-browser tools exposed",
+    "webb_aerial": "Search located a commercial image page, but no image was obtained or used",
+    "flickr_48630929733": "Page could not be fetched; not used",
+    "AJ_1924_04_23": "Public PDF exceeds web fetch size limit; content not inspected; not used"
+  },
+  "primary_links": [
+    "https://memorials.iwm.org.uk/memorial/1228",
+    "https://historicengland.org.uk/listing/the-list/list-entry/1379604",
+    "https://commons.wikimedia.org/wiki/File:Columns,_Southport_Monument_1.JPG",
+    "https://commons.wikimedia.org/wiki/File:Columns,_Southport_Monument_2.JPG",
+    "https://www.flickr.com/photos/rossendalewadey/7465690872"
+  ],
+  "cross_check_exclusions": [
+    {
+      "source": "commons-columns-1",
+      "column_axis_x_px": 2390,
+      "reason": "Lower shaft/foot partly hidden by a person and bicycle; no base-height measurement inferred through the occlusion."
+    }
+  ],
+  "study_artifacts": [
+    "models/studies/colonnade-vertical-candidate.blend",
+    "renders/studies/vertical-proportions-whole-0.11.png",
+    "renders/studies/vertical-proportions-capitals-0.11.png"
+  ],
+  "study_build_command": "blender -b --factory-startup --threads 12 --python scripts/study_colonnade_vertical_proportions.py",
+  "visual_review": "Inspected whole comparison and capital close-up. The candidate has a longer plain cylindrical neck and single lower annulus, consistent with the three coordinate close-ups. It also shows the larger upper-stone/shaft proportion. Cornice moulding contours remain a provisional band model. This study does not resolve global facade camera calibration or chamber fit.",
+  "next_action": "Current master uses the candidate vertical datums together with the facade/window/end-panel checks. Further work needs stronger absolute-height, bay-spacing and roof evidence.",
+  "inspection_checks": [
+    {
+      "file": "renders/studies/vertical-proportions-whole-0.11.png",
+      "pixels": [
+        1800,
+        1400
+      ],
+      "command": "chafa -f symbols --size 120x80 renders/studies/vertical-proportions-whole-0.11.png",
+      "exit_code": 0,
+      "terminal_output_bytes": 143064
+    },
+    {
+      "file": "renders/studies/vertical-proportions-capitals-0.11.png",
+      "pixels": [
+        2000,
+        700
+      ],
+      "command": "chafa -f symbols --size 120x50 renders/studies/vertical-proportions-capitals-0.11.png",
+      "exit_code": 0,
+      "terminal_output_bytes": 63459
+    }
+  ],
+  "delivered_checkpoint_artifacts": "All 49 delivered checkpoint 0.10 artifacts still exactly match the preserved hashes; this turn created only an isolated candidate and research/support records."
+}

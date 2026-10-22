@@ -1,0 +1,2472 @@
+{
+  "status": "Photo-registered shaft joint layout; dimensions and depths remain estimates",
+  "metric_envelope": {
+    "base_z_m": 4.78,
+    "top_z_m": 19.2,
+    "base_width_m": 1.8,
+    "top_width_m": 1.35,
+    "confidence": "Inherited photographic estimates within the published 20.574 m obelisk height; not independently measured"
+  },
+  "primary_bed_source": "commons-3563087",
+  "course_count": 36,
+  "course_count_evidence": "36 courses counted in SW (Jeff Buck), SE (Rept0n1x) and NW (Mike Peel) photographs; top/bottom datums are approximate",
+  "horizontal_beds_top_down": [
+    {
+      "index_top_down": 0,
+      "height_m": 19.2,
+      "source_xy_px": [
+        2659.97,
+        1107.56
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 1,
+      "height_m": 18.675,
+      "source_xy_px": [
+        2660.16,
+        1233.39
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 2,
+      "height_m": 18.345,
+      "source_xy_px": [
+        2660.28,
+        1313.29
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 3,
+      "height_m": 17.98,
+      "source_xy_px": [
+        2660.42,
+        1402.41
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 4,
+      "height_m": 17.67,
+      "source_xy_px": [
+        2660.53,
+        1478.71
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 5,
+      "height_m": 17.365,
+      "source_xy_px": [
+        2660.64,
+        1554.35
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 6,
+      "height_m": 17.015,
+      "source_xy_px": [
+        2660.77,
+        1641.83
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 7,
+      "height_m": 16.675,
+      "source_xy_px": [
+        2660.9,
+        1727.53
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 8,
+      "height_m": 16.34,
+      "source_xy_px": [
+        2661.03,
+        1812.67
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 9,
+      "height_m": 15.995,
+      "source_xy_px": [
+        2661.16,
+        1901.09
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 10,
+      "height_m": 15.645,
+      "source_xy_px": [
+        2661.3,
+        1991.56
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 11,
+      "height_m": 15.305,
+      "source_xy_px": [
+        2661.43,
+        2080.2
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 12,
+      "height_m": 14.91,
+      "source_xy_px": [
+        2661.59,
+        2184.12
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 13,
+      "height_m": 14.545,
+      "source_xy_px": [
+        2661.73,
+        2281.06
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 14,
+      "height_m": 14.18,
+      "source_xy_px": [
+        2661.88,
+        2378.9
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 15,
+      "height_m": 13.79,
+      "source_xy_px": [
+        2662.04,
+        2484.43
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 16,
+      "height_m": 13.41,
+      "source_xy_px": [
+        2662.19,
+        2588.27
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 17,
+      "height_m": 13.025,
+      "source_xy_px": [
+        2662.35,
+        2694.51
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 18,
+      "height_m": 12.645,
+      "source_xy_px": [
+        2662.51,
+        2800.39
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 19,
+      "height_m": 12.255,
+      "source_xy_px": [
+        2662.67,
+        2910.14
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 20,
+      "height_m": 11.875,
+      "source_xy_px": [
+        2662.84,
+        3018.15
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 21,
+      "height_m": 11.475,
+      "source_xy_px": [
+        2663.01,
+        3132.99
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 22,
+      "height_m": 11.065,
+      "source_xy_px": [
+        2663.19,
+        3251.96
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 23,
+      "height_m": 10.675,
+      "source_xy_px": [
+        2663.36,
+        3366.32
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 24,
+      "height_m": 10.23,
+      "source_xy_px": [
+        2663.56,
+        3498.25
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 25,
+      "height_m": 9.795,
+      "source_xy_px": [
+        2663.75,
+        3628.74
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 26,
+      "height_m": 9.32,
+      "source_xy_px": [
+        2663.97,
+        3772.95
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 27,
+      "height_m": 8.89,
+      "source_xy_px": [
+        2664.16,
+        3905.11
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 28,
+      "height_m": 8.43,
+      "source_xy_px": [
+        2664.38,
+        4048.19
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 29,
+      "height_m": 7.965,
+      "source_xy_px": [
+        2664.6,
+        4194.65
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 30,
+      "height_m": 7.505,
+      "source_xy_px": [
+        2664.82,
+        4341.39
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 31,
+      "height_m": 7.055,
+      "source_xy_px": [
+        2665.04,
+        4486.74
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 32,
+      "height_m": 6.6,
+      "source_xy_px": [
+        2665.26,
+        4635.56
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 33,
+      "height_m": 6.15,
+      "source_xy_px": [
+        2665.48,
+        4784.61
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 34,
+      "height_m": 5.685,
+      "source_xy_px": [
+        2665.72,
+        4940.62
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 35,
+      "height_m": 5.23,
+      "source_xy_px": [
+        2665.95,
+        5095.27
+      ],
+      "source": "commons-3563087"
+    },
+    {
+      "index_top_down": 36,
+      "height_m": 4.78,
+      "source_xy_px": [
+        2666.18,
+        5250.2
+      ],
+      "source": "commons-3563087"
+    }
+  ],
+  "bed_height_uncertainty_m": 0.12,
+  "secondary_SE_bed_comparison": [
+    {
+      "index_top_down": 0,
+      "source_xy_px": [
+        1491.0,
+        515
+      ],
+      "registered_height_m": 19.2,
+      "difference_from_primary_m": 0.0
+    },
+    {
+      "index_top_down": 1,
+      "source_xy_px": [
+        1489.108,
+        575
+      ],
+      "registered_height_m": 18.79175342667099,
+      "difference_from_primary_m": 0.11675342667098931
+    },
+    {
+      "index_top_down": 2,
+      "source_xy_px": [
+        1487.5,
+        626
+      ],
+      "registered_height_m": 18.447198006667616,
+      "difference_from_primary_m": 0.10219800666761714
+    },
+    {
+      "index_top_down": 3,
+      "source_xy_px": [
+        1485.829,
+        679
+      ],
+      "registered_height_m": 18.091495296858614,
+      "difference_from_primary_m": 0.11149529685861381
+    },
+    {
+      "index_top_down": 4,
+      "source_xy_px": [
+        1484.158,
+        732
+      ],
+      "registered_height_m": 17.738178801636344,
+      "difference_from_primary_m": 0.06817880163634271
+    },
+    {
+      "index_top_down": 5,
+      "source_xy_px": [
+        1482.518,
+        784
+      ],
+      "registered_height_m": 17.39382464676514,
+      "difference_from_primary_m": 0.028824646765141182
+    },
+    {
+      "index_top_down": 6,
+      "source_xy_px": [
+        1480.91,
+        835
+      ],
+      "registered_height_m": 17.058279965463726,
+      "difference_from_primary_m": 0.043279965463725034
+    },
+    {
+      "index_top_down": 7,
+      "source_xy_px": [
+        1479.207,
+        889
+      ],
+      "registered_height_m": 16.70533504571689,
+      "difference_from_primary_m": 0.030335045716888942
+    },
+    {
+      "index_top_down": 8,
+      "source_xy_px": [
+        1477.505,
+        943
+      ],
+      "registered_height_m": 16.354770724306764,
+      "difference_from_primary_m": 0.014770724306764293
+    },
+    {
+      "index_top_down": 9,
+      "source_xy_px": [
+        1475.802,
+        997
+      ],
+      "registered_height_m": 16.00656299663791,
+      "difference_from_primary_m": 0.011562996637911382
+    },
+    {
+      "index_top_down": 10,
+      "source_xy_px": [
+        1474.068,
+        1052
+      ],
+      "registered_height_m": 15.654304942851354,
+      "difference_from_primary_m": 0.009304942851354525
+    },
+    {
+      "index_top_down": 11,
+      "source_xy_px": [
+        1472.333,
+        1107
+      ],
+      "registered_height_m": 15.304442319066485,
+      "difference_from_primary_m": -0.0005576809335146038
+    },
+    {
+      "index_top_down": 12,
+      "source_xy_px": [
+        1470.536,
+        1164
+      ],
+      "registered_height_m": 14.944359087657368,
+      "difference_from_primary_m": 0.03435908765736784
+    },
+    {
+      "index_top_down": 13,
+      "source_xy_px": [
+        1468.707,
+        1222
+      ],
+      "registered_height_m": 14.580545074702583,
+      "difference_from_primary_m": 0.035545074702582724
+    },
+    {
+      "index_top_down": 14,
+      "source_xy_px": [
+        1466.847,
+        1281
+      ],
+      "registered_height_m": 14.213106739041175,
+      "difference_from_primary_m": 0.033106739041175004
+    },
+    {
+      "index_top_down": 15,
+      "source_xy_px": [
+        1464.955,
+        1341
+      ],
+      "registered_height_m": 13.84215034661521,
+      "difference_from_primary_m": 0.05215034661521045
+    },
+    {
+      "index_top_down": 16,
+      "source_xy_px": [
+        1463.0,
+        1403
+      ],
+      "registered_height_m": 13.46166782211205,
+      "difference_from_primary_m": 0.05166782211204968
+    },
+    {
+      "index_top_down": 17,
+      "source_xy_px": [
+        1461.014,
+        1466
+      ],
+      "registered_height_m": 13.077971223972622,
+      "difference_from_primary_m": 0.05297122397262122
+    },
+    {
+      "index_top_down": 18,
+      "source_xy_px": [
+        1458.995,
+        1530
+      ],
+      "registered_height_m": 12.691166495547899,
+      "difference_from_primary_m": 0.04616649554789909
+    },
+    {
+      "index_top_down": 19,
+      "source_xy_px": [
+        1456.914,
+        1596
+      ],
+      "registered_height_m": 12.295385798060366,
+      "difference_from_primary_m": 0.04038579806036502
+    },
+    {
+      "index_top_down": 20,
+      "source_xy_px": [
+        1454.77,
+        1664
+      ],
+      "registered_height_m": 11.890877260079922,
+      "difference_from_primary_m": 0.01587726007992174
+    },
+    {
+      "index_top_down": 21,
+      "source_xy_px": [
+        1452.626,
+        1732
+      ],
+      "registered_height_m": 11.489643127426765,
+      "difference_from_primary_m": 0.014643127426765545
+    },
+    {
+      "index_top_down": 22,
+      "source_xy_px": [
+        1450.45,
+        1801
+      ],
+      "registered_height_m": 11.085814809887157,
+      "difference_from_primary_m": 0.020814809887157892
+    },
+    {
+      "index_top_down": 23,
+      "source_xy_px": [
+        1448.243,
+        1871
+      ],
+      "registered_height_m": 10.679495523818426,
+      "difference_from_primary_m": 0.00449552381842544
+    },
+    {
+      "index_top_down": 24,
+      "source_xy_px": [
+        1445.847,
+        1947
+      ],
+      "registered_height_m": 10.242133987514187,
+      "difference_from_primary_m": 0.012133987514186373
+    },
+    {
+      "index_top_down": 25,
+      "source_xy_px": [
+        1443.387,
+        2025
+      ],
+      "registered_height_m": 9.797306829301327,
+      "difference_from_primary_m": 0.0023068293013270846
+    },
+    {
+      "index_top_down": 26,
+      "source_xy_px": [
+        1440.833,
+        2106
+      ],
+      "registered_height_m": 9.339647380674574,
+      "difference_from_primary_m": 0.01964738067457361
+    },
+    {
+      "index_top_down": 27,
+      "source_xy_px": [
+        1438.405,
+        2183
+      ],
+      "registered_height_m": 8.90857283340865,
+      "difference_from_primary_m": 0.01857283340864946
+    },
+    {
+      "index_top_down": 28,
+      "source_xy_px": [
+        1435.851,
+        2264
+      ],
+      "registered_height_m": 8.459238427106227,
+      "difference_from_primary_m": 0.02923842710622715
+    },
+    {
+      "index_top_down": 29,
+      "source_xy_px": [
+        1433.266,
+        2346
+      ],
+      "registered_height_m": 8.008614269819907,
+      "difference_from_primary_m": 0.04361426981990668
+    },
+    {
+      "index_top_down": 30,
+      "source_xy_px": [
+        1430.712,
+        2427
+      ],
+      "registered_height_m": 7.567632542128092,
+      "difference_from_primary_m": 0.06263254212809244
+    },
+    {
+      "index_top_down": 31,
+      "source_xy_px": [
+        1428.0,
+        2513
+      ],
+      "registered_height_m": 7.103876884164074,
+      "difference_from_primary_m": 0.04887688416407432
+    },
+    {
+      "index_top_down": 32,
+      "source_xy_px": [
+        1425.225,
+        2601
+      ],
+      "registered_height_m": 6.6340091170846565,
+      "difference_from_primary_m": 0.034009117084656815
+    },
+    {
+      "index_top_down": 33,
+      "source_xy_px": [
+        1422.545,
+        2686
+      ],
+      "registered_height_m": 6.184581768015198,
+      "difference_from_primary_m": 0.03458176801519741
+    },
+    {
+      "index_top_down": 34,
+      "source_xy_px": [
+        1419.833,
+        2772
+      ],
+      "registered_height_m": 5.734225335668866,
+      "difference_from_primary_m": 0.049225335668866776
+    },
+    {
+      "index_top_down": 35,
+      "source_xy_px": [
+        1417.09,
+        2859
+      ],
+      "registered_height_m": 5.283028551421645,
+      "difference_from_primary_m": 0.05302855142164464
+    },
+    {
+      "index_top_down": 36,
+      "source_xy_px": [
+        1414.0,
+        2957
+      ],
+      "registered_height_m": 4.78,
+      "difference_from_primary_m": 0.0
+    }
+  ],
+  "cross_view_bed_residual_m": {
+    "rms": 0.0475622861116005,
+    "maximum_absolute": 0.11675342667098931,
+    "interpretation": "Conditional photo-registration discrepancy; this does not establish metric survey accuracy"
+  },
+  "faces": {
+    "SE": {
+      "source": "commons-obelisk-2",
+      "corners_px": [
+        [
+          1491.0,
+          515.0
+        ],
+        [
+          1720.0,
+          568.0
+        ],
+        [
+          1766.0,
+          2977.0
+        ],
+        [
+          1414.0,
+          2957.0
+        ]
+      ],
+      "homography": [
+        [
+          0.005327722559707288,
+          3.122884938753217e-05,
+          -8.575602647357941
+        ],
+        [
+          -6.778313602698996e-05,
+          -0.005110127313568711,
+          20.25129978567602
+        ],
+        [
+          -7.810956189327634e-05,
+          5.6085923705814314e-05,
+          1.0
+        ]
+      ],
+      "registration": "Conditional planar homography to the existing estimated metric shaft envelope; not camera calibration or a dimensional survey",
+      "vertical_joint_rows": [
+        {
+          "course_top_down": 0,
+          "u_m": [],
+          "source_midpoint_pixels": [],
+          "confidence": "unresolved; omitted"
+        },
+        {
+          "course_top_down": 1,
+          "u_m": [
+            0.025
+          ],
+          "source_midpoint_pixels": [
+            [
+              1610.12,
+              644.1
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 2,
+          "u_m": [
+            -0.5,
+            0.54
+          ],
+          "source_midpoint_pixels": [
+            [
+              1519.39,
+              675.72
+            ],
+            [
+              1697.41,
+              714.95
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 3,
+          "u_m": [
+            0.025
+          ],
+          "source_midpoint_pixels": [
+            [
+              1609.54,
+              746.04
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 4,
+          "u_m": [
+            -0.515,
+            0.535
+          ],
+          "source_midpoint_pixels": [
+            [
+              1515.69,
+              772.24
+            ],
+            [
+              1696.54,
+              810.84
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 5,
+          "u_m": [
+            0.025
+          ],
+          "source_midpoint_pixels": [
+            [
+              1609.01,
+              841.69
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 6,
+          "u_m": [
+            -0.525,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1512.76,
+              874.36
+            ],
+            [
+              1699.09,
+              912.77
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 7,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1607.56,
+              945.6
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 8,
+          "u_m": [
+            -0.53,
+            0.555
+          ],
+          "source_midpoint_pixels": [
+            [
+              1510.68,
+              978.77
+            ],
+            [
+              1699.94,
+              1016.36
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 9,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1606.96,
+              1051.8
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 10,
+          "u_m": [
+            -0.54,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1507.65,
+              1086.72
+            ],
+            [
+              1699.07,
+              1123.25
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 11,
+          "u_m": [
+            0.025
+          ],
+          "source_midpoint_pixels": [
+            [
+              1607.21,
+              1163.49
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 12,
+          "u_m": [
+            -0.535,
+            0.555
+          ],
+          "source_midpoint_pixels": [
+            [
+              1507.17,
+              1205.4
+            ],
+            [
+              1699.94,
+              1240.56
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 13,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1605.66,
+              1281.56
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 14,
+          "u_m": [
+            -0.52,
+            0.555
+          ],
+          "source_midpoint_pixels": [
+            [
+              1508.49,
+              1325.28
+            ],
+            [
+              1699.93,
+              1358.56
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 15,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1604.97,
+              1404.32
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 16,
+          "u_m": [
+            -0.525,
+            0.56
+          ],
+          "source_midpoint_pixels": [
+            [
+              1506.15,
+              1450.36
+            ],
+            [
+              1700.82,
+              1482.45
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 17,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1604.26,
+              1529.31
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 18,
+          "u_m": [
+            -0.545,
+            0.565
+          ],
+          "source_midpoint_pixels": [
+            [
+              1501.03,
+              1576.9
+            ],
+            [
+              1701.71,
+              1608.16
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 19,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1603.54,
+              1657.01
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 20,
+          "u_m": [
+            -0.55,
+            0.565
+          ],
+          "source_midpoint_pixels": [
+            [
+              1498.58,
+              1707.1
+            ],
+            [
+              1701.72,
+              1736.85
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 21,
+          "u_m": [
+            0.025
+          ],
+          "source_midpoint_pixels": [
+            [
+              1603.7,
+              1791.0
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 22,
+          "u_m": [
+            -0.555,
+            0.565
+          ],
+          "source_midpoint_pixels": [
+            [
+              1496.03,
+              1844.49
+            ],
+            [
+              1701.73,
+              1872.59
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 23,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1601.99,
+              1930.73
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 24,
+          "u_m": [
+            -0.53,
+            0.565
+          ],
+          "source_midpoint_pixels": [
+            [
+              1498.97,
+              1994.03
+            ],
+            [
+              1701.75,
+              2019.56
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 25,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1601.11,
+              2086.47
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 26,
+          "u_m": [
+            -0.56,
+            0.565
+          ],
+          "source_midpoint_pixels": [
+            [
+              1491.43,
+              2153.77
+            ],
+            [
+              1701.76,
+              2177.85
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 27,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1600.21,
+              2245.47
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 28,
+          "u_m": [
+            -0.57,
+            0.57
+          ],
+          "source_midpoint_pixels": [
+            [
+              1487.58,
+              2317.01
+            ],
+            [
+              1702.7,
+              2339.12
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 29,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1599.27,
+              2412.38
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 30,
+          "u_m": [
+            -0.575,
+            0.57
+          ],
+          "source_midpoint_pixels": [
+            [
+              1484.6,
+              2485.28
+            ],
+            [
+              1702.73,
+              2505.08
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 31,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1598.33,
+              2579.23
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 32,
+          "u_m": [
+            -0.575,
+            0.565
+          ],
+          "source_midpoint_pixels": [
+            [
+              1482.56,
+              2654.52
+            ],
+            [
+              1701.8,
+              2671.77
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 33,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1597.37,
+              2749.69
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 34,
+          "u_m": [
+            -0.575,
+            0.57
+          ],
+          "source_midpoint_pixels": [
+            [
+              1480.46,
+              2829.38
+            ],
+            [
+              1702.77,
+              2844.1
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 35,
+          "u_m": [
+            0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              1596.38,
+              2923.88
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        }
+      ]
+    },
+    "NW": {
+      "source": "commons-war-memorial",
+      "corners_px": [
+        [
+          1305,
+          524
+        ],
+        [
+          1506,
+          481
+        ],
+        [
+          1570,
+          2632
+        ],
+        [
+          1295,
+          2643
+        ]
+      ],
+      "homography": [
+        [
+          0.007634757888085934,
+          -9.400499688426291e-05,
+          -10.677119237337305
+        ],
+        [
+          0.00014766691159013334,
+          -0.007638624895858265,
+          25.51358032676505
+        ],
+        [
+          9.527694173931286e-05,
+          1.1568379128918694e-05,
+          1.0
+        ]
+      ],
+      "registration": "Conditional planar homography to the existing estimated metric shaft envelope; not camera calibration or a dimensional survey",
+      "vertical_joint_rows": [
+        {
+          "course_top_down": 0,
+          "u_m": [],
+          "source_midpoint_pixels": [],
+          "confidence": "unresolved; omitted"
+        },
+        {
+          "course_top_down": 1,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              1404.42,
+              602.87
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 2,
+          "u_m": [
+            -0.53,
+            0.5
+          ],
+          "source_midpoint_pixels": [
+            [
+              1327.98,
+              668.79
+            ],
+            [
+              1481.56,
+              637.82
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 3,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              1404.89,
+              702.38
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 4,
+          "u_m": [
+            -0.53,
+            0.5
+          ],
+          "source_midpoint_pixels": [
+            [
+              1329.05,
+              761.88
+            ],
+            [
+              1482.8,
+              732.05
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 5,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              1406.03,
+              794.69
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 6,
+          "u_m": [
+            -0.54,
+            0.5
+          ],
+          "source_midpoint_pixels": [
+            [
+              1328.68,
+              859.43
+            ],
+            [
+              1484.09,
+              830.52
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 7,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              1408.0,
+              893.98
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 8,
+          "u_m": [
+            -0.55,
+            0.52
+          ],
+          "source_midpoint_pixels": [
+            [
+              1328.33,
+              957.89
+            ],
+            [
+              1488.43,
+              929.39
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 9,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              1409.23,
+              994.37
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 10,
+          "u_m": [
+            -0.56,
+            0.52
+          ],
+          "source_midpoint_pixels": [
+            [
+              1328.0,
+              1058.72
+            ],
+            [
+              1489.78,
+              1031.26
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 11,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              1410.51,
+              1098.64
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 12,
+          "u_m": [
+            -0.56,
+            0.52
+          ],
+          "source_midpoint_pixels": [
+            [
+              1329.23,
+              1167.52
+            ],
+            [
+              1491.23,
+              1141.48
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 13,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              1411.11,
+              1208.04
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 14,
+          "u_m": [
+            -0.58,
+            0.54
+          ],
+          "source_midpoint_pixels": [
+            [
+              1327.5,
+              1276.31
+            ],
+            [
+              1495.72,
+              1250.77
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 15,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              1413.24,
+              1320.05
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 16,
+          "u_m": [
+            -0.58,
+            0.54
+          ],
+          "source_midpoint_pixels": [
+            [
+              1328.78,
+              1388.55
+            ],
+            [
+              1497.22,
+              1364.52
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 17,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              1414.62,
+              1432.83
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 18,
+          "u_m": [
+            -0.59,
+            0.54
+          ],
+          "source_midpoint_pixels": [
+            [
+              1328.57,
+              1501.26
+            ],
+            [
+              1498.73,
+              1478.56
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 19,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              1415.27,
+              1546.72
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 20,
+          "u_m": [
+            -0.6,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1328.37,
+              1615.34
+            ],
+            [
+              1501.79,
+              1593.82
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 21,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              1417.47,
+              1664.42
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 22,
+          "u_m": [
+            -0.6,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1329.72,
+              1733.92
+            ],
+            [
+              1503.38,
+              1714.06
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 23,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              1418.21,
+              1785.95
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 24,
+          "u_m": [
+            -0.6,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1331.15,
+              1860.58
+            ],
+            [
+              1505.08,
+              1842.5
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 25,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              1419.85,
+              1919.27
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 26,
+          "u_m": [
+            -0.59,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1334.17,
+              1994.87
+            ],
+            [
+              1506.88,
+              1978.82
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 27,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              1421.49,
+              2053.37
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 28,
+          "u_m": [
+            -0.59,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1335.69,
+              2129.72
+            ],
+            [
+              1508.69,
+              2115.55
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 29,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              1423.96,
+              2191.93
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 30,
+          "u_m": [
+            -0.59,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1337.24,
+              2266.46
+            ],
+            [
+              1510.53,
+              2254.21
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 31,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              1424.87,
+              2328.39
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 32,
+          "u_m": [
+            -0.59,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1338.78,
+              2401.74
+            ],
+            [
+              1512.35,
+              2391.39
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 33,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              1427.32,
+              2465.54
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 34,
+          "u_m": [
+            -0.59,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              1340.34,
+              2539.3
+            ],
+            [
+              1514.19,
+              2530.89
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 35,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              1428.25,
+              2603.57
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        }
+      ]
+    },
+    "SW": {
+      "source": "commons-3563087",
+      "corners_px": [
+        [
+          2463,
+          1191
+        ],
+        [
+          2810,
+          1044
+        ],
+        [
+          2920,
+          5222
+        ],
+        [
+          2362,
+          5284
+        ]
+      ],
+      "homography": [
+        [
+          0.005640055965179428,
+          -1.2204532478326875e-06,
+          -14.855813907552356
+        ],
+        [
+          0.00010792248240781198,
+          -0.004710362520394138,
+          32.81614691364121
+        ],
+        [
+          0.00014007667717514614,
+          7.205727824484172e-05,
+          1.0
+        ]
+      ],
+      "registration": "Conditional planar homography to the existing estimated metric shaft envelope; not camera calibration or a dimensional survey",
+      "vertical_joint_rows": [
+        {
+          "course_top_down": 0,
+          "u_m": [],
+          "source_midpoint_pixels": [],
+          "confidence": "unresolved; omitted"
+        },
+        {
+          "course_top_down": 1,
+          "u_m": [
+            -0.405,
+            0.5
+          ],
+          "source_midpoint_pixels": [
+            [
+              2530.15,
+              1326.74
+            ],
+            [
+              2765.1,
+              1230.14
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 2,
+          "u_m": [
+            -0.025
+          ],
+          "source_midpoint_pixels": [
+            [
+              2627.78,
+              1370.94
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 3,
+          "u_m": [
+            -0.555,
+            0.505
+          ],
+          "source_midpoint_pixels": [
+            [
+              2490.88,
+              1508.07
+            ],
+            [
+              2767.55,
+              1397.82
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 4,
+          "u_m": [
+            -0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              2629.07,
+              1528.84
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 5,
+          "u_m": [
+            -0.555,
+            0.51
+          ],
+          "source_midpoint_pixels": [
+            [
+              2489.82,
+              1664.07
+            ],
+            [
+              2769.97,
+              1555.76
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 6,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              2630.39,
+              1696.17
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 7,
+          "u_m": [
+            -0.55,
+            0.515
+          ],
+          "source_midpoint_pixels": [
+            [
+              2489.96,
+              1833.91
+            ],
+            [
+              2772.5,
+              1728.34
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 8,
+          "u_m": [
+            -0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              2629.06,
+              1868.55
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 9,
+          "u_m": [
+            -0.58,
+            0.54
+          ],
+          "source_midpoint_pixels": [
+            [
+              2480.94,
+              2011.19
+            ],
+            [
+              2780.56,
+              1903.23
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 10,
+          "u_m": [
+            -0.025
+          ],
+          "source_midpoint_pixels": [
+            [
+              2627.71,
+              2047.69
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 11,
+          "u_m": [
+            -0.58,
+            0.52
+          ],
+          "source_midpoint_pixels": [
+            [
+              2479.64,
+              2195.02
+            ],
+            [
+              2776.39,
+              2092.25
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 12,
+          "u_m": [
+            -0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              2629.04,
+              2243.53
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 13,
+          "u_m": [
+            -0.55,
+            0.505
+          ],
+          "source_midpoint_pixels": [
+            [
+              2486.24,
+              2388.05
+            ],
+            [
+              2773.6,
+              2292.82
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 14,
+          "u_m": [
+            -0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              2629.04,
+              2442.19
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 15,
+          "u_m": [
+            -0.565,
+            0.52
+          ],
+          "source_midpoint_pixels": [
+            [
+              2480.84,
+              2593.48
+            ],
+            [
+              2779.22,
+              2499.24
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 16,
+          "u_m": [
+            -0.015
+          ],
+          "source_midpoint_pixels": [
+            [
+              2630.41,
+              2651.07
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 17,
+          "u_m": [
+            -0.575,
+            0.54
+          ],
+          "source_midpoint_pixels": [
+            [
+              2476.68,
+              2803.02
+            ],
+            [
+              2786.38,
+              2710.15
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 18,
+          "u_m": [
+            -0.025
+          ],
+          "source_midpoint_pixels": [
+            [
+              2627.62,
+              2865.33
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 19,
+          "u_m": [
+            -0.6,
+            0.55
+          ],
+          "source_midpoint_pixels": [
+            [
+              2468.33,
+              3019.14
+            ],
+            [
+              2790.83,
+              2927.7
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 20,
+          "u_m": [
+            -0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              2629.01,
+              3084.75
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 21,
+          "u_m": [
+            -0.615,
+            0.545
+          ],
+          "source_midpoint_pixels": [
+            [
+              2462.53,
+              3245.74
+            ],
+            [
+              2791.07,
+              3158.24
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 22,
+          "u_m": [
+            -0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              2631.85,
+              3317.09
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 23,
+          "u_m": [
+            -0.565,
+            0.555
+          ],
+          "source_midpoint_pixels": [
+            [
+              2474.72,
+              3478.94
+            ],
+            [
+              2795.76,
+              3399.25
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 24,
+          "u_m": [
+            -0.02
+          ],
+          "source_midpoint_pixels": [
+            [
+              2628.99,
+              3571.57
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 25,
+          "u_m": [
+            -0.6,
+            0.54
+          ],
+          "source_midpoint_pixels": [
+            [
+              2462.99,
+              3746.41
+            ],
+            [
+              2793.31,
+              3671.1
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 26,
+          "u_m": [
+            0.005
+          ],
+          "source_midpoint_pixels": [
+            [
+              2636.27,
+              3844.88
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 27,
+          "u_m": [
+            -0.57,
+            0.54
+          ],
+          "source_midpoint_pixels": [
+            [
+              2469.58,
+              4016.76
+            ],
+            [
+              2795.32,
+              3949.27
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 28,
+          "u_m": [
+            0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              2637.83,
+              4126.42
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 29,
+          "u_m": [
+            -0.575,
+            0.56
+          ],
+          "source_midpoint_pixels": [
+            [
+              2466.13,
+              4304.57
+            ],
+            [
+              2803.53,
+              4242.08
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 30,
+          "u_m": [
+            0.01
+          ],
+          "source_midpoint_pixels": [
+            [
+              2637.93,
+              4418.54
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 31,
+          "u_m": [
+            -0.585,
+            0.56
+          ],
+          "source_midpoint_pixels": [
+            [
+              2461.16,
+              4594.18
+            ],
+            [
+              2805.75,
+              4537.98
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 32,
+          "u_m": [
+            0.0
+          ],
+          "source_midpoint_pixels": [
+            [
+              2635.0,
+              4714.46
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 33,
+          "u_m": [
+            -0.59,
+            0.58
+          ],
+          "source_midpoint_pixels": [
+            [
+              2457.55,
+              4891.56
+            ],
+            [
+              2814.28,
+              4841.49
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 34,
+          "u_m": [
+            0.0
+          ],
+          "source_midpoint_pixels": [
+            [
+              2635.07,
+              5021.66
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        },
+        {
+          "course_top_down": 35,
+          "u_m": [
+            -0.61,
+            0.585
+          ],
+          "source_midpoint_pixels": [
+            [
+              2449.34,
+              5197.84
+            ],
+            [
+              2818.29,
+              5154.68
+            ]
+          ],
+          "confidence": "photographic estimate; approximately ±0.04 m lateral uncertainty"
+        }
+      ]
+    }
+  },
+  "unverified_face": {
+    "NE": "Horizontal levels continue around the shaft; no vertical bonds added without direct evidence"
+  },
+  "unresolved_uppermost_course": "Vertical streaks below the pyramid are insufficiently clear to distinguish every bond. No vertical seams are added in the uppermost band on any face.",
+  "joint_geometry": {
+    "horizontal_width_m": 0.003,
+    "vertical_width_m": 0.003,
+    "depth_m": 0.004,
+    "face_slab_depth_m": 0.007,
+    "status": "Estimated shallow recessed seams backed by a continuous solid tapered core; no see-through course gaps"
+  },
+  "surface_appearance": "Existing authored Portland palette retained. Individual dark stains, pale replacement blocks and pitting still need a separate evidenced surface pass.",
+  "source_state": "NW image 2011-07-30; SE image 2013-02-02; SW image 2013-07-18. No current live survey claimed.",
+  "inspection_method": "Original photographs unchanged. Temporary rectified analysis boards show native photo pixels under a planar mapping at 200 pixels/metre. Manual joint picks are inverse-mapped to native pixels above. Source RGB is not embedded in model textures.",
+  "bed_height_uncertainty_scope": "Approximate spread of photo registrations within the assumed metric envelope; 0.12 m does not bound absolute dimensional or ground-datum error."
+}

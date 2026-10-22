@@ -1,0 +1,299 @@
+{
+  "status": "Conditional whole-facade registration supporting a coupled vertical revision; not a surveyed camera solution",
+  "source": "references/images/commons-columns-1.jpg",
+  "source_pixels": [
+    3648,
+    2736
+  ],
+  "source_url": "https://commons.wikimedia.org/wiki/File:Columns,_Southport_Monument_1.JPG",
+  "registration_pixels": [
+    [
+      447,
+      842
+    ],
+    [
+      3508,
+      733
+    ],
+    [
+      3496,
+      1664
+    ],
+    [
+      425,
+      1582
+    ]
+  ],
+  "assumed_registration_metres": [
+    [
+      -12.2,
+      5.54
+    ],
+    [
+      12.2,
+      5.54
+    ],
+    [
+      12.2,
+      0.35
+    ],
+    [
+      -12.2,
+      0.35
+    ]
+  ],
+  "registration_notes": [
+    "Upper corners use the front parapet line; the wall/cornice depth offset is not solved.",
+    "Lower points extrapolate the level structural column-foot line, rather than the pavement edge.",
+    "24.4 m front parapet span is the existing estimate within the published 24.6 m overall envelope.",
+    "Roof 5.54 m and column-foot 0.35 m share the earlier conditional vertical anchors.",
+    "The opening corners follow the front reveal, including its lit return; the dark interior silhouette alone is too narrow."
+  ],
+  "image_to_facade_homography": [
+    [
+      0.009424088080926218,
+      0.00020989917713358391,
+      -17.157279311073573
+    ],
+    [
+      0.00022675702794802823,
+      -0.0073312734358829965,
+      11.869489189710226
+    ],
+    [
+      8.835251664260105e-05,
+      8.387058281834292e-06,
+      1.0
+    ]
+  ],
+  "windows": {
+    "left": {
+      "pixels": [
+        [
+          599,
+          1183
+        ],
+        [
+          697,
+          1183
+        ],
+        [
+          697,
+          1452
+        ],
+        [
+          592,
+          1448
+        ]
+      ],
+      "corners_m": [
+        [
+          -10.597913450724798,
+          3.1353772432795313
+        ],
+        [
+          -9.650344851444782,
+          3.130780318588761
+        ],
+        [
+          -9.577483855648,
+          1.2875597704994348
+        ],
+        [
+          -10.591661570762675,
+          1.304003497750954
+        ]
+      ],
+      "width_m": 0.9808731571973457,
+      "height_m": 1.8372971468089516,
+      "bottom_z_m": 1.2957816341251944,
+      "top_z_m": 3.133078780934146
+    },
+    "right": {
+      "pixels": [
+        [
+          3068,
+          1181
+        ],
+        [
+          3224,
+          1181
+        ],
+        [
+          3223,
+          1523
+        ],
+        [
+          3064,
+          1518
+        ]
+      ],
+      "corners_m": [
+        [
+          9.37079547626693,
+          3.0499885876864172
+        ],
+        [
+          10.406513859605939,
+          3.044841760049821
+        ],
+        [
+          10.432278971040672,
+          1.1057883908745831
+        ],
+        [
+          9.378482159880738,
+          1.1183970799005154
+        ]
+      ],
+      "width_m": 1.0447575972494718,
+      "height_m": 1.9353224384805698,
+      "bottom_z_m": 1.1120927353875492,
+      "top_z_m": 3.047415173868119
+    }
+  },
+  "trophies": {
+    "left": {
+      "pixels": [
+        [
+          570,
+          1063
+        ],
+        [
+          736,
+          1060
+        ],
+        [
+          736,
+          1123
+        ],
+        [
+          570,
+          1125
+        ]
+      ],
+      "corners_m": [
+        [
+          -10.915400858459101,
+          3.9702547162066764
+        ],
+        [
+          -9.310449989731143,
+          3.9716566596282585
+        ],
+        [
+          -9.293563943138968,
+          3.539835295218979
+        ],
+        [
+          -10.897765648697368,
+          3.5394139558964017
+        ]
+      ],
+      "width_m": 1.6045762871431783,
+      "height_m": 0.43133106235977703,
+      "bottom_z_m": 3.5396246255576904,
+      "top_z_m": 3.9709556879174674
+    },
+    "right": {
+      "pixels": [
+        [
+          3022,
+          1033
+        ],
+        [
+          3290,
+          1029
+        ],
+        [
+          3290,
+          1101
+        ],
+        [
+          3022,
+          1104
+        ]
+      ],
+      "corners_m": [
+        [
+          9.045587583534948,
+          3.9050557441534686
+        ],
+        [
+          10.824172868280309,
+          3.9033326929636076
+        ],
+        [
+          10.83077051048052,
+          3.495452776267775
+        ],
+        [
+          9.053044026722775,
+          3.4953856550189855
+        ]
+      ],
+      "width_m": 1.7781558842515528,
+      "height_m": 0.4087750029151578,
+      "bottom_z_m": 3.4954192156433805,
+      "top_z_m": 3.904194218558538
+    }
+  },
+  "end_panel_check": {
+    "source": "references/images/iwm-mont_9a.jpg",
+    "native_pixels": [
+      855,
+      1280
+    ],
+    "observations_px": {
+      "frieze_lower_edge_y": 178,
+      "structural_foot_y": 1256,
+      "panel_top_y": 505,
+      "panel_bottom_y": 1006,
+      "panel_width_px": 243
+    },
+    "conditional_height_m": 1.891530612244898,
+    "conditional_bottom_z_m": 1.2938775510204081,
+    "apparent_aspect_height_over_width": 2.0617283950617282,
+    "limits": "Near-frontal image, not an orthographic elevation. WMO full-end estimate gives about 1.83 m height / 1.09 m bottom, so the selected shared level is a compromise, not an exact transfer."
+  },
+  "selected_dimensions_m": {
+    "window": {
+      "width": 1.04,
+      "height": 1.9,
+      "bottom": 1.2,
+      "top": 3.1,
+      "jamb_centre_offset": 0.71,
+      "jamb_width": 0.38,
+      "band_width": 2.3,
+      "band_bottom": 3.1,
+      "band_top": 3.32
+    },
+    "trophy": {
+      "width": 1.85,
+      "height": 0.42,
+      "centre_z": 3.75
+    },
+    "end_plaque": {
+      "width": 0.94,
+      "height": 1.9,
+      "bottom": 1.2,
+      "top": 3.1,
+      "band_bottom": 3.2,
+      "band_top": 3.42,
+      "band_width": 2.32
+    }
+  },
+  "decision": [
+    "Use the independent three-view shaft/upper-stack ratio to revise the shaft top to 3.84 m, including a plain capital neck.",
+    "Window head and trophy levels from this whole-facade registration agree with the shorter shaft. Revise their fit together with the roof bands.",
+    "Preserve the traced end-carving aspect by scaling its width and height together, rather than compressing the figure vertically.",
+    "Do not adopt new bay spacing from this registration: depth offsets, corner extrapolation and absolute anchors remain insufficiently constrained."
+  ],
+  "limits": [
+    "These dimensions remain photographic estimates; approximate uncertainty is 0.15 m in window width and 0.25 m in height/vertical placement.",
+    "The two windows disagree by about 0.2 m at the sill. This is retained as evidence of registration/landmark uncertainty, not modelled as different window designs.",
+    "The prior 2.1\u20132.2 apparent window aspect was not a rectified physical aspect: it mixed facade foreshortening with vertical scale.",
+    "Global camera intrinsics, lens distortion, depth offsets and the physical datum of IWM height remain unresolved.",
+    "End plaque width follows its near-frontal aspect; full depth and frame profiles remain estimated."
+  ]
+}

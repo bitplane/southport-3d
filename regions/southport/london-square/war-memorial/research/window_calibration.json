@@ -1,0 +1,103 @@
+{
+  "sources": [
+    {
+      "id": "commons-columns-2",
+      "opening_corners_px": [
+        [
+          300,
+          873
+        ],
+        [
+          539,
+          873
+        ],
+        [
+          554,
+          1378
+        ],
+        [
+          314,
+          1382
+        ]
+      ],
+      "apparent_width_height_px": [
+        239,
+        507
+      ],
+      "apparent_height_width_ratio": 2.1213389121338913,
+      "jamb_width_px": 87,
+      "lintel_band_approximate_bounds_px": [
+        140,
+        815,
+        687,
+        873
+      ]
+    },
+    {
+      "id": "flickr-7465690872",
+      "opening_corners_px": [
+        [
+          225,
+          850
+        ],
+        [
+          355,
+          850
+        ],
+        [
+          360,
+          1135
+        ],
+        [
+          230,
+          1135
+        ]
+      ],
+      "apparent_width_height_px": [
+        132,
+        285
+      ],
+      "apparent_height_width_ratio": 2.159090909090909,
+      "jamb_centre_separation_px": 183
+    }
+  ],
+  "selected_geometry": {
+    "width_m": 1.04,
+    "bottom_z_m": 1.2,
+    "top_z_m": 3.1,
+    "height_m": 1.9,
+    "jamb_centre_offset_m": 0.71,
+    "jamb_width_m": 0.38,
+    "confidence": "Photographic estimate, approximately \u00b10.15 m width and \u00b10.25 m vertical dimensions; published ground datum unresolved",
+    "source": "research/colonnade_facade_calibration.json; conditional whole-facade registration",
+    "note": "Two separate moulded jamb capitals. Rosette band spans the opening; no lower continuous beam. Jambs extend down beside the blank apron.",
+    "lintel_band_width_m": 2.3,
+    "lintel_band_height_m": 0.21999999999999975,
+    "lintel_band_bottom_z_m": 3.1,
+    "lintel_band_top_z_m": 3.32
+  },
+  "visible_construction": [
+    "Two separate capitals, one atop each jamb, terminating beneath a continuous rosette band",
+    "Each rosette aligned over its jamb",
+    "Jambs continue below sill on either side of rectangular blank apron",
+    "Shallow moulded sill and recessed rectangle in apron"
+  ],
+  "interpretation": "Superseded apparent-aspect fit: facade foreshortening was not removed. Whole-facade conditional registration gives 1.84\u20131.94 m opening height and 0.98\u20131.04 m width. See colonnade_facade_calibration.json for landmarks and limitations.",
+  "excluded": "Interior furnishing / names / metalwork beyond opening are outside the current scope",
+  "review_correction": "Revise vertical fit together with the shorter shaft and deeper upper stack. Keep dimensions explicitly estimated.",
+  "previous_selection": {
+    "width_m": 1.06,
+    "bottom_z_m": 1.05,
+    "top_z_m": 3.319,
+    "height_m": 2.269,
+    "jamb_centre_offset_m": 0.735,
+    "jamb_width_m": 0.39,
+    "confidence": "Photographic estimate: approximately \u00b10.12 m width, \u00b10.25 m height; ground datum and camera calibration unresolved",
+    "source": "Commons columns 2 and Flickr 7465690872; see research/window_calibration.json",
+    "note": "Two separate moulded jamb capitals. Rosette band spans the opening; no lower continuous beam. Jambs extend down beside the blank apron.",
+    "lintel_band_width_m": 2.42,
+    "lintel_band_height_m": 0.26,
+    "lintel_band_bottom_z_m": 3.319,
+    "lintel_band_top_z_m": 3.579
+  }
+}
