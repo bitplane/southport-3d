@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 out=Path(__file__).resolve().parents[1]/'textures';out.mkdir(exist_ok=True)
 n=512;rng=np.random.default_rng(20261022);y,x=np.mgrid[:n,:n]
-for name,colour,cols,rows in [('paving',(166,162,147),4,6),('brick',(141,93,79),12,24),('asphalt',(63,65,64),1,1),('tactile',(166,128,89),4,4)]:
+for name,colour,cols,rows in [('paving',(166,162,147),4,6),('brick',(141,93,79),12,24),('path',(147,140,119),12,24),('asphalt',(63,65,64),1,1),('tactile',(166,128,89),4,4)]:
  xx=x/n*cols;yy=y/n*rows;row=np.floor(yy).astype(int);col=np.floor(xx+(row%2)*.5).astype(int)
  variation=rng.uniform(-7,7,(rows+1,cols+1))[row,col];noise=rng.normal(0,1.6,(n,n))
  a=np.array(colour)[None,None,:]+(variation+noise)[:,:,None]

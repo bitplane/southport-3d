@@ -41,4 +41,20 @@ print('Church gardens geometry, entrances and LoDs validated')
 D=json.loads((ROOT/'research/layout.json').read_text())
 for rows in D['benches'].values():
  for x,y,yaw in rows:
-  assert yaw==(180 if y>0 else 0),(x,y,yaw,'reversed garden bench')
+  assert yaw in ((180,90) if y>0 else (0,)),(x,y,yaw,'reversed garden bench')
+
+# Road-facing retaining wall and low path edging must not be interchanged.
+assert any(w['place']=='christ' and w['height']==.55 and all(abs(x+75.3)<.001 for x,y in w['xy']) for w in report['walls'])
+assert not any(w['place']=='christ' and w['height']>.1 and len(w['xy'])>2 and all(y<0 for x,y in w['xy']) for w in report['walls'])
+from mathutils import Vector
+def ground_height(x,y):
+    hits=[]
+    for ob in bpy.data.collections['christ-ground'].objects:
+        hit,p,n,i=ob.ray_cast(Vector((x,y,4)),Vector((0,0,-1)))
+        if hit:hits.append((p.z,ob.name))
+    assert len(hits)==1,(x,y,hits)
+    return hits[0]
+for x,y in [(-85,0),(-115,0)]:
+    z,name=ground_height(x,y);assert 'grass' in name and abs(z-(-.0075-.022*y+.45))<.002
+for x,y in [(-82,-24.5),(-91,-28.5),(-80,-20.4)]:
+    z,name=ground_height(x,y);assert 'grass' not in name and abs(z-(-.0075-.022*y))<.002

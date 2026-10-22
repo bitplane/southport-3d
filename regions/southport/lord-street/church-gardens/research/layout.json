@@ -7,7 +7,7 @@
   "bounds": {
     "christ": [
       -136,
-      -23.6,
+      -29.72,
       -73,
       41
     ],
@@ -150,13 +150,13 @@
         180
       ],
       [
-        -77,
-        -18.4,
-        0
+        -74.1,
+        3.5,
+        90
       ],
       [
         -94,
-        -19,
+        -20.2,
         0
       ]
     ],
@@ -285,5 +285,6 @@
     ]
   },
   "seams": "Christ X=-73 meets London Square; St George X=154 meets St Georges Place. Shared main road kerbs Y21/31. No kerb or paint across a tile cut.",
-  "bench_orientation_note": "Bench primitive backrest is local +Y and seat faces -Y. Garden-edge rows face out toward Lord Street (+Y, yaw180); rear rows face the southern footway (-Y,yaw0). Corrected from reversed original placements; exact positions remain estimated."
+  "bench_orientation_note": "Bench primitive backrest is local +Y and seat faces -Y. Garden-edge rows face out toward Lord Street (+Y, yaw180); rear rows face the southern footway (-Y,yaw0). Corrected from reversed original placements; exact positions remain estimated.",
+  "christ_snag_evidence": "Private user photo cbd4b778: retaining wall faces service-road end; lawn raised, interior path edged low. Approximate offsets and 0.45m rise, not surveyed."
 }

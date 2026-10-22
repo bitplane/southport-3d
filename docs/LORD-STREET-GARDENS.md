@@ -83,3 +83,17 @@ seam checks also ray-cast matching paint and height across the source boundaries
 These are sums of separate streamed parts, not compressed network transfer sizes.
 Walk can be larger in bytes than Detail because generated replacement meshes
 have separate baked maps; lower triangle counts do not guarantee smaller bytes.
+
+## Christ Church approach snag
+
+The private photo in cbd4b778 relocates the garden retaining wall to the end
+facing the service road. The diagonal wall beside the interior path is replaced
+with low edging. Lawns rise approximately 0.45 m, with graded margins toward
+the paths; heights and offsets are visually estimated. The road-facing bench
+and entrance bollards follow the revised boundary. Buff block paving replaces
+the overly red approach, and paving extends to Y=-29.72 to meet the recessed
+cafe and church entrances. The X=-73 ownership seam remains unchanged.
+
+Ground-level probes require one surface, verify raised turf and keep entrance
+paving on the inherited grade. Wall/path/terrain shapes remain at all LoDs;
+existing furniture generators and texture reductions continue to apply.

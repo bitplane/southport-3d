@@ -52,6 +52,7 @@ def material(name, colour, texture=None):
 
 mats = {
     'paving': material('Authored pale garden slabs', (.6,.58,.52), 'paving'),
+    'path': material('Authored buff church path blocks',(.46,.43,.36),'path'),
     'brick': material('Authored red-brown forecourt pavers', (.44,.30,.23), 'brick'),
     'asphalt': material('Authored Lord Street asphalt', (.08,.09,.09), 'asphalt'),
     'grass': material('Late summer lawn', (.27,.32,.14)),
@@ -79,7 +80,8 @@ def grade(y):
 def surface(place, points, mat, priority=0, drop=0):
     points = [tuple(p) for p in points]
     x0,_,x1,y1=D['bounds'][place]
-    for a,b in [((x0,-27),(x1,-27)),((x1,-27),(x1,y1)),((x1,y1),(x0,y1)),((x0,y1),(x0,-27))]:
+    ymin=D['bounds'][place][1] if place=='christ' else -27
+    for a,b in [((x0,ymin),(x1,ymin)),((x1,ymin),(x1,y1)),((x1,y1),(x0,y1)),((x0,y1),(x0,ymin))]:
         points=halfplane(points,a,b,True)
     if len(points)<3:return
     if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(points,points[1:]+points[:1])) < 0:
@@ -144,7 +146,7 @@ def item(place, kind,x,y,yaw=0,scale=(1,1,1)):
         ob=prototypes[kind].copy()
         ob.data=prototypes[kind].data
         collections[place+'-furniture'].objects.link(ob)
-    ob.location=(x,y,grade(y))
+    ob.location=(x,y,grade(y)+(.45 if place=='christ' and kind=='tree' else 0))
     ob.rotation_euler.z=math.radians(yaw)
     ob.scale=scale
     ob['evidence']='Street View family; placement/dimensions visually estimated'
@@ -182,29 +184,42 @@ for place,bounds in D['bounds'].items():
         start,end=max(x0,x),min(x1,x+2)
         if end>start:strip(place,[(start,25.6),(end,25.6)],.10,'white',300,-.12)
     for path in D['paths'][place]:
-        strip(place,path['xy'],path['width'],'brick' if place=='christ' else 'paving',80)
+        strip(place,path['xy'],path['width'],'path' if place=='christ' else 'paving',80)
     for x,y,scale in D['trees'][place]:item(place,'tree',x,y,0,(scale,scale,scale))
     for x,y,yaw in D['benches'][place]:item(place,'bench',x,y,yaw)
 
 # Christ Church lawns and two intersecting approaches. The path widths and
 # rounded corners are interpreted from aerial and ground views, not a survey.
-surface('christ',[(-128,-17.8),(-105,-17.8),(-103,-13),(-104,16.9),(-127.7,16.9)],'grass',40,.035)
-surface('christ',[(-97.4,-15.8),(-77.5,-13.4),(-73,-11.5),(-73,17.5),(-97.7,17.5)],'grass',40,.035)
-strip('christ',[(-73,-20.4),(-86.8,-20.34),(-99.9,-20.47),(-115.25,-22.06),(-128,-22.6)],5.0,'brick',85)
+def raised_lawn(points, south, west, east):
+    # Low path edge blends into a raised plateau. The road-facing end is retained.
+    def rise(x,y):return min(.45,.07+max(0,y-south)*.28,.07+max(0,x-west)*.28,.07+max(0,east-x)*.28)
+    for x in range(math.floor(min(p[0] for p in points)),math.ceil(max(p[0] for p in points)),2):
+        for y in range(math.floor(min(p[1] for p in points)),math.ceil(max(p[1] for p in points)),2):
+            cell=points[:]
+            for a,b in [((x,y),(x+2,y)),((x+2,y),(x+2,y+2)),((x+2,y+2),(x,y+2)),((x,y+2),(x,y))]:cell=halfplane(cell,a,b,True)
+            if len(cell)>2:surface('christ',cell,'grass',40,rise)
+
+raised_lawn([(-128,-17.8),(-105,-17.8),(-103,-13),(-104,16.9),(-127.7,16.9)],-17.8,-128,-103)
+raised_lawn([(-97.4,-16.0),(-79.5,-16.0),(-77,-15.2),(-75.5,-13.0),(-75.5,17.5),(-97.7,17.5)],-16,-97.7,-72.5)
+strip('christ',[(-73,-20.4),(-86.8,-20.34),(-99.9,-20.47),(-115.25,-22.06),(-128,-22.6)],5.0,'path',85)
+# Retaining wall follows the service-road end; only low kerb edging follows
+# the pedestrian approach. Keep the entry beside BHF open.
+wall('christ',[(-75.3,-13.0),(-75.3,17.8)],.55,True)
+wall('christ',[(-97.4,-16),(-79.5,-16),(-77,-15.2),(-75.5,-13)],.085)
 # Raise only the short entrance landings out of the road, keeping a continuous
 # accessible apron. Ramped meshes below replace the carriageway in each mouth.
 for x,width in [(-100.9,4.2),(-131.3,5.2)]:
-    rect('christ',x-width/2,19,x+width/2,21.5,'brick',210,lambda x,y:-.12*max(0,min(1,(y-19)/2)))
+    rect('christ',x-width/2,19,x+width/2,21.5,'path',210,lambda x,y:-.12*max(0,min(1,(y-19)/2)))
 for a,b in [(-127.6,-104.2),(-97.5,-73)]:
     wall('christ',[(a,17.8),(b,17.8)],.70)
 wall('christ',[(-127.7,-17.5),(-127.7,16.9)],.52,True)
-wall('christ',[(-97.2,-16.5),(-87,-15.3),(-77,-14.1),(-73,-12.2)],.48,True)
+# Former diagonal brick wall removed: this is an open pedestrian path edge.
 for x in [-103.2,-98.4]:
     wall('christ',[(x,17.5),(x,18.1)],.90)
 for x in [-102.2,-100.8,-99.4]:item('christ','bollard',x,12.6)
-for x in [-79.0,-77.6,-76.2]:item('christ','bollard',x,-21.3)
+for y in [-22.7,-20.8,-18.9]:item('christ','bollard',-74.0,y)
 for x,y in [(-104,20.0),(-126,19.8),(-75,-18.5)]:item('christ','bin',x,y)
-item('christ','lantern',-78.8,-17.0)
+item('christ','lantern',-77.5,-16.8)
 item('christ','streetlight',-118,32.1)
 item('christ','streetlight',-86,32.1)
 hedge_line('christ',[(-105,13.5),(-105,16.6)],.9)
