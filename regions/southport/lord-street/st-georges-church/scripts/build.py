@@ -103,17 +103,37 @@ for name,origin,normal,length in [('south',(xl,front,base),(-1,0,0),front-rear),
     centres=[(i+.5)*length/5 for i in range(5)]
     holes=[pointed(1.35,2.45,5.75,u) for u in centres]
     finish(wall('Envelope nave '+name,rectangle(0,0,length,eave),holes),transform=frame)
-    for i,u in enumerate(centres):arch_window('nave-'+str(i%2),1.35,2.45,5.75,frame@Matrix.Translation((u,0,0)),style=i)
+    for i,u in enumerate(centres):arch_window('nave-'+str(int(i==2)),1.35,2.45,5.75,frame@Matrix.Translation((u,0,0)),style=int(i==2))
     for i in range(6):
         u=i*length/5
         butt=Mesh('Buttress nave '+name)
-        # Four set-backs, sloping weatherings and narrow pinnacle cap.
-        for a,b,d,w in [(0,1.3,.95,.92),(1.3,4.7,.78,.78),(4.7,7.4,.57,.67),(7.4,9.35,.34,.55)]:
-            butt.box((u,(a+b)/2,d/2),(w,b-a,d))
-            butt.outline([(u-w/2,b),(u+w/2,b),(u+w/2,b+.21),(u-w/2,b+.21)],0,d+.09)
-        butt.add([(u-.34,9.35,0),(u+.34,9.35,0),(u+.34,9.35,.52),(u-.34,9.35,.52),(u-.34,9.68,.10),(u+.34,9.68,.10)],
-                 [(0,3,2,1),(0,1,5,4),(3,4,5,2),(0,4,3),(1,2,5)])
+        # Photographed stepped stone shaft with two broad dark weatherings.
+        rings=[(0,.92,.95),(1.3,.92,.95),(1.42,.78,.78),(4.15,.78,.78),
+               (4.70,.67,.57),(7.45,.67,.57),(8.85,.55,.08)]
+        vertices=[]
+        for h,w,dep in rings:vertices.extend([(u-w/2,h,0),(u+w/2,h,0),(u+w/2,h,dep),(u-w/2,h,dep)])
+        faces=[(3,2,1,0)]
+        for j in range(len(rings)-1):
+            for k in range(4):faces.append((4*j+k,4*j+(k+1)%4,4*(j+1)+(k+1)%4,4*(j+1)+k))
+        q=4*(len(rings)-1);faces.append((q,q+1,q+2,q+3))
+        butt.add(vertices,faces)
         finish(butt,mats=[ashlar],transform=frame)
+        weather=Mesh('Buttress weathering '+name)
+        for lo,hi,w0,w1,d0,d1,count in [(4.15,4.70,.78,.67,.78,.57,2),(7.45,8.85,.67,.55,.57,.08,3)]:
+            for k in range(count):
+                t0=k/count;t1=(k+1)/count-.006
+                h0=lo+(hi-lo)*t0;h1=lo+(hi-lo)*t1
+                ww0=w0+(w1-w0)*t0;ww1=w0+(w1-w0)*t1
+                dd0=d0+(d1-d0)*t0+.015;dd1=d0+(d1-d0)*t1+.015
+                weather.add([(u-ww0/2-.025,h0,dd0),(u+ww0/2+.025,h0,dd0),
+                             (u+ww1/2+.025,h1,dd1),(u-ww1/2-.025,h1,dd1)],[(0,1,2,3)])
+        finish(weather,mats=[slate],transform=frame)
+    corbels=Mesh('Course nave eave corbels '+name)
+    for i in range(int(length/.65)):
+        corbels.box(((i+.5)*length/int(length/.65),eave-.14,.14),(.18,.20,.28))
+    finish(corbels,mats=[ashlar],transform=frame)
+    for u in centres:
+        box('Course nave dark sill',(u,2.405,.12),(3.28,.035,.65),mat=slate,transform=frame)
     for z,h,dep in [(.32,.30,.18),(1.2,.12,.12),(eave-.15,.27,.18)]:
         box('Course nave '+name,(length/2,z,dep/2),(length,h,dep),transform=frame)
     # Gutters/downpipes remain distinct from masonry; omit small fittings far away.
@@ -151,9 +171,15 @@ roof=Mesh('Roof nave closed shell');x0=xl-.15;x1=xr+.15;y0=rear-.12;y1=front+.06
 section=[(x0,eave+.12),(cx,ridge+.12),(x1,eave+.12),(x1,eave-.08),(cx,ridge-.08),(x0,eave-.08)]
 verts=[(x,y,base+z) for y in (y0,y1) for x,z in section]
 faces=[tuple(reversed(range(6))),tuple(range(6,12))]+[(i,(i+1)%6,(i+1)%6+6,i+6) for i in range(6)]
-roof.add(verts,faces);finish(roof,mats=[slate])
-cap=Mesh('Roof ridge cap');cap.tube([(cx,rear-.1,base+ridge+.18),(cx,front+.05,base+ridge+.18)],.105,sides=8);finish(cap,mats=[ashlar])
-for yy in (front-.15,rear+.1):
+roof.add(verts,faces);roof_ob=finish(roof,mats=[slate])
+# Stop the nave roof at the tower walls; it must not run through the belfry.
+cut=Mesh('Temporary tower roof notch');cut.box((cx,(tb+tf)/2+.03,base+15),(tw,tf-tb,40))
+cutter=cut.finish([]);bpy.context.view_layer.objects.active=roof_ob
+mod=roof_ob.modifiers.new('Tower footprint clearance','BOOLEAN');mod.operation='DIFFERENCE';mod.solver='EXACT';mod.object=cutter
+bpy.ops.object.modifier_apply(modifier=mod.name);bpy.data.objects.remove(cutter,do_unlink=True)
+
+cap=Mesh('Roof ridge cap');cap.tube([(cx,rear-.1,base+ridge+.18),(cx,tb,base+ridge+.18)],.105,sides=8);finish(cap,mats=[ashlar])
+for yy in (rear+.1,):
     cross=Mesh('Silhouette roof cross');cross.box((cx,yy,base+ridge+.65),(.10,.15,1.05));cross.box((cx,yy,base+ridge+.83),(.65,.15,.10));finish(cross,mats=[ashlar])
 
 # Attached brick school/hall seen clearly in November 2020 car-park imagery.
@@ -225,10 +251,10 @@ for name,frame,length in tower_frames:
     if name in ('south','north'):
         for dx in (-.77,.77):holes.append(pointed(.57,5.6,7.7,length/2+dx))
         holes.append([(length/2+.67*math.cos(a*math.tau/32),2.85+.67*math.sin(a*math.tau/32)) for a in range(32)])
-    for u in (length/2-1.14,length/2+1.14):holes.append(pointed(.89,15.45,18.75,u))
-    # Rear lower wall remains inside nave; suppress it below ridge to avoid
-    # duplicate facade strips showing through the gable/roof intersection.
-    poly=rectangle(0,ridge if name=='back' else 0,length,22.2)
+    if name!='back':
+        for u in (length/2-1.14,length/2+1.14):holes.append(pointed(.89,15.45,18.75,u))
+    # Rear wall closes the notched roof junction; no invented rear belfry windows.
+    poly=rectangle(0,0,length,22.2)
     finish(wall('Envelope tower '+name,poly,holes,.50),'tower',transform=frame)
     if name in ('south','north'):
         for dx in (-.77,.77):
@@ -243,7 +269,8 @@ for name,frame,length in tower_frames:
         instance('tower-rose-stone',lambda:m,af,'tower',[ashlar])
         m=Mesh('Window arch glass tower rose');m.outline([(.66*math.cos(a*math.tau/40),.66*math.sin(a*math.tau/40)) for a in range(40)],-.26,-.22)
         instance('tower-rose-glass',lambda:m,af,'tower',[glass])
-    for u in (length/2-1.14,length/2+1.14):arch_window('bell',.89,15.45,18.75,frame@Matrix.Translation((u,0,0)),'tower',2,bell=True)
+    if name!='back':
+        for u in (length/2-1.14,length/2+1.14):arch_window('bell',.89,15.45,18.75,frame@Matrix.Translation((u,0,0)),'tower',2,bell=True)
     # Triple blind pointed niches in stage two are read as recessed stone,
     # not glass. Narrow pointed canopies/crockets form the recognisable group.
     if name in ('front','south','north'):

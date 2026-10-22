@@ -34,3 +34,26 @@ without an observed colour jump or open roof face. The hall attic vent was
 incorrectly pointed: it now has the semicircular head visible in the car-park
 photograph. Fine tracery and stone weathering remain interpretations; exact
 roof heights and unobserved elevations are not certified by this comparison.
+
+## Saved-view church snag pass
+
+The supplied side photographs in reports 7ed12d3b and 2a9e2049 establish dark,
+broad sloping buttress weatherings, irregular weathered masonry, and a central
+three-lobed window motif among four-lobed neighbours. Those features now replace
+the uniform buttress caps, alternating window pattern and regular masonry grid.
+The lower and upper weatherings have separate slab courses, dark sill caps and
+eave corbels add the visible horizontal details, and the side tracery uses pointed
+side lights in place of circular inserts. Both nave sides share this construction;
+visibility of the hidden rear remains limited. Texture pixels are procedural,
+with no reference photograph embedded, and preserve the previous mean albedo.
+
+The rear tower face no longer has the unsupported paired belfry openings. The
+nave roof is notched to the tower footprint, its ridge cap ends at the rear tower
+wall, and the redundant cross inside the tower is removed. A full-height rear
+tower wall closes the roof junction. Counts and roof clearance rays cover these
+changes. Dimensions, concealed details and the exact masonry condition remain
+visually estimated; this is an exterior reconstruction, not a survey.
+
+Walk and District keep the new buttress silhouette and weathering geometry.
+Tracery generators use the same corrected forms with fewer curve samples;
+District continues to bake fine glazing leadwork onto recessed receivers.

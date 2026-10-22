@@ -85,7 +85,13 @@ def foil(mesh,x,y,radius,lobes=4,out=.10,width=.045,material=0):
     steps=max(4,round(16*CURVE_SCALE))
     for i in range(lobes*steps+1):
         a=math.tau*i/(lobes*steps)
-        r=radius*(.80+.20*math.cos(lobes*a))
+        # Envelope of overlapping circular lobes, not a pointed star wave.
+        candidates=[]
+        for k in range(lobes):
+            phi=math.pi/2+k*math.tau/lobes
+            projection=.45*radius*math.cos(a-phi)
+            candidates.append(projection+math.sqrt((.55*radius)**2-(.45*radius)**2+projection**2))
+        r=max(candidates)
         pts.append((x+r*math.cos(a),y+r*math.sin(a),out))
     mesh.tube(pts,width,sides=max(4,round(6*CURVE_SCALE)),material=material)
 
@@ -105,12 +111,16 @@ def window_surround(name,radius,bottom,spring,lights=3,style=0,louvres=False):
     for i in range(lights):
         x=-radius+(i+.5)*lightwidth
         arch_ring(mesh,lightwidth*.43,bottom,tracerybase,.065,.06,.16,cx=x,steps=12,sill=False)
-    cy=spring+radius*.80
-    circle_band(mesh,0,cy,radius*.35,.065,.07,.18,24)
-    foil(mesh,0,cy,radius*.30,3 if style%2 else 4,out=.09,width=.035)
+    cy=spring+radius*.95
     if lights==3:
+        foil(mesh,0,cy,radius*.39,3 if style%2 else 4,out=.09,width=.055)
         for sign in (-1,1):
-            circle_band(mesh,sign*radius*.53,spring+radius*.32,radius*.18,.045,.065,.14,20)
+            # Tall pointed side lights rather than the old circular rings.
+            arch_ring(mesh,radius*.18,spring-.20,spring+.26,.045,.065,.14,cx=sign*radius*.59,sill=False)
+            mesh.tube([(sign*radius/3,tracerybase,.035),(sign*radius*.20,cy-radius*.34,.035)],.045,sides=max(4,round(8*CURVE_SCALE)))
+    else:
+        circle_band(mesh,0,cy,radius*.35,.065,.07,.18,24)
+        foil(mesh,0,cy,radius*.30,3 if style%2 else 4,out=.09,width=.035)
     return mesh
 
 
