@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.public-realm",
+  "name": "Nevill Street \u2014 monument to Funland",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "mapped-corridor-with-estimated-widths-and-grade",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "carriageways",
+    "footways",
+    "kerbs",
+    "crossings",
+    "side-road-mouths",
+    "pier-forecourt-approach"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Roads and pavements from London Square north seam through Nevill Street to the Promenade crossing and Funland frontage approach. No buildings, carousel, interiors or street furniture. Observed 2019/2020 imagery; not a reconstruction of proposed 2026 highway changes.",
+  "licensing": "OSM-derived layout, OpenStreetMap contributors ODbL 1.0; photographic reference links only, all maps procedurally authored."
+}

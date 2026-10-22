@@ -1,0 +1,79 @@
+{
+  "reviewed": "2026-10-22",
+  "sources": [
+    {
+      "id": "operator",
+      "url": "https://www.silcock-leisure.co.uk/amusements/funland/",
+      "author": "Silcock Leisure",
+      "observations": [
+        "Funland is the amusement centre at Southport Pier forecourt, Promenade; distinct from Nevill Street Amusements."
+      ]
+    },
+    {
+      "id": "route-map",
+      "url": "https://www.google.com/maps/@53.6496,-3.006,18z/data=!3m1!1e3",
+      "author": "Google satellite map, imagery providers displayed on page",
+      "capture": "Date not established",
+      "observations": [
+        "Continuous Nevill Street connection from monument to Promenade; broad upper paved areas, staggered side junctions and pier forecourt."
+      ]
+    },
+    {
+      "id": "lower-ground",
+      "url": "https://www.mapillary.com/app/?pKey=202357981713945&focus=photo",
+      "author": "davidsong via Mapillary",
+      "capture": "2020-04-04 displayed",
+      "observations": [
+        "Asphalt two-way lower Nevill Street with dashed white centre and double yellow edges; pale rectangular slab pavements with reddish brick edge bands. Street furnishings outside current scope."
+      ]
+    },
+    {
+      "id": "upper-ground",
+      "url": "https://www.mapillary.com/app/?pKey=4962497493845430&focus=photo",
+      "author": "davidsong via Mapillary",
+      "capture": "2019-07-29 displayed",
+      "observations": [
+        "Upper Nevill junction faces Funland across broad signalised Promenade carriageway; white give-way dashes and pale forecourt paving."
+      ]
+    },
+    {
+      "id": "townscape-grade",
+      "url": "https://www.southporttownscape.org.uk/the-townscape/nevill-street/nevill-street",
+      "author": "Southport Townscape",
+      "observations": [
+        "Street rises to Promenade; no measured levels provided."
+      ]
+    },
+    {
+      "id": "future-changes",
+      "url": "https://modgov.sefton.gov.uk/mgAi.aspx?ID=65072",
+      "author": "Sefton Council",
+      "observations": [
+        "2026 approval describes future footway widening and circulation changes. Not assumed completed; this model retains dated photographic layout."
+      ]
+    },
+    {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/1105140003",
+      "author": "OpenStreetMap contributors",
+      "observations": [
+        "Connected mapped road centreline, side junctions, pedestrian areas and Funland building edge establish route. Selected source geometries preserved with ODbL attribution in route-osm.json."
+      ]
+    },
+    {
+      "id": "middle-ground",
+      "url": "https://www.mapillary.com/app/?pKey=1153400095103923&focus=photo",
+      "author": "davidsong via Mapillary",
+      "capture": "2020-04-04 displayed",
+      "observations": [
+        "Middle Nevill view toward monument shows buff slabs, thin red kerbside bands, broad asphalt with a yellow bus bay and opposite white parking bay. Widths and bay extents estimated; furniture excluded."
+      ]
+    }
+  ],
+  "limitations": [
+    "No downloaded reference images embedded or committed.",
+    "Widths, crossfalls, tactile dimensions and longitudinal height profile are estimates.",
+    "No street furniture, carousel, Funland building, promenade beyond bounded crossing area or regional landscape in this pass.",
+    "White/yellow paint, pavement colour and kerb families are dated interpretations, not verified current traffic-regulation plans."
+  ]
+}

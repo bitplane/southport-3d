@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "OSM-registered roads and pavements; widths/grades estimated, no buildings or furnishings. 2019/2020 appearance; proposed highway scheme not modelled.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "lower-ground",
+      "name": "Lord Street to Stanley Street",
+      "collection": "lower-ground",
+      "ground": true
+    },
+    {
+      "id": "middle-ground",
+      "name": "Stanley, Cable, Bath and West Street junctions",
+      "collection": "middle-ground",
+      "ground": true
+    },
+    {
+      "id": "upper-ground",
+      "name": "Upper Nevill Street",
+      "collection": "upper-ground",
+      "ground": true
+    },
+    {
+      "id": "promenade-ground",
+      "name": "Promenade crossing and Funland approach",
+      "collection": "promenade-ground",
+      "ground": true
+    }
+  ],
+  "views": [
+    {
+      "name": "Nevill corridor",
+      "position": [
+        115,
+        160,
+        140
+      ],
+      "target": [
+        -6,
+        0,
+        -175
+      ]
+    },
+    {
+      "name": "Monument seam",
+      "position": [
+        15,
+        12,
+        -23
+      ],
+      "target": [
+        1,
+        0,
+        -55
+      ]
+    },
+    {
+      "name": "Middle junctions",
+      "position": [
+        35,
+        30,
+        -135
+      ],
+      "target": [
+        -2,
+        0,
+        -165
+      ]
+    },
+    {
+      "name": "Promenade",
+      "position": [
+        45,
+        42,
+        -242
+      ],
+      "target": [
+        -12,
+        2,
+        -280
+      ]
+    },
+    {
+      "name": "Walk to Funland",
+      "position": [
+        -14,
+        3.7,
+        -235
+      ],
+      "target": [
+        -18,
+        3,
+        -276
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      1,
+      1,
+      -55
+    ],
+    "target": [
+      1,
+      1,
+      -90
+    ]
+  },
+  "rules": [
+    {
+      "id": "surfaces",
+      "match": "^(Surface|Kerb) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Authored low-poly corridor preserves pavement widths, side-road mouths, crossing ramps and grade; surface joints use repeating PBR maps."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain the bounded inexpensive ground envelope and navigable crossings, reducing repeating map sizes rather than decimating shared seams."
+      }
+    }
+  ]
+}
