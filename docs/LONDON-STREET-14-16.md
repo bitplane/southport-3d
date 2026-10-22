@@ -56,3 +56,17 @@ renders do not certify the surrounding pavement join or exact neighbour fit.
 Build with `python3 tools/project.py build southport.london-street.london-street-14-16`;
 add `--stage render` for the inspection images. Normal publication uses the
 existing manifest-driven pipeline and needs no viewer-specific code.
+
+## Independent audit,22 October2026
+
+Compared the saved May2011 front and two November2020 Glebe panoramas against the source and all three exported levels. The upper side wall was incorrectly coplanar with the low street-edge wall, and the timber service door was roughly4m too far rearward. The low wall now starts immediately behind the tall return; the upper casements/dishes sit on a recessed range. The lower roof strip and exposed cheek close the resulting setback. Its1.65m depth and door offset0.95m from the return are visual estimates; the spatial relationship is supported by the photographs. Footprint registration and front ground elevation are retained.
+
+District's old rectangular window receiver included empty corners beside the wider sill, producing black edge patches outside the actual casement. A stepped silhouette now follows the frame and projecting sill and receives the same bake. It adds only four triangles per window; no validation threshold was relaxed.
+
+Validation adds two unobscured clerestory rays, three rays onto the lower roof strip and a ray through the corrected service-door aperture. Front,Glebe and roof views were inspected from every exported level.
+
+| Audited level | Triangles | GLB bytes including textures |
+|---|---:|---:|
+| detail | 6,104 | 2,306,864 |
+| walk | 2,516 | 2,046,608 |
+| district | 1,484 | 637,348 |

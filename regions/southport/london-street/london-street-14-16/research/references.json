@@ -15,7 +15,8 @@
       "attribution": "Google Street View",
       "observations": [
         "Glebe elevation tall blank brick front return, stepped lower upper wall with small casements and satellite dishes.",
-        "Low rear flat-roof/service wall, timber service door and continuous coping."
+        "Low rear flat-roof/service wall, timber service door and continuous coping.",
+        "Independent audit of saved panoramas: low street-edge wall starts at tall return; wooden door follows closely. Clerestory wall/dishes are recessed behind this low wall,not a third coplanar step."
       ]
     },
     {
@@ -44,6 +45,7 @@
   "limitations": [
     "Mixed dated observations; historical Betfred signage rather than claim of current fitout.",
     "Hidden south party elevation and precise rooftop pitch/levels estimated. No interiors or advertising posters reconstructed.",
-    "Rear bay locations and unobserved rear elevation are conservative estimates, not a full measured survey."
+    "Rear bay locations and unobserved rear elevation are conservative estimates, not a full measured survey.",
+    "Upper side setback1.65m and service-door offset0.95m from tall return are visual estimates. Relationship established by two Nov2020 Glebe views; exact distances need survey."
   ]
 }

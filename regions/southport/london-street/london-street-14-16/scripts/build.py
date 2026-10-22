@@ -117,18 +117,23 @@ elevation_box('Trim front coping',width/2,10.31,width+.08,.09,.43,-.14,coping)
 elevation_box('Trim shop head stone',width/2,4.02,width,.14,.38,-.08,granite)
 # The tall frontage wall returns only partway down Glebe before stepping down.
 wall_with_openings('Glebe tall return',side@Matrix.Translation((.36,0,0)),4.99,10.3,[],mat=brick)
-upper_side=side@Matrix.Translation((5.35,0,0))
+setback=D['upper_side_setback'];service_start=D['service_wall_start'];service_door=D['service_door_u']
+inset_side=side@Matrix.Translation((0,0,-setback))
+upper_side=inset_side@Matrix.Translation((5.35,0,0))
 wall_with_openings('Glebe low upper return',upper_side,3.90,6.5,
  [(u-.48,u+.48,4.95,5.65) for u in [1.25,3.1]])
-for i,u in enumerate([6.6,8.45]):window('Window Glebe clerestory '+str(i),side,u,5.3,.96,.70)
+for i,u in enumerate([6.6,8.45]):window('Window Glebe clerestory '+str(i),inset_side,u,5.3,.96,.70)
 # Low rear service enclosure follows the street edge; its wooden door is inset.
-low_side=side@Matrix.Translation((9.25,0,0))
-wall_with_openings('Glebe service wall',low_side,depth-9.25,3.35,[(.5,1.4,0,2.2)],'rear')
-elevation_box('Shop timber service door',10.2,1.1,.90,2.2,.08,-.16,wood,'rear',side)
-for u in [9.71,10.69]:elevation_box('Trim service door jamb',u,1.12,.09,2.3,.13,-.025,black,'rear',side)
-elevation_box('Trim service door lintel',10.2,2.25,1.1,.10,.17,-.02,black,'rear',side)
-for a,b,h in [(.40,5.35,10.31),(5.35,9.25,6.51),(9.25,depth,3.37)]:
- elevation_box('Trim Glebe coping',(a+b)/2,h,b-a,.09,.43,-.14,coping,'rear',side)
+low_side=side@Matrix.Translation((service_start,0,0))
+wall_with_openings('Glebe service wall',low_side,depth-service_start,3.35,[(service_door-service_start-.45,service_door-service_start+.45,0,2.2)],'rear')
+elevation_box('Shop timber service door',service_door,1.1,.90,2.2,.08,-.16,wood,'rear',side)
+for u in [service_door-.49,service_door+.49]:elevation_box('Trim service door jamb',u,1.12,.09,2.3,.13,-.025,black,'rear',side)
+elevation_box('Trim service door lintel',service_door,2.25,1.1,.10,.17,-.02,black,'rear',side)
+for a,b,h,frame in [(.40,5.35,10.31,side),(5.35,9.25,6.51,inset_side),(service_start,depth,3.37,side)]:
+ elevation_box('Trim Glebe coping',(a+b)/2,h,b-a,.09,.43,-.14,coping,'rear',frame)
+# Exposed return closes the upper setback above the low street-edge roof strip.
+cheek=face_matrix((xf-5.35,yn-.18,base),(-1,0,0))
+wall_with_openings('upper setback cheek',cheek,setback-.18,6.5,[(0,setback-.18,0,3.35)],'rear')
 # Conservative rear closing elevation. Door is a service opening, not an invented shop.
 wall_with_openings('rear service elevation',rear,width,3.35,[(width*.7-.5,width*.7+.5,0,2.15)],'rear')
 elevation_box('Shop rear steel door',width*.7,1.075,1,2.15,.06,-.12,metal,'rear',rear)
@@ -143,11 +148,12 @@ v=[(x0,ys+.16,z0),(x0,yn-.16,z0),(x1,yn-.16,z1),(x1,ys+.16,z1)]
 m.add(v+[(x,y,z-.14) for x,y,z in v],[(0,1,2),(0,2,3),(4,6,5),(4,7,6),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0)])
 finish(m,'roof',[slate],roof_uv=True)
 # Roof levels avoid overlapping deck faces. Low rear zone is visually separated.
-box('Roof middle deck',((xf-5.35+xr+5.72)/2,(ys+yn)/2,base+6.40),(depth-11.07,width-.35,.18),felt,'roof')
+box('Roof middle deck',((xf-5.35+xr+5.72)/2,(ys+yn-setback)/2,base+6.40),(depth-11.07,width-setback-.35,.18),felt,'roof')
+box('Roof recessed side strip',((xf-5.35+xr+5.72)/2,yn-setback/2-.10,base+3.25),(depth-11.07,setback-.16,.18),felt,'roof')
 box('Roof low rear deck',((xr+xr+5.72)/2,(ys+yn)/2,base+3.25),(5.72,width-.35,.18),felt,'roof')
 # Rear upper return closes the height step, with two modest casements seen obliquely.
-step=face_matrix((xr+5.72,yn-.18,base),(-1,0,0))
-wall_with_openings('upper rear step',step,width-.36,6.50,[(0,width-.36,0,3.35)],'rear')
+step=face_matrix((xr+5.72,yn-setback-.18,base),(-1,0,0))
+wall_with_openings('upper rear step',step,width-setback-.36,6.50,[(0,width-setback-.36,0,3.35)],'rear')
 # South roof wedge under the sloping plane.
 m=Mesh('Envelope party roof wedge')
 m.outline([(0,6.5),(5,6.5),(5,9.95)],-.26,0)
@@ -182,7 +188,7 @@ elevation_box('Shop fascia centre fill',width*.61,3.55,width*.10,.78,.05,.105,bl
 for h in [3.13,3.97]:elevation_box('Trim fascia red edge',width/2,h,width,.045,.32,.055,red,'shopfront')
 # Minor observed side services, kept separate for reasoned omission at distance.
 m=Mesh('Fine side drainage')
-for u in [5.6,9.1]:m.tube([(xf-u,yn+.06,base+.1),(xf-u,yn+.06,base+6.4)],.038,0,8)
+for u in [5.6,9.1]:m.tube([(xf-u,yn-setback+.06,base+.1),(xf-u,yn-setback+.06,base+6.4)],.038,0,8)
 finish(m,'rear',[black])
 for u,h in [(6.1,6.8),(8.1,6.3)]:
  m=Mesh('Fine satellite dish')
@@ -190,7 +196,7 @@ for u,h in [(6.1,6.8),(8.1,6.3)]:
  n=20;verts=[(0,0,.055)]+[(.32*math.cos(i*2*math.pi/n),.42*math.sin(i*2*math.pi/n),0) for i in range(n)]
  m.add(verts,[(0,i+1,(i+1)%n+1) for i in range(n)])
  m.box((0,-.35,-.13),(.05,.45,.3))
- finish(m,'rear',[metal],side@Matrix.Translation((u,h,.22)))
+ finish(m,'rear',[metal],inset_side@Matrix.Translation((u,h,.22)))
 # Align the mapped slightly oblique frontage and the Glebe wall, once only.
 registration=Matrix.Translation((xf,yn,0))@Matrix.Rotation(.02418,4,'Z')@Matrix.Translation((-xf,-yn,0))
 for obj in list(s.objects):

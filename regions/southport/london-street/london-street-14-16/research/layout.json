@@ -7,5 +7,9 @@
   "front_parapet_height": 10.3,
   "rear_upper_height": 6.5,
   "rear_low_height": 3.35,
-  "registration": "OSM whole-block northern and rear corner; southern unit division estimated from six window bays and neighbouring Skipton boundary. Frontage slightly rotates along mapped London Street line. Heights visually estimated, not surveyed."
+  "registration": "OSM whole-block northern and rear corner; southern unit division estimated from six window bays and neighbouring Skipton boundary. Frontage slightly rotates along mapped London Street line. Heights visually estimated, not surveyed.",
+  "upper_side_setback": 1.65,
+  "service_wall_start": 5.35,
+  "service_door_u": 6.3,
+  "audit_note": "2026-10-22 independent audit: Nov2020 Glebe views establish the low street-edge wall starting at the tall return,with upper casements on a recessed wall behind it. Setback1.65m and door offset0.95m from return are visual estimates,not surveyed."
 }

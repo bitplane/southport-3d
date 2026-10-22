@@ -121,23 +121,6 @@
       }
     },
     {
-      "id": "windows",
-      "match": "^Window ",
-      "walk": {
-        "strategy": "keep",
-        "reason": "Retain thin frames and real apertures at pedestrian distance."
-      },
-      "district": {
-        "strategy": "replace",
-        "reason": "Bake repeated front and side casements onto shallow receivers while retaining apertures.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4
-      }
-    },
-    {
       "id": "signs",
       "match": "^Sign ",
       "walk": {
@@ -169,6 +152,48 @@
       "district": {
         "strategy": "omit",
         "reason": "Omit tiny hardware, satellite dishes and fine granite joints below useful screen size."
+      }
+    },
+    {
+      "id": "windows-front",
+      "match": "^Window front ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain thin frames and real apertures at pedestrian distance."
+      },
+      "district": {
+        "strategy": "generator",
+        "reason": "Bake frame and glazing onto a stepped silhouette matching the projecting sill; avoid opaque bounding-panel corners outside the actual window.",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4,
+        "generator": "components:window_receiver",
+        "settings": {
+          "width": 1.18,
+          "height": 1.8
+        }
+      }
+    },
+    {
+      "id": "windows-clerestory",
+      "match": "^Window Glebe clerestory ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain thin frames and real apertures at pedestrian distance."
+      },
+      "district": {
+        "strategy": "generator",
+        "reason": "Bake frame and glazing onto a stepped silhouette matching the projecting sill; avoid opaque bounding-panel corners outside the actual window.",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4,
+        "generator": "components:window_receiver",
+        "settings": {
+          "width": 0.96,
+          "height": 0.7
+        }
       }
     }
   ]
