@@ -52,6 +52,7 @@ z0=D['base_z'];top=15.6
 # Local facade X increases to the viewer's right, Y is height, Z points outward.
 def elevation(label,a,b,centres):
  normal=Vector((b[1]-a[1],a[0]-b[0],0)).normalized();length=math.dist(a,b);frame=face_matrix((a[0],a[1],z0),normal)
+ if label=='Lord Street':frame=frame@Matrix.Diagonal((17.6/19.2,1,1,1))
  def fbox(mesh,u,y,w,h,d=.45,out=-.225):mesh.box((u,y,out),(w,h,d))
  shell=Mesh('Envelope '+label)
  openings=[]
@@ -88,10 +89,6 @@ def elevation(label,a,b,centres):
       key.tube([(side0*(.05+.025*math.sin(t)),head+.22+.13*math.cos(t),.25) for t in [j*math.pi/16 for j in range(17)]],.013,0,6)
      finish(key,'architecture',[stone],frame@Matrix.Translation((u,0,0)))
   if previous<length:fbox(shell,(previous+length)/2,(sill+head)/2,length-previous,head-sill)
- if label=='Lord Street':
-  for cy,h in [(1.40,2.80),(3.95,.70)]:
-   shell.cut_box_from_ashlar((length-.50,cy,-.225),(.80,h,.60))
-   openings.append((length-.90,cy-h/2,length-.10,cy+h/2))
  if label=='London Street':
   # Actual shallow pockets, not raised boxes pretending to be recesses.
   for u,cy,w,h in [(6.45,2.18,.84,1.68),(6.45,.99,.94,.67),(2.8,1.05,2.72,.62)]:
@@ -121,7 +118,6 @@ def elevation(label,a,b,centres):
  for u in ([.43,4.93,7.87,length-.43] if label=='London Street' else [.43]+[(a+b)/2 for a,b in zip(centres,centres[1:])]+[length-.43]):
   instance('pilaster',pilaster('detail','Pilaster '+label),'shopfront',frame@Matrix.Translation((u,.76,0)),[stone])
  pl=Mesh('Envelope plinth '+label);fbox(pl,length/2,.32,length,.64,.54,-.21)
- if label=='Lord Street':pl.cut_box_from_ashlar((length-.5,.32,-.21),(.80,.65,.60))
  finish(pl,'architecture',[base],frame)
  return frame,length
 
@@ -204,8 +200,8 @@ for frame,length in [(front,flen),(side,slen),(corner,L)]:
   m.tube([(u,14.94,.15),(u,15.0,.25),(u,15.13,.32),(u,15.20,.28)],.055,0,8)
  finish(m,'architecture',[stone],frame)
 # Simple party/rear envelopes explicitly not researched as finished elevations.
-m=Mesh('Envelope rear estimate');m.box((-20.9125,-38.75,z0+7.8),(22.175,.45,15.6));m.box((-32,-31.425,z0+7.8),(.45,15.15,15.6));finish(m,materials=[brick])
-# Mansard envelope: calibrated street silhouette, coarse unobserved rear slopes.
+m=Mesh('Envelope rear estimate');m.box((-20.0,-38.75,z0+7.8),(20.8,.45,15.6));m.box((-30.4,-31.425,z0+7.8),(.45,15.15,15.6));finish(m,materials=[brick])
+# Mansard only on the three street faces; flat-ended party/rear gables.
 poly=D['footprint']
 # Parallel inset edges keep the chamfer planar and every eave at the same pitch.
 inner=[]
@@ -215,8 +211,11 @@ for i,p in enumerate(poly):
  n0=Vector((-t0.y,t0.x));n1=Vector((-t1.y,t1.x))
  offset=(n0+n1)*(1.8/(1+n0.dot(n1)))
  inner.append(tuple(here+offset))
+# Rear and party boundaries meet vertical end walls instead of hip slopes.
+inner[0]=(-30.4,-39);inner[1]=(inner[1][0],-39);inner[4]=(-30.4,inner[4][1])
 m=Mesh('Roof mansard')
 for i,a in enumerate(poly):
+ if i not in (1,2,3):continue
  j=(i+1)%len(poly);b=poly[j];aa=inner[i];bb=inner[j]
  m.add([(a[0],a[1],z0+15.7),(b[0],b[1],z0+15.7),(bb[0],bb[1],z0+18.3),(aa[0],aa[1],z0+18.3)],[(0,1,2,3)])
 m.add([(x,y,z0+18.3) for x,y in inner],[tuple(range(len(inner)))],1)
@@ -229,6 +228,12 @@ for f in roof.data.polygons:
  for li in f.loop_indices:
   v=roof.data.vertices[roof.data.loops[li].vertex_index].co
   roof.data.uv_layers.active.data[li].uv=(v.dot(tangent)/2.4,(v.z-z0-15.7)*math.hypot(1.8,2.6)/2.6/2.4)
+# Visible party gable above the lower neighbouring terrace, and vertical rear
+# end. Heights are calibrated to the existing eave/deck, not surveyed.
+m=Mesh('Roof end gables')
+m.add([(-30.4,y,z0+z) for y,z in [(-39,15.6),(-23.4,15.6),(-23.4,15.7),(-25.2,18.3),(-39,18.3)]],[(4,3,2,1,0)])
+m.add([(x,-39,z0+z) for x,z in [(-30.4,15.6),(-9.6,15.6),(-9.6,15.7),(-11.4,18.3),(-30.4,18.3)]],[(0,1,2,3,4)])
+finish(m,'roof',[brick])
 # Dormer cheeks, frames and flat lead caps; front and London counts corroborated.
 for label,frame,centres in [('Lord',front,[2.05,5.8,9.55,13.3,17.05]),('London',side,[2.35,6.45,10.55]),('corner',corner,[L/2])]:
  for u in centres:
@@ -243,8 +248,18 @@ for label,frame,centres in [('Lord',front,[2.05,5.8,9.55,13.3,17.05]),('London',
   instance('dormer',window(1.35,1.30,'detail','Window dormer '+label),'roof',t@Matrix.Translation((0,0,.04)))
   flashing=Mesh('Ornament dormer flashing');flashing.box((0,.945,-.61),(1.92,.025,1.51));flashing.box((0,-.83,-.015),(1.80,.04,.23));finish(flashing,'roof',[lead],t)
 # Chimneys and terracotta pot groups; rear service structure is an estimated envelope.
-m=Mesh('Roof service enclosure');m.box((-24,-34,z0+19.1),(4.2,3.5,1.6));finish(m,'roof',[brick])
-instance('dormer',Mesh('Window rear service estimate'),'roof',face_matrix((-24,-32.10,z0+19.15),(0,1,0)))
+# Daylight aerial: larger access/headhouse with pale rendered street-facing
+# walls, flat coping and sash openings. Exact function/hidden faces unresolved.
+access=face_matrix((-20.5,-32.7,z0+18.3),(0,1,0))
+m=Mesh('Roof access enclosure')
+m.box((3.5,1.3,-2.5),(7,2.6,5))
+for u in [2.0,5.0]:m.cut_box_from_ashlar((u,1.35,.0),(1.0,1.5,.65))
+finish(m,'roof',[stone],access)
+for u in [2.0,5.0]:instance('access-sash',window(.90,1.40,'detail','Window roof access'),'roof',access@Matrix.Translation((u,1.35,.01)))
+m=Mesh('Roof access coping');m.box((3.5,2.65,-2.5),(7.2,.13,5.2));finish(m,'roof',[lead],access)
+m=Mesh('Hardware roof access vent');rectangle_frame(m,0,0,.60,.45,.035,.015,.04,0)
+for y in [-.15,-.075,0,.075,.15]:m.box((0,y,.04),(.53,.025,.06))
+finish(m,'roof',[dark],access@Matrix.Translation((.6,.7,.02)))
 for spec in D['chimneys']:
  x,y=spec['centre'];length=spec['length'];width=spec['width']
  matrix=Matrix.Translation((x,y,z0))@Matrix.Rotation(math.radians(spec['yaw_degrees']),4,'Z')
@@ -271,6 +286,8 @@ for frame,us in [(front,[2.05,9.55,17.05]),(side,[2.8,10.0])]:
  for u in us:instance('sign',Mesh('Sign PREZZO transom'),'shopfront',frame@Matrix.Translation((u,4.40,.10)))
 from frontage_detail import add_frontage
 add_frontage(finish,front,side,corner,flen,slen,L,shopmats,brass,lantern,ROOT)
+from end_bays import add_end_bays
+add_end_bays(finish,instance,z0,mats)
 # Remove ground-contact undersides; these overlap at joined wall corners and
 # the scene already has a separate walkable pavement asset.
 import bmesh

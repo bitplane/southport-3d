@@ -153,6 +153,32 @@
         3.0,
         32.55
       ]
+    },
+    {
+      "name": "Flats entrance",
+      "position": [
+        -34,
+        5,
+        17.5
+      ],
+      "target": [
+        -31.3,
+        5,
+        23.75
+      ]
+    },
+    {
+      "name": "Rear roof",
+      "position": [
+        -15,
+        30,
+        59
+      ],
+      "target": [
+        -21,
+        15,
+        35
+      ]
     }
   ],
   "walk_spawn": {

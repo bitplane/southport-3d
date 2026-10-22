@@ -44,18 +44,3 @@ def add_frontage(finish,front,side,corner,flen,slen,L,mats,brass,lantern,root):
     for y in [1.53,2.83]:
         for x in [6.23,6.67]:m.box((x,y,.002),(.015,.015,.009),0)
     finish(m,'shopfront',[dark],side)
-    # Small end doorway seen on the Lord Street oblique photograph.
-    u=flen-.50;m=Mesh('Entrance end door')
-    m.box((u,1.4,-.10),(.80,2.8,.06),3)
-    rectangle_frame(m,u,1.40,.80,2.8,.07,-.035,.10,3)
-    for y in [.45,1.05,1.67,2.30]:
-        rectangle_frame(m,u,y,.56,.41,.025,.025,.03,3)
-        m.box((u,y,-.015),(.51,.36,.025),3)
-    m.box((u,3.95,-.09),(.80,.70,.025),2)
-    rectangle_frame(m,u,3.95,.80,.70,.06,.01,.12,1)
-    m.tube([(u-.31,3.67,.06),(u+.31,4.23,.06)],.016,1,6)
-    m.tube([(u+.31,3.67,.06),(u-.31,4.23,.06)],.016,1,6)
-    finish(m,'shopfront',mats,front)
-    m=Mesh('Hardware end door')
-    m.box((u-.28,1.25,.08),(.08,.23,.035));m.box((u,1.75,.05),(.26,.045,.025))
-    m.box((u-.57,1.65,.11),(.12,.26,.05));finish(m,'shopfront',[brass],front)

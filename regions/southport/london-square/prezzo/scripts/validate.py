@@ -19,13 +19,13 @@ print('Prezzo geometry validated',len(meshes),'meshes')
 from mathutils import Vector
 bpy.context.view_layer.update();depsgraph=bpy.context.evaluated_depsgraph_get()
 windows=[o for o in meshes if o.name.startswith('Window ')]
-assert len(windows)==44,len(windows)
+assert len(windows)==51,len(windows)
 for o in windows:
  origin=o.matrix_world@Vector((.25,.20,1))
  direction=(o.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
  hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(depsgraph,origin,direction,distance=2)
  assert hit and ob==o,(o.name,'glazing obstructed by',ob.name if ob else None)
-print('All 44 window fronts visible from outside, including dormers')
+print('All 51 window fronts visible from outside, including dormers')
 
 # Roof-specific review guards: do not restore identical pot groups or UV axes.
 recipe=json.loads((ROOT/'research/layout.json').read_text())
@@ -39,6 +39,7 @@ for spec in recipe['chimneys']:
 roof=bpy.data.objects['Roof mansard'];uv=roof.data.uv_layers.active.data
 for f in roof.data.polygons:
  if f.material_index:continue
+ assert f.normal.x>=-.001 and f.normal.y>=-.001, 'Unobserved rear hip slope restored'
  for li in f.loop_indices:
   z=roof.data.vertices[roof.data.loops[li].vertex_index].co.z
   expected=(z-recipe['base_z']-15.7)*math.hypot(1.8,2.6)/2.6/2.4
@@ -68,3 +69,11 @@ for ob in [o for o in windows if o.name.startswith('Window lower ')]:
  assert hit and found.name.startswith('Dressings first floor inset'),(ob.name,'inset apron missing',found.name if found else None)
  assert (ob.matrix_world.inverted()@p).z<-.10,(ob.name,'apron is not recessed')
 print('London glazing edges clear of pilasters; first-floor aprons genuinely recessed')
+
+assert bpy.data.objects.get('Roof end gables')
+for label in ['Lord flats','London inset']:
+ ob=bpy.data.objects['Entrance recessed '+label]
+ x=.9 if label=='Lord flats' else 1.1
+ hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,ob.matrix_world@Vector((x,1.55,1)),(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized(),distance=2)
+ assert hit and found==ob,(label,'entrance hidden',found.name if found else None)
+ assert (ob.matrix_world.inverted()@p).z<-.20

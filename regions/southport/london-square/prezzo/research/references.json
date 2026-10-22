@@ -87,6 +87,21 @@
       "observations": [
         "Daylight aerial resolves roof deck, dormer cheek/cap shape and flashings; broad corner stone courses and upper sash divisions. Rear service structure remains approximate."
       ]
+    },
+    {
+      "id": "roof-ends-satellite",
+      "url": "https://www.google.com/maps/@53.64838,-3.00416,21z/data=!3m1!1e3",
+      "capture": "Date not displayed; viewed 2026-10-22",
+      "observations": [
+        "Street-facing slate apron ends at vertical party/rear walls; flat deck and larger rooftop access enclosure. Daylight OpenRent aerial corroborates the roof form and narrow recessed terminal bay on London Street."
+      ]
+    },
+    {
+      "id": "glebe-user-view",
+      "url": "https://www.google.com/maps/@53.6480108,-3.0040244,10a,60y,358.48h,93.25t/data=!3m4!1e1!3m2!1sAyJ9yz8uLvo9PuWs0Sf2UA!2e0",
+      "observations": [
+        "User supplied rear viewing location on Glebe Place. Browser returns 403 image tiles and 500 metadata on 2026-10-22, so no rear architectural details were inferred from unavailable imagery."
+      ]
     }
   ],
   "limitations": [
@@ -97,7 +112,8 @@
     "Capitals, keystones and mouldings are geometric interpretations, not exact ornamental tracings.",
     "Imagery spans dates; signage represents observed PREZZO identity, not a verified current branding survey.",
     "London menu stone panel dimensions and relief strokes are interpreted from a small photograph; no specific heraldry or lettering is claimed.",
-    "London shop register, menu pocket and first-floor apron dimensions calibrated visually from oblique property image, not measured. Small plaques remain blank; the carved subject above the menu is unresolved."
+    "London shop register, menu pocket and first-floor apron dimensions calibrated visually from oblique property image, not measured. Small plaques remain blank; the carved subject above the menu is unresolved.",
+    "User confirms matching narrow terminal bays on both street ends: Lord Street flats access and London Street inset door. Bay dimensions and exact door panels remain approximate; no interior access modelled. Glebe rear windows/services remain unverified because Street View tiles were unavailable."
   ],
   "detail_review": "2026-10-22: existing property photos and Mapillary re-opened, supplemented by official close frontage and daylight aerial. Three lights across each upper sash; two rows per sash. Fine relief, moulding dimensions, capital carving and end doorway proportions interpreted, not surveyed. Sign and lettering styles approximate."
 }

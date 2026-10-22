@@ -7,7 +7,7 @@
   "base_z": 0.58,
   "footprint": [
     [
-      -32,
+      -30.4,
       -39
     ],
     [
@@ -23,7 +23,7 @@
       -23.4
     ],
     [
-      -32,
+      -30.4,
       -23.4
     ]
   ],
@@ -31,7 +31,7 @@
     {
       "id": "lord-near",
       "centre": [
-        -19.0,
+        -18.483333333333334,
         -26.45
       ],
       "yaw_degrees": 90,
@@ -42,7 +42,7 @@
     {
       "id": "lord-middle-capped",
       "centre": [
-        -26.1,
+        -24.99166666666667,
         -26.45
       ],
       "yaw_degrees": 90,
@@ -53,7 +53,7 @@
     {
       "id": "lord-far",
       "centre": [
-        -30.3,
+        -28.84166666666667,
         -26.45
       ],
       "yaw_degrees": 90,
@@ -96,9 +96,9 @@
     }
   ],
   "registration": "Street corner follows OSM way 371203985 (whole urban block), nodes around (-12.76,-23.36),(-9.56,-26.03). Rear lot division and dimensions visually estimated from satellite; OSM does not separately map this building.",
-  "dimensions_status": "All heights estimated by storey/window proportions; five Lord Street bays, three London Street bays plus one corner confirmed in photographs. Rear wall/service enclosure and rear roof slopes simplified, not surveyed.",
+  "dimensions_status": "All heights estimated by storey/window proportions; five Lord Street bays, three London Street bays plus one corner confirmed in photographs. Rear wall remains schematic; gable ends and rooftop headhouse calibrated from aerial evidence, not surveyed.",
   "datum": "Level building floors; base .58m on the square\u2019s estimated sloping ground. No surveyed vertical datum.",
-  "roof_review": "Wider January 2018 ground panorama and January 2025 aerial show three tall pot groups and three capped stacks. Lord Street rows run into roof (site Y); London Street row runs into roof (site X). Corner stack follows chamfer. Four London pots and five on each Lord group interpreted from imagery; concealed flues and exact dimensions remain uncertain.",
+  "roof_review": "Wider January 2018 ground panorama and January 2025 aerial show three tall pot groups and three capped stacks. Lord Street rows run into roof (site Y); London Street row runs into roof (site X). Corner stack follows chamfer. Four London pots and five on each Lord group interpreted from imagery; concealed flues and exact dimensions remain uncertain. Rear/party slopes replaced by vertical gable ends, access headhouse enlarged from daylight aerial. Main corniced mass ends at X -30.4; terminal bay occupies remaining Lord frontage.",
   "detail_controls": {
     "ashlar_course_m": 0.39,
     "ashlar_block_m": 0.92,
@@ -124,5 +124,18 @@
       1.35,
       1.3
     ]
+  },
+  "terminal_bays": {
+    "lord": {
+      "width_m": 1.8,
+      "front_y": -23.75,
+      "outer_x": -32.2
+    },
+    "london": {
+      "width_m": 2.2,
+      "front_x": -9.92,
+      "end_y": -41.2
+    },
+    "status": "Visually estimated narrow bays beyond cornice, confirmed by user. Main Lord bay spacing compressed within existing block registration to accommodate terminal bay without overlapping terrace."
   }
 }

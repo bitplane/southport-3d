@@ -49,9 +49,9 @@ lighting. Walk textures cap at 512 pixels; District caps at 256.
 
 | Level | Placed triangles | GLB bytes including textures | Embedded image bytes |
 | --- | ---: | ---: | ---: |
-| Detail | 214,140 | 10,629,588 | 1,216,294 |
-| Walk | 50,450 | 3,976,988 | 1,065,936 |
-| District | 15,820 | 2,270,188 | 457,105 |
+| Detail | 219,596 | 11,139,884 | 1,216,294 |
+| Walk | 55,846 | 4,581,996 | 1,075,273 |
+| District | 16,900 | 2,624,612 | 637,130 |
 
 These are the building's three-part totals, excluding the street and memorial.
 Walk's similar download size reflects retained architecture and baked-map cost;
@@ -71,7 +71,7 @@ dormer/sign/chimney counts, and casts rays at all 44 window fronts. The ray chec
 guards against the error where a plausible window is obscured by a solid dormer
 body. The final dormers have open cheeks and a recessed back, so glazing remains
 visible. Meshes are triangulated before UV assignment/export for stable tangents.
-All 209 meshes are classified at every level, and all nine publication GLBs pass
+All 233 meshes are classified at every level, and all nine publication GLBs pass
 inspection. The model is rendered from both streets, the corner and above the
 roof; the adjusted public realm also receives its normal full build and renders.
 
@@ -215,3 +215,30 @@ The coordinated three-building publication passed all nine GLBs for this asset
 and its bake checks. Browser review covered automatic close-up Detail and forced
 Walk/District front and oblique views. All 31 combined scene parts loaded without
 asset errors. Thirteen Python tests and the viewer policy test pass.
+
+## Terminal bays and gable ends
+
+The 2026-10-22 follow-up restores the narrow plain terminal bays beyond the
+main cornice on both street ends. Each has three slimmer upper windows and a
+recessed entrance; the Lord Street bay provides the flats entrance identified
+by the user. The previous doorway squeezed into the main pilaster was removed.
+The London bay extends the footprint to site Y -41.2. The main Lord Street
+bays were recalibrated within the existing block registration, leaving a 1.8 m
+terminal bay before the adjoining terrace. These dimensions remain estimates.
+
+The slate mansard now covers only the three street faces. Vertical gable/end
+walls replace the guessed rear and party hips. The daylight aerial and satellite
+view support a larger flat-roofed headhouse with two street-facing sash windows.
+Terminal bay envelopes, recessed doors and gables remain at all LoDs; their
+window details use the existing shared panel bakes at District.
+
+Glebe Place's user-supplied Street View URL was tested, but Google returned
+403 tiles and 500 metadata responses. The rear wall below the corrected roof
+therefore remains a provisional envelope: rear windows, external stairs and
+services have not been reconstructed or claimed verified. No private interiors
+are included. New **Flats entrance** and **Rear roof** bookmarks aid review.
+
+The terminal-bay/rooftop publication pass passed master validation, fresh
+renders, all declared GLBs and bake coverage checks. Browser roof review
+covered Walk and District; thirteen Python tests and the viewer policy test
+also passed.
