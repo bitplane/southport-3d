@@ -24,3 +24,13 @@ These are standalone assembled package totals including all three parts, with te
 Exported front and rear comparisons at all three levels caught and resolved two issues: shared wall extrusion endcaps produced coincident black corner strips, and blanket ornament reduction removed pinnacle bodies. Joined facades now omit their shared endcaps; pinnacle bodies have their own silhouette-preserving generator.
 
 A subsequent WebGL review caught facade seams from independent clipped-wall prisms. Wall skins now use conforming shared boundaries with reveals only on true opening edges. The updated GLBs were tested through session-local browser request overrides, confirming that the facade artefacts disappear without changing the shared catalog.
+
+## Independent reference audit
+
+The retained August 2024 street frontage and November 2020 car-park views were
+compared with exported front/rear Detail and District renders. The spire,
+paired belfry lights, nave buttresses and attached hall retain their composition
+without an observed colour jump or open roof face. The hall attic vent was
+incorrectly pointed: it now has the semicircular head visible in the car-park
+photograph. Fine tracery and stone weathering remain interpretations; exact
+roof heights and unobserved elevations are not certified by this comparison.

@@ -198,7 +198,11 @@ for side,origin,normal in [('north',(hx1,hy0,base),(1,0,0)),('south',(hx0,hy1,ba
             bandwidth=hw if z<he else hw*(hr-z-.12)/(hr-he)
             box('Course hall stone band',(hw/2,z,.04),(bandwidth,.19,.12),mat=ashlar,transform=hf)
         # Brick arched attic vent, no unverified lettering.
-        m=Mesh('Window hall attic vent');m.outline(pointed(.48,9.1,9.45),.01,.035);finish(m,mats=[lead],transform=hf@Matrix.Translation((hw/2,0,0)))
+        m=Mesh('Window hall attic vent')
+        # The car-park photograph shows a semicircular brick vent, not a lancet.
+        vent=[(-.48,9.1),(.48,9.1)]+[(.48*math.cos(j*math.pi/20),9.18+.48*math.sin(j*math.pi/20)) for j in range(21)]
+        m.outline(vent,.01,.035)
+        finish(m,mats=[lead],transform=hf@Matrix.Translation((hw/2,0,0)))
     m=Mesh('Course hall gable verge');m.tube([(0,he,.08),(hw/2,hr,.08),(hw,he,.08)],.105,sides=6);finish(m,mats=[lead],transform=hf)
 # Six tall side sashes visible on the long rear wall; nave-facing wall is plain.
 for side,origin,normal in [('rear',(hx0,hy0,base),(0,-1,0)),('front',(hx1,hy1,base),(0,1,0))]:
