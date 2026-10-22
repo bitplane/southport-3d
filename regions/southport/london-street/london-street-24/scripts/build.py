@@ -131,7 +131,7 @@ for i,u in enumerate(bays):
 # Continuous roof wing: ridge is parallel to street and continues toward26/28.
 mainrear=xf-D['main_depth'];rf=face_matrix((mainrear,yn,base),(-1,0,0))
 wall_with_openings('main rear wall',rf,width,7.25,[],'rear')
-for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((mainrear,ys,base),(0,-1,0)))]:wall_with_openings('party '+label,frame,D['main_depth']-.36,7.25,[])
+for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((mainrear+.36,ys,base),(0,-1,0)))]:wall_with_openings('party '+label,frame,D['main_depth']-.72,7.25,[])
 xe=xf+.12;xb=mainrear-.10;ridge=(xe+xb)/2;ze=base+7.25;zr=base+9.20
 v=[(xe,ys,ze),(xe,yn,ze),(ridge,yn,zr),(ridge,ys,zr),(xb,ys,ze),(xb,yn,ze)]
 m=Mesh('Roof continuous pitched shell');m.add(v+[(x,y,z-.14) for x,y,z in v],[(0,1,2,3),(3,2,5,4),(6,9,8,7),(9,10,11,8),(0,6,7,1),(4,5,11,10),(0,3,4,10,9,6),(1,7,8,11,5,2)]);finish(m,'roof',[slate],roof_uv=True)
@@ -148,7 +148,7 @@ for h in [.55,2.25,4.15,6.1]:elevation_box('Fine rainwater bracket',width-.31,h,
 # Lower rear store, supported by aerial and published rear-loading description.
 wh=3.42;wingdepth=mainrear-xr
 box('Roof rear flat deck',((mainrear+xr)/2,(ys+yn)/2,base+wh-.09),(wingdepth-.03,width-.06,.18),felt,'roof')
-for label,frame in [('north',face_matrix((mainrear,yn,base),(0,1,0))),('south',face_matrix((xr,ys,base),(0,-1,0)))]:wall_with_openings('rear store '+label,frame,wingdepth,wh,[],'rear')
+for label,frame in [('north',face_matrix((mainrear,yn,base),(0,1,0))),('south',face_matrix((xr+.36,ys,base),(0,-1,0)))]:wall_with_openings('rear store '+label,frame,wingdepth-.36,wh,[],'rear')
 wall_with_openings('rear loading wall',rear,width,wh,[(1.75,3.05,0,2.25)],'rear')
 elevation_box('Shop rear loading door',2.4,1.125,1.3,2.25,.06,-.10,metal,'rear',rear)
 for y in [ys+.10,yn-.10]:box('Trim rear low coping',((mainrear+xr)/2,y,base+wh+.06),(wingdepth,.23,.15),coping,'roof')
@@ -162,7 +162,7 @@ elevation_box('Trim shop fascia cap',width/2,3.83,width-.15,.09,.25,.06,white,'s
 door=width-.86;left=.26;right=door-.57
 for a,b in [(left,(left+right)/2),((left+right)/2,right)]:
  elevation_box('Shop display glazing',(a+b)/2,1.55,b-a,2.77,.03,-.17,glass,'shopfront')
- for u in [a,b]:elevation_box('Shop display stile',u,1.55,.045,2.83,.07,-.105,white,'shopfront')
+ for u in ([a,b] if a==left else [b]):elevation_box('Shop display stile',u,1.55,.045,2.83,.07,-.105,white,'shopfront')
  for h in [.17,2.94]:elevation_box('Shop display rail',(a+b)/2,h,b-a,.05,.07,-.105,white,'shopfront')
 elevation_box('Shop low painted plinth',(left+right)/2,.09,right-left,.18,.22,-.04,cream,'shopfront')
 elevation_box('Shop door recess',door,1.45,1.12,2.90,.03,-.40,black,'shopfront')

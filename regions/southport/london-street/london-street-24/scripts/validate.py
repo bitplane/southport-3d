@@ -27,5 +27,13 @@ assert 9.9<max(v.z for v in points)<10.2
 repo=Path(os.environ['SOUTHPORT_REPO_ROOT']);nd=json.loads((repo/'regions/southport/london-street/london-street-22/research/layout.json').read_text())
 for f in ['front_x','base_z','registration_pivot','registration_radians']:assert D[f]==nd[f],f
 assert D['north_y']==nd['south_y']
+# Joined wall edges must not leave coplanar end caps on a visible rear plane.
+for o in meshes:
+ if o.name.startswith('Envelope party'):
+  assert min((reg.inverted()@o.matrix_world@v.co).x for v in o.data.vertices)>D['front_x']-D['main_depth']+.35
+ if o.name.startswith('Envelope rear store'):
+  assert min((reg.inverted()@o.matrix_world@v.co).x for v in o.data.vertices)>D['rear_x']+.35
+stiles=[o for o in meshes if o.name.startswith('Shop display stile')]
+assert len(stiles)==3,'Two display panes share one centre stile'
 report={'mesh_objects':len(meshes),'upper_windows':2,'checks':'Finite UV meshes; packed authored textures; two unobscured sashes; closed pitch/deck/endwall; shared22boundary and geographic registration.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
