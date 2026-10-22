@@ -15,10 +15,12 @@ The exterior now has 264 meshes with exact publication coverage. The validation 
 
 | Level | Placed triangles | GLB total | Embedded images |
 | --- | ---: | ---: | ---: |
-| Detail | 148,246 | 9.72 MB | 1.76 MB |
-| Walk | 107,758 | 8.65 MB | 1.76 MB |
-| District | 84,758 | 6.67 MB | 0.47 MB |
+| Detail | 149,002 | 10.71 MB | 1.76 MB |
+| Walk | 108,514 | 9.64 MB | 1.76 MB |
+| District | 85,514 | 7.66 MB | 0.47 MB |
 
 These are standalone assembled package totals including all three parts, with texture caps applied. District is a neighbourhood inspection model, not a future whole-town proxy. The outer architectural shell still retains substantial detail; regional envelope/atlas baking remains a future stage.
 
 Exported front and rear comparisons at all three levels caught and resolved two issues: shared wall extrusion endcaps produced coincident black corner strips, and blanket ornament reduction removed pinnacle bodies. Joined facades now omit their shared endcaps; pinnacle bodies have their own silhouette-preserving generator.
+
+A subsequent WebGL review caught facade seams from independent clipped-wall prisms. Wall skins now use conforming shared boundaries with reveals only on true opening edges. The updated GLBs were tested through session-local browser request overrides, confirming that the facade artefacts disappear without changing the shared catalog.

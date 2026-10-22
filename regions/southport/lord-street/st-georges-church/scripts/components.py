@@ -26,19 +26,39 @@ def regions(poly, holes):
     return result
 
 
-def wall(name, poly, holes, thickness=.48):
-    mesh=Mesh(name)
-    for part in regions(poly,holes): mesh.outline(part,-thickness,0)
-    # Adjacent facades own the outside surface at shared vertical corners.
-    # Remove extrusion end caps lying on those planes, avoiding coincident faces.
-    limits=(min(p[0] for p in poly),max(p[0] for p in poly))
-    faces=[];indices=[]
-    for face,material in zip(mesh.faces,mesh.indices):
-        pts=[mesh.vertices[i] for i in face]
-        vertical_cap=any(all(abs(p[0]-x)<1e-7 for p in pts) for x in limits) and max(p[2] for p in pts)-min(p[2] for p in pts)>1e-7
-        if not vertical_cap:faces.append(face);indices.append(material)
-    mesh.faces=faces;mesh.indices=indices
-    return mesh
+def wall(name,poly,holes,thickness=.48):
+    """Conforming facade shell with reveals only on true boundary edges."""
+    from southport3d.conform import conform
+    def clean(points):
+        out=[]
+        for p in points:
+            if not out or sum((p[k]-out[-1][k])**2 for k in range(2))>1e-16:out.append(p)
+        if len(out)>1 and sum((out[0][k]-out[-1][k])**2 for k in range(2))<1e-16:out.pop()
+        return out
+    poly=clean(poly);holes=[clean(h) for h in holes]
+    shapes=[poly]
+    for hole in holes:shapes=[p for q in shapes for p in subtract(q,hole)]
+    edges=[(a,b) for ring in [poly]+holes for a,b in zip(ring,ring[1:]+ring[:1])]
+    def on_boundary(a,b):
+        midpoint=((a[0]+b[0])/2,(a[1]+b[1])/2)
+        for c,d in edges:
+            v=(d[0]-c[0],d[1]-c[1]);length2=v[0]**2+v[1]**2
+            if length2<1e-14:continue
+            t=((midpoint[0]-c[0])*v[0]+(midpoint[1]-c[1])*v[1])/length2
+            error=sum((midpoint[k]-c[k]-t*v[k])**2 for k in range(2))
+            if -.00001<=t<=1.00001 and error<1e-12:return True
+        return False
+    m=Mesh(name);limits=(min(p[0] for p in poly),max(p[0] for p in poly))
+    for shape in shapes:
+        shape=clean(shape)
+        if len(shape)<3:continue
+        n=len(shape);verts=[(x,y,z) for z in (-thickness,0) for x,y in shape]
+        faces=[tuple(reversed(range(n))),tuple(range(n,2*n))]
+        for i,(a,b) in enumerate(zip(shape,shape[1:]+shape[:1])):
+            shared_corner=any(abs(a[0]-x)<1e-7 and abs(b[0]-x)<1e-7 for x in limits)
+            if on_boundary(a,b) and not shared_corner:faces.append((i,(i+1)%n,(i+1)%n+n,i+n))
+        m.add(verts,faces)
+    return conform({'wall':m})[0]['wall']
 
 
 def arch_ring(mesh, radius, bottom, spring, width=.15, out=.12, depth=.25, cx=0, material=0, steps=18, sill=True):
