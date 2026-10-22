@@ -1,0 +1,16 @@
+{
+  "base_z": 0.7845,
+  "front_x": -11.8772,
+  "rear_x": -35.8772,
+  "north_y": -80.25,
+  "south_y": -88.35,
+  "main_depth": 12.1,
+  "wall_height": 10.65,
+  "ridge_height": 12.1,
+  "registration_pivot": [
+    -11.8772,
+    -68.7886
+  ],
+  "registration_radians": 0.02418,
+  "uncertainty": "Frontage width 8.10m estimated against Betfred bays and 98.4sqm second floor auction area; main depth12.1m, rear wing depth24m estimated from aerial and ground floor192.5sqm. Not measured."
+}

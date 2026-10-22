@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/london-street-18.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "Skipton exterior based on2020 auction photograph; roof and rear proportions estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Four-bay rendered upper floors",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Hipped main roof and rear wing",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Skipton bank frontage",
+      "collection": "shopfront"
+    },
+    {
+      "id": "rear",
+      "name": "Estimated rear service wing",
+      "collection": "rear"
+    }
+  ],
+  "views": [
+    {
+      "name": "Overview",
+      "position": [
+        8,
+        22,
+        68
+      ],
+      "target": [
+        -20,
+        6,
+        85
+      ]
+    },
+    {
+      "name": "Front",
+      "position": [
+        12,
+        6.5,
+        84
+      ],
+      "target": [
+        -11.5,
+        6.5,
+        84
+      ]
+    },
+    {
+      "name": "Shopfront",
+      "position": [
+        -1,
+        3.2,
+        84
+      ],
+      "target": [
+        -11.5,
+        2.6,
+        84
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -30,
+        32,
+        68
+      ],
+      "target": [
+        -23,
+        5,
+        85
+      ]
+    },
+    {
+      "name": "Rear",
+      "position": [
+        -50,
+        18,
+        72
+      ],
+      "target": [
+        -24,
+        5,
+        85
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -6,
+      2.49,
+      84
+    ],
+    "target": [
+      -12,
+      2.49,
+      84
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain authored wall apertures, two roof silhouettes, shopfront recess and simple rear wing envelope."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain authored wall apertures, two roof silhouettes, shopfront recess and simple rear wing envelope."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain thin physical timber frames and aperture depth for walking inspection."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Bake eight framed windows to shallow receivers while retaining the physical wall openings.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake raised blue lettering to a shared white sign receiver.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Keep lower-resolution bank identity on a simple fascia panel.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep nearby stone joints, alarm housing, door handle and pipe."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit tiny joints and fittings; retain all main silhouettes."
+      }
+    }
+  ]
+}
