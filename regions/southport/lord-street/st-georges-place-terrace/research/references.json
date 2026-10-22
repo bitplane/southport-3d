@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "title": "J7 Architecture heritage assessment,140 Lord Street,existing elevations and photographs,2023",
+      "url": "https://docs.planning.org.uk/20231110/30/S36XRENWIIT00/2fhsjmr52u6zcexi.pdf",
+      "use": "Existing elevations,materials,floor levels; proposed changes excluded"
+    },
+    {
+      "title": "August2024 Street View frontage",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=UGdUPxjAHcWArsM4mK8HXA&heading=135&pitch=15&fov=90",
+      "use": "Verified actual pixels,wide view of complete frontage"
+    },
+    {
+      "title": "Post Office Avenue side",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=4ixhy0cDffT_fcVPx3_lMw&heading=320&pitch=12&fov=90",
+      "use": "Side elevation windows and brick dressings"
+    },
+    {
+      "title": "Google aerial",
+      "url": "https://www.google.com/maps/@53.64902,-3.00312,20z/data=!3m1!1e3",
+      "use": "Rear wings and roof arrangement"
+    },
+    {
+      "title": "OpenStreetMap way371742617",
+      "url": "https://www.openstreetmap.org/way/371742617",
+      "use": "Footprint; \u00a9 OpenStreetMap contributors,ODbL"
+    },
+    {
+      "title": "Brown Turner Ross contact",
+      "url": "https://www.brownturnerross.com/contact/",
+      "use": "11 St Georges Place address"
+    }
+  ],
+  "limitations": [
+    "Overall footprint from OSM; bay widths and hidden rear openings estimated",
+    "Floor heights from existing elevation; ridge17.840m explicitly assumed in source",
+    "No interior or proposed2023 loft conversion",
+    "Only links published; all reference pixels remain outside repository"
+  ]
+}

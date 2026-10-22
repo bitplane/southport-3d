@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/st-georges-place-terrace.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street",
+  "status": "St Georges Mansions,verified2024 frontage and2023 existing elevations; dimensions and rear detail estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "frontage",
+      "name": "Tudor Revival street facade",
+      "collection": "frontage"
+    },
+    {
+      "id": "roof",
+      "name": "Hipped slate and projecting gables",
+      "collection": "roof"
+    },
+    {
+      "id": "rear-wings",
+      "name": "Three rear wings and courts",
+      "collection": "rear-wings"
+    }
+  ],
+  "views": [
+    {
+      "name": "Mansions",
+      "position": [
+        60,
+        28,
+        -30
+      ],
+      "target": [
+        90,
+        9,
+        30
+      ]
+    },
+    {
+      "name": "Frontage",
+      "position": [
+        88,
+        12,
+        -15
+      ],
+      "target": [
+        89,
+        9,
+        20
+      ]
+    },
+    {
+      "name": "Bays",
+      "position": [
+        84,
+        10,
+        2
+      ],
+      "target": [
+        84,
+        8,
+        20
+      ]
+    },
+    {
+      "name": "Roofs",
+      "position": [
+        55,
+        65,
+        60
+      ],
+      "target": [
+        89,
+        11,
+        33
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      91,
+      2.3,
+      14
+    ],
+    "target": [
+      91,
+      4,
+      21
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelope",
+      "match": "^(Course|Bay|Door|Portal|Roof|Silhouette|Sign) |^Envelope (?!street wall)|^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain inexpensive exterior boundaries,real entrances,roof silhouette and supporting structural members."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain primary silhouette and genuinely open recesses; surrounding assemblies carry baked detail."
+      }
+    },
+    {
+      "id": "ornament",
+      "match": "^Ornament ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Subordinate small fascia dentils and spandrels omitted beyond close-detail view; their main cornices remain."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Small isolated carving is subpixel at district distance."
+      }
+    },
+    {
+      "id": "fittings",
+      "match": "^Fitting ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain rainwater fittings during walking."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Thin rainwater fittings are subpixel."
+      }
+    },
+    {
+      "id": "small-lettering",
+      "match": "^Lettering ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Window gold lettering remains legible at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Small window notices and text disappear at district distance; large fascia signs are baked with their receiving panel."
+      }
+    },
+    {
+      "id": "bay-faces",
+      "match": "^Assembly bay ",
+      "walk": {
+        "strategy": "replace",
+        "shape": "box",
+        "uv": "box",
+        "bake": true,
+        "cage_extrusion_m": 0.4,
+        "max_sampled_error_m": 0.35,
+        "reason": "Bake each complete splayed bay face with apron,framing and transoms to its closed shallow envelope; the actual three-face bay projection is retained."
+      },
+      "district": {
+        "strategy": "replace",
+        "shape": "box",
+        "uv": "box",
+        "bake": true,
+        "cage_extrusion_m": 0.4,
+        "max_sampled_error_m": 0.35,
+        "reason": "Retain the projecting three-sided bay silhouette and colour pattern while replacing fine bars,cornices and curved spandrels with a closed baked face."
+      }
+    },
+    {
+      "id": "sash-front",
+      "match": "^Assembly sash front",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:sash_receiver",
+        "settings": {
+          "width": 1.12,
+          "height": 2.52
+        },
+        "uv": "box",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4,
+        "reason": "Bake a complete sash,frame,sill,terracotta head and surrounding brick onto a shallow closed wall-mounted receiver. Retain the actual placement and opening colour; relinquish fine frame parallax."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:sash_receiver",
+        "settings": {
+          "width": 1.12,
+          "height": 2.52
+        },
+        "uv": "box",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4,
+        "reason": "Bake a complete sash,frame,sill,terracotta head and surrounding brick onto a shallow closed wall-mounted receiver. Retain the actual placement and opening colour; relinquish fine frame parallax."
+      }
+    },
+    {
+      "id": "sash-rear",
+      "match": "^Assembly sash rear",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:sash_receiver",
+        "settings": {
+          "width": 1.0,
+          "height": 1.9
+        },
+        "uv": "box",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4,
+        "reason": "Bake a complete sash,frame,sill,terracotta head and surrounding brick onto a shallow closed wall-mounted receiver. Retain the actual placement and opening colour; relinquish fine frame parallax."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:sash_receiver",
+        "settings": {
+          "width": 1.0,
+          "height": 1.9
+        },
+        "uv": "box",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4,
+        "reason": "Bake a complete sash,frame,sill,terracotta head and surrounding brick onto a shallow closed wall-mounted receiver. Retain the actual placement and opening colour; relinquish fine frame parallax."
+      }
+    },
+    {
+      "id": "street-wall",
+      "match": "^Envelope street wall",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep original portal and window reveals for walking geometry."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:street_wall_lod",
+        "settings": {},
+        "uv": "box",
+        "bake": false,
+        "reason": "Rebuild the wall with a shared aperture grid and local curved shoulder inserts; preserve all door,bay and sash openings while avoiding repeated whole-wall clipping. Reuse the authored brick map with metric box UV scaling."
+      }
+    },
+    {
+      "id": "fascia-0",
+      "match": "^Assembly street fascia 0(?:\\.|$)",
+      "walk": {
+        "strategy": "generator",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.3,
+        "max_sampled_error_m": 0.28,
+        "reason": "Bake each of three wall-mounted sign fields with its own lettering. Dedicated planar atlas retains usable text resolution; separate black cornice rails remain geometry. The0.28m surface budget includes the hidden rear of the0.20m-thick source field and its forward letter mounting offset.",
+        "generator": "components:fascia_receiver",
+        "settings": {
+          "width": 12.5
+        }
+      },
+      "district": {
+        "strategy": "generator",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.3,
+        "max_sampled_error_m": 0.28,
+        "reason": "Bake each of three wall-mounted sign fields with its own lettering. Dedicated planar atlas retains usable text resolution; separate black cornice rails remain geometry. The0.28m surface budget includes the hidden rear of the0.20m-thick source field and its forward letter mounting offset.",
+        "generator": "components:fascia_receiver",
+        "settings": {
+          "width": 12.5
+        }
+      }
+    },
+    {
+      "id": "fascia-12",
+      "match": "^Assembly street fascia 12(?:\\.|$)",
+      "walk": {
+        "strategy": "generator",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.3,
+        "max_sampled_error_m": 0.28,
+        "reason": "Bake each of three wall-mounted sign fields with its own lettering. Dedicated planar atlas retains usable text resolution; separate black cornice rails remain geometry. The0.28m surface budget includes the hidden rear of the0.20m-thick source field and its forward letter mounting offset.",
+        "generator": "components:fascia_receiver",
+        "settings": {
+          "width": 12.5
+        }
+      },
+      "district": {
+        "strategy": "generator",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.3,
+        "max_sampled_error_m": 0.28,
+        "reason": "Bake each of three wall-mounted sign fields with its own lettering. Dedicated planar atlas retains usable text resolution; separate black cornice rails remain geometry. The0.28m surface budget includes the hidden rear of the0.20m-thick source field and its forward letter mounting offset.",
+        "generator": "components:fascia_receiver",
+        "settings": {
+          "width": 12.5
+        }
+      }
+    },
+    {
+      "id": "fascia-25",
+      "match": "^Assembly street fascia 25(?:\\.|$)",
+      "walk": {
+        "strategy": "generator",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.3,
+        "max_sampled_error_m": 0.28,
+        "reason": "Bake each of three wall-mounted sign fields with its own lettering. Dedicated planar atlas retains usable text resolution; separate black cornice rails remain geometry. The0.28m surface budget includes the hidden rear of the0.20m-thick source field and its forward letter mounting offset.",
+        "generator": "components:fascia_receiver",
+        "settings": {
+          "width": 12.55
+        }
+      },
+      "district": {
+        "strategy": "generator",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.3,
+        "max_sampled_error_m": 0.28,
+        "reason": "Bake each of three wall-mounted sign fields with its own lettering. Dedicated planar atlas retains usable text resolution; separate black cornice rails remain geometry. The0.28m surface budget includes the hidden rear of the0.20m-thick source field and its forward letter mounting offset.",
+        "generator": "components:fascia_receiver",
+        "settings": {
+          "width": 12.55
+        }
+      }
+    }
+  ]
+}

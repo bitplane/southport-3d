@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.st-georges-place-terrace",
+  "name": "St George\u2019s Mansions",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "six-polygonal-bays",
+    "tudor-gables",
+    "leaded-transoms",
+    "recessed-entrances",
+    "terracotta-dressings",
+    "slate-roofs",
+    "rear-wings"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Exterior of St Georges Mansions adjoining Sainsburys,including three mapped rear wings; interiors and separate rear buildings excluded."
+}
