@@ -6,6 +6,7 @@ from mathutils import Vector,Matrix
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
+from cafe import build_cafe
 from components import rect,pointed,wall,gothic_window,leadwork,arch_ring,clock,roof,ring,clipped
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
@@ -25,7 +26,8 @@ glass=material('Muted opaque leaded glazing',(.17,.21,.22),rough=.3)
 lead=material('Dark leadwork',(.055,.064,.06))
 wood=material('Dark painted timber and bell louvres',(.095,.08,.064))
 brick=material('Rebuilt hall red brick',(.26,.08,.045),'brick')
-newbrick=material('Modern cafe buff brick',(.43,.30,.20))
+newbrick=material('Modern cafe buff brick',(.43,.30,.20),'buff-brick')
+cladding=material('Weathered cafe metal cladding',(.42,.43,.40),'cafe-metal')
 slate=material('Dark grey roof slates',(.092,.104,.102),'slate')
 metal=material('Rainwater goods and iron',(.055,.063,.061))
 clockface=material('Blue grey clock face',(.23,.30,.33))
@@ -191,29 +193,18 @@ for y,h in [(-35,5.4),(-54,5.4)]:
     box('Envelope annex roof step',(-83.1,y,z0+h/2),(12.8,.20,h),'modern-hall',brick)
 box('Envelope annex rear',(-83.2,-71.4,z0+1.95),(13.0,.32,3.9),'modern-hall',brick)
 box('Envelope annex return',(-89.75,-66.4,z0+1.95),(.32,10.3,3.9),'modern-hall',brick)
-# Close the modern front returns behind the lower cafe canopy/retained facade.
-box('Envelope annex front upper',(-82.98,-29.72,z0+3.7),(12.8,.30,.9),'modern-hall',brick)
-box('Envelope cafe porch return',(-91.45,-29.72,z0+4.8),(3.8,.30,3.8),'modern-hall',brick)
-# Close the exposed cafe side between porch and stepped annex roof.
-box('Envelope cafe west return',(-89.4,-30.45,z0+2.075),(.24,9.1,4.15),'modern-hall',newbrick)
-# Front low cafe range and its curved entrance corner, matching mapped offset.
-box('Envelope cafe front',(-82.0,-26.0,z0+1.9),(10.0,.30,3.8),'modern-hall',newbrick)
-trc=face_matrix((-82,-25.82,z0),(0,1,0))
-for x in [-3.0,0,3.0]:
-    box('Window cafe glazing',(x,2.1,.03),(2.2,2.4,.08),'modern-hall',glass,trc)
-    for side in [-1,1]:box('Trim cafe frame',(x+side*1.13,2.1,.10),(.09,2.56,.14),'modern-hall',cream,trc)
-    for h in [.86,3.34]:box('Trim cafe frame',(x,h,.10),(2.35,.09,.14),'modern-hall',cream,trc)
-# Projecting porch adjoining retained wing at positive X (left in frontal view).
-for x in [-93.0,-89.5]:box('Pier cafe porch',(x,-27.0,z0+1.45),(.42,.46,2.9),'modern-hall',newbrick)
-box('Door cafe recessed',(-91.25,-29.0,z0+1.35),(2.7,.12,2.7),'modern-hall',wood)
-for x in [-92.5,-90.0]:box('Window cafe door', (x,-28.92,z0+1.5),(.8,.03,1.9),'modern-hall',glass)
-finish(roof('Roof cafe entrance canopy',-93.5,-89.0,-29.4,-25.9,z0+2.95,z0+3.9,0),'roofs',[slate])
+# Close the hall side and front shoulder behind the cafe. Previously a short
+# partial-height return left a visible void beneath the main roof.
+box('Envelope cafe porch return',(-91.335,-29.72,z0+3.35),(3.57,.30,6.70),'modern-hall',brick)
+box('Envelope cafe west return',(-89.55,-45.41,z0+3.35),(.30,31.38,6.70),'modern-hall',brick)
+box('Envelope cafe connector',(-86.975,-29.72,z0+2.075),(4.85,.30,4.15),'modern-hall',newbrick)
+build_cafe(finish,box,z0,newbrick,cladding,glass,cream,wood,slate,metal)
 # Separate closed roofs do not intersect: lower annex roof ends at nave wall.
 finish(roof('Roof main hipped hall',-112.15,-89.55,-61.2,-29.6,z0+6.7,z0+10.2,5.1),'roofs',[slate])
 for ya,yb,h in [(-35,-29.55,4.15),(-54,-35,5.4),(-71.5,-54,3.9)]:
     box('Roof modern annex flat',(-82.975,(ya+yb)/2,z0+h),(12.85,yb-ya,.18),'roofs',slate)
 # Low cafe roof outside the high roof footprints.
-box('Roof cafe low flat',(-82.975,-27.6,z0+4.15),(12.85,3.9,.18),'roofs',slate)
+# Rounded cafe cap is authored in cafe.py.
 # Low step in rear hall (mapped southern offset) and lead valley between ranges.
 box('Roof rear shoulder',(-112.4,-56.7,z0+6.65),(3.0,9.0,.18),'roofs',slate)
 box('Roof valley flashing',(-89.47,-45.2,z0+6.65),(.24,31.2,.10),'roofs',metal)
@@ -226,11 +217,6 @@ for xs,ys,h in [([-86.2,-80.0],[-39,-45,-51],5.4),([-85.5,-79.5],[-58,-63,-68],3
         for y in ys:
             box('Roof annex rooflight kerb',(x,y,z0+h+.16),(1.25,1.35,.23),'roofs',cream)
             box('Window annex rooflight',(x,y,z0+h+.29),(1.03,1.13,.05),'roofs',glass)
-# Legible public cafe identity from August 2024 Street View; no reference pixels.
-box('Trim cafe signboard',(-82,-25.81,z0+3.72),(8.0,.16,1.1),'modern-hall',wood)
-ob=text_object('Trim cafe lettering','café 1821',(-82,-25.70,z0+3.72),(0,1,0),.65,7.3,bpy.data.fonts.load('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'),cream,collection=C['modern-hall'])
-bpy.ops.object.select_all(action='DESELECT');bpy.context.view_layer.objects.active=ob;ob.select_set(True);bpy.ops.object.convert(target='MESH');ob.select_set(False)
-if not ob.data.uv_layers:ob.data.uv_layers.new(name='Metric UV')
 for image in bpy.data.images:
     if image.source=='FILE':image.pack()
 s.render.engine='CYCLES';s.cycles.samples=20;s.cycles.use_denoising=True

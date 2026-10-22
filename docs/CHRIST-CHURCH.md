@@ -65,3 +65,20 @@ crenellations: merlons overlapped the parapet base with coplanar external faces,
 producing black horizontal marks. Merlons now begin at the base top without
 changing their upper silhouette. Fine tracery and stone weathering remain
 interpreted; photographs do not establish surveyed heights or hidden roofs.
+
+## Café 1821 snag reconstruction
+
+Private report 233407 supplies a mapped aerial and a clear May 2026 frontage
+photo. They establish the quarter-round corner, buff lower brickwork, weathered
+vertical metal fascia, full-height white-framed glazing with opening top lights,
+central paired doors and the two-line café/1821 sign. The previous broad box and
+three separate windows have been replaced. The small porch stands separately
+beside the round corner, with eaves above the café cap; its pitch and dimensions
+remain estimates. A full-height hall return closes the former gap above the annex.
+The image carrying a Dola AI watermark was not used to infer interior detail.
+No interior, temporary posters or photographic texture pixels were reproduced.
+
+The rounded envelope, cladding seams, porch and glazing remain geometric across
+all levels; low-cost 24-segment curvature is retained. The authored sign letters
+and rules bake to a shallow receiver at Walk/District. Validation checks clear
+glazing rays, separated cafe/porch roofs and closure of the exposed hall return.

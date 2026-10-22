@@ -362,6 +362,28 @@
         "bake": false,
         "reason": "Reduce circular sampling while retaining diamond stone surround, face and actual hands."
       }
+    },
+    {
+      "id": "cafe-sign",
+      "match": "^CafeSign ",
+      "walk": {
+        "strategy": "replace",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.25,
+        "max_sampled_error_m": 0.2,
+        "reason": "Bake authored lettering and rules onto the shallow two-line sign receiver; preserve the rounded building and window recesses geometrically."
+      },
+      "district": {
+        "strategy": "replace",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.25,
+        "max_sampled_error_m": 0.2,
+        "reason": "Bake authored lettering and rules onto the shallow two-line sign receiver; preserve the rounded building and window recesses geometrically."
+      }
     }
   ]
 }
