@@ -152,6 +152,16 @@
         "st-georges-place-terrace/references/aerial.png",
         "london-street-14-16/references/aerial.png"
       ]
+    },
+    {
+      "id": "sefton-lighting-2017",
+      "url": "https://www.sefton.gov.uk/media/2034/lord-street-appraisal-nov-17-chapters-5-to-7.pdf",
+      "author": "Sefton Council",
+      "capture": "2017 appraisal; photograph date unspecified",
+      "observations": [
+        "Page 74 photograph: unequal-height twin arched arms, pale upper shaft, dark base and suspended saucer lanterns.",
+        "Page 74 separates this family from memorial clustered globes and garden-wall globe lamps. Exact current pole locations and metric dimensions remain estimates."
+      ]
     }
   ],
   "limitations": [

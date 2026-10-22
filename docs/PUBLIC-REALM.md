@@ -226,3 +226,22 @@ zero-area cutter triangles are rejected. Otherwise a zero-length edge can
 classify the entire remaining polygon as both inside and outside, duplicating
 pavement fragments. Sampled Anchor Street footway rays guard against this
 overlap after triangulation and batching.
+
+## Signal and Lord Street lamp snag pass
+
+The London Square signals now use circular open-bottom visors, dark pedestrian
+lenses with distinct standing/striding silhouettes, housing brackets and yellow
+push-button boxes. The supplied private snag photo (4222c7f871974cf9939f27c724f13399)
+is shape evidence, not a surveyed local equipment identification. No live phase
+is represented. All three levels retain symbols and curved hoods; lower levels
+reduce sampling and omit screws. Other street assets retain their existing
+signals until their equipment is reviewed.
+
+The square and its Lord Street garden extensions use the unequal-height twin
+arched lamp pictured on page 74 of Sefton's 2017 conservation appraisal. Pale
+upper posts, dark bases, two arch heights and suspended saucer lanterns replace
+the single utilitarian heads. Arms face both road and pavement. London Street's
+separate single-arm family and the memorial/globe lamps remain distinct. Pole
+locations and metric proportions are estimated; this pass does not establish
+current equipment at every position. The family is authored locally while its
+placement is reviewed, for later extraction into the shared furniture library.

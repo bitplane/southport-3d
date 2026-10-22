@@ -13,7 +13,8 @@ print('Public realm geometry validated')
 # Validate the shared generator levers independently of published instance totals.
 import os,sys
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib'))
-from southport3d.street import furniture
+sys.path.insert(0,str(ROOT/"scripts"))
+from furniture_lod import furniture
 for kind in {f['kind'] for f in layout['furniture']}:
  counts=[]
  for level in ['detail','walk','district']:
@@ -180,3 +181,21 @@ for y in [-79.18,-79.36,-87.82,-87.64]:
 print('Anchor Street ownership seam has continuous road-edge paint')
 
 assert all(f.area>=1e-8 for o in bpy.data.collections['rear-streets-ground'].objects for f in o.data.polygons),'Degenerate corridor faces'
+
+# Distinctive signal and lamp silhouettes must survive every generator level.
+from mathutils import Vector
+for kind in ['pedestrian','signal','lord-street-lamp']:
+ for level in ['detail','walk','district']:
+  m=furniture(kind,level)
+  for face in m.faces:
+   a=Vector(m.vertices[face[0]])
+   area=sum((Vector(m.vertices[face[j]])-a).cross(Vector(m.vertices[face[j+1]])-a).length/2 for j in range(1,len(face)-1))
+   assert area>1e-9,(kind,level,'Collapsed furniture face')
+  if kind=='pedestrian':
+   for material in [4,6]:
+    faces=[f for f,mi in zip(m.faces,m.indices) if mi==material]
+    assert faces and all(m.vertices[i][1]<-.24 for f in faces for i in f),(level,'Pedestrian glyph buried')
+  if kind=='lord-street-lamp':
+   for sign in [-1,1]:
+    assert any(v[1]*sign>1.1 and v[2]>5.0 for v in m.vertices),(level,'Missing twin arm')
+print('Signal glyph depths, twin lamp arms and non-degenerate local furniture checked')

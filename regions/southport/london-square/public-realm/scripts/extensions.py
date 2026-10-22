@@ -6,7 +6,7 @@ choices here, with reusable canopy/edge construction in southport3d.landscape.
 """
 import json,math
 from southport3d.geometry import Mesh
-from southport3d.street import furniture
+from furniture_lod import furniture
 from southport3d.landscape import capped_wall
 from landscape_lod import tree
 from rear_streets import PARTS as REAR_PARTS, build_rear_streets
@@ -163,7 +163,7 @@ def build_extensions(ctx):
             if kind and x0<x<x1 and -23<y<41:
                 furnishing(kind,x,y,180 if 0<y<25 else 0,fp,'OSM node '+node_id+'; orientation estimated')
         for x in ([48,78,105,137] if side==1 else [-53]):
-            furnishing('streetlight',x,32.1,0,fp)
+            furnishing('lord-street-lamp',x,32.1,0,fp)
         # Bus stop poles only where mapped; shelter geometry awaits close evidence.
         for node_id,node in osm['nodes'].items():
             x,y=node['xy']

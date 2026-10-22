@@ -5,7 +5,9 @@ import bpy
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path.insert(0,str(REPO/'lib'))
 from southport3d.geometry import Mesh,text_object
-from southport3d.street import furniture,sagging_chain,guardrail
+from southport3d.street import sagging_chain,guardrail
+sys.path.insert(0,str(ROOT/"scripts"))
+from furniture_lod import furniture
 from southport3d.road import marking_segments,parallel
 D=json.loads((ROOT/'research/layout.json').read_text());bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 sys.path.insert(0,str(ROOT/'scripts'))

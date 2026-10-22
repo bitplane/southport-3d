@@ -424,7 +424,7 @@
         },
         "uv": "smart",
         "bake": false,
-        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+        "reason": "Retain round open visors and dark lenses; pedestrian silhouettes survive all levels. Reduce curved sampling and omit fasteners."
       },
       "district": {
         "strategy": "generator",
@@ -435,7 +435,7 @@
         },
         "uv": "smart",
         "bake": false,
-        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+        "reason": "Retain round open visors and dark lenses; pedestrian silhouettes survive all levels. Reduce curved sampling and omit fasteners."
       }
     },
     {
@@ -450,7 +450,7 @@
         },
         "uv": "smart",
         "bake": false,
-        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+        "reason": "Retain round open visors and dark lenses; pedestrian silhouettes survive all levels. Reduce curved sampling and omit fasteners."
       },
       "district": {
         "strategy": "generator",
@@ -461,7 +461,7 @@
         },
         "uv": "smart",
         "bake": false,
-        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+        "reason": "Retain round open visors and dark lenses; pedestrian silhouettes survive all levels. Reduce curved sampling and omit fasteners."
       }
     },
     {
@@ -576,6 +576,32 @@
         "uv": "smart",
         "bake": false,
         "reason": "Keep open baluster spacing and continuous stone coping; simplify turned profiles and radial sampling, preserving negative space."
+      }
+    },
+    {
+      "id": "lord-street-lamp",
+      "match": "^Furniture lord-street-lamp ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "lord-street-lamp",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Preserve unequal-height double arches and pendant lanterns; reduce curved sampling and omit access hardware."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "lord-street-lamp",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Preserve unequal-height double arches and pendant lanterns; reduce curved sampling and omit access hardware."
       }
     }
   ]

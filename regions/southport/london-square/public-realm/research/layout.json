@@ -520,23 +520,23 @@
       "part": "island-furniture"
     },
     {
-      "kind": "streetlight",
+      "kind": "lord-street-lamp",
       "xy": [
         15,
         19.5
       ],
-      "yaw": 0,
-      "source": "aerial-2025; curved road-light family, dimensions estimated",
+      "yaw": 180,
+      "source": "Sefton Lord Street appraisal 2017 p74; twin swan-neck family, metric dimensions and pole placements estimated",
       "part": "ne-furniture"
     },
     {
-      "kind": "streetlight",
+      "kind": "lord-street-lamp",
       "xy": [
         27,
         20
       ],
-      "yaw": 0,
-      "source": "aerial-2025; curved road-light family, dimensions estimated",
+      "yaw": 180,
+      "source": "Sefton Lord Street appraisal 2017 p74; twin swan-neck family, metric dimensions and pole placements estimated",
       "part": "ne-furniture"
     },
     {
@@ -840,23 +840,23 @@
       "part": "island-furniture"
     },
     {
-      "kind": "streetlight",
+      "kind": "lord-street-lamp",
       "xy": [
         -15,
         19.5
       ],
-      "yaw": 0,
-      "source": "aerial-2025; curved road-light family, dimensions estimated",
+      "yaw": 180,
+      "source": "Sefton Lord Street appraisal 2017 p74; twin swan-neck family, metric dimensions and pole placements estimated",
       "part": "sw-furniture"
     },
     {
-      "kind": "streetlight",
+      "kind": "lord-street-lamp",
       "xy": [
         -27,
         20
       ],
-      "yaw": 0,
-      "source": "aerial-2025; curved road-light family, dimensions estimated",
+      "yaw": 180,
+      "source": "Sefton Lord Street appraisal 2017 p74; twin swan-neck family, metric dimensions and pole placements estimated",
       "part": "sw-furniture"
     }
   ]
