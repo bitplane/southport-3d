@@ -14,6 +14,18 @@ Detail uses individual shallow ashlar relief, window profiles and full ornament.
 
 Validation checks finite metric geometry, packed maps, three gables/oculi and balconies, two cash machines, four stacks, footprint limits, unobscured principal windows and a genuinely lower internal roof deck. Render bookmarks cover both elevations, roof, entrance, gable and balcony. Local publication supplies the same views in the combined town scene, with pavements owned by the public-realm assets.
 
+The roof repair pass replaces separate intersecting sheets with a closed union
+of the two roof ranges and three cross gables. Eaves tuck into the masonry,
+inner attic returns close the gap above the lower deck, and chimney bases extend
+into the slopes. Wall ends and the deck meet at owned boundaries instead of
+duplicating exterior faces. Validation checks manifold roof edges, 1,391 vertical
+roof probes and positive-area coplanar overlap on the exterior envelope.
+
+Walk/District's sandstone map uses the sRGB equivalent of the Detail stone
+material. A linear-colour comparison catches changes that would restore the
+whole-facade colour jump when individual ashlar skins disappear. Fine joints,
+carving and ironwork still change with the intended LoD policy.
+
 ```sh
 python3 tools/project.py build southport.london-square.natwest
 python3 tools/project.py build southport.london-square.natwest --stage render

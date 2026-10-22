@@ -10,6 +10,7 @@ from mathutils import Matrix, Vector
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh, face_matrix, text_object
+from roof import joined_roof
 from components import rectangle, arch_outline, wall, upper_window, arched_window, gable, foliage, parapet, urn, finial, arc, partition_window
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT')
@@ -129,7 +130,8 @@ for elevation,frame,width,bays in facades:
         elif not front_face and i==1:
             pass
         else:holes.append(rectangle(u-1.225,6.8,u+1.225,10.25))
-    finish(wall('Envelope '+elevation,width,12.25,holes),mats=[stone],transform=frame)
+    # The front wall owns the shared corner; side masonry starts at its back.
+    finish(wall('Envelope '+elevation,width,12.25,holes,start=0 if front_face else .42),mats=[stone],transform=frame)
     finish(wall('Ashlar '+elevation,width,12.25,holes,True),mats=plain,transform=frame)
     # Continuous courses establish floor levels and retain their shadow profiles.
     for z,h,dep in [(0.25,.50,.12),(5.95,.16,.24),(6.18,.16,.34),(6.38,.12,.24),
@@ -260,47 +262,28 @@ for elevation,frame,width,bays in facades:
     sign(elevation+' projecting','',.72,.72,bracket)
 
 # Rear/party wall is deliberately plain where no reliable street imagery exists.
-box('Envelope rear',((xf+xn)/2,yb+.18,z0+6.15),(xf-xn,.36,12.3),mat=brick)
-box('Envelope party',(xf-.18,(yf+yb)/2,z0+6.15),(.36,yf-yb,12.3),mat=brick)
-box('Roof lower flat deck',((15.6+xf)/2,(-33.3+yb)/2,z0+10.25),(xf-15.6,-33.3-yb,.25),'roof',flat)
-for x in (15.65,xf-.15):box('Roof inner wall',(x,(-33.3+yb)/2,z0+11.5),(.30,-33.3-yb,2.5),'roof',brick)
+rear_left=xn+.42;rear_right=xf-.36;party_front=yf-.42
+box('Envelope rear',((rear_right+rear_left)/2,yb+.18,z0+6.15),(rear_right-rear_left,.36,12.3),mat=brick)
+box('Envelope party',(xf-.18,(party_front+yb)/2,z0+6.15),(.36,party_front-yb,12.3),mat=brick)
+court_front=yf-10.2;court_rear=yb+.36;court_left=xn+8.3
+box('Roof lower flat deck',((court_left+rear_right)/2,(court_front+court_rear)/2,z0+10.25),(rear_right-court_left,court_front-court_rear,.25),'roof',flat)
+# The party wall already encloses the right side. Do not duplicate its skin.
+box('Roof inner wall',(xn+8.15,(court_front+court_rear)/2,z0+11.16),(.30,court_front-court_rear,2.02),'roof',brick)
 box('Roof rear parapet',((xf+xn)/2,yb+.12,z0+12.55),(xf-xn,.28,.50),'roof',plain[1])
 
 
-def roof_face(name,points):
-    m=Mesh(name)
-    m.add(points,[tuple(range(len(points)))])
-    ob=finish(m,'roof',[slate])
-    # Courses follow each slope's eave, not an arbitrary global projection.
-    a,b,c=map(Vector,points[:3]);u=(b-a).normalized();normal=(b-a).cross(c-a).normalized();v=normal.cross(u)
-    for loop in ob.data.loops:
-        p=ob.data.vertices[loop.vertex_index].co-a
-        ob.data.uv_layers.active.data[loop.index].uv=(p.dot(u)/1.45,p.dot(v)/1.6)
-    return ob
-
-ze=z0+13.0;zr=z0+16.55;yr=yf-5.1;back=yf-10.2
-roof_face('Roof front slate',[(xn,yf,ze),(xf,yf,ze),(xf-2.5,yr,zr),(xn+4.1,yr,zr)])
-roof_face('Roof front inward slate',[(xf,back,ze),(xn+8.2,back,ze),(xn+4.1,yr,zr),(xf-2.5,yr,zr)])
-roof_face('Roof front party hip',[(xf,yf,ze),(xf,back,ze),(xf-2.5,yr,zr)])
-# London Street range turns around the lower central flat roof.
+# One closed roof skin: intersecting sheets must never be exported separately.
+joined_roof(xn,xf,yf,yb,z0,lambda mesh:finish(mesh,'roof',[slate]))
+ze=z0+12.35;zr=z0+16.55;yr=yf-5.1;back=yf-10.2
 xr=xn+4.1;xi=xn+8.2
-roof_face('Roof London slate',[(xn,yb,ze),(xn,yf,ze),(xr,yr,zr),(xr,yb+2.6,zr)])
-roof_face('Roof London inward slate',[(xi,back,ze),(xi,yb,ze),(xr,yb+2.6,zr),(xr,yr,zr)])
-roof_face('Roof London rear hip',[(xn,yb,ze),(xi,yb,ze),(xr,yb+2.6,zr)])
-# Cross-gabled roof shoulders behind all three stone gables.
-for u in D['front_bays'][::4]:
-    x=xf-u
-    roof_face('Roof front gable west',[(x-2.7,yf,ze),(x-2.7,yr,ze),(x,yr,zr),(x,yf,zr)])
-    roof_face('Roof front gable east',[(x,yr,zr),(x+2.7,yr,ze),(x+2.7,yf,ze),(x,yf,zr)])
-y=yf-8.1
-roof_face('Roof London gable north',[(xn,y+2.7,ze),(xr,y+2.7,ze),(xr,y,zr),(xn,y,zr)])
-roof_face('Roof London gable south',[(xn,y,zr),(xr,y,zr),(xr,y-2.7,ze),(xn,y-2.7,ze)])
+# Complete the inner attic returns between the low deck and the eaves.
+box('Roof inner front return',((xi+rear_right)/2,back+.12,z0+11.16),(rear_right-xi,.24,2.02),'roof',brick)
 for a,b in [((xn+4.1,yr,zr),(xf-2.5,yr,zr)),((xr,yr,zr),(xr,yb+2.6,zr))]:
     m=Mesh('Roof ridge cap');m.tube([a,b],.10,sides=8);finish(m,'roof',[lead])
 # Chimney positions/pots interpreted from aerial plus street images.
 for i,(x,y,w,d,h,pots) in enumerate([(20.5,yf-3.8,.95,.85,18.0,1),(29.0,yr,1.25,.8,17.3,2),(xr,yb+1.0,2.25,.9,16.8,4),(13.0,yf-8.0,1.9,.85,17.5,3)]):
     m=Mesh('Chimney stack '+str(i))
-    bottom=14.0
+    bottom=12.0
     m.box((x,y,z0+(bottom+h)/2),(w,d,h-bottom))
     for z in (h-.8,h-.25,h):m.box((x,y,z0+z),(w+.24,d+.22,.18))
     finish(m,'roof',[stone])

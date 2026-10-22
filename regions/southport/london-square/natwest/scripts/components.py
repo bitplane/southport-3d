@@ -21,10 +21,10 @@ def cut_regions(poly, openings):
     return pieces
 
 
-def wall(name,width,height,openings,ashlar=False):
+def wall(name,width,height,openings,ashlar=False,start=0):
     m=Mesh(name)
     if not ashlar:
-        for poly in cut_regions(rectangle(0,0,width,height),openings):m.outline(poly,-.42,0)
+        for poly in cut_regions(rectangle(start,0,width,height),openings):m.outline(poly,-.42,0)
     else:
         for row in range(math.ceil(height/.4)):
             y=row*.4
