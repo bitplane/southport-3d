@@ -98,7 +98,7 @@ for x in front['garden_bollards_x']:
 for x in front['shop_bollards_x']:
  assert (x,front['shop_bollards_y']) in positions
  assert -23.6<front['shop_bollards_y']< -21.1,'Post off frontage footway'
-assert len([o for o in meshes if o.name.startswith('Garden globe lamp')])==4
+assert len([o for o in meshes if o.name.startswith('Garden globe lamp')])==5
 from garden_front import globe_lamp,balustrade
 for factory in [globe_lamp,balustrade]:
  counts=[sum(len(f)-2 for f in factory(level).faces) for level in ['detail','walk','district']]
@@ -228,3 +228,10 @@ for level in ['detail','walk','district']:
     assert max(abs(v[0]) for v in m.vertices)<=.231
     assert max(v[2] for v in m.vertices)<1.0
 print('London Street kerb offsets, head directions and slim bin silhouette checked')
+
+# Rounded garden return has a raised pavement behind its curved kerb, and a
+# single block-paved lane in front. Ray probes protect the new ownership edges.
+for x,y,expected in [(-72.5,-12.3,'Authored mixed rectangular paving'),(-63.2,-11.8,'Authored mixed rectangular paving'),(-66.5,-13,'Authored dark service road blocks'),(-65.0,-12.0,'Authored mixed rectangular paving'),(-64.7,2,'Authored mixed rectangular paving'),(-68.0,2,'Authored dark service road blocks')]:
+ ob,p=ground_hit(x,y)
+ assert ob and any(m.name==expected for m in ob.data.materials),(x,y,expected,ob.name if ob else None)
+assert bpy.data.objects.get('Garden curved return')

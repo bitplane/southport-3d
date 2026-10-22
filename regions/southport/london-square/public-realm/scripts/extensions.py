@@ -91,11 +91,16 @@ def build_extensions(ctx):
         lo,hi=sorted([side*41,end])
         if side==1:polygon('Surface garden paved envelope',garden+[(41,21)],mixed,part)
         else:rect('Surface garden paved envelope',lo,-14.8,hi,21,mixed,part)
-        gx0,gx1=(42,143.7) if side==1 else (-66,-42)
-        rect('Surface lawn',gx0,(-8 if side>0 else -12),gx1,17.8,grass,part,.006)
+        gx0,gx1=(42,143.7) if side==1 else (-63.25,-42)
+        if side>0:rect('Surface lawn',gx0,-8,gx1,17.8,grass,part,.006)
+        else:
+            # Lawn follows the inside of the rounded wall, never the old square
+            # corner which would spill turf across the new pedestrian pavement.
+            arc=[(-60.5+2.75*math.cos(a),-9.3+2.75*math.sin(a)) for a in [math.pi+i*math.pi/2/16 for i in range(17)]]
+            polygon('Surface lawn',arc+[(gx1,-12.05),(gx1,17.8),(gx0,17.8)],grass,part,.006)
         # SW rear service lane wraps round the small memorial garden, not through it.
         if side==-1:
-            rect('Surface rear service return',-72,-21.1,-66,21,asphalt,part,.026)
+            rect('Surface rear service return',-72,-21.1,-66,21,roadpavers,part,.026)
         else:
             rect('Surface St Georges Place end return',147,-23.6,154,31,asphalt,part,-.12)
         # Garden paths use the mapped coordinates; long NE path and fountain circle.
@@ -120,13 +125,13 @@ def build_extensions(ctx):
             opening=3 if side==-1 else 1.8
             cuts=[piece for a,b in cuts for piece in ([(a,min(b,gate-opening))] if a<gate-opening else [])+([(max(a,gate+opening),b)] if b>gate+opening else [])]
         for a,b in cuts:
-            if b-a<.2:continue
+            if b-a<.2 or (side==-1 and b<=-66):continue
             for y in [(-8.3 if side>0 else -12.3),18]:
                 if side==-1 and y==-12.3:
                     # The observed balustrade replaces this portion of the provisional edge.
                     for start,end in [(a,min(b,-66)),(max(a,-42),b)]:
                         if end>start:wall([(start,y),(end,y)],fp,.3,.25)
-                else:wall([(a,y),(b,y)],fp,.3,.25)
+                else:wall([(max(a,-63.5) if side==-1 else a,y),(b,y)],fp,.3,.25)
         # Front/back pavements, with cross-path kerb openings, no kerb across scene ends.
         for a,b in cuts:
             if b>a:curb([(a,21),(b,21)],part)
@@ -147,8 +152,19 @@ def build_extensions(ctx):
             if b>a:paint_edge('Lord Street garden edge',[(a,21),(b,21)],1,part,bounds)
         if side==-1:
             paint_edge('terrace approach double yellow',[(x1,-21.1),(-72,-21.1),(-72,21)],-1,part,bounds)
-            curb([(x1,-14.8),(-66,-14.8),(-66,21)],part,-1)
-            paint_edge('garden service edge',[(x1,-14.8),(-66,-14.8),(-66,21)],1,part,bounds)
+            from rounded_garden import kerb_curve
+            curve=kerb_curve()
+            # Road extends up to the curved kerb; the pale footway owns its inside.
+            arc=curve[1:-1]
+            polygon('Surface rounded corner road',arc+[(-66,-14.8)],roadpavers,part,.027)
+            curb(curve,part,-1)
+            paint_edge('garden service edge',curve,1,part,bounds)
+            # Observed taxi bay: dashed inner edge and closed ends beside the church.
+            dashed([(-69.4,-12),(-69.4,15)],part,.10,1.1,1.8,yellow)
+            for y in [-12,15]:line('Marking Christ taxi bay end',[(-71.5,y),(-69.4,y)],.10,yellow,part,-.109)
+            from rounded_garden import taxi_letters
+            for cy in [-5,8]:
+                for poly in taxi_letters(-70.4,cy):polygon('Marking TAXIS',poly,yellow,part,-.108)
         else:
             curb(span(garden,41,116.8),part,1)
             curb(span(garden,119.2,147)+[(147,21)],part,1)
@@ -205,7 +221,7 @@ def build_extensions(ctx):
                    'user-street-2024; spacing estimated')
     garden_materials=[mat('Pale weathered balustrade stone',(.48,.46,.39)),fm[0],
                       mat('Globe lamp pale shaft and opal glass',(.79,.79,.70))]
-    y=frontage['balustrade_y'];start=frontage['balustrade_start_x'];end=frontage['balustrade_end_x']
+    y=frontage['balustrade_y'];start=-58;end=frontage['balustrade_end_x']
     template=None
     for x in range(start,end,4):
         if template is None:
@@ -215,13 +231,15 @@ def build_extensions(ctx):
         ob.location=(x,y,grade(y));ob['source']='user-street-2024; calibrated repeat spacing'
     m=Mesh('Wall balustrade end pier');m.box((end,y,grade(y)+.505),(.36,.46,1.01));m.box((end,y,grade(y)+1.045),(.46,.49,.07));m.finish([garden_materials[0]],C[fp])
     template=None
-    for x in frontage['globe_lamps_x']:
+    for x in [-58,-46]:
         if template is None:
             ob=globe_lamp().finish(garden_materials,C[fp]);template=ob
             for face in ob.data.polygons:face.use_smooth=True
         else:
             ob=template.copy();ob.data=template.data;C[fp].objects.link(ob)
         ob.location=(x,y,grade(y)+1.08);ob['source']='user-street-2024; pier placement estimated'
+    from rounded_garden import build_corner
+    build_corner(ctx,garden_materials)
     # Photographed return opposite St George's: open stone balusters, globe
     # lamps and shallow planter bowls. The remaining NE boundary is provisional.
     fp='ne-garden-furniture'

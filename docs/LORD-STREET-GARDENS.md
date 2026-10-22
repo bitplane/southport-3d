@@ -97,3 +97,7 @@ cafe and church entrances. The X=-73 ownership seam remains unchanged.
 Ground-level probes require one surface, verify raised turf and keep entrance
 paving on the inherited grade. Wall/path/terrain shapes remain at all LoDs;
 existing furniture generators and texture reductions continue to apply.
+
+The taxi-lane bench uses the existing shared bench family, positioned against
+the retaining wall and facing the road. Private reference c6a972 informs its
+approximate placement; detailed bench design is deferred to a later review.

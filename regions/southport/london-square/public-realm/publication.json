@@ -655,6 +655,58 @@
         "bake": false,
         "reason": "Straight tapered pole and rectangular LED silhouette survive; reduce circular sampling and omit small pole fittings at District."
       }
+    },
+    {
+      "id": "curved-garden-wall",
+      "match": "^Garden curved return",
+      "walk": {
+        "strategy": "generator",
+        "generator": "rounded_garden:build_lod",
+        "settings": {
+          "kind": "wall",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Preserve curved plan and pierced balustrade; reduce radial profiles and foliage lobes without filling openings."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "rounded_garden:build_lod",
+        "settings": {
+          "kind": "wall",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Preserve curved plan and pierced balustrade; reduce radial profiles and foliage lobes without filling openings."
+      }
+    },
+    {
+      "id": "curved-garden-shrubs",
+      "match": "^Garden corner shrubs",
+      "walk": {
+        "strategy": "generator",
+        "generator": "rounded_garden:build_lod",
+        "settings": {
+          "kind": "shrubs",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Preserve curved plan and pierced balustrade; reduce radial profiles and foliage lobes without filling openings."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "rounded_garden:build_lod",
+        "settings": {
+          "kind": "shrubs",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Preserve curved plan and pierced balustrade; reduce radial profiles and foliage lobes without filling openings."
+      }
     }
   ]
 }

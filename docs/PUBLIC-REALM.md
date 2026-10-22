@@ -262,3 +262,14 @@ bin at site (-5.4,-56). The observed Halifax lamp is a straight tapered pole wit
 a slim rectangular head. London Street poles move beside the kerb and face the
 carriageway. Other lamp fittings remain provisional rather than assuming all
 poles share the photographed modern replacement. Dimensions are visual estimates.
+
+### Christ Church taxi-lane corner
+
+Private report c6a972 supplies two clear views from the rear service lane toward
+Lord Street. The memorial garden has a rounded balustrade with shrubs behind it,
+a narrow side pavement, a low wall and planter bowls further along. The return
+lane uses dark blocks and carries a dashed taxi bay with TAXIS lettering. The
+model shares one curved kerb with its yellow-line offsets; clipped ground surfaces
+own each footprint once. The balustrade remains pierced at every level, reducing
+lathe samples; shrubs reduce crown lobes. Plan radii, bay lengths, wall height and
+planting density are visually estimated. Reference pixels remain private.
