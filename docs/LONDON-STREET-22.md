@@ -29,3 +29,15 @@ No whole-building decimation is used. Near-detail joinery depth was reduced afte
 The full asset build checks packed procedural maps, finite UV meshes, unobscured glazed openings, closed cap/deck/rooflights, and registration/shared boundary with 20. Isolated publication classifies every mesh and validates all twelve part/level GLBs. Exported Detail/Walk/District front, oblique and roof renders are reviewed; combined viewer publication remains the coordinator's final check.
 
 The exact independent 22a door location is unresolved in the retained historical view and is deferred rather than cut into a guessed pier. Rear windows, rear wall materials and precise roof levels require better ground or aerial evidence; no speculative rear window grid is added. Current shop signage and post-2019 glazing are also deferred. Hidden walls are conservative envelopes, not a claim of complete architectural survey. No interiors are modelled.
+
+## Independent audit, 22 October 2026
+
+An enlarged review of the same May 2011 panorama corrected the initially symmetric frontage. The south/Oxfam stone shoulder is broader and lower, the glazed shaft is offset toward 20, and its rounded crown stops short of the lower shoulder. The pale recessed historical entrance is on the left beneath the fascia; its use as shop or upper-floor access is still unresolved. The rear roof is kept below the observed shoulder, with its exact height explicitly estimated. Side-wall end caps now terminate within the rear wall instead of overlapping its outer surface.
+
+Validation checks the offset shaft, limited crown width, visible left entrance and non-overlapping rear-wall junction in addition to the original aperture/closure checks. Full build and all twelve GLBs pass. Detail, Walk and District front, oblique and roof images were reviewed after rebuilding; the steel/glass assemblies remain geometry at all levels to avoid a colour transition. Combined exported views with 20 are retained outside Git under `output/london-street-20-22-audit/`.
+
+| Level | Triangles | GLB bytes including textures |
+| --- | ---: | ---: |
+| Detail | 4,322 | 1,673,260 |
+| Walk | 1,780 | 1,489,500 |
+| District | 1,420 | 502,896 |

@@ -116,18 +116,18 @@ darkglass=material('Blue grey upper glazing',(.09,.135,.16),roughness=.65)
 darkglass.node_tree.nodes['Principled BSDF'].inputs['Specular IOR Level'].default_value=.15
 H=13.1
 # Tall Art Deco glass bay: actual void, with a separate lower shop opening.
-wall_with_openings('stone front',front,width,H,[(.83,width-.83,3.70,12.72),(.16,width-.16,0,3.18)],mat=stone)
+gl=1.02;gr=width-.43;gc=(gl+gr)/2;gw=gr-gl
+wall_with_openings('stone front',front,width,H,[(gl,gr,3.70,12.72),(0,gl,12.25,H),(.16,width-.16,0,3.18)],mat=stone)
 # Step the edges and use fine vertical stone ribs, preserving the slim proportions.
-for u in [.25,width-.25]:
- elevation_box('Trim outer stone pier',u,7.95,.50,9.62,.25,.045,stone)
- elevation_box('Trim pier cap',u,12.81,.58,.20,.36,.06,lightstone)
- for dx in [-.125,.125]:elevation_box('Trim pier vertical rib',u+dx,8.03,.065,9.28,.075,.205,lightstone)
-# Discrete cladding joints are real near-detail; omitted in District.
-for u in [.25,width-.25]:
- for h in [4.15+i*.58 for i in range(15)]:elevation_box('Fine stone joint',u,h,.49,.009,.009,.173,black)
+for u,w,top in [(.43,.86,12.25),(width-.20,.40,12.81)]:
+ bottom=3.14
+ elevation_box('Trim outer stone pier',u,(bottom+top)/2,w,top-bottom,.25,.045,stone)
+ elevation_box('Trim pier cap',u,top,w+.08,.20,.36,.06,lightstone)
+ for dx in [-w*.30,w*.30]:elevation_box('Trim pier vertical rib',u+dx,(bottom+top)/2,.065,top-bottom-.32,.075,.205,lightstone)
+ for h in [4.15+i*.58 for i in range(15) if 4.15+i*.58<top-.15]:elevation_box('Fine stone joint',u,h,w-.01,.009,.009,.173,black)
 # Three storeys of shallow steel joinery; broad division bars remain geometry at every level.
 # Each assembly has local XY coordinates, allowing bake receivers without changing depth.
-gw=width-1.66
+ # Glazing is offset north; the south stone shoulder is broader and lower.
 for i,(bottom,top) in enumerate([(3.70,6.63),(6.69,9.65),(9.71,12.72)]):
  h=(bottom+top)/2;hh=top-bottom;m=Mesh('Window glazed shaft %d'%i)
  m.box((0,0,-.09),(gw,hh,.03),0)
@@ -135,39 +135,40 @@ for i,(bottom,top) in enumerate([(3.70,6.63),(6.69,9.65),(9.71,12.72)]):
  for z in [-hh/2+.025,hh/2-.025,-hh*.28,hh*.28]:m.box((0,z,-.035),(gw,.045,.07),1)
  # Narrower subdividing bars seen across the glass, not a generic sash lattice.
  for z in [-hh*.10,hh*.10]:m.box((0,z,-.045),(gw,.027,.05),1)
- finish(m,materials=[darkglass,framegrey],transform=front@Matrix.Translation((width/2,h,0)))
-for h in [3.68,6.66,9.68,12.76]:elevation_box('Trim continuous glazing rail',width/2,h,gw+.08,.07,.19,-.03,framegrey)
-for u in [.77,width-.77]:elevation_box('Trim deep glass reveal',u,8.19,.12,9.12,.30,-.055,lightstone)
+ finish(m,materials=[darkglass,framegrey],transform=front@Matrix.Translation((gc,h,0)))
+for h in [3.68,6.66,9.68,12.76]:elevation_box('Trim continuous glazing rail',gc,h,gw+.08,.07,.19,-.03,framegrey)
+for u in [gl-.06,gr+.06]:elevation_box('Trim deep glass reveal',u,8.19,.12,9.12,.30,-.055,lightstone)
 # Rounded projecting terminal/canopy from the distant street image. Closed extruded plan.
 def curved_cap(name,h,thickness,projection,part='architecture'):
- pts=[(0,-.15),(width,-.15),(width,.04)]
+ x0=gl-.17;cw=width-x0
+ pts=[(0,-.15),(cw,-.15),(cw,.04)]
  for i in range(1,9):
-  t=(math.pi/2)*i/8;pts.append((width-.38+.38*math.cos(t),.04+projection*math.sin(t)))
+  t=(math.pi/2)*i/8;pts.append((cw-.38+.38*math.cos(t),.04+projection*math.sin(t)))
  pts.append((.38,.04+projection))
  for i in range(1,9):
   t=math.pi/2+(math.pi/2)*i/8;pts.append((.38+.38*math.cos(t),.04+projection*math.sin(t)))
- n=len(pts);verts=[(u,h-thickness/2,o) for u,o in pts]+[(u,h+thickness/2,o) for u,o in pts]
+ n=len(pts);verts=[(u+x0,h-thickness/2,o) for u,o in pts]+[(u+x0,h+thickness/2,o) for u,o in pts]
  faces=[tuple(reversed(range(n))),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
  m=Mesh(name);m.add(verts,faces);return finish(m,part,[lightstone],front)
 curved_cap('Trim rounded terminal lower',12.98,.16,.32)
 curved_cap('Trim rounded terminal upper',13.20,.18,.43)
 # Conservative full-depth block. Aerial shows a long flat roof with rooflights;
 # no unsupported pitched roof or rear window grid is invented.
-for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((xr,ys,base),(0,-1,0)))]:
- wall_with_openings('party '+label,frame,depth-.36,12.66,[],mat=brick)
-wall_with_openings('rear wall',rear,width,12.66,[(.55,1.5,0,2.12)],'rear',brick)
+for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((xr+.36,ys,base),(0,-1,0)))]:
+ wall_with_openings('party '+label,frame,depth-.72,11.94,[],mat=brick)
+wall_with_openings('rear wall',rear,width,11.94,[(.55,1.5,0,2.12)],'rear',brick)
 elevation_box('Shop rear service door',1.025,1.06,.95,2.12,.05,-.10,metal,'rear',rear)
 # Roof deck, parapets and three rooflights observed in the shared aerial; sizes estimated.
-box('Roof flat deck',((xf+xr)/2,(yn+ys)/2,base+12.48),(depth-.08,width-.08,.20),coping,'roof')
+box('Roof flat deck',((xf+xr)/2,(yn+ys)/2,base+11.76),(depth-.08,width-.08,.20),coping,'roof')
 for y in [ys+.13,yn-.13]:
- box('Roof side parapet',((xf+xr)/2,y,base+12.78),(depth,.26,.30),brick,'roof')
- box('Trim parapet cap',((xf+xr)/2,y,base+12.97),(depth,.33,.08),coping,'roof')
-box('Roof rear parapet',(xr+.13,(yn+ys)/2,base+12.78),(.26,width-.26,.30),brick,'roof')
-box('Trim rear coping',(xr+.13,(yn+ys)/2,base+12.97),(.33,width-.26,.08),coping,'roof')
+ box('Roof side parapet',((xf+xr)/2,y,base+12.06),(depth,.26,.30),brick,'roof')
+ box('Trim parapet cap',((xf+xr)/2,y,base+12.25),(depth,.33,.08),coping,'roof')
+box('Roof rear parapet',(xr+.13,(yn+ys)/2,base+12.06),(.26,width-.26,.30),brick,'roof')
+box('Trim rear coping',(xr+.13,(yn+ys)/2,base+12.25),(.33,width-.26,.08),coping,'roof')
 for i,x in enumerate([xf-5,xf-12.5,xf-21]):
- box('Roof rooflight curb %d'%i,(x,(yn+ys)/2,base+12.68),(1.7,1.65,.20),metal,'roof')
+ box('Roof rooflight curb %d'%i,(x,(yn+ys)/2,base+11.96),(1.7,1.65,.20),metal,'roof')
  # Four pitched glass faces, closed underpane, low pyramid silhouette.
- z=base+12.79;v=[(x-.73,(yn+ys)/2-.70,z),(x+.73,(yn+ys)/2-.70,z),(x+.73,(yn+ys)/2+.70,z),(x-.73,(yn+ys)/2+.70,z),(x,(yn+ys)/2,z+.23)]
+ z=base+12.07;v=[(x-.73,(yn+ys)/2-.70,z),(x+.73,(yn+ys)/2-.70,z),(x+.73,(yn+ys)/2+.70,z),(x-.73,(yn+ys)/2+.70,z),(x,(yn+ys)/2,z+.23)]
  m=Mesh('Roof rooflight glazing %d'%i);m.add(v,[(0,1,4),(1,2,4),(2,3,4),(3,0,4),(3,2,1,0)]);finish(m,'roof',[glass])
 # Observed historical shop frontage. Current Merkur identity is documented separately;
 # insufficient pixels exist to assert its present fitout.
@@ -175,23 +176,23 @@ for u in [.12,width-.12]:elevation_box('Shop stone jamb',u,1.58,.24,3.16,.28,-.0
 elevation_box('Shop yellow fascia backing',width/2,3.34,width,.74,.14,.035,yellow,'shopfront')
 sign('Money Shop fascia','The Money Shop',width/2,3.34,width-.32,.65,yellow,black,out=.125)
 elevation_box('Trim fascia crown',width/2,3.75,width,.09,.32,.06,lightstone,'shopfront')
-# Wide shop glazing and a recessed entrance to the right in the dated view.
-shopright=width-1.30
-for a,b in [(.24,1.65),(1.70,shopright)]:
+# Dated photo shows the pale recessed entrance on the south/left side.
+# Its function as shop or upper-floor access remains unresolved.
+shop_left=1.82;shop_right=width-.24
+for a,b in [(shop_left,3.48),(3.53,shop_right)]:
  elevation_box('Shop display glass',(a+b)/2,1.58,b-a,2.78,.04,-.17,glass,'shopfront')
  for u in [a,b]:elevation_box('Shop slim window stile',u,1.58,.055,2.83,.10,-.10,white,'shopfront')
  for h in [.19,2.97]:elevation_box('Shop slim window rail',(a+b)/2,h,b-a,.055,.10,-.10,white,'shopfront')
-# Opening remains inset, including threshold and deep return jambs.
-door=width-.74
-elevation_box('Shop entrance recess',door,1.47,1.03,2.94,.03,-.44,black,'shopfront')
-elevation_box('Shop entrance glazing',door,1.36,.91,2.65,.03,-.36,glass,'shopfront')
-for u in [door-.49,door+.49]:elevation_box('Shop entrance stile',u,1.36,.06,2.72,.10,-.30,white,'shopfront')
-for h in [.035,2.68]:elevation_box('Shop entrance rail',door,h,1.02,.06,.10,-.30,white,'shopfront')
-elevation_box('Shop entrance transom',door,2.85,1,.25,.03,-.35,glass,'shopfront')
+door=1.01;dw=1.48
+paledoor=material('Pale recessed entrance',(.51,.50,.44))
+elevation_box('Shop entrance recess',door,1.47,dw+.08,2.94,.03,-.44,black,'shopfront')
+elevation_box('Shop pale entrance leaf',door,1.36,dw,2.65,.03,-.36,paledoor,'shopfront')
+for u in [door-dw/2-.025,door+dw/2+.025]:elevation_box('Shop entrance stile',u,1.36,.06,2.72,.10,-.30,white,'shopfront')
+for h in [.035,2.68]:elevation_box('Shop entrance rail',door,h,dw+.10,.06,.10,-.30,white,'shopfront')
+elevation_box('Shop entrance transom',door,2.85,dw+.05,.25,.03,-.35,paledoor,'shopfront')
 elevation_box('Fine entrance handle',door-.33,1.23,.025,.40,.085,-.23,metal,'shopfront')
-elevation_box('Shop threshold',door,.035,1.08,.07,.54,-.20,granite,'shopfront')
-# Pale low shop plinth, not a floor-area surface.
-elevation_box('Shop display plinth',shopright/2,.10,shopright,.20,.25,-.045,stone,'shopfront')
+elevation_box('Shop threshold',door,.035,dw+.12,.07,.54,-.20,granite,'shopfront')
+elevation_box('Shop display plinth',(shop_left+shop_right)/2,.10,shop_right-shop_left,.20,.25,-.045,stone,'shopfront')
 # Separate access to22a verified by brochure; exact historical door not resolved,
 # so no speculative second door cut through the visible stone piers.
 pivot=D['registration_pivot'];registration=Matrix.Translation((*pivot,0))@Matrix.Rotation(D['registration_radians'],4,'Z')@Matrix.Translation((-pivot[0],-pivot[1],0))

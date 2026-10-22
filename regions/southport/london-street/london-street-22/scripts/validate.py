@@ -27,5 +27,23 @@ assert 13.8<max(v.z for v in points)<14.2
 repo=Path(os.environ['SOUTHPORT_REPO_ROOT']);nd=json.loads((repo/'regions/southport/london-street/london-street-20/research/layout.json').read_text())
 for f in ['front_x','base_z','registration_pivot','registration_radians']:assert D[f]==nd[f],f
 assert D['north_y']==nd['south_y']
+# The south stone shoulder is lower than the off-centre glazed crown.
+front_inv=(reg@Matrix(((0,0,1,D['front_x']),(1,0,0,D['south_y']),(0,1,0,D['base_z']),(0,0,0,1)))).inverted()
+cap=bpy.data.objects['Trim rounded terminal upper']
+cap_u=[(front_inv@cap.matrix_world@v.co).x for v in cap.data.vertices]
+assert min(cap_u)>.80 and max(cap_u)>5.35
+for o in windows:
+ assert abs((front_inv@o.matrix_world.translation).x-2.995)<.01
+# Side-wall end caps must terminate inside the rear wall, avoiding coplanar stripes.
+for o in meshes:
+ if o.name.startswith('Envelope party'):
+  assert min((reg.inverted()@o.matrix_world@v.co).x for v in o.data.vertices)>D['rear_x']+.35
+entrance=bpy.data.objects['Shop pale entrance leaf']
+centre=sum((v.co for v in entrance.data.vertices),Vector())/len(entrance.data.vertices)
+assert centre.x<1.1
+origin=entrance.matrix_world@(centre+Vector((0,0,1)))
+direction=(entrance.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
+assert hit and found==entrance,'Left recessed entrance must remain visible'
 report={'mesh_objects':len(meshes),'glazed_upper_bays':3,'checks':'Finite UV meshes; packed authored textures; unobscured three-storey glass; closed deck,rooflights and curvedcap; shared20boundary and geographic registration.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
