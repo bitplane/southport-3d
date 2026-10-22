@@ -11,7 +11,7 @@ for o in objects:
     assert all(math.isfinite(c) for v in o.data.vertices for c in v.co),o.name
 assert len([o for o in objects if o.name.startswith('Envelope tower')])==4
 assert len([o for o in objects if o.name.startswith('Louvre paired')])==8
-assert len([o for o in objects if o.name.startswith('Clock diamond')])==3
+assert len([o for o in objects if o.name.startswith('Roundel diamond')])==3
 assert len([o for o in objects if o.name.startswith('Window modern hall')])==5
 flat=[o for o in objects if o.name.startswith('Roof modern annex flat')]
 assert len(flat)==3,'Missing stepped flat annex roofs'
@@ -34,7 +34,7 @@ assert min(v.y for v in world)>-73 and max(v.y for v in world)<-21
 assert 22<max(v.z for v in world)<25,'Lost present-day tower silhouette'
 assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
 triangles=sum(len(p.vertices)-2 for o in objects for p in o.data.polygons)
-(ROOT/'research/validation.json').write_text(json.dumps({'objects':len(objects),'triangles':triangles,'checks':['four open tower elevations','eight pointed bell windows','three clocks','open main doorway','closed tower roof deck','five modern side windows','finite UV meshes','site bounds','packed authored maps']},indent=2))
+(ROOT/'research/validation.json').write_text(json.dumps({'objects':len(objects),'triangles':triangles,'checks':['four open tower elevations','eight pointed bell windows','three roundel windows','open main doorway','closed tower roof deck','five modern side windows','finite UV meshes','site bounds','packed authored maps']},indent=2))
 print('Christ Church geometry, openings, roof deck and site bounds passed',triangles)
 
 # The cafe has a real glazed opening, a round corner and a separate raised porch.
@@ -53,3 +53,11 @@ assert max(v.co.x for v in porch.data.vertices)<min(v.co.x for v in cap.data.ver
 side=bpy.data.objects['Envelope cafe west return']
 for y in [-32,-40,-50,-59]:
     assert side.ray_cast(Vector((-85,y,6.8)),Vector((-1,0,0)),distance=8)[0],('Hall side gap',y)
+
+# Roundel apertures remain open in the masonry; the stair belongs on the cafe side.
+for o in objects:
+    if o.name.startswith('Envelope tower') and not o.name.endswith('back'):
+        assert not o.ray_cast(Vector((0,13.1,2)),Vector((0,0,-1)),distance=4)[0]
+turret=bpy.data.objects['Turret octagonal stair']
+assert min(v.co.x for v in turret.data.vertices)>-102.69,'Stair turret moved to the wrong side'
+assert not any(o.name.startswith('Clock ') for o in objects)

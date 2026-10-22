@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
 from cafe import build_cafe
-from components import rect,pointed,wall,gothic_window,leadwork,arch_ring,clock,roof,ring,clipped
+from components import rect,pointed,wall,gothic_window,leadwork,arch_ring,roundel,roof,ring,clipped
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
@@ -30,7 +30,7 @@ newbrick=material('Modern cafe buff brick',(.43,.30,.20),'buff-brick')
 cladding=material('Weathered cafe metal cladding',(.42,.43,.40),'cafe-metal')
 slate=material('Dark grey roof slates',(.092,.104,.102),'slate')
 metal=material('Rainwater goods and iron',(.055,.063,.061))
-clockface=material('Blue grey clock face',(.23,.30,.33))
+doorwood=material('Burgundy painted church doors',(.105,.022,.027))
 cream=material('Pale window frames',(.69,.65,.53))
 blue=material('Cafe blue plaque',(.02,.12,.23))
 
@@ -53,7 +53,7 @@ def instance(key,factory,transform,mats=None,part='historic-front'):
     ob=protos[key].copy();ob.data=protos[key].data;C[part].objects.link(ob);ob.matrix_world=transform;return ob
 
 z0=D['base_z'];cx=D['tower']['centre_x'];front=-23.5;back=-29.3;tw=5.23
-# Clock/bell tower uses real holes in all elevations. The four sides are separate
+# Bell tower uses real holes in all elevations. The four sides are separate
 # wall prisms meeting at corners, never solid boxes with pasted-on windows.
 faces=[('front',(cx,front,z0),(0,1,0),tw),('right',(cx-tw/2,(front+back)/2,z0),(-1,0,0),front-back-.96),('left',(cx+tw/2,(front+back)/2,z0),(1,0,0),front-back-.96),('back',(cx,back,z0),(0,-1,0),tw)]
 for label,origin,normal,width in faces:
@@ -61,13 +61,14 @@ for label,origin,normal,width in faces:
     bells=[pointed(x,15.15,18.45,.80) for x in [-1.05,1.05]]
     middle=pointed(0,7.4,9.4,.96)
     holes=bells+[middle]
+    if label!='back':holes.append([(.69*math.cos(i*2*math.pi/48),13.1+.69*math.sin(i*2*math.pi/48)) for i in range(48)])
     if label=='front':holes.append(pointed(0,0,2.2,.95))
     finish(wall('Envelope tower '+label,rect(-width/2,0,width/2,21.1),holes,.48),transform=tr)
     for x in [-1.05,1.05]:
         instance('bell',lambda:gothic_window('Louvre paired belfry',1.6,15.15,18.45,'louvre'),tr@Matrix.Translation((x,0,0)),[trim,wood,wood])
     instance('middle-'+('blocked' if label=='left' else 'glass'),lambda:gothic_window('Window tower '+label,1.92,7.4,9.4,'blocked' if label=='left' else 'glass'),tr,[trim,glass,wood])
     if label!='left':instance('middle-lead',lambda:leadwork('Fine tower diamond lead',1.92,7.4,9.4),tr,[lead])
-    if label!='back':instance('clock',lambda:clock('Clock diamond surround'),tr@Matrix.Translation((0,13.1,.015)),[trim,clockface,wood])
+    if label!='back':instance('roundel',lambda:roundel('Roundel diamond window'),tr@Matrix.Translation((0,13.1,0)),[trim,glass,wood])
     for h,w,d in [(1.0,width+.26,.18),(6.85,width+.12,.12),(14.8,width+.15,.13),(20.9,width+.30,.22)]:
         # Plinth interrupted across entrance rather than blocking the doorway.
         if label=='front' and h<2:
@@ -94,7 +95,7 @@ tr=face_matrix((cx,front,z0),(0,1,0))
 m=Mesh('Door main pointed timber');m.outline(pointed(0,0,2.2,.95),-.42,-.37,0)
 for x in [-.45,0,.45]:m.box((x,1.05,-.33),(.045,1.95,.07),1)
 for h in [.3,1.9]:m.box((0,h,-.32),(1.75,.08,.08),1)
-finish(m,mats=[wood,trim],transform=tr)
+finish(m,mats=[doorwood,doorwood],transform=tr)
 for r,dep in [(1.00,.18),(1.15,.26),(1.31,.32)]:
     m=Mesh('Trim pointed entrance order');arch_ring(m,0,0,2.2,r,.095,dep,dep);finish(m,mats=[trim],transform=tr)
 # Crockets on the entrance arch: small stone buds, not speculative sculpture.
@@ -118,15 +119,20 @@ for x in [cx-tw/2-.20,cx+tw/2+.20]:
     # Use explicit world-coordinate pyramid instead of rotating ambiguous axes.
     m.add([(x-.27,front-.2,z0+20),(x+.27,front-.2,z0+20),(x+.27,front+.4,z0+20),(x-.27,front+.4,z0+20),(x,front+.1,z0+20.65)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4),(3,2,1,0)])
     finish(m,mats=[trim])
+from facade_detail import tower_detail
+tower_detail(finish,box,cx,front,z0,tw,trim,stone)
 # Rearward corner buttresses and distinctive projecting octagonal stair turret.
 for x in [cx-tw/2-.1,cx+tw/2+.1]:
     box('Buttress tower rear',(x,back+.25,z0+9.7),(.48,.72,19.4),mat=trim)
 m=Mesh('Turret octagonal stair')
-# Visible on the southwest flank (negative site X), rising short of belfry top.
-m.lathe((cx-tw/2-.42,back+1.35),[(z0,.64),(z0+12,.64),(z0+12.18,.73),(z0+12.35,.64),(z0+17.9,.64),(z0+18.1,.73),(z0+18.2,.64),(z0+19.45,.08)],segments=8)
+# Cafe-side octagonal stair, verified in the supplied oblique photograph.
+m.lathe((cx+tw/2+.42,back+1.35),[(z0,.64),(z0+12,.64),(z0+12.18,.73),(z0+12.35,.64),(z0+17.9,.64),(z0+18.1,.73),(z0+18.2,.64)],segments=8)
 finish(m)
+m=Mesh('Roof stair turret cap')
+m.lathe((cx+tw/2+.42,back+1.35),[(z0+18.16,.75),(z0+18.28,.75),(z0+19.45,.04)],segments=8)
+finish(m,'roofs',[slate])
 for h in [6.2,11.8,15.4]:
-    trt=face_matrix((cx-tw/2-1.04,back+1.35,z0),(-1,0,0))
+    trt=face_matrix((cx+tw/2+1.04,back+1.35,z0),(1,0,0))
     box('Window turret slit',(0,h,-.012),(.12,.75,.06),mat=wood,transform=trt)
     for dx in [-.12,.12]:box('Trim turret slit',(dx,h,.02),(.09,.92,.12),mat=trim,transform=trt)
 
@@ -142,10 +148,16 @@ for sign in [-1,1]:
     for xc,bottom,spring in [(inner_c,3.5,6.15),(outer_c,4.35,6.75)]:
         instance('wing-'+str(bottom),lambda b=bottom,sp=spring:gothic_window('Window Gothic wing '+('inner' if b==3.5 else 'outer'),2.0,b,sp),tr@Matrix.Translation((xc,0,0)),[trim,glass,wood])
         instance('wing-lead-'+str(bottom),lambda b=bottom,sp=spring:leadwork('Fine wing diamond lead',2,b,sp),tr@Matrix.Translation((xc,0,0)),[lead])
-    m=Mesh('Door wing pointed');m.outline(pointed(outer_c,0,1.85,.68),-.32,-.28,1);arch_ring(m,outer_c,0,1.85,.68,.16,.18,.12)
+    m=Mesh('Door wing pointed');m.outline(pointed(outer_c,0,1.85,.68),-.32,-.28,2);arch_ring(m,outer_c,0,1.85,.68,.16,.18,.12)
+    m.box((outer_c,.36,-.23),(1.32,.72,.10),1)
+    for dx in [-.61,0,.61]:m.box((outer_c+dx,1.2,-.21),(.075,2.4,.10),1)
+    m.box((outer_c,.76,-.21),(1.28,.075,.10),1)
+    for dx in [-.31,.31]:
+        m.box((outer_c+dx,.36,-.17),(.42,.44,.035),1)
+    arch_ring(m,outer_c,.75,1.85,.59,.06,.10,-.18,16,1)
     # Rectangular square hood and small carved spandrels above each side doorway.
     for x in [outer_c-.96,outer_c+.96]:m.box((x,1.56,.09),(.12,3.12,.22))
-    m.box((outer_c,3.15,.09),(2.04,.16,.22));finish(m,mats=[trim,wood],transform=tr)
+    m.box((outer_c,3.15,.09),(2.04,.16,.22));finish(m,mats=[trim,doorwood,glass],transform=tr)
     for x in [sign*5.8,sign*9.57]:
         m=Mesh('Buttress wing')
         for h0,h1,w,d in [(0,.55,.90,.70),(.55,3.2,.62,.50),(3.2,7.9,.44,.34),(7.9,10.0,.38,.30)]:
@@ -157,11 +169,14 @@ for sign in [-1,1]:
     for t in [.15,.45,.75]:
         x=sign*(a+(5.85-a)*t);h=9.9+(8.5-9.9)*t
         m.box((x,h+.18,0),(.46,.46,.43))
+    for u0,h0,u1,h1 in [(5.85,8.5,7.65,10.35),(7.65,10.35,b,8.4)]:
+        for t in [.25,.65]:
+            x=sign*(u0+(u1-u0)*t);h=h0+(h1-h0)*t
+            m.box((x,h+.22,0),(.42,.55,.43))
     for x in [sign*7.65]:m.box((x,10.55,.0),(.38,.55,.43))
     finish(m,mats=[trim],transform=tr)
-    # Narrow blind lancets under the gable give the upper front its vertical rhythm.
-    for dx in [-.65,0,.65]:
-        m=Mesh('Trim gable blind lancet');arch_ring(m,outer_c+dx,7.5,8.1-abs(dx)*.7,.17,.05,.08,.12,8);finish(m,mats=[trim],transform=tr)
+    from facade_detail import wing_detail
+    wing_detail(finish,box,tr,sign,a,b,inner_c,outer_c,trim,doorwood,glass,metal)
 
 # Modern hall follows OSM perimeter at base, with visible tall glazed side bays.
 foot=D['mapped_footprint']

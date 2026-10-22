@@ -19,3 +19,17 @@ for x in range(512):
     shade=rng.normal(0,12)+(-22 if x%85<3 else 0)
     for y in range(512):a[y,x]=np.array([164,166,156])+shade*(.3+.7*y/512)+rng.normal(0,3)
 Image.fromarray(np.clip(a,0,255).astype('uint8')).save(ROOT/'textures/cafe-metal.png')
+
+# Irregular narrow rubble courses distinguish the old church from the brick hall.
+im=Image.new('RGB',(512,512),(119,114,94));draw=ImageDraw.Draw(im)
+y=0
+while y<512:
+    h=int(rng.integers(10,23));x=-int(rng.integers(0,70))
+    while x<512:
+        w=int(rng.integers(24,94));shade=int(rng.integers(-16,17))
+        colour=tuple(c+shade for c in (165,155,126))
+        draw.polygon([(x+1,y+2),(x+w-2,y+1),(x+w-1,y+h-2),(x+2,y+h-1)],fill=colour)
+        x+=w
+    y+=h
+arr=np.array(im).astype(float)+rng.normal(0,3,(512,512,1))
+Image.fromarray(np.clip(arr,0,255).astype('uint8')).save(ROOT/'textures/stone.png')

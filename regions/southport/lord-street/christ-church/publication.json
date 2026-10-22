@@ -338,29 +338,29 @@
       }
     },
     {
-      "id": "clocks",
-      "match": "^Clock ",
+      "id": "roundels",
+      "match": "^Roundel ",
       "walk": {
         "strategy": "generator",
         "generator": "components:build_lod",
         "settings": {
-          "kind": "clock",
+          "kind": "roundel",
           "level": "walk"
         },
         "uv": "smart",
         "bake": false,
-        "reason": "Reduce circular sampling while retaining diamond stone surround, face and actual hands."
+        "reason": "Reduce circular sampling but preserve recessed glass, four spokes, central roundel and open diamond surround."
       },
       "district": {
         "strategy": "generator",
         "generator": "components:build_lod",
         "settings": {
-          "kind": "clock",
+          "kind": "roundel",
           "level": "district"
         },
         "uv": "smart",
         "bake": false,
-        "reason": "Reduce circular sampling while retaining diamond stone surround, face and actual hands."
+        "reason": "Reduce circular sampling but preserve recessed glass, four spokes, central roundel and open diamond surround."
       }
     },
     {

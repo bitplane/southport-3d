@@ -87,17 +87,19 @@ def leadwork(name,width,bottom,spring,steps=16):
     return m
 
 
-def clock(name,radius=.69,segments=48):
+def roundel(name,radius=.69,segments=48):
+    """Recessed four-spoke glazing in an open diamond surround, not a clock."""
     m=Mesh(name)
-    m.outline([(-radius*1.43,0),(0,-radius*1.43),(radius*1.43,0),(0,radius*1.43)],-.05,.045,0)
-    m.outline([(radius*math.cos(i*2*math.pi/segments),radius*math.sin(i*2*math.pi/segments)) for i in range(segments)],.05,.075,1)
-    ring(m,0,0,radius,.055,.12,segments,2)
-    for i in range(12):
-        a=i*math.pi/6
-        m.tube([(radius*.80*math.sin(a),radius*.80*math.cos(a),.13),(radius*.91*math.sin(a),radius*.91*math.cos(a),.13)],.014,sides=4,material=2)
-    m.tube([(0,0,.15),(-radius*.45,radius*.38,.15)],.025,sides=6,material=2)
-    m.tube([(0,0,.16),(radius*.70,radius*.16,.16)],.018,sides=6,material=2)
-    ring(m,0,0,.08,.025,.17,20,2)
+    diamond=[(-radius*1.43,0),(0,-radius*1.43),(radius*1.43,0),(0,radius*1.43)]
+    circle=[(radius*math.cos(i*2*math.pi/segments),radius*math.sin(i*2*math.pi/segments)) for i in range(segments)]
+    for polygon in clipped(diamond,[circle]):m.outline(polygon,-.08,.08,0)
+    m.outline(circle,-.23,-.20,1)
+    ring(m,0,0,radius,.065,.10,segments,0)
+    for a in range(4):
+        angle=a*math.pi/2
+        m.tube([(.25*math.cos(angle),.25*math.sin(angle),-.045),(radius*math.cos(angle),radius*math.sin(angle),-.045)],.035,sides=6,material=0)
+    ring(m,0,0,.22,.055,-.015,segments//2,0)
+    for i,p in enumerate(diamond):m.tube([(*p,.11),(*diamond[(i+1)%4],.11)],.045,sides=6)
     return m
 
 
@@ -110,8 +112,8 @@ def roof(name,x0,x1,y0,y1,eaves,ridge,hip=0):
 
 def build_lod(name,settings,asset_directory):
     """Regenerate known Gothic curves; preserve jambs, depth and pierced tracery."""
-    if settings['kind']=='clock':
-        mesh=clock(name,segments=24 if settings['level']=='walk' else 12)
+    if settings['kind']=='roundel':
+        mesh=roundel(name,segments=24 if settings['level']=='walk' else 12)
     else:
         mesh=gothic_window(name,settings['width'],settings['bottom'],settings['spring'],settings.get('window_kind','glass'),steps=8 if settings['level']=='walk' else 4)
     return mesh.finish([])

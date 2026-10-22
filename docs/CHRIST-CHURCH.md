@@ -38,13 +38,13 @@ python3 tools/project.py build southport.lord-street.christ-church --stage rende
 ```
 
 The geometry validator checks all four tower walls have actual window openings,
-eight belfry windows, three clocks, an open main doorway in the masonry, a closed
+eight belfry windows, three roundel windows, an open main doorway in the masonry, a closed
 tower roof deck, five tall modern side windows, finite UV meshes and site bounds.
 Fresh isolated-browser inspection checked August 2024 cafe-side Street View, May 2011 south garden Street View and satellite roof coverage. It corrected the initially inferred annex hip to stepped flat roofs. Google 3D Earth was unavailable, and no direct rear elevation was obtained. Global publication and combined-viewer placement are coordinated by the root agent during parallel work.
 
 The standalone streaming package preflight classifies every mesh for all three
 levels. Exported front and oblique renders were inspected at Detail, Walk and
-District: openings, battlements, clocks, stepped roof silhouette and material
+District: openings, battlements, roundel windows, stepped roof silhouette and material
 colours remain consistent. The package is approximately 70k / 43k / 34k placed
 triangles and 4.8 / 3.3 / 3.0 MB (embedded textures included). These are building
 levels for the current viewer, not a town-distance proxy; a later regional bake
@@ -59,7 +59,7 @@ The sign uses DejaVu Sans from the existing system font installation.
 ## Independent reference audit
 
 Front and side photographs were compared with exported Detail and District views.
-The retained facade, paired belfry openings, clock tower and rebuilt hall remain
+The retained facade, paired belfry openings, bell tower and rebuilt hall remain
 recognisable across levels. An actual rendering defect was found at the tower
 crenellations: merlons overlapped the parapet base with coplanar external faces,
 producing black horizontal marks. Merlons now begin at the base top without
@@ -82,3 +82,21 @@ The rounded envelope, cladding seams, porch and glazing remain geometric across
 all levels; low-cost 24-segment curvature is retained. The authored sign letters
 and rules bake to a shallow receiver at Walk/District. Validation checks clear
 glazing rays, separated cafe/porch roofs and closure of the exposed hall return.
+
+## Supplied facade photographs (reports 87c169 / 53ae49)
+
+Four private reference captures show the front, side-door tracery and cafe-side
+stair (one capture labelled June 2018). The stair has been moved to positive site
+X, with its separate octagonal slate cap; the unsupported turret on the opposite
+side is removed. The diamond features contain four-spoke round windows, not
+clocks. They now have actual circular wall apertures and recessed glazing.
+Burgundy door leaves, upper side-door glazing, blind gable tracery, inner-window
+stone aprons, sloping battlements and buttress weatherings/niches follow those
+photos. Fine spandrels, lights and crocket buds are interpreted exterior relief,
+not scans; metric sizes and hidden rear features remain estimates. The authored
+rubble texture uses irregular narrow courses; no reference pixels are published.
+
+Roundel curves regenerate with fewer segments at Walk/District; wall openings,
+stair silhouette, doors and major stone relief survive. Small lights and leading
+are Detail-only, while crocket/spandrel relief simplifies at Walk and disappears
+at District. Earlier package-size figures above describe the original build.
