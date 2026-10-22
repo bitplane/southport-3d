@@ -24,6 +24,7 @@ redtile=material('Red glazed shopfront tiles',(.55,.018,.025),'red-tile',.35)
 red=material('BHF sign and frame red',(.60,.012,.022),rough=.4)
 cream=material('White lettering and frames',(.89,.88,.84),rough=.45)
 dark=material('Polished dark plinth',(.026,.029,.031),rough=.38)
+tread=material('Matte dark access tiles',(.026,.029,.031),rough=.88)
 glass=material('Opaque grey glazing; no interior',(.11,.155,.18),rough=.26)
 metal=material('Painted aluminium hardware',(.45,.47,.46),rough=.36)
 grout=material('Dark threshold grout',(.075,.078,.077),rough=.9)
@@ -54,9 +55,9 @@ def finish(mesh,part='architecture',mats=None,transform=None):
 def frontbox(name,u,z,w,h,depth=.2,out=0,mat=None,part='architecture'):
  m=Mesh(name);m.box((u,z,out),(w,h,depth));return finish(m,part,[mat or stone],frame)
 
-def sign(name,text,u,z,w,h,bg=dark,fg=cream,out=.12,orient=None,script=False):
+def sign(name,text,u,z,w,h,bg=dark,fg=cream,out=.12,orient=None,script=False,extrude=.022):
  m=Mesh('Sign '+name);m.box((0,0,-.02),(w,h,.04),0)
- t=text_object('Temporary lettering',text,(0,0,.015),(0,0,1),h*.60,w*.94,font,fg,extrude=.022)
+ t=text_object('Temporary lettering',text,(0,0,.002 if extrude<=.002 else .015),(0,0,1),h*.60,w*.94,font,fg,extrude=extrude)
  bpy.ops.object.select_all(action='DESELECT');t.select_set(True);bpy.context.view_layer.objects.active=t;bpy.ops.object.convert(target='MESH')
  m.add([tuple(t.matrix_world@v.co) for v in t.data.vertices],[tuple(f.vertices) for f in t.data.polygons],1);bpy.data.objects.remove(t,do_unlink=True)
  return finish(m,'shopfront',[bg,fg],orient if orient is not None else frame@Matrix.Translation((u,z,out)))
@@ -105,42 +106,6 @@ from roof_details import build_roof
 R=json.loads((ROOT/'research/roof-layout.json').read_text())
 build_roof(D,R,finish,[roofmat,roofbrick,roofcap,metal,roofpale,dark,roofrust])
 
-# Three broad display/entrance zones divided by red tiled structural piers.
-a,b=D['entry_left'],D['entry_right'];dep=D['entry_depth'];top=4.35
-for u,w in [(.23,.46),(a-.30,.60),(b+.30,.60),(width-.23,.46)]:
- frontbox('Shop red tiled pier',u,top/2,w,top,.50,-.12,redtile,'shopfront')
- frontbox('Shop dark pier plinth',u,.28,w+.025,.56,.53,-.12,dark,'shopfront')
-for start,end,count in [(.46,a-.60,3),(b+.60,width-.46,4)]:
- u=(start+end)/2;w=end-start
- frontbox('Shop display plinth',u,.28,w,.56,.30,-.17,dark,'shopfront')
- frontbox('Shop display glazing',u,(top+.56)/2,w,top-.56,.035,-.16,glass,'shopfront')
- for z in [.59,top-.025]:frontbox('Shop display rail',u,z,w,.065,.11,-.065,red,'shopfront')
- for i in range(count+1):frontbox('Shop display mullion',start+w*i/count,(top+.56)/2,.055,top-.56,.11,-.065,red,'shopfront')
-# Return glazing and visible soffit around the deep recessed entrance.
-for u in [a,b]:
- frontbox('Shop entrance glazed return',u,(top+.56)/2,.045,top-.56,dep,-dep/2,glass,'shopfront')
- for out in [-.06,-dep]:frontbox('Shop return jamb',u,(top+.56)/2,.07,top-.56,.08,out,red,'shopfront')
-frontbox('Shop entrance soffit',(a+b)/2,top-.045,b-a,.09,dep+.12,-dep/2,stone,'shopfront')
-frontbox('Shop recessed doors',(a+b)/2,1.8,b-a,2.6,.04,-dep,glass,'shopfront')
-frontbox('Shop recessed transom',(a+b)/2,3.70,b-a,1.25,.04,-dep,glass,'shopfront')
-for i in range(5):frontbox('Shop door jamb',a+(b-a)*i/4,2.42,.065,3.82,.09,-dep+.03,red,'shopfront')
-for z in [.52,3.05,top-.02]:frontbox('Shop door rail',(a+b)/2,z,b-a,.10,.10,-dep+.03,red,'shopfront')
-# Shallow dark tiled steps lie inside the entrance recess, not on a duplicate street floor.
-for z,out,depth in [(.09,-.20,.40),(.25,-.53,.26),(.42,-.93,.54)]:
- frontbox('Shop entrance step',(a+b)/2,z,b-a,.18,depth,out,dark,'shopfront')
-# Broad red fascias with individually authored, raised white lettering.
-sign('charity name','British Heart Foundation',width*.225,4.92,width*.365,.85,red,cream,out=.08)
-sign('furniture name','Furniture & Electrical',width*.745,4.92,width*.425,.85,red,cream,out=.08)
-# The photograph has ONE framed red transom board, not three separate strips.
-m=Mesh('Sign entrance welcome');m.box((0,0,-.020),(2.30,1.12,.040),0)
-for text,z,h in [('WELCOME',.35,.30),('to BHF',.015,.27),('Southport',-.325,.27)]:
- t=text_object('Temporary entrance lettering',text,(0,z,.014),(0,0,1),h,2.10,font,cream,extrude=.008)
- ys=[v[1] for v in t.bound_box];t.matrix_world=t.matrix_world@Matrix.Translation((0,-(min(ys)+max(ys))/2,0))
- bpy.ops.object.select_all(action='DESELECT');t.select_set(True);bpy.context.view_layer.objects.active=t;bpy.ops.object.convert(target='MESH')
- m.add([tuple(t.matrix_world@v.co) for v in t.data.vertices],[tuple(f.vertices) for f in t.data.polygons],1);bpy.data.objects.remove(t,do_unlink=True)
-finish(m,'shopfront',[red,cream],frame@Matrix.Translation(((a+b)/2,3.67,-dep+.10)))
-for u in [(a+b)/2-1.19,(a+b)/2+1.19]:frontbox('Shop welcome transom stile',u,3.67,.07,1.20,.08,-dep+.08,red,'shopfront')
-for z in [3.075,4.265]:frontbox('Shop welcome transom rail',(a+b)/2,z,2.45,.07,.08,-dep+.08,red,'shopfront')
 # Hand-authored curve interpretation of the visible heart / pulse emblem.
 # This is source geometry, not a downloaded logo or photographic texture.
 def emblem(name,u,z,size,out,bg):
@@ -158,36 +123,8 @@ def emblem(name,u,z,size,out,bg):
    t=j/8;smooth.append(tuple(.5*((2*p1)+(-p0+p2)*t+(2*p0-5*p1+4*p2-p3)*t*t+(-p0+3*p1-3*p2+p3)*t*t*t)))
  smooth.append(pulse[-1]);m.tube(smooth,size*.018,1,6)
  return finish(m,'shopfront',[bg,cream],frame@Matrix.Translation((u,z,out)))
-emblem('central heart',width*.465,4.92,.92,.08,red)
-emblem('window heart',width-2.0,2.25,2.10,-.12,glass)
-sign('window strapline','FIGHT FOR EVERY HEARTBEAT',width-2.0,1.08,2.70,.17,glass,cream,out=-.11)
-# Small exterior hardware is omitted at District.
-m=Mesh('Fine handles and soffit lights')
-for u in [a+(b-a)*.25+.17,a+(b-a)*.5-.17,a+(b-a)*.5+.17,a+(b-a)*.75-.17]:
- m.tube([(u,1.25,-dep+.12),(u,1.85,-dep+.12)],.018,0,8)
-# Surface-mounted closer bodies and hinges are visible on the BID entrance.
-for u in [a+(b-a)*i/4 for i in [1,2,3]]:
- for z in [.82,2.73]:m.box((u, z,-dep+.10),(.055,.085,.045),0)
-for u in [a+(b-a)*.25,a+(b-a)*.75]:
- m.box((u,2.97,-dep+.115),(.34,.055,.09),0)
-finish(m,'shopfront',[metal],frame)
-# Circular recessed downlights, with dark inner lenses and metal annular trim.
-m=Mesh('Fine circular soffit downlights')
-for u in [a+.8,(a+b)/2,b-.8]:
- for radius,thick,matidx in [(.09,.012,0),(.065,.009,0)]:
-  pts=[(u+radius*math.cos(math.tau*i/32),top-.099,-.55+radius*math.sin(math.tau*i/32)) for i in range(33)]
-  m.tube(pts,thick,matidx,6)
- verts=[(u,top-.096,-.55)]+[(u+.065*math.cos(math.tau*i/32),top-.096,-.55+.065*math.sin(math.tau*i/32)) for i in range(32)]
- m.add(verts,[(0,1+i,1+(i+1)%32) for i in range(32)],1)
-finish(m,'shopfront',[metal,dark],frame)
-# Detail-only shallow threshold grout and small fasteners; lower LOD keeps steps.
-m=Mesh('Micro threshold tile joints')
-for z,out,depth in [(.09,-.20,.40),(.25,-.53,.26),(.42,-.93,.54)]:
- for i in range(1,22):
-  u=a+(b-a)*i/22
-  m.box((u,z,.0+out+depth/2+.001),(.004,.176,.002),0)
-  m.box((u,z+.091,out),(.004,.002,depth-.008),0)
-finish(m,'shopfront',[grout],frame)
+from frontage import build_frontage
+build_frontage(D,finish,frontbox,sign,emblem,frame,[redtile,red,cream,dark,glass,metal,stone,grout,tread],font)
 for im in bpy.data.images:
  if im.source=='FILE':im.pack()
 s.render.engine='CYCLES';s.cycles.samples=32;s.cycles.use_denoising=True

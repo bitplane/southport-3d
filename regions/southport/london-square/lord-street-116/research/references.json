@@ -95,12 +95,31 @@
         "No readable access doors or stair flights: none invented. Relative outlines clear, heights and equipment functions unresolved.",
         "Top-down frame is normalized to existing estimated building footprint, not used as a surveyed dimension source."
       ]
+    },
+    {
+      "id": "user-street-view-frontage-20261022",
+      "url": "https://www.google.com/maps/search/?api=1&query=118+Lord+Street+Southport",
+      "author": "Google Street View; screenshots supplied by project owner",
+      "private_reference_files": [
+        "screenshot-20261022-103728.png",
+        "screenshot-20261022-103749.png",
+        "screenshot-20261022-103807.png",
+        "screenshot-20261022-104131.png"
+      ],
+      "capture": "104131 explicitly displays Aug 2024; date UI absent from first three, not independently verified. Screenshot files supplied 2026-10-22.",
+      "observations": [
+        "Two independent recessed door arrangements: narrow entrance at right end of left display, larger central entrance between faceted projecting display showcases.",
+        "Left raised ramp slopes toward left door; black retaining cheek and red metal handrail. Central threshold has TWO risers and deep tiled landing, shown clearly by103807. Right display has a separate pale stepped apron.",
+        "Thirteen complete upper modules counted between fourteen strong vertical frame boundaries in both full-front images, correcting prior fourteen-module assumption. Green panels are small rectangular mosaic tiles.",
+        "Two distinct welcome signs: left reads WELCOME to / British Heart Foundation / Southport, central WELCOME / to BHF / Southport.",
+        "All widths, heights, slopes, glazing projection and door leaf subdivisions remain visually calibrated. No interiors, stock or temporary promotional notices modelled."
+      ]
     }
   ],
   "limitations": [
     "No reference photographs or photo-derived maps distributed. Procedural textures and hand-authored emblem interpretation only; BHF identity remains its trademark.",
     "Mixed-date exterior reconstruction, not a current survey.",
-    "All metric dimensions, fourteen-module count at obscured far end, rear envelope and roof features approximate.",
+    "All metric dimensions, rear envelope and roof features approximate.",
     "No interiors, stock displays or unreadable notices; opaque glazing.",
     "Church garden and exact side-wall attachment deferred to church pass.",
     "Three edge housings are visible but their access/ventilation function is unresolved; no doors or stair runs invented.",

@@ -11,6 +11,12 @@ for name,base,noise in [('cladding',[214,212,201],1.2),('spandrel',[145,163,157]
   weather=np.asarray(Image.fromarray(rng.integers(0,255,(32,32),dtype=np.uint8)).resize((n,n),Image.Resampling.BICUBIC),dtype=float)/255
   a-=weather[:,:,None]*9
   a[(x%128<1)|(y%256<1)]*=.85
+ elif name=='spandrel':
+  # Small green rectangular mosaic tiles are resolved in the supplied close view.
+  rows=y//16;cols=((x+(rows%2)*4)//8)%65
+  shades=rng.normal(0,8,(33,65))
+  a=np.array(base)[None,None,:]+shades[rows,cols,None]+rng.normal(0,1,(n,n,1))
+  a[(((x+(rows%2)*4)%8)<1)|(y%16<1)]*=.86
  elif name=='red-tile':
   # Four columns/four rows mapped onto .32 x 1.2 m: 8 x 30 cm tiles.
   a[(x%128<3)|(y%128<1)]*=.65

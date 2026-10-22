@@ -18,7 +18,7 @@ for o in windows+[o for o in meshes if o.name.startswith('Sign ')]:
  assert hit and obj==o,(o.name,obj.name if obj else None)
 doors=next(o for o in meshes if o.name=='Shop recessed doors')
 assert max((doors.matrix_world@v.co).y for v in doors.data.vertices)<D['front_y']-1.1
-assert len([o for o in meshes if o.name.startswith('Shop entrance step')])==3
+assert len([o for o in meshes if o.name.startswith('Shop entrance step')])==2
 # A dark lamp disc behind a solid soffit can silently disappear in an export.
 # Check each centre from below, not merely the existence of the fixture mesh.
 lights=next(o for o in meshes if o.name=='Fine circular soffit downlights')
@@ -26,12 +26,30 @@ for u in [D['entry_left']+.8,(D['entry_left']+D['entry_right'])/2,D['entry_right
  origin=lights.matrix_world@Vector((u,3.8,-.55));direction=(lights.matrix_world.to_3x3()@Vector((0,1,0))).normalized()
  hit,point,normal,index,obj,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1)
  assert hit and obj==lights,('downlight obscured',u,obj.name if obj else None)
-assert len([o for o in meshes if o.name.startswith('Sign entrance')])==1
+assert len([o for o in meshes if o.name.startswith('Sign entrance')])==2
+left_doors=next(o for o in meshes if o.name=='Shop left recessed doors')
+assert max((left_doors.matrix_world@v.co).y for v in left_doors.data.vertices)<D['front_y']-.90
+ramp=next(o for o in meshes if o.name=='Shop left access ramp')
+assert max(v.co.y for v in ramp.data.vertices)>.35 and min(v.co.y for v in ramp.data.vertices)==0
+assert any(o.name=='Shop red ramp railing' for o in meshes)
+# Custom local-Y-up solids must have outward winding, not rely on double-sided
+# materials hiding inverted faces. The missing threshold wedge must cover ground.
+for name in ['Shop left access ramp','Shop left ramp retaining wall','Shop left threshold infill']:
+ ob=next(o for o in meshes if o.name==name)
+ volume=sum(ob.data.vertices[f.vertices[0]].co.dot(ob.data.vertices[f.vertices[1]].co.cross(ob.data.vertices[f.vertices[2]].co))/6 for f in ob.data.polygons)
+ assert volume>0,(name,'inward winding',volume)
+infill=next(o for o in meshes if o.name=='Shop left threshold infill')
+origin=infill.matrix_world@Vector((6.0,1,-.7));direction=(infill.matrix_world.to_3x3()@Vector((0,-1,0))).normalized()
+hit,point,normal,index,obj,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1)
+assert hit and obj==infill and point.z>D['base_z']+.3,('threshold infill missing',obj.name if obj else None)
+for name in ['Shop left access ramp','Shop left access landing','Shop entrance step']:
+ ob=next(o for o in meshes if o.name==name)
+ assert ob.data.materials[0].node_tree.nodes.get('Principled BSDF').inputs['Roughness'].default_value>.8
 # A roof slab must not fill the external walled recess. Probe its actual floor.
 R=json.loads((ROOT/'research/roof-layout.json').read_text());wx,wy=R['walled_recess']['centre']
 hit,point,normal,index,obj,matrix=bpy.context.scene.ray_cast(deps,Vector((wx,wy,25)),Vector((0,0,-1)),distance=20)
 assert hit and obj.name=='Roof walled recess' and point.z<D['base_z']+D['roof_level']-.4
 assert len([o for o in meshes if o.name.startswith('Roof edge housing ')])==3
 assert any(o.name=='Roof plant platform and cabinets' for o in meshes)
-report={'objects':len(meshes),'window_modules':len(windows),'checks':'metric finite meshes, packed maps, neighbour bounds, visible windows/signs, deep entrance and three steps, continuous welcome panel and visible downlight lenses, open roof recess and three edge housings'}
+report={'objects':len(meshes),'window_modules':len(windows),'checks':'metric finite meshes, packed maps, neighbour bounds, visible windows/signs, two recessed entrances and two main risers, two welcome panels and visible downlight lenses, outward access solids and covered threshold, matte access tiles, open roof recess and three edge housings'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2));print(report)

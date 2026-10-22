@@ -22,7 +22,7 @@
   "parts": [
     {
       "id": "architecture",
-      "name": "White facade and green-grey window grid",
+      "name": "White facade and thirteen-module mosaic window grid",
       "collection": "architecture"
     },
     {
@@ -140,6 +140,19 @@
         13,
         59
       ]
+    },
+    {
+      "name": "Left ramp",
+      "position": [
+        -54,
+        3.0,
+        18
+      ],
+      "target": [
+        -56.9,
+        2.5,
+        24.0
+      ]
     }
   ],
   "walk_spawn": {
@@ -160,11 +173,11 @@
       "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
       "walk": {
         "strategy": "keep",
-        "reason": "Keep authored walls, stepped parapets, edge housings, actual roof recess, rooflight and coarse plant cabinets alongside facade openings."
+        "reason": "Keep authored walls, stepped parapets, edge housings, actual roof recess, rooflight and coarse plant cabinets alongside facade openings. Retain both entrances, faceted projecting display glazing, two-step landing and ramp with red railing."
       },
       "district": {
         "strategy": "keep",
-        "reason": "Keep low-cost roof and facade silhouettes, the walled recess and coarse plant masses; avoid flattening the rooftop into a single box."
+        "reason": "Keep low-cost roof and facade silhouettes, the walled recess and coarse plant masses; avoid flattening the rooftop into a single box. The two entrance recesses, display facets and ramp/railing remain authored geometry."
       }
     },
     {

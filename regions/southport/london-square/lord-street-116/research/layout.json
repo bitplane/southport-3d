@@ -10,10 +10,13 @@
   "upper_top": 11.5,
   "glass_bottom": 7.95,
   "glass_top": 10.05,
-  "upper_bays": 14,
+  "upper_bays": 13,
   "upper_margin": 1.25,
-  "entry_left": 8.6,
-  "entry_right": 15.2,
-  "entry_depth": 1.2,
-  "uncertainty": "Frontage registered between modelled terrace and OSM church boundary; width 25.88 m and all heights visually calibrated, not surveyed. Fourteen window modules interpreted from oblique imagery; tree cover obscures far end. Rectangular rear envelope to mapped block return is approximate; no internal division or Chapel Street elevation. Roof features follow satellite silhouettes normalized within this estimated footprint; detailed observations and functional uncertainty are in roof-layout.json. Facade aligned to existing terrace rather than the small mapped street skew."
+  "entry_left": 11.05,
+  "entry_right": 14.2,
+  "entry_depth": 1.35,
+  "uncertainty": "Frontage registered between modelled terrace and OSM church boundary; width 25.88 m and all heights visually calibrated, not surveyed. Thirteen upper modules counted in user-provided unobscured full-front Street View screenshots. Two independent entrances and two central risers now established; ramp/display/window dimensions remain visually calibrated estimates. Rectangular rear envelope to mapped block return is approximate; no internal division or Chapel Street elevation. Roof features follow satellite silhouettes normalized within this estimated footprint; detailed observations and functional uncertainty are in roof-layout.json. Facade aligned to existing terrace rather than the small mapped street skew.",
+  "left_entry_left": 5.85,
+  "left_entry_right": 7.6,
+  "left_entry_depth": 0.95
 }
