@@ -38,11 +38,33 @@ for ob in meshes:
     direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
     hit,point,normal,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
     assert hit and target==ob,(ob.name,'window obscured by',target.name if target else None)
+# Two single-pane lower windows: a cross-window generator previously introduced
+# extra mullions and intersecting oversized hoods in this narrow pair.
+low_windows=[o for o in meshes if o.name.startswith('Window low side')]
+assert len(low_windows)==2
+for ob in low_windows:
+    origin=ob.matrix_world@Vector((0,0,1))
+    direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+    hit,point,normal,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
+    assert hit and target==ob and ob.data.polygons[index].material_index==1,('Lower single light obstructed',ob.name)
+for ob in meshes:
+    if ob.name.startswith('Trim surround Window low side'):
+        assert max(abs(v.co.x) for v in ob.data.vertices)<.82, 'Adjacent lower window heads overlap'
+# Three Lord Street hoods must fit between their3.35m centres.
+front_heads=[o for o in meshes if o.name.startswith('Trim surround Window cross lord')]
+assert len(front_heads)==3
+assert all(max(abs(v.co.x) for v in o.data.vertices)<3.35/2 for o in front_heads), 'Upper hoods overlap'
 points=[ob.matrix_world@v.co for ob in meshes for v in ob.data.vertices]
 assert min(p.x for p in points)>D['x_min']-1.3
 assert max(p.x for p in points)<D['x_max']+1
 assert min(p.y for p in points)>D['rear_y']-.5
 assert max(p.y for p in points)<D['front_y']+1.5
+# Wall backing must close the strip between cornice and open parapet.
+for origin,direction,prefix in [
+    (Vector((D['x_max']-8,D['front_y']+1,D['base_z']+12.50)),Vector((0,-1,0)),'Envelope lord'),
+    (Vector((D['x_min']-1,D['front_y']-14,D['base_z']+12.50)),Vector((1,0,0)),'Envelope london')]:
+    hit,point,normal,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
+    assert hit and target.name.startswith((prefix,'Ashlar ')),('Open parapet footing',target.name if hit else None)
 # The inner deck must stay below the pitched perimeter; no huge solid roof slab.
 hit,point,normal,index,target,matrix=bpy.context.scene.ray_cast(deps,Vector((24,-40,25)),Vector((0,0,-1)),distance=25)
 assert hit and point.z<12,(target.name,point)

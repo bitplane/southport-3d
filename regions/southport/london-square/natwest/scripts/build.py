@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh, face_matrix, text_object
 from roof import joined_roof
-from components import rectangle, arch_outline, wall, upper_window, arched_window, gable, foliage, parapet, urn, finial, arc, partition_window
+from components import rectangle, arch_outline, wall, upper_window, low_side_window, arched_window, gable, foliage, parapet, urn, finial, arc, partition_window
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
@@ -131,8 +131,8 @@ for elevation,frame,width,bays in facades:
             pass
         else:holes.append(rectangle(u-1.225,6.8,u+1.225,10.25))
     # The front wall owns the shared corner; side masonry starts at its back.
-    finish(wall('Envelope '+elevation,width,12.25,holes,start=0 if front_face else .42),mats=[stone],transform=frame)
-    finish(wall('Ashlar '+elevation,width,12.25,holes,True),mats=plain,transform=frame)
+    finish(wall('Envelope '+elevation,width,12.60,holes,start=0 if front_face else .42),mats=[stone],transform=frame)
+    finish(wall('Ashlar '+elevation,width,12.60,holes,True),mats=plain,transform=frame)
     # Continuous courses establish floor levels and retain their shadow profiles.
     for z,h,dep in [(0.25,.50,.12),(5.95,.16,.24),(6.18,.16,.34),(6.38,.12,.24),
                     (11.42,.18,.22),(11.75,.28,.34),(11.96,.12,.46),(12.12,.16,.57),(12.35,.17,.40)]:
@@ -188,9 +188,12 @@ for elevation,frame,width,bays in facades:
                 m.tube([(0,9.65,.10),(.65*math.cos(a),9.7+.65*math.sin(a),.16)],.018,sides=5)
             finish(m,transform=frame@Matrix.Translation((u,0,.03)))
             for du in (-.83,.83):
-                instance('side-low-window',lambda:upper_window('Window low side',.96,2.15,False),frame@Matrix.Translation((u+du,2.975,.03)),mats=M)
+                instance('side-low-window',lambda:low_side_window('Window low side',.96,2.15),frame@Matrix.Translation((u+du,2.975,.03)),mats=M)
         else:
-            instance('upper-window',lambda:upper_window('Window cross',2.45,3.45),frame@Matrix.Translation((u,8.525,.04)),mats=M)
+            instance('upper-window-lord' if front_face else 'upper-window-london',
+                     lambda:upper_window('Window cross lord' if front_face else 'Window cross london',
+                                         2.45,3.45,hood_extra=.72 if front_face else 1.02),
+                     frame@Matrix.Translation((u,8.525,.04)),mats=M)
             if front_face:
                 box('Trim balcony slab',(u,6.66,.40),(3.15,.18,.94),transform=frame)
                 for du in (-1.05,1.05):box('Trim balcony console',(u+du,6.43,.24),(.28,.38,.48),transform=frame)
@@ -271,7 +274,9 @@ court_front=back;court_rear=yb+.36;court_left=xi+.1
 box('Roof lower flat deck',((court_left+rear_right)/2,(court_front+court_rear)/2,z0+10.25),(rear_right-court_left,court_front-court_rear,.25),'roof',flat)
 # The party wall already encloses the right side. Do not duplicate its skin.
 box('Roof inner wall',(xi-.05,(court_front+court_rear)/2,z0+11.16),(.30,court_front-court_rear,2.02),'roof',brick)
-box('Roof rear parapet',((xf+xn)/2,yb+.12,z0+12.55),(xf-xn,.28,.50),'roof',plain[1])
+# Side masonry owns the lower corner strip; parapet meets it without duplicate skins.
+box('Roof rear parapet',((xf+xn+.42)/2,yb+.12,z0+12.55),(xf-xn-.42,.28,.50),'roof',plain[1])
+box('Roof rear parapet corner',(xn+.21,yb+.12,z0+12.70),(.42,.28,.20),'roof',plain[1])
 
 
 # One closed roof skin: intersecting sheets must never be exported separately.

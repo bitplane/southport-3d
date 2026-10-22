@@ -171,11 +171,11 @@
       "match": "^Window low side",
       "walk": {
         "strategy": "keep",
-        "reason": "Keep transoms, mullions, narrow-window pediments and consoles at walking distances."
+        "reason": "Keep the observed two separate single-light windows and compact individual heads; no invented crossing bars."
       },
       "district": {
         "strategy": "replace",
-        "reason": "Keep stone surrounds, cornices, transoms and mullions as explicit depth geometry. Bake only shallow glazing and painted frame details onto a recessed panel, avoiding unsupported faces in a solid proxy.",
+        "reason": "Retain compact stone heads and aperture depths; bake only the shallow single-pane glazing and painted perimeter frame.",
         "shape": "panel",
         "uv": "planar-xy",
         "bake": true,

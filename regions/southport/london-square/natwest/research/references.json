@@ -61,5 +61,17 @@
     "Back/party masonry and low-roof service details are estimated.",
     "Heraldic finials and foliage are authored interpretations; no claim of exact sculptural reproduction.",
     "Bank frontage reflects unobstructed 2020/2021/2024 references; temporary cleaning/scaffolding and transient posters excluded."
-  ]
+  ],
+  "audit_2026_10_22": {
+    "sources": [
+      "Existing August2024 user-side panorama",
+      "Existing September2021 front and side photographs"
+    ],
+    "observations": [
+      "The pair below the blind side niche are single narrow lights, not miniature cross-windows; their heads are compact and separated.",
+      "Central front upper heads are separated by the pilasters; the original3.47m generated heads exceeded3.35m spacing.",
+      "Masonry is continuous behind the cornice/open-parapet base; original wall height left an unintended air gap."
+    ],
+    "limits": "Retained captures inspected; fresh browser session stalled atconsent. Roof silhouette reviewed but unchanged inthis audit."
+  }
 }

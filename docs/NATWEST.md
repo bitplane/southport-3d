@@ -38,3 +38,30 @@ lower saddle behind the corner Dutch gable. Ridge heights and widths are
 explicit estimates in `roof_ranges`; the corner saddle runs into the main slope
 instead of imposing an equally high crest across it. Closed-shell and single
 skin probes still apply. Google 3D Earth was unavailable during this review.
+
+## Independent audit: London Street windows and façade joins
+
+An independent comparison with the retained clear September 2021 photographs
+and the user's August 2024 side panorama identified three concrete defects:
+
+- The narrow pair below the blind niche had been generated as miniature cross-windows. They are now two single lights with compact separate heads. The former upper-window cornices overlapped between them.
+- The three central Lord Street upper windows were spaced 3.35 m apart while their cornices were 3.47 m wide. Their front-only heads are now narrower; the more widely spaced London Street heads retain their original width.
+- The wall backing stopped below the open parapet, leaving a 13.5 cm air slot above the final cornice. Masonry backing now reaches the parapet base while preserving the projecting mouldings and genuinely open strapwork.
+
+Validation probes the centres of the two single lights, bounds their compact
+heads, checks the three front heads against their bay spacing, and casts rays
+through the former parapet gap to require masonry. Existing roof manifold,
+single-skin, colour and envelope checks remain active. No roof pitch or public
+realm geometry was changed by this audit.
+
+The all-level exported comparisons before the fixes showed stable sandstone
+colour and roof silhouette. Fine foliage and heraldic figures remain interpreted
+sculpture; exact chimney-pot arrangements and hidden roof service details remain
+estimates. The audit does not claim fresh browser imagery: the isolated browser
+stalled at Google consent, so the saved dated references were used.
+
+After rebuilding and publication, the exported Detail, Walk and District GLBs
+were rendered from front, London Street, roof and corner viewpoints. The narrow
+lights and separated heads survive all three levels, the parapet backing is
+closed, and the roof silhouette and stone colour remain stable. This was an
+exported-model review; live browser inspection was unavailable in this pass.

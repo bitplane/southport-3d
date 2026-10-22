@@ -46,7 +46,7 @@ def arc(m,x,y,inner,outer,start=0,end=math.pi,depth=.2,out=.10,steps=48,material
                    (x+inner*math.cos(b),y+inner*math.sin(b))],out-depth,out,material)
 
 
-def upper_window(name,width=2.45,height=3.45,narrow=False):
+def upper_window(name,width=2.45,height=3.45,narrow=False,hood_extra=1.02):
     m=Mesh(name);w=width/2;h=height/2
     m.box((0,0,-.22),(width,height,.045),1)
     for side in (-1,1):
@@ -68,12 +68,38 @@ def upper_window(name,width=2.45,height=3.45,narrow=False):
         m.outline([(width*.5,h+.23),(-width*.5,h+.23)]+[(width*.5*math.cos(math.pi-i*math.pi/24),h+.23+width*.5*math.sin(math.pi-i*math.pi/24)) for i in range(25)],.0,.07)
         m.box((0,h+.23,.16),(width+.36,.11,.38))
     else:
-        for y,ww,hh,dd in [(h+.21,width+.65,.16,.28),(h+.37,width+.91,.13,.39),(h+.48,width+1.02,.09,.48)]:
+        for y,ww,hh,dd in [(h+.21,width+.65*hood_extra/1.02,.16,.28),(h+.37,width+.91*hood_extra/1.02,.13,.39),(h+.48,width+hood_extra,.09,.48)]:
             m.box((0,y,dd/2),(ww,hh,dd))
         for side in (-1,1):
             x=side*(w+.27)
             m.outline([(x-.12,h-.33),(x+.12,h-.33),(x+.15,h+.34),(x-.15,h+.34)],.03,.26)
             for yy in [h-.25,h-.12,h+.02]:m.box((x,yy,.29),(.21,.045,.1))
+    return m
+
+
+
+def low_side_window(name, width=.96, height=2.15):
+    """Single tall light and compact head, observed under the blind London St niche.
+
+    These are not miniature cross-windows. Their centres are only1.66m apart,
+    so the wide upper-storey cornice would overlap the neighbouring head.
+    """
+    m=Mesh(name);w=width/2;h=height/2
+    m.box((0,0,-.22),(width,height,.045),1)
+    for side in (-1,1):
+        m.box((side*(w+.075),0,.065),(.15,height+.22,.20),0)
+        m.box((side*(w-.027),0,-.10),(.054,height,.10),2)
+    for y in (-h,h):
+        m.box((0,y,-.09),(width,.055,.12),2)
+    m.box((0,-h-.105,.12),(width+.36,.15,.34),0)
+    # Narrow individual lintel and small ends; no central mullion or transom.
+    for y,ww,hh,dd in [(h+.07,width+.26,.12,.22),
+                        (h+.18,width+.42,.10,.30)]:
+        m.box((0,y,dd/2),(ww,hh,dd),0)
+    for side in (-1,1):
+        x=side*(w+.11)
+        m.outline([(x-.075,h-.22),(x+.075,h-.22),
+                   (x+.09,h+.10),(x-.09,h+.10)],.02,.22)
     return m
 
 
