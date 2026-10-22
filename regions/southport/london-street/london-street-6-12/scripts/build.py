@@ -127,7 +127,7 @@ def sign(name, body, u, h, w, height, background=blue, foreground=white,
                 xx = direction * yy * .95
                 mesh.box((xx, yy, .008), (w*.63, .025, .012), 1)
     text = text_object('Temporary sign glyphs', body, (0, 0, .035), (0, 0, 1),
-                       height*(.38 if logo else .56), w*.93, font, foreground, extrude=.012)
+                       height*(.38 if logo else .56), w*.93, font, foreground, extrude=.012, fit_bounds=True)
     bpy.ops.object.select_all(action='DESELECT')
     text.select_set(True)
     bpy.context.view_layer.objects.active = text
@@ -312,20 +312,22 @@ for i,u in enumerate(pier_centres):
         elevation_box('Fine granite course joint',u,h,pw,.012,.014,.148,sill,'shopfront')
 for i,(a,b) in enumerate(zip(pier_centres,pier_centres[1:])):
     centre=(a+b)/2
+    # Continuous reveal and head close the recess right back to the glazing.
+    elevation_box('Shop soffit beneath fascia',centre,3.10,b-a-.5,.16,1.0,-.34,metal,'shopfront')
     if i==2:
-        elevation_box('Shop recessed entrance shadow',centre,1.45,b-a-.5,2.9,.03,-.82,black,'shopfront')
+        elevation_box('Shop recessed entrance shadow',centre,1.545,b-a-.5,3.09,.03,-.82,black,'shopfront')
         elevation_box('Shop entrance threshold',centre,.035,b-a-.50,.07,.95,-.35,charcoal,'shopfront')
         for u in [a+.37,b-.37]:
-            elevation_box('Shop entrance jamb',u,1.45,.10,2.9,.75,-.30,metal,'shopfront')
+            elevation_box('Shop entrance jamb',u,1.545,.10,3.09,.75,-.30,metal,'shopfront')
         elevation_box('Shop entrance transom',centre,2.45,b-a-.6,.065,.12,-.14,metal,'shopfront')
         for u in [centre-.58,centre+.58]:
             elevation_box('Shop recessed door leaf',u,1.2,1.12,2.30,.035,-.65,glass,'shopfront')
             elevation_box('Fine entrance pull',u+.40,1.2,.035,.55,.055,-.60,metal,'shopfront')
         sign('entrance number','8-12',centre,2.82,.60,.22,black,white,out=-.14)
     else:
-        elevation_box('Shop display glass',centre,1.52,b-a-.5,2.98,.035,-.19,glass,'shopfront')
+        elevation_box('Shop display glass',centre,1.56,b-a-.5,3.06,.035,-.19,glass,'shopfront')
         for u in [centre-.51,centre+.51]:
-            elevation_box('Shop display mullion',u,1.52,.040,2.98,.085,-.13,metal,'shopfront')
+            elevation_box('Shop display mullion',u,1.56,.040,3.06,.085,-.13,metal,'shopfront')
         for h in [.18,2.67]:
             elevation_box('Shop display rail',centre,h,b-a-.5,.045,.07,-.12,metal,'shopfront')
 # Small manifestation dots are nearby detail, not invented advertising text.
@@ -337,24 +339,16 @@ elevation_box('Shop blue continuous fascia',hw/2,3.57,hw,.78,.28,.05,blue,'shopf
 for h in [3.16,3.97]:
     elevation_box('Trim Halifax fascia edge',hw/2,h,hw+.10,.045,.36,.07,blue,'shopfront')
 sign('Halifax main','HALIFAX',hw/2,3.58,2.15,.74,logo=True,out=.215)
-# Two ATM boxes, slots, screens and keypads; lettering only where readable.
+# Photo-led machines have separate display, sloping control recess and backboard.
+from frontage import cash_machine
 for i,u in enumerate([11.13,12.35]):
-    elevation_box('Shop ATM housing',u,1.28,.82,1.10,.19,.015,metal,'shopfront')
-    elevation_box('Shop ATM bezel',u,1.40,.62,.61,.05,.13,sill,'shopfront')
-    elevation_box('Shop ATM screen',u,1.57,.39,.22,.018,.163,black,'shopfront')
-    elevation_box('Shop ATM keyboard',u,1.18,.30,.17,.025,.164,black,'shopfront')
-    elevation_box('Shop ATM cash slot',u,.98,.42,.055,.025,.168,black,'shopfront')
-    sign('ATM label '+str(i),'cash machine',u,2.03,.82,.26,blue,white,out=.08)
-    mesh=Mesh('Fine ATM keys')
-    for row in range(3):
-        for col in range(3):
-            mesh.box((u-.075+col*.075,1.13+row*.05,.183),(.043,.026,.01))
-    finish(mesh,'shopfront',[metal],front)
+    cash_machine(finish,front,u,white,metal,black,blue,glass,font)
 # Corner returns into Glebe, as visibly glazed in the November2020 panorama.
 for u in [side_width-2.45,side_width-.22]:
     elevation_box('Shop Glebe corner granite',u,1.62,.44,3.24,.5,-.12,granite,'shopfront',side)
-elevation_box('Shop Glebe return glass',side_width-1.33,1.52,1.78,2.98,.03,-.18,glass,'shopfront',side)
+elevation_box('Shop Glebe return glass',side_width-1.33,1.56,1.78,3.06,.03,-.18,glass,'shopfront',side)
 elevation_box('Shop Glebe fascia return',side_width-1.33,3.57,2.66,.78,.25,.03,blue,'shopfront',side)
+elevation_box('Shop Glebe soffit',side_width-1.33,3.10,1.78,.16,.60,-.18,metal,'shopfront',side)
 # Number six: dark surround, lower shop fascia, side access door to offices.
 shop6=width-hw
 # The granite pier owns the shared lower face; a second full-height dark
@@ -362,13 +356,8 @@ shop6=width-hw
 elevation_box('Shop six shared pier head',hw+.10,3.42,.24,.36,.44,-.08,charcoal,'shopfront')
 elevation_box('Shop six stone pier',width-.10,1.8,.24,3.6,.44,-.08,charcoal,'shopfront')
 elevation_box('Shop six upper dark fascia',hw+shop6/2,3.57,shop6,.78,.32,.03,charcoal,'shopfront')
-elevation_box('Shop six glazing',hw+shop6*.40,1.44,shop6*.72,2.78,.035,-.20,glass,'shopfront')
-for u in [hw+.3,hw+shop6*.72]:
-    elevation_box('Shop six window jamb',u,1.44,.055,2.78,.10,-.10,metal,'shopfront')
-elevation_box('Shop six entrance door',width-.65,1.35,1.05,2.66,.055,-.28,black,'shopfront')
-for h in [.55,1.22,1.89]:
-    elevation_box('Shop six door panel',width-.65,h,.78,.43,.025,-.24,charcoal,'shopfront')
-elevation_box('Fine six letter slot',width-.65,.98,.26,.045,.028,-.21,metal,'shopfront')
+from frontage import number_six
+number_six(elevation_box,finish,front,hw,width,charcoal,metal,black,glass,white)
 sign('Post and Packing','Post & Packing',hw+shop6*.40,2.96,shop6*.72,.46,white,blue,out=.13)
 # Projecting Halifax sign panels have two separate visible faces.
 for u in [.18,hw-.18]:

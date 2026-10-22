@@ -124,3 +124,16 @@ for i in range(1,60):
  hit,p,n,index=wall.ray_cast(Vector((x-1,y,z)),Vector((1,0,0)),distance=1.1)
  assert hit,('Gap under rear hip',y,z)
 print('Rear wall closes to both roof planes across the hip seam')
+
+# Sample the previously open strip under the fascia and beside number-six door.
+xf=D['front_x'];ys=D['south_y'];base=D['base_z'];width=D['north_y']-ys
+for u,h in [(1.6,3.08),(4.9,3.08),(8.3,3.08),(11.7,3.08),(15,3.08),(width-1.39,1.2),(width-.78,2.9)]:
+    hit,p,n,i,found,matrix=bpy.context.scene.ray_cast(deps,Vector((xf+1,ys+u,base+h)),Vector((-1,0,0)),distance=2)
+    assert hit and found.name.startswith('Shop '),('Open frontage gap',u,h,found.name if hit else None)
+
+# The new soffit must stay behind the retail sign's upper blank margin.
+sign=bpy.data.objects['Sign Post and Packing']
+origin=sign.matrix_world@Vector((.30,.18,1))
+direction=sign.matrix_world.to_3x3()@Vector((0,0,-1))
+hit,p,n,i,found,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
+assert hit and found==sign,('Retail sign obscured by soffit',found.name if hit else None)

@@ -81,3 +81,19 @@ seam. Wall tops now split at roof-plane intersections instead of connecting
 only endpoint heights. Fifty-nine horizontal rays follow the rear eave to catch
 missing closure. The retained aerial supports the overall hip and exposed lower
 service deck; exact pitch and setback dimensions remain estimates.
+
+## Current frontage details
+
+Private snag photographs e6c96e and 588176 establish the paired Halifax machines
+and number-six entrances. Each machine has a white backboard, upper information
+display, hooded/sloping screen, paired button rows, green card guide, two lower
+slots and projecting keypad shelf. The blue identity panel carries authored
+Halifax/cash-machine lettering; unreadable screen instructions are omitted.
+The machines' coarse frames and recesses survive all levels; controls remain at
+Detail/Walk and omit at District, while sign lettering bakes to panels.
+
+Continuous soffits and glazing heads close the fascia recess. Number six has a
+separate glazed shop door and black four-panel offices door with two letterboxes,
+a knob, overlight, threshold and granite jambs. Temporary letting boards and
+interiors are excluded. Sizes are calibrated estimates from the supplied photos.
+Ray checks sample the previous fascia and doorway gaps in the assembled building.
