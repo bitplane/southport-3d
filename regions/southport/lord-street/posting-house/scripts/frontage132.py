@@ -52,7 +52,11 @@ def build_132(g):
             for h in [z+1.65,z-1.58]:
                 m=Mesh('Roof 132 bay ledge');m.add([(c+x,h,d) for x,d in outline]+[(c+x,h+.10,d) for x,d in outline],[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
                 finish(m,mats=[black],frame=front)
-        instance('132-top',sash('Window 132 upper sash',2.5,1.65),front@Matrix.Translation((c,14.75,0)),mats=[glass,white])
+        # The top row is four plain vertical casements, not a Georgian sash grid.
+        m=Mesh('Window 132 upper casement');m.box((0,0,-.23),(2.5,1.65,.04),0)
+        for x in [-1.215,-.625,0,.625,1.215]:m.box((x,0,-.10),(.055,1.65,.13),1)
+        for z in [-.7975,.7975]:m.box((0,z,-.10),(2.5,.055,.13),1)
+        instance('132-top-casement',m,front@Matrix.Translation((c,14.75,0)),mats=[glass,white])
         for h in [13.72,15.75,16.17]:box('Trim 132 black band',(c,h,.07),(w/3,.14,.23),mat=black,frame=front)
         m=Mesh('Gable 132 white front');m.outline([(c-1.4,16.35),(c+1.4,16.35),(c,18.05)],-.18,.07)
         finish(m,mats=[white],frame=front)

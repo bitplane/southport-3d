@@ -25,3 +25,16 @@ These are the first complete standalone package measurements, across four stream
 The full build/export/validation passes. Checks cover finite meshes and UVs, packed maps, two Post Office gables/three 132 gables/three front dormers/six main chimneys, a closed manifold joined roof, 1,326 roof rays requiring exactly one upper and one lower skin, 100 unobscured glazing rays, the NatWest alley boundary and the open courtyard. All 701 exportable meshes have exactly one publication classification. All twelve GLBs pass geometry/texture inspection and non-increasing level counts.
 
 Front, roof, entrance and rear master renders were inspected, followed by front/oblique/rear renders imported from all three actual GLB levels. Global publication and the combined live viewer are coordinated separately by the root agent; standalone review does not establish every neighbouring pavement join.
+
+## Independent reference audit
+
+The retained number 132 frontage photograph shows four plain vertical panes in
+each top-floor opening. These replace the previous generic small-pane sash grid.
+Exported front/oblique/rear comparisons retain the main roof, gables and facade
+identity across levels without an observed material-colour jump.
+
+The heritage statement's rear photograph also shows irregular window sizes and a
+prominent tall central opening/bay. The current regular historic-rear sash rows
+remain an approximation, not a verified reconstruction of that photograph.
+Rear fenestration and exact bay registration need a further calibrated pass;
+this audit does not certify them. Ground joins need combined-viewer inspection.
