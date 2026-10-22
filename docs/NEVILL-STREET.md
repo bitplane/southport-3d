@@ -76,9 +76,9 @@ include all four GLBs and embedded maps at each level:
 
 | Level | Placed triangles | GLB bytes including maps | Embedded image bytes |
 | --- | ---: | ---: | ---: |
-| Detail | 13,750 | 6,142,840 | 4,043,479 |
-| Walk | 13,750 | 6,142,840 | 4,043,479 |
-| District | 13,750 | 2,271,712 | 172,477 |
+| Detail | 15,371 | 6,386,016 | 4,043,479 |
+| Walk | 15,371 | 6,386,016 | 4,043,479 |
+| District | 15,371 | 2,514,908 | 172,477 |
 
 All 12 GLBs passed publication validation, with all 28 exported meshes classified
 at every level. Walk uses the same map cap as Detail; District's smaller maps
@@ -109,3 +109,17 @@ python3 tools/project.py build southport.nevill-street.public-realm --stage rend
 python3 tools/project.py publish
 chafa build/southport.nevill-street.public-realm/renders/contact-sheet.png
 ```
+
+## Edge-marking correction
+
+The yellow edge lines now continue through the lower taper from Y41. Mitered
+perpendicular offsets keep their kerb setback constant as the street bends;
+the earlier X-only offsets varied on angled transitions. Side-mouth gaps derive
+from intersections with the actual road strips, including angled West Street,
+and paint polygons are clipped against those mouths. Bay gaps and the upper
+crossing opening remain deliberate, based on the dated references.
+
+Validation measures each constructed marking centreline against its receiving
+kerb segment, then independently checks exported yellow-triangle interiors
+against all finite side-road mouths. These checks establish geometric placement,
+not the current legal extent of parking restrictions.

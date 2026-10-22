@@ -46,5 +46,26 @@ for ob in meshes:
 conform=json.loads((ROOT/'research/conform.json').read_text())
 assert conform['inserted_edge_junctions']>0,'Street clipping should share paint/base edge junctions'
 
-report={'minimum_triangle_area_m2':minimum_triangle_area,'joined_edge_junctions':conform['inserted_edge_junctions'],'ground_parts':len(publication['parts']),'objects':len(meshes),'triangles':sum(len(o.data.loop_triangles) for o in meshes),'checks':'finite meshes, UVs, packed authored maps, no ownership overlap south of seam, square road elevation, continuous route and three part seams','uncertainty':'Mapped registration with estimated widths and grade; checks establish geometric continuity, not survey accuracy.'}
+# Independently measure perpendicular distance from constructed paint endpoints
+# to their receiving kerb segment, including mitered station changes.
+for segment in json.loads((ROOT/'research/marking-centrelines.json').read_text()):
+ a,b=segment['kerb'];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
+ for p in segment['paint']:
+  distance=abs((p[0]-a[0])*(-dy)+(p[1]-a[1])*dx)/length
+  assert abs(distance-segment['offset'])<1e-6,(segment,distance,'varying kerb setback')
+# Edge paint must not run across a side-road mouth. Test actual exported paint
+# triangle interiors against the independent finite-width junction corridors.
+paint_samples=0
+for ob in meshes:
+ if not ob.name.endswith(' yellow'):continue
+ for tri in ob.data.loop_triangles:
+  p=sum((ob.data.vertices[i].co for i in tri.vertices),Vector())/3
+  for road in D['side_roads']:
+   a,b=road['centre'],road['end'];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
+   along=((p.x-a[0])*dx+(p.y-a[1])*dy)/length
+   across=abs((p.x-a[0])*(-dy)+(p.y-a[1])*dx)/length
+   assert not (.002<along<length-.002 and across<road['width']/2-.002),(road['name'],tuple(p),'paint blocks junction')
+  paint_samples+=1
+assert paint_samples>0
+report={'minimum_triangle_area_m2':minimum_triangle_area,'joined_edge_junctions':conform['inserted_edge_junctions'],'paint_triangle_samples':paint_samples,'ground_parts':len(publication['parts']),'objects':len(meshes),'triangles':sum(len(o.data.loop_triangles) for o in meshes),'checks':'finite meshes, UVs, packed authored maps, no ownership overlap south of seam, square road elevation, continuous route and three part seams','uncertainty':'Mapped registration with estimated widths and grade; checks establish geometric continuity, not survey accuracy.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2));print(report)

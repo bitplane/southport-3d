@@ -48,10 +48,39 @@ def station(y):
   if y<=b[0]:
    t=max(0,(y-a[0])/(b[0]-a[0]));return [a[i]+t*(b[i]-a[i]) for i in range(1,5)]
  return points[-1][1:]
+def marking_point(y,side,offset):
+ # Intersect the two parallel offset lines at a bend (miter join). Offsetting
+ # only X made the perpendicular kerb setback vary on angled transitions.
+ stations=D['stations_y_centre_halfwidth_left_right'];normals=[]
+ for a,b in zip(stations,stations[1:]):
+  if a[0]-1e-7<=y<=b[0]+1e-7:
+   dx=(b[1]+side*b[2])-(a[1]+side*a[2]);dy=b[0]-a[0];length=math.hypot(dx,dy)
+   normals.append((-side*dy/length,side*dx/length))
+ nx=sum(n[0] for n in normals);ny=sum(n[1] for n in normals);den=nx*normals[0][0]+ny*normals[0][1]
+ c,h,_,_=station(y);return (c+side*h+offset*nx/den,y+offset*ny/den)
+marking_segments=[]
+# Derive mouth breaks from the actual angled road strips. Hand-entered Y gaps
+# previously missed the lower side of West Street and left paint across asphalt.
+mouth_breaks={-1:[],1:[]}
+for road in D['side_roads']:
+ a,b=road['centre'],road['end'];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
+ side=1 if dx>0 else -1;hits=[]
+ for lo,hi in zip(D['stations_y_centre_halfwidth_left_right'],D['stations_y_centre_halfwidth_left_right'][1:]):
+  pa=(lo[1]+side*lo[2],lo[0]);pb=(hi[1]+side*hi[2],hi[0])
+  # Signed perpendicular distance to the side-road axis, in metres.
+  da=((pa[0]-a[0])*(-dy)+(pa[1]-a[1])*dx)/length
+  db=((pb[0]-a[0])*(-dy)+(pb[1]-a[1])*dx)/length
+  for bound in [-road['width']/2,road['width']/2]:
+   if abs(db-da)>1e-9:
+    t=(bound-da)/(db-da)
+    if 0<=t<=1:hits.append(pa[1]+t*(pb[1]-pa[1]))
+ assert len(hits)==2,(road['name'],hits)
+ mouth_breaks[side].append((min(hits),max(hits)))
+(ROOT/'research/marking-mouths.json').write_text(json.dumps(mouth_breaks,indent=2))
 # Exactly fill the pre-existing square's central open neck; outside this rectangle
 # its Y36–41 footway belongs to London Square, not this asset.
 quad('square road seam',-6,36,6,41,'asphalt',100,level(True))
-ys=sorted(set([r[0] for r in D['stations_y_centre_halfwidth_left_right']]+[45,118,125,145,156,97.7,104.5,106.1,113.3,161.8,169.1,177.1,186.4,190.5,195.7,245.7,246.8]))
+ys=sorted(set([v for pairs in mouth_breaks.values() for pair in pairs for v in pair]+[r[0] for r in D['stations_y_centre_halfwidth_left_right']]+[45,118,125,145,156,97.7,104.5,106.1,113.3,161.8,169.1,177.1,186.4,190.5,195.7,245.7,246.8]))
 for ya,yb in zip(ys,ys[1:]):
  ca,ha,la,ra=station(ya);cb,hb,lb,rb=station(yb)
  surface('Nevill asphalt',[(ca-ha,ya),(ca+ha,ya),(cb+hb,yb),(cb-hb,yb)],'asphalt',100,level(True))
@@ -59,7 +88,7 @@ for ya,yb in zip(ys,ys[1:]):
   edgea=ca+side*ha;edgeb=cb+side*hb;outera=la if side<0 else ra;outerb=lb if side<0 else rb
   surface('Nevill footway',[(outera,ya),(edgea,ya),(edgeb,yb),(outerb,yb)],'paving',10)
   midpoint=(ya+yb)/2
-  breaks=[(97.7,104.5),(161.8,169.1)] if side>0 else [(106.1,113.3),(177.1,186.4),(190.5,195.7)]
+  breaks=list(mouth_breaks[side])
   # Crossings are open, with separately authored ramps rather than a kerb barrier.
   breaks += [(246.8,249.5)]
   if any(a<midpoint<b for a,b in breaks):continue
@@ -67,8 +96,12 @@ for ya,yb in zip(ys,ys[1:]):
   # Red paviour band behind the kerb, observed on the lower street; breadth estimated.
   surface('red edge band',[(edgea+side*.32,ya),(edgea+side*.77,ya),(edgeb+side*.77,yb),(edgeb+side*.32,yb)],'brick',140)
   bay=(side>0 and 125<=midpoint<=156) or (side<0 and 118<=midpoint<=145)
-  if ya>45 and not bay:
-   for offset in [.18,.36]:strip('double yellow',(edgea-side*offset,ya),(edgeb-side*offset,yb),.07,'yellow',300,level(True))
+  if ya>=41 and not bay:
+   for offset in [.18,.36]:
+    pa,pb=marking_point(ya,side,offset),marking_point(yb,side,offset)
+    marking_segments.append({'kerb':[(edgea,ya),(edgeb,yb)],'paint':[pa,pb],'offset':offset})
+    strip('double yellow',pa,pb,.07,'yellow',300,level(True))
+(ROOT/'research/marking-centrelines.json').write_text(json.dumps(marking_segments,indent=2))
 # Short branches establish junction bounds without modelling the full side streets.
 for road in D['side_roads']:
  a=road['centre'];b=road['end'];w=road['width']
@@ -139,6 +172,12 @@ for x in [-25+i*.8 for i in range(12)]:quad('upper give way dash',x,260.8,x+.35,
 rows.sort(key=lambda row:row[3]);compiled={};bounds=D['part_boundaries_y']
 for index,(name,poly,mat,priority,zfun) in enumerate(rows):
  fragments=[ccw(poly)]
+ if name=='double yellow':
+  for road in D['side_roads']:
+   a,b=road['centre'],road['end'];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
+   nx,ny=-dy/length*road['width']/2,dx/length*road['width']/2
+   cutter=ccw([(a[0]-nx,a[1]-ny),(b[0]-nx,b[1]-ny),(b[0]+nx,b[1]+ny),(a[0]+nx,a[1]+ny)])
+   fragments=[piece for fragment in fragments for piece in subtract(fragment,cutter)]
  for _,cutter,_,_,_ in rows[index+1:]:
   fragments=[piece for fragment in fragments for piece in subtract(fragment,ccw(cutter))]
   if not fragments:break
