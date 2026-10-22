@@ -1,0 +1,47 @@
+{
+  "sources": [
+    {
+      "url": "https://www.oxfam.org.uk/shops/oxfam-shop-southport/",
+      "attribution": "Oxfam GB, official shop directory, accessed2026-10-22",
+      "observations": [
+        "Primary source identifies this Oxfam shop as24LondonStreet. OlderGoad/FSA26address conflicts; do not invent a separate24parcel."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6482245,-3.0035065,3a,90y,210h,100t/data=!3m4!1e1!3m2!1saST9WwnFs8VIYyz_tQDXWw!2e0",
+      "attribution": "Google Street View, retained14\u201316current.png; cropped locally forinspection",
+      "capture_date": "May2011",
+      "observations": [
+        "Immediately south of MoneyShop22: brick two-storey elevation, two white sash windows, vertical edge piers, cream Oxfam fascia withgreen lettering. Slate pitch continuous into next gabled frontage."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64803,-3.00377,88m/data=!3m1!1e3",
+      "attribution": "Google Maps / Airbus, retained14\u201316aerial.png, rotated locally forinspection",
+      "capture_date": "Undated aerial captured2026-10-22",
+      "observations": [
+        "Short pitched frontage roof and pale lower rear service roof; rearloadingcourtyard setting. Individual parcel edges estimated."
+      ]
+    },
+    {
+      "url": "https://www.rightmove.co.uk/properties/163235603",
+      "attribution": "Fitton Estates marketed property2571FH, accessed2026-10-22",
+      "observations": [
+        "Identifies24LondonStreet as two-storey brick unit approx121squaremetresover twofloors, rearstores and communal rearloading. Brochureimage404: images not claimed inspected."
+      ]
+    },
+    {
+      "url": "https://media.rightmove.co.uk/204k/203123/163235603/203123_2571FH_DOC_00_0001.pdf",
+      "attribution": "Fitton Estates brochure, cachedtextonly",
+      "observations": [
+        "Confirms sale oninstructions ofOxfam. LivePDFreturns404; no pixelgeometry inferredfromunseenPDF."
+      ]
+    }
+  ],
+  "limitations": [
+    "5.8mfrontage,8.3mupperdepth,18.2mgrounddepthandheights estimated againstneighboursandaerial, notsurveyed.",
+    "Currentoccupancy notasserted: historical2011branding whilecurrentlistingofferedvacantpossession.",
+    "Rearwindowpositions and loadingdoorposition unverified. Rearwallsleftplain,serviceopeningpositionestimated.",
+    "Nointeriors or pavement. Northernedgecoordinatedto22;southernroofcontinuesintofutureneighbour."
+  ]
+}

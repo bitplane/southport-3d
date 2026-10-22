@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/london-street-24.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "Oxfam24LondonStreet:2011street architecture and undatedaerial; dimensions/rear/precisefitout estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Two-window brick frontage",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Continuous slate roof and lower rear deck",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Oxfam shopfront",
+      "collection": "shopfront"
+    },
+    {
+      "id": "rear",
+      "name": "Estimated rear loading store",
+      "collection": "rear"
+    }
+  ],
+  "views": [
+    {
+      "name": "Overview",
+      "position": [
+        8,
+        22,
+        91.0
+      ],
+      "target": [
+        -20,
+        6,
+        104.0
+      ]
+    },
+    {
+      "name": "Front",
+      "position": [
+        12,
+        6.5,
+        104.0
+      ],
+      "target": [
+        -11.5,
+        6.5,
+        104.0
+      ]
+    },
+    {
+      "name": "Shopfront",
+      "position": [
+        -1,
+        3.2,
+        104.0
+      ],
+      "target": [
+        -11.5,
+        2.6,
+        104.0
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -30,
+        32,
+        91.0
+      ],
+      "target": [
+        -23,
+        5,
+        104.0
+      ]
+    },
+    {
+      "name": "Rear",
+      "position": [
+        -50,
+        18,
+        92.0
+      ],
+      "target": [
+        -24,
+        5,
+        104.0
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -6,
+      2.49,
+      104.0
+    ],
+    "target": [
+      -12,
+      2.49,
+      104.0
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve the two real upper apertures, brick edge piers, pitched roof cross-section, lower rear envelope and recessed shop entrance."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Preserve the two real upper apertures, brick edge piers, pitched roof cross-section, lower rear envelope and recessed shop entrance."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Two already inexpensive sash assemblies preserve dark openings and white framing consistently. No blanket decimation or unnecessary bake atlas."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Two already inexpensive sash assemblies preserve dark openings and white framing consistently. No blanket decimation or unnecessary bake atlas."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain small rainwater brackets, brick joints and handle for walking inspection."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit tiny joints, brackets and handle; keep the rainwater pipe and architectural openings."
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake Oxfam fascia lettering into a shallow receiver; keep the recognisable green/cream colour patch without distant glyph geometry.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.2,
+        "max_sampled_error_m": 0.2
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Bake Oxfam fascia lettering into a shallow receiver; keep the recognisable green/cream colour patch without distant glyph geometry.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.2,
+        "max_sampled_error_m": 0.2
+      }
+    }
+  ]
+}

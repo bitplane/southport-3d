@@ -1,0 +1,16 @@
+{
+  "base_z": 0.7845,
+  "front_x": -11.8772,
+  "rear_x": -30.0772,
+  "north_y": -101.25,
+  "south_y": -107.05,
+  "main_depth": 8.3,
+  "wall_height": 7.25,
+  "ridge_height": 9.2,
+  "registration_pivot": [
+    -11.8772,
+    -68.7886
+  ],
+  "registration_radians": 0.02418,
+  "uncertainty": "Frontage5.8m, main8.3mdepth and rear18.2mdepth estimated relative to22 and aerial. Pitchedroof continues across southern boundary into next unit; no invented hip. Heights/rear not surveyed."
+}
