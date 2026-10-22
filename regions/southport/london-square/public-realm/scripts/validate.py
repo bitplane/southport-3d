@@ -39,9 +39,20 @@ print('Furniture pavement containment and crossing clearance validated')
 sys.path.insert(0,str(ROOT/'scripts'))
 from extensions import PARTS
 assert all(bpy.data.collections.get(n) and len(bpy.data.collections[n].objects) for n in PARTS)
-from southport3d.landscape import tree
+from landscape_lod import tree
 counts=[sum(len(f)-2 for f in tree(level).faces) for level in ['detail','walk','district']]
 assert counts[0]>counts[1]>counts[2],counts
+from mathutils import Vector
+for level in ['detail','walk','district']:
+ canopy=tree(level);volume=0
+ for face,material in zip(canopy.faces,canopy.indices):
+  if material==0:continue
+  a=Vector(canopy.vertices[face[0]])
+  for j in range(1,len(face)-1):
+   b,c=(Vector(canopy.vertices[k]) for k in (face[j],face[j+1]))
+   assert (b-a).cross(c-a).length>1e-8,(level,'Collapsed canopy face')
+   volume+=a.dot(b.cross(c))/6
+ assert volume>0,(level,'Inward canopy shells')
 assert len([o for o in meshes if o.name.startswith('Tree ')])==sum(len(v) for v in json.loads((ROOT/'research/streets.json').read_text())['trees'].values())
 for name in ['london-1-ground','london-2-ground','london-3-ground']:
  vertices=[v.co.z for o in bpy.data.collections[name].objects for v in o.data.vertices]

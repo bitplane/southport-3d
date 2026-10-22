@@ -208,3 +208,9 @@ yards are outside this ground pass.
 All levels retain the low-poly street outlines and physical kerbs; Walk/District
 reduce texture resolution through the existing pipeline. `New street coverage`
 is the viewer overview bookmark. No reference imagery is published.
+
+Canopy meshes use an asset-local correction in `landscape_lod.py`: foliage
+ellipsoids face outward and their pole caps are triangles without coincident
+corners. Bark winding is retained. This applies to the master and all generated
+levels; validation checks nonzero canopy triangle areas and positive signed
+volume. The shared ellipsoid primitive still needs a separate caller audit.

@@ -24,6 +24,12 @@ Use `tools/project.py` for builds, renders, LoD baking and local publication. It
 
 Run a complete build and the asset's declared geometry checks after geometry changes. Inspect affected renders, then publish locally and inspect Detail, Walk and District in the browser. Check the assembled scene, ground following, neighbouring seams and close-up clearance; a standalone render cannot establish these. Record what was actually inspected and any remaining uncertainty.
 
+For orthographic combined renders, place the camera behind the entire scene
+along its viewing axis. A nearby camera plane can cut through foreground trees
+or buildings even when the framing looks correct, producing black openings or
+diagonal missing regions. Moving the camera backward along that axis preserves
+orthographic framing; check this before treating such patches as mesh defects.
+
 Keep parallel contributors on separate asset directories. Coordinate shared-library, catalog and viewer changes separately. Shared-library edits currently invalidate every asset conservatively, so schedule a complete rebuild for those changes. More selective dependencies and regional texture atlases can wait until their cost justifies the added machinery.
 
 Before adding a new `asset.json`, create every file it declares: discovery validates the whole registry, so an incomplete manifest blocks other agents' builds. Assign one coordinator to local publication after the participating assets are ready. Each browser MCP process must use the isolated launcher described in [SETUP.md](SETUP.md); a shared disk profile prevents simultaneous browser sessions. Keep screenshots under the owning asset's ignored references directory or let MCP choose a filename in its unique session output directory.

@@ -7,7 +7,8 @@ choices here, with reusable canopy/edge construction in southport3d.landscape.
 import json,math
 from southport3d.geometry import Mesh
 from southport3d.street import furniture
-from southport3d.landscape import tree,capped_wall
+from southport3d.landscape import capped_wall
+from landscape_lod import tree
 from rear_streets import PARTS as REAR_PARTS, build_rear_streets
 
 PARTS={
