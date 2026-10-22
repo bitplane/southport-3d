@@ -63,3 +63,23 @@ Build with `python3 tools/project.py build southport.lord-street.church-gardens`
 render with `--stage render`. The viewer bookmarks include both gardens, the
 Christ Church entrance and the St George’s seam. Review the assembled scene as
 well as the standalone renders before extending these boundaries.
+
+## Validation snapshot (22 October 2026)
+
+Full builds, geometry validators, the 21 Python tests and all three published
+levels passed. The combined viewer loaded the Detail garden entrance, Walk
+London Street/Glebe join and District gardens without asset errors. Lord Street
+seam checks also ray-cast matching paint and height across the source boundaries.
+
+| Asset / level | Placed triangles | GLBs including textures |
+| --- | ---: | ---: |
+| Church gardens Detail | 61,525 | 3.56 MiB |
+| Church gardens Walk | 26,925 | 3.98 MiB |
+| Church gardens District | 10,259 | 1.02 MiB |
+| London Square public realm Detail | 224,910 | 14.82 MiB |
+| London Square public realm Walk | 94,230 | 14.33 MiB |
+| London Square public realm District | 57,358 | 7.25 MiB |
+
+These are sums of separate streamed parts, not compressed network transfer sizes.
+Walk can be larger in bytes than Detail because generated replacement meshes
+have separate baked maps; lower triangle counts do not guarantee smaller bytes.
