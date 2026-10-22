@@ -152,7 +152,7 @@ build_extensions(globals())
 # Remove underlying surfaces rather than relying on millimetre depth offsets.
 # This prevents z-fighting in browsers and other GLB viewers, at oblique distances.
 sys.path.insert(0,str(ROOT/'scripts'))
-from planar import subtract,area
+from southport3d.planar import subtract,area
 from mathutils.geometry import tessellate_polygon
 for part,collection in collections.items():
  if part.endswith('-furniture'):continue

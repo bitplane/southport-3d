@@ -11,7 +11,8 @@ from components import window,rectangle_frame
 
 def beam(m,a,b,width,depth=None,material=0):
     """Rectangular steel/duct segment between 3-D points."""
-    a,b=Vector(a),Vector(b);direction=(b-a).normalized()
+    a,b=Vector(a),Vector(b)
+    direction=(b-a).normalized()
     axis=Vector((0,0,1)) if abs(direction.z)<.9 else Vector((1,0,0))
     x=direction.cross(axis).normalized()*width/2
     y=direction.cross(x).normalized()*(depth or width)/2
@@ -23,7 +24,8 @@ def brick_courses(ob):
     """Keep running-bond beds horizontal on rear and perpendicular returns."""
     uv=ob.data.uv_layers.active.data
     for face in ob.data.polygons:
-        if abs(face.normal.y)>.5:continue
+        if abs(face.normal.y)>.5:
+            continue
         across=0 if abs(face.normal.z)>.5 else 2
         for index in face.loop_indices:
             v=ob.data.vertices[ob.data.loops[index].vertex_index].co
@@ -39,7 +41,8 @@ def add_rear(finish,instance,z0,mats,whitebrick,paint,steel,lead,duct):
            ('central',-22.6,-19.3,-44.0,20.35),
            ('east',-14.4,-9.92,-41.2,15.10)]
     for label,left,right,rear,height in wings:
-        width=right-left;frame=face_matrix((left,rear,z0),(0,-1,0))
+        width=right-left
+        frame=face_matrix((left,rear,z0),(0,-1,0))
         wall=Mesh('Envelope rear wing '+label)
         wall.box((width/2,height/2,-.17),(width,height,.34))
         side_depth=-37.1-rear
@@ -73,16 +76,20 @@ def add_rear(finish,instance,z0,mats,whitebrick,paint,steel,lead,duct):
                 lintel.box((0,y-.69,.055),(1.22,.10,.20),1)
                 finish(lintel,'architecture',[stone,lead],return_frame)
         # The existing London terminal elevation owns this end of the return.
-        if label=='east':wall.cut_box_from_ashlar((width-.17,height/2,-1.10),(.60,height+.10,2.21))
+        if label=='east':
+            wall.cut_box_from_ashlar((width-.17,height/2,-1.10),(.60,height+.10,2.21))
         wall.box((width/2,height/2,-side_depth+.17),(width-.68,height,.34))
         if label=='central':
-            for u in [.85,width-.85]:wall.cut_box_from_ashlar((u,19.25,-side_depth+.17),(.90,1.40,.65))
+            for u in [.85,width-.85]:
+                wall.cut_box_from_ashlar((u,19.25,-side_depth+.17),(.90,1.40,.65))
             front=face_matrix((right,-37.1,z0),(0,1,0))
-            for u in [.85,width-.85]:instance('rear-headhouse-front',window(.90,1.40,'detail','Window rear headhouse front'),'roof',front@Matrix.Translation((width-u,19.25,0)),rear_mats)
+            for u in [.85,width-.85]:
+                instance('rear-headhouse-front',window(.90,1.40,'detail','Window rear headhouse front'),'roof',front@Matrix.Translation((width-u,19.25,0)),rear_mats)
         brick_courses(finish(wall,'architecture',[whitebrick],frame))
         roof=Mesh('Roof rear wing '+label)
         roof.box((width/2,height-.08,-side_depth/2),(width-.04,.15,side_depth-.04))
-        for u in [.08,width-.08]:roof.box((u,height+.02,-side_depth/2),(.20,.12,side_depth+.10))
+        for u in [.08,width-.08]:
+            roof.box((u,height+.02,-side_depth/2),(.20,.12,side_depth+.10))
         roof.box((width/2,height+.02,0),(width+.10,.12,.24))
         finish(roof,'roof',[lead],frame)
         # Painted downpipes have warm weathered collars, not arbitrary dirt decals.
@@ -90,7 +97,8 @@ def add_rear(finish,instance,z0,mats,whitebrick,paint,steel,lead,duct):
         for u in [.38,width-.35]:
             pipes.tube([(u,1.2,.11),(u,height-.45,.11),(u-.10,height-.20,.11)],.045,0,8)
             for y in [2.0,5.5,9.0,12.5,16.0]:
-                if y<height-.3:pipes.box((u,y,.11),(.12,.055,.14),1)
+                if y<height-.3:
+                    pipes.box((u,y,.11),(.12,.055,.14),1)
         finish(pipes,'architecture',[paint,duct],frame)
         if label=='west':
             # The terminal party face is visibly plain render; no false rear brick
@@ -107,34 +115,40 @@ def add_rear(finish,instance,z0,mats,whitebrick,paint,steel,lead,duct):
                     x=u-.5+j/6
                     antenna.tube([(x,height+1.15,.17),(x,height+1.15,.63)],.009,0,5)
             finish(antenna,'roof',[steel],frame)
-        if label=='east':roof_rail(finish,frame,width,side_depth,height,steel)
+        if label=='east':
+            roof_rail(finish,frame,width,side_depth,height,steel)
     # Recess walls sit behind the two stair flights. The old flat rear wall is gone.
     for label,left,right,rear,height in [('west',-26.2,-22.6,-40.55,18.45),('east',-19.3,-14.4,-38.70,15.00)]:
-        frame=face_matrix((left,rear,z0),(0,-1,0));width=right-left
+        frame=face_matrix((left,rear,z0),(0,-1,0))
+        width=right-left
         wall=Mesh('Envelope rear stair recess '+label)
         wall.box((width/2,height/2,-.16),(width,height,.32))
         levels=[4.9,8.4,11.9,15.4] if label=='west' else [4.9,8.4,11.9]
         for i,y in enumerate(levels):
-            u=.65;h=2.25
+            u=.65
+            h=2.25
             wall.cut_box_from_ashlar((u,y+h/2,-.16),(.90,h,.55))
             door=Mesh('Entrance rear escape '+label)
             door.box((u,y+h/2,-.18),(.90,h,.04),1)
             rectangle_frame(door,u,y+h/2,.9,h,.07,-.12,.08,0)
             # Glazed upper half, solid painted lower panel; no interior content.
             door.box((u,y+1.55,-.125),(.69,1.10,.02),2)
-            for cy in [y+1.3,y+1.8]:door.box((u,cy,-.08),(.69,.035,.05),0)
+            for cy in [y+1.3,y+1.8]:
+                door.box((u,cy,-.08),(.69,.035,.05),0)
             door.box((u,y+1.55,-.08),(.035,1.10,.05),0)
             if label=='west' and i==len(levels)-1:
                 # The upper recess opening has a round-headed light in the
                 # supplied close view; retain its outline, not a square substitute.
-                spring=y+1.8;r=.45
+                spring=y+1.8
+                r=.45
                 arc=[(u+r*math.cos(j*math.pi/32),spring+r*math.sin(j*math.pi/32),-.07) for j in range(33)]
                 door.tube(arc,.025,0,8)
                 for side in [-1,1]:
                     angles=[math.pi/2+side*j*math.pi/64 for j in range(33)]
                     points=[(u+r*math.cos(t),spring+r*math.sin(t)) for t in angles]
                     points.append((u-side*r,spring+r))
-                    if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(points,points[1:]+points[:1]))<0:points.reverse()
+                    if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(points,points[1:]+points[:1]))<0:
+                        points.reverse()
                     door.outline(points,-.14,-.025,1)
             finish(door,'architecture',[trim,stone,glass],frame)
         brick_courses(finish(wall,'architecture',[whitebrick],frame))
@@ -158,7 +172,8 @@ def add_rear(finish,instance,z0,mats,whitebrick,paint,steel,lead,duct):
     # Central wing's top return window and the conspicuous angular white duct.
     frame=face_matrix((-22.6,-44,z0),(0,-1,0))
     m=Mesh('Envelope rear angular duct')
-    for a,b in [((2.85,20.12,.24),(2.85,17.05,.24)),((2.85,17.05,.24),(3.62,16.15,.95)),((3.62,16.15,.95),(3.62,15.60,.95))]:beam(m,a,b,.60,.54)
+    for a,b in [((2.85,20.12,.24),(2.85,17.05,.24)),((2.85,17.05,.24),(3.62,16.15,.95)),((3.62,16.15,.95),(3.62,15.60,.95))]:
+        beam(m,a,b,.60,.54)
     finish(m,'architecture',[duct],frame)
     dish=Mesh('Hardware rear satellite dish')
     dish.ellipsoid((.13,15.68,.40),(.24,.24,.045),0,20,10)
@@ -174,18 +189,25 @@ def add_rear(finish,instance,z0,mats,whitebrick,paint,steel,lead,duct):
 
 
 def roof_rail(finish,frame,width,depth,height,steel):
-    main=Mesh('Envelope rear roof rails');fine=Mesh('Hardware rear roof crossbars')
+    main=Mesh('Envelope rear roof rails')
+    fine=Mesh('Hardware rear roof crossbars')
     # Front and two returns; photograph shows an open X-braced parapet railing.
     for a,b in [((.10,0),(width-.10,0)),((.10,0),(.10,-depth+.2)),((width-.10,0),(width-.10,-depth+.2))]:
-        length=math.dist(a,b);n=max(1,math.ceil(length/1.4))
-        for y in [height+.12,height+.95]:beam(main,(a[0],y,a[1]),(b[0],y,b[1]),.035)
+        length=math.dist(a,b)
+        n=max(1,math.ceil(length/1.4))
+        for y in [height+.12,height+.95]:
+            beam(main,(a[0],y,a[1]),(b[0],y,b[1]),.035)
         for i in range(n+1):
-            t=i/n;u=a[0]+(b[0]-a[0])*t;d=a[1]+(b[1]-a[1])*t
+            t=i/n
+            u=a[0]+(b[0]-a[0])*t
+            d=a[1]+(b[1]-a[1])*t
             beam(main,(u,height+.06,d),(u,height+.99,d),.04)
         for i in range(n):
             p=[(a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t) for t in [i/n,(i+1)/n]]
-            for lo,hi in [(.16,.90),(.90,.16)]:beam(fine,(p[0][0],height+lo,p[0][1]),(p[1][0],height+hi,p[1][1]),.018)
-    finish(main,'roof',[steel],frame);finish(fine,'roof',[steel],frame)
+            for lo,hi in [(.16,.90),(.90,.16)]:
+                beam(fine,(p[0][0],height+lo,p[0][1]),(p[1][0],height+hi,p[1][1]),.018)
+    finish(main,'roof',[steel],frame)
+    finish(fine,'roof',[steel],frame)
 
 
 def stairs(finish,frame,width,levels,steel,lead):
@@ -197,16 +219,23 @@ def stairs(finish,frame,width,levels,steel,lead):
     structure=Mesh('Envelope rear escape structure')
     fine=Mesh('Hardware rear escape balusters')
     grate=Mesh('Ornament rear escape grating')
-    u0=width-2.05;flight_width=.85;divider=u0+.94;outer=u0+1.90
-    near,far=.95,4.25;front=5.10
+    u0=width-2.05
+    flight_width=.85
+    divider=u0+.94
+    outer=u0+1.90
+    near,far=.95,4.25
+    front=5.10
     # The extra lower half-landing resolves the previously suspended 1.4 m end.
     floors=[0.0,levels[0]/2,*levels]
 
     def rail(a,b,y):
-        for height in [.48,1.00]:beam(structure,(a[0],y+height,a[1]),(b[0],y+height,b[1]),.028)
+        for height in [.48,1.00]:
+            beam(structure,(a[0],y+height,a[1]),(b[0],y+height,b[1]),.028)
         n=max(1,math.ceil(math.dist(a,b)/.85))
         for j in range(n+1):
-            t=j/n;u=a[0]+t*(b[0]-a[0]);d=a[1]+t*(b[1]-a[1])
+            t=j/n
+            u=a[0]+t*(b[0]-a[0])
+            d=a[1]+t*(b[1]-a[1])
             beam(fine,(u,y+.04,d),(u,y+1.01,d),.023)
 
     def deck(x0,x1,d0,d1,y):
@@ -240,22 +269,28 @@ def stairs(finish,frame,width,levels,steel,lead):
         rail((divider,near),(divider,far),y)
         rail((outer,.12),(outer,front),y)
         rail((u0-.08,front),(outer,front),y)
-        if u0-.08>.18:rail((.18,near),(u0-.08,near),y)
+        if u0-.08>.18:
+            rail((.18,near),(u0-.08,near),y)
     for bottom,top in zip(floors,floors[1:]):
-        n=math.ceil((top-bottom)/.20);run=(far-near)/n;rise=(top-bottom)/n
+        n=math.ceil((top-bottom)/.20)
+        run=(far-near)/n
+        rise=(top-bottom)/n
         for i in range(n):
-            d=near+(i+.5)*run;y=bottom+(i+1)*rise
+            d=near+(i+.5)*run
+            y=bottom+(i+1)*rise
             structure.box((u0+flight_width/2,y-.025,d),(flight_width,.05,run+.006))
             if i%3==0:
                 for u in [u0-.025,u0+flight_width+.025]:
                     beam(fine,(u,y,d),(u,y+.98,d),.020)
         for u in [u0-.025,u0+flight_width+.025]:
             beam(structure,(u,bottom-.03,near),(u,top-.03,far),.085,.045)
-            for h in [.48,1.00]:beam(structure,(u,bottom+h,near),(u,top+h,far),.028)
+            for h in [.48,1.00]:
+                beam(structure,(u,bottom+h,near),(u,top+h,far),.028)
     ob=finish(structure,'architecture',[steel],frame)
     ob['stair_floor_levels']=floors
     ob['stair_lane_u']=u0+flight_width/2
     ob['return_lane_u']=(divider+outer)/2
-    ob['stair_well_near']=near;ob['stair_well_far']=far
+    ob['stair_well_near']=near
+    ob['stair_well_far']=far
     finish(fine,'architecture',[steel],frame)
     finish(grate,'architecture',[lead],frame)

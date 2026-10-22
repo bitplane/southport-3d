@@ -11,33 +11,10 @@ from check_lods import array, matrix, read_glb
 
 
 def load_publication(path):
+    from publication_schema import validate_publication
+
     spec = json.loads(Path(path).read_text())
-    if spec.get('schema_version') != 1 or set(spec.get('levels', {})) != {'detail','walk','district'}:
-        raise ValueError('Publication requires detail, walk and district levels')
-    ids = [p['id'] for p in spec['parts']]
-    if len(ids) != len(set(ids)) or any(not p or any(c not in 'abcdefghijklmnopqrstuvwxyz0123456789-' for c in p) for p in ids):
-        raise ValueError('Part IDs must be unique path-safe names')
-    if len({p['collection'] for p in spec['parts']}) != len(ids):
-        raise ValueError('Each export collection must belong to exactly one part')
-    if spec['coordinates']['frame'] not in {'site','east-north'}:
-        raise ValueError('Declare the asset coordinate frame')
-    for excluded in spec.get('excluded_collections',[]):
-        if not excluded.get('name') or not excluded.get('reason'):
-            raise ValueError('Excluded collections require a name and reason')
-    for rule in spec['rules']:
-        import re
-        re.compile(rule['match'])
-        for name in ('walk','district'):
-            action = rule[name]
-            if action.get('strategy') not in {'keep','omit','replace','generator','decimate'} or not action.get('reason'):
-                raise ValueError('Every rule/level needs a supported strategy and a reason')
-            if action['strategy'] not in {'keep','omit'}:
-                if not isinstance(action.get('bake'),bool):
-                    raise ValueError('Explicit bake decision required')
-                if action['bake']:
-                    for key in ('cage_extrusion_m','max_sampled_error_m'):
-                        if not math.isfinite(action.get(key,0)) or action.get(key,0)<=0:
-                            raise ValueError('Positive projection/error limits required')
+    validate_publication(spec)
     return spec
 
 

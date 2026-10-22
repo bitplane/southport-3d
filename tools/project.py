@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Source checks and isolated, sequential Blender builds."""
+from build_lock import asset_lock
+
 import argparse
 import ast
 import hashlib
@@ -84,6 +86,11 @@ def fingerprint(source):
 
 
 def build(args):
+    with asset_lock(ROOT, args.asset):
+        return _build(args)
+
+
+def _build(args):
     source, spec = assets()[args.asset]
     runtime = ROOT / 'build' / args.asset
     signature = fingerprint(source)
@@ -138,6 +145,11 @@ def build(args):
 
 
 def lod(args):
+    with asset_lock(ROOT, args.asset):
+        return _lod(args)
+
+
+def _lod(args):
     source, spec = assets()[args.asset]
     runtime = ROOT / 'build' / args.asset
     signature = fingerprint(source)
@@ -198,7 +210,8 @@ def main():
         check()
     elif args.command == 'publish':
         from publish_viewer import publish
-        publish(args, assets, fingerprint, build)
+        # Publication owns all asset locks before invoking the unlocked builder.
+        publish(args, assets, fingerprint, _build)
     elif args.command == 'lod':
         lod(args)
     else:

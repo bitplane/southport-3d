@@ -17,6 +17,19 @@ from southport3d.lod import sha256
 
 
 def publish(args, assets, fingerprint, build):
+    """Freeze writers while packaging; build must be the unlocked callback."""
+    from contextlib import ExitStack
+    from build_lock import asset_lock
+
+    inventory = assets()
+    with ExitStack() as locks:
+        locks.enter_context(asset_lock(ROOT, "catalog"))
+        for key in sorted(inventory):
+            locks.enter_context(asset_lock(ROOT, key))
+        return _publish(args, lambda: inventory, fingerprint, build)
+
+
+def _publish(args, assets, fingerprint, build):
     world=json.loads((ROOT/'viewer/world.json').read_text())
     entries=[]
     for key,(source,asset) in assets().items():

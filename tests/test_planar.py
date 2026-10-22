@@ -1,8 +1,8 @@
-import importlib.util
 from pathlib import Path
 import unittest
-p=Path(__file__).resolve().parents[1]/'regions/southport/london-square/public-realm/scripts/planar.py'
-spec=importlib.util.spec_from_file_location('planar',p);planar=importlib.util.module_from_spec(spec);spec.loader.exec_module(planar)
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'lib'))
+from southport3d import planar
 
 class PlanarTests(unittest.TestCase):
     def test_cutout_preserves_area_without_overlay(self):
