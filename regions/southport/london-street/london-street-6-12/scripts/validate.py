@@ -2,10 +2,15 @@
 from pathlib import Path
 import json
 import math
+import os
+import sys
 import bpy
+import bmesh
 from mathutils import Vector
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
+from roof import roof_height
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/london-street-6-12.blend'))
 D=json.loads((ROOT/'research/layout.json').read_text())
 meshes=[obj for obj in bpy.context.scene.objects if obj.type=='MESH']
@@ -42,6 +47,48 @@ for origin,direction in [(Vector((-28,D['south_y']-1,D['base_z']+2)),Vector((0,1
             distances.append(((obj.matrix_world@p-origin).length,obj.name))
     distances.sort()
     assert distances and sum(abs(distance-distances[0][0])<1e-5 for distance,name in distances)==1,distances[:3]
-report={'objects':len(meshes),'front_windows':len(windows),'checks':'Finite UV meshes, packed maps, registered extent, 24 unobscured front windows, recessed double entrance'}
+roof=bpy.data.objects['Roof hipped slate envelope']
+bm=bmesh.new();bm.from_mesh(roof.data)
+assert all(e.is_manifold for e in bm.edges),'Open roof edge'
+bm.free()
+roof_probes=0
+for ix in range(1,40):
+    x=D['rear_x']+ix*.5
+    for iy in range(1,44):
+        y=D['south_y']+iy*.5
+        excluded=any(a<x<b and c<y<d for a,b,c,d in D['roof_cutouts'])
+        hit,p,n,index=roof.ray_cast(Vector((x,y,20)),Vector((0,0,-1)),distance=20)
+        assert hit!=excluded,('Roof coverage',x,y,hit,excluded)
+        if hit:
+            assert abs(p.z-roof_height(D,x,y))<1e-4 and n.z>0,('Non-planar roof fold',p,n)
+            hit,q,n,index=roof.ray_cast(p+Vector((0,0,-.0001)),Vector((0,0,-1)),distance=20)
+            assert hit and abs(p.z-q.z-.14)<1e-4 and n.z<0,('Roof underside',p,q,n)
+        roof_probes+=1
+
+def clip_axis(poly,axis,bound,lower):
+    result=[]
+    for p,q in zip(poly,poly[1:]+poly[:1]):
+        dp=(p[axis]-bound)*(1 if lower else -1)
+        dq=(q[axis]-bound)*(1 if lower else -1)
+        if dp>=0:result.append(p)
+        if (dp>=0)!=(dq>=0):result.append(p+(q-p)*(dp/(dp-dq)))
+    return result
+
+# Keep the entire clearance volumes free, including walls and minor pipes,
+# not just roof vertices. Large triangles can span a well without a vertex in it.
+for box in D['stair_clearance_boxes']:
+    low=(box[0],box[2],box[4]);high=(box[1],box[3],box[5])
+    for obj in meshes:
+        verts=[obj.matrix_world@v.co for v in obj.data.vertices]
+        if any(max(v[k] for v in verts)<=low[k] or min(v[k] for v in verts)>=high[k] for k in range(3)):continue
+        for face in obj.data.polygons:
+            poly=[verts[i] for i in face.vertices]
+            if any(max(v[k] for v in poly)<=low[k] or min(v[k] for v in poly)>=high[k] for k in range(3)):continue
+            for k in range(3):
+                poly=clip_axis(poly,k,low[k],True)
+                poly=clip_axis(poly,k,high[k],False)
+            area=sum((poly[i]-poly[0]).cross(poly[i+1]-poly[0]).length/2 for i in range(1,len(poly)-1)) if len(poly)>2 else 0
+            assert area<1e-7,('Neighbour escape stair obstructed',obj.name,box,area)
+report={'objects':len(meshes),'front_windows':len(windows),'roof_probes':roof_probes,'checks':'Finite UV meshes, packed maps, registered extent, 24 unobscured front windows, recessed double entrance, closed planar roof shell, open rear court and both neighbour stair wells'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print(report)

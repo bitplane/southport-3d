@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(Path(os.environ['SOUTHPORT_REPO_ROOT']) / 'lib'), str(ROOT / 'scripts')]
 from southport3d.geometry import Mesh, face_matrix, text_object
 from components import sash, cornice, rooflight
+from roof import build_roof, roof_height, party_return, eave_return
 D = json.loads((ROOT / 'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
@@ -52,7 +53,9 @@ font = bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-
 base, xf, ys, yn, xr = [D[k] for k in ['base_z', 'front_x', 'south_y', 'north_y', 'rear_x']]
 width = yn - ys
 front = face_matrix((xf, ys, base), (1, 0, 0))
-rear = face_matrix((D['upper_rear_x'], yn, base), (-1, 0, 0))
+rear_north=D['rear_wall_north_y']
+rear_offset=yn-rear_north
+rear = face_matrix((D['upper_rear_x'], rear_north, base), (-1, 0, 0))
 side = face_matrix((xr+.36, ys, base), (0, -1, 0))
 
 
@@ -188,7 +191,7 @@ finish(mesh, materials=[sill], transform=front)
 side_width = xf-xr-.36
 side_openings = [(side_width-2.65, side_width, 0, 3.95)]
 side_openings += [(u-.46, u+.46, 5.0, 6.2) for u in [side_width-5.1, side_width-7.1]]
-wall_with_openings('Glebe brick return', side, side_width-.36, D['rear_eaves_height'], side_openings)
+wall_with_openings('Glebe brick return', side, side_width-.36, D['rear_eaves_height']-.15, side_openings)
 for u in [side_width-5.1, side_width-7.1]:
     mesh = sash('Window Glebe casement', .92, 1.2, .05)
     finish(mesh, materials=[white, black, glass, sill], transform=side @ Matrix.Translation((u, 5.6, -.05)))
@@ -199,32 +202,21 @@ mesh.box((side_width-3.3, .8, .01), (1.05, 1.02, .035), 0)
 for k in range(13):
     mesh.box((side_width-3.3, .37+k*.067, .045), (.95, .028, .075), 1)
 finish(mesh, materials=[black, rust], transform=side)
-wedge=Mesh('Envelope south eaves wedge')
-wedge.add([(xr,ys,base+D['rear_eaves_height']),(xf,ys,base+D['rear_eaves_height']),(xf,ys,base+D['eaves_height'])],[(0,1,2)])
-finish(wedge,materials=[brick])
-# Party end is hidden against Prezzo, but closes the envelope.
-box('Envelope northern party wall', ((xf+xr-.36)/2, yn-.14, base+4.5), (xf-xr-.36, .28, 9))
-
-# Hipped slate roof with asymmetric ridge and explicit rear service notch.
-# Precise ridge pitch is estimated; observed rear rooflight is never buried.
-rx = D['ridge_x']; ry = D['ridge_end_y']; ze = base+D['eaves_height']
-zr = base+D['ridge_height']; zb = base+D['rear_eaves_height']
-roof = Mesh('Roof hipped slate envelope')
-roof.add([(xf+.12,ys-.12,ze),(xf+.12,yn,ze),(rx,yn,zr),(rx,ry,zr)], [(0,1,2,3)])
-roof.add([(xf+.12,ys-.12,ze),(rx,ry,zr),(xr,ys-.12,zb)], [(0,1,2)])
-# Broad rear slope is clipped around the low rooflight court, not flattened.
-back_points = [(xr,ys,zb),(rx,ry,zr),(rx,yn,zr),(-24.8,yn,zb),
-               (-24.8,-46.0,zb),(-24.8,-55.7,zb),(xr,-55.7,zb)]
-roof.add(back_points, [tuple(range(len(back_points)))])
-finish(roof, 'roof', [slate], roof_uv=True)
+finish(eave_return(D,'Envelope south eaves wedge',(xr+.36,ys),(xf-.36,ys),
+                   (0,.36),D['rear_eaves_height']-.15))
+# The neighbouring stair wells interrupt the party line behind number six.
+finish(party_return(D))
+rx=D['ridge_x'];ry=D['ridge_end_y'];ze=base+D['eaves_height']
+zr=base+D['ridge_height'];zb=base+D['rear_eaves_height']
+build_roof(D,lambda mesh:finish(mesh,'roof',[slate],roof_uv=True))
 mesh = Mesh('Roof lead ridge and hip seams')
-mesh.tube([(rx,yn,zr+.025),(rx,ry,zr+.025),(xf,ys,ze+.025)], .055, 0, 8)
-mesh.tube([(rx,ry,zr+.025),(xr,ys,zb+.025)], .055, 0, 8)
+mesh.tube([(rx,-44.15,zr+.025),(rx,ry,zr+.025),(xf+.12,ys-.12,ze+.025)], .055, 0, 8)
+mesh.tube([(rx,ry,zr+.025),(xr,ys-.12,zb+.025)], .055, 0, 8)
 finish(mesh, 'roof', [felt])
 # Roof vents are small authored fittings, not invented decorative chimneys.
 mesh = Mesh('Fine roof vent terminals')
 for x,y in [(-18.4,-45.2),(-20.4,-48.7),(-20,-58.4)]:
-    z=zr-(rx-x)*(zr-zb)/(rx+24.8)
+    z=roof_height(D,x,y)
     mesh.lathe((x,y),[(z,.065),(z+.48,.065),(z+.52,.09)],10)
 finish(mesh, 'roof', [metal])
 
@@ -233,18 +225,19 @@ rear_windows = [(1.9,6.6,.65,1.6,False),(4.0,7.1,.62,.9,True),
                 (6.3,7.1,1.25,1.0,False),(10.0,6.9,1.5,1.2,True),
                 (15.3,5.65,.8,.85,True),(17.4,5.65,.8,.85,True),(19.5,5.65,.8,.85,True),
                 (10.0,4.5,1.45,.7,True)]
-wall_with_openings('rear upper brick', rear, 14.5, D['rear_eaves_height'],
-                   [(u-w/2,u+w/2,h-hh/2,h+hh/2) for u,h,w,hh,bars in rear_windows if u<12.3], 'rear')
+rear_height=roof_height(D,D['upper_rear_x'],-50)-base-.14
+wall_with_openings('rear upper brick', rear, rear_north+55.7, rear_height,
+                   [(u-rear_offset-w/2,u-rear_offset+w/2,h-hh/2,h+hh/2) for u,h,w,hh,bars in rear_windows if rear_offset+w/2<u<12.3], 'rear')
 south_rear=face_matrix((xr,-55.7,base),(-1,0,0))
 south_windows=[(u-14.5,h,w,hh,bars) for u,h,w,hh,bars in rear_windows if u>14.5]
-wall_with_openings('rear southern upper return',south_rear,-55.7-ys,D['rear_eaves_height'],
+wall_with_openings('rear southern upper return',south_rear,-55.7-ys,D['rear_eaves_height']-.14,
                    [(0,-55.7-ys,0,4.65)]+[(u-w/2,u+w/2,h-hh/2,h+hh/2) for u,h,w,hh,bars in south_windows],'rear')
-box('Envelope rear notch return',((xr-24.8)/2,-55.7,base+6.65),(-24.8-xr,.25,4.0),part='rear')
+finish(eave_return(D,'Envelope rear notch return',(xr+.36,-55.7),(-24.8,-55.7),(0,-.25),4.65),part='rear')
 for i,(u,h,w,hh,bars) in enumerate(rear_windows):
-    if 12.3<u<14.5:
+    if u<rear_offset+w/2 or 12.3<u<14.5:
         continue
     window_frame=rear if u<14.5 else south_rear
-    window_u=u if u<14.5 else u-14.5
+    window_u=u-rear_offset if u<14.5 else u-14.5
     mesh = sash('Window rear casement '+str(i),w,hh,.055)
     if bars:
         for k in range(max(3,int(w/.12))):
@@ -259,9 +252,9 @@ box('Trim chimney cap',(-25.15,-49.6,base+11.72),(1.08,.95,.12),sill,'rear')
 mesh=Mesh('Fine chimney flue')
 mesh.lathe((-25.15,-49.6),[(base+11.76,.11),(base+12.2,.11)],12)
 finish(mesh,'rear',[black])
-box('Envelope service wing northern return',((xr-24.8)/2,-45.7,base+1.925),(-24.8-xr,.25,3.85),part='rear')
+box('Envelope service wing northern return',((xr+.36-24.8)/2,rear_north-.14,base+1.925),(-24.8-xr-.36,.25,3.85),part='rear')
 # Two flat service wings and the observed pitched rooflight.
-for name,ya,yb,height in [('rooflight wing',-55.7,-45.7,3.85),('south wing',ys,-55.7,4.65)]:
+for name,ya,yb,height in [('rooflight wing',-55.7,rear_north,3.85),('south wing',ys,-55.7,4.65)]:
     frame=face_matrix((xr,yb,base),(-1,0,0))
     n=3 if name=='rooflight wing' else 2
     centres_rear=[(yb-ya)*(k+1)/(n+1) for k in range(n)]
@@ -276,8 +269,10 @@ for name,ya,yb,height in [('rooflight wing',-55.7,-45.7,3.85),('south wing',ys,-
         box('Envelope '+name+' side',((xr-24.8)/2,ya+.14,base+height/2),(-24.8-xr,.28,height),part='rear')
     # Keep concealed deck end inside the full-height Glebe wall, not coplanar
     # with its exterior face (which otherwise exposes a black horizontal line).
-    deck_start=ya+.20 if name=='south wing' else ya
-    box('Roof '+name+' flat deck',((xr-24.8)/2,(deck_start+yb)/2,base+height),(-24.8-xr,yb-deck_start,.16),felt,'rear')
+    deck_start=ya+.20 if name=='south wing' else ya+.02
+    deck_end=yb-.02
+    deck_left=xr+.20;deck_right=-24.78
+    box('Roof '+name+' flat deck',((deck_left+deck_right)/2,(deck_start+deck_end)/2,base+height),(deck_right-deck_left,deck_end-deck_start,.16),felt,'rear')
     box('Trim '+name+' coping',(xr-.035,(ya+yb)/2,base+height+.09),(.25,yb-ya+.1,.12),sill,'rear')
 finish(rooflight('Roof rear pyramidal rooflight',2.7,2.7,.75),'rear',[metal,glass],
        Matrix.Translation((-27.2,-51.3,base+3.95)))
@@ -301,9 +296,12 @@ for y in [-55.5,-55.175,-54.85]:
 finish(ladder,'rear',[metal])
 # Pipes drop to the roof surfaces, with estimated positions calibrated to photos.
 mesh=Mesh('Fine rear drainage')
-for y in [-42.4,-46.1,-53.4,-61.5]:
-    mesh.tube([(-24.98,y,base+.2),(-24.98,y,base+8.6)],.045,0,8)
-mesh.tube([(-24.95,ys,base+8.64),(-24.95,yn,base+8.64)],.065,0,8)
+for y in [-46.1,-53.4,-61.5]:
+    x=-24.98 if y>-55.7 else xr-.10
+    height=rear_height if y>-55.7 else D['rear_eaves_height']-.14
+    mesh.tube([(x,y,base+.2),(x,y,base+height)],.045,0,8)
+mesh.tube([(-24.95,-55.7,base+rear_height),(-24.95,rear_north,base+rear_height)],.065,0,8)
+mesh.tube([(xr-.06,ys,base+D['rear_eaves_height']-.14),(xr-.06,-55.7,base+D['rear_eaves_height']-.14)],.065,0,8)
 finish(mesh,'rear',[black])
 
 # Halifax occupies nine upper bays, with five ground bays and real entrance depth.

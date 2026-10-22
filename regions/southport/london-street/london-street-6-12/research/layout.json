@@ -12,10 +12,86 @@
   "ridge_end_y": -57.7,
   "upper_bays": 12,
   "halifax_bays": 9,
-  "first_window": [4.02, 6.30],
-  "second_window": [7.01, 8.79],
-  "window_width": 1.20,
-  "scope": "6–12 London Street continuous architectural block including Halifax frontage and former Post & Packing unit. Exterior only, no interior reconstruction.",
+  "first_window": [
+    4.02,
+    6.3
+  ],
+  "second_window": [
+    7.01,
+    8.79
+  ],
+  "window_width": 1.2,
+  "scope": "6\u201312 London Street continuous architectural block including Halifax frontage and former Post & Packing unit. Exterior only, no interior reconstruction.",
   "registration": "OSM way371203985 fixes frontage and southern corner; north party boundary matches existing Prezzo terminal bay at Y=-41.2. Individual rear setbacks, heights and openings visually estimated from August2024 frontage, November2020 rear and undated overhead imagery.",
-  "uncertainties": "Metric dimensions, rear roof pitch/notch, concealed ground-floor rear access and window spacing are visually calibrated estimates. Current occupancy and post-2024 conversion works are not asserted."
+  "uncertainties": "Metric dimensions, rear roof pitch/notch, concealed ground-floor rear access and window spacing are visually calibrated estimates. Current occupancy and post-2024 conversion works are not asserted.",
+  "roof_cutouts": [
+    [
+      -40,
+      -24.8,
+      -55.7,
+      -30
+    ],
+    [
+      -40,
+      -22.6,
+      -45.95,
+      -30
+    ],
+    [
+      -22.6,
+      -14.4,
+      -44.15,
+      -30
+    ]
+  ],
+  "north_boundary": [
+    [
+      -9.83,
+      -41.2
+    ],
+    [
+      -14.4,
+      -41.2
+    ],
+    [
+      -14.4,
+      -44.15
+    ],
+    [
+      -15.8,
+      -44.15
+    ],
+    [
+      -22.6,
+      -44.15
+    ],
+    [
+      -22.6,
+      -45.95
+    ],
+    [
+      -24.44,
+      -45.95
+    ]
+  ],
+  "rear_wall_north_y": -45.95,
+  "stair_clearance_boxes": [
+    [
+      -26.1,
+      -22.65,
+      -45.8,
+      -40.5,
+      0.55,
+      17.2
+    ],
+    [
+      -19.2,
+      -14.45,
+      -43.95,
+      -38.65,
+      0.55,
+      14.0
+    ]
+  ],
+  "roof_review": "Repair from retained Google aerial and November2020 rear views: three planar hip slopes with a raised eave at the rear court cutout; stepped northern boundary leaves both existing Prezzo escape stairs open. Setback dimensions are visually estimated and coordinated with the existing neighbour model; no survey or current 3D-view verification."
 }

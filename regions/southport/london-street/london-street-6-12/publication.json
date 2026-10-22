@@ -7,7 +7,7 @@
     "elevation_m": 0
   },
   "area_name": "London Street",
-  "status": "6–12 London Street exterior; August2024 front and November2020 rear, estimated dimensions. Historical Halifax signage; current occupancy not asserted.",
+  "status": "6\u201312 London Street exterior; August2024 front and November2020 rear, estimated dimensions. Historical Halifax signage; current occupancy not asserted.",
   "levels": {
     "detail": {
       "texture_size": null
@@ -118,6 +118,19 @@
         -20,
         9,
         52
+      ]
+    },
+    {
+      "name": "Prezzo stair clearance",
+      "position": [
+        -47,
+        15,
+        64
+      ],
+      "target": [
+        -21,
+        9,
+        42
       ]
     }
   ],

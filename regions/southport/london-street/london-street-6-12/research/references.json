@@ -5,9 +5,9 @@
       "id": "osm-block",
       "url": "https://www.openstreetmap.org/way/371203985",
       "capture": "OSM extract retrieved 2026-10-21",
-      "attribution": "© OpenStreetMap contributors; ODbL 1.0",
+      "attribution": "\u00a9 OpenStreetMap contributors; ODbL 1.0",
       "observations": [
-        "Whole urban-block footprint registers the London Street face and Glebe corner. It does not split number 6 from 8–12 or distinguish the low rear extension."
+        "Whole urban-block footprint registers the London Street face and Glebe corner. It does not split number 6 from 8\u201312 or distinguish the low rear extension."
       ]
     },
     {
@@ -85,5 +85,15 @@
   "uncertainties": [
     "All metric dimensions visually calibrated against mapped block outline, not surveyed.",
     "2020 rear imagery predates reported 2025 planning changes to number 6 rear access. Do not present the observed historic arrangement as a verified current condition."
-  ]
+  ],
+  "roof_repair_review": {
+    "date": "2026-10-22",
+    "evidence": "Re-inspected retained halifax-roof-reference.png and prezzo-rear-streetview-pan.png. Live browser profile remained locked; no new Google Maps 3D inspection claimed.",
+    "findings": [
+      "The previous rear n-gon was non-planar and its triangulation created a false fold. The replacement uses three explicit planes with a hipped Glebe end and cutouts for the rear court and north neighbour.",
+      "The rectangular north party wall and uncut roof crossed both existing Prezzo escape stairs. Northern setbacks and masonry now leave both stair volumes unobstructed.",
+      "Rear court eaves and wall returns follow the rear pitch rather than forcing every eave vertex to the same height."
+    ],
+    "uncertainty": "North setback coordinates follow visually inferred separation and existing Prezzo model geometry, not a measured cadastral boundary. Exact ridge height, pitch and hidden returns remain estimates pending a fresh 3D review."
+  }
 }
