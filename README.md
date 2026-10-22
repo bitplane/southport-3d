@@ -2,7 +2,7 @@
 
 A source-built, detailed model of Southport, UK, starting with the War Memorial in London Square. The aim is to capture individual buildings, shop fronts and architectural details, and eventually stream them through a town-wide web viewer.
 
-The memorial asset contains the obelisk, two colonnades and clustered lamps. A separate [public-realm asset](docs/PUBLIC-REALM.md) adds the square’s patterned paving, carriageways, kerbs and street furniture. Exterior proportions, lettering and reliefs are researched reconstructions with documented estimates. Interiors and further names await photographs. A local browser viewer streams Detail, Walk and District representations from a source-built catalog. The detailed master supports close inspection; reduced levels use explicit feature decisions and shared baked prototypes. Regional tiles and public hosting are deferred.
+The memorial asset contains the obelisk, two colonnades and clustered lamps. A separate [public-realm asset](docs/PUBLIC-REALM.md) adds patterned paving, carriageways, gardens and street furniture, extending along London Street to Chapel Street/Hoghton Street. Exterior proportions, lettering and reliefs are researched reconstructions with documented estimates. Interiors and further names await photographs. A local browser viewer streams Detail, Walk and District representations from a source-built catalog. The detailed master supports close inspection; reduced levels use explicit feature decisions and shared baked prototypes. Regional tiles and public hosting are deferred.
 
 ## Build
 

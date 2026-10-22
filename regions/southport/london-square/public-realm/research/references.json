@@ -43,6 +43,42 @@
         "Existing road centrelines and monument/colonnade registration.",
         "Bench and waste-basket node positions used where present. Traffic-signal nodes are junction positions, not surveyed pole positions."
       ]
+    },
+    {
+      "id": "garden-satellite",
+      "url": "https://www.google.com/maps/@53.6493,-3.0034,19z/data=!3m1!1e3",
+      "reviewed": "2026-10-22",
+      "capture": "Not displayed",
+      "observations": [
+        "North-east lawn and winding path, circular fountain path, St George\u2019s Place loop, mature canopy groups. Satellite used for proportions, not copied as texture."
+      ]
+    },
+    {
+      "id": "garden-ground-2025",
+      "url": "https://www.google.com/maps/@53.6493185,-3.0031514,3a,90y,310h,90t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIC_sruvMw!2e10",
+      "author": "Niko S. via Google Maps",
+      "capture": "Jan 2025 (displayed)",
+      "observations": [
+        "Rectangular pool behind colonnade, low retaining lawn edge, benches by road, open asphalt path entrance, mature trees."
+      ]
+    },
+    {
+      "id": "sw-satellite",
+      "url": "https://www.google.com/maps/@53.64808,-3.00537,19z/data=!3m1!1e3",
+      "reviewed": "2026-10-22",
+      "capture": "Not displayed",
+      "observations": [
+        "South-west garden context and rear service road registration."
+      ]
+    },
+    {
+      "id": "london-satellite",
+      "url": "https://www.google.com/maps/@53.6478,-3.0026,18z/data=!3m1!1e3",
+      "reviewed": "2026-10-22",
+      "capture": "Not displayed",
+      "observations": [
+        "London Street corridor, Anchor Street and Glebe Place mouths, Chapel/Hoghton junction. Direct Street View at requested corridor location failed to return usable panorama; crossing details remain provisional."
+      ]
     }
   ],
   "limitations": [
@@ -50,6 +86,8 @@
     "No photographs or extracted photograph textures published. Material maps are authored procedurally.",
     "Kerb geometry, tile sizes, signal orientations, pole count and unrecorded furnishings are photographic estimates, typically 0.5\u20132 m placement uncertainty.",
     "Tactile patches, access covers and drainage locations are interpreted where imagery cannot resolve exact layouts; do not treat as an accessibility or highway survey.",
-    "Perimeter beyond core forecourts/island remains approximate and is identified separately."
+    "Perimeter beyond core forecourts/island remains approximate and is identified separately.",
+    "Extension heights/widths and tree positions are estimates, not a highway survey. London Street ends at Chapel/Hoghton; further station-side extension remains separate.",
+    "Fountain sculpture and bus shelter structures deferred pending adequate close references. Water and vegetation are schematic representations."
   ]
 }

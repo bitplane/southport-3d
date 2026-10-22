@@ -18,3 +18,7 @@ for name,color in [('asphalt',(66,67,65)),('red-road',(111,76,68))]:
  noise=rng.normal(0,5,(n,n,1));a=np.array(color)[None,None,:]+noise
  Image.fromarray(np.uint8(np.clip(a,0,255))).save(out/(name+'.png'))
 print('Authored five repeating colour maps and one joint normal map')
+
+# Non-directional authored lawn grain; no satellite or photograph pixels.
+a=np.array([88,116,53])[None,None,:]+rng.normal(0,5,(n,n,1))
+Image.fromarray(np.uint8(np.clip(a,0,255))).save(out/'grass.png')

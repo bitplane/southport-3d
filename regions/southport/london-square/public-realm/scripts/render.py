@@ -1,4 +1,18 @@
+"""Overview and oblique checks of the expanded public realm."""
 from pathlib import Path
 import bpy
-ROOT=Path(__file__).resolve().parents[1];bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
-bpy.context.scene.render.filepath=str(ROOT/'renders/overview.png');bpy.ops.render.render(write_still=True)
+from mathutils import Vector
+ROOT=Path(__file__).resolve().parents[1]
+bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
+scene=bpy.context.scene
+for name,position,target,scale in [
+    ('overview',(205,-242,220),(25,-48,0),285),
+    ('gardens',(86,-60,48),(85,0,0),115),
+    ('london-street',(45,-175,70),(0,-100,0),130),
+    ('crossing-landing',(10,-142,6),(0,-133,0),20),
+]:
+    cam=scene.camera;cam.location=position
+    cam.rotation_euler=(Vector(target)-cam.location).to_track_quat('-Z','Y').to_euler()
+    cam.data.ortho_scale=scale
+    scene.render.filepath=str(ROOT/'renders'/(name+'.png'))
+    bpy.ops.render.render(write_still=True)

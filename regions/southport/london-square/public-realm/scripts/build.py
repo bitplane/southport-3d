@@ -7,9 +7,11 @@ ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_RO
 from southport3d.geometry import Mesh,text_object
 from southport3d.street import furniture,sagging_chain,guardrail
 D=json.loads((ROOT/'research/layout.json').read_text());bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
+sys.path.insert(0,str(ROOT/'scripts'))
+from extensions import PARTS, build_extensions
 scene=bpy.context.scene;scene.unit_settings.system='METRIC'
 collections={}
-for name in ['ne-ground','sw-ground','island-ground','roads','perimeter','ne-furniture','sw-furniture','island-furniture']:
+for name in ['ne-ground','sw-ground','island-ground','roads','perimeter','ne-furniture','sw-furniture','island-furniture']+list(PARTS):
  c=bpy.data.collections.new(name);scene.collection.children.link(c);collections[name]=c
 
 def mat(name,color,texture=None,normal=False,metal=0):
@@ -23,7 +25,7 @@ mixed=mat('Authored mixed rectangular paving',(.45,.43,.39),'mixed',True);pale=m
 asphalt=mat('Authored asphalt',(.08,.08,.08),'asphalt');redroad=mat('Authored reddish carriageway',(.22,.11,.09),'red-road');kerb=mat('Pale granite kerb',(.40,.40,.36));yellow=mat('Faded yellow road marking',(.65,.47,.10));white=mat('Worn white road marking',(.69,.68,.60));tactile=mat('Buff tactile paving',(.48,.34,.19));iron=mat('Access covers',(.075,.08,.08),metal=.25)
 fm=[mat('Painted dark iron',(.025,.033,.031),metal=.35),mat('Galvanised metal',(.45,.48,.47),metal=.65),mat('Pale backing',(.65,.65,.59)),mat('Push button edging',(.8,.48,.015)),mat('Unlit red lens',(.14,.008,.008)),mat('Unlit amber lens',(.16,.075,.005)),mat('Unlit green lens',(.004,.10,.035)),mat('Weathered bench slats',(.25,.20,.13)),mat('Dark opening',(.006,.008,.008))]
 
-def grade(y,road=False):return D['grade']['origin_z']+D['grade']['dz_dy']*y-(D['grade']['road_drop'] if road else 0)
+def grade(y,road=False):return D['grade']['origin_z']+D['grade']['dz_dy']*max(-36,min(36,y))-(D['grade']['road_drop'] if road else 0)
 def finish(m,material,part,slope=True):
  o=m.finish([material],collections[part]);uv=o.data.uv_layers.new(name='Metric repeat')
  for f in o.data.polygons:
@@ -55,18 +57,19 @@ def edge(name,pts,part):
  inner=offset(pts,-.19);outer=offset(pts,0);m=Mesh('Kerb '+name)
  for i in range(len(pts)):
   j=(i+1)%len(pts)
-  if abs(outer[i][0])>47.9 and abs(outer[j][0])>47.9:continue  # open scene boundary, not a kerb
+  if abs(outer[i][0])>40.9 and abs(outer[j][0])>40.9:continue  # open scene boundary, not a kerb
   m.add([(outer[i][0],outer[i][1],-.12),(outer[j][0],outer[j][1],-.12),(outer[j][0],outer[j][1],.004),(outer[i][0],outer[i][1],.004),(inner[i][0],inner[i][1],.004),(inner[j][0],inner[j][1],.004)],[(0,1,2,3),(3,2,5,4)])
  finish(m,kerb,part)
  # The yellow pair is road paint, offset outwards from the kerb.
  for dist in [.18,.36]:
   q=offset(pts,dist)
   for a,b in zip(q,q[1:]+q[:1]):
-   if abs(a[0])>47.9 and abs(b[0])>47.9:continue
+   if abs(a[0])>40.9 and abs(b[0])>40.9:continue
    line('Marking double yellow '+name,[a,b],.08,yellow,'roads',-.116)
 
 # Road base is continuous. Red surfacing is the island-loop material observed in imagery.
-rect('Surface roads',-48,-36,48,36,asphalt,'roads',-.12)
+rect('Surface roads',-41,-27,41,36,asphalt,'roads',-.12)
+rect('Surface London neck',-8.5,-36,8.5,-27,asphalt,'roads',-.12)
 rect('Surface red island carriageways',-13.1,-23,13.1,21,redroad,'roads',-.118)
 for side,label in [(1,'ne'),(-1,'sw')]:
  pts=D['courts'][label];polygon('Surface '+label+' mixed paving',pts,mixed,label+'-ground');edge(label+' forecourt',pts,label+'-ground')
@@ -95,8 +98,9 @@ for x in [-5.1,3.8]:
  for y in [-5.9,3.8]:rect('Pattern island corner bar',x,y,x+1.3,y+2.1,pale,'island-ground',.015)
 # Bounded outer continuity surfaces; detailed streets beyond the square await their own assets.
 for s in [-1,1]:
- x0,x1=sorted([s*6.2,s*48]);rect('Surface perimeter south approximate',x0,-36,x1,-23.6,mixed,'perimeter')
- x0,x1=sorted([s*6,s*48]);rect('Surface perimeter north approximate',x0,31,x1,36,mixed,'perimeter')
+ x0,x1=sorted([s*6.2,s*41]);rect('Surface perimeter south approximate',x0,-27,x1,-23.6,mixed,'perimeter')
+ x0,x1=sorted([s*6.2,s*8.5]);rect('Surface London neck footway',x0,-36,x1,-27,mixed,'perimeter')
+ x0,x1=sorted([s*6,s*41]);rect('Surface perimeter north approximate',x0,31,x1,36,mixed,'perimeter')
 # Observed crossing studs and stop bars; positions follow the reconstructed kerb geometry.
 for s in [-1,1]:
  x0,x1=sorted([s*7.8,s*12.9])
@@ -111,7 +115,7 @@ for s in [-1,1]:
   # opposite directions around the island
   polygon('Marking direction arrow',[(x+s*a,y+s*b) for a,b in pts],white,'roads',-.113)
 # Dashed Lord Street centre line, interrupted across junction and crossings.
-for x in list(range(-46,-14,6))+list(range(18,47,6)):rect('Marking Lord Street lane dash',x,25.5,x+2,25.6,white,'roads',-.114)
+for x in list(range(-40,-14,6))+list(range(18,40,6)):rect('Marking Lord Street lane dash',x,25.5,x+2,25.6,white,'roads',-.114)
 # Access covers and drains: generic dimensions, placements explicitly interpreted.
 for side,label in [(1,'ne'),(-1,'sw')]:
  for x,y in [(20,8),(28,-9)]:
@@ -133,13 +137,15 @@ for side in [-1,1]:
  m=sagging_chain(pts);m.name='Chain island '+str(side);m.finish(fm,collections['island-furniture'])
  label='ne' if side>0 else 'sw';pts=[(side*x,y,grade(y)) for x,y in [(14.2,17),(15.5,19),(18,20),(22,20)]]
  m=guardrail(pts);m.name='Guardrail '+label;m.finish(fm,collections[label+'-furniture'])
+build_extensions(globals())
+
 # Remove underlying surfaces rather than relying on millimetre depth offsets.
 # This prevents z-fighting in browsers and other GLB viewers, at oblique distances.
 sys.path.insert(0,str(ROOT/'scripts'))
 from planar import subtract,area
 from mathutils.geometry import tessellate_polygon
 for part,collection in collections.items():
- if not part in {'ne-ground','sw-ground','island-ground','roads','perimeter'}:continue
+ if part.endswith('-furniture'):continue
  rows=[]
  for o in list(collection.objects):
   for face in o.data.polygons:
@@ -153,10 +159,12 @@ for part,collection in collections.items():
    cutters=[xy] if min(crosses)>=-1e-7 else [[xy[v] if isinstance(v,int) else (v.x,v.y) for v in tri] for tri in tessellate_polygon([[Vector(p) for p in points]])]
    rows.append((o,face.index,sum(offsets)/len(offsets),xy,cutters))
  replacements={}
+ order={(o,index):i for i,(o,index,*_) in enumerate(rows)}
  for o,index,z,xy,_ in rows:
   fragments=[xy]
   for other,otherindex,oz,_,cutters in rows:
-   if oz<=z+1e-6 or oz-z>.04:continue
+   if oz<z-1e-6 or oz-z>.04:continue
+   if abs(oz-z)<=1e-6 and order[(other,otherindex)]<=order[(o,index)]:continue
    for cutter in cutters:
     fragments=[piece for frag in fragments for piece in subtract(frag,cutter)]
   replacements[(o,index)]=(z,fragments)
@@ -174,6 +182,20 @@ for part,collection in collections.items():
   for f in o.data.polygons:
    for i in f.loop_indices:
     v=o.data.vertices[o.data.loops[i].vertex_index].co;uv.data[i].uv=(v.x/3.6,v.y/3.6)
+
+# Drop the London Street landing edge to road level; keep adjoining footway level.
+for o in collections['london-3-ground'].objects:
+ if o.name.startswith(('Surface crossing ramp','Tactile London')):
+  for v in o.data.vertices:
+   v.co.z-=.12*max(0,min(1,(5.4-abs(v.co.x))/1.1))
+
+# Pools are horizontal even though surrounding lawn/edging follows the site grade.
+# Do this after the plan cutouts, so the lawn cannot fill the basin at its high end.
+for o in bpy.data.objects:
+ if o.type=='MESH' and o.data.materials and o.data.materials[0].name=='Still dark pool water':
+  ys=[v.co.y for v in o.data.vertices];zs=[v.co.z-grade(v.co.y) for v in o.data.vertices]
+  water_z=grade((min(ys)+max(ys))/2)+sum(zs)/len(zs)
+  for v in o.data.vertices:v.co.z=water_z
 
 # Batch authored surface pieces by policy/material within each spatial part.
 # Furniture stays instanced; avoid hundreds of draw calls for individual paint strips.
@@ -195,6 +217,6 @@ for im in bpy.data.images:
 scene.render.engine='CYCLES';scene.cycles.samples=24;scene.cycles.use_denoising=True;scene.world.color=(.35,.35,.35)
 scene.render.resolution_x=1400;scene.render.resolution_y=1000;scene.render.resolution_percentage=100
 sun=bpy.data.lights.new('Sun','SUN');sun.energy=2.4;o=bpy.data.objects.new('Sun',sun);scene.collection.objects.link(o);o.rotation_euler=(.5,-.4,-.5)
-data=bpy.data.cameras.new('Area overview');cam=bpy.data.objects.new('Area overview',data);scene.collection.objects.link(cam);cam.location=(70,-76,88);cam.rotation_euler=(Vector((0,0,0))-cam.location).to_track_quat('-Z','Y').to_euler();data.type='ORTHO';data.ortho_scale=110;scene.camera=cam
+data=bpy.data.cameras.new('Area overview');cam=bpy.data.objects.new('Area overview',data);scene.collection.objects.link(cam);cam.location=(205,-242,220);cam.rotation_euler=(Vector((25,-48,0))-cam.location).to_track_quat('-Z','Y').to_euler();data.type='ORTHO';data.ortho_scale=285;scene.camera=cam
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 print('Public realm built:',len(D['furniture']),'furniture placements')

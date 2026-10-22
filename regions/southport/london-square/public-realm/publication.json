@@ -7,7 +7,7 @@
     "elevation_m": 0
   },
   "area_name": "London Square",
-  "status": "Researched paving, roads and furnishings; tile sizes and most placements estimated from 2018\u20132025 imagery. Outer continuity paving remains approximate. Vegetation and surrounding buildings deferred.",
+  "status": "Memorial square, adjoining Lord Street gardens and St George\u2019s Place, London Street to Chapel/Hoghton junction. OSM-registered layout with estimated widths, grades and planting. Fountain sculpture and bus shelters await detail.",
   "levels": {
     "detail": {
       "texture_size": null
@@ -64,6 +64,61 @@
       "id": "island-furniture",
       "name": "Island bollards and signals",
       "collection": "island-furniture"
+    },
+    {
+      "id": "ne-garden-ground",
+      "name": "North-east gardens and adjoining streets \u2014 ground",
+      "collection": "ne-garden-ground",
+      "ground": true
+    },
+    {
+      "id": "ne-garden-furniture",
+      "name": "North-east gardens and adjoining streets \u2014 furniture",
+      "collection": "ne-garden-furniture"
+    },
+    {
+      "id": "sw-garden-ground",
+      "name": "South-west gardens and adjoining streets \u2014 ground",
+      "collection": "sw-garden-ground",
+      "ground": true
+    },
+    {
+      "id": "sw-garden-furniture",
+      "name": "South-west gardens and adjoining streets \u2014 furniture",
+      "collection": "sw-garden-furniture"
+    },
+    {
+      "id": "london-1-ground",
+      "name": "London Street section 1 \u2014 ground",
+      "collection": "london-1-ground",
+      "ground": true
+    },
+    {
+      "id": "london-1-furniture",
+      "name": "London Street section 1 \u2014 furniture",
+      "collection": "london-1-furniture"
+    },
+    {
+      "id": "london-2-ground",
+      "name": "London Street section 2 \u2014 ground",
+      "collection": "london-2-ground",
+      "ground": true
+    },
+    {
+      "id": "london-2-furniture",
+      "name": "London Street section 2 \u2014 furniture",
+      "collection": "london-2-furniture"
+    },
+    {
+      "id": "london-3-ground",
+      "name": "London Street section 3 \u2014 ground",
+      "collection": "london-3-ground",
+      "ground": true
+    },
+    {
+      "id": "london-3-furniture",
+      "name": "London Street section 3 \u2014 furniture",
+      "collection": "london-3-furniture"
     }
   ],
   "views": [
@@ -104,6 +159,45 @@
         14,
         1,
         -12
+      ]
+    },
+    {
+      "name": "Gardens",
+      "position": [
+        98,
+        60,
+        65
+      ],
+      "target": [
+        85,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "London Street",
+      "position": [
+        40,
+        65,
+        125
+      ],
+      "target": [
+        0,
+        0,
+        92
+      ]
+    },
+    {
+      "name": "Area bounds",
+      "position": [
+        175,
+        170,
+        195
+      ],
+      "target": [
+        25,
+        0,
+        50
       ]
     }
   ],
@@ -310,6 +404,42 @@
         "uv": "smart",
         "bake": false,
         "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "landscape-structure",
+      "match": "^(Wall|Street) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already coarse capped edges and poles; preserve entrances and wall height."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Low polygon boundary silhouettes establish garden and road layout."
+      }
+    },
+    {
+      "id": "trees",
+      "match": "^Tree ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "landscape_lod:build_lod",
+        "settings": {
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep crown lobes and trunks, reduce rings and radial samples."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "landscape_lod:build_lod",
+        "settings": {
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Replace lobed canopy with one coarse crown and trunk; omit branches."
       }
     }
   ]

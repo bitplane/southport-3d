@@ -2,7 +2,7 @@ from pathlib import Path
 import bpy,json,math
 ROOT=Path(__file__).resolve().parents[1];bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 meshes=[o for o in bpy.context.scene.objects if o.type=='MESH'];layout=json.loads((ROOT/'research/layout.json').read_text())
-assert len([o for o in meshes if o.name.startswith('Furniture ')])==len(layout['furniture'])
+assert len([o for o in meshes if o.name.startswith('Furniture ') and ' extension ' not in o.name])==len(layout['furniture'])
 assert len([o for o in meshes if o.name.startswith('Chain ')])==2
 assert all(math.isfinite(v) for o in meshes for p in o.data.vertices for v in p.co)
 assert all(o.data.polygons for o in meshes)
@@ -34,3 +34,16 @@ for f in layout['furniture']:
   assert min(crosses)>=-1e-5 or max(crosses)<=1e-5,(f,'off forecourt')
   if f['kind']=='bollard':assert not (abs(x)<14 and 11<y<13),'Bollard obstructs crossing'
 print('Furniture pavement containment and crossing clearance validated')
+
+# Extension coverage, open seams, and bounded longitudinal grade.
+sys.path.insert(0,str(ROOT/'scripts'))
+from extensions import PARTS
+assert all(bpy.data.collections.get(n) and len(bpy.data.collections[n].objects) for n in PARTS)
+from southport3d.landscape import tree
+counts=[sum(len(f)-2 for f in tree(level).faces) for level in ['detail','walk','district']]
+assert counts[0]>counts[1]>counts[2],counts
+assert len([o for o in meshes if o.name.startswith('Tree ')])==sum(len(v) for v in json.loads((ROOT/'research/streets.json').read_text())['trees'].values())
+for name in ['london-1-ground','london-2-ground','london-3-ground']:
+ vertices=[v.co.z for o in bpy.data.collections[name].objects for v in o.data.vertices]
+ assert max(vertices)-min(vertices)<.3,(name,'Unbounded grade or furniture in ground')
+print('Extended areas, tree LODs and bounded road grades validated')

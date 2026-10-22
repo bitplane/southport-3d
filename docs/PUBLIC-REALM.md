@@ -6,7 +6,7 @@ The area shares the memorial's origin, site orientation and estimated 2.2% north
 
 ## Working spatial split
 
-Five walkable surface parts cover the two forecourts, island, roads and outer continuity paving. Three separate furniture parts cover the forecourts and island. Ground-following rays therefore cannot mistake a bench, bollard or signal for the pavement. Each part streams independently in the existing viewer; no viewer-specific asset code was added.
+The initial five walkable surface parts cover the two forecourts, island, roads and outer continuity paving. The initial three separate furniture parts cover the forecourts and island. Ground-following rays therefore cannot mistake a bench, bollard or signal for the pavement. Each part streams independently in the existing viewer; no viewer-specific asset code was added.
 
 These are semantic area boundaries, not the final district tile grid. Keep curb-adjacent surfaces on exactly the same datum and retain crossing/road continuity. Split much larger roads by junction or bounded segment when they outgrow this square; avoid a single town-wide road mesh whose bounds force detailed loading everywhere.
 
@@ -20,7 +20,7 @@ These are semantic area boundaries, not the final district tile grid. Keep curb-
 
 ## Evidence limits and next survey pass
 
-The core paving identity and furniture families are evidenced. Most kerb offsets, tile dimensions, counts, orientations and unmapped object placements are estimates. Some bench/bin positions use recorded OSM nodes; other placements explicitly cite photographic estimates. Access covers, drainage and tactile patches are interpreted details. Dropped-kerb ramp geometry, precise tactile layouts, signal equipment variants and their current configuration need closer evidence. The broad outer footway strips are continuity placeholders, not completed adjoining streets. Vegetation, outer bus stops/shelters and surrounding buildings remain outside this pass.
+The core paving identity and furniture families are evidenced. Most kerb offsets, tile dimensions, counts, orientations and unmapped object placements are estimates. Some bench/bin positions use recorded OSM nodes; other placements explicitly cite photographic estimates. Access covers, drainage and tactile patches are interpreted details. Dropped-kerb ramp geometry, precise tactile layouts, signal equipment variants and their current configuration need closer evidence. The initial broad outer footway strips were continuity placeholders. The extension below replaces and continues them into bounded streets and gardens. Surrounding buildings, bus shelters and exact current equipment variants remain unfinished.
 
 Use `python3 tools/project.py publish` to build and stream both assets. Render the area alone with `python3 tools/project.py build southport.london-square.public-realm --stage render`; then inspect the combined browser view for foundation contact, overlap, scale and LOD changes. Do not infer that an area is surveyed merely because its surfaces now join up.
 
@@ -35,3 +35,74 @@ Use `python3 tools/project.py publish` to build and stream both assets. Render t
 All 24 part/level GLBs passed publication inspection. All 104 mesh objects are classified; the model contains 76 furniture placements. Furniture generators have checked decreasing triangle counts. Surface batching reduced object count from hundreds of separate paint/paving pieces to a few groups per material. Polygon clipping removes underlying faces beneath motifs/paint rather than relying on small depth offsets; unit checks cover cutout areas and repeated subtraction. The viewer also enables logarithmic depth to support the scene's scale range; see the [Three.js renderer options](https://threejs.org/docs/pages/WebGLRenderer.html). Its fragment-depth cost needs testing on users' hardware.
 
 The complete memorial rebuild and existing validators passed. Eleven host-Python tests passed, including a regression preventing a failed full build from leaving a reusable source stamp. Browser review loaded both assets (12 streaming parts), checked the combined overview and close paving/foundation contacts, and exercised automatic ground Detail selection and walking-height adjustment without asset load errors. Placement checks also require furniture bases to lie on their assigned pavement and keep the crossing openings clear. Browser screenshots and the Blender area overview are local build artifacts. Agent-browser performance is limited and is not a desktop GPU benchmark.
+
+## Street and garden extension (2026-10-22)
+
+The area now continues along London Street to the Chapel Street/Hoghton Street
+junction (site Y = -144 m), with a short continuation to -154 m. Wright Street
+and the station frontage farther along are outside this pass. Short mouths mark
+Glebe Place, Anchor Street, Chapel Street and Hoghton Street for future adjoining
+assets. Lord Street runs from site X = -104 to +154 m, including the two gardens
+behind the colonnades and St George’s Place around the north-east garden.
+
+`research/streets-osm.json` retains the selected OSM ways and furnishing nodes in
+the shared metric frame, with attribution. `research/streets.json` records the
+working extent, estimated grade, path widths and approximate canopy groups.
+`extensions.py` owns the site-specific assembly; `lib/southport3d/landscape.py`
+provides reusable capped walls and a controlled tree proxy. The gardens add
+lawns, paths, open entrances, low coping, rectangular pools, a schematic round
+fountain basin, benches, bins and mapped bus-stop poles. The fountain sculpture
+and bus shelters are not yet modelled. Trees represent canopy groups rather than
+surveyed individual specimens or species.
+
+There are ten additional streaming parts: ground and furnishings for each garden
+and each of three bounded London Street sections. The square ends at X = +/-41 m;
+the extensions meet that boundary rather than overlaying its old oversized floor.
+London Street splits at Y = -36, -76, -116 and -154 m. Ground and furnishings remain
+separate, including tree trunks and retaining walls. The viewer still follows
+ground without wall/plant collision physics.
+
+The old estimated 2.2% site-Y slope is clamped outside +/-36 m. This preserves the
+square seam without extrapolating a large height change along London Street;
+outer longitudinal grades still need surveyed levels. Pools have horizontal
+water surfaces. Crossing studs, tactile pads, signal positions and dropped
+landings near Chapel/Hoghton are provisional interpretations, not a verified
+current crossing layout. Footway widths, wall heights and planting positions are
+also estimates. Source photographs remain private; published materials are
+procedural colours/maps.
+
+Keep coarse ground outlines, path openings and capped walls at every level.
+Tree Walk reduces crown sampling while preserving lobes and trunks; District
+replaces the lobes with one coarse crown and omits branches. Repeated furniture
+and trees share master mesh data. Fine tree leaves are not generated, and no
+photographic foliage is baked. The existing street furniture LOD policies apply
+to the extension. A regional texture bake is still unnecessary at this scale.
+
+Use the **Gardens**, **London Street** and **Area bounds** bookmarks on the
+public-realm site. Local render artifacts are `renders/overview.png`,
+`renders/gardens.png`, `renders/london-street.png` and
+`renders/crossing-landing.png` beneath the public-realm build directory.
+
+The expanded public realm has 18 independently streamed parts (54 GLBs) and 241
+classified mesh objects. Its measured publication budgets, including embedded
+maps, are:
+
+| Level | Placed triangles | GLB bytes | Embedded image bytes |
+| --- | ---: | ---: | ---: |
+| Detail | 147,488 | 8,279,688 | 4,835,767 |
+| Walk | 51,696 | 8,289,296 | 4,835,767 |
+| District | 22,680 | 1,885,472 | 215,217 |
+
+Walk has fewer placed triangles but similar download size because shared maps
+and export representation dominate this small area. These figures exclude the
+memorial. All 54 GLBs passed publication inspection. The full memorial rebuild
+and validators also passed after the shared library change. Eleven host-Python
+tests and the viewer policy tests passed. Render review covers the expanded
+overview, garden paths, London Street and the dropped crossing landing. Coplanar
+path overlaps are clipped in stable order, and round joins close wedges at bends.
+
+Browser review loaded all 22 combined scene parts without errors at forced
+District and Walk, then verified automatic Detail selection for London Street
+sections 2/3 at close range. Combined overview and garden screenshots are retained
+locally as `renders/combined-overview.png` and `renders/combined-gardens.png`;
+`renders/combined-london-detail.png` records the close automatic-level check.

@@ -1,0 +1,1013 @@
+{
+  "source": "OpenStreetMap contributors, ODbL 1.0; retrieved 2026-10-21",
+  "projection": "Local equirectangular metre approximation, origin 53.6486555,-3.0043401; rotation 43.5293 degrees",
+  "ways": {
+    "23158339": {
+      "tags": {
+        "highway": "tertiary",
+        "maxspeed": "20 mph",
+        "name": "London Street",
+        "oneway": "yes",
+        "sidewalk": "left",
+        "source": "npe",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          2.515,
+          -23.286
+        ],
+        [
+          2.107,
+          -65.429
+        ],
+        [
+          1.891,
+          -82.988
+        ],
+        [
+          1.881,
+          -137.808
+        ],
+        [
+          0.551,
+          -144.114
+        ]
+      ]
+    },
+    "24943574": {
+      "tags": {
+        "highway": "unclassified",
+        "name": "St George's Place",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          150.513,
+          25.947
+        ],
+        [
+          149.871,
+          -14.699
+        ],
+        [
+          118.19,
+          -17.247
+        ],
+        [
+          105.895,
+          -18.235
+        ],
+        [
+          69.936,
+          -17.163
+        ],
+        [
+          68.235,
+          -17.114
+        ],
+        [
+          38.969,
+          -17.764
+        ],
+        [
+          24.22,
+          -18.094
+        ],
+        [
+          3.227,
+          -18.619
+        ]
+      ]
+    },
+    "25335293": {
+      "tags": {
+        "highway": "unclassified",
+        "lane_markings": "no",
+        "maxspeed": "20 mph",
+        "name": "Lord Street",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "paving_stones",
+        "wikidata": "Q6679981"
+      },
+      "xy": [
+        [
+          -6.425,
+          -18.586
+        ],
+        [
+          -64.647,
+          -18.906
+        ],
+        [
+          -67.852,
+          -17.136
+        ],
+        [
+          -69.23,
+          -14.553
+        ],
+        [
+          -70.436,
+          25.393
+        ]
+      ]
+    },
+    "42083826": {
+      "tags": {
+        "leisure": "park"
+      },
+      "xy": [
+        [
+          42.414,
+          -13.82
+        ],
+        [
+          71.428,
+          -11.933
+        ],
+        [
+          146.686,
+          -11.413
+        ],
+        [
+          146.442,
+          19.496
+        ],
+        [
+          41.134,
+          17.904
+        ],
+        [
+          41.651,
+          2.535
+        ],
+        [
+          42.414,
+          -13.82
+        ]
+      ]
+    },
+    "42083827": {
+      "tags": {
+        "leisure": "park"
+      },
+      "xy": [
+        [
+          -41.878,
+          16.827
+        ],
+        [
+          -41.735,
+          -13.832
+        ],
+        [
+          -58.746,
+          -14.102
+        ],
+        [
+          -69.18,
+          -13.571
+        ],
+        [
+          -99.336,
+          -16.785
+        ],
+        [
+          -115.926,
+          -18.375
+        ],
+        [
+          -243.335,
+          -17.643
+        ],
+        [
+          -239.348,
+          15.296
+        ],
+        [
+          -234.759,
+          18.383
+        ],
+        [
+          -100.938,
+          17.302
+        ],
+        [
+          -41.878,
+          16.827
+        ]
+      ]
+    },
+    "1041199835": {
+      "tags": {
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          115.089,
+          25.896
+        ],
+        [
+          116.388,
+          8.571
+        ]
+      ]
+    },
+    "1041199836": {
+      "tags": {
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          118.016,
+          -4.737
+        ],
+        [
+          118.19,
+          -17.247
+        ]
+      ]
+    },
+    "1041199837": {
+      "tags": {
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          124.234,
+          2.776
+        ],
+        [
+          123.629,
+          4.87
+        ],
+        [
+          122.375,
+          6.645
+        ],
+        [
+          120.627,
+          7.937
+        ],
+        [
+          118.554,
+          8.601
+        ],
+        [
+          116.388,
+          8.571
+        ],
+        [
+          114.273,
+          7.801
+        ],
+        [
+          112.529,
+          6.387
+        ],
+        [
+          111.35,
+          4.466
+        ],
+        [
+          110.874,
+          2.278
+        ],
+        [
+          111.143,
+          0.042
+        ],
+        [
+          112.145,
+          -1.97
+        ],
+        [
+          113.745,
+          -3.551
+        ],
+        [
+          115.781,
+          -4.503
+        ],
+        [
+          118.016,
+          -4.737
+        ],
+        [
+          120.139,
+          -4.236
+        ],
+        [
+          121.982,
+          -3.1
+        ],
+        [
+          123.367,
+          -1.422
+        ],
+        [
+          124.152,
+          0.611
+        ],
+        [
+          124.234,
+          2.776
+        ]
+      ]
+    },
+    "1041199838": {
+      "tags": {
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          69.936,
+          -17.163
+        ],
+        [
+          68.72,
+          -0.47
+        ],
+        [
+          66.814,
+          25.815
+        ]
+      ]
+    },
+    "1041199839": {
+      "tags": {
+        "highway": "footway",
+        "surface": "asphalt"
+      },
+      "xy": [
+        [
+          68.72,
+          -0.47
+        ],
+        [
+          76.595,
+          -1.425
+        ],
+        [
+          82.749,
+          -1.222
+        ],
+        [
+          89.273,
+          0.472
+        ],
+        [
+          95.949,
+          2.422
+        ],
+        [
+          103.331,
+          2.902
+        ],
+        [
+          108.267,
+          2.159
+        ],
+        [
+          110.874,
+          2.278
+        ]
+      ]
+    }
+  },
+  "nodes": {
+    "533862601": {
+      "xy": [
+        38.849,
+        32.926
+      ],
+      "tags": {
+        "bench": "yes",
+        "bin": "yes",
+        "bus": "yes",
+        "covered": "yes",
+        "highway": "bus_stop",
+        "name": "LORD ST/MONUMENT/STOP CB",
+        "naptan:AtcoCode": "2800S63002A",
+        "naptan:Bearing": "NE",
+        "naptan:CommonName": "LORD ST/MONUMENT/STOP CB",
+        "naptan:Indicator": "LORD STREET/MONUMENT/STOP CB",
+        "naptan:Landmark": "CORNER NEVILL STREET STOP CB O/S 399",
+        "naptan:NaptanCode": "mergjgam",
+        "naptan:Notes": "No Notes",
+        "naptan:ShortCommonName": "Lord St/Stop CB",
+        "naptan:Street": "LORD STREET",
+        "naptan:verified": "no",
+        "public_transport": "platform",
+        "shelter": "no",
+        "source": "naptan_import"
+      }
+    },
+    "533862602": {
+      "xy": [
+        24.002,
+        33.027
+      ],
+      "tags": {
+        "bench": "yes",
+        "bin": "no",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "lit": "no",
+        "name": "LORD ST/MONUMENT/STOP CA",
+        "naptan:AtcoCode": "2800S63002B",
+        "naptan:Bearing": "NE",
+        "naptan:CommonName": "LORD ST/MONUMENT/STOP CA",
+        "naptan:Indicator": "LORD STREET/NEVILL STREET",
+        "naptan:Landmark": "O/S 387",
+        "naptan:NaptanCode": "mergpajw",
+        "naptan:Notes": "No Notes",
+        "naptan:ShortCommonName": "Lord St Stop CA",
+        "naptan:Street": "LORD STREET",
+        "naptan:verified": "no",
+        "public_transport": "platform",
+        "shelter": "yes",
+        "source": "naptan_import",
+        "tactile_paving": "no"
+      }
+    },
+    "533862604": {
+      "xy": [
+        67.096,
+        34.083
+      ],
+      "tags": {
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "LORD ST/MONUMENT/STOP CD",
+        "naptan:AtcoCode": "2800S63002C",
+        "naptan:Bearing": "NE",
+        "naptan:CommonName": "LORD ST/MONUMENT/STOP CD",
+        "naptan:Indicator": "LORD STREET/MONUMENT/STOP CD",
+        "naptan:Landmark": "O/S 413/415 STOP CD",
+        "naptan:NaptanCode": "mergjgap",
+        "naptan:Notes": "No Notes",
+        "naptan:ShortCommonName": "Lord St/Monument-Cd",
+        "naptan:Street": "LORD STREET",
+        "naptan:verified": "no",
+        "public_transport": "platform",
+        "source": "naptan_import"
+      }
+    },
+    "533862606": {
+      "xy": [
+        -59.409,
+        19.048
+      ],
+      "tags": {
+        "bench": "yes",
+        "bin": "yes",
+        "bus": "yes",
+        "check_date:bench": "2024-09-04",
+        "covered": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "name": "Lord St/monument/stop Cg",
+        "naptan:AtcoCode": "2800S63002I",
+        "naptan:Bearing": "NE",
+        "naptan:CommonName": "Lord St/monument/stop Cg",
+        "naptan:Indicator": "Lord Street/monument/stop Cg",
+        "naptan:Landmark": "Stop Ch O/s Christ Church",
+        "naptan:NaptanCode": "mergjgat",
+        "naptan:Notes": "No Notes",
+        "naptan:ShortCommonName": "Lord St/stop Cg",
+        "naptan:Street": "Lord Street",
+        "naptan:verified": "no",
+        "public_transport": "platform",
+        "shelter": "no",
+        "source": "naptan_import",
+        "tactile_paving": "no"
+      }
+    },
+    "533862607": {
+      "xy": [
+        -29.906,
+        18.797
+      ],
+      "tags": {
+        "bench": "yes",
+        "bin": "yes",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "name": "Lord St/monument/stop Cf",
+        "naptan:AtcoCode": "2800S63002J",
+        "naptan:Bearing": "SW",
+        "naptan:CommonName": "Lord St/monument/stop Cf",
+        "naptan:Indicator": "Lord Street/monument/stop Cf",
+        "naptan:Landmark": "Stop Cg O/s Christ Church Opp Midland Bank",
+        "naptan:NaptanCode": "mergjgaw",
+        "naptan:Notes": "No Notes",
+        "naptan:ShortCommonName": "Lord St/monument Cf",
+        "naptan:Street": "Lord Street",
+        "naptan:verified": "no",
+        "public_transport": "platform",
+        "shelter": "yes",
+        "source": "naptan_import",
+        "tactile_paving": "no"
+      }
+    },
+    "533862608": {
+      "xy": [
+        -87.967,
+        20.658
+      ],
+      "tags": {
+        "bench": "yes",
+        "bin": "yes",
+        "bus": "yes",
+        "covered": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "name": "Lord St/Monument/Stop Ch",
+        "naptan:AtcoCode": "2800S63002K",
+        "naptan:Bearing": "NW",
+        "naptan:CommonName": "Lord St/monument/stop Ch",
+        "naptan:Indicator": "Lord Street/london Street",
+        "naptan:Landmark": "Monument Stop Ch",
+        "naptan:NaptanCode": "mergjgda",
+        "naptan:Notes": "No Notes",
+        "naptan:ShortCommonName": "Lord St/stop Ch",
+        "naptan:Street": "Lord Street",
+        "naptan:verified": "no",
+        "public_transport": "platform",
+        "shelter": "no",
+        "source": "naptan_import",
+        "tactile_paving": "no"
+      }
+    },
+    "533862618": {
+      "xy": [
+        33.582,
+        -141.974
+      ],
+      "tags": {
+        "bench": "yes",
+        "bus": "yes",
+        "covered": "yes",
+        "highway": "bus_stop",
+        "name": "Hoghton St/london St (he)",
+        "naptan:AtcoCode": "2800S63005A",
+        "naptan:Bearing": "NE",
+        "naptan:CommonName": "Hoghton St/london St (he)",
+        "naptan:Indicator": "Hoghton Street/london Street",
+        "naptan:Landmark": "O/s Cornerstone Estate Agents",
+        "naptan:NaptanCode": "mergjgdw",
+        "naptan:Notes": "No Notes",
+        "naptan:ShortCommonName": "London St",
+        "naptan:Street": "Hoghton Street",
+        "naptan:verified": "no",
+        "public_transport": "platform",
+        "shelter": "no",
+        "source": "naptan_import"
+      }
+    },
+    "533862627": {
+      "xy": [
+        -6.843,
+        -80.465
+      ],
+      "tags": {
+        "bench": "yes",
+        "bus": "yes",
+        "covered": "yes",
+        "highway": "bus_stop",
+        "name": "London Street Hc",
+        "naptan:AtcoCode": "2800S63902A",
+        "naptan:Bearing": "NW",
+        "naptan:CommonName": "London Street Hc",
+        "naptan:Indicator": "London Street/lord Street Hc",
+        "naptan:Landmark": "Lord Street",
+        "naptan:NaptanCode": "mermtpmd",
+        "naptan:ShortCommonName": "London Street",
+        "naptan:Street": "London Street",
+        "naptan:verified": "no",
+        "public_transport": "platform",
+        "shelter": "no",
+        "source": "naptan_import"
+      }
+    },
+    "3499022353": {
+      "xy": [
+        44.389,
+        -20.517
+      ],
+      "tags": {
+        "amenity": "post_box",
+        "collection_times": "Mo-Fr 17:00; Sa 12:30",
+        "operator": "Royal Mail",
+        "post_box:design": "type_g",
+        "post_box:type": "pillar",
+        "ref": "PR9 151",
+        "royal_cypher": "EIIR",
+        "royal_cypher:wikidata": "Q33102113"
+      }
+    },
+    "3499022371": {
+      "xy": [
+        42.394,
+        -20.557
+      ],
+      "tags": {
+        "amenity": "post_box",
+        "collection_times": "Mo-Fr 17:00; Sa 12:30",
+        "operator": "Royal Mail",
+        "post_box:design": "type_g",
+        "post_box:type": "pillar",
+        "ref": "PR9 152",
+        "royal_cypher": "EIIR",
+        "royal_cypher:wikidata": "Q33102113"
+      }
+    },
+    "3747885626": {
+      "xy": [
+        -99.026,
+        16.009
+      ],
+      "tags": {
+        "amenity": "waste_basket"
+      }
+    },
+    "3747894038": {
+      "xy": [
+        -63.754,
+        18.277
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2026-06-09"
+      }
+    },
+    "3747929408": {
+      "xy": [
+        -41.941,
+        -135.732
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "no",
+        "check_date": "2026-05-03"
+      }
+    },
+    "3747929409": {
+      "xy": [
+        -41.105,
+        -143.742
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes"
+      }
+    },
+    "3747929410": {
+      "xy": [
+        -54.838,
+        -140.216
+      ],
+      "tags": {
+        "amenity": "waste_basket"
+      }
+    },
+    "3748890690": {
+      "xy": [
+        -12.433,
+        -146.765
+      ],
+      "tags": {
+        "amenity": "bench"
+      }
+    },
+    "3748890691": {
+      "xy": [
+        -38.041,
+        -144.042
+      ],
+      "tags": {
+        "amenity": "waste_basket",
+        "check_date": "2026-05-03"
+      }
+    },
+    "3748890692": {
+      "xy": [
+        -62.442,
+        -141.975
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes"
+      }
+    },
+    "3748890693": {
+      "xy": [
+        -55.532,
+        -135.734
+      ],
+      "tags": {
+        "amenity": "bench"
+      }
+    },
+    "3752906467": {
+      "xy": [
+        23.104,
+        4.845
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2023-09-01"
+      }
+    },
+    "3752906468": {
+      "xy": [
+        16.359,
+        4.958
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2023-09-01"
+      }
+    },
+    "3752906469": {
+      "xy": [
+        22.39,
+        -4.472
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2023-09-01"
+      }
+    },
+    "3752906470": {
+      "xy": [
+        16.133,
+        -4.439
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2023-09-01"
+      }
+    },
+    "3752906471": {
+      "xy": [
+        27.14,
+        -4.731
+      ],
+      "tags": {
+        "amenity": "waste_basket"
+      }
+    },
+    "3752906472": {
+      "xy": [
+        27.834,
+        5.158
+      ],
+      "tags": {
+        "amenity": "waste_basket"
+      }
+    },
+    "3787604115": {
+      "xy": [
+        152.963,
+        38.221
+      ],
+      "tags": {
+        "amenity": "waste_basket",
+        "check_date": "2024-09-04"
+      }
+    },
+    "3787612559": {
+      "xy": [
+        90.562,
+        39.844
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2024-09-04"
+      }
+    },
+    "3787612560": {
+      "xy": [
+        117.321,
+        36.81
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2024-09-04"
+      }
+    },
+    "3787612561": {
+      "xy": [
+        93.468,
+        39.34
+      ],
+      "tags": {
+        "amenity": "waste_basket"
+      }
+    },
+    "3787612563": {
+      "xy": [
+        76.383,
+        38.819
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes"
+      }
+    },
+    "3787612566": {
+      "xy": [
+        66.308,
+        38.886
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes"
+      }
+    },
+    "3787612567": {
+      "xy": [
+        54.539,
+        37.352
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes"
+      }
+    },
+    "3787612568": {
+      "xy": [
+        44.721,
+        36.683
+      ],
+      "tags": {
+        "amenity": "waste_basket"
+      }
+    },
+    "3787614731": {
+      "xy": [
+        14.96,
+        39.451
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes"
+      }
+    },
+    "3788940539": {
+      "xy": [
+        -20.297,
+        35.264
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes"
+      }
+    },
+    "3788940540": {
+      "xy": [
+        -22.963,
+        35.571
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes"
+      }
+    },
+    "3788940541": {
+      "xy": [
+        -28.545,
+        35.146
+      ],
+      "tags": {
+        "amenity": "waste_basket"
+      }
+    },
+    "3788940542": {
+      "xy": [
+        -48.049,
+        36.17
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2026-06-09"
+      }
+    },
+    "3788940543": {
+      "xy": [
+        -50.858,
+        35.906
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2026-06-09"
+      }
+    },
+    "3788940545": {
+      "xy": [
+        -63.073,
+        37.791
+      ],
+      "tags": {
+        "bench": "yes",
+        "bin": "no",
+        "bus": "yes",
+        "covered": "yes",
+        "departures_board": "realtime",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "name": "Nevill Street",
+        "naptan:AtcoCode": "2800S63002N",
+        "naptan:Bearing": "NE",
+        "naptan:CommonName": "Nevill Street",
+        "naptan:Indicator": "Stop CB",
+        "naptan:NaptanCode": "mergpdja",
+        "naptan:PlusbusZoneRef": "SOUTHPT",
+        "naptan:Street": "Lord Street",
+        "naptan:verified": "no",
+        "public_transport": "platform",
+        "ref": "2800S63002N",
+        "shelter": "yes",
+        "tactile_paving": "no"
+      }
+    },
+    "3788948128": {
+      "xy": [
+        -76.049,
+        35.791
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2026-06-09"
+      }
+    },
+    "3788966267": {
+      "xy": [
+        -92.702,
+        34.537
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "check_date": "2026-06-09"
+      }
+    },
+    "8638034908": {
+      "xy": [
+        125.457,
+        2.167
+      ],
+      "tags": {
+        "amenity": "bench",
+        "backrest": "yes",
+        "colour": "silver",
+        "material": "metal",
+        "seats": "3"
+      }
+    },
+    "8638034909": {
+      "xy": [
+        124.155,
+        5.922
+      ],
+      "tags": {
+        "access": "yes",
+        "amenity": "bench",
+        "backrest": "yes",
+        "colour": "silver",
+        "material": "metal",
+        "seats": "3"
+      }
+    },
+    "9585973427": {
+      "xy": [
+        117.871,
+        2.018
+      ],
+      "tags": {
+        "amenity": "fountain"
+      }
+    }
+  }
+}
