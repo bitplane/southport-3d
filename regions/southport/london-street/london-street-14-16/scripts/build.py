@@ -180,6 +180,12 @@ for u in [entry-.37,entry+.37]:
  elevation_box('Fine door pull',u+.23,1.2,.025,.45,.07,-.43,metal,'shopfront')
 elevation_box('Shop entrance transom',entry,2.72,1.50,.49,.04,-.52,glass,'shopfront')
 elevation_box('Shop entrance header rail',entry,2.45,1.50,.06,.09,-.47,red,'shopfront')
+for u in [entry-.75,entry+.75]:
+ elevation_box('Shop entrance side return',u,1.525,.055,3.05,.57,-.435,red,'shopfront')
+elevation_box('Shop entrance soffit',entry,3.06,1.55,.06,.77,-.335,blue,'shopfront')
+elevation_box('Shop continuous glazing head',width/2,3.105,width-.72,.11,.24,-.12,red,'shopfront')
+for a,b in [(.36,entry-.75),(entry+.75,width-.36)]:
+ elevation_box('Shop display sill',(a+b)/2,.025,b-a,.05,.12,-.19,granite,'shopfront')
 elevation_box('Shop blue fascia backing',width/2,3.55,width,.78,.12,.025,blue,'shopfront')
 # One material identity at all levels; raised lettering is baked on lower levels.
 sign('Betfred main','BETFRED',width*.29,3.55,width*.55,.78,background=blue,out=.13)

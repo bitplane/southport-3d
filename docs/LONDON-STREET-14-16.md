@@ -70,3 +70,9 @@ Validation adds two unobscured clerestory rays, three rays onto the lower roof s
 | detail | 6,104 | 2,306,864 |
 | walk | 2,516 | 2,046,608 |
 | district | 1,484 | 637,348 |
+
+A local viewer report identified open sides to the recessed entrance. The source
+now closes both entrance cheeks and its soffit behind the round red posts, and
+connects the glazing heads to the fascia. These exterior closure surfaces remain
+at every viewing level. Sideways/upward rays inside the recess check that it
+cannot see through to the rear of the building; no interior has been added.

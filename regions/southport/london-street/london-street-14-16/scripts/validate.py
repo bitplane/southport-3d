@@ -21,6 +21,15 @@ assert all(e.is_manifold for e in bm.edges);bm.free()
 # Audit regression: the upper side is recessed, while the timber door remains
 # in the low street-edge wall immediately behind the tall return.
 D=json.loads((ROOT/'research/layout.json').read_text());xf=D['front_x'];yn=D['north_y'];base=D['base_z']
+front=bpy.data.objects['Envelope six-bay front'].matrix_world
+entry=(D['north_y']-D['south_y'])*.31
+for side in [-1,1]:
+ origin=front@Vector((entry,1.4,-.3));direction=(front.to_3x3()@Vector((side,0,0))).normalized()
+ hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=.8)
+ assert hit and found.name.startswith('Shop entrance side return'),('Open entrance cheek',side)
+origin=front@Vector((entry,2.9,-.3));direction=(front.to_3x3()@Vector((0,1,0))).normalized()
+hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=.3)
+assert hit and found.name=='Shop entrance soffit','Open entrance soffit'
 reg=Matrix.Translation((xf,yn,0))@Matrix.Rotation(.02418,4,'Z')@Matrix.Translation((-xf,-yn,0))
 for u in (5.6,7.0,9.0):
  origin=reg@Vector((xf-u,yn-.6,base+8));direction=Vector((0,0,-1))
