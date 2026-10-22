@@ -76,3 +76,8 @@ now closes both entrance cheeks and its soffit behind the round red posts, and
 connects the glazing heads to the fascia. These exterior closure surfaces remain
 at every viewing level. Sideways/upward rays inside the recess check that it
 cannot see through to the rear of the building; no interior has been added.
+
+The middle and low rear decks now terminate inside the brick wall thickness.
+Their exposed vertical edges previously shared the rear wall plane, causing
+flickering pale stripes in the saved Glebe Place views. Geometry checks keep
+both slab ends at least 170 mm inside their owning masonry face.

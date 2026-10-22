@@ -148,9 +148,9 @@ v=[(x0,ys+.16,z0),(x0,yn-.16,z0),(x1,yn-.16,z1),(x1,ys+.16,z1)]
 m.add(v+[(x,y,z-.14) for x,y,z in v],[(0,1,2),(0,2,3),(4,6,5),(4,7,6),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0)])
 finish(m,'roof',[slate],roof_uv=True)
 # Roof levels avoid overlapping deck faces. Low rear zone is visually separated.
-box('Roof middle deck',((xf-5.35+xr+5.72)/2,(ys+yn-setback)/2,base+6.40),(depth-11.07,width-setback-.35,.18),felt,'roof')
+box('Roof middle deck',((xf-5.35+xr+5.90)/2,(ys+yn-setback)/2,base+6.40),(depth-11.25,width-setback-.35,.18),felt,'roof')
 box('Roof recessed side strip',((xf-5.35+xr+5.72)/2,yn-setback/2-.10,base+3.25),(depth-11.07,setback-.16,.18),felt,'roof')
-box('Roof low rear deck',((xr+xr+5.72)/2,(ys+yn)/2,base+3.25),(5.72,width-.35,.18),felt,'roof')
+box('Roof low rear deck',((xr+.18+xr+5.72)/2,(ys+yn)/2,base+3.25),(5.54,width-.35,.18),felt,'roof')
 # Rear upper return closes the height step, with two modest casements seen obliquely.
 step=face_matrix((xr+5.72,yn-setback-.18,base),(-1,0,0))
 wall_with_openings('upper rear step',step,width-setback-.36,6.50,[(0,width-setback-.36,0,3.35)],'rear')

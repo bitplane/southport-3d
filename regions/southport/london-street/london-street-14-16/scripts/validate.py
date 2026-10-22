@@ -51,3 +51,9 @@ assert min(v.y for v in points)>-81.3 and max(v.y for v in points)<-68.3
 assert 10.8<max(v.z for v in points)<11.6
 report={'mesh_objects':len(meshes),'front_windows':len(windows),'checks':'Finite UV meshes, packed procedural maps, mapped bounds, six unobscured window apertures, closed pitched roof shell; recessed clerestory glazing,three unobstructed side-strip roof rays and correct street-edge service door.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# Deck edge faces sit within the masonry, not on the exposed rear wall planes.
+for name,boundary in [('Roof middle deck',D['rear_x']+5.72),('Roof low rear deck',D['rear_x'])]:
+ o=bpy.data.objects[name]
+ # Decks are constructed in site coordinates before their registration transform.
+ assert min(v.co.x for v in o.data.vertices)>boundary+.17,(name,'Coplanar deck/wall edge')
