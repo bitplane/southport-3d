@@ -1,0 +1,28 @@
+from pathlib import Path
+import bpy,math,json
+ROOT=Path(__file__).resolve().parents[1]
+bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/prezzo.blend'))
+meshes=[o for o in bpy.context.scene.objects if o.type=='MESH']
+assert all(o.data.polygons and o.data.uv_layers for o in meshes)
+assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.co)
+assert len([o for o in meshes if o.name.startswith('Window dormer')])==9
+assert len([o for o in meshes if o.name.startswith('Sign ')])==6
+assert len([o for o in meshes if o.name.startswith('Roof chimney')])==6
+assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
+points=[o.matrix_world@v.co for o in meshes for v in o.data.vertices]
+assert min(p.x for p in points)>-33 and max(p.x for p in points)<-8
+assert 20<max(p.z for p in points)<22
+(ROOT/'research/validation.json').write_text(json.dumps({'objects':len(meshes),'checks':'finite metric geometry, UVs, packed maps, dormer/sign/stack counts, registered bounds'},indent=2))
+print('Prezzo geometry validated',len(meshes),'meshes')
+
+# A plausible window mesh is not enough: its glazing must not sit behind a solid wall.
+from mathutils import Vector
+bpy.context.view_layer.update();depsgraph=bpy.context.evaluated_depsgraph_get()
+windows=[o for o in meshes if o.name.startswith('Window ')]
+assert len(windows)==44,len(windows)
+for o in windows:
+ origin=o.matrix_world@Vector((.25,.20,1))
+ direction=(o.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+ hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(depsgraph,origin,direction,distance=2)
+ assert hit and ob==o,(o.name,'glazing obstructed by',ob.name if ob else None)
+print('All 44 window fronts visible from outside, including dormers')

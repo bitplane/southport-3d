@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/prezzo.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Square",
+  "status": "Exterior building; visible street architecture reconstructed, rear and dimensions estimated. No interiors or adjacent buildings. Based on 2019/2025 imagery and undated property photographs; heights and plot depth estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Street elevations and cornices",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Mansard, dormers and chimneys",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Restaurant frontage and corner entrance",
+      "collection": "shopfront"
+    }
+  ],
+  "views": [
+    {
+      "name": "Prezzo",
+      "position": [
+        13,
+        22,
+        3
+      ],
+      "target": [
+        -20,
+        9,
+        29
+      ]
+    },
+    {
+      "name": "Lord Street",
+      "position": [
+        -22,
+        10,
+        4
+      ],
+      "target": [
+        -22,
+        8,
+        25
+      ]
+    },
+    {
+      "name": "London Street",
+      "position": [
+        12,
+        10,
+        36
+      ],
+      "target": [
+        -10,
+        8,
+        32
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        6,
+        35,
+        14
+      ],
+      "target": [
+        -22,
+        16,
+        31
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -6,
+      2.25,
+      21
+    ],
+    "target": [
+      -14,
+      2.25,
+      26
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Cornice|Dressings|Quoins|Entrance|Roof|Pots) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Coarse authored walls, real openings, moulding profiles, roof forms and chimney silhouettes remain visible at walking distance."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Keep street openings, chamfered corner, mansard, dormers and chimney skyline; these envelopes are already inexpensive."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Small repeated sash meshes retain real frame parallax for walking; mesh prototypes are shared."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Flatten sash glazing bars and sill detail onto a baked rectangular receiver; preserve the separate wall opening and stone surround.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.6,
+        "max_sampled_error_m": 0.45
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake raised lettering onto its sign backing to retain readable PREZZO text without glyph geometry.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.6,
+        "max_sampled_error_m": 0.45
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Retain signage colour and lettering on a small baked panel at reduced resolution.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.6,
+        "max_sampled_error_m": 0.45
+      }
+    },
+    {
+      "id": "dentils",
+      "match": "^Dentils ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Cornice dentils contribute visible rhythm at pedestrian distances."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Tiny repeated teeth disappear; retain the stepped cornice profile."
+      }
+    },
+    {
+      "id": "pilasters",
+      "match": "^Pilaster ",
+      "walk": {
+        "strategy": "generator",
+        "reason": "Retain Ionic scrolls, bases and shaft; omit fine flute ribs and reduce scroll sampling.",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "pilaster",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false
+      },
+      "district": {
+        "strategy": "generator",
+        "reason": "Retain shaft and capital envelope; omit flute ribs and tiny volute spirals.",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "pilaster",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false
+      }
+    }
+  ]
+}

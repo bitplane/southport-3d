@@ -88,6 +88,7 @@
     "Tactile patches, access covers and drainage locations are interpreted where imagery cannot resolve exact layouts; do not treat as an accessibility or highway survey.",
     "Perimeter beyond core forecourts/island remains approximate and is identified separately.",
     "Extension heights/widths and tree positions are estimates, not a highway survey. London Street ends at Chapel/Hoghton; further station-side extension remains separate.",
-    "Fountain sculpture and bus shelter structures deferred pending adequate close references. Water and vegetation are schematic representations."
+    "Fountain sculpture and bus shelter structures deferred pending adequate close references. Water and vegetation are schematic representations.",
+    "Prezzo approach adjusted to OSM block corner and exterior/aerial photographs during building integration; kerb offsets remain estimated. See prezzo/research/references.json."
   ]
 }

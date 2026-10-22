@@ -106,3 +106,12 @@ District and Walk, then verified automatic Detail selection for London Street
 sections 2/3 at close range. Combined overview and garden screenshots are retained
 locally as `renders/combined-overview.png` and `renders/combined-gardens.png`;
 `renders/combined-london-detail.png` records the close automatic-level check.
+
+## Prezzo integration
+
+Adding 128 Lord Street exposed a gap between the estimated pavement edge and the
+mapped building corner. Its approach now follows an estimated kerb around that
+corner; the west London Street footway extends to site X = -10 m, meeting the
+wall rather than leaving an uncovered strip. The building owns no walkable ground.
+The revised public-realm totals are 147,709 / 51,917 / 22,901 triangles and
+8,298,624 / 8,308,232 / 1,904,412 GLB bytes for Detail / Walk / District.

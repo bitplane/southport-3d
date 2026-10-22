@@ -1,0 +1,66 @@
+{
+  "reviewed": "2026-10-22",
+  "sources": [
+    {
+      "id": "corner-photo",
+      "url": "https://www.onthemarket.com/details/17164559/",
+      "image_url": "https://media.onthemarket.com/properties/17164559/1580739509/image-0-1024x1024.jpg",
+      "capture": "Unknown",
+      "observations": [
+        "Three London Street bays, five Lord Street bays, chamfered arched entrance, rusticated corner, three upper storeys and dormer mansard."
+      ]
+    },
+    {
+      "id": "lord-oblique",
+      "url": "https://www.onthemarket.com/details/16602912/",
+      "image_url": "https://media.onthemarket.com/properties/16602912/1587755169/image-0-1024x1024.jpg",
+      "capture": "Unknown",
+      "observations": [
+        "Tall ground glazing, fluted Ionic pilasters, sash bars, first-floor keystones, stepped and dentilled cornices."
+      ]
+    },
+    {
+      "id": "mapillary",
+      "url": "https://www.mapillary.com/app/?pKey=3872094862903705&focus=photo",
+      "author": "davidsong",
+      "capture": "2019-07-31",
+      "observations": [
+        "London Street side and chamfer, corner first-floor segmental hood, roof pots and corner dormer."
+      ]
+    },
+    {
+      "id": "aerial-pano",
+      "url": "https://www.google.com/maps/@53.6486722,-3.004327,3a,60y,320h,70t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIC_ssfc0gE!2e10",
+      "author": "Niko S. via Google Maps",
+      "capture": "Jan 2025 (displayed)",
+      "observations": [
+        "Both street elevations, dormer counts, dark mansard, flat roof deck, multiple chimney stacks and raised rear structure."
+      ]
+    },
+    {
+      "id": "satellite",
+      "url": "https://www.google.com/maps/@53.64838,-3.00416,20z/data=!3m1!1e3",
+      "capture": "Not displayed",
+      "observations": [
+        "Building footprint approximate extent and flat rear roof layout."
+      ]
+    },
+    {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/371203985",
+      "retrieved": "2026-10-21",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0; https://www.openstreetmap.org/copyright",
+      "observations": [
+        "Urban-block footprint establishes street corner; no separate Prezzo plot polygon. Restaurant node 3747894065 identifies site."
+      ]
+    }
+  ],
+  "limitations": [
+    "Only source links published; no photographic pixels used in materials or bakes.",
+    "Metric dimensions visually estimated; no survey or measured building plans.",
+    "Rear elevations, service enclosure and hidden roof geometry are simplified estimates.",
+    "Glazing is opaque blue-grey shading; interiors and realistic reflections not modelled.",
+    "Capitals, keystones and mouldings are geometric interpretations, not exact ornamental tracings.",
+    "Imagery spans dates; signage represents observed PREZZO identity, not a verified current branding survey."
+  ]
+}

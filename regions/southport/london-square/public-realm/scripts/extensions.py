@@ -138,7 +138,7 @@ def build_extensions(ctx):
     # The northern carriageway narrows from the existing square to an estimated 8.6m.
     for i,(north,south) in enumerate([(-36,-76),(-76,-116),(-116,-154)],1):
         part=f'london-{i}-ground';fp=f'london-{i}-furniture'
-        rect('Surface London Street carriageway',-8.5,south,8.5,north,asphalt,part,-.12)
+        rect('Surface London Street carriageway',-10,south,8.5,north,asphalt,part,-.12)
         for side in [-1,1]:
             # split at side roads and final crossroads, preserving contiguous road mouths
             gaps=([(-70,-62)] if side==-1 else [(-88,-79)])+[(-150,-138)]
@@ -149,11 +149,11 @@ def build_extensions(ctx):
                 ranges=[(a,min(b,-134.5)) for a,b in ranges if a<-134.5]+[(max(a,-132),b) for a,b in ranges if b>-132]
                 a,b=-134.5,-132
                 polygon('Surface crossing ramp',[(side*4.3,a),(side*5.4,a),(side*5.4,b),(side*4.3,b)],mixed,part)
-                polygon('Surface crossing back landing',[(side*5.4,a),(side*8.5,a),(side*8.5,b),(side*5.4,b)],mixed,part)
+                polygon('Surface crossing back landing',[(side*5.4,a),(side*(10 if side<0 else 8.5),a),(side*(10 if side<0 else 8.5),b),(side*5.4,b)],mixed,part)
             for a,b in ranges:
                 if b<=a:continue
                 def inner(y):return 4.3+max(0,min(1,(y+46)/10))*1.9
-                points=[(side*inner(a),a),(side*8.5,a),(side*8.5,b),(side*inner(b),b)]
+                points=[(side*inner(a),a),(side*(10 if side<0 else 8.5),a),(side*(10 if side<0 else 8.5),b),(side*inner(b),b)]
                 polygon('Surface London Street footway',points,mixed,part)
                 curb([(side*inner(a),a),(side*inner(b),b)],part)
                 for delta in [.25,.45]:line('Marking London yellow edge',[(side*(inner(a)-delta),a),(side*(inner(b)-delta),b)],.075,yellow,part,-.111)
@@ -165,7 +165,7 @@ def build_extensions(ctx):
         # Short junction stubs establish future road/building ownership boundaries.
         for cy,side,width in [(-66,-1,8),(-83.5,1,9),(-144,-1,12),(-144,1,12)]:
             if south<cy<north:
-                a,b=sorted([side*8.5,side*25]);rect('Surface side road mouth',a,cy-width/2,b,cy+width/2,asphalt,part,-.12)
+                a,b=sorted([side*(10 if side<0 else 8.5),side*25]);rect('Surface side road mouth',a,cy-width/2,b,cy+width/2,asphalt,part,-.12)
                 for yy in [cy-width/2,cy+width/2]:
                     rect('Surface side road footway',a,yy-(3 if yy<cy else 0),b,yy+(3 if yy>cy else 0),mixed,part)
                     curb([(a,yy),(b,yy)],part)

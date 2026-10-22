@@ -1,0 +1,59 @@
+{
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "base_z": 0.58,
+  "footprint": [
+    [
+      -32,
+      -39
+    ],
+    [
+      -9.6,
+      -39
+    ],
+    [
+      -9.6,
+      -26.1
+    ],
+    [
+      -12.8,
+      -23.4
+    ],
+    [
+      -32,
+      -23.4
+    ]
+  ],
+  "chimneys": [
+    [
+      -30,
+      -25.3
+    ],
+    [
+      -22,
+      -25.3
+    ],
+    [
+      -14.8,
+      -25.3
+    ],
+    [
+      -11.2,
+      -30.5
+    ],
+    [
+      -11.2,
+      -37
+    ],
+    [
+      -29.8,
+      -36.5
+    ]
+  ],
+  "registration": "Street corner follows OSM way 371203985 (whole urban block), nodes around (-12.76,-23.36),(-9.56,-26.03). Rear lot division and dimensions visually estimated from satellite; OSM does not separately map this building.",
+  "dimensions_status": "All heights estimated by storey/window proportions; five Lord Street bays, three London Street bays plus one corner confirmed in photographs. Rear wall/service enclosure and rear roof slopes simplified, not surveyed.",
+  "datum": "Level building floors; base .58m on the square\u2019s estimated sloping ground. No surveyed vertical datum."
+}

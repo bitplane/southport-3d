@@ -69,7 +69,7 @@ def edge(name,pts,part):
 
 # Road base is continuous. Red surfacing is the island-loop material observed in imagery.
 rect('Surface roads',-41,-27,41,36,asphalt,'roads',-.12)
-rect('Surface London neck',-8.5,-36,8.5,-27,asphalt,'roads',-.12)
+rect('Surface London neck',-10,-36,8.5,-27,asphalt,'roads',-.12)
 rect('Surface red island carriageways',-13.1,-23,13.1,21,redroad,'roads',-.118)
 for side,label in [(1,'ne'),(-1,'sw')]:
  pts=D['courts'][label];polygon('Surface '+label+' mixed paving',pts,mixed,label+'-ground');edge(label+' forecourt',pts,label+'-ground')
@@ -98,9 +98,19 @@ for x in [-5.1,3.8]:
  for y in [-5.9,3.8]:rect('Pattern island corner bar',x,y,x+1.3,y+2.1,pale,'island-ground',.015)
 # Bounded outer continuity surfaces; detailed streets beyond the square await their own assets.
 for s in [-1,1]:
- x0,x1=sorted([s*6.2,s*41]);rect('Surface perimeter south approximate',x0,-27,x1,-23.6,mixed,'perimeter')
- x0,x1=sorted([s*6.2,s*8.5]);rect('Surface London neck footway',x0,-36,x1,-27,mixed,'perimeter')
+ x0,x1=sorted([s*6.2,s*41])
+ if s<0:
+  polygon('Surface Prezzo corner pavement',[(-41,-27),(-6.2,-27),(-6.2,-25.3),(-11.9,-21.1),(-32.5,-21.1),(-36,-23.6),(-41,-23.6)],mixed,'perimeter')
+ else:rect('Surface perimeter south approximate',x0,-27,x1,-23.6,mixed,'perimeter')
+ x0,x1=sorted([s*6.2,s*(10 if s<0 else 8.5)]);rect('Surface London neck footway',x0,-36,x1,-27,mixed,'perimeter')
  x0,x1=sorted([s*6,s*41]);rect('Surface perimeter north approximate',x0,31,x1,36,mixed,'perimeter')
+# The mapped Prezzo corner reveals the old generic footway was too far back.
+# Retain building registration and give its doorway an estimated continuous approach.
+from southport3d.landscape import capped_wall
+approach=[(-41,-23.6),(-36,-23.6),(-32.5,-21.1),(-11.9,-21.1),(-6.2,-25.3)]
+m=capped_wall([(x,y,grade(y)-.12) for x,y in approach],.125,.18,'Kerb Prezzo approach');m.finish([kerb],collections['perimeter'])
+for d in [.25,.43]:line('Marking Prezzo approach edge',[(x,y+d) for x,y in approach],.075,yellow,'roads',-.111)
+
 # Observed crossing studs and stop bars; positions follow the reconstructed kerb geometry.
 for s in [-1,1]:
  x0,x1=sorted([s*7.8,s*12.9])

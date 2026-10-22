@@ -63,6 +63,16 @@ def publish(args, assets, fingerprint, build):
         else:
             print('Reusing checked package:',key,flush=True)
         metadata=json.loads((package/'manifest.json').read_text())
+        # Asset-specific appearance checks run on new AND reused packages before
+        # the catalog is replaced. A valid GLB alone does not prove a sound bake.
+        for script in asset.get('publication_checks', []):
+            check=(runtime/'scripts'/script).resolve()
+            if not check.is_relative_to((runtime/'scripts').resolve()) or not check.is_file():
+                raise ValueError('Invalid publication check: '+script)
+            print('Checking published asset:',key,script,flush=True)
+            subprocess.run([sys.executable,str(check),'--package',str(package),'--recipe',str(config)],
+                           cwd=runtime,check=True)
+
         east,north=east_north_offset(world['origin_wgs84_lat_lon'],asset['origin_wgs84_lat_lon'])
         coordinates=spec['coordinates']
         entry={'id':key,'name':asset['name'],'areaName':spec['area_name'],'status':spec['status'],

@@ -1,0 +1,6 @@
+from pathlib import Path
+from PIL import Image,ImageOps,ImageDraw
+root=Path(__file__).resolve().parents[1]/'renders';sheet=Image.new('RGB',(1200,1000),'#d9dfdc')
+for i,name in enumerate(['corner','lord-street','london-street','roof']):
+ im=Image.open(root/(name+'.png')).convert('RGB');im=ImageOps.contain(im,(600,470));x=(i%2)*600;y=(i//2)*500;sheet.paste(im,(x,y+25));ImageDraw.Draw(sheet).text((x+12,y+6),name,fill='black')
+sheet.save(root/'contact-sheet.png')
