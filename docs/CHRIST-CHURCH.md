@@ -6,7 +6,7 @@ walling, trees and street furniture remain in the separate gardens asset.
 
 The present building retains a Gothic stone frontage and a square battlemented
 tower. The former spire is deliberately absent. The model includes paired
-pointed belfry openings and louvres, geometric tracery, diamond clock surrounds,
+pointed belfry openings and louvres, geometric tracery, diamond round-window surrounds,
 recessed pointed doors, stepped buttresses, a projecting octagonal stair turret,
 flanking gables and the rebuilt red-brick hall/cafe behind the historic front.
 The cafe-side middle tower window is blocked masonry, as visible in the close
@@ -22,7 +22,7 @@ deterministically authored materials.
 
 The structural envelope, roof slopes, battlements, buttresses, window recesses
 and coarse mullions stay geometric at all levels. Walk and District regenerate
-Gothic curves and clock circles with fewer samples. Fine diamond leadwork,
+Gothic curves and round-window circles with fewer samples. Fine diamond leadwork,
 small quoin skins and downpipes are omitted in the reduced levels. Tiny entrance
 crockets are selectively simplified at Walk and omitted at District. No global
 decimation is applied, and no solid-box proxy fills Gothic openings. The opaque
