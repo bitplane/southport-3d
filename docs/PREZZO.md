@@ -324,3 +324,21 @@ flights, open landings, supports and rails remain at every LoD; fine balusters
 remain at Detail/Walk and surface grating at Detail only. Geometry rays now
 check open wells, clear return routes and clear stair mouths, alongside the
 existing rear-window and roof-seam tests. Publication figures above include this correction and all three packages pass validation.
+
+
+### Recessed joinery and entrance sign (22 October 2026)
+
+The supplied Lord Street close-up and retained official exterior photographs show
+slimmer painted frames than the first model. Perimeter frames are now 65 mm
+(previously 100 mm), shop dividers 40 mm (60 mm), and fine sash glazing bars
+18 mm (27 mm). Frames sit inside the stone reveal rather than projecting as a
+white surround. These are visually calibrated proportions, not surveyed sizes.
+The same authored geometry supplies Detail/Walk and the rebaked District panels.
+
+The corner PREZZO sign now sits behind the masonry face and ahead of the dark
+fanlight. Its whole rectangular receiver fits inside the curved arch, avoiding
+the previous panel crossing the stone hood. Validation tests the recess, curved
+clearance and all street window fronts. All three exported levels were reviewed
+in entrance, shopfront and upper-sash close-ups; 26 window/relief bake checks pass.
+Fresh browser verification was attempted but the session stalled after its idle
+restart, so this correction relies on the recorded existing photographs.

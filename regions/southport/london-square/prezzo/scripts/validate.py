@@ -129,3 +129,19 @@ for ob in [o for o in meshes if o.name.startswith('Envelope rear escape structur
    hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,matrix@Vector((u,y+.45,d)),(rot@Vector((0,0,direction))).normalized(),distance=.35)
    assert not hit,(ob.name,'rail across stair mouth',y,found.name if found else None)
 print('Escape stair wells open, return paths and access mouths clear, feet reach datum')
+
+# The entrance lettering must fit within the arched void, behind the masonry
+# front and ahead of the fanlight, rather than sitting on the stone hood.
+entrance_sign=bpy.data.objects['Sign PREZZO']
+corner_frame=bpy.data.objects['Envelope corner'].matrix_world
+local=[corner_frame.inverted()@entrance_sign.matrix_world@v.co for v in entrance_sign.data.vertices]
+L=math.dist((-9.6,-26.1),(-12.8,-23.4));radius=.825
+assert max(v.z for v in local)<-.035,'Entrance sign projects ahead of stone opening'
+assert min(v.z for v in local)>-.125,'Entrance sign buried in fanlight'
+assert all(v.y<3.35+math.sqrt(max(0,radius*radius-(v.x-L/2)**2))-.002 for v in local),'Sign crosses curved arch edge'
+street_joinery=[ob for ob in windows if 'Lord Street' in ob.name or 'London Street' in ob.name or ob.name.startswith('Window corner')]
+assert len(street_joinery)>=30,'Missing street-frame coverage'
+for ob in street_joinery:
+    painted=[ob.data.vertices[i].co.z for f in ob.data.polygons if f.material_index==1 for i in f.vertices]
+    assert painted and max(painted)<.011,(ob.name,'painted frame projects out of reveal')
+print('Slender recessed window joinery and inset arch sign checked')
