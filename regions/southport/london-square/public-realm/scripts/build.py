@@ -100,14 +100,14 @@ for x in [-5.1,3.8]:
 for s in [-1,1]:
  x0,x1=sorted([s*6.2,s*41])
  if s<0:
-  polygon('Surface Prezzo corner pavement',[(-41,-27),(-6.2,-27),(-6.2,-25.3),(-11.9,-21.1),(-32.5,-21.1),(-36,-23.6),(-41,-23.6)],mixed,'perimeter')
+  polygon('Surface Prezzo corner pavement',[(-41,-27),(-6.2,-27),(-6.2,-25.3),(-11.9,-21.1),(-41,-21.1)],mixed,'perimeter')
  else:rect('Surface perimeter south approximate',x0,-27,x1,-23.6,mixed,'perimeter')
  x0,x1=sorted([s*6.2,s*(10 if s<0 else 8.5)]);rect('Surface London neck footway',x0,-36,x1,-27,mixed,'perimeter')
  x0,x1=sorted([s*6,s*41]);rect('Surface perimeter north approximate',x0,31,x1,36,mixed,'perimeter')
 # The mapped Prezzo corner reveals the old generic footway was too far back.
 # Retain building registration and give its doorway an estimated continuous approach.
 from southport3d.landscape import capped_wall
-approach=[(-41,-23.6),(-36,-23.6),(-32.5,-21.1),(-11.9,-21.1),(-6.2,-25.3)]
+approach=[(-41,-21.1),(-11.9,-21.1),(-6.2,-25.3)]
 m=capped_wall([(x,y,grade(y)-.12) for x,y in approach],.125,.18,'Kerb Prezzo approach');m.finish([kerb],collections['perimeter'])
 for d in [.25,.43]:line('Marking Prezzo approach edge',[(x,y+d) for x,y in approach],.075,yellow,'roads',-.111)
 

@@ -65,3 +65,10 @@ The manifest records decisions, source/recipe/baker hashes, Blender version, bou
 ## Streaming assembly
 
 The commands above retain the original component experiment. For the complete viewer build, use `python tools/project.py publish` and the [publication contract](VIEWER.md). publication.json groups compatible instances, classifies every exported object, retains explicit architectural envelopes where appropriate, and assembles Detail/Walk/District streaming parts. Regional tiles remain deferred.
+
+For long shop signs, inspect the result in the actual viewer as well as the bake
+PNG. Stretching a square atlas over a thin panel creates unequal texel density;
+isotropic mip filtering can erase otherwise sharp letters. The viewer now uses
+device-limited anisotropic filtering (up to 16). Check both front and oblique
+views and retain this sampling policy in other viewers. Rectangular sign atlases
+would also reduce wasted texture allocation in a future packing pass.

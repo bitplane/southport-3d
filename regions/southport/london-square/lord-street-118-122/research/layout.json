@@ -1,0 +1,44 @@
+{
+  "base_z": 0.58,
+  "x_near": -32.225,
+  "x_far": -50.8,
+  "front_y": -23.6,
+  "rear_y": -41.2,
+  "parapet_top": 11.55,
+  "roof_level": 10.95,
+  "upper_sill": 6.35,
+  "upper_head": 8.35,
+  "upper_centres": [
+    1.55,
+    4.55,
+    7.55,
+    10.55,
+    13.55,
+    16.55
+  ],
+  "shops": [
+    {
+      "id": "sam-thai",
+      "name": "Sam Thai",
+      "u0": 0.15,
+      "u1": 6.05,
+      "colour": "blue"
+    },
+    {
+      "id": "mamma-mia",
+      "name": "Mamma Mia",
+      "u0": 6.25,
+      "u1": 11.95,
+      "colour": "dark"
+    },
+    {
+      "id": "bugle-tap",
+      "name": "THE BUGLE TAP",
+      "u0": 12.15,
+      "u1": 18.4,
+      "colour": "dark"
+    }
+  ],
+  "registration": "OSM whole-block way 371203985 sets frontage line. Units registered relative to Prezzo party wall; mapped POIs lie at site X -35.19, -39.49, -43.04 and -47.39. Exact shop subdivisions not separately surveyed.",
+  "uncertainty": "Facade width, heights, shop subdivisions and rear depth visually calibrated estimates. New Bugle frontage treated as combined former right-hand shop bays from 2026 oblique photograph. Roof fittings and rear wall simplified; no interiors."
+}

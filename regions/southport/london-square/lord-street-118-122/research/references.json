@@ -1,0 +1,90 @@
+{
+  "reviewed": "2026-10-22",
+  "sources": [
+    {
+      "id": "ground-wide",
+      "url": "https://www.google.com/maps/@53.6488147,-3.004116,3a,35y,211h,95t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgID486XpYw!2e10",
+      "author": "Jomo via Google Maps",
+      "capture": "Jan 2018 displayed",
+      "observations": [
+        "Six narrow dark upper windows, plain stone panel wall, tall blank parapet zone, lower height than Prezzo. Old shop signage not used as current identity."
+      ]
+    },
+    {
+      "id": "aerial",
+      "url": "https://www.google.com/maps/@53.6486722,-3.004327,3a,45y,340h,72t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIC_ssfc0gE!2e10",
+      "author": "Niko S. via Google Maps",
+      "capture": "Jan 2025 displayed",
+      "observations": [
+        "Continuous flat roof behind parapet, shallow roof features, frontage between Prezzo and larger British Heart Foundation building."
+      ]
+    },
+    {
+      "id": "mapillary",
+      "url": "https://www.mapillary.com/app/?pKey=3872094862903705&focus=photo",
+      "author": "davidsong",
+      "capture": "2019-07-31",
+      "observations": [
+        "Neighbourhood and Prezzo registration only; this frame does not resolve the terrace facade."
+      ]
+    },
+    {
+      "id": "sam-thai",
+      "url": "https://www.happycow.net/reviews/sam-thai-restaurant-southport-377041",
+      "image_url": "https://images.happycow.net/venues/1024/37/70/hcmp377041_2415433.jpeg",
+      "capture": "Unknown",
+      "observations": [
+        "Green polished piers, silver narrow mullions, two main panes and right door, blue bands and fascia lettering, projecting black sign."
+      ]
+    },
+    {
+      "id": "sam-address",
+      "url": "https://sam-thai-restaurant-southport.co.uk/gallery/",
+      "observations": [
+        "Business site identifies 122 Lord Street."
+      ]
+    },
+    {
+      "id": "mamma",
+      "url": "https://www.visitsouthport.com/listing/pizzeria-mamma-mia/30887101/",
+      "image_url": "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill%2Cf_jpg%2Ch_822%2Cq_75%2Cw_1220/https%3A/tmpdmsmedia.newmindmedia.com/wsimgs/mamma_mia_2065932265.jpg",
+      "capture": "Unknown",
+      "observations": [
+        "Tall upper transom with pizzeria lettering, black awning below it, large ground pane and right recessed entry."
+      ]
+    },
+    {
+      "id": "bugle",
+      "url": "https://micropubadventures.co.uk/2026/08/22/22-08-26-southport/",
+      "image_url": "https://www.flickr.com/photo_download.gne?id=55483468780&secret=736b214a19&size=c&source=photoPageEngagement",
+      "author": "Micropub Adventures",
+      "capture": "2026-08-22 article",
+      "observations": [
+        "Bugle Tap black fascia with pale lettering, narrow high transoms, dark glazed folding frontage and right door; Mamma Mia blue projecting sign adjoining; polished pier and ATM at right edge."
+      ]
+    },
+    {
+      "id": "letting",
+      "url": "https://www.loopnet.co.uk/listing/118-122-lord-st-southport/19957980/",
+      "observations": [
+        "Listing calls terrace 118\u2013122 Lord Street and gives year built 1966 (listing claim, not independently verified). Full property image could not be retrieved; not used as pixel evidence."
+      ]
+    },
+    {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/371203985",
+      "retrieved": "2026-10-21",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0; https://www.openstreetmap.org/copyright",
+      "observations": [
+        "Whole block envelope and restaurant POIs, not independent surveyed unit boundaries."
+      ]
+    }
+  ],
+  "limitations": [
+    "Reference links only; no photographic pixels in generated textures.",
+    "Imagery dates differ; present-day condition not surveyed.",
+    "Dimensions, hidden rear and rooftop fittings approximate.",
+    "No interiors; opaque glazing.",
+    "Unreadable menus and notices omitted."
+  ]
+}

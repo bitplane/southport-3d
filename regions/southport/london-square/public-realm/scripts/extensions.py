@@ -64,6 +64,10 @@ def build_extensions(ctx):
         rect('Surface extended carriageways',x0,-27,x1,41,asphalt,part,-.12)
         rect('Surface Lord Street north footway',x0,31,x1,41,mixed,part)
         rect('Surface rear frontage footway',x0,-27,x1,-23.6,mixed,part)
+        if side==-1:
+            # Continue the Prezzo approach along the newly registered shop terrace.
+            # Keep pavement ownership here; taper beyond its western party wall.
+            polygon('Surface 118-122 frontage approach',[(-55,-23.6),(-52,-21.1),(-41,-21.1),(-41,-23.6)],mixed,part)
         # Garden envelope with continuous footways beside main/rear carriageways.
         end=149 if side==1 else -100
         lo,hi=sorted([side*41,end]);rect('Surface garden paved envelope',lo,-14.8,hi,20.5,mixed,part)
@@ -103,9 +107,15 @@ def build_extensions(ctx):
         # Front/back pavements, with cross-path kerb openings, no kerb across scene ends.
         for a,b in cuts:
             if b>a:curb([(a,20.5),(b,20.5)],part)
-        curb([(x0,31),(x1,31)],part);curb([(x0,-23.6),(x1,-23.6)],part)
+        curb([(x0,31),(x1,31)],part)
+        if side==-1:curb([(x0,-23.6),(-55,-23.6),(-52,-21.1),(x1,-21.1)],part)
+        else:curb([(x0,-23.6),(x1,-23.6)],part)
         dashed([(x0,25.6),(x1,25.6)],part)
-        for y in [21,21.2,-22.9,-23.1]:line('Marking double yellow',[(x0,y),(x1,y)],.075,yellow,part,-.111)
+        for y in [21,21.2,-22.9,-23.1]:
+            end=-55 if side==-1 and y<0 else x1
+            line('Marking double yellow',[(x0,y),(end,y)],.075,yellow,part,-.111)
+        if side==-1:
+            for offset in [.5,.7]:line('Marking terrace approach double yellow',[(-55,-23.6+offset),(-52,-21.1+offset),(x1,-21.1+offset)],.075,yellow,part,-.111)
         # OSM benches/bins outside the old core. Orient benches toward road or paths.
         for node_id,node in osm['nodes'].items():
             x,y=node['xy'];kind={'bench':'bench','waste_basket':'bin'}.get(node['tags'].get('amenity'))

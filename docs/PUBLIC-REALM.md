@@ -113,5 +113,13 @@ Adding 128 Lord Street exposed a gap between the estimated pavement edge and the
 mapped building corner. Its approach now follows an estimated kerb around that
 corner; the west London Street footway extends to site X = -10 m, meeting the
 wall rather than leaving an uncovered strip. The building owns no walkable ground.
-The revised public-realm totals are 147,709 / 51,917 / 22,901 triangles and
-8,298,624 / 8,308,232 / 1,904,412 GLB bytes for Detail / Walk / District.
+The revised public-realm totals are 147,705 / 51,913 / 22,897 triangles and
+8,297,184 / 8,306,792 / 1,902,968 GLB bytes for Detail / Walk / District.
+
+## 118–122 Lord Street approach
+
+The next terrace continues the Prezzo frontage southwest. The perimeter and
+southwest garden ground parts now carry the same widened approach out to site
+X -52, with a taper to the earlier estimate at X -55. Kerbs and yellow lines
+follow that edge; building assets add no duplicate floor. The kerb position is
+visually estimated and can be refined with the next Lord Street frontage.

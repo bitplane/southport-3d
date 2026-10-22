@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/terrace.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Square",
+  "status": "118\u2013122 Lord Street exterior, with 2026 Bugle Tap and undated Sam Thai/Mamma Mia references. Dimensions and rear estimated; no interiors.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Stone panels and upper windows",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Flat roof and parapets",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Sam Thai, Mamma Mia and Bugle Tap",
+      "collection": "shopfront"
+    }
+  ],
+  "views": [
+    {
+      "name": "Terrace",
+      "position": [
+        -31,
+        13,
+        3
+      ],
+      "target": [
+        -41,
+        6,
+        25
+      ]
+    },
+    {
+      "name": "Front",
+      "position": [
+        -41,
+        7,
+        2
+      ],
+      "target": [
+        -41,
+        6,
+        24
+      ]
+    },
+    {
+      "name": "Shopfronts",
+      "position": [
+        -41,
+        2.3,
+        17
+      ],
+      "target": [
+        -41,
+        2.8,
+        24
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -30,
+        25,
+        18
+      ],
+      "target": [
+        -42,
+        9,
+        32
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -41,
+      2.8,
+      21
+    ],
+    "target": [
+      -41,
+      2.8,
+      24
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Trim|Roof|Shop|Awning|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Inexpensive panel walls, door recesses, roof parapet and awning silhouettes retain street scale."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain small authored envelope and distinctly coloured frontage; no global decimation."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Small repeated dark window frames retain recess parallax."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Bake six narrow window frames onto shared panels; retain independent wall openings.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.35
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake glyph geometry onto authored sign panels, retaining readable names.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.35
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Retain frontage identity with lower resolution sign textures.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.35
+      }
+    },
+    {
+      "id": "fittings",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Door handles and fascia lamps visible at walking range."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Small hardware disappears; retain doors and sign envelopes."
+      }
+    }
+  ]
+}

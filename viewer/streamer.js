@@ -8,10 +8,11 @@ function dispose(root) {
   geometries.forEach(x=>x.dispose());materials.forEach(x=>x.dispose());textures.forEach(x=>{x.dispose();x.source?.data?.close?.();});
 }
 export class Streamer {
-  constructor(scene,catalog,baseURL,onChange,onError) {
+  constructor(scene,catalog,baseURL,onChange,onError,maxAnisotropy=1) {
     this.scene=scene;this.baseURL=baseURL;this.onChange=onChange;this.onError=onError;
     this.entries=[];this.loader=new GLTFLoader();this.cache=new Map();this.pending=0;this.bytes=0;
     this.budget=256*1024*1024;this.wireframe=false;
+    this.anisotropy=Math.max(1,Math.min(16,maxAnisotropy));
     for(const asset of catalog.assets){
       const group=new THREE.Group();group.position.fromArray(asset.position);group.rotation.y=asset.rotationY;scene.add(group);group.updateMatrixWorld(true);
       for(const part of asset.parts){
@@ -50,7 +51,17 @@ export class Streamer {
       if(controller.signal.aborted)return;
       const gltf=await this.loader.parseAsync(bytes,'');
       if(controller.signal.aborted){dispose(gltf.scene);return;}
-      gltf.scene.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;for(const m of [o.material].flat())m.wireframe=this.wireframe;}});
+      // Long sign panels and oblique paving otherwise lose their long-axis detail
+      // to isotropic mip filtering, even when the underlying bake is sharp.
+      const textures=new Set();
+      gltf.scene.traverse(o=>{if(o.isMesh){
+        o.castShadow=true;o.receiveShadow=true;
+        for(const m of [o.material].flat().filter(Boolean)){
+          m.wireframe=this.wireframe;
+          for(const texture of Object.values(m))if(texture?.isTexture)textures.add(texture);
+        }
+      }});
+      for(const texture of textures)texture.anisotropy=this.anisotropy;
       this.cache.set(key,{key,root:gltf.scene,bytes:record.gpuBytesEstimate||record.bytes*3,used:performance.now(),entry,level});
       if(entry.current===null || entry.wanted===level)this.activate(entry,level);
     }catch(error){if(error.name!=='AbortError'){entry.failed.add(level);this.onError(`${entry.part.name}: ${error.message}`);}}

@@ -84,13 +84,13 @@ async function init(){
   $('resolution').oninput=()=>{$('resolution-output').textContent=$('resolution').value+'×';resize();};$('wireframe').onchange=()=>streamer?.setWireframe($('wireframe').checked);$('shadows').onchange=()=>{renderer.shadowMap.enabled=$('shadows').checked;renderer.shadowMap.needsUpdate=true;};$('retry').onclick=()=>location.reload();
   const manifestURL=new URL('catalog.json',location.href);const response=await fetch(manifestURL,{cache:'no-store'});if(!response.ok)throw new Error('The scene package is not ready yet. Reload in a moment.');catalog=await response.json();if(!catalog.assets?.length)throw new Error('No buildings are available in this package.');
   settings.detailDistance=catalog.lodPolicy.detailDistance;settings.districtDistance=catalog.lodPolicy.districtDistance;
-  streamer=new Streamer(scene,catalog,manifestURL,status,showError);
+  streamer=new Streamer(scene,catalog,manifestURL,status,showError,renderer.capabilities.getMaxAnisotropy());
   for(const asset of catalog.assets){const option=document.createElement('option');option.value=asset.id;option.textContent=asset.name;$('asset-select').append(option);}
   $('asset-select').onchange=()=>selectAsset(catalog.assets.find(a=>a.id===$('asset-select').value));
   for(const option of $('quality').options)if(option.value!=='auto')option.disabled=!catalog.assets.some(a=>a.parts.some(p=>p.levels[option.value]));
   selectAsset(catalog.assets[0]);resize();window.addEventListener('resize',resize);
   // Read-only state gives contributors a stable way to inspect browser runs.
-  window.southport={getState:()=>({mode,camera:camera.position.toArray(),target:orbit.target.toArray(),quality:$('quality').value,pending:streamer.pending,transferred:streamer.bytes,resident:streamer.residentBytes,triangles:renderer.info.render.triangles,parts:streamer.entries.map(e=>({id:e.part.id,level:e.current,wanted:e.wanted,distance:e.distance,error:[...e.failed]}))})};
+  window.southport={getState:()=>({mode,camera:camera.position.toArray(),target:orbit.target.toArray(),quality:$('quality').value,textureAnisotropy:streamer.anisotropy,pending:streamer.pending,transferred:streamer.bytes,resident:streamer.residentBytes,triangles:renderer.info.render.triangles,parts:streamer.entries.map(e=>({id:e.part.id,level:e.current,wanted:e.wanted,distance:e.distance,error:[...e.failed]}))})};
   requestAnimationFrame(animate);
 }
 init().catch(e=>{showError(e.message);$('status').textContent='Unable to open scene';});

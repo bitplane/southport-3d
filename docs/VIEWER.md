@@ -83,3 +83,16 @@ Part splitting duplicates some resources across GLBs; Detail therefore exceeds t
 Validation: the master build and its existing export checks passed; all 13 part/level GLBs passed publication inspection. All 307 nonempty physical meshes have declared part/rule coverage, with the survey guide explicitly excluded. Python contract tests, JavaScript policy tests and syntax checks passed. A second publication reused the checked packages. Browser checks exercised all five parts, forced Walk/District, automatic close-up Detail, viewpoint changes, walking movement, orbit/overview and wireframe toggling without asset errors. Walk and District colonnade screenshots were inspected; openings and column silhouettes remain present, with loss of fine carving at District expected. Full visual equivalence, pointer lock and hardware performance have not been certified; the agent browser's low frame rate is not a useful desktop GPU benchmark.
 
 The separate public-realm asset now replaces the memorial’s old ground part in the combined scene. See [public-realm ownership, spatial parts and evidence limits](PUBLIC-REALM.md). The table above remains the historical first-package measurement.
+
+## Long signs and texture filtering
+
+The streamer applies anisotropic filtering to loaded material textures, capped
+at 16 and the device's reported limit (1 when unsupported). Long narrow sign
+panels can otherwise look blurred despite sharp bake pixels, because ordinary
+mip filtering discards detail along their long axis. The 118–122 Lord Street
+review caught this in Walk/District; the same change improves Prezzo signage.
+This costs additional texture samples, not additional downloads or geometry.
+See [Three.js Texture anisotropy](https://threejs.org/docs/pages/Texture.html#anisotropy).
+The read-only viewer state reports `textureAnisotropy`. Devices with lower
+limits can still show softer signs; aspect-aware rectangular atlases remain a
+future bake optimisation.
