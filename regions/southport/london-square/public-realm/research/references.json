@@ -124,6 +124,20 @@
         "Red junction surface extends into LondonStreet approach, with flaring white divider.",
         "Paving, kerb and yellowlines share one corrected boundary; widths remain estimated."
       ]
+    },
+    {
+      "id": "prezzo-paving-review",
+      "url": "https://www.onthemarket.com/details/16602912/",
+      "capture": "Undated listing image; compared with saved August 2024 London Street panorama",
+      "observations": [
+        "Lord Street has mixed rectangular stone slabs beside the building, a dark small-block service carriageway and marked parking bays.",
+        "Saved August 2024 panorama from 6 London Street shows a rounded kerb return at Prezzo, not a single chamfer; kerb and double-yellow line now share a sampled curve.",
+        "Radius 6.2m and registration visually calibrated against existing building footprint; not surveyed."
+      ],
+      "local_reference_files": [
+        "output/prezzo-detail-reference-lord.png",
+        "output/natwest-junction-reference.png"
+      ]
     }
   ],
   "limitations": [

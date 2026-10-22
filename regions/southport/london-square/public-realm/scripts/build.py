@@ -58,7 +58,7 @@ def open_kerb(points,inside,part):
 
 def london_kerb(side):
  if side>0:return [(4.3,-154),(4.3,-25.3)]
- return [(side*4.3,-154),(side*4.3,-46),(side*6.2,-36),(side*6.2,-25.3)]
+ return [(side*4.3,-154),(side*4.3,-46),(side*6.2,-36),(side*6.2,-27.3)]
 
 
 def paint_edge(name, points, side, part, bounds=None, closed=False):
@@ -98,12 +98,18 @@ def edge(name,pts,part):
   if abs(a[0])>=40.999 and abs(b[0])>=40.999:continue
   line('Marking double yellow '+name,[a,b],.075,yellow,'roads',-.111)
 
+# Rounded Prezzo kerb observed in August 2024 Street View. Radius/registration
+# are visually calibrated; reuse this boundary for paving, kerb and road paint.
+prezzo_curve=[(-12.4+6.2*math.cos(t),-27.3+6.2*math.sin(t))
+ for t in [math.pi/2-i*math.pi/24 for i in range(13)]]
+prezzo_approach=[(-41,-21.1)]+prezzo_curve
+
 # Road base is continuous. Red surfacing is the island-loop material observed in imagery.
 rect('Surface roads',-41,-27,41,36,asphalt,'roads',-.12)
 rect('Surface London neck',-10,-36,8.5,-27,asphalt,'roads',-.12)
 polygon('Surface red island carriageways',[(-13.1,21),(13.1,21),(13.1,-19),
  (8,-19.9),(5.5,-21.4),(4.3,-25.3),(4.3,-28),(-6.2,-28),
- (-6.2,-25.3),(-11.9,-21.1),(-13.1,-19)],redroad,'roads',-.118)
+ *list(reversed(prezzo_curve)),(-13.1,-19)],redroad,'roads',-.118)
 rect('Surface Lord Street service pavers',-41,-23.6,-13.1,-14.8,roadpavers,'roads',-.117)
 rect('Surface St Georges service pavers',13.1,-23.6,41,-14.8,roadpavers,'roads',-.117)
 for side,label in [(1,'ne'),(-1,'sw')]:
@@ -135,16 +141,16 @@ for x in [-5.1,3.8]:
 for s in [-1,1]:
  x0,x1=sorted([s*6.2,s*41])
  if s<0:
-  polygon('Surface Prezzo corner pavement',[(-41,-27),(-6.2,-27),(-6.2,-25.3),(-11.9,-21.1),(-41,-21.1)],mixed,'perimeter')
+  polygon('Surface Prezzo corner pavement',[(-41,-29),(-6.2,-29)]+list(reversed(prezzo_approach)),mixed,'perimeter')
  else:
   polygon('Surface NatWest corner pavement',[(4.3,-27),(41,-27),(41,-19.9),
    (8,-19.9),(6.5,-20.3),(5.4,-21),(4.7,-22.4),(4.35,-24.5),(4.3,-25.3)],mixed,'perimeter')
- x0,x1=sorted([s*(6.2 if s<0 else 4.3),s*(10 if s<0 else 8.5)]);rect('Surface London neck footway',x0,-36,x1,-27,mixed,'perimeter')
+ x0,x1=sorted([s*(6.2 if s<0 else 4.3),s*(10 if s<0 else 8.5)]);rect('Surface London neck footway',x0,-36,x1,(-29 if s<0 else -27),mixed,'perimeter')
  x0,x1=sorted([s*6,s*41]);rect('Surface perimeter north approximate',x0,31,x1,36,mixed,'perimeter')
 # The mapped Prezzo corner reveals the old generic footway was too far back.
 # Retain building registration and give its doorway an estimated continuous approach.
 from southport3d.landscape import capped_wall
-approach=[(-41,-21.1),(-11.9,-21.1),(-6.2,-25.3)]
+approach=prezzo_approach
 open_kerb(approach,-1,'perimeter')
 paint_edge('Prezzo approach edge',approach,1,'roads',(-41,-36,41,36))
 natwest_approach=[(4.3,-25.3),(4.35,-24.5),(4.7,-22.4),(5.4,-21),
@@ -154,8 +160,9 @@ paint_edge('NatWest approach edge',natwest_approach,1,'roads',(-41,-36,41,36))
 # Continuous London Street neck edges use the same setback as its first tile.
 for side in [-1,1]:
  x=side*(6.2 if side<0 else 4.3)
- open_kerb([(x,-36),(x,-25.3)],-side,'perimeter')
- paint_edge('London neck edge',london_kerb(side),side,'roads',(-10,-36,8.5,-25.3))
+ end=-27.3 if side<0 else -25.3
+ open_kerb([(x,-36),(x,end)],-side,'perimeter')
+ paint_edge('London neck edge',london_kerb(side),side,'roads',(-10,-36,8.5,end))
 
 # Flaring approach divider seen from London Street, rather than a paint line
 # ending at the rectangular red-material patch. Dimensions are visual estimates.

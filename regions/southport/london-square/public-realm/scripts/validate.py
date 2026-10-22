@@ -112,3 +112,12 @@ for ob in meshes:
   facing_y=-math.cos(ob.rotation_euler.z)
   assert facing_y*expected>.99,(ob.name,'bench faces away from intended footway')
 print('Lord Street bench seats face the footway, with backs toward planting or shops')
+
+# The Prezzo apron must meet both elevations and remain inside the rounded kerb.
+for x,y in [(-22,-22),(-12,-22),(-9,-24),(-7,-27),(-8,-30)]:
+ ob,p=ground_hit(x,y)
+ assert ob and any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(x,y,'Prezzo apron missing')
+for x,y in [(-7.5,-23),(-5.8,-28)]:
+ ob,p=ground_hit(x,y)
+ assert ob and not any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(x,y,'Prezzo paving extends into carriageway')
+print('Rounded Prezzo pavement and open carriageway validated')

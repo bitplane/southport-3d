@@ -180,3 +180,9 @@ paving around the pier and red surfacing through the former rectangular seam.
 August 2024 Street View supports the layout; widths remain visual estimates.
 Lord Street bench orientations also account for the generator's backrest at
 local +Y, so garden rows face outward and opposite pavement rows face the road.
+
+The Prezzo-side corner now follows the rounded kerb visible in the retained
+August 2024 panorama, replacing its single diagonal cut. The slab apron, red
+carriageway boundary and paired yellow lines use the same sampled curve; the
+London Street neck joins tangentially. The estimated 6.2 m radius retains the
+existing terrace registration. Combined close renders check both elevations.
