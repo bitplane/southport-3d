@@ -14,7 +14,8 @@
   "components": [
     "white-clad-frame-and-spandrel-grid",
     "recessed-red-shopfront",
-    "flat-roof-envelope"
+    "stepped-parapets-and-roof-recess",
+    "roof-edge-housings-and-plant"
   ],
   "lods": [
     "detail",

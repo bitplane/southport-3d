@@ -1,0 +1,220 @@
+{
+  "status": "observed-top-down-outlines-estimated-heights-and-functions",
+  "source_ids": [
+    "roof-satellite",
+    "aerial"
+  ],
+  "coordinate_method": "Satellite feature positions normalized within existing visually calibrated frontage/rear envelope. Coordinates and heights are estimates; the photograph is not a measured orthophoto survey. No access doors, stairs or hidden equipment inferred.",
+  "edge_housings": [
+    {
+      "centre": [
+        -52.65,
+        -40.1
+      ],
+      "size": [
+        2.2,
+        2.5
+      ],
+      "height": 1.55
+    },
+    {
+      "centre": [
+        -51.75,
+        -46.85
+      ],
+      "size": [
+        1.5,
+        2.3
+      ],
+      "height": 1.35
+    },
+    {
+      "centre": [
+        -52.2,
+        -67.0
+      ],
+      "size": [
+        2.2,
+        3.0
+      ],
+      "height": 1.55
+    }
+  ],
+  "walled_recess": {
+    "centre": [
+      -69.45,
+      -62.45
+    ],
+    "size": [
+      4.3,
+      4.8
+    ],
+    "floor_relative": -0.5
+  },
+  "low_rooflight": {
+    "centre": [
+      -54.4,
+      -53.35
+    ],
+    "size": [
+      1.45,
+      3.9
+    ]
+  },
+  "plant": {
+    "centre": [
+      -57.95,
+      -65.8
+    ],
+    "size": [
+      6.2,
+      8.5
+    ],
+    "fan_count": 4
+  },
+  "vent_caps": [
+    [
+      -60.45,
+      -36.1
+    ],
+    [
+      -55.7,
+      -49.0
+    ],
+    [
+      -61.5,
+      -49.3
+    ],
+    [
+      -69.15,
+      -49.55
+    ]
+  ],
+  "pipe_cluster": [
+    [
+      -56.7,
+      -44
+    ],
+    [
+      -57,
+      -44.3
+    ],
+    [
+      -56.5,
+      -44.5
+    ]
+  ],
+  "parapets": [
+    {
+      "a": [
+        -76.35,
+        -23.95
+      ],
+      "b": [
+        -76.35,
+        -43.0
+      ],
+      "thickness": 0.56,
+      "top": 13.15,
+      "material": "brick"
+    },
+    {
+      "a": [
+        -76.35,
+        -43.0
+      ],
+      "b": [
+        -76.35,
+        -66.0
+      ],
+      "thickness": 0.56,
+      "top": 13.5,
+      "material": "brick"
+    },
+    {
+      "a": [
+        -76.35,
+        -66.0
+      ],
+      "b": [
+        -76.35,
+        -71.15
+      ],
+      "thickness": 0.56,
+      "top": 13.25,
+      "material": "brick"
+    },
+    {
+      "a": [
+        -50.95,
+        -23.95
+      ],
+      "b": [
+        -50.95,
+        -39.0
+      ],
+      "thickness": 0.26,
+      "top": 13.1,
+      "material": "felt"
+    },
+    {
+      "a": [
+        -50.95,
+        -39.0
+      ],
+      "b": [
+        -50.95,
+        -48.2
+      ],
+      "thickness": 0.26,
+      "top": 13.4,
+      "material": "felt"
+    },
+    {
+      "a": [
+        -50.95,
+        -48.2
+      ],
+      "b": [
+        -50.95,
+        -65.5
+      ],
+      "thickness": 0.26,
+      "top": 13.1,
+      "material": "felt"
+    },
+    {
+      "a": [
+        -50.95,
+        -65.5
+      ],
+      "b": [
+        -50.95,
+        -71.15
+      ],
+      "thickness": 0.26,
+      "top": 13.4,
+      "material": "felt"
+    },
+    {
+      "a": [
+        -76.07,
+        -71.15
+      ],
+      "b": [
+        -51.08,
+        -71.15
+      ],
+      "thickness": 0.26,
+      "top": 13.2,
+      "material": "felt"
+    }
+  ],
+  "uncertainties": [
+    "Three edge housings are visible but their access/ventilation function is unresolved; no doors or stair runs invented.",
+    "Rectangular rear feature interpreted as a shallow external walled recess with two higher walls; actual internal depth is unknown.",
+    "Elongated pale/rust feature may be a rooflight or ventilation hood; opaque shallow pitched interpretation only.",
+    "Plant silhouette and four fan tops observed; heights, cabinet panel divisions and guardrail construction approximate.",
+    "Rear and side ownership boundaries against adjoining properties remain unverified."
+  ]
+}

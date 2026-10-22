@@ -114,6 +114,32 @@
         9.4,
         24
       ]
+    },
+    {
+      "name": "Roof plant",
+      "position": [
+        -44,
+        23,
+        79
+      ],
+      "target": [
+        -58,
+        14,
+        65
+      ]
+    },
+    {
+      "name": "Roof rear",
+      "position": [
+        -36,
+        37,
+        86
+      ],
+      "target": [
+        -62,
+        13,
+        59
+      ]
     }
   ],
   "walk_spawn": {
@@ -134,11 +160,11 @@
       "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
       "walk": {
         "strategy": "keep",
-        "reason": "Keep low-cost walls, actual entrance recess and threshold steps, large piers and roof silhouette."
+        "reason": "Keep authored walls, stepped parapets, edge housings, actual roof recess, rooflight and coarse plant cabinets alongside facade openings."
       },
       "district": {
         "strategy": "keep",
-        "reason": "Authored coarse envelope preserves shopfront recess, white surround and red piers at district range."
+        "reason": "Keep low-cost roof and facade silhouettes, the walled recess and coarse plant masses; avoid flattening the rooftop into a single box."
       }
     },
     {
@@ -185,11 +211,11 @@
       "match": "^Fine ",
       "walk": {
         "strategy": "keep",
-        "reason": "Retain door handles and entrance downlights visible nearby."
+        "reason": "Retain visible door fittings, circular downlights, rooftop rails, fan rims, vents and flashings; inexpensive nearby geometry."
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit small handles, downlights and fixings; retain entrance envelope."
+        "reason": "Omit small handles/downlights and rooftop rails, fan rims and vent caps; retain coarse rooftop envelopes and plant cabinet shapes."
       }
     },
     {
@@ -197,11 +223,11 @@
       "match": "^Micro ",
       "walk": {
         "strategy": "omit",
-        "reason": "Sub-centimetre grout relief is below useful walking sampling; retain complete three-step entrance geometry."
+        "reason": "Omit tiny threshold grout, fan guards and cabinet seams below useful walking sampling; retain steps and coarse rooftop plant."
       },
       "district": {
         "strategy": "omit",
-        "reason": "No geometry allocation for threshold tile joints at district range."
+        "reason": "No geometry allocation for threshold grout, fan guards or cabinet seams at district range."
       }
     }
   ]

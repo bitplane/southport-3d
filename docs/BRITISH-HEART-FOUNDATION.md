@@ -21,8 +21,7 @@ All metric dimensions are visually calibrated estimates. The site frame is the
 same as the memorial and adjoining terrace. The front spans site X -50.8 to
 -76.68; the southwest edge is registered against the OSM church boundary. The
 fourteen-module count is interpreted from oblique imagery with foliage at the
-far end. The long rectangular rear envelope, church-side
-attachment need further evidence; no Chapel Street elevation is implied. The second pass removes arbitrary equipment boxes: the aerial view establishes low rooftop features but cannot resolve their exact shapes or placement.
+far end. The rear envelope and church-side attachment still need a measured survey; no Chapel Street elevation is implied. Roof feature positions are now calibrated from close Google/ Airbus satellite views within the existing estimated envelope.
 
 Architecture, roof and shopfront stream separately. Walk keeps the inexpensive
 window grid and entrance geometry and bakes lettering/emblems to 512-pixel
@@ -49,13 +48,13 @@ visible window modules, unobscured sign centres, recessed doors and three steps.
 Publication checks full-panel window bake coverage as well as ordinary GLB
 validation. Rear geometry is explicitly provisional.
 
-Current measurements after the exterior review and coordinated publication:
+Measurements after the facade and rooftop passes:
 
 | Level | Placed triangles | GLB bytes including maps | Embedded image bytes |
 | --- | ---: | ---: | ---: |
-| detail | 27,540 | 3,064,336 | 846,628 |
-| walk | 8,824 | 1,554,376 | 1,022,469 |
-| district | 820 | 387,880 | 234,873 |
+| detail | 33,790 | 4,529,656 | 1,479,745 |
+| walk | 12,542 | 2,646,348 | 1,655,586 |
+| district | 1,798 | 640,816 | 366,066 |
 
 The initial pass passed all nine GLBs and window bake checks. Its browser review covered Walk and
 District front/oblique views and automatic Detail at the entrance; all 31 scene
@@ -67,3 +66,32 @@ The coordinated three-building publication passed all nine GLBs for this asset
 and its bake checks. Browser review covered automatic close-up Detail and forced
 Walk/District front and oblique views. All 31 combined scene parts loaded without
 asset errors. Thirteen Python tests and the viewer policy test pass.
+
+The rooftop pass uses the close satellite view and elevated panorama together.
+It replaces the featureless slab with stepped brick parapets and coping, three
+capped edge housings, a shallow external walled recess, an elongated pitched
+rooflight/vent and the rear plant platform. Four circular-top condensers sit
+alongside the larger pale cabinet, perimeter steelwork and a small terminal.
+Scattered vent caps, a pipe cluster, flashing and authored felt laps complete
+the visible roof surface. These are source-built shapes and procedural maps;
+the satellite photograph is neither distributed nor projected onto the model.
+
+The plan and evidence limits live in `research/roof-layout.json`. Satellite
+outlines identify the housings, but do not prove they are access stairheads:
+no doors, ladders or stairs have been invented. The rectangular recess's depth,
+rooflight/vent function, equipment heights and railing construction remain
+interpretations. Rear ownership boundaries and dimensions are not surveyed.
+
+Walk retains the coarse housings, parapets, recess and plant cabinets plus fan
+rims, rails and vents. District keeps the low-cost roof envelopes and cabinet
+silhouettes but omits the rails, fan rims and small vents. Fine fan guards and
+cabinet seams are Detail-only, as are the tiny threshold joints. The recess is
+an actual opening in four disjoint roof fields with a lower external floor;
+a validation ray checks it has not been filled by the former slab. Roof rear,
+roof plant and plan renders support top-down and oblique review; the viewer
+has **Roof plant** and **Roof rear** presets.
+
+The terminal-bay/rooftop publication pass passed master validation, fresh
+renders, all declared GLBs and bake coverage checks. Browser roof review
+covered Walk and District; thirteen Python tests and the viewer policy test
+also passed.

@@ -3,6 +3,7 @@ import bpy,bmesh,sys,os,json,math
 from pathlib import Path
 from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib'))
 from southport3d.geometry import Mesh,face_matrix,text_object
 D=json.loads((ROOT/'research/layout.json').read_text())
@@ -27,7 +28,11 @@ glass=material('Opaque grey glazing; no interior',(.11,.155,.18),rough=.26)
 metal=material('Painted aluminium hardware',(.45,.47,.46),rough=.36)
 grout=material('Dark threshold grout',(.075,.078,.077),rough=.9)
 gasket=material('Dark glazing seals',(.025,.030,.028),rough=.7)
-roofmat=material('Flat weathered roof',(.25,.26,.25))
+roofmat=material('Flat weathered roof',(.25,.26,.25),'roof-felt')
+roofbrick=material('Roof parapet brick',(.43,.27,.20),'roof-brick')
+roofcap=material('Weathered parapet coping',(.47,.49,.46))
+roofpale=material('Weathered pale roof equipment',(.70,.72,.68),rough=.65)
+roofrust=material('Weathered rooflight bars',(.43,.19,.10),rough=.85)
 rear=material('Unsurveyed rear envelope',(.42,.40,.35))
 font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf')
 frame=face_matrix((D['x_near'],D['front_y'],D['base_z']),(0,1,0))
@@ -41,7 +46,7 @@ def finish(mesh,part='architecture',mats=None,transform=None):
    v=ob.data.vertices[ob.data.loops[li].vertex_index].co
    # Glazed pier tiles are narrow vertical rectangles, not metre-wide courses.
    mat=ob.data.materials[f.material_index]
-   sx,sy=(.32,1.2) if mat==redtile else (3.2,2.4) if mat==stone else (3.2,4.8)
+   sx,sy=(.32,1.2) if mat==redtile else (.88,.30) if mat==roofbrick else (10,10) if mat==roofmat else (3.2,2.4) if mat==stone else (3.2,4.8)
    uv.data[li].uv=(v[axes[0]]/sx,v[axes[1]]/sy)
  if transform is not None:ob.matrix_world=transform
  return ob
@@ -93,14 +98,12 @@ for i in range(D['upper_bays']):
 # Roof mass ends at an estimated rear block return; do not invent a rear shop facade.
 x0,x1,yf,yb,z0=[D[k] for k in ['x_far','x_near','front_y','rear_y','base_z']];rl=D['roof_level']
 m=Mesh('Envelope rear and party walls')
-for x in [x0+.15,x1-.15]:m.box((x,(yf+yb-.45)/2,z0+height/2),(.30,yf-yb-.45,height))
-m.box(((x0+x1)/2,yb+.15,z0+height/2),(width,.30,height));finish(m,mats=[rear])
-m=Mesh('Roof slab');m.box(((x0+x1)/2,(yf+yb-.45)/2,z0+rl),(width-.6,yf-yb-.45,.20));finish(m,'roof',[roofmat])
-m=Mesh('Roof coping')
-for x in [x0+.15,x1-.15]:m.box((x,(yf+yb-.45)/2,z0+height+.065),(.42,yf-yb-.45,.13))
-m.box(((x0+x1)/2,yb+.15,z0+height+.065),(width,.42,.13));finish(m,'roof',[roofmat])
-# Aerial imagery shows unresolved low roof features. Do not assign invented
-# equipment boxes to exact coordinates: retain the provisional roof envelope.
+for x in [x0+.15,x1-.15]:m.box((x,(yf+yb-.45)/2,z0+rl/2),(.30,yf-yb-.45,rl))
+m.box(((x0+x1)/2,yb+.15,z0+rl/2),(width-.60,.30,rl));finish(m,mats=[rear])
+# Roof construction follows observed satellite forms, separately from facade.
+from roof_details import build_roof
+R=json.loads((ROOT/'research/roof-layout.json').read_text())
+build_roof(D,R,finish,[roofmat,roofbrick,roofcap,metal,roofpale,dark,roofrust])
 
 # Three broad display/entrance zones divided by red tiled structural piers.
 a,b=D['entry_left'],D['entry_right'];dep=D['entry_depth'];top=4.35

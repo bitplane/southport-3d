@@ -9,7 +9,7 @@ assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.
 assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
 points=[o.matrix_world@v.co for o in meshes for v in o.data.vertices]
 assert min(v.x for v in points)>=D['x_far']-.07 and max(v.x for v in points)<=D['x_near']+.07
-assert 13.7<max(v.z for v in points)<14
+assert 14.6<max(v.z for v in points)<15.5
 windows=[o for o in meshes if o.name.startswith('Window ')];assert len(windows)==D['upper_bays']
 bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get()
 for o in windows+[o for o in meshes if o.name.startswith('Sign ')]:
@@ -27,5 +27,11 @@ for u in [D['entry_left']+.8,(D['entry_left']+D['entry_right'])/2,D['entry_right
  hit,point,normal,index,obj,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1)
  assert hit and obj==lights,('downlight obscured',u,obj.name if obj else None)
 assert len([o for o in meshes if o.name.startswith('Sign entrance')])==1
-report={'objects':len(meshes),'window_modules':len(windows),'checks':'metric finite meshes, packed maps, neighbour bounds, visible windows/signs, deep entrance and three steps, continuous welcome panel and visible downlight lenses'}
+# A roof slab must not fill the external walled recess. Probe its actual floor.
+R=json.loads((ROOT/'research/roof-layout.json').read_text());wx,wy=R['walled_recess']['centre']
+hit,point,normal,index,obj,matrix=bpy.context.scene.ray_cast(deps,Vector((wx,wy,25)),Vector((0,0,-1)),distance=20)
+assert hit and obj.name=='Roof walled recess' and point.z<D['base_z']+D['roof_level']-.4
+assert len([o for o in meshes if o.name.startswith('Roof edge housing ')])==3
+assert any(o.name=='Roof plant platform and cabinets' for o in meshes)
+report={'objects':len(meshes),'window_modules':len(windows),'checks':'metric finite meshes, packed maps, neighbour bounds, visible windows/signs, deep entrance and three steps, continuous welcome panel and visible downlight lenses, open roof recess and three edge housings'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2));print(report)

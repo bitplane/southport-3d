@@ -83,6 +83,18 @@
       "observations": [
         "Previously inspected neighbourhood frame faces London Street; does not resolve BHF. No BHF detail inferred from it."
       ]
+    },
+    {
+      "id": "roof-satellite",
+      "url": "https://www.google.com/maps/@53.64797,-3.0044,21z/data=!3m1!1e3",
+      "author": "Google Maps / Airbus imagery; displayed copyright 2026",
+      "capture": "Imagery capture date not displayed; reviewed 2026-10-22",
+      "observations": [
+        "Three capped housings on Glebe Place roof edge; long church-side brick/parapet strip with steps; four fan-topped plant units beside a long pale cabinet on framed rear platform.",
+        "Rear rectangular feature has raised walls around a lower exposed surface; interpreted as shallow external recess. Low elongated pale/rust rooflight or vent, scattered caps and pipe cluster also visible.",
+        "No readable access doors or stair flights: none invented. Relative outlines clear, heights and equipment functions unresolved.",
+        "Top-down frame is normalized to existing estimated building footprint, not used as a surveyed dimension source."
+      ]
     }
   ],
   "limitations": [
@@ -91,6 +103,10 @@
     "All metric dimensions, fourteen-module count at obscured far end, rear envelope and roof features approximate.",
     "No interiors, stock displays or unreadable notices; opaque glazing.",
     "Church garden and exact side-wall attachment deferred to church pass.",
-    "Second pass removes invented rooftop equipment boxes: low features occur in aerial view, but precise type/shape/placement is unresolved. Circular lights, hardware and joints are visually inferred exterior details, not measured fittings."
+    "Three edge housings are visible but their access/ventilation function is unresolved; no doors or stair runs invented.",
+    "Rectangular rear feature interpreted as a shallow external walled recess with two higher walls; actual internal depth is unknown.",
+    "Elongated pale/rust feature may be a rooflight or ventilation hood; opaque shallow pitched interpretation only.",
+    "Plant silhouette and four fan tops observed; heights, cabinet panel divisions and guardrail construction approximate.",
+    "Rear and side ownership boundaries against adjoining properties remain unverified."
   ]
 }
