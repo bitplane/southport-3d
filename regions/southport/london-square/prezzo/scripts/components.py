@@ -16,7 +16,7 @@ def rectangle_frame(m,cx,cy,width,height,border,out,depth,material=1):
         m.box((x,cy,out),(border,height-2*border,depth),material)
 
 
-def window(width,height,level='detail',name='Window',shop_override=False,raised_shop=False,apron_window=False):
+def window(width,height,level='detail',name='Window',shop_override=False,raised_shop=False,apron_window=False,columns=3,rows_per_sash=2):
     m=Mesh(name);w=width/2;h=height/2;shop=shop_override or (width>2.2 and height>3)
     # The backing extends under sill/architrave so distant receivers are covered.
     m.box((0,-.06,-.205),(width+.27,height+.12,.025),0)
@@ -54,9 +54,9 @@ def window(width,height,level='detail',name='Window',shop_override=False,raised_
             m.box((0,cy,out-.045),(iw,sh,.02),2)
             rectangle_frame(m,0,cy,iw,sh,.045,out,.075)
             innerw=iw-.09;innerh=sh-.09
-            m.box((0,cy,out+.002),(innerw,.028,.045),1)
-            for x in [-innerw/6,innerw/6]:
-                for lo,hi in [(cy-innerh/2,cy-.014),(cy+.014,cy+innerh/2)]:
+            if rows_per_sash>1:m.box((0,cy,out+.002),(innerw,.028,.045),1)
+            for x in [-innerw/2+innerw*i/columns for i in range(1,columns)]:
+                for lo,hi in ([(cy-innerh/2,cy-.014),(cy+.014,cy+innerh/2)] if rows_per_sash>1 else [(cy-innerh/2,cy+innerh/2)]):
                     m.box((x,(lo+hi)/2,out+.002),(.027,hi-lo,.045),1)
             if level=='detail':
                 rectangle_frame(m,0,cy,iw-.09,sh-.09,.012,out-.012,.018)

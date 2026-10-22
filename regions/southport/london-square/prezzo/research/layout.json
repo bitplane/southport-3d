@@ -96,7 +96,7 @@
     }
   ],
   "registration": "Street corner follows OSM way 371203985 (whole urban block), nodes around (-12.76,-23.36),(-9.56,-26.03). Rear lot division and dimensions visually estimated from satellite; OSM does not separately map this building.",
-  "dimensions_status": "All heights estimated by storey/window proportions; five Lord Street bays, three London Street bays plus one corner confirmed in photographs. Rear wall remains schematic; gable ends and rooftop headhouse calibrated from aerial evidence, not surveyed.",
+  "dimensions_status": "Street elevations and stepped rear interpreted from exterior photographs and supplied November 2020 Street View. All metric dimensions visually estimated, not surveyed.",
   "datum": "Level building floors; base .58m on the square\u2019s estimated sloping ground. No surveyed vertical datum.",
   "roof_review": "Wider January 2018 ground panorama and January 2025 aerial show three tall pot groups and three capped stacks. Lord Street rows run into roof (site Y); London Street row runs into roof (site X). Corner stack follows chamfer. Four London pots and five on each Lord group interpreted from imagery; concealed flues and exact dimensions remain uncertain. Rear/party slopes replaced by vertical gable ends, access headhouse enlarged from daylight aerial. Main corniced mass ends at X -30.4; terminal bay occupies remaining Lord frontage.",
   "detail_controls": {
@@ -137,5 +137,66 @@
       "end_y": -41.2
     },
     "status": "Visually estimated narrow bays beyond cornice, confirmed by user. Main Lord bay spacing compressed within existing block registration to accommodate terminal bay without overlapping terrace."
+  },
+  "rear_review": {
+    "date": "2026-10-22",
+    "source": "User-supplied Google Maps / Street View screenshots, rear panorama displayed Nov 2020 at 2 Glebe Pl",
+    "wings": [
+      {
+        "id": "west",
+        "x_limits": [
+          -32.2,
+          -26.2
+        ],
+        "rear_y": -43.7,
+        "height_m": 18.55
+      },
+      {
+        "id": "central",
+        "x_limits": [
+          -22.6,
+          -19.3
+        ],
+        "rear_y": -44,
+        "height_m": 20.35
+      },
+      {
+        "id": "east",
+        "x_limits": [
+          -14.4,
+          -9.92
+        ],
+        "rear_y": -41.2,
+        "height_m": 15.1
+      }
+    ],
+    "recesses": [
+      {
+        "x_limits": [
+          -26.2,
+          -22.6
+        ],
+        "rear_y": -40.55,
+        "landing_heights_m": [
+          4.9,
+          8.4,
+          11.9,
+          15.4
+        ]
+      },
+      {
+        "x_limits": [
+          -19.3,
+          -14.4
+        ],
+        "rear_y": -38.7,
+        "landing_heights_m": [
+          4.9,
+          8.4,
+          11.9
+        ]
+      }
+    ],
+    "uncertainty": "Wing projections, heights, stair rise/run and hidden lower landings visually estimated. Ground yards/neighbour outbuildings outside this asset; no interiors. Rear brick is authored procedural material, not projected reference pixels."
   }
 }

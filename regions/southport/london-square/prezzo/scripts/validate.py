@@ -6,7 +6,7 @@ meshes=[o for o in bpy.context.scene.objects if o.type=='MESH']
 assert all(o.data.polygons and o.data.uv_layers for o in meshes)
 assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.co)
 assert len([o for o in meshes if o.name.startswith('Window dormer')])==9
-assert len([o for o in meshes if o.name.startswith('Sign ')])==11
+assert len([o for o in meshes if o.name.startswith('Sign ')])==12
 assert len([o for o in meshes if o.name.startswith('Roof chimney')])==6
 assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
 points=[o.matrix_world@v.co for o in meshes for v in o.data.vertices]
@@ -19,13 +19,13 @@ print('Prezzo geometry validated',len(meshes),'meshes')
 from mathutils import Vector
 bpy.context.view_layer.update();depsgraph=bpy.context.evaluated_depsgraph_get()
 windows=[o for o in meshes if o.name.startswith('Window ')]
-assert len(windows)==51,len(windows)
+assert len(windows)==71,len(windows)
 for o in windows:
  origin=o.matrix_world@Vector((.25,.20,1))
  direction=(o.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
  hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(depsgraph,origin,direction,distance=2)
  assert hit and ob==o,(o.name,'glazing obstructed by',ob.name if ob else None)
-print('All 51 window fronts visible from outside, including dormers')
+print('All 71 window fronts visible from outside, including dormers')
 
 # Roof-specific review guards: do not restore identical pot groups or UV axes.
 recipe=json.loads((ROOT/'research/layout.json').read_text())
@@ -77,3 +77,37 @@ for label in ['Lord flats','London inset']:
  hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,ob.matrix_world@Vector((x,1.55,1)),(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized(),distance=2)
  assert hit and found==ob,(label,'entrance hidden',found.name if found else None)
  assert (ob.matrix_world.inverted()@p).z<-.20
+
+# The researched rear keeps open stair recesses and actual rear windows.
+assert len([o for o in meshes if o.name.startswith('Envelope rear wing ')])==3
+assert len([o for o in meshes if o.name.startswith('Envelope rear stair recess ')])==2
+assert len([o for o in meshes if o.name.startswith('Envelope rear escape structure')])==2
+assert bpy.data.objects.get('Envelope rear angular duct')
+assert bpy.data.objects.get('Sign flats address')
+assert min(p.y for p in points)>-46 and min(p.y for p in points)<-44
+assert not bpy.data.objects.get('Envelope rear estimate')
+assert not bpy.data.objects.get('Roof access enclosure')
+print('Stepped rear wings, open escape assemblies, angular duct and flats address present')
+
+hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,Vector((-16,-48,recipe['base_z']+17)),Vector((0,1,0)),distance=12)
+assert hit and found.name=='Envelope rear east upper gable',('Open rear mansard end',found.name if found else None)
+print('Rear mansard end closes above lower east wing')
+
+for ob in [o for o in meshes if o.name.startswith(('Envelope rear wing ','Envelope rear stair recess '))]:
+ uv=ob.data.uv_layers.active.data
+ for face in ob.data.polygons:
+  if abs(face.normal.y)>.5:continue
+  for index in face.loop_indices:
+   v=ob.data.vertices[ob.data.loops[index].vertex_index].co
+   assert abs(uv[index].uv.y-v.y/1.8)<1e-5,(ob.name,'rear brick courses rotated')
+print('Rear brick courses horizontal on both elevation and return faces')
+
+# The gable/recess seam was previously a real 100 mm hole. Horizontal probes
+# check its former band; a rising oblique probe checks the 300 mm soffit return.
+for z in [15.02,15.05,15.08]:
+ hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,Vector((-16,-50,recipe['base_z']+z)),Vector((0,1,0)),distance=13)
+ assert hit and found.name=='Envelope rear east upper gable',('rear seam hole',z,found.name if found else None)
+hit,p,n,i,found,mat=bpy.context.scene.ray_cast(depsgraph,Vector((-16,-44,recipe['base_z']+13)),Vector((0,5.2,2.02)).normalized(),distance=6)
+assert hit and found.name=='Envelope rear east upper gable',('rear soffit open',found.name if found else None)
+assert abs(p.z-recipe['base_z']-15.0)<1e-4,('rear soffit wrong height',tuple(p))
+print('Rear gable seam and offset soffit closed to horizontal and oblique rays')

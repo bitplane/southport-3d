@@ -16,3 +16,13 @@ Image.fromarray(np.uint8(np.clip(a,0,255))).save(out/'slate.png')
 for i in range(4):
  a=np.array([183+i*2,181+i*2,170+i*2])[None,None,:]+rng.normal(0,1.1,(n,n,1))
  Image.fromarray(np.uint8(np.clip(a,0,255))).save(out/('ashlar'+str(i)+'.png'))
+
+# Painted running-bond brick on the researched rear. 16 x 24 bricks per
+# 3.6 x 1.8 metre UV repeat, authored here without photographic pixels.
+ny,nx=768,1024;yy,xx=np.mgrid[:ny,:nx];row=yy//32
+col=((xx+(row%2)*32)%nx)//64
+v=rng.uniform(-5,3,(24,16))[row,col]+rng.normal(0,.65,(ny,nx))
+a=np.array([206,205,195])[None,None,:]+v[:,:,None]
+joints=(yy%32<2)|((xx+(row%2)*32)%64<2)
+a[joints]=np.array([178,179,172])
+Image.fromarray(np.uint8(np.clip(a,0,255))).save(out/'rear-white-brick.png')

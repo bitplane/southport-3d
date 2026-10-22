@@ -199,8 +199,8 @@ for frame,length in [(front,flen),(side,slen),(corner,L)]:
   m.box((u,15.05,.20),(.16,.28,.30))
   m.tube([(u,14.94,.15),(u,15.0,.25),(u,15.13,.32),(u,15.20,.28)],.055,0,8)
  finish(m,'architecture',[stone],frame)
-# Simple party/rear envelopes explicitly not researched as finished elevations.
-m=Mesh('Envelope rear estimate');m.box((-20.0,-38.75,z0+7.8),(20.8,.45,15.6));m.box((-30.4,-31.425,z0+7.8),(.45,15.15,15.6));finish(m,materials=[brick])
+# Party wall behind the street mass. The researched stepped rear is built below.
+m=Mesh('Envelope party return');m.box((-30.4,-30.2,z0+7.8),(.45,13.6,15.6));finish(m,materials=[stone])
 # Mansard only on the three street faces; flat-ended party/rear gables.
 poly=D['footprint']
 # Parallel inset edges keep the chamfer planar and every eave at the same pitch.
@@ -232,8 +232,7 @@ for f in roof.data.polygons:
 # end. Heights are calibrated to the existing eave/deck, not surveyed.
 m=Mesh('Roof end gables')
 m.add([(-30.4,y,z0+z) for y,z in [(-39,15.6),(-23.4,15.6),(-23.4,15.7),(-25.2,18.3),(-39,18.3)]],[(4,3,2,1,0)])
-m.add([(x,-39,z0+z) for x,z in [(-30.4,15.6),(-9.6,15.6),(-9.6,15.7),(-11.4,18.3),(-30.4,18.3)]],[(0,1,2,3,4)])
-finish(m,'roof',[brick])
+finish(m,'roof',[stone])
 # Dormer cheeks, frames and flat lead caps; front and London counts corroborated.
 for label,frame,centres in [('Lord',front,[2.05,5.8,9.55,13.3,17.05]),('London',side,[2.35,6.45,10.55]),('corner',corner,[L/2])]:
  for u in centres:
@@ -247,19 +246,14 @@ for label,frame,centres in [('Lord',front,[2.05,5.8,9.55,13.3,17.05]),('London',
   m.box((0,.87,-.61),(1.88,.13,1.47));finish(m,'roof',[stone],t)
   instance('dormer',window(1.35,1.30,'detail','Window dormer '+label),'roof',t@Matrix.Translation((0,0,.04)))
   flashing=Mesh('Ornament dormer flashing');flashing.box((0,.945,-.61),(1.92,.025,1.51));flashing.box((0,-.83,-.015),(1.80,.04,.23));finish(flashing,'roof',[lead],t)
-# Chimneys and terracotta pot groups; rear service structure is an estimated envelope.
-# Daylight aerial: larger access/headhouse with pale rendered street-facing
-# walls, flat coping and sash openings. Exact function/hidden faces unresolved.
-access=face_matrix((-20.5,-32.7,z0+18.3),(0,1,0))
-m=Mesh('Roof access enclosure')
-m.box((3.5,1.3,-2.5),(7,2.6,5))
-for u in [2.0,5.0]:m.cut_box_from_ashlar((u,1.35,.0),(1.0,1.5,.65))
-finish(m,'roof',[stone],access)
-for u in [2.0,5.0]:instance('access-sash',window(.90,1.40,'detail','Window roof access'),'roof',access@Matrix.Translation((u,1.35,.01)))
-m=Mesh('Roof access coping');m.box((3.5,2.65,-2.5),(7.2,.13,5.2));finish(m,'roof',[lead],access)
-m=Mesh('Hardware roof access vent');rectangle_frame(m,0,0,.60,.45,.035,.015,.04,0)
-for y in [-.15,-.075,0,.075,.15]:m.box((0,y,.04),(.53,.025,.06))
-finish(m,'roof',[dark],access@Matrix.Translation((.6,.7,.02)))
+# Rear wings replace the earlier guessed roof headhouse and flat back wall.
+from rear import add_rear
+rear_brick=material('Painted rear brick',(.70,.70,.66),'rear-white-brick')
+rear_pipe=material('Weathered cream rainwater pipe',(.55,.49,.34))
+rear_steel=material('Painted grey escape steel',(.36,.39,.37),rough=.72)
+rear_duct=material('Pale rear metal duct',(.65,.65,.60))
+add_rear(finish,instance,z0,mats,rear_brick,rear_pipe,rear_steel,lead,rear_duct)
+# Existing street-side stacks and pot groups retain the established calibration.
 for spec in D['chimneys']:
  x,y=spec['centre'];length=spec['length'];width=spec['width']
  matrix=Matrix.Translation((x,y,z0))@Matrix.Rotation(math.radians(spec['yaw_degrees']),4,'Z')

@@ -4,7 +4,7 @@
   "name": "Prezzo \u2014 128 Lord Street",
   "region": "southport",
   "area": "london-square",
-  "status": "researched-street-elevations-estimated-rear",
+  "status": "researched-exterior-estimated-dimensions",
   "units": "metres",
   "origin_wgs84_lat_lon": [
     53.6486555,
@@ -17,7 +17,10 @@
     "corner-entrance",
     "mansard",
     "dormers",
-    "chimneys"
+    "chimneys",
+    "rear-wings",
+    "external-fire-escapes",
+    "flats-entrance"
   ],
   "lods": [
     "detail",
@@ -32,7 +35,7 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Exterior building; visible street architecture reconstructed, rear and dimensions estimated. No interiors or adjacent buildings.",
+  "scope": "Exterior street and stepped rear elevations from photographs; dimensions and occluded rear bases estimated. No interiors or neighbouring yard buildings.",
   "publication_checks": [
     "check_package.py"
   ]

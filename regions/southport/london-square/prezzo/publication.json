@@ -7,7 +7,7 @@
     "elevation_m": 0
   },
   "area_name": "London Square",
-  "status": "Exterior building; visible street architecture reconstructed, rear and dimensions estimated. No interiors or adjacent buildings. Based on 2019/2025 imagery and undated property photographs; heights and plot depth estimated.",
+  "status": "Researched exterior street and stepped rear elevations; dimensions and occluded lower rear geometry estimated. No interiors. Rear evidence November 2020; street imagery spans dates.",
   "levels": {
     "detail": {
       "texture_size": null
@@ -157,27 +157,53 @@
     {
       "name": "Flats entrance",
       "position": [
-        -34,
-        5,
-        17.5
+        -32,
+        3.4,
+        18.4
       ],
       "target": [
         -31.3,
-        5,
+        3.1,
         23.75
+      ]
+    },
+    {
+      "name": "Rear elevation",
+      "position": [
+        -21,
+        12,
+        65
+      ],
+      "target": [
+        -21,
+        11.5,
+        41
+      ]
+    },
+    {
+      "name": "Rear stairs",
+      "position": [
+        -27,
+        13,
+        51
+      ],
+      "target": [
+        -24.4,
+        12,
+        42
       ]
     },
     {
       "name": "Rear roof",
       "position": [
-        -15,
+        -17,
         30,
-        59
+        62
       ],
       "target": [
-        -21,
+        -22,
         15,
-        35
+        40
       ]
     }
   ],
@@ -199,11 +225,11 @@
       "match": "^(Envelope|Cornice|Dressings|Quoins|Rustication|Entrance|Roof|Pots) ",
       "walk": {
         "strategy": "keep",
-        "reason": "Coarse authored walls, real openings, moulding profiles, roof forms and chimney silhouettes remain visible at walking distance."
+        "reason": "Coarse authored walls, real openings, moulding profiles, roof forms and chimney silhouettes remain visible at walking distance. Stepped rear wings, escape treads/platforms and primary rails remain open geometry; duct silhouette is retained."
       },
       "district": {
         "strategy": "keep",
-        "reason": "Keep street openings, chamfered corner, mansard, dormers and chimney skyline; these envelopes are already inexpensive."
+        "reason": "Keep street openings, chamfered corner, mansard, dormers and chimney skyline; these envelopes are already inexpensive. Rear escape stringers/treads and principal railing remain real open structures; do not collapse recesses into bounding boxes."
       }
     },
     {
