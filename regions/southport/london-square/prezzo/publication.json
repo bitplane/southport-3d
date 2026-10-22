@@ -127,6 +127,19 @@
         10,
         23.4
       ]
+    },
+    {
+      "name": "London stonework",
+      "position": [
+        -4,
+        4.8,
+        32.55
+      ],
+      "target": [
+        -9.6,
+        4.6,
+        32.55
+      ]
     }
   ],
   "walk_spawn": {
@@ -265,6 +278,28 @@
       "district": {
         "strategy": "omit",
         "reason": "Small fittings vanish at district range; entrances and sign faces remain."
+      }
+    },
+    {
+      "id": "london-relief",
+      "match": "^Relief London menu stonework$",
+      "walk": {
+        "strategy": "replace",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.3,
+        "max_sampled_error_m": 0.2,
+        "reason": "Bake shallow carved panel and pendant to a normal-mapped receiver; preserve their appearance above the menu without small carving triangles."
+      },
+      "district": {
+        "strategy": "replace",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.3,
+        "max_sampled_error_m": 0.2,
+        "reason": "Retain the framed stone patch in a reduced-resolution bake."
       }
     }
   ]

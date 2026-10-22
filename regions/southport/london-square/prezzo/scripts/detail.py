@@ -99,3 +99,37 @@ def cornice_ring(poly,z0,profile,name):
         if edge==3:fs.append(tuple(range(n,2*n)))
         m.add(vs,fs)
     return m
+
+
+def london_menu_stonework():
+    """Interpreted framed relief and pendant from the small corner photograph.
+
+    Local XY permits a normal-map panel bake. No heraldic identity or lettering
+    is asserted: the photograph resolves the masses, not the carved subject.
+    """
+    from components import rectangle_frame
+    m=Mesh('Relief London menu stonework')
+    # Continuous shallow backing gives the two reduced-level receivers coverage.
+    m.box((0,.0125,.0295),(1.28,1.605,.035))
+    # Raised square frame, with an inset field and stepped projecting mouldings.
+    for w,h,b,out,d in [(1.16,.91,.075,.095,.075),(1.03,.78,.035,.139,.035),(.94,.69,.024,.115,.025)]:
+        rectangle_frame(m,0,.30,w,h,b,out,d,0)
+    stone(m,(-.64,.755,.64,.815),.18,.15,.01)
+    stone(m,(-.62,-.19,.62,-.12),.18,.15,.01)
+    # Central raised cartouche-like mass and shallow branching strokes. Subject
+    # is deliberately abstract pending a close photograph, rather than invented arms.
+    def relief_polygon(points,out,back=.055):
+        n=len(points);v=[(x,y,z) for z in [back,out] for x,y in points]
+        m.add(v,[tuple(reversed(range(n))),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)])
+    relief_polygon([(-.12,.43),(-.14,.24),(0,.13),(.14,.24),(.12,.43)],.14)
+    for sign in [-1,1]:
+        m.tube([(sign*(.10+.28*t),.23+.20*t+.045*math.sin(t*math.pi),.12) for t in [i/20 for i in range(21)]],.035,0,8,.6)
+        for j in range(3):
+            x=sign*(.19+j*.075);y=.29+j*.055
+            relief_polygon([(x,y),(x+sign*.035,y+.13),(x+sign*.075,y+.10),(x+sign*.025,y-.025)],.135)
+    # Pendant below the square: broad shoulders and a pointed, shield-like bottom.
+    relief_polygon([(-.27,-.24),(-.25,-.54),(0,-.68),(.25,-.54),(.27,-.24)],.145)
+    m.tube([(-.27,-.24,.16),(-.25,-.54,.16),(0,-.68,.16),(.25,-.54,.16),(.27,-.24,.16)],.024,0,8,.65)
+    for sign in [-1,1]:
+        m.tube([(sign*(.26+.21*t),-.39-.055*math.sin(t*math.pi),.115) for t in [i/16 for i in range(17)]],.041,0,8,.6)
+    return m

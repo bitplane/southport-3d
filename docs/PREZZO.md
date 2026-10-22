@@ -49,9 +49,9 @@ lighting. Walk textures cap at 512 pixels; District caps at 256.
 
 | Level | Placed triangles | GLB bytes including textures | Embedded image bytes |
 | --- | ---: | ---: | ---: |
-| Detail | 210,510 | 10,078,716 | 1,216,294 |
-| Walk | 48,825 | 3,496,288 | 843,452 |
-| District | 14,205 | 1,959,556 | 359,515 |
+| Detail | 212,097 | 10,317,316 | 1,216,294 |
+| Walk | 48,827 | 3,720,668 | 1,065,921 |
+| District | 14,207 | 2,030,796 | 428,985 |
 
 These are the building's three-part totals, excluding the street and memorial.
 Walk's similar download size reflects retained architecture and baked-map cost;
@@ -71,7 +71,7 @@ dormer/sign/chimney counts, and casts rays at all 44 window fronts. The ray chec
 guards against the error where a plausible window is obscured by a solid dormer
 body. The final dormers have open cheeks and a recessed back, so glazing remains
 visible. Meshes are triangulated before UV assignment/export for stable tangents.
-All 199 meshes are classified at every level, and all nine publication GLBs pass
+All 200 meshes are classified at every level, and all nine publication GLBs pass
 inspection. The model is rendered from both streets, the corner and above the
 roof; the adjusted public realm also receives its normal full build and renders.
 
@@ -162,3 +162,22 @@ The revised build passes 13 Python tests (including the Blender surface ownershi
 regression), viewer policy tests, source checks and all publication checks.
 Browser review compares forced Walk/District and automatic close-up Detail for
 the entrance, upper stonework and roof, with no asset errors across 31 scene parts.
+
+## London Street menu stonework
+
+The central pier now has the framed stone relief above the menu and its hanging
+shield-like pendant, with stepped frame, coping and shallow branching strokes.
+The original corner photograph resolves the overall forms but not the carved
+subject: this is an explicitly approximate interpretation, pending a close photo.
+No heraldic identity or unreadable lettering has been invented.
+
+Detail uses relief geometry. Walk and District bake this single component to a
+two-triangle receiver with colour, roughness and normal maps at 512 and 256 pixels;
+the receiver gives up depth and shadow parallax. The backing sits clear of the
+wall's ashlar skin. The **London stonework** bookmark shows the feature; the
+Blender close-up is `renders/london-menu.png`. Full build, all publication levels,
+close/overview renders, browser level review and 13 Python tests pass.
+
+The relief bake check requires 99.5% colour coverage inside the receiver UV
+rectangle, excluding unused atlas borders; this catches unbacked strips at the
+projecting coping ends.

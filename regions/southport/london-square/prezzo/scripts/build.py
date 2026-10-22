@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(Path(os.environ['
 from southport3d.geometry import Mesh,face_matrix,text_object
 from components import window,pilaster,rectangle_frame
 from surface_cleanup import clean
-from detail import coursed_surface,rusticated_corner,arch_stones,architrave,cornice_ring
+from detail import coursed_surface,rusticated_corner,arch_stones,architrave,cornice_ring,london_menu_stonework
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 scene=bpy.context.scene;scene.unit_settings.system='METRIC'
@@ -110,6 +110,7 @@ def elevation(label,a,b,centres):
 front,flen=elevation('Lord Street',(-12.8,-23.4),(-32,-23.4),[2.05,5.8,9.55,13.3,17.05])
 side,slen=elevation('London Street',(-9.6,-39.0),(-9.6,-26.1),[2.35,6.45,10.55])
 m=Mesh('Dressings London plaque');m.box((6.45,2.65,.055),(.68,1.05,.12),0);m.box((6.45,2.65,.125),(.44,.76,.03),3);finish(m,'shopfront',mats,side)
+finish(london_menu_stonework(),'architecture',[stone],side@Matrix.Translation((6.45,4.05,0)))
 # Chamfered entrance corner, with a true arched opening and upper windows.
 a=(-9.6,-26.1);b=(-12.8,-23.4);normal=Vector((b[1]-a[1],a[0]-b[0],0)).normalized();L=math.dist(a,b);corner=face_matrix((*a,z0),normal)
 m=Mesh('Envelope corner');doorw=1.65;spring=3.35;radius=doorw/2
