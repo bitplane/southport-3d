@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/posting-house.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street",
+  "status": "130C and 132 exterior from November 2020 Street View, RGP photographs and 2024 heritage report; heights and hidden courtyard elevations estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "historic-front",
+      "name": "Post Office and 132 Lord Street elevations",
+      "collection": "historic-front"
+    },
+    {
+      "id": "roof",
+      "name": "Gables, slate roofs, dormers and chimneys",
+      "collection": "roof"
+    },
+    {
+      "id": "rear-range",
+      "name": "Posting House courtyard and Anchor Street range",
+      "collection": "rear-range"
+    },
+    {
+      "id": "shopfronts",
+      "name": "Arched shop fronts and original inscriptions",
+      "collection": "shopfronts"
+    }
+  ],
+  "views": [
+    {
+      "name": "Posting House",
+      "position": [
+        45,
+        23,
+        -10
+      ],
+      "target": [
+        48,
+        10,
+        29
+      ]
+    },
+    {
+      "name": "132 Lord Street",
+      "position": [
+        60,
+        12,
+        0
+      ],
+      "target": [
+        59,
+        9,
+        23
+      ]
+    },
+    {
+      "name": "Rear courtyard",
+      "position": [
+        27,
+        38,
+        65
+      ],
+      "target": [
+        49,
+        9,
+        52
+      ]
+    },
+    {
+      "name": "Anchor Street",
+      "position": [
+        48,
+        16,
+        100
+      ],
+      "target": [
+        49,
+        7,
+        76
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      43,
+      2.3,
+      18
+    ],
+    "target": [
+      45,
+      6,
+      24
+    ]
+  },
+  "rules": [
+    {
+      "id": "structure",
+      "match": "^(Envelope|Trim|Arch|Turret|Gable|Door|Roof|Chimney|Dormer|Balcony) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
+      }
+    },
+    {
+      "id": "glazing-flat",
+      "match": "^(Window (?!132 bay)|Glazing (rear estimated|rear attic|warehouse|modern curtain))",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Bake only shallow painted glazing/frame detail into its existing recessed opening; stone surrounds remain explicit.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.45,
+        "max_sampled_error_m": 0.3
+      }
+    },
+    {
+      "id": "glazing-arches",
+      "match": "^Glazing (ground arch|attic arch|dormer sash|132 arched)",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Detail ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Subtle quoin joints, dentils and blind-arcade relief give way to existing material and coarse cornices."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit fine masonry relief and chimney pots below district projected size; chimney masses remain."
+      }
+    },
+    {
+      "id": "ornament",
+      "match": "^Ornament ",
+      "walk": {
+        "strategy": "decimate",
+        "ratio": 0.5,
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reduce only interpreted organic enrichment and finials; architectural arches stay intact."
+      },
+      "district": {
+        "strategy": "decimate",
+        "ratio": 0.35,
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reduce irregular enrichment moderately: more aggressive collapse visibly deformed the round gable medallions."
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake original Post Office inscription onto its shallow stone receiver.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.45,
+        "max_sampled_error_m": 0.3
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Retain inscription colour and position at reduced texture resolution.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.45,
+        "max_sampled_error_m": 0.3
+      }
+    },
+    {
+      "id": "canted-windows",
+      "match": "^Window 132 bay",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain thin canted glazing returns and visible arch heads."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "A front bounding panel occludes the separately authored arched upper lights; preserve these inexpensive canted sash meshes."
+      }
+    }
+  ]
+}

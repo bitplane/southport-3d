@@ -1,0 +1,25 @@
+{
+  "front_east": [
+    64.25,
+    -21.75
+  ],
+  "front_west": [
+    33.12,
+    -22.8
+  ],
+  "base_z": 0.58,
+  "historic_start": 10.2,
+  "historic_bay_edges": [
+    10.2,
+    13.4,
+    18.7,
+    22.65,
+    27.95,
+    31.1477
+  ],
+  "eave_z": 16.25,
+  "ridge_z": 21.0,
+  "main_depth": 17.9,
+  "rear_depth": 54.3,
+  "registration": "OSM ways 371741772 and 653815606 define overall extents; front frame retains mapped 1.05m skew. Historic/132 boundary and roof/courtyard subdivisions are visually calibrated, not cadastral or surveyed."
+}

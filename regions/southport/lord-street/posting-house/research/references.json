@@ -1,0 +1,94 @@
+{
+  "sources": [
+    {
+      "id": "listing",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379612",
+      "title": "Head Post Office, list entry 1379612",
+      "creator": "Historic England",
+      "date": "1998-04-15",
+      "use": "Identity, date/architect, principal architectural composition",
+      "rights": "Text Open Government Licence; source imagery not redistributed"
+    },
+    {
+      "id": "heritage-2024",
+      "url": "https://docs.planning.org.uk/20240430/30/SC578SNWK2Q00/mclt3lg3lqef3v3s.pdf",
+      "title": "The Posting House Heritage Statement",
+      "creator": "Kingscrown Land & Commercial Ltd",
+      "date": "2024-04",
+      "use": "Roof and facade repair evidence, six chimney stacks, rear roof structure",
+      "rights": "Reference only; no PDF/image pixels redistributed"
+    },
+    {
+      "id": "architect",
+      "url": "https://www.rgp.uk.com/portfolio-items/the-posting-house-southport/",
+      "title": "Posting House redevelopment",
+      "creator": "RGP Architects",
+      "date": null,
+      "use": "Rear courtyard, historic warehouse and modern Anchor Street extension identity",
+      "rights": "Reference only"
+    },
+    {
+      "id": "osm-front",
+      "url": "https://www.openstreetmap.org/way/371741772",
+      "title": "Historic front building footprint",
+      "creator": "OpenStreetMap contributors",
+      "date": "local retained extract",
+      "use": "Frontage registration and dimensions",
+      "rights": "ODbL 1.0"
+    },
+    {
+      "id": "osm-rear",
+      "url": "https://www.openstreetmap.org/way/653815606",
+      "title": "The Posting House mapped rear envelope",
+      "creator": "OpenStreetMap contributors",
+      "date": "local retained extract",
+      "use": "Rear boundary and alignment; courtyard split from aerial, not a solid extrusion",
+      "rights": "ODbL 1.0"
+    },
+    {
+      "id": "street-front-2020",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6488224,-3.0037021&heading=135&pitch=20",
+      "title": "130 St Georges Place / Lord Street frontage",
+      "creator": "Google Street View",
+      "date": "2020-11",
+      "use": "Actual panorama pixels inspected: arch proportions, white glazing, paired stone cross windows, inscriptions, columns, upper cornice and gables.",
+      "rights": "Reference only; screenshots remain outside repository"
+    },
+    {
+      "id": "street-132-2020",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6489526,-3.0034907&heading=135&pitch=15",
+      "title": "132 Lord Street and Post Office Avenue junction",
+      "creator": "Google Street View",
+      "date": "2020-11",
+      "use": "Three canted projecting bays, white aprons, red sandstone arched ground storey, red-brick upper masonry and triple white gables.",
+      "rights": "Reference only"
+    },
+    {
+      "id": "132-photo",
+      "url": "https://www.rightmove.co.uk/properties/153937736",
+      "title": "132 Lord Street commercial listing",
+      "creator": "Rightmove / agent photography",
+      "date": null,
+      "use": "Clear distant full facade corroborates three upper bay stacks and three front gables.",
+      "rights": "Reference only"
+    },
+    {
+      "id": "aerial",
+      "url": "https://www.google.com/maps/@53.6487,-3.0035,110m/data=!3m1!1e3",
+      "title": "London Square aerial imagery retained with NatWest research",
+      "creator": "Google / Airbus",
+      "date": "imagery 2026, displayed source",
+      "use": "Roof ranges, open courtyard, flat warehouse roof and Anchor Street redeveloped range.",
+      "rights": "Reference only"
+    }
+  ],
+  "uncertainty": [
+    "All metric heights, projections and individual opening dimensions are visually calibrated estimates, not survey measurements.",
+    "Rear service fittings, inaccessible elevations and fine carving are interpreted; no interiors are modelled.",
+    "Current tenant service status is not inferred from historical imagery.",
+    "130C/132 frontage split is visually estimated at 10.2 m from the Post Office Avenue corner within the shared 31.15 m mapped range.",
+    "Historic rear gables are documented by the 2024 report; individual hidden opening locations remain estimated.",
+    "Rear architectural photographs date from the RGP portfolio (uploaded 2014); model does not claim current tenancy or exact current fittings.",
+    "Fine organic carving is an interpreted approximation; original inscription POST OFFICE is legible and modelled, but unreadable window notices are omitted."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.posting-house",
+  "name": "The Posting House and 132 Lord Street",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "five-bay-stone-and-brick-front",
+    "arched-ground-floor",
+    "projecting-gables-and-tourelles",
+    "sash-windows",
+    "slate-roofs-and-dormers",
+    "chimneys",
+    "rear-courtyard-envelope",
+    "132-red-sandstone-arcade",
+    "132-canted-bays-and-triple-gables",
+    "Anchor-Street-balconies-and-corner-tower"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Historic 130C Lord Street Head Post Office, adjoining 132 Lord Street within the shared mapped frontage, open courtyard and Anchor Street redevelopment. Exterior only; metric heights and hidden courtyard details remain estimates."
+}
