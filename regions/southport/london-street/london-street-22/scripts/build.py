@@ -184,8 +184,8 @@ for i,x in enumerate([xf-5,xf-12.5,xf-21]):
 # Observed historical shop frontage. Current Merkur identity is documented separately;
 # insufficient pixels exist to assert its present fitout.
 for u in [.12,width-.12]:elevation_box('Shop stone jamb',u,1.58,.24,3.16,.28,-.03,stone,'shopfront')
-elevation_box('Shop yellow fascia backing',width/2,3.34,width,.74,.14,.035,yellow,'shopfront')
-sign('Money Shop fascia','The Money Shop',width/2,3.34,width-.32,.65,yellow,black,out=.125)
+elevation_box('Shop yellow fascia backing',width/2,3.34,width,.73,.10,.025,yellow,'shopfront')
+sign('Money Shop fascia','The Money Shop',width/2,3.34,width,.73,yellow,black,out=.125)
 elevation_box('Trim fascia crown',width/2,3.75,width,.09,.32,.06,lightstone,'shopfront')
 # Dated photo shows the pale recessed entrance on the south/left side.
 # Its function as shop or upper-floor access remains unresolved.
@@ -200,7 +200,7 @@ elevation_box('Shop entrance recess',door,1.47,dw+.08,2.94,.03,-.44,black,'shopf
 elevation_box('Shop pale entrance leaf',door,1.36,dw,2.65,.03,-.36,paledoor,'shopfront')
 for u in [door-dw/2-.025,door+dw/2+.025]:elevation_box('Shop entrance stile',u,1.36,.06,2.72,.10,-.30,white,'shopfront')
 for h in [.035,2.68]:elevation_box('Shop entrance rail',door,h,dw+.10,.06,.10,-.30,white,'shopfront')
-elevation_box('Shop entrance transom',door,2.85,dw+.05,.25,.03,-.35,paledoor,'shopfront')
+elevation_box('Shop entrance transom',door,2.825,dw+.05,.25,.03,-.35,paledoor,'shopfront')
 elevation_box('Fine entrance handle',door-.33,1.23,.025,.40,.085,-.23,metal,'shopfront')
 elevation_box('Shop threshold',door,.035,dw+.12,.07,.54,-.20,granite,'shopfront')
 for u in [.24,shop_left]:

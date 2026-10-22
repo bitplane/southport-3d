@@ -33,3 +33,7 @@ The rear loading door position, hidden rear wall arrangement and precise shop en
 Measured isolated exports: Detail 2,592 triangles / 1,197,312 bytes; Walk 1,298 / 1,112,940; District 1,070 / 383,300, including embedded textures. A combined exported-master oblique with 20 and 22 was also inspected for frontage alignment; paving contact still needs the coordinator's combined viewer pass.
 
 Independent audit on22October2026 checked the retained dated frontage and aerial against all three exported levels. Removed duplicated coplanar display-centre stile and shortened main/rear sidewalls to meet the rear walls without overlapping visible end caps. Fullbuild, validation and12GLBs passed; new checks enforce the three unique display stiles and rear junction extents. Final totals: Detail2580tri/1195144bytes; Walk1286/1110776; District1058/381144. Historical facade and estimated rear scope unchanged.
+
+The projecting brick pier feet stop at the shop boundary; their former 35 mm
+overhang crossed the neighbouring Money Shop fascia. This was corrected during
+the saved oblique frontage snag review.

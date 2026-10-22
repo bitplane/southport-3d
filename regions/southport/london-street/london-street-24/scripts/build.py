@@ -117,7 +117,7 @@ openings=[(u-.49,u+.49,4.80,6.25) for u in bays]+[(.23,width-.23,0,3.19)]
 wall_with_openings('red brick street face',front,width,7.25,openings)
 for u in [.15,width-.15]:
  elevation_box('Trim brick edge pier',u,5.25,.30,4.0,.17,.035,brick)
- elevation_box('Trim brick pier foot',u,3.30,.37,.16,.25,.045,brick)
+ elevation_box('Trim brick pier foot',.185 if u<width/2 else width-.185,3.30,.37,.16,.25,.045,brick)
 for i,u in enumerate(bays):
  m=Mesh('Window upper sash %d'%i);m.box((0,0,-.14),(.98,1.45,.025),0)
  for x in [-.46,.46]:m.box((x,0,-.07),(.06,1.45,.10),1)

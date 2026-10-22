@@ -52,3 +52,8 @@ recessed doorway. The retained frontal photograph establishes the separation
 above the fascia; exact clearances remain estimated. Validation checks vertical
 clearance and rays across/up the door recess, and all LoDs are checked from both
 reported camera positions.
+
+A later oblique snag exposed the stepped overlap between the fascia board and
+its backing, plus a 15 mm slit above the door rail. The board now has one full
+rectangular outline with its backing meeting the rear face; the transom meets
+the rail. Depth and entrance visibility probes cover these joins.

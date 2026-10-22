@@ -68,3 +68,12 @@ for o in return_lights:
  assert hit and found==o,(o.name,found.name if found else None)
 report={'mesh_objects':len(meshes),'glazed_upper_panels':21,'checks':'Finite UV meshes; packed authored textures; unobscured three-storey glass; closed deck,rooflights and curvedcap; shared20boundary and geographic registration.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# The yellow face has one rectangular outline, not overlapping stepped boards.
+back=bpy.data.objects['Shop yellow fascia backing'];sign=bpy.data.objects['Sign Money Shop fascia']
+back_points=[front_inv@back.matrix_world@v.co for v in back.data.vertices]
+sign_points=[front_inv@sign.matrix_world@v.co for v in sign.data.vertices]
+assert abs(max(v.z for v in back_points)-min(v.z for v in sign_points))<1e-5,'Overlapping fascia boards'
+for h in [2.705,2.72,2.735,2.90,2.945]:
+ hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,front@Vector((1.01,h,.5)),(front.to_3x3()@Vector((0,0,-1))).normalized(),distance=1)
+ assert hit and found.name.startswith(('Shop entrance rail','Shop entrance transom','Shop entrance soffit')),('Gap above door',h,found.name if found else None)
