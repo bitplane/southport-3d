@@ -11,7 +11,7 @@ from mathutils import Matrix, Vector
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(Path(os.environ['SOUTHPORT_REPO_ROOT']) / 'lib'), str(ROOT / 'scripts')]
 from southport3d.geometry import Mesh, face_matrix, text_object
-from components import sash, cornice, rooflight
+from components import casement,sash, cornice, rooflight
 from roof import build_roof, roof_height, party_return, eave_return
 D = json.loads((ROOT / 'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT')
@@ -193,9 +193,9 @@ side_openings = [(side_width-2.65, side_width, 0, 3.95)]
 side_openings += [(u-.46, u+.46, 5.0, 6.2) for u in [side_width-5.1, side_width-7.1]]
 wall_with_openings('Glebe brick return', side, side_width-.36, D['rear_eaves_height']-.15, side_openings)
 for u in [side_width-5.1, side_width-7.1]:
-    mesh = sash('Window Glebe casement', .92, 1.2, .05)
+    mesh = casement('Window Glebe casement', .92, 1.2, 1,.78)
     finish(mesh, materials=[white, black, glass, sill], transform=side @ Matrix.Translation((u, 5.6, -.05)))
-for u in [side_width-12.3, side_width-14.4]:
+for u in [side_width-5.1, side_width-7.1]:
     elevation_box('Envelope bricked side opening', u, 7.6, .95, 1.4, .025, .018, brick, frame=side)
 mesh = Mesh('Fine Glebe louvre blades')
 mesh.box((side_width-3.3, .8, .01), (1.05, 1.02, .035), 0)
@@ -221,47 +221,40 @@ for x,y in [(-18.4,-45.2),(-20.4,-48.7),(-20,-58.4)]:
 finish(mesh, 'roof', [metal])
 
 # Rear upper wall: mixed casements and barred service windows visible Nov2020.
-rear_windows = [(1.9,6.6,.65,1.6,False),(4.0,7.1,.62,.9,True),
-                (6.3,7.1,1.25,1.0,False),(10.0,6.9,1.5,1.2,True),
-                (15.3,5.65,.8,.85,True),(17.4,5.65,.8,.85,True),(19.5,5.65,.8,.85,True),
-                (10.0,4.5,1.45,.7,True)]
+rear_windows=D['rear_windows']
 rear_height=roof_height(D,D['upper_rear_x'],-50)-base-.14
-wall_with_openings('rear upper brick', rear, rear_north+55.7, rear_height,
-                   [(u-rear_offset-w/2,u-rear_offset+w/2,h-hh/2,h+hh/2) for u,h,w,hh,bars in rear_windows if rear_offset+w/2<u<12.3], 'rear')
+wall_with_openings('rear upper brick',rear,rear_north+55.7,rear_height,
+                   [(q['u']-q['w']/2,q['u']+q['w']/2,q['h']-q['hh']/2,q['h']+q['hh']/2) for q in rear_windows],'rear')
 south_rear=face_matrix((xr,-55.7,base),(-1,0,0))
-south_windows=[(u-14.5,h,w,hh,bars) for u,h,w,hh,bars in rear_windows if u>14.5]
 wall_with_openings('rear southern upper return',south_rear,-55.7-ys,D['rear_eaves_height']-.14,
-                   [(0,-55.7-ys,0,4.65)]+[(u-w/2,u+w/2,h-hh/2,h+hh/2) for u,h,w,hh,bars in south_windows],'rear')
+                   [(0,-55.7-ys,0,4.65)],'rear')
 finish(eave_return(D,'Envelope rear notch return',(xr+.36,-55.7),(-24.8,-55.7),(0,-.25),4.65),part='rear')
-for i,(u,h,w,hh,bars) in enumerate(rear_windows):
-    if u<rear_offset+w/2 or 12.3<u<14.5:
-        continue
-    window_frame=rear if u<14.5 else south_rear
-    window_u=u-rear_offset if u<14.5 else u-14.5
-    mesh = sash('Window rear casement '+str(i),w,hh,.055)
+for i,q in enumerate(rear_windows):
+    u,h,w,hh,bars=[q[k] for k in ['u','h','w','hh','bars']]
+    mesh=casement('Window rear casement '+str(i),w,hh,q['columns'])
     if bars:
         for k in range(max(3,int(w/.12))):
             x=-w/2+.08+k*(w-.16)/(max(3,int(w/.12))-1)
             mesh.box((x,0,.11),(.018,hh+.08,.025),0)
         for yy in [-hh*.28,hh*.28]:
             mesh.box((0,yy,.115),(w+.08,.025,.025),0)
-    finish(mesh,'rear',[white,black,glass,sill],window_frame@Matrix.Translation((window_u,h,0)))
+    finish(mesh,'rear',[white,black,glass,sill],rear@Matrix.Translation((u,h,0)))
 # Prominent external red-brick stack with one dark flue, seen from Glebe.
-box('Envelope rear chimney',(-25.15,-49.6,base+7.9),(.95,.8,7.5),part='rear')
-box('Trim chimney cap',(-25.15,-49.6,base+11.72),(1.08,.95,.12),sill,'rear')
+box('Envelope rear chimney',(-25.15,D['rear_chimney_y'],base+7.9),(.95,.8,7.5),part='rear')
+box('Trim chimney cap',(-25.15,D['rear_chimney_y'],base+11.72),(1.08,.95,.12),sill,'rear')
 mesh=Mesh('Fine chimney flue')
-mesh.lathe((-25.15,-49.6),[(base+11.76,.11),(base+12.2,.11)],12)
+mesh.lathe((-25.15,D['rear_chimney_y']),[(base+11.76,.11),(base+12.2,.11)],12)
 finish(mesh,'rear',[black])
 box('Envelope service wing northern return',((xr+.36-24.8)/2,rear_north-.14,base+1.925),(-24.8-xr-.36,.25,3.85),part='rear')
 # Two flat service wings and the observed pitched rooflight.
 for name,ya,yb,height in [('rooflight wing',-55.7,rear_north,3.85),('south wing',ys,-55.7,4.65)]:
     frame=face_matrix((xr,yb,base),(-1,0,0))
-    n=3 if name=='rooflight wing' else 2
+    n=1 if name=='rooflight wing' else 2
     centres_rear=[(yb-ya)*(k+1)/(n+1) for k in range(n)]
     openings=[(u-.52,u+.52,1.2,2.5) for u in centres_rear]
     wall_with_openings(name,frame,yb-ya,height,openings,'rear')
     for u in centres_rear:
-        m=sash('Window low rear barred',1.04,1.3,.05)
+        m=casement('Window low rear barred',1.04,1.3,2)
         for k in range(8):
             m.box((-.45+k*.128,0,.11),(.021,1.35,.03),0)
         finish(m,'rear',[white,black,glass,sill],frame@Matrix.Translation((u,1.85,0)))
@@ -275,7 +268,7 @@ for name,ya,yb,height in [('rooflight wing',-55.7,rear_north,3.85),('south wing'
     box('Roof '+name+' flat deck',((deck_left+deck_right)/2,(deck_start+deck_end)/2,base+height),(deck_right-deck_left,deck_end-deck_start,.16),felt,'rear')
     box('Trim '+name+' coping',(xr-.035,(ya+yb)/2,base+height+.09),(.25,yb-ya+.1,.12),sill,'rear')
 finish(rooflight('Roof rear pyramidal rooflight',2.7,2.7,.75),'rear',[metal,glass],
-       Matrix.Translation((-27.2,-51.3,base+3.95)))
+       Matrix.Translation((-27.2,-49.5,base+3.95)))
 # Open guardrails and caged access ladder are physical; never bake as a solid wall.
 rails=Mesh('Fixture rear roof guardrail')
 for y in [-46,-48.1,-50.2,-52.3,-54.6]:

@@ -92,3 +92,18 @@ for box in D['stair_clearance_boxes']:
 report={'objects':len(meshes),'front_windows':len(windows),'roof_probes':roof_probes,'checks':'Finite UV meshes, packed maps, registered extent, 24 unobscured front windows, recessed double entrance, closed planar roof shell, open rear court and both neighbour stair wells'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print(report)
+
+# Every observed court window belongs to the recessed rear wall, not the south
+# projection; inspect glazing rays as well as mesh counts so walls cannot fill it.
+service_windows=[o for o in meshes if o.name.startswith('Window rear casement')]
+assert len(service_windows)==8
+assert all(abs(o.matrix_world.translation.x-D['upper_rear_x'])<1e-6 for o in service_windows)
+side_windows=[o for o in meshes if o.name.startswith('Window Glebe casement')]
+assert len(side_windows)==2
+for obj in service_windows+side_windows:
+    origin=obj.matrix_world@Vector((.13,.12,1))
+    direction=(obj.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+    hit,p,n,i,found,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
+    assert hit and found==obj,(obj.name,'service window obscured',found.name if found else None)
+assert D['rear_eaves_height']<D['eaves_height']-1.5,'Lost lower rear roof level'
+print('Eight courtyard windows, two plain Glebe casements and lower rear eave checked')

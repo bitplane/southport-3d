@@ -28,3 +28,30 @@ Roof validation requires manifold edges and checks 1,677 rays against the
 declared slopes/cutouts. Every triangle, including pipes and wall returns, is
 checked against both neighbouring stair-clearance volumes. The viewer's
 “Prezzo stair clearance” bookmark shows the two buildings together.
+
+
+## Rear court and side-window correction
+
+The November 2020 Glebe photographs were rechecked against the generated rear
+and side elevations. The pair of side windows now use plain casements with a
+narrow top transom, distinct from the front sashes. Upper bricked openings align
+with those casements. The recessed court wall now holds all eight visible mixed
+openings: four upper windows, three lower barred windows and the larger barred
+opening below the chimney-side window. The southern projection is blank above
+its low service wing; the previous misplaced trio has been removed.
+
+The rear eave is lowered to calibrate the two-storey courtyard proportions, while
+the front eave/ridge and the neighbouring staircase cutouts remain fixed. Chimney
+and rooflight positions follow the corrected window grouping. These rear heights
+and offsets remain estimates. Fresh Maps screenshot attempts stalled, so this
+pass uses the retained dated Street View and aerial references explicitly.
+
+Regression checks retain all 1,677 roof rays, manifold roof tests and triangle-level
+stair clearances, and add visibility/registration checks for the eight court
+windows and two side casements. All levels rebake the changed window modules.
+
+The rebuilt Detail, Walk and District GLBs were reviewed in rear, side and roof
+comparisons. Their roof silhouette and material colour stay consistent; only
+small fittings and baked sash depth simplify. The normal front composition is
+preserved. The exact rear pitch still needs confirmation when live imagery is
+available; the reconstruction does not claim a surveyed roof profile.

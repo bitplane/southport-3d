@@ -56,3 +56,22 @@ def rooflight(name, width=2.5, depth=2.1, rise=.65, detailed=True):
             mid = tuple((a[i] + b[i]) / 2 for i in range(3))
             mesh.tube([mid, apex], .024, 0, 6)
     return mesh
+
+
+def casement(name,width,height,columns=1,transom_fraction=.75):
+    """Plain service casement with narrow top lights, distinct from street sashes."""
+    mesh=Mesh(name);b=.055
+    mesh.box((0,0,-.13),(width,height,.025),1)
+    mesh.box((0,0,-.09),(width-2*b,height-2*b,.02),2)
+    for x in [-width/2+b/2,width/2-b/2]:
+        mesh.box((x,0,-.025),(b,height,.11),0)
+    for y in [-height/2+b/2,height/2-b/2]:
+        mesh.box((0,y,-.025),(width-2*b,b,.11),0)
+    th=-height/2+height*transom_fraction
+    mesh.box((0,th,-.025),(width-2*b,.038,.10),0)
+    for k in range(1,columns):
+        x=-width/2+width*k/columns
+        for low,high in [(-height/2+b,th-.019),(th+.019,height/2-b)]:
+            mesh.box((x,(low+high)/2,-.025),(.045,high-low,.10),0)
+    mesh.box((0,-height/2-.04,.015),(width+.12,.08,.25),3)
+    return mesh

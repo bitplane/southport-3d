@@ -6,7 +6,7 @@
   "rear_x": -29.9,
   "upper_rear_x": -24.8,
   "eaves_height": 9.35,
-  "rear_eaves_height": 8.65,
+  "rear_eaves_height": 7.1,
   "ridge_height": 11.5,
   "ridge_x": -15.8,
   "ridge_end_y": -57.7,
@@ -93,5 +93,72 @@
       14.0
     ]
   ],
-  "roof_review": "Repair from retained Google aerial and November2020 rear views: three planar hip slopes with a raised eave at the rear court cutout; stepped northern boundary leaves both existing Prezzo escape stairs open. Setback dimensions are visually estimated and coordinated with the existing neighbour model; no survey or current 3D-view verification."
+  "roof_review": "Repair from retained Google aerial and November2020 rear views: three planar hip slopes with a raised eave at the rear court cutout; stepped northern boundary leaves both existing Prezzo escape stairs open. Setback dimensions are visually estimated and coordinated with the existing neighbour model; no survey or current 3D-view verification. Rear/courtyard correction: lower rear eave calibrated from existing rear photo relative to two-storey wall; all mixed windows placed on recessed upper wall, not incorrectly moved to southern projection. Heights still estimated.",
+  "rear_windows": [
+    {
+      "u": 0.8,
+      "h": 7.5,
+      "w": 0.65,
+      "hh": 1.45,
+      "bars": false,
+      "columns": 1
+    },
+    {
+      "u": 2.1,
+      "h": 7.65,
+      "w": 0.62,
+      "hh": 0.9,
+      "bars": true,
+      "columns": 1
+    },
+    {
+      "u": 3.6,
+      "h": 7.6,
+      "w": 1.25,
+      "hh": 1.0,
+      "bars": false,
+      "columns": 2
+    },
+    {
+      "u": 6.3,
+      "h": 7.2,
+      "w": 1.5,
+      "hh": 1.2,
+      "bars": true,
+      "columns": 2
+    },
+    {
+      "u": 6.3,
+      "h": 4.95,
+      "w": 1.45,
+      "hh": 0.7,
+      "bars": true,
+      "columns": 2
+    },
+    {
+      "u": 6.6,
+      "h": 5.85,
+      "w": 0.8,
+      "hh": 0.85,
+      "bars": true,
+      "columns": 1
+    },
+    {
+      "u": 7.85,
+      "h": 5.85,
+      "w": 0.8,
+      "hh": 0.85,
+      "bars": true,
+      "columns": 1
+    },
+    {
+      "u": 9.1,
+      "h": 5.85,
+      "w": 0.8,
+      "hh": 0.85,
+      "bars": true,
+      "columns": 1
+    }
+  ],
+  "rear_chimney_y": -51.0
 }

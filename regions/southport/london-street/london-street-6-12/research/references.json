@@ -95,5 +95,19 @@
       "Rear court eaves and wall returns follow the rear pitch rather than forcing every eave vertex to the same height."
     ],
     "uncertainty": "North setback coordinates follow visually inferred separation and existing Prezzo model geometry, not a measured cadastral boundary. Exact ridge height, pitch and hidden returns remain estimates pending a fresh 3D review."
+  },
+  "rear_side_correction": {
+    "date": "2026-10-22",
+    "evidence": [
+      "output/glebe-mouth-reference.png (November 2020)",
+      "output/halifax-rear-full.png (November 2020)",
+      "output/halifax-roof-reference.png (undated aerial)"
+    ],
+    "findings": [
+      "Glebe windows have a narrow top transom and large plain lower pane, not the street sash module. Brick-filled upper openings align with the two real casements.",
+      "The recessed court wall carries four varied upper windows, three lower small barred windows and a larger low barred opening. Earlier boundary trimming discarded two windows, while the lower trio had been placed incorrectly on the projecting southern wall.",
+      "Rear eave lowered relative to street elevation to better match the two-storey courtyard composition. Chimney/rooflight repositioned relative to the corrected windows; north roof cutouts and stair clearances retained."
+    ],
+    "limits": "Fresh browser attempts with normal offscreen, GPU-disabled offscreen and headless Chrome stalled on Google Maps screenshots. Retained references re-inspected; no fresh Street View or Google 3D claim. Exact rear roof height, pitch and offsets remain calibrated estimates."
   }
 }
