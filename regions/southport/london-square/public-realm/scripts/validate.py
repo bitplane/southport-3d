@@ -74,6 +74,18 @@ for y in [-19.137,-10.137,.137,10.137,19.137]:
  assert len(hits)==1,(y,'Overlapping return-road surfaces',hits)
 print('SW return road has one physical surface after priority flattening')
 
+rear_paving=[ob for ob in bpy.data.collections['rear-streets-ground'].objects
+             if any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials)]
+for ob in rear_paving:ob.data.calc_loop_triangles()
+for x,y in [(25.31354,-77.78526),(25.88249,-77.31763),(80.137,-83.4137),(110.137,-86.3137)]:
+ hits=[]
+ for ob in rear_paving:
+  for triangle in ob.data.loop_triangles:
+   hit=intersect_ray_tri(*(ob.data.vertices[i].co for i in triangle.vertices),Vector((0,0,-1)),Vector((x,y,10)),True)
+   if hit is not None:hits.append(hit.z)
+ assert len(hits)==1,(x,y,'Duplicated or missing Anchor footway fragments',hits)
+print('Anchor footway cutter fragments have one pavement layer')
+
 # The photographed garden row extends, rather than duplicates, the core row.
 front=json.loads((ROOT/'research/streets.json').read_text())['sw_frontage_2024']
 posts=[o for o in meshes if o.name.startswith('Furniture bollard ')]

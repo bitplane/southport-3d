@@ -220,3 +220,9 @@ flattened onto the same road datum must subtract one another even when those
 priorities differ by more than the normal small overlay tolerance. This removes
 the duplicate asphalt beneath the SW garden return lane. Validation counts
 actual triangle intersections there, including overlaps within a batched mesh.
+
+Before cutting surfaces, adjacent repeated polygon corners are removed and
+zero-area cutter triangles are rejected. Otherwise a zero-length edge can
+classify the entire remaining polygon as both inside and outside, duplicating
+pavement fragments. Sampled Anchor Street footway rays guard against this
+overlap after triangulation and batching.

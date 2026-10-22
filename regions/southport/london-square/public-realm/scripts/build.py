@@ -222,11 +222,18 @@ for part,collection in collections.items():
    points=[tuple(o.data.vertices[i].co) for i in face.vertices]
    offsets=[p[2]-grade(p[1]) for p in points]
    if max(offsets)-min(offsets)>1e-5:continue  # vertical kerb face
-   xy=[(p[0],p[1]) for p in points];signed=sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(xy,xy[1:]+xy[:1]))
+   xy=[(p[0],p[1]) for p in points]
+   # Earlier road/footway clipping can retain repeated boundary corners. A
+   # zero-length cutter edge classifies the entire subject as both inside and
+   # outside, duplicating pavement fragments instead of subtracting a strip.
+   xy=[p for i,p in enumerate(xy) if math.dist(p,xy[i-1])>1e-8]
+   if len(xy)<3:continue
+   signed=sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(xy,xy[1:]+xy[:1]))
    if signed<=0:continue
    # Convex quads/outline faces are common; triangulate concave arrow faces.
    crosses=[(xy[(i+1)%len(xy)][0]-xy[i][0])*(xy[(i+2)%len(xy)][1]-xy[(i+1)%len(xy)][1])-(xy[(i+1)%len(xy)][1]-xy[i][1])*(xy[(i+2)%len(xy)][0]-xy[(i+1)%len(xy)][0]) for i in range(len(xy))]
-   cutters=[xy] if min(crosses)>=-1e-7 else [[xy[v] if isinstance(v,int) else (v.x,v.y) for v in tri] for tri in tessellate_polygon([[Vector(p) for p in points]])]
+   cutters=[xy] if min(crosses)>=-1e-7 else [[xy[v] if isinstance(v,int) else (v.x,v.y) for v in tri] for tri in tessellate_polygon([[Vector((x,y,0)) for x,y in xy]])]
+   cutters=[c for c in cutters if area(c)>1e-9]
    rows.append((o,face.index,sum(offsets)/len(offsets),xy,cutters))
  replacements={}
  order={(o,index):i for i,(o,index,*_) in enumerate(rows)}
