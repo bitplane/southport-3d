@@ -59,9 +59,36 @@ for x in front['garden_bollards_x']:
 for x in front['shop_bollards_x']:
  assert (x,front['shop_bollards_y']) in positions
  assert -23.6<front['shop_bollards_y']< -21.1,'Post off frontage footway'
-assert len([o for o in meshes if o.name.startswith('Garden globe lamp')])==2
+assert len([o for o in meshes if o.name.startswith('Garden globe lamp')])==4
 from garden_front import globe_lamp,balustrade
 for factory in [globe_lamp,balustrade]:
  counts=[sum(len(f)-2 for f in factory(level).faces) for level in ['detail','walk','district']]
  assert counts[0]>counts[1]>counts[2],(factory.__name__,counts)
 print('Photographed garden furniture placement and LOD reductions validated')
+
+# Cast against the assembled surface, not construction metadata: each yellow
+# pair meets its neighbour and the detailed Glebe throat has one owner.
+from mathutils import Vector
+depsgraph=bpy.context.evaluated_depsgraph_get()
+def ground_hit(x,y):
+ hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(depsgraph,Vector((x,y,30)),Vector((0,0,-1)))
+ return ob,point if hit else None
+for station in [-41,41]:
+ for y in [21.18,21.36,-14.98,-15.16,-20.92,-20.74]:
+  left,lp=ground_hit(station-.015,y)
+  right,rp=ground_hit(station+.015,y)
+  assert left and right,(station,y,'uncovered seam')
+  assert 'Faded yellow road marking' in [m.name for m in left.data.materials],(station,y,left.name)
+  assert 'Faded yellow road marking' in [m.name for m in right.data.materials],(station,y,right.name)
+  assert abs(lp.z-rp.z)<.0005,(station,y,'paint step')
+for station in [-76,-116]:
+ for x in [-4.12,-3.94,3.94,4.12]:
+  before,p=ground_hit(x,station-.015)
+  after,q=ground_hit(x,station+.015)
+  assert before and after
+  assert 'Faded yellow road marking' in [m.name for m in before.data.materials]
+  assert 'Faded yellow road marking' in [m.name for m in after.data.materials]
+  assert abs(p.z-q.z)<.0005
+ob,p=ground_hit(-7,-66.5)
+assert ob is None,'London Square still overlaps the detailed Glebe throat'
+print('Exportable yellow-line seams and single Glebe ownership validated')

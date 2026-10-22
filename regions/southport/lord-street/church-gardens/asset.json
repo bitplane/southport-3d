@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.church-gardens",
+  "name": "Lord Street \u2014 Christ Church and St George\u2019s gardens",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "street-view-researched-with-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "paving",
+    "kerbs",
+    "carriageways",
+    "markings",
+    "bollards",
+    "chains",
+    "signals",
+    "benches",
+    "bins",
+    "guardrails",
+    "street-lights",
+    "gardens",
+    "trees",
+    "walls",
+    "pools",
+    "garden-paths",
+    "bus-stop-poles"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Christ Church lawns and pedestrian forecourt to town-hall access, Lord Street carriageway and pavements, St George\u2019s garden and church approach; Sainsbury\u2019s adjoining frontage belongs to London Square. Church architecture deferred.",
+  "licensing": "See RIGHTS.md. OSM-derived layout attribution retained; no reference imagery embedded."
+}

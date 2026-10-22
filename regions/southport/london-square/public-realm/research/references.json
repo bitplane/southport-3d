@@ -96,6 +96,24 @@
         "Pale stone balustrade separates garden planting from footway; black/pale slender lamps with white spherical globes rise from square stone piers. Two lamps visible in receding view.",
         "Placements, spacings and dimensions visually calibrated; original panorama URL not included in screenshot. Source pixels are not published."
       ]
+    },
+    {
+      "id": "george-side-2024",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6494858,-3.0025353&heading=45&pitch=-12",
+      "capture": "August 2024",
+      "author": "Google Street View; linked evidence only",
+      "observations": [
+        "Actual panorama pixels inspected: clipped hedge around church garden, open forecourt, planted beds, white flagpole; taxi bay yellow dashes on St Georges Place. Opposite garden has balustrade, globe lamps and planter bowls."
+      ]
+    },
+    {
+      "id": "sainsburys-2024",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6492563,-3.0028990&heading=135&pitch=-12",
+      "capture": "August 2024",
+      "author": "Google Street View; linked evidence only",
+      "observations": [
+        "Actual pixels inspected: tactile patch outside entrance, slab footway, yellow edges, block-paved carriageway section and white parking-bay ends."
+      ]
     }
   ],
   "limitations": [
@@ -106,6 +124,7 @@
     "Perimeter beyond core forecourts/island remains approximate and is identified separately.",
     "Extension heights/widths and tree positions are estimates, not a highway survey. London Street ends at Chapel/Hoghton; further station-side extension remains separate.",
     "Fountain sculpture and bus shelter structures deferred pending adequate close references. Water and vegetation are schematic representations.",
-    "Prezzo approach adjusted to OSM block corner and exterior/aerial photographs during building integration; kerb offsets remain estimated. See prezzo/research/references.json."
+    "Prezzo approach adjusted to OSM block corner and exterior/aerial photographs during building integration; kerb offsets remain estimated. See prezzo/research/references.json.",
+    "Church garden ownership now in southport.lord-street.church-gardens; kerb widths, bay endpoints and tactile layout remain visually estimated. Taxi lettering and detailed crossing equipment deferred."
   ]
 }

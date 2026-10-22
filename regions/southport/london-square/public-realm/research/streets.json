@@ -1,7 +1,7 @@
 {
   "bounds_m": {
     "site_x": [
-      -104,
+      -73,
       154
     ],
     "site_y": [
@@ -245,21 +245,6 @@
         -62,
         -8,
         0.8
-      ],
-      [
-        -78,
-        11,
-        1
-      ],
-      [
-        -84,
-        -7,
-        0.9
-      ],
-      [
-        -93,
-        10,
-        1.1
       ]
     ]
   },
@@ -301,5 +286,6 @@
       -46
     ],
     "notes": "Retain existing forecourt bollards through X -30, add continuation only. Leave service-road opening around X -69 clear. Balustrade replaces low SW garden edging on the photographed shop-facing segment; unobserved other sides remain provisional."
-  }
+  },
+  "ownership": "Christ Church garden/road west of site X=-73 belongs to southport.lord-street.church-gardens. Shared road datum and kerbs Y21/31; no wall across the ownership seam."
 }

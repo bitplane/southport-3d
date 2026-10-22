@@ -212,6 +212,58 @@
         1.5,
         14
       ]
+    },
+    {
+      "name": "Lord Street seam",
+      "position": [
+        -43,
+        18,
+        37
+      ],
+      "target": [
+        -41,
+        0,
+        15
+      ]
+    },
+    {
+      "name": "Sainsbury\u2019s crossing",
+      "position": [
+        125,
+        13,
+        40
+      ],
+      "target": [
+        118,
+        0,
+        18
+      ]
+    },
+    {
+      "name": "St George\u2019s return",
+      "position": [
+        170,
+        17,
+        27
+      ],
+      "target": [
+        146,
+        0,
+        -3
+      ]
+    },
+    {
+      "name": "London Street seam",
+      "position": [
+        13,
+        14,
+        82
+      ],
+      "target": [
+        0,
+        0,
+        76
+      ]
     }
   ],
   "walk_spawn": {

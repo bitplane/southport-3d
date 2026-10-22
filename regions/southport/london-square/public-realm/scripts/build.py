@@ -6,6 +6,7 @@ from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path.insert(0,str(REPO/'lib'))
 from southport3d.geometry import Mesh,text_object
 from southport3d.street import furniture,sagging_chain,guardrail
+from southport3d.road import marking_segments,parallel
 D=json.loads((ROOT/'research/layout.json').read_text());bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 sys.path.insert(0,str(ROOT/'scripts'))
 from extensions import PARTS, build_extensions
@@ -22,6 +23,7 @@ def mat(name,color,texture=None,normal=False,metal=0):
   t=m.node_tree.nodes.new('ShaderNodeTexImage');t.image=bpy.data.images.load(str(ROOT/'textures/paving-normal.png'),check_existing=True);t.image.colorspace_settings.name='Non-Color';n=m.node_tree.nodes.new('ShaderNodeNormalMap');m.node_tree.links.new(t.outputs['Color'],n.inputs['Color']);m.node_tree.links.new(n.outputs['Normal'],p.inputs['Normal'])
  return m
 mixed=mat('Authored mixed rectangular paving',(.45,.43,.39),'mixed',True);pale=mat('Authored pale paving',(.64,.62,.55),'pale',True);dark=mat('Authored charcoal paving',(.08,.09,.10),'dark',True)
+roadpavers=mat('Authored dark service road blocks',(.25,.26,.25),'service-road')
 asphalt=mat('Authored asphalt',(.08,.08,.08),'asphalt');redroad=mat('Authored reddish carriageway',(.22,.11,.09),'red-road');kerb=mat('Pale granite kerb',(.40,.40,.36));yellow=mat('Faded yellow road marking',(.65,.47,.10));white=mat('Worn white road marking',(.69,.68,.60));tactile=mat('Buff tactile paving',(.48,.34,.19));iron=mat('Access covers',(.075,.08,.08),metal=.25)
 fm=[mat('Painted dark iron',(.025,.033,.031),metal=.35),mat('Galvanised metal',(.45,.48,.47),metal=.65),mat('Pale backing',(.65,.65,.59)),mat('Push button edging',(.8,.48,.015)),mat('Unlit red lens',(.14,.008,.008)),mat('Unlit amber lens',(.16,.075,.005)),mat('Unlit green lens',(.004,.10,.035)),mat('Weathered bench slats',(.25,.20,.13)),mat('Dark opening',(.006,.008,.008))]
 
@@ -45,6 +47,33 @@ def line(name,pts,width,material,part,z=.003):
   if not l:continue
   nx,ny=-dy/l*width/2,dx/l*width/2;m.add([(a[0]-nx,a[1]-ny,z),(b[0]-nx,b[1]-ny,z),(b[0]+nx,b[1]+ny,z),(a[0]+nx,a[1]+ny,z)],[(0,1,2,3)])
  return finish(m,material,part)
+def open_kerb(points,inside,part):
+ inner=parallel(points,inside*.19)
+ mesh=Mesh('Kerb aligned street edge')
+ for i,(a,b) in enumerate(zip(points,points[1:])):
+  p,q=inner[i],inner[i+1]
+  mesh.add([(a[0],a[1],-.12),(b[0],b[1],-.12),(b[0],b[1],.004),(a[0],a[1],.004),(p[0],p[1],.004),(q[0],q[1],.004)],[(0,1,2,3),(3,2,5,4)])
+ return finish(mesh,kerb,part)
+
+
+def london_kerb(side):
+ return [(side*4.3,-154),(side*4.3,-46),(side*6.2,-36),(side*6.2,-25.3)]
+
+
+def paint_edge(name, points, side, part, bounds=None, closed=False):
+ from southport3d.planar import halfplane
+ for _, (a,b) in marking_segments(points, side, bounds, closed):
+  dx,dy=b[0]-a[0],b[1]-a[1]
+  length=math.hypot(dx,dy)
+  nx,ny=-dy/length*.075/2,dx/length*.075/2
+  poly=[(a[0]-nx,a[1]-ny),(b[0]-nx,b[1]-ny),(b[0]+nx,b[1]+ny),(a[0]+nx,a[1]+ny)]
+  if bounds:
+   x0,y0,x1,y1=bounds
+   for c,d in [((x0,y0),(x1,y0)),((x1,y0),(x1,y1)),((x1,y1),(x0,y1)),((x0,y1),(x0,y0))]:
+    poly=halfplane(poly,c,d,True)
+  if len(poly)>=3:polygon('Marking '+name,poly,yellow,part,-.111)
+
+
 def offset(pts,amount):
  # Offset closed CCW polygons with bounded mitres.
  if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(pts,pts[1:]+pts[:1]))<0:pts=list(reversed(pts))
@@ -60,17 +89,19 @@ def edge(name,pts,part):
   if abs(outer[i][0])>40.9 and abs(outer[j][0])>40.9:continue  # open scene boundary, not a kerb
   m.add([(outer[i][0],outer[i][1],-.12),(outer[j][0],outer[j][1],-.12),(outer[j][0],outer[j][1],.004),(outer[i][0],outer[i][1],.004),(inner[i][0],inner[i][1],.004),(inner[j][0],inner[j][1],.004)],[(0,1,2,3),(3,2,5,4)])
  finish(m,kerb,part)
- # The yellow pair is road paint, offset outwards from the kerb.
- for dist in [.18,.36]:
-  q=offset(pts,dist)
-  for a,b in zip(q,q[1:]+q[:1]):
-   if abs(a[0])>40.9 and abs(b[0])>40.9:continue
-   line('Marking double yellow '+name,[a,b],.08,yellow,'roads',-.116)
+ # Cut the pair at the actual tile boundary, not the expanded offset polygon.
+ # There is no return line on an ownership boundary.
+ q=pts if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(pts,pts[1:]+pts[:1]))>0 else list(reversed(pts))
+ curves=list(marking_segments(q,-1,(-41,-36,41,36),closed=True))
+ for _,(a,b) in curves:
+  if abs(a[0])>=40.999 and abs(b[0])>=40.999:continue
+  line('Marking double yellow '+name,[a,b],.075,yellow,'roads',-.111)
 
 # Road base is continuous. Red surfacing is the island-loop material observed in imagery.
 rect('Surface roads',-41,-27,41,36,asphalt,'roads',-.12)
 rect('Surface London neck',-10,-36,8.5,-27,asphalt,'roads',-.12)
 rect('Surface red island carriageways',-13.1,-23,13.1,21,redroad,'roads',-.118)
+rect('Surface Lord Street service pavers',-41,-23.6,-13.1,-14.8,roadpavers,'roads',-.117)
 for side,label in [(1,'ne'),(-1,'sw')]:
  pts=D['courts'][label];polygon('Surface '+label+' mixed paving',pts,mixed,label+'-ground');edge(label+' forecourt',pts,label+'-ground')
  # Paving panel runs along site X from road to colonnade, not along the building elevation.
@@ -101,15 +132,23 @@ for s in [-1,1]:
  x0,x1=sorted([s*6.2,s*41])
  if s<0:
   polygon('Surface Prezzo corner pavement',[(-41,-27),(-6.2,-27),(-6.2,-25.3),(-11.9,-21.1),(-41,-21.1)],mixed,'perimeter')
- else:rect('Surface perimeter south approximate',x0,-27,x1,-23.6,mixed,'perimeter')
+ else:
+  polygon('Surface NatWest corner pavement',[(6.2,-27),(41,-27),(41,-21.1),(11.9,-21.1),(6.2,-25.3)],mixed,'perimeter')
  x0,x1=sorted([s*6.2,s*(10 if s<0 else 8.5)]);rect('Surface London neck footway',x0,-36,x1,-27,mixed,'perimeter')
  x0,x1=sorted([s*6,s*41]);rect('Surface perimeter north approximate',x0,31,x1,36,mixed,'perimeter')
 # The mapped Prezzo corner reveals the old generic footway was too far back.
 # Retain building registration and give its doorway an estimated continuous approach.
 from southport3d.landscape import capped_wall
 approach=[(-41,-21.1),(-11.9,-21.1),(-6.2,-25.3)]
-m=capped_wall([(x,y,grade(y)-.12) for x,y in approach],.125,.18,'Kerb Prezzo approach');m.finish([kerb],collections['perimeter'])
-for d in [.25,.43]:line('Marking Prezzo approach edge',[(x,y+d) for x,y in approach],.075,yellow,'roads',-.111)
+open_kerb(approach,-1,'perimeter')
+paint_edge('Prezzo approach edge',approach,1,'roads',(-41,-36,41,36))
+natwest_approach=[(6.2,-25.3),(11.9,-21.1),(41,-21.1)]
+open_kerb(natwest_approach,-1,'perimeter')
+paint_edge('NatWest approach edge',natwest_approach,1,'roads',(-41,-36,41,36))
+# Continuous London Street neck edges use the same setback as its first tile.
+for side in [-1,1]:
+ open_kerb([(side*6.2,-36),(side*6.2,-25.3)],-side,'perimeter')
+ paint_edge('London neck edge',london_kerb(side),side,'roads',(-10,-36,8.5,-25.3))
 
 # Observed crossing studs and stop bars; positions follow the reconstructed kerb geometry.
 for s in [-1,1]:
@@ -125,7 +164,9 @@ for s in [-1,1]:
   # opposite directions around the island
   polygon('Marking direction arrow',[(x+s*a,y+s*b) for a,b in pts],white,'roads',-.113)
 # Dashed Lord Street centre line, interrupted across junction and crossings.
-for x in list(range(-40,-14,6))+list(range(18,40,6)):rect('Marking Lord Street lane dash',x,25.5,x+2,25.6,white,'roads',-.114)
+for x in range(-42,42,6):
+ if -14<x<16:continue
+ rect('Marking Lord Street lane dash',max(-41,x),25.55,min(41,x+2),25.65,white,'roads',-.111)
 # Access covers and drains: generic dimensions, placements explicitly interpreted.
 for side,label in [(1,'ne'),(-1,'sw')]:
  for x,y in [(20,8),(28,-9)]:
@@ -193,6 +234,27 @@ for part,collection in collections.items():
    for i in f.loop_indices:
     v=o.data.vertices[o.data.loops[i].vertex_index].co;uv.data[i].uv=(v.x/3.6,v.y/3.6)
 
+# Height offsets above were ordering priorities for cutouts, not floating paint.
+# Flatten road materials onto their physical datum after clipping.
+for part,collection in collections.items():
+ if part.endswith('-furniture'):continue
+ for ob in collection.objects:
+  if ob.data.materials and ob.data.materials[0] in [mixed,pale,dark,kerb]:
+   for vertex in ob.data.vertices:
+    if abs(vertex.co.z-grade(vertex.co.y))<.04:vertex.co.z=grade(vertex.co.y)
+  if ob.data.materials and ob.data.materials[0] in [asphalt,redroad,roadpavers,yellow,white]:
+   for vertex in ob.data.vertices:
+    vertex.co.z=grade(vertex.co.y)-.12
+
+# Tactile crossing at the mapped Sainsbury's path: drop the pavement to the
+# carriageway at each kerb while retaining the higher rear landing.
+for ob in collections['ne-garden-ground'].objects:
+ if ob.name.startswith('Surface Sainsbury ramp') or ob.name.startswith('Tactile Sainsbury'):
+  south='south' in ob.name
+  for vertex in ob.data.vertices:
+   fraction=max(0,min(1,(vertex.co.y+24.6) if south else (-13.8-vertex.co.y)))
+   vertex.co.z=grade(vertex.co.y)-.12*fraction
+
 # Drop the London Street landing edge to road level; keep adjoining footway level.
 for o in collections['london-3-ground'].objects:
  if o.name.startswith(('Surface crossing ramp','Tactile London')):
@@ -220,6 +282,34 @@ for collection in collections.values():
   for o in objects:o.select_set(True)
   bpy.context.view_layer.objects.active=objects[0];bpy.ops.object.join()
   objects[0].name=family+' '+collection.name+' '+material
+
+# Resolve boundary T-junctions across all ground parts together, including
+# painted strips and the independent street tiles. Furniture stays instanced.
+from southport3d.conform import conform
+compiled={}
+for part,collection in collections.items():
+ if part.endswith('-furniture'):continue
+ for ob in collection.objects:
+  mesh=Mesh(ob.name)
+  for face in ob.data.polygons:
+   pts=[tuple(ob.data.vertices[i].co) for i in face.vertices]
+   # Triangulate first: the conformer expects convex faces, and this asset also
+   # contains concave arrows and rounded court outlines.
+   for tri in tessellate_polygon([[Vector(p) for p in pts]]):
+    mesh.add([pts[v] if isinstance(v,int) else tuple(v) for v in tri],[(0,1,2)])
+  compiled[ob.name]=mesh
+compiled,report=conform(compiled)
+for name,mesh in compiled.items():
+ ob=bpy.data.objects[name]
+ ob.data.clear_geometry()
+ ob.data.from_pydata(mesh.vertices,[],mesh.faces)
+ ob.data.update()
+ uv=ob.data.uv_layers.active or ob.data.uv_layers.new(name='Metric repeat')
+ for face in ob.data.polygons:
+  for loop in face.loop_indices:
+   v=ob.data.vertices[ob.data.loops[loop].vertex_index].co
+   uv.data[loop].uv=(v.x/3.6,v.y/3.6)
+(ROOT/'research/conform.json').write_text(json.dumps(report,indent=2))
 
 # Pack generated images for self-contained source output; no external reference pixels.
 for im in bpy.data.images:

@@ -1,0 +1,57 @@
+{
+  "accessed": "2026-10-22",
+  "rights": "Reference links only. Google imagery \u00a9Google and aerial providers; no pixels published. OSM data attribution retained. Geometry/materials authored reconstructions.",
+  "references": [
+    {
+      "id": "christ-east-2024",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=UMES6ZQ9XWueLZMDGyNXqQ&heading=234&pitch=-10",
+      "capture": "August 2024",
+      "observed": "Actual panorama pixels inspected: brick side retaining wall, open paved forecourt, three entry bollards, heritage lantern, benches, mature lawn trees, church/Cafe1821 frontage.",
+      "local_capture": "output/christchurch-gardens-east.png"
+    },
+    {
+      "id": "christ-main-2026",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=x4P8BXasiLSUn728wphO-A&heading=152&pitch=-10",
+      "capture": "July 2026",
+      "observed": "Actual panorama pixels inspected: low coursed stone garden wall, piers and broad paved entrance, paired yellow paint continuing over access, long wooden bench row, cylindrical bins, ornate lamps.",
+      "local_capture": "output/christchurch-mainstreet-entrance.png"
+    },
+    {
+      "id": "george-side-2024",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6494858,-3.0025353&heading=45&pitch=-12",
+      "capture": "August 2024",
+      "observed": "Actual panorama pixels inspected: clipped hedge around church garden, open forecourt, planted beds, white flagpole; taxi bay yellow dashes on St Georges Place. Opposite garden has balustrade, globe lamps and planter bowls.",
+      "local_capture": "output/st-georges-place-reference.png"
+    },
+    {
+      "id": "george-main-2026",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=aYGe43DlcJGcEc8ECrJynQ&heading=140&pitch=-10",
+      "capture": "July 2026",
+      "observed": "Actual panorama pixels inspected: broad slabs, dense shrubs/trees, bench row, bins and pathways. Crossing furniture farther northeast; not all included.",
+      "local_capture": "output/st-georges-garden-oblique.png"
+    },
+    {
+      "id": "sainsburys-2024",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6492563,-3.0028990&heading=135&pitch=-12",
+      "capture": "August 2024",
+      "observed": "Actual pixels inspected: tactile patch outside entrance, slab footway, yellow edges, block-paved carriageway section and white parking-bay ends.",
+      "local_capture": "output/sainsburys-forecourt-reference.png"
+    },
+    {
+      "id": "aerial",
+      "url": "https://www.google.com/maps/@53.6481,-3.00545,20z",
+      "capture": "Displayed copyright2026; aerial acquisition date not supplied",
+      "observed": "Christ Church lawns, broad forecourt, crossing paths and service return geometry. St George map @53.64965,-3.0026,19z covers forked paths, church grounds and Hill Street boundary."
+    },
+    {
+      "id": "church-identity",
+      "url": "https://christchurchsouthport.org.uk/new-here/",
+      "observed": "Church identity and public access from Lord Street opposite Wayfarers confirmed."
+    },
+    {
+      "id": "george-identity",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379676",
+      "observed": "St George\u2019s church identity and location confirmed; building architecture not modelled."
+    }
+  ]
+}

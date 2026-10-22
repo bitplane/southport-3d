@@ -1,0 +1,38 @@
+"""Check authored coverage, open entrances and semantic ground ownership."""
+import json
+import math
+import os
+import sys
+from pathlib import Path
+import bpy
+ROOT=Path(__file__).resolve().parents[1]
+sys.path[:0]=[str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib'),str(ROOT/'scripts')]
+from components import hedge,lantern
+from southport3d.landscape import tree
+bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
+report=json.loads((ROOT/'research/geometry-report.json').read_text())
+for place in ['christ','george']:
+    ground=bpy.data.collections[place+'-ground']
+    assert ground.objects
+    assert all(o.name.startswith('Surface ') for o in ground.objects),'Furniture leaked into walking surface'
+    for o in ground.objects:
+        assert o.data.uv_layers and o.data.polygons
+        assert all(math.isfinite(c) for v in o.data.vertices for c in v.co)
+for factory in [hedge,lantern,tree]:
+    counts=[sum(len(f)-2 for f in factory(level).faces) for level in ['detail','walk','district']]
+    assert counts[0]>counts[1]>counts[2],(factory.__name__,counts)
+# No wall blocks the mapped Christ Church cross-garden path.
+for w in report['walls']:
+    if w['place']=='christ':
+        for a,b in zip(w['xy'],w['xy'][1:]):
+            assert not (min(a[0],b[0])<-100.8<max(a[0],b[0]) and min(a[1],b[1])>10),'Wall blocks entrance'
+positions=[(r['place'],r['kind'],*r['xy']) for r in report['placements']]
+assert len(positions)==len(set(positions)), 'Duplicate furnishings'
+assert all(image.packed_file for image in bpy.data.images if image.source=='FILE')
+# Declared ownership station occurs in exported ground on both sides of the road.
+for place,x in [('christ',-73),('george',154)]:
+    verts=[v.co for o in bpy.data.collections[place+'-ground'].objects for v in o.data.vertices]
+    for y in [21,31]:
+        assert any(abs(v.x-x)<.001 and abs(v.y-y)<.001 for v in verts),(place,'missing seam vertex',y)
+(ROOT/'research/validation.json').write_text(json.dumps({'checks':'Finite surfaces, ground separation, distinct placements, open cross-garden entrance, all LOD generators reduce, seam vertices, packed maps','placements':len(positions)},indent=2))
+print('Church gardens geometry, entrances and LoDs validated')

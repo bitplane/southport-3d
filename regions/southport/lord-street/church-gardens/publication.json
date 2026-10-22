@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street church gardens",
+  "status": "Christ Church lawns and pedestrian forecourt to town-hall access, Lord Street carriageway and pavements, St George\u2019s garden and church approach; Sainsbury\u2019s adjoining frontage belongs to London Square. Church architecture deferred.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "christ-ground",
+      "name": "Christ Church ground",
+      "collection": "christ-ground",
+      "ground": true
+    },
+    {
+      "id": "christ-furniture",
+      "name": "Christ Church furniture",
+      "collection": "christ-furniture"
+    },
+    {
+      "id": "george-ground",
+      "name": "St George\u2019s ground",
+      "collection": "george-ground",
+      "ground": true
+    },
+    {
+      "id": "george-furniture",
+      "name": "St George\u2019s furniture",
+      "collection": "george-furniture"
+    }
+  ],
+  "views": [
+    {
+      "name": "Christ Church gardens",
+      "position": [
+        -90,
+        58,
+        68
+      ],
+      "target": [
+        -104,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Church garden entrance",
+      "position": [
+        -103,
+        5,
+        -31
+      ],
+      "target": [
+        -102,
+        1,
+        -13
+      ]
+    },
+    {
+      "name": "St George\u2019s gardens",
+      "position": [
+        197,
+        55,
+        51
+      ],
+      "target": [
+        181,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "St George\u2019s seam",
+      "position": [
+        143,
+        9,
+        7
+      ],
+      "target": [
+        160,
+        1,
+        -4
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -101,
+      2,
+      -20
+    ],
+    "target": [
+      -101,
+      2,
+      10
+    ]
+  },
+  "rules": [
+    {
+      "id": "surfaces",
+      "match": "^(Surface|Kerb|Pattern|Marking|Tactile|Cover) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already coarse surfaces; preserve kerb silhouette and large paving motifs. Tile joints live in shared authored maps."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain ground continuity and recognisable paving/road pattern; reduce map resolution rather than collapse the outline."
+      }
+    },
+    {
+      "id": "bollard",
+      "match": "^Furniture bollard ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bollard",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bollard",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "bench",
+      "match": "^Furniture bench ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "bin",
+      "match": "^Furniture bin ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bin",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bin",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "streetlight",
+      "match": "^Furniture streetlight ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "streetlight",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep silhouette and material bands; omit ribs, hardware and reduce curved sections."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "streetlight",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Use coarse authored profiles; omit small fittings and simplify slats/lenses while retaining recognisable form."
+      }
+    },
+    {
+      "id": "landscape-structure",
+      "match": "^(Wall|Street) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already coarse capped edges and poles; preserve entrances and wall height."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Low polygon boundary silhouettes establish garden and road layout."
+      }
+    },
+    {
+      "id": "trees",
+      "match": "^Tree ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "level": "walk",
+          "kind": "tree"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep crown lobes and trunks, reduce rings and radial samples."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "level": "district",
+          "kind": "tree"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Replace lobed canopy with one coarse crown and trunk; omit branches."
+      }
+    },
+    {
+      "id": "hedge",
+      "match": "^Hedge ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "hedge",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain physical silhouette; reduce profile/radial sampling and foliage lobes."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "hedge",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Coarse envelope retains planting boundaries and lamp silhouette, omitting tiny fittings."
+      }
+    },
+    {
+      "id": "lantern",
+      "match": "^Lantern ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "lantern",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain physical silhouette; reduce profile/radial sampling and foliage lobes."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "lantern",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Coarse envelope retains planting boundaries and lamp silhouette, omitting tiny fittings."
+      }
+    }
+  ]
+}

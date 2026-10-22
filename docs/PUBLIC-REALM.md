@@ -156,3 +156,18 @@ in the published model or Git sources.
 | detail | 179,221 | 8,537,132 | 4,835,767 |
 | walk | 58,973 | 8,450,560 | 4,835,767 |
 | district | 25,093 | 1,956,300 | 215,217 |
+
+## Church gardens and corrected street seams
+
+The [church-garden pass](LORD-STREET-GARDENS.md) transfers the ground west of
+X=-73 to a new bounded asset and continues beyond St George’s Place to the other
+church garden. London Square now owns only the memorial-side southwest garden;
+the older X=-104 bound above describes the previous build. Its Sainsbury’s
+crossing, service-road paving, parking/taxi bay edges and garden return furniture
+have been refined from actual August 2024 and July 2026 Street View imagery.
+
+Road paint now shares kerb geometry and tile limits. Both pairs meet across the
+square/garden cuts, the London Street taper is correctly stationed, and ground
+faces are conformed before export. NatWest has a wider corner approach. Glebe
+Place’s detailed asset replaces the old provisional broad pavement stub. See the
+linked document for exact ownership and remaining estimates.

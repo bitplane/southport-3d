@@ -22,3 +22,10 @@ print('Authored five repeating colour maps and one joint normal map')
 # Non-directional authored lawn grain; no satellite or photograph pixels.
 a=np.array([88,116,53])[None,None,:]+rng.normal(0,5,(n,n,1))
 Image.fromarray(np.uint8(np.clip(a,0,255))).save(out/'grass.png')
+
+# Small dark block pavers seen on the Lord Street service carriageway.
+bx=xx/n*18;by=yy/n*36;rows=np.floor(by).astype(int)
+joints=((bx+(rows%2)*.5)%1<.035)|(by%1<.035)
+pixels=np.array([72,75,72])[None,None,:]+rng.normal(0,2,(n,n,1))
+pixels[joints]*=.70
+Image.fromarray(np.uint8(np.clip(pixels,0,255))).save(out/'service-road.png')
