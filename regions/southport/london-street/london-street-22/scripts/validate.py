@@ -31,6 +31,16 @@ for f in ['front_x','base_z','registration_pivot','registration_radians']:assert
 assert D['north_y']==nd['south_y']
 # Both stone shoulders are lower than the centred curved glass crown.
 front_inv=(reg@Matrix(((0,0,1,D['front_x']),(1,0,0,D['south_y']),(0,1,0,D['base_z']),(0,0,0,1)))).inverted()
+baybase=[o for o in meshes if o.name.startswith('Trim curved spandrel 6')]
+fascia=[o for o in meshes if o.name.startswith(('Sign Money Shop fascia','Shop yellow fascia backing','Trim fascia crown'))]
+baybottom=min((front_inv@o.matrix_world@v.co).y for o in baybase for v in o.data.vertices)
+fasciatop=max((front_inv@o.matrix_world@v.co).y for o in fascia for v in o.data.vertices)
+assert baybottom>fasciatop+.01,('Curved bay intersects fascia',baybottom,fasciatop)
+front=front_inv.inverted()
+for direction in [Vector((-1,0,0)),Vector((1,0,0)),Vector((0,1,0))]:
+ origin=front@Vector((1.01,1.4,-.12))
+ hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,(front.to_3x3()@direction).normalized(),distance=1.7)
+ assert hit and found.name.startswith(('Shop entrance side return','Shop entrance soffit')),('Open entrance',tuple(direction))
 cap=bpy.data.objects['Trim rounded terminal upper']
 cap_u=[(front_inv@cap.matrix_world@v.co).x for v in cap.data.vertices]
 assert min(cap_u)>1.1 and max(cap_u)<4.3

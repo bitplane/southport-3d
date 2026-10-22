@@ -116,7 +116,7 @@ darkglass=material('Blue grey upper glazing',(.09,.135,.16),roughness=.65)
 darkglass.node_tree.nodes['Principled BSDF'].inputs['Specular IOR Level'].default_value=.15
 H=13.1
 gl=1.34;gr=width-1.34;gc=width/2
-wall_with_openings('stone front',front,width,H,[(.90,width-.90,3.70,H),(0,gl,12.25,H),(gr,width,12.25,H),(.16,width-.16,0,3.18)],mat=stone)
+wall_with_openings('stone front',front,width,H,[(.90,width-.90,3.81,H),(0,gl,12.25,H),(gr,width,12.25,H),(.16,width-.16,0,3.18)],mat=stone)
 # Frontal2024 photo resolves perspective ambiguity: symmetric shoulders and cylindrical bay.
 for u in [.45,width-.45]:
  elevation_box('Trim outer stone pier',u,8.0,.90,8.50,.25,.045,stone)
@@ -128,7 +128,7 @@ for u in [.45,width-.45]:
  for h in [4.15+i*.58 for i in range(14)]:elevation_box('Fine stone joint',u,h,.89,.009,.009,.173,black)
 # Seven chordal glazing strips approximate the visible continuous round bay.
 radius=1.45;half=math.radians(65);segments=7
-for floor,(bottom,top) in enumerate([(3.70,6.48),(6.48,6.84),(6.84,9.50),(9.50,9.86),(9.86,12.72),(12.72,13.10),(3.55,3.70)]):
+for floor,(bottom,top) in enumerate([(3.96,6.48),(6.48,6.84),(6.84,9.50),(9.50,9.86),(9.86,12.72),(12.72,13.10),(3.81,3.96)]):
  for j in range(segments):
   angle=-half+(j+.5)*2*half/segments;ww=2*radius*math.sin(half/segments);hh=top-bottom
   chord_r=radius*math.cos(half/segments)
@@ -141,6 +141,11 @@ for floor,(bottom,top) in enumerate([(3.70,6.48),(6.48,6.84),(6.84,9.50),(9.50,9
   for z in ([-hh/2+.025,hh/2-.025,-hh*.28,hh*.28,-hh*.10,hh*.10] if is_window else [-hh/2+.015,hh/2-.015]):m.box((0,z,0),(ww,.035,.05),1)
   surface=darkglass if is_window else (lightstone if floor>=5 else black)
   finish(m,materials=[surface,framegrey if floor<5 else lightstone],transform=front@mat)
+# A continuous underside closes the projecting bay above the fascia crown.
+# Its bottom must clear the sign rather than sweep through its face.
+pts=[(gc-radius*math.sin(half),-.42),(gc+radius*math.sin(half),-.42)]
+pts += [(gc+radius*math.sin(half-i*2*half/segments),-.28+radius*(math.cos(half-i*2*half/segments)-math.cos(half))) for i in range(segments+1)]
+m=Mesh('Trim curved bay soffit');m.add([(u,3.81,o) for u,o in pts],[tuple(range(len(pts)))]);finish(m,materials=[lightstone],transform=front)
 # Pale swept return strips with small dark inset lights, retained at every LoD.
 for right in [False,True]:
  edge=gc-radius*math.sin(half)
@@ -198,6 +203,9 @@ for h in [.035,2.68]:elevation_box('Shop entrance rail',door,h,dw+.10,.06,.10,-.
 elevation_box('Shop entrance transom',door,2.85,dw+.05,.25,.03,-.35,paledoor,'shopfront')
 elevation_box('Fine entrance handle',door-.33,1.23,.025,.40,.085,-.23,metal,'shopfront')
 elevation_box('Shop threshold',door,.035,dw+.12,.07,.54,-.20,granite,'shopfront')
+for u in [.24,shop_left]:
+ elevation_box('Shop entrance side return',u,1.485,.06,2.97,.39,-.275,white,'shopfront')
+elevation_box('Shop entrance soffit',(.24+shop_left)/2,2.97,shop_left-.24,.05,.48,-.23,white,'shopfront')
 elevation_box('Shop display plinth',(shop_left+shop_right)/2,.10,shop_right-shop_left,.20,.25,-.045,stone,'shopfront')
 # Separate access to22a verified by brochure; exact historical door not resolved,
 # so no speculative second door cut through the visible stone piers.

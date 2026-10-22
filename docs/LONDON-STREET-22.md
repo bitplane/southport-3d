@@ -43,3 +43,12 @@ Full build, all twelve GLBs and Detail/Walk/District front, oblique and roof ren
 | Detail | 9,314 | 2,248,644 |
 | Walk | 6,772 | 2,064,884 |
 | District | 6,424 | 1,080,616 |
+
+Local viewer reports caught the curved bay's base overlapping the historical
+fascia and an open entrance cheek. The base now clears the fascia crown, with a
+closed underside and a slightly shorter lowest glazed tier; upper floor and
+crown levels are unchanged. Side returns and a soffit close the existing pale
+recessed doorway. The retained frontal photograph establishes the separation
+above the fascia; exact clearances remain estimated. Validation checks vertical
+clearance and rays across/up the door recess, and all LoDs are checked from both
+reported camera positions.
