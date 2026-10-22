@@ -76,7 +76,9 @@ for label,origin,normal,width in faces:
     for i in (range(5) if label in ['front','back'] else range(1,4)):
         x=-width/2+i*width/4
         corner=i in [0,4]
-        box('Parapet merlon '+label,(x,22.30 if corner else 22.0,.0),(.52,1.20 if corner else .60,.48),transform=tr)
+        # Begin at the base's top: overlapping coplanar outer faces caused black streaks.
+        merlon_bottom=21.42+.75/2;merlon_top=22.90 if corner else 22.30
+        box('Parapet merlon '+label,(x,(merlon_bottom+merlon_top)/2,.0),(.52,merlon_top-merlon_bottom,.48),transform=tr)
         box('Trim merlon coping '+label,(x,22.91 if corner else 22.31,.015),(.62,.12,.58),transform=tr)
     # Quoin strips make the tower's corners read without ashlar overdraw.
     for side in [-1,1]:

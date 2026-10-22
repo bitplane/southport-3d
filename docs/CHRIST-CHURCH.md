@@ -55,3 +55,13 @@ needed an explicit installed font to avoid missing-glyph boxes, and the old high
 annex gutter had to be removed after replacing its pitched roof. Cafe side-wall
 closure and three flat-roof/15-rooflight checks protect the revised silhouette.
 The sign uses DejaVu Sans from the existing system font installation.
+
+## Independent reference audit
+
+Front and side photographs were compared with exported Detail and District views.
+The retained facade, paired belfry openings, clock tower and rebuilt hall remain
+recognisable across levels. An actual rendering defect was found at the tower
+crenellations: merlons overlapped the parapet base with coplanar external faces,
+producing black horizontal marks. Merlons now begin at the base top without
+changing their upper silhouette. Fine tracery and stone weathering remain
+interpreted; photographs do not establish surveyed heights or hidden roofs.
