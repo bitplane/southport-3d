@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "url": "https://www.google.com/maps/@53.6482245,-3.0035065,3a,90y,210h,100t/data=!3m4!1e1!3m2!1saST9WwnFs8VIYyz_tQDXWw!2e0",
+      "capture_date": "May 2011",
+      "attribution": "Google Street View; retained london-street-14-16/references/current.png, enlarged crop under london-street-24/references",
+      "observations": [
+        "Single cream gabled bay immediately south of Oxfam. Two upper white windows, small high vent, red brick edge piers, dark fascia and glazing. Lettering unreadable."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64803,-3.00377,88m/data=!3m1!1e3",
+      "capture_date": "Undated aerial captured 2026-10-22",
+      "attribution": "Google Maps / Airbus; retained aerial rotated for inspection",
+      "observations": [
+        "Cross-gable rises out of continuous roofline; rear roof plots not clearly subdivided."
+      ]
+    },
+    {
+      "url": "https://www.oxfam.org.uk/shops/oxfam-shop-southport/",
+      "attribution": "Oxfam GB official shop directory",
+      "observations": [
+        "Confirms 24 London Street as the adjoining northern shop. Asset named geographically because its own postal division is uncertain."
+      ]
+    },
+    {
+      "url": "https://www.glartent.com/GB/Southport/109753/genre/551469561691940/Tattoo-%26-Piercing-Shop",
+      "attribution": "Secondary business directory; identity research only",
+      "observations": [
+        "Lists 26 London Street for tattoo business, but not adequate to tie exact frontage or upper entrance; postal number not asserted."
+      ]
+    }
+  ],
+  "limitations": [
+    "Provisional geographic identity; possible 26/28 subdivision is unresolved.",
+    "Single 5 m frontage only: no assumption that 26\u201330 is one parcel.",
+    "Hidden rear, dimensions and shop entrance placement estimated. Unreadable tenant lettering and projecting sign graphics omitted.",
+    "No authoritative property boundary or newer facade pixels; this is a dated architectural reconstruction."
+  ]
+}

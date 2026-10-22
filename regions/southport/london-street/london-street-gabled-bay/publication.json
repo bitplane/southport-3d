@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/london-street-gabled-bay.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "Observed cream gabled bay south of 24; provisional geographic identity. Dimensions and rear estimated; unreadable tenant lettering deferred.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Cream gabled front and sash windows",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Joined cross-gable slate roof",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Observed dark shopfront, lettering deferred",
+      "collection": "shopfront"
+    },
+    {
+      "id": "rear",
+      "name": "Conservative rear envelope",
+      "collection": "rear"
+    }
+  ],
+  "views": [
+    {
+      "name": "Overview",
+      "position": [
+        8,
+        22,
+        96.5
+      ],
+      "target": [
+        -20,
+        6,
+        109.5
+      ]
+    },
+    {
+      "name": "Front",
+      "position": [
+        12,
+        6.5,
+        109.5
+      ],
+      "target": [
+        -11.5,
+        6.5,
+        109.5
+      ]
+    },
+    {
+      "name": "Shopfront",
+      "position": [
+        -1,
+        3.2,
+        109.5
+      ],
+      "target": [
+        -11.5,
+        2.6,
+        109.5
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -30,
+        32,
+        96.5
+      ],
+      "target": [
+        -23,
+        5,
+        109.5
+      ]
+    },
+    {
+      "name": "Rear",
+      "position": [
+        -50,
+        18,
+        97.5
+      ],
+      "target": [
+        -24,
+        5,
+        109.5
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -6,
+      2.49,
+      109.5
+    ],
+    "target": [
+      -12,
+      2.49,
+      109.5
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep the low-cost cream gable, apertures, roof valley union and inset shop entrance; these are the visible identity and silhouette."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Keep the low-cost cream gable, apertures, roof valley union and inset shop entrance; these are the visible identity and silhouette."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Two already inexpensive sash assemblies preserve dark openings and white framing consistently. No blanket decimation or unnecessary bake atlas."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Two already inexpensive sash assemblies preserve dark openings and white framing consistently. No blanket decimation or unnecessary bake atlas."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain small rainwater brackets, brick joints and handle for walking inspection."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit tiny vent slats, masonry joints and fittings; keep the vent shadow patch, gable edges and rainwater pipe."
+      }
+    }
+  ]
+}
