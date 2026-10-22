@@ -17,12 +17,15 @@ for name,colour,cols,rows in [('paving',(166,162,147),4,6),('brick',(141,93,79),
  Image.fromarray(np.uint8(np.clip(a,0,255))).save(out/(name+'.png'))
  Image.fromarray(np.uint8((normal+1)*127.5)).save(out/(name+'-normal.png'))
 # Small authored masonry repeats for the two observed boundary materials.
-for name, colour, rows, cols in [('stone',(134,129,105),14,5),('wallbrick',(125,81,62),28,10)]:
+for name, colour, rows, cols in [('stone',(134,129,105),14,5),('wallbrick',(125,81,62),28,10),('washedbrick',(151,139,113),28,10)]:
     xx=x/n*cols;yy=y/n*rows
     row=np.floor(yy).astype(int);col=np.floor(xx+(row%2)*.5).astype(int)
     variation=rng.uniform(-12,12,(rows+1,cols+1))[row,col]
     joint=((xx+(row%2)*.5)%1<.035)|(yy%1<.07)
     pixels=np.array(colour)[None,None,:]+variation[:,:,None]+rng.normal(0,2,(n,n,1))
+    if name=='washedbrick':
+        weather=(np.sin(x/31)+np.cos(y/47)+rng.normal(0,.2,(n,n)))
+        pixels+=weather[:,:,None]*np.array([8,10,5])
     pixels[joint]=[87,83,71]
     height=np.where(joint,0,.004)
     dy,dx=np.gradient(height,2.4/n)

@@ -17,6 +17,7 @@ from southport3d.planar import subtract, area, halfplane
 from southport3d.road import marking_segments
 from southport3d.conform import conform
 from components import hedge, lantern
+from boundary import continuous_wall
 
 D = json.loads((ROOT / 'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT')
@@ -60,6 +61,7 @@ mats = {
     'kerb': material('Pale granite kerb', (.40,.40,.36)),
     'stone': material('Weathered garden sandstone', (.39,.37,.28), 'stone'),
     'wallbrick': material('Weathered red boundary brick', (.39,.23,.17), 'wallbrick'),
+    'washedbrick': material('Pale weathered garden brick', (.48,.44,.35), 'washedbrick'),
     'yellow': material('Faded yellow road marking', (.65,.47,.10)),
     'white': material('Worn white road marking', (.69,.68,.60)),
 }
@@ -120,9 +122,10 @@ def paint(place, points, side, bounds=None):
         strip(place,segment,.075,'yellow',300,-.12)
 
 
-def wall(place, points, height=.70, brick=False):
-    mesh=capped_wall([(x,y,grade(y)) for x,y in points],height,.32,'Wall '+place+' boundary')
-    ob=mesh.finish([mats['wallbrick' if brick else 'stone']],collections[place+'-furniture'])
+def wall(place, points, height=.70, brick=False, washed=False):
+    factory=continuous_wall if washed else capped_wall
+    mesh=factory([(x,y,grade(y)) for x,y in points],height,.32,'Wall '+place+' boundary')
+    ob=mesh.finish([mats['washedbrick' if washed else 'wallbrick' if brick else 'stone']],collections[place+'-furniture'])
     # Vertical masonry uses metres, not a stretched facade atlas.
     uv=ob.data.uv_layers.new(name='Masonry metric repeat')
     for face in ob.data.polygons:
@@ -200,18 +203,19 @@ def raised_lawn(points, south, west, east):
             if len(cell)>2:surface('christ',cell,'grass',40,rise)
 
 raised_lawn([(-128,-17.8),(-105,-17.8),(-103,-13),(-104,16.9),(-127.7,16.9)],-17.8,-128,-103)
-raised_lawn([(-97.4,-16.0),(-79.5,-16.0),(-77,-15.2),(-75.5,-13.0),(-75.5,17.5),(-97.7,17.5)],-16,-97.7,-72.5)
+corner=[(-78.3+3*math.cos(i*math.pi/24),14.8+3*math.sin(i*math.pi/24)) for i in range(13)]
+lawn_corner=[(-78.3+2.8*math.cos(i*math.pi/24),14.8+2.8*math.sin(i*math.pi/24)) for i in range(13)]
+raised_lawn([(-97.4,-16),(-79.5,-16),(-77,-15.2),(-75.5,-13)]+lawn_corner+[(-97.7,17.6)],-16,-97.7,-72.5)
 strip('christ',[(-73,-20.4),(-86.8,-20.34),(-99.9,-20.47),(-115.25,-22.06),(-128,-22.6)],5.0,'path',85)
 # Retaining wall follows the service-road end; only low kerb edging follows
 # the pedestrian approach. Keep the entry beside BHF open.
-wall('christ',[(-75.3,-13.0),(-75.3,17.8)],.55,True)
+wall('christ',[(-75.3,-13)]+corner+[(-97.5,17.8)],.55,True,washed=True)
 wall('christ',[(-97.4,-16),(-79.5,-16),(-77,-15.2),(-75.5,-13)],.085)
 # Raise only the short entrance landings out of the road, keeping a continuous
 # accessible apron. Ramped meshes below replace the carriageway in each mouth.
 for x,width in [(-100.9,4.2),(-131.3,5.2)]:
     rect('christ',x-width/2,19,x+width/2,21.5,'path',210,lambda x,y:-.12*max(0,min(1,(y-19)/2)))
-for a,b in [(-127.6,-104.2),(-97.5,-73)]:
-    wall('christ',[(a,17.8),(b,17.8)],.70)
+wall('christ',[(-127.6,17.8),(-104.2,17.8)],.55,True,washed=True)
 wall('christ',[(-127.7,-17.5),(-127.7,16.9)],.52,True)
 # Former diagonal brick wall removed: this is an open pedestrian path edge.
 for x in [-103.2,-98.4]:

@@ -101,3 +101,12 @@ existing furniture generators and texture reductions continue to apply.
 The taxi-lane bench uses the existing shared bench family, positioned against
 the retaining wall and facing the road. Private reference c6a972 informs its
 approximate placement; detailed bench design is deferred to a later review.
+
+The Christ Church road-facing retaining wall continues around a rounded corner
+from the service lane onto Lord Street. Its pale, weathered brick finish and
+coping follow the private photo attached to snag 265bf7b325b8408dacc92ae3a0067569;
+the 3 m corner radius and 0.55 m height remain visual estimates. The raised lawn
+follows the inner curve. Lord Street benches reuse the shared furniture model,
+with their backrests close to the wall; individual bench designs are deferred.
+The continuous wall shell is retained at every LoD, with masonry represented by
+authored repeating maps rather than downloaded photo pixels.

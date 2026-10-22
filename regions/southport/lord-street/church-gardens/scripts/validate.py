@@ -44,7 +44,7 @@ for rows in D['benches'].values():
   assert yaw in ((180,90) if y>0 else (0,)),(x,y,yaw,'reversed garden bench')
 
 # Road-facing retaining wall and low path edging must not be interchanged.
-assert any(w['place']=='christ' and w['height']==.55 and all(abs(x+75.3)<.001 for x,y in w['xy']) for w in report['walls'])
+assert any(w['place']=='christ' and w['height']==.55 and w['xy'][0]==[-75.3,-13] and len(w['xy'])>10 for w in report['walls'])
 assert not any(w['place']=='christ' and w['height']>.1 and len(w['xy'])>2 and all(y<0 for x,y in w['xy']) for w in report['walls'])
 from mathutils import Vector
 def ground_height(x,y):
