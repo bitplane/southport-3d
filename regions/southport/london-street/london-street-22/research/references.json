@@ -1,0 +1,48 @@
+{
+  "sources": [
+    {
+      "url": "https://www.google.com/maps/@53.6482245,-3.0035065,3a,90y,210h,100t/data=!3m4!1e1!3m2!1saST9WwnFs8VIYyz_tQDXWw!2e0",
+      "attribution": "Google Street View, retained current.png from14\u201316 research",
+      "capture_date": "May2011",
+      "observations": [
+        "Narrow tall pale stone Art Deco frontage immediately south of Britannia20. Continuous glazed shaft with fine horizontal steel bars, broad flanking piers and rounded projecting top. Yellow Money Shop fascia and pale glazed shop."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64803,-3.00377,88m/data=!3m1!1e3",
+      "attribution": "Google Maps / Airbus, retained aerial.png from14\u201316 research",
+      "capture_date": "Undated aerial captured2026-10-22",
+      "observations": [
+        "Long narrow flat dark roof following20 southward, with square rooflights. Parcel boundary and precise height cannot be read directly."
+      ]
+    },
+    {
+      "url": "https://media.rightmove.co.uk/204k/203123/130599818/203123_1900_DOC_00_0000.pdf",
+      "attribution": "Fitton Estates, details updated11January2023; cached PDF text inspected, image retrieval failed",
+      "observations": [
+        "Confirms22/22a as four-storey stone/glazed Art Deco building; six upper flats converted2019, independent access from London Street. Ground floor137square metres supports approximate narrow/deep envelope. Do not treat unavailable brochure photographs as inspected."
+      ]
+    },
+    {
+      "url": "https://ratings.food.gov.uk/business/1863541/merkur-slots-southport",
+      "attribution": "Food Standards Agency, inspected24September2025",
+      "observations": [
+        "Confirms present Merkur Slots address22LondonStreet; used for identity only, not facade geometry."
+      ]
+    },
+    {
+      "url": "https://www.openstreetmap.org/way/371203985",
+      "attribution": "\u00a9OpenStreetMap contributors, ODbL1.0",
+      "observations": [
+        "Whole-block envelope only. Individual frontage estimate registered to20 sharededge."
+      ]
+    }
+  ],
+  "limitations": [
+    "Historical2011shopfront is deliberately modelled; current Merkur fitout and2019glazing changes are not asserted.",
+    "5.4m frontage,27mdepth and13.1mheight are visually calibrated estimates, not surveyed.",
+    "Rear wall/window arrangement and exact rooflight dimensions need additional pixels; no invented rear window grid.",
+    "Independent22a door location is unresolved in current retained view and deferred.",
+    "Fresh isolated StreetView stalled afterconsent; no freshpanorama claimed."
+  ]
+}

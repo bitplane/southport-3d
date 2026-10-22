@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/london-street-22.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "Art Deco exterior from May2011 Street View and undated aerial; historical Money Shop frontage, depth/roof/rear dimensions estimated. Present Merkur use verified separately.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Stone and glazed Art Deco elevation",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Estimated flat roof and observed rooflight rhythm",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Historical Money Shop frontage",
+      "collection": "shopfront"
+    },
+    {
+      "id": "rear",
+      "name": "Estimated rear wall",
+      "collection": "rear"
+    }
+  ],
+  "views": [
+    {
+      "name": "Overview",
+      "position": [
+        8,
+        22,
+        85.5
+      ],
+      "target": [
+        -20,
+        6,
+        98.5
+      ]
+    },
+    {
+      "name": "Front",
+      "position": [
+        12,
+        6.5,
+        98.5
+      ],
+      "target": [
+        -11.5,
+        6.5,
+        98.5
+      ]
+    },
+    {
+      "name": "Shopfront",
+      "position": [
+        -1,
+        3.2,
+        98.5
+      ],
+      "target": [
+        -11.5,
+        2.6,
+        98.5
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -30,
+        32,
+        85.5
+      ],
+      "target": [
+        -23,
+        5,
+        98.5
+      ]
+    },
+    {
+      "name": "Rear",
+      "position": [
+        -50,
+        18,
+        86.5
+      ],
+      "target": [
+        -24,
+        5,
+        98.5
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -6,
+      2.49,
+      98.5
+    ],
+    "target": [
+      -12,
+      2.49,
+      98.5
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep stone pier profiles, rounded cap, three-storey glass divisions, flat roof/parapets and inset shop entrance: these define the narrow Art Deco silhouette."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Keep stone pier profiles, rounded cap, three-storey glass divisions, flat roof/parapets and inset shop entrance: these define the narrow Art Deco silhouette."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "The three slim steel assemblies cost only396triangles. Retain them to preserve material response and fine framing; planar bake review showed a conspicuous shadow/colour shift on this continuous glass facade."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "The three slim steel assemblies cost only396triangles. Retain them to preserve material response and fine framing; planar bake review showed a conspicuous shadow/colour shift on this continuous glass facade."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain visible stone joints and door handle at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit sub-centimetre joints and small handle while preserving the stone piers and entrance recess."
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake historical sign glyphs into a shallow fascia receiver, avoiding costly small lettering geometry.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.2,
+        "max_sampled_error_m": 0.2
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Preserve the observed yellow/black shopfront colour patch and lettering via a smaller baked panel.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.2,
+        "max_sampled_error_m": 0.2
+      }
+    }
+  ]
+}

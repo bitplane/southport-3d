@@ -1,0 +1,16 @@
+{
+  "base_z": 0.7845,
+  "front_x": -11.8772,
+  "rear_x": -38.8772,
+  "north_y": -95.85,
+  "south_y": -101.25,
+  "main_depth": 12.5,
+  "wall_height": 13.1,
+  "ridge_height": 13.4,
+  "registration_pivot": [
+    -11.8772,
+    -68.7886
+  ],
+  "registration_radians": 0.02418,
+  "uncertainty": "5.4m frontage and 27m depth visually calibrated against adjoining20 and aerial. Hidden roof/rear estimated; not surveyed."
+}

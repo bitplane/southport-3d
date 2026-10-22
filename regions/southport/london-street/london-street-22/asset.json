@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "southport.london-street.london-street-22",
+  "name": "22\u201322a London Street \u2014 Art Deco / historical Money Shop",
+  "region": "southport",
+  "area": "london-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "stone-piers",
+    "continuous-glazed-shaft",
+    "rounded-terminal",
+    "historical-money-shop-front",
+    "flat-roof-and-rooflights"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Exterior observed inMay2011with aerial roofcalibration. CurrentMerkuridentity verified separately; currentfitout notasserted. Dimensions/rear estimated; interiors and unresolved22adoor deferred."
+}
