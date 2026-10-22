@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/london-street-20.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "Former bank exterior: architectural detail fromMay2011, vacant frontage from2020, common roof and rear dimensions estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Cream classical frontage",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Common roof southern half",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Vacant bank and upper flats entrance",
+      "collection": "shopfront"
+    },
+    {
+      "id": "rear",
+      "name": "Estimated rear service range",
+      "collection": "rear"
+    }
+  ],
+  "views": [
+    {
+      "name": "Overview",
+      "position": [
+        8,
+        22,
+        79
+      ],
+      "target": [
+        -20,
+        6,
+        92
+      ]
+    },
+    {
+      "name": "Front",
+      "position": [
+        12,
+        6.5,
+        92
+      ],
+      "target": [
+        -11.5,
+        6.5,
+        92
+      ]
+    },
+    {
+      "name": "Shopfront",
+      "position": [
+        -1,
+        3.2,
+        92
+      ],
+      "target": [
+        -11.5,
+        2.6,
+        92
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -30,
+        32,
+        79
+      ],
+      "target": [
+        -23,
+        5,
+        92
+      ]
+    },
+    {
+      "name": "Rear",
+      "position": [
+        -50,
+        18,
+        80
+      ],
+      "target": [
+        -24,
+        5,
+        92
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -6,
+      2.49,
+      92
+    ],
+    "target": [
+      -12,
+      2.49,
+      92
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Trim|Roof|Shop|Fixture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain authored wall apertures, two roof silhouettes, shopfront recess and simple rear wing envelope."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain authored wall apertures, two roof silhouettes, shopfront recess and simple rear wing envelope."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake repeated shallow sash joinery onto shared512px receivers; retain the separate stone surrounds and real wall apertures for walking depth.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Bake four shared sash sizes to shallow receivers; preserve grouped composition and real wall openings.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain cornice dentils, joinery and fittings for close walking inspection."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit small cornice dentils and fittings; preserve the continuous moulding profile and all window openings."
+      }
+    }
+  ]
+}

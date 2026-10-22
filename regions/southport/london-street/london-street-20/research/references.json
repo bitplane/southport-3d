@@ -1,0 +1,54 @@
+{
+  "sources": [
+    {
+      "url": "https://www.acuitus.co.uk/uploads/82-3880/16.pdf?dt=20200622130125",
+      "attribution": "Acuitus, July2020 auction brochure",
+      "observations": [
+        "Vacant former bank immediately left of18: cream classical front, two storeys of three groups of sashes (central group paired), shallow pilasters, full cornice, white blank bank fascia and narrow separate north doorway."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6482245,-3.0035065,3a,90y,210h,100t/data=!3m4!1e1!3m2!1saST9WwnFs8VIYyz_tQDXWw!2e0",
+      "capture_date": "May2011",
+      "attribution": "Google Street View, saved wide capture shared by14\u201316worker",
+      "observations": [
+        "Whole frontage visible with Britannia branding; upper facade three bays with paired central sashes; cornice and projecting dentils; street frontage attaches directly to Skipton and slender glazed building at22."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64803,-3.00377,88m/data=!3m1!1e3",
+      "attribution": "Google Maps / Airbus",
+      "capture_date": "Undated aerial captured2026-10-22",
+      "observations": [
+        "Pitched grey main roof; narrow deeper rear wing and rooflights visible behind front block. Boundaries and ridge dimensions remain estimated."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6480775,-3.0039067,3a,90y,100h,100t/data=!3m4!1e1!3m2!1suQXeADpPMwK5hHzPll2JzA!2e0",
+      "attribution": "Google Street View November2020, shared by neighbouring asset worker",
+      "observations": [
+        "Oblique rear reference confirms service courtyard setting; exact Skipton rear windows obscured."
+      ]
+    },
+    {
+      "url": "https://www.openstreetmap.org/way/371203985",
+      "attribution": "\u00a9 OpenStreetMap contributors ODbL1.0",
+      "observations": [
+        "Broad block envelope only. Subdivision coordinated to Betfred estimated southern edge; individual parcel not independently surveyed."
+      ]
+    },
+    {
+      "url": "https://standupforsouthport.com/former-southport-town-centre-bank-could-become-new-burger-restaurant-and-takeaway/",
+      "attribution": "Andrew Brown, Stand Up For Southport,1March2022",
+      "observations": [
+        "Identifies20LondonStreet as formerCo-operativeBank, closed2016; plannedrestaurant conversion in2022, rear small yard. Used only foraddress/useidentification, not asserting projectcompletion."
+      ]
+    }
+  ],
+  "limitations": [
+    "Model follows vacant2020shopfront with architecturaldetail crosscheckedagainstMay2011StreetView. Not a claimofcurrentoccupancy.",
+    "Main roof continued from18 based onaerial sharedplane; exactridge and rearwinggeometry estimated.",
+    "Rearwindows not sufficiently identifiable; no inventedwindowgrid orinterior.",
+    "Browser stalled atconsent so retainedcaptures used; allsourceimagery outsideGit."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "base_z": 0.7845,
+  "front_x": -11.8772,
+  "rear_x": -35.8772,
+  "north_y": -88.35,
+  "south_y": -95.85,
+  "main_depth": 12.1,
+  "wall_height": 10.65,
+  "ridge_height": 12.1,
+  "registration_pivot": [
+    -11.8772,
+    -68.7886
+  ],
+  "registration_radians": 0.02418,
+  "uncertainty": "7.5m frontage estimated relative to adjoining8.1m Skipton and dated street image. Main12.1mdepth and rear24mdepth from aerial; common hip roof with18 inferred, not surveyed."
+}

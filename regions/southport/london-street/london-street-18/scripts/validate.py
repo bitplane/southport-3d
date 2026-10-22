@@ -24,5 +24,11 @@ assert min(v.y for v in points)>D['south_y']-.1
 assert max(v.y for v in points)<D['north_y']+.1
 assert min(v.x for v in points)>D['rear_x']-.1
 assert 12.8<max(v.z for v in points)<13.1
+# Common ridge/eaves section must match the adjoining unit's source dimensions.
+other='20' if D['north_y']==-80.25 else '18'
+repo=Path(__import__('os').environ['SOUTHPORT_REPO_ROOT'])
+nd=json.loads((repo/'regions/southport/london-street'/('london-street-'+other)/'research/layout.json').read_text())
+for field in ['front_x','main_depth','ridge_height','base_z','registration_pivot','registration_radians']:assert D[field]==nd[field],field
+assert (D['south_y']==nd['north_y'] if other=='20' else D['north_y']==nd['south_y'])
 report={'mesh_objects':len(meshes),'front_windows':len(windows),'checks':'Finite UV meshes, packed authored maps, eight unobscured upper window apertures, two manifold roof shells, bounds respecting neighbour division.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

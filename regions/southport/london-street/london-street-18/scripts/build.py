@@ -144,14 +144,14 @@ mainrear=xf-D['main_depth'];rearframe=face_matrix((mainrear,yn,base),(-1,0,0))
 for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((mainrear,ys,base),(0,-1,0)))]:
  wall_with_openings('party '+label,frame,D['main_depth']-.36,10.40,[],mat=brick)
 wall_with_openings('main rear',rearframe,width,10.4,[],'rear',brick)
-# Closed hipped roof; ridge runs parallel to street, short hips at party ends.
+# Northern half of the common18–20 hipped roof; southern boundary is a matching roof section.
 xe=xf-.20;xb=mainrear+.15;ridge=(xe+xb)/2
 ze=base+10.40;zr=base+D['ridge_height'];hip=2.15
-a=(xe,ys+.12,ze);b=(xe,yn-.12,ze);c=(xb,yn-.12,ze);d=(xb,ys+.12,ze);e=(ridge,ys+hip,zr);f=(ridge,yn-hip,zr)
+a=(xe,ys,ze);b=(xe,yn-.12,ze);c=(xb,yn-.12,ze);d=(xb,ys,ze);e=(ridge,ys,zr);f=(ridge,yn-hip,zr)
 m=Mesh('Roof main hip shell');v=[a,b,c,d,e,f]
-m.add(v+[(x,y,z-.14) for x,y,z in v],[(0,1,5,4),(1,2,5),(2,3,4,5),(3,0,4),(6,10,11,7),(7,11,8),(8,11,10,9),(9,10,6),(0,6,7,1),(1,7,8,2),(2,8,9,3),(3,9,6,0)])
+m.add(v+[(x,y,z-.14) for x,y,z in v],[(0,1,5,4),(1,2,5),(2,3,4,5),(6,10,11,7),(7,11,8),(8,11,10,9),(0,6,7,1),(1,7,8,2),(2,8,9,3),(3,4,10,9),(4,0,6,10)])
 finish(m,'roof',[slate],roof_uv=True)
-box('Trim ridge cap',(ridge,(ys+yn)/2,zr+.025),(.16,width-2*hip+.1,.10),slate,'roof')
+box('Trim ridge cap',(ridge,(ys+yn-hip)/2,zr+.025),(.16,width-hip,.10),slate,'roof')
 # Narrow deep service wing, inferred from aerial and published ground-floor area.
 # Southern strip extends toward Glebe courtyard; north cutback preserves open yard.
 wingwidth=5.8;wingnorth=ys+wingwidth;wingfront=mainrear+.3;wingrear=xr;wingheight=3.30

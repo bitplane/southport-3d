@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "southport.london-street.london-street-20",
+  "name": "20 London Street \u2014 former Britannia and Co-operative Bank",
+  "region": "southport",
+  "area": "london-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "three-bay-classical-elevation",
+    "vacant-bank-frontage",
+    "flats-entrance",
+    "shared-hipped-roof",
+    "rear-service-range"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Exterior of20LondonStreet. Dated2011/2020references; currentoccupancy notasserted; estimateddimensions andrear. No interior orpavement."
+}

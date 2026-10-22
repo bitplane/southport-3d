@@ -6,7 +6,7 @@ Source lives under `regions/southport/london-street/london-street-18/`. The comm
 
 Evidence is linked in `research/references.json`: the [Acuitus 2020 brochure](https://www.acuitus.co.uk/uploads/82-3880/16.pdf?dt=20200622130125), Google aerial imagery and November 2020 Glebe Place Street View captured by the adjacent-building worker. The Google references were visually inspected as saved captures. This worker's fresh browser reached consent and then stalled; fresh interactive exploration was unavailable. Original captures remain outside Git.
 
-The pitched main roof and deeper narrow rear wing are reconstructed from aerial evidence. Roof pitch, exact parcel division, rear heights and the service door remain estimates. Rear upper windows were not sufficiently visible to assert their pattern, so that elevation remains deliberately unfinished. Branding follows the dated reference and does not assert present occupancy. This needs another rear-reference pass, not cosmetic invented detail.
+The pitched main roof and deeper narrow rear wing are reconstructed from aerial evidence. The main roof now continues across the boundary into20, with the northern hip owned by18 and the southern hip owned by20; matching ridge/eaves coordinates avoid an invented party-line valley. Roof pitch, exact parcel division, rear heights and the service door remain estimates. Rear upper windows were not sufficiently visible to assert their pattern, so that elevation remains deliberately unfinished. Branding follows the dated reference and does not assert present occupancy. This needs another rear-reference pass, not cosmetic invented detail.
 
 ## Viewing levels
 
@@ -20,8 +20,8 @@ The final package has12 classified part/level GLBs. Combined exported-GLB front,
 
 | Level | Placed triangles | GLB bytes, including textures | Embedded image bytes |
 | --- | ---: | ---: | ---: |
-| detail | 5,940 | 1,241,696 | 655,390 |
-| walk | 2,750 | 999,992 | 676,093 |
-| district | 1,658 | 430,468 | 173,079 |
+| detail | 5,940 | 1,241,320 | 655,390 |
+| walk | 2,750 | 999,616 | 676,093 |
+| district | 1,658 | 430,092 | 173,079 |
 
 These are this building's four streaming parts, not town-wide totals. The two window prototypes share baked maps across each row. Textures include authored brick/slate and baked sign/windows; no downloaded photographic pixels are embedded.
