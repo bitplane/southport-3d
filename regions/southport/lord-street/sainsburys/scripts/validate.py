@@ -23,6 +23,18 @@ for ob in meshes:
   hit,p,n,i,target,mat=bpy.context.scene.ray_cast(dep,ray,direction,distance=1.2)
   assert hit and target.name.startswith('Window shop glass'),(ob.name,'Blocked shop aperture',target.name if target else None)
   probes+=1
+# Continuous roof coverage: include the shorter wing's former open strip.
+D=json.loads((ROOT/'research/layout.json').read_text())
+from mathutils import Matrix
+world=Matrix.Translation((*D['origin_site_xy'],D['base_z']))@Matrix.Rotation(math.radians(D['local_rotation_degrees']),4,'Z')
+roof_probes=0
+for x in [1+i*(D['width']-2)/20 for i in range(21)]:
+ for y in [-D['depth']+1+i*(D['depth']-2)/30 for i in range(31)]+[-11.7,-11.3]:
+  origin=world@Vector((x,y,25))
+  hit,p,n,i,target,matrix=bpy.context.scene.ray_cast(dep,origin,Vector((0,0,-1)),distance=20)
+  assert hit and p.z>=D['base_z']+D['rear_parapet']-.24,('roof opening',x,y,target.name if target else None,p.z if hit else None)
+  roof_probes+=1
+print('Continuous roof coverage:',roof_probes,'downward samples')
 pts=[ob.matrix_world@v.co for ob in meshes for v in ob.data.vertices]
 assert 106<min(p.x for p in pts)<111 and 150<max(p.x for p in pts)<158
 assert -74<min(p.y for p in pts)<-65 and -19<max(p.y for p in pts)<-12

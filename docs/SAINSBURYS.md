@@ -17,3 +17,24 @@ The full build validates finite UV geometry, packed authored maps, counts of pro
 | District | 60,032 | 5.89 MB | 0.19 MB |
 
 Totals cover all three streaming parts with texture caps applied. All 486 source meshes have exactly one publication rule. Master front, canopy and rear views and the exported three-level comparisons are reviewed before the coordinator’s combined-viewer publication. These are neighbourhood levels; larger regional envelope atlases remain future work.
+
+## Independent roof and frontage audit
+
+The retained August 2024 front and July 2026 rear Street View captures were
+compared with exported front, canopy, roof and rear views at all three levels.
+The nine projecting upper bays, lower four-window wing, rounded shop openings,
+open canopy structure and rear loading arrangement were retained. Roof plant
+placement, opaque glazing and concealed dimensions remain approximations.
+
+The flat membrane stopped at local Y -12.175 m, whereas the shorter church-wing
+hip ends at -10.8 m. This left an open strip visible from above. The membrane now
+continues beneath both pitched ranges, below their shells and inside the
+perimeter masonry. It closes the opening without changing the roof silhouette,
+frontage registration or public ground. Validation adds 693 downward roof
+coverage probes, including samples across the former gap, alongside the existing
+closed-shell and unobscured-glazing checks.
+
+The repaired exported roof was inspected at Detail, Walk and District, alongside
+front/canopy/rear comparisons. The opening is closed and the frontage colours and
+silhouette remain stable. Combined ground renders confirm the front canopy
+registration against the public pavement. Live browser review was unavailable.

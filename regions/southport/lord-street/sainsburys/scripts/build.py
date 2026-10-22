@@ -161,7 +161,11 @@ for name,origin,normal,length in [('north',(W,-DEP,0),(1,0,0),DEP),('south',(0,0
    box('Vent rear rectangular',(u,3.5,.05),(1.5,.65,.13),'roof-service',metal,frame)
   label('Lettering rear high',"Sainsbury's",(29,-DEP-.16,8.5),(0,-1,0),1.25,11.2,orange,'roof-service')
 # Low roof with parapet inset and rectangular access upstand at loading end.
-box('Roof main flat membrane',(W/2,-(DEP+12)/2,RH-.32),(W-.45,DEP-12-.35,.18),'roof-service',roofmat)
+# Carry the membrane below both front roof ranges. The shorter wing ends
+# at -10.8 m; stopping the deck at -12.175 left an open slot behind it.
+# Concealed overlap is below the hip shells and inside perimeter masonry.
+flat_front=-.60;flat_rear=-DEP+.175
+box('Roof main flat membrane',(W/2,(flat_front+flat_rear)/2,RH-.32),(W-.45,flat_front-flat_rear,.18),'roof-service',roofmat)
 box('Envelope rear access upstand',(13.8,-DEP+.72,RH+.8),(5.0,1.45,2.2),'roof-service',brick)
 box('Roof rear access coping',(13.8,-DEP+.72,RH+1.95),(5.15,1.55,.12),'roof-service',metal)
 # Two front hipped slate ranges seen in aerial, behind stepped front parapets.
