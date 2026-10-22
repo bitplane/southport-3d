@@ -172,8 +172,16 @@ def add_rear(finish,instance,z0,mats,whitebrick,paint,steel,lead,duct):
     # Central wing's top return window and the conspicuous angular white duct.
     frame=face_matrix((-22.6,-44,z0),(0,-1,0))
     m=Mesh('Envelope rear angular duct')
-    for a,b in [((2.85,20.12,.24),(2.85,17.05,.24)),((2.85,17.05,.24),(3.62,16.15,.95)),((3.62,16.15,.95),(3.62,15.60,.95))]:
-        beam(m,a,b,.60,.54)
+    # The photograph shows an offset in the wall plane, not a second bend
+    # projecting into the alley. One mitered shell avoids twisted beam joints.
+    outline=[(2.55,20.12),(3.15,20.12),(3.15,17.16),(3.92,16.26),
+             (3.92,15.60),(3.32,15.60),(3.32,16.04),(2.55,16.94)]
+    outline.reverse()  # positive area in local u/height plane
+    count=len(outline)
+    vertices=[(u,h,out) for out in [-.03,.51] for u,h in outline]
+    faces=[tuple(reversed(range(count))),tuple(range(count,2*count))]
+    faces += [(i,(i+1)%count,(i+1)%count+count,i+count) for i in range(count)]
+    m.add(vertices,faces)
     finish(m,'architecture',[duct],frame)
     dish=Mesh('Hardware rear satellite dish')
     dish.ellipsoid((.13,15.68,.40),(.24,.24,.045),0,20,10)

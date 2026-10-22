@@ -342,3 +342,9 @@ clearance and all street window fronts. All three exported levels were reviewed
 in entrance, shopfront and upper-sash close-ups; 26 window/relief bake checks pass.
 Fresh browser verification was attempted but the session stalled after its idle
 restart, so this correction relies on the recorded existing photographs.
+
+The rear duct was rechecked against the supplied November 2020 Glebe Place
+close-up (screenshot-20261022-104014.png, retained privately). Its offset follows
+the wall plane; the previous extra alleyward bend and independently twisted
+box segments were removed. A single closed mitered shell now forms the elbow.
+Widths and exact wall offsets remain visually estimated.

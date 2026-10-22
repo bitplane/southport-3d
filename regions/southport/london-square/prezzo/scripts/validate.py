@@ -145,3 +145,13 @@ for ob in street_joinery:
     painted=[ob.data.vertices[i].co.z for f in ob.data.polygons if f.material_index==1 for i in f.vertices]
     assert painted and max(painted)<.011,(ob.name,'painted frame projects out of reveal')
 print('Slender recessed window joinery and inset arch sign checked')
+
+# The offset duct stays in the wall plane, without an unsupported alleyward jog.
+duct=bpy.data.objects['Envelope rear angular duct']
+assert min(v.co.z for v in duct.data.vertices)>-.031
+assert max(v.co.z for v in duct.data.vertices)<.511
+import bmesh
+bm=bmesh.new();bm.from_mesh(duct.data)
+assert all(e.is_manifold for e in bm.edges),'Open angular duct elbow'
+assert bm.calc_volume(signed=True)>0,'Inward duct shell'
+bm.free()
