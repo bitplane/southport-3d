@@ -112,6 +112,10 @@ def pilaster(level='detail',name='Pilaster'):
                 m.tube(pts,.009,0,6)
             for y,d in [(.235,.34),(.30,.30),(3.84,.32)]:
                 m.tube([(-.28,y,d),(.28,y,d)],.012,0,8)
+    # Shallow applied relief: base meets the existing grey skirt at +.06 m.
+    # Calibrated relationship from screenshot-20261022-103827, not a survey.
+    depth_scale=.06/.38
+    m.vertices=[(x,y,z*depth_scale) for x,y,z in m.vertices]
     return m
 
 

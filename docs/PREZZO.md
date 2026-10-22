@@ -292,10 +292,16 @@ the duct and address plaque. Existing street-window, roof and bounds checks rema
 | Level | Placed triangles | GLB bytes including textures | Embedded image bytes |
 | --- | ---: | ---: | ---: |
 | detail | 249,285 | 14,187,208 | 1,552,866 |
-| walk | 79,489 | 6,997,064 | 1,294,664 |
-| district | 24,081 | 3,922,468 | 855,905 |
+| walk | 79,489 | 6,999,560 | 1,294,664 |
+| district | 24,081 | 3,922,496 | 855,936 |
 
 The east rear gable meets the recess at 15.00 m, with a 300 mm underside return
 between their offset planes. Horizontal and rising-oblique ray checks guard
 against the previously open 100 mm band and a missing soffit. Its vertical top
 shares only an edge with the roof deck, avoiding a duplicate horizontal cap.
+
+User review and `screenshot-20261022-103827.png` show shallow applied pilasters,
+with their bases close to the grey skirt face. Pilaster depth is reduced at all
+three levels so the base projects 0.06 m rather than 0.38 m; shaft, flutes and
+capital relief scale together while width and height remain unchanged. This
+projection is a visual estimate, not a measured dimension. The skirt is unchanged.
