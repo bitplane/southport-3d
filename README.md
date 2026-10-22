@@ -2,7 +2,7 @@
 
 A source-built, detailed model of Southport, UK, starting with the War Memorial in London Square. The aim is to capture individual buildings, shop fronts and architectural details, and eventually stream them through a town-wide web viewer.
 
-The first asset contains the obelisk, two colonnades and clustered lamps. Exterior proportions, lettering and reliefs are researched reconstructions with documented estimates. Interiors and further names await photographs. Only the detailed master exists today; LODs, publication and the web viewer are planned.
+The first asset contains the obelisk, two colonnades and clustered lamps. Exterior proportions, lettering and reliefs are researched reconstructions with documented estimates. Interiors and further names await photographs. The detailed master and an experimental baked LOD workflow for representative components exist today. Whole-building LOD coverage, publication and the web viewer are planned.
 
 ## Build
 
@@ -19,6 +19,8 @@ python tools/project.py build southport.london-square.war-memorial --stage rende
 ```
 
 Builds go into `build/southport.london-square.war-memorial/`, including models, PNG renders, reports and logs. The default build prepares textures, builds geometry, exports GLBs and validates them. Rendering is a separate step. No reference photographs are needed to rebuild the current master.
+
+See the [LOD audit](docs/LOD-AUDIT.md) and [reasoned LOD workflow](docs/LOD-PIPELINE.md) for choosing omissions, replacements, generator controls and selective decimation.
 
 ## Source layout
 

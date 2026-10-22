@@ -7,3 +7,5 @@ Place buildings under `regions/<town>/<area>/<asset>/` with an `asset.json`, con
 Compare multiple views for elevations, roof form and ornaments. Mark occluded or uncertain details as estimates. Link to photographs instead of adding them to Git. Keep your local reference cache outside the source checkout (or in ignored references/ folders). Do not include login sessions or browser profiles.
 
 Stage intended source files and run `python tools/project.py check`. Geometry changes also need a complete build/export/validation and visual review of affected views. Attach review renders through an appropriate licensed review channel rather than committing build products. Explain changes to scale, placement and visibility. Keep PRs small enough for another contributor to review.
+
+Include a reasoned LOD recipe with new buildings: what gets omitted, replaced by an envelope, parameterised or selectively decimated at each level. Add controls as features are built, and run the [baked LOD workflow](docs/LOD-PIPELINE.md). Review front/oblique views and identify any explicit coverage deferral.

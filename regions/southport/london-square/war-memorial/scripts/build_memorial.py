@@ -23,6 +23,7 @@ import shaft_masonry
 import obelisk_surfaces
 import site_grade
 import wwii_roundel
+import column_geometry
 from sculpt_surface import simplify_relief, trim_empty_relief_background
 
 ARGS=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
@@ -159,24 +160,8 @@ def column(name,x,y,c):
         ob=COLUMN_TEMPLATE.copy();ob.data=COLUMN_TEMPLATE.data;c.objects.link(ob);ob.name=name
         ob.matrix_world=Matrix.Translation(position)
         return ob
-    x=y=0
-    m=Mesh(name)
-    m.lathe((x,y),[(.32,.365),(.34,.382),(.37,.388),(.405,.379),(.432,.349),(.47,.331)],80)
-    profile=[]
-    for j in range(65):
-        t=j/64;z=.47+t*(COL['shaft_top']-.47);r=.33*(1-t)+.275*t+.010*math.sin(math.pi*t)
-        profile.append((z,r))
-    m.lathe((x,y),profile,160,0,20,.024)
-    # Three original close-ups show a single lower annulus, a plain neck,
-    # then the spreading echinus. The old repeated rings filled the neck.
-    m.lathe((x,y),[(3.84,.282),(3.848,.292),(3.858,.298),(3.872,.293),(3.883,.280)],80)
-    m.lathe((x,y),[(3.883,.280),(3.975,.280),(3.985,.285)],80)
-    m.lathe((x,y),[(3.985,.285),(4.002,.301),(4.028,.342),(4.052,.391),(4.06,.397)],80)
-    m.box((x,y,4.101),(.83,.83,.082))
-    # The original 0.66 m draft was too broad against the shaft-height /
-    # silhouette ratios in three independent views. Absolute sizes remain estimates.
     radius_scale=SPEC['dimensions']['column_shaft_diameter_lower']['value']/.66
-    m.transform(Matrix.Diagonal((radius_scale,radius_scale,1,1)))
+    m=column_geometry.build_mesh(name,COL['shaft_top'],radius_scale)
     o=finish(m,c,.001,True);o['flutes']=20;o['flute_count_status']='provisional photographic count';o['shaft_taper_m']=[.48,.40]
     o['dimension_reference']='research/colonnade_vertical_proportion_study.json; conditional photographic estimate, not survey'
     o['capital_construction']='Lower annulus, plain cylindrical neck, spreading echinus, square abacus'

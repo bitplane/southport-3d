@@ -10,4 +10,6 @@ Do not commit downloaded reference images, page captures, browser profiles, cred
 
 Run python tools/project.py check after staging intended files. For geometry changes, run a full asset build and inspect affected renders. Preserve the distinction between observed dimensions and estimates. Interiors and missing memorial names are deferred until supporting evidence arrives.
 
-Use master. Do not push or publish unless requested. LOD generation and the viewer are future work; do not describe them as implemented.
+Plan LODs while constructing each feature. Read docs/LOD-PIPELINE.md: each component/level needs a reasoned omit, replace, generator or decimate decision. Start distant models from simple envelopes while preserving major openings and silhouette. Global decimation ratios are not a substitute for these decisions. Add generator controls and replacement geometry as the feature is authored, then run the declared baked levels and inspect front/oblique comparisons. Any incomplete coverage must be explicit.
+
+Use master. Do not push or publish unless requested. A baked component-LOD pilot exists; full-building LOD coverage, publication and the viewer remain future work. Do not overstate coverage.

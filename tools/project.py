@@ -11,6 +11,9 @@ import shutil
 import subprocess
 import sys
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
+from southport3d.lod import load_recipe
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -55,6 +58,10 @@ def check():
                     raise ValueError(f'Invalid relief data: {name}')
                 if float(data['width']) <= 0 or float(data['height']) <= 0:
                     raise ValueError(f'Invalid relief dimensions: {name}')
+    for source, spec in entries.values():
+        recipe_path = source / 'lod.json'
+        if recipe_path.exists():
+            load_recipe(recipe_path)
     print(f'Checked {len(entries)} asset(s) and {len(list(filter(None, tracked)))} tracked files.')
 
 
@@ -62,7 +69,7 @@ def fingerprint(source):
     digest = hashlib.sha256()
     for base in (source, ROOT / 'lib'):
         for path in sorted(base.rglob('*')):
-            if path.is_file() and '__pycache__' not in path.parts:
+            if path.is_file() and '__pycache__' not in path.parts and path.name not in {'lod.json', 'lod.py'}:
                 digest.update(str(path.relative_to(ROOT)).encode())
                 digest.update(path.read_bytes())
     return digest.hexdigest()
@@ -121,6 +128,40 @@ def build(args):
     print(f'Finished: {runtime}')
 
 
+def lod(args):
+    source, spec = assets()[args.asset]
+    runtime = ROOT / 'build' / args.asset
+    signature = fingerprint(source)
+    stamp = runtime / 'source.sha256'
+    if not stamp.exists() or stamp.read_text().strip() != signature:
+        raise ValueError('Master missing or source changed: run build first')
+    recipe_path = source / 'lod.json'
+    recipe = load_recipe(recipe_path)
+    blend = (runtime / recipe['source_blend']).resolve()
+    if not blend.is_relative_to(runtime.resolve()) or not blend.is_file():
+        raise ValueError('LOD source must be an existing blend inside the asset runtime')
+    work = runtime / 'lod-work'
+    if work.exists():
+        shutil.rmtree(work)
+    work.mkdir()
+    log = runtime / 'logs/lod.log'
+    command = [args.blender, '-b', '--factory-startup', '--threads', str(args.threads),
+               '--python-exit-code', '1', '--python', str(ROOT / 'tools/blender_lod.py'), '--',
+               '--source', str(blend), '--recipe', str(recipe_path), '--output', str(work),
+               '--source-fingerprint', signature]
+    print(f'Baking LODs; log: {log}', flush=True)
+    with log.open('w') as output:
+        subprocess.run(command, cwd=ROOT, stdout=output, stderr=subprocess.STDOUT, check=True)
+    subprocess.run([sys.executable, str(ROOT / 'tools/check_lods.py'), str(work)], check=True)
+    subprocess.run([sys.executable, str(ROOT / 'tools/lod_contact_sheet.py'), str(work)], check=True)
+    subprocess.run([sys.executable, str(ROOT / 'tools/lod_contact_sheet.py'), str(work), '--oblique'], check=True)
+    dest = runtime / 'lods'
+    if dest.exists():
+        shutil.rmtree(dest)
+    work.rename(dest)
+    print(f'Finished: {dest}')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
@@ -132,12 +173,18 @@ def main():
     builder.add_argument('--threads', type=int, default=12)
     builder.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))
     builder.add_argument('--views', nargs='*', default=[])
+    lodder = sub.add_parser('lod', help='Bake and validate levels from the asset lod.json')
+    lodder.add_argument('asset')
+    lodder.add_argument('--threads', type=int, default=12)
+    lodder.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))
     args = parser.parse_args()
     if args.command == 'list':
         for key in assets():
             print(key)
     elif args.command == 'check':
         check()
+    elif args.command == 'lod':
+        lod(args)
     else:
         build(args)
 

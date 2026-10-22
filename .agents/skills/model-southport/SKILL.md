@@ -11,4 +11,6 @@ Work from footprint and height through elevations, columns/mouldings, entrances 
 
 Use the isolated tools/project.py build workflow. Existing relief NPZ files are source depth fields; regenerating them may require local photographs, while ordinary builds do not. Keep Blender file writers sequential. Review affected close-ups and an overview for scale, silhouette and placement. The render stage accepts --views with full view identifiers (for example, 43_obelisk_wwii).
 
+Before treating a new building as complete, read docs/LOD-PIPELINE.md and record a reasoned action for every component at every intended level: omit, replace with a simple envelope, adjust the generator, or decimate selectively. Design feature boundaries and generator controls while authoring the master. Preserve major silhouettes and through-openings; bake facade/carving/text detail onto simpler receiving surfaces. Test front and oblique views. Mark incomplete coverage explicitly; the memorial currently has a component pilot, not whole-asset LODs.
+
 Stage intended source, run the source check, and report build/validation results plus unresolved estimates. Do not add reference images or generated outputs to Git. See docs/SETUP.md for browser MCP setup and RIGHTS.md for source provenance.
