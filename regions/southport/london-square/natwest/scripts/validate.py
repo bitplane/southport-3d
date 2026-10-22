@@ -120,3 +120,14 @@ for face in roof.data.polygons:
  points=[roof.data.vertices[i].co for i in face.vertices]
  if all(abs(p.y-end)<1e-4 for p in points) and abs(face.normal.z)<.08:
   assert face.area<.02 or max(p.z for p in points)<D['base_z']+12.40,('Exposed corner saddle endcap',face.area)
+
+# Cash-machine apertures must expose the inset screen, not uncut ashlar.
+for ob in [o for o in meshes if o.name.startswith('ATM screen') and not o.name.startswith('ATM screen hood')]:
+    origin=ob.matrix_world@Vector((-.115,.08,1))
+    direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+    hit,point,normal,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
+    assert hit and target==ob, ('ATM screen obscured',target.name if hit else None)
+assert len([o for o in meshes if o.name.startswith('Door wall handrail')])==2
+steps=[o for o in meshes if o.name.startswith('Trim entrance step')]
+assert len(steps)==4
+assert sorted(round(max(v.co.y for v in o.data.vertices),2) for o in steps)==[.14,.28,.42,.56]

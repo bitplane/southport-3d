@@ -11,6 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh, face_matrix, text_object
 from roof import joined_roof
+from frontage import cash_machine, entrance_steps
 from components import rectangle, arch_outline, wall, upper_window, low_side_window, arched_window, gable, foliage, parapet, urn, finial, arc, partition_window
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT')
@@ -42,6 +43,7 @@ white=material('Painted window frames',(.90,.91,.86),roughness=.55)
 black=material('Dark door and ironwork',(.035,.043,.039),roughness=.65)
 metal=material('Weathered cash machine metal',(.34,.37,.35),roughness=.4)
 purple=material('Bank sign purple',(.105,.026,.20),roughness=.5)
+green=material('Card reader dark green',(.025,.12,.045),roughness=.5)
 red=material('Bank emblem red',(.70,.024,.055),roughness=.5)
 slate=material('Green grey slate',(.26,.29,.25),'slate')
 lead=material('Lead flashing',(.25,.27,.25))
@@ -125,6 +127,7 @@ for elevation,frame,width,bays in facades:
             radius=1.48 if front_face and i in (0,4) else 1.14
             bottom=.16 if front_face and i in (1,4) else 1.55
             holes.append(arch_outline(u,bottom,3.85,radius))
+        if front_face and i in (2,3):holes.append(rectangle(u-.45,.45,u+.45,1.43))
         if front_face and i in (0,4):
             for du in (-.9,.9):holes.append(rectangle(u+du-.49,6.8,u+du+.49,10.25))
         elif not front_face and i==1:
@@ -134,9 +137,9 @@ for elevation,frame,width,bays in facades:
     finish(wall('Envelope '+elevation,width,12.60,holes,start=0 if front_face else .42),mats=[stone],transform=frame)
     finish(wall('Ashlar '+elevation,width,12.60,holes,True),mats=plain,transform=frame)
     # Continuous courses establish floor levels and retain their shadow profiles.
-    for z,h,dep in [(0.25,.50,.12),(5.95,.16,.24),(6.18,.16,.34),(6.38,.12,.24),
+    for z,h,dep in [(0.15,.70,.12),(5.95,.16,.24),(6.18,.16,.34),(6.38,.12,.24),
                     (11.42,.18,.22),(11.75,.28,.34),(11.96,.12,.46),(12.12,.16,.57),(12.35,.17,.40)]:
-        box('Trim '+elevation,(width/2,z,dep/2),(width,h,dep),mat=base if z==.25 else plain[1],transform=frame)
+        box('Trim '+elevation,(width/2,z,dep/2),(width,h,dep),mat=base if z==.15 else plain[1],transform=frame)
     # End-bay turrets have a deep upper shaft and a suspended corbel below.
     tower_positions=[.25,width-.25]
     tower_positions += [5.55,17.35] if front_face else [5.5,10.7]
@@ -212,15 +215,23 @@ for elevation,frame,width,bays in facades:
         key=f'arch-{radius}-{bottom}'
         instance(key,lambda r=radius,b=bottom:arched_window('Window arch',r,b,3.85,r>1.4),frame@Matrix.Translation((u,0,.04)),mats=M)
         if front_face and i in (1,4):
-            box('Door recessed '+str(i),(u,1.71,-.17),(radius*2-.08,3.1,.08),'bank-frontage',black if i==1 else white,frame)
+            box('Door recessed '+str(i),(u,1.94 if i==1 else 1.71,-.17),(radius*2-.08,2.68 if i==1 else 3.1,.08),'bank-frontage',black if i==1 else white,frame)
             for du in (-radius*.48,radius*.48):
-                for zz in (.65,1.60,2.65):
-                    box('Door panel',(u+du,zz,-.105),(radius*.78,.77,.05),'bank-frontage',black if i==1 else glass,frame)
+                for zz,ph in ([(1.0,.60),(1.95,.95),(2.90,.45)] if i==1 else [(.85,1.20),(2.20,1.20)]):
+                    box('Door panel',(u+du,zz,-.105),(radius*.78,ph,.05),'bank-frontage',black if i==1 else glass,frame)
+                    if i==1:
+                        for dx in (-radius*.39,radius*.39):box('Door panel moulding',(u+du+dx,zz,-.065),(.035,ph+.04,.035),'bank-frontage',black,frame)
+                        for dy in (-ph/2,ph/2):box('Door panel moulding',(u+du,zz+dy,-.065),(radius*.78-.035,.035,.035),'bank-frontage',black,frame)
             box('Door transom',(u,3.4,-.10),(radius*2,.13,.15),'bank-frontage',plain[1],frame)
             for du in (-.12,.12):box('Fine door handle',(u+du,1.63,-.045),(.035,.35,.045),'bank-frontage',metal,frame)
             if i==1:
-                for step in range(3):box('Trim entrance step',(u,.055+step*.09,.24+(.3-step*.1)),(2.4,.11,.45+(.3-step*.1)),transform=frame)
+                box('Door fanlight mullion',(u,4.24,-.11),(.075,.74,.12),'bank-frontage',plain[1],frame)
+                box('Fine door letter plate',(u+.48,1.45,-.032),(.30,.095,.025),'bank-frontage',metal,frame)
+                entrance_steps(frame@Matrix.Translation((u,0,0)),finish,plain[0],black)
             else:
+                box('Door main threshold',(u,.015,.02),(radius*2,.29,.30),'bank-frontage',plain[0],frame)
+                panel=Mesh('Door arched sign backing');panel.outline(arch_outline(u,3.65,3.85,radius-.07),-.19,-.18)
+                finish(panel,'bank-frontage',[purple],frame)
                 sign('entrance','NatWest',2.55,.65,frame@Matrix.Translation((u,4.15,-.17)))
                 # Main entrance hood and square vase-baluster pilasters.
                 hood=Mesh('Trim main entrance hood')
@@ -232,11 +243,8 @@ for elevation,frame,width,bays in facades:
         if front_face and i in (0,2,3):
             sign('window '+str(i),'NatWest',2.1,.48,frame@Matrix.Translation((u,1.93,-.14)))
         if front_face and i in (2,3):
-            box('ATM surround',(u,.85,.04),(1.02,1.02,.16),'bank-frontage',plain[1],frame)
-            box('ATM metal',(u,.85,.14),(.77,.83,.07),'bank-frontage',metal,frame)
-            box('ATM screen',(u,1.04,.18),(.45,.27,.035),'bank-frontage',black,frame)
-            box('ATM cash slot',(u,.66,.19),(.47,.055,.04),'bank-frontage',black,frame)
-            box('ATM keypad',(u,.80,.19),(.22,.10,.04),'bank-frontage',black,frame)
+            # The wall is cut for the recessed metal face, not covered by a box.
+            cash_machine(frame@Matrix.Translation((u,.94,0)),finish,metal,black,glass,white,green)
     # Tall gables have genuine oculus holes, layered ring mouldings and foliage.
     gables=[3.0,width-3.0] if front_face else [8.1]
     for u in gables:

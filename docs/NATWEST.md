@@ -65,3 +65,24 @@ were rendered from front, London Street, roof and corner viewpoints. The narrow
 lights and separated heads survive all three levels, the parapet backing is
 closed, and the roof silhouette and stone colour remain stable. This was an
 exported-model review; live browser inspection was unavailable in this pass.
+
+## Frontage snag detail pass
+
+The user's private ATM and entrance closeups (snags 42e849 and 44cca8) supplement
+the retained November 2020 full frontage. Cash machines have actual masonry
+apertures, metal perimeter frames, recessed screens under hoods, paired control
+buttons, card-reader bezels, receipt and cash slots, and sloping keyboard shelves.
+Unreadable screen text and temporary notices are not invented. The black double
+door has panel mouldings and four broad stone treads with rounded outer ends,
+plus sloping wall-mounted handrails. Dimensions remain visually calibrated.
+
+The ATM housings, screens, slots, steps and rails remain geometric at every LoD;
+small buttons and keypad keys use the Fine policy (keep at Walk, omit at District).
+Validation probes screens through the wall apertures and checks the four tread
+heights. The supplied Google panorama link fell back to a base map during this
+pass; no fresh panorama inspection is claimed.
+
+The front plinth and lowest tread extend below the inherited estimated pavement
+grade, closing the previously visible air gap without moving the building. The
+main glazed entry has two taller panels per leaf, an arched sign backing and
+its own threshold; the black-door fanlight has a central mullion.
