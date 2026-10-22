@@ -250,3 +250,15 @@ Drainage grates now cut both the road and yellow/white markings before all
 surfaces are flattened to the road datum. Grate slots retain their own higher
 construction priority. Twelve ray samples cover the four square drains and
 require exactly one surface, with no paint inside the grate footprint.
+
+### London Street furniture evidence
+
+Private reports e3d20f / 519929 supply a slim stainless bin and the Halifax
+straight-pole LED fitting. The street's retained bin placeholders now use a
+0.43 m body, flat lid, recessed mouth and Detail perforation marks, with lower
+segment counts and omitted tiny marks at Walk/District. Remaining bin positions
+are provisional; the later Halifax report explicitly removes the unsupported
+bin at site (-5.4,-56). The observed Halifax lamp is a straight tapered pole with
+a slim rectangular head. London Street poles move beside the kerb and face the
+carriageway. Other lamp fittings remain provisional rather than assuming all
+poles share the photographed modern replacement. Dimensions are visual estimates.

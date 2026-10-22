@@ -279,9 +279,10 @@ def build_extensions(ctx):
                 paint_edge('Glebe mouth return',curve,side,part,(-4.3,-69.4,8.5,-63.4))
         dashed([(0,south),(0,north)],part)
         for side in [-1,1]:
-            furnishing('streetlight',side*7.3,(north+south)/2,90*side,fp)
-        for yy,side in [(-56,-1),(-74,1),(-94,-1),(-113,1),(-130,-1),(-153,1)]:
-            if south<=yy<north:furnishing('bin' if int(abs(yy))%2==0 else 'bollard',side*5.4,yy,0,fp)
+            furnishing('london-led' if i==1 and side==-1 else 'streetlight',side*4.65,(north+south)/2,-90*side,fp,'User kerb/orientation correction; Halifax LED observed, other fittings provisional')
+        # The later Halifax photograph explicitly disproves the old (-5.4,-56) bin.
+        for yy,side in [(-74,1),(-94,-1),(-113,1),(-130,-1),(-153,1)]:
+            if south<=yy<north:furnishing('stainless-bin' if int(abs(yy))%2==0 else 'bollard',side*5.4,yy,0,fp)
         # Short junction stubs establish future road/building ownership boundaries.
         for cy,side,width in [(-83.5,1,9),(-144,-1,12),(-144,1,12)]:
             if south<cy<north:

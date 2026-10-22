@@ -603,6 +603,58 @@
         "bake": false,
         "reason": "Preserve unequal-height double arches and pendant lanterns; reduce curved sampling and omit access hardware."
       }
+    },
+    {
+      "id": "stainless-bin",
+      "match": "^Furniture stainless-bin ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "stainless-bin",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate slimmer stainless shell and real mouth; keep hinges at Walk, omit tiny perforation marks below Detail."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "stainless-bin",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate slimmer stainless shell and real mouth; keep hinges at Walk, omit tiny perforation marks below Detail."
+      }
+    },
+    {
+      "id": "london-led",
+      "match": "^Furniture london-led ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "london-led",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Straight tapered pole and rectangular LED silhouette survive; reduce circular sampling and omit small pole fittings at District."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "london-led",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Straight tapered pole and rectangular LED silhouette survive; reduce circular sampling and omit small pole fittings at District."
+      }
     }
   ]
 }

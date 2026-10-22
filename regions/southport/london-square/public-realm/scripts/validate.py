@@ -214,3 +214,17 @@ for side in [-1,1]:
    assert len(hits)==1,('Overlapping grate surfaces',side,y,dx,dy,[(o.name,i) for o,i in hits])
    assert hits[0][0].data.materials[hits[0][1]].name in ['Access covers','Pale granite kerb'],'Paint across drainage grate'
 print('All four drainage grates own their road-surface footprint')
+
+# London Street heads point into the carriageway, with poles beside the kerb.
+for i in range(1,4):
+    for ob in bpy.data.collections[f'london-{i}-furniture'].objects:
+        if ob.name.startswith(('Furniture streetlight ','Furniture london-led ')):
+            assert abs(abs(ob.location.x)-4.65)<1e-4
+            head=ob.matrix_world@Vector((0,-.45,6.8))
+            assert abs(head.x)<abs(ob.location.x),'Lamp faces shops rather than road'
+        assert not (ob.name.startswith('Furniture bin ') and abs(ob.location.y+56)<.1),'Unsupported Halifax bin'
+for level in ['detail','walk','district']:
+    m=furniture('stainless-bin',level)
+    assert max(abs(v[0]) for v in m.vertices)<=.231
+    assert max(v[2] for v in m.vertices)<1.0
+print('London Street kerb offsets, head directions and slim bin silhouette checked')
