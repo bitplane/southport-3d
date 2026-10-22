@@ -51,7 +51,9 @@ def build_roof(D, R, finish, mats):
     m.box((x,y,deck+.17),(w,d,.34),0)
     # Shallow double pitch with weathered pale perimeter and rust-coloured bars.
     verts=[(x-w/2,y-d/2,deck+.34),(x,y-d/2,deck+.54),(x+w/2,y-d/2,deck+.34),(x-w/2,y+d/2,deck+.34),(x,y+d/2,deck+.54),(x+w/2,y+d/2,deck+.34)]
-    m.add(verts,[(0,3,4,1),(1,4,5,2),(0,1,2),(3,5,4)],1)
+    # Outward winding on both pitches and end caps; double-sided display
+    # must not conceal an inside-out rooflight shell. The underside meets its base.
+    m.add(verts,[(1,4,3,0),(2,5,4,1),(2,1,0),(4,5,3)],1)
     for yy in [y-d/2,y+d/2]:
         m.tube([(x-w/2,yy,deck+.355),(x,yy,deck+.555),(x+w/2,yy,deck+.355)],.045,0,6)
     for xx,zz in [(x-w/2,deck+.355),(x,deck+.555),(x+w/2,deck+.355)]:m.tube([(xx,y-d/2,zz),(xx,y+d/2,zz)],.035,0,6)

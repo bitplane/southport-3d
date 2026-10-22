@@ -51,5 +51,9 @@ hit,point,normal,index,obj,matrix=bpy.context.scene.ray_cast(deps,Vector((wx,wy,
 assert hit and obj.name=='Roof walled recess' and point.z<D['base_z']+D['roof_level']-.4
 assert len([o for o in meshes if o.name.startswith('Roof edge housing ')])==3
 assert any(o.name=='Roof plant platform and cabinets' for o in meshes)
+# The shallow rooflight pitches must face the sky, independent of material culling.
+rooflight=next(o for o in meshes if o.name=='Roof elongated rooflight or vent')
+pitches=[f for f in rooflight.data.polygons if f.material_index==1 and abs(f.normal.z)>.5]
+assert len(pitches)==4 and all(f.normal.z>0 for f in pitches),('rooflight pitch winding',[tuple(f.normal) for f in pitches])
 report={'objects':len(meshes),'window_modules':len(windows),'checks':'metric finite meshes, packed maps, neighbour bounds, visible windows/signs, two recessed entrances and two main risers, two welcome panels and visible downlight lenses, outward access solids and covered threshold, matte access tiles, open roof recess and three edge housings'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2));print(report)

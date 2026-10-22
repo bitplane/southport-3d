@@ -126,3 +126,22 @@ These surfaces remain physical at every LOD.
 | detail | 44,386 | 5,356,664 | 1,349,971 |
 | walk | 13,216 | 2,736,580 | 1,584,140 |
 | district | 2,706 | 812,620 | 381,086 |
+
+## Independent mesh audit
+
+The retained user frontage screenshots and close roof satellite view were
+compared with Detail, Walk and District exports. The thirteen upper modules,
+two recessed entrances, left ramp, three edge housings and four-fan plant
+arrangement remain consistent with those references. Heights and hidden rear
+openings remain estimates; no access stair or door was inferred from the aerial.
+
+The shallow rooflight/vent had both pitch faces and end caps wound inward.
+Their winding is corrected, and validation now requires both sloping faces to
+point upward. Double-sided rendering had concealed the error. Roof shape and
+all three LoD policies are unchanged.
+
+Full builds and validators passed after the audit. Re-published Detail, Walk
+and District GLBs were rendered from front, close and roof/rear viewpoints;
+colour and major silhouettes remain stable. A combined Walk comparison with
+public-realm ground checked the frontage and entrance approaches. Live browser
+inspection was unavailable; these checks used imported exported GLBs.
