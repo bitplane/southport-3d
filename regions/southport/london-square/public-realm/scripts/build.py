@@ -248,8 +248,11 @@ for part,collection in collections.items():
    road_materials=[asphalt,redroad,roadpavers,yellow,white]
    both_road=(o.data.materials[0] in road_materials and other.data.materials[0] in road_materials)
    # Paint belongs above every carriageway, including high-priority returns.
-   priority=1+z if both_road and o.data.materials[0] in [yellow,white] else z
-   other_priority=1+oz if both_road and other.data.materials[0] in [yellow,white] else oz
+   drainage=o.name.startswith('Marking drainage')
+   other_drainage=other.name.startswith('Marking drainage')
+   if drainage or other_drainage:both_road=True
+   priority=(3 if 'slots' in o.name else 2)+z if drainage else (1+z if both_road and o.data.materials[0] in [yellow,white] else z)
+   other_priority=(3 if 'slots' in other.name else 2)+oz if other_drainage else (1+oz if both_road and other.data.materials[0] in [yellow,white] else oz)
    if other_priority<priority-1e-6:continue
    if oz-z>.04 and not both_road:continue
    if abs(other_priority-priority)<=1e-6 and order[(other,otherindex)]<=order[(o,index)]:continue
@@ -279,7 +282,7 @@ for part,collection in collections.items():
   if ob.data.materials and ob.data.materials[0] in [mixed,pale,dark,kerb]:
    for vertex in ob.data.vertices:
     if abs(vertex.co.z-grade(vertex.co.y))<.04:vertex.co.z=grade(vertex.co.y)
-  if ob.data.materials and ob.data.materials[0] in [asphalt,redroad,roadpavers,yellow,white]:
+  if ob.name.startswith('Marking drainage') or (ob.data.materials and ob.data.materials[0] in [asphalt,redroad,roadpavers,yellow,white]):
    for vertex in ob.data.vertices:
     vertex.co.z=grade(vertex.co.y)-.12
 

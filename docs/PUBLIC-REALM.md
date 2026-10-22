@@ -245,3 +245,8 @@ separate single-arm family and the memorial/globe lamps remain distinct. Pole
 locations and metric proportions are estimated; this pass does not establish
 current equipment at every position. The family is authored locally while its
 placement is reviewed, for later extraction into the shared furniture library.
+
+Drainage grates now cut both the road and yellow/white markings before all
+surfaces are flattened to the road datum. Grate slots retain their own higher
+construction priority. Twelve ray samples cover the four square drains and
+require exactly one surface, with no paint inside the grate footprint.

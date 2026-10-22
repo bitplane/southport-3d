@@ -199,3 +199,18 @@ for kind in ['pedestrian','signal','lord-street-lamp']:
    for sign in [-1,1]:
     assert any(v[1]*sign>1.1 and v[2]>5.0 for v in m.vertices),(level,'Missing twin arm')
 print('Signal glyph depths, twin lamp arms and non-degenerate local furniture checked')
+
+# Grate metal/slots own their footprint; yellow and white paint cannot cover it.
+road_objects=list(bpy.data.collections['roads'].objects)
+for ob in road_objects:ob.data.calc_loop_triangles()
+for side in [-1,1]:
+ for y in [-10,8]:
+  for dx,dy in [(-.123,.031),(.017,.113),(.123,-.079)]:
+   hits=[]
+   for ob in road_objects:
+    for tri in ob.data.loop_triangles:
+     hit=intersect_ray_tri(*(ob.data.vertices[i].co for i in tri.vertices),Vector((0,0,-1)),Vector((side*12.85+dx,y+dy,10)),True)
+     if hit is not None:hits.append((ob,tri.material_index))
+   assert len(hits)==1,('Overlapping grate surfaces',side,y,dx,dy,[(o.name,i) for o,i in hits])
+   assert hits[0][0].data.materials[hits[0][1]].name in ['Access covers','Pale granite kerb'],'Paint across drainage grate'
+print('All four drainage grates own their road-surface footprint')
