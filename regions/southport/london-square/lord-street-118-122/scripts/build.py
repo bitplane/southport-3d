@@ -3,6 +3,7 @@ import bpy,bmesh,sys,os,json,math
 from pathlib import Path
 from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'scripts'))
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib'))
 from southport3d.geometry import Mesh,face_matrix,text_object
 D=json.loads((ROOT/'research/layout.json').read_text())
@@ -30,10 +31,10 @@ def finish(mesh,part='architecture',mats=None,transform=None):
  ob=mesh.finish(mats or [stone],collections[part]);bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.triangulate(bm,faces=list(bm.faces));bm.to_mesh(ob.data);bm.free();ob.data.update()
  uv=ob.data.uv_layers.new(name='Metric repeat')
  for f in ob.data.polygons:
-  axes=sorted(range(3),key=lambda i:abs(f.normal[i]))[:2]
+  axes=[i for i in range(3) if i!=max(range(3),key=lambda j:abs(f.normal[j]))]
   for li in f.loop_indices:
    v=ob.data.vertices[ob.data.loops[li].vertex_index].co
-   uv.data[li].uv=(v[axes[0]]/3.2,v[axes[1]]/4.8)
+   uv.data[li].uv=(v[axes[0]]/(.65 if mats and pier in mats else 3.2),v[axes[1]]/(.65 if mats and pier in mats else 4.8))
  if transform is not None:ob.matrix_world=transform
  return ob
 
@@ -50,8 +51,12 @@ for u in D['upper_centres']:
 frontbox('Envelope upper end',(prev+width)/2,(lo+hi)/2,width-prev,hi-lo,.4,-.2)
 window=Mesh('Window upper 0')
 window.box((0,0,-.15),(ww,hi-lo,.025),1)
-for x in [-ww/2+.045,ww/2-.045,0]:window.box((x,0,-.025),(.065,hi-lo,.12),0)
-for z in [-(hi-lo)/2+.04,(hi-lo)/2-.04,.55]:window.box((0,z,-.025),(ww,.065,.12),0)
+# Butt-ended rails avoid coplanar overlapping frame faces.
+for x in [-ww/2+.0325,ww/2-.0325,0]:window.box((x,0,-.055),(.065,hi-lo,.10),0)
+for z in [-(hi-lo)/2+.0325,(hi-lo)/2-.0325,.55]:
+ for x in [-ww/4,ww/4]:window.box((x,z,-.055),(ww/2-.065,.065,.10),0)
+# Slim inset glazing beads and hinged casement edges, inside the coarse frame.
+for x in [-ww/2+.085,-.055,.055,ww/2-.085]:window.box((x,0,-.09),(.018,hi-lo-.14,.025),0)
 # Backing fills the full receiver, guarding against missed colour rays.
 window.box((0,0,-.175),(ww,hi-lo,.02),0)
 proto=None
@@ -67,11 +72,12 @@ frontbox('Trim coping',width/2,height+.055,width+.02,.11,.56,-.18,roofmat)
 # Closed party/rear walls, not an invented finished rear facade.
 x0=D['x_far'];x1=D['x_near'];yf=D['front_y'];yb=D['rear_y'];z0=D['base_z'];rl=D['roof_level']
 m=Mesh('Envelope rear and party walls')
-for x in [x0+.15,x1-.15]:m.box((x,(yf+yb-.4)/2,z0+height/2),(.3,yf-yb-.4,height))
+for x in [x0+.15,x1-.15]:m.box((x,(yf+yb-.1)/2,z0+height/2),(.3,yf-yb-.7,height))
 m.box(((x0+x1)/2,yb+.15,z0+height/2),(width,.3,height));finish(m,mats=[rear])
 m=Mesh('Roof slab');m.box(((x0+x1)/2,(yf+yb-.4)/2,z0+rl),(width-.6,yf-yb-.4,.22));finish(m,'roof',[roofmat])
 m=Mesh('Roof parapet coping')
-for x in [x0+.15,x1-.15]:m.box((x,(yf+yb)/2,z0+height+.055),(.45,yf-yb,.11))
+# Butt side coping into the front/rear strips; overlapping top faces caused black flicker.
+for x in [x0+.15,x1-.15]:m.box((x,(yf-.46+yb+.375)/2,z0+height+.055),(.45,yf-.46-yb-.375,.11))
 m.box(((x0+x1)/2,yb+.15,z0+height+.055),(width,.45,.11));finish(m,'roof',[roofmat])
 # Low features visible in aerial; exact service arrangement unverified.
 m=Mesh('Roof service approximations')
@@ -87,55 +93,33 @@ def sign(name,text,u,z,w,h,bg=dark,fg=cream,out=.12,orient=None,script=False):
  m.add([tuple(t.matrix_world@v.co) for v in t.data.vertices],[tuple(f.vertices) for f in t.data.polygons],1);bpy.data.objects.remove(t,do_unlink=True)
  return finish(m,'shopfront',[bg,fg],orient if orient is not None else frame@Matrix.Translation((u,z,out)))
 
-for shop in D['shops']:
- a=shop['u0'];b=shop['u1'];w=b-a;u=(a+b)/2;name=shop['id'];sam=name=='sam-thai';mamma=name=='mamma-mia'
- # Street piers and recessed opaque glazing; no fake interior photographs.
- for pos in [a-.075,b+.075]:frontbox('Shop polished pier '+name,pos,2.6,.15,5.2,.32,-.12,pier,'shopfront')
- frontbox('Shop transom '+name,u,4.25,w,1.75,.03,-.18,glass,'shopfront')
- groundtop=3.30;doorw=1.06;doorx=b-doorw/2-.08
- frontbox('Shop display '+name,(a+doorx-doorw/2)/2,1.95,doorx-doorw/2-a,2.7,.025,-.17,glass,'shopfront')
- frontbox('Shop stallriser '+name,(a+doorx-doorw/2)/2,.36,doorx-doorw/2-a,.70,.10,-.12,blue if sam else dark,'shopfront')
- # Recess door by .28 m, with visible reveals/threshold retained at District.
- frontbox('Shop recessed door '+name,doorx,1.55,doorw,3.10,.07,-.40,glass,'shopfront')
- for px in [doorx-doorw/2,doorx+doorw/2]:frontbox('Shop door reveal '+name,px,1.55,.065,3.10,.42,-.22,dark,'shopfront')
- frontbox('Shop threshold '+name,doorx,.035,doorw,.07,.50,-.22,dark,'shopfront')
- divs=[a+.04,a+w*.38,doorx-doorw/2,b-.03]
- if name=='bugle-tap':divs=[a+.04,a+w*.24,a+w*.48,doorx-doorw/2,b-.03]
- for px in divs:frontbox('Shop mullion '+name,px,2.6,.055,5.2,.09,-.07,metal if sam else dark,'shopfront')
- for z in [.72,3.30,5.05]:frontbox('Shop rail '+name,u,z,w,.07,.10,-.06,metal if sam else dark,'shopfront')
- # Unambiguous names from references; tiny unreadable menu notices omitted.
- if sam:
-  frontbox('Shop fascia stone',u,4.85,w,.66,.20,0,pier,'shopfront')
-  sign(name+' fascia','Sam Thai',u,4.85,w*.70,.53,pier,blue)
-  for px in [a+w*.19,a+w*.57]:sign(name+' window','Sam Thai',px,3.10,w*.36,.33,blue,cream,out=.025)
- elif mamma:
-  sign(name+' high','Mamma Mia',u,4.24,w*.87,.72,dark,cream,out=-.045,script=True)
-  sign(name+' small','PIZZERIA',u,4.73,w*.40,.20,dark,cream,out=-.04)
-  m=Mesh('Trim neon border');m.tube([(-w*.43,-.53,0),(w*.43,-.53,0),(w*.43,.53,0),(-w*.43,.53,0),(-w*.43,-.53,0)],.018,0,6);finish(m,'shopfront',[red],frame@Matrix.Translation((u,4.32,-.02)))
- else:
-  sign(name+' fascia','THE BUGLE TAP',u,3.16,w,.58,dark,cream,out=.34)
-  sign(name+' subtitle','CASK AND CRAFT ALES',u,2.82,w*.53,.15,dark,cream,out=.34)
- if not sam:
-  m=Mesh('Awning '+name);depth=.85 if mamma else .28
-  m.add([(a,3.62,0),(b,3.62,0),(b,3.28,depth),(a,3.28,depth)],[(0,1,2,3),(3,2,1,0)])
-  m.box((u,3.20,depth),(w,.16,.035));finish(m,'shopfront',[dark],frame)
-  if mamma:sign(name+' awning','Mamma Mia',u,3.20,w*.65,.15,dark,cream,out=depth+.025,script=True)
- # Handles and fascia lamps vanish only at District.
- m=Mesh('Fine hardware '+name)
- m.tube([(doorx+.32,1.15,-.33),(doorx+.32,1.65,-.33)],.016,0,8)
- for px in [a+.4,b-.4]:m.box((px,4.98,.22),(.30,.07,.16))
- finish(m,'shopfront',[metal],frame)
+# Each shop has a different joinery layout; do not share a generic door/window grid.
+from frontage import build_frontages
+build_frontages(D,frontbox,finish,sign,frame,dict(stone=stone,pier=pier,dark=dark,
+ glass=glass,metal=metal,blue=blue,cream=cream,red=red),material)
 # Projecting signs, two independently baked faces with an opaque thin core.
 for u,title,bg,fg in [(5.6,'Sam Thai',dark,cream),(11.45,'Mamma Mia',blue,cream)]:
  origin=frame@Vector((u,4.25,.55))
  for side in [-1,1]:
   orient=face_matrix((origin.x+side*.045,origin.y,origin.z),(side,0,0))
-  sign('projecting '+title+' '+str(side),title,0,0,.95,.52,bg,fg,orient=orient,script=title=='Mamma Mia')
+  sign('projecting '+title+' '+str(side),'Mamma\nMia' if title=='Mamma Mia' else title,0,0,.80 if title=='Mamma Mia' else .95,.70 if title=='Mamma Mia' else .52,bg,fg,orient=orient,script=title=='Mamma Mia')
  m=Mesh('Fixture sign bracket');m.box((u,4.61,.45),(.055,.055,.9));finish(m,'shopfront',[dark],frame)
-# Small right-hand ATM shell observed beside Bugle, screen/text simplified.
-frontbox('Fixture ATM',width-.22,1.14,.47,1.10,.24,.08,metal,'shopfront')
-frontbox('Fixture ATM screen',width-.22,1.29,.30,.25,.025,.215,dark,'shopfront')
-frontbox('Fixture ATM lower',width-.22,.96,.32,.09,.025,.215,dark,'shopfront')
+# ATM is a tall wall-mounted housing with hood, recessed controls and lower bin.
+au=width-.24
+frontbox('Fixture ATM tiled backing',au,1.55,.60,3.10,.12,.01,dark,'shopfront')
+frontbox('Fixture ATM',au,1.12,.49,1.72,.22,.15,metal,'shopfront')
+frontbox('Fixture ATM control recess',au,1.35,.39,.86,.035,.273,dark,'shopfront')
+frontbox('Fixture ATM screen',au,1.60,.28,.23,.02,.296,glass,'shopfront')
+frontbox('Fixture ATM lower bin',au,.49,.35,.38,.035,.274,dark,'shopfront')
+m=Mesh('Fine ATM controls')
+m.box((au,1.08,.31),(.27,.11,.025))
+m.box((au,1.36,.31),(.25,.025,.04))
+for xx in [-.17,.17]:
+ for zz in [1.53,1.60,1.67]:m.box((au+xx,zz,.315),(.024,.023,.02))
+for xx in [-.075,0,.075]:
+ for zz in [1.05,1.09,1.13]:m.box((au+xx,zz,.332),(.045,.020,.01))
+m.add([(au-.27,1.99,.03),(au+.27,1.99,.03),(au+.27,1.91,.34),(au-.27,1.91,.34)],[(0,1,2,3),(3,2,1,0)])
+finish(m,'shopfront',[metal],frame)
 for im in bpy.data.images:
  if im.source=='FILE':im.pack()
 s.render.engine='CYCLES';s.cycles.samples=32;s.cycles.use_denoising=True

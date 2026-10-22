@@ -88,6 +88,45 @@
         9,
         32
       ]
+    },
+    {
+      "name": "Sam Thai",
+      "position": [
+        -35.3,
+        3.5,
+        18.2
+      ],
+      "target": [
+        -35.3,
+        3.1,
+        23.6
+      ]
+    },
+    {
+      "name": "Mamma Mia",
+      "position": [
+        -41.3,
+        3.5,
+        18.2
+      ],
+      "target": [
+        -41.3,
+        3.1,
+        23.6
+      ]
+    },
+    {
+      "name": "Bugle Tap",
+      "position": [
+        -47.5,
+        3.5,
+        18.2
+      ],
+      "target": [
+        -47.5,
+        3.1,
+        23.6
+      ]
     }
   ],
   "walk_spawn": {
@@ -159,11 +198,11 @@
       "match": "^Fine ",
       "walk": {
         "strategy": "keep",
-        "reason": "Door handles and fascia lamps visible at walking range."
+        "reason": "Retain observed door handles, awning arms, glazing beads, ATM controls and Bugle festoon at walking range."
       },
       "district": {
         "strategy": "omit",
-        "reason": "Small hardware disappears; retain doors and sign envelopes."
+        "reason": "Omit subpixel joinery beads, hinges, controls and bulbs; coarse doors, sign receivers and ATM envelope remain."
       }
     }
   ]

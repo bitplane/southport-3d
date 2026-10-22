@@ -28,3 +28,14 @@ for ob in [o for o in meshes if o.name.startswith('Sign ')]:
  hit,point,normal,index,found,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1)
  assert hit and found==ob,(ob.name,'obscured by',found.name if found else None)
 print('All sign centres visible from their authored front')
+
+# Actual display panes must be visible, including Mamma Mia's unsplit main pane
+# and Bugle's independent right sidelight (generic frontage once obscured these).
+for ob in [o for o in meshes if o.name.startswith('Shop display ')]:
+ centre=sum((v.co for v in ob.data.vertices),Vector())/len(ob.data.vertices)
+ sample_x=centre.x if 'mamma-mia' in ob.name else (centre.x+min(v.co.x for v in ob.data.vertices))/2
+ origin=ob.matrix_world@Vector((sample_x,1.75,1))
+ direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+ hit,point,normal,index,found,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
+ assert hit and found==ob,(ob.name,'display blocked by',found.name if found else None)
+print('All four display panes visible, including the unsplit Mamma pane and Bugle right sidelight')
