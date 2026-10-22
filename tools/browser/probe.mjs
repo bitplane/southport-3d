@@ -8,12 +8,15 @@ import path from 'node:path';
 const directory = path.dirname(fileURLToPath(import.meta.url));
 const output = path.join(directory, 'probe-output');
 await mkdir(output, { recursive: true });
-const results = { started: new Date().toISOString(), checks: {} };
+const mode = process.env.SOUTHPORT_BROWSER_MODE || 'offscreen';
+if (!['offscreen', 'headed', 'headless'].includes(mode)) throw new Error('Invalid SOUTHPORT_BROWSER_MODE');
+const results = { started: new Date().toISOString(), mode, checks: {} };
 let browser;
 try {
   browser = await chromium.launch({
     executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome',
-    headless: true,
+    headless: mode === 'headless',
+    args: mode === 'offscreen' ? ['--ozone-platform=headless'] : [],
     chromiumSandbox: true,
     timeout: 20000,
   });
@@ -58,7 +61,7 @@ try {
 
   const sites = [
     ['google-maps', 'https://www.google.com/maps/search/?api=1&query=Southport%2C%20UK'],
-    ['street-view', 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6473%2C-3.0069'],
+    ['street-view', 'https://www.google.com/maps/@53.6480488,-3.0041471,3a,75y,350.3h,104.58t/data=!3m4!1e1!3m2!1smnlr3P-VeOWNjzTBAxwdfA!2e0'],
     ['mapillary', 'https://www.mapillary.com/app/?lat=53.6473&lng=-3.0069&z=16'],
   ];
   for (const [name, url] of sites) {

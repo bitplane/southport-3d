@@ -24,6 +24,35 @@ codex mcp add southport-browser -- /absolute/path/southport-3d/tools/browser/run
 claude mcp add --transport stdio southport-browser -- /absolute/path/southport-3d/tools/browser/run-mcp.sh
 ```
 
-Choose the command for your agent. The launcher runs headless Chrome with its sandbox enabled and stores its profile and output in ignored directories. It does not need an X-forwarded desktop. If the agent environment cannot launch Chrome, the MCP process needs host execution permission or an administrator-configured external MCP connection; a repository script cannot grant that permission. Do not use an arbitrary remote-debugging endpoint or expose a personal browser profile. Local MCP registrations and credentials stay out of Git.
+Choose the command for your agent. The launcher runs normal Chrome on its offscreen Ozone display backend with its sandbox enabled and stores its profile and output in ignored directories. It does not need an X-forwarded desktop. If the agent environment cannot launch Chrome, the MCP process needs host execution permission or an administrator-configured external MCP connection; a repository script cannot grant that permission. Do not use an arbitrary remote-debugging endpoint or expose a personal browser profile. Local MCP registrations and credentials stay out of Git.
+
+For a genuine headed-browser comparison on a host without a desktop, install
+Xvfb and run the existing probe with a virtual display:
+
+```sh
+SOUTHPORT_BROWSER_MODE=headed xvfb-run -a -s '-screen 0 1440x1000x24 -nolisten tcp' node tools/browser/probe.mjs
+```
+
+`SOUTHPORT_BROWSER_MODE` accepts `offscreen` (default), `headless` and `headed`.
+Offscreen uses `headless: false` and `--ozone-platform=headless`; Chrome runs
+without an X server or an interactive desktop. Headed mode instead needs a
+virtual or physical display. [Playwright documents Xvfb for headed Linux
+execution](https://playwright.dev/docs/ci).
+
+On 22 October 2026, Chrome 145.0.7632.116 in the original headless MCP and a fresh
+private context returned Street View metadata errors and HTTP 403 tile responses.
+Normal Chrome using offscreen Ozone rendered both supplied Glebe Place car
+panoramas (November 2020), supported mouse dragging and zooming, and loaded a
+July 2026 Promenade panorama. These were checked visually, not just by page
+labels. This comparison implicates browser mode/configuration; it does not prove
+Google's detection mechanism or guarantee future availability. No user-agent
+spoofing, challenge bypass, personal profile or sandbox disabling was used.
+
+Known reference view for reproducing the check:
+[2 Glebe Place](https://www.google.com/maps/@53.6480488,-3.0041471,3a,75y,350.3h,104.58t/data=!3m4!1e1!3m2!1smnlr3P-VeOWNjzTBAxwdfA!2e0).
+The probe records rendering mode, page text and screenshots. Always visually
+inspect its Street View image before claiming access. Existing MCP registrations
+that directly pass `--headless` must be changed to this launcher and reloaded to
+use the new default; editing repository files does not reconfigure a live server.
 
 Codex's repository skill is in `.agents/skills/model-southport`. Claude's `.claude/skills` symlink exposes the same workflow; if symlinks are unavailable, read the linked SKILL.md directly. These conventions follow the [Codex skills documentation](https://learn.chatgpt.com/docs/build-skills), [Claude skills documentation](https://code.claude.com/docs/en/skills) and [Claude MCP documentation](https://code.claude.com/docs/en/mcp).
