@@ -348,3 +348,10 @@ close-up (screenshot-20261022-104014.png, retained privately). Its offset follow
 the wall plane; the previous extra alleyward bend and independently twisted
 box segments were removed. A single closed mitered shell now forms the elbow.
 Widths and exact wall offsets remain visually estimated.
+
+The corner lantern snag (64f5fd) replaces the brass-coloured boxes using two
+private closeups supplied by the user. Dark weathered metal frames surround
+recessed glazing and ivory bulb forms; hipped caps, raised vents, finials and
+tapered lower bowls define the silhouette. These are visual estimates, not a
+manufacturer identification. Hardware is retained at Detail/Walk and omitted
+at District under the existing publication policy. No photo pixels are embedded.

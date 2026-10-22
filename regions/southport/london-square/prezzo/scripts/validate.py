@@ -155,3 +155,8 @@ bm=bmesh.new();bm.from_mesh(duct.data)
 assert all(e.is_manifold for e in bm.edges),'Open angular duct elbow'
 assert bm.calc_volume(signed=True)>0,'Inward duct shell'
 bm.free()
+
+lanterns=[o for o in meshes if o.name.startswith('Hardware corner lantern')]
+assert len(lanterns)==2
+assert all(len(o.data.materials)==3 for o in lanterns)
+assert all(max(v.co.y for v in o.data.vertices)-min(v.co.y for v in o.data.vertices)>.60 for o in lanterns)

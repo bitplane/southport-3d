@@ -30,15 +30,42 @@ def add_frontage(finish,front,side,corner,flen,slen,L,mats,brass,lantern,root):
         matrix=face_matrix((origin.x+direction*.035,origin.y,origin.z),(direction,0,0))
         sign('projecting '+str(direction),'PREZZO',.80,.53,dark,white,matrix)
     m=Mesh('Hardware projecting bracket');m.box((u,4.24,.46),(.05,.05,.92));m.box((u,3.64,.46),(.04,.04,.92));finish(m,'shopfront',[dark],front)
-    # Two small wall lanterns flank the arched corner door.
+    # Shaped dark metal lanterns, from the two private user closeups.
+    pewter=bpy.data.materials.new('Lantern weathered dark metal');pewter.use_nodes=True
+    shader=pewter.node_tree.nodes.get('Principled BSDF')
+    shader.inputs['Base Color'].default_value=(.12,.15,.14,1)
+    shader.inputs['Metallic'].default_value=.55;shader.inputs['Roughness'].default_value=.42
+    pane=bpy.data.materials.new('Lantern muted glazing');pane.use_nodes=True
+    pane.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value=(.15,.19,.12,1)
+    bulb=bpy.data.materials.new('Lantern ivory bulb');bulb.use_nodes=True
+    bulb.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value=(.79,.67,.40,1)
     for u in [.48,L-.48]:
         m=Mesh('Hardware corner lantern')
-        m.box((u,2.24,.12),(.12,.35,.12),0)
-        m.box((u,2.30,.27),(.20,.29,.14),1)
-        for x in [u-.11,u+.11]:m.box((x,2.30,.35),(.025,.32,.025),0)
-        for y in [2.14,2.46]:m.box((u,y,.29),(.26,.035,.20),0)
-        m.add([(u-.15,2.49,.17),(u+.15,2.49,.17),(u+.15,2.49,.40),(u-.15,2.49,.40),(u,2.60,.28)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4)],0)
-        finish(m,'shopfront',[brass,lantern],corner)
+        m.box((u,2.30,.10),(.12,.42,.08),0)
+        m.box((u,2.16,.19),(.055,.045,.18),0)
+        # Front panes are recessed so the slender frame remains visible.
+        m.box((u,2.31,.25),(.185,.30,.13),1)
+        for x in (u-.106,u+.106):
+            for out in (.175,.335):m.box((x,2.31,out),(.022,.32,.022),0)
+        for height in (2.15,2.47):m.box((u,height,.255),(.245,.025,.20),0)
+        # Faceted hipped cap, raised vent and curled lower bowl.
+        def shell(rings):
+            verts=[]
+            for height,half,dep in rings:
+                verts.extend([(u-half,height,.255-dep),(u+half,height,.255-dep),
+                              (u+half,height,.255+dep),(u-half,height,.255+dep)])
+            faces=[(3,2,1,0)]
+            for k in range(len(rings)-1):
+                faces.extend((4*k+j,4*k+(j+1)%4,4*k+4+(j+1)%4,4*k+4+j) for j in range(4))
+            n=len(verts);faces.append(tuple(range(n-4,n)));m.add(verts,faces,0)
+        shell([(2.47,.145,.12),(2.50,.15,.125),(2.57,.065,.055),(2.61,.043,.04)])
+        shell([(2.15,.12,.09),(2.10,.085,.065),(2.065,.04,.035)])
+        m.ellipsoid((u,2.635,.255),(.024,.035,.024),0,segments=12,rings=8)
+        m.ellipsoid((u,2.045,.255),(.024,.03,.024),0,segments=12,rings=8)
+        # Bulb in front of opaque interior backing; no transparent sorting shell.
+        m.box((u,2.23,.327),(.04,.08,.025),0)
+        m.ellipsoid((u,2.31,.33),(.029,.064,.021),2,segments=16,rings=10)
+        finish(m,'shopfront',[pewter,pane,bulb],corner)
     # London Street's framed wall display: retain the frame but no unreadable copy.
     m=Mesh('Hardware London menu frame');rectangle_frame(m,6.45,2.18,.50,1.44,.025,-.024,.035,0)
     for y in [1.53,2.83]:
