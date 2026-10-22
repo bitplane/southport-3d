@@ -101,6 +101,19 @@
         7,
         30
       ]
+    },
+    {
+      "name": "Upper windows",
+      "position": [
+        -62.7,
+        10,
+        19
+      ],
+      "target": [
+        -62.7,
+        9.4,
+        24
+      ]
     }
   ],
   "walk_spawn": {
@@ -177,6 +190,18 @@
       "district": {
         "strategy": "omit",
         "reason": "Omit small handles, downlights and fixings; retain entrance envelope."
+      }
+    },
+    {
+      "id": "micro",
+      "match": "^Micro ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Sub-centimetre grout relief is below useful walking sampling; retain complete three-step entrance geometry."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "No geometry allocation for threshold tile joints at district range."
       }
     }
   ]

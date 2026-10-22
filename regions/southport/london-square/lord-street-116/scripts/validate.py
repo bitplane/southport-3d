@@ -19,5 +19,13 @@ for o in windows+[o for o in meshes if o.name.startswith('Sign ')]:
 doors=next(o for o in meshes if o.name=='Shop recessed doors')
 assert max((doors.matrix_world@v.co).y for v in doors.data.vertices)<D['front_y']-1.1
 assert len([o for o in meshes if o.name.startswith('Shop entrance step')])==3
-report={'objects':len(meshes),'window_modules':len(windows),'checks':'metric finite meshes, packed maps, neighbour bounds, visible windows/signs, deep entrance and three steps'}
+# A dark lamp disc behind a solid soffit can silently disappear in an export.
+# Check each centre from below, not merely the existence of the fixture mesh.
+lights=next(o for o in meshes if o.name=='Fine circular soffit downlights')
+for u in [D['entry_left']+.8,(D['entry_left']+D['entry_right'])/2,D['entry_right']-.8]:
+ origin=lights.matrix_world@Vector((u,3.8,-.55));direction=(lights.matrix_world.to_3x3()@Vector((0,1,0))).normalized()
+ hit,point,normal,index,obj,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1)
+ assert hit and obj==lights,('downlight obscured',u,obj.name if obj else None)
+assert len([o for o in meshes if o.name.startswith('Sign entrance')])==1
+report={'objects':len(meshes),'window_modules':len(windows),'checks':'metric finite meshes, packed maps, neighbour bounds, visible windows/signs, deep entrance and three steps, continuous welcome panel and visible downlight lenses'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2));print(report)
