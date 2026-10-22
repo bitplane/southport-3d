@@ -233,8 +233,17 @@ for part,collection in collections.items():
  for o,index,z,xy,_ in rows:
   fragments=[xy]
   for other,otherindex,oz,_,cutters in rows:
-   if oz<z-1e-6 or oz-z>.04:continue
-   if abs(oz-z)<=1e-6 and order[(other,otherindex)]<=order[(o,index)]:continue
+   # Road offsets encode layering priority before all road materials are
+   # flattened to the same physical datum below. Even a high-priority return
+   # lane must cut the underlying asphalt or the two become coplanar later.
+   road_materials=[asphalt,redroad,roadpavers,yellow,white]
+   both_road=(o.data.materials[0] in road_materials and other.data.materials[0] in road_materials)
+   # Paint belongs above every carriageway, including high-priority returns.
+   priority=1+z if both_road and o.data.materials[0] in [yellow,white] else z
+   other_priority=1+oz if both_road and other.data.materials[0] in [yellow,white] else oz
+   if other_priority<priority-1e-6:continue
+   if oz-z>.04 and not both_road:continue
+   if abs(other_priority-priority)<=1e-6 and order[(other,otherindex)]<=order[(o,index)]:continue
    for cutter in cutters:
     fragments=[piece for frag in fragments for piece in subtract(frag,cutter)]
   replacements[(o,index)]=(z,fragments)

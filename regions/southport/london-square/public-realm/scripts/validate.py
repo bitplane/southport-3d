@@ -59,6 +59,21 @@ for name in ['london-1-ground','london-2-ground','london-3-ground']:
  assert max(vertices)-min(vertices)<.3,(name,'Unbounded grade or furniture in ground')
 print('Extended areas, tree LODs and bounded road grades validated')
 
+# The SW return replaces underlying asphalt even though its construction
+# priority is above footway height. Count triangles, not objects: batching can
+# hide two coplanar layers inside one object. Avoid triangulation boundaries.
+from mathutils.geometry import intersect_ray_tri
+return_objects=list(bpy.data.collections['sw-garden-ground'].objects)
+for ob in return_objects:ob.data.calc_loop_triangles()
+for y in [-19.137,-10.137,.137,10.137,19.137]:
+ hits=[]
+ for ob in return_objects:
+  for triangle in ob.data.loop_triangles:
+   hit=intersect_ray_tri(*(ob.data.vertices[i].co for i in triangle.vertices),Vector((0,0,-1)),Vector((-69.137,y,10)),True)
+   if hit is not None:hits.append((ob.name,hit.z))
+ assert len(hits)==1,(y,'Overlapping return-road surfaces',hits)
+print('SW return road has one physical surface after priority flattening')
+
 # The photographed garden row extends, rather than duplicates, the core row.
 front=json.loads((ROOT/'research/streets.json').read_text())['sw_frontage_2024']
 posts=[o for o in meshes if o.name.startswith('Furniture bollard ')]
@@ -84,6 +99,9 @@ depsgraph=bpy.context.evaluated_depsgraph_get()
 def ground_hit(x,y):
  hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(depsgraph,Vector((x,y,30)),Vector((0,0,-1)))
  return ob,point if hit else None
+for x in [-71.82,-71.64,-66.18,-66.36]:
+ ob,p=ground_hit(x,.137)
+ assert ob and any(m.name=='Faded yellow road marking' for m in ob.data.materials),(x,'Return lane has erased its yellow lines')
 for station in [-41,41]:
  for y in [21.18,21.36,-14.98,-15.16,*([-20.92,-20.74] if station<0 else [-19.72,-19.54])]:
   left,lp=ground_hit(station-.015,y)

@@ -214,3 +214,9 @@ ellipsoids face outward and their pole caps are triangles without coincident
 corners. Bark winding is retained. This applies to the master and all generated
 levels; validation checks nonzero canopy triangle areas and positive signed
 volume. The shared ellipsoid primitive still needs a separate caller audit.
+
+Road clipping uses construction offsets as priorities. Surfaces that will be
+flattened onto the same road datum must subtract one another even when those
+priorities differ by more than the normal small overlay tolerance. This removes
+the duplicate asphalt beneath the SW garden return lane. Validation counts
+actual triangle intersections there, including overlaps within a batched mesh.
