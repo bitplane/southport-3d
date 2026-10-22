@@ -50,6 +50,10 @@
     {
       "url": "https://www.mapillary.com/app/?lat=53.64865&lng=-3.00395&z=18",
       "use": "Attempted: map loaded but no image sequence displayed; not used as architectural evidence."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64856,-3.0037259,44m/data=!3m1!1e3",
+      "use": "Close satellite view compared with published model2026-10-22: unequal roof ranges, broader LondonStreet hip and short corner saddle. Recalibrated widths/ridges are visual estimates. 3DEarth unavailable; no 3Dsurvey claimed."
     }
   ],
   "uncertainty": [

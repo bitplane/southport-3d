@@ -24,14 +24,17 @@ def roof_volume(name, outline, ridge, eave, bottom, finish):
     return ob
 
 
-def joined_roof(xn, xf, yf, yb, z0, finish):
+def joined_roof(xn, xf, yf, yb, z0, finish, ranges):
     """Union the two ranges and three cross gables; remove all buried sheets."""
     # The street eaves sit inside the masonry and below its top cornice.
     xf -= .04
     yb += .04
     x0, y0 = xn + .30, yf - .30
-    xr, xi, yr, back = xn + 4.1, xn + 8.2, yf - 5.1, yf - 10.2
-    ze, zr = z0 + 12.35, z0 + 16.55
+    xr, xi = xn + ranges["side_width"]/2, xn + ranges["side_width"]
+    yr, back = yf-ranges["front_depth"]/2, yf-ranges["front_depth"]
+    ze = z0 + 12.35
+    zr = z0 + ranges["front_ridge_height"]
+    side_zr = z0 + ranges["side_ridge_height"]
     bottom = ze - .18
     volumes = []
 
@@ -41,13 +44,16 @@ def joined_roof(xn, xf, yf, yb, z0, finish):
     add([(x0, y0), (xf, y0), (xf, back), (x0, back)],
         [(xr, yr, zr), (xf - 2.5, yr, zr)])
     add([(x0, yb), (x0, y0), (xi, y0), (xi, yb)],
-        [(xr, yb + 2.6, zr), (xr, yr, zr)])
+        [(xr, yb + 3.4, side_zr), (xr, yr, side_zr)])
     for x in (xf - 3.0, xn + 3.0):
-        add([(x - 2.7, y0), (x - 2.7, yr), (x + 2.7, yr), (x + 2.7, y0)],
-            [(x, y0, zr), (x, yr, zr)])
+        corner = x < xn + 4
+        end = yf-ranges['corner_saddle_depth'] if corner else yr
+        peak = z0+ranges['corner_saddle_height'] if corner else zr
+        add([(x - 2.7, y0), (x - 2.7, end), (x + 2.7, end), (x + 2.7, y0)],
+            [(x, y0, peak), (x, end, peak)])
     y = yf - 8.1
     add([(x0, y - 2.7), (xr, y - 2.7), (xr, y + 2.7), (x0, y + 2.7)],
-        [(x0, y, zr), (xr, y, zr)])
+        [(x0, y, side_zr), (xr, y, side_zr)])
     roof = volumes[0]
     for operand in volumes[1:]:
         bpy.context.view_layer.objects.active = roof

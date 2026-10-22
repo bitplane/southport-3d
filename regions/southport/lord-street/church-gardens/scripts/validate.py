@@ -36,3 +36,9 @@ for place,x in [('christ',-73),('george',154)]:
         assert any(abs(v.x-x)<.001 and abs(v.y-y)<.001 for v in verts),(place,'missing seam vertex',y)
 (ROOT/'research/validation.json').write_text(json.dumps({'checks':'Finite surfaces, ground separation, distinct placements, open cross-garden entrance, all LOD generators reduce, seam vertices, packed maps','placements':len(positions)},indent=2))
 print('Church gardens geometry, entrances and LoDs validated')
+
+# Backrest is local +Y: the northern garden rows must face +Y, not the lawn.
+D=json.loads((ROOT/'research/layout.json').read_text())
+for rows in D['benches'].values():
+ for x,y,yaw in rows:
+  assert yaw==(180 if y>0 else 0),(x,y,yaw,'reversed garden bench')

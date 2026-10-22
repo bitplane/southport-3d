@@ -58,7 +58,7 @@ for ix in range(1,45):
     for iy in range(1,57):
         y=D['front_y']-.3-iy*.5
         if x>D['x_max']-.1 or y<D['rear_y']+.1:continue
-        if x>D['x_min']+8.15 and y<D['front_y']-10.15:continue
+        if x>D['x_min']+D['roof_ranges']['side_width']-.05 and y<D['front_y']-D['roof_ranges']['front_depth']+.05:continue
         origin=Vector((x,y,25));hits=[]
         for _ in range(5):
             hit,point,normal,index=roof.ray_cast(origin,Vector((0,0,-1)),distance=25)
@@ -91,3 +91,10 @@ for axis,value in [(0,D['x_min']),(0,D['x_max']),(1,D['front_y']),(1,D['rear_y']
 report={'meshes':len(meshes),'roof_samples':roof_samples,'checks':'finite metric meshes, packed maps, three gables/oculi and balconies, two ATMs, four stacks, unobscured main glazing and oculi, footprint limits, lower internal deck, closed roof and single visible skin, no coplanar exterior envelopes'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print(report)
+
+# A short saddle must disappear into the hip, not end as an exposed vertical step.
+end=D['front_y']-D['roof_ranges']['corner_saddle_depth']
+for face in roof.data.polygons:
+ points=[roof.data.vertices[i].co for i in face.vertices]
+ if all(abs(p.y-end)<1e-4 for p in points) and abs(face.normal.z)<.08:
+  assert face.area<.02 or max(p.z for p in points)<D['base_z']+12.40,('Exposed corner saddle endcap',face.area)

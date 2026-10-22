@@ -171,3 +171,12 @@ square/garden cuts, the London Street taper is correctly stationed, and ground
 faces are conformed before export. NatWest has a wider corner approach. Glebe
 Place’s detailed asset replaces the old provisional broad pavement stub. See the
 linked document for exact ownership and remaining estimates.
+
+The NatWest corner snag pass replaces the mirrored Prezzo kerb with a rounded
+apron outside NatWest's actual square footprint. Its old diagonal crossed the
+corner pier. The widened London Street footway, service-road blocks and red
+approach mouth now meet explicit kerb/paint boundaries; regression rays check
+paving around the pier and red surfacing through the former rectangular seam.
+August 2024 Street View supports the layout; widths remain visual estimates.
+Lord Street bench orientations also account for the generator's backrest at
+local +Y, so garden rows face outward and opposite pavement rows face the road.

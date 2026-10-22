@@ -74,7 +74,10 @@ x0=D['x_far'];x1=D['x_near'];yf=D['front_y'];yb=D['rear_y'];z0=D['base_z'];rl=D[
 m=Mesh('Envelope rear and party walls')
 for x in [x0+.15,x1-.15]:m.box((x,(yf+yb-.1)/2,z0+height/2),(.3,yf-yb-.7,height))
 m.box(((x0+x1)/2,yb+.15,z0+height/2),(width,.3,height));finish(m,mats=[rear])
-m=Mesh('Roof slab');m.box(((x0+x1)/2,(yf+yb-.4)/2,z0+rl),(width-.6,yf-yb-.4,.22));finish(m,'roof',[roofmat])
+# Keep the slab behind the rear wall's inner face. Its former rear edge lay
+# exactly on the external wall plane, producing a flickering strip from Glebe.
+roof_back=yb+.31;roof_front=yf-.4
+m=Mesh('Roof slab');m.box(((x0+x1)/2,(roof_front+roof_back)/2,z0+rl),(width-.6,roof_front-roof_back,.22));finish(m,'roof',[roofmat])
 m=Mesh('Roof parapet coping')
 # Butt side coping into the front/rear strips; overlapping top faces caused black flicker.
 for x in [x0+.15,x1-.15]:m.box((x,(yf-.46+yb+.375)/2,z0+height+.055),(.45,yf-.46-yb-.375,.11))

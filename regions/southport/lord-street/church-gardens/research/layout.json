@@ -102,94 +102,94 @@
       [
         -78,
         19.5,
-        0
+        180
       ],
       [
         -81,
         19.5,
-        0
+        180
       ],
       [
         -84,
         19.5,
-        0
+        180
       ],
       [
         -87,
         19.5,
-        0
+        180
       ],
       [
         -91,
         19.5,
-        0
+        180
       ],
       [
         -109,
         19.5,
-        0
+        180
       ],
       [
         -112,
         19.5,
-        0
+        180
       ],
       [
         -115,
         19.5,
-        0
+        180
       ],
       [
         -118,
         19.5,
-        0
+        180
       ],
       [
         -122,
         19.5,
-        0
+        180
       ],
       [
         -77,
         -18.4,
-        180
+        0
       ],
       [
         -94,
         -19,
-        180
+        0
       ]
     ],
     "george": [
       [
         160,
         19.5,
-        0
+        180
       ],
       [
         176,
         19.5,
-        0
+        180
       ],
       [
         179,
         19.5,
-        0
+        180
       ],
       [
         182,
         19.5,
-        0
+        180
       ],
       [
         199,
         19.5,
-        0
+        180
       ],
       [
         210,
         19.5,
-        0
+        180
       ]
     ]
   },
@@ -284,5 +284,6 @@
       }
     ]
   },
-  "seams": "Christ X=-73 meets London Square; St George X=154 meets St Georges Place. Shared main road kerbs Y21/31. No kerb or paint across a tile cut."
+  "seams": "Christ X=-73 meets London Square; St George X=154 meets St Georges Place. Shared main road kerbs Y21/31. No kerb or paint across a tile cut.",
+  "bench_orientation_note": "Bench primitive backrest is local +Y and seat faces -Y. Garden-edge rows face out toward Lord Street (+Y, yaw180); rear rows face the southern footway (-Y,yaw0). Corrected from reversed original placements; exact positions remain estimated."
 }

@@ -67,7 +67,7 @@ def build_extensions(ctx):
         rect('Surface Lord Street north footway',x0,31,x1,41,mixed,part)
         rect('Surface rear frontage footway',x0,-27,x1,-23.6,mixed,part)
         if side==1:
-            polygon('Surface NatWest frontage approach',[(41,-23.6),(41,-21.1),(65,-21.1),(68,-23.6)],mixed,part)
+            polygon('Surface NatWest frontage approach',[(41,-23.6),(41,-19.9),(43,-19.9),(47,-21.1),(65,-21.1),(68,-23.6)],mixed,part)
         if side==-1:
             # Continue the Prezzo approach along the registered terrace and BHF frontage.
             # Keep pavement ownership here; taper beyond BHF at the church edge.
@@ -119,7 +119,7 @@ def build_extensions(ctx):
         curb([(x0,31),(x1,31)],part,1)
         if side==-1:curb([(x1,-21.1),(-72,-21.1),(-72,21)],part,1)
         else:
-            curb([(x0,-21.1),(65,-21.1),(68,-23.6),(116.8,-23.6)],part)
+            curb([(x0,-19.9),(43,-19.9),(47,-21.1),(65,-21.1),(68,-23.6),(116.8,-23.6)],part)
             curb([(119.2,-23.6),(x1,-23.6)],part)
         # One phase and one kerb setback across all Lord Street ownership seams.
         for x in range(math.floor(x0/6)*6,math.ceil(x1/6)*6,6):
@@ -135,7 +135,7 @@ def build_extensions(ctx):
         else:
             curb([(x0,-14.8),(116.8,-14.8)],part,1)
             curb([(119.2,-14.8),(143,-14.8),(147,-10.8),(147,21)],part,1)
-            paint_edge('St Georges frontage',[(x0,-21.1),(65,-21.1),(68,-23.6),(154,-23.6)],1,part,bounds)
+            paint_edge('St Georges frontage',[(x0,-19.9),(43,-19.9),(47,-21.1),(65,-21.1),(68,-23.6),(154,-23.6)],1,part,bounds)
             paint_edge('St Georges garden edge',[(x0,-14.8),(143,-14.8),(147,-10.8),(147,21)],-1,part,bounds)
             curb([(154,-10.8),(154,21)],part)
             for y in range(-8,19,3):line('Marking St Georges taxi bay',[(151.8,y),(151.8,min(y+1.2,19))],.10,yellow,part,-.109)
@@ -144,7 +144,7 @@ def build_extensions(ctx):
         for node_id,node in osm['nodes'].items():
             x,y=node['xy'];kind={'bench':'bench','waste_basket':'bin'}.get(node['tags'].get('amenity'))
             if kind and x0<x<x1 and -23<y<41:
-                furnishing(kind,x,y,180 if y>25 else 0,fp,'OSM node '+node_id+'; orientation estimated')
+                furnishing(kind,x,y,180 if 0<y<25 else 0,fp,'OSM node '+node_id+'; orientation estimated')
         for x in ([48,78,105,137] if side==1 else [-53]):
             furnishing('streetlight',x,32.1,0,fp)
         # Bus stop poles only where mapped; shelter geometry awaits close evidence.
@@ -248,7 +248,7 @@ def build_extensions(ctx):
             ranges=[(lo,hi) for a,b in ranges for lo,hi in zip(sorted({a,b,*[y for y in [-46] if a<y<b]})[:-1],sorted({a,b,*[y for y in [-46] if a<y<b]})[1:])]
             for a,b in ranges:
                 if b<=a:continue
-                def inner(y):return 4.3+max(0,min(1,(y+46)/10))*1.9
+                def inner(y):return 4.3+(max(0,min(1,(y+46)/10))*1.9 if side<0 else 0)
                 points=[(side*inner(a),a),(side*(10 if side<0 else 8.5),a),(side*(10 if side<0 else 8.5),b),(side*inner(b),b)]
                 polygon('Surface London Street footway',points,mixed,part)
                 curb([(side*inner(a),a),(side*inner(b),b)],part,-side)
@@ -284,5 +284,5 @@ def build_extensions(ctx):
     for node_id,node in osm['nodes'].items():
         x,y=node['xy'];kind={'bench':'bench','waste_basket':'bin'}.get(node['tags'].get('amenity'))
         if kind and -41<x<41 and 31<y<41:
-            furnishing(kind,x,y,180,'ne-furniture' if x>0 else 'sw-furniture','OSM node '+node_id)
+            furnishing(kind,x,y,0,'ne-furniture' if x>0 else 'sw-furniture','OSM node '+node_id)
     ctx['extension_furniture_count']=count

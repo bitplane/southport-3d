@@ -39,3 +39,12 @@ for ob in [o for o in meshes if o.name.startswith('Shop display ')]:
  hit,point,normal,index,found,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
  assert hit and found==ob,(ob.name,'display blocked by',found.name if found else None)
 print('All four display panes visible, including the unsplit Mamma pane and Bugle right sidelight')
+
+# No roof skin may share the exposed rear wall plane (Glebe Place view).
+slab=bpy.data.objects['Roof slab']
+assert min((slab.matrix_world@v.co).y for v in slab.data.vertices)>D['rear_y']+.30
+for x in [D['x_far']+1,(D['x_far']+D['x_near'])/2,D['x_near']-1]:
+ for z in [D['base_z']+D['roof_level']-.10,D['base_z']+D['roof_level'],D['base_z']+D['roof_level']+.10]:
+  hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(deps,Vector((x,D['rear_y']-2,z)),Vector((0,1,0)),distance=3)
+  assert hit and ob.name=='Envelope rear and party walls',(x,z,ob.name if ob else None)
+print('Glebe rear wall owns the full roof-level strip without coplanar slab faces')

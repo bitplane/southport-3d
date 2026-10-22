@@ -114,6 +114,16 @@
       "observations": [
         "Actual pixels inspected: tactile patch outside entrance, slab footway, yellow edges, block-paved carriageway section and white parking-bay ends."
       ]
+    },
+    {
+      "id": "natwest-junction-2024",
+      "url": "https://www.google.com/maps/@53.6485064,-3.0040526,3a,100y,305h,68t/data=!3m4!1e1!3m2!1sNIsU_2Tnmksq_xrC0BL6MA!2e0",
+      "capture": "August2024",
+      "observations": [
+        "LondonStreet footway wraps squarebankcorner rather than cutting through its footprint.",
+        "Red junction surface extends into LondonStreet approach, with flaring white divider.",
+        "Paving, kerb and yellowlines share one corrected boundary; widths remain estimated."
+      ]
     }
   ],
   "limitations": [

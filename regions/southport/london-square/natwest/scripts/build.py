@@ -265,20 +265,22 @@ for elevation,frame,width,bays in facades:
 rear_left=xn+.42;rear_right=xf-.36;party_front=yf-.42
 box('Envelope rear',((rear_right+rear_left)/2,yb+.18,z0+6.15),(rear_right-rear_left,.36,12.3),mat=brick)
 box('Envelope party',(xf-.18,(party_front+yb)/2,z0+6.15),(.36,party_front-yb,12.3),mat=brick)
-court_front=yf-10.2;court_rear=yb+.36;court_left=xn+8.3
+R=D['roof_ranges']
+xi=xn+R['side_width'];back=yf-R['front_depth']
+court_front=back;court_rear=yb+.36;court_left=xi+.1
 box('Roof lower flat deck',((court_left+rear_right)/2,(court_front+court_rear)/2,z0+10.25),(rear_right-court_left,court_front-court_rear,.25),'roof',flat)
 # The party wall already encloses the right side. Do not duplicate its skin.
-box('Roof inner wall',(xn+8.15,(court_front+court_rear)/2,z0+11.16),(.30,court_front-court_rear,2.02),'roof',brick)
+box('Roof inner wall',(xi-.05,(court_front+court_rear)/2,z0+11.16),(.30,court_front-court_rear,2.02),'roof',brick)
 box('Roof rear parapet',((xf+xn)/2,yb+.12,z0+12.55),(xf-xn,.28,.50),'roof',plain[1])
 
 
 # One closed roof skin: intersecting sheets must never be exported separately.
-joined_roof(xn,xf,yf,yb,z0,lambda mesh:finish(mesh,'roof',[slate]))
-ze=z0+12.35;zr=z0+16.55;yr=yf-5.1;back=yf-10.2
-xr=xn+4.1;xi=xn+8.2
+joined_roof(xn,xf,yf,yb,z0,lambda mesh:finish(mesh,'roof',[slate]),R)
+ze=z0+12.35;zr=z0+R['front_ridge_height'];side_zr=z0+R['side_ridge_height'];yr=yf-R['front_depth']/2
+xr=xn+R['side_width']/2
 # Complete the inner attic returns between the low deck and the eaves.
 box('Roof inner front return',((xi+rear_right)/2,back+.12,z0+11.16),(rear_right-xi,.24,2.02),'roof',brick)
-for a,b in [((xn+4.1,yr,zr),(xf-2.5,yr,zr)),((xr,yr,zr),(xr,yb+2.6,zr))]:
+for a,b in [((xr,yr,zr),(xf-2.5,yr,zr)),((xr,yr,side_zr),(xr,yb+3.4,side_zr))]:
     m=Mesh('Roof ridge cap');m.tube([a,b],.10,sides=8);finish(m,'roof',[lead])
 # Chimney positions/pots interpreted from aerial plus street images.
 for i,(x,y,w,d,h,pots) in enumerate([(20.5,yf-3.8,.95,.85,18.0,1),(29.0,yr,1.25,.8,17.3,2),(xr,yb+1.0,2.25,.9,16.8,4),(13.0,yf-8.0,1.9,.85,17.5,3)]):

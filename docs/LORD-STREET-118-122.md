@@ -112,3 +112,8 @@ The coordinated three-building publication passed all nine GLBs for this asset
 and its bake checks. Browser review covered automatic close-up Detail and forced
 Walk/District front and oblique views. All 31 combined scene parts loaded without
 asset errors. Thirteen Python tests and the viewer policy test pass.
+
+The Glebe Place rear snag exposed a coplanar roof-slab end on the outside rear
+wall. The slab now stops behind the wall's inner face. Rear-facing probes through
+the full slab-height strip require the wall to be the visible surface; this
+removes the flickering strip without changing the estimated rear envelope.

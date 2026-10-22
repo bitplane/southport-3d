@@ -31,3 +31,10 @@ python3 tools/project.py build southport.london-square.natwest
 python3 tools/project.py build southport.london-square.natwest --stage render
 python3 tools/project.py publish
 ```
+
+The October 22 snag pass recalibrates the roof ranges against a close satellite
+view: a broader London Street hip, narrower Lord Street range, and shorter,
+lower saddle behind the corner Dutch gable. Ridge heights and widths are
+explicit estimates in `roof_ranges`; the corner saddle runs into the main slope
+instead of imposing an equally high crest across it. Closed-shell and single
+skin probes still apply. Google 3D Earth was unavailable during this review.

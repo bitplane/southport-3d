@@ -74,7 +74,7 @@ def ground_hit(x,y):
  hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(depsgraph,Vector((x,y,30)),Vector((0,0,-1)))
  return ob,point if hit else None
 for station in [-41,41]:
- for y in [21.18,21.36,-14.98,-15.16,-20.92,-20.74]:
+ for y in [21.18,21.36,-14.98,-15.16,*([-20.92,-20.74] if station<0 else [-19.72,-19.54])]:
   left,lp=ground_hit(station-.015,y)
   right,rp=ground_hit(station+.015,y)
   assert left and right,(station,y,'uncovered seam')
@@ -92,3 +92,23 @@ for station in [-76,-116]:
 ob,p=ground_hit(-7,-66.5)
 assert ob is None,'London Square still overlaps the detailed Glebe throat'
 print('Exportable yellow-line seams and single Glebe ownership validated')
+
+# NatWest's square corner must have a walkable apron around both elevations.
+# Old generic mirrored kerbs crossed through the stone corner pier.
+for x,y in [(6.3,-23.0),(7.5,-21.4),(10,-21),(20,-21),(29,-21),(5.3,-30),(5.3,-40)]:
+ ob,p=ground_hit(x,y)
+ assert ob and any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(x,y,ob.name if ob else None,'NatWest apron is not paving')
+ assert abs(p.z-(-.0075-.022*max(-36,min(36,y))))<.005
+# The red mouth continues across the old Y=-23 rectangle seam to London Street.
+for x,y in [(-4,-24),(-4,-26),(3,-24),(3,-26)]:
+ ob,p=ground_hit(x,y)
+ assert ob and any(m.name=='Authored reddish carriageway' for m in ob.data.materials),(x,y,'Red approach discontinuity')
+print('NatWest corner pavement and red approach continuity validated')
+
+for ob in meshes:
+ if ob.name.startswith('Furniture bench extension'):
+  y=ob.location.y
+  expected=1 if 0<y<25 else -1
+  facing_y=-math.cos(ob.rotation_euler.z)
+  assert facing_y*expected>.99,(ob.name,'bench faces away from intended footway')
+print('Lord Street bench seats face the footway, with backs toward planting or shops')

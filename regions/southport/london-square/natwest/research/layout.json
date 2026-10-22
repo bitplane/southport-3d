@@ -1,5 +1,8 @@
 {
-  "origin_wgs84_lat_lon": [53.6486555, -3.0043401],
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
   "site_rotation_from_east_degrees": 43.5293,
   "x_min": 7.5,
   "x_max": 30.4,
@@ -10,8 +13,29 @@
   "cornice": 12.2,
   "roof_eave": 13.0,
   "roof_ridge": 16.55,
-  "front_bays": [3.0, 8.1, 11.45, 14.8, 19.9],
-  "side_bays": [2.7, 8.1, 14.2, 20.1, 26.1],
+  "front_bays": [
+    3.0,
+    8.1,
+    11.45,
+    14.8,
+    19.9
+  ],
+  "side_bays": [
+    2.7,
+    8.1,
+    14.2,
+    20.1,
+    26.1
+  ],
   "registration": "OSM way 371741580 interpreted as bank footprint; small obliquity simplified to project axes. Main facade width22.9m and return28.94m from mapped footprint. Heights, projections and individual bay sizes visually calibrated, not surveyed.",
-  "evidence": "Unobstructed Commons front and London Street photographs September2021, wider oblique Commons image and user-supplied Street View tracks. Sculptural carving is interpreted geometry, not a scan; hidden rear/party elevations remain estimated."
+  "evidence": "Unobstructed Commons front and London Street photographs September2021, wider oblique Commons image and user-supplied Street View tracks. Sculptural carving is interpreted geometry, not a scan; hidden rear/party elevations remain estimated.",
+  "roof_ranges": {
+    "front_depth": 8.6,
+    "side_width": 10.2,
+    "front_ridge_height": 15.8,
+    "side_ridge_height": 16.1,
+    "corner_saddle_depth": 3.2,
+    "corner_saddle_height": 14.4,
+    "evidence": "Close Google satellite aerial inspected2026-10-22: broader London Street hip, narrower Lord Street range, short corner saddle. Widths/pitches are visually calibrated estimates, not measured or surveyed."
+  }
 }
