@@ -129,7 +129,7 @@ def _publish(args, assets, fingerprint, build, retained=()):
                 if not destination.exists():
                     try:os.link(source,destination)
                     except OSError:shutil.copy2(source,destination)
-    for name in ('index.html','style.css','app.js','lod.js','streamer.js'):
+    for name in ('index.html','style.css','app.js','lod.js','streamer.js','snags.js'):
         target=dist/(name+'.tmp');shutil.copy2(ROOT/'viewer'/name,target);target.replace(dist/name)
     catalog={'schema_version':1,'worldOrigin':world['origin_wgs84_lat_lon'],'coordinateSystem':'East, up, south (metres)','lodPolicy':world['lodPolicy'],'assets':sorted(entries,key=lambda entry:entry['id'])}
     temporary=dist/'catalog.json.tmp';temporary.write_text(json.dumps(catalog,indent=2)+'\n');temporary.replace(dist/'catalog.json')

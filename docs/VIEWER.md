@@ -98,3 +98,11 @@ See [Three.js Texture anisotropy](https://threejs.org/docs/pages/Texture.html#an
 The read-only viewer state reports `textureAnisotropy`. Devices with lower
 limits can still show softer signs; aspect-aware rectangular atlases remain a
 future bake optimisation.
+
+## Reporting snags
+
+Use **Report snag** to mark a captured view, leave a comment and paste reference
+photos. **Snag queue** reopens saved reports and camera positions. The local
+server stores them outside the repository; restart `tools/serve.py` after
+installing this feature. See [the snag workflow](SNAGS.md) for queue location,
+agent claim/resolve commands and reference-image handling.
