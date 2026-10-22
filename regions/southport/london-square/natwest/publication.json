@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/natwest.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Square",
+  "status": "NatWest exterior from 2020/2024 Street View, clear 2021 photographs and aerial. Metric heights and hidden rear are estimated; sculpture interpreted.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Rusticated bank, gables and open parapets",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Intersecting slate roofs and chimneys",
+      "collection": "roof"
+    },
+    {
+      "id": "bank-frontage",
+      "name": "Bank entrances, signs and cash machines",
+      "collection": "bank-frontage"
+    }
+  ],
+  "views": [
+    {
+      "name": "Bank",
+      "position": [
+        -24,
+        24,
+        -1
+      ],
+      "target": [
+        18,
+        9,
+        35
+      ]
+    },
+    {
+      "name": "Lord Street",
+      "position": [
+        19,
+        11,
+        -2
+      ],
+      "target": [
+        19,
+        10,
+        24
+      ]
+    },
+    {
+      "name": "London Street",
+      "position": [
+        -1,
+        8,
+        58
+      ],
+      "target": [
+        8,
+        9,
+        37
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -8,
+        43,
+        13
+      ],
+      "target": [
+        19,
+        10,
+        37
+      ]
+    },
+    {
+      "name": "Entrance",
+      "position": [
+        5,
+        3.5,
+        20
+      ],
+      "target": [
+        10.5,
+        3.5,
+        23
+      ]
+    },
+    {
+      "name": "Gable",
+      "position": [
+        27,
+        15,
+        15
+      ],
+      "target": [
+        27,
+        15,
+        23.2
+      ]
+    },
+    {
+      "name": "Balconies",
+      "position": [
+        19,
+        9,
+        17
+      ],
+      "target": [
+        19,
+        9,
+        23.2
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      9,
+      2.4,
+      20.5
+    ],
+    "target": [
+      13,
+      6,
+      24
+    ]
+  },
+  "rules": [
+    {
+      "id": "structure",
+      "match": "^(Envelope|Trim|Pier|Gable|Balcony|Roof|Chimney|Door|ATM) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain authored openings, depths, floor profiles, access, roof junctions and silhouette."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Coarse architectural geometry preserves arched openings, gables, balconies, roof valleys and chimney masses."
+      }
+    },
+    {
+      "id": "ashlar",
+      "match": "^Ashlar ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Fine individual joint relief yields to the coursed sandstone material on the open wall envelope."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Use coarse coursed material rather than individual block skins."
+      }
+    },
+    {
+      "id": "window-side-low",
+      "match": "^Window low side",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep transoms, mullions, narrow-window pediments and consoles at walking distances."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Keep stone surrounds, cornices, transoms and mullions as explicit depth geometry. Bake only shallow glazing and painted frame details onto a recessed panel, avoiding unsupported faces in a solid proxy.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.4,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "window-narrow",
+      "match": "^Window narrow",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep transoms, mullions, narrow-window pediments and consoles at walking distances."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Keep stone surrounds, cornices, transoms and mullions as explicit depth geometry. Bake only shallow glazing and painted frame details onto a recessed panel, avoiding unsupported faces in a solid proxy.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.4,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "window-cross",
+      "match": "^Window cross",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep transoms, mullions, narrow-window pediments and consoles at walking distances."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Keep stone surrounds, cornices, transoms and mullions as explicit depth geometry. Bake only shallow glazing and painted frame details onto a recessed panel, avoiding unsupported faces in a solid proxy.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.4,
+        "max_sampled_error_m": 0.25
+      }
+    },
+    {
+      "id": "arches",
+      "match": "^Window (arch|oculus)",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep true curved arched surrounds, keystones and circular window openings."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "These openings define the bank; low-cost explicit arches and oculi stay geometric."
+      }
+    },
+    {
+      "id": "ornament",
+      "match": "^Ornament ",
+      "walk": {
+        "strategy": "decimate",
+        "reason": "Selectively simplify irregular leaf sprays, finials and urns; avoid changing architectural envelopes.",
+        "ratio": 0.48,
+        "uv": "smart",
+        "bake": false
+      },
+      "district": {
+        "strategy": "decimate",
+        "reason": "Retain small sculptural silhouette and relief colour with coarse interpreted carving.",
+        "ratio": 0.18,
+        "uv": "smart",
+        "bake": false
+      }
+    },
+    {
+      "id": "parapets",
+      "match": "^Parapet ",
+      "walk": {
+        "strategy": "decimate",
+        "reason": "Reduce radial sections of pierced scrolls while preserving openings.",
+        "ratio": 0.6,
+        "uv": "smart",
+        "bake": false
+      },
+      "district": {
+        "strategy": "decimate",
+        "reason": "Retain coarse open strapwork rather than fill the pierced parapet with a flat box.",
+        "ratio": 0.25,
+        "uv": "smart",
+        "bake": false
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake lettering and emblem onto its shallow sign receiver.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.7,
+        "max_sampled_error_m": 0.6
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Retain bank identity at reduced texture size.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.7,
+        "max_sampled_error_m": 0.6
+      }
+    },
+    {
+      "id": "fittings",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain small ironwork, door hardware and chimney pots at walking scale."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit tiny iron curls, handles and pots; structural balcony rails and chimney stacks remain."
+      }
+    }
+  ]
+}

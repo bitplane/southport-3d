@@ -1,0 +1,17 @@
+{
+  "origin_wgs84_lat_lon": [53.6486555, -3.0043401],
+  "site_rotation_from_east_degrees": 43.5293,
+  "x_min": 7.5,
+  "x_max": 30.4,
+  "front_y": -23.16,
+  "rear_y": -52.1,
+  "base_z": 0.58,
+  "first_floor": 6.15,
+  "cornice": 12.2,
+  "roof_eave": 13.0,
+  "roof_ridge": 16.55,
+  "front_bays": [3.0, 8.1, 11.45, 14.8, 19.9],
+  "side_bays": [2.7, 8.1, 14.2, 20.1, 26.1],
+  "registration": "OSM way 371741580 interpreted as bank footprint; small obliquity simplified to project axes. Main facade width22.9m and return28.94m from mapped footprint. Heights, projections and individual bay sizes visually calibrated, not surveyed.",
+  "evidence": "Unobstructed Commons front and London Street photographs September2021, wider oblique Commons image and user-supplied Street View tracks. Sculptural carving is interpreted geometry, not a scan; hidden rear/party elevations remain estimated."
+}

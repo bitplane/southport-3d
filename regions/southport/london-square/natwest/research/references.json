@@ -1,0 +1,61 @@
+{
+  "retrieved": "2026-10-22",
+  "local_cache": "/home/gaz/tmp/3d/natwest/references (not published)",
+  "sources": [
+    {
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379611",
+      "use": "Identity,1892 William Owen/Parr\u2019s Bank, sandstone/green slate, elevation bay arrangement. Paraphrased only."
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:NatWest_Bank,_130_Lord_Street,_Southport_(NHLE_Code_1379611)_(September_2021)_(1).JPG",
+      "author": "Hassocks5489",
+      "date": "2021-09-27",
+      "license": "CC0",
+      "use": "Unobstructed front elevation, entrances, upper windows, gables, parapet and roof stacks."
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:NatWest_Bank,_130_Lord_Street,_Southport_(NHLE_Code_1379611)_(September_2021)_(2).JPG",
+      "author": "Hassocks5489",
+      "date": "2021-09-27",
+      "use": "London Street side, blind upper niche, lower paired windows, three rear bays."
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:NatWest_bank_in_Southport.jpg",
+      "use": "Wide oblique, front/return registration, cornice projection and roof relationships; photo retained privately."
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Bank_on_London_Street_-_geograph.org.uk_-_5855382.jpg",
+      "use": "Distant view of whole bank and adjoining pavement."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6486934,-3.003913,3a,90y,143.18h,116.88t/data=!3m7!1e1!3m5!1sICinwYY83-tqHIxeViTuCg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-26.879912909182764%26panoid%3DICinwYY83-tqHIxeViTuCg%26yaw%3D143.1818485915308!7i16384!8i8192",
+      "panorama": "ICinwYY83-tqHIxeViTuCg",
+      "capture": "Nov2020",
+      "use": "User viewpoint, actual pixels inspected: front door panels, ATM slots, balcony ironwork and facade depth."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6485064,-3.0040526,3a,75y,84.61h,112.75t/data=!3m7!1e1!3m5!1sNIsU_2Tnmksq_xrC0BL6MA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-22.747842928104674%26panoid%3DNIsU_2Tnmksq_xrC0BL6MA%26yaw%3D84.6146136147066!7i16384!8i8192",
+      "panorama": "NIsU_2Tnmksq_xrC0BL6MA",
+      "capture": "Aug2024",
+      "use": "User side viewpoint, actual pixels inspected: stone niche, lower windows, projecting signs and cornice."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64862,-3.00345,70m/data=!3m1!1e3",
+      "use": "Actual aerial pixels inspected: intersecting perimeter pitched roofs and lower internal flat deck; imagery date not shown."
+    },
+    {
+      "url": "https://www.openstreetmap.org/way/371741580",
+      "use": "Footprint registration from retained OSM XML, OpenStreetMap contributors ODbL."
+    },
+    {
+      "url": "https://www.mapillary.com/app/?lat=53.64865&lng=-3.00395&z=18",
+      "use": "Attempted: map loaded but no image sequence displayed; not used as architectural evidence."
+    }
+  ],
+  "uncertainty": [
+    "All heights and small projections are visually calibrated, not surveyed.",
+    "Back/party masonry and low-roof service details are estimated.",
+    "Heraldic finials and foliage are authored interpretations; no claim of exact sculptural reproduction.",
+    "Bank frontage reflects unobstructed 2020/2021/2024 references; temporary cleaning/scaffolding and transient posters excluded."
+  ]
+}
