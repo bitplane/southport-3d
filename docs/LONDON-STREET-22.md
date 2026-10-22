@@ -1,6 +1,6 @@
 # 22–22a London Street
 
-The narrow Art Deco building immediately south of the former Britannia/Co-operative Bank at 20 London Street. Current address/use is verified as Merkur Slots; the model deliberately follows the visible **May 2011 Money Shop frontage**, because newer exterior photographs could not be retrieved reliably. It does not claim to reproduce the present tenant's fitout or the glazing alterations associated with the 2019 residential conversion.
+The narrow Art Deco building immediately south of the former Britannia/Co-operative Bank at 20 London Street. Current address/use is verified as Merkur Slots; the model deliberately follows the visible **May 2011 Money Shop frontage**, as a declared historical storefront. It does not claim to reproduce the present tenant's fitout or the glazing alterations associated with the 2019 residential conversion.
 
 ## Evidence and registration
 
@@ -12,12 +12,12 @@ Coordinates retain the common memorial origin and 43.5293-degree site yaw. Local
 
 ## Construction and viewing levels
 
-The upper glass has a real continuous opening behind three separately authored steel/glass assemblies. Stone reveals, large rails, stepped piers, terminal profile and recessed shop entrance remain geometry at every level. Roof deck, parapets and low rooflights are closed meshes. Ground/paving belongs to the public-realm asset.
+The upper glass has a real continuous opening behind seven curved chordal strips per storey, with dark spandrel bands, swept stone returns and eighteen small inset lights. Stone reveals, large rails, stepped piers, terminal profile and recessed shop entrance remain geometry at every level. Roof deck, parapets and low rooflights are closed meshes. Ground/paving belongs to the public-realm asset.
 
 | Feature | Detail | Walk | District |
 | --- | --- | --- | --- |
 | Stone envelope, reveals and rounded cap | Authored geometry | Keep silhouette/depth | Keep silhouette/depth |
-| Three glazed storeys | Thin steel bars and glazing | Keep inexpensive assemblies | Keep inexpensive assemblies |
+| Curved glazed storeys and return lights | Thin steel bars and glazing | Keep silhouette and joinery | Keep silhouette and joinery |
 | Historical fascia | Shallow lettering | Baked receiver | Smaller baked receiver |
 | Roof, parapets and rooflights | Authored envelope | Keep | Keep |
 | Stone joints and handle | Geometry | Keep | Omit |
@@ -32,12 +32,14 @@ The exact independent 22a door location is unresolved in the retained historical
 
 ## Independent audit, 22 October 2026
 
-An enlarged review of the same May 2011 panorama corrected the initially symmetric frontage. The south/Oxfam stone shoulder is broader and lower, the glazed shaft is offset toward 20, and its rounded crown stops short of the lower shoulder. The pale recessed historical entrance is on the left beneath the fascia; its use as shop or upper-floor access is still unresolved. The rear roof is kept below the observed shoulder, with its exact height explicitly estimated. Side-wall end caps now terminate within the rear wall instead of overlapping its outer surface.
+A clearer frontal photograph from [Modern Mooch](https://modernmooch.com/2025/04/03/southport-walk/) supersedes the apparent asymmetry in the oblique 2011 view. The final geometry has matching lower stone shoulders and a cylindrical central glass bay. Seven chordal strips per storey retain the rounded silhouette, with dark intermediate bands, swept returns containing eighteen actual small window apertures, slim rounded ribs and semicircular capitals. The projecting crown follows the round bay. The historical pale left entrance remains based on 2011 imagery; its use as shop or upper-floor access is unresolved. This asset deliberately combines the more legible permanent architectural evidence with a declared historical shopfront, rather than claiming a current Merkur fitout.
 
-Validation checks the offset shaft, limited crown width, visible left entrance and non-overlapping rear-wall junction in addition to the original aperture/closure checks. Full build and all twelve GLBs pass. Detail, Walk and District front, oblique and roof images were reviewed after rebuilding; the steel/glass assemblies remain geometry at all levels to avoid a colour transition. Combined exported views with 20 are retained outside Git under `output/london-street-20-22-audit/`.
+The hidden roof remains below the observed shoulders; its exact height is estimated. Side-wall end caps terminate within the rear wall instead of overlapping its outer surface. Validation checks all21 curved glazing panels,18 return lights, visible left entrance, centred crown and non-overlapping rear-wall junction, alongside the original closure and registration checks.
+
+Full build, all twelve GLBs and Detail/Walk/District front, oblique and roof renders were checked after the final correction. Glazing remains geometry at all levels to preserve the curved silhouette and avoid colour changes from flat bake receivers. Fascia lettering is baked at reduced levels. No reference image pixels are published.
 
 | Level | Triangles | GLB bytes including textures |
 | --- | ---: | ---: |
-| Detail | 4,322 | 1,673,260 |
-| Walk | 1,780 | 1,489,500 |
-| District | 1,420 | 502,896 |
+| Detail | 9,314 | 2,248,644 |
+| Walk | 6,772 | 2,064,884 |
+| District | 6,424 | 1,080,616 |

@@ -115,43 +115,49 @@ yellow=material('Money Shop yellow fascia',(.91,.64,.005))
 darkglass=material('Blue grey upper glazing',(.09,.135,.16),roughness=.65)
 darkglass.node_tree.nodes['Principled BSDF'].inputs['Specular IOR Level'].default_value=.15
 H=13.1
-# Tall Art Deco glass bay: actual void, with a separate lower shop opening.
-gl=1.02;gr=width-.43;gc=(gl+gr)/2;gw=gr-gl
-wall_with_openings('stone front',front,width,H,[(gl,gr,3.70,12.72),(0,gl,12.25,H),(.16,width-.16,0,3.18)],mat=stone)
-# Step the edges and use fine vertical stone ribs, preserving the slim proportions.
-for u,w,top in [(.43,.86,12.25),(width-.20,.40,12.81)]:
- bottom=3.14
- elevation_box('Trim outer stone pier',u,(bottom+top)/2,w,top-bottom,.25,.045,stone)
- elevation_box('Trim pier cap',u,top,w+.08,.20,.36,.06,lightstone)
- for dx in [-w*.30,w*.30]:elevation_box('Trim pier vertical rib',u+dx,(bottom+top)/2,.065,top-bottom-.32,.075,.205,lightstone)
- for h in [4.15+i*.58 for i in range(15) if 4.15+i*.58<top-.15]:elevation_box('Fine stone joint',u,h,w-.01,.009,.009,.173,black)
-# Three storeys of shallow steel joinery; broad division bars remain geometry at every level.
-# Each assembly has local XY coordinates, allowing bake receivers without changing depth.
- # Glazing is offset north; the south stone shoulder is broader and lower.
-for i,(bottom,top) in enumerate([(3.70,6.63),(6.69,9.65),(9.71,12.72)]):
- h=(bottom+top)/2;hh=top-bottom;m=Mesh('Window glazed shaft %d'%i)
- m.box((0,0,-.09),(gw,hh,.03),0)
- for x in [-gw/2+.025,gw/2-.025,-gw/6,gw/6]:m.box((x,0,-.045),(.050,hh,.06),1)
- for z in [-hh/2+.025,hh/2-.025,-hh*.28,hh*.28]:m.box((0,z,-.035),(gw,.045,.07),1)
- # Narrower subdividing bars seen across the glass, not a generic sash lattice.
- for z in [-hh*.10,hh*.10]:m.box((0,z,-.045),(gw,.027,.05),1)
- finish(m,materials=[darkglass,framegrey],transform=front@Matrix.Translation((gc,h,0)))
-for h in [3.68,6.66,9.68,12.76]:elevation_box('Trim continuous glazing rail',gc,h,gw+.08,.07,.19,-.03,framegrey)
-for u in [gl-.06,gr+.06]:elevation_box('Trim deep glass reveal',u,8.19,.12,9.12,.30,-.055,lightstone)
-# Rounded projecting terminal/canopy from the distant street image. Closed extruded plan.
-def curved_cap(name,h,thickness,projection,part='architecture'):
- x0=gl-.17;cw=width-x0
- pts=[(0,-.15),(cw,-.15),(cw,.04)]
- for i in range(1,9):
-  t=(math.pi/2)*i/8;pts.append((cw-.38+.38*math.cos(t),.04+projection*math.sin(t)))
- pts.append((.38,.04+projection))
- for i in range(1,9):
-  t=math.pi/2+(math.pi/2)*i/8;pts.append((.38+.38*math.cos(t),.04+projection*math.sin(t)))
- n=len(pts);verts=[(u+x0,h-thickness/2,o) for u,o in pts]+[(u+x0,h+thickness/2,o) for u,o in pts]
+gl=1.34;gr=width-1.34;gc=width/2
+wall_with_openings('stone front',front,width,H,[(.90,width-.90,3.70,H),(0,gl,12.25,H),(gr,width,12.25,H),(.16,width-.16,0,3.18)],mat=stone)
+# Frontal2024 photo resolves perspective ambiguity: symmetric shoulders and cylindrical bay.
+for u in [.45,width-.45]:
+ elevation_box('Trim outer stone pier',u,8.0,.90,8.50,.25,.045,stone)
+ elevation_box('Trim pier cap',u,12.25,.96,.18,.36,.06,lightstone)
+ m=Mesh('Trim pier central rib');m.tube([(u,3.90,.23),(u,11.38,.23)],.065,sides=10);finish(m,materials=[lightstone],transform=front)
+ pts=[(u-.24,11.36),(u+.24,11.36)]+[(u+.24*math.cos(i*math.pi/12),11.40+.12*math.sin(i*math.pi/12)) for i in range(13)]
+ n=len(pts);v=[(x,h,o) for o in [.17,.34] for x,h in pts]
+ m=Mesh('Trim rib capital');m.add(v,[tuple(reversed(range(n))),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]);finish(m,materials=[lightstone],transform=front)
+ for h in [4.15+i*.58 for i in range(14)]:elevation_box('Fine stone joint',u,h,.89,.009,.009,.173,black)
+# Seven chordal glazing strips approximate the visible continuous round bay.
+radius=1.45;half=math.radians(65);segments=7
+for floor,(bottom,top) in enumerate([(3.70,6.48),(6.48,6.84),(6.84,9.50),(9.50,9.86),(9.86,12.72),(12.72,13.10),(3.55,3.70)]):
+ for j in range(segments):
+  angle=-half+(j+.5)*2*half/segments;ww=2*radius*math.sin(half/segments);hh=top-bottom
+  chord_r=radius*math.cos(half/segments)
+  u=gc+chord_r*math.sin(angle);out=-.28+chord_r*math.cos(angle)-radius*math.cos(half)
+  mat=Matrix(((math.cos(angle),0,math.sin(angle),u),(0,1,0,(bottom+top)/2),(-math.sin(angle),0,math.cos(angle),out),(0,0,0,1)))
+  is_window=floor in [0,2,4]
+  name=('Window glazed shaft' if is_window else 'Trim curved spandrel')+' %d %d'%(floor,j)
+  m=Mesh(name);m.box((0,0,-.045),(ww,hh,.03),0)
+  for x in [-ww/2+.015,ww/2-.015]:m.box((x,0,-.012),(.030,hh,.045),1)
+  for z in ([-hh/2+.025,hh/2-.025,-hh*.28,hh*.28,-hh*.10,hh*.10] if is_window else [-hh/2+.015,hh/2-.015]):m.box((0,z,0),(ww,.035,.05),1)
+  surface=darkglass if is_window else (lightstone if floor>=5 else black)
+  finish(m,materials=[surface,framegrey if floor<5 else lightstone],transform=front@mat)
+# Pale swept return strips with small dark inset lights, retained at every LoD.
+for right in [False,True]:
+ edge=gc-radius*math.sin(half)
+ u0=.90 if not right else width-edge;u1=edge if not right else width-.90
+ z0=0 if not right else -.28;z1=-.28 if not right else 0
+ length=math.hypot(u1-u0,z1-z0);tx=(u1-u0)/length;tz=(z1-z0)/length
+ f=front@Matrix(((tx,0,-tz,u0),(0,1,0,0),(tz,0,tx,z0),(0,0,0,1)))
+ holes=[(length/2-.085,length/2+.085,h-.18,h+.18) for h in [4.1,5.0,5.9,7.1,8.0,8.9,10.1,11.0,11.9]]
+ wall_with_openings('swept return '+str(right),f,length,12.25,holes+[(0,length,0,3.70)],mat=lightstone)
+ for h in [4.1,5.0,5.9,7.1,8.0,8.9,10.1,11.0,11.9]:elevation_box('Shop inset return light',length/2,h,.17,.36,.025,-.10,darkglass,'architecture',f)
+# Round slab crown follows the same bay arc, rather than a flat full-width canopy.
+for h,thickness,rad in [(12.98,.16,1.52),(13.20,.18,1.68)]:
+ pts=[(gc+rad*math.sin(-half),-.42),(gc+rad*math.sin(half),-.42)]
+ pts += [(gc+rad*math.sin(half-i*2*half/24),-.28+rad*(math.cos(half-i*2*half/24)-math.cos(half))) for i in range(25)]
+ n=len(pts);verts=[(u,h-thickness/2,o) for u,o in pts]+[(u,h+thickness/2,o) for u,o in pts]
  faces=[tuple(reversed(range(n))),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
- m=Mesh(name);m.add(verts,faces);return finish(m,part,[lightstone],front)
-curved_cap('Trim rounded terminal lower',12.98,.16,.32)
-curved_cap('Trim rounded terminal upper',13.20,.18,.43)
+ m=Mesh('Trim rounded terminal '+('upper' if h>13 else 'lower'));m.add(verts,faces);finish(m,materials=[lightstone],transform=front)
 # Conservative full-depth block. Aerial shows a long flat roof with rooflights;
 # no unsupported pitched roof or rear window grid is invented.
 for label,frame in [('north',side@Matrix.Translation((.36,0,0))),('south',face_matrix((xr+.36,ys,base),(0,-1,0)))]:

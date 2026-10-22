@@ -5,8 +5,7 @@
       "attribution": "Google Street View, retained current.png from14\u201316 research",
       "capture_date": "May2011",
       "observations": [
-        "Narrow tall pale stone Art Deco frontage immediately south of Britannia20. Continuous glazed shaft with fine horizontal steel bars, broad flanking piers and rounded projecting top. Yellow Money Shop fascia and pale glazed shop.",
-        "Independent enlarged review: broader lower stone shoulder at south/Oxfam edge, glazed shaft offset north, rounded terminal over shaft, pale recessed entrance at left below fascia. Entrance use not resolved."
+        "Narrow tall pale stone Art Deco frontage immediately south of Britannia20. Continuous glazed shaft with fine horizontal steel bars, broad flanking piers and rounded projecting top. Yellow Money Shop fascia and pale glazed shop."
       ]
     },
     {
@@ -37,6 +36,16 @@
       "observations": [
         "Whole-block envelope only. Individual frontage estimate registered to20 sharededge."
       ]
+    },
+    {
+      "url": "https://modernmooch.com/2025/04/03/southport-walk/",
+      "image_url": "https://modernmooch.com/wp-content/uploads/2025/04/p1000811-1.jpg",
+      "attribution": "Modern Mooch / modernmoocher, primary frontal photograph published3April2025; image metadata timestamp16November2024",
+      "observations": [
+        "Frontal photograph resolves perspective: matching lower stone shoulders, cylindrical central glass bay, swept returns with small inset windows, dark spandrel bands, round projecting crown and slim ribs with semicircular capitals.",
+        "Modern Merkur signage and newer opening lights are visible; historical2011MoneyShop shopfront remains deliberately retained, not claimed current."
+      ],
+      "local_reference": "Outside Git: /home/gaz/tmp/3d/london-street-24/references/modern22.jpg"
     }
   ],
   "limitations": [

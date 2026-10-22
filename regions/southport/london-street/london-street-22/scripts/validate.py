@@ -10,9 +10,11 @@ assert all(o.data.polygons and o.data.uv_layers for o in meshes)
 assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.co)
 assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
 bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get()
-windows=[o for o in meshes if o.name.startswith('Window glazed shaft')];assert len(windows)==3
+windows=[o for o in meshes if o.name.startswith('Window glazed shaft')];assert len(windows)==21
 for o in windows:
- origin=o.matrix_world@Vector((.2,0,1));direction=(o.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+ angle=json.loads((ROOT/'research/layout.json').read_text())['registration_radians']
+ direction=Vector((-math.cos(angle),-math.sin(angle),0))
+ origin=o.matrix_world@Vector((0,.1,0))-direction
  hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
  assert hit and found==o,(o.name,found.name if found else None)
 for o in meshes:
@@ -27,13 +29,14 @@ assert 13.8<max(v.z for v in points)<14.2
 repo=Path(os.environ['SOUTHPORT_REPO_ROOT']);nd=json.loads((repo/'regions/southport/london-street/london-street-20/research/layout.json').read_text())
 for f in ['front_x','base_z','registration_pivot','registration_radians']:assert D[f]==nd[f],f
 assert D['north_y']==nd['south_y']
-# The south stone shoulder is lower than the off-centre glazed crown.
+# Both stone shoulders are lower than the centred curved glass crown.
 front_inv=(reg@Matrix(((0,0,1,D['front_x']),(1,0,0,D['south_y']),(0,1,0,D['base_z']),(0,0,0,1)))).inverted()
 cap=bpy.data.objects['Trim rounded terminal upper']
 cap_u=[(front_inv@cap.matrix_world@v.co).x for v in cap.data.vertices]
-assert min(cap_u)>.80 and max(cap_u)>5.35
-for o in windows:
- assert abs((front_inv@o.matrix_world.translation).x-2.995)<.01
+assert min(cap_u)>1.1 and max(cap_u)<4.3
+centres=[(front_inv@o.matrix_world.translation).x for o in windows]
+assert min(centres)<1.6 and max(centres)>3.8
+assert abs(sum(centres)/len(centres)-2.7)<.01
 # Side-wall end caps must terminate inside the rear wall, avoiding coplanar stripes.
 for o in meshes:
  if o.name.startswith('Envelope party'):
@@ -45,5 +48,13 @@ origin=entrance.matrix_world@(centre+Vector((0,0,1)))
 direction=(entrance.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
 hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
 assert hit and found==entrance,'Left recessed entrance must remain visible'
-report={'mesh_objects':len(meshes),'glazed_upper_bays':3,'checks':'Finite UV meshes; packed authored textures; unobscured three-storey glass; closed deck,rooflights and curvedcap; shared20boundary and geographic registration.'}
+return_lights=[o for o in meshes if o.name.startswith('Shop inset return light')]
+assert len(return_lights)==18
+for o in return_lights:
+ centre=sum((v.co for v in o.data.vertices),Vector())/len(o.data.vertices)
+ direction=Vector((-math.cos(D['registration_radians']),-math.sin(D['registration_radians']),0))
+ origin=o.matrix_world@centre-direction
+ hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
+ assert hit and found==o,(o.name,found.name if found else None)
+report={'mesh_objects':len(meshes),'glazed_upper_panels':21,'checks':'Finite UV meshes; packed authored textures; unobscured three-storey glass; closed deck,rooflights and curvedcap; shared20boundary and geographic registration.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
