@@ -94,8 +94,28 @@ def eave_return(d,name,a,b,inward,bottom):
     polygon=[a,b,(b[0]+inward[0],b[1]+inward[1]),(a[0]+inward[0],a[1]+inward[1])]
     if sum(p[0]*q[1]-q[0]*p[1] for p,q in zip(polygon,polygon[1:]+polygon[:1]))<0:
         polygon.reverse()
-    vertices=[(x,y,d['base_z']+bottom) for x,y in polygon]
-    vertices += [(x,y,roof_height(d,x,y)-.14) for x,y in polygon]
+    # A return can cross a hip seam: its top is piecewise planar. Joining only
+    # endpoint heights made a straight diagonal below the roof, leaving a hole.
     mesh=Mesh(name)
-    mesh.add(vertices,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
+    planes=roof_planes(d)[2]
+    for plane in planes:
+        cell=polygon[:]
+        for other in planes:
+            if other==plane:continue
+            aa,bb,cc=[plane[k]-other[k] for k in range(3)]
+            result=[]
+            for p,q in zip(cell,cell[1:]+cell[:1]):
+                dp=aa*p[0]+bb*p[1]+cc;dq=aa*q[0]+bb*q[1]+cc
+                if dp<=1e-9:result.append(p)
+                if (dp<0)!=(dq<0):
+                    t=dp/(dp-dq);result.append((p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])))
+            cell=[p for i,p in enumerate(result) if (Vector(p)-Vector(result[i-1])).length>1e-8]
+            if len(cell)<3:break
+        if len(cell)<3:continue
+        n=len(cell)
+        vertices=[(x,y,d['base_z']+bottom) for x,y in cell]
+        vertices += [(x,y,plane[0]*x+plane[1]*y+plane[2]-.14) for x,y in cell]
+        faces=[tuple(reversed(range(n))),tuple(range(n,2*n))]
+        faces += [(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
+        mesh.add(vertices,faces)
     return mesh

@@ -115,3 +115,12 @@ for y in [-57.5,-60,-62.5]:
  origin=Vector((-27.5,y,20))
  hit,p,n,i,found,matrix=bpy.context.scene.ray_cast(deps,origin,Vector((0,0,-1)),distance=20)
  assert hit and found.name.startswith('Roof south wing flat deck'),('Southern deck obscured',y,found.name if found else None)
+
+# Follow the hip intersection along the rear wall, rather than checking its ends.
+for i in range(1,60):
+ y=D['south_y']+.36+i*((-55.7)-(D['south_y']+.36))/60
+ x=D['upper_rear_x'];z=roof_height(D,x,y)-.18
+ wall=bpy.data.objects['Envelope southern rear upper return']
+ hit,p,n,index=wall.ray_cast(Vector((x-1,y,z)),Vector((1,0,0)),distance=1.1)
+ assert hit,('Gap under rear hip',y,z)
+print('Rear wall closes to both roof planes across the hip seam')

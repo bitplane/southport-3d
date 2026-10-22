@@ -75,3 +75,9 @@ casements, matching the ground view instead of repeating a narrow portrait unit.
 Their sizes and sill heights remain visually calibrated. A validation ray checks
 that the southern deck is exposed at three positions, in addition to the existing
 closed-roof, window-clearance and neighbouring-stair checks.
+
+A saved rear snag exposed a triangular opening where the wall crossed the hip
+seam. Wall tops now split at roof-plane intersections instead of connecting
+only endpoint heights. Fifty-nine horizontal rays follow the rear eave to catch
+missing closure. The retained aerial supports the overall hip and exposed lower
+service deck; exact pitch and setback dimensions remain estimates.
