@@ -6,6 +6,8 @@ ROOT=Path(__file__).resolve().parents[1]
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 scene=bpy.context.scene
 for name,position,target,scale in [
+    ('lord-street-furniture',(-76,-32,12),(-51,-14,1),40),
+    ('garden-globe',(-65,-17,3.8),(-62,-12.3,1.8),5),
     ('overview',(205,-242,220),(25,-48,0),285),
     ('gardens',(86,-60,48),(85,0,0),115),
     ('london-street',(45,-175,70),(0,-100,0),130),

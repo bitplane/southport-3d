@@ -129,3 +129,30 @@ visually estimated and can be refined with the next Lord Street frontage.
 The same approach now extends past British Heart Foundation to X -77, tapering
 to the prior ground estimate at X -80 by Christ Church. Building-specific steps
 remain inside the recessed doorway. Kerb offsets remain photographic estimates.
+
+## User-supplied Street View frontage review
+
+The August 2024 view from 118 Lord Street (`screenshot-20261022-104131.png`,
+provided privately on 2026-10-22) establishes black ribbed bollards along both
+kerbs, a pale stone garden balustrade and globe lamps on its piers. The earlier
+core bollards remain; nine posts continue the garden row towards BHF, and ten
+posts mark the shop-side kerb. The service-road opening around site X -69 stays
+clear. Counts, spacing, pier registration and heights are visually estimated;
+this is not a surveyed street inventory.
+
+Six open balustrade modules replace the low provisional edging on the observed
+24 m stretch. Two pale-globe lamps stand on its piers. Their local shape generators
+retain the globe, material bands and open baluster spacing at every level;
+Walk and District reduce radial/profile samples. No solid wall proxy fills the
+balustrade openings. The rest of the garden boundary remains provisional.
+The new **Lord Street furniture** viewer bookmark and `lord-street-furniture.png`
+and `garden-globe.png` renders expose this pass. No reference pixels are included
+in the published model or Git sources.
+
+## Screenshot correction pass publication budgets
+
+| Level | Placed triangles | GLB bytes including textures | Embedded image bytes |
+| --- | ---: | ---: | ---: |
+| detail | 179,221 | 8,537,132 | 4,835,767 |
+| walk | 58,973 | 8,450,560 | 4,835,767 |
+| district | 25,093 | 1,956,300 | 215,217 |

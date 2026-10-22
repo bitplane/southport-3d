@@ -264,5 +264,42 @@
     ]
   },
   "lord_terrace_integration": "118\u2013122 Lord Street facade registered at site Y -23.6, X -32.225 to -50.8. Extend Prezzo pavement kerb at Y -21.1 to X -52, then taper to old estimate at X -55. Dimensions remain estimated; building owns no ground.",
-  "bhf_integration": "Continue estimated Lord Street pavement to site X -77 beside 116 Lord Street, tapering at -80 towards church garden. Same 2.5 m widening as terrace; photographic width estimate, not surveyed."
+  "bhf_integration": "Continue estimated Lord Street pavement to site X -77 beside 116 Lord Street, tapering at -80 towards church garden. Same 2.5 m widening as terrace; photographic width estimate, not surveyed.",
+  "sw_frontage_2024": {
+    "source": "user-street-2024",
+    "status": "Visible furniture families and two kerb rows from user screenshot; spacings and metric registration estimated, not surveyed inventory.",
+    "garden_bollards_x": [
+      -34,
+      -38,
+      -42,
+      -46,
+      -50,
+      -54,
+      -58,
+      -62,
+      -65
+    ],
+    "garden_bollards_y": -14.15,
+    "shop_bollards_x": [
+      -22,
+      -28,
+      -34,
+      -40,
+      -46,
+      -52,
+      -58,
+      -64,
+      -70,
+      -75
+    ],
+    "shop_bollards_y": -21.6,
+    "balustrade_start_x": -66,
+    "balustrade_end_x": -42,
+    "balustrade_y": -12.3,
+    "globe_lamps_x": [
+      -62,
+      -46
+    ],
+    "notes": "Retain existing forecourt bollards through X -30, add continuation only. Leave service-road opening around X -69 clear. Balustrade replaces low SW garden edging on the photographed shop-facing segment; unobserved other sides remain provisional."
+  }
 }

@@ -199,6 +199,19 @@
         0,
         50
       ]
+    },
+    {
+      "name": "Lord Street furniture",
+      "position": [
+        -73,
+        5,
+        20
+      ],
+      "target": [
+        -48,
+        1.5,
+        14
+      ]
     }
   ],
   "walk_spawn": {
@@ -440,6 +453,58 @@
         "uv": "smart",
         "bake": false,
         "reason": "Replace lobed canopy with one coarse crown and trunk; omit branches."
+      }
+    },
+    {
+      "id": "garden-lamp",
+      "match": "^Garden globe lamp",
+      "walk": {
+        "strategy": "generator",
+        "generator": "garden_front:build_lod",
+        "settings": {
+          "kind": "lamp",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep globe silhouette and pale/dark bands; reduce radial sampling and omit small collar profiles."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "garden_front:build_lod",
+        "settings": {
+          "kind": "lamp",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep globe silhouette and pale/dark bands; reduce radial sampling and omit small collar profiles."
+      }
+    },
+    {
+      "id": "garden-balustrade",
+      "match": "^Garden balustrade",
+      "walk": {
+        "strategy": "generator",
+        "generator": "garden_front:build_lod",
+        "settings": {
+          "kind": "balustrade",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep open baluster spacing and continuous stone coping; simplify turned profiles and radial sampling, preserving negative space."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "garden_front:build_lod",
+        "settings": {
+          "kind": "balustrade",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep open baluster spacing and continuous stone coping; simplify turned profiles and radial sampling, preserving negative space."
       }
     }
   ]

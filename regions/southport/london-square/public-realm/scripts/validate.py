@@ -47,3 +47,21 @@ for name in ['london-1-ground','london-2-ground','london-3-ground']:
  vertices=[v.co.z for o in bpy.data.collections[name].objects for v in o.data.vertices]
  assert max(vertices)-min(vertices)<.3,(name,'Unbounded grade or furniture in ground')
 print('Extended areas, tree LODs and bounded road grades validated')
+
+# The photographed garden row extends, rather than duplicates, the core row.
+front=json.loads((ROOT/'research/streets.json').read_text())['sw_frontage_2024']
+posts=[o for o in meshes if o.name.startswith('Furniture bollard ')]
+positions=[tuple(round(c,3) for c in o.location[:2]) for o in posts]
+assert len(set(positions))==len(positions),'Duplicated bollard placements'
+for x in front['garden_bollards_x']:
+ assert (x,front['garden_bollards_y']) in positions
+ assert x>-66,'Post blocks SW garden service-road opening'
+for x in front['shop_bollards_x']:
+ assert (x,front['shop_bollards_y']) in positions
+ assert -23.6<front['shop_bollards_y']< -21.1,'Post off frontage footway'
+assert len([o for o in meshes if o.name.startswith('Garden globe lamp')])==2
+from garden_front import globe_lamp,balustrade
+for factory in [globe_lamp,balustrade]:
+ counts=[sum(len(f)-2 for f in factory(level).faces) for level in ['detail','walk','district']]
+ assert counts[0]>counts[1]>counts[2],(factory.__name__,counts)
+print('Photographed garden furniture placement and LOD reductions validated')

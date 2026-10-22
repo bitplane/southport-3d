@@ -103,7 +103,12 @@ def build_extensions(ctx):
             cuts=[piece for a,b in cuts for piece in ([(a,min(b,gate-1.8))] if a<gate-1.8 else [])+([(max(a,gate+1.8),b)] if b>gate+1.8 else [])]
         for a,b in cuts:
             if b-a<.2:continue
-            for y in [-12.3,18]:wall([(a,y),(b,y)],fp,.3,.25)
+            for y in [-12.3,18]:
+                if side==-1 and y==-12.3:
+                    # The observed balustrade replaces this portion of the provisional edge.
+                    for start,end in [(a,min(b,-66)),(max(a,-42),b)]:
+                        if end>start:wall([(start,y),(end,y)],fp,.3,.25)
+                else:wall([(a,y),(b,y)],fp,.3,.25)
         # Front/back pavements, with cross-path kerb openings, no kerb across scene ends.
         for a,b in cuts:
             if b>a:curb([(a,20.5),(b,20.5)],part)
@@ -137,6 +142,34 @@ def build_extensions(ctx):
                 ob=tree_prototype.copy();ob.data=tree_prototype.data;ob.name=name;C[fp].objects.link(ob)
             ob.location=(x,y,grade(y));ob.scale=(scale,scale,scale);ob.rotation_euler.z=i*1.73
             ob['source']='Canopy grouping estimated from Google satellite; generic species/shape'
+    # Screenshot-supported shop-facing garden edge, added without duplicating core posts.
+    from garden_front import globe_lamp,balustrade
+    frontage=recipe['sw_frontage_2024'];fp='sw-garden-furniture'
+    for x in frontage['garden_bollards_x']:
+        furnishing('bollard',x,frontage['garden_bollards_y'],0,
+                   'sw-furniture' if x>-41 else fp,'user-street-2024; spacing estimated')
+    for x in frontage['shop_bollards_x']:
+        furnishing('bollard',x,frontage['shop_bollards_y'],0,fp,
+                   'user-street-2024; spacing estimated')
+    garden_materials=[mat('Pale weathered balustrade stone',(.48,.46,.39)),fm[0],
+                      mat('Globe lamp pale shaft and opal glass',(.79,.79,.70))]
+    y=frontage['balustrade_y'];start=frontage['balustrade_start_x'];end=frontage['balustrade_end_x']
+    template=None
+    for x in range(start,end,4):
+        if template is None:
+            ob=balustrade(name='Garden balustrade segment').finish(garden_materials,C[fp]);template=ob
+        else:
+            ob=template.copy();ob.data=template.data;C[fp].objects.link(ob)
+        ob.location=(x,y,grade(y));ob['source']='user-street-2024; calibrated repeat spacing'
+    m=Mesh('Wall balustrade end pier');m.box((end,y,grade(y)+.505),(.36,.46,1.01));m.box((end,y,grade(y)+1.045),(.46,.49,.07));m.finish([garden_materials[0]],C[fp])
+    template=None
+    for x in frontage['globe_lamps_x']:
+        if template is None:
+            ob=globe_lamp().finish(garden_materials,C[fp]);template=ob
+            for face in ob.data.polygons:face.use_smooth=True
+        else:
+            ob=template.copy();ob.data=template.data;C[fp].objects.link(ob)
+        ob.location=(x,y,grade(y)+1.08);ob['source']='user-street-2024; pier placement estimated'
     # Round fountain site: retain pool and surrounding path; sculpture deferred.
     part='ne-garden-ground';fp='ne-garden-furniture';x,y=117.87,2.02
     pts=[(x+4.0*math.cos(i*math.tau/48),y+4.0*math.sin(i*math.tau/48)) for i in range(48)]

@@ -79,6 +79,23 @@
       "observations": [
         "London Street corridor, Anchor Street and Glebe Place mouths, Chapel/Hoghton junction. Direct Street View at requested corridor location failed to return usable panorama; crossing details remain provisional."
       ]
+    },
+    {
+      "id": "user-street-2024",
+      "url": "https://www.google.com/maps/",
+      "local_reference_files": [
+        "screenshot-20261022-104131.png",
+        "screenshot-20261022-103728.png",
+        "screenshot-20261022-103749.png"
+      ],
+      "author": "Google Street View; screenshots provided privately by user",
+      "capture": "August 2024 displayed in 104131; other crops not independently dated",
+      "reviewed": "2026-10-22",
+      "observations": [
+        "Ribbed black bollards line both kerbs beside 116\u2013128 Lord Street. Existing core garden-side row stops before this stretch in the old model.",
+        "Pale stone balustrade separates garden planting from footway; black/pale slender lamps with white spherical globes rise from square stone piers. Two lamps visible in receding view.",
+        "Placements, spacings and dimensions visually calibrated; original panorama URL not included in screenshot. Source pixels are not published."
+      ]
     }
   ],
   "limitations": [
