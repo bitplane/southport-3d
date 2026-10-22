@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/sainsburys.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street",
+  "status": "Sainsburys exterior from verified 2020/2024/2026 Street View and aerial; dimensions and roof plant estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "frontage",
+      "name": "Stepped brick street frontage",
+      "collection": "frontage"
+    },
+    {
+      "id": "canopy",
+      "name": "Glazed cast-iron street canopy",
+      "collection": "canopy"
+    },
+    {
+      "id": "roof-service",
+      "name": "Store roofs and service elevations",
+      "collection": "roof-service"
+    }
+  ],
+  "views": [
+    {
+      "name": "Store",
+      "position": [
+        100,
+        25,
+        -28
+      ],
+      "target": [
+        130,
+        7,
+        35
+      ]
+    },
+    {
+      "name": "Frontage",
+      "position": [
+        129,
+        10,
+        -14
+      ],
+      "target": [
+        130,
+        7,
+        20
+      ]
+    },
+    {
+      "name": "Canopy",
+      "position": [
+        119,
+        4,
+        7
+      ],
+      "target": [
+        130,
+        3,
+        18
+      ]
+    },
+    {
+      "name": "Store roof",
+      "position": [
+        90,
+        65,
+        85
+      ],
+      "target": [
+        130,
+        9,
+        44
+      ]
+    },
+    {
+      "name": "Loading side",
+      "position": [
+        127,
+        18,
+        104
+      ],
+      "target": [
+        131,
+        6,
+        68
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      130,
+      2.3,
+      12
+    ],
+    "target": [
+      130,
+      3,
+      20
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelope",
+      "match": "^(Envelope|Course|Roof|Plant|Door|Vent|Sign) |^Window (?!shop rounded frame|upper brick surround|church wing brick arch)",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain inexpensive envelopes, real openings, stepped brick courses, entrance geometry and distinctive facade proportions."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Retain inexpensive envelopes, real openings, stepped brick courses and recognisable roof/service silhouette."
+      }
+    },
+    {
+      "id": "canopy-structure",
+      "match": "^Canopy (?!cast column|ornamental knee)",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep the open structural lattice, translucent roof and spanning beams rather than baking a solid obstruction."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Canopy holes and continuous roof edge distinguish the frontage at distance; this modest explicit structure remains."
+      }
+    },
+    {
+      "id": "columns",
+      "match": "^Canopy cast column",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:column_lod",
+        "settings": {
+          "segments": 10
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Rebuild the same black-base and white-shaft iron column with fewer radial samples."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:column_lod",
+        "settings": {
+          "segments": 6
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain closed tapered column and capital profile with six sides, preserving support spacing and silhouette."
+      }
+    },
+    {
+      "id": "knees",
+      "match": "^Canopy ornamental knee",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Curved iron knees and small circle ornament remain visible during close walking."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:bracket_lod",
+        "settings": {},
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain curved support knee with fewer samples, omit small inset circles."
+      }
+    },
+    {
+      "id": "small-fittings",
+      "match": "^Fitting ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep louvre and shutter slats in walking views."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Fine ventilation and shutter slats are subpixel; their metal receiving cabinet/shutter envelopes remain."
+      }
+    },
+    {
+      "id": "lettering",
+      "match": "^Lettering ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "These modest raised glyph meshes preserve crisp brand lettering and open negative space. Baking isolated letters to an opaque rectangle would cover the surrounding brick; a future regional wall atlas can replace the complete receiving wall."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "These modest raised glyph meshes preserve crisp brand lettering and open negative space. Baking isolated letters to an opaque rectangle would cover the surrounding brick; a future regional wall atlas can replace the complete receiving wall."
+      }
+    },
+    {
+      "id": "shop-frames",
+      "match": "^Window shop rounded frame",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:ring_lod",
+        "settings": {
+          "width": 4.15,
+          "bottom": 0.12,
+          "top": 4.08,
+          "radius": 0.92,
+          "border": 0.075,
+          "depth": 0.06,
+          "steps": 7
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:ring_lod",
+        "settings": {
+          "width": 4.15,
+          "bottom": 0.12,
+          "top": 4.08,
+          "radius": 0.92,
+          "border": 0.075,
+          "depth": 0.06,
+          "steps": 4
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
+      }
+    },
+    {
+      "id": "upper-frames",
+      "match": "^Window upper brick surround",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:ring_lod",
+        "settings": {
+          "width": 1.52,
+          "bottom": 5.7,
+          "top": 12.75,
+          "radius": 0.76,
+          "border": 0.18,
+          "depth": 0.27,
+          "steps": 7
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:ring_lod",
+        "settings": {
+          "width": 1.52,
+          "bottom": 5.7,
+          "top": 12.75,
+          "radius": 0.76,
+          "border": 0.18,
+          "depth": 0.27,
+          "steps": 4
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
+      }
+    },
+    {
+      "id": "wing-frames",
+      "match": "^Window church wing brick arch",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:ring_lod",
+        "settings": {
+          "width": 0.88,
+          "bottom": 6,
+          "top": 9.65,
+          "radius": 0.44,
+          "border": 0.13,
+          "depth": 0.07,
+          "steps": 7
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:ring_lod",
+        "settings": {
+          "width": 0.88,
+          "bottom": 6,
+          "top": 9.65,
+          "radius": 0.44,
+          "border": 0.13,
+          "depth": 0.07,
+          "steps": 4
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
+      }
+    }
+  ]
+}

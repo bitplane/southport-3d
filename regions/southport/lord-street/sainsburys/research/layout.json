@@ -1,0 +1,15 @@
+{
+ "origin_site_xy": [108.66,-20.2],
+ "local_rotation_degrees": 2.37,
+ "width": 42.57,
+ "depth": 50.0,
+ "base_z": 0.58,
+ "main_front_width": 29.4,
+ "front_parapet": 14.1,
+ "church_wing_parapet": 11.4,
+ "rear_parapet": 11.1,
+ "canopy_projection": 3.0,
+ "osm_way": 371203338,
+ "osm_outline_site_xy": [[153.9,-67.84],[151.19,-18.44],[108.66,-20.2],[108.74,-30.46],[110.25,-70.4],[153.9,-67.84]],
+ "uncertainty": "Mapped footprint guides approximate rectangular registration. Heights, projections, roof plant and hidden party elevation estimated from verified imagery. Front nine upper window bays and four lower-wing windows counted. Rear store roof and two front pitched roofs observed in aerial. No interior model."
+}

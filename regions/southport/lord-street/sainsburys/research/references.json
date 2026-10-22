@@ -1,0 +1,45 @@
+{
+  "accessed": "2026-10-22",
+  "rights": "Source links only. Reference photographs/screenshots remain outside Git and are not material pixels. OSM contributors registration. Geometry and material maps authored.",
+  "references": [
+    {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/371203338",
+      "observed": "Approximate footprint and store identity; retained extract church-gardens route-osm.json."
+    },
+    {
+      "id": "street-front",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=1L2SfgiHc0AtTirmuR42MA&heading=138&pitch=14&fov=90",
+      "capture": "August 2024",
+      "attribution": "Google Street View",
+      "observed": "Full panorama pixels inspected including 2400px wide viewport. Nine tall projecting upper bays on high block, lower wing with four tall arched windows. Rounded ground glazing and entrance doors; upper spandrel panels and stepped brick corbels. White canopy diamond truss, curved knees with circles, black-footed tapered iron columns, glazing bars. Orange Sainsburys signs and readable information boards."
+    },
+    {
+      "id": "street-north-rear",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=9XXhEqk3UijmVaznjkXIZA&heading=245&pitch=5",
+      "capture": "November 2020",
+      "attribution": "Google Street View",
+      "observed": "Full pixels inspected: plain rear side brick wall with shallow framed lower bays, grey service doors, tall window, large vent grille and white entrance hood beside church hall."
+    },
+    {
+      "id": "street-rear",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=kmUFY6X3Gh-1CqcclCJMDg&heading=325&pitch=8",
+      "capture": "July 2026",
+      "attribution": "Google Street View",
+      "observed": "Full pixels inspected: long rear wall, high orange sign, two loading shutters with metal hood at left, taller access upstand and plain rear bays with vent grilles. Car-park wall/trolleys not part of building asset."
+    },
+    {
+      "id": "aerial",
+      "url": "https://www.google.com/maps/@53.64957,-3.00217,20z/data=!3m1!1e3",
+      "capture": "Acquisition unknown; accessed 2026-10-22",
+      "attribution": "Google Maps / Airbus",
+      "observed": "Satellite pixels inspected: broad pale flat rear store roof, irregular plant/ducts, two dark pitched roofs behind stepped street frontage. Main roof footprint and relationship to church hall confirmed."
+    }
+  ],
+  "uncertainties": [
+    "All heights and small projections visually estimated, not survey measurements.",
+    "Simplified rectangular store footprint approximates mapped skew; base aligned to same site datum as neighbouring church.",
+    "Roof plant envelopes/positions and concealed party elevation are estimates; no claim of mechanical layout fidelity.",
+    "No interiors, product displays or unreadable notices invented; glazing is a tinted opaque exterior approximation."
+  ]
+}
