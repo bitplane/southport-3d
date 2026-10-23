@@ -70,6 +70,7 @@ BAY = D['bay_width']
 UC = D['gable_centre']            # gable centred on the whole frontage
 ZL, ZR = D['jetty_left'], D['jetty_right']
 CANT0, CANT1 = D['cant']
+CENTRE0,CENTRE1=D['centre_panel'];ZC=D['jetty_centre']
 LW, RW, CL, GP = D['left_window'], D['right_window'], D['cant_light'], D['gable_posts']
 SHOP = D['shop_top']
 TIE = D['tie_beam']
@@ -204,21 +205,22 @@ def leaded(name, frame, u0, u1, h0, h1, lights, part='architecture'):
 
 
 def projection(u):
-    """Projection of the first-floor face beyond the shop face at position u."""
-    if u <= CANT0:
-        return ZL
-    if u >= CANT1:
-        return ZR
-    return ZL + (ZR - ZL) * (u - CANT0) / (CANT1 - CANT0)
+    """Two oriels separated by a recessed flat and two canted returns."""
+    if u < BAY:return .2
+    if u <= CANT0:return ZL
+    if u < CENTRE0:return ZL+(ZC-ZL)*(u-CANT0)/(CENTRE0-CANT0)
+    if u <= CENTRE1:return ZC
+    if u < CANT1:return ZC+(ZR-ZC)*(u-CENTRE1)/(CANT1-CENTRE1)
+    return ZR
 
 
-# Elevation frames. FS is the shop face; FG the projecting left oriel plane,
-# which the tie beam and street gable also share; FR the set-back right plane.
 FS, _ = plane((FX, YN), (FX, YS))
 FG, _ = plane((FX - ZL, YN), (FX - ZL, YS))
 FR, _ = plane((FX - ZR, YN), (FX - ZR, YS))
-FC, LC = plane((FX - ZL, YN - CANT0), (FX - ZR, YN - CANT1))
-FB, _ = plane((FX - .2, YN), (FX - .2, YN - BAY))          # bay attic, behind the gable bargeboard
+FL, LL = plane((FX-ZL,YN-CANT0),(FX-ZC,YN-CENTRE0))
+FC, LC = plane((FX-ZC,YN-CENTRE0),(FX-ZC,YN-CENTRE1))
+FCR, LCR = plane((FX-ZC,YN-CENTRE1),(FX-ZR,YN-CANT1))
+FB, _ = plane((FX-.2,YN),(FX-.2,YN-BAY))
 
 # ---------------------------------------------------------------- shopfront
 spring, rise = D['arch_spring'], D['arch_rise']
@@ -298,8 +300,9 @@ finish(m, 'shopfront', [iron])
 
 # ------------------------------------------------------------- jetty storey
 m = Mesh('Envelope jetty floor')
-m.outline([(FX, YN), (FX - ZL, YN), (FX - ZL, YN - CANT0), (FX - ZR, YN - CANT1),
-           (FX - ZR, YS), (FX, YS)], B + SHOP, B + SHOP + .27)
+m.outline([(FX,YN),(FX-.2,YN),(FX-.2,YN-BAY),(FX-ZL,YN-BAY),
+           (FX-ZL,YN-CANT0),(FX-ZC,YN-CENTRE0),(FX-ZC,YN-CENTRE1),
+           (FX-ZR,YN-CANT1),(FX-ZR,YS),(FX,YS)],B+SHOP,B+SHOP+.27)
 finish(m, 'architecture', [timber])
 
 brackets = Group('Timber jetty brackets', FS, [timber])
@@ -312,14 +315,19 @@ for k in range(12):
 brackets.done()
 
 top = 6.35
-# Three-light left oriel, one leaded light opening the canted centre, and a
-# four-light right window (May2011 frontal and Nov2020 close views).
-wall('first floor left oriel', FG, 0, CANT0, SHOP + .27, TIE, [(LW[0], LW[1], 4.92, top)])
-wall('first floor canted centre', FC, 0, LC, SHOP + .27, TIE, [(CL[0], CL[1], 4.92, top)])
-wall('first floor right', FR, CANT1, W, SHOP + .27, TIE, [(RW[0], RW[1], 4.92, top)])
-leaded('first floor left', FG, LW[0], LW[1], 4.92, top, LW[2])
-leaded('first floor canted centre', FC, CL[0], CL[1], 4.92, top, 1)
-leaded('first floor right', FR, RW[0], RW[1], 4.92, top, RW[2])
+# Equal front-facing oriels; the right bay has one visible canted return light.
+wall('first floor north bay',FB,0,BAY,SHOP+.27,TIE)
+wall('first floor left oriel',FG,BAY,CANT0,SHOP+.27,TIE,[(LW[0],LW[1],4.92,top)])
+wall('first floor left return',FL,0,LL,SHOP+.27,TIE)
+wall('first floor centre recess',FC,0,LC,SHOP+.27,TIE)
+wall('first floor right return',FCR,0,LCR,SHOP+.27,TIE,[(CL[0],CL[1],4.92,top)])
+wall('first floor right',FR,CANT1,W,SHOP+.27,TIE,[(RW[0],RW[1],4.92,top)])
+leaded('first floor left',FG,LW[0],LW[1],4.92,top,LW[2])
+leaded('first floor right return',FCR,CL[0],CL[1],4.92,top,1)
+leaded('first floor right',FR,RW[0],RW[1],4.92,top,RW[2])
+# Close the short step between the recessed entrance bay and left oriel.
+step,stepwidth=plane((FX-.2,YN-BAY),(FX-ZL,YN-BAY))
+wall('first floor oriel north cheek',step,0,stepwidth,SHOP+.27,TIE,depth=.05)
 
 
 def frame_timbers(name, frame, u0, u1, posts):
@@ -334,26 +342,26 @@ def frame_timbers(name, frame, u0, u1, posts):
     for u in posts:
         g.box(u - .06, u + .06, 4.92, top, 0, .06)
     g.box(u0, u1, top, TIE, -.01, .07)
+    for z,h,out in [(SHOP+.03,.055,.16),(SHOP+.27,.055,.15),(4.78,.045,.14),(4.91,.045,.13),(top+.035,.045,.11)]:
+        g.box(u0,u1,z,z+h,out-.045,out)
     return g
 
 
-left = frame_timbers('first floor left oriel', FG, 0, CANT0, [.06, BAY + .03, CANT0 - .06])
-# Curved brace in the narrow bay panel: level at the top left, falling to the
-# post at the bottom right (snag photograph, Nov2020 close view).
-pts = [(.12 + (BAY - .24) * math.sin(t * math.pi / 16), 4.95 + 1.3 * math.cos(t * math.pi / 16))
-       for t in range(9)]
-for a, b in zip(pts, pts[1:]):
-    left.strut(a, b, .12, 0, .06)
+frame_timbers('first floor left oriel',FG,BAY,CANT0,[BAY+.03,CANT0-.06]).done()
+left=frame_timbers('north entry bay',FB,0,BAY,[.06,BAY-.06])
+pts=[(.12+(BAY-.24)*math.sin(t*math.pi/16),4.95+1.3*math.cos(t*math.pi/16)) for t in range(9)]
+for a,b in zip(pts,pts[1:]):left.strut(a,b,.12,0,.06)
 left.done()
-# Two inner studs divide the arch-headed panel beside the canted light.
-a = CL[1] + .05
-centre = frame_timbers('first floor canted centre', FC, 0, LC,
-                       [.06, a, a + (LC - a) / 3, a + 2 * (LC - a) / 3, LC - .06])
-# Timber arch head with sunk spandrels over the stud panel only.
-head = arc(a, LC - .12, 5.95, .32)
-centre.poly(head + [(LC - .12, top), (a, top)], 0, .07)
+frame_timbers('left oriel return',FL,0,LL,[.055,LL-.055]).done()
+frame_timbers('recessed centre',FC,0,LC,[.055,LC/2,LC-.055]).done()
+frame_timbers('right oriel return',FCR,0,LCR,[.055,LCR-.055]).done()
+frame_timbers('first floor right',FR,CANT1,W,[RW[1]+.06,8.6,W-.06]).done()
+# The arch spans the recess in the projecting head beam, rather than lying
+# flat on an invented sloping wall. Its soffit leaves the return glazing clear.
+centre=Group('Timber recessed centre arch',FG,[timber])
+head=arc(CANT0+.05,CANT1-.05,5.95,.32)
+centre.poly(head+[(CANT1-.05,top),(CANT0+.05,top)],0,.08)
 centre.done()
-frame_timbers('first floor right', FR, CANT1, W, [RW[1] + .06, 8.6, W - .06]).done()
 
 # Tie beam across the whole front, solid gable floor and bay ledge behind it.
 g = Group('Timber tie beam', FG, [timber])
@@ -370,15 +378,15 @@ for side in (-1, 1):
 finish(m, 'architecture', [timber], FG @ Matrix.Translation((UC, TIE + .13, .17)))
 
 # Corner closures where the projecting storey meets NatWest and the alley.
-north, _ = plane((FX, YN), (FX - ZL, YN))
-wall('first floor north return', north, 0, ZL, SHOP + .27, TIE, depth=.05)
+north, _ = plane((FX, YN), (FX - .2, YN))
+wall('first floor north return', north, 0, .2, SHOP + .27, TIE, depth=.05)
 south, _ = plane((FX - ZR, YS), (FX, YS))
 wall('first floor south return', south, 0, ZR, SHOP + .27, TIE, depth=.05)
 
 # ------------------------------------------------------------- street gable
 gable_top = RIDGE - .14
 half = (gable_top - EAVE) / PITCH
-# Over the bay the gable is open: the bargeboard passes in front of the attic.
+# The north bay stays open; the bargeboard ends beside its attic window.
 g = Group('Envelope street gable infill', FG, [plaster])
 g.poly([(BAY, EAVE), (UC + half, EAVE), (UC, gable_top), (BAY, gable_top - PITCH * (UC - BAY))], -.25, 0)
 g.done()
@@ -410,9 +418,11 @@ for h in (EAVE + 1.1, EAVE + 1.95):
 g.done()
 
 barge = Group('Roof bargeboards and finial', FG, [timber], 'roof')
-for u0, u1 in ((0, UC), (UC, W + .3)):
+for u0, u1 in ((BAY-.15, UC), (UC, W + .3)):
     t0, t1 = RIDGE + .1 - PITCH * abs(u0 - UC), RIDGE + .1 - PITCH * abs(u1 - UC)
-    barge.poly([(u0, t0), (u1, t1), (u1, t1 - .38), (u0, t0 - .38)], .32, .40)
+    barge.poly([(u0,t0),(u1,t1),(u1,t1-.38),(u0,t0-.38)],.32,.40)
+    for drop in (.04,.15,.30):
+        barge.poly([(u0,t0-drop),(u1,t1-drop),(u1,t1-drop-.035),(u0,t0-drop-.035)],.40,.44)
 barge.box(UC - .07, UC + .07, RIDGE - .5, RIDGE + .62, .30, .42)
 barge.box(UC - .11, UC + .11, RIDGE + .55, RIDGE + .66, .29, .43)
 # Shaped corner bracket under the southern barge foot (snag photograph).
@@ -449,8 +459,8 @@ finish(m, 'roof', [clay])
 m = Mesh('Envelope bay attic ledge')
 m.box((FX - .425, YN - BAY / 2, B + TIE + .06), (.45, BAY, .12))
 finish(m, 'architecture', [timber])
-wall('bay top storey', FB, 0, BAY, TIE, D['bay_eaves'], [(.3, 1.15, 6.78, 7.22)])
-leaded('bay top storey', FB, .3, 1.15, 6.78, 7.22, 3)
+wall('bay top storey', FB, 0, BAY, TIE, D['bay_eaves'], [(.26,1.15,6.90,7.50)])
+leaded('bay top storey', FB,.26,1.15,6.90,7.50,3)
 g = Group('Timber bay top storey', FB, [timber])
 for u in (.06, BAY - .06):
     g.box(u - .06, u + .06, TIE, D['bay_eaves'], 0, .06)
@@ -459,23 +469,20 @@ g.done()
 side, _ = plane((FX - .2, YN - BAY), (RX, YN - BAY))
 wall('bay side above main roof', side, 0, RX - FX + .2, EAVE - .2, max(D['bay_eaves'], HB), mat=plaster, depth=.25)
 
-be, br = D['bay_eaves'], D['bay_ridge']
-kb = (br - be) / 1.1
-yb = YN - .85
-xf = FX - .2 - .25
-north_h = br - kb * .85
-top_v = [(xf, YN - 1.95, be), (xf, YN, be), (xf + (north_h - be) / kb, YN, north_h),
-         (RX + .3, YN, north_h), (RX + .3, yb, br), (RX + .3, YN - 1.95, be), (xf + 1.1, yb, br)]
-m = Mesh('Roof north bay clay shell')
-verts = [(x, y, z + B) for x, y, z in top_v] + [(x, y, z + B - .12) for x, y, z in top_v]
-faces = [(0, 1, 2, 6), (0, 6, 4, 5), (2, 3, 4, 6),
-         (7, 13, 9, 8), (7, 12, 11, 13), (9, 13, 11, 10)]
-# Closed shell: the six outer edges of the top surface get vertical sides.
-faces += [(i, (i + 1) % 6, (i + 1) % 6 + 7, i + 7) for i in range(6)]
-m.add(verts, faces)
-finish(m, 'roof', [clay], roof_uv=True, recalc=True)
+be,br=D['bay_eaves'],D['bay_ridge'];north_h=be
+yb=YN-BAY/2;xf=FX-.45
+# Small hip entirely within the entrance strip; no roof sheet across the light.
+frontx=xf;backx=RX+.3;y0=YN-BAY;y1=YN-.02
+upper=[(frontx,y0,be),(backx,y0,be),(backx,y1,be),(frontx,y1,be),
+       (frontx+.85,yb,br),(backx,yb,br)]
+faces=[(0,1,5,4),(1,2,5),(2,3,4,5),(3,0,4)]
+verts=[(x,y,z+B) for x,y,z in upper]+[(x,y,z+B-.12) for x,y,z in upper]
+faces+= [tuple(i+6 for i in reversed(f)) for f in list(faces)]
+for a,b in [(0,1),(1,2),(2,3),(3,0)]:faces.append((a,b,b+6,a+6))
+m=Mesh('Roof north bay clay shell');m.add(verts,faces)
+finish(m,'roof',[clay],roof_uv=True,recalc=True)
 m = Mesh('Roof north bay ridge tiles')
-m.box(((xf + 1.1 + RX + .3) / 2, yb, B + br + .04), (RX + .3 - xf - 1.1, .22, .12))
+m.box(((xf + .85 + RX + .3) / 2, yb, B + br + .04), (RX + .3 - xf - .85, .22, .12))
 finish(m, 'roof', [clay])
 
 # Tall brick stack on the ridge behind the gable: Nov2020 Street View shows it

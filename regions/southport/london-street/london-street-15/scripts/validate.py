@@ -29,6 +29,25 @@ for o in windows:
     hit, p, n, i, found, m = scene.ray_cast(deps, origin, direction, distance=2)
     assert hit and found == o, (o.name, found.name if found else None)
 
+# The two photographed oriels have matching front windows; the centre is
+# genuinely recessed. Check exported master geometry, not only recipe values.
+left = bpy.data.objects['Window first floor left']
+right = bpy.data.objects['Window first floor right']
+def width(obj):
+    return max(v.co.x for v in obj.data.vertices) - min(v.co.x for v in obj.data.vertices)
+assert abs(width(left) - width(right)) < .001
+assert abs(left.matrix_world.translation.x - right.matrix_world.translation.x) < .001
+# Sample across the small attic aperture: the roof/bargeboard must clear it.
+attic = bpy.data.objects['Window bay top storey']
+for u in (-.30, 0, .30):
+    for v in (-.17, 0, .17):
+        origin = attic.matrix_world @ Vector((u, v, 1.5))
+        direction = (attic.matrix_world.to_3x3() @ Vector((0, 0, -1))).normalized()
+        hit, p, n, i, found, m = scene.ray_cast(deps, origin, direction, distance=2)
+        assert hit and found == attic, ('attic occluded', u, v, found and found.name)
+centre = bpy.data.objects['Envelope first floor centre recess']
+assert centre.matrix_world.translation.x - left.matrix_world.translation.x > .45
+
 # Shop arches are closed by glazing/joinery within half a metre of the face.
 shop = bpy.data.objects['Shop rendered arcade'].matrix_world
 for a, b in D['arches']:
