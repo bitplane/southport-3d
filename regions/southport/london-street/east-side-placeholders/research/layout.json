@@ -1,0 +1,49 @@
+{
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "ground_z": 0.785,
+  "bury_z": 0.62,
+  "frontage_x": 7.5,
+  "registration": "Footprints read in the site frame from Google's map building outlines (zoom 21, inspected 2026-10-23), aligned to the NatWest London Street line. OSM way 371741580 wrongly folds the mock-Tudor building into NatWest and way 371741581 merges the rest into one block; neither is used for these divisions. Edges are about +/-0.5m.",
+  "heights": "Eaves or parapet heights above the pavement, estimated from May2011 and Aug2019 Street View relative to the NatWest cornice. Pitched roofs, gables and rooftop boxes are not modelled.",
+  "blocks": [
+    {
+      "name": "8 mock-Tudor front range",
+      "x": [7.5, 17.5],
+      "y": [-53.1, -42.68],
+      "height": 9.5,
+      "evidence": "Black-and-white jettied building adjoining NatWest (HC UK in 2011, SIP Southport later); red tiled roof in satellite. Range depth estimated."
+    },
+    {
+      "name": "8 rear flat-roofed range",
+      "x": [17.5, 30.4],
+      "y": [-53.1, -42.68],
+      "height": 4.2,
+      "evidence": "Low flat roof with rooflights behind the red roof in Google satellite; height estimated."
+    },
+    {
+      "name": "15-17 William Hill",
+      "x": [7.5, 27.3],
+      "y": [-62.05, -53.1],
+      "height": 8.0,
+      "evidence": "Two-storey frontage with slate roof (May2011 Street View); Google outline 15-17."
+    },
+    {
+      "name": "11-13 KBA",
+      "x": [7.5, 28.0],
+      "y": [-70.4, -62.05],
+      "height": 7.0,
+      "evidence": "Lower rendered frontage with small front gable (Aug2019 Street View); Google outline."
+    },
+    {
+      "name": "19-21 Anchor Street corner",
+      "x": [7.5, 27.1],
+      "y": [-77.6, -70.4],
+      "height": 9.0,
+      "evidence": "Two-storey brick opticians (David H Myers) with parapet and rooftop box (Aug2019 Street View). South face kept 1.4m off the modelled Anchor Street kerb."
+    }
+  ]
+}

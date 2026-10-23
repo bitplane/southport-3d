@@ -94,3 +94,16 @@ glazed telephone kiosk. These follow the private photo in snag
 existing mapped gap; hidden rear rooms and unreadable notices are omitted.
 The wall and door remain simple solids at every level; the kiosk generator
 reduces crown segments and glazing bars at distance, omitting fine lettering.
+
+## London Street return length (October 23 snag)
+
+OSM way 371741580 gave a 28.94 m return, but it also covers the adjoining
+mock-Tudor building. Google's map outline (18.7 m), the satellite parapet
+(19.6 m) and a near-frontal May 2011 Street View scaled from its camera geometry
+(19.3–20.4 m) agree on about 19.5 m, so `rear_y` is now -42.66. The return's
+five bays were re-placed from fractions measured in that view; arches (about
+1.45 m) and upper lights (about 1.6 m) are narrower, and the London Street gable
+narrows its lower shoulders to rest on the two flanking towers without changing
+the oculus. The Lord Street front, heights and roof forms are unchanged. The
+buildings beyond the return are placeholder boxes in
+[LONDON-STREET-EAST-PLACEHOLDERS.md](LONDON-STREET-EAST-PLACEHOLDERS.md).

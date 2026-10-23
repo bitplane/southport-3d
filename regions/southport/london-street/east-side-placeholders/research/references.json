@@ -1,0 +1,50 @@
+{
+  "reviewed": "2026-10-23",
+  "sources": [
+    {
+      "url": "https://www.google.com/maps/@53.648344,-3.003529,21z",
+      "capture": "Map data 2026; inspected 2026-10-23",
+      "author": "Google Maps building outlines",
+      "observations": [
+        "Separate outlines for 8 (mock-Tudor), 15-17, 11-13 and the 19-21 Anchor Street corner. Read in the site frame by georeferencing the screenshot from its URL centre and 5m scale bar."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64845,-3.00375,30m/data=!3m1!1e3",
+      "capture": "Imagery 2026 Airbus/Google; inspected 2026-10-23",
+      "author": "Google satellite imagery",
+      "observations": [
+        "Red tiled mock-Tudor roof directly after the NatWest parapet, low flat rooflit range behind it, slate roofs further south."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6484184,-3.0040981,15a,90y,46h,105t/data=!3m4!1e1!3m2!1sUobTWVKYCf-YxcK1OBgnNA!2e0",
+      "capture": "May2011 Street View; inspected 2026-10-23",
+      "author": "Google Street View",
+      "observations": [
+        "Mock-Tudor building adjoins NatWest with no gap; William Hill follows. Eaves heights judged against the NatWest cornice."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6482378,-3.0037112,10a,90y,60h,100t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDa_YnoJg!2e10",
+      "capture": "Aug2019 user-contributed panorama (VR 360 TV); inspected 2026-10-23",
+      "author": "Google Maps contributor imagery",
+      "observations": [
+        "Two-storey brick opticians on the Anchor Street corner with parapet and rooftop box; lower rendered neighbour with a small gable."
+      ]
+    },
+    {
+      "url": "https://www.openstreetmap.org/way/371741581",
+      "attribution": "© OpenStreetMap contributors; ODbL 1.0",
+      "capture": "Overpass extract 2026-10-23",
+      "observations": [
+        "Merges the run south of the mock-Tudor into one block (site y -54.6 to -79.7); used only to confirm the overall extent."
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Edges about +/-0.5m from screenshot reading; rear depths are map outlines, not surveyed.",
+    "Heights are single eaves/parapet estimates; roofs, gables and rooftop structures are omitted.",
+    "Tenants named for identification only and reflect the referenced capture dates."
+  ]
+}

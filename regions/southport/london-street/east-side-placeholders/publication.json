@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/east-side-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "Placeholder boxes from mapped footprints between NatWest and Anchor Street; heights estimated. Not building models.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "massing",
+      "name": "Placeholder footprint boxes",
+      "collection": "massing"
+    }
+  ],
+  "views": [
+    {
+      "name": "Overview",
+      "position": [
+        -18,
+        24,
+        40
+      ],
+      "target": [
+        18,
+        4,
+        60
+      ]
+    },
+    {
+      "name": "Street",
+      "position": [
+        2,
+        2.5,
+        84
+      ],
+      "target": [
+        7,
+        5,
+        55
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      5,
+      2.49,
+      76
+    ],
+    "target": [
+      5,
+      2.49,
+      50
+    ]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^Envelope ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Twelve-triangle boxes are already the coarsest useful context; reducing them would lose the mapped footprint."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Twelve-triangle boxes are already the coarsest useful context; reducing them would lose the mapped footprint."
+      }
+    }
+  ]
+}

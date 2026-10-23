@@ -125,7 +125,7 @@ for elevation,frame,width,bays in facades:
             for du in (-.83,.83):holes.append(rectangle(u+du-.48,1.9,u+du+.48,4.05))
             # The upper niche is stone and blind, not a missing glass window.
         else:
-            radius=1.48 if front_face and i in (0,4) else 1.14
+            radius=(1.48 if i in (0,4) else 1.14) if front_face else .73
             bottom=.16 if front_face and i in (1,4) else 1.55
             holes.append(arch_outline(u,bottom,3.85,radius))
         if front_face and i in (2,3):holes.append(rectangle(u-.45,.45,u+.45,1.43))
@@ -133,7 +133,9 @@ for elevation,frame,width,bays in facades:
             for du in (-.9,.9):holes.append(rectangle(u+du-.49,6.8,u+du+.49,10.25))
         elif not front_face and i==1:
             pass
-        else:holes.append(rectangle(u-1.225,6.8,u+1.225,10.25))
+        else:
+            half=1.225 if front_face else .8
+            holes.append(rectangle(u-half,6.8,u+half,10.25))
     # The front wall owns the shared corner; side masonry starts at its back.
     finish(wall('Envelope '+elevation,width,12.60,holes,start=0 if front_face else .42),mats=[stone],transform=frame)
     finish(wall('Ashlar '+elevation,width,12.60,holes,True),mats=plain,transform=frame)
@@ -143,7 +145,7 @@ for elevation,frame,width,bays in facades:
         box('Trim '+elevation,(width/2,z,dep/2),(width,h,dep),mat=base if z==.15 else plain[1],transform=frame)
     # End-bay turrets have a deep upper shaft and a suspended corbel below.
     tower_positions=[.25,width-.25]
-    tower_positions += [5.55,17.35] if front_face else [5.5,10.7]
+    tower_positions += [5.55,17.35] if front_face else [4.76,8.76]
     for u in tower_positions:
         m=Mesh('Pier tower '+elevation)
         m.box((0,8.95,.17),(.62,6.9,.50))
@@ -162,7 +164,7 @@ for elevation,frame,width,bays in facades:
         crown.ellipsoid((0,.48,0),(.09,.13,.09),segments=12,rings=8)
         instance('crown',lambda:crown,frame@Matrix.Translation((u,13.18,.15)))
     # Upper Ionic pilasters divide the recessed central bays.
-    for u in ([9.775,13.125] if front_face else [17.15,23.1]):
+    for u in ([9.775,13.125] if front_face else [12.4,15.83]):
         m=Mesh('Pier Ionic pilaster')
         m.box((0,8.85,.12),(.42,4.55,.30))
         for z,w,h,d in [(6.5,.64,.16,.39),(6.7,.55,.12,.34),(10.98,.53,.10,.36),(11.18,.71,.16,.43),(11.30,.76,.08,.47)]:
@@ -196,7 +198,7 @@ for elevation,frame,width,bays in facades:
         else:
             instance('upper-window-lord' if front_face else 'upper-window-london',
                      lambda:upper_window('Window cross lord' if front_face else 'Window cross london',
-                                         2.45,3.45,hood_extra=.72 if front_face else 1.02),
+                                         2.45 if front_face else 1.6,3.45,hood_extra=.72 if front_face else 1.02),
                      frame@Matrix.Translation((u,8.525,.04)),mats=M)
             if front_face:
                 box('Trim balcony slab',(u,6.66,.40),(3.15,.18,.94),transform=frame)
@@ -210,7 +212,7 @@ for elevation,frame,width,bays in facades:
                 scroll.vertices=[(x,y*1.4,z) for x,y,z in scroll.vertices]
                 instance('balcony-scroll',lambda:scroll,frame@Matrix.Translation((u,6.75,.80)),mats=[black])
         if not front_face and i==1:continue
-        radius=1.48 if front_face and i in (0,4) else 1.14
+        radius=(1.48 if i in (0,4) else 1.14) if front_face else .73
         bottom=.16 if front_face and i in (1,4) else 1.55
         # Doors and transoms occupy the recess, not a solid wall behind a decal.
         key=f'arch-{radius}-{bottom}'
@@ -247,9 +249,11 @@ for elevation,frame,width,bays in facades:
             # The wall is cut for the recessed metal face, not covered by a box.
             cash_machine(frame@Matrix.Translation((u,.94,0)),finish,metal,black,glass,white,green)
     # Tall gables have genuine oculus holes, layered ring mouldings and foliage.
-    gables=[3.0,width-3.0] if front_face else [8.1]
+    # The London Street gable's shoulders rest on its two flanking towers.
+    gables=[3.0,width-3.0] if front_face else [6.83]
+    spread=1.0 if front_face else .79
     for u in gables:
-        instance('gable',lambda:gable('Gable Dutch silhouette'),frame@Matrix.Translation((u,0,.08)))
+        instance('gable-'+str(spread),lambda:gable('Gable Dutch silhouette',spread),frame@Matrix.Translation((u,0,.08)))
         instance('foliage',lambda:foliage('Ornament oculus foliage'),frame@Matrix.Translation((u,0,.08)),mats=[plain[1]])
         glazing=Mesh('Window oculus')
         glazing.outline([(.65*math.cos(math.tau*j/64),.65*math.sin(math.tau*j/64)) for j in range(64)],-.13,-.10,1)
@@ -258,7 +262,7 @@ for elevation,frame,width,bays in facades:
         for y in (-.21,.21):glazing.box((0,y,-.03),(1.16,.045,.08),2)
         instance('oculus',lambda:glazing,frame@Matrix.Translation((u,14.35,.08)),mats=M)
         instance('finial',lambda:finial('Ornament heraldic finial'),frame@Matrix.Translation((u,19.08,.17)),mats=[plain[1]])
-    spans=[(5.8,17.1)] if front_face else [(.7,5.2),(11.0,width-.65)]
+    spans=[(5.8,17.1)] if front_face else [(.7,4.36),(9.16,width-.65)]
     for a,b in spans:
         count=3 if b-a>7 else 1
         for i in range(count):
@@ -267,7 +271,7 @@ for elevation,frame,width,bays in facades:
             if i<count-1:
                 box('Trim urn pedestal',(a+(i+1)*width_part,12.87,.15),(.38,.7,.45),transform=frame)
                 instance('urn',lambda:urn('Ornament parapet urn'),frame@Matrix.Translation((a+(i+1)*width_part,13.22,.15)),mats=[plain[1]])
-    sign(elevation+' fascia','NatWest',3.2,.58,frame@Matrix.Translation((11.45 if front_face else 8.1,5.66,.09)),False)
+    sign(elevation+' fascia','NatWest',3.2,.58,frame@Matrix.Translation((11.45 if front_face else 6.83,5.66,.09)),False)
     # Projecting purple corner signs face each approach.
     bracket=frame@Matrix.Translation((width-.55 if front_face else .65,4.75,.65))
     bracket=bracket@Matrix.Rotation(math.pi/2,4,'Y')
@@ -307,7 +311,7 @@ for i,(x,y,w,d,h,pots) in enumerate([(20.5,yf-3.8,.95,.85,18.0,1),(29.0,yr,1.25,
         m=Mesh('Fine chimney pot')
         m.lathe((x+(j-(pots-1)/2)*.38,y),[(z0+h+.08,.14),(z0+h+.18,.16),(z0+h+.53,.13),(z0+h+.59,.17)],segments=16)
         finish(m,'roof',[plain[1]])
-for x,y in [(24,-39),(26,-46)]:box('Roof estimated service upstand',(x,y,z0+10.55),(1.2,1.8,.45),'roof',lead)
+for x,y in [(24,-39),(26,-35.5)]:box('Roof estimated service upstand',(x,y,z0+10.55),(1.2,1.8,.45),'roof',lead)
 # The narrow frontage gap belongs to this boundary, not to Posting House.
 length=math.hypot(30.4-33.12,-23.16+22.8)
 ux,uy=(30.4-33.12)/length,(-23.16+22.8)/length

@@ -126,11 +126,13 @@ def arched_window(name,radius=1.2,bottom=1.4,spring=3.7,large=False):
     return m
 
 
-def gable(name):
+def gable(name,spread=1.0):
     m=Mesh(name)
     # Steep curved shoulders lead to a narrow terminal aedicule, not a triangle.
-    side=[(2.82,12.55),(2.55,13.35),(2.15,14.10),(1.70,14.85),
-          (1.25,15.65),(.92,16.35),(.76,17.05),(.72,18.18)]
+    # Spread narrows only the lower shoulders; the oculus and aedicule keep size.
+    side=[(x*spread if y<16 else x,y) for x,y in
+          [(2.82,12.55),(2.55,13.35),(2.15,14.10),(1.70,14.85),
+           (1.25,15.65),(.92,16.35),(.76,17.05),(.72,18.18)]]
     outline=[(-x,y) for x,y in reversed(side)]+side
     hole=[(.68*math.cos(math.tau*i/48),14.35+.68*math.sin(math.tau*i/48)) for i in range(48)]
     # Triangulate the concave shoulder before convex clipping around the oculus.
@@ -141,7 +143,7 @@ def gable(name):
     for sign in (-1,1):
         m.tube([(sign*x,y,.16) for x,y in side],.115,sides=8)
     for y in (12.65,13.25,15.55,16.45):
-        w=5.20 if y<13.5 else 2.75 if y<16 else 1.65
+        w=5.20*spread if y<13.5 else 2.75*spread if y<16 else 1.65
         m.box((0,y,.17),(w,.10,.20))
     for r,out in [(.71,.22),(.82,.18),(.91,.15)]:arc(m,0,14.35,r,r+.075,0,math.tau,out=out,depth=.15,steps=64)
     m.box((0,17.42,.16),(1.07,1.40,.30))

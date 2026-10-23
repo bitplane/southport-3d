@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "southport.london-street.east-side-placeholders",
+  "name": "London Street east side — placeholder massing",
+  "region": "southport",
+  "area": "london-street",
+  "status": "placeholder-massing-mapped-footprints-estimated-heights",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "footprint-boxes"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Context boxes for the buildings between NatWest and Anchor Street on London Street's east side. Mapped footprints, estimated eaves heights; no roofs, openings or signage. Each box is to be replaced by a real building asset."
+}

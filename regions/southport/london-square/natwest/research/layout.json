@@ -7,7 +7,7 @@
   "x_min": 7.5,
   "x_max": 30.4,
   "front_y": -23.16,
-  "rear_y": -52.1,
+  "rear_y": -42.66,
   "base_z": 0.58,
   "first_floor": 6.15,
   "cornice": 12.2,
@@ -21,13 +21,13 @@
     19.9
   ],
   "side_bays": [
-    2.7,
-    8.1,
-    14.2,
-    20.1,
-    26.1
+    2.95,
+    6.83,
+    10.69,
+    14.1,
+    17.55
   ],
-  "registration": "OSM way 371741580 interpreted as bank footprint; small obliquity simplified to project axes. Main facade width22.9m and return28.94m from mapped footprint. Heights, projections and individual bay sizes visually calibrated, not surveyed.",
+  "registration": "OSM way 371741580 fixes the corner, Lord Street line and 22.9m frontage; small obliquity simplified to project axes. That way's 28.94m London Street depth also covers the adjoining mock-Tudor building: Google's map outline (18.7m), Google satellite parapet (19.6m) and a near-frontal May2011 Street View scaled from the camera geometry (19.3-20.4m) give a 19.5m return. Heights, projections and individual bay sizes visually calibrated, not surveyed.",
   "evidence": "Unobstructed Commons front and London Street photographs September2021, wider oblique Commons image and user-supplied Street View tracks. Sculptural carving is interpreted geometry, not a scan; hidden rear/party elevations remain estimated.",
   "roof_ranges": {
     "front_depth": 8.6,
@@ -37,5 +37,6 @@
     "corner_saddle_depth": 3.2,
     "corner_saddle_height": 14.4,
     "evidence": "Close Google satellite aerial inspected2026-10-22: broader London Street hip, narrower Lord Street range, short corner saddle. Widths/pitches are visually calibrated estimates, not measured or surveyed."
-  }
+  },
+  "london_elevation": "Bay, tower, gable and opening positions measured as fractions of the return in the near-frontal May2011 Street View (pano UobTWVKYCf-YxcK1OBgnNA, heading 46): corner arch .15, towers .24/.45, niche bay .35, arched bays .55/.72/.90. Arches about 1.45m and upper lights about 1.6m wide; the gable spans the two towers. Heights unchanged."
 }
