@@ -64,10 +64,32 @@ def wall(name,poly,holes,thickness=.48):
 def arch_ring(mesh, radius, bottom, spring, width=.15, out=.12, depth=.25, cx=0, material=0, steps=18, sill=True):
     inner=pointed(radius,bottom,spring,cx,steps)
     outer=pointed(radius+width,bottom-width if sill else bottom,spring,cx,steps)
-    for i in range(len(inner)):
-        if i==0 and not sill: continue
-        j=(i+1)%len(inner)
-        mesh.outline([inner[i],outer[i],outer[j],inner[j]],out-depth,out,material)
+    # One continuous annular shell, without internal caps between curve sectors.
+    n=len(inner);vertices=[(x,y,z) for z in (out-depth,out) for loop in (inner,outer) for x,y in loop]
+    faces=[]
+    for i in range(0 if sill else 1,n):
+        j=(i+1)%n
+        faces.extend([(i,j,n+j,n+i),(2*n+i,3*n+i,3*n+j,2*n+j),
+                      (i,2*n+i,2*n+j,j),(n+i,n+j,3*n+j,3*n+i)])
+    if not sill:
+        faces.extend([(0,2*n,3*n,n),(1,n+1,3*n+1,2*n+1)])
+    mesh.add(vertices,faces,material)
+
+
+def joined_tracery(parts):
+    """Exact union of the overlapping inner arches and common mullions."""
+    import bpy
+    objects=[part.finish([]) for part in parts];body=objects[0]
+    for piece in objects[1:]:
+        bpy.context.view_layer.objects.active=body
+        mod=body.modifiers.new('Shared tracery stone','BOOLEAN')
+        mod.operation='UNION';mod.solver='EXACT';mod.object=piece
+        bpy.context.view_layer.update();bpy.ops.object.modifier_apply(modifier=mod.name)
+        data=piece.data;bpy.data.objects.remove(piece,do_unlink=True);bpy.data.meshes.remove(data)
+    mesh=Mesh('Joined inner tracery')
+    mesh.add([tuple(v.co) for v in body.data.vertices],[tuple(p.vertices) for p in body.data.polygons])
+    data=body.data;bpy.data.objects.remove(body,do_unlink=True);bpy.data.meshes.remove(data)
+    return mesh
 
 
 def circle_band(mesh, x, y, radius, width=.07, out=.05, depth=.13, steps=32, material=0):
@@ -83,7 +105,7 @@ def circle_band(mesh, x, y, radius, width=.07, out=.05, depth=.13, steps=32, mat
 def foil(mesh,x,y,radius,lobes=4,out=.10,width=.045,material=0):
     pts=[]
     steps=max(4,round(16*CURVE_SCALE))
-    for i in range(lobes*steps+1):
+    for i in range(lobes*steps):
         a=math.tau*i/(lobes*steps)
         # Envelope of overlapping circular lobes, not a pointed star wave.
         candidates=[]
@@ -93,7 +115,19 @@ def foil(mesh,x,y,radius,lobes=4,out=.10,width=.045,material=0):
             candidates.append(projection+math.sqrt((.55*radius)**2-(.45*radius)**2+projection**2))
         r=max(candidates)
         pts.append((x+r*math.cos(a),y+r*math.sin(a),out))
-    mesh.tube(pts,width,sides=max(4,round(6*CURVE_SCALE)),material=material)
+    # Periodic section frames close the foil without two intersecting end rings.
+    from mathutils import Vector
+    pts=[Vector(p) for p in pts];sides=max(4,round(6*CURVE_SCALE));vertices=[];faces=[]
+    for i,p in enumerate(pts):
+        tangent=(pts[(i+1)%len(pts)]-pts[i-1]).normalized()
+        side=tangent.cross(Vector((0,0,1))).normalized();other=tangent.cross(side).normalized()
+        for j in range(sides):
+            a=math.tau*j/sides
+            vertices.append(p+width*(side*math.cos(a)+other*math.sin(a)))
+    for i in range(len(pts)):
+        for j in range(sides):
+            faces.append((i*sides+j,i*sides+(j+1)%sides,((i+1)%len(pts))*sides+(j+1)%sides,((i+1)%len(pts))*sides+j))
+    mesh.add(vertices,faces,material)
 
 
 def window_surround(name,radius,bottom,spring,lights=3,style=0,louvres=False):
@@ -105,12 +139,16 @@ def window_surround(name,radius,bottom,spring,lights=3,style=0,louvres=False):
     arch_ring(mesh,radius+.32,bottom+.24,spring,.075,.26,.12,sill=False)
     lightwidth=2*radius/lights
     tracerybase=spring-.45
+    tracery=[]
     for i in range(1,lights):
         x=-radius+i*lightwidth
-        mesh.box((x,(bottom+tracerybase)/2,.015),(.11,tracerybase-bottom,.23))
+        piece=Mesh('Temporary tracery mullion')
+        piece.box((x,(bottom+tracerybase)/2,.015),(.11,tracerybase-bottom,.23));tracery.append(piece)
     for i in range(lights):
         x=-radius+(i+.5)*lightwidth
-        arch_ring(mesh,lightwidth*.43,bottom,tracerybase,.065,.06,.16,cx=x,steps=12,sill=False)
+        piece=Mesh('Temporary tracery arch')
+        arch_ring(piece,lightwidth*.43,bottom,tracerybase,.065,.06,.16,cx=x,steps=12,sill=False);tracery.append(piece)
+    joined=joined_tracery(tracery);mesh.add(joined.vertices,joined.faces)
     cy=spring+radius*.95
     if lights==3:
         foil(mesh,0,cy,radius*.39,3 if style%2 else 4,out=.09,width=.055)

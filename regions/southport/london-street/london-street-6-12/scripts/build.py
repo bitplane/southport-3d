@@ -207,7 +207,14 @@ finish(mesh, materials=[black, rust], transform=side)
 finish(eave_return(D,'Envelope south eaves wedge',(D['upper_rear_x'],ys),(xf-.36,ys),
                    (0,.36),D['rear_eaves_height']-.15))
 # The neighbouring stair wells interrupt the party line behind number six.
-finish(party_return(D))
+north_return=finish(party_return(D))
+# Front masonry owns its corner volume; preserve the party wall's roof wedge
+# above the eave and its separate ground-floor return below the shop fascia.
+bpy.context.view_layer.objects.active=north_return
+mod=north_return.modifiers.new('Front wall corner ownership','BOOLEAN')
+mod.operation='DIFFERENCE';mod.solver='EXACT';mod.use_self=True
+mod.object=bpy.data.objects['Envelope London Street brick wall']
+bpy.context.view_layer.update();bpy.ops.object.modifier_apply(modifier=mod.name)
 rx=D['ridge_x'];ry=D['ridge_end_y'];ze=base+D['eaves_height']
 zr=base+D['ridge_height'];zb=base+D['rear_eaves_height']
 build_roof(D,lambda mesh:finish(mesh,'roof',[slate],roof_uv=True))
@@ -269,7 +276,7 @@ for name,ya,yb,height,x,n in [('rooflight wing',-55.7,rear_north,3.85,xr,1),
             m.box((-window_w/2+.06+k*(window_w-.12)/9,0,.11),(.021,window_h+.05,.03),0)
         finish(m,'rear',[white,black,glass,sill],frame@Matrix.Translation((u,window_z,0)))
     if name=='rooflight wing':
-        box('Envelope '+name+' side',((xr-24.8)/2,ya+.14,base+height/2),(-24.8-xr,.28,height),part='rear')
+        box('Envelope '+name+' side',((xr+.36-24.8)/2,ya+.14,base+height/2),(-24.8-xr-.36,.28,height),part='rear')
     # Keep concealed deck end inside the full-height Glebe wall, not coplanar
     # with its exterior face (which otherwise exposes a black horizontal line).
     # The two south decks abut exactly over the yard return.

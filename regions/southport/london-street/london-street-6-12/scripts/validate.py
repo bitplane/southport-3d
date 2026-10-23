@@ -137,3 +137,26 @@ origin=sign.matrix_world@Vector((.30,.18,1))
 direction=sign.matrix_world.to_3x3()@Vector((0,0,-1))
 hit,p,n,i,found,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
 assert hit and found==sign,('Retail sign obscured by soffit',found.name if hit else None)
+
+# Front/party and rear rooflight-wing corners have no shared exposed faces.
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+for names in [('Envelope London Street brick wall','Envelope stepped northern party wall'),
+              ('Envelope rooflight wing','Envelope rooflight wing side')]:
+ triangles=[];labels=[]
+ for name in names:
+  ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+  for t in ob.data.loop_triangles:
+   triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
+ assert not [hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]],names
+party=bpy.data.objects['Envelope stepped northern party wall']
+bm=bmesh.new();bm.from_mesh(party.data)
+assert all(e.is_manifold for e in bm.edges),'Open party wall after front notch'
+bm.free()
+# A blanket shortening would remove this narrow wedge above the frontage eave.
+x=D['front_x']-.35;top=roof_height(D,x,D['north_y']-.14)-.14
+eave=D['base_z']+D['eaves_height']
+assert top>eave
+hit,p,n,i=party.ray_cast(Vector((x,D['north_y']+.3,(top+eave)/2)),Vector((0,-1,0)),distance=1)
+assert hit,'Missing party-wall wedge above frontage eave'
+print('Front notch retains roof wedge; front and rooflight-wing corners are clear')

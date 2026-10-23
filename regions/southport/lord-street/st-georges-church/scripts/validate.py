@@ -76,3 +76,52 @@ for u in [D['tower_width']/2-1.14,D['tower_width']/2+1.14]:
  hit,p,n,i=back.ray_cast(back.matrix_world.inverted()@origin,(back.matrix_world.inverted().to_3x3()@direction).normalized(),distance=2)
  assert hit,'Invented rear belfry aperture'
 assert len([o for o in mesh if o.name.startswith('Buttress weathering')])==12
+
+# The repeated nave/bell tracery must not contain coincident front/back jambs.
+import os,sys
+sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
+from coplanar import overlaps
+from components import arch_ring,foil
+from southport3d.geometry import Mesh
+seen=set()
+for ob in mesh:
+ if not ob.name.startswith(('Window stone nave','Window stone bell','Window stone front-flank')) or ob.data.name in seen:continue
+ seen.add(ob.data.name);ob.data.calc_loop_triangles()
+ triangles=[[tuple(ob.data.vertices[i].co) for i in t.vertices] for t in ob.data.loop_triangles]
+ assert not overlaps(triangles,[ob.name]*len(triangles),min_area=1e-5),ob.name
+# Open-bottom arch strips still need closed end caps; closed foils need no seam caps.
+for kind in ('arch-with-sill','arch-open-bottom','foil'):
+ m=Mesh('Regression '+kind)
+ if kind=='foil':foil(m,0,0,.32,4)
+ else:arch_ring(m,.825,2.45,5.75,sill=kind=='arch-with-sill')
+ ob=m.finish([]);bm=bmesh.new();bm.from_mesh(ob.data)
+ assert all(e.is_manifold and e.is_contiguous for e in bm.edges),(kind,'Open or inverted profile')
+ assert bm.calc_volume(signed=True)>0,(kind,'Inward profile')
+ bm.free();data=ob.data;bpy.data.objects.remove(ob,do_unlink=True);bpy.data.meshes.remove(data)
+print('Repeated tracery has no coplanar overlaps; arch and foil shells are closed')
+
+# The enlarged wall apertures stop behind the stone surrounds without removing
+# the narrow visible wall strip between the first and second moulding orders.
+wall_names=('Envelope nave south','Envelope nave north','Envelope front gable',
+            'Envelope tower front','Envelope tower south','Envelope tower north')
+wall_objects=[bpy.data.objects[n] for n in wall_names];ownership_probes=0
+for ob in mesh:
+ if ob.name.startswith('Window stone nave'):radius,bottom=.825,2.45
+ elif ob.name.startswith('Window stone front-flank'):radius,bottom=.94,5.25
+ elif ob.name.startswith('Window stone bell'):radius,bottom=.89,15.45
+ else:continue
+ outward=(ob.matrix_world.to_3x3()@Vector((0,0,1))).normalized()
+ candidates=[w for w in wall_objects if (w.matrix_world.to_3x3()@Vector((0,0,1))).normalized().dot(outward)>.999 and abs((w.matrix_world.inverted()@ob.matrix_world.translation).z)<1e-4]
+ assert len(candidates)==1,(ob.name,'Missing coplanar wall owner')
+ wall=candidates[0];inverse=wall.matrix_world.inverted();direction=(inverse.to_3x3()@(-outward)).normalized()
+ for sign in (-1,1):
+  point=ob.matrix_world@Vector((sign*(radius+.08),bottom+.6,1))
+  assert not wall.ray_cast(inverse@point,direction,distance=2)[0],(ob.name,'Masonry inside surround')
+  point=ob.matrix_world@Vector((sign*(radius+.175),bottom+.6,1))
+  assert wall.ray_cast(inverse@point,direction,distance=2)[0],(ob.name,'Missing wall between mouldings')
+  point=ob.matrix_world@Vector((sign*(radius+.08),bottom+.6,1))
+  hit,p,n,i,target,matrix=bpy.context.scene.ray_cast(deps,point,-outward,distance=2)
+  assert hit and target==ob,(ob.name,'Surround failed to cover wall opening',target.name if hit else None)
+ ownership_probes+=1
+assert ownership_probes==18
+print('18 window surrounds cover their wall apertures; inter-order wall strips retained')

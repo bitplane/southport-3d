@@ -43,10 +43,11 @@ louvre=material('Weathered bell louvres',(.18,.19,.17))
 black=material('Belfry dark recess',(.022,.025,.022))
 
 
-def finish(mesh,part='nave',mats=None,transform=None):
+def finish(mesh,part='nave',mats=None,transform=None,authored_winding=False):
     ob=mesh.finish(mats or [stone],collections[part])
     bm=bmesh.new();bm.from_mesh(ob.data)
-    bmesh.ops.triangulate(bm,faces=list(bm.faces));bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+    bmesh.ops.triangulate(bm,faces=list(bm.faces))
+    if not authored_winding:bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
     bm.to_mesh(ob.data);bm.free();ob.data.update()
     uv=ob.data.uv_layers.new(name='Metric surfaces')
     for face in ob.data.polygons:
@@ -104,8 +105,9 @@ for name,origin,normal,length in [('south',(xl,front,base),(-1,0,0),front-rear),
     # Keep the five bays inside the researched nave span, with real clearance
     # between the window hood mould and each buttress.
     radius=min(1.35,(length/5-.92-.79-.10)/2)
-    holes=[pointed(radius,2.45,5.75,u) for u in centres]
-    finish(wall('Envelope nave '+name,rectangle(0,0,length,eave),holes),transform=frame)
+    # Masonry ends at the outer primary surround, not at the glass aperture.
+    holes=[pointed(radius+.16,2.45-.16,5.75,u) for u in centres]
+    finish(wall('Envelope nave '+name,rectangle(0,0,length,eave),holes),transform=frame,authored_winding=True)
     for i,u in enumerate(centres):arch_window('nave-'+str(int(i==2)),radius,2.45,5.75,frame@Matrix.Translation((u,0,0)),style=int(i==2))
     for i in range(6):
         u=i*length/5
@@ -148,8 +150,8 @@ for name,origin,normal,length in [('south',(xl,front,base),(-1,0,0),front-rear),
 ff=face_matrix((xr,front,base),(0,1,0))
 front_poly=[(0,0),(width,0),(width,eave),(width/2,ridge),(0,eave)]
 holes=[rectangle(width/2-tw/2-.01,0,width/2+tw/2+.01,ridge+.1)]
-for u in (3.1,width-3.1):holes += [pointed(.86,.15,2.55,u),pointed(.94,5.25,7.6,u)]
-finish(wall('Envelope front gable',front_poly,holes),transform=ff)
+for u in (3.1,width-3.1):holes += [pointed(.86,.15,2.55,u),pointed(.94+.16,5.25-.16,7.6,u)]
+finish(wall('Envelope front gable',front_poly,holes),transform=ff,authored_winding=True)
 for u in (3.1,width-3.1):
     arch_window('front-flank',.94,5.25,7.6,ff@Matrix.Translation((u,0,0)),lights=2)
     doorway=Mesh('Door flank moulding')
@@ -255,10 +257,10 @@ for name,frame,length in tower_frames:
         for dx in (-.77,.77):holes.append(pointed(.57,5.6,7.7,length/2+dx))
         holes.append([(length/2+.67*math.cos(a*math.tau/32),2.85+.67*math.sin(a*math.tau/32)) for a in range(32)])
     if name!='back':
-        for u in (length/2-1.14,length/2+1.14):holes.append(pointed(.89,15.45,18.75,u))
+        for u in (length/2-1.14,length/2+1.14):holes.append(pointed(.89+.16,15.45-.16,18.75,u))
     # Rear wall closes the notched roof junction; no invented rear belfry windows.
     poly=rectangle(0,0,length,22.2)
-    finish(wall('Envelope tower '+name,poly,holes,.50),'tower',transform=frame)
+    finish(wall('Envelope tower '+name,poly,holes,.50),'tower',transform=frame,authored_winding=True)
     if name in ('south','north'):
         for dx in (-.77,.77):
             af=frame@Matrix.Translation((length/2+dx,0,0))
