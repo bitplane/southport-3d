@@ -95,3 +95,17 @@ for v in side.data.vertices:
     if p.z<6:continue
     hit,top,n,i=roof.ray_cast(Vector((p.x-.01,p.y,20)),Vector((0,0,-1)),distance=20)
     assert hit and p.z<=top.z-.159, ('Wall penetrates roof shell',tuple(p),top.z if hit else None)
+
+# Rear elevation corners have one owner, including their exposed end caps.
+import os,sys
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+triangles=[];labels=[]
+for name in ('Envelope rear cross gable','Envelope cafe west return','Envelope rear long wall'):
+    ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+    for t in ob.data.loop_triangles:
+        triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
+# The full published audit also retains sub-0.0001 m² export slivers.
+errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+assert not errors,errors[:8]
+print('Rear hall corner surface ownership passed')

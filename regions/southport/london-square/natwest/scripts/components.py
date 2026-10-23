@@ -103,8 +103,13 @@ def low_side_window(name, width=.96, height=2.15):
     return m
 
 
-def arched_window(name,radius=1.2,bottom=1.4,spring=3.7,large=False):
+def arched_window(name,radius=1.2,bottom=1.4,spring=3.7,large=False,outer_limit=None):
     m=Mesh(name);r=radius
+    def moulding(inner,outer,*angles,**kwargs):
+        # A surrounding entrance hood owns everything beyond its inner radius.
+        # Keep the smaller window mouldings only where they remain exposed.
+        if outer_limit is not None:outer=min(outer,outer_limit)
+        if outer>inner:arc(m,0,spring,inner,outer,*angles,**kwargs)
     m.outline(arch_outline(0,bottom,spring,r),-.30,-.24,1)
     if radius < 1.4 and bottom > 1:
         m.outline([(r*math.cos(math.pi*i/32),spring+r*math.sin(math.pi*i/32)) for i in range(33)],-.235,-.22,2)
@@ -115,13 +120,13 @@ def arched_window(name,radius=1.2,bottom=1.4,spring=3.7,large=False):
         for z in (bottom-.08,spring):m.box((x,z,.15),(.40,.14,.36))
     m.box((0,bottom-.13,.12),(2*r+.6,.17,.40))
     m.box((0,spring,-.10),(2*r,.09,.14),2)
-    arc(m,0,spring,r,r+.14,out=.15)
-    arc(m,0,spring,r+.18,r+.29,out=.20)
-    if large:arc(m,0,spring,r+.34,r+.48,out=.30)
+    moulding(r,r+.14,out=.15)
+    moulding(r+.18,r+.29,out=.20)
+    if large:moulding(r+.34,r+.48,out=.30)
     # Radial joints and alternating recessed voussoirs remain real profiles.
     for i in range(13):
         a=math.pi*i/13+.016;b=math.pi*(i+1)/13-.016
-        arc(m,0,spring,r+.15,r+.30,a,b,out=.18,steps=3)
+        moulding(r+.15,r+.30,a,b,out=.18,steps=3)
     m.outline([(-.13,spring+r-.14),(.13,spring+r-.14),(.23,spring+r+.47),(-.23,spring+r+.47)],.10,.36)
     return m
 

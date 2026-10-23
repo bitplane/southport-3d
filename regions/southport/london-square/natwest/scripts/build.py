@@ -215,8 +215,9 @@ for elevation,frame,width,bays in facades:
         radius=(1.48 if i in (0,4) else 1.14) if front_face else .73
         bottom=.16 if front_face and i in (1,4) else 1.55
         # Doors and transoms occupy the recess, not a solid wall behind a decal.
-        key=f'arch-{radius}-{bottom}'
-        instance(key,lambda r=radius,b=bottom:arched_window('Window arch',r,b,3.85,r>1.4),frame@Matrix.Translation((u,0,.04)),mats=M)
+        outer_limit=1.75 if front_face and i==4 else None
+        key=f'arch-{radius}-{bottom}-{outer_limit}'
+        instance(key,lambda r=radius,b=bottom,limit=outer_limit:arched_window('Window arch',r,b,3.85,r>1.4,outer_limit=limit),frame@Matrix.Translation((u,0,.04)),mats=M)
         if front_face and i in (1,4):
             box('Door recessed '+str(i),(u,1.94 if i==1 else 1.71,-.17),(radius*2-.08,2.68 if i==1 else 3.1,.08),'bank-frontage',black if i==1 else white,frame)
             for du in (-radius*.48,radius*.48):

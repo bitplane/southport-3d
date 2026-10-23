@@ -161,3 +161,19 @@ for level in ['detail','walk','district']:
         assert top-edge>.05,(level,'K6 roof became a barrel or flat cap')
 assert counts[0]>counts[1]>counts[2],counts
 print('K6 roof, glazing, solid back and LOD reductions checked',counts)
+
+# The larger entrance hood replaces the outer window arch moulding.
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+hood=bpy.data.objects['Trim main entrance hood']
+# Find its colocated arched opening by frame origin, not Blender suffix order.
+arch=min((o for o in meshes if o.name.startswith('Window arch')),
+         key=lambda o:(o.matrix_world.translation-hood.matrix_world.translation).length)
+triangles=[];labels=[]
+for ob in (hood,arch):
+    ob.data.calc_loop_triangles()
+    for t in ob.data.loop_triangles:
+        triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(ob.name)
+errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+assert not errors,errors[:8]
+print('Entrance hood/window moulding ownership passed')

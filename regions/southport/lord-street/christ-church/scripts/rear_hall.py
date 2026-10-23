@@ -58,7 +58,9 @@ def build_rear(ctx):
     frame=face_matrix((x0,y0,base),(0,-1,0));width=x1-x0
     centres=[1.9+i*(width-3.8)/5 for i in range(6)]
     holes=[rect(u-.72,2.05,u+.72,5.55) for u in centres]
-    finish(wall('Envelope rear long wall',rect(0,0,width,eave),holes,.32),'modern-hall',[brick],frame)
+    # The gable and cafe return own the corner thickness. Stop the long wall
+    # at their inner faces so their exposed end caps are not drawn twice.
+    finish(wall('Envelope rear long wall',rect(.32,0,width-.30,eave),holes,.32),'modern-hall',[brick],frame)
     for u in centres:
         m=Mesh('Window modern rear side');m.box((u,3.8,-.19),(1.44,3.5,.06),0)
         for dx in (-.76,.76):m.box((u+dx,3.8,.02),(.10,3.65,.14),1)
