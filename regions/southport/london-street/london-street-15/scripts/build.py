@@ -48,7 +48,7 @@ plaster = material('Lime-white plaster infill', (.80, .80, .77), roughness=.9)
 timber = material('Black stained timber', (.028, .027, .03), roughness=.6)
 render = material('Pale painted shop render', (.74, .75, .73), roughness=.85)
 sage = material('Sage grey shop joinery', (.46, .49, .42), roughness=.55)
-glass = material('Exterior glass', (.10, .14, .16), roughness=.2)
+glass = material('Exterior glass', (.24, .28, .28), roughness=.38)
 lead = material('Lead cames', (.09, .095, .10), roughness=.5)
 shadow = material('Recess shadow', (.02, .022, .025))
 tiles = material('Dark stall riser tiles', (.20, .21, .23), roughness=.35)
@@ -78,6 +78,7 @@ EAVE = TIE + .25                 # top of tie beam = main side eaves
 RIDGE = D['ridge_height']
 PITCH = (RIDGE - EAVE) / UC
 HB = RIDGE - PITCH * (UC - BAY)  # main roof edge against the bay strip
+SILL = D['window_sill']
 BURY = D['bury_z'] - B           # buried wall bottom, local height
 
 
@@ -188,12 +189,23 @@ def leaded(name, frame, u0, u1, h0, h1, lights, part='architecture'):
         m.box((0, transom, -.01), (w - .09, .07, .1), 0)
     for i in range(lights):
         left = -w / 2 + .045 + i * light
-        count = max(2, round(light / .15))
+        count = max(2, round(light / .12))
         for j in range(1, count):
             m.box((left + light * j / count, 0, -.08), (.012, hh - .1, .012), 1)
-    rows = max(3, round((hh - .1) / .18))
+    rows = max(3, round((hh - .1) / .14))
     for j in range(1, rows):
         m.box((0, -hh / 2 + .05 + (hh - .1) * j / rows, -.08), (w - .1, .012, .012), 1)
+    if hh>1:
+        # Repeated shallow ogee heads in the upper lights; keep this inside the
+        # same Window object so distant receivers bake its actual silhouette.
+        for i in range(lights):
+            left=-w/2+.045+i*light
+            count=max(3,round(light/.12))
+            for j in range(count):
+                x0=left+j*light/count;x1=left+(j+1)*light/count
+                for drop in (.17,.25):
+                    pts=[(x0+(x1-x0)*k/8,hh/2-drop+.035*math.sin(k*math.pi/8),-.065) for k in range(9)]
+                    m.tube(pts,.007,1,sides=4)
     key = (round(w, 3), round(hh, 3), lights)
     obj = finish(m, part, [timber, lead, glass, shadow],
                  frame @ Matrix.Translation(((u0 + u1) / 2, (h0 + h1) / 2, 0)))
@@ -236,34 +248,45 @@ outline += [(W, spring), (W, SHOP), (BAY, SHOP)]
 shop.poly(outline, -.36, 0)
 shop.done()
 
-frames = Group('Shop arched frames', FS, [sage, glass, tiles, door, shadow], 'shopfront')
-for i, (a, b) in enumerate(arches):
-    mid = (a + b) / 2
-    outer = arc(a, b, spring, rise)
-    inner = arc(a, b, spring, rise, .09)
-    frames.poly(outer + inner[::-1], -.16, -.05)
-    frames.poly([(a, spring)] + outer[1:-1] + [(b, spring)], -.14, -.12, 1)
-    for u in (a, b - .08):
-        frames.box(u, u + .08, .45, spring, -.16, -.05)
-    frames.box(a, b, spring - .05, spring + .05, -.16, -.05)
-    frames.box(a, b, .45, .53, -.17, -.04)
-    if i == 1:
-        # Central entrance: glazed door between narrow sidelights.
-        for u in (mid - .52, mid + .44):
-            frames.box(u, u + .08, 0, spring, -.24, -.05)
-        frames.box(mid - .44, mid + .44, 0, .04, -.26, -.05, 2)
-        frames.box(mid - .44, mid + .44, .05, spring - .05, -.24, -.22, 3)
-        frames.box(mid - .34, mid + .34, .25, spring - .25, -.22, -.21, 1)
-        frames.box(mid - .44, mid + .44, 0, spring, -.30, -.28, 4)
-        for u0, u1 in ((a + .08, mid - .52), (mid + .52, b - .08)):
-            frames.box(u0, u1, BURY, .45, -.36, -.10, 2)
-            frames.box(u0, u1, .53, spring - .05, -.14, -.12, 1)
-        frames.box(mid - .52, mid - .44, .45, .53, -.24, -.05)
+frames=Group('Shop arched frames',FS,[sage,glass,tiles,shadow],'shopfront')
+for i,(a,b) in enumerate(arches):
+    mid=(a+b)/2
+    outer=arc(a,b,spring,rise);inner=arc(a,b,spring,rise,.09)
+    frames.poly(outer+inner[::-1],-.16,-.05)
+    frames.poly(arc(a,b,spring,rise,.025)+arc(a,b,spring,rise,.045)[::-1],-.05,-.025)
+    # One continuous arched glass receiver prevents slivers between the lower
+    # rectangles and fanlight, including the zones over the entry jambs.
+    bottom=0 if i==1 else .45
+    frames.poly([(a+.08,bottom),(b-.08,bottom)]+inner[::-1],-.24,-.22,1)
+    for u in (a,b-.08):frames.box(u,u+.08,.45,spring,-.16,-.05)
+    frames.box(a,b,1.70,1.80,-.16,-.05)
+    if i==1:
+        left,right=mid-.44,mid+.44
+        for u in (left-.08,right):frames.box(u,u+.08,0,1.70,-.16,-.05)
+        frames.box(left,right,0,.12,-.16,-.05)
+        frames.box(left,right,.12,1.70,-.13,-.11,1)
+        frames.box(left-.08,right+.08,BURY,.04,-.40,.02,2)
+        frames.box(right-.12,right-.095,.88,1.08,-.045,-.005)
+        for u0,u1 in ((a,left-.08),(right+.08,b)):
+            frames.box(u0,u1,BURY,.45,-.36,-.10,2)
+            frames.box(u0,u1,.45,.53,-.17,-.04)
     else:
-        frames.box(a, b, BURY, .45, -.36, -.10, 2)
-        frames.box(a + .08, b - .08, .53, spring - .05, -.14, -.12, 1)
-        frames.box(mid - .03, mid + .03, .53, spring - .05, -.16, -.06)
+        frames.box(a,b,BURY,.45,-.36,-.10,2)
+        frames.box(a,b,.45,.53,-.17,-.04)
+        frames.box(mid-.03,mid+.03,.53,1.70,-.16,-.06)
 frames.done()
+
+# Documented Love To Eat frontage, matching the supplied 2020-era views.
+from southport3d.geometry import text_object
+font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf')
+lettering=material('Historic cafe lettering',(.055,.095,.16))
+txt=text_object('Temporary cafe lettering','LOVE · TO · EAT',(0,0,0),(0,0,1),.10,1.25,font,lettering,extrude=.006)
+bpy.ops.object.select_all(action='DESELECT');txt.select_set(True);bpy.context.view_layer.objects.active=txt
+bpy.ops.object.convert(target='MESH')
+m=Mesh('Fine historical cafe lettering')
+m.add([tuple(txt.matrix_world@v.co) for v in txt.data.vertices],[tuple(f.vertices) for f in txt.data.polygons])
+bpy.data.objects.remove(txt,do_unlink=True)
+finish(m,'shopfront',[lettering],FS@Matrix.Translation(((BAY+W)/2,3.075,.012)))
 
 # North entrance bay: gated porch with a panelled door at its back.
 porch = Group('Shop entrance porch', FS, [render, tiles, door, glass, timber], 'shopfront')
@@ -317,14 +340,15 @@ brackets.done()
 top = 6.35
 # Equal front-facing oriels; the right bay has one visible canted return light.
 wall('first floor north bay',FB,0,BAY,SHOP+.27,TIE)
-wall('first floor left oriel',FG,BAY,CANT0,SHOP+.27,TIE,[(LW[0],LW[1],4.92,top)])
-wall('first floor left return',FL,0,LL,SHOP+.27,TIE)
+wall('first floor left oriel',FG,BAY,CANT0,SHOP+.27,TIE,[(LW[0],LW[1],SILL,top)])
+wall('first floor left return',FL,0,LL,SHOP+.27,TIE,[(CL[0],CL[1],SILL,top)])
 wall('first floor centre recess',FC,0,LC,SHOP+.27,TIE)
-wall('first floor right return',FCR,0,LCR,SHOP+.27,TIE,[(CL[0],CL[1],4.92,top)])
-wall('first floor right',FR,CANT1,W,SHOP+.27,TIE,[(RW[0],RW[1],4.92,top)])
-leaded('first floor left',FG,LW[0],LW[1],4.92,top,LW[2])
-leaded('first floor right return',FCR,CL[0],CL[1],4.92,top,1)
-leaded('first floor right',FR,RW[0],RW[1],4.92,top,RW[2])
+wall('first floor right return',FCR,0,LCR,SHOP+.27,TIE,[(CL[0],CL[1],SILL,top)])
+wall('first floor right',FR,CANT1,W,SHOP+.27,TIE,[(RW[0],RW[1],SILL,top)])
+leaded('first floor left',FG,LW[0],LW[1],SILL,top,LW[2])
+leaded('first floor left return',FL,CL[0],CL[1],SILL,top,1)
+leaded('first floor right return',FCR,CL[0],CL[1],SILL,top,1)
+leaded('first floor right',FR,RW[0],RW[1],SILL,top,RW[2])
 # Close the short step between the recessed entrance bay and left oriel.
 step,stepwidth=plane((FX-.2,YN-BAY),(FX-ZL,YN-BAY))
 wall('first floor oriel north cheek',step,0,stepwidth,SHOP+.27,TIE,depth=.05)
@@ -334,48 +358,67 @@ def frame_timbers(name, frame, u0, u1, posts):
     """Close-studded apron, sill beam, posts and head rail on one plane."""
     g = Group('Timber ' + name, frame, [timber])
     g.box(u0, u1, SHOP, SHOP + .30, -.05, .12)
-    n = max(2, round((u1 - u0) / .42))
+    n = max(2, round((u1 - u0) / .72))
     for k in range(n + 1):
         u = min(max(u0 + (u1 - u0) * k / n, u0 + .055), u1 - .055)
-        g.box(u - .055, u + .055, SHOP + .30, 4.76, 0, .06)
-    g.box(u0, u1, 4.76, 4.92, -.02, .10)
+        g.box(u - .055, u + .055, SHOP + .30, SILL-.16, 0, .06)
+    g.box(u0, u1, SILL-.16, SILL, -.02, .10)
     for u in posts:
-        g.box(u - .06, u + .06, 4.92, top, 0, .06)
+        g.box(u - .06, u + .06, SILL, top, 0, .06)
     g.box(u0, u1, top, TIE, -.01, .07)
-    for z,h,out in [(SHOP+.03,.055,.16),(SHOP+.27,.055,.15),(4.78,.045,.14),(4.91,.045,.13),(top+.035,.045,.11)]:
+    for z,h,out in [(SHOP+.03,.055,.16),(SHOP+.27,.055,.15),(SILL-.14,.045,.14),(SILL-.01,.045,.13),(top+.035,.045,.11)]:
         g.box(u0,u1,z,z+h,out-.045,out)
+    for h in (SHOP+.065,SHOP+.20,SILL-.10):
+        g.mesh.tube([(u0,h,.15),(u1,h,.15)],.025,sides=8)
     return g
 
 
-frame_timbers('first floor left oriel',FG,BAY,CANT0,[BAY+.03,CANT0-.06]).done()
+frame_timbers('first floor left oriel',FG,BAY,CANT0,[BAY+.03,LW[0]-.06,CANT0-.06]).done()
 left=frame_timbers('north entry bay',FB,0,BAY,[.06,BAY-.06])
-pts=[(.12+(BAY-.24)*math.sin(t*math.pi/16),4.95+1.3*math.cos(t*math.pi/16)) for t in range(9)]
-for a,b in zip(pts,pts[1:]):left.strut(a,b,.12,0,.06)
+left.strut((.12,top-.05),(BAY-.15,SILL+.08),.19,0,.08)
 left.done()
 frame_timbers('left oriel return',FL,0,LL,[.055,LL-.055]).done()
 frame_timbers('recessed centre',FC,0,LC,[.055,LC/2,LC-.055]).done()
 frame_timbers('right oriel return',FCR,0,LCR,[.055,LCR-.055]).done()
-frame_timbers('first floor right',FR,CANT1,W,[RW[1]+.06,8.6,W-.06]).done()
+frame_timbers('first floor right',FR,CANT1,W,[CANT1+.03,RW[1]+.06,W-.06]).done()
 # The arch spans the recess in the projecting head beam, rather than lying
 # flat on an invented sloping wall. Its soffit leaves the return glazing clear.
 centre=Group('Timber recessed centre arch',FG,[timber])
 head=arc(CANT0+.05,CANT1-.05,5.95,.32)
 centre.poly(head+[(CANT1-.05,top),(CANT0+.05,top)],0,.08)
 centre.done()
+orn=Group('Fine recessed arch spandrel carving',FG,[timber])
+for sign in (-1,1):
+    edge=CANT0+.05 if sign<0 else CANT1-.05
+    pts=[(edge-sign*.07,top-.05),(edge-sign*.20,top-.07),(edge-sign*.36,top-.17),(edge-sign*.46,top-.30)]
+    for a,b in zip(pts,pts[1:]):orn.strut(a,b,.022,.08,.105)
+    for k in range(3):
+        u=edge-sign*(.13+k*.09);h=top-.08-k*.045
+        orn.strut((u,h),(u-sign*.07,h-.08),.018,.08,.105)
+orn.done()
 
 # Tie beam across the whole front, solid gable floor and bay ledge behind it.
 g = Group('Timber tie beam', FG, [timber])
-g.box(0, W, TIE, EAVE, -.02, .13)
+g.box(BAY, W, TIE, EAVE, -.02, .13)
+for h,dep in [(TIE,.18),(TIE+.07,.16),(EAVE-.04,.19)]:g.box(BAY,W,h,h+.035,dep-.035,dep)
 g.box(UC - .55, UC + .55, TIE - .04, EAVE + .02, .12, .16)
 g.done()
 m = Mesh('Envelope gable floor')
 m.box(((FX - ZL + FX) / 2, (YN - BAY + YS) / 2, B + (TIE + EAVE) / 2), (ZL, W - BAY, EAVE - TIE))
 finish(m, 'architecture', [timber])
+# Interpreted scrollwork, not an invented inscription: the close view resolves
+# curled leaves and a central boss but not a reliably readable motif.
 m = Mesh('Fine carved tie-beam boss')
-m.ellipsoid((0, 0, 0), (.36, .13, .07), 0, 16, 8)
-for side in (-1, 1):
-    m.ellipsoid((side * .30, -.02, -.01), (.14, .09, .05), 0, 10, 6)
-finish(m, 'architecture', [timber], FG @ Matrix.Translation((UC, TIE + .13, .17)))
+m.ellipsoid((0,0,.035),(.14,.10,.055),0,16,8)
+for sign in (-1,1):
+    for offset,rad in [(.25,.11),(.49,.075)]:
+        pts=[]
+        for k in range(31):
+            angle=k/30*math.pi*2.2;r=rad*(1-k/42)
+            pts.append((sign*(offset+r*math.cos(angle)),r*math.sin(angle),.045))
+        m.tube(pts,.018,sides=6)
+    m.tube([(sign*.08,-.04,.025),(sign*.19,-.12,.025),(sign*.38,-.11,.025),(sign*.55,-.02,.025)],.018,sides=6)
+finish(m,'architecture',[timber],FG@Matrix.Translation((UC,TIE+.13,.18)))
 
 # Corner closures where the projecting storey meets NatWest and the alley.
 north, _ = plane((FX, YN), (FX - .2, YN))
@@ -397,24 +440,15 @@ def under_roof(u, drop=0):
     return gable_top - drop - PITCH * abs(u - UC)
 
 
-# Twin centre posts; four parallel braces each side rise outward to the
-# bargeboards, the upper three from the post and the lowest from the tie beam.
-SLOPE = .62
-for side in (-1, 1):
-    post = UC + side * GP
-    g.box(post - .07, post + .07, EAVE, under_roof(post), 0, .07)
-    for k in range(4):
-        h0 = EAVE + .25 + (k - 1) * .85
-        if h0 >= EAVE + .05:
-            start = (post, h0)
-        else:
-            start = (post + side * (EAVE + .05 - h0) / SLOPE, EAVE + .05)
-        run = (under_roof(start[0]) - .1 - start[1]) / (SLOPE + PITCH)
-        g.strut(start, (start[0] + side * run, start[1] + SLOPE * run), .13, 0, .07)
-# Small chevrons point up between the posts at the upper brace junctions.
-for h in (EAVE + 1.1, EAVE + 1.95):
-    for side in (-1, 1):
-        g.strut((UC + side * (GP - .07), h), (UC, h + .22), .1, 0, .07)
+# Single central king post with four straight outward-rising braces per side.
+g.box(UC-.09,UC+.09,EAVE,gable_top,0,.09)
+SLOPE=.62
+for sign in (-1,1):
+    for h0 in (EAVE-.6,EAVE+.25,EAVE+1.10,EAVE+1.95):
+        run0=max(0,(EAVE+.04-h0)/SLOPE)
+        start=(UC+sign*(.09+run0),max(EAVE+.04,h0))
+        run=(under_roof(start[0])-.08-start[1])/(SLOPE+PITCH)
+        if run>0:g.strut(start,(start[0]+sign*run,start[1]+SLOPE*run),.15,0,.07)
 g.done()
 
 barge = Group('Roof bargeboards and finial', FG, [timber], 'roof')
@@ -423,12 +457,20 @@ for u0, u1 in ((BAY-.15, UC), (UC, W + .3)):
     barge.poly([(u0,t0),(u1,t1),(u1,t1-.38),(u0,t0-.38)],.32,.40)
     for drop in (.04,.15,.30):
         barge.poly([(u0,t0-drop),(u1,t1-drop),(u1,t1-drop-.035),(u0,t0-drop-.035)],.40,.44)
-barge.box(UC - .07, UC + .07, RIDGE - .5, RIDGE + .62, .30, .42)
-barge.box(UC - .11, UC + .11, RIDGE + .55, RIDGE + .66, .29, .43)
+barge.box(UC-.07,UC+.07,RIDGE-.40,RIDGE+.10,.30,.46)
+barge.box(UC-.10,UC+.10,RIDGE+.06,RIDGE+.14,.29,.47)
 # Shaped corner bracket under the southern barge foot (snag photograph).
 barge.poly([(W - .12, EAVE - .35), (W + .2, EAVE - .35), (W + .2, EAVE - .55), (W - .02, EAVE - .85),
             (W - .12, EAVE - .85)], .05, .34)
 barge.done()
+for side,u in [(-1,BAY+.04),(1,W-.10)]:
+    g=Group('Fine carved barge bracket '+str(side),FG,[timber])
+    htop=under_roof(u)+.03;bottom=htop-.76
+    outline=[(u-.08,htop),(u+.16,htop)]+[(u-.035+.195*(1-t/10)**.5,htop-.76*t/10) for t in range(1,11)]+[(u-.08,bottom)]
+    g.poly(outline,.08,.31)
+    for k in range(3):g.box(u-.10,u+.08,bottom+.01+k*.055,bottom+.04+k*.055,.12,.34)
+    g.done()
+
 
 # Main roof: front gable, ridge running back from the street, eaves over the alley.
 def prism(name, section, x0, x1, materials, part='roof'):
@@ -467,23 +509,22 @@ for u in (.06, BAY - .06):
 g.box(0, BAY, D['bay_eaves'] - .14, D['bay_eaves'], -.01, .08)
 g.done()
 side, _ = plane((FX - .2, YN - BAY), (RX, YN - BAY))
-wall('bay side above main roof', side, 0, RX - FX + .2, EAVE - .2, max(D['bay_eaves'], HB), mat=plaster, depth=.25)
+wall('bay side above main roof', side, 0, RX - FX + .2, EAVE - .2, D['bay_eaves']-.12, mat=plaster, depth=.25)
 
-be,br=D['bay_eaves'],D['bay_ridge'];north_h=be
-yb=YN-BAY/2;xf=FX-.45
-# Small hip entirely within the entrance strip; no roof sheet across the light.
-frontx=xf;backx=RX+.3;y0=YN-BAY;y1=YN-.02
-upper=[(frontx,y0,be),(backx,y0,be),(backx,y1,be),(frontx,y1,be),
-       (frontx+.85,yb,br),(backx,yb,br)]
-faces=[(0,1,5,4),(1,2,5),(2,3,4,5),(3,0,4)]
-verts=[(x,y,z+B) for x,y,z in upper]+[(x,y,z+B-.12) for x,y,z in upper]
-faces+= [tuple(i+6 for i in reversed(f)) for f in list(faces)]
-for a,b in [(0,1),(1,2),(2,3),(3,0)]:faces.append((a,b,b+6,a+6))
+be,br=D['bay_eaves'],D['bay_ridge'];north_h=br
+xf=FX-.45;backx=RX+.3;y0=YN-BAY;y1=YN-.02
+# Lean-to against NatWest: high edge stays against the wall. Only the front
+# turns down into a hip; there is no ridge through the middle of this strip.
+upper=[(xf,y0,be),(backx,y0,be),(backx,y1,br),(xf+.85,y1,br),(xf,y1,be)]
+faces=[(0,1,2,3),(0,3,4)]
+n=len(upper);verts=[(x,y,z+B) for x,y,z in upper]+[(x,y,z+B-.12) for x,y,z in upper]
+faces += [tuple(i+n for i in reversed(f)) for f in list(faces)]
+for i in range(n):j=(i+1)%n;faces.append((i,j,j+n,i+n))
 m=Mesh('Roof north bay clay shell');m.add(verts,faces)
 finish(m,'roof',[clay],roof_uv=True,recalc=True)
-m = Mesh('Roof north bay ridge tiles')
-m.box(((xf + .85 + RX + .3) / 2, yb, B + br + .04), (RX + .3 - xf - .85, .22, .12))
-finish(m, 'roof', [clay])
+m=Mesh('Roof north wall flashing')
+m.box(((xf+.85+backx)/2,y1-.025,B+br+.025),(backx-xf-.85,.05,.10))
+finish(m,'roof',[iron])
 
 # Tall brick stack on the ridge behind the gable: Nov2020 Street View shows it
 # above the ridge, the May2011 frontal view hides it behind the apex.
@@ -499,16 +540,21 @@ finish(m, 'roof', [pot])
 
 # ------------------------------------------------- side, rear and party walls
 alley, _ = plane((FX, YS), (RX, YS))
-wall('alley side lower', alley, 0, RX - FX, BURY, SHOP, mat=render)
-wall('alley side upper timbered', alley, 0, 2.6, SHOP, EAVE)
-wall('alley side upper brick', alley, 2.6, RX - FX, SHOP, EAVE, mat=brick)
-g = Group('Timber alley side return', alley, [timber])
-g.box(0, 2.6, SHOP, SHOP + .22, 0, .06)
-g.box(0, 2.6, 4.76, 4.92, 0, .07)
-g.box(0, 2.6, TIE, EAVE, 0, .07)
-for k in range(7):
-    u = .06 + k * 2.48 / 6
-    g.box(u - .055, u + .055, SHOP + .22, TIE, 0, .06)
+wall('alley side lower panelled',alley,0,2.6,BURY,SHOP,mat=sage)
+wall('alley side lower',alley,2.6,RX-FX,BURY,SHOP,mat=render)
+wall('alley side upper timbered',alley,0,RX-FX,SHOP,EAVE)
+g=Group('Timber alley side return',alley,[timber])
+for lo,hi in [(SHOP,SHOP+.22),(SILL-.16,SILL),(TIE,EAVE)]:g.box(0,RX-FX,lo,hi,0,.07)
+for k in range(16):
+    u=.06+k*(RX-FX-.12)/15
+    g.box(u-.055,u+.055,SHOP+.22,TIE,0,.06)
+for h in (SHOP+.03,SHOP+.19,SILL-.13,SILL-.01):g.box(0,RX-FX,h,h+.035,.07,.095)
+g.done()
+# Panelled sage-painted return below the jetty, visible from William Hill.
+g=Group('Shop alley panelled return',alley,[sage,tiles],'shopfront')
+g.box(0,2.6,.04,.45,0,.06,1)
+for lo,hi in [(.45,.52),(1.55,1.61),(2.03,2.09)]:g.box(0,2.6,lo,hi,.025,.09)
+for u in (.04,.88,1.72,2.56):g.box(u-.03,u+.03,.52,2.03,.025,.07)
 g.done()
 
 rearwall, _ = plane((RX, YS), (RX, YN))
@@ -517,11 +563,15 @@ g = Group('Envelope range rear gable', rearwall, [brick])
 south_eave = RIDGE - PITCH * (W - UC)
 g.poly([(0, BURY), (main_w, BURY), (main_w, HB - .14), (W - UC, RIDGE - .14), (0, south_eave - .14)],
        -.36, 0)
-g.poly([(main_w, BURY), (W, BURY), (W, north_h - .12), (W - .85, br - .12), (main_w, north_h - .12)], -.36, 0)
+g.poly([(main_w,BURY),(W,BURY),(W,br-.12),(main_w,be-.12)],-.36,0)
 g.done()
 party, _ = plane((RR, YN), (FX, YN))
 wall('NatWest party wall rear range', party, 0, RR - RX, BURY, D['rear_height'], mat=brick, depth=.2)
-wall('NatWest party wall front range', party, RR - RX, RR - FX, BURY, north_h - .12, mat=brick, depth=.2)
+g=Group('Envelope NatWest party wall front range',party,[brick])
+hipx=xf+.85
+endheight=be+(br-be)*max(0,min(1,(FX-xf)/.85))-.12
+g.poly([(RR-RX,BURY),(RR-FX,BURY),(RR-FX,endheight),(RR-hipx,br-.12),(RR-RX,br-.12)],-.2,0)
+g.done()
 
 # Low flat-roofed rear range along the alley, as seen in satellite imagery.
 rh = D['rear_height']

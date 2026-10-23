@@ -7,7 +7,7 @@
     "elevation_m": 0
   },
   "area_name": "London Street",
-  "status": "Mock-Tudor exterior and side alley from May2011/Nov2020 Street View and satellite; dimensions visually calibrated, rear and hidden faces estimated.",
+  "status": "Mock-Tudor exterior and historical Love To Eat frontage from supplied frontal/oblique photographs and aerial; dimensions calibrated, hidden rear and carving interpreted.",
   "levels": {
     "detail": {
       "texture_size": null
@@ -44,33 +44,81 @@
   "views": [
     {
       "name": "Overview",
-      "position": [-12, 20, 30],
-      "target": [14, 4, 48]
+      "position": [
+        -12,
+        20,
+        30
+      ],
+      "target": [
+        14,
+        4,
+        48
+      ]
     },
     {
       "name": "Front",
-      "position": [-6, 6, 47.2],
-      "target": [7.5, 6, 47.2]
+      "position": [
+        -6,
+        6,
+        47.2
+      ],
+      "target": [
+        7.5,
+        6,
+        47.2
+      ]
     },
     {
       "name": "Gable",
-      "position": [0, 4, 38],
-      "target": [7, 8.5, 47.5]
+      "position": [
+        0,
+        4,
+        38
+      ],
+      "target": [
+        7,
+        8.5,
+        47.5
+      ]
     },
     {
       "name": "Side alley",
-      "position": [2, 2.4, 57],
-      "target": [9, 2.6, 52.4]
+      "position": [
+        2,
+        2.4,
+        57
+      ],
+      "target": [
+        9,
+        2.6,
+        52.4
+      ]
     },
     {
       "name": "Roof",
-      "position": [-6, 26, 66],
-      "target": [13, 6, 46]
+      "position": [
+        -6,
+        26,
+        66
+      ],
+      "target": [
+        13,
+        6,
+        46
+      ]
     }
   ],
   "walk_spawn": {
-    "position": [3, 2.49, 47],
-    "target": [7.5, 2.49, 47]
+    "position": [
+      3,
+      2.49,
+      47
+    ],
+    "target": [
+      7.5,
+      2.49,
+      47
+    ]
   },
   "rules": [
     {
@@ -94,7 +142,7 @@
       },
       "district": {
         "strategy": "keep",
-        "reason": "Studs, braces and gable chevrons are a few hundred box triangles and carry the black-and-white pattern; a planar bake cannot follow the stepped oriel or triangular gable."
+        "reason": "Keep the single king-post gable, braces and stepped oriel framing as geometry; these carry the building identity across non-planar faces."
       }
     },
     {
@@ -123,7 +171,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Thin ironwork, small carving and fittings fall below district scale; silhouettes are unaffected."
+        "reason": "Omit thin ironwork, small scroll and spandrel carvings, scalloped brackets, historical shop lettering and fittings at district scale."
       }
     }
   ]

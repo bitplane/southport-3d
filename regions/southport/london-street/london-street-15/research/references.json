@@ -6,7 +6,7 @@
       "capture": "May 2011 Street View; inspected 2026-10-23",
       "author": "Google Street View",
       "observations": [
-        "Near-frontal elevation (HC UK tenant). Three round-headed shop openings in a rendered ground storey; jettied first floor on timber blocks; close-studded apron; two equally wide three-light front windows on separate projecting oriels, with a recessed centre under a timber arch; tie beam with carved boss; gable with twin centre posts and nested chevron braces under heavy bargeboards.",
+        "Near-frontal elevation (HC UK tenant). Three round-headed shop openings in a rendered ground storey; jettied first floor on timber blocks; close-studded apron; two equally wide three-light front windows on separate projecting oriels, with a recessed centre under a timber arch; tie beam with carved boss; gable with one central king post and nested chevron braces under heavy bargeboards.",
         "North of the shop, beside NatWest, a narrow gated entrance bay with a small red-tiled roof over a set-back top window.",
         "A dark open gap with a bin between the building and William Hill, with brick walls receding behind: the side alley. Used to scale widths and heights."
       ]
@@ -33,7 +33,7 @@
       "capture": "Snag 583afcccd53447dca6d47cd75aba8c9f photograph (Google Maps Street View crop, undated, Love To Eat tenant); reviewed 2026-10-23",
       "author": "User-supplied reference from Google Maps",
       "observations": [
-        "Close view from the north: two equally projecting oriels with a recessed centre; the left oriel has a plastered inner return and the right has a glazed canted inner return. Both front windows have three lights. The narrow entrance bay is set back, with a curved brace and small leaded attic window under its own hipped roof. The main bargeboard ends beside that window rather than crossing it. Cast-iron bracket and railings at the gated entrance; layered bargeboard and jetty mouldings; red brick and a wheelie bin in the alley mouth."
+        "Close north oblique: projecting oriels, recessed centre, layered mouldings and porch ironwork. The left return is largely hidden in this view; the five later supplied captures resolve it as glazed. The small roof form and brace are resolved by those views rather than inferred from this crop."
       ]
     },
     {
@@ -43,12 +43,23 @@
       "observations": [
         "Red clay-tile roof with its ridge running back from the street gable, a narrow red roof along the NatWest side, and a flat rooflit range behind. A dark strip separates the red roof from William Hill along the full range depth: the alley continues to the rear."
       ]
+    },
+    {
+      "url": "https://www.google.com/maps/place/15+London+St,+Southport+PR9+0UZ/@53.6484221,-3.00271,69a,35y,271.36h,45.06t/data=!3m1!1e3",
+      "capture": "Five user-supplied Google Maps/Street View captures in snag b8a1315359c2463eb124289dbd1f4f00, reviewed 2026-10-23; capture dates not shown. Love To Eat tenant in street views; aerial labels SIP Southport.",
+      "author": "Google imagery, supplied privately by the user",
+      "observations": [
+        "Frontal and both oblique views establish equal three-light front windows, taller than the apron beneath, with glazed single-light inner canted returns on both sides of the inset central plaster panel.",
+        "Single gable king post; four straight outward-rising braces each side. Heavy layered bargeboards and small apex pendant; carved end brackets, scrollwork on the tie beam and shallow carved arch spandrels. Fine leaded quarries include repeated scalloped upper borders.",
+        "The narrow roof against NatWest has a high wall edge and one falling slope. It turns down into a hip only at the street end, with no central ridge. The entrance bay has a straight diagonal brace.",
+        "Three nearly equal shop arches with pale sage frames and one continuous transom level; small Love To Eat lettering above. The side has close-studded white panels above and sage panelled return below."
+      ]
     }
   ],
   "uncertainties": [
     "Street numbering: the user's link and Google's place name give 15 London St; Google's basemap shows an '8' label here and the old placeholder named the block 8. The asset uses 15.",
-    "Tenant lettering (HC UK 2011, Love To Eat 2020, SIP Southport in the current Google listing) is omitted rather than asserting present occupancy.",
+    "The model depicts the Love To Eat shopfront visible in the supplied photos, including its small name. This is a historical appearance, not an assertion about current occupancy.",
     "Ground-level alley width (1.32m) is a scaled estimate; any gate at the street end is not modelled because the 2011 and snag images show it open. The rear brick closure is estimated.",
-    "Range depth, roof pitch, bay roof form, chimney, rear range and all hidden elevations are estimates."
+    "Exact dimensions, range depth, chimney placement, hidden rear faces and the continuation of side studding behind the foreground neighbour remain estimated. Scroll and leaf carving is interpreted relief; unreadable motifs are not asserted as exact reproductions."
   ]
 }

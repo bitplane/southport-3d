@@ -22,7 +22,7 @@ deps = bpy.context.evaluated_depsgraph_get()
 
 # Every leaded window is the first thing a ray from the street meets.
 windows = [o for o in meshes if o.name.startswith('Window ')]
-assert len(windows) == 4, [o.name for o in windows]
+assert len(windows) == 5, [o.name for o in windows]
 for o in windows:
     origin = o.matrix_world @ Vector((.21, .13, 1.5))
     direction = (o.matrix_world.to_3x3() @ Vector((0, 0, -1))).normalized()
@@ -77,6 +77,9 @@ assert 11.9 < max(p.z for _, p in points) < 13.5
 for name, p in points:
     if name.startswith(('Rear alley', 'Envelope alley rear end')):
         continue
+    if name=='Shop alley panelled return':
+        assert p.y >= D['south_y']-.10, (name,tuple(p),'panel projects into alley')
+        continue
     # Facing timbers may stand 6cm proud above the shop storey; nothing else
     # enters the alley below the eaves.
     if p.y < D['south_y'] - .1 or (p.y < D['south_y'] - 1e-3 and p.z < D['base_z'] + 3.4):
@@ -103,3 +106,17 @@ report = {
 }
 (ROOT / 'research/validation.json').write_text(json.dumps(report, indent=2) + '\n')
 print(report)
+
+# The narrow roof is a lean-to against NatWest, not a pitched strip with a
+# middle ridge. Its central run rises monotonically towards the party wall.
+roof=bpy.data.objects['Roof north bay clay shell']
+for x in (9.0,13.0,17.0):
+    heights=[]
+    for t in (.1,.3,.5,.7,.9):
+        y=D['north_y']-D['bay_width']+t*(D['bay_width']-.02)
+        hit,p,n,i=roof.ray_cast(Vector((x,y,20)),Vector((0,0,-1)),distance=20)
+        assert hit,('Missing lean-to roof',x,y)
+        heights.append(p.z)
+    assert all(b>a+.1 for a,b in zip(heights,heights[1:])),heights
+assert 'Roof north bay ridge tiles' not in bpy.data.objects
+assert all('Window first floor '+side+' return' in bpy.data.objects for side in ('left','right'))

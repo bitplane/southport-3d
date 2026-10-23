@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "southport.london-street.london-street-15",
-  "name": "15 London Street — mock-Tudor café and side alley",
+  "name": "15 London Street \u2014 mock-Tudor caf\u00e9 and side alley",
   "region": "southport",
   "area": "london-street",
   "status": "researched-exterior-visually-calibrated-dimensions",
@@ -34,5 +34,5 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Exterior of the black-and-white mock-Tudor building adjoining NatWest's London Street return, its gated north entrance bay, the open alley along its south side and the low rear range. Shop lettering, interiors and the hidden rear elevations are not asserted."
+  "scope": "Exterior of the mock-Tudor building adjoining NatWest, with the photographed historical Love To Eat frontage, north entrance bay, open south alley and low rear range. Interiors are deferred; hidden elevations and fine carving are interpreted."
 }

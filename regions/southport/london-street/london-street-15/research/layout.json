@@ -12,24 +12,24 @@
   "jetty_left": 0.65,
   "jetty_right": 0.65,
   "cant": [
-    3.98,
-    5.77
+    4.4,
+    6.0
   ],
   "left_window": [
-    1.7,
-    3.77,
+    2.2,
+    4.27,
     3
   ],
   "cant_light": [
-    0.1,
-    0.7
+    0.09,
+    0.69
   ],
   "right_window": [
-    5.9,
-    7.97,
+    6.15,
+    8.22,
     3
   ],
-  "gable_posts": 0.28,
+  "gable_posts": 0.09,
   "tie_beam": 6.6,
   "ridge_height": 9.8,
   "gable_centre": 4.65,
@@ -38,27 +38,28 @@
   "rear_height": 4.2,
   "arches": [
     [
-      1.55,
-      3.55
+      1.58,
+      3.96
     ],
     [
-      3.7,
-      6.3
+      4.1,
+      6.48
     ],
     [
-      6.45,
-      8.62
+      6.62,
+      9.0
     ]
   ],
   "arch_spring": 2.05,
   "arch_rise": 0.95,
   "registration": "Frontage on the shared London Street line x=7.5 used by NatWest and the east-side placeholders; local u runs south from NatWest's corrected return end (y=-42.66, 0.02m clearance). Google's place pin for 15 London St (53.6484152,-3.0037463) falls at site x=10.0, y=-46.4, inside this footprint. Old placeholder outline -42.68 to -53.1 (10.42m) now holds the 9.10m building and a 1.32m alley; William Hill's placeholder edge (-53.1) is unchanged.",
   "measurement": "Widths and heights are visually calibrated from the near-frontal May 2011 Street View (pano XibO1wwSLghj_p6Oqn5oNw, heading 40), scaled so building plus alley equal the mapped 10.42m outline (about 0.0215m per screen pixel); proportions cross-checked in the November 2020 oblique and the snag photograph. Satellite scale bar (22.8px/m) gives about 9.9m from NatWest to the alley at roof level and an alley/eave gap of 0.7-0.9m above a wider ground-level gap. Nothing here is surveyed.",
-  "detail_review": "2026-10-23 snag 4a7f6310: two equally wide three-light front windows on separate projecting oriels, with a recessed central panel and a glazed canted return on the right oriel. The north entry bay is set back. Small attic roof and front bargeboard stop clear of its leaded window. Rechecked supplied close north oblique (583afccc) and May 2011 near-frontal Street View.",
+  "detail_review": "2026-10-23 report b8a13153: five close frontal, north/south oblique and aerial captures supersede previous readings. Both canted centre returns are glazed; balanced three-light front windows; single gable king post with outward-rising braces; small roof is a single slope against NatWest with a front hip, not a pitched ridge. Window/apron proportions, applied mouldings, carved beam and arch spandrels follow the close photos.",
   "estimated": "Hidden range depth and rear elevations, exact 0.65 m oriel projection and 0.60 m centre recess, roof heights and chimney placement remain visually estimated.",
   "jetty_centre": 0.05,
   "centre_panel": [
-    4.55,
-    5.2
-  ]
+    4.9,
+    5.5
+  ],
+  "window_sill": 4.55
 }

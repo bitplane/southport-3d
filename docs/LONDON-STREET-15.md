@@ -4,13 +4,10 @@
 boxes beside NatWest's London Street return. It models the black-and-white
 building's arched rendered shop storey, the jettied close-studded first floor on
 timber blocks, two equal-width three-light oriel windows, and their recessed
-centre. The left inner return is plastered; the right inner return has a leaded
-light. Layered horizontal mouldings follow the steps of the jetty. Above are the
-tie beam with its carved boss and the street gable with twin centre posts,
-chevrons, four parallel braces each side, profiled bargeboards and a finial.
+centre. Both canted inner returns have a single leaded light. Layered horizontal mouldings follow the steps of the jetty. Above are the
+tie beam with its carved boss and the street gable with one central king post, four parallel braces each side, profiled bargeboards and a short apex pendant.
 The narrow north entrance bay is set back, with its gated porch, cast-iron
-bracket, curved timber brace and a small attic light. Its hipped clay roof stays
-within the bay, and the main bargeboard ends beside the attic aperture.
+bracket, diagonal timber brace and a small attic light. Its single-slope clay roof rises against NatWest, with a hip only at the street end, and the main bargeboard ends beside the attic aperture.
 Behind are a brick stack on the ridge, a red clay
 main roof whose ridge runs back from the street, and a low flat-roofed rear range
 with rooflights.
@@ -33,10 +30,12 @@ registration and estimates are in `research/layout.json`. Widths and heights wer
 scaled from the near-frontal 2011 panorama so that building plus alley match the
 mapped outline, and cross-checked against the 2020 oblique, the snag photograph and
 the satellite scale bar. They are visually calibrated, not surveyed. The range
-depth, oriel projections (0.65 m) and central recess (0.60 m), the bay roof form and attic set-back, chimney
+depth, oriel projections (0.65 m) and central recess (0.60 m), the precise bay roof dimensions and attic set-back, chimney
 position, rear range, rear alley closure and every hidden elevation are estimates.
-Shop lettering (HC UK in 2011, Love To Eat in 2020, SIP Southport in the current
-Google listing) is omitted. Google's place name gives 15 London St; its basemap
+The shop depicts the historical Love To Eat frontage in the supplied photos,
+including the small name above the three arches. This does not assert current
+occupancy. Scrollwork and spandrel carving are interpreted relief; hidden details
+and unreadable motifs are not claimed as exact reproductions. Google's place name gives 15 London St; its basemap
 label and the old placeholder said 8.
 
 ## Viewing levels
@@ -48,11 +47,12 @@ label and the old placeholder said 8.
   the timber framing, which carries the black-and-white identity and cannot be
   baked onto one plane across the oriel steps and triangular gable. The leaded
   windows become baked panels in their physical openings; the gate, cast-iron
-  bracket, carved boss, chimney pots, gutter, downpipe and door furniture are omitted.
+  bracket, scrollwork, spandrel carving, historical name, chimney pots, gutter,
+  downpipe and door furniture are omitted.
 
 `python3 tools/project.py build southport.london-street.london-street-15` builds and
 validates the master: finite UV meshes, packed authored textures, matching oriel widths, unobscured leaded
-windows including nine attic aperture probes, shop arches closed within half a metre, two manifold clay roof shells,
+windows including nine attic aperture probes, shop arches closed within half a metre, two manifold clay roof shells and a monotonically rising lean-to slope,
 clearance from NatWest, William Hill and the remaining placeholders, and an alley
 kept clear below the eaves with a ray reaching its rear closure. `--stage render`
 produces front, overview, alley, roof and shop views.

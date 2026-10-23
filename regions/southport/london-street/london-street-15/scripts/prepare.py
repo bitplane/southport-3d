@@ -21,10 +21,10 @@ Image.fromarray(np.uint8(np.clip(brick, 0, 255))).save(out / 'brick.png')
 # Red clay plain tiles: small courses parallel to the eaves (2.4 x 2.2 m repeat).
 rows = y // 24
 cols = ((x + (rows % 2) * 16) // 32) % 16
-tile = np.array([150, 66, 46]) + rng.normal(0, 13, (22, 16))[rows % 22, cols][:, :, None]
-tile = tile + rng.normal(0, 4, (n, n, 1))
-tile[(y % 24 < 3)] *= .58
-tile[((x + (rows % 2) * 16) % 32 < 2)] *= .75
+tile = np.array([129, 77, 58]) + rng.normal(0, 6, (22, 16))[rows % 22, cols][:, :, None]
+tile = tile + rng.normal(0, 2, (n, n, 1))
+tile[(y % 24 < 2)] *= .65
+tile[((x + (rows % 2) * 16) % 32 < 1)] *= .85
 Image.fromarray(np.uint8(np.clip(tile, 0, 255))).save(out / 'tile.png')
 
 # Grey concrete flags for the alley floor (1 m repeat over the texture).
