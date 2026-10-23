@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/london-street-15.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "Mock-Tudor exterior and side alley from May2011/Nov2020 Street View and satellite; dimensions visually calibrated, rear and hidden faces estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Half-timbered upper storeys and gable",
+      "collection": "architecture"
+    },
+    {
+      "id": "roof",
+      "name": "Clay tile roofs, bargeboards and chimney",
+      "collection": "roof"
+    },
+    {
+      "id": "shopfront",
+      "name": "Arched shopfront and gated entrance bay",
+      "collection": "shopfront"
+    },
+    {
+      "id": "rear",
+      "name": "Side alley and estimated rear range",
+      "collection": "rear"
+    }
+  ],
+  "views": [
+    {
+      "name": "Overview",
+      "position": [-12, 20, 30],
+      "target": [14, 4, 48]
+    },
+    {
+      "name": "Front",
+      "position": [-6, 6, 47.2],
+      "target": [7.5, 6, 47.2]
+    },
+    {
+      "name": "Gable",
+      "position": [0, 4, 38],
+      "target": [7, 8.5, 47.5]
+    },
+    {
+      "name": "Side alley",
+      "position": [2, 2.4, 57],
+      "target": [9, 2.6, 52.4]
+    },
+    {
+      "name": "Roof",
+      "position": [-6, 26, 66],
+      "target": [13, 6, 46]
+    }
+  ],
+  "walk_spawn": {
+    "position": [3, 2.49, 47],
+    "target": [7.5, 2.49, 47]
+  },
+  "rules": [
+    {
+      "id": "envelopes",
+      "match": "^(Envelope|Roof|Shop|Rear) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain authored walls with real window and arch apertures, the jetty and oriel steps, both roof silhouettes, the open side alley and the simple rear range."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "The jettied, stepped front, street gable, arched openings and alley gap are the building's distant identity; these envelopes are already simple boxes and prisms."
+      }
+    },
+    {
+      "id": "timbers",
+      "match": "^Timber ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Black-and-white framing is the defining architecture; keep its physical relief for walking inspection."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Studs, braces and gable chevrons are a few hundred box triangles and carry the black-and-white pattern; a planar bake cannot follow the stepped oriel or triangular gable."
+      }
+    },
+    {
+      "id": "windows",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep mullions, transoms and leaded cames as geometry near walking distance."
+      },
+      "district": {
+        "strategy": "replace",
+        "reason": "Bake leaded lights to shallow receivers while the wall openings stay physical.",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.5,
+        "max_sampled_error_m": 0.4
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep the gate, cast-iron bracket, carved boss, pots, downpipe and door furniture near the pavement."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Thin ironwork, small carving and fittings fall below district scale; silhouettes are unaffected."
+      }
+    }
+  ]
+}

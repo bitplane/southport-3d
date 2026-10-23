@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "southport.london-street.london-street-15",
+  "name": "15 London Street — mock-Tudor café and side alley",
+  "region": "southport",
+  "area": "london-street",
+  "status": "researched-exterior-visually-calibrated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "arched-rendered-shopfront",
+    "jettied-close-studded-first-floor",
+    "leaded-windows",
+    "half-timbered-street-gable",
+    "north-entrance-bay",
+    "clay-tile-roofs",
+    "side-alley",
+    "rear-flat-roofed-range"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Exterior of the black-and-white mock-Tudor building adjoining NatWest's London Street return, its gated north entrance bay, the open alley along its south side and the low rear range. Shop lettering, interiors and the hidden rear elevations are not asserted."
+}

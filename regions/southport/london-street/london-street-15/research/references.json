@@ -1,0 +1,54 @@
+{
+  "reviewed": "2026-10-23",
+  "sources": [
+    {
+      "url": "https://www.google.com/maps/@53.6482598,-3.0038305,3a,60y,40h,90t/data=!3m4!1e1!3m2!1sXibO1wwSLghj_p6Oqn5oNw!2e0",
+      "capture": "May2011 Street View; inspected 2026-10-23",
+      "author": "Google Street View",
+      "observations": [
+        "Near-frontal elevation (HC UK tenant). Three round-headed shop openings in a rendered ground storey; jettied first floor on a row of timber blocks; close-studded apron; two four-light leaded windows either side of a centre panel under a timber arch; tie beam with carved boss; gable with king post and nested chevron braces under heavy bargeboards.",
+        "North of the shop, beside NatWest, a narrow gated entrance bay with a small red-tiled roof over a set-back top window.",
+        "A dark open gap with a bin between the building and William Hill, with brick walls receding behind: the side alley. Used to scale widths and heights."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6483082,-3.0036769,3a,75y,345h,92t/data=!3m4!1e1!3m2!1s_XyTwciPdMkBriArRNNVuw!2e0",
+      "capture": "May2011 Street View; inspected 2026-10-23",
+      "author": "Google Street View",
+      "observations": [
+        "Oblique from the south: first floor and gable overhang the shopfront; the south return of the first floor is half-timbered."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6481645,-3.0037624,3a,40y,25h,95t/data=!3m4!1e1!3m2!1swtXuGzJWtBrbQewdKJUirw!2e0",
+      "capture": "Nov2020 Street View; inspected 2026-10-23",
+      "author": "Google Street View",
+      "observations": [
+        "Love To Eat tenant; sage-grey arched shop frames on a pale render storey. Red clay-tile main roof slope falls towards the alley; tall brick chimney behind; red-brick gabled ranges at the rear.",
+        "The alley opening between the cafe and William Hill is visible; William Hill's rendered side wall rises beside it."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/place/15+London+St,+Southport+PR9+0UZ/@53.6484221,-3.00271,69a,35y,271.36h,45.06t/data=!3m1!1e3",
+      "capture": "Snag 583afcccd53447dca6d47cd75aba8c9f photograph (Google Maps Street View crop, undated, Love To Eat tenant); reviewed 2026-10-23",
+      "author": "User-supplied reference from Google Maps",
+      "observations": [
+        "Close view from the north: projecting left oriel stepping back through a canted centre to the right window; curved brace and small leaded window in the north bay; cast-iron bracket and railings at the gated entrance; bargeboard corner bracket; red brick and a wheelie bin in the alley mouth."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64845,-3.00368,44m/data=!3m1!1e3",
+      "capture": "Imagery 2026 Airbus/Google; inspected 2026-10-23",
+      "author": "Google satellite imagery",
+      "observations": [
+        "Red clay-tile roof with its ridge running back from the street gable, a narrow red roof along the NatWest side, and a flat rooflit range behind. A dark strip separates the red roof from William Hill along the full range depth: the alley continues to the rear."
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Street numbering: the user's link and Google's place name give 15 London St; Google's basemap shows an '8' label here and the old placeholder named the block 8. The asset uses 15.",
+    "Tenant lettering (HC UK 2011, Love To Eat 2020, SIP Southport in the current Google listing) is omitted rather than asserting present occupancy.",
+    "Ground-level alley width (1.32m) is a scaled estimate; any gate at the street end is not modelled because the 2011 and snag images show it open. The rear brick closure is estimated.",
+    "Range depth, roof pitch, bay roof form, chimney, rear range and all hidden elevations are estimates."
+  ]
+}
