@@ -1,5 +1,7 @@
 """132 Lord Street: three canted bays over red sandstone arcade, from Nov 2020 imagery."""
 import math
+import bpy
+import bmesh
 from mathutils import Matrix, Vector
 from southport3d.geometry import Mesh
 from components import rect, wall, opening, ellipse_band, sash
@@ -83,7 +85,21 @@ def build_132(g):
     section=[(16.3,0),(19.1,-depth/2),(16.3,-depth),(16.14,-depth),(18.94,-depth/2),(16.14,0)]
     m.add([(u,h,d) for u in [0,w] for h,d in section],
           [tuple(reversed(range(6))),tuple(range(6,12))]+[(i,(i+1)%6,(i+1)%6+6,i+6) for i in range(6)])
-    finish(m,'roof',[slate],front)
+    main=finish(m,'roof',[slate],front)
+    # Three projecting white gables need their own pitched roofs. They intersect
+    # the transverse main slope, rather than standing as unsupported screens.
+    for c in [w*(j+.5)/3 for j in range(3)]:
+        top=[(c-1.48,16.32,.08),(c+1.48,16.32,.08),(c+1.48,16.32,-6.0),(c-1.48,16.32,-6.0),
+             (c,18.12,.08),(c,18.12,-6.0)]
+        faces=[(0,4,5,3),(4,1,2,5)]
+        edges=[(0,4),(4,1),(1,2),(2,5),(5,3),(3,0)]
+        m=Mesh('Temporary 132 front cross gable')
+        m.add(top+[(x,y-.16,z) for x,y,z in top],faces+[tuple(i+6 for i in reversed(f)) for f in faces]+[(a,b,b+6,a+6) for a,b in edges])
+        cross=finish(m,'roof',[slate],front)
+        bm=bmesh.new();bm.from_mesh(cross.data);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(cross.data);bm.free()
+        bpy.context.view_layer.objects.active=main
+        mod=main.modifiers.new('Join 132 front gable roof','BOOLEAN');mod.operation='UNION';mod.solver='EXACT';mod.object=cross
+        bpy.ops.object.modifier_apply(modifier=mod.name);bpy.data.objects.remove(cross,do_unlink=True)
     for u in [0,w]:
         f=front@Matrix.Translation((u,0,0))@Matrix.Rotation(math.pi/2,4,'Y')
         finish(wall('Envelope 132 side',[(0,0),(depth,0),(depth,16.14),(depth/2,18.94),(0,16.14)],[]),mats=[brick],frame=f)

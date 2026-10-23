@@ -10,12 +10,12 @@ def build_rear(g):
     brick=g['brick'];cream=g['cream'];glass=g['glass'];white=g['white'];flat=g['flat']
     blue=g['material']('Modern blue metal railings',(.16,.28,.36))
     f=front@Matrix.Translation((29.3,0,-54.3))@Matrix.Rotation(math.pi,4,'Y')
-    w=28.3;h=12.6
+    w=29.3;h=12.6
     # Brick lower floors, a light framed attic, and taller rendered corner tower.
     holes=[]
     for x in [1.8,4.8,16.3,19.3,22.3]:
         for z in [3.0,6.6]:holes.append(rect(x-.57,z-1.0,x+.57,z+1.0))
-    holes += [rect(7.0,.1,10.6,8.7),rect(12.0,4.9,14.9,8.0),rect(12.0,.1,14.9,4.87)]
+    holes += [rect(7.0,.1,10.6,8.7),rect(12.0,4.9,14.9,8.0),rect(12.0,-1.5,14.9,4.87)]
     finish(wall('Envelope modern Anchor brick',rect(0,0,24.3,9.1),holes),'rear-range',[brick],f)
     upper=[rect(x-.83,9.5,x+.83,11.9) for x in [1.7,4.4,12.6,15.3,18,20.7,23.2]]+[rect(6.2,9.5,10.6,11.9)]
     finish(wall('Envelope modern Anchor attic',rect(0,9.1,24.3,h),upper),'rear-range',[cream],f)
@@ -44,7 +44,7 @@ def build_rear(g):
     # garden is raised over parking: no invented through-passage to Anchor St.
     inward=front@Matrix.Translation((1,0,-44.4))
     iholes=[rect(x-.9,z-1.12,x+.9,z+1.12) for x in [17.4,21.5,25.6] for z in [4.5,7.9,11.1]]
-    finish(wall('Envelope modern courtyard',rect(14.5,2.7,w,h),iholes),'rear-range',[brick],inward)
+    finish(wall('Envelope modern courtyard',rect(14.5,2.7,28.3,h),iholes),'rear-range',[brick],inward)
     for x in [17.4,21.5,25.6]:
         for z in [4.5,7.9,11.1]:
             instance('courtyard-sash',sash('Window modern courtyard',1.8,2.24),inward@Matrix.Translation((x,z,0)),'rear-range',[glass,blue])
@@ -52,16 +52,24 @@ def build_rear(g):
     # brick above it. End the recess behind the frontage instead of tunnelling
     # through the entire building into the garden.
     for x in [11.90,15.0]:
-        box('Envelope garage jamb',(x,2.435,-1.45),(.20,4.87,2.90),'rear-range',brick,f)
+        box('Envelope garage jamb',(x,1.685,-1.45),(.20,6.37,2.90),'rear-range',brick,f)
     box('Envelope garage soffit',(13.45,4.96,-1.45),(3.1,.18,2.9),'rear-range',cream,f)
-    box('Envelope garage head',(13.45,3.68,-2.85),(2.9,2.38,.20),'rear-range',brick,f)
-    box('Door garage roller shutter',(13.45,1.28,-2.80),(2.9,2.36,.08),'rear-range',blue,f)
-    for z in [.15+j*.10 for j in range(24)]:
+    box('Envelope garage head',(13.45,2.94,-2.85),(2.9,3.86,.20),'rear-range',brick,f)
+    box('Door garage roller shutter',(13.45,-.17,-2.80),(2.9,2.36,.08),'rear-range',blue,f)
+    for z in [-1.30+j*.10 for j in range(24)]:
         box('Detail garage shutter slats',(13.45,z,-2.748),(2.86,.012,.012),'rear-range',g['black'],f)
-    box('Envelope garage floor',(13.45,.04,-1.45),(2.9,.12,2.9),'rear-range',flat,f)
-    for u in [1,29.3]:box('Envelope modern side',(u,h/2,-49.35),(.30,h,9.9),'rear-range',brick,front)
-    for u in [1,5]:box('Envelope modern raised corner side',(u,13.85,-49.35),(.25,2.7,9.9),'rear-range',cream,front)
-    box('Envelope modern raised corner courtyard',(3,13.85,-44.4),(4,2.7,.25),'rear-range',cream,front)
+    # The user's photograph shows a descent to basement parking. Coordinates
+    # of this aperture are also recorded in public-realm/research/garage-ramp.json.
+    m=Mesh('Envelope garage descending ramp')
+    top=[(12.0,.2045,.05),(14.9,.2045,.05),(14.9,-1.35,-2.75),(12.0,-1.35,-2.75)]
+    m.add(top+[(x,y-.12,z) for x,y,z in top],[(0,1,2,3),(4,7,6,5),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0)])
+    finish(m,'courtyard-ground',[flat],f)
+    # Side lights and security boxes are visible; their small labels are unreadable.
+    for x in [12.02,14.88]:
+        box('Detail garage wall light',(x,1.85,-.8),(.12,.14,.24),'rear-range',white,f)
+    for u in [0,29.3]:box('Envelope modern side',(u,h/2,-49.35),(.30,h,9.9),'rear-range',brick,front)
+    for u in [0,5]:box('Envelope modern raised corner side',(u,13.85,-49.35),(.25,2.7,9.9),'rear-range',cream,front)
+    box('Envelope modern raised corner courtyard',(2.5,13.85,-44.4),(5,2.7,.25),'rear-range',cream,front)
     zinc=g['material']('Anchor pale zinc roof',(.48,.52,.54))
     box('Roof modern grey metal',(17.25,12.7,-49.35),(24.8,.20,10.7),'roof',zinc,front)
-    box('Roof modern corner canopy',(3,15.35,-49.35),(4.8,.20,10.7),'roof',zinc,front)
+    box('Roof modern corner canopy',(2.5,15.35,-49.35),(5.8,.20,10.7),'roof',zinc,front)

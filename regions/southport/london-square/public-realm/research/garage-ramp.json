@@ -1,0 +1,24 @@
+{
+  "source": "Posting House rear.py garage frame; registered using posting-house/research/layout.json",
+  "xy": [
+    [
+      49.500615676534,
+      -76.72514198584477
+    ],
+    [
+      52.182574418465386,
+      -76.77310463137081
+    ],
+    [
+      52.050373335072486,
+      -73.95790634364181
+    ],
+    [
+      49.35179180914184,
+      -73.92113775731043
+    ]
+  ],
+  "entry_world_z": 0.7845,
+  "rear_world_z": -0.77,
+  "evidence": "Private photograph attached to snag 476d830e6a6945b8b94889e061192690; observed basement descent, depth/drop estimated."
+}

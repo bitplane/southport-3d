@@ -60,7 +60,8 @@ def build_block(ctx, existing_roads, anchor_north, anchor_south):
     outer_anchor=parallel(anchor_north,2.5)
     street_reserve=outer_anchor+[(234,-120),(25,-120)]
     entrance=[(147.5,-86),(154.5,-86),(154.5,-96),(147.5,-96)]
-    reserve=[street_reserve,entrance,hillpoly,castlepoly,exit_apron]
+    ramp=json.loads((ctx['ROOT']/'research/garage-ramp.json').read_text())['xy']
+    reserve=[street_reserve,entrance,hillpoly,castlepoly,exit_apron,ramp]
     buildings=[ways[k]['xy'][:-1] for k in ('371203338','371742617','51826176','371742618','371742619','371742620')]
     # The OSM church outline includes its rear hall. Do not append a second
     # hall footprint into the parking/service aisle behind it.

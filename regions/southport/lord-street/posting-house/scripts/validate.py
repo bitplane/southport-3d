@@ -89,3 +89,29 @@ direction=(front.to_3x3()@Vector((-1,0,0))).normalized();inverse=ob.matrix_world
 hit,p,n,i=ob.ray_cast(inverse@origin,(inverse.to_3x3()@direction).normalized(),distance=2)
 assert not hit,'Solid roof end duplicates 132 brick gable'
 print('Dormer panes, sash-edge ownership, canted apron joins and thin 132 roof verified')
+
+# Cross-gable slopes must cover both sides of each white front gable.
+for c in [D['historic_start']*(j+.5)/3 for j in range(3)]:
+ for dx in [-.6,.6]:
+  origin=front@Vector((c+dx,25,-1))
+  inv=ob.matrix_world.inverted()
+  hit,p,n,i=ob.ray_cast(inv@origin,(inv.to_3x3()@Vector((0,0,-1))).normalized(),distance=15)
+  assert hit and (ob.matrix_world@p).z>17.7,('Missing 132 cross-gable slope',c,dx)
+
+# The shared pavement aperture has a continuous walkable descent underneath.
+ramp=bpy.data.objects['Envelope garage descending ramp']
+verts=[ramp.matrix_world@v.co for v in ramp.data.vertices]
+assert abs(max(v.z for v in verts)-.7845)<1e-4
+for t in [.05,.1,.2,.5,.8]:
+ a=(verts[0]+verts[1])/2;b=(verts[2]+verts[3])/2
+ expected=a.lerp(b,t);origin=expected+Vector((0,0,8))
+ # The garage soffit is overhead; test the walkable surface below it directly.
+ inv=ramp.matrix_world.inverted()
+ hit,p,n,i=ramp.ray_cast(inv@origin,(inv.to_3x3()@Vector((0,0,-1))).normalized(),distance=10)
+ # The tapered plan makes the quad slightly non-planar (under 2 mm).
+ assert hit and abs((ramp.matrix_world@p).z-expected.z)<.003,('Ramp discontinuity',t)
+ assert (ramp.matrix_world.to_3x3()@n).z>.5,'Ramp top faces down'
+ hit,p,n,i,target,matrix=bpy.context.scene.ray_cast(deps,expected+Vector((0,0,.5)),Vector((0,0,-1)),distance=.6)
+ assert hit and target==ramp,('Threshold blocks descent',t,target.name if target else None)
+assert min(v.z for v in verts)<-.88,'Garage has no basement descent'
+print('132 cross-gable coverage and descending garage surface verified')

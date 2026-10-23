@@ -258,3 +258,14 @@ for x,y in [(31,-38),(31,-58),(32,-74)]:
  assert abs(p.z-expected)<.002,(x,y,'Service lane not flush',p.z,expected,ob.name)
 assert bpy.data.objects.get('Street Posting lane gate')
 print('Posting House service-lane surface, grade and entrance gate verified')
+
+# The building owns its descending basement ramp; no flat ground may cover it.
+ramp=json.loads((ROOT/'research/garage-ramp.json').read_text())['xy']
+for t in [.25,.5,.75]:
+ a=Vector(ramp[0]).lerp(Vector(ramp[3]),t);b=Vector(ramp[1]).lerp(Vector(ramp[2]),t)
+ x,y=(a+b)/2;ob,p=ground_hit(x,y)
+ assert ob is None or p.z< -1,(x,y,'Ground fills basement ramp',ob.name if ob else None)
+from rounded_garden import taxi_letters
+glyphs=taxi_letters(0,0)
+assert sum(p[0] for p in glyphs[0])/4 < sum(p[0] for p in glyphs[1])/4-.3,'TAXIS lettering reflected'
+print('Basement ramp cut-out and road lettering orientation verified')

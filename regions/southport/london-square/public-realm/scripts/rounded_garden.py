@@ -68,8 +68,8 @@ def taxi_letters(x,y):
     result=[]
     for i,c in enumerate('TAXIS'):
         for a,b,c,d in letters[c]:
-            # Text runs along the lane and reads towards Lord Street.
-            a,b,c,d=x+b-.4,y+a+i*.65-1.55,x+d-.4,y+c+i*.65-1.55
+            # Rotate the glyph axes; swapping them alone reflects the lettering.
+            a,b,c,d=x-b+.4,y+a+i*.65-1.55,x-d+.4,y+c+i*.65-1.55
             length=math.hypot(c-a,d-b);nx,ny=-(d-b)/length*.045,(c-a)/length*.045
             result.append([(a-nx,b-ny),(c-nx,d-ny),(c+nx,d+ny),(a+nx,b+ny)])
     return result
