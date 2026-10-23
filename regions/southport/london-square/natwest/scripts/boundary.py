@@ -4,33 +4,7 @@ from southport3d.geometry import Mesh
 from components import wall, rectangle, arc
 
 
-def kiosk(level='detail', name='Kiosk boundary telephone'):
-    # Local XY is the front elevation, +Z faces the pavement.
-    m=Mesh(name)
-    m.box((0,.045,0),(.88,.09,.88),1)
-    m.box((0,1.22,0),(.74,2.32,.74),2)
-    for x in [-.40,.40]:
-        for z in [-.40,.40]:m.box((x,1.20,z),(.09,2.3,.09),0)
-    for y,h in [(.15,.18),(2.14,.13),(2.36,.12)]:
-        m.box((0,y,0),(.88,h,.88),0)
-    # A shallow curved crown, shared silhouette at every LoD.
-    steps={'detail':20,'walk':12,'district':6}[level]
-    crown=[(-.44,2.42),(.44,2.42)]+[(.44*math.cos(i*math.pi/steps),2.42+.16*math.sin(i*math.pi/steps)) for i in range(steps+1)]
-    m.outline(crown,-.44,.44,0)
-    # Front and both visible side window grids remain recognisable at distance.
-    for side in [-1,1]:
-        for x in [-.25,.25]:m.box((x,1.15,side*.405),(.025,1.76,.025),0)
-        for z in [-.25,.25]:m.box((side*.405,1.15,z),(.025,1.76,.025),0)
-    for j in range(1,9 if level!='district' else 5):
-        y=.26+j*(1.75/(9 if level!='district' else 5))
-        for side in [-1,1]:
-            m.box((0,y,side*.405),(.72,.025,.025),0)
-            m.box((side*.405,y,0),(.025,.025,.72),0)
-    for side in [-1,1]:
-        m.box((0,2.27,side*.447),(.71,.14,.012),3)
-        m.box((side*.447,2.27,0),(.012,.14,.71),3)
-    if level!='district':m.box((.31,1.08,.445),(.025,.18,.04),1)
-    return m
+from kiosk import kiosk
 
 
 def build_lod(name, settings, asset_dir):

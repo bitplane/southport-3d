@@ -131,3 +131,33 @@ assert len([o for o in meshes if o.name.startswith('Door wall handrail')])==2
 steps=[o for o in meshes if o.name.startswith('Trim entrance step')]
 assert len(steps)==4
 assert sorted(round(max(v.co.y for v in o.data.vertices),2) for o in steps)==[.14,.28,.42,.56]
+
+# Kiosk regressions: a square compound cap, eight margin-glazed rows on three
+# faces, solid rear and stable dimensions at every viewing level.
+sys.path.insert(0,str(ROOT/'scripts'))
+from kiosk import kiosk
+from mathutils.bvhtree import BVHTree
+counts=[]
+for level in ['detail','walk','district']:
+    model=kiosk(level)
+    tree=BVHTree.FromPolygons(model.vertices,model.faces)
+    counts.append(sum(len(f)-2 for f in model.faces))
+    assert abs(max(v[1] for v in model.vertices)-2.54)<1e-6
+    for axis in [0,2]:
+        assert .459<max(v[axis] for v in model.vertices)<.50
+    for rotation in [0,math.pi/2,3*math.pi/2]:
+        from mathutils import Matrix
+        frame=Matrix.Rotation(rotation,4,'Y')
+        for j in range(8):
+            for x in [0,-.275,.275]:
+                origin=frame@Vector((x,.32+(j+.5)*1.73/8,.6))
+                point,normal,index,distance=tree.ray_cast(origin,frame@Vector((0,0,-1)),.3)
+                assert index is not None and model.indices[index]==2,(level,j,x,'K6 pane obscured')
+    point,normal,index,distance=tree.ray_cast(Vector((0,1,-.6)),Vector((0,0,1)),.3)
+    assert index is not None and model.indices[index]==0,(level,'K6 rear must be solid')
+    top=tree.ray_cast(Vector((0,3,0)),Vector((0,-1,0)))[0].y
+    for x,z in [(.40,0),(0,.40)]:
+        edge=tree.ray_cast(Vector((x,3,z)),Vector((0,-1,0)))[0].y
+        assert top-edge>.05,(level,'K6 roof became a barrel or flat cap')
+assert counts[0]>counts[1]>counts[2],counts
+print('K6 roof, glazing, solid back and LOD reductions checked',counts)

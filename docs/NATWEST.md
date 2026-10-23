@@ -107,3 +107,9 @@ narrows its lower shoulders to rest on the two flanking towers without changing
 the oculus. The Lord Street front, heights and roof forms are unchanged. The
 buildings beyond the return are placeholder boxes in
 [LONDON-STREET-EAST-PLACEHOLDERS.md](LONDON-STREET-EAST-PLACEHOLDERS.md).
+
+## Boundary telephone kiosk
+
+The K6 exterior follows the November 2020 front and oblique Street View images of this particular kiosk: vermilion body, gold crown, black base, inset telephone panel, heavy door surround and eight rows of wide centre panes with narrow margin lights. Original casting photographs supplement the roof and glazing beads; generated seller images were excluded. The cap curves in both directions and the rear is solid. The cup handle, hinge placement and fine crown relief are interpretations of the standard type where the local image is unclear. Glazing remains opaque; no unsupported interior is modelled.
+
+The adopted 0.91 m base and 2.54 m overall height are approximate K6 dimensions, checked against local photographic proportions, not site measurements. Detail retains glazing beads, vents, hinges and crown arches. Walk reduces curved sampling and removes the tiny beads/vents. District keeps all eight pane rows and the roof silhouette, simplifies the crown and omits hardware and telephone lettering. Generator checks protect the three glazed elevations, solid rear, compound cap and decreasing triangle counts.

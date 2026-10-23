@@ -310,7 +310,7 @@
         },
         "uv": "smart",
         "bake": false,
-        "reason": "Keep red frame, glazing grid and curved crown with fewer crown segments."
+        "reason": "Retain three eight-row margin-glazed elevations, solid back, inset door, gold crown and compound curved cap; reduce roof and crown sampling and omit tiny beads/vents."
       },
       "district": {
         "strategy": "generator",
@@ -320,7 +320,7 @@
         },
         "uv": "smart",
         "bake": false,
-        "reason": "Coarse curved crown and reduced grid preserve the kiosk silhouette; omit handle and fine lettering."
+        "reason": "Retain the characteristic eight-row glazing and compound roof silhouette; coarsen roof sampling, replace crown arches by a gold silhouette, omit handle, hinges and small trim. Separate telephone lettering is omitted at District."
       }
     }
   ]

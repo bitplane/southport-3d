@@ -61,6 +61,34 @@
       "capture_date": null,
       "use": "Sandstone boundary, black door, circular frieze, semicircular pediment and red kiosk; dimensions estimated within mapped frontage gap.",
       "rights": "Private reference only; no image pixels distributed."
+    },
+    {
+      "id": "kiosk-street-2020",
+      "url": "https://www.google.com/maps/@53.6487575,-3.0038094,9a,60y,133h,95t/data=!3m4!1e1!3m2!1sfbSggWFA7WJUyiO7in0vrw!2e0",
+      "capture_date": "2020-11",
+      "use": "Front-on kiosk: red K6 form, gold crown, thick door frame, eight rows of margin glazing, black plinth. Second panorama ICinwYY83-tqHIxeViTuCg at heading 78 confirms compound cap and side sign; vehicle hides lower side. Private captures output/kiosk-street-reference.png and kiosk-street-oblique.png.",
+      "rights": "Reference only; no pixels redistributed"
+    },
+    {
+      "id": "k6-original-casting-photos",
+      "url": "https://www.trampsuk.co.uk/product/traditional-english-k6-phone-box/",
+      "capture_date": null,
+      "use": "Original IMG_1845-scaled-1 photograph inspected for curved top casting, inset telephone sign, crown relief and stepped glazing beads; IMG_1846-1 for door construction. The newer files named ChatGPT-Image were explicitly excluded as generated images. Published overall dimensions 2.45 x 0.86 x 0.86 m differ from other K6 records and are not adopted as a survey of this kiosk.",
+      "rights": "Reference only; original photographs stay outside Git"
+    },
+    {
+      "id": "k6-heritage-description",
+      "url": "https://her.northamptonshire.gov.uk/Monument/MNN144502",
+      "capture_date": null,
+      "use": "K6 typology: three glazed sides including door, solid rear, eight strips with margin lights, domed roof and relief crowns. Used for concealed back typology, not evidence of this exact kiosk.",
+      "rights": "Source text reference"
+    },
+    {
+      "id": "k6-local-auction-dimensions",
+      "url": "https://bidx1.com/en/en-gb/auction/property/62432",
+      "capture_date": null,
+      "use": "Comparable Southport K6 offered as 8 ft 3 in high, 3 ft square. Adopted approximately 0.91 m square and 2.54 m overall for reconstruction, with local photo proportions controlling details; no site survey.",
+      "rights": "Reference only"
     }
   ],
   "uncertainty": [
