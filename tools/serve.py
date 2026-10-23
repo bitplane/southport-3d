@@ -8,7 +8,7 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
-from snag_store import DEFAULT_QUEUE, MAX_BODY, SnagStore
+from snag_store import DEFAULT_QUEUE, SnagStore
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -87,8 +87,8 @@ class Handler(SimpleHTTPRequestHandler):
             return self.json_response({'error': 'Expected JSON'}, 415)
         try:
             length = int(self.headers.get('Content-Length', '0'))
-            if not 0 < length <= MAX_BODY:
-                return self.json_response({'error': 'Snag must be smaller than 24 MB'}, 413)
+            if length <= 0:
+                return self.json_response({'error': 'Expected a non-empty JSON request'}, 400)
             payload = json.loads(self.rfile.read(length))
             record = self.snags.create(payload)
         except (ValueError, UnicodeError) as exc:

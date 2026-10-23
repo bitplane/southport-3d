@@ -7,7 +7,6 @@ export function selectionBox(start, end) {
 
 async function photoData(file) {
   if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('Use JPEG, PNG or WebP photos.');
-  if(file.size>25*1024*1024)throw new Error('Choose photos smaller than 25 MB.');
   const bitmap=await createImageBitmap(file);
   const scale=Math.min(1,2400/Math.max(bitmap.width,bitmap.height));
   const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
@@ -30,7 +29,7 @@ export function installSnags({capture,restore,setActive}) {
     <p id="snag-help">Drag a box around the detail, then describe what needs fixing. You can paste photos into the comment.</p>
     <div class="snag-workspace"><div class="snag-preview"><div class="snag-stage" id="snag-stage"><img id="snag-image" alt="Captured camera view"><div id="snag-box" hidden></div></div></div>
     <form id="snag-form"><label for="snag-comment">What needs fixing?</label><textarea id="snag-comment" rows="6" maxlength="10000" required placeholder="Describe the detail and what it should look like…"></textarea>
-    <label class="snag-upload" for="snag-files">Add reference photos <input id="snag-files" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><small>Or paste photos here. Up to five; large photos are resized.</small>
+    <label class="snag-upload" for="snag-files">Add reference photos <input id="snag-files" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><small>Or paste photos here. Large photos are resized; there is no photo-count limit.</small>
     <div id="snag-photos"></div><button type="submit" id="snag-submit">Queue snag</button><button type="button" id="snag-restore" hidden>Return to this camera view</button></form></div>
     <div id="snag-list" hidden></div><p id="snag-message" role="status" aria-live="polite"></p>`;
   dialog.setAttribute('aria-labelledby','snag-title');document.body.append(dialog);
@@ -52,7 +51,6 @@ export function installSnags({capture,restore,setActive}) {
     readingPhotos++;$('snag-submit').disabled=true;
     try{
       for(const file of files){
-        if(photos.length>=5)throw new Error('You can attach up to five photos.');
         photos.push(await photoData(file));photoList();
       }
       message('Photos attached.');

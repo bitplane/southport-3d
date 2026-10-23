@@ -10,7 +10,7 @@ import sys
 import tempfile
 import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from snag_store import SnagStore, MAX_BODY
+from snag_store import SnagStore
 from serve import Handler
 
 PNG='data:image/png;base64,'+base64.b64encode(b'\x89PNG\r\n\x1a\nfixture').decode()
@@ -41,7 +41,7 @@ class SnagTests(unittest.TestCase):
 
     def test_invalid_report_leaves_no_partial_task(self):
         for patch in [{'comment':' '}, {'box':[0,0,2,1]}, {'screenshot':'data:image/svg+xml;base64,PHN2Zz4='},
-                      {'photos':[{'name':'x','data':PNG}]*6}]:
+                      {'photos':'not a list'}]:
             with self.subTest(patch=patch):
                 data=payload();data.update(patch)
                 with self.assertRaises(ValueError):self.store.create(data)
@@ -82,10 +82,21 @@ class SnagTests(unittest.TestCase):
         self.assertEqual(status,200);self.assertTrue(body.startswith(b'\x89PNG'))
         self.assertEqual(self.request('GET',f"/api/snags/{record['id']}/files/snag.json")[0],404)
 
-    def test_http_rejects_cross_origin_wrong_content_type_and_oversize(self):
+    def test_http_rejects_cross_origin_wrong_content_type_and_empty_body(self):
         self.assertEqual(self.request('POST',data=payload(),Origin='https://elsewhere.example')[0],403)
         self.assertEqual(self.request('POST',data=payload(),**{'Content-Type':'text/plain'})[0],415)
-        self.assertEqual(self.request('POST',data=payload(),**{'Content-Length':str(MAX_BODY+1)})[0],413)
+        self.assertEqual(self.request('POST',data=payload(),**{'Content-Length':'0'})[0],400)
         self.assertEqual(self.store.list(),[])
 
+    def test_many_large_photos_round_trip_through_http(self):
+        data=payload()
+        large='data:image/png;base64,'+base64.b64encode(b'\x89PNG\r\n\x1a\n'+b'x'*(6*1024*1024)).decode()
+        data['photos']=[{'name':f'reference-{i}.png','data':large if i<3 else PNG} for i in range(8)]
+        status,body=self.request('POST',data=data)
+        self.assertEqual(status,201)
+        record=json.loads(body)
+        self.assertEqual(len(record['photos']),8)
+        self.assertGreater(self.store.image(record['id'],'photo-1.png').stat().st_size,5*1024*1024)
+
 if __name__=='__main__':unittest.main()
+

@@ -12,8 +12,6 @@ import shutil
 import uuid
 
 DEFAULT_QUEUE = Path(__file__).resolve().parents[2] / 'snags'
-MAX_BODY = 24 * 1024 * 1024
-MAX_IMAGE = 5 * 1024 * 1024
 ID = re.compile(r'^[0-9a-f]{32}$')
 STATUSES = {'open', 'in_progress', 'done'}
 
@@ -35,8 +33,8 @@ def image_bytes(value):
     if not isinstance(value, str):
         raise ValueError('Missing image data')
     match = re.fullmatch(r'data:image/(png|jpeg|webp);base64,([A-Za-z0-9+/=]+)', value)
-    if not match or len(value) > MAX_IMAGE * 4 // 3 + 100:
-        raise ValueError('Use PNG, JPEG or WebP images up to 5 MB each')
+    if not match:
+        raise ValueError('Use PNG, JPEG or WebP images')
     try:
         data = base64.b64decode(match[2], validate=True)
     except binascii.Error as exc:
@@ -45,8 +43,8 @@ def image_bytes(value):
     valid = (kind == 'png' and data.startswith(b'\x89PNG\r\n\x1a\n')
              or kind == 'jpeg' and data.startswith(b'\xff\xd8\xff')
              or kind == 'webp' and data.startswith(b'RIFF') and data[8:12] == b'WEBP')
-    if not valid or len(data) > MAX_IMAGE:
-        raise ValueError('Invalid or oversized image')
+    if not valid:
+        raise ValueError('Invalid image')
     return data, 'jpg' if kind == 'jpeg' else kind
 
 
@@ -79,8 +77,8 @@ def validate(payload):
         raise ValueError('Draw a box within the screenshot')
     screenshot = image_bytes(payload.get('screenshot'))
     photos = payload.get('photos', [])
-    if not isinstance(photos, list) or len(photos) > 5:
-        raise ValueError('Attach at most five photos')
+    if not isinstance(photos, list):
+        raise ValueError('Photos must be a list')
     attachments = []
     for photo in photos:
         if not isinstance(photo, dict):

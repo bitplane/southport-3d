@@ -27,20 +27,20 @@ python3 tools/serve.py
 
 The default queue is a sibling of the repository: `../snags/` (on the current
 machine, `/home/gaz/tmp/3d/snags/`). It survives model rebuilds and publication.
-Each report has its own directory with `snag.json`, its captured view, and up to
-five reference images. Nothing is copied into `dist/`, model textures or Git.
+Each report has its own directory with `snag.json`, its captured view, and reference images. Nothing is copied into `dist/`, model textures or Git.
 Back up this directory separately if the reports matter. Image provenance and
 licensing still apply; attachments are private working references.
 
 Use `--snag-dir /path/to/queue` to choose another location, and pass the same
 path to the CLI with `--queue`. The service remains on loopback by default and
 works through the existing SSH port forward. The API accepts only raster images
-and bounded JSON submissions; it does not execute comments or upload filenames.
+and JSON submissions; it does not execute comments or upload filenames.
 This is a trusted local collaboration tool, not a public issue tracker.
 
 Photos are resized in the browser to a maximum dimension of 2400 pixels; the
-view capture is capped at 1920 pixels. The server accepts images up to 5 MB each,
-five attached photos, and a maximum 24 MB request. PNG, JPEG and WebP are accepted.
+view capture is capped at 1920 pixels. There is no application-imposed photo-count, image-file-size or request-size cap.
+PNG, JPEG and WebP are accepted. Reports are buffered in memory while saving;
+practical capacity depends on the browser, server memory and available disk.
 
 ## Picking up work
 
