@@ -10,7 +10,7 @@ from mathutils import Matrix, Vector
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh, face_matrix, text_object
-from components import rect, opening, wall, ellipse_band, sash, surround, cross_window
+from components import rect, opening, wall, ellipse_band, sash, surround, surround_parts, recessed_wall, cross_window
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
@@ -94,7 +94,12 @@ for i,(a,b,c) in enumerate(zip(edges,edges[1:],bays)):
     else:holes.append(rect(c-1.05,.08,c+1.05,4.8))
     for level,h in [(8.0,3.65),(12.95,3.75)]:
         for u in ([c-.95,c+.95] if i in (1,3) else [c]):holes.append(rect(u-.63,level-h/2,u+.63,level+h/2))
-    finish(wall('Envelope front bay '+str(i),rect(a,0,b,eave),holes),mats=[brick],frame=frame)
+    recesses=[]
+    for level,h in [(8.0,3.65),(12.95,3.75)]:
+        for u in ([c-.95,c+.95] if i in (1,3) else [c]):
+            for (x,y,d),(w,hh,thickness) in surround_parts(1.26,h,False):
+                recesses.append((rect(u+x-w/2,level+y-hh/2,u+x+w/2,level+y+hh/2),d-thickness/2))
+    finish(recessed_wall('Envelope front bay '+str(i),rect(a,0,b,eave),holes,recesses),mats=[brick],frame=frame)
     finish(wall('Envelope ground ashlar '+str(i),rect(a,0,b,5.65),holes,back=.001,front=.055),mats=[stone],frame=frame)
     for level,h in [(8.0,3.65),(12.95,3.75)]:
         for u in ([c-.95,c+.95] if i in (1,3) else [c]):
@@ -252,7 +257,10 @@ for i in (0,2,4):
     bpy.ops.object.modifier_apply(modifier=mod.name);bpy.data.objects.remove(cutter,do_unlink=True)
     for side in [-1,1]:
         # Front stone surround owns its .24 m return thickness.
-        box('Dormer closed side cheek',(side*.79,z+.96,-1.57),(.18,1.92,2.66),'roof',plain,f)
+        box('Dormer closed side cheek',(side*.79,z+.96,-1.48),(.18,1.92,2.48),'roof',plain,f)
+    # Close the rear above the main slope, underneath the hip roof. The rear
+    # cheek owns the corner thickness; side cheeks end at its inner face.
+    box('Dormer closed rear cheek',(0,z+.955,-2.81),(1.76,1.91,.18),'roof',plain,f)
     box('Dormer sill',(0,z+.09,-.04),(1.82,.14,.42),'roof',plain,f)
     m=Mesh('Roof dormer hip '+str(i))
     m.add([(-1.03,z+1.91,.18),(1.03,z+1.91,.18),(1.03,z+1.91,-2.9),(-1.03,z+1.91,-2.9),(0,z+3.6,-1.1)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4),(3,2,1,0)])

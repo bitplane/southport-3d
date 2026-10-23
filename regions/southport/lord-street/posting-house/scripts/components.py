@@ -20,6 +20,29 @@ def wall(name,outline,holes,back=-.40,front=0):
     return m
 
 
+def recessed_wall(name,outline,holes,recesses,back=-.40,front=0):
+    """Stepped masonry reveals follow the actual stone profiles and depths.
+
+    Adjacent depth layers meet on opposing internal caps. No Boolean solver or
+    epsilon offset changes the external brick plane or original deep opening.
+    """
+    levels=sorted({back,front,*(max(back,min(front,d)) for _,d in recesses)})
+    m=Mesh(name)
+    # Keep the lower facade as its original unsplit solid. Layering its entire
+    # depth would introduce buried caps at unrelated ground-floor trim planes.
+    split=min(y for shape,_ in recesses for _,y in shape)
+    xs=[x for x,_ in outline];ys=[y for _,y in outline]
+    lower=subtract(outline,rect(min(xs)-1,split,max(xs)+1,max(ys)+1))
+    upper=subtract(outline,rect(min(xs)-1,min(ys)-1,max(xs)+1,split))
+    for part in lower:
+        solid=wall(name,part,holes,back,front);m.add(solid.vertices,solid.faces)
+    for lo,hi in zip(levels,levels[1:]):
+        cuts=holes+[shape for shape,d in recesses if d<(lo+hi)/2]
+        for part in upper:
+            layer=wall(name,part,cuts,lo,hi);m.add(layer.vertices,layer.faces)
+    return m
+
+
 def ellipse_band(m,cx,cy,rx,ry,width,depth=.22,start=0,end=math.pi,steps=40,mat=0):
     for j in range(steps):
         a=start+(end-start)*j/steps;b=start+(end-start)*(j+1)/steps
@@ -41,14 +64,21 @@ def sash(name,width,height,arched=False):
     return m
 
 
-def surround(name,width,height,transom=True):
-    m=Mesh(name);w=width/2;h=height/2
+def surround_parts(width,height,transom=True):
+    """Metric box profiles shared by the stone and its masonry clearance."""
+    w=width/2;h=height/2;parts=[]
     for side in (-1,1):
-        m.box((side*(w+.13),0,.04),(.26,height+.3,.26))
-        m.box((side*(w+.29),0,.10),(.075,height+.48,.28))
-    for y in (-h,h):m.box((0,y,.10),(width+.62,.19,.35))
-    m.box((0,-h-.14,.18),(width+.84,.15,.52))
-    if transom:m.box((0,h-.76,.08),(width,.16,.30))
+        parts.append(((side*(w+.13),0,.04),(.26,height+.3,.26)))
+        parts.append(((side*(w+.29),0,.10),(.075,height+.48,.28)))
+    for y in (-h,h):parts.append(((0,y,.10),(width+.62,.19,.35)))
+    parts.append(((0,-h-.14,.18),(width+.84,.15,.52)))
+    if transom:parts.append(((0,h-.76,.08),(width,.16,.30)))
+    return parts
+
+
+def surround(name,width,height,transom=True):
+    m=Mesh(name)
+    for centre,size in surround_parts(width,height,transom):m.box(centre,size)
     return m
 
 

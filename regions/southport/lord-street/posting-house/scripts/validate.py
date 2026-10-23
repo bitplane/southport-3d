@@ -175,7 +175,7 @@ print('Courtyard paving joint intersections have no coplanar overlaps')
 # owns its corner volume. Keep all exposed cheek extents and glazed openings.
 triangles=[];labels=[]
 for ob in meshes:
- if not ob.name.startswith(('Roof historic joined gables','Dormer closed side cheek','Dormer cheek front')):continue
+ if not ob.name.startswith(('Roof historic joined gables','Dormer closed side cheek','Dormer closed rear cheek','Dormer cheek front')):continue
  ob.data.calc_loop_triangles()
  for t in ob.data.loop_triangles:
   triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(ob.name)
@@ -189,3 +189,41 @@ for ob in cheeks:
  bm.free()
  assert abs(max(v.co.x for v in ob.data.vertices)-min(v.co.x for v in ob.data.vertices)-.18)<1e-4,ob.name
 print('Dormer cheek/roof and cheek/front junctions have single surface ownership')
+
+# Upper stone surrounds own their frontmost reveal thickness, while the
+# deeper brick reveal remains behind each recessed sash.
+for wall in [o for o in meshes if o.name.startswith('Envelope front bay')]:
+ for trim in [o for o in meshes if o.name.startswith('Trim upper window')]:
+  triangles=[];labels=[]
+  for ob in (wall,trim):
+   ob.data.calc_loop_triangles()
+   for t in ob.data.loop_triangles:
+    triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(ob.name)
+  errors=[v for v in overlaps(triangles,labels,min_area=1e-4) if v[0]!=v[1]]
+  assert not errors,errors[:5]
+print('Upper brick reveals and stone surrounds have single surface ownership')
+
+# The three dormer rear apertures are closed above the main roof slope.
+backs=[ob for ob in meshes if ob.name.startswith('Dormer closed rear cheek')]
+assert len(backs)==3
+for ob in backs:
+ ob.data.calc_loop_triangles()
+ pts=[v.co for v in ob.data.vertices];cy=(min(v.y for v in pts)+max(v.y for v in pts))/2
+ # Near the top, above the main slope: a rear-facing ray must hit the cheek.
+ origin=Vector((0,cy+.8,-3.2))
+ hit,p,n,index=ob.ray_cast(origin,Vector((0,0,1)),distance=.6)
+ assert hit and n.z<0,(ob.name,'Missing rear closure')
+ bm=bmesh.new();bm.from_mesh(ob.data)
+ assert all(e.is_manifold for e in bm.edges),ob.name
+ bm.free()
+print('Three dormer rear closures verified above the roof slope')
+
+# The untouched ground-floor masonry retains its two original depth planes;
+# upper-window recess layers must not add buried caps through doorway trim.
+for ob in [o for o in meshes if o.name.startswith('Envelope front bay')]:
+ for face in ob.data.polygons:
+  if abs(face.normal.z)<.999:continue
+  points=[ob.data.vertices[i].co for i in face.vertices]
+  if max(p.y for p in points)>=5.5:continue
+  assert min(abs(points[0].z),abs(points[0].z+.4))<1e-5,(ob.name,'Extra ground-floor depth cap',points[0].z)
+print('Ground-floor wall retains only its original front and rear planes')
