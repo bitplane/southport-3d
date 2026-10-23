@@ -110,3 +110,9 @@ case that failed before its overlapping wall return was removed. This is a
 scoped geometric check, not a claim to detect every depth-buffer artefact or to
 audit all existing assets automatically. Add affected neighbours to the selected
 surfaces when their boundary is being changed.
+
+For an audit of the existing published map, run
+`python3 tools/audit_published_coplanar.py`. It checks all three complete viewing
+levels, including cross-asset overlaps, and writes a review queue under
+`build/coplanar-audit/`. See [published overlap audit](COPLANAR-AUDIT.md) for
+coverage limits and how to distinguish visible conflicts from buried faces.
