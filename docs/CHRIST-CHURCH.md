@@ -100,3 +100,14 @@ Roundel curves regenerate with fewer segments at Walk/District; wall openings,
 stair silhouette, doors and major stone relief survive. Small lights and leading
 are Detail-only, while crocket/spandrel relief simplifies at Walk and disappears
 at District. Earlier package-size figures above describe the original build.
+
+
+The rear modern range is transverse and gabled: its ridge meets the main hall
+ridge at a T junction. A closed roof union preserves the valleys at every LoD.
+The west gable has a circular cross-mullioned light, tall glazed entrance, two
+narrow slots, pale coping and capped brick piers. Six recessed rear windows and
+two pale string courses follow the supplied photographs. Exact heights, hidden
+east-end treatment and small dimensions remain estimates. These simple roof,
+wall-opening and frame meshes stay geometric at Walk and District; fine fittings
+retain the existing omission policy. Source captures remain in the private snag
+queue, with provenance recorded in the asset research catalogue.

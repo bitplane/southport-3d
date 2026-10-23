@@ -61,3 +61,25 @@ for o in objects:
 turret=bpy.data.objects['Turret octagonal stair']
 assert min(v.co.x for v in turret.data.vertices)>-102.69,'Stair turret moved to the wrong side'
 assert not any(o.name.startswith('Clock ') for o in objects)
+
+
+# Supplied rear/garden photographs show a cross-gable, never a terminal hip.
+import bmesh
+roof=bpy.data.objects['Roof main cross gabled hall']
+bm=bmesh.new();bm.from_mesh(roof.data)
+assert all(e.is_manifold for e in bm.edges),'Open cross-roof junction'
+bm.free()
+for x in (-113.5,-108,-101,-92):
+    hit,p,n,i=roof.ray_cast(Vector((x,-56.65,20)),Vector((0,0,-1)),distance=20)
+    assert hit and abs(p.z-10.78)<.02,('Lost transverse ridge',x,p.z if hit else None)
+for x in (-110,-103,-95):
+    for y in (-60,-55,-45,-32):
+        hit,p,n,i=roof.ray_cast(Vector((x,y,20)),Vector((0,0,-1)),distance=20)
+        assert hit,('Missing roof slope',x,y)
+assert len([o for o in objects if o.name.startswith('Window modern rear side')])==6
+back=bpy.data.objects['Envelope rear cross gable']
+for u,z in [(4.55,2.5),(4.55,7.75),(2.55,4.1),(6.55,4.1)]:
+    assert not back.ray_cast(Vector((u,z,2)),Vector((0,0,-1)),distance=4)[0],('Rear gable opening filled',u,z)
+
+# Roof endcap must not cover the photographed round light or brick gable.
+assert not roof.ray_cast(Vector((-120,-56.65,8.33)),Vector((1,0,0)),distance=10)[0], 'Slate cap obscures rear roundel'

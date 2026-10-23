@@ -198,8 +198,7 @@ for y in [-30,-34,-38.2,-42.4,-46.6,-51.6]:
     box('Pier modern brick',(westx-.05,y,z0+3.3),(.32,.32,6.6),'modern-hall',brick)
     box('Trim modern pier cap',(westx-.05,y,z0+6.1),(.46,.46,.16),'modern-hall',cream)
 # Rear envelopes: only masses/openings supported by aerial; no invented rows.
-box('Envelope modern rear',(-102,-61.1,z0+3.3),(24.0,.32,6.6),'modern-hall',brick)
-box('Envelope hall rear return',(-113.8,-56.7,z0+3.3),(.32,9.1,6.6),'modern-hall',brick)
+# Rear walls and real gable openings are authored with the transverse roof below.
 box('Envelope hall shoulder',(-112.5,-52.1,z0+3.3),(2.8,.32,6.6),'modern-hall',brick)
 # Aerial confirms three flat-roof heights along the eastern annex, not a hip.
 for y0,y1,h in [(-35,-26,4.15),(-54,-35,5.4),(-71.4,-54,3.9)]:
@@ -215,13 +214,13 @@ box('Envelope cafe west return',(-89.55,-45.41,z0+3.35),(.30,31.38,6.70),'modern
 box('Envelope cafe connector',(-86.975,-29.72,z0+2.075),(4.85,.30,4.15),'modern-hall',newbrick)
 build_cafe(finish,box,z0,newbrick,cladding,glass,cream,wood,slate,metal)
 # Separate closed roofs do not intersect: lower annex roof ends at nave wall.
-finish(roof('Roof main hipped hall',-112.15,-89.55,-61.2,-29.6,z0+6.7,z0+10.2,5.1),'roofs',[slate])
+from rear_hall import build_rear
+build_rear(globals())
 for ya,yb,h in [(-35,-29.55,4.15),(-54,-35,5.4),(-71.5,-54,3.9)]:
     box('Roof modern annex flat',(-82.975,(ya+yb)/2,z0+h),(12.85,yb-ya,.18),'roofs',slate)
 # Low cafe roof outside the high roof footprints.
 # Rounded cafe cap is authored in cafe.py.
 # Low step in rear hall (mapped southern offset) and lead valley between ranges.
-box('Roof rear shoulder',(-112.4,-56.7,z0+6.65),(3.0,9.0,.18),'roofs',slate)
 box('Roof valley flashing',(-89.47,-45.2,z0+6.65),(.24,31.2,.10),'roofs',metal)
 for x in [-112.2]:
     box('Trim hall eaves',(x,-45.5,z0+6.63),(.16,31,.16),'roofs',cream)

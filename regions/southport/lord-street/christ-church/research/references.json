@@ -54,13 +54,20 @@
       "url": "https://www.google.com/maps/@53.6477398,-3.0049757,88m/data=!3m1!1e3",
       "attribution": "Google / Airbus / Maxar Technologies",
       "capture_date": "Aerial date unknown; inspected 2026-10-22",
-      "use": "Fresh aerial: confirmed main hall hip, corrected eastern annex to three stepped flat roofs and visible rooflight arrays. Heights remain estimates; 3D Earth unavailable."
+      "use": "Fresh aerial establishes stepped eastern annex and rooflight arrays. Earlier hip interpretation superseded by supplied rear-gable photographs and the 2026-10-23 aerial review."
     },
     {
       "url": "https://www.google.com/maps/@53.6476993,-3.0054519,16a,85y,65h,105t/data=!3m4!1e1!3m2!1sxblOwKB3T_a7ldR6VDIUlA!2e0",
       "attribution": "Google Street View",
       "capture_date": "2011-05",
       "use": "Fresh south garden approach: modern hall brick side and tall windows, tower round-window diamond surround; some facade obscured by trees."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6477398,-3.0049757,88m/data=!3m1!1e3",
+      "attribution": "Google Maps and imagery providers; user-supplied private captures in local snag queue",
+      "accessed": "2026-10-23",
+      "capture_date": "2011 for supplied ground view; aerial acquisition date unknown",
+      "use": "Snags fd00a9a0 and 2dec8fcd: rear transverse gabled range, ridge across the main hall ridge, west-facing brick gable with round window, glazed door and two narrow slits; long rear elevation has recessed windows, projecting piers and pale bands. Fresh aerial confirms T-shaped roof valleys. Dimensions and hidden opposite gable remain estimates."
     }
   ],
   "uncertainty": [
@@ -68,7 +75,7 @@
     "Fine Gothic tracery reconstructed from visible patterns, not traced/photogrammetric sculpture.",
     "No historic spire: model depicts retained square battlemented tower.",
     "Tower middle window is blocked masonry on cafe side; frontal window follows visible stained glazing.",
-    "Hidden modern rear openings and interiors omitted.",
+    "Unseen east end of rear crosswing and interiors remain undetailed.",
     "Reference images remain private local files and are not embedded in model or Git.",
     "Rear street-view query snapped to Cambridge Arcade; no direct rear elevation claimed. Annex heights are calibrated estimates from roof overlaps and cafe-side view."
   ]
