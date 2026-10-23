@@ -33,10 +33,10 @@ The viewer uses a version-pinned Three.js 0.180.0 import map from jsDelivr; no N
 
 ## Controls and tuning
 
-- Orbit: drag to rotate, scroll to move closer, right-drag to pan. WASD or arrows move the target and camera together horizontally relative to the view; Shift moves faster. Movement scales with viewing distance. Viewpoint buttons and Overview reset the view.
+- Orbit: drag to rotate, scroll to move closer, right-drag to pan. WASD or arrows move the target and camera together horizontally relative to the view; Shift moves faster. Movement scales with viewing distance. Overview explicitly resets the view.
 - Walk: WASD or arrows, Shift to move faster, drag to look. Capture mouse enables pointer lock; Escape releases it. Switching to Walk keeps your horizontal position and heading, placing your eyes 1.7 m above the ground below. If ground is still loading or absent, the camera stays at its current height and retries without jumping to a saved spawn. Walking follows the ground at a 1.7 m eye height. This is an inspection navigator, not a collision/physics simulation: it can pass through walls.
 - View settings: force a level, change the automatic distance bands, change rendering resolution, and toggle wireframe/shadows. Statistics show placed triangles, transfer bytes and approximate resident GPU resource bytes.
-- Select a site to focus another asset. The UI is populated entirely from catalog.json.
+- The viewer remembers camera position, orientation, orbit target and navigation mode in local storage, including across hard refreshes. Each browser/origin keeps its own view. Clearing site data resets it; unavailable storage simply disables persistence. Snag links and restored snag cameras continue to work without a location picker.
 
 Parts appear first at District where available, then switch only after the requested level is loaded. At most two downloads run concurrently. Obsolete fetches are cancelled, and the current model remains visible during replacement. Inactive resources are evicted least-recently-used against a 256 MiB estimate. Active models remain pinned, so forcing Detail everywhere can exceed that soft budget. GPU estimates are not a browser process-memory measurement.
 

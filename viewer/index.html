@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Southport 3D · London Square</title>
+  <title>Southport 3D</title>
   <link rel="stylesheet" href="style.css">
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
 </head>
@@ -11,7 +11,6 @@
   <header class="masthead"><a class="brand" href="./" aria-label="Southport 3D home"><span class="brand-mark">S<span>3</span></span><span>SOUTHPORT <b>3D</b><small>A town, one building at a time</small></span></a>
     <nav aria-label="Navigation mode" class="mode-switch"><button id="orbit" class="active" aria-pressed="true">Orbit</button><button id="walk" aria-pressed="false">Walk</button><button id="home" title="Return to the overview">Overview ↗</button></nav>
   </header>
-  <section class="place-card"><span class="eyebrow">EXPLORE THE TOWN</span><h1 id="place-name">London Square</h1><p id="place-subtitle">War Memorial · Southport, UK</p><label class="sr-only" for="asset-select">Choose a site</label><select id="asset-select"></select><div id="bookmarks" class="bookmarks" aria-label="Viewpoints"></div></section>
   <aside class="settings"><button id="settings-toggle" aria-expanded="false" aria-controls="settings-panel">View settings <span>☷</span></button><div id="settings-panel" hidden>
     <h2>Find your level of detail</h2><label for="quality">Model detail</label><select id="quality"><option value="auto">Automatic</option><option value="detail">Detail · close inspection</option><option value="walk">Walk · street level</option><option value="district">District · overview</option></select>
     <p class="note">Automatic changes each building part as you approach. Force a level to compare it.</p>
@@ -20,13 +19,12 @@
     <label for="resolution">Render resolution <output id="resolution-output">1×</output></label><input id="resolution" type="range" min="0.5" max="1.5" step="0.25" value="1">
     <div class="checks"><label><input id="wireframe" type="checkbox"> Wireframe</label><label><input id="shadows" type="checkbox"> Shadows</label></div>
     <div class="metrics"><span>Frame rate <strong id="fps">—</strong></span><span>Drawn triangles <strong id="triangles">—</strong></span><span>Transferred <strong id="downloaded">0 MB</strong></span><span>Resident estimate <strong id="resident">0 MB</strong></span></div>
-    <div id="part-status" class="part-status"></div><button id="retry" class="secondary">Reload scene</button>
-    <p class="note" id="coverage"></p>
+    <button id="retry" class="secondary">Reload scene</button>
   </div></aside>
   <div class="snag-tools"><button id="snag-new" disabled>Report snag</button><button id="snag-queue" disabled>Snag queue</button></div>
   <div id="crosshair" hidden aria-hidden="true">+</div>
   <div class="walk-tools" id="walk-tools" hidden><button id="capture">Capture mouse</button><span>Esc releases it</span></div>
-  <footer><div class="status"><span class="status-dot" id="status-dot"></span><span id="status" role="status">Opening London Square…</span></div><div id="controls-hint">Drag to orbit · WASD / arrows to move · Shift to move faster · Scroll to zoom · Right-drag to pan</div><span class="credit">Reconstruction · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a></span></footer>
+  <footer><div class="status"><span class="status-dot" id="status-dot"></span><span id="status" role="status">Opening Southport…</span></div><div id="controls-hint">Drag to orbit · WASD / arrows to move · Shift to move faster · Scroll to zoom · Right-drag to pan</div><span class="credit">Reconstruction · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a></span></footer>
   <div id="error" class="error" role="alert" hidden></div>
   <script type="module" src="app.js"></script>
 </body>

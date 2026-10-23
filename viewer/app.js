@@ -5,10 +5,11 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { Streamer } from './streamer.js';
 import { formatBytes } from './lod.js';
 import { installSnags } from './snags.js';
+import { readView, writeView } from './view-state.js';
 
 const $=id=>document.getElementById(id), viewport=$('viewport');
 const showError=message=>{$('error').textContent=message;$('error').hidden=false;console.error(message);};
-let renderer,streamer,mode='orbit',catalog,selectedAsset,frames=0,lastStats=0,lastStream=0;
+let renderer,streamer,mode='orbit',catalog,frames=0,lastStats=0,lastStream=0,lastSave=0,viewReady=false,lastSaved=null;
 const settings={detailDistance:8,districtDistance:70};
 const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5df');scene.fog=new THREE.Fog('#dce5df',250,1400);
 const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.05,3000);
@@ -21,30 +22,47 @@ function status(){
   $('status').textContent=streamer.pending?`Loading detail · ${ready}/${streamer.entries.length} parts ready`:failed?'Some detail could not load':`${ready} parts ready · ${mode==='walk'?'Walking':'Exploring'}`;
   $('status-dot').classList.toggle('ready',!streamer.pending && ready>0 && !failed);
   $('downloaded').textContent=formatBytes(streamer.bytes);$('resident').textContent=formatBytes(streamer.residentBytes);
-  $('part-status').replaceChildren(...streamer.entries.filter(e=>e.asset===selectedAsset).map(e=>{
-    const line=document.createElement('div'),name=document.createElement('span'),level=document.createElement('span');name.textContent=e.part.name;level.textContent=e.loading?`${e.loading.level}…`:e.current||'waiting';line.append(name,level);return line;
-  }));
   if(renderer)renderer.shadowMap.needsUpdate=true;
 }
 function assetPoint(asset,p){return new THREE.Vector3().fromArray(p).applyAxisAngle(new THREE.Vector3(0,1,0),asset.rotationY).add(new THREE.Vector3().fromArray(asset.position));}
-function viewpoint(view){
-  setMode('orbit');camera.position.copy(assetPoint(selectedAsset,view.position));orbit.target.copy(assetPoint(selectedAsset,view.target));orbit.update();
+function overview(){
+  const asset=catalog.assets.find(a=>a.id==='southport.london-square.war-memorial')||catalog.assets.find(a=>a.views?.length);
+  const view=asset.views[0];setMode('orbit');
+  camera.position.copy(assetPoint(asset,view.position));orbit.target.copy(assetPoint(asset,view.target));orbit.update();
 }
-function selectAsset(asset){
-  selectedAsset=asset;$('place-name').textContent=asset.areaName||asset.name;$('place-subtitle').textContent=asset.name+' · Southport, UK';
-  $('coverage').textContent=asset.status;
-  $('bookmarks').replaceChildren(...asset.views.map(view=>{const button=document.createElement('button');button.textContent=view.name;button.onclick=()=>viewpoint(view);return button;}));
-  viewpoint(asset.views[0]);status();
+function saveView(){
+  if(!viewReady)return;
+  const view={version:1,worldOrigin:catalog.worldOrigin,mode,position:camera.position.toArray(),
+    quaternion:camera.quaternion.toArray(),target:orbit.target.toArray(),fov:camera.fov,walkFloor,dropPending};
+  const value=JSON.stringify(view);if(value===lastSaved)return;
+  try{if(writeView(localStorage,view))lastSaved=value;}catch{} // Storage can be disabled.
+}
+function restoreSavedView(){
+  let saved;try{saved=readView(localStorage,catalog.worldOrigin);}catch{return false;}
+  if(!saved)return false;
+  // Restore Walk without triggering another drop or a location reset.
+  mode=saved.mode;orbit.enabled=mode==='orbit';updateModeUI();
+  camera.position.fromArray(saved.position);camera.quaternion.fromArray(saved.quaternion).normalize();
+  camera.fov=saved.fov;camera.updateProjectionMatrix();orbit.target.fromArray(saved.target);
+  walkFloor=saved.walkFloor;dropPending=saved.dropPending;dropTimer=0;
+  if(mode==='orbit')orbit.update();
+  return true;
+}
+function nearestAsset(){
+  return streamer.entries.reduce((best,e)=>!best||e.box.distanceToPoint(camera.position)<best.box.distanceToPoint(camera.position)?e:best,null)?.asset||catalog.assets[0];
 }
 function setMode(next){
   if(next===mode)return;
   mode=next;orbit.enabled=next==='orbit';keys.clear();drag=null;dropPending=false;
   if(next==='orbit'){
     walkControl.unlock();camera.getWorldDirection(vector);orbit.target.copy(camera.position).addScaledVector(vector,12);orbit.update();
-  }else if(selectedAsset){
+  }else{
     // Keep position and heading; ground may still be streaming beneath us.
     walkFloor=camera.position.y-1.7;dropPending=true;dropTimer=0;dropToGround();
   }
+  updateModeUI();
+}
+function updateModeUI(){
   $('orbit').classList.toggle('active',mode==='orbit');$('walk').classList.toggle('active',mode==='walk');$('orbit').setAttribute('aria-pressed',mode==='orbit');$('walk').setAttribute('aria-pressed',mode==='walk');
   $('walk-tools').hidden=mode!=='walk';$('crosshair').hidden=mode!=='walk';
   $('controls-hint').textContent=mode==='walk'?'WASD / arrows to walk · Shift to move faster · Drag to look':'Drag to orbit · WASD / arrows to move · Shift to move faster · Scroll to zoom · Right-drag to pan';status();
@@ -89,6 +107,7 @@ function animate(now){
   requestAnimationFrame(animate);const dt=clock.getDelta();walk(dt);moveOrbit(dt);if(mode==='orbit'&&!reporting)orbit.update();
   if(streamer && !reporting && now-lastStream>200){streamer.update(camera,settings,$('quality').value);lastStream=now;}
   renderer.render(scene,camera);frames++;
+  if(now-lastSave>500){saveView();lastSave=now;}
   if(now-lastStats>1000){$('fps').textContent=`${Math.round(frames*1000/(now-lastStats))} fps`;$('triangles').textContent=renderer.info.render.triangles.toLocaleString();frames=0;lastStats=now;status();}
 }
 async function init(){
@@ -104,17 +123,17 @@ async function init(){
   renderer.domElement.addEventListener('pointerup',()=>{drag=null;});
   window.addEventListener('keydown',e=>{if(reporting||e.target.matches('input,select,button,textarea,[contenteditable]'))return;if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight'].includes(e.code)){e.preventDefault();keys.add(e.code);}});
   window.addEventListener('keyup',e=>keys.delete(e.code));window.addEventListener('blur',()=>{keys.clear();drag=null;});
-  $('orbit').onclick=()=>{setMode('orbit');viewport.focus();};$('walk').onclick=()=>{setMode('walk');viewport.focus();};$('home').onclick=()=>viewpoint(selectedAsset.views[0]);$('capture').onclick=()=>walkControl.lock();
+  $('orbit').onclick=()=>{setMode('orbit');viewport.focus();};$('walk').onclick=()=>{setMode('walk');viewport.focus();};$('home').onclick=()=>{overview();saveView();viewport.focus();};$('capture').onclick=()=>walkControl.lock();
   $('settings-toggle').onclick=()=>{const open=$('settings-panel').hidden;$('settings-panel').hidden=!open;$('settings-toggle').setAttribute('aria-expanded',open);};
   for(const [id,key] of [['detail','detailDistance'],['district','districtDistance']])$(id+'-distance').oninput=()=>{settings[key]=Number($(id+'-distance').value);$(id+'-output').textContent=settings[key]+' m';};
   $('resolution').oninput=()=>{$('resolution-output').textContent=$('resolution').value+'×';resize();};$('wireframe').onchange=()=>streamer?.setWireframe($('wireframe').checked);$('shadows').onchange=()=>{renderer.shadowMap.enabled=$('shadows').checked;renderer.shadowMap.needsUpdate=true;};$('retry').onclick=()=>location.reload();
   const manifestURL=new URL('catalog.json',location.href);const response=await fetch(manifestURL,{cache:'no-store'});if(!response.ok)throw new Error('The scene package is not ready yet. Reload in a moment.');catalog=await response.json();if(!catalog.assets?.length)throw new Error('No buildings are available in this package.');
   settings.detailDistance=catalog.lodPolicy.detailDistance;settings.districtDistance=catalog.lodPolicy.districtDistance;
   streamer=new Streamer(scene,catalog,manifestURL,status,showError,renderer.capabilities.getMaxAnisotropy());
-  for(const asset of catalog.assets){const option=document.createElement('option');option.value=asset.id;option.textContent=asset.name;$('asset-select').append(option);}
-  $('asset-select').onchange=()=>selectAsset(catalog.assets.find(a=>a.id===$('asset-select').value));
   for(const option of $('quality').options)if(option.value!=='auto')option.disabled=!catalog.assets.some(a=>a.parts.some(p=>p.levels[option.value]));
-  selectAsset(catalog.assets[0]);resize();window.addEventListener('resize',resize);
+  if(!restoreSavedView())overview();viewReady=true;resize();window.addEventListener('resize',resize);
+  window.addEventListener('pagehide',saveView);window.addEventListener('beforeunload',saveView);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)saveView();});
   const snags=installSnags({
     setActive(active){reporting=active;keys.clear();drag=null;orbit.enabled=!active&&mode==='orbit';if(active)walkControl.unlock();},
     capture(){
@@ -125,7 +144,7 @@ async function init(){
       canvas.getContext('2d').drawImage(source,0,0,canvas.width,canvas.height);
       const target=mode==='orbit'?orbit.target.clone():camera.position.clone().addScaledVector(camera.getWorldDirection(new THREE.Vector3()),12);
       return {screenshot:canvas.toDataURL('image/jpeg',.92),view:{
-        asset:selectedAsset.id,mode,worldOrigin:catalog.worldOrigin,coordinateSystem:catalog.coordinateSystem,
+        asset:nearestAsset().id,mode,worldOrigin:catalog.worldOrigin,coordinateSystem:catalog.coordinateSystem,
         camera:{position:camera.position.toArray(),quaternion:camera.quaternion.toArray(),target:target.toArray(),fov:camera.fov,aspect:camera.aspect},
         viewport:{width:innerWidth,height:innerHeight,imageWidth:canvas.width,imageHeight:canvas.height},
         quality:$('quality').value,settings:{...settings},wireframe:$('wireframe').checked,shadows:$('shadows').checked,
@@ -133,7 +152,6 @@ async function init(){
       }};
     },
     restore(view){
-      const asset=catalog.assets.find(a=>a.id===view.asset);if(asset){$('asset-select').value=asset.id;selectAsset(asset);}
       setMode('orbit');camera.position.fromArray(view.camera.position);camera.quaternion.fromArray(view.camera.quaternion);
       camera.fov=view.camera.fov;camera.updateProjectionMatrix();orbit.target.fromArray(view.camera.target);orbit.update();
       $('quality').value=view.quality;
