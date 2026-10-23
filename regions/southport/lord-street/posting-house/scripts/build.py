@@ -243,13 +243,16 @@ for i in (0,2,4):
     # Cut the main slope behind the glazing; it formerly obscured the lower
     # panes. Solid cheeks close the opening back into the existing roof.
     cutter_mesh=Mesh('Temporary dormer opening')
-    cutter_mesh.box((c,z+.96,-2.55),(1.40,1.92,2.9))
+    # Cut to the outside of both solid cheeks. Their inside faces own the
+    # opening; leaving roof cut faces at the glazing edge duplicates them.
+    cutter_mesh.box((c,z+.96,-2.55),(1.76,1.92,2.9))
     cutter=cutter_mesh.finish([]);cutter.matrix_world=front
     bpy.context.view_layer.objects.active=roof
     mod=roof.modifiers.new('Dormer aperture','BOOLEAN');mod.operation='DIFFERENCE';mod.solver='EXACT';mod.object=cutter
     bpy.ops.object.modifier_apply(modifier=mod.name);bpy.data.objects.remove(cutter,do_unlink=True)
     for side in [-1,1]:
-        box('Dormer closed side cheek',(side*.79,z+.96,-1.45),(.18,1.92,2.9),'roof',plain,f)
+        # Front stone surround owns its .24 m return thickness.
+        box('Dormer closed side cheek',(side*.79,z+.96,-1.57),(.18,1.92,2.66),'roof',plain,f)
     box('Dormer sill',(0,z+.09,-.04),(1.82,.14,.42),'roof',plain,f)
     m=Mesh('Roof dormer hip '+str(i))
     m.add([(-1.03,z+1.91,.18),(1.03,z+1.91,.18),(1.03,z+1.91,-2.9),(-1.03,z+1.91,-2.9),(0,z+3.6,-1.1)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4),(3,2,1,0)])

@@ -170,3 +170,22 @@ assert triangles
 errors=overlaps(triangles,labels,min_area=1e-6)
 assert not errors,errors[:8]
 print('Courtyard paving joint intersections have no coplanar overlaps')
+
+# The main roof cutout meets the outside of the cheeks; the front surround
+# owns its corner volume. Keep all exposed cheek extents and glazed openings.
+triangles=[];labels=[]
+for ob in meshes:
+ if not ob.name.startswith(('Roof historic joined gables','Dormer closed side cheek','Dormer cheek front')):continue
+ ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(ob.name)
+errors=[v for v in overlaps(triangles,labels,min_area=1e-4) if v[0]!=v[1]]
+assert not errors,errors[:12]
+cheeks=[ob for ob in meshes if ob.name.startswith('Dormer closed side cheek')]
+assert len(cheeks)==6
+for ob in cheeks:
+ bm=bmesh.new();bm.from_mesh(ob.data)
+ assert all(e.is_manifold for e in bm.edges),ob.name
+ bm.free()
+ assert abs(max(v.co.x for v in ob.data.vertices)-min(v.co.x for v in ob.data.vertices)-.18)<1e-4,ob.name
+print('Dormer cheek/roof and cheek/front junctions have single surface ownership')
