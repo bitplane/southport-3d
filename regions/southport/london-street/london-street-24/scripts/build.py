@@ -151,7 +151,8 @@ box('Roof rear flat deck',((mainrear+xr)/2,(ys+yn)/2,base+wh-.09),(wingdepth-.03
 for label,frame in [('north',face_matrix((mainrear,yn,base),(0,1,0))),('south',face_matrix((xr+.36,ys,base),(0,-1,0)))]:wall_with_openings('rear store '+label,frame,wingdepth-.36,wh,[],'rear')
 wall_with_openings('rear loading wall',rear,width,wh,[(1.75,3.05,0,2.25)],'rear')
 elevation_box('Shop rear loading door',2.4,1.125,1.3,2.25,.06,-.10,metal,'rear',rear)
-for y in [ys+.10,yn-.10]:box('Trim rear low coping',((mainrear+xr)/2,y,base+wh+.06),(wingdepth,.23,.15),coping,'roof')
+# Meet the cream bay at the mapped boundary without overlapping coping skins.
+for y,w in [(ys+.1075,.215),(yn-.10,.23)]:box('Trim rear low coping',((mainrear+xr)/2,y,base+wh+.06),(wingdepth,w,.15),coping,'roof')
 box('Trim rear end coping',(xr+.10,(ys+yn)/2,base+wh+.06),(.23,width-.20,.15),coping,'roof')
 # 2011 Oxfam storefront: cream fascia with green lettering, thin pale glazing frames.
 for u in [.12,width-.12]:elevation_box('Shop brick entrance pier',u,1.62,.24,3.24,.28,-.035,brick,'shopfront')

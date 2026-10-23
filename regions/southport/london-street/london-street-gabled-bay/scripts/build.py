@@ -90,7 +90,7 @@ openings=[(u-.49,u+.49,4.80,6.25) for u in bays]+[(.23,width-.23,0,3.19)]
 wall_with_openings('cream gabled street face',front,width,7.25,openings,mat=cream)
 for u in [.15,width-.15]:
  elevation_box('Trim brick edge pier',u,5.25,.30,4.0,.17,.035,brick)
- elevation_box('Trim brick pier foot',u,3.30,.37,.16,.25,.045,brick)
+ elevation_box('Trim brick pier foot',u if u<width/2 else width-.1675,3.30,.37 if u<width/2 else .335,.16,.25,.045,brick)
 for i,u in enumerate(bays):
  m=Mesh('Window upper sash %d'%i);m.box((0,0,-.14),(.98,1.45,.025),0)
  for x in [-.46,.46]:m.box((x,0,-.07),(.06,1.45,.10),1)
@@ -109,7 +109,7 @@ cy=(ys+yn)/2
 v=[(xe,ys,ze),(xe,yn,ze),(ridge,yn,zr),(ridge,ys,zr),(xb,ys,ze),(xb,yn,ze),(xe,cy,zr),(ridge,cy,zr)]
 top=[(0,6,7),(6,1,7),(0,7,3),(1,2,7),(3,7,2,5,4)]
 boundary=[0,6,1,2,5,4,3]
-faces=top+[tuple(i+8 for i in reversed(f)) for f in top]+[(i,j,j+8,i+8) for i,j in zip(boundary,boundary[1:]+boundary[:1])]
+faces=top+[tuple(i+8 for i in reversed(f)) for f in top]+[(i,i+8,j+8,j) for i,j in zip(boundary,boundary[1:]+boundary[:1])]
 m=Mesh('Roof continuous pitched shell');m.add(v+[(x,y,z-.14) for x,y,z in v],faces);finish(m,'roof',[slate],roof_uv=True)
 # Cream triangular front with real shallow vent recess; plinth below is the open-window wall.
 m=Mesh('Envelope cream front gable');m.add([(0,7.25,-.36),(width,7.25,-.36),(width/2,9.12,-.36),(0,7.25,0),(width,7.25,0),(width/2,9.12,0)],[(0,2,1),(3,4,5),(0,1,4,3),(1,2,5,4),(2,0,3,5)]);finish(m,materials=[cream],transform=front)
@@ -134,7 +134,8 @@ box('Roof rear flat deck',((mainrear+xr)/2,(ys+yn)/2,base+wh-.09),(wingdepth-.03
 for label,frame in [('north',face_matrix((mainrear,yn,base),(0,1,0))),('south',face_matrix((xr+.36,ys,base),(0,-1,0)))]:wall_with_openings('rear store '+label,frame,wingdepth-.36,wh,[],'rear')
 wall_with_openings('rear loading wall',rear,width,wh,[(1.75,3.05,0,2.25)],'rear')
 elevation_box('Shop rear loading door',2.4,1.125,1.3,2.25,.06,-.10,metal,'rear',rear)
-for y in [ys+.10,yn-.10]:box('Trim rear low coping',((mainrear+xr)/2,y,base+wh+.06),(wingdepth,.23,.15),coping,'roof')
+# Meet 24 at the mapped boundary; retain the union's original outer edges.
+for y,w in [(ys+.10,.23),(yn-.1075,.215)]:box('Trim rear low coping',((mainrear+xr)/2,y,base+wh+.06),(wingdepth,w,.15),coping,'roof')
 box('Trim rear end coping',(xr+.10,(ys+yn)/2,base+wh+.06),(.23,width-.20,.15),coping,'roof')
 # Observed dark shop fascia and glazing; tenant lettering is not legible.
 for u in [.12,width-.12]:elevation_box('Shop brick entrance pier',u,1.62,.24,3.24,.28,-.035,brick,'shopfront')

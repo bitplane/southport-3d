@@ -37,3 +37,10 @@ stiles=[o for o in meshes if o.name.startswith('Shop display stile')]
 assert len(stiles)==3,'Two display panes share one centre stile'
 report={'mesh_objects':len(meshes),'upper_windows':2,'checks':'Finite UV meshes; packed authored textures; two unobscured sashes; closed pitch/deck/endwall; shared22boundary and geographic registration.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# Manifold alone does not prove consistent winding: every roof side faces out.
+roof=bpy.data.objects['Roof continuous pitched shell'];bm=bmesh.new();bm.from_mesh(roof.data)
+assert all(e.is_contiguous for e in bm.edges),'Roof shell has reversed side faces'
+assert bm.calc_volume(signed=True)>0,'Roof shell faces inward'
+bm.free()
+o=bpy.data.objects['Trim rear low coping'];assert min((reg.inverted()@o.matrix_world@v.co).y for v in o.data.vertices)>=D['south_y']-1e-5,'Coping crosses cream-bay boundary'
