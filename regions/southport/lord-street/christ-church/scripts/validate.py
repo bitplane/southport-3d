@@ -52,7 +52,8 @@ assert max(v.co.x for v in porch.data.vertices)<min(v.co.x for v in cap.data.ver
 # Close the formerly exposed hall side above the lower flat annex.
 side=bpy.data.objects['Envelope cafe west return']
 for y in [-32,-40,-50,-59]:
-    assert side.ray_cast(Vector((-85,y,6.8)),Vector((-1,0,0)),distance=8)[0],('Hall side gap',y)
+    inv=side.matrix_world.inverted()
+    assert side.ray_cast(inv@Vector((-85,y,6.8)),inv.to_3x3()@Vector((-1,0,0)),distance=8)[0],('Hall side gap',y)
 
 # Roundel apertures remain open in the masonry; the stair belongs on the cafe side.
 for o in objects:
@@ -83,3 +84,14 @@ for u,z in [(4.55,2.5),(4.55,7.75),(2.55,4.1),(6.55,4.1)]:
 
 # Roof endcap must not cover the photographed round light or brick gable.
 assert not roof.ray_cast(Vector((-120,-56.65,8.33)),Vector((1,0,0)),distance=10)[0], 'Slate cap obscures rear roundel'
+
+# Shared annex seam: the flat roof meets the return wall instead of leaving a
+# light strip, and the gable wall has no vertices above the roof underside.
+annex=bpy.data.objects['Envelope annex return']
+assert abs(min(v.co.x for v in annex.data.vertices)+89.55)<1e-5
+assert all(abs(min(v.co.x for v in o.data.vertices)+89.55)<1e-5 for o in flat)
+for v in side.data.vertices:
+    p=side.matrix_world@v.co
+    if p.z<6:continue
+    hit,top,n,i=roof.ray_cast(Vector((p.x-.01,p.y,20)),Vector((0,0,-1)),distance=20)
+    assert hit and p.z<=top.z-.159, ('Wall penetrates roof shell',tuple(p),top.z if hit else None)

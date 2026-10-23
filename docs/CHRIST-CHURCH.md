@@ -111,3 +111,9 @@ east-end treatment and small dimensions remain estimates. These simple roof,
 wall-opening and frame meshes stay geometric at Walk and District; fine fittings
 retain the existing omission policy. Source captures remain in the private snag
 queue, with provenance recorded in the asset research catalogue.
+
+The annex-facing hall side and transverse gable form one wall whose top follows
+the roof shell's underside. The flat annex decks and their west return share
+x = −89.55 m, avoiding an exposed strip at the junction. Validation checks the
+shared edge and roof clearance; these are construction joins, not new surveyed
+dimensions.

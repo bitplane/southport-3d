@@ -45,9 +45,15 @@ def build_rear(ctx):
     m=Mesh('Trim rear gable coping');m.tube([(0,eave+.05,.08),(centre,ridge+.06,.08),(depth,eave+.05,.08)],.10,sides=4)
     m.tube([(centre,ridge+.05,.08),(centre,ridge+.27,.08)],.075,sides=8)
     finish(m,'modern-hall',[cream],frame)
-    # The annex-side end needs a plain closure above the existing side wall.
+    # One continuous annex-facing wall ends at the underside of the roof.
+    # A separate full-height box plus a coplanar triangular cap caused roof-edge
+    # fighting and an offset return. Derive this silhouette from the roof shell.
     east=face_matrix((x1,y0,base),(1,0,0))
-    finish(wall('Envelope rear east gable',[(0,eave),(depth,eave),(centre,ridge)],[],.30),'modern-hall',[brick],east)
+    shell=.16;overhang=.12
+    end_height=ridge-(ridge-eave)*centre/(centre+overhang)-shell
+    outline=[(0,0),(-29.72-y0,0),(-29.72-y0,eave-shell),
+             (depth+overhang,eave-shell),(centre,ridge-shell),(0,end_height)]
+    finish(wall('Envelope cafe west return',outline,[],.30),'modern-hall',[brick],east)
     # Rear long elevation: six recessed windows, brick piers and two string courses.
     frame=face_matrix((x0,y0,base),(0,-1,0));width=x1-x0
     centres=[1.9+i*(width-3.8)/5 for i in range(6)]

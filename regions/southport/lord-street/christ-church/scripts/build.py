@@ -206,18 +206,18 @@ for y0,y1,h in [(-35,-26,4.15),(-54,-35,5.4),(-71.4,-54,3.9)]:
 for y,h in [(-35,5.4),(-54,5.4)]:
     box('Envelope annex roof step',(-83.1,y,z0+h/2),(12.8,.20,h),'modern-hall',brick)
 box('Envelope annex rear',(-83.2,-71.4,z0+1.95),(13.0,.32,3.9),'modern-hall',brick)
-box('Envelope annex return',(-89.75,-66.4,z0+1.95),(.32,10.3,3.9),'modern-hall',brick)
+box('Envelope annex return',(-89.39,-66.4,z0+1.95),(.32,10.3,3.9),'modern-hall',brick)
 # Close the hall side and front shoulder behind the cafe. Previously a short
 # partial-height return left a visible void beneath the main roof.
 box('Envelope cafe porch return',(-91.335,-29.72,z0+3.35),(3.57,.30,6.70),'modern-hall',brick)
-box('Envelope cafe west return',(-89.55,-45.41,z0+3.35),(.30,31.38,6.70),'modern-hall',brick)
+# The continuous hall side and cross-gable are built together in rear_hall.py.
 box('Envelope cafe connector',(-86.975,-29.72,z0+2.075),(4.85,.30,4.15),'modern-hall',newbrick)
 build_cafe(finish,box,z0,newbrick,cladding,glass,cream,wood,slate,metal)
 # Separate closed roofs do not intersect: lower annex roof ends at nave wall.
 from rear_hall import build_rear
 build_rear(globals())
 for ya,yb,h in [(-35,-29.55,4.15),(-54,-35,5.4),(-71.5,-54,3.9)]:
-    box('Roof modern annex flat',(-82.975,(ya+yb)/2,z0+h),(12.85,yb-ya,.18),'roofs',slate)
+    box('Roof modern annex flat',(-83.05,(ya+yb)/2,z0+h),(13.0,yb-ya,.18),'roofs',slate)
 # Low cafe roof outside the high roof footprints.
 # Rounded cafe cap is authored in cafe.py.
 # Low step in rear hall (mapped southern offset) and lead valley between ranges.
