@@ -64,7 +64,7 @@ The manifest records decisions, source/recipe/baker hashes, Blender version, bou
 
 ## Streaming assembly
 
-The commands above retain the original component experiment. For the complete viewer build, use `python tools/project.py publish` and the [publication contract](VIEWER.md). publication.json groups compatible instances, classifies every exported object, retains explicit architectural envelopes where appropriate, and assembles Detail/Walk/District streaming parts. Regional tiles remain deferred.
+The commands above retain the original component experiment. For the complete viewer build, use `python tools/project.py publish` and the [publication contract](VIEWER.md). publication.json groups compatible instances, classifies every exported object, retains explicit architectural envelopes where appropriate, and assembles Detail/Walk/District streaming parts. Spatial streaming cells are implemented; merged regional LoDs remain deferred.
 
 For long shop signs, inspect the result in the actual viewer as well as the bake
 PNG. Stretching a square atlas over a thin panel creates unequal texel density;

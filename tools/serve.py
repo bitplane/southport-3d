@@ -61,7 +61,9 @@ class Handler(SimpleHTTPRequestHandler):
         try:
             while True:
                 try:
-                    body = (Path(self.directory) / 'catalog.json').read_bytes()
+                    body = b''.join(path.read_bytes() for path in
+                                   (Path(self.directory) / 'catalog.json', Path(self.directory) / 'scene.json')
+                                   if path.is_file())
                     revision = hashlib.sha256(body).hexdigest()
                     if revision != previous:
                         self.wfile.write(('event: catalog\ndata: ' + json.dumps({'revision': revision}) + '\n\n').encode())

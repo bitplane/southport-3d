@@ -49,27 +49,44 @@ def _publish(args, assets, fingerprint, build, retained=()):
         if not config.exists():
             print('No publication recipe; skipping',key);continue
         spec=load_publication(config);runtime=ROOT/'build'/key
-        signature=fingerprint(source);stamp=runtime/'source.sha256'
-        if not stamp.exists() or stamp.read_text().strip()!=signature or args.rebuild:
-            build(SimpleNamespace(asset=key,stage='all',threads=args.threads,blender=args.blender,views=[]))
+        # Always ask the stage runner: unchanged stages are cheap verified hits,
+        # and validation-only changes must not bypass publication validation.
+        build(SimpleNamespace(asset=key,stage='all',threads=args.threads,blender=args.blender,
+                              views=[],force=args.rebuild))
+        from build_state import Stages
+        stages=Stages(ROOT,source,asset,runtime,args.blender,args.threads)
+        signature=stages.state['nodes']['master']['key']
         source_blend=(runtime/spec['source_blend']).resolve()
         if not source_blend.is_relative_to(runtime.resolve()) or not source_blend.is_file():raise ValueError('Invalid source blend')
-        digest=hashlib.sha256()
-        for value in [signature,sha256(source_blend),config.read_text()]:digest.update(value.encode())
-        for name in ['blender_package.py','blender_lod.py','publication.py']:
-            digest.update((ROOT/'tools'/name).read_bytes())
-        package_signature=digest.hexdigest();package=runtime/'package';manifest_path=package/'manifest.json'
-        reuse=False
-        if manifest_path.exists() and not args.rebuild:
-            previous=json.loads(manifest_path.read_text())
-            reuse=previous.get('build_signature')==package_signature and all((package/f['path']).is_file() and sha256(package/f['path'])==f['sha256'] for f in previous['files'])
+        if stages.reason('master'):raise ValueError('Master changed before packaging')
+        package=runtime/'package';manifest_path=package/'manifest.json'
+        previous=json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+        dependencies=previous.get('dependencies',[])
+        package_inputs=stages.inputs('package',dependencies)
+        # Host-side inspection/repacking is part of the package recipe too.
+        package_inputs['host_tools']={name:sha256(ROOT/'tools'/name) for name in
+            ('publish_viewer.py','publication.py','publication_schema.py','check_lods.py')}
+        reuse=(not args.rebuild and previous.get('inputs')==package_inputs and
+               all((package/f['path']).is_file() and sha256(package/f['path'])==f['sha256']
+                   for f in previous.get('files',[])) and bool(previous.get('files')))
         if not reuse:
             work=runtime/'package-work'
             if work.exists():shutil.rmtree(work)
             work.mkdir();log=runtime/'logs/package.log'
-            command=[args.blender,'-b','--factory-startup','--threads',str(args.threads),'--python-exit-code','1','--python',str(ROOT/'tools/blender_package.py'),'--','--source',str(source_blend),'--asset',str(source),'--output',str(work)]
-            print(f'Building viewer levels for {key}; log: {log}',flush=True)
-            with log.open('w') as output:subprocess.run(command,cwd=ROOT,stdout=output,stderr=subprocess.STDOUT,check=True)
+            stages.snapshot_inputs();stages.deps=set()
+            before=stages.inputs('package',[])
+            stages.run_script(stages.snapshot/'tools/blender_package.py',True,
+                ('--source',str(source_blend),'--asset',str(stages.snapshot/'asset'),'--output',str(work)))
+            if stages.reason('master'):raise ValueError('Master changed during packaging')
+            if before!=stages.inputs('package',[]):raise ValueError('Package inputs changed during baking')
+            for path in set(stages.deps)|set(map(Path,before['files'])):
+                if not path.is_file() or sha256(path)!=stages.snapshot_digest(path):
+                    raise ValueError('Package dependency changed during baking: '+str(path))
+            dependencies=sorted(map(str,stages.deps))
+            package_inputs=stages.inputs('package',dependencies)
+            package_inputs['host_tools']={name:sha256(ROOT/'tools'/name) for name in
+                ('publish_viewer.py','publication.py','publication_schema.py','check_lods.py')}
+            package_signature=hashlib.sha256(json.dumps(package_inputs,sort_keys=True).encode()).hexdigest()
             assembly=json.loads((work/'assembly.json').read_text());files=[]
             for item in assembly['files']:
                 path=work/item['path'];limit=spec['levels'][item['level']]['texture_size']
@@ -81,7 +98,7 @@ def _publish(args, assets, fingerprint, build, retained=()):
                 levels={f['level']:f for f in files if f['part']==part['id']}
                 for a,b in [('detail','walk'),('walk','district')]:
                     if a in levels and b in levels and levels[b]['triangles']>levels[a]['triangles']:raise ValueError('Placed triangles increased in a lower level')
-            metadata={'schema_version':1,'asset':key,'build_signature':package_signature,'source_fingerprint':signature,'source_blend_sha256':assembly['source_sha256'],'files':files,'coverage':assembly['coverage']}
+            metadata={'schema_version':1,'asset':key,'inputs':package_inputs,'dependencies':dependencies,'build_signature':package_signature,'source_fingerprint':signature,'source_blend_sha256':assembly['source_sha256'],'files':files,'coverage':assembly['coverage']}
             (work/'manifest.json').write_text(json.dumps(metadata,indent=2)+'\n')
             if package.exists():shutil.rmtree(package)
             work.rename(package)
@@ -111,7 +128,7 @@ def _publish(args, assets, fingerprint, build, retained=()):
             result={'id':part['id'],'name':part['name'],'bounds':baseline['bounds'],'ground':part.get('ground',False),'levels':{}}
             if part.get('fixed_level'):result['fixedLevel']=part['fixed_level']
             for item in files:
-                result['levels'][item['level']]={k:item[k] for k in ('bytes','sha256','triangles','uniqueTriangles','gpuBytesEstimate')}
+                result['levels'][item['level']]={k:item[k] for k in ('bytes','sha256','triangles','uniqueTriangles','gpuBytesEstimate','bounds')}
                 result['levels'][item['level']]['uri']=f"assets/{key}/{item['part']}-{item['level']}-{item['sha256'][:16]}.glb"
                 result['levels'][item['level']]['source_path']=str(package/item['path'])
             entry['parts'].append(result)
@@ -130,18 +147,30 @@ def _publish(args, assets, fingerprint, build, retained=()):
                 if not destination.exists():
                     try:os.link(source,destination)
                     except OSError:shutil.copy2(source,destination)
-    viewer_files=('index.html','style.css','app.js','lod.js','streamer.js','snags.js','view-state.js','live.js')
-    viewer_version=hashlib.sha256()
-    for name in viewer_files:
-        viewer_version.update(name.encode());viewer_version.update((ROOT/'viewer'/name).read_bytes())
-        target=dist/(name+'.tmp');shutil.copy2(ROOT/'viewer'/name,target);target.replace(dist/name)
+    viewer_version=install_viewer(dist)
     catalog={'schema_version':1,'worldOrigin':world['origin_wgs84_lat_lon'],'coordinateSystem':'East, up, south (metres)','lodPolicy':world['lodPolicy'],'assets':sorted(entries,key=lambda entry:entry['id'])}
-    catalog['viewerVersion']=viewer_version.hexdigest()
+    catalog['viewerVersion']=viewer_version
     catalog['revision']=hashlib.sha256(json.dumps(catalog,sort_keys=True).encode()).hexdigest()
     temporary=dist/'catalog.json.tmp';temporary.write_text(json.dumps(catalog,indent=2)+'\n');temporary.replace(dist/'catalog.json')
-    retire_resources(dist,uris(catalog))
+    from spatial_index import index_catalog
+    _, cells = index_catalog(ROOT)
+    retire_resources(dist,uris(catalog) | cells)
     print('Viewer package ready:',dist,flush=True)
     print('Serve with: python3 tools/serve.py   →   http://127.0.0.1:8765',flush=True)
+
+
+def install_viewer(dist):
+    """Install one coherent snapshot of viewer sources, returning its identity."""
+    names=('index.html','style.css','app.js','lod.js','streamer.js','snags.js','view-state.js',
+           'live.js','spatial.js','spatial-streamer.js')
+    snapshot={name:(ROOT/'viewer'/name).read_bytes() for name in names}
+    if any((ROOT/'viewer'/name).read_bytes()!=data for name,data in snapshot.items()):
+        raise ValueError('Viewer sources changed during snapshot')
+    version=hashlib.sha256()
+    for name,data in snapshot.items():
+        version.update(name.encode());version.update(data)
+        target=dist/(name+'.tmp');target.write_bytes(data);target.replace(dist/name)
+    return version.hexdigest()
 
 
 def retire_resources(dist, current, now=None):
@@ -150,11 +179,12 @@ def retire_resources(dist, current, now=None):
     retired_path=dist/'retired-resources.json'
     retired=json.loads(retired_path.read_text()) if retired_path.exists() else {}
     published={p.relative_to(dist).as_posix() for p in (dist/'assets').rglob('*.glb')}
+    published.update(p.relative_to(dist).as_posix() for p in (dist/'cells').glob('*.json'))
     for uri in published-current:retired.setdefault(uri,now)
     for uri in list(retired):
         if uri in current or uri not in published:del retired[uri]
         elif now-retired[uri]>86400:
             path=(dist/uri).resolve()
-            if path.is_relative_to((dist/'assets').resolve()):path.unlink(missing_ok=True)
+            if any(path.is_relative_to((dist/folder).resolve()) for folder in ('assets','cells')):path.unlink(missing_ok=True)
             del retired[uri]
     tmp=dist/'retired-resources.json.tmp';tmp.write_text(json.dumps(retired));tmp.replace(retired_path)

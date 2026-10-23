@@ -18,7 +18,7 @@ export function watchCatalog(onCatalog,onStatus){
     if(busy){again=true;return;}
     busy=true;
     try{
-      const response=await fetch(new URL('catalog.json',location.href),{cache:'no-store'});
+      const response=await fetch(new URL('scene.json',location.href),{cache:'no-store'});
       if(!response.ok)throw new Error('Catalog unavailable');
       const catalog=await response.json();
       if(!Array.isArray(catalog.assets)||!catalog.assets.length)throw new Error('Invalid catalog');

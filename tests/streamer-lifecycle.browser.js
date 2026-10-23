@@ -46,6 +46,13 @@ async () => {
     root.children[0].geometry.addEventListener('dispose',()=>disposed=true);
     stale.destroy();done({scene:root});await late;
     assert(stale.cache.size===0 && disposed,'Superseded decode leaked or resurrected');
+    const bounded=make('bounded');instances.push(bounded);bounded.budget=20;
+    bounded.entries[0].part.levels={detail:{uri:'detail.glb',bytes:1,gpuBytesEstimate:10},district:{uri:'district.glb',bytes:1,gpuBytesEstimate:40}};
+    bounded.loader.parseAsync=async()=>({scene:mesh()});
+    bounded.update(new THREE.PerspectiveCamera(),{detailDistance:8,districtDistance:70},'detail');
+    while(bounded.pending)await new Promise(resolve=>setTimeout(resolve,1));
+    assert(bounded.entries[0].current==='detail','Expensive District bootstrap blocked cheaper Detail');
+    assert(bounded.residentBytes<=bounded.budget,'Admission exceeded budget');
     return 'Streamer lifecycle checks passed';
   } finally {
     window.fetch=originalFetch;

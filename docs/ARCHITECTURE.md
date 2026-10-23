@@ -14,6 +14,11 @@ Generated Blender scenes, GLBs, baked/procedural maps, renders and validation re
 
 Polygon clipping and ground-boundary conformance live in lib/southport3d/planar.py and conform.py. Site-specific layouts remain in each asset. The publication schema rejects unknown orchestration fields while leaving custom generator settings to the generator’s checks.
 
-The runner locks each asset across build/export/render/LoD operations. Publication locks the catalog and all asset outputs for a consistent snapshot. Locks are advisory POSIX locks under ignored build/.locks; direct scripts bypass them. Source fingerprints conservatively include the entire shared library. See [MODELLING-WORKFLOW.md](MODELLING-WORKFLOW.md) for the review process and lessons from the first block.
+The runner locks each asset across build/export/render/LoD operations. Publication locks the catalog and all asset outputs for a consistent snapshot. Locks are advisory POSIX locks under ignored build/.locks; direct scripts bypass them. Runtime dependency records invalidate only stages that consumed changed shared modules. Master inputs are snapshotted; leaf stages cannot mutate the master. See [INCREMENTAL-BUILDS.md](INCREMENTAL-BUILDS.md). See [MODELLING-WORKFLOW.md](MODELLING-WORKFLOW.md) for the review process and lessons from the first block.
 
 Metric parallel road-edge curves and ownership clipping live in `southport3d/road.py`. Use the same kerb curve for both paint offsets and clip it at the shared site station; a tile boundary is not a kerb return.
+
+The viewer reads a compact `scene.json` bootstrap and content-addressed loose cell
+manifests generated from the union of all published LoD bounds. The flat
+`catalog.json` remains for whole-map audits. Source geographic folders do not
+determine runtime cells. See [VIEWER.md](VIEWER.md) for residency and live updates.

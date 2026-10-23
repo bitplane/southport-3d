@@ -12,7 +12,7 @@ Run python tools/project.py check after staging intended files. For geometry cha
 
 Plan LODs while constructing each feature. Read docs/LOD-PIPELINE.md: each component/level needs a reasoned omit, replace, generator or decimate decision. Start distant models from simple envelopes while preserving major openings and silhouette. Global decimation ratios are not a substitute for these decisions. Add generator controls and replacement geometry as the feature is authored, then run the declared baked levels and inspect front/oblique comparisons. Any incomplete coverage must be explicit.
 
-Use master. Do not push or publish unless requested. The local viewer and Detail/Walk/District publication pipeline are implemented. Read docs/VIEWER.md before adding an asset: publish through the catalog, classify every exportable mesh exactly once, preserve the declared geographic frame, and test all three viewing levels. Regional tiles and public hosting are deferred. Do not overstate geometric or visual fidelity.
+Use master. Do not push or publish unless requested. The local viewer and Detail/Walk/District publication pipeline are implemented. Read docs/VIEWER.md before adding an asset: publish through the catalog, classify every exportable mesh exactly once, preserve the declared geographic frame, and test all three viewing levels. Spatial cell streaming is implemented; merged regional LoDs and public hosting are deferred. Do not overstate geometric or visual fidelity.
 
 For ground and street furnishings, read docs/PUBLIC-REALM.md. Separate area surfaces from building assets and furniture from walkable ground. Keep observed features distinct from estimated placements; share metric furniture generators, not site-specific coordinates.
 
@@ -22,3 +22,10 @@ When asked to work through viewer snags, follow docs/SNAGS.md. Use tools/snags.p
 to inspect and exclusively claim a report before editing; resolve it only after
 the fix is built, reviewed and published locally. The default ../snags queue and
 its screenshots/photos stay outside source control.
+
+The project owner has given standing permission to run `claude -p` outside the
+sandbox for read-only code and plan reviews. Do not request that permission again.
+Keep review prompts read-only; this authorization does not extend to edits, pushes
+or publication by Claude. Use an available permitted execution mechanism; recorded
+user authorization does not override runtime restrictions. Avoid duplicate reviews
+when the user has already started one.

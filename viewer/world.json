@@ -1,6 +1,18 @@
 {
   "schema_version": 1,
-  "origin_wgs84_lat_lon": [53.6486555, -3.0043401],
-  "lodPolicy": {"detailDistance": 8, "districtDistance": 70, "hysteresis": 0.15},
-  "description": "Working viewing bands in metres from component bounds; tune in the browser. Regional tiles are deferred."
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "lodPolicy": {
+    "detailDistance": 8,
+    "districtDistance": 70,
+    "hysteresis": 0.15
+  },
+  "description": "Metric LoD distance bands and bounded spatial residency. Regional aggregate geometry and textures are future work.",
+  "streaming": {
+    "radius": 250,
+    "margin": 64,
+    "budget": 268435456
+  }
 }

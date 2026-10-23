@@ -71,18 +71,11 @@ def check():
 
 
 def fingerprint(source):
-    digest = hashlib.sha256()
-    for base in (source, ROOT / 'lib'):
-        for path in sorted(base.rglob('*')):
-            if path.is_file() and '__pycache__' not in path.parts and path.name not in {'lod.json', 'lod.py', 'publication.json'}:
-                digest.update(str(path.relative_to(ROOT)).encode())
-                if path == source / 'asset.json':
-                    metadata = json.loads(path.read_text())
-                    metadata.pop('validation_checks', None)
-                    digest.update((json.dumps(metadata, indent=2) + '\n').encode())
-                else:
-                    digest.update(path.read_bytes())
-    return digest.hexdigest()
+    """Expected master input key; output hashes are integrity checks, not keys."""
+    from build_state import Stages
+    spec = json.loads((source / 'asset.json').read_text())
+    stages = Stages(ROOT, source, spec, ROOT / 'build' / spec['id'])
+    return hashlib.sha256(json.dumps(stages.inputs('master'), sort_keys=True).encode()).hexdigest()
 
 
 def build(args):
@@ -91,57 +84,40 @@ def build(args):
 
 
 def _build(args):
+    from build_state import Stages
     source, spec = assets()[args.asset]
     runtime = ROOT / 'build' / args.asset
-    signature = fingerprint(source)
-    stamp = runtime / 'source.sha256'
-    fresh = args.stage in ('build', 'all')
-    if not fresh and (not stamp.exists() or stamp.read_text().strip() != signature):
+    stages = Stages(ROOT, source, spec, runtime, args.blender, args.threads)
+    force = getattr(args, 'force', False)
+    if args.stage in ('build', 'all'):
+        stages.execute('master', force)
+    elif stages.reason('master'):
         raise ValueError('Build missing or source changed: run --stage all first')
-    runtime.mkdir(parents=True, exist_ok=True)
-    if fresh:
-        stamp.unlink(missing_ok=True)
-        for name in ('scripts', 'research'):
-            dest = runtime / name
-            if dest.exists():
-                shutil.rmtree(dest)
-            shutil.copytree(source / name, dest, ignore=shutil.ignore_patterns('__pycache__'))
-        # Clear obsolete products when rebuilding changed source.
-        for name in ('models', 'renders', 'textures'):
-            dest = runtime / name
-            if dest.exists():
-                shutil.rmtree(dest)
-            dest.mkdir()
-        (runtime / 'research/progress_checkpoint.json').write_text(json.dumps({'checkpoint': 'Source build'}))
-    logs = runtime / 'logs'
-    logs.mkdir(exist_ok=True)
-    env = dict(os.environ, SOUTHPORT_REPO_ROOT=str(ROOT))
-
-    def run(script, blender=False, extra=()):
-        command = ([args.blender, '-b', '--factory-startup', '--threads', str(args.threads), '--python-exit-code', '1', '--python'] if blender else [sys.executable])
-        command += [str(runtime / 'scripts' / script)]
-        if extra:
-            command += ['--', *extra] if blender else list(extra)
-        log = logs / (Path(script).stem + '.log')
-        print(f'Running {script}; log: {log}', flush=True)
-        with log.open('w') as output:
-            subprocess.run(command, cwd=runtime, env=env, stdout=output, stderr=subprocess.STDOUT, check=True)
-
-    if fresh:
-        run(spec['build']['prepare'])
-        run(spec['build']['geometry'], True, ('--no-render', '--no-export'))
-    if args.stage in ('all', 'export'):
-        run(spec['build']['export'], True)
-    if args.stage in ('all', 'validate'):
-        run(spec['build']['validate'], True)
-        for script in spec.get('validation_checks', []):
-            run(script)
-    if args.stage == 'render':
-        run(spec['build']['render'], True, ('--final', *args.views))
-        run('contact_sheet.py')
-    if fresh:
-        stamp.write_text(signature + '\n')
+    try:
+        if args.stage in ('all', 'export'):
+            stages.execute('export', force)
+        if args.stage in ('all', 'validate'):
+            stages.execute('validate', force)
+        if args.stage == 'render':
+            stages.execute('render', force or bool(args.views), args.views)
+    except Exception:
+        (runtime / 'source.sha256').unlink(missing_ok=True)
+        raise
+    if not stages.reason('validate'):
+        (runtime / 'source.sha256').write_text(stages.state['nodes']['master']['key'] + '\n')
     print(f'Finished: {runtime}')
+
+
+def explain(args):
+    from build_state import Stages
+    source, spec = assets()[args.asset]
+    stages = Stages(ROOT, source, spec, ROOT / 'build' / args.asset, args.blender)
+    for stage in ('master', 'export', 'validate', 'render'):
+        reason = stages.reason(stage)
+        if stage != 'master' and stages.reason('master'):
+            reason = 'upstream master needs rebuilding'
+        print(f'{stage}: {reason or "up to date"}')
+    print('package: '+stages.package_reason())
 
 
 def lod(args):
@@ -150,37 +126,40 @@ def lod(args):
 
 
 def _lod(args):
+    from build_state import Stages, record
     source, spec = assets()[args.asset]
     runtime = ROOT / 'build' / args.asset
-    signature = fingerprint(source)
-    stamp = runtime / 'source.sha256'
-    if not stamp.exists() or stamp.read_text().strip() != signature:
+    stages = Stages(ROOT, source, spec, runtime, args.blender, args.threads)
+    if stages.reason('master'):
         raise ValueError('Master missing or source changed: run build first')
-    recipe_path = source / 'lod.json'
+    stages.snapshot_inputs();stages.deps=set()
+    recipe_path = stages.snapshot / 'asset/lod.json'
     recipe = load_recipe(recipe_path)
     blend = (runtime / recipe['source_blend']).resolve()
     if not blend.is_relative_to(runtime.resolve()) or not blend.is_file():
         raise ValueError('LOD source must be an existing blend inside the asset runtime')
+    master_hash = record([blend])
     work = runtime / 'lod-work'
-    if work.exists():
-        shutil.rmtree(work)
+    if work.exists():shutil.rmtree(work)
     work.mkdir()
-    log = runtime / 'logs/lod.log'
-    command = [args.blender, '-b', '--factory-startup', '--threads', str(args.threads),
-               '--python-exit-code', '1', '--python', str(ROOT / 'tools/blender_lod.py'), '--',
-               '--source', str(blend), '--recipe', str(recipe_path), '--output', str(work),
-               '--source-fingerprint', signature]
-    print(f'Baking LODs; log: {log}', flush=True)
-    with log.open('w') as output:
-        subprocess.run(command, cwd=ROOT, stdout=output, stderr=subprocess.STDOUT, check=True)
-    subprocess.run([sys.executable, str(ROOT / 'tools/check_lods.py'), str(work)], check=True)
-    subprocess.run([sys.executable, str(ROOT / 'tools/lod_contact_sheet.py'), str(work)], check=True)
-    subprocess.run([sys.executable, str(ROOT / 'tools/lod_contact_sheet.py'), str(work), '--oblique'], check=True)
+    stages.run_script(stages.snapshot/'tools/blender_lod.py', True,
+        ('--source',str(blend),'--recipe',str(recipe_path),'--output',str(work),
+         '--source-fingerprint',stages.state['nodes']['master']['key']))
+    for script, extra in [('check_lods.py',()),('lod_contact_sheet.py',()),('lod_contact_sheet.py',('--oblique',))]:
+        stages.run_script(stages.snapshot/'tools'/script, False, (str(work),*extra))
+    if record([blend])!=master_hash:raise ValueError('LOD pilot mutated master')
+    for path in stages.deps:
+        if not path.is_file() or stages.snapshot_digest(path)!=sha_file(path):
+            raise ValueError('LOD dependency changed during run: '+str(path))
     dest = runtime / 'lods'
-    if dest.exists():
-        shutil.rmtree(dest)
+    if dest.exists():shutil.rmtree(dest)
     work.rename(dest)
     print(f'Finished: {dest}')
+
+
+def sha_file(path):
+    from build_state import sha
+    return sha(path)
 
 
 def main():
@@ -188,12 +167,18 @@ def main():
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('list')
     sub.add_parser('check')
+    indexer=sub.add_parser('index', help='Index the last-good published catalog without building assets')
+    indexer.add_argument('--viewer', action='store_true', help='Also publish current viewer code without rebuilding assets')
     builder = sub.add_parser('build')
     builder.add_argument('asset')
     builder.add_argument('--stage', choices=['all', 'build', 'export', 'validate', 'render'], default='all')
     builder.add_argument('--threads', type=int, default=12)
     builder.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))
     builder.add_argument('--views', nargs='*', default=[])
+    builder.add_argument('--force', action='store_true')
+    planner = sub.add_parser('explain', aliases=['plan'], help='Explain stale incremental stages')
+    planner.add_argument('asset')
+    planner.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))
     lodder = sub.add_parser('lod', help='Bake and validate levels from the asset lod.json')
     lodder.add_argument('asset')
     lodder.add_argument('--threads', type=int, default=12)
@@ -209,10 +194,25 @@ def main():
             print(key)
     elif args.command == 'check':
         check()
+    elif args.command == 'index':
+        from spatial_index import index_catalog
+        with asset_lock(ROOT, 'catalog'):
+            if args.viewer:
+                from publish_viewer import install_viewer
+                path=ROOT/'dist/catalog.json'
+                catalog=json.loads(path.read_text())
+                catalog['viewerVersion']=install_viewer(ROOT/'dist')
+                catalog.pop('revision',None)
+                catalog['revision']=hashlib.sha256(json.dumps(catalog,sort_keys=True).encode()).hexdigest()
+                temporary=path.with_suffix('.json.tmp');temporary.write_text(json.dumps(catalog,indent=2)+'\n');temporary.replace(path)
+            scene, _ = index_catalog(ROOT)
+        print(f"Indexed {len(scene['cells'])} spatial cells: {scene['revision']}")
     elif args.command == 'publish':
         from publish_viewer import publish
         # Publication owns all asset locks before invoking the unlocked builder.
         publish(args, assets, fingerprint, _build)
+    elif args.command in ('explain', 'plan'):
+        explain(args)
     elif args.command == 'lod':
         lod(args)
     else:

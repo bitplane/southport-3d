@@ -8,7 +8,7 @@ The working levels are:
 | **Walk** | Ground-level exploration with reduced geometry and baked detail | Between Detail and District |
 | **District** | Looking across a square or several buildings; retain recognisable envelopes and openings | Beyond 70 m of a part's bounds |
 
-These are adjustable starting bands, not claims of perceptual equivalence. The viewer applies 15% hysteresis to avoid flickering between levels. Changing zoom changes camera distance. It selects each part independently; Detail for the obelisk does not require Detail for every colonnade. Larger towns will need visibility and screen-space scheduling refinements. Regional tiles and merged regional textures are deliberately deferred.
+These are adjustable starting bands, not claims of perceptual equivalence. The viewer applies 15% hysteresis to avoid flickering between levels. Changing zoom changes camera distance. It selects each part independently; Detail for the obelisk does not require Detail for every colonnade. Larger towns will need visibility and screen-space scheduling refinements. Loose spatial cells now bound loading; merged regional geometry/textures and screen-space error selection remain deferred.
 
 ## Build and open
 
@@ -38,7 +38,7 @@ The viewer uses a version-pinned Three.js 0.180.0 import map from jsDelivr; no N
 - View settings: force a level, change the automatic distance bands, change rendering resolution, and toggle wireframe/shadows. Statistics show placed triangles, transfer bytes and approximate resident GPU resource bytes.
 - The viewer remembers camera position, orientation, orbit target and navigation mode in local storage, including across hard refreshes. Each browser/origin keeps its own view. Clearing site data resets it; unavailable storage simply disables persistence. Snag links and restored snag cameras continue to work without a location picker.
 
-Parts appear first at District where available, then switch only after the requested level is loaded. At most two downloads run concurrently. Obsolete fetches are cancelled, and the current model remains visible during replacement. Inactive resources are evicted least-recently-used against a 256 MiB estimate. Active models remain pinned, so forcing Detail everywhere can exceed that soft budget. GPU estimates are not a browser process-memory measurement.
+Parts normally appear first at District, then refine within the memory budget. Each model streamer allows two concurrent downloads. Obsolete fetches are cancelled; distant active models are retired as well as cached versions. A replacement usually keeps the old LoD visible, but it may release that version first if both cannot fit. See Spatial working set below for admission, deferral and staging limits.
 
 ## Adding a building
 
@@ -54,9 +54,9 @@ The common world frame is **east, up, south** in metres. Publication computes ho
 ## Files and checks
 
 - `build/<asset>/package/`: generated levels, reused bake maps, assembly coverage and validated package metadata.
-- `dist/catalog.json`: only data the viewer needs, including bounds, transforms, level URLs, hashes and resource sizes.
+- `dist/catalog.json`: complete audit/admin inventory, including bounds, transforms, level URLs, hashes and sizes. The browser uses `scene.json` and nearby cell manifests.
 - `dist/assets/<asset>/`: content-addressed GLBs with embedded textures. Hard links are used on the same filesystem to avoid duplicate disk blocks.
-- The catalog changes only after all assets validate. One previous catalog's resources are retained for open browser tabs; older publication resources are pruned on subsequent builds.
+- The catalog changes only after all assets validate. Retired model and cell resources are retained for at least 24 hours, then pruned during subsequent publications.
 
 The master remains read-only during LOD assembly. Each source prototype is processed once per compatible material/scale group, then reused for its instances. Texture dimensions are capped per level; normals are renormalised after downsampling. The source and recipe signatures invalidate stale outputs. GLBs are checked for positions, indices, transforms, texture embedding, budgets and non-increasing placed triangle counts. The original full memorial validators still run when its master changes.
 
@@ -111,22 +111,22 @@ agent claim/resolve commands and reference-image handling.
 ## Live model updates
 
 Completed local publications appear without refreshing. The server emits an SSE
-notification when the atomic catalog changes; clients also check every 15 seconds
+notification when the catalog or spatial scene bootstrap changes; clients also check every 15 seconds
 and on returning to the tab, so static hosting and older servers still work.
 Restart `tools/serve.py` after installing the event endpoint. No new port is needed.
 
 Changed assets load in a separate scene, then swap together between frames;
 unchanged assets keep their caches. Additions, removals, transforms and bounds are
 included. A newer publication cancels an obsolete replacement batch. Failed loads
-keep the existing scene and pause updates; unpause to retry. View settings contains
+keep the existing scene and report the failure; movement, a new publication or reload retries the working set. View settings contains
 **Pause live updates**. Reporting a snag automatically freezes updates and late LoD
 activations; the report records the catalog revision and loaded resource filenames.
 Camera position, mode and settings survive a swap. Walking rechecks ground height
 at the same horizontal location. There is still no building collision physics.
 
 A replacement batch has a 128 MiB estimated GPU-resource budget in addition to the
-current scene. Oversized batches try District before refinement; if even District
-exceeds the budget, the viewer asks for a reload. Estimates are not a hard cap on
+current scene. Oversized batches try District before refinement; if an existing-asset replacement at District
+exceeds the staging budget, the viewer reports the failure and keeps its old geometry. Reload can apply a new initial working set. Estimates are not a hard cap on
 browser RAM or texture-decoding allocations. Two replacement downloads can run
 alongside the ordinary streamer's two requests. Pausing prevents application of a
 batch; requests already in flight may finish offscreen.
@@ -144,3 +144,48 @@ Live-update policy checks: `node tests/live-policy.mjs`. Python regression tests
 `tests/streamer-lifecycle.browser.js` is a Playwright `page.evaluate` function for
 a loaded viewer page. It checks versioned caches, batch adoption, reporting freezes
 and disposal of superseded asynchronous decodes using isolated fixture scenes.
+
+## Spatial working set
+
+The browser fetches `scene.json`, then only nearby hashed `cells/*.json` manifests.
+The flat `catalog.json` is retained for audits, not browser discovery. Each part
+appears once, in a metric cell chosen by centre and horizontal extent; published
+bounds conservatively include every LoD after its world transform. Cell sizes
+start at 64 m and increase by factors of four. A small origin-crossing object does
+not become a root-level object. The bootstrap contains cell descriptors and asset
+names/views, not every part. Paging this descriptor list is future work if needed.
+
+Defaults are a 250 m horizontal load radius, 64 m retention margin, 256 MiB
+estimated payload budget and up to 128 MiB additional replacement staging space.
+Set `viewer/world.json:streaming.radius`, `margin`, and `budget` to change the
+published policy. These are payload estimates, not a cap on all browser/GPU RAM.
+Ground is prioritised; coarse coverage is admitted before refinement. Forced
+Detail remains budgeted and geographically bounded. Distant active models are
+removed and disposed; requests are aborted and obsolete decodes are discarded.
+Parts that do not fit are labelled deferred in state/status rather than exceeding
+the budget. Current assets can still exceed this budget even at District: they
+need further LoD optimisation. No distant aggregate exists outside the horizon.
+
+`python3 tools/project.py index` regenerates cells from the last-good published
+catalog without rebuilding a building. Add `--viewer` to publish viewer code changes
+without rebuilding any asset. Old catalog formats recover other LoD
+bounds from matching package metadata or the published GLBs. Regular publication
+also writes the spatial index. Immutable cells and GLBs precede the atomic scene
+bootstrap; old resources retain the same 24-hour retirement grace period.
+
+Live updates compare the current spatial working set and stage changed assets'
+loaded parts. All cells come from one bootstrap revision; a per-asset revision
+prevents mixed-version assembly. Moving across a 16 m planning cell cancels and
+replans pending work. Replacement failure or an oversized existing-asset batch
+keeps the previous scene and reports the failure; reload is a fallback for such
+batches. Initial loading is progressive. Snag capture freezes adoption and records
+both the applied `sceneRevision` and legacy `catalogRevision`, plus exact loaded
+resource URLs. Camera persistence remains unchanged.
+
+The server now observes both catalog and scene updates. An already running older
+server still signals ordinary asset publications; index-only changes are caught
+by the 15-second browser poll until that server is restarted.
+
+`window.southport.getState()` reports loaded parts with asset IDs, deferred flags,
+cell count, estimated residency/budget and staging bytes. It contains only the
+current working set; do not map parts by flat catalog array order.

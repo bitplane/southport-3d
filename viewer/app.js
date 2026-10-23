@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { Streamer } from './streamer.js';
+import { SpatialStreamer } from './spatial-streamer.js';
 import { chooseLevel, formatBytes } from './lod.js';
 import { installSnags } from './snags.js';
 import { readView, writeView } from './view-state.js';
@@ -17,62 +17,43 @@ const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.05,3000);
 const keys=new Set(),clock=new THREE.Clock(),ray=new THREE.Raycaster();
 const vector=new THREE.Vector3(),down=new THREE.Vector3(0,-1,0);
 let orbit,walkControl,drag=null,walkFloor=0,reporting=false,dropPending=false,dropTimer=0;
-let pendingCatalog=null,staged=null,stagedIds=null,stagedCamera=null,stagedForce='auto',stagedSettings=null;
+let pendingCatalog=null;
 let livePaused=false,liveConnected=true,reloadNeeded=false,liveMessage='';
-const liveBudget=128*1024*1024;
+let groundRevision=null;
 function liveStatus(){
   $('live-status').textContent=reloadNeeded?'Viewer update available — reload when ready':
     reporting?'Updates paused while reporting':livePaused?(liveMessage||'Updates paused'):
-    staged?'Downloading updated models…':!liveConnected?'Checking for updates — connection interrupted':liveMessage||'Live updates on';
+    streamer?.staged||streamer?.loading?'Downloading nearby models…':!liveConnected?'Checking for updates — connection interrupted':liveMessage||'Live updates on';
   $('live-reload').hidden=!reloadNeeded;
 }
-function cancelStaged(){if(staged){staged.destroy();staged=null;}stagedIds=null;}
 function receiveCatalog(next){
   if(next.revision===catalog.revision && next.viewerVersion===catalog.viewerVersion)return;
-  if(!compatible(catalog,next)){reloadNeeded=true;cancelStaged();pendingCatalog=null;liveStatus();return;}
-  if(next.revision===pendingCatalog?.revision)return;
-  cancelStaged();pendingCatalog=next;liveMessage='';liveStatus();
+  if(!compatible(catalog,next)){reloadNeeded=true;pendingCatalog=null;liveStatus();return;}
+  pendingCatalog=next;liveStatus();
 }
-function failLive(message){cancelStaged();livePaused=true;$('live-pause').checked=true;liveMessage=message+' — unpause to retry';liveStatus();}
 function updateLive(){
+  streamer.setPaused(livePaused||reloadNeeded);
   if(reporting||livePaused||reloadNeeded||!pendingCatalog)return;
-  if(!staged){
-    stagedIds=changedAssets(catalog,pendingCatalog);
-    const next={...pendingCatalog,assets:pendingCatalog.assets.filter(a=>stagedIds.has(a.id))};
-    staged=new Streamer(new THREE.Scene(),next,new URL('catalog.json',location.href),()=>{},()=>{},renderer.capabilities.getMaxAnisotropy());
-    staged.staging=true;staged.setWireframe($('wireframe').checked);
-    stagedCamera=camera.clone();stagedSettings={...settings};stagedForce=$('quality').value;
-    // Bound the replacement batch; a large publication starts at District and
-    // normal distance-based refinement resumes after the single scene swap.
-    const estimate=force=>staged.entries.reduce((sum,e)=>{
-      const level=e.part.fixedLevel||chooseLevel(e.box.distanceToPoint(camera.position),null,force,settings,Object.keys(e.part.levels));
-      const r=e.part.levels[level];return sum+(r.gpuBytesEstimate||r.bytes*3);
-    },0);
-    if(estimate(stagedForce)>liveBudget)stagedForce='district';
-    if(estimate(stagedForce)>liveBudget){failLive('Update exceeds the live memory budget; reload to apply');return;}
-    liveStatus();
-  }
-  staged.update(stagedCamera,stagedSettings,stagedForce);
-  if(staged.entries.some(e=>e.failed.size)){failLive('Update could not load; existing models kept');return;}
-  if(staged.pending || staged.entries.some(e=>!e.current||e.current!==e.wanted))return;
-  // Called between frames. All changed assets, including their ground, move
-  // to one catalog revision together. Unchanged assets keep their caches.
-  staged.setWireframe($('wireframe').checked);
-  streamer.adopt(staged,stagedIds);staged=null;stagedIds=null;
-  catalog=pendingCatalog;pendingCatalog=null;liveMessage='Models updated';
-  if(mode==='walk'){
-    scene.updateMatrixWorld(true);
-    ray.set(new THREE.Vector3(camera.position.x,camera.position.y+5,camera.position.z),down);ray.far=Infinity;
-    const hit=ray.intersectObjects(streamer.groundRoots,true).find(h=>h.face);
-    if(hit){walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;}
-  }
-  liveStatus();status();
+  catalog=pendingCatalog;pendingCatalog=null;streamer.setCatalog(catalog);
+  liveMessage='';liveStatus();
 }
 
 function status(){
   if(!streamer)return;
+  liveStatus();
+  const revision=streamer.appliedCatalog?.revision;
+  if(revision&&revision!==groundRevision){
+    groundRevision=revision;
+    if(mode==='walk'){
+      scene.updateMatrixWorld(true);
+      ray.set(new THREE.Vector3(camera.position.x,camera.position.y+5,camera.position.z),down);ray.far=Infinity;
+      const hit=ray.intersectObjects(streamer.groundRoots,true).find(h=>h.face);
+      if(hit){walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;}
+    }
+  }
   const ready=streamer.entries.filter(e=>e.current).length, failed=streamer.entries.some(e=>e.failed.size);
-  $('status').textContent=streamer.pending?`Loading detail · ${ready}/${streamer.entries.length} parts ready`:failed?'Some detail could not load':`${ready} parts ready · ${mode==='walk'?'Walking':'Exploring'}`;
+  const deferred=streamer.entries.filter(e=>e.deferred).length;
+  $('status').textContent=streamer.pending?`Loading detail · ${ready}/${streamer.entries.length} parts ready`:failed?'Some detail could not load':`${ready} parts ready${deferred?` · ${deferred} deferred by budget`:''} · ${mode==='walk'?'Walking':'Exploring'}`;
   $('status-dot').classList.toggle('ready',!streamer.pending && ready>0 && !failed);
   $('downloaded').textContent=formatBytes(streamer.bytes);$('resident').textContent=formatBytes(streamer.residentBytes);
   if(renderer)renderer.shadowMap.needsUpdate=true;
@@ -180,10 +161,10 @@ async function init(){
   $('settings-toggle').onclick=()=>{const open=$('settings-panel').hidden;$('settings-panel').hidden=!open;$('settings-toggle').setAttribute('aria-expanded',open);};
   for(const [id,key] of [['detail','detailDistance'],['district','districtDistance']])$(id+'-distance').oninput=()=>{settings[key]=Number($(id+'-distance').value);$(id+'-output').textContent=settings[key]+' m';};
   $('resolution').oninput=()=>{$('resolution-output').textContent=$('resolution').value+'×';resize();};$('wireframe').onchange=()=>streamer?.setWireframe($('wireframe').checked);$('shadows').onchange=()=>{renderer.shadowMap.enabled=$('shadows').checked;renderer.shadowMap.needsUpdate=true;};$('retry').onclick=()=>location.reload();
-  const manifestURL=new URL('catalog.json',location.href);const response=await fetch(manifestURL,{cache:'no-store'});if(!response.ok)throw new Error('The scene package is not ready yet. Reload in a moment.');catalog=await response.json();if(!catalog.assets?.length)throw new Error('No buildings are available in this package.');
+  const manifestURL=new URL('scene.json',location.href);const response=await fetch(manifestURL,{cache:'no-store'});if(!response.ok)throw new Error('The scene package is not ready yet. Reload in a moment.');catalog=await response.json();if(!catalog.assets?.length||!Array.isArray(catalog.cells))throw new Error('No buildings are available in this package.');
   settings.detailDistance=catalog.lodPolicy.detailDistance;settings.districtDistance=catalog.lodPolicy.districtDistance;
-  streamer=new Streamer(scene,catalog,manifestURL,status,showError,renderer.capabilities.getMaxAnisotropy());
-  for(const option of $('quality').options)if(option.value!=='auto')option.disabled=!catalog.assets.some(a=>a.parts.some(p=>p.levels[option.value]));
+  streamer=new SpatialStreamer(scene,catalog,manifestURL,status,showError,renderer.capabilities.getMaxAnisotropy());
+  for(const option of $('quality').options)if(option.value!=='auto')option.disabled=false;
   if(!restoreSavedView())overview();viewReady=true;resize();window.addEventListener('resize',resize);
   window.addEventListener('pagehide',saveView);window.addEventListener('beforeunload',saveView);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)saveView();});
@@ -197,7 +178,7 @@ async function init(){
       canvas.getContext('2d').drawImage(source,0,0,canvas.width,canvas.height);
       const target=mode==='orbit'?orbit.target.clone():camera.position.clone().addScaledVector(camera.getWorldDirection(new THREE.Vector3()),12);
       return {screenshot:canvas.toDataURL('image/jpeg',.92),view:{
-        catalogRevision:catalog.revision,asset:nearestAsset().id,mode,worldOrigin:catalog.worldOrigin,coordinateSystem:catalog.coordinateSystem,
+        catalogRevision:(streamer.appliedCatalog||catalog).catalogRevision,sceneRevision:(streamer.appliedCatalog||catalog).revision,asset:nearestAsset().id,mode,worldOrigin:catalog.worldOrigin,coordinateSystem:catalog.coordinateSystem,
         camera:{position:camera.position.toArray(),quaternion:camera.quaternion.toArray(),target:target.toArray(),fov:camera.fov,aspect:camera.aspect},
         viewport:{width:innerWidth,height:innerHeight,imageWidth:canvas.width,imageHeight:canvas.height},
         quality:$('quality').value,settings:{...settings},wireframe:$('wireframe').checked,shadows:$('shadows').checked,
@@ -222,7 +203,7 @@ async function init(){
   $('snag-new').disabled=false;$('snag-queue').disabled=false;
   const snagId=new URLSearchParams(location.search).get('snag');if(snagId)snags.openReport(snagId);
   // Read-only state gives contributors a stable way to inspect browser runs.
-  window.southport={getState:()=>({revision:catalog.revision,live:{paused:livePaused,reporting,staging:!!staged,queued:pendingCatalog?.revision,reloadNeeded,message:liveMessage},mode,camera:camera.position.toArray(),target:orbit.target.toArray(),quality:$('quality').value,textureAnisotropy:streamer.anisotropy,pending:streamer.pending,transferred:streamer.bytes,resident:streamer.residentBytes,triangles:renderer.info.render.triangles,parts:streamer.entries.map(e=>({id:e.part.id,level:e.current,wanted:e.wanted,distance:e.distance,error:[...e.failed]}))})};
+  window.southport={getState:()=>({revision:(streamer.appliedCatalog||catalog).revision,requestedRevision:catalog.revision,live:{paused:livePaused,reporting,staging:!!streamer.staged,queued:pendingCatalog?.revision,reloadNeeded,message:liveMessage},mode,camera:camera.position.toArray(),target:orbit.target.toArray(),quality:$('quality').value,textureAnisotropy:streamer.anisotropy,pending:streamer.pending,transferred:streamer.bytes,resident:streamer.residentBytes,budget:streamer.budget,reserved:streamer.reservedBytes,stagedBytes:streamer.stagedBytes,cells:streamer.nodes.size,streamingMessage:streamer.message,triangles:renderer.info.render.triangles,parts:streamer.entries.map(e=>({asset:e.asset.id,id:e.part.id,deferred:e.deferred,level:e.current,wanted:e.wanted,distance:e.distance,error:[...e.failed]}))})};
   requestAnimationFrame(animate);
 }
 init().catch(e=>{showError(e.message);$('status').textContent='Unable to open scene';});

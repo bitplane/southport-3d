@@ -13,7 +13,7 @@
   </header>
   <aside class="settings"><button id="settings-toggle" aria-expanded="false" aria-controls="settings-panel">View settings <span>☷</span></button><div id="settings-panel" hidden>
     <h2>Find your level of detail</h2><label for="quality">Model detail</label><select id="quality"><option value="auto">Automatic</option><option value="detail">Detail · close inspection</option><option value="walk">Walk · street level</option><option value="district">District · overview</option></select>
-    <p class="note">Automatic changes each building part as you approach. Force a level to compare it.</p>
+    <p class="note">Automatic changes detail as you approach. Requested levels stay within the memory budget; some parts may use less detail or be deferred.</p>
     <label for="detail-distance">Detail within <output id="detail-output">8 m</output></label><input id="detail-distance" type="range" min="2" max="30" step="1" value="8">
     <label for="district-distance">District beyond <output id="district-output">70 m</output></label><input id="district-distance" type="range" min="35" max="200" step="5" value="70">
     <label for="resolution">Render resolution <output id="resolution-output">1×</output></label><input id="resolution" type="range" min="0.5" max="1.5" step="0.25" value="1">

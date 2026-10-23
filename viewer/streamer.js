@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { chooseLevel, evictionCandidates } from './lod.js';
+import { chooseLevel } from './lod.js';
+import { admit, estimatedBytes, horizontalDistance } from './spatial.js';
 
 function dispose(root) {
   const geometries=new Set(), materials=new Set(), textures=new Set();
@@ -11,7 +12,7 @@ export class Streamer {
   constructor(scene,catalog,baseURL,onChange,onError,maxAnisotropy=1) {
     this.scene=scene;this.baseURL=baseURL;this.onChange=onChange;this.onError=onError;
     this.entries=[];this.loader=new GLTFLoader();this.cache=new Map();this.pending=0;this.bytes=0;
-    this.budget=256*1024*1024;this.wireframe=false;this.frozen=false;this.staging=false;
+    this.budget=256*1024*1024;this.radius=Infinity;this.margin=64;this.wireframe=false;this.frozen=false;this.staging=false;
     this.anisotropy=Math.max(1,Math.min(16,maxAnisotropy));
     for(const asset of catalog.assets){
       const group=new THREE.Group();group.position.fromArray(asset.position);group.rotation.y=asset.rotationY;scene.add(group);group.updateMatrixWorld(true);
@@ -23,23 +24,42 @@ export class Streamer {
     }
   }
   update(camera,settings,force){
+    if(this.frozen)return;
+    const candidates=[];
     for(const entry of this.entries){
       entry.distance=entry.box.distanceToPoint(camera.position);
-      const available=Object.keys(entry.part.levels);
-      entry.wanted=entry.part.fixedLevel || chooseLevel(entry.distance,entry.current,force,settings,available);
-      if(entry.loading && entry.loading.level!==entry.wanted && entry.current!==null) entry.loading.controller.abort();
-      const key=this.key(entry,entry.wanted);
-      if(this.cache.has(key))this.activate(entry,entry.wanted);
+      const bounds=[entry.box.min.toArray(),entry.box.max.toArray()];
+      const nearby=horizontalDistance(bounds,camera.position.toArray())<=this.radius+(entry.current?this.margin:0);
+      const desired=entry.part.fixedLevel || chooseLevel(entry.distance,entry.current,force,settings,Object.keys(entry.part.levels));
+      entry.desired=nearby?desired:null;
+      if(nearby)candidates.push({key:this.entryKey(entry),ground:entry.part.ground,distance:entry.distance,
+        wanted:desired,fixed:!!entry.part.fixedLevel,levels:entry.part.levels});
     }
+    const selection=admit(candidates,this.budget).levels;
+    for(const entry of this.entries){
+      entry.wanted=selection.get(this.entryKey(entry))||null;
+      entry.deferred=!!entry.desired&&!entry.wanted;
+      if(entry.loading && (!entry.wanted || (entry.current!==null&&entry.loading.level!==entry.wanted)))entry.loading.controller.abort();
+      if(!entry.wanted){entry.slot.clear();entry.current=null;}
+      const key=this.key(entry,entry.wanted);
+      if(entry.wanted&&this.cache.has(key))this.activate(entry,entry.wanted);
+    }
+    this.evict();
     const queue=this.entries.filter(e=>e.wanted && !e.loading && e.current!==e.wanted).sort((a,b)=>(a.part.fixedLevel?-1:0)-(b.part.fixedLevel?-1:0)||a.distance-b.distance);
     for(const entry of queue){
       if(this.pending>=2)break;
       // Show an inexpensive complete part while its selected level is fetched.
-      const level=!this.staging && entry.current===null && entry.part.levels.district && !entry.failed.has('district') && entry.wanted!=='district' ? 'district' : entry.wanted;
-      if(!entry.failed.has(level)) this.load(entry,level);
+      const fallback=!this.staging && entry.current===null && entry.part.levels.district && !entry.failed.has('district') && entry.wanted!=='district' ? 'district' : entry.wanted;
+      const available=this.budget-this.residentBytes-this.reservedBytes;
+      // A baked District GLB can cost more memory than its detailed geometry.
+      // Do not let an unaffordable bootstrap block an affordable wanted level.
+      const level=estimatedBytes(entry.part.levels[fallback])<=available?fallback:entry.wanted;
+      if(!entry.failed.has(level) && estimatedBytes(entry.part.levels[level])<=available) this.load(entry,level);
     }
     this.evict();
   }
+  entryKey(entry){return `${entry.asset.id}/${entry.part.id}`;}
+  get reservedBytes(){return this.entries.reduce((n,e)=>n+(e.loading?estimatedBytes(e.part.levels[e.loading.level]):0),0);}
   key(entry,level){return `${entry.asset.id}/${entry.part.id}/${level}/${entry.part.levels[level]?.uri}`;}
   async load(entry,level){
     const key=this.key(entry,level), record=entry.part.levels[level], controller=new AbortController();
@@ -50,7 +70,7 @@ export class Streamer {
       const bytes=await response.arrayBuffer();this.bytes+=bytes.byteLength;
       if(controller.signal.aborted)return;
       const gltf=await this.loader.parseAsync(bytes,'');
-      if(controller.signal.aborted || entry.retired){dispose(gltf.scene);return;}
+      if(controller.signal.aborted || entry.retired || (entry.desired===null)){dispose(gltf.scene);return;}
       // Long sign panels and oblique paving otherwise lose their long-axis detail
       // to isotropic mip filtering, even when the underlying bake is sharp.
       const textures=new Set();
@@ -62,7 +82,7 @@ export class Streamer {
         }
       }});
       for(const texture of textures)texture.anisotropy=this.anisotropy;
-      this.cache.set(key,{key,root:gltf.scene,bytes:record.gpuBytesEstimate||record.bytes*3,used:performance.now(),entry,level});
+      this.cache.set(key,{key,root:gltf.scene,bytes:estimatedBytes(record),used:performance.now(),entry,level});
       if(entry.current===null || entry.wanted===level)this.activate(entry,level);
     }catch(error){if(error.name!=='AbortError'){entry.failed.add(level);this.onError(`${entry.part.name}: ${error.message}`);}}
     finally{entry.loading=null;this.pending--;this.onChange();}
@@ -75,8 +95,21 @@ export class Streamer {
     entry.slot.clear();entry.slot.add(cached.root);entry.current=level;this.onChange();
   }
   evict(){
-    const records=[...this.cache.values()].map(r=>({...r,active:r.entry.current===r.level}));
-    for(const key of evictionCandidates(records,this.budget)){const r=this.cache.get(key);dispose(r.root);this.cache.delete(key);}
+    // Keep only the active or selected replacement version. Inactive cached
+    // LoDs must not prevent admission of a selected, closer part.
+    for(const [key,r] of this.cache){
+      if(r.entry.current!==r.level && r.entry.wanted!==r.level){dispose(r.root);this.cache.delete(key);}
+    }
+    // Release old oversized levels before their smaller replacement is fetched.
+    for(const entry of this.entries){
+      if(entry.current&&entry.wanted&&entry.current!==entry.wanted){
+        const target=estimatedBytes(entry.part.levels[entry.wanted]);
+        if(this.residentBytes+this.reservedBytes+target>this.budget){
+          const key=this.key(entry,entry.current),r=this.cache.get(key);
+          entry.slot.clear();entry.current=null;if(r){dispose(r.root);this.cache.delete(key);}
+        }
+      }
+    }
   }
   removeAssets(ids){
     const removed=this.entries.filter(e=>ids.has(e.asset.id));
