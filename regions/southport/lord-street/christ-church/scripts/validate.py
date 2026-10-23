@@ -101,7 +101,7 @@ import os,sys
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
 from coplanar import overlaps
 triangles=[];labels=[]
-for name in ('Envelope rear cross gable','Envelope cafe west return','Envelope rear long wall'):
+for name in ('Envelope rear cross gable','Envelope cafe west return','Envelope rear long wall','Envelope cafe porch return'):
     ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
     for t in ob.data.loop_triangles:
         triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
@@ -109,6 +109,21 @@ for name in ('Envelope rear cross gable','Envelope cafe west return','Envelope r
 errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
 assert not errors,errors[:8]
 print('Rear hall corner surface ownership passed')
+
+# The cafe-side front shoulder must close every strip below the sloping roof.
+# A former rectangular wall left a triangular opening up to 1.1 m high.
+shoulder=bpy.data.objects['Envelope cafe porch return']
+inv=shoulder.matrix_world.inverted()
+for x in (-89.65,-90.2,-91.0,-92.0,-93.0):
+    hit,top,n,i=roof.ray_cast(Vector((x,-29.65,20)),Vector((0,0,-1)),distance=20)
+    assert hit,('Missing shoulder roof',x)
+    for drop in (.18,.35,.7):
+        origin=inv@Vector((x,-28,top.z-drop))
+        direction=inv.to_3x3()@Vector((0,-1,0))
+        assert shoulder.ray_cast(origin,direction,distance=3)[0],('Open cafe roof shoulder',x,drop)
+    assert not shoulder.ray_cast(inv@Vector((x,-28,top.z+.02)),direction,distance=3)[0],('Shoulder above roof',x)
+assert abs(max((side.matrix_world@v.co).y for v in side.data.vertices)+29.9)<1e-5
+print('Cafe shoulder closes the sloping roof without changing its silhouette')
 
 # Tower quoins retain their exposed relief but stop at the masonry face.
 # Their former 7 mm embedded ends overlapped the tower's corner end caps.

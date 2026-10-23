@@ -51,7 +51,7 @@ def build_rear(ctx):
     east=face_matrix((x1,y0,base),(1,0,0))
     shell=.16;overhang=.12
     end_height=ridge-(ridge-eave)*centre/(centre+overhang)-shell
-    outline=[(0,0),(-29.72-y0,0),(-29.72-y0,eave-shell),
+    outline=[(0,0),(-29.90-y0,0),(-29.90-y0,eave-shell),
              (depth+overhang,eave-shell),(centre,ridge-shell),(0,end_height)]
     finish(wall('Envelope cafe west return',outline,[],.30),'modern-hall',[brick],east)
     # Rear long elevation: six recessed windows, brick piers and two string courses.

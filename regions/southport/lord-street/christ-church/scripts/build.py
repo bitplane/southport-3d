@@ -209,9 +209,13 @@ for y,h in [(-35,5.4),(-54,5.4)]:
     box('Envelope annex roof step',(-83.1,y,z0+h/2),(12.8,.20,h),'modern-hall',brick)
 box('Envelope annex rear',(-83.2,-71.4,z0+1.95),(13.0,.32,3.9),'modern-hall',brick)
 box('Envelope annex return',(-89.39,-66.4,z0+1.95),(.32,10.3,3.9),'modern-hall',brick)
-# Close the hall side and front shoulder behind the cafe. Previously a short
-# partial-height return left a visible void beneath the main roof.
-box('Envelope cafe porch return',(-91.335,-29.72,z0+3.35),(3.57,.30,6.70),'modern-hall',brick)
+# The exposed front shoulder follows the rising roof, not a rectangular eaves
+# height. Its rear face owns the corner seam with the long cafe-side wall.
+shoulder_width=3.57
+shoulder_top=lambda u: 6.70+3.50*u/11.30-.16
+finish(wall('Envelope cafe porch return',
+            [(0,0),(shoulder_width,0),(shoulder_width,shoulder_top(shoulder_width)),(0,shoulder_top(0))],
+            [],.30),'modern-hall',[brick],face_matrix((-89.55,-29.60,z0),(0,1,0)))
 # The continuous hall side and cross-gable are built together in rear_hall.py.
 box('Envelope cafe connector',(-86.975,-29.72,z0+2.075),(4.85,.30,4.15),'modern-hall',newbrick)
 build_cafe(finish,box,z0,newbrick,cladding,glass,cream,wood,slate,metal)

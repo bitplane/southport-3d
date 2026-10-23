@@ -15,8 +15,7 @@ reference photograph. The front middle window retains muted glazing.
 Source links and image dates are in `research/references.json`. The footprint is
 mapped; heights, roof pitches, opening sizes and relief depths are calibrated
 estimates. Photographs establish the frontal composition, modern tall side
-windows and the turret. Fresh satellite inspection establishes the main hall hip and three stepped flat cafe/annex roofs with rooflight arrays. Concealed
-rear openings are omitted; no interior has been invented. Reference photographs
+windows and the turret. Aerial and supplied rear photographs establish the intersecting gabled hall roofs and three stepped flat cafe/annex roofs with rooflight arrays. Evidenced rear openings are modelled; no interior has been invented. Reference photographs
 are not stored in Git or embedded in textures. Stone, brick and slate maps are
 deterministically authored materials.
 
@@ -117,3 +116,12 @@ the roof shell's underside. The flat annex decks and their west return share
 x = −89.55 m, avoiding an exposed strip at the junction. Validation checks the
 shared edge and roof clearance; these are construction joins, not new surveyed
 dimensions.
+
+The exposed front shoulder beside the cafe follows the main roof underside,
+closing the former triangular opening above its rectangular eaves-height wall.
+Its back face meets the cafe-side return without overlapping exterior end caps.
+This is a construction closure on the existing estimated envelope, not a new
+roof pitch or height measurement. Private snag 2a2a1aec and the supplied cafe
+aerial establish the affected junction; August 2024 Street View was rechecked
+for the cafe-side context. Ray checks sample the sloping closure and above-roof
+clearance, and the adjoining wall skins receive a coplanar-overlap check.
