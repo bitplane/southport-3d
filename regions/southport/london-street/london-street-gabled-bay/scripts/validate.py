@@ -45,3 +45,24 @@ assert bm.calc_volume(signed=True)>0,'Roof shell faces inward'
 bm.free()
 for name in ['Trim rear low coping.001','Trim brick pier foot.001']:
  o=bpy.data.objects[name];assert max((reg.inverted()@o.matrix_world@v.co).y for v in o.data.vertices)<=D['north_y']+1e-5,(name,'Crosses 24 boundary')
+
+# Felt owns the wall-top strips while the outer brick profile is unchanged.
+import sys
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+deck=bpy.data.objects['Roof rear flat deck']
+for name in ('Envelope rear store north','Envelope rear store south','Envelope rear loading wall'):
+ wall=bpy.data.objects[name];triangles=[];labels=[]
+ for ob in (deck,wall):
+  ob.data.calc_loop_triangles()
+  for t in ob.data.loop_triangles:
+   triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(ob.name)
+ assert not [h for h in overlaps(triangles,labels,min_area=1e-4) if h[0]!=h[1]],name
+ # Both upper outside corners remain: subtraction must not lower the wall.
+ pts=[reg.inverted()@wall.matrix_world@v.co for v in wall.data.vertices]
+ assert abs(max(v.z for v in pts)-(D['base_z']+3.42))<1e-4,name
+# Loading-door aperture remains clear after the wall-top subtraction.
+wall=bpy.data.objects['Envelope rear loading wall']
+hit,*_=wall.ray_cast(Vector((2.4,1.1,1)),Vector((0,0,-1)),distance=2)
+assert not hit,'Rear loading opening filled by wall-top repair'
+print('Rear deck/wall faces have single ownership; outer wall height and loading opening retained')

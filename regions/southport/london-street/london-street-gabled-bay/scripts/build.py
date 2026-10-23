@@ -130,9 +130,19 @@ elevation_box('Fixture rainwater pipe',width-.31,3.65,.075,7.15,.09,.16,coping)
 for h in [.55,2.25,4.15,6.1]:elevation_box('Fine rainwater bracket',width-.31,h,.13,.06,.08,.205,metal)
 # Conservative lower rear store follows the aerial massing; detailed access is estimated.
 wh=3.42;wingdepth=mainrear-xr
-box('Roof rear flat deck',((mainrear+xr)/2,(ys+yn)/2,base+wh-.09),(wingdepth-.03,width-.06,.18),felt,'roof')
+rear_deck=box('Roof rear flat deck',((mainrear+xr)/2,(ys+yn)/2,base+wh-.09),(wingdepth-.03,width-.06,.18),felt,'roof')
 for label,frame in [('north',face_matrix((mainrear,yn,base),(0,1,0))),('south',face_matrix((xr+.36,ys,base),(0,-1,0)))]:wall_with_openings('rear store '+label,frame,wingdepth-.36,wh,[],'rear')
 wall_with_openings('rear loading wall',rear,width,wh,[(1.75,3.05,0,2.25)],'rear')
+# The felt deck owns the inner wall-top strip. Retain the original outer
+# brick skin and coping profile instead of covering two coincident surfaces.
+deck_cut=box('Temporary deck clearance',((mainrear+xr)/2,(ys+yn)/2,base+wh),(wingdepth-.03,width-.06,.36),felt,'roof')
+for name in ('Envelope rear store north','Envelope rear store south','Envelope rear loading wall'):
+ wall=bpy.data.objects[name]
+ bpy.context.view_layer.objects.active=wall
+ cut=wall.modifiers.new('Felt deck wall-top ownership','BOOLEAN')
+ cut.operation='DIFFERENCE';cut.solver='EXACT';cut.use_self=True;cut.object=deck_cut
+ bpy.context.view_layer.update();bpy.ops.object.modifier_apply(modifier=cut.name)
+bpy.data.objects.remove(deck_cut,do_unlink=True)
 elevation_box('Shop rear loading door',2.4,1.125,1.3,2.25,.06,-.10,metal,'rear',rear)
 # Meet 24 at the mapped boundary; retain the union's original outer edges.
 for y,w in [(ys+.10,.23),(yn-.1075,.215)]:box('Trim rear low coping',((mainrear+xr)/2,y,base+wh+.06),(wingdepth,w,.15),coping,'roof')
