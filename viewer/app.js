@@ -3,9 +3,10 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { Streamer } from './streamer.js';
-import { formatBytes } from './lod.js';
+import { chooseLevel, formatBytes } from './lod.js';
 import { installSnags } from './snags.js';
 import { readView, writeView } from './view-state.js';
+import { changedAssets, compatible, watchCatalog } from './live.js';
 
 const $=id=>document.getElementById(id), viewport=$('viewport');
 const showError=message=>{$('error').textContent=message;$('error').hidden=false;console.error(message);};
@@ -16,6 +17,58 @@ const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.05,3000);
 const keys=new Set(),clock=new THREE.Clock(),ray=new THREE.Raycaster();
 const vector=new THREE.Vector3(),down=new THREE.Vector3(0,-1,0);
 let orbit,walkControl,drag=null,walkFloor=0,reporting=false,dropPending=false,dropTimer=0;
+let pendingCatalog=null,staged=null,stagedIds=null,stagedCamera=null,stagedForce='auto',stagedSettings=null;
+let livePaused=false,liveConnected=true,reloadNeeded=false,liveMessage='';
+const liveBudget=128*1024*1024;
+function liveStatus(){
+  $('live-status').textContent=reloadNeeded?'Viewer update available — reload when ready':
+    reporting?'Updates paused while reporting':livePaused?(liveMessage||'Updates paused'):
+    staged?'Downloading updated models…':!liveConnected?'Checking for updates — connection interrupted':liveMessage||'Live updates on';
+  $('live-reload').hidden=!reloadNeeded;
+}
+function cancelStaged(){if(staged){staged.destroy();staged=null;}stagedIds=null;}
+function receiveCatalog(next){
+  if(next.revision===catalog.revision && next.viewerVersion===catalog.viewerVersion)return;
+  if(!compatible(catalog,next)){reloadNeeded=true;cancelStaged();pendingCatalog=null;liveStatus();return;}
+  if(next.revision===pendingCatalog?.revision)return;
+  cancelStaged();pendingCatalog=next;liveMessage='';liveStatus();
+}
+function failLive(message){cancelStaged();livePaused=true;$('live-pause').checked=true;liveMessage=message+' — unpause to retry';liveStatus();}
+function updateLive(){
+  if(reporting||livePaused||reloadNeeded||!pendingCatalog)return;
+  if(!staged){
+    stagedIds=changedAssets(catalog,pendingCatalog);
+    const next={...pendingCatalog,assets:pendingCatalog.assets.filter(a=>stagedIds.has(a.id))};
+    staged=new Streamer(new THREE.Scene(),next,new URL('catalog.json',location.href),()=>{},()=>{},renderer.capabilities.getMaxAnisotropy());
+    staged.staging=true;staged.setWireframe($('wireframe').checked);
+    stagedCamera=camera.clone();stagedSettings={...settings};stagedForce=$('quality').value;
+    // Bound the replacement batch; a large publication starts at District and
+    // normal distance-based refinement resumes after the single scene swap.
+    const estimate=force=>staged.entries.reduce((sum,e)=>{
+      const level=e.part.fixedLevel||chooseLevel(e.box.distanceToPoint(camera.position),null,force,settings,Object.keys(e.part.levels));
+      const r=e.part.levels[level];return sum+(r.gpuBytesEstimate||r.bytes*3);
+    },0);
+    if(estimate(stagedForce)>liveBudget)stagedForce='district';
+    if(estimate(stagedForce)>liveBudget){failLive('Update exceeds the live memory budget; reload to apply');return;}
+    liveStatus();
+  }
+  staged.update(stagedCamera,stagedSettings,stagedForce);
+  if(staged.entries.some(e=>e.failed.size)){failLive('Update could not load; existing models kept');return;}
+  if(staged.pending || staged.entries.some(e=>!e.current||e.current!==e.wanted))return;
+  // Called between frames. All changed assets, including their ground, move
+  // to one catalog revision together. Unchanged assets keep their caches.
+  staged.setWireframe($('wireframe').checked);
+  streamer.adopt(staged,stagedIds);staged=null;stagedIds=null;
+  catalog=pendingCatalog;pendingCatalog=null;liveMessage='Models updated';
+  if(mode==='walk'){
+    scene.updateMatrixWorld(true);
+    ray.set(new THREE.Vector3(camera.position.x,camera.position.y+5,camera.position.z),down);ray.far=Infinity;
+    const hit=ray.intersectObjects(streamer.groundRoots,true).find(h=>h.face);
+    if(hit){walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;}
+  }
+  liveStatus();status();
+}
+
 function status(){
   if(!streamer)return;
   const ready=streamer.entries.filter(e=>e.current).length, failed=streamer.entries.some(e=>e.failed.size);
@@ -105,7 +158,7 @@ function walk(dt){
 }
 function animate(now){
   requestAnimationFrame(animate);const dt=clock.getDelta();walk(dt);moveOrbit(dt);if(mode==='orbit'&&!reporting)orbit.update();
-  if(streamer && !reporting && now-lastStream>200){streamer.update(camera,settings,$('quality').value);lastStream=now;}
+  if(streamer && !reporting && now-lastStream>200){updateLive();streamer.update(camera,settings,$('quality').value);lastStream=now;}
   renderer.render(scene,camera);frames++;
   if(now-lastSave>500){saveView();lastSave=now;}
   if(now-lastStats>1000){$('fps').textContent=`${Math.round(frames*1000/(now-lastStats))} fps`;$('triangles').textContent=renderer.info.render.triangles.toLocaleString();frames=0;lastStats=now;status();}
@@ -135,7 +188,7 @@ async function init(){
   window.addEventListener('pagehide',saveView);window.addEventListener('beforeunload',saveView);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)saveView();});
   const snags=installSnags({
-    setActive(active){reporting=active;keys.clear();drag=null;orbit.enabled=!active&&mode==='orbit';if(active)walkControl.unlock();},
+    setActive(active){reporting=active;streamer.frozen=active;liveStatus();keys.clear();drag=null;orbit.enabled=!active&&mode==='orbit';if(active)walkControl.unlock();},
     capture(){
       renderer.render(scene,camera);
       const canvas=document.createElement('canvas'),source=renderer.domElement;
@@ -144,7 +197,7 @@ async function init(){
       canvas.getContext('2d').drawImage(source,0,0,canvas.width,canvas.height);
       const target=mode==='orbit'?orbit.target.clone():camera.position.clone().addScaledVector(camera.getWorldDirection(new THREE.Vector3()),12);
       return {screenshot:canvas.toDataURL('image/jpeg',.92),view:{
-        asset:nearestAsset().id,mode,worldOrigin:catalog.worldOrigin,coordinateSystem:catalog.coordinateSystem,
+        catalogRevision:catalog.revision,asset:nearestAsset().id,mode,worldOrigin:catalog.worldOrigin,coordinateSystem:catalog.coordinateSystem,
         camera:{position:camera.position.toArray(),quaternion:camera.quaternion.toArray(),target:target.toArray(),fov:camera.fov,aspect:camera.aspect},
         viewport:{width:innerWidth,height:innerHeight,imageWidth:canvas.width,imageHeight:canvas.height},
         quality:$('quality').value,settings:{...settings},wireframe:$('wireframe').checked,shadows:$('shadows').checked,
@@ -162,10 +215,14 @@ async function init(){
       $('shadows').checked=!!view.shadows;renderer.shadowMap.enabled=!!view.shadows;renderer.shadowMap.needsUpdate=true;
     }
   });
+  $('live-pause').onchange=()=>{livePaused=$('live-pause').checked;liveMessage='';liveStatus();};
+  $('live-reload').onclick=()=>{if(!reporting){saveView();location.reload();}};
+  watchCatalog(receiveCatalog,connected=>{liveConnected=connected;liveStatus();});
+  liveStatus();
   $('snag-new').disabled=false;$('snag-queue').disabled=false;
   const snagId=new URLSearchParams(location.search).get('snag');if(snagId)snags.openReport(snagId);
   // Read-only state gives contributors a stable way to inspect browser runs.
-  window.southport={getState:()=>({mode,camera:camera.position.toArray(),target:orbit.target.toArray(),quality:$('quality').value,textureAnisotropy:streamer.anisotropy,pending:streamer.pending,transferred:streamer.bytes,resident:streamer.residentBytes,triangles:renderer.info.render.triangles,parts:streamer.entries.map(e=>({id:e.part.id,level:e.current,wanted:e.wanted,distance:e.distance,error:[...e.failed]}))})};
+  window.southport={getState:()=>({revision:catalog.revision,live:{paused:livePaused,reporting,staging:!!staged,queued:pendingCatalog?.revision,reloadNeeded,message:liveMessage},mode,camera:camera.position.toArray(),target:orbit.target.toArray(),quality:$('quality').value,textureAnisotropy:streamer.anisotropy,pending:streamer.pending,transferred:streamer.bytes,resident:streamer.residentBytes,triangles:renderer.info.render.triangles,parts:streamer.entries.map(e=>({id:e.part.id,level:e.current,wanted:e.wanted,distance:e.distance,error:[...e.failed]}))})};
   requestAnimationFrame(animate);
 }
 init().catch(e=>{showError(e.message);$('status').textContent='Unable to open scene';});

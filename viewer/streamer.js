@@ -11,7 +11,7 @@ export class Streamer {
   constructor(scene,catalog,baseURL,onChange,onError,maxAnisotropy=1) {
     this.scene=scene;this.baseURL=baseURL;this.onChange=onChange;this.onError=onError;
     this.entries=[];this.loader=new GLTFLoader();this.cache=new Map();this.pending=0;this.bytes=0;
-    this.budget=256*1024*1024;this.wireframe=false;
+    this.budget=256*1024*1024;this.wireframe=false;this.frozen=false;this.staging=false;
     this.anisotropy=Math.max(1,Math.min(16,maxAnisotropy));
     for(const asset of catalog.assets){
       const group=new THREE.Group();group.position.fromArray(asset.position);group.rotation.y=asset.rotationY;scene.add(group);group.updateMatrixWorld(true);
@@ -35,12 +35,12 @@ export class Streamer {
     for(const entry of queue){
       if(this.pending>=2)break;
       // Show an inexpensive complete part while its selected level is fetched.
-      const level=entry.current===null && entry.part.levels.district && !entry.failed.has('district') && entry.wanted!=='district' ? 'district' : entry.wanted;
+      const level=!this.staging && entry.current===null && entry.part.levels.district && !entry.failed.has('district') && entry.wanted!=='district' ? 'district' : entry.wanted;
       if(!entry.failed.has(level)) this.load(entry,level);
     }
     this.evict();
   }
-  key(entry,level){return `${entry.asset.id}/${entry.part.id}/${level}`;}
+  key(entry,level){return `${entry.asset.id}/${entry.part.id}/${level}/${entry.part.levels[level]?.uri}`;}
   async load(entry,level){
     const key=this.key(entry,level), record=entry.part.levels[level], controller=new AbortController();
     entry.loading={level,controller};this.pending++;this.onChange();
@@ -50,7 +50,7 @@ export class Streamer {
       const bytes=await response.arrayBuffer();this.bytes+=bytes.byteLength;
       if(controller.signal.aborted)return;
       const gltf=await this.loader.parseAsync(bytes,'');
-      if(controller.signal.aborted){dispose(gltf.scene);return;}
+      if(controller.signal.aborted || entry.retired){dispose(gltf.scene);return;}
       // Long sign panels and oblique paving otherwise lose their long-axis detail
       // to isotropic mip filtering, even when the underlying bake is sharp.
       const textures=new Set();
@@ -68,6 +68,7 @@ export class Streamer {
     finally{entry.loading=null;this.pending--;this.onChange();}
   }
   activate(entry,level){
+    if(this.frozen || entry.retired)return;
     const cached=this.cache.get(this.key(entry,level));if(!cached)return;
     cached.used=performance.now();
     if(entry.current===level)return;
@@ -76,6 +77,26 @@ export class Streamer {
   evict(){
     const records=[...this.cache.values()].map(r=>({...r,active:r.entry.current===r.level}));
     for(const key of evictionCandidates(records,this.budget)){const r=this.cache.get(key);dispose(r.root);this.cache.delete(key);}
+  }
+  removeAssets(ids){
+    const removed=this.entries.filter(e=>ids.has(e.asset.id));
+    const groups=new Set(removed.map(e=>e.slot.parent));
+    for(const entry of removed){entry.retired=true;entry.loading?.controller.abort();}
+    for(const group of groups)group?.removeFromParent();
+    for(const [key,record] of this.cache){
+      if(ids.has(record.entry.asset.id)){dispose(record.root);this.cache.delete(key);}
+    }
+    this.entries=this.entries.filter(e=>!ids.has(e.asset.id));
+  }
+  destroy(){this.removeAssets(new Set(this.entries.map(e=>e.asset.id)));}
+  adopt(staged,ids){
+    this.removeAssets(ids);
+    for(const group of [...staged.scene.children])this.scene.add(group);
+    this.entries.push(...staged.entries);
+    for(const [key,record] of staged.cache)this.cache.set(key,record);
+    this.bytes+=staged.bytes;
+    staged.entries=[];staged.cache.clear();
+    this.scene.updateMatrixWorld(true);this.onChange();
   }
   setWireframe(value){this.wireframe=value;for(const r of this.cache.values())r.root.traverse(o=>{for(const m of [o.material].flat().filter(Boolean))m.wireframe=value;});}
   get residentBytes(){return [...this.cache.values()].reduce((n,r)=>n+r.bytes,0);}

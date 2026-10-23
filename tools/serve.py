@@ -2,6 +2,8 @@
 """Serve the generated viewer and its local snag queue on loopback by default."""
 import argparse
 import json
+import hashlib
+import time
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -28,6 +30,8 @@ class Handler(SimpleHTTPRequestHandler):
         path = urlsplit(self.path).path
         if not path.startswith('/api/'):
             return super().do_GET()
+        if path == '/api/events':
+            return self.events()
         try:
             parts = path.strip('/').split('/')
             if parts == ['api', 'snags']:
@@ -47,6 +51,29 @@ class Handler(SimpleHTTPRequestHandler):
         except (ValueError, FileNotFoundError):
             pass
         self.json_response({'error': 'Snag not found'}, 404)
+
+    def events(self):
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/event-stream')
+        self.send_header('X-Accel-Buffering', 'no')
+        self.end_headers()
+        previous = None
+        try:
+            while True:
+                try:
+                    body = (Path(self.directory) / 'catalog.json').read_bytes()
+                    revision = hashlib.sha256(body).hexdigest()
+                    if revision != previous:
+                        self.wfile.write(('event: catalog\ndata: ' + json.dumps({'revision': revision}) + '\n\n').encode())
+                        previous = revision
+                    else:
+                        self.wfile.write(b': keepalive\n\n')
+                except FileNotFoundError:
+                    self.wfile.write(b': waiting for publication\n\n')
+                self.wfile.flush()
+                time.sleep(2)
+        except (BrokenPipeError, ConnectionResetError, OSError):
+            pass
 
     def do_POST(self):
         if urlsplit(self.path).path != '/api/snags':

@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const source=await readFile(new URL('../viewer/live.js',import.meta.url),'utf8');
+const {changedAssets,compatible}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+const base={schema_version:1,viewerVersion:'app-a',worldOrigin:[1,2],coordinateSystem:'test',assets:[{id:'a',position:[0,0,0],parts:[{id:'wall',uri:'v1'}]},{id:'b',parts:[]}]};
+const next=structuredClone(base);next.assets[0].position=[1,0,0];next.assets.splice(1,1,{id:'c',parts:[]});
+assert.deepEqual([...changedAssets(base,next)].sort(),['a','b','c']);
+assert.equal(changedAssets(base,structuredClone(base)).size,0);
+assert.ok(compatible(base,next));
+for(const change of [{viewerVersion:'app-b'},{worldOrigin:[3,4]},{schema_version:2},{coordinateSystem:'different'}])assert.equal(compatible(base,{...next,...change}),false);
+console.log('Live catalog policy checks passed');

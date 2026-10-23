@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import time
 from types import SimpleNamespace
 
 from publication import load_publication, inspect_glb, resize_glb_textures, east_north_offset
@@ -129,17 +130,31 @@ def _publish(args, assets, fingerprint, build, retained=()):
                 if not destination.exists():
                     try:os.link(source,destination)
                     except OSError:shutil.copy2(source,destination)
-    for name in ('index.html','style.css','app.js','lod.js','streamer.js','snags.js','view-state.js'):
+    viewer_files=('index.html','style.css','app.js','lod.js','streamer.js','snags.js','view-state.js','live.js')
+    viewer_version=hashlib.sha256()
+    for name in viewer_files:
+        viewer_version.update(name.encode());viewer_version.update((ROOT/'viewer'/name).read_bytes())
         target=dist/(name+'.tmp');shutil.copy2(ROOT/'viewer'/name,target);target.replace(dist/name)
     catalog={'schema_version':1,'worldOrigin':world['origin_wgs84_lat_lon'],'coordinateSystem':'East, up, south (metres)','lodPolicy':world['lodPolicy'],'assets':sorted(entries,key=lambda entry:entry['id'])}
+    catalog['viewerVersion']=viewer_version.hexdigest()
+    catalog['revision']=hashlib.sha256(json.dumps(catalog,sort_keys=True).encode()).hexdigest()
     temporary=dist/'catalog.json.tmp';temporary.write_text(json.dumps(catalog,indent=2)+'\n');temporary.replace(dist/'catalog.json')
-    # Keep one previous catalog's resources for open browser tabs; bound disk growth.
-    history=dist/'previous-catalog.json'
-    previous=json.loads(history.read_text()) if history.exists() else {'assets':[]}
-    keep=uris(catalog)|uris(old_catalog)
-    for uri in uris(previous)-keep:
-        path=(dist/uri).resolve()
-        if path.is_relative_to((dist/'assets').resolve()):path.unlink(missing_ok=True)
-    history.write_text(json.dumps(old_catalog,indent=2)+'\n')
+    retire_resources(dist,uris(catalog))
     print('Viewer package ready:',dist,flush=True)
     print('Serve with: python3 tools/serve.py   →   http://127.0.0.1:8765',flush=True)
+
+
+def retire_resources(dist, current, now=None):
+    """Retain obsolete resources for 24 hours after retirement, even across builds."""
+    now=time.time() if now is None else now
+    retired_path=dist/'retired-resources.json'
+    retired=json.loads(retired_path.read_text()) if retired_path.exists() else {}
+    published={p.relative_to(dist).as_posix() for p in (dist/'assets').rglob('*.glb')}
+    for uri in published-current:retired.setdefault(uri,now)
+    for uri in list(retired):
+        if uri in current or uri not in published:del retired[uri]
+        elif now-retired[uri]>86400:
+            path=(dist/uri).resolve()
+            if path.is_relative_to((dist/'assets').resolve()):path.unlink(missing_ok=True)
+            del retired[uri]
+    tmp=dist/'retired-resources.json.tmp';tmp.write_text(json.dumps(retired));tmp.replace(retired_path)

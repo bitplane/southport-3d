@@ -106,3 +106,41 @@ photos. **Snag queue** reopens saved reports and camera positions. The local
 server stores them outside the repository; restart `tools/serve.py` after
 installing this feature. See [the snag workflow](SNAGS.md) for queue location,
 agent claim/resolve commands and reference-image handling.
+
+
+## Live model updates
+
+Completed local publications appear without refreshing. The server emits an SSE
+notification when the atomic catalog changes; clients also check every 15 seconds
+and on returning to the tab, so static hosting and older servers still work.
+Restart `tools/serve.py` after installing the event endpoint. No new port is needed.
+
+Changed assets load in a separate scene, then swap together between frames;
+unchanged assets keep their caches. Additions, removals, transforms and bounds are
+included. A newer publication cancels an obsolete replacement batch. Failed loads
+keep the existing scene and pause updates; unpause to retry. View settings contains
+**Pause live updates**. Reporting a snag automatically freezes updates and late LoD
+activations; the report records the catalog revision and loaded resource filenames.
+Camera position, mode and settings survive a swap. Walking rechecks ground height
+at the same horizontal location. There is still no building collision physics.
+
+A replacement batch has a 128 MiB estimated GPU-resource budget in addition to the
+current scene. Oversized batches try District before refinement; if even District
+exceeds the budget, the viewer asks for a reload. Estimates are not a hard cap on
+browser RAM or texture-decoding allocations. Two replacement downloads can run
+alongside the ordinary streamer's two requests. Pausing prevents application of a
+batch; requests already in flight may finish offscreen.
+
+Viewer-code, catalog-schema and geographic-frame changes show a reload notice
+instead of attempting an unsafe hot swap. Reference assets retired from a catalog
+remain on disk for at least 24 hours, cleaned during later publications. Tabs
+paused or disconnected longer than that may need to resume or refresh to obtain
+the latest catalog. Updates are whole changed GLBs, not binary patches or in-progress
+Blender edits. Publish related building and ground changes in one command.
+
+Live-update policy checks: `node tests/live-policy.mjs`. Python regression tests in
+`tests/test_live_publication.py` cover retirement/reactivation and event delivery.
+
+`tests/streamer-lifecycle.browser.js` is a Playwright `page.evaluate` function for
+a loaded viewer page. It checks versioned caches, batch adoption, reporting freezes
+and disposal of superseded asynchronous decodes using isolated fixture scenes.
