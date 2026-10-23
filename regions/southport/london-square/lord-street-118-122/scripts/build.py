@@ -34,7 +34,7 @@ def finish(mesh,part='architecture',mats=None,transform=None):
   axes=[i for i in range(3) if i!=max(range(3),key=lambda j:abs(f.normal[j]))]
   for li in f.loop_indices:
    v=ob.data.vertices[ob.data.loops[li].vertex_index].co
-   uv.data[li].uv=(v[axes[0]]/(.65 if mats and pier in mats else 3.2),v[axes[1]]/(.65 if mats and pier in mats else 4.8))
+   uv.data[li].uv=(v[axes[0]]/(.88 if mats and any(m.name=='Observed orange rear brick' for m in mats) else .65 if mats and pier in mats else 3.2),v[axes[1]]/(.30 if mats and any(m.name=='Observed orange rear brick' for m in mats) else .65 if mats and pier in mats else 4.8))
  if transform is not None:ob.matrix_world=transform
  return ob
 
@@ -73,7 +73,7 @@ frontbox('Trim coping',width/2,height+.055,width+.02,.11,.56,-.18,roofmat)
 x0=D['x_far'];x1=D['x_near'];yf=D['front_y'];yb=D['rear_y'];z0=D['base_z'];rl=D['roof_level']
 m=Mesh('Envelope rear and party walls')
 for x in [x0+.15,x1-.15]:m.box((x,(yf+yb-.1)/2,z0+height/2),(.3,yf-yb-.7,height))
-m.box(((x0+x1)/2,yb+.15,z0+height/2),(width,.3,height));finish(m,mats=[rear])
+finish(m,mats=[rear])
 # Keep the slab behind the rear wall's inner face. Its former rear edge lay
 # exactly on the external wall plane, producing a flickering strip from Glebe.
 roof_back=yb+.31;roof_front=yf-.4
@@ -125,6 +125,10 @@ hood=[(au-.27,1.99,.03),(au+.27,1.99,.03),(au+.27,1.91,.34),(au-.27,1.91,.34)]
 m.add(hood+[(x,y-.015,z) for x,y,z in hood],
       [(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
 finish(m,'shopfront',[metal],frame)
+from service_rear import build as build_service_rear
+service_brick=material('Observed orange rear brick',(.43,.25,.16),'service-brick')
+build_service_rear(D,finish,service_brick,dark,glass,metal,cream,roofmat)
+
 for im in bpy.data.images:
  if im.source=='FILE':im.pack()
 s.render.engine='CYCLES';s.cycles.samples=32;s.cycles.use_denoising=True

@@ -20,7 +20,7 @@ for y in [-68.5,-67,-65,-64.3]:
     hit,p,n,index,obj,matrix=bpy.context.scene.ray_cast(deps,Vector((-4.301,y,3)),Vector((0,0,-1)),distance=4)
     assert hit and obj in ground,(y,obj)
     assert abs(p.z-.66465)<.005,(y,p.z)
-for x,y in [(-18,-66.5),(-28,-66.5),(-40,-53),(-38,-70),(-28,-69.7)]:
+for x,y in [(-18,-66.5),(-28,-66.5),(-40,-53),(-38,-70),(-28,-69.7),(-49.5,-57),(-49.5,-51),(-48,-68)]:
     hit,p,n,index,obj,matrix=bpy.context.scene.ray_cast(deps,Vector((x,y,3)),Vector((0,0,-1)),distance=4)
     assert hit and obj in ground,(x,y,obj)
 report={'objects':len(meshes),'ground_objects':len(ground),'checks':'Ground owns x<=-4.3; seam road height matches; lane and parking aisle connected; furniture separate'}

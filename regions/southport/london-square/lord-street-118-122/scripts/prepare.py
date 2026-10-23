@@ -27,3 +27,9 @@ colour=colour*.70+(np.array([112,125,109])+((macro-.5)*70)[:,:,None])*.30
 fissure=np.abs(np.sin(x*.17+y*.11+ids*1.7))<.045
 colour[fissure]=colour[fissure]*.5+np.array([152,160,143])*.5
 Image.fromarray(np.uint8(np.clip(colour,0,255))).save(out/'pier.png')
+
+# Four brick courses in a .88 x .30 metre authored repeat.
+brick=np.array([148,94,62])[None,None,:]+rng.normal(0,5,(n,n,1))
+row=y//128;xx=(x+(row%2)*64)%128
+brick[(xx<3)|(y%128<7)]=[124,117,100]
+Image.fromarray(np.uint8(np.clip(brick,0,255))).save(out/'service-brick.png')

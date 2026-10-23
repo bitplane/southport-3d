@@ -99,12 +99,14 @@ for i in range(D['upper_bays']):
 # Roof mass ends at an estimated rear block return; do not invent a rear shop facade.
 x0,x1,yf,yb,z0=[D[k] for k in ['x_far','x_near','front_y','rear_y','base_z']];rl=D['roof_level']
 m=Mesh('Envelope rear and party walls')
-for x in [x0+.15,x1-.15]:m.box((x,(yf+yb-.45)/2,z0+rl/2),(.30,yf-yb-.45,rl))
+for x in [x0+.15]:m.box((x,(yf+yb-.45)/2,z0+rl/2),(.30,yf-yb-.45,rl))
 m.box(((x0+x1)/2,yb+.15,z0+rl/2),(width-.60,.30,rl));finish(m,mats=[rear])
 # Roof construction follows observed satellite forms, separately from facade.
 from roof_details import build_roof
 R=json.loads((ROOT/'research/roof-layout.json').read_text())
 build_roof(D,R,finish,[roofmat,roofbrick,roofcap,metal,roofpale,dark,roofrust])
+from service_side import build as build_service_side
+build_service_side(D,R,finish,roofbrick,roofcap,dark,glass,metal,cream)
 
 # Hand-authored curve interpretation of the visible heart / pulse emblem.
 # This is source geometry, not a downloaded logo or photographic texture.
@@ -125,6 +127,7 @@ def emblem(name,u,z,size,out,bg):
  return finish(m,'shopfront',[bg,cream],frame@Matrix.Translation((u,z,out)))
 from frontage import build_frontage
 build_frontage(D,finish,frontbox,sign,emblem,frame,[redtile,red,cream,dark,glass,metal,stone,grout,tread],font)
+sign('rear collection point','Customer Collection\nPoint',0,0,2.4,.65,red,cream,orient=face_matrix((x1+.08,yb+18.7, z0+5.0),(1,0,0)))
 for im in bpy.data.images:
  if im.source=='FILE':im.pack()
 s.render.engine='CYCLES';s.cycles.samples=32;s.cycles.use_denoising=True

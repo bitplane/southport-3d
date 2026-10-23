@@ -4,7 +4,7 @@
     "roof-satellite",
     "aerial"
   ],
-  "coordinate_method": "Satellite feature positions normalized within existing visually calibrated frontage/rear envelope. Coordinates and heights are estimates; the photograph is not a measured orthophoto survey. No access doors, stairs or hidden equipment inferred.",
+  "coordinate_method": "Satellite feature positions normalized within existing visually calibrated frontage/rear envelope. Coordinates and heights are estimates; the photograph is not a measured orthophoto survey. No access doors, stairs or hidden equipment inferred. Glebe Place ground photos now establish that the first two edge forms continue down as brick wall shafts; the third remains provisional.",
   "edge_housings": [
     {
       "centre": [
@@ -211,7 +211,7 @@
     }
   ],
   "uncertainties": [
-    "Three edge housings are visible but their access/ventilation function is unresolved; no doors or stair runs invented.",
+    "First two edge housings are integrated brick wall shafts, established by private Glebe Place views; their internal function and the third housing remain unresolved.",
     "Rectangular rear feature interpreted as a shallow external walled recess with two higher walls; actual internal depth is unknown.",
     "Elongated pale/rust feature may be a rooflight or ventilation hood; opaque shallow pitched interpretation only.",
     "Plant silhouette and four fan tops observed; heights, cabinet panel divisions and guardrail construction approximate.",

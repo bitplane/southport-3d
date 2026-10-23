@@ -30,5 +30,8 @@ for col in range(0,n,192):felt[:,col:col+1]*=.90
 Image.fromarray(np.uint8(np.clip(felt,0,255))).save(out/'roof-felt.png')
 brick=np.array([138,99,78])[None,None,:]+rng.normal(0,4,(n,n,1))
 rows=y//128;xx=(x+(rows%2)*64)%128
+col=((x+(rows%2)*64)//128)%5
+shade=rng.uniform(-10,28,(4,5))[rows,col]
+brick+=shade[:,:,None]
 brick[(xx<3)|(y%128<7)]=[112,109,99]
 Image.fromarray(np.uint8(np.clip(brick,0,255))).save(out/'roof-brick.png')

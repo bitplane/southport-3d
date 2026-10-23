@@ -37,6 +37,7 @@ def build_roof(D, R, finish, mats):
     finish(m,'roof',[brick,cap,felt])
     # Three roof-edge housings have capped tops. Their use is unresolved from above.
     for i,housing in enumerate(R['edge_housings']):
+        if i<2:continue  # Integrated into the court wall by service_side.py.
         x,y=housing['centre'];w,d=housing['size'];h=housing['height']
         m=Mesh(f'Roof edge housing {i+1}')
         m.box((x,y,deck+h/2),(w,d,h),0)

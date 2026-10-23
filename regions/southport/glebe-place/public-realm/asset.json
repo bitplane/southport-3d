@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "southport.glebe-place.public-realm",
-  "name": "Glebe Place — lane and rear parking",
+  "name": "Glebe Place \u2014 lane and rear parking",
   "region": "southport",
   "area": "glebe-place",
   "status": "researched-public-realm-estimated-dimensions",
@@ -31,5 +31,5 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Ground, marked parking, low walls and furnishings behind London Street and Lord Street. Existing building assets own architecture; missing terrace rear wing remains deferred."
+  "scope": "Ground, marked parking, low walls and furnishings behind London Street and Lord Street. Building assets own the service elevations; court ground reaches BHF and the modelled restaurant annex."
 }

@@ -46,7 +46,7 @@ assert min((slab.matrix_world@v.co).y for v in slab.data.vertices)>D['rear_y']+.
 for x in [D['x_far']+1,(D['x_far']+D['x_near'])/2,D['x_near']-1]:
  for z in [D['base_z']+D['roof_level']-.10,D['base_z']+D['roof_level'],D['base_z']+D['roof_level']+.10]:
   hit,point,normal,index,ob,matrix=bpy.context.scene.ray_cast(deps,Vector((x,D['rear_y']-2,z)),Vector((0,1,0)),distance=3)
-  assert hit and ob.name=='Envelope rear and party walls',(x,z,ob.name if ob else None)
+  assert hit and ob.name=='Envelope service upper rear',(x,z,ob.name if ob else None)
 print('Glebe rear wall owns the full roof-level strip without coplanar slab faces')
 
 # Thin awning/hood surfaces need closed, outward shells rather than opposing

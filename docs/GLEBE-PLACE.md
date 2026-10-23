@@ -13,3 +13,9 @@ The curved kerbs meet the London Street edge tangentially. Double yellow lines d
 Surfaces, repairs, drains and paint are partitioned before export, then conformed at float32 precision. Ground and furnishings stream separately so walls and bollards cannot become walkable floors. All levels retain inexpensive surface topology and boundary-wall volumes. Walk/District reduce bollard generators; District omits fine timber joints and downsamples maps to 128 px. Photographic pixels are not used in published textures.
 
 Run `python3 tools/project.py build southport.glebe-place.public-realm`, followed by `--stage render`. The validator samples the seam height, lane and parking aisle, checks ground ownership and requires furniture separation. Review the combined viewer after publishing: an isolated road render cannot prove the join to the neighbouring asset.
+
+The rear court reaches BHF's court wall at site X -50.8 and the restaurant annex
+at Y -49.0. This closes the former unmodelled strip beneath the service entrances.
+Parking stripes stop outside the annex footprint. These boundary positions follow
+the visually calibrated building recipes and private Glebe Place images in snag
+9648072a74f14fbfac2ad9c4483b92d7; they are not surveyed land boundaries.

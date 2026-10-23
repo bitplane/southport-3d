@@ -104,7 +104,7 @@ surface('Glebe mouth ground',[(-4.3,-69.4),(-4.3,-63.4),(-10,-63.4),(-10,-69.4)]
 surface('Glebe narrow lane',[(-10,-63.4),(-29.9,-63.46),(-39.0,-64.0),
         (-39.0,-70.0),(-26.85,-69.37),(-10,-69.4)],'asphalt')
 # Rear court reaches the terrace/Prezzo rear bounds; it is not a wide street.
-surface('Rear parking court',[(-46.5,-65.0),(-46.7,-41.3),(-32.2,-41.3),
+surface('Rear parking court',[(-50.8,-71.3),(-50.8,-49.0),(-32.2,-49.0),
         (-32.2,-44.0),(-30.5,-44.0),(-30.5,-63.5),(-29.9,-63.5),(-29.9,-70),(-43,-70)],
         'asphalt',0,ROAD,'court-ground')
 # A short southern service continuation and visible return parking, bounded for
@@ -135,9 +135,9 @@ surface('Patched service trench',[(-10.6,-66.0),(-16,-66.05),(-16.3,-65.9),(-24,
         (-30,-66.1),(-38.2,-66.7),(-38.7,-67.5),(-29.9,-67.0),(-23.7,-67.2),
         (-15.8,-66.85),(-10.6,-66.9)],'patch',70)
 # Keep parking bays behind the white boundary wall, with a clear service aisle.
-for y in [-46.0,-48.5,-51,-53.5,-56,-58.5,-61]:
+for y in [-51,-53.5,-56,-58.5,-61]:
     strip('Rear bay stripe',(-37.1,y),(-31.3,y),.07,'white',160,ROAD,'court-ground')
-strip('Rear bay aisle edge',(-37.1,-46),(-37.1,-61),.06,'white',160,ROAD,'court-ground')
+strip('Rear bay aisle edge',(-37.1,-51),(-37.1,-61),.06,'white',160,ROAD,'court-ground')
 # Drainage and access covers are flush, with no near-coplanar overlay.
 for x,y,w,h in [(-9,-66.1,1.0,.8),(-32.8,-67.3,.55,.4),(-40,-62.2,.6,.4),(-39,-72,.6,.4)]:
     part='lane-ground' if x>-30 else 'court-ground'

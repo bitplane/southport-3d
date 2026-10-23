@@ -8,7 +8,7 @@ assert all(o.data.polygons and o.data.uv_layers for o in meshes)
 assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.co)
 assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
 points=[o.matrix_world@v.co for o in meshes for v in o.data.vertices]
-assert min(v.x for v in points)>=D['x_far']-.07 and max(v.x for v in points)<=D['x_near']+.07
+assert min(v.x for v in points)>=D['x_far']-.07 and max(v.x for v in points)<=D['x_near']+2.5  # Collection steps project into the court.
 assert 14.6<max(v.z for v in points)<15.5
 windows=[o for o in meshes if o.name.startswith('Window ')];assert len(windows)==D['upper_bays']
 bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get()
@@ -49,7 +49,8 @@ for name in ['Shop left access ramp','Shop left access landing','Shop entrance s
 R=json.loads((ROOT/'research/roof-layout.json').read_text());wx,wy=R['walled_recess']['centre']
 hit,point,normal,index,obj,matrix=bpy.context.scene.ray_cast(deps,Vector((wx,wy,25)),Vector((0,0,-1)),distance=20)
 assert hit and obj.name=='Roof walled recess' and point.z<D['base_z']+D['roof_level']-.4
-assert len([o for o in meshes if o.name.startswith('Roof edge housing ')])==3
+assert len([o for o in meshes if o.name.startswith('Roof edge housing ')])==1
+assert len([o for o in meshes if o.name.startswith('Envelope integrated court shaft ')])==2
 assert any(o.name=='Roof plant platform and cabinets' for o in meshes)
 # The shallow rooflight pitches must face the sky, independent of material culling.
 rooflight=next(o for o in meshes if o.name=='Roof elongated rooflight or vent')
@@ -57,3 +58,19 @@ pitches=[f for f in rooflight.data.polygons if f.material_index==1 and abs(f.nor
 assert len(pitches)==4 and all(f.normal.z>0 for f in pitches),('rooflight pitch winding',[tuple(f.normal) for f in pitches])
 report={'objects':len(meshes),'window_modules':len(windows),'checks':'metric finite meshes, packed maps, neighbour bounds, visible windows/signs, two recessed entrances and two main risers, two welcome panels and visible downlight lenses, outward access solids and covered threshold, matte access tiles, open roof recess and three edge housings'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2));print(report)
+
+# Collection sign and door faces must remain clear of exterior rainwater pipes.
+ob=bpy.data.objects['Sign rear collection point']
+for x in [-1,-.5,0,.5,1]:
+ for y in [-.2,0,.2]:
+  origin=ob.matrix_world@Vector((x,y,.8))
+  direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+  hit,p,n,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1.5)
+  assert hit and target==ob,('Collection sign obstructed',x,y,target.name if target else None)
+for name,u in [('Fixture collection door 0',14.0),('Fixture collection door 1',16.8)]:
+ ob=bpy.data.objects[name]
+ for dx in [-.6,0,.6]:
+  origin=ob.matrix_world@Vector((u+dx,2,.8))
+  direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+  hit,p,n,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1.5)
+  assert hit and target==ob,('Collection door obstructed',name,dx,target.name if target else None)
