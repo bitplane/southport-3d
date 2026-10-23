@@ -174,8 +174,9 @@ box('Trim ridge cap',(ridge,(ys+hip+yn)/2,zr+.025),(.16,width-hip,.10),slate,'ro
 # Lower rear range observed in aerial, kept plain where ground views are obscured.
 wingnorth=yn-.9;wingwidth=width-.9;wingfront=mainrear+.2;wingrear=xr;wh=3.4
 nf=face_matrix((wingfront,wingnorth,base),(0,1,0));sf=face_matrix((wingrear,ys,base),(0,-1,0));rf=face_matrix((wingrear,wingnorth,base),(-1,0,0))
-wall_with_openings('rear wing north',nf,wingfront-wingrear,wh,[],'rear',brick)
-wall_with_openings('rear wing south',sf,wingfront-wingrear,wh,[],'rear',brick)
+# End wall owns the rear corners; side walls stop at its inner face.
+wall_with_openings('rear wing north',nf,wingfront-wingrear-.36,wh,[],'rear',brick)
+wall_with_openings('rear wing south',sf@Matrix.Translation((.36,0,0)),wingfront-wingrear-.36,wh,[],'rear',brick)
 wall_with_openings('rear wing end',rf,wingwidth,wh,[(1.1,2.1,0,2.15)],'rear',brick)
 elevation_box('Shop rear service door',1.6,1.075,1,2.15,.06,-.10,metal,'rear',rf)
 box('Roof rear deck',((wingfront+wingrear)/2,(ys+wingnorth)/2,base+wh-.12),(wingfront-wingrear-.04,wingwidth-.04,.16),felt,'roof')

@@ -38,3 +38,16 @@ for field in ['front_x','main_depth','ridge_height','base_z','registration_pivot
 assert (D['south_y']==nd['north_y'] if other=='20' else D['north_y']==nd['south_y'])
 report={'mesh_objects':len(meshes),'front_windows':len(windows),'checks':'Finite UV meshes, packed authored maps, eight unobscured upper window apertures, two manifold roof shells, bounds respecting neighbour division.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# Rear wing corners have one owner, including their exposed end caps.
+import os,sys
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+triangles=[];labels=[]
+for name in ('Envelope rear wing north','Envelope rear wing south','Envelope rear service end'):
+ ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
+errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+assert not errors,errors[:8]
+print('Rear wing corner ownership passed')

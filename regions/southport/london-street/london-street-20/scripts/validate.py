@@ -64,3 +64,16 @@ for u in (.02,.3,3.75,7.48):
 for u in (1,2.5,3.75,5):
  hit,p,n,i=body.ray_cast(Vector((u,7.5,1)),Vector((0,0,-1)),distance=2)
  assert hit and abs(p.z)<.001,("Missing rendered wall",u)
+
+# Rear wing corners have one owner, including their exposed end caps.
+import os,sys
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+triangles=[];labels=[]
+for name in ('Envelope rear wing north','Envelope rear wing south','Envelope rear wing end'):
+ ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
+errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+assert not errors,errors[:8]
+print('Rear wing corner ownership passed')

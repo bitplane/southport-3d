@@ -156,8 +156,9 @@ box('Trim ridge cap',(ridge,(ys+yn-hip)/2,zr+.025),(.16,width-hip,.10),slate,'ro
 # Southern strip extends toward Glebe courtyard; north cutback preserves open yard.
 wingwidth=5.8;wingnorth=ys+wingwidth;wingfront=mainrear+.3;wingrear=xr;wingheight=3.30
 wnorth=face_matrix((wingfront,wingnorth,base),(0,1,0));wsouth=face_matrix((wingrear,ys,base),(0,-1,0));wr=face_matrix((wingrear,wingnorth,base),(-1,0,0))
-wall_with_openings('rear wing north',wnorth,wingfront-wingrear,wingheight,[],'rear',brick)
-wall_with_openings('rear wing south',wsouth,wingfront-wingrear,wingheight,[],'rear',brick)
+# End wall owns the rear corners; side walls stop at its inner face.
+wall_with_openings('rear wing north',wnorth,wingfront-wingrear-.36,wingheight,[],'rear',brick)
+wall_with_openings('rear wing south',wsouth@Matrix.Translation((.36,0,0)),wingfront-wingrear-.36,wingheight,[],'rear',brick)
 wall_with_openings('rear service end',wr,wingwidth,wingheight,[(1.0,2.0,0,2.15)],'rear',brick)
 elevation_box('Shop rear service door',1.5,1.075,1,2.15,.08,-.15,metal,'rear',wr)
 # Shallow dual pitched wing roof with one visible rooflight, all estimated heights.
