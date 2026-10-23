@@ -96,8 +96,14 @@ def build_courtyard(g):
     # Flag grid is fine relief only; courtyard proportions survive every LOD.
     for d in [24+i*.6 for i in range(34)]:
         b('Detail courtyard paving joint',(19.6,level+.012,-d),(3.8,.012,.015),soil)
+    # Cross-joints own each intersection. Split the longitudinal strips at
+    # their edges instead of drawing coincident top/bottom faces twice.
+    m=Mesh('Detail courtyard paving joint longitudinal')
     for u in [17.8+i*.6 for i in range(7)]:
-        b('Detail courtyard paving joint',(u,level+.012,-34),( .015,.012,20),soil)
+        for i in range(34):
+            start=24+i*.6+.0075;end=min(24+(i+1)*.6-.0075,44)
+            m.box((u,level+.012,-(start+end)/2),(.015,.012,end-start))
+    finish(m,'rear-range',[soil],front)
     for u,d,w,dep in [(27.8,25.8,1.3,1.3),(27.8,31.4,1.3,1.3),(27.8,37,1.3,1.3),
                        (21.3,26,1.35,1.35),(21.3,33,1.35,1.35),(21.3,40,1.35,1.35),
                        (18,29,.65,2.7),(18,36,.65,2.7)]:

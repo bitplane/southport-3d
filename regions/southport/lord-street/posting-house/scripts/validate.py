@@ -158,3 +158,15 @@ for name in ('Envelope courtyard basement roof', 'Envelope courtyard west retain
 errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
 assert not errors,errors[:8]
 print('Reported wall/return surface ownership verified')
+
+# Fine paving grid intersections have one owner; no duplicate top surfaces.
+triangles=[];labels=[]
+for ob in meshes:
+ if not ob.name.startswith('Detail courtyard paving joint'):continue
+ ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(ob.name)
+assert triangles
+errors=overlaps(triangles,labels,min_area=1e-6)
+assert not errors,errors[:8]
+print('Courtyard paving joint intersections have no coplanar overlaps')
