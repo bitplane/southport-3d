@@ -57,3 +57,20 @@ for name,boundary in [('Roof middle deck',D['rear_x']+5.72),('Roof low rear deck
  o=bpy.data.objects[name]
  # Decks are constructed in site coordinates before their registration transform.
  assert min(v.co.x for v in o.data.vertices)>boundary+.17,(name,'Coplanar deck/wall edge')
+
+# Shared front/rear corners and shop-head masonry have a single surface owner.
+import os,sys
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+names=('Envelope six-bay front','Trim shop head stone','Envelope shop head backing',
+       'Envelope Glebe service wall','Envelope rear service elevation',
+       'Envelope party lower wall','Envelope upper rear step','Envelope Glebe low upper return')
+triangles=[];labels=[]
+for ob in meshes:
+ if ob.name not in names and not ob.name.startswith('Shop granite pier'):continue
+ ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(ob.name)
+errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+assert not errors,errors[:8]
+print('Shop head and front/rear corner surface ownership passed')

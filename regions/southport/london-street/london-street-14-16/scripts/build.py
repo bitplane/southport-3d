@@ -102,7 +102,7 @@ def sign(name, body, u, h, w, height, background=blue, foreground=white,
 
 # Six first-floor apertures; the much taller brick area above is deliberately blank.
 centres=[width*(i+.5)/6 for i in range(6)]
-openings=[(u-.59,u+.59,4.35,6.15) for u in centres]+[(0,width,0,3.95)]
+openings=[(u-.59,u+.59,4.35,6.15) for u in centres]+[(0,width,0,4.09)]
 wall_with_openings('six-bay front',front,width,D['front_parapet_height'],openings)
 def window(name,frame,u,h,w,hh):
  m=Mesh(name);m.box((0,0,-.14),(w,hh,.035),1)
@@ -115,6 +115,8 @@ def window(name,frame,u,h,w,hh):
 for i,u in enumerate(centres):window('Window front '+str(i),front,u,5.25,1.18,1.8)
 elevation_box('Trim front coping',width/2,10.31,width+.08,.09,.43,-.14,coping)
 elevation_box('Trim shop head stone',width/2,4.02,width,.14,.38,-.08,granite)
+# Granite owns the soffit and outer .27 m of the wall; retain the rear backing.
+elevation_box('Envelope shop head backing',width/2,4.02,width,.14,.09,-.315,brick)
 # The tall frontage wall returns only partway down Glebe before stepping down.
 wall_with_openings('Glebe tall return',side@Matrix.Translation((.36,0,0)),4.99,10.3,[],mat=brick)
 setback=D['upper_side_setback'];service_start=D['service_wall_start'];service_door=D['service_door_u']
@@ -125,7 +127,7 @@ wall_with_openings('Glebe low upper return',upper_side,3.90,6.5,
 for i,u in enumerate([6.6,8.45]):window('Window Glebe clerestory '+str(i),inset_side,u,5.3,.96,.70)
 # Low rear service enclosure follows the street edge; its wooden door is inset.
 low_side=side@Matrix.Translation((service_start,0,0))
-wall_with_openings('Glebe service wall',low_side,depth-service_start,3.35,[(service_door-service_start-.45,service_door-service_start+.45,0,2.2)],'rear')
+wall_with_openings('Glebe service wall',low_side,depth-service_start-.36,3.35,[(service_door-service_start-.45,service_door-service_start+.45,0,2.2)],'rear')
 elevation_box('Shop timber service door',service_door,1.1,.90,2.2,.08,-.16,wood,'rear',side)
 for u in [service_door-.49,service_door+.49]:elevation_box('Trim service door jamb',u,1.12,.09,2.3,.13,-.025,black,'rear',side)
 elevation_box('Trim service door lintel',service_door,2.25,1.1,.10,.17,-.02,black,'rear',side)
@@ -139,7 +141,11 @@ wall_with_openings('rear service elevation',rear,width,3.35,[(width*.7-.5,width*
 elevation_box('Shop rear steel door',width*.7,1.075,1,2.15,.06,-.12,metal,'rear',rear)
 # South party boundary: stepped heights matching the roof envelope.
 south=face_matrix((xr,ys,base),(0,-1,0))
-wall_with_openings('party lower wall',south,depth,6.5,[],mat=brick)
+# Notches preserve the upper rear wall above the low service elevation,
+# and the front wall above/between the shop elements.
+wall_with_openings('party lower wall',south,depth,6.5,
+ [(0,.36,0,3.35),(depth-.36,depth,3.95,6.5),
+  (depth-.33,depth,0,3.2)],mat=brick)
 # Front roof zone slopes behind the raised parapet, closing at the lower rear roof.
 # Exact pitch is estimated from the high return and aerial dark/pale roof boundary.
 x0=xf-.36;x1=xf-5.35;z0=base+9.95;z1=base+6.52
@@ -153,7 +159,8 @@ box('Roof recessed side strip',((xf-5.35+xr+5.72)/2,yn-setback/2-.10,base+3.25),
 box('Roof low rear deck',((xr+.18+xr+5.72)/2,(ys+yn)/2,base+3.25),(5.54,width-.35,.18),felt,'roof')
 # Rear upper return closes the height step, with two modest casements seen obliquely.
 step=face_matrix((xr+5.72,yn-setback-.18,base),(-1,0,0))
-wall_with_openings('upper rear step',step,width-setback-.36,6.50,[(0,width-setback-.36,0,3.35)],'rear')
+# End the upper return at the inner faces of both side walls.
+wall_with_openings('upper rear step',step@Matrix.Translation((.18,0,0)),width-setback-.72,6.50,[(0,width-setback-.72,0,3.35)],'rear')
 # South roof wedge under the sloping plane.
 m=Mesh('Envelope party roof wedge')
 m.outline([(0,6.5),(5,6.5),(5,9.95)],-.26,0)
