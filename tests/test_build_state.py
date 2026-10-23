@@ -112,3 +112,22 @@ def test_render_edit_does_not_change_package_inputs(recipe):
 def test_partial_render_does_not_bless_full_render_cache(recipe):
     _,_,make=recipe;s=make();s.execute('master');s.execute('render',views=['closeup'])
     assert make().reason('render')
+
+
+def test_generated_research_survives_between_stages_and_is_checked(recipe):
+    root,source,make=recipe
+    with (source/'scripts/prepare.py').open('a') as f:
+        f.write("(ROOT/'research/materials.json').write_text('generated material manifest')\n")
+    with (source/'scripts/export.py').open('a') as f:
+        f.write("assert (ROOT/'research/materials.json').read_text()=='generated material manifest'\n(ROOT/'research/export-report.json').write_text('export checked')\n")
+    with (source/'scripts/validate.py').open('a') as f:
+        f.write("assert (ROOT/'research/export-report.json').read_text()=='export checked'\n")
+    s=make()
+    for stage in ('master','export','validate','render'):s.execute(stage)
+    assert all(make().reason(stage) is None for stage in ('master','export','validate','render'))
+    assert not (source/'research/materials.json').exists()
+    (root/'build/test.asset/research/materials.json').write_text('corrupted')
+    assert 'output missing or changed' in make().reason('master')
+    s.execute('master')
+    assert (root/'build/test.asset/research/materials.json').read_text()=='generated material manifest'
+    assert not (root/'build/test.asset/research/export-report.json').exists()

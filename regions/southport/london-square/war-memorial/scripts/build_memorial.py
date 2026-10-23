@@ -511,3 +511,7 @@ summary={'blender':bpy.app.version_string,'objects':len(scene.objects),
          'interiors':'Deferred by user; chambers contain structural shell only'}
 (ROOT/'research/build_report.json').write_text(json.dumps(summary,indent=2)+'\n')
 print('BUILD_COMPLETE',json.dumps(summary),flush=True)
+
+# Portable shaders/UVs are master outputs; export must remain read-only.
+import runpy
+runpy.run_path(str(ROOT/'scripts/prepare_materials.py'),run_name='__main__')

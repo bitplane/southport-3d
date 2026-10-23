@@ -106,6 +106,8 @@ class Stages:
         paths += [Path(p) for p in dependency_paths]
         parameters['files'] = record(paths)
         if stage == 'render':parameters['views']=self.render_views
+        if stage == 'validate':
+            parameters['export'] = self.state['nodes'].get('export', {}).get('key')
         if stage != 'master':
             parameters['master'] = self.state['nodes'].get('master', {}).get('key')
         return parameters
@@ -144,6 +146,17 @@ class Stages:
         atomic_json(self.path, self.state)
 
     def snapshot_inputs(self):
+        # Legacy recipes generate material/geometry manifests under research/.
+        # Preserve only verified outputs of successful stages, never arbitrary
+        # leftovers from failed runs. A new master clears all node records first.
+        generated={}
+        for node in self.state.get('nodes',{}).values():
+            for name,digest in node.get('outputs',{}).items():
+                path=Path(name)
+                if path.is_relative_to(self.runtime/'research'):
+                    if not path.is_file() or sha(path)!=digest:
+                        raise ValueError('Generated stage input missing or changed: '+name)
+                    generated[path]=path.read_bytes()
         if self.snapshot.exists():
             shutil.rmtree(self.snapshot)
         self.snapshot.mkdir()
@@ -169,6 +182,8 @@ class Stages:
             dest = self.runtime / name
             if dest.exists(): shutil.rmtree(dest)
             shutil.copytree(self.snapshot / 'asset' / name, dest)
+        for path,data in generated.items():
+            path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)
 
     def live_path(self, path):
         path = Path(path)
@@ -178,6 +193,10 @@ class Stages:
             return self.root / path.relative_to(self.snapshot)
         for name in ('scripts', 'research'):
             if path.is_relative_to(self.runtime / name):
+                if name=='research':
+                    original=self.snapshot/'asset'/path.relative_to(self.runtime)
+                    if not original.is_file() or (path.is_file() and sha(path)!=sha(original)):
+                        return None  # Generated stage output, not a live source input.
                 return self.source / path.relative_to(self.runtime)
         if path.is_relative_to(self.root) and not path.is_relative_to(self.root / 'build'):
             return path
@@ -227,6 +246,7 @@ class Stages:
         self.deps = set()
         before = self.inputs(stage, [])
         master_outputs = dict(self.state['nodes'].get('master', {}).get('outputs', {}))
+        research_before=record(files(self.runtime/'research'))
         if stage == 'master':
             for name in ('models', 'textures', 'renders'):
                 dest = self.runtime / name
@@ -249,6 +269,7 @@ class Stages:
             outputs = files(self.runtime / 'renders')
         else:
             raise ValueError('Use package runner for ' + stage)
+        outputs += [p for p in files(self.runtime/'research') if research_before.get(str(p))!=sha(p)]
         if stage == 'master' and not any(p.suffix == '.blend' for p in outputs):
             raise ValueError('Master stage produced no Blender file')
         for path, digest in master_outputs.items():

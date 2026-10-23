@@ -19,7 +19,10 @@ not the legacy exported GLB. The component-pilot `lod` command uses snapshots an
 master integrity checks but still runs its requested experiment each time.
 
 `build/<id>/build-state.json` records successful stages. The master runs prepare
-and geometry and owns the generated model/texture files. Export, validation and
+and geometry and owns the generated model/texture files and generated research
+manifests. Verified generated research outputs survive source snapshots between
+stages; stale leftovers from failed runs do not. Export-generated reports are
+tracked too, and validation depends on the successful export key. Export, validation and
 render read those files; if they mutate them the stage fails. Failed stages have
 no successful cache record. Missing/corrupt outputs also force regeneration.
 Package cache keys use the master's input key, not Blender file bytes (which are
