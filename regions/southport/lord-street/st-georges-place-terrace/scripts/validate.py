@@ -42,3 +42,20 @@ assert -57<min(p.y for p in pts)<-49 and -23<max(p.y for p in pts)<-16
 assert 20<max(p.z for p in pts)<22
 report={'meshes':len(meshes),'closed_roofs':len(roofs),'glazing_probes':probes,'sash_probes':sash_probes,'checks':['Finite UV meshes and packed authored textures','Six polygonal bays,90 leaded transoms and three recessed entrances','Closed main,oriel and rear wing roofs','Registered site envelope']}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# Repeated rails meet their stiles without overlapping the visible faces.
+import os,sys
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+for prefixes in [('Window main side frame','Window main side transom'),
+                 ('Window attic stile','Window attic rail')]:
+ triangles=[];labels=[]
+ for ob in meshes:
+  if not ob.name.startswith(prefixes):continue
+  ob.data.calc_loop_triangles()
+  for t in ob.data.loop_triangles:
+   triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(ob.name)
+ assert triangles,prefixes
+ errors=overlaps(triangles,labels,min_area=1e-4)
+ assert not errors,(prefixes,errors[:8])
+print('Repeated window rail/stile surface ownership passed')

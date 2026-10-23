@@ -90,7 +90,8 @@ for side,origin,normal in [('north',(W,-DEP,0),(1,0,0)),('south',(0,0,0),(-1,0,0
    h=1.2 if z>11 else 2.4
    box('Window main side glazing',(u,z+h/2,-.12),(1.08,h-.03,.1),'rear-wings',glass,frame)
    for xx in (u-.56,u+.56):box('Window main side frame',(xx,z+h/2,-.02),(.07,h+.1,.1),'rear-wings',white,frame)
-   for zz in (z,z+h/2,z+h):box('Window main side transom',(u,zz,-.02),(1.16,.065,.10),'rear-wings',white,frame)
+   # Rails stop at the inner faces of the full-height stiles.
+   for zz in (z,z+h/2,z+h):box('Window main side transom',(u,zz,-.02),(1.05,.065,.10),'rear-wings',white,frame)
 # Plain rectangular sash bays and terracotta arches / carved keystones.
 def sash(frame,u,z,width=1.12,height=2.52,part='frontage'):
  before=set(C[part].objects)
@@ -114,7 +115,8 @@ for x in FLATS:
  for dx in (-1.12,0,1.12):
   af=ff@Matrix.Translation((W-x-dx,0,0));box('Window attic glass',(0,12.335,-.13),(.84,1.18,.10),material=glass,frame=af)
   for xx in (-.46,.46):box('Window attic stile',(xx,12.335,-.02),(.08,1.30,.11),material=white,frame=af)
-  for zz in (11.71,12.93):box('Window attic rail',(0,zz,-.02),(.96,.08,.11),material=white,frame=af)
+  # Continuous stiles own the rail corners.
+  for zz in (11.71,12.93):box('Window attic rail',(0,zz,-.02),(.84,.08,.11),material=white,frame=af)
   box('Window attic mullion',(0,12.335,-.02),(.055,1.2,.1),material=white,frame=af)
 for z in (3.50,7.15,10.99):box('Course sandstone string',(W/2,.025,z),(W,.10,.10),material=terracotta)
 # Six polygonal bays. Their glass faces are separate inset surfaces, not painted boxes.
