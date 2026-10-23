@@ -15,7 +15,7 @@ def build_rear(g):
     holes=[]
     for x in [1.8,4.8,16.3,19.3,22.3]:
         for z in [3.0,6.6]:holes.append(rect(x-.57,z-1.0,x+.57,z+1.0))
-    holes += [rect(7.0,.1,10.6,8.7),rect(12.0,4.9,14.9,8.0),rect(12.0,.1,14.9,3.0)]
+    holes += [rect(7.0,.1,10.6,8.7),rect(12.0,4.9,14.9,8.0),rect(12.0,.1,14.9,4.87)]
     finish(wall('Envelope modern Anchor brick',rect(0,0,24.3,9.1),holes),'rear-range',[brick],f)
     upper=[rect(x-.83,9.5,x+.83,11.9) for x in [1.7,4.4,12.6,15.3,18,20.7,23.2]]+[rect(6.2,9.5,10.6,11.9)]
     finish(wall('Envelope modern Anchor attic',rect(0,9.1,24.3,h),upper),'rear-range',[cream],f)
@@ -43,11 +43,24 @@ def build_rear(g):
     # Remaining elevations are deliberately low-detail envelopes with readable
     # openings; exact courtyard fenestration awaits a survey.
     inward=front@Matrix.Translation((1,0,-44.4))
-    iholes=[rect(x-.7,z-1.05,x+.7,z+1.05) for x in [10,14,18,22] for z in [3,6.6,10.3]]
-    iholes.append(rect(13.4,0,16.3,3.3))
+    iholes=[rect(x-.7,z-1.05,x+.7,z+1.05) for x in [10,14,18,22] for z in [3,6.6,10.3] if not (x==14 and z==3)]
+    iholes.append(rect(13.4,0,16.3,4.87))
     finish(wall('Envelope modern courtyard',rect(0,0,w,h),iholes),'rear-range',[cream],inward)
     for x in [10,14,18,22]:
         for z in ([6.6,10.3] if x==14 else [3,6.6,10.3]):instance('courtyard-sash',sash('Window modern courtyard',1.4,2.1),inward@Matrix.Translation((x,z,0)),'rear-range',[glass,blue])
+    # RGP photographs show a recess beneath the balcony. Line the passage so
+    # its opening does not expose the entire hollow building shell. The hidden
+    # connection to the aligned courtyard opening is an estimated enclosure.
+    for x in [11.90,15.0]:
+        box('Envelope passage jamb',(x,2.435,-4.95),(.20,4.87,9.10),'rear-range',brick,f)
+    # Roof and floor follow the differing surveyed-frame opening datums.
+    for name,ends,thick,mat in [('ceiling',(4.87,4.87),.18,cream),('floor',(.1,0),-.12,flat)]:
+        m=Mesh('Envelope passage '+name)
+        a,b=ends
+        verts=[(x,y,z) for delta in [0,thick] for x,y,z in
+               [(12,a+delta,0),(14.9,a+delta,0),(14.9,b+delta,-9.9),(12,b+delta,-9.9)]]
+        m.add(verts,[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
+        finish(m,'rear-range',[mat],f)
     for u in [1,29.3]:box('Envelope modern side',(u,h/2,-49.35),(.30,h,9.9),'rear-range',cream,front)
     for u in [1,5]:box('Envelope modern raised corner side',(u,13.85,-49.35),(.25,2.7,9.9),'rear-range',cream,front)
     box('Envelope modern raised corner courtyard',(3,13.85,-44.4),(4,2.7,.25),'rear-range',cream,front)
