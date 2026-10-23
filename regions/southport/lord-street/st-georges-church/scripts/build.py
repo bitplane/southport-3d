@@ -10,7 +10,7 @@ from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh,face_matrix
-from components import rectangle,pointed,regions,wall,arch_ring,circle_band,foil,window_surround,diamond_leads,pinnacles
+from components import rectangle,pointed,regions,wall,recessed_wall,arch_ring,circle_band,foil,window_surround,diamond_leads,pinnacles
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 scene=bpy.context.scene;scene.unit_settings.system='METRIC'
@@ -151,7 +151,8 @@ ff=face_matrix((xr,front,base),(0,1,0))
 front_poly=[(0,0),(width,0),(width,eave),(width/2,ridge),(0,eave)]
 holes=[rectangle(width/2-tw/2-.01,0,width/2+tw/2+.01,ridge+.1)]
 for u in (3.1,width-3.1):holes += [pointed(.86,.15,2.55,u),pointed(.94+.16,5.25-.16,7.6,u)]
-finish(wall('Envelope front gable',front_poly,holes),transform=ff,authored_winding=True)
+recesses=[(pointed(1.04,-.03,2.55,u),-.23) for u in (3.1,width-3.1)]
+finish(recessed_wall('Envelope front gable',front_poly,holes,recesses),transform=ff,authored_winding=True)
 for u in (3.1,width-3.1):
     arch_window('front-flank',.94,5.25,7.6,ff@Matrix.Translation((u,0,0)),lights=2)
     doorway=Mesh('Door flank moulding')
@@ -251,16 +252,18 @@ tower_frames=[('front',face_matrix((cx+tw/2,tf,base),(0,1,0)),tw),
               ('back',face_matrix((cx-tw/2,tb,base),(0,-1,0)),tw),
               ('north',face_matrix((cx+tw/2,tb,base),(1,0,0)),tf-tb)]
 for name,frame,length in tower_frames:
-    holes=[]
+    holes=[];recesses=[]
     if name=='front':holes.append(pointed(1.27,.12,3.6,length/2))
     if name in ('south','north'):
-        for dx in (-.77,.77):holes.append(pointed(.57,5.6,7.7,length/2+dx))
+        for dx in (-.77,.77):
+            holes.append(pointed(.57,5.6,7.7,length/2+dx))
+            recesses.append((pointed(.71,5.46,7.7,length/2+dx),-.18))
         holes.append([(length/2+.67*math.cos(a*math.tau/32),2.85+.67*math.sin(a*math.tau/32)) for a in range(32)])
     if name!='back':
         for u in (length/2-1.14,length/2+1.14):holes.append(pointed(.89+.16,15.45-.16,18.75,u))
     # Rear wall closes the notched roof junction; no invented rear belfry windows.
     poly=rectangle(0,0,length,22.2)
-    finish(wall('Envelope tower '+name,poly,holes,.50),'tower',transform=frame,authored_winding=True)
+    finish(recessed_wall('Envelope tower '+name,poly,holes,recesses,.50),'tower',transform=frame,authored_winding=True)
     if name in ('south','north'):
         for dx in (-.77,.77):
             af=frame@Matrix.Translation((length/2+dx,0,0))

@@ -109,6 +109,8 @@ for ob in mesh:
  if ob.name.startswith('Window stone nave'):radius,bottom=.825,2.45
  elif ob.name.startswith('Window stone front-flank'):radius,bottom=.94,5.25
  elif ob.name.startswith('Window stone bell'):radius,bottom=.89,15.45
+ elif ob.name.startswith('Window stone tower lancet'):radius,bottom=.57,5.6
+ elif ob.name.startswith('Door flank moulding'):radius,bottom=.86,.15
  else:continue
  outward=(ob.matrix_world.to_3x3()@Vector((0,0,1))).normalized()
  candidates=[w for w in wall_objects if (w.matrix_world.to_3x3()@Vector((0,0,1))).normalized().dot(outward)>.999 and abs((w.matrix_world.inverted()@ob.matrix_world.translation).z)<1e-4]
@@ -116,12 +118,29 @@ for ob in mesh:
  wall=candidates[0];inverse=wall.matrix_world.inverted();direction=(inverse.to_3x3()@(-outward)).normalized()
  for sign in (-1,1):
   point=ob.matrix_world@Vector((sign*(radius+.08),bottom+.6,1))
-  assert not wall.ray_cast(inverse@point,direction,distance=2)[0],(ob.name,'Masonry inside surround')
-  point=ob.matrix_world@Vector((sign*(radius+.175),bottom+.6,1))
+  clearance=1.17 if ob.name.startswith('Window stone tower lancet') else 1.22 if ob.name.startswith('Door flank') else 2
+  assert not wall.ray_cast(inverse@point,direction,distance=clearance)[0],(ob.name,'Masonry inside surround')
+  if clearance<2:assert wall.ray_cast(inverse@point,direction,distance=2)[0],(ob.name,'Missing deep masonry reveal')
+  point=ob.matrix_world@Vector((sign*(radius+(.195 if ob.name.startswith('Door flank') else .165 if ob.name.startswith('Window stone tower lancet') else .175)),bottom+.6,1))
   assert wall.ray_cast(inverse@point,direction,distance=2)[0],(ob.name,'Missing wall between mouldings')
   point=ob.matrix_world@Vector((sign*(radius+.08),bottom+.6,1))
   hit,p,n,i,target,matrix=bpy.context.scene.ray_cast(deps,point,-outward,distance=2)
   assert hit and target==ob,(ob.name,'Surround failed to cover wall opening',target.name if hit else None)
  ownership_probes+=1
-assert ownership_probes==18
-print('18 window surrounds cover their wall apertures; inter-order wall strips retained')
+assert ownership_probes==24
+print('24 window/door surrounds cover their wall apertures; inter-order wall strips retained')
+
+# Targeted lancet/flank-door reveals: no coplanar wall and stone faces.
+for ob in mesh:
+ if not ob.name.startswith(('Window stone tower lancet','Door flank moulding')):continue
+ outward=(ob.matrix_world.to_3x3()@Vector((0,0,1))).normalized()
+ owners=[w for w in wall_objects if (w.matrix_world.to_3x3()@Vector((0,0,1))).normalized().dot(outward)>.999 and abs((w.matrix_world.inverted()@ob.matrix_world.translation).z)<1e-4]
+ assert len(owners)==1,ob.name
+ triangles=[];labels=[]
+ for part in (ob,owners[0]):
+  part.data.calc_loop_triangles()
+  for t in part.data.loop_triangles:
+   triangles.append([tuple(part.matrix_world@part.data.vertices[i].co) for i in t.vertices]);labels.append(part.name)
+ errors=[v for v in overlaps(triangles,labels,min_area=1e-4) if v[0]!=v[1]]
+ assert not errors,errors[:8]
+print('Lancet and flank-door stone/masonry overlaps removed')

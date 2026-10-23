@@ -61,6 +61,16 @@ def wall(name,poly,holes,thickness=.48):
     return conform({'wall':m})[0]['wall']
 
 
+def recessed_wall(name,poly,holes,recesses,thickness=.48):
+    """Retain deep masonry reveals behind the front stone clearance."""
+    m=Mesh(name)
+    levels=sorted({-thickness,0,*(max(-thickness,min(0,d)) for _,d in recesses)})
+    for lo,hi in zip(levels,levels[1:]):
+        layer=wall(name,poly,holes+[p for p,d in recesses if d<(lo+hi)/2],hi-lo)
+        m.add([(x,y,z+hi) for x,y,z in layer.vertices],layer.faces)
+    return m
+
+
 def arch_ring(mesh, radius, bottom, spring, width=.15, out=.12, depth=.25, cx=0, material=0, steps=18, sill=True):
     inner=pointed(radius,bottom,spring,cx,steps)
     outer=pointed(radius+width,bottom-width if sill else bottom,spring,cx,steps)
