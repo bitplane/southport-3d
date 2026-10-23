@@ -167,3 +167,15 @@ for name in ('Envelope short north party wall', 'Shop entrance porch'):
 errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
 assert not errors,errors[:8]
 print('Reported wall/return surface ownership verified')
+
+# Roof-side and red-wing corners must not duplicate their end-wall skins.
+for pair in [('Envelope north roof rear wall','Envelope short north party wall'),
+             ('Envelope red wing alley wall','Envelope red wing rear wall')]:
+ triangles=[];labels=[]
+ for name in pair:
+  ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+  for t in ob.data.loop_triangles:
+   triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
+ errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+ assert not errors,(pair,errors[:8])
+print('Rear wall corner ownership passed')

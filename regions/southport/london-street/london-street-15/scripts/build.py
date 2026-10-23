@@ -609,8 +609,9 @@ endheight=be+(br-be)*(FX-xf)/.85-.12
 hipu=north_back-(xf+.85)
 # The rendered porch jamb owns the front 1.5 m below the shop head.
 # Notch the brick party wall around it instead of overlaying its outside face.
-g.poly([(0,BURY),(north_back-FX-1.5,BURY),(north_back-FX-1.5,SHOP),
-        (north_back-FX,SHOP),(north_back-FX,endheight),(hipu,br-.12),(0,br-.12)],-.2,0)
+# Rear wall owns its .20 m corner thickness.
+g.poly([(.20,BURY),(north_back-FX-1.5,BURY),(north_back-FX-1.5,SHOP),
+        (north_back-FX,SHOP),(north_back-FX,endheight),(hipu,br-.12),(.20,br-.12)],-.2,0)
 g.done()
 
 # Lower single-slope wing with a hip at the rear, visible in both rear photos.
@@ -625,7 +626,8 @@ for k in range(5):
     u=.06+k*(mid_end-RX-.12)/4;g.box(u-.05,u+.05,SHOP,wh-.14,0,.055)
 g.done()
 re,_=plane((mid_end,YS),(mid_end,wing_y))
-wall('red wing rear wall',re,0,D['rear_wing_width'],BURY,wh-.14,mat=plaster,part='rear')
+# Alley wall owns the corner; the rear return starts at its inner face.
+wall('red wing rear wall',re,.36,D['rear_wing_width'],BURY,wh-.14,mat=plaster,part='rear')
 # Grey roof is visibly stepped, with four lights on the broad section and
 # one long light on its narrower, higher rear section. Plan offsets estimated.
 step=D['rear_grey_step_x'];gh=D['rear_grey_height'];uh=D['rear_upper_height']
