@@ -6,7 +6,7 @@ from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
-from components import rect,roundtop,wall,ring,leaded,oriel_frame,sash_aperture,sash_panel_aperture
+from components import rect,roundtop,wall,ring,leaded,oriel_frame,sash_aperture,sash_panel_aperture,rectangle_union_shell
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC';C={}
@@ -107,8 +107,10 @@ def sash(frame,u,z,width=1.12,height=2.52,part='frontage'):
  box('Window sash meeting rail',(0,z+height*.47,-.015),(width,.07,.12),part,white,af)
  box('Course sash sill',(0,z-.09,.10),(width+.30,.15,.36),part,stone,af)
  # Three stepped terracotta voussoir blocks and centre key follow shallow head.
- for dx,zz in [(-.46,z+height+.12),(0,z+height+.20),(.46,z+height+.12)]:
-  box('Course terracotta window head',(dx,zz,.075),(.52,.13,.20),part,terracotta,af)
+ # The stepped blocks share their front plane; union their intersecting corners.
+ heads=[(dx-.26,zz-.065,dx+.26,zz+.065)
+        for dx,zz in [(-.46,z+height+.12),(0,z+height+.20),(.46,z+height+.12)]]
+ finish(rectangle_union_shell('Course terracotta window head',heads,-.025,.175),part,[terracotta],af)
  box('Ornament terracotta keystone',(0,z+height+.24,.12),(.18,.28,.26),part,terracotta,af)
  for dx in (-.32,0,.32):
   m=Mesh('Ornament sill pendant');m.ellipsoid((dx,z-.25,.03),(.12,.055,.07),segments=8,rings=4);finish(m,part,[terracotta],af)

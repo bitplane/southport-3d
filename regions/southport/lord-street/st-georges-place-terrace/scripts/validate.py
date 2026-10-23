@@ -119,3 +119,13 @@ for ob in meshes:
   assert hit and target==ob,('Uncovered sash border',ob.name,x,target.name if hit else None)
   assert target.data.materials[target.data.polygons[i].material_index].name=='Historic red water shot brick',(ob.name,'Border lost masonry')
 print('All sash panels cover their enlarged wall openings')
+
+# Stepped head blocks have one surface across their overlapping corners.
+seen=set()
+for ob in meshes:
+ if not ob.name.startswith('Assembly sash ') or ob.data.name in seen:continue
+ seen.add(ob.data.name);ob.data.calc_loop_triangles()
+ triangles=[[tuple(ob.data.vertices[i].co) for i in t.vertices] for t in ob.data.loop_triangles
+            if ob.data.materials[t.material_index].name=='Terracotta dressings']
+ assert not overlaps(triangles,[ob.name]*len(triangles),min_area=1e-4),ob.name
+print('Repeated terracotta head surfaces have no coplanar overlap')

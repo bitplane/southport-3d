@@ -170,6 +170,11 @@ def oriel_frame(name):
             strips.append((x-.0275,12.47-.83,x+.0275,12.47+.83))
         for z in (11.65,12.45,13.28):
             strips.append((centre-.34,z-.0275,centre+.34,z+.0275))
+    return rectangle_union_shell(name,strips,-.09,0)
+
+
+def rectangle_union_shell(name,strips,back,front):
+    """Closed extrusion of a union of axis-aligned metric rectangles."""
     xs=sorted({v for a,b,c,d in strips for v in (a,c)})
     ys=sorted({v for a,b,c,d in strips for v in (b,d)})
     filled={(i,j) for i in range(len(xs)-1) for j in range(len(ys)-1)
@@ -183,10 +188,10 @@ def oriel_frame(name):
         faces.append(tuple(ids))
     for i,j in sorted(filled):
         a,b,c,d=xs[i],ys[j],xs[i+1],ys[j+1]
-        face([(a,b,0),(c,b,0),(c,d,0),(a,d,0)])
-        face([(a,d,-.09),(c,d,-.09),(c,b,-.09),(a,b,-.09)])
+        face([(a,b,front),(c,b,front),(c,d,front),(a,d,front)])
+        face([(a,d,back),(c,d,back),(c,b,back),(a,b,back)])
         for neighbour,p,q in [((i,j-1),(a,b),(c,b)),((i+1,j),(c,b),(c,d)),
                                ((i,j+1),(c,d),(a,d)),((i-1,j),(a,d),(a,b))]:
             if neighbour not in filled:
-                face([(*p,0),(*p,-.09),(*q,-.09),(*q,0)])
+                face([(*p,front),(*p,back),(*q,back),(*q,front)])
     m=Mesh(name);m.add(vertices,faces);return m
