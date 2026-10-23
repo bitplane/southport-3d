@@ -61,10 +61,20 @@ def receiver(name,surfaces,size,rects=None):
     return ob,rects
 
 
-def bake(sources,low,size,rects,dest,cage):
+def bake(sources,low,size,rects,dest,cage,faces):
     scene=bpy.context.scene;scene.render.engine='CYCLES';scene.cycles.device='CPU';scene.cycles.samples=1
     scene.render.bake.use_selected_to_active=True;scene.render.bake.use_cage=True
     scene.render.bake.cage_extrusion=cage;scene.render.bake.max_ray_distance=cage*2
+    cage_object=None
+    if any('cage_m' in face for face in faces):
+        cage_mesh=low.data.copy();cage_object=bpy.data.objects.new(low.name+' projection cage',cage_mesh)
+        scene.collection.objects.link(cage_object);cage_object.hide_render=True
+        for vertex in cage_mesh.vertices:
+            distance=faces[vertex.index//4].get('cage_m',cage)
+            if not 0<distance<=cage:raise ValueError('Per-face cage must be positive and bounded by the part cage')
+            vertex.co+=low.data.vertices[vertex.index].normal*distance
+        cage_mesh.update();scene.render.bake.cage_object=cage_object
+    else:scene.render.bake.cage_object=None
     scene.render.bake.margin=12;scene.render.bake.use_clear=True
     scene.render.bake.normal_space='TANGENT';scene.render.bake.normal_r='POS_X';scene.render.bake.normal_g='POS_Y';scene.render.bake.normal_b='POS_Z'
     scene.render.bake.use_pass_direct=False;scene.render.bake.use_pass_indirect=False;scene.render.bake.use_pass_color=True
@@ -117,6 +127,9 @@ def bake(sources,low,size,rects,dest,cage):
     nt.links.new(maps['roughness'].outputs['Color'],shader.inputs['Roughness'])
     normal=nt.nodes.new('ShaderNodeNormalMap');normal.uv_map=low.data.uv_layers.active.name
     nt.links.new(maps['normal'].outputs['Color'],normal.inputs['Color']);nt.links.new(normal.outputs['Normal'],shader.inputs['Normal'])
+    if cage_object is not None:
+        scene.render.bake.cage_object=None
+        bpy.data.objects.remove(cage_object,do_unlink=True);bpy.data.meshes.remove(cage_mesh)
     return checks
 
 
@@ -153,7 +166,7 @@ def build(spec,asset,dest,sources):
         low,all_rects=receiver('District '+part,faces,size,{i:rects[j] for i,j in enumerate(indices)})
         if triangles(low)>config['max_triangles']:raise ValueError('Envelope exceeds fixed triangle budget: '+part)
         folder=dest/'maps'/'district'/part;folder.mkdir(parents=True)
-        checks=bake(selected,target,size,rects,folder,config['cage_m'])
+        checks=bake(selected,target,size,rects,folder,config['cage_m'],unique)
         low.data.materials.append(target.data.materials[0]);data=target.data
         bpy.data.objects.remove(target,do_unlink=True);bpy.data.meshes.remove(data)
         report['parts'][part]={'triangles':triangles(low),'atlas':size,'faces':[f['name'] for f in faces],
@@ -161,3 +174,42 @@ def build(spec,asset,dest,sources):
             'rectangles':all_rects,'bake_checks':checks}
         outputs[part]=[low]
     return outputs,report
+
+
+class Surfaces:
+    """Small authored-surface helpers; no dependency on detailed source topology."""
+    def __init__(self, parts, transform=lambda p:p):
+        self.result={p:[] for p in parts};self.part=parts[0];self.transform=transform
+
+    def quad(self,name,points,weight=1,cage=None):
+        row={'name':name,'vertices':[self.transform(p) for p in points],'weight':weight}
+        if cage is not None:row['cage_m']=cage
+        self.result[self.part].append(row)
+
+    def triangle(self,name,points,**kwargs):
+        # Three nondegenerate quads give each corner a regular rectangular atlas
+        # island, avoiding transparent unused halves of triangular UV islands.
+        a,b,c=map(Vector,points);mid=(a+b+c)/3
+        for i,(p,q,r) in enumerate(((a,b,c),(b,c,a),(c,a,b))):
+            self.quad(name+' '+str(i),[p,(p+q)/2,mid,(r+p)/2],**kwargs)
+
+    def box(self,name,a,b,omit=('bottom',),**kwargs):
+        x,y,z=a;X,Y,Z=b
+        v=[(x,y,z),(X,y,z),(X,Y,z),(x,Y,z),(x,y,Z),(X,y,Z),(X,Y,Z),(x,Y,Z)]
+        for side,ids in [('bottom',(0,3,2,1)),('rear',(0,1,5,4)),('right',(1,2,6,5)),('front',(2,3,7,6)),('left',(3,0,4,7)),('top',(4,5,6,7))]:
+            if side not in omit:self.quad(name+' '+side,[v[i] for i in ids],**kwargs)
+
+    def hip(self,name,x0,x1,y0,y1,eave,ridge,axis='x',**kwargs):
+        swap=axis=='y'
+        if swap:x0,x1,y0,y1=y0,y1,x0,x1
+        h=min((x1-x0)*.28,(y1-y0)*.48);cy=(y0+y1)/2
+        v=[(x0,y0,eave),(x1,y0,eave),(x1,y1,eave),(x0,y1,eave),(x0+h,cy,ridge),(x1-h,cy,ridge)]
+        for i,ids in enumerate([(0,1,5,4),(1,2,5),(2,3,4,5),(3,0,4)]):
+            points=[v[k] for k in ids]
+            if swap:points=[(y,x,z) for x,y,z in reversed(points)]
+            (self.quad if len(points)==4 else self.triangle)(name+' '+str(i),points,**kwargs)
+        # Narrow fascia closes the roof edge against its supporting wall.
+        for i in range(4):
+            j=(i+1)%4;points=[v[j],v[i],(v[i][0],v[i][1],eave-.18),(v[j][0],v[j][1],eave-.18)]
+            if swap:points=[(y,x,z) for x,y,z in reversed(points)]
+            self.quad(name+' edge '+str(i),points,**kwargs)

@@ -166,3 +166,11 @@ first measured result. Regional aggregation and impostors remain separate work.
 
 The [memorial pilot](MEMORIAL-DISTRICT.md) records the second fixed-envelope result,
 including shared column atlas islands and explicit metallic-fitting omissions.
+
+For new envelope generators, `blender_envelope.Surfaces` supplies small quad,
+triangle, box and hip helpers. These consume authored dimensions, not detailed
+mesh topology. A face can set `cage_m` below its part's maximum for tightly spaced
+features such as chimney pots; use this to prevent rays crossing neighbouring
+features. Reflected local coordinate frames must reverse winding after the
+geographic transform. Preserve courtyards and recesses explicitly instead of
+baking them onto a filled bounding box.

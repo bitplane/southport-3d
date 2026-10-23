@@ -16,26 +16,21 @@ The main slate hip, six projecting gable roofs and three rear roof ranges are cl
 
 ## LoD policy
 
-Detail retains all the modelled frames, curved glazing bars, terracotta dressings and small ornament. Repeated geometry shares mesh data. Walk and District replace each complete splayed bay face with a closed 12-triangle receiver; their six shared prototypes bake the white spandrels, black frames, aprons and glazing together. The three-sided projecting bay silhouette remains explicit. Two shared sash prototypes similarly bake the full frame, sill, head, pendants and surrounding brick onto shallow closed receivers. Their fine parallax and cast-shadow geometry are intentionally lost beyond Detail.
+Detail retains the modelled window frames, curved glazing bars, terracotta dressings and ornament. Walk keeps the existing shared bay/window prototypes and geometry policy.
 
-Three separate fascia fields use wall-mounted panels and planar atlases. This preserves negative space around the lettering and avoids the unreadable result of squeezing the entire long fascia into one box atlas. The black rails remain geometric. Small window lettering remains at Walk and is omitted at District. Minor free-standing carvings are omitted beyond Detail; pipes disappear at District.
+District uses a separately authored envelope in `scripts/district.py`. Six whole canted bays replace the per-window boxes; three recessed portals, the six projecting gables, main hip and three mapped rear wings preserve the massing and open courts. Coarse chimney stacks and square pots remain. Individual frames, transoms, lettering and stone relief are baked onto shared colour, normal and roughness maps. Geometry and atlas sizes are independent of added Detail ornament.
 
-District rebuilds the street wall as an aperture grid with local curved-shoulder inserts, replacing expensive repeated whole-wall clipping. All portal, bay and sash opening boundaries remain. The plain brick uses the authored repeating map with a metric texture transform, verified in the exported GLB. No global decimation is used. All 10 roofs, the gables, chimney profiles and deep entrance recesses retain their silhouette geometry.
+The frontage atlas is 512×512, the roof atlas 256×256 and the rear atlas 512×256. Triangle budgets are 500, 600 and 150 respectively, with an asset budget of 1.4 MB download and 9 MiB estimated GPU storage. Thin chimney pots use a smaller projection cage than the large surfaces to avoid sampling neighbouring pots. No reference photographs are embedded.
 
-Both reduced levels use 512px shared prototype atlases. A 256px trial failed the normal validity check at thin box-atlas borders; validation was retained, and the larger maps selected. The sign-panel sampled-error budget includes the hidden rear face of its 0.20m source field and forward letter offset. Geometry reductions are reviewed in front and oblique exported renders, not judged solely by these sampled distances.
-
-This is a first researched exterior pass. Rear details and exact decorative carving deserve closer photographs; the existing documentary and Street View evidence supports the characteristic facade composition better than the hidden service elevations.
+The existing entrance-step snag is deliberately retained in all levels pending its coordinated architectural correction. Rear elevations and decorative carving retain the source model's documented uncertainty. This LoD rollout has automated bake, geometry and package validation; visual acceptance is handed to the project owner.
 
 ## Rebuild and review
 
-Run `python 3 tools/project.py build southport.lord-street.st-georges-place-terrace`, then the same command with `--stage render`. The publication recipe splits frontage, roof and rear wings. Validation checks finite UV meshes, packed authored textures, six bays, 90 transoms, three recessed doors, ten closed roof solids, 36 unobscured upper bay glazing probes and 99 sash probes and registered site bounds.
+Run `python3 tools/project.py build southport.lord-street.st-georges-place-terrace`, then the same command with `--stage render`. The publication recipe splits frontage, roof and rear wings. Validation checks finite UV meshes, packed authored textures, six bays, 90 transoms, three recessed doors, ten closed roof solids, 36 unobscured upper bay glazing probes and 99 sash probes and registered site bounds.
 
-Reviewed preflight sizes (all three parts combined, decimal MB):
+Current published sizes are recorded in the generated package manifest. Historical review figures above do not certify the new District envelope.
 
-| Level | Triangles | GLBs including maps | Embedded image bytes |
-|---|---:|---:|---:|
-| detail | 197,470 | 6.43 MB | 0.72 MB |
-| walk | 33,576 | 5.11 MB | 1.40 MB |
-| district | 18,944 | 3.10 MB | 1.40 MB |
-
-All three exported levels were inspected from front, oblique and rear; the isolated review does not certify surrounding ground joins. Combined viewer integration is coordinated by the publishing agent.
+The current District package contains 730 triangles, 374,340 bytes including
+textures, and 7,426,214 estimated GPU bytes. The previous package used 18,602
+triangles, 3,364,580 bytes and 68,411,434 estimated GPU bytes. Detail and Walk are
+unchanged by this envelope replacement.

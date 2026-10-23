@@ -111,8 +111,8 @@
         "reason": "Retain inexpensive exterior boundaries,real entrances,roof silhouette and supporting structural members."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Retain primary silhouette and genuinely open recesses; surrounding assemblies carry baked detail."
+        "strategy": "omit",
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -124,7 +124,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Small isolated carving is subpixel at district distance."
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -136,7 +136,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Thin rainwater fittings are subpixel."
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -148,7 +148,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Small window notices and text disappear at district distance; large fascia signs are baked with their receiving panel."
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -164,13 +164,8 @@
         "reason": "Bake each complete splayed bay face with apron,framing and transoms to its closed shallow envelope; the actual three-face bay projection is retained."
       },
       "district": {
-        "strategy": "replace",
-        "shape": "box",
-        "uv": "box",
-        "bake": true,
-        "cage_extrusion_m": 0.4,
-        "max_sampled_error_m": 0.35,
-        "reason": "Retain the projecting three-sided bay silhouette and colour pattern while replacing fine bars,cornices and curved spandrels with a closed baked face."
+        "strategy": "omit",
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -190,17 +185,8 @@
         "reason": "Bake a complete sash,frame,sill,terracotta head and surrounding brick onto a shallow closed wall-mounted receiver. Retain the actual placement and opening colour; relinquish fine frame parallax."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:sash_receiver",
-        "settings": {
-          "width": 1.12,
-          "height": 2.52
-        },
-        "uv": "box",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4,
-        "reason": "Bake a complete sash,frame,sill,terracotta head and surrounding brick onto a shallow closed wall-mounted receiver. Retain the actual placement and opening colour; relinquish fine frame parallax."
+        "strategy": "omit",
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -220,17 +206,8 @@
         "reason": "Bake a complete sash,frame,sill,terracotta head and surrounding brick onto a shallow closed wall-mounted receiver. Retain the actual placement and opening colour; relinquish fine frame parallax."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:sash_receiver",
-        "settings": {
-          "width": 1.0,
-          "height": 1.9
-        },
-        "uv": "box",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4,
-        "reason": "Bake a complete sash,frame,sill,terracotta head and surrounding brick onto a shallow closed wall-mounted receiver. Retain the actual placement and opening colour; relinquish fine frame parallax."
+        "strategy": "omit",
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -241,12 +218,8 @@
         "reason": "Keep original portal and window reveals for walking geometry."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:street_wall_lod",
-        "settings": {},
-        "uv": "box",
-        "bake": false,
-        "reason": "Rebuild the wall with a shared aperture grid and local curved shoulder inserts; preserve all door,bay and sash openings while avoiding repeated whole-wall clipping. Reuse the authored brick map with metric box UV scaling."
+        "strategy": "omit",
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -265,16 +238,8 @@
         }
       },
       "district": {
-        "strategy": "generator",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.3,
-        "max_sampled_error_m": 0.28,
-        "reason": "Bake each of three wall-mounted sign fields with its own lettering. Dedicated planar atlas retains usable text resolution; separate black cornice rails remain geometry. The0.28m surface budget includes the hidden rear of the0.20m-thick source field and its forward letter mounting offset.",
-        "generator": "components:fascia_receiver",
-        "settings": {
-          "width": 12.5
-        }
+        "strategy": "omit",
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -293,16 +258,8 @@
         }
       },
       "district": {
-        "strategy": "generator",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.3,
-        "max_sampled_error_m": 0.28,
-        "reason": "Bake each of three wall-mounted sign fields with its own lettering. Dedicated planar atlas retains usable text resolution; separate black cornice rails remain geometry. The0.28m surface budget includes the hidden rear of the0.20m-thick source field and its forward letter mounting offset.",
-        "generator": "components:fascia_receiver",
-        "settings": {
-          "width": 12.5
-        }
+        "strategy": "omit",
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     },
     {
@@ -321,17 +278,41 @@
         }
       },
       "district": {
-        "strategy": "generator",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.3,
-        "max_sampled_error_m": 0.28,
-        "reason": "Bake each of three wall-mounted sign fields with its own lettering. Dedicated planar atlas retains usable text resolution; separate black cornice rails remain geometry. The0.28m surface budget includes the hidden rear of the0.20m-thick source field and its forward letter mounting offset.",
-        "generator": "components:fascia_receiver",
-        "settings": {
-          "width": 12.55
-        }
+        "strategy": "omit",
+        "reason": "The independently authored whole-building District envelope receives appearance; no per-window or per-bay-face replacement meshes are retained."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve six polygonal bays as joined facade surfaces, recessed portals, projecting Tudor gables, hipped roofs, chimneys and three mapped rear wings. Atlas the frames, lettering, brickwork and timber ornament into one material per part; source detail cannot grow envelope topology.",
+    "max_bytes": 1400000,
+    "max_gpu_bytes": 9437184,
+    "parts": {
+      "frontage": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.5
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 600,
+        "cage_m": 0.5
+      },
+      "rear-wings": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 150,
+        "cage_m": 0.5
+      }
+    }
+  }
 }
