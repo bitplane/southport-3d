@@ -1,5 +1,54 @@
 # British Heart Foundation, 116 Lord Street
 
+## Current District envelope pilot
+
+District now uses `scripts/district.py`: a separate fixed-topology envelope,
+not a reduction of the detailed mesh. Detail and Walk remain unchanged. The
+historical District policies/measurements below describe the superseded models.
+
+The 316-triangle envelope retains the two recessed entrances, display facets,
+access ramp/steps, stepped parapets, roof recess and major rooftop masses. Four
+condensers become one bank; fine rails, mouldings, frames and relief become
+appearance rather than source geometry. The three atlas materials use base
+colour, tangent-space normals and roughness: 512×256 architecture, 256×256 roof,
+and 512×128 shopfront. Bakes run at four times each dimension then area-downsample;
+this preserves thin window bars more consistently. No reference photos are baked.
+
+| District version | Triangles | GLB bytes including textures | Estimated GPU bytes |
+| --- | ---: | ---: | ---: |
+| Previous | 4,056 | 1,038,008 | 11,939,306 |
+| Envelope pilot | 316 | 221,044 | 4,226,651 |
+
+Hard publication budgets are 430 triangles across three parts, 800,000 download
+bytes and 5 MiB estimated GPU bytes. The actual meshes/embedded images are checked.
+A regression changes the detailed window count from 13 to 1,300 and verifies that
+the envelope geometry does not change. Major footprint/roof changes still require
+an explicit envelope review. Projection coverage checks are useful heuristics,
+not proof of correspondence; matching-camera visual inspection remains required.
+
+Reviewed exported Detail/new District at matching front and roof/rear viewpoints,
+and at 70 m frontal distance. Main shapes and openings persist; close views expose
+soft lettering, simplified frames and omitted small fittings, deliberately. The
+user accepted the initial pilot visually. Supersampling then improved thin bars;
+matching 70 m comparisons were inspected afterward. The full final build/export/
+validate/package run took 3m10s with peak child RSS about 925 MiB (GNU time), not a
+claim about peak aggregate host memory. Screenshots and old GLBs remain private
+under `../output/bhf-district-pilot/`.
+
+Generate the disposable browser comparison (same camera across all four versions):
+
+```sh
+python3 tools/create_lod_review.py --asset southport.london-square.lord-street-116 \
+  --baseline ../output/bhf-district-pilot/before
+```
+
+Open `/reviews/southport.london-square.lord-street-116/index.html` on the local
+viewer. It includes Detail, Walk, previous District, new District, wireframe and
+normal-map switches. This generated review page is independent of the town's
+memory scheduler; it is not an additional published LoD.
+
+## Building evidence and earlier passes
+
 The building continues the Lord Street frontage from 118–122 towards Christ
 Church. Select **116 Lord Street — British Heart Foundation** in the viewer.
 Source lives in `regions/southport/london-square/lord-street-116/`.

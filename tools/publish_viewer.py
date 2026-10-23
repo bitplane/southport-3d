@@ -98,6 +98,12 @@ def _publish(args, assets, fingerprint, build, retained=()):
                 levels={f['level']:f for f in files if f['part']==part['id']}
                 for a,b in [('detail','walk'),('walk','district')]:
                     if a in levels and b in levels and levels[b]['triangles']>levels[a]['triangles']:raise ValueError('Placed triangles increased in a lower level')
+            if 'district_envelope' in spec:
+                envelope=spec['district_envelope'];coarse=[f for f in files if f['level']=='district']
+                for f in coarse:
+                    if f['triangles']>envelope['parts'][f['part']]['max_triangles']:raise ValueError('Exported envelope exceeds triangle budget')
+                if sum(f['bytes'] for f in coarse)>envelope['max_bytes']:raise ValueError('Envelope exceeds download budget')
+                if sum(f['gpuBytesEstimate'] for f in coarse)>envelope['max_gpu_bytes']:raise ValueError('Envelope exceeds GPU budget')
             metadata={'schema_version':1,'asset':key,'inputs':package_inputs,'dependencies':dependencies,'build_signature':package_signature,'source_fingerprint':signature,'source_blend_sha256':assembly['source_sha256'],'files':files,'coverage':assembly['coverage']}
             (work/'manifest.json').write_text(json.dumps(metadata,indent=2)+'\n')
             if package.exists():shutil.rmtree(package)

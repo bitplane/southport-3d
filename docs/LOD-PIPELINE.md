@@ -72,3 +72,40 @@ isotropic mip filtering can erase otherwise sharp letters. The viewer now uses
 device-limited anisotropic filtering (up to 16). Check both front and oblique
 views and retain this sampling policy in other viewers. Rectangular sign atlases
 would also reduce wasted texture allocation in a future packing pass.
+
+
+## Fixed District envelope pilot
+
+BHF now replaces its previous District model using an optional `district_envelope`
+publication recipe. Its generator returns authored quad surfaces per streaming
+part, in asset coordinates. The shared `tools/blender_envelope.py` packs aspect-
+correct, non-overlapping rectangles into fixed-size atlases, projects the selected
+source onto split-normal receivers, supersamples and area-downsamples colour,
+normal and roughness maps. Sharp corners do not share inflated cage normals.
+Normals use glTF tangent-space +Y; colour is averaged in linear space. Source
+material support is currently opaque dielectric only. Height/parallax maps are
+not implemented. One material per part bounds draw calls independently of detail.
+
+The replacement must cover every part. Source meshes still pass complete rule
+classification; the whole-envelope recipe supersedes District per-object actions.
+Explicit triangle, total download and estimated GPU budgets fail publication if
+exceeded. Detail and Walk use the existing recipes. Inputs, generators and bakes
+are traced/cached through the ordinary package stage. Failed bakes leave the last
+published catalog intact. Receiver pixel coverage and valid normals are only
+heuristics; inspect front, oblique, roof and rear comparisons at the intended
+screen size, not just close screenshots or a successful build.
+
+Establish a verified footprint, roof and large openings first. Author the envelope
+from those dimensions, never from an automatically simplified detailed mesh.
+Adding windows, lettering or mouldings must not add envelope topology or enlarge
+atlases. Test this independence. Rebake appearance when detailed surfaces change;
+review the envelope when major geometry changes. Preserve negative spaces and
+silhouette with geometry, even when their surfaces are baked. Record omissions,
+projection distances, budgets, before/after costs and actual visual comparisons.
+The pilot is not yet evidence that this works for every building or open colonnade.
+
+`tools/create_lod_review.py --asset ID --baseline DIRECTORY` generates a private
+local review page from the previous package and current checked package. Switch
+models without moving the camera; compare wireframe and normal maps. Generated
+review GLBs/images/pages stay outside Git. See BHF's asset documentation for the
+first measured result. Regional aggregation and impostors remain separate work.

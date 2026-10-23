@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -176,8 +176,8 @@
         "reason": "Keep authored walls, stepped parapets, edge housings, actual roof recess, rooflight and coarse plant cabinets alongside facade openings. Retain both entrances, faceted projecting display glazing, two-step landing and ramp with red railing."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Keep low-cost roof and facade silhouettes, the walled recess and coarse plant masses; avoid flattening the rooftop into a single box. The two entrance recesses, display facets and ramp/railing remain authored geometry."
+        "strategy": "omit",
+        "reason": "Source contributes appearance to the independently authored District envelope atlas; no source feature meshes are retained."
       }
     },
     {
@@ -188,13 +188,8 @@
         "reason": "Retain slim window divisions and spandrel depth in the repeated inexpensive module."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Replace each repeated window/spandrel module with one shared baked panel; white surround remains physical.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.35
+        "strategy": "omit",
+        "reason": "Source contributes appearance to the independently authored District envelope atlas; no source feature meshes are retained."
       }
     },
     {
@@ -210,13 +205,8 @@
         "max_sampled_error_m": 0.35
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Retain frontage identity with lower resolution sign textures.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.35
+        "strategy": "omit",
+        "reason": "Source contributes appearance to the independently authored District envelope atlas; no source feature meshes are retained."
       }
     },
     {
@@ -228,7 +218,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit small handles/downlights and rooftop rails, fan rims and vent caps; retain coarse rooftop envelopes and plant cabinet shapes."
+        "reason": "Source contributes appearance to the independently authored District envelope atlas; no source feature meshes are retained."
       }
     },
     {
@@ -240,8 +230,40 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "No geometry allocation for threshold grout, fan guards or cabinet seams at district range."
+        "reason": "Source contributes appearance to the independently authored District envelope atlas; no source feature meshes are retained."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed-topology shell preserving frontage recesses, access surfaces, stepped parapets and roof recess. Frames, signs, fine fittings and masonry become shared atlases; rooftop condenser row becomes one bank. Dimensions follow reviewed layout, independent of detailed mesh count.",
+    "max_bytes": 800000,
+    "max_gpu_bytes": 5242880,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 60,
+        "cage_m": 0.6
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 250,
+        "cage_m": 0.8
+      },
+      "shopfront": {
+        "atlas": [
+          512,
+          128
+        ],
+        "max_triangles": 120,
+        "cage_m": 0.5
+      }
+    }
+  }
 }

@@ -118,7 +118,7 @@ def action(value, where):
 def validate_publication(spec):
     fields(spec, {'schema_version', 'source_blend', 'coordinates', 'area_name',
                   'status', 'levels', 'parts', 'views', 'walk_spawn', 'rules'},
-           {'excluded_collections'}, 'publication')
+           {'excluded_collections', 'district_envelope'}, 'publication')
     if type(spec['schema_version']) is not int or spec['schema_version'] != 1:
         raise ValueError('publication: expected schema_version 1')
     for key in ('source_blend', 'area_name', 'status'):
@@ -181,6 +181,22 @@ def validate_publication(spec):
         for level in ('walk', 'district'):
             action(rule[level], where + '.' + level)
     unique_ids(rules, 'rules')
+    if 'district_envelope' in spec:
+        envelope=spec['district_envelope']
+        fields(envelope, {'generator','reason','parts','max_bytes','max_gpu_bytes'}, set(), 'district_envelope')
+        text(envelope['reason'],'district_envelope.reason')
+        if not isinstance(envelope['generator'],str) or not re.fullmatch(r'[a-z][a-z0-9_]*:[a-z][a-z0-9_]*',envelope['generator']):
+            raise ValueError('district_envelope: expected module:function')
+        for name in ('max_bytes','max_gpu_bytes'):
+            if type(envelope[name]) is not int or envelope[name]<=0:raise ValueError('district_envelope: positive budgets required')
+        fields(envelope['parts'], {p['id'] for p in parts}, set(), 'district_envelope.parts')
+        for name,part in envelope['parts'].items():
+            fields(part, {'atlas','max_triangles','cage_m'}, set(), 'district_envelope.'+name)
+            if type(part['max_triangles']) is not int or part['max_triangles']<=0:raise ValueError('Invalid envelope triangle budget')
+            number(part['cage_m'],'envelope cage')
+            if part['cage_m']<=0:raise ValueError('Invalid envelope cage')
+            if not isinstance(part['atlas'],list) or len(part['atlas'])!=2 or any(type(v) is not int or v<64 or v>spec['levels']['district']['texture_size'] or v&(v-1) for v in part['atlas']):
+                raise ValueError('Invalid envelope atlas dimensions')
     excluded = spec.get('excluded_collections', [])
     if not isinstance(excluded, list):
         raise ValueError('excluded_collections: expected a list')

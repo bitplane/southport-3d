@@ -49,6 +49,15 @@ def main():
             if len(matches)!=1:raise ValueError(f'{obj.name}: expected one publication rule, found {len(matches)}')
             classes[obj]=matches[0]
         report['coverage'][level]={'objects':len(included),'classified':len(classes)}
+        if level=='district' and 'district_envelope' in spec:
+            from blender_envelope import build as build_envelope
+            by_part,envelope=build_envelope(spec,asset_dir,dest,list(included))
+            report['envelope']=envelope
+            for part,objects in by_part.items():
+                path=dest/(part+'-'+level+'.glb');export(path,objects)
+                report['files'].append({'part':part,'level':level,'path':path.name})
+            print('LEVEL_COMPLETE',level,flush=True)
+            continue
         omitted=set()
         if level!='detail':
             groups={}
