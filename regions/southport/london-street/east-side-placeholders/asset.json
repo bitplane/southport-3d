@@ -4,7 +4,7 @@
   "name": "11\u201321 London Street \u2014 William Hill, KBA and David H Myers",
   "region": "southport",
   "area": "london-street",
-  "status": "block-reconstruction-in-progress",
+  "status": "exterior-reconstruction",
   "units": "metres",
   "origin_wgs84_lat_lon": [
     53.6486555,
@@ -29,5 +29,5 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Exterior reconstruction replacing the three east-side context boxes. Stable asset ID retained for viewer links; separate building recipes share a facade helper. Main forms first; roof dormers, rear service details and proportions remain under review."
+  "scope": "Exterior reconstruction of three former context boxes. Separate building recipes and streaming parts; observed frontages and roof forms, with estimated dimensions and hidden service elevations recorded in research/block-review/coverage.json."
 }

@@ -15,7 +15,7 @@ D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
 C={}
-for name in ('historic-front','roof','rear-range','shopfronts'):
+for name in ('historic-front','roof','rear-range','shopfronts','courtyard-ground'):
     C[name]=bpy.data.collections.new(name);s.collection.children.link(C[name])
 
 
@@ -271,22 +271,8 @@ for i in (1,3):
     for offset,word in [(-1.05,'POST'),(1.05,'OFFICE')]:
         sign('carved Post Office '+str(i)+word,word,1.55,.23,front@Matrix.Translation((bays[i]+offset,5.38,.50)),plain,black)
 
-# Historic rear wall is explicit, with approximate openings at the same floors.
-rear=front@Matrix.Translation((width,0,-depth))@Matrix.Rotation(math.pi,4,'Y')
-rearholes=[]
-for u in [2.2,5.6,9,12.4]:
-    for h in [7.7,12.1]:rearholes.append(rect(u-.60,h-1.25,u+.60,h+1.25))
-finish(wall('Envelope historic rear',rect(0,0,width-start,eave),rearholes),'rear-range',[brick],rear)
-for u in [2.2,5.6,9,12.4]:
-    for h in [7.7,12.1]:
-        instance('rear-sash',sash('Glazing rear estimated sash',1.2,2.5),rear@Matrix.Translation((u,h,0)),'rear-range',[glass,white])
-        instance('rear-surround',surround('Trim rear lintel',1.2,2.5,False),rear@Matrix.Translation((u,h,0)),'rear-range',[plain])
-
-for c,w,top in [(start+3.1,5.7,ridge-.65),((start+width)/2,4.6,ridge-.15),(width-3,5.7,ridge-.65)]:
-    f=front@Matrix.Translation((c,0,-depth-.035))@Matrix.Rotation(math.pi,4,'Y')
-    m=wall('Gable rear brick', [(-w/2,eave),(w/2,eave),(0,top)], [rect(-.47,16.85,.47,18.1)],-.15,0)
-    finish(m,'rear-range',[brick],f)
-    instance('rear-attic',sash('Glazing rear attic',.94,1.25),f@Matrix.Translation((0,17.475,.20)),'rear-range',[glass,white])
+from historic_rear import build_historic_rear
+build_historic_rear(globals())
 
 # Modern redevelopment and raised courtyard follow the block evidence review.
 from rear import build_rear

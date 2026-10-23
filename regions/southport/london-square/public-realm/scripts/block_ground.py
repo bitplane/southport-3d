@@ -68,7 +68,33 @@ def build_block(ctx, existing_roads, anchor_north, anchor_south):
     # the London Street plots. Stop exactly at Post Office Avenue's outer footway.
     avenue_outer=parallel([(68.154,-27),(68.0803,-36),(67.658,-87.563)],-3.8)
     west_court=[(25,-27)]+avenue_outer+[(25,-87)]
-    clipped('Surface Posting House side court',west_court,ctx['mixed'],reserve)
+    # Anchor Street's gated lane is asphalt, not the decorative paving used
+    # outside the shops. Its footprint is owned once, with a flush entrance.
+    lane=[(27.3,-78.4),(36.7,-78.4),(36.7,-74),(34.6,-51),(33.2,-28),(27.3,-28)]
+    clipped('Surface Posting House side court',west_court,ctx['mixed'],reserve+[lane])
+    # Split at the grade clamp so triangulation cannot slope the level lane.
+    for upper in [True,False]:
+        piece=halfplane(lane,(0,-36),(100,-36),upper)
+        clipped('Surface Posting House service lane',piece,ctx['asphalt'],reserve,z=-.12)
+    # Two vehicle leaves and a narrow side gate are observed in August 2024.
+    # Positions fit the mapped plot ends; widths are photographic estimates.
+    iron=ctx['mat']('Posting lane painted gate',(.025,.028,.025))
+    gatebrick=ctx['mat']('Posting lane brick piers',(.34,.14,.075))
+    m=Mesh('Street Posting lane gate')
+    for a,b in [(27.65,29.0),(29.3,32.7),(32.74,36.15)]:
+        m.box(((a+b)/2,-78.25,1.08),(b-a,.08,1.98))
+        for z in [.15,1.98]:m.box(((a+b)/2,-78.30,z),(b-a,.07,.07))
+        for x in [a,b]:m.box((x,-78.30,1.08),(.07,.07,2.12))
+        for j in range(1,max(2,int((b-a)/.3))):
+            x=a+(b-a)*j/max(2,int((b-a)/.3));m.box((x,-78.31,1.08),(.028,.04,1.9))
+    ctx['finish'](m,iron,'block-furniture')
+    m=Mesh('Wall Posting lane gate piers')
+    for x in [27.45,29.15,36.4]:m.box((x,-78.23,1.15),(.30,.42,2.3))
+    ctx['finish'](m,gatebrick,'block-furniture')
+    # A short return joins the gate pier to the raised courtyard boundary.
+    from southport3d.landscape import capped_wall
+    m=capped_wall([(36.4,-78.23,grade(-78.23)),(38.2,-76.5,grade(-76.5))],height=2.25,width=.28,name='Wall Posting lane gate return')
+    m.finish([gatebrick,ctx['kerb']],ctx['collections']['block-furniture'])
     clipped('Surface rear courts',ground,ctx['mixed'],[parking]+reserve)
     clipped('Surface Sainsburys parking',parking,ctx['asphalt'],reserve,z=-.12)
     # Open access apron joins parking to Anchor; no kerb or paint across its mouth.

@@ -36,7 +36,7 @@ for ix in range(1,40):
 bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get()
 windows=0
 for ob in meshes:
-    if not ob.name.startswith(('Window upper','Window 132','Window modern','Glazing warehouse','Glazing rear estimated')):continue
+    if not ob.name.startswith(('Window upper','Window 132','Window modern','Glazing warehouse','Glazing rear estimated','Glazing rear attic')):continue
     origin=ob.matrix_world@Vector((.16,.25,.35))
     direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
     hit,p,n,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1)

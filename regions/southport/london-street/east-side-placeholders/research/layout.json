@@ -17,11 +17,12 @@
         27.3
       ],
       "y": [
-        -61.0248,
+        -62.05,
         -53.1
       ],
-      "height": 6.15,
-      "evidence": "2016 auction gross frontage 7.9248 m and built depth 20.3962 m (vendor supplied); low flat front and lower stepped service roofs observed in 2024 imagery. Existing map subdivision conflicts by about 1 m; retain total block span and flag internal boundary for review."
+      "height": 7.55,
+      "evidence": "Google ground-plan outline gives approximately 8.95 m overall building frontage. The 2016 auction quotes 7.9248 m gross shop frontage and 20.3962 m built depth, vendor supplied; these do not securely establish the entire building boundary. Retain map division. Close 3D orbit shows a sloping front roof and taller pitched rear range.",
+      "height_definition": "Maximum roof height above asset ground datum; estimated"
     },
     {
       "name": "15-17 KBA",
@@ -31,10 +32,11 @@
       ],
       "y": [
         -70.4,
-        -61.0248
+        -62.05
       ],
-      "height": 7.1,
-      "evidence": "August 2024 Street View: two projecting canted bays with decorative timber gables, pale render, lower rear extensions; no single central gable."
+      "height": 7.5,
+      "evidence": "August 2024 Street View: two projecting canted bays with decorative timber gables, pale render, lower rear extensions; no single central gable.",
+      "height_definition": "Maximum roof height above asset ground datum; estimated"
     },
     {
       "name": "19-21 Anchor Street corner",
@@ -46,8 +48,9 @@
         -77.6,
         -70.4
       ],
-      "height": 8.15,
-      "evidence": "August 2024 Street View: four front upper sashes, brick parapet, hipped tiled roof with front and two Anchor Street dormers; cream rendered side and garage."
+      "height": 10.9,
+      "evidence": "August 2024 Street View: four front upper sashes, brick parapet, hipped tiled roof with front and two Anchor Street dormers; cream rendered side and garage.",
+      "height_definition": "Maximum roof height above asset ground datum; estimated"
     }
   ]
 }

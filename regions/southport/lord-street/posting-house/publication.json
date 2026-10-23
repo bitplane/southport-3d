@@ -39,6 +39,12 @@
       "id": "shopfronts",
       "name": "Arched shop fronts and original inscriptions",
       "collection": "shopfronts"
+    },
+    {
+      "id": "courtyard-ground",
+      "name": "Raised courtyard and rear terrace",
+      "collection": "courtyard-ground",
+      "ground": true
     }
   ],
   "views": [

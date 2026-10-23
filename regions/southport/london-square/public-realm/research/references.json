@@ -173,6 +173,15 @@
         "Mapped numeric outlines retained in st-georges-block.json; imagery is not distributed.",
         "Private user aerial establishes Posting House open courtyard and skewed rear redevelopment. Dimensions and furniture placements remain estimates."
       ]
+    },
+    {
+      "id": "posting-lane-2024",
+      "url": "https://www.google.com/maps/@53.6482974,-3.0031334,10a,90y,325h,105t/data=!3m4!1e1!3m2!1sj1tZHV_c9SEYzcJaD0v2Mw!2e0",
+      "capture_date": "2024-08",
+      "observations": [
+        "Asphalt service lane, black double vehicle gates with narrow pedestrian gate, brick piers and raised courtyard retaining wall. Dimensions and hidden lane boundary estimated from plan and obliques."
+      ],
+      "rights": "Reference only; no source pixels redistributed"
     }
   ],
   "limitations": [

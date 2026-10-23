@@ -83,12 +83,12 @@ def build_courtyard(g):
     # Raised basement roof garden. The service lane remains outside its west
     # retaining wall. Photo 15 shows paving, artificial lawn and timber squares.
     level=2.7
-    b('Envelope courtyard basement roof',(22.4,level-.18,-31.15),(13.8,.36,26.5),paving)
+    b('Envelope courtyard basement roof',(22.4,level-.18,-31.15),(13.8,.36,26.5),paving,'courtyard-ground')
     b('Envelope courtyard west retaining wall',(29.05,1.95,-31.15),(.5,3.9,26.5),brick)
     b('Trim courtyard retaining coping',(29.05,3.96,-31.15),(.65,.12,26.5),paving)
-    b('Envelope courtyard lawn',(25.0,level+.025,-33.6),(7.5,.05,21.6),turf)
+    b('Envelope courtyard lawn',(25.0,level+.025,-33.6),(7.5,.05,21.6),turf,'courtyard-ground')
     for d in [27.8,37.6]:
-        b('Envelope courtyard timber square',(24.2,level+.055,-d),(5.1,.06,3.5),wood)
+        b('Envelope courtyard timber square',(24.2,level+.055,-d),(5.1,.06,3.5),wood,'courtyard-ground')
         for j in range(27):
             b('Detail courtyard deck joints',(21.7+j*.19,level+.088,-d),(.012,.005,3.5),soil)
     # Flag grid is fine relief only; courtyard proportions survive every LOD.
@@ -114,13 +114,34 @@ def build_courtyard(g):
     finish(m,'rear-range',[rail],front)
 
     # Historic rear's low extension supports the terrace above the garden doors.
-    b('Roof historic rear terrace',(23,5.1,-20.45),(12,.18,5.1),paving,'roof')
+    b('Roof historic rear terrace',(23,5.1,-20.45),(12,.18,5.1),paving,'courtyard-ground')
     ef=front@Matrix.Translation((29,0,-23.0))@Matrix.Rotation(math.pi,4,'Y')
     for x in [1.5,4.5,7.5,10.5]:
         instance('garden-door',sash('Window garden extension',2.95,2.2),
                  ef@Matrix.Translation((x,3.8,0)),'rear-range',[glass,rail])
     for u in [17,29]:b('Envelope garden extension return',(u,3.9,-20.45),(.18,2.4,5.1))
     m=Mesh('Balcony historic terrace rails')
-    for z in [5.5,6.15]:m.tube([(17,z,-23),(29,z,-23)],.025,sides=6)
-    for j in range(49):m.tube([(17+j*.25,5.2,-23),(17+j*.25,6.2,-23)],.018,sides=6)
+    for a,bound in [(17,25.5),(26.5,29)]:
+        for z in [5.5,6.15]:m.tube([(a,z,-23),(bound,z,-23)],.025,sides=6)
+        count=round((bound-a)/.25)
+        for j in range(count+1):m.tube([(a+j*(bound-a)/count,5.2,-23),(a+j*(bound-a)/count,6.2,-23)],.018,sides=6)
+    finish(m,'rear-range',[white],front)
+    # Exterior spiral from the garden to the terrace, visible in photo 15 and
+    # the heritage rear photograph. Treads belong to walkable ground; rails do not.
+    steps=13;cx,cz=26.0,-23.9
+    m=Mesh('Envelope courtyard spiral treads');handrail=[]
+    for j in range(steps):
+        angle=-math.pi*1.5+2*math.pi*(j+1)/steps
+        z=level+(5.1-level)*(j+1)/steps
+        a,bound=angle-2*math.pi/steps,angle
+        plan=[(cx+r*math.cos(t),cz+r*math.sin(t)) for r,t in [(.08,a),(.72,a),(.72,bound),(.08,bound)]]
+        verts=[(x,y,d) for y in [z-.07,z] for x,d in plan]
+        m.add(verts,[(0,1,2,3),(7,6,5,4),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0)])
+        handrail.append((cx+.76*math.cos(angle),z+1.0,cz+.76*math.sin(angle)))
+    finish(m,'courtyard-ground',[metal],front)
+    b('Envelope courtyard stair landing',(26,5.06,-23.1),(1.0,.08,.7),metal,'courtyard-ground')
+    m=Mesh('Balcony courtyard spiral rails')
+    m.tube([(cx,level,cz),(cx,6.1,cz)],.06,sides=10)
+    m.tube(handrail,.025,sides=6)
+    for x,z,d in handrail:m.tube([(x,z-1,d),(x,z,d)],.018,sides=6)
     finish(m,'rear-range',[white],front)

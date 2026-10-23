@@ -249,3 +249,12 @@ for ob in placeholders:
  assert all(e.is_manifold for e in bm.edges),(ob.name,'Open placeholder shell')
  bm.free()
 print('Block junctions, parking entrance and mapped placeholder shells validated')
+
+# The shared gated lane has one asphalt owner, flush with its entrance apron.
+for x,y in [(31,-38),(31,-58),(32,-74)]:
+ ob,p=ground_hit(x,y)
+ assert ob and any(m.name=='Authored asphalt' for m in ob.data.materials),(x,y,'Wrong service-lane surface')
+ expected=layout['grade']['origin_z']+layout['grade']['dz_dy']*max(-36,min(36,y))-.12
+ assert abs(p.z-expected)<.002,(x,y,'Service lane not flush',p.z,expected,ob.name)
+assert bpy.data.objects.get('Street Posting lane gate')
+print('Posting House service-lane surface, grade and entrance gate verified')

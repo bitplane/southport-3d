@@ -14,7 +14,7 @@ import numpy as np
 
 
 def measure(width, heading, pitch, fov, left, right, base, landmarks):
-    h,p,a=map(math.radians,[heading,pitch,43.5293])
+    h,p,a=map(math.radians,[heading,pitch,46.4707])
     focal=720/math.tan(math.radians(fov/2))
     right_axis=np.array([math.cos(h),-math.sin(h),0])
     forward=np.array([math.sin(h)*math.cos(p),math.cos(h)*math.cos(p),math.sin(p)])
@@ -38,7 +38,7 @@ if __name__=='__main__':
           'parapet':([453,282],0),'upper_sill':([490,491],0),
           'upper_head':([492,365],0),'fascia_top':([413,560],0),
           'ridge_with_estimated_setback':([730,207],3.5)}),
-      'kba':measure(9.3752,45,15,80,[414,615],[1213,615],[398,923],{
+      'kba':measure(8.35,45,15,80,[414,615],[1213,615],[398,923],{
           'eave':([475,360],0),'gable':([618,264],0),
           'fascia':([430,540],0),'window_head':([540,382],0),
           'window_sill':([540,532],0)})}

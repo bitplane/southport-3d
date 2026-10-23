@@ -82,11 +82,14 @@ class Facade:
     def roof(self,name,u0,u1,d0,d1,eave,ridge,mat,hip=0):
         """Closed thin roof shell; ridge runs perpendicular to the frontage."""
         c=(u0+u1)/2
+        h0,h1=hip if isinstance(hip,tuple) else (hip,hip)
         top=[(u0,eave,-d0),(u1,eave,-d0),(u1,eave,-d1),(u0,eave,-d1),
-             (c,ridge,-d0-hip),(c,ridge,-d1+hip)]
-        faces=[(0,1,4),(1,2,5,4),(2,3,5),(3,0,4,5)] if hip else [(0,4,5,3),(4,1,2,5)]
+             (c,ridge,-d0-h0),(c,ridge,-d1+h1)]
+        faces=[(0,4,5,3),(4,1,2,5)]
+        if h0:faces.append((0,1,4))
+        if h1:faces.append((2,3,5))
         # Gabled roofs have open space beneath, closed skins along each edge.
-        edges=[(0,1),(1,2),(2,3),(3,0)] if hip else [(0,4),(4,1),(1,2),(2,5),(5,3),(3,0)]
+        edges=[(1,2),(3,0)]+([(0,1)] if h0 else [(0,4),(4,1)])+([(2,3)] if h1 else [(2,5),(5,3)])
         m=Mesh('Roof '+name);n=len(top)
         m.add(top+[(x,y-.12,z) for x,y,z in top],faces+[tuple(i+n for i in reversed(f)) for f in faces]+[(a,b,b+n,a+n) for a,b in edges])
         return self.finish(m,[mat])

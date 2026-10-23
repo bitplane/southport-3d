@@ -20,7 +20,7 @@ def make_roof(a,b,depth,eave,ridge,finish,front,slate):
         return o
     main=volume('Roof historic joined gables',a,b,.06,depth-.06)
     # Three rear gables terminate at the documented rear brick elevation.
-    for c,w,top in [(a+3.1,5.7,ridge-.65),((a+b)/2,4.6,ridge-.15),(b-3.0,5.7,ridge-.65)]:
+    for c,w,top in [(a+3.1,5.7,ridge-.65),((a+b)/2,6.2,ridge-.15),(b-3.0,5.7,ridge-.65)]:
         operand=volume('temporary cross gable',c-w/2,c+w/2,depth/2,depth,False,top)
         bpy.context.view_layer.objects.active=main
         mod=main.modifiers.new('Resolve valley','BOOLEAN');mod.operation='UNION';mod.solver='EXACT';mod.object=operand

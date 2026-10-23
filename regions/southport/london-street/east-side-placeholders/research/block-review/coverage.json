@@ -1,7 +1,7 @@
 {
   "reviewed": "2026-10-23",
   "snag": "a6d8e1dc6a0e41c693bd2adef2fcbec3",
-  "stage": "Posting House first geometry correction; shop research in progress",
+  "stage": "Constructed exterior block review; hidden service elevations and absolute heights remain estimated",
   "scope": "Block bounded by London Street, Anchor Street, Post Office Avenue and St Georges Place: Posting House rear, three placeholder shops and their shared access/ground. Existing NatWest and Tudor boundaries checked in context.",
   "sources": [
     {
@@ -13,13 +13,13 @@
     {
       "url": "https://www.google.com/maps/@53.6480504,-3.0028046,79a,35y,329.41h,45.05t/data=!3m1!1e3",
       "type": "user requested 3D orbit",
-      "observed": "Enabled hardware GL/EGL then Globe view and Satellite/3D. Rotated through headings 0,72.5,145,217.5 degrees; private captures output/block-orbit-a.png through d.png. Identified low courtyard retaining boundary, raised planted terrace, broad warehouse with narrow balcony-side roof strip and two separate modern roof towers.",
+      "observed": "Enabled hardware GL/EGL then Globe view and Satellite/3D. Rotated through headings 0,72.5,145,217.5 degrees; private captures output/block-orbit-a.png through d.png. Identified low courtyard retaining boundary, raised planted terrace, broad warehouse with narrow balcony-side roof strip and two separate modern roof towers. Closer shop roof captures: output/shops-roofs-near.png, shops-roofs-west.png, shops-roofs-north.png. Incorrectly centred shops-orbit-close-west/north images were excluded.",
       "date": "unknown"
     },
     {
       "url": "https://www.rgp.uk.com/portfolio-items/the-posting-house-southport/",
       "type": "architect project description and three photographs",
-      "observed": "Anchor Street facade, balconies and passage; scheme includes courtyard over basement parking. Images published in 2014 upload path; exact photography date unknown."
+      "observed": "Anchor Street facade, balconies and recessed garage; scheme includes courtyard over basement parking. Images published in 2014 upload path; exact photography date unknown."
     },
     {
       "url": "https://docs.planning.org.uk/20240430/30/SC578SNWK2Q00/mclt3lg3lqef3v3s.pdf",
@@ -49,7 +49,7 @@
     }
   ],
   "coverage": {
-    "roof": "3D orbit and 2D aerial obtained; measurements in progress",
+    "roof": "Four broad orbits plus close south/west/north shop orbits; corrected William Hill front slope and rear range, common KBA hip with cross-gables, Myers front hip/rear gable and dormers.",
     "London Street frontages": "August 2024 Google panoramas obtained for KBA and Myers; 2019 contributor panorama and adjoining 2024 view for William Hill.",
     "Anchor Street": "RGP photos and August 2024 Street View: recessed garage, not a through passage.",
     "Post Office Avenue": "August 2024 Street View and 3D obliques; exact opening counts still to refine.",
@@ -80,5 +80,10 @@
     "William Hill / KBA internal boundary: vendor frontage differs from old map division by about 1 m.",
     "Street View field-of-view convention and stitching limit elevation calibration; adopted heights remain estimates, approximately +/- 0.5 m.",
     "Rear shop footprint steps and hidden openings need comparison against the shared service lane."
-  ]
+  ],
+  "comparisons": {
+    "frontages": "Private renders kba-reference and myers-reference compared to August 2024 panoramas. Reduced KBA eaves, gable and bay heights; added canted ground displays, pilasters and spectacles emblem. Cameras fitted; not a survey.",
+    "courtyard": "Rear render compared to heritage rear photograph and Arnold & Phillips garden photo. Unequal rear openings, three central attic windows, glazed connector, terrace and spiral stair. Roof cut behind attic glass; glazing-ray tests cover these windows.",
+    "measurements": "Mapped overall widths retained; shop gross frontage from auction does not securely establish a whole-building division. Roof parallax prohibits transferring elevated roof corners directly to ground."
+  }
 }
