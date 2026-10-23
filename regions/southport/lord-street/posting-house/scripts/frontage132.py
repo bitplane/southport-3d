@@ -61,7 +61,9 @@ def build_132(g):
             # One closed apron across the whole canted plan avoids overlapping
             # white panel ends and closes the former slit below the sill.
             m=Mesh('Envelope 132 white apron')
-            v=[(c+x,h,d) for h in [z-2.34,z-1.47] for x,d in outline]
+            # Black ledges own their full thickness above/below the white panel.
+            bottom=z-2.25 if z>10 else z-2.34
+            v=[(c+x,h,d) for h in [bottom,z-1.58] for x,d in outline]
             m.add(v,[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
             finish(m,mats=[white],frame=front)
             for x,d in outline:
@@ -102,6 +104,10 @@ def build_132(g):
         bpy.ops.object.modifier_apply(modifier=mod.name);bpy.data.objects.remove(cross,do_unlink=True)
     for u in [0,w]:
         f=front@Matrix.Translation((u,0,0))@Matrix.Rotation(math.pi/2,4,'Y')
-        finish(wall('Envelope 132 side',[(0,0),(depth,0),(depth,16.14),(depth/2,18.94),(0,16.14)],[]),mats=[brick],frame=f)
+        # Front/rear walls own their corner thickness. Keep the side inside
+        # the footprint at both ends, with the original gable slope.
+        h=16.14+2.8*.40/(depth/2)
+        outline=[(.40,0),(depth-.40,0),(depth-.40,h),(depth/2,18.94),(.40,h)]
+        finish(wall('Envelope 132 side',outline,[],back=0 if u==0 else -.40,front=.40 if u==0 else 0),mats=[brick],frame=f)
     back=front@Matrix.Translation((w,0,-depth))@Matrix.Rotation(math.pi,4,'Y')
     finish(wall('Envelope 132 rear',rect(0,0,w,16.3),[]),mats=[brick],frame=back)

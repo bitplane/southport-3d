@@ -115,3 +115,32 @@ for t in [.05,.1,.2,.5,.8]:
  assert hit and target==ramp,('Threshold blocks descent',t,target.name if target else None)
 assert min(v.z for v in verts)<-.88,'Garage has no basement descent'
 print('132 cross-gable coverage and descending garage surface verified')
+
+# Exterior wall returns meet at their thickness; they do not overlay end caps.
+import sys
+sys.path.insert(0,str(Path(__import__('os').environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+names=['Envelope front bay 0','Envelope front bay 4','Envelope east return',
+       'Envelope bank alley return','Envelope historic rear','Envelope 132 front',
+       'Envelope 132 side','Envelope 132 side.001','Envelope 132 rear']
+triangles=[];labels=[]
+for name in names:
+ ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
+# Regression for the large corner overlaps. Sub-centimetre-square float32
+# slivers remain in the separate published audit; they are not waived there.
+errors=overlaps(triangles,labels,min_area=1e-4)
+assert not errors,errors[:12]
+print('Historic and 132 wall corner ownership verified')
+
+# White apron fronts must not occupy the black ledge's front skin.
+triangles=[];labels=[]
+for ob in meshes:
+ if not ob.name.startswith(('Envelope 132 white apron','Roof 132 bay ledge')):continue
+ ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(ob.name)
+errors=[v for v in overlaps(triangles,labels,min_area=1e-4) if v[0]!=v[1]]
+assert not errors,errors[:12]
+print('132 white aprons and black ledges have separate surface ownership')

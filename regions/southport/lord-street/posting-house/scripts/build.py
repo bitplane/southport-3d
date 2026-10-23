@@ -217,7 +217,9 @@ for u,name,normal in [(start,'east return',(1,0,0)),(width,'bank alley return',(
     f=face_matrix(p,out)
     # Normals determine local direction: use signed depth coordinate accordingly.
     signum=1 if u==width else -1
-    outline=rect(min(0,signum*depth),0,max(0,signum*depth),eave)
+    # Front and rear walls own the 0.40 m corner returns.
+    ends=[signum*.40,signum*(depth-.40)]
+    outline=rect(min(ends),0,max(ends),eave)
     finish(wall('Envelope '+name,outline,[]),mats=[brick],frame=f)
     for z in [5.8,10.05,14.18]:box('Trim return band',(signum*depth/2,z,.10),(depth,.17,.20),frame=f)
 
