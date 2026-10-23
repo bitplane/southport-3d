@@ -6,7 +6,12 @@ if [[ ! -f "$browser_cli" ]]; then
   echo "Missing browser dependencies. Run npm ci --ignore-scripts --prefix $browser_tools_dir on the host." >&2
   exit 1
 fi
+if [[ -z "${SOUTHPORT_BROWSER_CLI:-}" ]]; then
+  node "$browser_tools_dir/patch-mcp.mjs"
+fi
 mkdir -p "$browser_tools_dir/output"
+# Sessions are never cleaned up by the MCP; drop ones untouched for a day.
+find "$browser_tools_dir/output" -mindepth 1 -maxdepth 1 -name 'session.*' -mmin +1440 -exec rm -rf {} +
 browser_session_dir="$(mktemp -d "$browser_tools_dir/output/session.XXXXXXXX")"
 case "${SOUTHPORT_BROWSER_MODE:-offscreen}" in
   offscreen) browser_mode_args=(--config "$browser_tools_dir/offscreen.json") ;;

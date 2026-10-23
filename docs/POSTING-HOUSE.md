@@ -54,3 +54,11 @@ closing the openings. The dormer hips have underside closures. Validation probes
 cover low/high dormer panes, unique sash-edge hits, bay apron/sill joins and the
 132 roof volume. All levels retain these structural corrections; existing
 selective detail reduction and sign/glazing bakes still apply.
+
+The opening beneath the first Anchor Street balcony is visible in RGP's retained
+exterior photographs (architect-315 and architect-122). It is retained, with
+brick side returns and a ceiling/floor enclosing the passage instead of exposing
+the whole building shell. Its connection to the aligned courtyard opening is
+estimated: the photographs establish the outer recess, not its hidden fittings.
+An overlapping, unfilled courtyard window cut has been removed. These simple
+passage surfaces remain at every LoD.

@@ -145,3 +145,16 @@ and District GLBs were rendered from front, close and roof/rear viewpoints;
 colour and major silhouettes remain stable. A combined Walk comparison with
 public-realm ground checked the frontage and entrance approaches. Live browser
 inspection was unavailable; these checks used imported exported GLBs.
+
+The Glebe Place court-facing side follows the private photos attached to snag
+9648072a74f14fbfac2ad9c4483b92d7 (the close Street View frame is dated November
+2020). It has exposed brick, pale lintels, barred and unbarred upper windows,
+two black collection doors on raised landings, steps and rails, a roller door,
+a low utility enclosure and rainwater pipes. Two previously detached roof-edge
+boxes now continue down as brick shafts at the wall edge. Their top-down
+positions remain calibrated estimates; their precise internal function is
+unknown. The third, farther roof housing retains its earlier provisional form.
+Court dimensions, window positions and landing heights are estimated from the
+photos. Major geometry remains at all three levels; fine rails, pipes and shutter
+ribs are omitted at District. No hidden rooms or unreadable warning notices
+are invented.

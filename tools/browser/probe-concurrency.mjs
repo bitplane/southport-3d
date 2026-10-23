@@ -93,6 +93,18 @@ try {
   const survivor = await sessions[1].code("async page => { if(await page.title() !== 'Session B') throw new Error('Other session shutdown lost page'); return 'SURVIVED'; }");
   assert.ok(survivor.includes('SURVIVED'), survivor);
   report.checks.shutdown = 'Closing A preserves B';
+  // Map viewers pan only on intermediate moves; patch-mcp.mjs supplies them.
+  await sessions[1].code(`async page => {
+    await page.setContent('<div id="pad" style="width:600px;height:300px"></div><script>let down=false;window.moves=0;pad.onpointerdown=()=>down=true;pad.onpointermove=()=>{if(down)moves++};</script>');
+    return 'prepared';
+  }`);
+  const drag = await sessions[1].request('tools/call', {
+    name: 'browser_mouse_drag_xy', arguments: { startX: 50, startY: 50, endX: 450, endY: 50 },
+  });
+  if (drag.isError) throw new Error(JSON.stringify(drag));
+  const stepped = await sessions[1].code("async page => { const moves = await page.evaluate(() => window.moves); if (moves < 5) throw new Error(`Drag sent ${moves} intermediate moves`); return 'DRAG_OK'; }");
+  assert.ok(stepped.includes('DRAG_OK'), stepped);
+  report.checks.drag = 'browser_mouse_drag_xy sends intermediate moves';
   await sessions[1].closeBrowser();
   report.passed = true;
 } catch (error) {

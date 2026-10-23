@@ -139,3 +139,14 @@ and District GLBs were rendered from front, close and roof/rear viewpoints;
 colour and major silhouettes remain stable. A combined Walk comparison with
 public-realm ground checked the frontage and entrance approaches. Live browser
 inspection was unavailable; these checks used imported exported GLBs.
+
+The Glebe Place rear now follows the four private images attached to snag
+9648072a74f14fbfac2ad9c4483b92d7, including a Street View frame dated November
+2020. Orange brick, an upper rear range, a lower flat-roofed service annex,
+asymmetric white/dark windows, metal service doors, two external stair runs,
+condensers and drainpipes are observed. The annex depth to site Y -49 m, floor
+heights and exact bay positions are visually estimated, not surveyed. Temporary
+bins, parked vehicles, tiny warning text and hidden interiors are omitted.
+Simple wall, window, door and stair solids remain at all LoDs; fine rails,
+pipework and fan faces follow the existing Fine-detail rule. Brickwork uses
+an authored metric repeating map; none of the reference pixels is distributed.
