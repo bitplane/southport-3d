@@ -6,7 +6,7 @@ from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
-from components import rect,roundtop,wall,ring,leaded,oriel_frame
+from components import rect,roundtop,wall,ring,leaded,oriel_frame,sash_aperture,sash_panel_aperture
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC';C={}
@@ -26,8 +26,12 @@ stone=mat('Sandstone thresholds and sills',(.52,.45,.34));terracotta=mat('Terrac
 blue=mat('Dark blue doors',(.014,.025,.11));teal=mat('BTR blue green fascia',(.035,.22,.31));pink=mat('HW magenta board',(.47,.025,.14));metal=mat('Grey metal',(.25,.28,.27));lead=mat('Dark lead came',(.065,.071,.067))
 font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf')
 
-def finish(m,part='frontage',mats=None,frame=None):
- ob=m.finish(mats or [brick],C[part]);bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.triangulate(bm,faces=list(bm.faces));bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(ob.data);bm.free();ob.data.update()
+def finish(m,part='frontage',mats=None,frame=None,authored_winding=False):
+ ob=m.finish(mats or [brick],C[part]);bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.triangulate(bm,faces=list(bm.faces))
+ # Conformed wall fragments already carry outward winding; disconnected
+ # reveal triangles cannot have their normals reliably inferred in isolation.
+ if not authored_winding:bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+ bm.to_mesh(ob.data);bm.free();ob.data.update()
  uv=ob.data.uv_layers.new(name='Metric UV')
  for f in ob.data.polygons:
   axes=sorted(sorted(range(3),key=lambda i:abs(f.normal[i]))[:2])
@@ -76,9 +80,9 @@ for x in BAYS:holes.append(rect(W-x-1.7,.35,W-x+1.7,11.0))
 for x in FLATS:
  holes.append([(u+W-x,z) for u,z in roundtop(2.7,.12,3.08,.65)])
  for dx in (-.96,.96):
-  for z in (4.02,7.60):holes.append([(u+W-x-dx,zz) for u,zz in roundtop(1.12,z,z+2.52,.15)])
+  for z in (4.02,7.60):holes.append([(u+W-x-dx,zz) for u,zz in sash_panel_aperture(1.12,z,2.52)])
  for dx in (-1.12,0,1.12):holes.append(rect(W-x-dx-.43,11.73,W-x-dx+.43,12.94))
-finish(wall('Envelope street wall',rect(0,0,W,E),holes),frame=ff)
+finish(wall('Envelope street wall',rect(0,0,W,E),holes),frame=ff,authored_winding=True)
 # Main side elevations and upper rear strip; lower rear wall breaks at the wings.
 for side,origin,normal in [('north',(W,-DEP,0),(1,0,0)),('south',(0,0,0),(-1,0,0))]:
  frame=face_matrix(origin,normal);holes=[]
@@ -97,7 +101,7 @@ def sash(frame,u,z,width=1.12,height=2.52,part='frontage'):
  before=set(C[part].objects)
  af=frame@Matrix.Translation((u,0,0))
  # Brick receiver around the full sash ensures the later bake retains surrounding negative space.
- finish(wall('Window sash backing',rect(-width/2-.2,z-.35,width/2+.2,z+height+.5),[roundtop(width,z,z+height,.15)],thickness=.08),part,[brick],af@Matrix.Translation((0,0,.006)))
+ finish(wall('Window sash backing',rect(-width/2-.2,z-.35,width/2+.2,z+height+.5),[sash_aperture(width,z,height)],thickness=.08),part,[brick],af@Matrix.Translation((0,0,.006)),authored_winding=True)
  m=Mesh('Window sash glazing');m.outline(roundtop(width,z,z+height,.15),-.14,-.10);finish(m,part,[glass],af)
  finish(ring('Window sash frame',width,z,z+height,.15,.07,.01),part,[white],af)
  box('Window sash meeting rail',(0,z+height*.47,-.015),(width,.07,.12),part,white,af)
@@ -255,8 +259,8 @@ for wi,(x0,x1,depth) in enumerate(WINGS):
  for side,origin,normal,length in [('west',(x0,-DEP,0),(-1,0,0),depth-DEP),('east',(x1,-depth,0),(1,0,0),depth-DEP),('end',(x0,-depth,0),(0,-1,0),x1-x0)]:
   frame=face_matrix(origin,normal);us=[(j+.5)*length/(4 if length>15 else 3) for j in range(4 if length>15 else 3)];holes=[]
   for u in us:
-   for z in (1.0,4.3,7.8):holes.append(rect(u-.5,z,u+.5,z+1.9))
-  finish(wall('Envelope rear wing '+str(wi)+' '+side,rect(0,0,length,height),holes),'rear-wings',frame=frame)
+   for z in (1.0,4.3,7.8):holes.append([(x+u,y) for x,y in sash_panel_aperture(1.0,z,1.9)])
+  finish(wall('Envelope rear wing '+str(wi)+' '+side,rect(0,0,length,height),holes),'rear-wings',frame=frame,authored_winding=True)
   for u in us:
    for z in (1.0,4.3,7.8):sash(frame,u,z,1.0,1.9,'rear-wings')
   for z in (3.7,7.2):box('Course rear wing floor band',(length/2,z,.035),(length,.10,.08),'rear-wings',terracotta,frame)

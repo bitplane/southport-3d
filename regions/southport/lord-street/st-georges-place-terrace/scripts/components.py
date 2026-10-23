@@ -18,6 +18,16 @@ def roundtop(width,bottom,top,radius,steps=12):
     return pts
 
 
+def sash_panel_aperture(width,bottom,height):
+    """Wall opening occupied by the complete authored/baked sash panel."""
+    return rect(-width/2-.2,bottom-.35,width/2+.2,bottom+height+.5)
+
+
+def sash_aperture(width,bottom,height):
+    """Masonry ends at the outside of the 70 mm timber frame."""
+    return roundtop(width+.14,bottom-.07,bottom+height+.07,.22)
+
+
 def wall(name,poly,holes,thickness=.48):
     """Conforming facade shell with reveals only on true boundary edges."""
     from southport3d.conform import conform
@@ -102,7 +112,7 @@ def street_wall_lod(name,settings,asset_directory):
     for x in d['flat_centres']:
         holes.append([(u+w-x,z) for u,z in roundtop(2.7,.12,3.08,.65,12)])
         for dx in (-.96,.96):
-            for z in (4.02,7.60):holes.append([(u+w-x-dx,zz) for u,zz in roundtop(1.12,z,z+2.52,.15,12)])
+            for z in (4.02,7.60):holes.append([(u+w-x-dx,zz) for u,zz in sash_panel_aperture(1.12,z,2.52)])
         for dx in (-1.12,0,1.12):holes.append(rect(w-x-dx-.43,11.73,w-x-dx+.43,12.94))
     # Build a shared rectangular grid around aperture bounds; add only the
     # curved shoulders locally. This avoids repeated whole-wall clipping.

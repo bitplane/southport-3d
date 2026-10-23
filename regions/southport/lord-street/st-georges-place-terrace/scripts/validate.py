@@ -95,3 +95,27 @@ assert not overlaps(triangles,[ob.name]*len(triangles),min_area=1e-6)
 print('Oriel union: closed outward shell, original bounds, open panes and no duplicate faces')
 
 mesh=ob.data;bpy.data.objects.remove(ob);bpy.data.meshes.remove(mesh)
+
+# Masonry backing must not duplicate the timber's exposed inner reveal.
+seen=set()
+for ob in meshes:
+ if not ob.name.startswith('Assembly sash ') or ob.data.name in seen:continue
+ seen.add(ob.data.name);ob.data.calc_loop_triangles();triangles=[];labels=[]
+ for t in ob.data.loop_triangles:
+  mat=ob.data.materials[t.material_index].name
+  if mat not in ('Historic red water shot brick','Ivory painted timber'):continue
+  triangles.append([tuple(ob.data.vertices[i].co) for i in t.vertices]);labels.append(mat)
+ errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+ assert not errors,(ob.name,errors[:8])
+print('Sash backing leaves timber reveals unobscured',len(seen),'prototypes')
+
+# Once the wall is cut around each panel, its exposed border must still be brick.
+for ob in meshes:
+ if not ob.name.startswith('Assembly sash '):continue
+ w,h=(1.12,2.52) if ob.name.startswith('Assembly sash front') else (1.0,1.9)
+ for x in (-w/2-.12,w/2+.12):
+  ray=ob.matrix_world@Vector((x,h*.55,.5));direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+  hit,p,n,i,target,mat=bpy.context.scene.ray_cast(dep,ray,direction,distance=.85)
+  assert hit and target==ob,('Uncovered sash border',ob.name,x,target.name if hit else None)
+  assert target.data.materials[target.data.polygons[i].material_index].name=='Historic red water shot brick',(ob.name,'Border lost masonry')
+print('All sash panels cover their enlarged wall openings')
