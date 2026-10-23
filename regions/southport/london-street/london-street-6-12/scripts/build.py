@@ -250,11 +250,16 @@ mesh=Mesh('Fine chimney flue')
 mesh.lathe((-25.15,D['rear_chimney_y']),[(base+11.76,.11),(base+12.2,.11)],12)
 finish(mesh,'rear',[black])
 box('Envelope service wing northern return',((xr+.36-24.8)/2,rear_north-.14,base+1.925),(-24.8-xr-.36,.25,3.85),part='rear')
-# Two flat service wings and the observed pitched rooflight.
-for name,ya,yb,height in [('rooflight wing',-55.7,rear_north,3.85),('south wing',ys,-55.7,4.65)]:
-    frame=face_matrix((xr,yb,base),(-1,0,0))
-    n=1 if name=='rooflight wing' else 2
+# Two flat service wings and the observed pitched rooflight. The south wing's
+# northern bay is set back behind a walled ladder yard (Nov2020 court views).
+yard_y,yard_x=-59.2,xr+1.6
+for name,ya,yb,height,x,n in [('rooflight wing',-55.7,rear_north,3.85,xr,1),
+                              ('south wing',ys,yard_y,4.65,xr,1),
+                              ('south wing yard bay',yard_y,-55.7,4.65,yard_x,1)]:
+    frame=face_matrix((x,yb,base),(-1,0,0))
     centres_rear=[(yb-ya)*(k+1)/(n+1) for k in range(n)]
+    if name=='south wing':centres_rear=[yb-(-60.9)]
+    if name=='south wing yard bay':centres_rear=[-55.7-(-58.3)]
     window_w,window_h,window_z=(1.04,1.3,1.85) if name=='rooflight wing' else (1.60,.85,3.0)
     openings=[(u-window_w/2,u+window_w/2,window_z-window_h/2,window_z+window_h/2) for u in centres_rear]
     wall_with_openings(name,frame,yb-ya,height,openings,'rear')
@@ -263,15 +268,28 @@ for name,ya,yb,height in [('rooflight wing',-55.7,rear_north,3.85),('south wing'
         for k in range(10):
             m.box((-window_w/2+.06+k*(window_w-.12)/9,0,.11),(.021,window_h+.05,.03),0)
         finish(m,'rear',[white,black,glass,sill],frame@Matrix.Translation((u,window_z,0)))
-    if name!='south wing':
+    if name=='rooflight wing':
         box('Envelope '+name+' side',((xr-24.8)/2,ya+.14,base+height/2),(-24.8-xr,.28,height),part='rear')
     # Keep concealed deck end inside the full-height Glebe wall, not coplanar
     # with its exterior face (which otherwise exposes a black horizontal line).
-    deck_start=ya+.20 if name=='south wing' else ya+.02
-    deck_end=yb-.02
-    deck_left=xr+.20;deck_right=-24.78
-    box('Roof '+name+' flat deck',((deck_left+deck_right)/2,(deck_start+deck_end)/2,base+height),(deck_right-deck_left,deck_end-deck_start,.16),pale_deck if name=='south wing' else felt,'rear')
-    box('Trim '+name+' coping',(xr-.035,(ya+yb)/2,base+height+.09),(.25,yb-ya+.1,.12),sill,'rear')
+    # The two south decks abut exactly over the yard return.
+    deck_start={'south wing':ya+.20,'south wing yard bay':ya}.get(name,ya+.02)
+    deck_end=yb if name=='south wing' else yb-.02
+    deck_left=x+.20;deck_right=-24.78
+    box('Roof '+name.replace(' yard bay','')+' flat deck',((deck_left+deck_right)/2,(deck_start+deck_end)/2,base+height),(deck_right-deck_left,deck_end-deck_start,.16),felt if name=='rooflight wing' else pale_deck,'rear')
+    box('Trim '+name+' coping',(x-.035,(ya+yb)/2,base+height+.09),(.25,yb-ya+.1,.12),sill,'rear')
+# Yard return, low yard wall with its black timber gate, and paved floor.
+box('Envelope south wing yard return',((xr+.36+yard_x)/2,yard_y-.14,base+2.325),(yard_x-xr-.36,.28,4.65),part='rear')
+box('Trim south wing yard return coping',((xr+.095+yard_x-.16)/2,yard_y-.14,base+4.74),(yard_x-.16-xr-.095,.38,.12),sill,'rear')
+yard_frame=face_matrix((xr,-55.7,base),(-1,0,0))
+gate_u,gate_w,gate_h=2.8,.9,2.0
+wall_with_openings('ladder yard wall',yard_frame,-55.7-yard_y,2.3,[(gate_u-gate_w/2,gate_u+gate_w/2,0,gate_h)],'rear')
+box('Trim ladder yard wall coping',(xr+.16,(yard_y-55.7)/2,base+2.34),(.46,-55.7-yard_y,.08),black,'rear')
+m=Mesh('Fixture ladder yard timber gate')
+m.box((gate_u,gate_h/2,-.2),(gate_w,gate_h,.05))
+for k in range(1,6):m.box((gate_u-gate_w/2+k*gate_w/6,gate_h/2,-.17),(.012,gate_h,.012))
+finish(m,'rear',[black],yard_frame)
+box('Envelope ladder yard paving',((xr+.36+yard_x)/2,(yard_y-55.7)/2,base-.06),(yard_x-xr-.36,-55.7-yard_y,.12),sill,'rear')
 finish(rooflight('Roof rear pyramidal rooflight',2.7,2.7,.75),'rear',[metal,glass],
        Matrix.Translation((-27.2,-49.5,base+3.95)))
 # Open guardrails and caged access ladder are physical; never bake as a solid wall.
@@ -281,16 +299,19 @@ for y in [-46,-48.1,-50.2,-52.3,-54.6]:
 for h in [4.0,4.48,4.92]:
     rails.tube([(-29.55,-46,base+h),(-29.55,-54.7,base+h)],.023,0,6)
 finish(rails,'rear',[metal])
+# Caged ladder rises inside the yard on the rooflight wing's south wall, facing
+# into the yard (not the parking court); stiles extend past the roof edge.
 ladder=Mesh('Fixture rear access ladder')
-for y in [-54.85,-55.5]:
-    ladder.box((-30.0,y,base+3.15),(.05,.05,5.6))
-for k in range(18):
-    ladder.box((-30.0,-55.175,base+.5+k*.29),(.045,.65,.035))
-for h in [2.2,3.2,4.2,5.2,5.85]:
-    points=[(-30.0-.4*math.sin(t),-55.175+.4*math.cos(t),base+h) for t in [j*math.pi/12 for j in range(13)]]
+lx,ly=-28.94,-55.85
+for x in [lx-.325,lx+.325]:
+    ladder.box((x,ly,base+2.55),(.05,.05,4.8))
+for k in range(12):
+    ladder.box((lx,ly,base+.5+k*.29),(.65,.045,.035))
+for h in [2.2,2.9,3.6,4.3,4.9]:
+    points=[(lx+.4*math.cos(t),ly-.4*math.sin(t),base+h) for t in [j*math.pi/12 for j in range(13)]]
     ladder.tube(points,.02,0,6)
-for y in [-55.5,-55.175,-54.85]:
-    ladder.box((-30.35,y,base+4),(.024,.024,3.7))
+for x in [lx-.325,lx,lx+.325]:
+    ladder.box((x,ly-.35,base+3.55),(.024,.024,2.7))
 finish(ladder,'rear',[metal])
 # Pipes drop to the roof surfaces, with estimated positions calibrated to photos.
 mesh=Mesh('Fine rear drainage')

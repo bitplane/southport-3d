@@ -79,6 +79,15 @@
       "observations": [
         "Hipped southern end, ridge towards frontage, broad rear slate slopes with service notch around lower glazed rooflight. Individual roof pitches and setback depths remain visually estimated."
       ]
+    },
+    {
+      "id": "ladder-yard-2020",
+      "url": "https://www.google.com/maps/@53.6480488,-3.0041471,3a,75y,40h,95t/data=!3m4!1e1!3m2!1smnlr3P-VeOWNjzTBAxwdfA!2e0",
+      "capture": "Nov2020 Street View; inspected 2026-10-23",
+      "author": "Google Street View",
+      "observations": [
+        "Caged access ladder rises inside a small walled yard on the south wall of the lower rooflight wing, facing south into the yard. The yard wall has a dark coping and a black timber gate onto the passage behind the boundary wall; the south wing\u2019s northern bay is set back behind it. Yard size, recess depth and wall height are visual estimates (snag 91d7d069 reference)."
+      ]
     }
   ],
   "scope": "Exterior architectural reconstruction, not interiors or current occupancy certification. Reference pixels remain private; source and published materials are authored.",

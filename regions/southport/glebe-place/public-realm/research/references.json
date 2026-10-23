@@ -31,6 +31,22 @@
       "observations": [
         "Rear parking row, turning space and southern service return."
       ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6480488,-3.0041471,3a,75y,40h,95t/data=!3m4!1e1!3m2!1smnlr3P-VeOWNjzTBAxwdfA!2e0",
+      "capture": "Nov2020 Street View; inspected 2026-10-23",
+      "author": "Google Street View",
+      "observations": [
+        "Rendered boundary wall runs north from the timber enclosure; the enclosure doors face the parking court (headings 40 and 90). Snag bf789f8a reference shows the passage closed at the lane by a taller rendered panel and brick pier flush with the enclosure front."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6481,-3.0040,40m/data=!3m1!1e3",
+      "capture": "Date not shown; inspected 2026-10-23",
+      "author": "Google satellite imagery",
+      "observations": [
+        "Shadowed passage about 0.9m wide between the boundary wall and the 6–12 rear wing, running down past the enclosure. Width, wall heights and the closure panel are scaled visually, not measured."
+      ]
     }
   ],
   "uncertainties": [

@@ -48,7 +48,7 @@ def stairs(name,u,landing,width,height,run,frame,finish,metal):
     finish(m,mats=[metal],transform=frame)
 
 
-def build(D,finish,brick,dark,glass,metal,cream,roofmat):
+def build(D,finish,brick,dark,glass,metal,cream,roofmat,white=None):
     x0,x1=D['x_far'],D['x_near'];width=x1-x0;z0=D['base_z']
     upper=face_matrix((x0,D['rear_y'],z0),(0,-1,0))
     f=face_matrix((x0,-49.0,z0),(0,-1,0))
@@ -71,11 +71,16 @@ def build(D,finish,brick,dark,glass,metal,cream,roofmat):
     finish(m,mats=[brick])
     m=Mesh('Roof service annex');m.box(((x0+x1)/2,-45.1,z0+7.0),(width,7.8,.18));finish(m,'roof',[roofmat])
     # Exposed upper rear lights, doors and downpipes from the Glebe Place view.
-    upper_windows=[(2.1,8.3,1.1,1.0),(4.7,8.3,1.2,.65),(7.2,8.3,1.1,.65),(9.2,8.3,1.1,.65),(14.0,8.3,1.15,.65),(16.4,8.3,1.15,.65)]
-    holes=[(x-w/2,z-h/2,x+w/2,z+h/2) for x,z,w,h in upper_windows]+[(11,7.1,12,9.1)]
+    # Snag aerial: white lights in groups of two and three west of the door,
+    # two dark-framed lights east of it. Centres scaled along the wall's ends.
+    upper_windows=[(1.3,8.3,1.4,.85,True),(4.0,8.35,1.0,1.0,True),(6.3,8.3,1.3,.8,True),
+                   (8.85,8.3,1.35,.8,True),(10.55,8.3,1.35,.8,True),
+                   (15.55,8.25,1.3,.8,False),(17.2,8.25,1.25,.8,False)]
+    holes=[(x-w/2,z-h/2,x+w/2,z+h/2) for x,z,w,h,_ in upper_windows]+[(12.35,7.1,13.45,9.1)]
     finish(panel('Envelope service upper rear',width,D['parapet_top'],holes),mats=[brick],transform=upper)
-    for i,(x,z,w,h) in enumerate(upper_windows):window('upper rear window '+str(i),x,z,w,h,cream if x<10 else dark,glass,finish,upper)
-    m=Mesh('Fixture upper rear door');m.box((11.5,8.1,-.16),(1,2,.08));finish(m,mats=[dark],transform=upper)
+    for i,(x,z,w,h,pale) in enumerate(upper_windows):
+        window('upper rear window '+str(i),x,z,w,h,(white or cream) if pale else dark,glass,finish,upper)
+    m=Mesh('Fixture upper rear door');m.box((12.9,8.1,-.16),(1.1,2,.08));finish(m,mats=[dark],transform=upper)
     stairs('service west stair',0,0,.85,3.6,3.6,f@Matrix.Translation((.65,0,.75))@Matrix.Rotation(math.pi/2,4,'Y'),finish,dark)
     stairs('service central stair',9.4,.9,.95,3.6,4.2,f,finish,metal)
     # Condensers, visible round fan faces, and sparse external pipework.

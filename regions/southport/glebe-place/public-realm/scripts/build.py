@@ -105,7 +105,7 @@ surface('Glebe narrow lane',[(-10,-63.4),(-29.9,-63.46),(-39.0,-64.0),
         (-39.0,-70.0),(-26.85,-69.37),(-10,-69.4)],'asphalt')
 # Rear court reaches the terrace/Prezzo rear bounds; it is not a wide street.
 surface('Rear parking court',[(-50.8,-71.3),(-50.8,-49.0),(-32.2,-49.0),
-        (-32.2,-44.0),(-30.5,-44.0),(-30.5,-63.5),(-29.9,-63.5),(-29.9,-70),(-43,-70)],
+        (-32.2,-44.0),(-29.9,-44.0),(-29.9,-70),(-43,-70)],
         'asphalt',0,ROAD,'court-ground')
 # A short southern service continuation and visible return parking, bounded for
 # later adjoining building work rather than a speculative full alley network.
@@ -188,16 +188,30 @@ def finish(mesh,mat,part='furniture'):
 
 for (part,mat),mesh in compiled.items():
     finish(mesh,mat,part)
-# Low rendered retaining/boundary wall is distinct from the Halifax building.
-wall=capped_wall([(-30.6,-44.2,ROAD),(-30.6,-60.9,ROAD)],1.45,.27,'Wall rear parking boundary')
+# Low rendered boundary wall is distinct from the Halifax building. Aerial and
+# Nov2020 views show a walkable ~0.9m passage behind it to the rear yard gate,
+# with the wall running on to meet the timber enclosure.
+wall=capped_wall([(-30.935,-44.2,ROAD),(-30.935,-61.2,ROAD)],1.45,.27,'Wall rear parking boundary')
 finish(wall,'render')
 cap=Mesh('Wall rear coping')
-cap.box((-30.6,-52.55,ROAD+1.48),(.34,16.7,.09))
+cap.box((-30.935,-52.7,ROAD+1.48),(.34,17.0,.09))
 finish(cap,'iron')
-# Timber utility enclosure observed at the end of the north parking row.
-# No service internals or unreadable warning text are fabricated.
+# The passage is closed at the lane by a taller rendered panel and brick pier,
+# flush with the enclosure front. Heights scaled against the enclosure.
+m=Mesh('Wall passage lane closure')
+m.box((-30.76,-64.065,ROAD+1.05),(.62,.27,2.1))
+finish(m,'render')
+m=Mesh('Wall passage lane pier')
+m.box((-30.175,-64.06,ROAD+1.125),(.55,.42,2.25))
+finish(m,'brick')
+m=Mesh('Wall passage closure copings')
+m.box((-30.76,-64.065,ROAD+2.13),(.66,.33,.06))
+m.box((-30.175,-64.06,ROAD+2.28),(.61,.48,.06))
+finish(m,'iron')
+# Timber utility enclosure observed at the end of the north parking row; its
+# east side forms the passage edge. No service internals are fabricated.
 wood=Mesh('Envelope timber utility enclosure')
-wood.box((-33.2,-62.7,ROAD+1.2),(3.7,3.0,2.4))
+wood.box((-33.06,-62.7,ROAD+1.2),(3.98,3.0,2.4))
 finish(wood,'wood')
 boards=Mesh('Fine utility board joints')
 for i in range(22):

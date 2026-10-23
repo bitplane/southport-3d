@@ -127,7 +127,8 @@ m.add(hood+[(x,y-.015,z) for x,y,z in hood],
 finish(m,'shopfront',[metal],frame)
 from service_rear import build as build_service_rear
 service_brick=material('Observed orange rear brick',(.43,.25,.16),'service-brick')
-build_service_rear(D,finish,service_brick,dark,glass,metal,cream,roofmat)
+white=material('White uPVC window frames',(.82,.82,.80),rough=.5)
+build_service_rear(D,finish,service_brick,dark,glass,metal,cream,roofmat,white)
 
 for im in bpy.data.images:
  if im.source=='FILE':im.pack()
