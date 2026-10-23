@@ -51,7 +51,7 @@ def main():
         report['coverage'][level]={'objects':len(included),'classified':len(classes)}
         if level=='district' and 'district_envelope' in spec:
             from blender_envelope import build as build_envelope
-            by_part,envelope=build_envelope(spec,asset_dir,dest,list(included))
+            by_part,envelope=build_envelope(spec,asset_dir,dest,by_part)
             report['envelope']=envelope
             for part,objects in by_part.items():
                 path=dest/(part+'-'+level+'.glb');export(path,objects)

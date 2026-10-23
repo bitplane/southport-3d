@@ -6,6 +6,7 @@ cages project along each face normal rather than rounding building corners.
 import importlib
 import json
 import math
+import re
 import sys
 from pathlib import Path
 
@@ -44,8 +45,8 @@ def pack(surfaces, width, height, padding=3):
     return attempt(lo)
 
 
-def receiver(name,surfaces,size):
-    rects=pack(surfaces,*size);verts=[];faces=[];uvs=[]
+def receiver(name,surfaces,size,rects=None):
+    rects=pack(surfaces,*size) if rects is None else rects;verts=[];faces=[];uvs=[]
     for i,face in enumerate(surfaces):
         n=len(verts);verts.extend(face['vertices']);faces.append(tuple(range(n,n+4)))
         x,y,w,h=rects[i]
@@ -56,6 +57,7 @@ def receiver(name,surfaces,size):
         for loop in poly.loop_indices:uv.data[loop].uv=uvs[mesh.loops[loop].vertex_index]
     ob=bpy.data.objects.new(name,mesh);bpy.context.scene.collection.objects.link(ob)
     bm=bmesh.new();bm.from_mesh(mesh);bmesh.ops.triangulate(bm,faces=list(bm.faces));bm.to_mesh(mesh);bm.free();mesh.update()
+    if any(poly.area<1e-10 for poly in mesh.polygons):raise ValueError('Degenerate envelope triangle: '+name)
     return ob,rects
 
 
@@ -71,6 +73,7 @@ def bake(sources,low,size,rects,dest,cage):
     maps={};checks={}
     mask=np.zeros((size[1],size[0]),dtype=bool)
     for x,y,w,h in rects.values():mask[y+1:y+h-1,x+1:x+w-1]=True
+    if not mask.any():raise ValueError('Atlas has no testable receiver pixels')
     for label,kind in [('base-color','DIFFUSE'),('normal','NORMAL'),('roughness','ROUGHNESS')]:
         # Supersample before area averaging: subpixel mullions and glyph strokes
         # must fade consistently rather than disappear according to sample phase.
@@ -79,9 +82,22 @@ def bake(sources,low,size,rects,dest,cage):
         im.colorspace_settings.name='sRGB' if label=='base-color' else 'Non-Color'
         node=nt.nodes.new('ShaderNodeTexImage');node.image=im;nt.nodes.active=node
         for n in nt.nodes:n.select=n==node
+        print('ENVELOPE_BAKE',low.name,label,size,flush=True)
         select(*sources,low);bpy.ops.object.bake(type=kind)
         pixels=np.empty(len(im.pixels),dtype=np.float32);im.pixels.foreach_get(pixels)
-        rgba=pixels.reshape(size[1],supersample,size[0],supersample,4).mean(axis=(1,3))
+        raw=pixels.reshape(size[1]*supersample,size[0]*supersample,4)
+        raw_invalid=0.
+        if label=='normal':
+            raw_mask=np.repeat(np.repeat(mask,supersample,axis=0),supersample,axis=1)
+            lengths=np.linalg.norm(raw[:,:,:3][raw_mask]*2-1,axis=1)
+            raw_invalid=float(np.mean(abs(lengths-1)>.2))
+            if raw_invalid>.01:
+                bad=[]
+                for index,(x,y,w,h) in rects.items():
+                    patch=raw[(y+1)*supersample:(y+h-1)*supersample,(x+1)*supersample:(x+w-1)*supersample,:3]
+                    if patch.size:bad.append((float(np.mean(abs(np.linalg.norm(patch*2-1,axis=2)-1)>.2)),index))
+                raise ValueError(f'{low.name}: invalid source normal pixels {raw_invalid:.1%}; worst islands {sorted(bad,reverse=True)[:8]}')
+        rgba=raw.reshape(size[1],supersample,size[0],supersample,4).mean(axis=(1,3))
         if label=='normal':
             vectors=rgba[:,:,:3]*2-1;lengths=np.linalg.norm(vectors,axis=2,keepdims=True)
             rgba[:,:,:3]=(vectors/np.maximum(lengths,1e-8)+1)*.5
@@ -92,6 +108,7 @@ def bake(sources,low,size,rects,dest,cage):
         checks[label]={'receiver_coverage':coverage,'covered_pixels':int(covered.sum())}
         if coverage<.97:raise ValueError(f'{low.name} {label}: missed projection rays ({coverage:.1%} receiver coverage)')
         if label=='normal':
+            checks[label]['raw_invalid_normal_fraction']=raw_invalid
             lengths=np.linalg.norm(rgba[:,:,:3][mask]*2-1,axis=1)
             invalid=float(np.mean(abs(lengths-1)>.2));checks[label]['invalid_normal_fraction']=invalid
             if invalid>.01:raise ValueError(f'{low.name}: invalid normal pixels {invalid:.1%}')
@@ -108,13 +125,39 @@ def build(spec,asset,dest,sources):
     module,func=recipe['generator'].split(':');surfaces=getattr(importlib.import_module(module),func)(asset)
     expected={p['id'] for p in spec['parts']}
     if set(surfaces)!=expected:raise ValueError('Envelope must replace every streaming part')
-    for obj in sources:validate_materials(obj)
-    outputs={};report={'reason':recipe['reason'],'parts':{},'source_meshes':len(sources)}
+    outputs={};report={'reason':recipe['reason'],'parts':{},'source_meshes':sum(len(v) for v in sources.values())}
+    report['source_omissions']=[]
+    for omission in recipe.get('source_omissions',[]):
+        pattern=re.compile(omission['match']);matches=[o.name for objects in sources.values() for o in objects if pattern.search(o.name)]
+        if not matches:raise ValueError('Source omission matches no objects: '+omission['match'])
+        sources={key:[o for o in objects if not pattern.search(o.name)] for key,objects in sources.items()}
+        report['source_omissions'].append(dict(omission,objects=matches))
+
     for part,faces in surfaces.items():
-        config=recipe['parts'][part];size=config['atlas'];low,rects=receiver('District '+part,faces,size)
+        config=recipe['parts'][part];size=config['atlas']
+        selected=[obj for key in config.get('source_parts',[part]) for obj in sources[key]]
+        for obj in selected:validate_materials(obj)
+        # Repeated surfaces deliberately share one sampled appearance. Bake only
+        # their representative, never overlapping UV islands from many instances.
+        unique=[];keys={};indices=[]
+        for i,face in enumerate(faces):
+            key=face.get('atlas_key',f'unique:{i}')
+            if key not in keys:keys[key]=len(unique);unique.append(face)
+            else:
+                original=unique[keys[key]]
+                a,b=list(map(Vector,face['vertices'])),list(map(Vector,original['vertices']))
+                if any(abs((a[j]-a[k]).length-(b[j]-b[k]).length)>1e-5 for j in range(4) for k in range(j)):
+                    raise ValueError('Shared atlas key has incompatible geometry: '+key)
+            indices.append(keys[key])
+        target,rects=receiver('Bake '+part,unique,size)
+        low,all_rects=receiver('District '+part,faces,size,{i:rects[j] for i,j in enumerate(indices)})
         if triangles(low)>config['max_triangles']:raise ValueError('Envelope exceeds fixed triangle budget: '+part)
         folder=dest/'maps'/'district'/part;folder.mkdir(parents=True)
-        checks=bake(sources,low,size,rects,folder,config['cage_m'])
-        report['parts'][part]={'triangles':triangles(low),'atlas':size,'faces':[f['name'] for f in faces],'rectangles':rects,'bake_checks':checks}
+        checks=bake(selected,target,size,rects,folder,config['cage_m'])
+        low.data.materials.append(target.data.materials[0]);data=target.data
+        bpy.data.objects.remove(target,do_unlink=True);bpy.data.meshes.remove(data)
+        report['parts'][part]={'triangles':triangles(low),'atlas':size,'faces':[f['name'] for f in faces],
+            'unique_atlas_surfaces':len(unique),'source_parts':config.get('source_parts',[part]),
+            'rectangles':all_rects,'bake_checks':checks}
         outputs[part]=[low]
     return outputs,report

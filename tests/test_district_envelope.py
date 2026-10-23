@@ -39,3 +39,27 @@ def test_envelope_schema_requires_complete_parts_and_bounded_atlases():
     with pytest.raises(ValueError):validate_publication(bad)
     bad=copy.deepcopy(recipe);bad['district_envelope']['max_gpu_bytes']=0
     with pytest.raises(ValueError):validate_publication(bad)
+
+
+def test_memorial_preserves_column_count_with_shared_fixed_topology(tmp_path):
+    asset=ROOT/'regions/southport/london-square/war-memorial'
+    s=importlib.util.spec_from_file_location('memorial_envelope',asset/'scripts/district.py')
+    m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+    (tmp_path/'research').mkdir()
+    for name in ('modelling_spec.json','site_layout.json','shaft_masonry_calibration.json'):
+        (tmp_path/'research'/name).write_bytes((asset/'research'/name).read_bytes())
+    before=m.surfaces(tmp_path)
+    p=tmp_path/'research/modelling_spec.json';d=json.loads(p.read_text())
+    d['dimensions']['column_flute_count']['value']=200
+    p.write_text(json.dumps(d))
+    assert m.surfaces(tmp_path)==before
+    recipe=json.loads((asset/'publication.json').read_text());validate_publication(recipe)
+    for part,faces in before.items():
+        assert 2*len(faces)<=recipe['district_envelope']['parts'][part]['max_triangles']
+    for part in ('north-east','south-west'):
+        faces=before[part]
+        shafts=[f for f in faces if f.get('atlas_key','').startswith('column ')]
+        assert len(shafts)==16*3*8
+        assert len({f['atlas_key'] for f in shafts})==3*8
+        # The two lateral window openings are split wall envelopes, not solid boxes.
+        assert sum(f['name'].startswith('chamber wall ') for f in faces)==2*2*4*4

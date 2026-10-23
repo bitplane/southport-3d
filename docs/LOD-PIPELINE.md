@@ -2,6 +2,60 @@
 
 An LOD is a different representation of a building, not a percentage of its polygons. Start with the volumes, openings and silhouette that remain visible at the intended scale. Decide what each feature contributes, then choose its representation. Textures can carry appearance; they cannot restore a missing silhouette, an open arcade, parallax or cast-shadow geometry.
 
+## Default for new buildings and the current rollout
+
+Retain Detail for close inspection and Walk for exploration. **Replace District**
+with an independently authored, fixed-budget envelope; do not add another permanent
+per-building LoD. Existing per-feature District recipes are legacy intermediate
+representations until converted. Distant block/district aggregation is a separate,
+future tier that replaces multiple individual assets together.
+
+Plan the envelope when establishing the footprint and main roof/openings. Finalise
+it against the reviewed detailed model, sharing dimensional inputs where useful
+but not inheriting the detailed mesh topology. New ornament changes baked appearance,
+not envelope face counts or texture sizes. Significant roof/footprint/opening changes
+require revisiting the envelope. Avoid replacing each tiny source object with its
+own box: that scales with detail, duplicates textures and creates intersections.
+A polygonal bay should be one coordinated envelope with adjoining faces.
+
+Provisional per-building triangle targets, to be tested at intended screen sizes:
+
+| Type | District triangles | Typical maximum atlas dimension |
+| --- | ---: | ---: |
+| Simple shop/unit | 100–500 | 256–512 |
+| Ornate corner building | 500–1,500 | 512–1,024 |
+| Large church/landmark | 1,000–3,000 | 512–1,024 |
+
+These are design targets, not a mandate to damage a silhouette. A multi-building
+ensemble may have a justified larger combined budget (the memorial is capped at
+7,000). Each asset declares enforced triangle, total GLB-byte and estimated GPU
+budgets. Include all embedded maps and duplicated part resources. Texture memory
+and material/draw-call counts matter even when triangle counts are tiny. Prefer
+one bounded atlas material per streaming part, with shared appearance only where
+it is justified. Keep source texture resolution independent of exported atlas size.
+
+Use geometry for negative spaces, roof outline, large projections and distinct
+columns. Use low-sided tapered cylinders with coarse capitals for isolated round
+columns, rectangular prisms for square piers, and surface bakes for shallow attached
+features. Do not fill an open colonnade or courtyard just to meet a budget. Surface
+normal maps cannot restore missing silhouettes, through-openings or cast shadows.
+Height/parallax mapping is optional future work, not a prerequisite for this pipeline.
+
+Declare receiving surfaces and source groups explicitly. Keep unrelated buildings
+and nearby opposite surfaces out of the projection group. Choose cages for the
+actual feature depths; record any unsupported-material omissions. Bake colour
+without illumination, normal and roughness, then supersample/downsample carefully
+so thin frames and glyph strokes fade consistently. Validate receiver coverage,
+finite/valid normals before and after filtering, nondegenerate geometry and actual
+exported costs. Passing those checks does not certify architectural fidelity.
+
+Ordinarily compare matching front, oblique, roof and rear views and actual viewing
+transitions. For the current rollout, the user explicitly owns visual acceptance:
+retain technical checks, publish each finished asset, provide measured before/after
+costs, and leave visual acceptance pending the user's review. Do not spend long
+render/browser passes on every asset or claim those comparisons happened. New
+architectural modelling still follows the evidence workflow.
+
 ## Make four explicit choices
 
 | Strategy | Use it when | Examples |
@@ -102,10 +156,13 @@ atlases. Test this independence. Rebake appearance when detailed surfaces change
 review the envelope when major geometry changes. Preserve negative spaces and
 silhouette with geometry, even when their surfaces are baked. Record omissions,
 projection distances, budgets, before/after costs and actual visual comparisons.
-The pilot is not yet evidence that this works for every building or open colonnade.
+BHF establishes the facade case; the memorial exercises open colonnades and shared columns. This is not automatic quality certification for other buildings.
 
 `tools/create_lod_review.py --asset ID --baseline DIRECTORY` generates a private
 local review page from the previous package and current checked package. Switch
 models without moving the camera; compare wireframe and normal maps. Generated
 review GLBs/images/pages stay outside Git. See BHF's asset documentation for the
 first measured result. Regional aggregation and impostors remain separate work.
+
+The [memorial pilot](MEMORIAL-DISTRICT.md) records the second fixed-envelope result,
+including shared column atlas islands and explicit metallic-fitting omissions.

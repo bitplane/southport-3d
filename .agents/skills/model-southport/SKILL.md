@@ -13,6 +13,13 @@ Work from footprint and height through elevations, columns/mouldings, entrances 
 
 Use the isolated tools/project.py build workflow. Existing relief NPZ files are source depth fields; regenerating them may require local photographs, while ordinary builds do not. Keep Blender file writers sequential. Review affected close-ups and an overview for scale, silhouette and placement. The render stage accepts --views with full view identifiers (for example, 43_obelisk_wwii).
 
-Before treating a new building as complete, read docs/LOD-PIPELINE.md and record a reasoned action for every component at every intended level: omit, replace with a simple envelope, adjust the generator, or decimate selectively. Design feature boundaries and generator controls while authoring the master. Preserve major silhouettes and through-openings; bake facade/carving/text detail onto simpler receiving surfaces. Test front and oblique views. Mark incomplete coverage explicitly; the memorial has a complete streaming assembly recipe as well as the earlier component pilot. Read docs/VIEWER.md and add publication.json with exact coverage, transforms and all three working levels. Run the publication command and inspect the building in the viewer before treating its LOD work as complete.
+Plan Detail/Walk feature choices and a separately authored District envelope; read docs/LOD-PIPELINE.md for budgets, projection groups and the working BHF/memorial examples. Coarse topology and atlas dimensions must stay fixed when fine detail is added. Reuse verified dimensions, preserve silhouettes and meaningful openings, and bake onto the actual replacement surfaces. Prefer shared atlases to one bake per window/sign. Record omissions and incomplete coverage. Integrate all three levels through publication.json and the ordinary checked publisher; regional aggregation is a separate farther-distance representation.
 
 Completion requires recorded reference-versus-model comparisons, including roof/rear coverage and the assembled neighbourhood; passing builds alone is insufficient. Publish staged progress when requested, keeping provisional areas and unresolved discrepancies explicit. Stage intended source, run the source check, and report build/validation results plus unresolved estimates. Do not add reference images or generated outputs to Git. See docs/SETUP.md for browser MCP setup and RIGHTS.md for source provenance.
+
+For an LoD-only rollout where the user explicitly takes visual acceptance, keep
+automated mesh/bake/budget checks and publish reviewable increments; do not claim
+unperformed visual checks or impose a long render/browser review on each asset.
+This exception does not waive evidence gathering for new architecture or permit
+changing major dimensions to simplify baking. Coordinate Blender jobs across
+agents; one job at a time is the current working policy.

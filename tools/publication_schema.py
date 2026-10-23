@@ -183,16 +183,25 @@ def validate_publication(spec):
     unique_ids(rules, 'rules')
     if 'district_envelope' in spec:
         envelope=spec['district_envelope']
-        fields(envelope, {'generator','reason','parts','max_bytes','max_gpu_bytes'}, set(), 'district_envelope')
+        fields(envelope, {'generator','reason','parts','max_bytes','max_gpu_bytes'}, {'source_omissions'}, 'district_envelope')
         text(envelope['reason'],'district_envelope.reason')
+        for omission in envelope.get('source_omissions',[]):
+            fields(omission,{'match','reason'},set(),'district_envelope.source_omissions')
+            text(omission['reason'],'source omission reason')
+            text(omission['match'],'source omission match')
+            try:re.compile(omission['match'])
+            except re.error as error:raise ValueError('Invalid source omission regex') from error
+
         if not isinstance(envelope['generator'],str) or not re.fullmatch(r'[a-z][a-z0-9_]*:[a-z][a-z0-9_]*',envelope['generator']):
             raise ValueError('district_envelope: expected module:function')
         for name in ('max_bytes','max_gpu_bytes'):
             if type(envelope[name]) is not int or envelope[name]<=0:raise ValueError('district_envelope: positive budgets required')
         fields(envelope['parts'], {p['id'] for p in parts}, set(), 'district_envelope.parts')
         for name,part in envelope['parts'].items():
-            fields(part, {'atlas','max_triangles','cage_m'}, set(), 'district_envelope.'+name)
+            fields(part, {'atlas','max_triangles','cage_m'}, {'source_parts'}, 'district_envelope.'+name)
             if type(part['max_triangles']) is not int or part['max_triangles']<=0:raise ValueError('Invalid envelope triangle budget')
+            if 'source_parts' in part:
+                if not isinstance(part['source_parts'],list) or not part['source_parts'] or any(v not in envelope['parts'] for v in part['source_parts']):raise ValueError('Invalid envelope source parts')
             number(part['cage_m'],'envelope cage')
             if part['cage_m']<=0:raise ValueError('Invalid envelope cage')
             if not isinstance(part['atlas'],list) or len(part['atlas'])!=2 or any(type(v) is not int or v<64 or v>spec['levels']['district']['texture_size'] or v&(v-1) for v in part['atlas']):

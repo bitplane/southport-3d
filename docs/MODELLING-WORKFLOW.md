@@ -116,3 +116,13 @@ For an audit of the existing published map, run
 levels, including cross-asset overlaps, and writes a review queue under
 `build/coplanar-audit/`. See [published overlap audit](COPLANAR-AUDIT.md) for
 coverage limits and how to distinguish visible conflicts from buried faces.
+
+## Delivering the distant representation
+
+Use the independent District-envelope process and budgets in [LOD-PIPELINE.md](LOD-PIPELINE.md).
+Establish the block and main building dimensions first, then refine Detail and bake
+appearance onto a deliberately bounded coarse model. Shared dimensional inputs
+keep the representations aligned; added decorative meshes must not grow District
+geometry or atlases. Publish and measure all three levels as part of delivery.
+When the user explicitly takes visual review for an LoD rollout, record that
+handoff, retain automated technical checks, and leave visual acceptance to them.

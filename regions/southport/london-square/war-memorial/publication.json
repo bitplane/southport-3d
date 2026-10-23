@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -128,20 +128,8 @@
         "max_sampled_error_m": 0.025
       },
       "district": {
-        "strategy": "generator",
-        "generator": "column_geometry:build_lod",
-        "uv": "smart",
-        "reason": "Retain tapered shaft, broad base, capital and square abacus. Flutes move to normals; tiny neck annulus is omitted.",
-        "settings": {
-          "radial_segments": 16,
-          "shaft_rings": 5,
-          "moulding_segments": 16,
-          "flutes": 0,
-          "small_mouldings": false
-        },
-        "max_sampled_error_m": 0.03,
-        "cage_extrusion_m": 0.04,
-        "bake": true
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -163,13 +151,8 @@
         "max_sampled_error_m": 0.08
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.25,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -191,13 +174,8 @@
         "max_sampled_error_m": 0.08
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.25,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -219,13 +197,8 @@
         "max_sampled_error_m": 0.08
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.25,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -247,19 +220,8 @@
         "max_sampled_error_m": 0.08
       },
       "district": {
-        "strategy": "generator",
-        "reason": "Retain the open wreath silhouette with a coarse trimmed heightfield; bake the leaves instead of filling the open centre with a panel.",
-        "generator": "heightfield",
-        "source_npz": "research/relief-data/salute-wreath.npz",
-        "grid": [
-          64,
-          64
-        ],
-        "trim_empty": true,
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.08,
-        "max_sampled_error_m": 0.08
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -281,13 +243,8 @@
         "max_sampled_error_m": 0.08
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.25,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -309,13 +266,8 @@
         "max_sampled_error_m": 0.08
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.25,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -337,13 +289,8 @@
         "max_sampled_error_m": 0.08
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.25,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -365,13 +312,8 @@
         "max_sampled_error_m": 0.08
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Wall-mounted sculpture becomes a shallow receiving panel; fine carving remains in baked maps.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.25,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -394,7 +336,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "This small repeated ornament is insignificant at district scale."
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -417,7 +359,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "This small repeated ornament is insignificant at district scale."
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -440,7 +382,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "This small repeated ornament is insignificant at district scale."
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -471,28 +413,8 @@
         "max_sampled_error_m": 0.012
       },
       "district": {
-        "strategy": "replace",
-        "shape": "lathe",
-        "profile": [
-          [
-            -0.003,
-            0.513
-          ],
-          [
-            0.031,
-            0.515
-          ],
-          [
-            0.035,
-            0.513
-          ]
-        ],
-        "segments": 48,
-        "uv": "lathe",
-        "reason": "Replace boolean-cut lettering with a solid circular insert; bake lettering and keep the circular edge.",
-        "bake": true,
-        "cage_extrusion_m": 0.012,
-        "max_sampled_error_m": 0.012
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -508,13 +430,8 @@
         "max_sampled_error_m": 0.03
       },
       "district": {
-        "strategy": "replace",
-        "shape": "box",
-        "uv": "box",
-        "reason": "The plain pedestal becomes its local bounding box. Bake shallow masonry joints and wear; retain silhouette and cast-shadow volume.",
-        "bake": true,
-        "cage_extrusion_m": 0.03,
-        "max_sampled_error_m": 0.03
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -532,15 +449,8 @@
         "bake": false
       },
       "district": {
-        "strategy": "generator",
-        "reason": "Preserve globe count, pole and open arms; omit acanthus, beads and small casting details. Retain the original metal/globe materials.",
-        "generator": "lamp_lod:build_lod",
-        "settings": {
-          "kind": "single",
-          "segments": 12
-        },
-        "uv": "smart",
-        "bake": false
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -558,15 +468,8 @@
         "bake": false
       },
       "district": {
-        "strategy": "generator",
-        "reason": "Preserve globe count, pole and open arms; omit acanthus, beads and small casting details. Retain the original metal/globe materials.",
-        "generator": "lamp_lod:build_lod",
-        "settings": {
-          "kind": "cluster",
-          "segments": 12
-        },
-        "uv": "smart",
-        "bake": false
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -578,7 +481,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Tiny modern fittings do not define the monument at this level; close inspection uses the original detail asset."
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -590,7 +493,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Keep the paving surface; individual provisional grid strips do not need geometry at these scales."
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     },
     {
@@ -601,8 +504,8 @@
         "reason": "Preserve measured placement, openings, steps, roof and major profiles with their source materials. Further envelope reduction is deferred until visual comparisons in the viewer justify it."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Preserve measured placement, openings, steps, roof and major profiles with their source materials. Further envelope reduction is deferred until visual comparisons in the viewer justify it."
+        "strategy": "omit",
+        "reason": "District uses the independent envelope and shared atlases; source feature meshes contribute appearance only."
       }
     }
   ],
@@ -615,5 +518,51 @@
       "name": "00 Site registration and approximate paving",
       "reason": "Superseded in the combined viewer by southport.london-square.public-realm; retain original study context in the standalone memorial source."
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Independent distant memorial retaining obelisk taper, stepped bases, two open colonnades, chamber windows/entrances, stepped roofs and globe counts. Eight-sided tapered columns share one baked appearance per colonnade. Reliefs, flutes, inscriptions and fine masonry become atlas detail.",
+    "max_bytes": 2000000,
+    "max_gpu_bytes": 14680064,
+    "parts": {
+      "obelisk": {
+        "atlas": [
+          256,
+          512
+        ],
+        "max_triangles": 200,
+        "cage_m": 0.25
+      },
+      "north-east": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 2400,
+        "cage_m": 0.18
+      },
+      "south-west": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 2400,
+        "cage_m": 0.18
+      },
+      "lamps": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 2000,
+        "cage_m": 0.2
+      }
+    },
+    "source_omissions": [
+      {
+        "match": "^Obelisk (SE|SW|NW) (cornice linear light|recessed pyramid grille)",
+        "reason": "Omit the tiny modern metallic lights and grille fittings entirely at District, matching the established distant policy. No metallic source is silently converted to dielectric stone."
+      }
+    ]
+  }
 }

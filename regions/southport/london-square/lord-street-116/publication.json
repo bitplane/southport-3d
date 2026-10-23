@@ -246,7 +246,12 @@
           256
         ],
         "max_triangles": 60,
-        "cage_m": 0.6
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture",
+          "roof",
+          "shopfront"
+        ]
       },
       "roof": {
         "atlas": [
@@ -254,7 +259,12 @@
           256
         ],
         "max_triangles": 250,
-        "cage_m": 0.8
+        "cage_m": 0.8,
+        "source_parts": [
+          "architecture",
+          "roof",
+          "shopfront"
+        ]
       },
       "shopfront": {
         "atlas": [
@@ -262,7 +272,12 @@
           128
         ],
         "max_triangles": 120,
-        "cage_m": 0.5
+        "cage_m": 0.5,
+        "source_parts": [
+          "architecture",
+          "roof",
+          "shopfront"
+        ]
       }
     }
   }
