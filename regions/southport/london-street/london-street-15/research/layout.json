@@ -5,7 +5,7 @@
   "north_y": -42.68,
   "south_y": -51.78,
   "alley_south_y": -53.1,
-  "range_rear_x": 17.5,
+  "range_rear_x": 13.4,
   "rear_x": 30.4,
   "bay_width": 1.45,
   "shop_top": 3.45,
@@ -31,11 +31,10 @@
   ],
   "gable_posts": 0.09,
   "tie_beam": 6.6,
-  "ridge_height": 9.8,
-  "gable_centre": 4.65,
+  "ridge_height": 9.65,
+  "gable_centre": 5.275000000000002,
   "bay_eaves": 7.65,
   "bay_ridge": 8.45,
-  "rear_height": 4.2,
   "arches": [
     [
       1.58,
@@ -53,13 +52,25 @@
   "arch_spring": 2.05,
   "arch_rise": 0.95,
   "registration": "Frontage on the shared London Street line x=7.5 used by NatWest and the east-side placeholders; local u runs south from NatWest's corrected return end (y=-42.66, 0.02m clearance). Google's place pin for 15 London St (53.6484152,-3.0037463) falls at site x=10.0, y=-46.4, inside this footprint. Old placeholder outline -42.68 to -53.1 (10.42m) now holds the 9.10m building and a 1.32m alley; William Hill's placeholder edge (-53.1) is unchanged.",
-  "measurement": "Widths and heights are visually calibrated from the near-frontal May 2011 Street View (pano XibO1wwSLghj_p6Oqn5oNw, heading 40), scaled so building plus alley equal the mapped 10.42m outline (about 0.0215m per screen pixel); proportions cross-checked in the November 2020 oblique and the snag photograph. Satellite scale bar (22.8px/m) gives about 9.9m from NatWest to the alley at roof level and an alley/eave gap of 0.7-0.9m above a wider ground-level gap. Nothing here is surveyed.",
+  "measurement": "See roof-measurements.json for raw image landmarks and derived metre dimensions. Main roof depth about 7.2 m (previously 11.3 m), small north roof about 3.3 m (previously 10.75 m). Gable centre derives from its two eave positions, not the whole frontage including the entrance strip.",
   "detail_review": "2026-10-23 report b8a13153: five close frontal, north/south oblique and aerial captures supersede previous readings. Both canted centre returns are glazed; balanced three-light front windows; single gable king post with outward-rising braces; small roof is a single slope against NatWest with a front hip, not a pitched ridge. Window/apron proportions, applied mouldings, carved beam and arch spandrels follow the close photos.",
-  "estimated": "Hidden range depth and rear elevations, exact 0.65 m oriel projection and 0.60 m centre recess, roof heights and chimney placement remain visually estimated.",
+  "estimated": "Roof plan lengths measured from a 5 m / 111 px satellite scale and checked against three supplied obliques; allow about 0.5 m for edge picking and roof parallax. Eave/ridge heights, jetty projection and hidden rear elevations remain estimates. No chimney is supported on this property.",
   "jetty_centre": 0.05,
   "centre_panel": [
     4.9,
     5.5
   ],
-  "window_sill": 4.55
+  "window_sill": 4.55,
+  "main_roof_depth": 7.2,
+  "main_hip_run": 3.0,
+  "north_roof_depth": 3.3,
+  "gable_projection": 0.18,
+  "rear_flat_end_x": 17.6,
+  "rear_flat_height": 6.25,
+  "rear_wing_eave": 4.65,
+  "rear_wing_width": 2.5,
+  "rear_grey_step_x": 26.4,
+  "rear_grey_height": 4.85,
+  "rear_upper_height": 5.8,
+  "main_rear_skew": 1.5
 }

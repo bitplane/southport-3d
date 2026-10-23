@@ -1,0 +1,109 @@
+{
+  "source": "https://www.google.com/maps/@53.64843,-3.00369,44m/data=!3m1!1e3",
+  "reviewed": "2026-10-23",
+  "private_capture": "/home/gaz/tmp/3d/output/tudor-measure-aerial.png",
+  "viewport_px": [
+    1440,
+    1000
+  ],
+  "scale_bar": {
+    "metres": 5,
+    "pixels": 111,
+    "method": "Google Maps scale label and DOM bar width read at capture zoom"
+  },
+  "landmarks_px": {
+    "front_ridge": [
+      640,
+      553
+    ],
+    "ridge_end": [
+      704,
+      500
+    ],
+    "main_front_south_eave": [
+      714,
+      645
+    ],
+    "main_rear_south_eave": [
+      830,
+      531
+    ],
+    "small_front_wall_edge": [
+      577,
+      469
+    ],
+    "small_rear_wall_edge": [
+      621,
+      414
+    ],
+    "white_deck_back_north": [
+      736,
+      321
+    ],
+    "white_deck_back_south": [
+      833,
+      403
+    ],
+    "rear_red_wing_tip": [
+      817,
+      496
+    ],
+    "rear_red_wing_back": [
+      842,
+      406
+    ],
+    "grey_rear_north": [
+      898,
+      171
+    ],
+    "grey_rear_south": [
+      1066,
+      311
+    ],
+    "main_rear_north_eave": [
+      700,
+      438
+    ],
+    "main_front_north_eave": [
+      590,
+      503
+    ]
+  },
+  "roof_depth_calculation": {
+    "street_normal_image_unit": [
+      0.7250222644055666,
+      -0.6887254286841924
+    ],
+    "main_eave_depth_m": 7.325,
+    "small_roof_depth_m": 3.143,
+    "ridge_run_m": 3.734,
+    "north_eave_depth_m": 5.61,
+    "rear_eave_depth_difference_m": 1.72
+  },
+  "front_photo_landmarks": {
+    "source": "private snag b8a13153 photo-2.jpg",
+    "apex_px": [
+      638,
+      19
+    ],
+    "barge_ends_px": [
+      [
+        185,
+        354
+      ],
+      [
+        1173,
+        337
+      ]
+    ],
+    "interpretation": "About 0.33 rise/width in the perspective photograph. Adopt 2.8 m rise over about 8.25 m eave span, with equal pitches; heights remain calibrated, not surveyed."
+  },
+  "rooflight_observations": [
+    "One dark rectangular light on the main rear hip, distinct from the lower red wing light.",
+    "Two rectangular lights on the pale middle deck, plus smaller service fixtures.",
+    "One light on the lower red pitched rear wing.",
+    "Four rectangular lights on the broad grey rear roof, plus a small dark hatch.",
+    "One elongated light on the higher narrow rear section."
+  ],
+  "limits": "Satellite roof parallax prevents treating these roof pixels as surveyed ground coordinates. Plan proportions are anchored to the existing frontage; rear ownership/hidden walls and exact heights remain less certain. Supplied three obliques establish section ordering, rear hip and timbered rear walls. Main front pitches are equal; the rear eave line is oblique in plan, about 1.5 m shorter on the north, rounded from image edge picks."
+}

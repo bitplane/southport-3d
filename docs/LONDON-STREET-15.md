@@ -8,9 +8,12 @@ centre. Both canted inner returns have a single leaded light. Layered horizontal
 tie beam with its carved boss and the street gable with one central king post, four parallel braces each side, profiled bargeboards and a short apex pendant.
 The narrow north entrance bay is set back, with its gated porch, cast-iron
 bracket, diagonal timber brace and a small attic light. Its single-slope clay roof rises against NatWest, with a hip only at the street end, and the main bargeboard ends beside the attic aperture.
-Behind are a brick stack on the ridge, a red clay
-main roof whose ridge runs back from the street, and a low flat-roofed rear range
-with rooflights.
+The main roof has equal pitches, a short ridge and a rear hip with one rooflight, with no chimney.
+Its 7.2 m plan depth and the north roof's 3.3 m depth are rounded from aerial
+measurements of 7.3 m and 3.2 m respectively. The gable stands 0.18 m forward of
+the oriel face. Behind are a pale middle deck with two lights, a lower red pitched
+wing with one light, a broad grey roof with four lights and a hatch, and a
+narrower raised rear roof with one long light.
 
 ## The alley
 
@@ -29,9 +32,11 @@ Sources, capture dates and observations are in `research/references.json`;
 registration and estimates are in `research/layout.json`. Widths and heights were
 scaled from the near-frontal 2011 panorama so that building plus alley match the
 mapped outline, and cross-checked against the 2020 oblique, the snag photograph and
-the satellite scale bar. They are visually calibrated, not surveyed. The range
-depth, oriel projections (0.65 m) and central recess (0.60 m), the precise bay roof dimensions and attic set-back, chimney
-position, rear range, rear alley closure and every hidden elevation are estimates.
+the satellite scale bar. They are visually calibrated, not surveyed. Raw aerial landmarks, scale-bar readings and the front gable rise/span comparison
+are in `research/roof-measurements.json`. Image measurements are not a survey:
+roof parallax limits ground registration. Oriel projections (0.65 m), the central
+recess (0.60 m), gable projection, roof heights, rooflight sizes, far rear ownership,
+rear alley closure and hidden elevations remain estimates.
 The shop depicts the historical Love To Eat frontage in the supplied photos,
 including the small name above the three arches. This does not assert current
 occupancy. Scrollwork and spandrel carving are interpreted relief; hidden details
@@ -47,12 +52,12 @@ label and the old placeholder said 8.
   the timber framing, which carries the black-and-white identity and cannot be
   baked onto one plane across the oriel steps and triangular gable. The leaded
   windows become baked panels in their physical openings; the gate, cast-iron
-  bracket, scrollwork, spandrel carving, historical name, chimney pots, gutter,
+  bracket, scrollwork, spandrel carving, historical name, gutter,
   downpipe and door furniture are omitted.
 
 `python3 tools/project.py build southport.london-street.london-street-15` builds and
 validates the master: finite UV meshes, packed authored textures, matching oriel widths, unobscured leaded
-windows including nine attic aperture probes, shop arches closed within half a metre, two manifold clay roof shells and a monotonically rising lean-to slope,
+windows including nine attic aperture probes, shop arch edges closed under frontal and oblique ray probes, equal main pitches and measured roof depth, no chimney, nine rooflights, two manifold clay roof shells and a monotonically rising lean-to slope,
 clearance from NatWest, William Hill and the remaining placeholders, and an alley
 kept clear below the eaves with a ray reaching its rear closure. `--stage render`
 produces front, overview, alley, roof and shop views.

@@ -24,7 +24,7 @@
       "capture": "November 2020 Street View; inspected 2026-10-23",
       "author": "Google Street View",
       "observations": [
-        "Love To Eat tenant; sage-grey arched shop frames on a pale render storey. Red clay-tile main roof slope falls towards the alley; tall brick chimney behind; red-brick gabled ranges at the rear.",
+        "Love To Eat tenant; sage-grey arched shop frames on a pale render storey. The red clay main roof falls towards the alley. The distant chimney belongs to another roof, not this building.",
         "The alley opening between the cafe and William Hill is visible; William Hill's rendered side wall rises beside it."
       ]
     },
@@ -54,12 +54,22 @@
         "The narrow roof against NatWest has a high wall edge and one falling slope. It turns down into a hip only at the street end, with no central ridge. The entrance bay has a straight diagonal brace.",
         "Three nearly equal shop arches with pale sage frames and one continuous transom level; small Love To Eat lettering above. The side has close-studded white panels above and sage panelled return below."
       ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64845,-3.00368,44m/data=!3m1!1e3",
+      "capture": "Three privately supplied Google 3D Maps obliques in snag cd3833c4e7e3420991fec165e92e5e68; imagery date unknown; reviewed 2026-10-23",
+      "author": "Google imagery, supplied by user",
+      "observations": [
+        "Main roof has equal front pitches, a short ridge and a rear hip. No chimney. Small north roof is much shallower than the main roof.",
+        "White middle deck, lower red pitched wing with one light, broad grey rear roof with four lights and a hatch, and a narrower higher rear roof with one elongated light. Timbering is visible on rear upper walls.",
+        "Satellite scale-bar measurements and raw image landmarks are recorded in roof-measurements.json. Main depth about 7.3 m; narrow roof depth about 3.2 m. These are image measurements, not a survey."
+      ]
     }
   ],
   "uncertainties": [
     "Street numbering: the user's link and Google's place name give 15 London St; Google's basemap shows an '8' label here and the old placeholder named the block 8. The asset uses 15.",
     "The model depicts the Love To Eat shopfront visible in the supplied photos, including its small name. This is a historical appearance, not an assertion about current occupancy.",
     "Ground-level alley width (1.32m) is a scaled estimate; any gate at the street end is not modelled because the 2011 and snag images show it open. The rear brick closure is estimated.",
-    "Exact dimensions, range depth, chimney placement, hidden rear faces and the continuation of side studding behind the foreground neighbour remain estimated. Scroll and leaf carving is interpreted relief; unreadable motifs are not asserted as exact reproductions."
+    "Front heights and projections, rear roof heights and exact rooflight sizes are calibrated estimates. Satellite roof parallax limits ground registration; hidden walls, far rear ownership and rear alley closure remain uncertain. Scroll and leaf carving is interpreted relief."
   ]
 }

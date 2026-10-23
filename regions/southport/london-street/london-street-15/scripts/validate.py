@@ -68,9 +68,10 @@ natwest = json.loads((repo / 'regions/southport/london-square/natwest/research/l
 assert max(p.y for _, p in points) <= natwest['rear_y'] - .01, 'intrudes into NatWest'
 assert min(p.y for _, p in points) >= D['alley_south_y'] - 1e-4, 'crosses into William Hill'
 assert max(p.x for _, p in points) <= D['rear_x'] + 1e-4
-assert min(p.x for _, p in points) > D['front_x'] - 1.2, 'projects too far over the pavement'
-# Ridge at about 11m; the stack and pots stand about 2.2m above it.
-assert 11.9 < max(p.z for _, p in points) < 13.5
+assert min(p.x for _, p in points) > D['front_x'] - 1.4, 'projects too far over the pavement'
+# Highest point is the gable finial: no chimney exists on this building.
+assert D['base_z']+D['ridge_height'] < max(p.z for _,p in points) < D['base_z']+D['ridge_height']+.2
+assert not any('chimney' in o.name.lower() for o in meshes)
 
 # The alley stays open: only roof overhangs/eave brackets sit above it, and a
 # ray from the pavement runs its length to the estimated rear closure.
@@ -110,7 +111,7 @@ print(report)
 # The narrow roof is a lean-to against NatWest, not a pitched strip with a
 # middle ridge. Its central run rises monotonically towards the party wall.
 roof=bpy.data.objects['Roof north bay clay shell']
-for x in (9.0,13.0,17.0):
+for x in (8.5,9.2,10.0):
     heights=[]
     for t in (.1,.3,.5,.7,.9):
         y=D['north_y']-D['bay_width']+t*(D['bay_width']-.02)
@@ -120,3 +121,31 @@ for x in (9.0,13.0,17.0):
     assert all(b>a+.1 for a,b in zip(heights,heights[1:])),heights
 assert 'Roof north bay ridge tiles' not in bpy.data.objects
 assert all('Window first floor '+side+' return' in bpy.data.objects for side in ('left','right'))
+
+# Equal roof pitches and short measured plan depth, independent of facade trim.
+roof=bpy.data.objects['Roof main clay shell']
+xs=[v.co.x for v in roof.data.vertices]
+assert abs(max(xs)-min(xs)-D['main_roof_depth'])<.001
+ycentre=D['north_y']-D['gable_centre']
+for offset in (.7,1.8,3.0):
+    heights=[]
+    for sign in (-1,1):
+        hit,p,n,i=roof.ray_cast(Vector((8.0,ycentre+sign*offset,20)),Vector((0,0,-1)),distance=20)
+        assert hit
+        heights.append(p.z)
+    assert abs(heights[0]-heights[1])<.001,heights
+assert len([o for o in meshes if o.name.startswith('Rear rooflight ')])==9
+# Arc edges must close at oblique as well as perpendicular viewing angles.
+for a,b in D['arches']:
+    radius=((b-a)**2/4+D['arch_rise']**2)/(2*D['arch_rise'])
+    half=math.asin((b-a)/2/radius)
+    for k in range(1,20):
+        angle=-half+2*half*k/20
+        u=(a+b)/2+(radius-.095)*math.sin(angle)
+        h=D['arch_spring']+D['arch_rise']-radius+(radius-.095)*math.cos(angle)
+        for oblique in (-.6,0,.6):
+            target=Vector((u,h,-.22))
+            origin=target+Vector((oblique,0,1.2))
+            direction=(target-origin).normalized()
+            hit,p,n,i,found,m=scene.ray_cast(deps,shop@origin,(shop.to_3x3()@direction).normalized(),distance=1.5)
+            assert hit and (shop.inverted()@p).z > -.30,(u,h,oblique,found and found.name)

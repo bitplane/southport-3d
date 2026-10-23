@@ -14,7 +14,7 @@ from pathlib import Path
 
 import bmesh
 import bpy
-from mathutils import Matrix
+from mathutils import Matrix, Vector
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(os.environ['SOUTHPORT_REPO_ROOT']) / 'lib'))
@@ -60,14 +60,13 @@ flag = material('Grey concrete flags', (.47, .46, .43), 'flag')
 felt = material('Grey roofing felt', (.27, .28, .28))
 coping = material('Concrete coping', (.55, .54, .51))
 metal = material('Rooflight metal', (.38, .40, .40), roughness=.5)
-pot = material('Terracotta chimney pot', (.50, .24, .14))
 
 B = D['base_z']
 FX, YN, YS, YA = D['front_x'], D['north_y'], D['south_y'], D['alley_south_y']
 RX, RR = D['range_rear_x'], D['rear_x']
 W = YN - YS                      # building width along the street
 BAY = D['bay_width']
-UC = D['gable_centre']            # gable centred on the whole frontage
+UC = D['gable_centre']            # midpoint of the main gable, excluding entrance bay
 ZL, ZR = D['jetty_left'], D['jetty_right']
 CANT0, CANT1 = D['cant']
 CENTRE0,CENTRE1=D['centre_panel'];ZC=D['jetty_centre']
@@ -76,7 +75,7 @@ SHOP = D['shop_top']
 TIE = D['tie_beam']
 EAVE = TIE + .25                 # top of tie beam = main side eaves
 RIDGE = D['ridge_height']
-PITCH = (RIDGE - EAVE) / UC
+PITCH = (RIDGE - EAVE) / ((W - BAY) / 2 + .3)
 HB = RIDGE - PITCH * (UC - BAY)  # main roof edge against the bay strip
 SILL = D['window_sill']
 BURY = D['bury_z'] - B           # buried wall bottom, local height
@@ -252,13 +251,15 @@ frames=Group('Shop arched frames',FS,[sage,glass,tiles,shadow],'shopfront')
 for i,(a,b) in enumerate(arches):
     mid=(a+b)/2
     outer=arc(a,b,spring,rise);inner=arc(a,b,spring,rise,.09)
-    frames.poly(outer+inner[::-1],-.16,-.05)
+    frames.poly(outer+inner[::-1],-.29,-.05)
     frames.poly(arc(a,b,spring,rise,.025)+arc(a,b,spring,rise,.045)[::-1],-.05,-.025)
     # One continuous arched glass receiver prevents slivers between the lower
     # rectangles and fanlight, including the zones over the entry jambs.
     bottom=0 if i==1 else .45
-    frames.poly([(a+.08,bottom),(b-.08,bottom)]+inner[::-1],-.24,-.22,1)
-    for u in (a,b-.08):frames.box(u,u+.08,.45,spring,-.16,-.05)
+    frames.poly([(a+.08,bottom),(b-.08,bottom)]+arc(a,b,spring,rise,.075)[::-1],-.24,-.22,1)
+    for u in (a,b-.08):
+        for h0,h1 in ((.45,1.70),(1.80,spring)):
+            frames.box(u,u+.08,h0,h1,-.29,-.05)
     frames.box(a,b,1.70,1.80,-.16,-.05)
     if i==1:
         left,right=mid-.44,mid+.44
@@ -404,7 +405,7 @@ for h,dep in [(TIE,.18),(TIE+.07,.16),(EAVE-.04,.19)]:g.box(BAY,W,h,h+.035,dep-.
 g.box(UC - .55, UC + .55, TIE - .04, EAVE + .02, .12, .16)
 g.done()
 m = Mesh('Envelope gable floor')
-m.box(((FX - ZL + FX) / 2, (YN - BAY + YS) / 2, B + (TIE + EAVE) / 2), (ZL, W - BAY, EAVE - TIE))
+m.box(((FX - ZL - D['gable_projection'] + FX) / 2, (YN - BAY + YS) / 2, B + (TIE + EAVE) / 2), (ZL+D['gable_projection'], W - BAY, EAVE - TIE))
 finish(m, 'architecture', [timber])
 # Interpreted scrollwork, not an invented inscription: the close view resolves
 # curled leaves and a central boss but not a reliably readable motif.
@@ -426,14 +427,15 @@ wall('first floor north return', north, 0, .2, SHOP + .27, TIE, depth=.05)
 south, _ = plane((FX - ZR, YS), (FX, YS))
 wall('first floor south return', south, 0, ZR, SHOP + .27, TIE, depth=.05)
 
+FGA = FG @ Matrix.Translation((0, 0, D['gable_projection']))
 # ------------------------------------------------------------- street gable
 gable_top = RIDGE - .14
 half = (gable_top - EAVE) / PITCH
 # The north bay stays open; the bargeboard ends beside its attic window.
-g = Group('Envelope street gable infill', FG, [plaster])
-g.poly([(BAY, EAVE), (UC + half, EAVE), (UC, gable_top), (BAY, gable_top - PITCH * (UC - BAY))], -.25, 0)
+g = Group('Envelope street gable infill', FGA, [plaster])
+g.poly([(UC-half, EAVE), (UC+half, EAVE), (UC, gable_top)], -.25-D['gable_projection'], 0)
 g.done()
-g = Group('Timber street gable framing', FG, [timber])
+g = Group('Timber street gable framing', FGA, [timber])
 
 
 def under_roof(u, drop=0):
@@ -451,8 +453,8 @@ for sign in (-1,1):
         if run>0:g.strut(start,(start[0]+sign*run,start[1]+SLOPE*run),.15,0,.07)
 g.done()
 
-barge = Group('Roof bargeboards and finial', FG, [timber], 'roof')
-for u0, u1 in ((BAY-.15, UC), (UC, W + .3)):
+barge = Group('Roof bargeboards and finial', FGA, [timber], 'roof')
+for u0, u1 in ((BAY-.3, UC), (UC, W + .3)):
     t0, t1 = RIDGE + .1 - PITCH * abs(u0 - UC), RIDGE + .1 - PITCH * abs(u1 - UC)
     barge.poly([(u0,t0),(u1,t1),(u1,t1-.38),(u0,t0-.38)],.32,.40)
     for drop in (.04,.15,.30):
@@ -464,7 +466,7 @@ barge.poly([(W - .12, EAVE - .35), (W + .2, EAVE - .35), (W + .2, EAVE - .55), (
             (W - .12, EAVE - .85)], .05, .34)
 barge.done()
 for side,u in [(-1,BAY+.04),(1,W-.10)]:
-    g=Group('Fine carved barge bracket '+str(side),FG,[timber])
+    g=Group('Fine carved barge bracket '+str(side),FGA,[timber])
     htop=under_roof(u)+.03;bottom=htop-.76
     outline=[(u-.08,htop),(u+.16,htop)]+[(u-.035+.195*(1-t/10)**.5,htop-.76*t/10) for t in range(1,11)]+[(u-.08,bottom)]
     g.poly(outline,.08,.31)
@@ -483,18 +485,41 @@ def prism(name, section, x0, x1, materials, part='roof'):
     return finish(m, part, materials, roof_uv=True, recalc=True)
 
 
-yr = YN - UC
-ys_eave = YN - (W + .3)
-section = [(YN - BAY, B + HB), (yr, B + RIDGE), (ys_eave, B + RIDGE - PITCH * (W + .3 - UC)),
-           (ys_eave, B + RIDGE - PITCH * (W + .3 - UC) - .14), (yr, B + RIDGE - .14), (YN - BAY, B + HB - .14)]
-prism('Roof main clay shell', section, FX - ZL - .35, RX + .3, [clay])
-m = Mesh('Fine alley eaves gutter')
-gz = B + RIDGE - PITCH * (W + .3 - UC) - .1
-m.tube([(FX - ZL - .3, ys_eave - .06, gz), (RX + .3, ys_eave - .06, gz)], .06, 0, 8)
-finish(m, 'roof', [iron])
-m = Mesh('Roof main ridge tiles')
-m.box(((FX - ZL - .35 + RX + .3) / 2, yr, B + RIDGE + .05), (RX + .3 - FX + ZL + .35, .26, .14))
-finish(m, 'roof', [clay])
+def roof_shell(name, upper, faces, material=clay, part='roof', thickness=.14):
+    """Closed slab from a connected roof surface, without internal seam walls."""
+    n=len(upper)
+    counts={}
+    for face in faces:
+        for a,b in zip(face,face[1:]+face[:1]):
+            edge=tuple(sorted((a,b)));counts[edge]=counts.get(edge,0)+1
+    sides=[(a,b,b+n,a+n) for (a,b),count in counts.items() if count==1]
+    vertices=upper+[(x,y,z-thickness) for x,y,z in upper]
+    closed=faces+[tuple(i+n for i in reversed(f)) for f in faces]+sides
+    m=Mesh(name);m.add(vertices,closed)
+    return finish(m,part,[material],roof_uv=True,recalc=True)
+
+
+yr=YN-UC;yn_eave=YN-BAY+.3;ys_eave=YS-.3
+roof_front=FX-ZL-.35-D['gable_projection']
+roof_back=roof_front+D['main_roof_depth']
+RX=roof_back-.12
+main_north_back=roof_back-D['main_rear_skew']
+ridge_back=roof_back-D['main_hip_run']
+roof_shell('Roof main clay shell',[
+    (roof_front,yn_eave,B+EAVE),(roof_front,yr,B+RIDGE),
+    (roof_front,ys_eave,B+EAVE),(roof_back,ys_eave,B+EAVE),
+    (main_north_back,yn_eave,B+EAVE),(ridge_back,yr,B+RIDGE)],
+    [(0,1,5,4),(1,2,3,5),(3,4,5)])
+m=Mesh('Fine alley eaves gutter')
+m.tube([(roof_front,ys_eave-.06,B+EAVE-.1),(roof_back,ys_eave-.06,B+EAVE-.1)],.06,0,8)
+finish(m,'roof',[iron])
+m=Mesh('Roof main ridge tiles')
+m.box(((roof_front+ridge_back)/2,yr,B+RIDGE+.04),(ridge_back-roof_front,.20,.10))
+finish(m,'roof',[clay])
+for y in (yn_eave,ys_eave):
+    m=Mesh('Roof rear hip tiles '+str(y))
+    m.tube([(ridge_back,yr,B+RIDGE+.025),(main_north_back if y==yn_eave else roof_back,y,B+EAVE+.025)],.065,0,8)
+    finish(m,'roof',[clay])
 
 # Narrow north bay: small three-light attic window under its hipped clay roof,
 # set back behind the tie beam and bargeboard (Nov2020 close, May2011 frontal).
@@ -508,11 +533,12 @@ for u in (.06, BAY - .06):
     g.box(u - .06, u + .06, TIE, D['bay_eaves'], 0, .06)
 g.box(0, BAY, D['bay_eaves'] - .14, D['bay_eaves'], -.01, .08)
 g.done()
-side, _ = plane((FX - .2, YN - BAY), (RX, YN - BAY))
-wall('bay side above main roof', side, 0, RX - FX + .2, EAVE - .2, D['bay_eaves']-.12, mat=plaster, depth=.25)
+north_back=FX-.45+D['north_roof_depth']
+side, _ = plane((FX - .2, YN - BAY), (north_back, YN - BAY))
+wall('bay side above main roof', side, 0, north_back - FX + .2, EAVE - .2, D['bay_eaves']-.12, mat=plaster, depth=.25)
 
 be,br=D['bay_eaves'],D['bay_ridge'];north_h=br
-xf=FX-.45;backx=RX+.3;y0=YN-BAY;y1=YN-.02
+xf=FX-.45;backx=north_back;y0=YN-BAY;y1=YN-.02
 # Lean-to against NatWest: high edge stays against the wall. Only the front
 # turns down into a hip; there is no ridge through the middle of this strip.
 upper=[(xf,y0,be),(backx,y0,be),(backx,y1,br),(xf+.85,y1,br),(xf,y1,be)]
@@ -526,23 +552,11 @@ m=Mesh('Roof north wall flashing')
 m.box(((xf+.85+backx)/2,y1-.025,B+br+.025),(backx-xf-.85,.05,.10))
 finish(m,'roof',[iron])
 
-# Tall brick stack on the ridge behind the gable: Nov2020 Street View shows it
-# above the ridge, the May2011 frontal view hides it behind the apex.
-cx = 14.0
-m = Mesh('Roof brick chimney stack')
-m.box((cx, yr, B + 10.55), (1.0, .62, 2.7))
-m.box((cx, yr, B + 11.96), (1.12, .74, .12))
-finish(m, 'roof', [brick])
-m = Mesh('Fine chimney pots')
-for dx in (-.25, .25):
-    m.lathe((cx + dx, yr), [(B + 12.02, .13), (B + 12.37, .11), (B + 12.42, .13)], 12)
-finish(m, 'roof', [pot])
-
 # ------------------------------------------------- side, rear and party walls
 alley, _ = plane((FX, YS), (RX, YS))
 wall('alley side lower panelled',alley,0,2.6,BURY,SHOP,mat=sage)
 wall('alley side lower',alley,2.6,RX-FX,BURY,SHOP,mat=render)
-wall('alley side upper timbered',alley,0,RX-FX,SHOP,EAVE)
+wall('alley side upper timbered',alley,0,RX-FX,SHOP,EAVE+.1)
 g=Group('Timber alley side return',alley,[timber])
 for lo,hi in [(SHOP,SHOP+.22),(SILL-.16,SILL),(TIE,EAVE)]:g.box(0,RX-FX,lo,hi,0,.07)
 for k in range(16):
@@ -557,44 +571,92 @@ for lo,hi in [(.45,.52),(1.55,1.61),(2.03,2.09)]:g.box(0,2.6,lo,hi,.025,.09)
 for u in (.04,.88,1.72,2.56):g.box(u-.03,u+.03,.52,2.03,.025,.07)
 g.done()
 
-rearwall, _ = plane((RX, YS), (RX, YN))
-main_w = W - BAY
-g = Group('Envelope range rear gable', rearwall, [brick])
-south_eave = RIDGE - PITCH * (W - UC)
-g.poly([(0, BURY), (main_w, BURY), (main_w, HB - .14), (W - UC, RIDGE - .14), (0, south_eave - .14)],
-       -.36, 0)
-g.poly([(main_w,BURY),(W,BURY),(W,br-.12),(main_w,be-.12)],-.36,0)
-g.done()
-party, _ = plane((RR, YN), (FX, YN))
-wall('NatWest party wall rear range', party, 0, RR - RX, BURY, D['rear_height'], mat=brick, depth=.2)
-g=Group('Envelope NatWest party wall front range',party,[brick])
-hipx=xf+.85
-endheight=be+(br-be)*max(0,min(1,(FX-xf)/.85))-.12
-g.poly([(RR-RX,BURY),(RR-FX,BURY),(RR-FX,endheight),(RR-hipx,br-.12),(RR-RX,br-.12)],-.2,0)
+# Rear hip closes at the eaves, not an invented tall rear gable.
+rearwall,rear_width=plane((RX,YS),(main_north_back-.12,YN-BAY))
+wall('main range rear wall',rearwall,.08,rear_width,BURY,EAVE+.05,mat=plaster)
+g=Group('Timber main rear wall',rearwall,[timber])
+for h in (SHOP,6.15,EAVE-.18):g.box(0,rear_width,h,h+.12,0,.06)
+for u in (.08,1.6,3.1,4.6,6.1,W-BAY-.08):g.box(u-.05,u+.05,SHOP,EAVE-.14,0,.06)
 g.done()
 
-# Low flat-roofed rear range along the alley, as seen in satellite imagery.
-rh = D['rear_height']
-rs, _ = plane((RX, YS), (RR, YS))
-wall('rear range alley wall', rs, 0, RR - RX, BURY, rh, [(4.2, 5.1, 0, 2.1)], brick, 'rear')
-g = Group('Rear range service door', rs, [door, metal], 'rear')
-g.box(4.2, 5.1, 0, 2.1, -.12, -.08)
-g.box(4.9, 4.95, .95, 1.1, -.08, -.04, 1)
+# The white middle deck wraps behind the short entrance roof and the main
+# rear hip. The attached lower red wing occupies its alley-side edge.
+mid_end=D['rear_flat_end_x'];mh=D['rear_flat_height']
+wing_y=YS+D['rear_wing_width'];wh=D['rear_wing_eave']
+def range_box(name,x0,x1,y0,y1,height,wallmat=brick,roofmat=felt,add_roof=True):
+    m=Mesh('Rear '+name+' walls')
+    m.box(((x0+x1)/2,(y0+y1)/2,B+(BURY+height-.16)/2),(x1-x0,y1-y0,height-.16-BURY))
+    finish(m,'rear',[wallmat])
+    if not add_roof:return
+    m=Mesh('Rear '+name+' roof')
+    m.box(((x0+x1)/2,(y0+y1)/2,B+height-.08),(x1-x0,y1-y0,.16))
+    finish(m,'rear',[roofmat])
+
+range_box('north middle deck',north_back,RX,YN-BAY,YN,mh,plaster,coping,add_roof=False)
+range_box('middle deck',RX,mid_end,wing_y,YN,mh,plaster,coping,add_roof=False)
+# A single L-shaped roof avoids coincident seams between the wraparound parts.
+roof_shell('Rear continuous middle deck',[(north_back,YN,B+mh),
+    (mid_end,YN,B+mh),(mid_end,wing_y,B+mh),(RX,wing_y,B+mh),
+    (main_north_back-.12,YN-BAY,B+mh),(north_back,YN-BAY,B+mh)],
+    [(0,1,2,3,4,5)],material=coping,part='rear',thickness=.16)
+# Close the entrance lean-to's rear and party wall at its actual short depth.
+r,_=plane((north_back,YN-BAY),(north_back,YN))
+g=Group('Envelope north roof rear wall',r,[plaster])
+g.poly([(0,BURY),(BAY,BURY),(BAY,br-.12),(0,be-.12)],-.20,0);g.done()
+party,_=plane((north_back,YN),(FX,YN))
+g=Group('Envelope short north party wall',party,[brick])
+endheight=be+(br-be)*(FX-xf)/.85-.12
+hipu=north_back-(xf+.85)
+g.poly([(0,BURY),(north_back-FX,BURY),(north_back-FX,endheight),(hipu,br-.12),(0,br-.12)],-.2,0)
 g.done()
-re, _ = plane((RR, YS), (RR, YN))
-wall('rear range back wall', re, 0, W, BURY, rh, mat=brick, part='rear')
-m = Mesh('Rear range flat roof')
-m.box(((RX + RR) / 2, (YN + YS) / 2, B + rh - .08), (RR - RX, W, .16))
-m.box(((RX + RR) / 2, YS + .15, B + rh + .12), (RR - RX, .3, .24), 1)
-m.box((RR - .15, (YN + YS) / 2, B + rh + .12), (.3, W - .3, .24), 1)
-finish(m, 'rear', [felt, coping])
-for i, x in enumerate((21.2, 26.0)):
-    m = Mesh('Rear range rooflight %d' % i)
-    m.box((x, (YN + YS) / 2, B + rh + .1), (1.3, 1.8, .2), 0)
-    m.add([(x - .6, (YN + YS) / 2 - .85, B + rh + .2), (x + .6, (YN + YS) / 2 - .85, B + rh + .2),
-           (x + .6, (YN + YS) / 2 + .85, B + rh + .2), (x - .6, (YN + YS) / 2 + .85, B + rh + .2),
-           (x, (YN + YS) / 2, B + rh + .55)], [(0, 1, 4), (1, 2, 4), (2, 3, 4), (3, 0, 4)], 1)
-    finish(m, 'rear', [metal, glass])
+
+# Lower single-slope wing with a hip at the rear, visible in both rear photos.
+wing_tip=mid_end-.75
+roof_shell('Rear red wing roof',[(RX,YS,B+wh),(RX,wing_y,B+mh),
+    (wing_tip,wing_y,B+mh),(mid_end,YS,B+wh)],[(0,1,2),(0,2,3)],part='rear')
+rs,_=plane((RX,YS),(mid_end,YS))
+wall('red wing alley wall',rs,0,mid_end-RX,BURY,wh-.14,mat=plaster,part='rear')
+g=Group('Timber rear wing framing',rs,[timber])
+for h in (SHOP,wh-.28):g.box(0,mid_end-RX,h,h+.12,0,.055)
+for k in range(5):
+    u=.06+k*(mid_end-RX-.12)/4;g.box(u-.05,u+.05,SHOP,wh-.14,0,.055)
+g.done()
+re,_=plane((mid_end,YS),(mid_end,wing_y))
+wall('red wing rear wall',re,0,D['rear_wing_width'],BURY,wh-.14,mat=plaster,part='rear')
+# Grey roof is visibly stepped, with four lights on the broad section and
+# one long light on its narrower, higher rear section. Plan offsets estimated.
+step=D['rear_grey_step_x'];gh=D['rear_grey_height'];uh=D['rear_upper_height']
+range_box('broad grey range',mid_end,step,YS,YN,gh)
+range_box('upper grey range',step,RR,YS+1.0,YN-1.0,uh)
+range_box('rear south shoulder',step,RR,YS,YS+1.0,gh)
+range_box('rear north shoulder',step,RR,YN-1.0,YN,gh)
+
+def skylight(name,x,y,z,sx,sy,slope=0):
+    # Flush rectangular glass in a shallow raised curb; no invented pyramids.
+    m=Mesh('Rear rooflight '+name)
+    m.box((0,0,0),(sx,sy,.16),0)
+    m.box((0,0,.09),(sx-.12,sy-.12,.025),1)
+    m.box((0,0,.11),(.045,sy-.12,.035),0)
+    transform=Matrix.Translation((x,y,B+z+.09)) @ Matrix.Rotation(slope,4,'X')
+    finish(m,'rear',[metal,glass],transform)
+
+skylight('middle north',11.25,YN-.73,mh,.85,.85)
+skylight('middle central',15.25,YN-2.5,mh,1.25,1.25)
+wx=15.05;wy=YS+1.25
+# Dark rectangular light on the main rear hip, visible in the rear oblique.
+a=Vector((ridge_back,yr,B+RIDGE));b=Vector((roof_back,ys_eave,B+EAVE));c=Vector((main_north_back,yn_eave,B+EAVE))
+normal=(b-a).cross(c-a).normalized()
+if normal.z<0:normal=-normal
+m=Mesh('Rear rooflight main hip');m.box((0,0,0),(.62,.85,.12),0);m.box((0,0,.07),(.50,.73,.025),1)
+transform=Matrix.Translation(a*.40+b*.40+c*.20+normal*.08) @ Vector((0,0,1)).rotation_difference(normal).to_matrix().to_4x4()
+finish(m,'rear',[metal,glass],transform)
+skylight('red wing',wx,wy,wh+(mh-wh)*.5,.68,.80,math.atan2(mh-wh,D['rear_wing_width']))
+for i,(x,y) in enumerate(((19.2,YS+2.0),(21.4,YN-2.0),(24.2,YS+2.0),(24.0,YN-2.0))):
+    skylight('grey '+str(i),x,y,gh,1.3,1.55)
+skylight('upper long',28.2,(YN+YS)/2,uh,1.2,2.7)
+m=Mesh('Rear grey access hatch')
+m.box((22.3,(YN+YS)/2,B+gh+.08),(.85,.85,.16))
+finish(m,'rear',[metal])
 
 # The alley itself: paved floor along the whole depth, closed by an estimated
 # rear wall and gate. Its southern side is William Hill's (placeholder) wall.

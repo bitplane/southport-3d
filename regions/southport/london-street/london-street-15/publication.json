@@ -27,7 +27,7 @@
     },
     {
       "id": "roof",
-      "name": "Clay tile roofs, bargeboards and chimney",
+      "name": "Symmetric clay roof, short north roof and bargeboards",
       "collection": "roof"
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "id": "rear",
-      "name": "Side alley and estimated rear range",
+      "name": "Stepped rear roofs, rooflights and side alley",
       "collection": "rear"
     }
   ],
@@ -167,7 +167,7 @@
       "match": "^Fine ",
       "walk": {
         "strategy": "keep",
-        "reason": "Keep the gate, cast-iron bracket, carved boss, pots, downpipe and door furniture near the pavement."
+        "reason": "Keep the gate, cast-iron bracket, carved boss, downpipe and door furniture near the pavement."
       },
       "district": {
         "strategy": "omit",
