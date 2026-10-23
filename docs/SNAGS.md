@@ -6,7 +6,10 @@ photos. **Queue snag** saves the report on the machine running `tools/serve.py`.
 The view is frozen while you annotate it. A failed submission retains the form
 so you can retry. Closing an unsaved form discards it.
 
-**Snag queue** lists saved reports, including their task status. Open one to
+**Snag queue** lists outstanding reports, including their task status. It refreshes
+automatically within about two seconds while the viewer tab is visible; completed
+reports disappear from the list and count. Completed records and their photos
+remain on disk and accessible through direct report links or the CLI. Open one to
 inspect the original screenshot and marked area, open reference photos, or
 return to its camera position. The saved screenshot is the exact framing;
 a differently sized browser window can show a different aspect ratio when

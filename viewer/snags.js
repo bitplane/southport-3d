@@ -14,7 +14,7 @@ async function photoData(file) {
   return {name:file.name||'Pasted photo',data:canvas.toDataURL('image/jpeg',.9)};
 }
 async function api(path, options) {
-  const response=await fetch(path,options);
+  const response=await fetch(path,{cache:'no-store',...options});
   if(!response.ok){
     let message='The snag server is unavailable. Restart tools/serve.py to enable the queue.';
     try{message=(await response.json()).error||message;}catch{}
@@ -95,7 +95,7 @@ export function installSnags({capture,restore,setActive}) {
     busy=true;$('snag-submit').disabled=true;$('snag-close').disabled=true;message('Saving snag…');
     try{
       const saved=await api('/api/snags',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...draft,box,comment:$('snag-comment').value,photos})});
-      await showReport(saved);message('Saved to the local queue. You can close this panel and add another.');refreshCount();
+      await showReport(saved);message('Saved to the local queue. You can close this panel and add another.');refreshQueue();
     }catch(error){message(error.message+' Your report is still here; you can retry.');}
     finally{busy=false;$('snag-submit').disabled=false;$('snag-close').disabled=false;}
   };
@@ -113,19 +113,53 @@ export function installSnags({capture,restore,setActive}) {
     }));
     $('snag-restore').onclick=()=>{restore(saved.view);close();};
   }
-  async function queue(){
-    report=null;$('snag-title').textContent='Snag queue';$('snag-help').textContent='Saved locally on the machine serving this viewer. Select a report to see its marked view and photos.';
-    dialog.querySelector('.snag-workspace').hidden=true;$('snag-list').hidden=false;$('snag-list').replaceChildren();message('Loading queue…');open();
-    try{
-      const {snags}=await api('/api/snags');
-      $('snag-list').replaceChildren(...snags.map(saved=>{
-        const button=document.createElement('button');button.className='snag-list-item';button.type='button';
+  let refreshing=null,listRevision=null;
+  function renderQueue(snags){
+    const active=snags.filter(saved=>saved.status!=='done');
+    document.getElementById('snag-queue').textContent=`Snag queue (${active.length})`;
+    if(!dialog.open||$('snag-list').hidden)return;
+    const revision=JSON.stringify(active);
+    if(revision!==listRevision){
+      const focused=document.activeElement?.dataset.snagId;
+      $('snag-list').replaceChildren(...active.map(saved=>{
+        const button=document.createElement('button');button.className='snag-list-item';button.type='button';button.dataset.snagId=saved.id;
         const title=document.createElement('strong'),detail=document.createElement('span');title.textContent=saved.comment;detail.textContent=saved.status.replace('_',' ')+' · '+new Date(saved.created_at).toLocaleString();button.append(title,detail);button.onclick=()=>{message('');showReport(saved);};return button;
-      }));message(snags.length?'':'No snags yet. Position the camera and choose Report snag.');
-    }catch(error){message(error.message);}
+      }));
+      listRevision=revision;
+      if(focused){
+        const replacement=[...$('snag-list').children].find(button=>button.dataset.snagId===focused);
+        (replacement||$('snag-close')).focus();
+      }
+    }
+    message(active.length?'':'No outstanding snags. Position the camera and choose Report snag.');
   }
-  async function refreshCount(){try{const {snags}=await api('/api/snags');document.getElementById('snag-queue').textContent=`Snag queue (${snags.filter(s=>s.status!=='done').length})`;}catch{}}
+  function refreshQueue(){
+    if(refreshing)return refreshing;
+    refreshing=(async()=>{
+      try{
+        const {snags}=await api('/api/snags');
+        renderQueue(snags);
+        // Refresh a saved report's status without disturbing a draft or photos.
+        if(dialog.open&&report&&$('snag-list').hidden){
+          const current=snags.find(saved=>saved.id===report.id);
+          if(current)$('snag-title').textContent='Queued snag · '+current.status.replace('_',' ');
+        }
+      }catch(error){if(dialog.open&&!$('snag-list').hidden)message(error.message);}
+      finally{refreshing=null;}
+    })();
+    return refreshing;
+  }
+  function queue(){
+    report=null;listRevision=null;$('snag-title').textContent='Snag queue';$('snag-help').textContent='Outstanding reports, updated automatically. Select a report to see its marked view and photos.';
+    dialog.querySelector('.snag-workspace').hidden=true;$('snag-list').hidden=false;$('snag-list').replaceChildren();message('Loading queue…');open();
+    refreshQueue();
+  }
   document.getElementById('snag-new').onclick=composer;document.getElementById('snag-queue').onclick=queue;
-  refreshCount();
+  // Status updates also come from CLI workers, so observe the server's queue.
+  // Polling works with already-running servers and pauses in hidden tabs.
+  setInterval(()=>{if(!document.hidden)refreshQueue();},2000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshQueue();});
+  window.addEventListener('focus',()=>refreshQueue());
+  refreshQueue();
   return {openReport:async id=>{open();try{await showReport(await api('/api/snags/'+encodeURIComponent(id)));}catch(error){message(error.message);}}};
 }
