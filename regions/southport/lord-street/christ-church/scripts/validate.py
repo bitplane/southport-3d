@@ -109,3 +109,12 @@ for name in ('Envelope rear cross gable','Envelope cafe west return','Envelope r
 errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
 assert not errors,errors[:8]
 print('Rear hall corner surface ownership passed')
+
+# Tower quoins retain their exposed relief but stop at the masonry face.
+# Their former 7 mm embedded ends overlapped the tower's corner end caps.
+quoins=[o for o in objects if o.name.startswith('Fine tower quoin')]
+assert len(quoins)==312
+for ob in quoins:
+    assert abs(min(v.co.z for v in ob.data.vertices))<1e-6,ob.name
+    assert abs(max(v.co.z for v in ob.data.vertices)-.063)<1e-6,ob.name
+print('All 312 tower quoins meet masonry without embedded corner faces')

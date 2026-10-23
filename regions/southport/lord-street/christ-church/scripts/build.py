@@ -86,7 +86,9 @@ for label,origin,normal,width in faces:
     # Quoin strips make the tower's corners read without ashlar overdraw.
     for side in [-1,1]:
         for h in [1.5+i*.48 for i in range(39)]:
-            box('Fine tower quoin',(side*(width/2-.16),h,.028),(.32,.44,.07),transform=tr,mat=trim)
+            # Wall owns the embedded portion: retain the .063 m exposed relief
+            # without duplicating its outer corner face below the wall surface.
+            box('Fine tower quoin',(side*(width/2-.16),h,.0315),(.32,.44,.063),transform=tr,mat=trim)
 # Closed shallow inner roof below battlements, never a missing face seen from above.
 box('Roof tower lead deck',(cx,(front+back)/2,z0+21.15),(tw-.8,front-back-.8,.18),'roofs',metal)
 
