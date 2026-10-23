@@ -14,7 +14,7 @@ const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5df');scene.
 const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.05,3000);
 const keys=new Set(),clock=new THREE.Clock(),ray=new THREE.Raycaster();
 const vector=new THREE.Vector3(),down=new THREE.Vector3(0,-1,0);
-let orbit,walkControl,drag=null,walkFloor=0,reporting=false;
+let orbit,walkControl,drag=null,walkFloor=0,reporting=false,dropPending=false,dropTimer=0;
 function status(){
   if(!streamer)return;
   const ready=streamer.entries.filter(e=>e.current).length, failed=streamer.entries.some(e=>e.failed.size);
@@ -37,31 +37,56 @@ function selectAsset(asset){
   viewpoint(asset.views[0]);status();
 }
 function setMode(next){
-  mode=next;orbit.enabled=next==='orbit';keys.clear();
+  if(next===mode)return;
+  mode=next;orbit.enabled=next==='orbit';keys.clear();drag=null;dropPending=false;
   if(next==='orbit'){
     walkControl.unlock();camera.getWorldDirection(vector);orbit.target.copy(camera.position).addScaledVector(vector,12);orbit.update();
   }else if(selectedAsset){
-    const spawn=selectedAsset.walkSpawn;camera.position.copy(assetPoint(selectedAsset,spawn.position));camera.lookAt(assetPoint(selectedAsset,spawn.target));walkFloor=camera.position.y-1.7;
+    // Keep position and heading; ground may still be streaming beneath us.
+    walkFloor=camera.position.y-1.7;dropPending=true;dropTimer=0;dropToGround();
   }
   $('orbit').classList.toggle('active',mode==='orbit');$('walk').classList.toggle('active',mode==='walk');$('orbit').setAttribute('aria-pressed',mode==='orbit');$('walk').setAttribute('aria-pressed',mode==='walk');
   $('walk-tools').hidden=mode!=='walk';$('crosshair').hidden=mode!=='walk';
-  $('controls-hint').textContent=mode==='walk'?'WASD / arrows to walk · Shift to move faster · Drag to look':'Drag to orbit · Scroll to move closer · Right-drag to pan';status();
+  $('controls-hint').textContent=mode==='walk'?'WASD / arrows to walk · Shift to move faster · Drag to look':'Drag to orbit · WASD / arrows to move · Shift to move faster · Scroll to zoom · Right-drag to pan';status();
+}
+function dropToGround(){
+  scene.updateMatrixWorld(true);
+  ray.set(new THREE.Vector3(camera.position.x,camera.position.y+.05,camera.position.z),down);ray.far=Infinity;
+  const hit=ray.intersectObjects(streamer.groundRoots,true).find(h=>h.face);
+  if(!hit)return; // Unmodelled/unloaded ground: stay here, never use a remote spawn.
+  walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;
+}
+function moveOrbit(dt){
+  if(mode!=='orbit'||reporting)return;
+  const x=Number(keys.has('KeyD')||keys.has('ArrowRight'))-Number(keys.has('KeyA')||keys.has('ArrowLeft'));
+  const z=Number(keys.has('KeyW')||keys.has('ArrowUp'))-Number(keys.has('KeyS')||keys.has('ArrowDown'));
+  if(!x&&!z)return;
+  camera.updateMatrixWorld();
+  // Camera-right remains stable even when looking nearly straight down.
+  vector.setFromMatrixColumn(camera.matrixWorld,0);vector.y=0;vector.normalize();
+  const speed=THREE.MathUtils.clamp(camera.position.distanceTo(orbit.target)*.7,3,180);
+  const step=speed*(keys.has('ShiftLeft')||keys.has('ShiftRight')?3:1)*Math.min(dt,.05)/Math.max(1,Math.hypot(x,z));
+  const rightX=vector.x,rightZ=vector.z;
+  vector.set((rightX*x+rightZ*z)*step,0,(rightZ*x-rightX*z)*step);
+  camera.position.add(vector);orbit.target.add(vector);
 }
 function resize(){const dpr=Math.min(devicePixelRatio,2)*Number($('resolution').value);renderer.setPixelRatio(dpr);renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();}
 function walk(dt){
   if(mode!=='walk'||reporting)return;
+  if(dropPending){dropTimer-=dt;if(dropTimer<=0){dropToGround();dropTimer=.2;}}
   const speed=(keys.has('ShiftLeft')||keys.has('ShiftRight')?5:1.8)*Math.min(dt,.05);
   const x=Number(keys.has('KeyD')||keys.has('ArrowRight'))-Number(keys.has('KeyA')||keys.has('ArrowLeft'));
   const z=Number(keys.has('KeyW')||keys.has('ArrowUp'))-Number(keys.has('KeyS')||keys.has('ArrowDown'));
   if(x||z){const scale=speed/Math.max(1,Math.hypot(x,z));walkControl.moveRight(x*scale);walkControl.moveForward(z*scale);
     // Ground-following only: no collision physics in this first inspection viewer.
+    if(dropPending)return;
     ray.set(new THREE.Vector3(camera.position.x,walkFloor+.6,camera.position.z),down);ray.far=5;
     const hit=ray.intersectObjects(streamer.groundRoots,true).find(h=>h.face && h.point.y<=walkFloor+.45);
     if(hit)walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;
   }
 }
 function animate(now){
-  requestAnimationFrame(animate);const dt=clock.getDelta();walk(dt);if(mode==='orbit'&&!reporting)orbit.update();
+  requestAnimationFrame(animate);const dt=clock.getDelta();walk(dt);moveOrbit(dt);if(mode==='orbit'&&!reporting)orbit.update();
   if(streamer && !reporting && now-lastStream>200){streamer.update(camera,settings,$('quality').value);lastStream=now;}
   renderer.render(scene,camera);frames++;
   if(now-lastStats>1000){$('fps').textContent=`${Math.round(frames*1000/(now-lastStats))} fps`;$('triangles').textContent=renderer.info.render.triangles.toLocaleString();frames=0;lastStats=now;status();}
@@ -77,9 +102,9 @@ async function init(){
   renderer.domElement.addEventListener('pointerdown',e=>{if(mode==='walk'&&!walkControl.isLocked){drag={x:e.clientX,y:e.clientY};renderer.domElement.setPointerCapture(e.pointerId);}});
   renderer.domElement.addEventListener('pointermove',e=>{if(!drag||mode!=='walk'||walkControl.isLocked)return;const rotation=new THREE.Euler().setFromQuaternion(camera.quaternion,'YXZ');rotation.y-=(e.clientX-drag.x)*.003;rotation.x=THREE.MathUtils.clamp(rotation.x-(e.clientY-drag.y)*.003,-1.45,1.45);camera.quaternion.setFromEuler(rotation);drag={x:e.clientX,y:e.clientY};});
   renderer.domElement.addEventListener('pointerup',()=>{drag=null;});
-  window.addEventListener('keydown',e=>{if(reporting||e.target.matches('input,select,button,textarea,[contenteditable]'))return;if(mode==='walk'&&['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight'].includes(e.code)){e.preventDefault();keys.add(e.code);}});
+  window.addEventListener('keydown',e=>{if(reporting||e.target.matches('input,select,button,textarea,[contenteditable]'))return;if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight'].includes(e.code)){e.preventDefault();keys.add(e.code);}});
   window.addEventListener('keyup',e=>keys.delete(e.code));window.addEventListener('blur',()=>{keys.clear();drag=null;});
-  $('orbit').onclick=()=>setMode('orbit');$('walk').onclick=()=>{setMode('walk');viewport.focus();};$('home').onclick=()=>viewpoint(selectedAsset.views[0]);$('capture').onclick=()=>walkControl.lock();
+  $('orbit').onclick=()=>{setMode('orbit');viewport.focus();};$('walk').onclick=()=>{setMode('walk');viewport.focus();};$('home').onclick=()=>viewpoint(selectedAsset.views[0]);$('capture').onclick=()=>walkControl.lock();
   $('settings-toggle').onclick=()=>{const open=$('settings-panel').hidden;$('settings-panel').hidden=!open;$('settings-toggle').setAttribute('aria-expanded',open);};
   for(const [id,key] of [['detail','detailDistance'],['district','districtDistance']])$(id+'-distance').oninput=()=>{settings[key]=Number($(id+'-distance').value);$(id+'-output').textContent=settings[key]+' m';};
   $('resolution').oninput=()=>{$('resolution-output').textContent=$('resolution').value+'×';resize();};$('wireframe').onchange=()=>streamer?.setWireframe($('wireframe').checked);$('shadows').onchange=()=>{renderer.shadowMap.enabled=$('shadows').checked;renderer.shadowMap.needsUpdate=true;};$('retry').onclick=()=>location.reload();
