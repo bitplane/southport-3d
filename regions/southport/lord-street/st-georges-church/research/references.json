@@ -1,5 +1,5 @@
 {
-  "accessed": "2026-10-22",
+  "accessed": "2026-10-23",
   "rights": "Reference links only; no external photographs or downloaded pixels in source or materials. OSM contributors data supplies registration. All geometry and textures authored.",
   "references": [
     {
@@ -10,7 +10,7 @@
     {
       "id": "osm",
       "url": "https://www.openstreetmap.org/way/51826176",
-      "observed": "Retained local extract provides simplified 18.25 by 35.55 metre footprint. Tower projection and nave front division are photographic estimates."
+      "observed": "Simplified 18.25 by 35.55 m outline covers the church AND rear hall. It is not a nave-only footprint. Tower projection and internal roof divisions need photographic interpretation."
     },
     {
       "id": "gardens-aerial",
@@ -90,10 +90,28 @@
     },
     {
       "id": "aerial-current",
-      "url": "https://www.google.com/maps/@53.64957,-3.00217,20z/data=!3m1!1e3",
-      "capture": "Acquisition date unknown; accessed 2026-10-22",
+      "url": "https://www.google.com/maps/@53.64964,-3.00257,177m/data=!3m1!1e3",
+      "capture": "Acquisition date unknown; accessed 2026-10-23",
       "attribution": "Google Maps / Airbus",
-      "observed": "Satellite pixels verified. Church roof and rear hall footprint aligned against mapped nave. Hall rectangle estimated at site x159.55..178.2,y-68.6..-53.1. Hall ridge perpendicular to nave. 3D Earth unavailable in this session."
+      "observed": "Verified aerial: rear hall finishes substantially ahead of Sainsburys back wall, leaving the car-park aisle clear. Approximate clicked roof/corner coordinates establish the hall position; roof parallax and overhang prevent survey precision. Nave/hall subdivision is calibrated inside the combined OSM envelope, not appended beyond it.",
+      "roof_controls_lat_lon": [
+        [
+          53.649301,
+          -3.002007
+        ],
+        [
+          53.6494,
+          -3.001843
+        ],
+        [
+          53.649413,
+          -3.002165
+        ],
+        [
+          53.649503,
+          -3.002009
+        ]
+      ]
     }
   ],
   "uncertainties": [

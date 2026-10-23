@@ -221,7 +221,7 @@
         "generator": "components:reduced_window",
         "settings": {
           "curve_scale": 0.55,
-          "radius": 1.35,
+          "radius": 0.825,
           "bottom": 2.45,
           "spring": 5.75,
           "lights": 3,
@@ -236,7 +236,7 @@
         "generator": "components:reduced_window",
         "settings": {
           "curve_scale": 0.27,
-          "radius": 1.35,
+          "radius": 0.825,
           "bottom": 2.45,
           "spring": 5.75,
           "lights": 3,
@@ -255,7 +255,7 @@
         "generator": "components:reduced_window",
         "settings": {
           "curve_scale": 0.55,
-          "radius": 1.35,
+          "radius": 0.825,
           "bottom": 2.45,
           "spring": 5.75,
           "lights": 3,
@@ -270,7 +270,7 @@
         "generator": "components:reduced_window",
         "settings": {
           "curve_scale": 0.27,
-          "radius": 1.35,
+          "radius": 0.825,
           "bottom": 2.45,
           "spring": 5.75,
           "lights": 3,

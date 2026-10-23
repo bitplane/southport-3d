@@ -9,7 +9,7 @@ The retained [block plan](../regions/southport/london-square/public-realm/resear
 | Posting House | OSM 371741772 historic frontage; 653815606 tapered redevelopment. The rear wall has its own skew. Modern front inset and courtyard subdivisions remain photographic estimates. |
 | St George’s Mansions | OSM 371742617 street edge and west rear wing; side direction is independent of facade direction. Other wing subdivision dimensions remain approximate. |
 | Sainsbury’s | OSM 371203338 outer four corners, rather than a perpendicular rectangle. Small west-wall step remains simplified. |
-| St George’s Church | OSM 51826176 orientation retained across nave, tower and hall. Hall depth and heights remain estimates. |
+| St George’s Church | OSM 51826176 covers both nave and hall. Aerial-calibrated roof divisions fit inside that combined envelope; the hall ends about 15 m ahead of Sainsbury’s rear wall, leaving the service aisle clear. Heights and exact wall offsets remain estimates. |
 | Rear buildings | OSM 371742618, 371742619, 371742620 and 51826175 are plain provisional volumes with estimated heights. Replace them on these footprints when architectural evidence is researched. |
 
 NatWest and the adjoining 15 London Street building share a coarse OSM outline; the separate architectural evidence determines their internal division. The concurrent 15 London Street task owns that division and alley, so this pass does not override it.

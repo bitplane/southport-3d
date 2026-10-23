@@ -101,9 +101,12 @@ tw=D['tower_width'];tf=D['tower_front_y'];tb=D['tower_back_y'];tp=D['tower_parap
 for name,origin,normal,length in [('south',(xl,front,base),(-1,0,0),front-rear),('north',(xr,rear,base),(1,0,0),front-rear)]:
     frame=face_matrix(origin,normal)
     centres=[(i+.5)*length/5 for i in range(5)]
-    holes=[pointed(1.35,2.45,5.75,u) for u in centres]
+    # Keep the five bays inside the researched nave span, with real clearance
+    # between the window hood mould and each buttress.
+    radius=min(1.35,(length/5-.92-.79-.10)/2)
+    holes=[pointed(radius,2.45,5.75,u) for u in centres]
     finish(wall('Envelope nave '+name,rectangle(0,0,length,eave),holes),transform=frame)
-    for i,u in enumerate(centres):arch_window('nave-'+str(int(i==2)),1.35,2.45,5.75,frame@Matrix.Translation((u,0,0)),style=int(i==2))
+    for i,u in enumerate(centres):arch_window('nave-'+str(int(i==2)),radius,2.45,5.75,frame@Matrix.Translation((u,0,0)),style=int(i==2))
     for i in range(6):
         u=i*length/5
         butt=Mesh('Buttress nave '+name)
@@ -133,7 +136,7 @@ for name,origin,normal,length in [('south',(xl,front,base),(-1,0,0),front-rear),
         corbels.box(((i+.5)*length/int(length/.65),eave-.14,.14),(.18,.20,.28))
     finish(corbels,mats=[ashlar],transform=frame)
     for u in centres:
-        box('Course nave dark sill',(u,2.405,.12),(3.28,.035,.65),mat=slate,transform=frame)
+        box('Course nave dark sill',(u,2.405,.12),(2*radius+.58,.035,.65),mat=slate,transform=frame)
     for z,h,dep in [(.32,.30,.18),(1.2,.12,.12),(eave-.15,.27,.18)]:
         box('Course nave '+name,(length/2,z,dep/2),(length,h,dep),transform=frame)
     # Gutters/downpipes remain distinct from masonry; omit small fittings far away.
@@ -397,7 +400,7 @@ for tier,z,r,rad,spring in [(0,25.1,2.55,.58,2.65),(1,34.15,1.62,.34,1.25)]:
             c=Mesh('Ornament lucarne finial');c.tube([(0,spring+rad*2.1+.35,.2),(0,spring+rad*2.1+.8,.2)],.05,sides=6);finish(c,'spire',[ashlar],frame)
 # Restore the mapped church skew; architecture and hall move together.
 a=math.atan2(.503,18.252)
-registration=Matrix.Translation((159.144,-16.922,0))@Matrix.Rotation(a,4,'Z')@Matrix.Translation((-(D['centre_x']-D['nave_width']/2),-D['tower_front_y'],0))
+registration=Matrix.Translation((*D['registration_target_xy'],0))@Matrix.Rotation(a,4,'Z')@Matrix.Translation(tuple(-v for v in D['registration_source_xy'])+(0,))
 for ob in [o for col in collections.values() for o in col.objects if o.type=='MESH']:
     ob.matrix_world=registration@ob.matrix_world
 

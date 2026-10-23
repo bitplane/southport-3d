@@ -62,7 +62,8 @@ def build_block(ctx, existing_roads, anchor_north, anchor_south):
     entrance=[(147.5,-86),(154.5,-86),(154.5,-96),(147.5,-96)]
     reserve=[street_reserve,entrance,hillpoly,castlepoly,exit_apron]
     buildings=[ways[k]['xy'][:-1] for k in ('371203338','371742617','51826176','371742618','371742619','371742620')]
-    hall=[(159.55,-53.1),(178.2,-53.1),(178.2,-68.6),(159.55,-68.6)]
+    # The OSM church outline includes its rear hall. Do not append a second
+    # hall footprint into the parking/service aisle behind it.
     # Keep a continuous floor in the narrow access court behind NatWest and
     # the London Street plots. Stop exactly at Post Office Avenue's outer footway.
     avenue_outer=parallel([(68.154,-27),(68.0803,-36),(67.658,-87.563)],-3.8)
@@ -89,7 +90,7 @@ def build_block(ctx, existing_roads, anchor_north, anchor_south):
                 if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(triangle,triangle[1:]+triangle[:1]))<0:triangle.reverse()
                 piece=stripe
                 for a,b in zip(triangle,triangle[1:]+triangle[:1]):piece=halfplane(piece,a,b,True)
-                if len(piece)>2:clipped('Marking parking bay',piece,white,[hall]+buildings+reserve,z=-.109)
+                if len(piece)>2:clipped('Marking parking bay',piece,white,buildings+reserve,z=-.109)
     # Low-detail rear building volumes occupy mapped footprints, not guessed boxes.
     material=ctx['mat']('Provisional rear building volume',(.39,.37,.33))
     for key,height in [('371742618',7.5),('371742619',11),('371742620',8.5),('51826175',6.5)]:

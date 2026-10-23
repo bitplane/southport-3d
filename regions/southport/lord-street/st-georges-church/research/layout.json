@@ -24,9 +24,9 @@
     ]
   ],
   "centre_x": 168.7,
-  "nave_width": 18.25,
+  "nave_width": 16.0,
   "nave_front_y": -21.7,
-  "rear_y": -52.2,
+  "rear_y": -39.0,
   "base_z": 0.57,
   "eaves": 9.7,
   "ridge": 17.3,
@@ -35,17 +35,25 @@
   "tower_back_y": -23.2,
   "tower_parapet": 23.1,
   "spire_tip": 47.2,
-  "status": "OSM 51826176 footprint skew restored across nave, tower and hall. Heights and rear hall extent remain estimates from aerial/Street View.",
+  "status": "Whole church and hall occupy the mapped block envelope; aerial-calibrated nave/hall division and widths. Tower datum retained. Roof parallax and simplified OSM outline limit precision.",
   "rear_hall": {
     "bounds_xy": [
-      159.55,
-      178.2,
-      -68.6,
-      -53.1
+      160.5,
+      176.5,
+      -52.2,
+      -39.9
     ],
     "eaves": 6.15,
     "ridge": 11.3,
-    "evidence": "November 2020 car-park panoramas and 2026-accessed aerial; dimensions estimated"
+    "evidence": "Google aerial accessed 2026-10-23: hall ends about 15 m ahead of Sainsburys rear wall, within the whole church OSM envelope. Roof corners calibrated in geographic coordinates; wall positions estimated allowing for overhang and parallax."
   },
-  "block_plan": "../../london-square/public-realm/research/st-georges-block.json"
+  "block_plan": "../../london-square/public-realm/research/st-georges-block.json",
+  "registration_source_xy": [
+    159.575,
+    -16.65
+  ],
+  "registration_target_xy": [
+    159.144,
+    -16.922
+  ]
 }
