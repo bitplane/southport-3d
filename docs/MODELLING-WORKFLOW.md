@@ -100,3 +100,13 @@ Before adding a new `asset.json`, create every file it declares: discovery valid
 ## Submit source, not workspace history
 
 Stage recipes, code, source links and meaningful checks. Exclude local reference images, generated scenes, baked textures, screenshots and browser state. Run `python3 tools/project.py check` after staging, plus the relevant tests. Explain the visible change, evidence and validation in the commit or PR; distinguish observed details from estimates. Use `master`. Public hosting is a separate step from generating the local viewer.
+
+For adjoining exterior wall skins, use `tools/coplanar.py` from the asset's
+validation script. Select the surfaces whose exterior ownership is defined and
+call `check_blender(objects)`. It reports positive-area overlap of same-facing
+coplanar triangles, including across objects; touching edges and opposite-facing
+internal seams do not fail. The Myers front/Anchor Street corner is a regression
+case that failed before its overlapping wall return was removed. This is a
+scoped geometric check, not a claim to detect every depth-buffer artefact or to
+audit all existing assets automatically. Add affected neighbours to the selected
+surfaces when their boundary is being changed.

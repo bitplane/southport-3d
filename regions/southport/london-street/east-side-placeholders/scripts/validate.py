@@ -37,3 +37,10 @@ for o in meshes:
 report={'meshes':len(meshes),'checks':'finite UV geometry; frontage and lane bounds; closed roof skins; visible recessed window samples'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print(report)
+
+# The visible corner return and main side plane previously coincided, flickering
+# despite valid individual meshes. Audit these exterior wall skins together.
+import os,sys
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import check_blender
+check_blender([o for o in meshes if o.name in ['Envelope Myers brick frontage','Envelope Myers Anchor wall']])

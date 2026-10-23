@@ -41,7 +41,7 @@ def build(f):
     side=f.frame@Matrix.Translation((w,0,0))@Matrix.Rotation(math.pi/2,4,'Y')
     centres=[3.0,6.2,10.6,13.0,15.4,17.8]
     holes=[rect(d-.53,4.5,d+.53,6.0) for d in centres]+[rect(13,.05,19,2.6),rect(.25,.10,5.8,2.8)]
-    f.wall('Envelope Myers Anchor wall',rect(0,0,depth,7.6),holes,render,frame=side)
+    f.wall('Envelope Myers Anchor wall',rect(.25,0,depth,7.6),holes,render,frame=side)
     for d in centres:f.window('Myers side sash',d,5.25,1.06,1.5,white,frame=side)
     f.window('Myers side display',3.025,1.45,5.55,2.7,black,frame=side,mullions=3,transom=1.1)
     f.sign('Myers Anchor fascia','DAVID H MYERS\nOPTICIANS',3.025,3.45,5.8,1.0,black,white,frame=side)
