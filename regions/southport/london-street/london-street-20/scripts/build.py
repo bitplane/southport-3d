@@ -142,6 +142,24 @@ for u in [.13,width-.13]:
 for h,hh,depth in [(4.47,.14,.27),(4.59,.07,.19),(9.85,.09,.18),(10.14,.12,.25),(10.43,.16,.40),(10.61,.11,.49)]:
  elevation_box('Trim facade moulding',width/2,h,width,hh,depth,.06,cream)
 elevation_box('Trim frieze',width/2,10.00,width,.23,.13,.015,cream)
+# Union the painted masonry courses with the facade. Closed boxes sharing
+# the same end planes left overlapping exposed caps beside the taller neighbour.
+# Keep the fine dentils separate so District can still omit them.
+body=bpy.data.objects['Envelope classical cream front']
+trim_names=('Trim end pilaster','Trim pilaster capital','Trim pilaster foot',
+            'Trim facade moulding','Trim frieze')
+for piece in [o for o in C['architecture'].objects if o.name.startswith(trim_names)]:
+ bpy.context.view_layer.objects.active=body
+ mod=body.modifiers.new('Continuous masonry profile','BOOLEAN')
+ mod.operation='UNION';mod.solver='EXACT';mod.use_self=True;mod.object=piece
+ bpy.context.view_layer.update()
+ bpy.ops.object.modifier_apply(modifier=mod.name)
+ bpy.data.objects.remove(piece,do_unlink=True)
+
+# Boolean material remapping must not inherit the default brick slot.
+body.data.materials.clear();body.data.materials.append(cream)
+for polygon in body.data.polygons:polygon.material_index=0
+
 # Repeated dentils are detailed geometry nearby, deliberately omitted at District.
 for i in range(37):elevation_box('Fine cornice dentil',.13+i*(width-.26)/36,10.29,.09,.13,.17,.13,cream)
 # Plain party surfaces and a closed conservative rear facade.

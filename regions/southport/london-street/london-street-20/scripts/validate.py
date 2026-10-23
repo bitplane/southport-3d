@@ -45,3 +45,22 @@ hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
 assert hit and found==infill,'Shop entrance dividing strip must close the aperture'
 report={'mesh_objects':len(meshes),'front_windows':len(windows),'checks':'Finite UV meshes, packed authored maps, eight unobscured upper window apertures, manifold common roof shell, bounds respecting neighbour division.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# Cornice courses and pilasters form one closed masonry surface. Separate
+# coplanar end caps caused the reported flicker at the neighbouring frontage.
+body=bpy.data.objects['Envelope classical cream front']
+bm=bmesh.new();bm.from_mesh(body.data)
+assert all(e.is_manifold for e in bm.edges),'Open cornice/masonry union'
+bm.free()
+assert not any(o.name.startswith(('Trim facade moulding','Trim frieze','Trim end pilaster','Trim pilaster capital','Trim pilaster foot')) for o in meshes)
+# Probe the upper two projected courses, including the formerly fighting end.
+assert len(body.data.materials)==1 and body.data.materials[0].name=='Pale painted render'
+assert all(p.material_index==0 for p in body.data.polygons)
+for u in (.02,.3,3.75,7.48):
+ for h,depth in [(10.43,.26),(10.61,.305)]:
+  hit,p,n,i=body.ray_cast(Vector((u,h,1)),Vector((0,0,-1)),distance=2)
+  assert hit and abs(p.z-depth)<.001,('Lost cornice profile',u,h,tuple(p) if hit else None)
+
+for u in (1,2.5,3.75,5):
+ hit,p,n,i=body.ray_cast(Vector((u,7.5,1)),Vector((0,0,-1)),distance=2)
+ assert hit and abs(p.z)<.001,("Missing rendered wall",u)

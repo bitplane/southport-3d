@@ -29,3 +29,9 @@ Compared the retained May 2011 panorama and 2020 Acuitus frontage against the th
 Combined rear renders revealed black vertical stripes at the 18/20 wall junction. The rear walls met correctly, but the party-wall end caps overlapped their outer faces. Both assets now stop those side walls at the inner rear-wall face. Rebuilt exported renders confirm the stripes are gone. The common roof's six section vertices and ridge-cap corners match across both assets; validation now checks the actual authored roof section, rather than only matching layout parameters. No roof silhouette or frontage registration changed.
 
 Full builds, validation and all 24 GLBs across both assets passed. Combined front, oblique and rear renders were reviewed at Detail, Walk and District. Review images are generated locally under `output/london-street-20-audit/`, outside Git. Rear architecture and frontage dimensions retain the stated estimation limits.
+
+The cornice, frieze and end pilasters are united with the rendered frontage as
+one closed masonry surface. This removes overlapping end caps beside the taller
+neighbour while preserving the stepped profile at every LoD. Dentils remain
+separate for the District omission rule. Validation checks shell closure and
+rays against the two upper cornice courses, including their ends.
