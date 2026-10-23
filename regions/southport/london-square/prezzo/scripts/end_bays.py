@@ -19,7 +19,10 @@ def add_end_bays(finish,instance,z0,mats):
             wall.cut_box_from_ashlar((cx,cy,-.21),(ww,wh,.60))
         # Side return and plain provisional backing close the narrow wing.
         if label=='Lord flats':wall.box((.10,h/2,-depth/2),(.20,h,depth))
-        wall.box((w-.10,h/2,-depth/2),(.20,h,depth))
+        # The photographed rear west wing owns the outer wall beyond y=-37.1.
+        # End the flats return at that junction rather than overlaying it.
+        return_depth=13.35 if label=='Lord flats' else depth
+        wall.box((w-.10,h/2,-return_depth/2),(.20,h,return_depth))
         if label=='Lord flats':wall.box((cx,h/2,-depth+.10),(w-.40,h,.20))
         finish(wall,'architecture',[stone],frame)
         for cy,wh in [(6.95,1.95),(10.35,1.85),(13.50,1.75)]:

@@ -200,7 +200,8 @@ for frame,length in [(front,flen),(side,slen),(corner,L)]:
   m.tube([(u,14.94,.15),(u,15.0,.25),(u,15.13,.32),(u,15.20,.28)],.055,0,8)
  finish(m,'architecture',[stone],frame)
 # Party wall behind the street mass. The researched stepped rear is built below.
-m=Mesh('Envelope party return');m.box((-30.4,-30.2,z0+7.8),(.45,13.6,15.6));finish(m,materials=[stone])
+# The Lord Street wall owns its 0.45 m thickness at the front corner.
+m=Mesh('Envelope party return');m.box((-30.4,-30.425,z0+7.8),(.45,13.15,15.6));finish(m,materials=[stone])
 # Mansard only on the three street faces; flat-ended party/rear gables.
 poly=D['footprint']
 # Parallel inset edges keep the chamfer planar and every eave at the same pitch.

@@ -160,3 +160,19 @@ lanterns=[o for o in meshes if o.name.startswith('Hardware corner lantern')]
 assert len(lanterns)==2
 assert all(len(o.data.materials)==3 for o in lanterns)
 assert all(max(v.co.y for v in o.data.vertices)-min(v.co.y for v in o.data.vertices)>.60 for o in lanterns)
+
+# Separate envelope owners must not leave duplicate visible skins at the joins.
+import sys,os
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+for names in [('Envelope rear wing west','Envelope end bay Lord flats'),
+              ('Envelope Lord Street','Envelope party return')]:
+ triangles=[];labels=[]
+ for name in names:
+  ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+  for t in ob.data.loop_triangles:
+   triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
+ # Micrometre-wide float32 boundary slivers remain recorded in the map audit.
+ errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+ assert not errors,errors[:8]
+print('Rear/flats and Lord Street/party-return surface ownership verified')
