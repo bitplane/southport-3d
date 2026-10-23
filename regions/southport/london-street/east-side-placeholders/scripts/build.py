@@ -1,8 +1,4 @@
-"""Placeholder massing on London Street's east side, NatWest to Anchor Street.
-
-Footprints follow map outlines; heights are estimates. These are context
-volumes to be replaced by real buildings, not models of them.
-"""
+"""11–21 London Street: staged replacements of the three context boxes."""
 import json
 import os
 from pathlib import Path
@@ -17,34 +13,12 @@ bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene
 s.unit_settings.system='METRIC'
-massing=bpy.data.collections.new('massing')
-s.collection.children.link(massing)
-
-
-def material(name,colour):
-    mat=bpy.data.materials.new(name)
-    mat.use_nodes=True
-    shader=mat.node_tree.nodes['Principled BSDF']
-    shader.inputs['Base Color'].default_value=(*colour,1)
-    shader.inputs['Roughness'].default_value=.9
-    return mat
-
-
-# Alternating neutral tones keep neighbouring placeholders distinguishable.
-tones=[material('Placeholder massing light',(.55,.53,.50)),material('Placeholder massing dark',(.44,.43,.41))]
-for i,block in enumerate(D['blocks']):
-    (x0,x1),(y0,y1)=block['x'],block['y']
-    # Bury the base slightly so gaps in adjoining ground never show a floating edge.
-    bottom,top=D['bury_z'],D['ground_z']+block['height']
-    mesh=Mesh('Envelope placeholder '+block['name'])
-    mesh.box(((x0+x1)/2,(y0+y1)/2,(bottom+top)/2),(x1-x0,y1-y0,top-bottom))
-    obj=mesh.finish([tones[i%2]],massing)
-    uv=obj.data.uv_layers.new(name='Metric')
-    for face in obj.data.polygons:
-        axes=sorted(sorted(range(3),key=lambda k:abs(face.normal[k]))[:2])
-        for loop in face.loop_indices:
-            v=obj.data.vertices[obj.data.loops[loop].vertex_index].co
-            uv.data[loop].uv=(v[axes[0]]/4,v[axes[1]]/4)
+sys.path.insert(0,str(ROOT/'scripts'))
+from facades import Facade
+import william_hill, kba, myers
+for block,module,part in zip(D['blocks'],[william_hill,kba,myers],['william-hill','kba','myers']):
+    collection=bpy.data.collections.new(part);s.collection.children.link(collection)
+    module.build(Facade(block,D['ground_z'],collection))
 s.render.engine='CYCLES'
 s.cycles.samples=16
 s.world=s.world or bpy.data.worlds.new('World')

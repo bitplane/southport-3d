@@ -8,7 +8,7 @@ from components import wall, rect, sash
 def build_rear(g):
     front=g['front'];finish=g['finish'];box=g['box'];instance=g['instance']
     brick=g['brick'];cream=g['cream'];glass=g['glass'];white=g['white'];flat=g['flat']
-    blue=g['material']('Modern blue metal railings',(.12,.25,.34))
+    blue=g['material']('Modern blue metal railings',(.16,.28,.36))
     f=front@Matrix.Translation((29.3,0,-54.3))@Matrix.Rotation(math.pi,4,'Y')
     w=28.3;h=12.6
     # Brick lower floors, a light framed attic, and taller rendered corner tower.
@@ -40,29 +40,28 @@ def build_rear(g):
             for y in [.35,.68,1.02]:m.tube([(xx,z+y,.05),(xx,z+y,1.03)],.022,sides=6)
         finish(m,'rear-range',[blue],f)
     for x,z,ww in [(3,9.35,5.8),(17,9.35,13.7),(13.45,4.95,3.2)]+[(26.2,z-1.30,2.8) for z in [2.5,6.1,9.7,13.3]]:balcony(x,z,ww)
-    # Remaining elevations are deliberately low-detail envelopes with readable
-    # openings; exact courtyard fenestration awaits a survey.
+    # Courtyard elevation begins beyond the warehouse return. The lower
+    # garden is raised over parking: no invented through-passage to Anchor St.
     inward=front@Matrix.Translation((1,0,-44.4))
-    iholes=[rect(x-.7,z-1.05,x+.7,z+1.05) for x in [10,14,18,22] for z in [3,6.6,10.3] if not (x==14 and z==3)]
-    iholes.append(rect(13.4,0,16.3,4.87))
-    finish(wall('Envelope modern courtyard',rect(0,0,w,h),iholes),'rear-range',[cream],inward)
-    for x in [10,14,18,22]:
-        for z in ([6.6,10.3] if x==14 else [3,6.6,10.3]):instance('courtyard-sash',sash('Window modern courtyard',1.4,2.1),inward@Matrix.Translation((x,z,0)),'rear-range',[glass,blue])
-    # RGP photographs show a recess beneath the balcony. Line the passage so
-    # its opening does not expose the entire hollow building shell. The hidden
-    # connection to the aligned courtyard opening is an estimated enclosure.
+    iholes=[rect(x-.9,z-1.12,x+.9,z+1.12) for x in [17.4,21.5,25.6] for z in [4.5,7.9,11.1]]
+    finish(wall('Envelope modern courtyard',rect(14.5,2.7,w,h),iholes),'rear-range',[brick],inward)
+    for x in [17.4,21.5,25.6]:
+        for z in [4.5,7.9,11.1]:
+            instance('courtyard-sash',sash('Window modern courtyard',1.8,2.24),inward@Matrix.Translation((x,z,0)),'rear-range',[glass,blue])
+    # Street View shows a recessed garage shutter under the balcony, with
+    # brick above it. End the recess behind the frontage instead of tunnelling
+    # through the entire building into the garden.
     for x in [11.90,15.0]:
-        box('Envelope passage jamb',(x,2.435,-4.95),(.20,4.87,9.10),'rear-range',brick,f)
-    # Roof and floor follow the differing surveyed-frame opening datums.
-    for name,ends,thick,mat in [('ceiling',(4.87,4.87),.18,cream),('floor',(.1,0),-.12,flat)]:
-        m=Mesh('Envelope passage '+name)
-        a,b=ends
-        verts=[(x,y,z) for delta in [0,thick] for x,y,z in
-               [(12,a+delta,0),(14.9,a+delta,0),(14.9,b+delta,-9.9),(12,b+delta,-9.9)]]
-        m.add(verts,[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
-        finish(m,'rear-range',[mat],f)
-    for u in [1,29.3]:box('Envelope modern side',(u,h/2,-49.35),(.30,h,9.9),'rear-range',cream,front)
+        box('Envelope garage jamb',(x,2.435,-1.45),(.20,4.87,2.90),'rear-range',brick,f)
+    box('Envelope garage soffit',(13.45,4.96,-1.45),(3.1,.18,2.9),'rear-range',cream,f)
+    box('Envelope garage head',(13.45,3.68,-2.85),(2.9,2.38,.20),'rear-range',brick,f)
+    box('Door garage roller shutter',(13.45,1.28,-2.80),(2.9,2.36,.08),'rear-range',blue,f)
+    for z in [.15+j*.10 for j in range(24)]:
+        box('Detail garage shutter slats',(13.45,z,-2.748),(2.86,.012,.012),'rear-range',g['black'],f)
+    box('Envelope garage floor',(13.45,.04,-1.45),(2.9,.12,2.9),'rear-range',flat,f)
+    for u in [1,29.3]:box('Envelope modern side',(u,h/2,-49.35),(.30,h,9.9),'rear-range',brick,front)
     for u in [1,5]:box('Envelope modern raised corner side',(u,13.85,-49.35),(.25,2.7,9.9),'rear-range',cream,front)
     box('Envelope modern raised corner courtyard',(3,13.85,-44.4),(4,2.7,.25),'rear-range',cream,front)
-    box('Roof modern grey metal',(17.25,12.7,-49.35),(24.8,.20,10.7),'roof',flat,front)
-    box('Roof modern corner canopy',(3,15.35,-49.35),(4.8,.20,10.7),'roof',flat,front)
+    zinc=g['material']('Anchor pale zinc roof',(.48,.52,.54))
+    box('Roof modern grey metal',(17.25,12.7,-49.35),(24.8,.20,10.7),'roof',zinc,front)
+    box('Roof modern corner canopy',(3,15.35,-49.35),(4.8,.20,10.7),'roof',zinc,front)

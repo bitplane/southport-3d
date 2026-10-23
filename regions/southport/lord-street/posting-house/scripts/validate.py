@@ -50,9 +50,9 @@ assert min(p.y for p in points)>-79
 assert max(p.y for p in points)<-19
 x0,y0=D['front_east'];x1,y1=D['front_west'];w=math.hypot(x1-x0,y1-y0);ux=(x1-x0)/w;uy=(y1-y0)/w
 front=Matrix(((ux,0,uy,x0),(uy,0,-ux,y0),(0,1,0,D['base_z']),(0,0,0,1)))
-p=front@Vector((17,30,-31))
+p=front@Vector((24,30,-31))
 hit,point,normal,index,target,matrix=bpy.context.scene.ray_cast(deps,p,Vector((0,0,-1)),distance=35)
-assert hit and point.z<1.5,('Courtyard filled',target.name if target else None,point)
+assert hit and 3.2<point.z<3.6,('Courtyard filled',target.name if target else None,point)
 report={'meshes':len(meshes),'roof_samples':roof_samples,'clear_windows':windows,'checks':'finite meshes and UVs, packed textures, landmark counts, closed single-skin intersecting roof, clear glazing rays, alley bounds, open courtyard'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
 

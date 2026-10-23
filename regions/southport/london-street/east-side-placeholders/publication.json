@@ -7,7 +7,7 @@
     "elevation_m": 0
   },
   "area_name": "London Street",
-  "status": "Placeholder boxes from mapped footprints between NatWest and Anchor Street; heights estimated. Not building models.",
+  "status": "Staged block reconstruction: researched shop fronts and roof forms replace context boxes; rear service details, footprint steps and fine ornament remain under review.",
   "levels": {
     "detail": {
       "texture_size": null
@@ -21,9 +21,19 @@
   },
   "parts": [
     {
-      "id": "massing",
-      "name": "Placeholder footprint boxes",
-      "collection": "massing"
+      "id": "william-hill",
+      "name": "11\u201313 William Hill",
+      "collection": "william-hill"
+    },
+    {
+      "id": "kba",
+      "name": "15\u201317 KBA / Yorkshire Building Society",
+      "collection": "kba"
+    },
+    {
+      "id": "myers",
+      "name": "19\u201321 David H Myers",
+      "collection": "myers"
     }
   ],
   "views": [
@@ -68,15 +78,44 @@
   },
   "rules": [
     {
-      "id": "envelopes",
-      "match": "^Envelope ",
+      "id": "architecture",
+      "match": "^(Envelope|Trim|Roof|Window|Door) ",
       "walk": {
         "strategy": "keep",
-        "reason": "Twelve-triangle boxes are already the coarsest useful context; reducing them would lose the mapped footprint."
+        "reason": "Authored thin walls, openings, roof shells and window frames preserve the block silhouette and shop identities."
       },
       "district": {
         "strategy": "keep",
-        "reason": "Twelve-triangle boxes are already the coarsest useful context; reducing them would lose the mapped footprint."
+        "reason": "Initial inexpensive architectural replacement: retain true openings and roof forms while finer features are developed."
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain readable fascia lettering during the first architectural comparison."
+      },
+      "district": {
+        "strategy": "replace",
+        "shape": "panel",
+        "uv": "planar-xy",
+        "bake": true,
+        "cage_extrusion_m": 0.3,
+        "max_sampled_error_m": 0.2,
+        "reason": "Shallow fascia lettering can become a baked front panel without changing the building silhouette."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Detail ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Small vents and shutter slats are below useful walk-distance detail."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Omit service fittings below the distant silhouette."
       }
     }
   ]

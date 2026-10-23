@@ -274,10 +274,10 @@ for i in (1,3):
 # Historic rear wall is explicit, with approximate openings at the same floors.
 rear=front@Matrix.Translation((width,0,-depth))@Matrix.Rotation(math.pi,4,'Y')
 rearholes=[]
-for u in [2.2,5.6,9,12.4,15.8,19.2]:
+for u in [2.2,5.6,9,12.4]:
     for h in [7.7,12.1]:rearholes.append(rect(u-.60,h-1.25,u+.60,h+1.25))
 finish(wall('Envelope historic rear',rect(0,0,width-start,eave),rearholes),'rear-range',[brick],rear)
-for u in [2.2,5.6,9,12.4,15.8,19.2]:
+for u in [2.2,5.6,9,12.4]:
     for h in [7.7,12.1]:
         instance('rear-sash',sash('Glazing rear estimated sash',1.2,2.5),rear@Matrix.Translation((u,h,0)),'rear-range',[glass,white])
         instance('rear-surround',surround('Trim rear lintel',1.2,2.5,False),rear@Matrix.Translation((u,h,0)),'rear-range',[plain])
@@ -288,37 +288,11 @@ for c,w,top in [(start+3.1,5.7,ridge-.65),((start+width)/2,4.6,ridge-.15),(width
     finish(m,'rear-range',[brick],f)
     instance('rear-attic',sash('Glazing rear attic',.94,1.25),f@Matrix.Translation((0,17.475,.20)),'rear-range',[glass,white])
 
-# Model the redeveloped courtyard as open air; do not extrude the OSM perimeter
-# into a solid block. Hidden rear window positions remain provisional.
-def rear_block(name,u0,u1,d0,d1,height,material):
-    f=front@Matrix.Translation((0,0,0))
-    box('Envelope '+name,((u0+u1)/2,height/2,-(d0+d1)/2),(u1-u0,height,d1-d0),'rear-range',material,f)
-    box('Roof '+name,((u0+u1)/2,height+.10,-(d0+d1)/2),(u1-u0,.20,d1-d0),'roof',flat,f)
-
-rear_block('Post Office Avenue warehouse',0,8.0,depth,44.4,13.7,brick)
+# Modern redevelopment and raised courtyard follow the block evidence review.
 from rear import build_rear
 build_rear(globals())
-rear_block('courtyard west access range',26.4,29.3,depth,44.4,6.1,brick)
-box('Envelope courtyard terrace',(17.2,.09,-31.1),(18.4,.18,26.6),'rear-range',plain,front)
-# Rear fenestration is shallow and applied to the known courtyard envelope. It
-# is classified separately so a better survey can replace it without redoing
-# the measured historic facade.
-# The modern block's frontage and inner courtyard are consciously restrained.
-for d in [21.2,25.8,30.4,35,39.6]:
-    for h in [3.1,6.9,10.6]:
-        f=face_matrix(site(-.28,d,h),(front[0][0]*-1,front[1][0]*-1,0))
-        instance('warehouse-sash',sash('Glazing warehouse',1.7,2.15),f,'rear-range',[glass,white])
-
-# Two lead-roofed bays on the courtyard edge are visible in the 2024 roof
-# photographs and aerial. Their dimensions and hidden lower walls are estimates.
-for dep in [25.8,39.0]:
-    box('Envelope rear turret bay',(9.6,5.8,-dep),(3.2,11.6,4.7),'rear-range',cream,front)
-    m=Mesh('Roof rear lead pyramid')
-    m.add([(7.8,11.65,-dep-2.55),(11.4,11.65,-dep-2.55),(11.4,11.65,-dep+2.55),(7.8,11.65,-dep+2.55),(9.6,13.6,-dep)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4),(3,2,1,0)])
-    finish(m,'roof',[lead],front)
-    for h in [3.0,6.4,9.7]:
-        f=face_matrix(site(11.48,dep,h),(front[0][0],front[1][0],0))
-        instance('rear-turret-window',sash('Window modern turret',3.4,2.5),f,'rear-range',[glass,white])
+from courtyard import build_courtyard
+build_courtyard(globals())
 
 from frontage132 import build_132
 build_132(globals())

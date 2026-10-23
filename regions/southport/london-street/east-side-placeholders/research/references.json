@@ -19,7 +19,7 @@
     },
     {
       "url": "https://www.google.com/maps/@53.6484184,-3.0040981,15a,90y,46h,105t/data=!3m4!1e1!3m2!1sUobTWVKYCf-YxcK1OBgnNA!2e0",
-      "capture": "May2011 Street View; inspected 2026-10-23",
+      "capture": "2011-05 Street View; inspected 2026-10-23",
       "author": "Google Street View",
       "observations": [
         "Mock-Tudor building adjoins NatWest with no gap; William Hill follows. Eaves heights judged against the NatWest cornice."
@@ -27,18 +27,58 @@
     },
     {
       "url": "https://www.google.com/maps/@53.6482378,-3.0037112,10a,90y,60h,100t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDa_YnoJg!2e10",
-      "capture": "Aug2019 user-contributed panorama (VR 360 TV); inspected 2026-10-23",
+      "capture": "2019-08 user-contributed panorama (VR 360 TV); inspected 2026-10-23",
       "author": "Google Maps contributor imagery",
       "observations": [
-        "Two-storey brick opticians on the Anchor Street corner with parapet and rooftop box; lower rendered neighbour with a small gable."
+        "Brick opticians frontage with pitched dormered roof, adjoining pale KBA frontage with paired gables. See August 2024 coverage and roof orbit in block-review."
       ]
     },
     {
       "url": "https://www.openstreetmap.org/way/371741581",
-      "attribution": "© OpenStreetMap contributors; ODbL 1.0",
+      "attribution": "\u00a9 OpenStreetMap contributors; ODbL 1.0",
       "capture": "Overpass extract 2026-10-23",
       "observations": [
         "Merges the run south of the mock-Tudor into one block (site y -54.6 to -79.7); used only to confirm the overall extent."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6481698,-3.0035161,10a,80y,40h,108t/data=!3m4!1e1!3m2!1snFTJmqDiryzEt4m_Q4mEeQ!2e0",
+      "capture_date": "2024-08",
+      "author": "Google Street View",
+      "observations": [
+        "Myers: four front upper sashes, brick parapet, central three-light dormer, black opticians fascia and glass entrance. Private capture output/myers-front.png."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6482355,-3.0036219,10a,80y,45h,105t/data=!3m4!1e1!3m2!1sJEzJtNkEmN7ojjzwHrUpow!2e0",
+      "capture_date": "2024-08",
+      "author": "Google Street View",
+      "observations": [
+        "KBA: paired canted bays with decorative gables, 1989 plaque, Yorkshire and KBA signage; low William Hill ribbon window adjoining. Private capture output/opticians-front.png (filename predates correct subject identification)."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6482974,-3.0031334,10a,90y,235h,105t/data=!3m4!1e1!3m2!1sj1tZHV_c9SEYzcJaD0v2Mw!2e0",
+      "capture_date": "2024-08",
+      "author": "Google Street View",
+      "observations": [
+        "Anchor Street: rendered Myers side, upper sash run, two side roof dormers, rear garage shutter, pipes and narrow pavement."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6481832,-3.0033598,10a,90y,320h,102t/data=!3m4!1e1!3m2!1sS6dzuhA2p3b1A2D6gO2yzw!2e0",
+      "capture_date": "2024-08",
+      "author": "Google Street View",
+      "observations": [
+        "Myers shop window and black fascia wrap onto Anchor Street; cream rendered side with incised pilaster strips."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.64833,-3.0033,88m/data=!3m1!1e3",
+      "capture_date": null,
+      "author": "Google / Airbus",
+      "observations": [
+        "Roof plan for all three shops; map centre verified by right-click at pixel720,500. Roof parallax prevents treating all roof pixels as wall footprint controls."
       ]
     }
   ],

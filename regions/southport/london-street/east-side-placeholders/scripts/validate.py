@@ -1,33 +1,39 @@
-"""Check placeholder footprints stay separate, behind the frontage and off NatWest."""
-from pathlib import Path
+"""Check finite architecture, facade registration and clear window openings."""
 import json
 import math
-import os
+from pathlib import Path
 import bpy
+import bmesh
+from mathutils import Vector
 
 ROOT=Path(__file__).resolve().parents[1]
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/east-side-placeholders.blend'))
 D=json.loads((ROOT/'research/layout.json').read_text())
 meshes=[o for o in bpy.context.scene.objects if o.type=='MESH']
-assert len(meshes)==len(D['blocks'])
 assert all(o.data.polygons and o.data.uv_layers for o in meshes)
 assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.co)
-boxes=[]
+bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get()
+for part,block in zip(['william-hill','kba','myers'],D['blocks']):
+    obs=list(bpy.data.collections[part].objects)
+    points=[o.matrix_world@v.co for o in obs for v in o.data.vertices]
+    assert min(v.x for v in points)>6.6,(part,'projects into road')
+    assert min(v.y for v in points)>block['y'][0]-.2,(part,'crosses south neighbour')
+    assert max(v.y for v in points)<block['y'][1]+.2,(part,'crosses north neighbour')
+    assert max(v.x for v in points)<29,(part,'blocks shared lane')
+    assert min(v.z for v in points)<D['ground_z']+.01,(part,'floating base')
 for o in meshes:
-    points=[o.matrix_world@v.co for v in o.data.vertices]
-    box=[(min(p[k] for p in points),max(p[k] for p in points)) for k in range(3)]
-    assert box[0][0]>D['frontage_x']-1e-4,(o.name,'in front of the London Street frontage')
-    assert box[2][0]<D['ground_z']<box[2][1]
-    boxes.append((o.name,box))
-# NatWest's corrected return ends at y=-42.66; placeholders must not intrude.
-repo=Path(os.environ['SOUTHPORT_REPO_ROOT'])
-natwest=json.loads((repo/'regions/southport/london-square/natwest/research/layout.json').read_text())
-for name,box in boxes:
-    assert box[1][1]<=natwest['rear_y']-.01,(name,'overlaps NatWest')
-for i,(name,a) in enumerate(boxes):
-    for other,b in boxes[i+1:]:
-        overlap=[min(a[k][1],b[k][1])-max(a[k][0],b[k][0]) for k in range(2)]
-        assert min(overlap)<1e-4,('Overlapping placeholders',name,other)
-report={'placeholders':len(meshes),'checks':'Finite UV boxes on the shared frontage, buried bases, no mutual or NatWest overlap'}
+    if o.name.startswith('Roof ') and 'flat' not in o.name and 'felt' not in o.name:
+        bm=bmesh.new();bm.from_mesh(o.data)
+        assert all(e.is_manifold for e in bm.edges),(o.name,'open roof shell')
+        bm.free()
+    if o.name.startswith('Window ') and 'rooflight' not in o.name:
+        pts=[v.co for v in o.data.vertices]
+        x=(min(v.x for v in pts)+max(v.x for v in pts))/2+.04
+        y=(min(v.y for v in pts)+max(v.y for v in pts))/2+.12
+        origin=o.matrix_world@Vector((x,y,.35))
+        direction=(o.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+        hit,p,n,i,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1)
+        assert hit and target==o,(o.name,'obscured by',target.name if target else None)
+report={'meshes':len(meshes),'checks':'finite UV geometry; frontage and lane bounds; closed roof skins; visible recessed window samples'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print(report)

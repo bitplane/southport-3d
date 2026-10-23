@@ -1,0 +1,84 @@
+{
+  "reviewed": "2026-10-23",
+  "snag": "a6d8e1dc6a0e41c693bd2adef2fcbec3",
+  "stage": "Posting House first geometry correction; shop research in progress",
+  "scope": "Block bounded by London Street, Anchor Street, Post Office Avenue and St Georges Place: Posting House rear, three placeholder shops and their shared access/ground. Existing NatWest and Tudor boundaries checked in context.",
+  "sources": [
+    {
+      "url": "https://www.google.com/maps/@53.64863,-3.00344,88m/data=!3m1!1e3",
+      "type": "satellite",
+      "date": "unknown; copyright 2026 is not a capture date",
+      "private_capture": "output/block-plan-aerial.png"
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6480504,-3.0028046,79a,35y,329.41h,45.05t/data=!3m1!1e3",
+      "type": "user requested 3D orbit",
+      "observed": "Enabled hardware GL/EGL then Globe view and Satellite/3D. Rotated through headings 0,72.5,145,217.5 degrees; private captures output/block-orbit-a.png through d.png. Identified low courtyard retaining boundary, raised planted terrace, broad warehouse with narrow balcony-side roof strip and two separate modern roof towers.",
+      "date": "unknown"
+    },
+    {
+      "url": "https://www.rgp.uk.com/portfolio-items/the-posting-house-southport/",
+      "type": "architect project description and three photographs",
+      "observed": "Anchor Street facade, balconies and passage; scheme includes courtyard over basement parking. Images published in 2014 upload path; exact photography date unknown."
+    },
+    {
+      "url": "https://docs.planning.org.uk/20240430/30/SC578SNWK2Q00/mclt3lg3lqef3v3s.pdf",
+      "type": "2024 heritage report",
+      "observed": "Photographic schedule gives historic rear elevation with uneven openings, terrace and glazed stair structures. Existing six equally spaced rear windows are unsupported."
+    },
+    {
+      "url": "https://www.barnettross.co.uk/details/201610/catalogue.pdf?v=3",
+      "type": "2016 auction particulars",
+      "observed": "11-13 London Street William Hill: vendor-supplied gross frontage 26 feet and built depth 66 feet 11 inches. Not independently surveyed by auctioneer."
+    },
+    {
+      "url": "https://kbafinancial.com/our-lancashire-agency/",
+      "type": "occupier",
+      "observed": "KBA address 15-17 London Street. Previous placeholders swapped its address with William Hill."
+    },
+    {
+      "url": "https://davidhmyers.com/branch/southport/?sec=contact",
+      "type": "occupier",
+      "observed": "David H Myers address 19-21 London Street."
+    },
+    {
+      "url": "https://www.arnoldandphillips.com/property-details/fff9aeb9-a76d-43c0-b545-1b98213cec74/merseyside/southport/the-posting-house-post-office-avenue-2",
+      "type": "property photographs",
+      "date": null,
+      "observed": "Photos 10,14,15 show garden, glazed stair access, historic rear elevation and deck details. Private captures output/posting-property-sheet.png and posting-courtyard-photo.png."
+    }
+  ],
+  "coverage": {
+    "roof": "3D orbit and 2D aerial obtained; measurements in progress",
+    "London Street frontages": "August 2024 Google panoramas obtained for KBA and Myers; 2019 contributor panorama and adjoining 2024 view for William Hill.",
+    "Anchor Street": "RGP photos and August 2024 Street View: recessed garage, not a through passage.",
+    "Post Office Avenue": "August 2024 Street View and 3D obliques; exact opening counts still to refine.",
+    "historic Posting House rear": "2024 heritage photograph plus 3D obliques obtained",
+    "courtyard": "Arnold & Phillips photographs 10,14,15 plus four 3D orbit views; raised deck and planted layout observed, elevation estimated.",
+    "shared service lane": "August 2024 Anchor Street panorama shows black gate and high courtyard retaining wall."
+  },
+  "searches": [
+    {
+      "query": "Posting House Southport courtyard photographs",
+      "result": "RGP architect page and 2024 heritage report"
+    },
+    {
+      "query": "site:commons.wikimedia.org Posting House Southport",
+      "result": "No useful additional courtyard photographs returned in this search; not proof none exist."
+    },
+    {
+      "query": "Mapillary app at 53.6484,-3.0035 zoom18",
+      "result": "Base map loaded, but no imagery tracks/images loaded; console reported network errors. This does not establish absence of coverage. Private capture output/block-mapillary.png."
+    }
+  ],
+  "unresolved": [
+    "Ground versus roof parallax and exact hidden footprint corners",
+    "Courtyard floor elevation over basement",
+    "Historical appearance date for shopfronts",
+    "Post Office Avenue opening positions",
+    "Rear shop service elevation details",
+    "William Hill / KBA internal boundary: vendor frontage differs from old map division by about 1 m.",
+    "Street View field-of-view convention and stitching limit elevation calibration; adopted heights remain estimates, approximately +/- 0.5 m.",
+    "Rear shop footprint steps and hidden openings need comparison against the shared service lane."
+  ]
+}

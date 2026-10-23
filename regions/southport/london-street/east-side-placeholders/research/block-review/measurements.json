@@ -1,0 +1,59 @@
+{
+  "source": "https://www.google.com/maps/@53.64863,-3.00344,88m/data=!3m1!1e3",
+  "capture": "output/block-plan-aerial.png (private)",
+  "map_centre_pixel": [
+    720,
+    500
+  ],
+  "centre_lat_lon": [
+    53.64863,
+    -3.00344
+  ],
+  "scale_bar": {
+    "metres": 10,
+    "pixels": 111
+  },
+  "points_px": {
+    "warehouse_near_east": [
+      900,
+      242
+    ],
+    "warehouse_far_east": [
+      1098,
+      471
+    ],
+    "warehouse_near_flat_inner": [
+      815,
+      324
+    ],
+    "warehouse_far_flat_inner": [
+      1006,
+      549
+    ],
+    "warehouse_near_balcony_roof_inner": [
+      750,
+      368
+    ],
+    "anchor_roof_east": [
+      1185,
+      570
+    ],
+    "anchor_roof_west": [
+      960,
+      774
+    ],
+    "anchor_roof_back_east": [
+      1100,
+      481
+    ]
+  },
+  "method": "Project image delta onto site axes, divide by 11.1 pixels per metre. These are roof edges, not ground survey controls.",
+  "derived_m": {
+    "warehouse_length": 27.24,
+    "warehouse_flat_width": 10.64,
+    "warehouse_total_roof_width": 17.62,
+    "anchor_roof_width": 27.35,
+    "anchor_roof_depth": 11.09
+  },
+  "uncertainty": "Approximately +/- 0.7 m for image edge picks, perspective/parallax and roof overhang; compare ground outlines before moving outer registered boundaries."
+}
