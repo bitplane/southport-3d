@@ -10,13 +10,68 @@ Publish simple, explicitly labelled placeholder volumes for buildings whose arch
 
 Replace each placeholder with its detailed asset on the same agreed footprint and height datum; remove the placeholder in the same publication. Record footprint controls in the building recipe, with a link to the block plan. Keep exceptions explicit (porches, bays, canopies and roof overhangs). A later footprint correction must include its neighbouring ground and access review, rather than adding compensating pavement around the error. Ground and architecture retain separate ownership and streaming parts.
 
-## Establish the evidence
+## Required evidence and comparison stages
 
-Verify that imagery actually displays before treating a browser session as a reference. A Street View URL or page title alone does not establish that the panorama loaded. See [SETUP.md](SETUP.md) for the working offscreen Chrome configuration. Record source URLs, dates, viewpoints and uncertainty; keep downloaded images and browser profiles out of Git.
+A successful build proves technical validity, not architectural fidelity. Existing
+code and previous research interpretations are hypotheses: recheck them against
+imagery. Do not preserve a wrong footprint or roof while decorating its facade.
 
-Compare front, side, rear and distant views before adding ornament. Establish the footprint, end bays, entrances, roof silhouette and relative depths first. Our Prezzo revisions exposed missing narrow entrance bays, incorrect roof forms and excessively deep pilasters that close frontal views had concealed. If an elevation is hidden, label the reconstruction as estimated rather than filling it with confident detail.
+### 1. Understand the building in its block
 
-Check circulation as well as appearance: stairs need connected landings and clear headroom, doors need usable approaches, and ramps should connect to the pavement. Model street lamps from local evidence rather than substituting generic furniture.
+Verify that imagery actually displays; a URL or page title is not evidence of a
+loaded panorama. See [SETUP.md](SETUP.md) for the offscreen browser. Open Google
+Maps 3D and rotate around the target from several directions, including the rear.
+Use the low-resolution mesh to understand roof sections, relative heights,
+extensions, setbacks, courtyards and connections with neighbours. Record what
+was visible. Do not mistake distorted photogrammetry for fine architectural detail.
+If 3D is unavailable, record the actual failure and seek alternate obliques;
+do not silently replace this investigation with an overhead footprint.
+
+Gather close and distant Street View views of every elevation being modelled.
+Move along the road and investigate alleys and rear access. Search Google Maps
+place photos, Mapillary, image/web searches and, where relevant, Wikimedia and
+heritage records. Record searches that yielded no useful evidence as well as
+successful sources. Check dates: different tenants or renovation stages must not
+be accidentally combined. Choose and document the represented appearance.
+
+Before detailed geometry, save an evidence coverage record under the asset's
+research directory: front, each side, rear, roof and ground/footprint. For each,
+list source links, capture dates when known, viewpoints, observations, confidence,
+contradictions and missing coverage. Distinguish not-yet-investigated from searched
+but unavailable. Keep reference captures private and out of Git.
+
+### 2. Establish and compare measured main shapes
+
+Record a plan and elevation breakdown: frontage divisions, storey heights,
+projections, openings, roof ridges/eaves/pitches and rear volumes. Retain actual
+measurement inputs (scale-bar lengths, image landmarks, ratios and calculations),
+not just final numbers labelled visually calibrated. Allow for perspective,
+roof parallax and overhangs; give estimates and their uncertainty honestly.
+
+Build the footprint, volumes, openings and roof sections before ornament. Compare
+model views with references from similar positions and directions, including an
+orbit of the assembled block. Check silhouette, width/height/depth ratios, rear
+setbacks and access gaps. Record discrepancies and resolve them before the detail
+pass. Publish intermediate massing when requested, explicitly identifying its
+provisional status; publication does not mean completion.
+
+### 3. Detail every evidenced elevation and verify it again
+
+Work systematically from ground to roof: plinths, entrances and approaches,
+reveals, windows, courses, columns/timbering, cornices, roof furniture and drainage.
+Check depth as well as frontal pattern. Stairs need connected landings/headroom;
+doors and ramps need usable approaches. Use local evidence for street furniture.
+Do not invent hidden ornament, inscriptions, chimneys or rows of windows.
+Unknown surfaces receive restrained provisional geometry and remain listed as
+unresolved; a failed search does not establish that a feature is absent.
+
+Review reference-versus-model views for each evidenced elevation and roof, then
+review exported Detail, Walk and District and the neighbouring assembled scene.
+A pleasant standalone render and passing mesh tests cannot substitute for these
+comparisons. Keep a short current-state review record identifying the references,
+model viewpoints, comparisons actually made and remaining discrepancies.
+Do not close a snag merely because its interpreted code change was implemented:
+verify the reported discrepancy against its evidence in the published viewer.
 
 ## Author each viewing level together
 

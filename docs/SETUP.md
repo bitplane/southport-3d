@@ -65,3 +65,20 @@ that directly pass `--headless` must be changed to this launcher and reloaded to
 use the new default; editing repository files does not reconfigure a live server.
 
 Codex's repository skill is in `.agents/skills/model-southport`. Claude's `.claude/skills` symlink exposes the same workflow; if symlinks are unavailable, read the linked SKILL.md directly. These conventions follow the [Codex skills documentation](https://learn.chatgpt.com/docs/build-skills), [Claude skills documentation](https://code.claude.com/docs/en/skills) and [Claude MCP documentation](https://code.claude.com/docs/en/mcp).
+
+## Google Maps 3D on the desktop GPU
+
+The default offscreen browser can select SwiftShader even on a machine with an
+NVIDIA GPU. Street View and the project viewer may still work while Maps disables
+3D. On Brett's desktop, `SOUTHPORT_BROWSER_MODE=offscreen-gpu` selects the optional
+`offscreen-gpu.json` configuration: ANGLE with the GL/EGL backend and the GPU block
+list overridden. The browser sandbox remains enabled. This mode requires working
+host graphics drivers; use ordinary offscreen mode on hosts without them.
+
+Verified on 23 October 2026: Chrome reported NVIDIA GeForce RTX 5090 rather than
+SwiftShader, accepted WebGL2 with `failIfMajorPerformanceCaveat: true`, and rendered
+Southport's photogrammetric buildings from several rotated viewpoints. In Maps,
+open Layers → More, enable Globe view, select Satellite and then 3D. Some direct
+3D URLs still reset to the flat map; enable it through the controls and navigate
+within that session. Ctrl-drag rotates the view; ordinary arrow keys pan. Verify
+a perspective screenshot rather than assuming a supported WebGL context suffices.

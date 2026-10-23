@@ -15,6 +15,7 @@ find "$browser_tools_dir/output" -mindepth 1 -maxdepth 1 -name 'session.*' -mmin
 browser_session_dir="$(mktemp -d "$browser_tools_dir/output/session.XXXXXXXX")"
 case "${SOUTHPORT_BROWSER_MODE:-offscreen}" in
   offscreen) browser_mode_args=(--config "$browser_tools_dir/offscreen.json") ;;
+  offscreen-gpu) browser_mode_args=(--config "$browser_tools_dir/offscreen-gpu.json") ;;
   headless) browser_mode_args=(--headless) ;;
   headed)
     if [[ -z "${DISPLAY:-}" ]]; then
@@ -22,7 +23,7 @@ case "${SOUTHPORT_BROWSER_MODE:-offscreen}" in
       exit 1
     fi
     browser_mode_args=() ;;
-  *) echo 'SOUTHPORT_BROWSER_MODE must be offscreen, headed or headless.' >&2; exit 1 ;;
+  *) echo 'SOUTHPORT_BROWSER_MODE must be offscreen, offscreen-gpu, headed or headless.' >&2; exit 1 ;;
 esac
 exec node "$browser_cli" \
   --browser chrome "${browser_mode_args[@]}" --sandbox --caps vision \

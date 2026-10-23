@@ -1,0 +1,13 @@
+{
+  "browser": {
+    "launchOptions": {
+      "headless": false,
+      "args": [
+        "--ozone-platform=headless",
+        "--use-gl=angle",
+        "--use-angle=gl-egl",
+        "--ignore-gpu-blocklist"
+      ]
+    }
+  }
+}
