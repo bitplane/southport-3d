@@ -87,13 +87,17 @@ def leaded(name,width,height=.85,detail=True):
     outline=roundtop(width,0,height,r,10 if detail else 5)
     m.outline(outline,-.035,0,0)
     if detail:
+        strips=[]
         for i in range(1,6):
             x=-r+i*width/6;top=height-r+math.sqrt(max(0,r*r-x*x))
-            m.box((x,top/2,.013),(.012,top,.018),1)
+            strips.append((x-.006,0,x+.006,top))
         for i in range(1,7):
             y=i*height/7
             half=r if y<=height-r else math.sqrt(max(0,r*r-(y-(height-r))**2))
-            m.box((0,y,.013),(half*2,.012,.018),1)
+            strips.append((-half,y-.006,half,y+.006))
+        # One closed union retains the lead widths without duplicate crossing faces.
+        came=rectangle_union_shell('Leaded transom came',strips,.004,.022)
+        m.add(came.vertices,came.faces,1)
     return m
 
 

@@ -49,10 +49,33 @@ def box(name,p,size,part='frontage',material=None,frame=None):
   ob=bpy.data.objects.new(name,box_prototypes[key]);C[part].objects.link(ob);ob.matrix_world=world@placement
  return ob
 proto={}
-def instance(key,factory,frame,part='frontage',mats=None):
- if key not in proto:ob=finish(factory(),part,mats,frame);ob.data.use_fake_user=True;proto[key]=(ob.name,ob.data)
+def instance(key,factory,frame,part='frontage',mats=None,authored_winding=False):
+ if key not in proto:ob=finish(factory(),part,mats,frame,authored_winding=authored_winding);ob.data.use_fake_user=True;proto[key]=(ob.name,ob.data)
  else:ob=bpy.data.objects.new(proto[key][0],proto[key][1]);C[part].objects.link(ob);ob.matrix_world=world@frame
  return ob
+
+def bay_arch_frames(length,lights,lw,frame):
+ # Adjacent 35 mm arch rings share a narrow upright. Union them once per
+ # prototype so their front/back planes do not overlap along that upright.
+ key=('bay-arch-frame',lights,round(lw,7))
+ if key in proto:
+  ob=bpy.data.objects.new(proto[key][0],proto[key][1]);C['frontage'].objects.link(ob);ob.matrix_world=world@frame
+  return ob
+ rings=[]
+ for k in range(lights):
+  u=.08+(k+.5)*(length-.16)/lights
+  mesh=ring('Window bay upper arches',lw,0,.85,lw/2,.035,.035,steps=10)
+  mesh.vertices=[(x+u,y,z) for x,y,z in mesh.vertices]
+  rings.append(finish(mesh,mats=[white],frame=frame))
+ body=rings[0]
+ for piece in rings[1:]:
+  bpy.context.view_layer.objects.active=body
+  mod=body.modifiers.new('Shared arch upright','BOOLEAN');mod.operation='UNION';mod.solver='EXACT';mod.object=piece
+  bpy.context.view_layer.update();bpy.ops.object.modifier_apply(modifier=mod.name)
+  bpy.data.objects.remove(piece,do_unlink=True)
+ body.data.use_fake_user=True;proto[key]=(body.name,body.data)
+ return body
+
 
 def label(name,body,origin,normal,height,width,material,part='frontage'):
  ob=text_object(name,body,origin,normal,height,width,font,material,extrude=.008,collection=C[part]);ob.matrix_world=world@ob.matrix_world
@@ -154,13 +177,14 @@ def bay(x,index):
     af=frame@Matrix.Translation((u,top+.07,0))
     typ='front' if seg==1 else 'side'
     instance('lead-'+typ,lambda:leaded('Leaded transom '+typ,lw),af,mats=[leadedglass,lead])
-    instance('transom-ring-'+typ,lambda:ring('Window bay upper arch '+typ,lw,0,.85,lw/2,.035,.035,steps=10),af,mats=[white])
+   bay_arch_frames(length,lights,lw,frame@Matrix.Translation((0,top+.07,0)))
    # Ivory spandrels fill the area outside the actual rounded transom openings.
    cutouts=[]
    for k in range(lights):
     u=.08+(k+.5)*(length-.16)/lights
-    cutouts.append([(xx+u,zz+top+.07) for xx,zz in roundtop(lw,0,.85,lw/2,10)])
-   instance('spandrel-'+str(storey)+'-'+typ,lambda:wall('Bay ivory transom spandrel',rect(.04,top+.02,length-.04,h-.13),cutouts,thickness=.07),frame,mats=[white])
+    # Spandrel ends at the outside of the 35 mm arch frame.
+    cutouts.append([(xx+u,zz+top+.07) for xx,zz in roundtop(lw+.07,-.035,.885,lw/2+.035,10)])
+   instance('spandrel-'+str(storey)+'-'+typ,lambda:wall('Bay ivory transom spandrel',rect(.04,top+.02,length-.04,h-.13),cutouts,thickness=.07),frame,mats=[white],authored_winding=True)
    # Thin white inner sill around the lower glass.
    box('Window bay inner sill',(length/2,apron+.03,-.02),(length-.10,.075,.13),material=white,frame=frame)
    assemble('Assembly bay '+typ+' storey '+str(storey),set(C['frontage'].objects)-before,frame,'frontage',('bay',storey,typ))

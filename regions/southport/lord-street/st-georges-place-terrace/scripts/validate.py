@@ -129,3 +129,37 @@ for ob in meshes:
             if ob.data.materials[t.material_index].name=='Terracotta dressings']
  assert not overlaps(triangles,[ob.name]*len(triangles),min_area=1e-4),ob.name
 print('Repeated terracotta head surfaces have no coplanar overlap')
+
+# Check actual bay prototypes in their authored frames after undoing site shear.
+# Lead crossings and exposed arch faces have one owner; spandrels leave glazing clear.
+seen=set();transom_probes=0
+for source in meshes:
+ if not source.name.startswith('Assembly bay '):continue
+ lights=3 if ' front ' in source.name else 1
+ length=2.46 if lights==3 else math.hypot((3.45-2.46)/2,1.08)
+ top=2.12 if 'storey 0' in source.name else 2.35
+ r=source.matrix_world.to_3x3();undo=(r.inverted()@registered@rotation.inverted()@r).inverted()
+ verts=[undo@v.co for v in source.data.vertices]
+ tree=BVHTree.FromPolygons(verts,[p.vertices[:] for p in source.data.polygons])
+ lw=(length-.16)/lights-.045
+ for k in range(lights):
+  u=.08+(k+.5)*(length-.16)/lights
+  p,n,i,distance=tree.ray_cast(Vector((u+lw*.1,top+.35,.2)),Vector((0,0,-1)),.5)
+  assert p is not None and source.data.materials[source.data.polygons[i].material_index].name=='Leaded transom glass',(source.name,'Obscured transom',k)
+  transom_probes+=1
+ if source.data.name in seen:continue
+ seen.add(source.data.name);source.data.calc_loop_triangles()
+ lead_tri=[];front_tri=[];boundary_tri=[];boundary_labels=[]
+ for t in source.data.loop_triangles:
+  mat=source.data.materials[t.material_index].name
+  tri=[verts[i] for i in t.vertices]
+  if mat=='Dark lead came':lead_tri.append(tri)
+  if mat in ('Ivory painted timber','Leaded transom glass'):
+   boundary_tri.append(tri);boundary_labels.append(mat)
+  n=(tri[1]-tri[0]).cross(tri[2]-tri[0]).normalized()
+  if mat=='Ivory painted timber' and n.z>.99:front_tri.append(tri)
+ assert not overlaps(lead_tri,['lead']*len(lead_tri),min_area=1e-6),source.name
+ assert not overlaps(front_tri,['arch']*len(front_tri),min_area=1e-5),source.name
+ assert not [hit for hit in overlaps(boundary_tri,boundary_labels,min_area=1e-5) if hit[0]!=hit[1]],source.name
+assert transom_probes==90
+print('90 clear bay transoms; lead crossings and exposed arch faces have no overlap')
