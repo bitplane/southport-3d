@@ -275,6 +275,24 @@ for x in (5.0,18.78,32.5):
 m=Mesh('Course terracotta ridge');m.tube([(4.9,-DEP/2,R+.08),(W-4.9,-DEP/2,R+.08)],.09,sides=8);finish(m,'roof',[terracotta])
 for x in (0,W):
  m=Mesh('Fitting front drainpipe');m.tube([(x,.07,13.4),(x,.07,.3)],.045,sides=8);finish(m,mats=[black])
+# Bake the mapped side skew into vertices: Blender object transforms cannot
+# retain shear, so assigning a sheared matrix would separate attached features.
+a=math.radians(D['local_rotation_degrees'])
+registered_world=Matrix(((math.cos(a),D['north_basis'][0],0,D['origin_site_xy'][0]),
+                         (math.sin(a),D['north_basis'][1],0,D['origin_site_xy'][1]),
+                         (0,0,1,D['base_z']),(0,0,0,1)))
+registration=registered_world@world.inverted()
+registered_meshes={}
+for ob in [o for col in C.values() for o in col.objects if o.type=='MESH']:
+    old=ob.matrix_world.copy();new=old.copy();new.translation=registration@old.translation
+    linear=old.inverted().to_3x3()@registration.to_3x3()@old.to_3x3()
+    key=(ob.data.name,tuple(round(v,6) for row in linear for v in row))
+    if key not in registered_meshes:
+        mesh=ob.data.copy()
+        for vertex in mesh.vertices:vertex.co=linear@vertex.co
+        mesh.update();registered_meshes[key]=mesh
+    ob.data=registered_meshes[key];ob.matrix_world=new
+
 for im in bpy.data.images:
  if im.source=='FILE':im.pack()
 s.render.engine='CYCLES';s.cycles.samples=24;s.cycles.use_denoising=True

@@ -162,6 +162,17 @@
         "Page 74 photograph: unequal-height twin arched arms, pale upper shaft, dark base and suspended saucer lanterns.",
         "Page 74 separates this family from memorial clustered globes and garden-wall globe lamps. Exact current pole locations and metric dimensions remain estimates."
       ]
+    },
+    {
+      "id": "st-georges-block-plan",
+      "url": "https://www.google.com/maps/@53.650035,-3.00220,177m/data=!3m1!1e3",
+      "author": "Google Maps / Airbus, Maxar; OSM contributors for mapped boundaries",
+      "reviewed": "2026-10-23",
+      "observations": [
+        "Aerial visibly loaded: church, hall, separate building at 150, parking rows, Anchor/Hill/Castle junctions and open car park approaches.",
+        "Mapped numeric outlines retained in st-georges-block.json; imagery is not distributed.",
+        "Private user aerial establishes Posting House open courtyard and skewed rear redevelopment. Dimensions and furniture placements remain estimates."
+      ]
     }
   ],
   "limitations": [

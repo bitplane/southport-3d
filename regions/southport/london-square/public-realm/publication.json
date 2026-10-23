@@ -125,6 +125,17 @@
       "name": "Post Office Avenue and Anchor Street",
       "collection": "rear-streets-ground",
       "ground": true
+    },
+    {
+      "id": "block-ground",
+      "name": "Sainsburys car park and rear courts",
+      "collection": "block-ground",
+      "ground": true
+    },
+    {
+      "id": "block-furniture",
+      "name": "Block furniture and provisional rear building volumes",
+      "collection": "block-furniture"
     }
   ],
   "views": [
@@ -706,6 +717,96 @@
         "uv": "smart",
         "bake": false,
         "reason": "Preserve curved plan and pierced balustrade; reduce radial profiles and foliage lobes without filling openings."
+      }
+    },
+    {
+      "id": "mapped-placeholders",
+      "match": "^Placeholder OSM ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already minimal footprint volume; temporary architectural placeholder."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Preserve mapped footprint and estimated mass until replaced by a researched building."
+      }
+    },
+    {
+      "id": "block-bollard",
+      "match": "^Block bollard ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bollard",
+          "level": "walk"
+        },
+        "reason": "Reuse shared furniture at reduced profile resolution.",
+        "uv": "smart",
+        "bake": false
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bollard",
+          "level": "district"
+        },
+        "reason": "Coarse reusable furniture silhouette.",
+        "uv": "smart",
+        "bake": false
+      }
+    },
+    {
+      "id": "block-bin",
+      "match": "^Block bin ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bin",
+          "level": "walk"
+        },
+        "reason": "Reuse shared furniture at reduced profile resolution.",
+        "uv": "smart",
+        "bake": false
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bin",
+          "level": "district"
+        },
+        "reason": "Coarse reusable furniture silhouette.",
+        "uv": "smart",
+        "bake": false
+      }
+    },
+    {
+      "id": "block-bench",
+      "match": "^Block bench ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "walk"
+        },
+        "reason": "Reuse shared furniture at reduced profile resolution.",
+        "uv": "smart",
+        "bake": false
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "district"
+        },
+        "reason": "Coarse reusable furniture silhouette.",
+        "uv": "smart",
+        "bake": false
       }
     }
   ]

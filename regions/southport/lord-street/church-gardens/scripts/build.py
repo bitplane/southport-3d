@@ -252,6 +252,10 @@ flag=Mesh('Street St George flagpole')
 flag.lathe((163,-5),[(grade(-5),.055),(grade(-5)+7.2,.025)],12)
 flag.finish([mats['paving']],collections['george-furniture'])
 
+# Hill Street runs along the eastern garden boundary. The adjacent block owns
+# the continuation east of X218; both use the same mapped centreline and width.
+strip('george',[(219.58,21),(219.961,-6.062),(222.111,-21.523),(224.285,-59.271)],7.0,'asphalt',110,-.12)
+
 # Partition all surfaces by material priority, so paving, lawns, paint and paths
 # occupy one visible surface. Conform the clipped fragments before GLB float32.
 compiled={}

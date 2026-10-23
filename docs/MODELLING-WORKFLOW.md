@@ -2,6 +2,14 @@
 
 Start with one building or a bounded street section. Read its manifest, research records and neighbouring assets before changing coordinates or shared boundaries. The source recipes are authoritative; Blender scenes, GLBs, baked textures and screenshots are generated products.
 
+## Establish the block before detailing buildings
+
+Begin each expansion with a bounded block plan: mapped road centrelines and kerbs, junction mouths, building footprints, alleys, courtyards, grounds and parking. Retain the geographic source geometry and attribution alongside the area recipe. Compare it with current aerial imagery; OSM outlines are evidence, not a survey, and roofs can overhang wall footprints.
+
+Publish simple, explicitly labelled placeholder volumes for buildings whose architecture is not yet researched. Review the whole block from above and obliquely before assigning detailed buildings. Check frontage alignment, rear setbacks, access gaps, church grounds and the next junction together. Do not straighten a skewed footprint merely to simplify a facade generator or move a street to fit an independently guessed building.
+
+Replace each placeholder with its detailed asset on the same agreed footprint and height datum; remove the placeholder in the same publication. Record footprint controls in the building recipe, with a link to the block plan. Keep exceptions explicit (porches, bays, canopies and roof overhangs). A later footprint correction must include its neighbouring ground and access review, rather than adding compensating pavement around the error. Ground and architecture retain separate ownership and streaming parts.
+
 ## Establish the evidence
 
 Verify that imagery actually displays before treating a browser session as a reference. A Street View URL or page title alone does not establish that the panorama loaded. See [SETUP.md](SETUP.md) for the working offscreen Chrome configuration. Record source URLs, dates, viewpoints and uncertainty; keep downloaded images and browser profiles out of Git.

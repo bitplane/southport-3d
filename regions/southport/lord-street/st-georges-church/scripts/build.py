@@ -395,6 +395,12 @@ for tier,z,r,rad,spring in [(0,25.1,2.55,.58,2.65),(1,34.15,1.62,.34,1.25)]:
         coping=Mesh('Lucarne coping '+str(tier));coping.tube([(-rad-.28,spring,.20),(0,spring+rad*2.1+.4,.20),(rad+.28,spring,.20)],.08,sides=6);finish(coping,'spire',[ashlar],frame)
         if tier==0:
             c=Mesh('Ornament lucarne finial');c.tube([(0,spring+rad*2.1+.35,.2),(0,spring+rad*2.1+.8,.2)],.05,sides=6);finish(c,'spire',[ashlar],frame)
+# Restore the mapped church skew; architecture and hall move together.
+a=math.atan2(.503,18.252)
+registration=Matrix.Translation((159.144,-16.922,0))@Matrix.Rotation(a,4,'Z')@Matrix.Translation((-(D['centre_x']-D['nave_width']/2),-D['tower_front_y'],0))
+for ob in [o for col in collections.values() for o in col.objects if o.type=='MESH']:
+    ob.matrix_world=registration@ob.matrix_world
+
 for image in bpy.data.images:
     if image.source=='FILE':image.pack()
 scene.render.engine='CYCLES';scene.cycles.samples=20;scene.cycles.use_denoising=True

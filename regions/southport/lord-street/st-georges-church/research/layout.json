@@ -35,7 +35,7 @@
   "tower_back_y": -23.2,
   "tower_parapet": 23.1,
   "spire_tip": 47.2,
-  "status": "Nave footprint registered to retained OSM extract; small skew simplified. Heights, tower projection and ornamental dimensions visually calibrated estimates. Rear hall volume and cross-gable observed, footprint estimated from aerial.",
+  "status": "OSM 51826176 footprint skew restored across nave, tower and hall. Heights and rear hall extent remain estimates from aerial/Street View.",
   "rear_hall": {
     "bounds_xy": [
       159.55,
@@ -46,5 +46,6 @@
     "eaves": 6.15,
     "ridge": 11.3,
     "evidence": "November 2020 car-park panoramas and 2026-accessed aerial; dimensions estimated"
-  }
+  },
+  "block_plan": "../../london-square/public-realm/research/st-georges-block.json"
 }

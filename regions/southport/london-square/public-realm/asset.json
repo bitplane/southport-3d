@@ -28,7 +28,10 @@
     "walls",
     "pools",
     "garden-paths",
-    "bus-stop-poles"
+    "bus-stop-poles",
+    "sainsburys-car-park",
+    "hill-street-junction",
+    "mapped-rear-building-placeholders"
   ],
   "lods": [
     "detail",
@@ -43,6 +46,6 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Memorial square, adjoining Lord Street gardens and St George\u2019s Place, London Street to Chapel/Hoghton junction. OSM-registered layout with estimated widths, grades and planting. Fountain sculpture and bus shelters await detail.",
+  "scope": "Memorial square, adjoining Lord Street gardens and St George\u2019s Place, London Street to Chapel/Hoghton junction. OSM-registered layout with estimated widths, grades and planting. Fountain sculpture and bus shelters await detail. Block layout now includes Sainsburys parking, rear courts and Hill/Castle junction; three rear buildings are explicitly provisional footprint volumes.",
   "licensing": "See RIGHTS.md. OSM-derived layout attribution retained; no reference imagery embedded."
 }

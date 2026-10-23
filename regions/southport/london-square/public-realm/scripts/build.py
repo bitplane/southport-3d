@@ -353,11 +353,18 @@ for name,mesh in compiled.items():
 # Clipping meeting road strips can leave zero-area slivers after float conversion.
 # Remove those faces in the new corridor rather than exporting invalid normals.
 import bmesh
-for ob in collections['rear-streets-ground'].objects:
+for ob in list(collections['rear-streets-ground'].objects)+list(collections['block-ground'].objects):
  bm=bmesh.new();bm.from_mesh(ob.data)
- bad=[f for f in bm.faces if f.calc_area()<1e-8]
+ bad=[f for f in bm.faces if f.calc_area()<1e-7]
  if bad:bmesh.ops.delete(bm,geom=bad,context='FACES_ONLY')
  bm.to_mesh(ob.data);bm.free();ob.data.update()
+ # Mesh polygons use float32 area calculations; a long collinear triangle can
+ # have nonzero BMesh area but collapse after conversion. Check that result too.
+ collapsed=[f.index for f in ob.data.polygons if f.area<1e-8]
+ if collapsed:
+  bm=bmesh.new();bm.from_mesh(ob.data);bm.faces.ensure_lookup_table()
+  bmesh.ops.delete(bm,geom=[bm.faces[i] for i in collapsed],context='FACES_ONLY')
+  bm.to_mesh(ob.data);bm.free();ob.data.update()
 (ROOT/'research/conform.json').write_text(json.dumps(report,indent=2))
 
 # Pack generated images for self-contained source output; no external reference pixels.

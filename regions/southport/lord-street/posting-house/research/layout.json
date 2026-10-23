@@ -21,5 +21,16 @@
   "ridge_z": 21.0,
   "main_depth": 17.9,
   "rear_depth": 54.3,
-  "registration": "OSM ways 371741772 and 653815606 define overall extents; front frame retains mapped 1.05m skew. Historic/132 boundary and roof/courtyard subdivisions are visually calibrated, not cadastral or surveyed."
+  "registration": "Historic frontage OSM 371741772 retained; rear range tapered to OSM 653815606 outer corners. Modern frontage remains inset within that envelope; courtyard subdivisions estimated from aerial.",
+  "rear_boundary": [
+    [
+      65.499,
+      -76.96
+    ],
+    [
+      36.69,
+      -76.447
+    ]
+  ],
+  "block_plan": "../../london-square/public-realm/research/st-georges-block.json"
 }

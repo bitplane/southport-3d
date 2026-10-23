@@ -16,7 +16,7 @@ Use master. Do not push or publish unless requested. The local viewer and Detail
 
 For ground and street furnishings, read docs/PUBLIC-REALM.md. Separate area surfaces from building assets and furniture from walkable ground. Keep observed features distinct from estimated placements; share metric furniture generators, not site-specific coordinates.
 
-Follow docs/MODELLING-WORKFLOW.md for evidence verification, shared geometry, concurrency and combined-viewer review.
+Follow docs/MODELLING-WORKFLOW.md for evidence verification, shared geometry, concurrency and combined-viewer review. Establish roads, footprints, access gaps and placeholder building volumes for a bounded block before detailing individual buildings; replace placeholders on the agreed plan.
 
 When asked to work through viewer snags, follow docs/SNAGS.md. Use tools/snags.py
 to inspect and exclusively claim a report before editing; resolve it only after

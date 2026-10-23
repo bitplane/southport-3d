@@ -1,5 +1,5 @@
 from pathlib import Path
-import bpy,json,math
+import bpy,bmesh,json,math
 ROOT=Path(__file__).resolve().parents[1];bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 meshes=[o for o in bpy.context.scene.objects if o.type=='MESH'];layout=json.loads((ROOT/'research/layout.json').read_text())
 assert len([o for o in meshes if o.name.startswith('Furniture ') and ' extension ' not in o.name])==len(layout['furniture'])
@@ -235,3 +235,17 @@ for x,y,expected in [(-72.5,-12.3,'Authored mixed rectangular paving'),(-63.2,-1
  ob,p=ground_hit(x,y)
  assert ob and any(m.name==expected for m in ob.data.materials),(x,y,expected,ob.name if ob else None)
 assert bpy.data.objects.get('Garden curved return')
+
+# Block-scale circulation: the car-park entrance and Hill/Anchor/Castle mouths
+# must be asphalt, not a higher footway spanning the new road.
+for x,y in [(151,-91),(151,-93),(218,-60),(223.9,-95.7),(224.3,-59.3),(231,-59.4),(220,-10),(180,-75),(210,-70)]:
+ ob,p=ground_hit(x,y)
+ assert ob and any(m.name=='Authored asphalt' for m in ob.data.materials),(x,y,'Blocked block circulation',ob.name if ob else None)
+ assert abs(p.z-(layout['grade']['origin_z']+layout['grade']['dz_dy']*max(-36,min(36,y))-.12))<.002,(x,y,'Road grade mismatch')
+placeholders=[o for o in meshes if o.name.startswith('Placeholder OSM ')]
+assert len(placeholders)==4,'Missing mapped provisional volumes'
+for ob in placeholders:
+ bm=bmesh.new();bm.from_mesh(ob.data)
+ assert all(e.is_manifold for e in bm.edges),(ob.name,'Open placeholder shell')
+ bm.free()
+print('Block junctions, parking entrance and mapped placeholder shells validated')

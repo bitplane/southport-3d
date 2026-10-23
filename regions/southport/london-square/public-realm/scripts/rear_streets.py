@@ -2,13 +2,13 @@
 from southport3d.planar import subtract
 from southport3d.road import parallel
 
-PARTS={'rear-streets-ground':'Post Office Avenue and Anchor Street surfaces'}
+PARTS={'rear-streets-ground':'Post Office Avenue and Anchor Street surfaces', 'block-ground':'St Georges block courts and parking', 'block-furniture':'St Georges block furniture and mapped placeholders'}
 
 def build_rear_streets(ctx):
     polygon=ctx['polygon'];part='rear-streets-ground'
     # Ownership starts at the existing Anchor stub X25 and front strip Y-27.
     # Anchor widens to the nine-metre stub, then follows mapped centreline bends.
-    anchor=[(25,-83.5),(26,-83.5),(49.817,-85.631),(67.658,-87.563),(150.579,-95.244),(160,-97.0)]
+    anchor=[(25,-83.5),(26,-83.5),(49.817,-85.631),(67.658,-87.563),(150.579,-95.244),(159.105,-96.894),(223.91,-95.688),(234,-95.5)]
     avenue=[(68.154,-27),(68.0803,-36),(67.658,-87.563)]
     an=parallel(anchor,4);aso=parallel(anchor,-4)
     an[0]=(25,-79);aso[0]=(25,-88)
@@ -17,6 +17,11 @@ def build_rear_streets(ctx):
     roads=[an+list(reversed(aso)),aw+list(reversed(ae))]
     for name,pts in zip(['Anchor Street','Post Office Avenue'],roads):
         polygon('Surface '+name,pts,ctx['asphalt'],part,-.12)
+    # Include the adjoining junctions and car-park mouth when cutting Anchor's
+    # footways, otherwise a higher pavement slab would bridge the new road.
+    hill=[(219.58,21),(219.961,-6.062),(222.111,-21.523),(224.285,-59.271),(223.91,-95.688),(224.15,-104)]
+    roads.append(parallel(hill,-3.5)+list(reversed(parallel(hill,3.5))))
+    roads.append([(147.5,-86),(154.5,-86),(154.5,-96),(147.5,-96)])
     # Footways are genuinely cut out at the T-junction, not layered over roads.
     for name,edge,outer in [
         ('Anchor north',an,parallel(anchor,6.5)),('Anchor south',aso,parallel(anchor,-6.5)),
@@ -39,5 +44,25 @@ def build_rear_streets(ctx):
             ('Avenue east into Anchor north',[ae[0],ae[1],(69.69,-83.7)]+an[4:],1),
             ('Anchor south',aso,-1)]
     for name,curve,side in curves:
-        ctx['open_kerb'](curve,side,part)
-        ctx['paint_edge'](name,curve,-side,part)
+        # This pass ends the Anchor kerb at the Hill Street junction mouth.
+        from southport3d.planar import halfplane
+        for a,b in zip(curve,curve[1:]):
+            cuts=[(a,b)]
+            # Open vehicular access to Sainsbury's from Anchor, and Hill junction.
+            for lo,hi in ([(147.5,154.5),(219.8,228)] if name!='Anchor south' else [(219.8,228)]):
+                trimmed=[]
+                for p,q in cuts:
+                    if abs(q[0]-p[0])<1e-9:
+                        if not lo<p[0]<hi:trimmed.append((p,q))
+                        continue
+                    ts=sorted(set([0.,1.]+[max(0,min(1,(x-p[0])/(q[0]-p[0]))) for x in (lo,hi)]))
+                    for ta,tb in zip(ts,ts[1:]):
+                        mid=p[0]+(q[0]-p[0])*(ta+tb)/2
+                        if lo<mid<hi:continue
+                        trimmed.append((tuple(p[i]+(q[i]-p[i])*ta for i in range(2)),tuple(p[i]+(q[i]-p[i])*tb for i in range(2))))
+                cuts=trimmed
+            for segment in cuts:
+                ctx['open_kerb'](list(segment),side,part)
+                ctx['paint_edge'](name,list(segment),-side,part)
+    from block_ground import build_block
+    build_block(ctx,roads,an,aso)

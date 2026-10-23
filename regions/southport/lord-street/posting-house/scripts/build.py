@@ -323,6 +323,29 @@ for dep in [25.8,39.0]:
 from frontage132 import build_132
 build_132(globals())
 
+
+# Fit the redevelopment to the mapped taper and independently skew rear wall.
+# Historic frontage/roof remain in their original frame.
+def registered(p):
+    q=front.inverted()@p
+    t=max(0,(-q.z-depth)/(D['rear_depth']-depth))
+    u=q.x/width
+    original=front@Vector((q.x,q.y,-D['rear_depth']))
+    east,west=D['rear_boundary']
+    target=Vector(((1-u)*east[0]+u*west[0],(1-u)*east[1]+u*west[1],p.z))
+    return p+Vector(((target.x-original.x)*t,(target.y-original.y)*t,0))
+for ob in [o for col in C.values() for o in col.objects if o.type=='MESH']:
+    old=ob.matrix_world.copy()
+    if all((front.inverted()@(old@v.co)).z>=-depth-.01 for v in ob.data.vertices):continue
+    origin=registered(old.translation)
+    # Keep a true orthogonal local facade frame for baked receiving panels.
+    u=(registered(old@Vector((1,0,0)))-origin).normalized()
+    v=registered(old@Vector((0,1,0)))-origin;v=(v-u*v.dot(u)).normalized()
+    n=u.cross(v).normalized()
+    new=Matrix(((u.x,v.x,n.x,origin.x),(u.y,v.y,n.y,origin.y),(u.z,v.z,n.z,origin.z),(0,0,0,1)))
+    ob.data=ob.data.copy();inv=new.inverted()
+    for v in ob.data.vertices:v.co=inv@registered(old@v.co)
+    ob.matrix_world=new;ob.data.update()
 for im in bpy.data.images:
     if im.source=='FILE':im.pack()
 s.render.engine='CYCLES';s.cycles.samples=24;s.cycles.use_denoising=True

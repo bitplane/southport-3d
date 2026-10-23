@@ -1,15 +1,56 @@
 {
- "origin_site_xy": [71.14,-21.67],
- "local_rotation_degrees": 2.244,
- "width": 37.55,
- "base_z": 0.58,
- "main_depth": 10.2,
- "eaves": 13.6,
- "ridge": 17.84,
- "floor_levels": [0,3.55,7.13,10.965],
- "bay_centres": [1.95,10.45,14.50,23.05,27.10,35.60],
- "flat_centres": [6.15,18.775,31.40],
- "rear_wings": [[0,8.3,32.0],[13.5,21.35,21.6],[26.25,34.45,21.5]],
- "osm_way": 371742617,
- "evidence": "Footprint registered to OSM371742617. 140LordStreet existing elevations in J7Architects2023 heritage report provide floor levels3.55,7.13,10.965m and assumedridge17.84m. Applying this rhythm across symmetricalblock is an estimate. Other dimensions visually calibrated."
+  "origin_site_xy": [
+    71.14,
+    -21.67
+  ],
+  "local_rotation_degrees": 2.244,
+  "width": 37.55,
+  "base_z": 0.58,
+  "main_depth": 10.2,
+  "eaves": 13.6,
+  "ridge": 17.84,
+  "floor_levels": [
+    0,
+    3.55,
+    7.13,
+    10.965
+  ],
+  "bay_centres": [
+    1.95,
+    10.45,
+    14.5,
+    23.05,
+    27.1,
+    35.6
+  ],
+  "flat_centres": [
+    6.15,
+    18.775,
+    31.4
+  ],
+  "rear_wings": [
+    [
+      0,
+      8.3,
+      32.0
+    ],
+    [
+      13.5,
+      21.35,
+      21.6
+    ],
+    [
+      26.25,
+      34.45,
+      21.5
+    ]
+  ],
+  "osm_way": 371742617,
+  "evidence": "Footprint registered to OSM371742617. 140LordStreet existing elevations in J7Architects2023 heritage report provide floor levels3.55,7.13,10.965m and assumedridge17.84m. Applying this rhythm across symmetricalblock is an estimate. Other dimensions visually calibrated.",
+  "north_basis": [
+    0.0173125,
+    0.997875
+  ],
+  "block_plan": "../../london-square/public-realm/research/st-georges-block.json",
+  "footprint_review": "2026-10-23: retain the frontage while restoring the west rear wing to OSM 371742617; rear wing subdivisions remain approximate."
 }

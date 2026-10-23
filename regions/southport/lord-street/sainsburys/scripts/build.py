@@ -211,6 +211,24 @@ for i in range(49):
 # Side return beams connect to the wall and prevent a floating canopy end.
 for x in (.02,W-.02):
  m=Mesh('Canopy end frame');m.tube([(x,0,4.8),(x,projection,4.8),(x,0,5.38),(x,0,4.8)],.045,sides=6);finish(m,'canopy',[white])
+
+# Block-plan registration: the rear wall is skew to the street facade.
+def registered(p):
+    local=world.inverted()@p
+    u=local.x/W; v=-local.y/DEP
+    corners=D['registration_corners']
+    q=Vector(tuple((1-v)*((1-u)*corners[0][i]+u*corners[1][i])+v*((1-u)*corners[2][i]+u*corners[3][i]) for i in range(2))+(p.z,))
+    return q
+for ob in [o for col in C.values() for o in col.objects if o.type=='MESH']:
+    old=ob.matrix_world.copy(); origin=registered(old.translation)
+    # Keep a true orthogonal local facade frame for baked receiving panels.
+    u=(registered(old@Vector((1,0,0)))-origin).normalized()
+    v=registered(old@Vector((0,1,0)))-origin;v=(v-u*v.dot(u)).normalized()
+    n=u.cross(v).normalized()
+    new=Matrix(((u.x,v.x,n.x,origin.x),(u.y,v.y,n.y,origin.y),(u.z,v.z,n.z,origin.z),(0,0,0,1)))
+    ob.data=ob.data.copy(); inv=new.inverted()
+    for v in ob.data.vertices:v.co=inv@registered(old@v.co)
+    ob.matrix_world=new;ob.data.update()
 for im in bpy.data.images:
  if im.source=='FILE':im.pack()
 s.render.engine='CYCLES';s.cycles.samples=24;s.cycles.use_denoising=True
