@@ -148,3 +148,35 @@ def street_wall_lod(name,settings,asset_directory):
 def fascia_receiver(name,settings,asset_directory):
     m=Mesh(name);w=settings['width'];m.add([(0,3.215,.168),(w,3.215,.168),(w,3.645,.168),(0,3.645,.168)],[(0,1,2,3)])
     return m.finish([])
+
+
+def oriel_frame(name):
+    """Union the original triple-sash strips, preserving their exact outline."""
+    strips=[]
+    for k in range(3):
+        centre=(k-1)*.67
+        for dx in (-.32,.32):
+            x=centre+dx
+            strips.append((x-.0275,12.47-.83,x+.0275,12.47+.83))
+        for z in (11.65,12.45,13.28):
+            strips.append((centre-.34,z-.0275,centre+.34,z+.0275))
+    xs=sorted({v for a,b,c,d in strips for v in (a,c)})
+    ys=sorted({v for a,b,c,d in strips for v in (b,d)})
+    filled={(i,j) for i in range(len(xs)-1) for j in range(len(ys)-1)
+            if any(a<(xs[i]+xs[i+1])/2<c and b<(ys[j]+ys[j+1])/2<d for a,b,c,d in strips)}
+    vertices=[];faces=[];indices={}
+    def face(points):
+        ids=[]
+        for p in points:
+            if p not in indices:indices[p]=len(vertices);vertices.append(p)
+            ids.append(indices[p])
+        faces.append(tuple(ids))
+    for i,j in sorted(filled):
+        a,b,c,d=xs[i],ys[j],xs[i+1],ys[j+1]
+        face([(a,b,0),(c,b,0),(c,d,0),(a,d,0)])
+        face([(a,d,-.09),(c,d,-.09),(c,b,-.09),(a,b,-.09)])
+        for neighbour,p,q in [((i,j-1),(a,b),(c,b)),((i+1,j),(c,b),(c,d)),
+                               ((i,j+1),(c,d),(a,d)),((i-1,j),(a,d),(a,b))]:
+            if neighbour not in filled:
+                face([(*p,0),(*p,-.09),(*q,-.09),(*q,0)])
+    m=Mesh(name);m.add(vertices,faces);return m

@@ -6,7 +6,7 @@ from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
-from components import rect,roundtop,wall,ring,leaded
+from components import rect,roundtop,wall,ring,leaded,oriel_frame
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC';C={}
@@ -168,8 +168,8 @@ def bay(x,index):
   # Rectangular triple sash on face of attic box, slightly projecting cheeks.
   for k in range(3):
    xx=x+(k-1)*.67;box('Window attic oriel glass',(xx,1.145,12.47),(.58,.035,1.55),material=glass)
-   for sx in (-.32,.32):box('Window attic oriel stile',(xx+sx,1.19,12.47),(.055,.09,1.66),material=white)
-   for zz in (11.65,12.45,13.28):box('Window attic oriel rail',(xx,1.19,zz),(.68,.09,.055),material=white)
+  instance('attic-oriel-frame',lambda:oriel_frame('Window attic oriel frame'),
+           face_matrix((x,1.235,0),(0,1,0)),mats=[white])
  # Gabled fronts have layered black verges and white triangular fields.
  m=Mesh('Bay white gable');m.outline([(-baywidth/2,top),(baywidth/2,top),(0,top+1.65)],-.13,.02)
  frame=face_matrix((x,1.225,0),(0,1,0));finish(m,mats=[white],frame=frame)

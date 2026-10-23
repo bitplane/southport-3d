@@ -59,3 +59,39 @@ for prefixes in [('Window main side frame','Window main side transom'),
  errors=overlaps(triangles,labels,min_area=1e-4)
  assert not errors,(prefixes,errors[:8])
 print('Repeated window rail/stile surface ownership passed')
+
+# Triple-sash strip union keeps all openings and the original outer bounds.
+oriels=[o for o in meshes if o.name.startswith('Window attic oriel frame')]
+assert len(oriels)==4
+# Undo the documented site shear only for checks in the authored frame.
+# Check the actual saved mesh, not a freshly generated substitute.
+from mathutils import Matrix
+d=json.loads((ROOT/'research/layout.json').read_text());angle=math.radians(d['local_rotation_degrees'])
+rotation=Matrix.Rotation(angle,3,'Z')
+registered=Matrix(((math.cos(angle),d['north_basis'][0],0),
+                   (math.sin(angle),d['north_basis'][1],0),(0,0,1)))
+ob=oriels[0].copy();ob.data=oriels[0].data.copy()
+r=ob.matrix_world.to_3x3();undo=(r.inverted()@registered@rotation.inverted()@r).inverted()
+for v in ob.data.vertices:v.co=undo@v.co
+ob.data.update()
+bm=bmesh.new();bm.from_mesh(ob.data)
+assert all(e.is_manifold and e.is_contiguous for e in bm.edges),'Open/inverted oriel frame'
+assert bm.calc_volume(signed=True)>0
+bm.free()
+assert abs(max(v.co.x for v in ob.data.vertices)-1.0175)<1e-5
+assert abs(min(v.co.y for v in ob.data.vertices)-11.6225)<1e-5
+assert abs(max(v.co.y for v in ob.data.vertices)-13.3075)<1e-5
+from mathutils.bvhtree import BVHTree
+tree=BVHTree.FromPolygons([v.co for v in ob.data.vertices],[p.vertices[:] for p in ob.data.polygons])
+for x in (-.67,0,.67):
+ for y in (11.9,12.9):
+  assert tree.ray_cast(Vector((x,y,.2)),Vector((0,0,-1)),.4)[0] is None,('Filled oriel pane',x,y)
+ for y in (11.65,12.45,13.28):
+  p,n,i,distance=tree.ray_cast(Vector((x,y,.2)),Vector((0,0,-1)),.4)
+  assert p is not None and abs(p.z)<1e-5 and n.z>.99,('Missing/inverted oriel rail',x,y)
+ob.data.calc_loop_triangles()
+triangles=[[tuple(ob.data.vertices[i].co) for i in t.vertices] for t in ob.data.loop_triangles]
+assert not overlaps(triangles,[ob.name]*len(triangles),min_area=1e-6)
+print('Oriel union: closed outward shell, original bounds, open panes and no duplicate faces')
+
+mesh=ob.data;bpy.data.objects.remove(ob);bpy.data.meshes.remove(mesh)
