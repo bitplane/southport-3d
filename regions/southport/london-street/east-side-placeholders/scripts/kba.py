@@ -17,7 +17,8 @@ def build(f):
     slate=f.mat('KBA dark slate',(.17,.18,.175))
     holes=[rect(.3,.3,w-.3,3.12)]+[rect(c-1.25,4.15,c+1.25,5.75) for c in [w*.25,w*.75]]
     f.wall('Envelope KBA front',rect(0,0,w,5.95),holes,cream)
-    f.enclosed('KBA main',0,w,0,8.5,5.95,cream)
+    # The taller southern neighbour owns this entire shared wall section.
+    f.enclosed('KBA main',0,w,0,8.5,5.95,cream,sides=(0,))
     # Orbit evidence shows a common transverse roof behind the two projecting
     # front gables, not two independent full-depth parallel roofs.
     main=f.roof('KBA main hip',0,8.5,0,w,5.95,7.5,slate,hip=1.0)

@@ -94,7 +94,9 @@ class Facade:
         m.add(top+[(x,y-.12,z) for x,y,z in top],faces+[tuple(i+n for i in reversed(f)) for f in faces]+[(a,b,b+n,a+n) for a,b in edges])
         return self.finish(m,[mat])
 
-    def enclosed(self,name,u0,u1,d0,d1,height,mat):
+    def enclosed(self,name,u0,u1,d0,d1,height,mat,sides=(0,1)):
         # Side/rear walls only: the separately authored front contains openings.
-        for u in [u0,u1]:self.box('Envelope '+name+' side',(u,height/2,-(d0+d1)/2),(.22,height,d1-d0),mat)
+        for side in sides:
+            u=(u0,u1)[side]
+            self.box('Envelope '+name+' side',(u,height/2,-(d0+d1)/2),(.22,height,d1-d0),mat)
         self.box('Envelope '+name+' rear',((u0+u1)/2,height/2,-d1),(u1-u0,height,.22),mat)

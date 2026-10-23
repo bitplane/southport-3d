@@ -10,7 +10,8 @@ def build(f):
     white=f.mat('Shop white lettering',(.87,.88,.84))
     grey=f.mat('William Hill aluminium frames',(.33,.35,.34))
     felt=f.mat('Shop weathered felt',(.13,.14,.14))
-    f.enclosed('William Hill front',0,w,0,7.0,5.6,cream)
+    # The taller southern neighbour owns this entire shared wall section.
+    f.enclosed('William Hill front',0,w,0,7.0,5.6,cream,sides=(0,))
     holes=[rect(.35,.15,w-.35,2.85),rect(.35,3.95,w-.35,5.25)]
     f.wall('Envelope William Hill frontage',rect(0,0,w,5.6),holes,cream)
     f.window('William Hill ribbon',w/2,4.6,w-.7,1.3,grey,mullions=5,transom=-.58)

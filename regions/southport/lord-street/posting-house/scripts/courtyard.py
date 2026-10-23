@@ -82,8 +82,10 @@ def build_courtyard(g):
 
     # Raised basement roof garden. The service lane remains outside its west
     # retaining wall. Photo 15 shows paving, artificial lawn and timber squares.
+    # The slab terminates at the retaining wall's inside face (u=28.8).
+    # The brick wall owns the lane-facing skin, including the floor thickness.
     level=2.7
-    b('Envelope courtyard basement roof',(22.4,level-.18,-31.15),(13.8,.36,26.5),paving,'courtyard-ground')
+    b('Envelope courtyard basement roof',(22.15,level-.18,-31.15),(13.3,.36,26.5),paving,'courtyard-ground')
     b('Envelope courtyard west retaining wall',(29.05,1.95,-31.15),(.5,3.9,26.5),brick)
     b('Trim courtyard retaining coping',(29.05,3.96,-31.15),(.65,.12,26.5),paving)
     b('Envelope courtyard lawn',(25.0,level+.025,-33.6),(7.5,.05,21.6),turf,'courtyard-ground')

@@ -144,3 +144,17 @@ for ob in meshes:
 errors=[v for v in overlaps(triangles,labels,min_area=1e-4) if v[0]!=v[1]]
 assert not errors,errors[:12]
 print('132 white aprons and black ledges have separate surface ownership')
+
+# Reported adjoining surfaces have separate ownership (large-overlap regression).
+import sys,os
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+triangles=[];labels=[]
+for name in ('Envelope courtyard basement roof', 'Envelope courtyard west retaining wall'):
+ ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
+# The full published audit still records sub-centimetre-square rounding slivers.
+errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+assert not errors,errors[:8]
+print('Reported wall/return surface ownership verified')

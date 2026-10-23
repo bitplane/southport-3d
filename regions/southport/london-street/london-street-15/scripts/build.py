@@ -607,7 +607,10 @@ party,_=plane((north_back,YN),(FX,YN))
 g=Group('Envelope short north party wall',party,[brick])
 endheight=be+(br-be)*(FX-xf)/.85-.12
 hipu=north_back-(xf+.85)
-g.poly([(0,BURY),(north_back-FX,BURY),(north_back-FX,endheight),(hipu,br-.12),(0,br-.12)],-.2,0)
+# The rendered porch jamb owns the front 1.5 m below the shop head.
+# Notch the brick party wall around it instead of overlaying its outside face.
+g.poly([(0,BURY),(north_back-FX-1.5,BURY),(north_back-FX-1.5,SHOP),
+        (north_back-FX,SHOP),(north_back-FX,endheight),(hipu,br-.12),(0,br-.12)],-.2,0)
 g.done()
 
 # Lower single-slope wing with a hip at the rear, visible in both rear photos.

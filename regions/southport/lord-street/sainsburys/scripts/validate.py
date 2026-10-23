@@ -41,3 +41,18 @@ assert -74<min(p.y for p in pts)<-65 and -19<max(p.y for p in pts)<-12
 assert 16<max(p.z for p in pts)<18
 report={'meshes':len(meshes),'shop_aperture_probes':probes,'checks':['Finite UV meshes and packed authored textures','9 projecting upper bays,4 wing arches,9 ground glazed openings,8 cast columns','Closed two hip roofs and flat roof deck','Unobscured storefront glazing','Registered bounded site envelope']}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# Every wall cap faces out; coincident coping undersides face the opposite way.
+for name,low,high in [('north',0,D['rear_parapet']),('south',0,D['rear_parapet']),('rear',0,D['rear_parapet']),
+                      ('stepped front lower',0,D['church_wing_parapet']),('stepped front upper',D['church_wing_parapet'],D['front_parapet'])]:
+ ob=bpy.data.objects['Envelope '+name];caps=0
+ for face in ob.data.polygons:
+  # Boolean opening repair can leave microscopic float32 fragments; the
+  # map audit retains them. This regression checks the wall's cap/skin faces.
+  if face.area<1e-5:continue
+  p=[ob.data.vertices[i].co for i in face.vertices]
+  if all(abs(v.y-high)<1e-4 for v in p):assert face.normal.y>.99,(name,'Inward top cap');caps+=1
+  if all(abs(v.y-low)<1e-4 for v in p):assert face.normal.y<-.99,(name,'Inward bottom cap')
+  if all(abs(v.z)<1e-5 for v in p):assert face.normal.z>.99,(name,'Inward exterior skin')
+ assert caps,(name,'Missing top cap')
+print('Wall exterior skins and horizontal caps retain authored outward normals')

@@ -64,3 +64,17 @@ for name in ['Awning mamma-mia','Fine ATM controls']:
  volume=sum(ob.data.vertices[f.vertices[0]].co.dot(ob.data.vertices[f.vertices[1]].co.cross(ob.data.vertices[f.vertices[2]].co))/6 for f in ob.data.polygons)
  assert volume>0,(name,'inward shell',volume)
 print('Awning and ATM hood have closed non-duplicate outward surfaces')
+
+# Reported adjoining surfaces have separate ownership (large-overlap regression).
+import sys,os
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+triangles=[];labels=[]
+for name in ('Envelope service annex rear', 'Envelope service annex returns'):
+ ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  triangles.append([tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]);labels.append(name)
+# The full published audit still records sub-centimetre-square rounding slivers.
+errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+assert not errors,errors[:8]
+print('Reported wall/return surface ownership verified')

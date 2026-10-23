@@ -67,7 +67,8 @@ def build(D,finish,brick,dark,glass,metal,cream,roofmat,white=None):
         m=Mesh('Trim service door lintel');m.box((x,z+h+.06,.03),(w+.20,.12,.14));finish(m,mats=[cream],transform=f)
     # Annex sides close against the original rear wall, not overlapping it.
     m=Mesh('Envelope service annex returns')
-    for x in [x0+.15,x1-.15]:m.box((x,-45.25,z0+3.5),(.30,7.5,7.0))
+    # The rear facade owns the first 0.30 m of wall thickness.
+    for x in [x0+.15,x1-.15]:m.box((x,-45.10,z0+3.5),(.30,7.2,7.0))
     finish(m,mats=[brick])
     m=Mesh('Roof service annex');m.box(((x0+x1)/2,-45.1,z0+7.0),(width,7.8,.18));finish(m,'roof',[roofmat])
     # Exposed upper rear lights, doors and downpipes from the Glebe Place view.

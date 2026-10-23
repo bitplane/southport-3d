@@ -149,3 +149,21 @@ for a,b in D['arches']:
             direction=(target-origin).normalized()
             hit,p,n,i,found,m=scene.ray_cast(deps,shop@origin,(shop.to_3x3()@direction).normalized(),distance=1.5)
             assert hit and (shop.inverted()@p).z > -.30,(u,h,oblique,found and found.name)
+
+# Reported adjoining surfaces have separate ownership (large-overlap regression).
+import sys,os
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import overlaps
+triangles=[];labels=[]
+for name in ('Envelope short north party wall', 'Shop entrance porch'):
+ ob=bpy.data.objects[name];ob.data.calc_loop_triangles()
+ for t in ob.data.loop_triangles:
+  points=[tuple(ob.matrix_world@ob.data.vertices[i].co) for i in t.vertices]
+  # The 0.01 m² common bottom patch is buried at z=.62, below the
+  # .785 m pavement/porch floor. The map-wide audit still records it.
+  if all(abs(p[2]-D['bury_z'])<1e-5 for p in points):continue
+  triangles.append(points);labels.append(name)
+# The full published audit still records sub-centimetre-square rounding slivers.
+errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
+assert not errors,errors[:8]
+print('Reported wall/return surface ownership verified')

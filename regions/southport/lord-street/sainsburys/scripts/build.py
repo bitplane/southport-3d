@@ -31,8 +31,12 @@ sh=canopyglass.node_tree.nodes.get('Principled BSDF');sh.inputs['Alpha'].default
 canopyglass.surface_render_method='DITHERED'
 font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf')
 
-def finish(m,part='frontage',mats=None,frame=None):
- ob=m.finish(mats or [brick],C[part]);bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.triangulate(bm,faces=list(bm.faces));bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(ob.data);bm.free();ob.data.update()
+def finish(m,part='frontage',mats=None,frame=None,authored_winding=False):
+ ob=m.finish(mats or [brick],C[part]);bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.triangulate(bm,faces=list(bm.faces))
+ # Conformed wall triangles are disconnected: recalculation can flip caps
+ # independently. Their generator already supplies consistent outward winding.
+ if not authored_winding:bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+ bm.to_mesh(ob.data);bm.free();ob.data.update()
  uv=ob.data.uv_layers.new(name='Metric UV')
  for f in ob.data.polygons:
   axes=sorted(sorted(range(3),key=lambda i:abs(f.normal[i]))[:2])
@@ -72,8 +76,8 @@ for x in upperx:holes.append([(u+W-x,z) for u,z in roundtop(1.52,5.7,12.75,.76)]
 lowx=[MW+5.2+i*1.55 for i in range(4)]
 for x in lowx:holes.append([(u+W-x,z) for u,z in roundtop(.88,6.0,9.65,.44)])
 poly=[(0,0),(W,0),(W,PH),(W-MW,PH),(W-MW,LH),(0,LH)]
-finish(wall('Envelope stepped front lower',rect(0,0,W,LH),holes),frame=ff)
-finish(wall('Envelope stepped front upper',rect(W-MW,LH,W,PH),holes),frame=ff)
+finish(wall('Envelope stepped front lower',rect(0,0,W,LH),holes),frame=ff,authored_winding=True)
+finish(wall('Envelope stepped front upper',rect(W-MW,LH,W,PH),holes),frame=ff,authored_winding=True)
 # Shop glass backed by a muted opaque colour; no invented shop interior.
 for i,u in enumerate(centres):
  af=ff@Matrix.Translation((u,0,0))
@@ -130,7 +134,7 @@ for name,origin,normal,length in [('north',(W,-DEP,0),(1,0,0),DEP),('south',(0,0
  if name=='north':
   holes=[rect(2.3,.1,3.5,2.45),rect(9.6,.1,11.4,2.45),rect(17.1,.1,20.7,3.05),rect(12.7,5.4,14.4,7.8)]
  if name=='rear':holes=[rect(1.2,.1,4.6,3.5),rect(5.5,.1,8.9,3.5)]
- finish(wall('Envelope '+name,rect(0,0,length,RH),holes),'roof-service',frame=frame)
+ finish(wall('Envelope '+name,rect(0,0,length,RH),holes),'roof-service',frame=frame,authored_winding=True)
  box('Course '+name+' parapet',(length/2,RH+.07,-.09),(length,.14,.45),'roof-service',metal,frame)
  # Brick rectangular panel relief at lower storey.
  for u in [1.0+i*4.0 for i in range(int(length/4))]:

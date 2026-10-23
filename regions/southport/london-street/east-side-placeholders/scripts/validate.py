@@ -44,3 +44,15 @@ import os,sys
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
 from coplanar import check_blender
 check_blender([o for o in meshes if o.name in ['Envelope Myers brick frontage','Envelope Myers Anchor wall']])
+
+# Myers owns the KBA/Myers party wall; KBA owns the William Hill/KBA wall.
+assert bpy.data.objects.get('Envelope KBA main side.001') is None
+assert bpy.data.objects.get('Envelope William Hill front side.001') is None
+for name,depth,height in [('Envelope KBA main side',7.0,5.6),('Envelope Myers north party wall',8.5,5.95)]:
+ ob=bpy.data.objects[name]
+ for d in [.5,depth-.5]:
+  for h in [.5,height-.1]:
+   for side in [-1,1]:
+    hit,p,n,i=ob.ray_cast(Vector((side,h,-d)),Vector((-side,0,0)),distance=2)
+    assert hit and abs(abs(p.x)-.11)<1e-5,(name,'Shared-wall coverage',d,h,side)
+print('Shared party sections have one continuous owner')
