@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Station quarter",
+  "status": "Paving families observed in 2017/2026 views; pattern bands and furniture positions estimated. No grade survey. No temporary works or business signs.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "west-ground",
+      "name": "West Chapel ground",
+      "collection": "west-ground",
+      "ground": true
+    },
+    {
+      "id": "middle-ground",
+      "name": "Middle Chapel ground",
+      "collection": "middle-ground",
+      "ground": true
+    },
+    {
+      "id": "east-ground",
+      "name": "East Chapel ground",
+      "collection": "east-ground",
+      "ground": true
+    },
+    {
+      "id": "west-furniture",
+      "name": "West Chapel furniture",
+      "collection": "west-furniture"
+    },
+    {
+      "id": "middle-furniture",
+      "name": "Middle Chapel furniture",
+      "collection": "middle-furniture"
+    },
+    {
+      "id": "east-furniture",
+      "name": "East Chapel furniture",
+      "collection": "east-furniture"
+    }
+  ],
+  "views": [
+    {
+      "name": "Chapel Street and station",
+      "position": [
+        -330,
+        240,
+        340
+      ],
+      "target": [
+        -140,
+        0,
+        145
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Shared cut ground boundaries and paving material bands; texture reduction only."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed coarse ground envelope; fine slab joints are texture maps."
+      }
+    },
+    {
+      "id": "bench",
+      "match": "^Furniture bench ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Source already uses the economical shared Walk generator; there is no fine hardware to remove. District replaces the remaining silhouette separately."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain coarse furnishing silhouette with bounded sampling and omit fine fittings."
+      }
+    },
+    {
+      "id": "bin",
+      "match": "^Furniture bin ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Source already uses the economical shared Walk generator; there is no fine hardware to remove. District replaces the remaining silhouette separately."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "bin",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain coarse furnishing silhouette with bounded sampling and omit fine fittings."
+      }
+    },
+    {
+      "id": "chapel-lamp",
+      "match": "^Furniture chapel-lamp ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "chapel-lamp",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain coarse furnishing silhouette with bounded sampling and omit fine fittings."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "chapel-lamp",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain coarse furnishing silhouette with bounded sampling and omit fine fittings."
+      }
+    },
+    {
+      "id": "planter",
+      "match": "^Furniture planter ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "planter",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain coarse furnishing silhouette with bounded sampling and omit fine fittings."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "planter",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain coarse furnishing silhouette with bounded sampling and omit fine fittings."
+      }
+    },
+    {
+      "id": "steel-bollard",
+      "match": "^Furniture steel-bollard ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "steel-bollard",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain coarse furnishing silhouette with bounded sampling and omit fine fittings."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "steel-bollard",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain coarse furnishing silhouette with bounded sampling and omit fine fittings."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -55,
+      2.3845,
+      140
+    ],
+    "target": [
+      -95,
+      2.3845,
+      136
+    ]
+  }
+}

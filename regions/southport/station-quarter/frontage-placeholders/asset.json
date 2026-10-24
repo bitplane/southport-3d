@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "southport.station-quarter.frontage-placeholders",
+  "name": "Chapel Street and station quarter \u2014 checked footprint placeholders",
+  "region": "southport",
+  "area": "station-quarter",
+  "status": "provisional-block-plan",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "chapel-london-corner",
+    "chapel-jd-range",
+    "chapel-boots-range",
+    "hugo-frontage",
+    "hugo-rear-range",
+    "station-london-retail",
+    "station-entrance-north",
+    "station-entrance-bridge",
+    "station-tesco-range",
+    "station-ms-range",
+    "chapel-eastbank-terrace",
+    "chapel-smith-frontage",
+    "marble-place-rear",
+    "marble-place-rear-2"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "External outlines checked against calibrated north-up Google aerials. 3D Earth unavailable on this host (NVIDIA driver unavailable); all heights are provisional bounds. Internal block divisions denote visible roof ranges, not legal property boundaries.",
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only."
+}

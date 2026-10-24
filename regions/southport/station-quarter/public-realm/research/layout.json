@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "datum_m": 0.7845,
+  "block_plan": "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
+  "existing_block_plan": "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+  "bounds": [
+    -270,
+    0,
+    -180,
+    -95
+  ],
+  "tile_cuts": [
+    -270,
+    -170,
+    -95,
+    0
+  ],
+  "ground_polygons": [
+    [
+      [
+        -4.3,
+        -138
+      ],
+      [
+        -12.5,
+        -138
+      ],
+      [
+        -12.5,
+        -132
+      ],
+      [
+        -124,
+        -119
+      ],
+      [
+        -132,
+        -119
+      ],
+      [
+        -161,
+        -116
+      ],
+      [
+        -167,
+        -116
+      ],
+      [
+        -254,
+        -107
+      ],
+      [
+        -257,
+        -108
+      ],
+      [
+        -260.8,
+        -137
+      ],
+      [
+        -254,
+        -139
+      ],
+      [
+        -171,
+        -148
+      ],
+      [
+        -154,
+        -151
+      ],
+      [
+        -140,
+        -148
+      ],
+      [
+        -61,
+        -153
+      ],
+      [
+        -50,
+        -153
+      ],
+      [
+        -42,
+        -156
+      ],
+      [
+        -12.5,
+        -156
+      ],
+      [
+        -12.5,
+        -150
+      ],
+      [
+        -4.3,
+        -150
+      ]
+    ],
+    [
+      [
+        -60,
+        -177
+      ],
+      [
+        -50,
+        -177
+      ],
+      [
+        -50,
+        -140
+      ],
+      [
+        -60,
+        -140
+      ]
+    ],
+    [
+      [
+        -132.5,
+        -128
+      ],
+      [
+        -123.3,
+        -128
+      ],
+      [
+        -123.3,
+        -105
+      ],
+      [
+        -132.5,
+        -105
+      ]
+    ],
+    [
+      [
+        -166,
+        -125
+      ],
+      [
+        -161,
+        -125
+      ],
+      [
+        -159,
+        -95
+      ],
+      [
+        -164,
+        -95
+      ]
+    ],
+    [
+      [
+        -172,
+        -175
+      ],
+      [
+        -156,
+        -175
+      ],
+      [
+        -156,
+        -133
+      ],
+      [
+        -172,
+        -133
+      ]
+    ]
+  ],
+  "exclusions": [
+    [
+      [
+        -12.5,
+        -138
+      ],
+      [
+        10,
+        -138
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        -12.5,
+        0
+      ]
+    ],
+    [
+      [
+        -12.5,
+        -300
+      ],
+      [
+        10,
+        -300
+      ],
+      [
+        10,
+        -150
+      ],
+      [
+        -12.5,
+        -150
+      ]
+    ],
+    [
+      [
+        -4.3,
+        -150
+      ],
+      [
+        10,
+        -150
+      ],
+      [
+        10,
+        -138
+      ],
+      [
+        -4.3,
+        -138
+      ]
+    ]
+  ],
+  "centreline": [
+    [
+      -258.5,
+      -120.8
+    ],
+    [
+      -249.7,
+      -121.81
+    ],
+    [
+      -202.04,
+      -126.66
+    ],
+    [
+      -165.35,
+      -128.78
+    ],
+    [
+      -129.02,
+      -131.87
+    ],
+    [
+      -49.39,
+      -138.7
+    ],
+    [
+      -12.5,
+      -142.5
+    ]
+  ],
+  "route_width_m": 7.0,
+  "furniture_strip_offset_m": 4.9,
+  "furniture_strip_width_m": 1.5,
+  "placements": [
+    {
+      "kind": "bench",
+      "xy": [
+        -238,
+        -127.90062106588334
+      ],
+      "rotation_degrees": 180,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -238,
+        -118.10062106588333
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -213,
+        -130.44468317247168
+      ],
+      "rotation_degrees": 180,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -213,
+        -120.64468317247167
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -188,
+        -132.37125102207685
+      ],
+      "rotation_degrees": 180,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -188,
+        -122.57125102207685
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -145,
+        -135.41084227910818
+      ],
+      "rotation_degrees": 180,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -145,
+        -125.61084227910817
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -113,
+        -138.144062539244
+      ],
+      "rotation_degrees": 180,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -113,
+        -128.344062539244
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -83,
+        -140.71721336179831
+      ],
+      "rotation_degrees": 180,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -83,
+        -130.9172133617983
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -34,
+        -145.1853076714557
+      ],
+      "rotation_degrees": 180,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -34,
+        -135.38530767145568
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Photographed long slatted bench family; approximate strip placement."
+    },
+    {
+      "kind": "chapel-lamp",
+      "xy": [
+        -248,
+        -116.48299622324801
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Curved Chapel lamp family; approximate aerial row spacing."
+    },
+    {
+      "kind": "chapel-lamp",
+      "xy": [
+        -220,
+        -119.33234578262694
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Curved Chapel lamp family; approximate aerial row spacing."
+    },
+    {
+      "kind": "chapel-lamp",
+      "xy": [
+        -193,
+        -121.68234396293268
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Curved Chapel lamp family; approximate aerial row spacing."
+    },
+    {
+      "kind": "chapel-lamp",
+      "xy": [
+        -148,
+        -124.75568125516102
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Curved Chapel lamp family; approximate aerial row spacing."
+    },
+    {
+      "kind": "chapel-lamp",
+      "xy": [
+        -115,
+        -127.57251915107372
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Curved Chapel lamp family; approximate aerial row spacing."
+    },
+    {
+      "kind": "chapel-lamp",
+      "xy": [
+        -85,
+        -130.14566997362803
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Curved Chapel lamp family; approximate aerial row spacing."
+    },
+    {
+      "kind": "chapel-lamp",
+      "xy": [
+        -37,
+        -134.4762808349146
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Curved Chapel lamp family; approximate aerial row spacing."
+    },
+    {
+      "kind": "bin",
+      "xy": [
+        -241.4,
+        -117.9988585816198
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view litter bin family; approximate placement."
+    },
+    {
+      "kind": "bin",
+      "xy": [
+        -190.4,
+        -122.57125102207685
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view litter bin family; approximate placement."
+    },
+    {
+      "kind": "bin",
+      "xy": [
+        -114.4,
+        -128.42983423332913
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view litter bin family; approximate placement."
+    },
+    {
+      "kind": "bin",
+      "xy": [
+        -36.4,
+        -135.38530767145568
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view litter bin family; approximate placement."
+    },
+    {
+      "kind": "steel-bollard",
+      "xy": [
+        -254,
+        -125.5
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view pedestrian entrance bollards; count and offsets estimated."
+    },
+    {
+      "kind": "steel-bollard",
+      "xy": [
+        -254,
+        -122.7
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view pedestrian entrance bollards; count and offsets estimated."
+    },
+    {
+      "kind": "steel-bollard",
+      "xy": [
+        -254,
+        -119.9
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view pedestrian entrance bollards; count and offsets estimated."
+    },
+    {
+      "kind": "steel-bollard",
+      "xy": [
+        -254,
+        -117.1
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view pedestrian entrance bollards; count and offsets estimated."
+    },
+    {
+      "kind": "steel-bollard",
+      "xy": [
+        -18,
+        -147
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view pedestrian entrance bollards; count and offsets estimated."
+    },
+    {
+      "kind": "steel-bollard",
+      "xy": [
+        -18,
+        -144.2
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view pedestrian entrance bollards; count and offsets estimated."
+    },
+    {
+      "kind": "steel-bollard",
+      "xy": [
+        -18,
+        -141.4
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view pedestrian entrance bollards; count and offsets estimated."
+    },
+    {
+      "kind": "steel-bollard",
+      "xy": [
+        -18,
+        -138.6
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Street view pedestrian entrance bollards; count and offsets estimated."
+    },
+    {
+      "kind": "planter",
+      "xy": [
+        -250,
+        -126.77556818181819
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Large round planters at Eastbank entrance in July 2026; positions approximate."
+    },
+    {
+      "kind": "planter",
+      "xy": [
+        -250,
+        -116.77556818181819
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Large round planters at Eastbank entrance in July 2026; positions approximate."
+    },
+    {
+      "kind": "planter",
+      "xy": [
+        -243,
+        -127.49180864456568
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Large round planters at Eastbank entrance in July 2026; positions approximate."
+    },
+    {
+      "kind": "planter",
+      "xy": [
+        -243,
+        -117.49180864456568
+      ],
+      "rotation_degrees": 0,
+      "evidence": "Large round planters at Eastbank entrance in July 2026; positions approximate."
+    }
+  ],
+  "budgets": {
+    "detail_triangles": 35000,
+    "walk_triangles": 16000,
+    "district_triangles": 6000,
+    "detail_download_bytes": 2000000,
+    "district_download_bytes": 450000,
+    "district_gpu_bytes": 2000000
+  },
+  "ownership": "Chapel pedestrian corridor, bounded arcade/station entrances. Ends at Eastbank east pavement edge; full highway scheme deferred. London Square retains x>=-4.3 at the Chapel mouth and its existing north/south approach footways. Existing and new building footprints are hard ground exclusions; elevated entrance bridge does not cut the floor.",
+  "uncertainty": "Paving families observed in 2017/2026 views; pattern bands and furniture positions estimated. No grade survey. No temporary works or business signs.",
+  "entrance_ramp": {
+    "start_x_m": -5.3,
+    "kerb_x_m": -4.3,
+    "drop_m": 0.12,
+    "evidence": "Estimated shallow transition to the existing London Street road datum; exact ramp run not surveyed."
+  }
+}

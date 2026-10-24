@@ -302,3 +302,13 @@ unsupported posts through or behind the Lord Street guardrails are omitted.
 Unchained posts follow the island's rounded ends, leaving the northern crossing
 mouths clear. Exact post spacing and counts remain estimates from these views.
 Validation checks surface ownership at the flare and clearance from guardrails.
+
+## Chapel Street handover
+
+The station-quarter public-realm asset now owns the pedestrian Chapel Street
+mouth west of the London Street carriageway. The former west asphalt stub,
+side-road kerbs and yellow lines have been removed from `extensions.py`.
+The new owner meets X=-4.3 m between Y=-150 and -138 m and the retained London
+footways at X=-12.5 m outside that interval, with a shallow ramp to the road
+level. See [Station quarter](STATION-QUARTER.md) for footprint, ground and
+streaming ownership through to Eastbank Street.

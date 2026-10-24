@@ -1,0 +1,53 @@
+{
+  "reviewed": "2026-10-24",
+  "sources": [
+    {
+      "id": "north-aerial",
+      "url": "https://www.google.com/maps/@53.647611,-3.00392,180a,35y,0h,0t/data=!3m1!1e3",
+      "observed": "North-up aerial inspected with georegistered OSM overlay. External Chapel retail walls, station rooftop parking and entrance recess, rear roof ranges and Corporation/Cambridge passages. Imagery capture date not established."
+    },
+    {
+      "id": "south-aerial",
+      "url": "https://www.google.com/maps/@53.64635,-3.00575,210a,35y,0h,0t/data=!3m1!1e3",
+      "observed": "Chapel bend, Tulketh mouth, Eastbank threshold, shopping block roof and courtyard divisions. External outlines agree at block-plan precision; fine eaves offsets are not surveyed."
+    },
+    {
+      "id": "eastbank-street",
+      "url": "https://www.google.com/maps/@53.6463014,-3.0059832,3a,90y,45h,85t/data=!3m4!1e1!3m2!1spIdRPC4fdET_E4qH5X7eng!2e0",
+      "capture_date": "2026-07",
+      "observed": "Pedestrian Chapel entrance: dark central slab route, lighter margins, large planters, stainless entrance bollards, paired curved lamps, three-storey terrace and taller Costa/Primark wall. Eastbank paving recently renewed."
+    },
+    {
+      "id": "station-street",
+      "url": "https://www.google.com/maps/@53.6475675,-3.0032328,3a,90y,225h,80t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDEqI_H7QE!2e10",
+      "capture_date": "2017-06",
+      "observed": "Station Approach opening, broad grey slab pedestrian corridor, dark furniture strips, long slatted benches and curved lamps. Exact present furniture positions not established."
+    },
+    {
+      "id": "london-mouth",
+      "url": "https://www.google.com/maps/@53.647723,-3.0028227,3a,90y,235h,85t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDavf3ltgE!2e10",
+      "capture_date": "2019-08",
+      "observed": "Open pedestrian entrance into Chapel Street; two-storey station retail corner, three-storey Waterstones range. This is not an asphalt side road."
+    },
+    {
+      "id": "station-works",
+      "url": "https://www.sefton.gov.uk/mysefton-news/latest-news/chapel-street-station-approach-improvements-works-what-you-need-to-know/",
+      "capture_date": "2026-04-14",
+      "observed": "Covered Station Approach refurbishment, with public access retained. Does not establish a complete repaving of Chapel Street; temporary compound omitted."
+    },
+    {
+      "id": "osm-seed",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-3.0082,53.6448,-3.0002,53.6492",
+      "observed": "OpenStreetMap contributors, ODbL 1.0. Ways 371203985, 371199519, 30141945, 371730196 used as aerial-checked external outline controls. Not accepted as separate buildings or reliable height records."
+    }
+  ],
+  "private_captures": "../references/station-quarter/; references are not distributed or used as published texture pixels.",
+  "limitations": [
+    "Google 3D Earth was attempted in headed GPU sessions but unavailable; NVIDIA driver did not respond and Maps reported 3D Earth unavailable. No 3D roof orbit achieved for this pass.",
+    "Height bounds are storey-based estimates with roughly 2\u20134 m uncertainty. Flat tops are placeholder bounds, not reconstructed roofs.",
+    "Aerial plan registration has approximately 1\u20132 m uncertainty, particularly roof-to-wall offsets. Not cadastral or engineering survey.",
+    "Ground datum is inherited from London Street; longitudinal levels are not surveyed.",
+    "Furniture family is observed; exact counts and placements are provisional, based on the dated views and aerial tree/furniture strips.",
+    "Station platforms, full Eastbank highway works and fine facade details are outside this bounded pass."
+  ]
+}

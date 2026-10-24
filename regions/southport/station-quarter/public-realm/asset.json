@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "southport.station-quarter.public-realm",
+  "name": "Chapel Street pedestrian corridor and station approaches",
+  "region": "southport",
+  "area": "station-quarter",
+  "status": "provisional-public-realm",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "west-ground",
+    "middle-ground",
+    "east-ground",
+    "west-furniture",
+    "middle-furniture",
+    "east-furniture"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Chapel pedestrian corridor, bounded arcade/station entrances. Ends at Eastbank east pavement edge; full highway scheme deferred. London Square retains x>=-4.3 at the Chapel mouth and its existing north/south approach footways. Existing and new building footprints are hard ground exclusions; elevated entrance bridge does not cut the floor.",
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
+  "build_inputs": {
+    "build": [
+      "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+    ],
+    "validate": [
+      "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json"
+    ]
+  }
+}

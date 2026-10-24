@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Station quarter",
+  "status": "External outlines checked against calibrated north-up Google aerials. 3D Earth unavailable on this host (NVIDIA driver unavailable); all heights are provisional bounds. Internal block divisions denote visible roof ranges, not legal property boundaries.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "chapel-london-corner",
+      "name": "Chapel London Corner \u2014 placeholder",
+      "collection": "chapel-london-corner"
+    },
+    {
+      "id": "chapel-jd-range",
+      "name": "Chapel Jd Range \u2014 placeholder",
+      "collection": "chapel-jd-range"
+    },
+    {
+      "id": "chapel-boots-range",
+      "name": "Chapel Boots Range \u2014 placeholder",
+      "collection": "chapel-boots-range"
+    },
+    {
+      "id": "hugo-frontage",
+      "name": "Hugo Frontage \u2014 placeholder",
+      "collection": "hugo-frontage"
+    },
+    {
+      "id": "hugo-rear-range",
+      "name": "Hugo Rear Range \u2014 placeholder",
+      "collection": "hugo-rear-range"
+    },
+    {
+      "id": "station-london-retail",
+      "name": "Station London Retail \u2014 placeholder",
+      "collection": "station-london-retail"
+    },
+    {
+      "id": "station-entrance-north",
+      "name": "Station Entrance North \u2014 placeholder",
+      "collection": "station-entrance-north"
+    },
+    {
+      "id": "station-entrance-bridge",
+      "name": "Station Entrance Bridge \u2014 placeholder",
+      "collection": "station-entrance-bridge"
+    },
+    {
+      "id": "station-tesco-range",
+      "name": "Station Tesco Range \u2014 placeholder",
+      "collection": "station-tesco-range"
+    },
+    {
+      "id": "station-ms-range",
+      "name": "Station Ms Range \u2014 placeholder",
+      "collection": "station-ms-range"
+    },
+    {
+      "id": "chapel-eastbank-terrace",
+      "name": "Chapel Eastbank Terrace \u2014 placeholder",
+      "collection": "chapel-eastbank-terrace"
+    },
+    {
+      "id": "chapel-smith-frontage",
+      "name": "Chapel Smith Frontage \u2014 placeholder",
+      "collection": "chapel-smith-frontage"
+    },
+    {
+      "id": "marble-place-rear",
+      "name": "Marble Place Rear \u2014 placeholder",
+      "collection": "marble-place-rear"
+    },
+    {
+      "id": "marble-place-rear-2",
+      "name": "Marble Place Rear 2 \u2014 placeholder",
+      "collection": "marble-place-rear-2"
+    }
+  ],
+  "views": [
+    {
+      "name": "Chapel Street and station",
+      "position": [
+        -330,
+        240,
+        340
+      ],
+      "target": [
+        -140,
+        0,
+        145
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "placeholder-volumes",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already minimal untextured footprint prisms; no decorative detail to reduce."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed-budget untextured footprint bounds, under 4000 triangles overall. Detailed replacements require separate District envelopes."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -55,
+      2.3845,
+      140
+    ],
+    "target": [
+      -95,
+      2.3845,
+      136
+    ]
+  }
+}

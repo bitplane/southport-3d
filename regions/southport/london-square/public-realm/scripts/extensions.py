@@ -289,6 +289,11 @@ def build_extensions(ctx):
             rect('Surface London Street carriageway',-10,south,8.5,-69.4,asphalt,part,-.12)
             rect('Surface London Street carriageway',-4.3,-69.4,8.5,-63.4,asphalt,part,-.12)
             rect('Surface London Street carriageway',-10,-63.4,8.5,north,asphalt,part,-.12)
+        elif i==3:
+            # Chapel is pedestrianised. Its owner meets the west carriageway edge.
+            rect('Surface London Street carriageway',-10,south,8.5,-150,asphalt,part,-.12)
+            rect('Surface London Street carriageway',-4.3,-150,8.5,-138,asphalt,part,-.12)
+            rect('Surface London Street carriageway',-10,-138,8.5,north,asphalt,part,-.12)
         else:rect('Surface London Street carriageway',-10,south,8.5,north,asphalt,part,-.12)
         for side in [-1,1]:
             # split at side roads and final crossroads, preserving contiguous road mouths
@@ -323,7 +328,7 @@ def build_extensions(ctx):
         for yy,side in [(-74,1),(-94,-1),(-113,1),(-130,-1),(-153,1)]:
             if south<=yy<north:furnishing('stainless-bin' if int(abs(yy))%2==0 else 'bollard',side*5.4,yy,0,fp)
         # Short junction stubs establish future road/building ownership boundaries.
-        for cy,side,width in [(-83.5,1,9),(-144,-1,12),(-144,1,12)]:
+        for cy,side,width in [(-83.5,1,9),(-144,1,12)]:
             if south<cy<north:
                 a,b=sorted([side*(10 if side<0 else 8.5),side*25]);rect('Surface side road mouth',a,cy-width/2,b,cy+width/2,asphalt,part,-.12)
                 for yy in [cy-width/2,cy+width/2]:

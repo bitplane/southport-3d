@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "grade": {
+    "start_y": -350,
+    "top_y": 0,
+    "start_z": 0.7845,
+    "top_z": 0.7845
+  },
+  "budgets": {
+    "triangles_all_levels": 4000,
+    "download_bytes_per_level": 250000,
+    "gpu_texture_bytes": 0
+  },
+  "blocks": [
+    {
+      "id": "chapel-london-corner",
+      "footprint": [
+        [
+          -37.137,
+          -108.62
+        ],
+        [
+          -37.069041,
+          -107.65931
+        ],
+        [
+          -10.952216,
+          -107.027819
+        ],
+        [
+          -10.421,
+          -128.993
+        ],
+        [
+          -11.59,
+          -131.583
+        ],
+        [
+          -13.549,
+          -132.87
+        ],
+        [
+          -39.0,
+          -130.55047
+        ],
+        [
+          -39.0,
+          -108.485878
+        ]
+      ],
+      "height_m": 12.5,
+      "replace_with": null,
+      "source_way": "371203985",
+      "evidence": "Waterstones/Hays continuation: aerial external boundary, 2019 street view three storeys; height bound estimated. Northern seam follows London Street 24 orientation."
+    },
+    {
+      "id": "chapel-jd-range",
+      "footprint": [
+        [
+          -42.706,
+          -76.122
+        ],
+        [
+          -52.773,
+          -75.817
+        ],
+        [
+          -54.625,
+          -107.361
+        ],
+        [
+          -39.0,
+          -108.485878
+        ],
+        [
+          -39.0,
+          -130.55047
+        ],
+        [
+          -88.0,
+          -126.084752
+        ],
+        [
+          -88.0,
+          -75.7
+        ],
+        [
+          -42.724324,
+          -75.7
+        ]
+      ],
+      "height_m": 11,
+      "replace_with": null,
+      "source_way": "371203985",
+      "evidence": "Aerial roof range and courtyard indentation retained; street frontage height estimated, rear roof height not established."
+    },
+    {
+      "id": "chapel-boots-range",
+      "footprint": [
+        [
+          -123.197,
+          -122.877
+        ],
+        [
+          -123.645,
+          -94.139
+        ],
+        [
+          -123.759662,
+          -71.74
+        ],
+        [
+          -88.0,
+          -71.74
+        ],
+        [
+          -88.0,
+          -126.084752
+        ]
+      ],
+      "height_m": 13,
+      "replace_with": null,
+      "source_way": "371203985",
+      "evidence": "Aerial footprint adjoining Christ Church rear; multiple roof heights represented by an upper bound, not a reconstructed roof."
+    },
+    {
+      "id": "hugo-frontage",
+      "footprint": [
+        [
+          -132.426,
+          -122.754
+        ],
+        [
+          -160.832,
+          -119.892
+        ],
+        [
+          -159.591424,
+          -95.0
+        ],
+        [
+          -132.134886,
+          -95.0
+        ]
+      ],
+      "height_m": 11.5,
+      "replace_with": null,
+      "source_way": "371199519",
+      "evidence": "Aerial external walls and Cambridge/Corporation passages retained; height estimated from storeys."
+    },
+    {
+      "id": "hugo-rear-range",
+      "footprint": [
+        [
+          -132.134886,
+          -95.0
+        ],
+        [
+          -159.591424,
+          -95.0
+        ],
+        [
+          -158.643,
+          -75.97
+        ],
+        [
+          -131.928,
+          -75.276
+        ]
+      ],
+      "height_m": 9,
+      "replace_with": null,
+      "source_way": "371199519",
+      "evidence": "Rear roof range adjacent to existing Town Hall placeholder; no duplicate Town Hall volume."
+    },
+    {
+      "id": "station-london-retail",
+      "footprint": [
+        [
+          -42.579,
+          -147.21
+        ],
+        [
+          -42.302,
+          -153.538
+        ],
+        [
+          -9.757,
+          -153.116
+        ],
+        [
+          -9.653,
+          -211.314
+        ],
+        [
+          -11.052309,
+          -211.39
+        ],
+        [
+          -43.0,
+          -211.39
+        ],
+        [
+          -43.0,
+          -147.197222
+        ]
+      ],
+      "height_m": 7,
+      "replace_with": null,
+      "source_way": "30141945",
+      "evidence": "Two-storey station corner retail and roof parking, seen from London Street; excludes platforms."
+    },
+    {
+      "id": "station-entrance-north",
+      "footprint": [
+        [
+          -61.491,
+          -149.711
+        ],
+        [
+          -60.0,
+          -149.638417
+        ],
+        [
+          -60.0,
+          -177.0
+        ],
+        [
+          -50.0,
+          -177.0
+        ],
+        [
+          -50.0,
+          -146.985097
+        ],
+        [
+          -49.992,
+          -146.985
+        ],
+        [
+          -43.0,
+          -147.197222
+        ],
+        [
+          -43.0,
+          -211.39
+        ],
+        [
+          -61.6,
+          -211.39
+        ],
+        [
+          -61.6,
+          -148.15256
+        ],
+        [
+          -61.595,
+          -148.153
+        ]
+      ],
+      "height_m": 7,
+      "replace_with": null,
+      "source_way": "30141945",
+      "evidence": "Station Approach entrance cut through the street wall; flat upper bound for retail/deck."
+    },
+    {
+      "id": "station-entrance-bridge",
+      "footprint": [
+        [
+          -58.8,
+          -149.58
+        ],
+        [
+          -58.849,
+          -147.092
+        ],
+        [
+          -50.0,
+          -146.985097
+        ],
+        [
+          -50.0,
+          -177.0
+        ],
+        [
+          -60.0,
+          -177.0
+        ],
+        [
+          -60.0,
+          -149.638417
+        ]
+      ],
+      "height_m": 3,
+      "replace_with": null,
+      "source_way": "30141945",
+      "evidence": "Upper bound above the covered entrance passage; 4 m clear height estimated.",
+      "base_z_m": 4.7845
+    },
+    {
+      "id": "station-tesco-range",
+      "footprint": [
+        [
+          -61.6,
+          -148.15256
+        ],
+        [
+          -61.6,
+          -222.0
+        ],
+        [
+          -105.687096,
+          -222.0
+        ],
+        [
+          -106.2,
+          -221.970647
+        ],
+        [
+          -106.2,
+          -144.228088
+        ]
+      ],
+      "height_m": 8,
+      "replace_with": null,
+      "source_way": "30141945",
+      "evidence": "Aerial retail roof range; broad bound, not one continuous occupied building claim."
+    },
+    {
+      "id": "station-ms-range",
+      "footprint": [
+        [
+          -164.413,
+          -221.143
+        ],
+        [
+          -163.104,
+          -215.032
+        ],
+        [
+          -148.038,
+          -216.446
+        ],
+        [
+          -145.863,
+          -201.884
+        ],
+        [
+          -158.12,
+          -199.391
+        ],
+        [
+          -160.13,
+          -193.689
+        ],
+        [
+          -153.715,
+          -145.998
+        ],
+        [
+          -142.928,
+          -147.002
+        ],
+        [
+          -141.893,
+          -142.98
+        ],
+        [
+          -106.201,
+          -144.228
+        ],
+        [
+          -106.2,
+          -144.228088
+        ],
+        [
+          -106.2,
+          -221.970647
+        ],
+        [
+          -128.088,
+          -220.718
+        ],
+        [
+          -128.215742,
+          -222.0
+        ],
+        [
+          -156.250586,
+          -222.0
+        ]
+      ],
+      "height_m": 11,
+      "replace_with": null,
+      "source_way": "30141945",
+      "evidence": "M&S/Trespass/Tulketh block; aerial external recesses retained. Station platforms beyond scope."
+    },
+    {
+      "id": "chapel-eastbank-terrace",
+      "footprint": [
+        [
+          -255.105,
+          -144.664
+        ],
+        [
+          -215.896,
+          -150.419
+        ],
+        [
+          -215.229,
+          -146.891
+        ],
+        [
+          -255.018,
+          -140.893
+        ],
+        [
+          -253.925,
+          -131.859
+        ],
+        [
+          -215.0,
+          -136.472565
+        ],
+        [
+          -215.0,
+          -165.0
+        ],
+        [
+          -229.706217,
+          -165.0
+        ],
+        [
+          -229.456,
+          -163.41
+        ],
+        [
+          -240.132,
+          -162.051
+        ],
+        [
+          -240.484833,
+          -165.0
+        ],
+        [
+          -257.974769,
+          -165.0
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "371730196",
+      "evidence": "Eastbank corner terrace, three storeys and roof seen July 2026. Passage/rear void retained."
+    },
+    {
+      "id": "chapel-smith-frontage",
+      "footprint": [
+        [
+          -204.045,
+          -137.771
+        ],
+        [
+          -171.431,
+          -141.636
+        ],
+        [
+          -174.743136,
+          -165.0
+        ],
+        [
+          -215.0,
+          -165.0
+        ],
+        [
+          -215.0,
+          -136.472565
+        ]
+      ],
+      "height_m": 10.5,
+      "replace_with": null,
+      "source_way": "371730196",
+      "evidence": "Marble Place / former WHSmith frontage and broad roof range; aerial checked, heights estimated."
+    },
+    {
+      "id": "marble-place-rear",
+      "footprint": [
+        [
+          -179.108,
+          -195.79
+        ],
+        [
+          -182.132,
+          -217.147
+        ],
+        [
+          -232.655,
+          -209.688
+        ],
+        [
+          -233.849,
+          -216.599
+        ],
+        [
+          -265.004,
+          -212.645
+        ],
+        [
+          -260.889,
+          -187.504
+        ],
+        [
+          -238.135,
+          -191.047
+        ],
+        [
+          -233.332,
+          -188.04
+        ],
+        [
+          -229.706217,
+          -165.0
+        ],
+        [
+          -174.743136,
+          -165.0
+        ]
+      ],
+      "height_m": 7,
+      "replace_with": null,
+      "source_way": "371730196",
+      "evidence": "Rear shopping roofs and court cutouts retained from aerial-checked outline; no tenant subdivision claim."
+    },
+    {
+      "id": "marble-place-rear-2",
+      "footprint": [
+        [
+          -243.017,
+          -186.164
+        ],
+        [
+          -260.726,
+          -184.496
+        ],
+        [
+          -257.974769,
+          -165.0
+        ],
+        [
+          -240.484833,
+          -165.0
+        ]
+      ],
+      "height_m": 7,
+      "replace_with": null,
+      "source_way": "371730196",
+      "evidence": "Rear shopping roofs and court cutouts retained from aerial-checked outline; no tenant subdivision claim."
+    }
+  ],
+  "limits": "External outlines checked against calibrated north-up Google aerials. 3D Earth unavailable on this host (NVIDIA driver unavailable); all heights are provisional bounds. Internal block divisions denote visible roof ranges, not legal property boundaries."
+}

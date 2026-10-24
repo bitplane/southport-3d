@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "coordinate_frame": "Common London Square site origin 53.6486555,-3.0043401; yaw43.5293 degrees from east; metres.",
+  "aerial_registration": [
+    {
+      "source": "north-aerial",
+      "centre_pixel": [
+        800,
+        550
+      ],
+      "centre_lat_lon": [
+        53.647611,
+        -3.00392
+      ],
+      "control_pixel": [
+        970,
+        690
+      ],
+      "control_lat_lon": [
+        53.647388,
+        -3.003464
+      ],
+      "metres_per_pixel_approx": 0.1777
+    },
+    {
+      "source": "south-aerial",
+      "centre_pixel": [
+        800,
+        550
+      ],
+      "centre_lat_lon": [
+        53.64635,
+        -3.00575
+      ],
+      "control_pixel": [
+        1000,
+        650
+      ],
+      "control_lat_lon": [
+        53.646191,
+        -3.005214
+      ],
+      "metres_per_pixel_approx": 0.1777
+    }
+  ],
+  "controls": [
+    {
+      "feature": "Chapel east frontage corner",
+      "north_image_pixel": [
+        1105,
+        490
+      ],
+      "site_xy": [
+        -13.52,
+        -132.86
+      ]
+    },
+    {
+      "feature": "Boots / Corporation frontage corner",
+      "north_image_pixel": [
+        616,
+        875
+      ],
+      "site_xy": [
+        -123.28,
+        -122.74
+      ]
+    },
+    {
+      "feature": "Church rear boundary",
+      "north_image_pixel": [
+        554,
+        537
+      ],
+      "site_xy": [
+        -89.96,
+        -71.73
+      ]
+    }
+  ],
+  "method": "OSM external outlines were overlaid on calibrated aerials and checked; broad roof ranges partition the combined outlines. Ground follows these walls and photographed pedestrian routes. Height estimates remain separate from measured plan controls.",
+  "coverage": {
+    "plan": "North and south aerials with geographic controls",
+    "street": "London mouth 2019, station middle 2017, Eastbank mouth July 2026",
+    "rear": "Aerial-only; no detailed rear elevations reconstructed",
+    "roof": "Flat aerial visible, no photogrammetric orbit available; placeholder bounds only"
+  }
+}
