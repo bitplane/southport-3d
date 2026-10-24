@@ -59,7 +59,9 @@ solid walls blocking windows, verifies the principal component counts, and runs
 a coplanar audit on the wall skins. Wall junctions are mitred and clipped before
 triangulation; window reveals are explicit surfaces, avoiding the internal caps
 produced by extruding every clipped wall fragment. The affine site transform is
-baked into vertices consistently across geometry and lettering.
+baked into vertices consistently across geometry and lettering. The entrance has
+continuous masonry behind the separate decorative architrave strips, joining
+the wider arched wall opening to the recessed timber frame, plus a solid threshold.
 
 ```sh
 python3 tools/project.py build southport.nevill-street.occulo-lounge --threads 8
@@ -69,7 +71,8 @@ python3 tools/project.py publish --asset southport.nevill-street.occulo-lounge -
 
 ## Review record
 
-The detailed master has 205,816 triangles. Validation probes 23 glazed openings
+The detailed master has 205,864 triangles. Validation probes 23 glazed openings
+plus 54 straight and oblique rays around the entrance perimeter,
 and all sampled front-facing lettering on both main signs and the entrance
 plaque; all are unobstructed. The scoped wall coplanar check passes. A broader
 export audit retains seven small candidates totalling about 0.069 m² of summed
@@ -86,10 +89,10 @@ comparison captures are under `../output/occulo/` and the asset's generated
 `build/` directory. The generated validation, projection and package reports
 remain outside source control.
 
-The published District totals are 662 triangles, 294,948 bytes (all embedded
-textures included) and 11,086,415 estimated GPU bytes. Each atlas reports 100%
+The published District totals are 662 triangles, 293,920 bytes (all embedded
+textures included) and 11,086,417 estimated GPU bytes. Each atlas reports 100%
 receiver coverage; filtered normals contain no invalid pixels. Detail is
-27,037,048 bytes and Walk 24,643,824 bytes. Walk deliberately retains most of the
+27,045,288 bytes and Walk 24,652,060 bytes. Walk deliberately retains most of the
 architectural carving; District supplies the large reduction. The production
 viewer may select Walk or District when the shared 256 MiB budget is full.
 

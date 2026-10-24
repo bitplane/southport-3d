@@ -29,6 +29,20 @@ for o in obs:
  hit,point,normal,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=2)
  assert hit and target.name.startswith('Window '),(o.name,'glazing blocked',target.name if target else None)
  probes+=1
+# Rays through the doorway perimeter must meet masonry or its carved trim,
+# including the narrow space between the timber frame and the architrave.
+frame=Matrix(bpy.data.objects['Door shadow']['face_frame'])
+u=json.loads((ROOT/'research/layout.json').read_text())['front_bays'][1]
+entrance_probes=0
+for side in (-1,1):
+ for offset in (1.015,1.21,1.46):
+  for z in (.15,2.,4.60):
+   for slope in (-.35,0,.35):
+    origin=frame@Vector((u+side*offset,z,.6))
+    direction=(frame.to_3x3()@Vector((slope,0,-1))).normalized()
+    hit,point,normal,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1.5)
+    assert hit,('entrance perimeter gap',side,offset,z,slope)
+    entrance_probes+=1
 # Sample visible lettering faces, preventing a correctly named but buried sign.
 letter_checks={}
 for name,outward in [('Sign Lord gold',(0,-1,0)),('Sign Nevill gold',(1,0,0)),('Sign established',(0,-1,0)),('Sign date',(0,-1,0))]:
@@ -43,5 +57,5 @@ for name,outward in [('Sign Lord gold',(0,-1,0)),('Sign Nevill gold',(1,0,0)),('
  letter_checks[name]=good/total
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'));from coplanar import check_blender
 check_blender([o for o in obs if o.name.startswith('Wall ')])
-report={'triangles':triangles,'window_probes':probes,'letter_visibility':letter_checks,'checks':'Finite float32 triangles/UVs; glazing rays; scoped wall coplanar audit; nine columns, two rooflights, one front pediment','limitations':'Metric scale estimated; rear lower detail and exact carved relief depth unresolved.'}
+report={'triangles':triangles,'window_probes':probes,'entrance_perimeter_probes':entrance_probes,'letter_visibility':letter_checks,'checks':'Finite float32 triangles/UVs; glazing rays; scoped wall coplanar audit; nine columns, two rooflights, one front pediment','limitations':'Metric scale estimated; rear lower detail and exact carved relief depth unresolved.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

@@ -161,6 +161,14 @@ for name,frame,length,bays,columns in [('Lord',front,W,D['front_bays'],D['front_
             if DETAIL:finish(tympanum(u,5.88,i+(1 if name=='Lord' else 0)),frame=frame)
         else:
             # Square deeply recessed entrance with enriched architrave and triangular hood.
+            # The large arched wall opening needs a continuous masonry infill
+            # behind the separate ornamental strips and recessed timber frame.
+            # Join the 2 m doorway to the 2.96 m arch; decorative strips alone
+            # leave daylight between the frame, mouldings and main wall.
+            for sign in (-1,1):
+                box('Entrance masonry jamb',(u+sign*1.24,2.66,-.21),(.48,5.32,.42),frame=frame)
+            box('Entrance masonry head',(u,5.03,-.21),(2,.58,.42),frame=frame)
+            box('Entrance threshold',(u,-.04,-.16),(2,.08,.52),mat=shadow,frame=frame)
             box('Trim entrance soffit',(u,4.76,-.11),(2.15,.04,.50),frame=frame)
             box('Door shadow', (u,2.37,-.36),(2.15,4.74,.08),'frontage',black,frame)
             for x in (-.94,.94):box('Door timber jamb',(u+x,1.8825,-.19),(.12,3.765,.16),'frontage',door,frame)
