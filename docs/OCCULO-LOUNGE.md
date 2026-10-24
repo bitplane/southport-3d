@@ -61,7 +61,8 @@ triangulation; window reveals are explicit surfaces, avoiding the internal caps
 produced by extruding every clipped wall fragment. The affine site transform is
 baked into vertices consistently across geometry and lettering. The entrance has
 continuous masonry behind the separate decorative architrave strips, joining
-the wider arched wall opening to the recessed timber frame, plus a solid threshold.
+the wider arched wall opening to the recessed timber frame, plus a solid threshold. The District doorway also has an explicit threshold
+face joining its recessed door to the front edge.
 
 ```sh
 python3 tools/project.py build southport.nevill-street.occulo-lounge --threads 8
@@ -89,8 +90,8 @@ comparison captures are under `../output/occulo/` and the asset's generated
 `build/` directory. The generated validation, projection and package reports
 remain outside source control.
 
-The published District totals are 662 triangles, 293,920 bytes (all embedded
-textures included) and 11,086,417 estimated GPU bytes. Each atlas reports 100%
+The published District totals are 664 triangles, 294,976 bytes (all embedded
+textures included) and 11,086,619 estimated GPU bytes. Each atlas reports 100%
 receiver coverage; filtered normals contain no invalid pixels. Detail is
 27,045,288 bytes and Walk 24,652,060 bytes. Walk deliberately retains most of the
 architectural carving; District supplies the large reduction. The production
