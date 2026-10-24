@@ -1608,7 +1608,7 @@
     },
     {
       "id": "way-372049064",
-      "name": "Lord Street frontage range",
+      "name": "Hill Street garden convenience building",
       "osm_way": "372049064",
       "footprint": [
         [
@@ -1628,8 +1628,8 @@
           9.644
         ]
       ],
-      "height_m": 12,
-      "height_uncertainty_m": 3,
+      "height_m": 3.5,
+      "height_uncertainty_m": 1.5,
       "status": "placeholder-massing",
       "evidence": [
         "google-3d-orbit",
@@ -1637,7 +1637,8 @@
         "osm-seed"
       ],
       "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
-      "replace_with": null
+      "replace_with": null,
+      "height_basis": "Low single-storey garden structure in north-corridor 3D obliques, not an ordinary terrace height."
     },
     {
       "id": "way-372049065",
