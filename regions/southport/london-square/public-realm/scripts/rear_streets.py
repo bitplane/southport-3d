@@ -22,9 +22,11 @@ def build_rear_streets(ctx):
     hill=[(219.58,21),(219.961,-6.062),(222.111,-21.523),(224.285,-59.271),(223.91,-95.688),(224.15,-104)]
     roads.append(parallel(hill,-3.5)+list(reversed(parallel(hill,3.5))))
     roads.append([(147.5,-86),(154.5,-86),(154.5,-96),(147.5,-96)])
+    anchor_outer=parallel(anchor,6.5)
+    anchor_outer[0]=(25,-76)
     # Footways are genuinely cut out at the T-junction, not layered over roads.
     for name,edge,outer in [
-        ('Anchor north',an,parallel(anchor,6.5)),('Anchor south',aso,parallel(anchor,-6.5)),
+        ('Anchor north',an,anchor_outer),('Anchor south',aso,parallel(anchor,-6.5)),
         ('Avenue west',aw,parallel(avenue,-3.8)),('Avenue east',ae,parallel(avenue,3.1))]:
         if name.startswith('Anchor'):
             outer[0]=(25,-76 if name.endswith('north') else -91)
@@ -65,4 +67,4 @@ def build_rear_streets(ctx):
                 ctx['open_kerb'](list(segment),side,part)
                 ctx['paint_edge'](name,list(segment),-side,part)
     from block_ground import build_block
-    build_block(ctx,roads,an,aso)
+    build_block(ctx,roads,anchor_outer)

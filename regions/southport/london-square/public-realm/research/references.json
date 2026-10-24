@@ -199,6 +199,14 @@
         "output/london-square-bollards-2018.png",
         "output/london-square-red-aerial-close.png"
       ]
+    },
+    {
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=j1tZHV_c9SEYzcJaD0v2Mw&heading=320&pitch=0&fov=75",
+      "capture_date": "2024-08",
+      "reviewed": "2026-10-24",
+      "observations": [
+        "Anchor Street side gate attaches directly to the Myers rear brick wall; no separate free-standing outer pier beside the garage. The small leaf sits behind the main vehicle gate line. Placement follows existing mapped building footprint; gate widths remain estimated."
+      ]
     }
   ],
   "limitations": [

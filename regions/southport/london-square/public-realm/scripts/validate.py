@@ -286,3 +286,20 @@ for side in (-1,1):
 for end in (-1,1):
  assert sum(f['kind']=='bollard' and f['part']=='island-furniture' and end*f['xy'][1]>12 for f in layout['furniture'])>=5,'Missing curved island cap posts'
 print('Square red flare and bollard/guardrail separation passed')
+
+# Anchor footway and Posting court consume the same boundary, not separately
+# offset curves. Probe the former triangular gap on both sides of the seam.
+for x,y in [(38,-78.0),(38,-77.9),(38,-77.8),(40,-78.2),(40,-78.1),(45,-78.6)]:
+ ob,point=ground_hit(x,y)
+ assert ob and ob.data.materials[0].name=='Authored mixed rectangular paving',('Posting footway gap',x,y)
+wall=bpy.data.objects['Wall Posting lane gate return']
+slope=(-76.96+76.447)/(65.499-36.69)
+for index in (1,2,5,6,9,10,13,14):
+ p=wall.data.vertices[index].co
+ assert abs(p.y-(-76.447+slope*(p.x-36.69)))<1e-4,('Open Posting return end',tuple(p))
+print('Posting footway seam and mitred wall contact verified')
+
+# The side gate meets Myers directly; the former free-standing pier left a slot.
+gate=bpy.data.objects["Street Posting lane gate"]
+hit,point,normal,index=gate.ray_cast(Vector((27.2,-80,1.3)),Vector((0,1,0)))
+assert hit and point.y>-78.0,"Myers side-gate contact missing"
