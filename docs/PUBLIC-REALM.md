@@ -273,3 +273,15 @@ model shares one curved kerb with its yellow-line offsets; clipped ground surfac
 own each footprint once. The balustrade remains pierced at every level, reducing
 lathe samples; shrubs reduce crown lobes. Plan radii, bay lengths, wall height and
 planting density are visually estimated. Reference pixels remain private.
+
+### London Square forecourt mouth
+
+The red surface follows the curved forecourt shoulders before meeting the grey
+Lord Street carriageway. Its outline shares the existing paving boundary; it
+does not continue across Lord Street. January 2025 elevated Maps photography
+and June 2018 pedestrian photography show the guardrails and separate bollard
+rows. Bollards follow the red forecourt edge and the London-side frontage;
+unsupported posts through or behind the Lord Street guardrails are omitted.
+Unchained posts follow the island's rounded ends, leaving the northern crossing
+mouths clear. Exact post spacing and counts remain estimates from these views.
+Validation checks surface ownership at the flare and clearance from guardrails.

@@ -182,6 +182,23 @@
         "Asphalt service lane, black double vehicle gates with narrow pedestrian gate, brick piers and raised courtyard retaining wall. Dimensions and hidden lane boundary estimated from plan and obliques."
       ],
       "rights": "Reference only; no source pixels redistributed"
+    },
+    {
+      "id": "square-boundaries-2025",
+      "url": "https://www.google.com/maps/@53.6486722,-3.004327,3a,90y,140h,35t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIC_ssfc0gE!2e10",
+      "author": "Niko S. via Google Maps",
+      "capture_date": "2025-01",
+      "observations": [
+        "Reddish island-loop surfacing flares to the curved forecourt kerbs before meeting the grey Lord Street carriageway; a narrow rectangular cutoff misses these corners.",
+        "Lord Street-facing forecourt edges carry guardrails, not a second row of ribbed bollards intersecting the rail.",
+        "Ribbed posts follow both red-side forecourt edges and curved island caps; spacing is estimated, not surveyed."
+      ],
+      "local_reference_files": [
+        "output/london-square-red-2025-lord.png",
+        "output/london-square-red-2025-reference.png",
+        "output/london-square-bollards-2018.png",
+        "output/london-square-red-aerial-close.png"
+      ]
     }
   ],
   "limitations": [

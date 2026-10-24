@@ -109,9 +109,9 @@ prezzo_approach=[(-41,-21.1)]+prezzo_curve
 # Road base is continuous. Red surfacing is the island-loop material observed in imagery.
 rect('Surface roads',-41,-27,41,36,asphalt,'roads',-.12)
 rect('Surface London neck',-10,-36,8.5,-27,asphalt,'roads',-.12)
-polygon('Surface red island carriageways',[(-13.1,21),(13.1,21),(13.1,-19),
+polygon('Surface red island carriageways',[(-18,21),(18,21),(14,19),(13,16),(13.1,-19),
  (8,-19.9),(5.5,-21.4),(4.3,-25.3),(4.3,-28),(-6.2,-28),
- *list(reversed(prezzo_curve)),(-13.1,-19)],redroad,'roads',-.118)
+ *list(reversed(prezzo_curve)),(-13.1,-19),(-13,16),(-14,19)],redroad,'roads',-.118)
 rect('Surface Lord Street service pavers',-41,-23.6,-13.1,-14.8,roadpavers,'roads',-.117)
 rect('Surface St Georges service pavers',13.1,-23.6,41,-14.8,roadpavers,'roads',-.117)
 for side,label in [(1,'ne'),(-1,'sw')]:

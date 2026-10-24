@@ -270,3 +270,19 @@ from rounded_garden import taxi_letters
 glyphs=taxi_letters(0,0)
 assert sum(p[0] for p in glyphs[0])/4 < sum(p[0] for p in glyphs[1])/4-.3,'TAXIS lettering reflected'
 print('Basement ramp cut-out and road lettering orientation verified')
+
+# Red surfacing follows the flared kerb mouths, then stops at Lord Street.
+for side in (-1,1):
+ for x,y,expected in [(15.5,20,'Authored reddish carriageway'),(16.6,20,'Authored mixed rectangular paving'),(15.5,21.3,'Authored asphalt')]:
+  ob,point=ground_hit(side*x,y)
+  assert ob and ob.data.materials[0].name==expected,('Square flare ownership',side*x,y,ob.name if ob else None,expected)
+ rails=[(side*x,y) for x,y in [(14.2,17),(15.5,19),(18,20),(22,20)]]
+ for f in layout['furniture']:
+  if f['kind']!='bollard' or f['part']!=('ne-furniture' if side>0 else 'sw-furniture'):continue
+  x,y=f['xy']
+  for a,b in zip(rails,rails[1:]):
+   dx,dy=b[0]-a[0],b[1]-a[1];t=max(0,min(1,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy)))
+   assert math.hypot(x-a[0]-t*dx,y-a[1]-t*dy)>.5,('Bollard intersects guardrail',f)
+for end in (-1,1):
+ assert sum(f['kind']=='bollard' and f['part']=='island-furniture' and end*f['xy'][1]>12 for f in layout['furniture'])>=5,'Missing curved island cap posts'
+print('Square red flare and bollard/guardrail separation passed')

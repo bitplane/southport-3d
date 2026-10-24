@@ -302,28 +302,8 @@
     {
       "kind": "bollard",
       "xy": [
-        13.5,
-        15
-      ],
-      "yaw": 0,
-      "source": "street-2018/aerial-2025; count and spacing estimated",
-      "part": "ne-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
         18,
         -14
-      ],
-      "yaw": 0,
-      "source": "aerial-2025; estimated",
-      "part": "ne-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
-        18,
-        20
       ],
       "yaw": 0,
       "source": "aerial-2025; estimated",
@@ -342,16 +322,6 @@
     {
       "kind": "bollard",
       "xy": [
-        22,
-        20
-      ],
-      "yaw": 0,
-      "source": "aerial-2025; estimated",
-      "part": "ne-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
         26,
         -14
       ],
@@ -362,28 +332,8 @@
     {
       "kind": "bollard",
       "xy": [
-        26,
-        20
-      ],
-      "yaw": 0,
-      "source": "aerial-2025; estimated",
-      "part": "ne-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
         30,
         -14
-      ],
-      "yaw": 0,
-      "source": "aerial-2025; estimated",
-      "part": "ne-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
-        30,
-        20
       ],
       "yaw": 0,
       "source": "aerial-2025; estimated",
@@ -622,28 +572,8 @@
     {
       "kind": "bollard",
       "xy": [
-        -13.5,
-        15
-      ],
-      "yaw": 0,
-      "source": "street-2018/aerial-2025; count and spacing estimated",
-      "part": "sw-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
         -18,
         -14
-      ],
-      "yaw": 0,
-      "source": "aerial-2025; estimated",
-      "part": "sw-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
-        -18,
-        20
       ],
       "yaw": 0,
       "source": "aerial-2025; estimated",
@@ -662,16 +592,6 @@
     {
       "kind": "bollard",
       "xy": [
-        -22,
-        20
-      ],
-      "yaw": 0,
-      "source": "aerial-2025; estimated",
-      "part": "sw-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
         -26,
         -14
       ],
@@ -682,28 +602,8 @@
     {
       "kind": "bollard",
       "xy": [
-        -26,
-        20
-      ],
-      "yaw": 0,
-      "source": "aerial-2025; estimated",
-      "part": "sw-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
         -30,
         -14
-      ],
-      "yaw": 0,
-      "source": "aerial-2025; estimated",
-      "part": "sw-furniture"
-    },
-    {
-      "kind": "bollard",
-      "xy": [
-        -30,
-        20
       ],
       "yaw": 0,
       "source": "aerial-2025; estimated",
@@ -858,6 +758,166 @@
       "yaw": 180,
       "source": "Sefton Lord Street appraisal 2017 p74; twin swan-neck family, metric dimensions and pole placements estimated",
       "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        34,
+        -14
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead panorama, London-side kerb row continued; metre positions estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        38,
+        -14
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead panorama, London-side kerb row continued; metre positions estimated",
+      "part": "ne-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -34,
+        -14
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead panorama, London-side kerb row continued; metre positions estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -38,
+        -14
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead panorama, London-side kerb row continued; metre positions estimated",
+      "part": "sw-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        4.914,
+        14.414
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        2.66,
+        15.921
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        0.0,
+        16.45
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -2.66,
+        15.921
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -4.914,
+        14.414
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        6.421,
+        -12.16
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        4.914,
+        -14.414
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        2.66,
+        -15.921
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        0.0,
+        -16.45
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -2.66,
+        -15.921
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -4.914,
+        -14.414
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
+    },
+    {
+      "kind": "bollard",
+      "xy": [
+        -6.421,
+        -12.16
+      ],
+      "yaw": 0,
+      "source": "January 2025 overhead and June 2018 ground panoramas: curved island cap posts, unchained; spacing/positions estimated, northern crossing mouths left open",
+      "part": "island-furniture"
     }
   ]
 }
