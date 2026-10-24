@@ -10,6 +10,8 @@ import re
 import sys
 from pathlib import Path
 
+if __name__=='__main__':sys.path.insert(0,str(Path(__file__).resolve().parent))
+
 import bpy
 import bmesh
 import numpy as np
@@ -133,12 +135,12 @@ def bake(sources,low,size,rects,dest,cage,faces):
     return checks
 
 
-def build(spec,asset,dest,sources):
+def prepare(spec,asset,sources):
     recipe=spec['district_envelope'];sys.path.insert(0,str(asset/'scripts'))
     module,func=recipe['generator'].split(':');surfaces=getattr(importlib.import_module(module),func)(asset)
     expected={p['id'] for p in spec['parts']}
     if set(surfaces)!=expected:raise ValueError('Envelope must replace every streaming part')
-    outputs={};report={'reason':recipe['reason'],'parts':{},'source_meshes':sum(len(v) for v in sources.values())}
+    report={'reason':recipe['reason'],'parts':{},'source_meshes':sum(len(v) for v in sources.values())}
     report['source_omissions']=[]
     for omission in recipe.get('source_omissions',[]):
         pattern=re.compile(omission['match']);matches=[o.name for objects in sources.values() for o in objects if pattern.search(o.name)]
@@ -165,10 +167,17 @@ def build(spec,asset,dest,sources):
                     raise ValueError('Shared atlas key has incompatible geometry: '+key)
             indices.append(keys[key])
         target,rects=receiver('Bake '+part,unique,size)
+        if not any(w>2 and h>2 for x,y,w,h in rects.values()):
+            raise ValueError('Atlas has no testable receiver pixels before baking: '+part)
         low,all_rects=receiver('District '+part,faces,size,{i:rects[j] for i,j in enumerate(indices)})
         if triangles(low)>config['max_triangles']:raise ValueError('Envelope exceeds fixed triangle budget: '+part)
         pending.append((part,faces,config,selected,unique,target,low,rects,all_rects))
 
+    return pending,report
+
+
+def build(spec,asset,dest,sources):
+    pending,report=prepare(spec,asset,sources);outputs={}
     for part,faces,config,selected,unique,target,low,rects,all_rects in pending:
         size=config['atlas']
         folder=dest/'maps'/'district'/part;folder.mkdir(parents=True)
@@ -219,3 +228,64 @@ class Surfaces:
             j=(i+1)%4;points=[v[j],v[i],(v[i][0],v[i][1],eave-.18),(v[j][0],v[j][1],eave-.18)]
             if swap:points=[(y,x,z) for x,y,z in reversed(points)]
             self.quad(name+' edge '+str(i),points,**kwargs)
+
+
+def preflight(spec,asset,sources):
+    """Run the bake's real preparation plus cheap, diagnostic projection rays.
+
+    Ray hits do not certify architectural fidelity, surface colour, or successful
+    texture coverage. Thin geometry can fall between this deliberately small grid.
+    """
+    from mathutils.bvhtree import BVHTree
+    pending,report=prepare(spec,asset,sources)
+    for part,faces,config,selected,unique,target,low,rects,all_rects in pending:
+        vertices=[];polygons=[]
+        for ob in selected:
+            offset=len(vertices)
+            vertices.extend(ob.matrix_world@v.co for v in ob.data.vertices)
+            polygons.extend(tuple(offset+i for i in p.vertices) for p in ob.data.polygons)
+        tree=BVHTree.FromPolygons(vertices,polygons)
+        misses=[]
+        for face in faces:
+            v=list(map(Vector,face['vertices']))
+            normal=(v[1]-v[0]).cross(v[3]-v[0]).normalized()
+            cage=face.get('cage_m',config['cage_m']);count=0
+            for i in range(5):
+                for j in range(5):
+                    u,t=(i+.5)/5,(j+.5)/5
+                    point=(v[0]*(1-u)+v[1]*u)*(1-t)+(v[3]*(1-u)+v[2]*u)*t
+                    if tree.ray_cast(point+normal*cage,-normal,config['cage_m']*2)[0] is None:count+=1
+            if count:misses.append({'face':face['name'],'misses':count,'samples':25})
+        width,height=config['atlas']
+        report['parts'][part]={'triangles':triangles(low),'atlas':[width,height],
+            'unique_atlas_surfaces':len(unique),'receiver_faces':len(faces),
+            'testable_pixels':sum(max(0,w-2)*max(0,h-2) for x,y,w,h in rects.values()),
+            'texture_gpu_bytes_floor':width*height*16,'projection_misses':misses}
+    report['mode']='preflight-only; no texture bake or visual acceptance'
+    return report
+
+
+if __name__=='__main__':
+    import argparse,json
+    from pathlib import Path
+    from publication import load_publication
+    parser=argparse.ArgumentParser(description='Preflight an authored District envelope without baking textures.')
+    parser.add_argument('--asset',type=Path,required=True,help='Asset source directory')
+    parser.add_argument('--source',type=Path,help='Built master blend; defaults to build/<asset-id>/<source_blend>')
+    parser.add_argument('--output',type=Path,required=True,help='Private JSON report outside source control')
+    args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+    root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root/'lib'))
+    asset=args.asset.resolve();spec=load_publication(asset/'publication.json')
+    if 'district_envelope' not in spec:parser.error('Asset has no district_envelope recipe')
+    metadata=json.loads((asset/'asset.json').read_text())
+    source=args.source or root/'build'/metadata['id']/spec['source_blend']
+    if not source.is_file():parser.error('Build the asset master before running preflight')
+    bpy.ops.wm.open_mainfile(filepath=str(source))
+    sources={p['id']:[o for o in bpy.data.collections[p['collection']].all_objects if o.type=='MESH'] for p in spec['parts']}
+    report=preflight(spec,asset,sources)
+    report['source_blend']=str(source.resolve())
+    args.output.parent.mkdir(parents=True,exist_ok=True)
+    args.output.write_text(json.dumps(report,indent=2)+'\n')
+    for part,row in report['parts'].items():
+        print(f"PREFLIGHT {part}: {row['triangles']} triangles, {row['unique_atlas_surfaces']} atlas surfaces, {len(row['projection_misses'])} faces with sampled ray misses",flush=True)
+    print('Preflight report:',args.output,flush=True)

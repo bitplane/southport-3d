@@ -44,3 +44,19 @@ class PublicationTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+
+def test_envelope_budget_rejects_texture_floor_before_baking():
+    import copy
+    import pytest
+    from publication_schema import validate_publication
+    spec=json.loads((ROOT/'regions/southport/london-square/war-memorial/publication.json').read_text())
+    envelope=spec['district_envelope']
+    floor=sum(p['atlas'][0]*p['atlas'][1]*16 for p in envelope['parts'].values())
+    for cap in (floor-1,floor):
+        trial=copy.deepcopy(spec);trial['district_envelope']['max_gpu_bytes']=cap
+        with pytest.raises(ValueError,match='atlas memory floor'):
+            validate_publication(trial)
+    # This is only a necessary lower bound. Export still checks actual buffers.
+    spec['district_envelope']['max_gpu_bytes']=floor+1
+    validate_publication(spec)

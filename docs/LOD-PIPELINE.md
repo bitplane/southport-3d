@@ -187,3 +187,58 @@ whole asset, so a malformed late part fails immediately rather than after earlie
 parts have spent minutes baking. Coplanar overlap reports remain candidates to
 inspect; a valid UV layout or normal bake does not prove that adjacent envelopes
 have only one visible surface.
+
+## Repeatable envelope rollout
+
+1. Save the existing package manifest and District GLBs outside Git for the
+   before/after comparison. Read the researched layout and current source shape;
+   this pass does not silently correct or reinterpret architectural estimates.
+2. Author `scripts/district.py` using verified dimensions and bounded topology.
+   Configure `district_envelope` groups, cages, omissions and fixed budgets in
+   `publication.json`. Retain Detail/Walk policies.
+3. Build the master, then run the shared preflight without rendering or baking:
+
+   ```sh
+   python3 tools/project.py build ASSET_ID --stage all --threads 8
+   blender -b --factory-startup --threads 8 --python-exit-code 1 \
+     --python tools/blender_envelope.py -- \
+     --asset regions/southport/AREA/ASSET \
+     --output ../output/ASSET-envelope-preflight.json
+   ```
+
+   This uses the baker's actual material, geometry, budget and atlas preparation,
+   then samples projection rays. Investigate named faces with misses; do not
+   increase a cage blindly, since it may hit an unrelated surface. Tiny-grid ray
+   sampling is diagnostic and does not replace actual bake coverage/normal checks.
+   Rebuild the master after architectural source changes before trusting the probe.
+   Inspect coplanar candidates as well; the projection test does not detect them.
+4. Publish only that asset with `python3 tools/project.py publish --asset ASSET_ID
+   --threads 8`. Package validation still checks actual exported costs and bakes.
+   Wait for the catalog lock if another agent is publishing; do not delete locks.
+5. Generate the owner's comparison page with `python3 tools/create_lod_review.py
+   --asset ASSET_ID --baseline BASELINE_DIRECTORY`, record measured results and
+   omissions in the building document, then stage intended source, run `check`
+   and commit. Owner visual acceptance remains pending until actually received.
+
+Practical lessons from the rollout:
+
+- Repeated painted columns should share atlas islands when their shapes and
+  appearance agree. A genuine metric prototype avoids tiny differences from
+  geographic warping; test congruency after float32 conversion, not just in Python
+  doubles. Do not share islands across different lettering or material patterns.
+- A long plain beam can force every island to become tiny in an aspect-correct
+  atlas. Lower its `weight` relative to important surfaces, or split it at real
+  structural spans. Verify usable interior pixels before paying for a bake.
+- Transparent glass and metallic materials need explicit treatment; the current
+  envelope baker supports opaque dielectric surfaces. Preserve open canopy/arcade
+  geometry and document distant omissions instead of projecting a solid sheet.
+- Respect local coordinate frames and winding, especially mirrored facades and
+  frames whose second coordinate is height. Several false overlaps came from
+  applying world-axis box-face exclusions to these local frames.
+- Build valleys from a few authored roof volumes or analytic planes. Remove
+  numerical degenerate triangles before exporting; never inherit the detailed
+  roof's decorative tessellation. Clip shared boundaries so one visible surface
+  owns each location.
+- Source snapshots must stay fixed throughout packaging. Coordinate shared-tool
+  edits between active bakes; an otherwise successful bake is rejected if its
+  inputs change. Failed packages leave the previous published catalog intact.

@@ -206,6 +206,9 @@ def validate_publication(spec):
             if part['cage_m']<=0:raise ValueError('Invalid envelope cage')
             if not isinstance(part['atlas'],list) or len(part['atlas'])!=2 or any(type(v) is not int or v<64 or v>spec['levels']['district']['texture_size'] or v&(v-1) for v in part['atlas']):
                 raise ValueError('Invalid envelope atlas dimensions')
+        texture_floor=sum(part['atlas'][0]*part['atlas'][1]*16 for part in envelope['parts'].values())
+        if envelope['max_gpu_bytes']<=texture_floor:
+            raise ValueError(f'district_envelope: GPU budget must exceed the atlas memory floor ({texture_floor} bytes), leaving space for mesh buffers')
     excluded = spec.get('excluded_collections', [])
     if not isinstance(excluded, list):
         raise ValueError('excluded_collections: expected a list')
