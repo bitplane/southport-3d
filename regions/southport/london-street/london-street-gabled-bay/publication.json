@@ -129,8 +129,8 @@
         "reason": "Keep the low-cost cream gable, apertures, roof valley union and inset shop entrance; these are the visible identity and silhouette."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Keep the low-cost cream gable, apertures, roof valley union and inset shop entrance; these are the visible identity and silhouette."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -141,8 +141,8 @@
         "reason": "Two already inexpensive sash assemblies preserve dark openings and white framing consistently. No blanket decimation or unnecessary bake atlas."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Two already inexpensive sash assemblies preserve dark openings and white framing consistently. No blanket decimation or unnecessary bake atlas."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -154,8 +154,52 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit tiny vent slats, masonry joints and fittings; keep the vent shadow patch, gable edges and rainwater pipe."
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve the measured source footprint, roof silhouette and entrance placement; bake facade detail into a fixed texture budget.",
+    "max_bytes": 450000,
+    "max_gpu_bytes": 2200000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "roof": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "shopfront": {
+        "atlas": [
+          256,
+          64
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65,
+        "source_parts": [
+          "shopfront",
+          "architecture"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      }
+    }
+  }
 }

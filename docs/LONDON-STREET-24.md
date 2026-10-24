@@ -14,15 +14,7 @@ The frontage uses the established block adjustment: 0.02418 radians about (−11
 
 Two actual upper apertures contain inexpensive framed sash meshes. The pitched roof is a closed slab with correctly directed slate courses, ridge cap, end infill, gutter and rainwater pipe. The lower rear store is deliberately plain where detailed evidence is missing. Ground and pavement remain owned by the public-realm asset.
 
-| Feature | Detail | Walk | District |
-| --- | --- | --- | --- |
-| Brick walls, openings and piers | Authored envelope | Keep | Keep |
-| Two small sash assemblies | Thin frames/glazing | Keep inexpensive geometry | Keep inexpensive geometry |
-| Pitched roof and lower deck | Closed authored shapes | Keep | Keep |
-| Oxfam sign | Shallow lettering | Baked panel | Smaller baked panel |
-| Rainwater brackets, joints, handle | Geometry | Keep | Omit |
-
-No global decimation is used. Near-detail texture maps are procedural brick/slate rather than downloaded reference photography. The inexpensive window geometry avoids a material/shadow jump between levels.
+Detail and Walk retain their authored walls, sash assemblies and roof geometry, with the existing Walk sign bake. District is an independent envelope described below. No global decimation or downloaded reference photography is used.
 
 ## Validation and limitations
 
@@ -30,10 +22,18 @@ The full build verifies finite UV meshes, packed generated maps, both unobstruct
 
 The rear loading door position, hidden rear wall arrangement and precise shop entrance proportions are estimates. Rear windows are not invented without pixels. The continuous southern roof must be coordinated when the next frontage is built. No interiors or pavement are modelled.
 
-Measured isolated exports: Detail 2,592 triangles / 1,197,312 bytes; Walk 1,298 / 1,112,940; District 1,070 / 383,300, including embedded textures. A combined exported-master oblique with 20 and 22 was also inspected for frontage alignment; paving contact still needs the coordinator's combined viewer pass.
-
-Independent audit on22October2026 checked the retained dated frontage and aerial against all three exported levels. Removed duplicated coplanar display-centre stile and shortened main/rear sidewalls to meet the rear walls without overlapping visible end caps. Fullbuild, validation and12GLBs passed; new checks enforce the three unique display stiles and rear junction extents. Final totals: Detail2580tri/1195144bytes; Walk1286/1110776; District1058/381144. Historical facade and estimated rear scope unchanged.
+Earlier all-level exported reviews checked frontage alignment and removed duplicated display stiles and overlapping rear wall junctions. The historical facade and estimated rear scope are unchanged.
 
 The projecting brick pier feet stop at the shop boundary; their former 35 mm
 overhang crossed the neighbouring Money Shop fascia. This was corrected during
 the saved oblique frontage snag review.
+
+## Current District envelope
+
+The frontage and rear store retain their separate heights, with the continuous two-pitch roof meeting the cream bay without an invented hip. The shop door stays recessed. Windows, brick detail, lettering, gutters and coping are projected into the fixed atlases. Tiny gaps already present around the source entrance are not filled by invented projection surfaces.
+
+The four parts use architecture 256 × 128, roof 128 × 128, shopfront 256 × 64 and rear 128 × 128 atlases, each with colour, tangent normal and roughness maps. Topology and atlas dimensions are independent of added Detail geometry. The common geographic transform and existing dimensional estimates are unchanged.
+
+Published total: **40 triangles, 87,788 bytes including textures, 1,315,388 estimated GPU bytes**. Source construction/validation, float32 receiver overlap checks, sampled projection, actual bake coverage and normal validity, and export budgets pass. Visual acceptance is delegated to the project owner for this LoD rollout; no new architectural evidence or visual inspection is claimed.
+
+Comparison: `/reviews/southport.london-street.london-street-24/index.html`. Private baseline, preflight and bake reports are under `../output/london-24-district-pilot/`; generated files remain outside Git.

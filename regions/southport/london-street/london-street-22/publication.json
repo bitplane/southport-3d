@@ -129,8 +129,8 @@
         "reason": "Keep stone pier profiles, rounded cap, three-storey glass divisions, flat roof/parapets and inset shop entrance: these define the narrow Art Deco silhouette."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Keep stone pier profiles, rounded cap, three-storey glass divisions, flat roof/parapets and inset shop entrance: these define the narrow Art Deco silhouette."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -141,8 +141,8 @@
         "reason": "The three slim steel assemblies cost only396triangles. Retain them to preserve material response and fine framing; planar bake review showed a conspicuous shadow/colour shift on this continuous glass facade."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "The three slim steel assemblies cost only396triangles. Retain them to preserve material response and fine framing; planar bake review showed a conspicuous shadow/colour shift on this continuous glass facade."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -154,7 +154,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit sub-centimetre joints and small handle while preserving the stone piers and entrance recess."
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -170,14 +170,49 @@
         "max_sampled_error_m": 0.2
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Preserve the observed yellow/black shopfront colour patch and lettering via a smaller baked panel.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.2,
-        "max_sampled_error_m": 0.2
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve the measured source footprint, roof silhouette and entrance placement; bake facade detail into a fixed texture budget.",
+    "max_bytes": 450000,
+    "max_gpu_bytes": 2200000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "roof": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "shopfront": {
+        "atlas": [
+          256,
+          64
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "rear": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      }
+    }
+  }
 }

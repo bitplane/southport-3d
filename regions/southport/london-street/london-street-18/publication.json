@@ -129,8 +129,8 @@
         "reason": "Retain authored wall apertures, two roof silhouettes, shopfront recess and simple rear wing envelope."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Retain authored wall apertures, two roof silhouettes, shopfront recess and simple rear wing envelope."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -141,13 +141,8 @@
         "reason": "Retain thin physical timber frames and aperture depth for walking inspection."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Bake eight framed windows to shallow receivers while retaining the physical wall openings.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -163,13 +158,8 @@
         "max_sampled_error_m": 0.4
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Keep lower-resolution bank identity on a simple fascia panel.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -181,8 +171,48 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit tiny joints and fittings; retain all main silhouettes."
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve the measured source footprint, roof silhouette and entrance placement; bake facade detail into a fixed texture budget.",
+    "max_bytes": 450000,
+    "max_gpu_bytes": 2200000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "roof": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "shopfront": {
+        "atlas": [
+          256,
+          64
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "rear": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      }
+    }
+  }
 }

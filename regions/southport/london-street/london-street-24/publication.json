@@ -129,8 +129,8 @@
         "reason": "Preserve the two real upper apertures, brick edge piers, pitched roof cross-section, lower rear envelope and recessed shop entrance."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Preserve the two real upper apertures, brick edge piers, pitched roof cross-section, lower rear envelope and recessed shop entrance."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -141,8 +141,8 @@
         "reason": "Two already inexpensive sash assemblies preserve dark openings and white framing consistently. No blanket decimation or unnecessary bake atlas."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Two already inexpensive sash assemblies preserve dark openings and white framing consistently. No blanket decimation or unnecessary bake atlas."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -154,7 +154,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit tiny joints, brackets and handle; keep the rainwater pipe and architectural openings."
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     },
     {
@@ -170,14 +170,53 @@
         "max_sampled_error_m": 0.2
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Bake Oxfam fascia lettering into a shallow receiver; keep the recognisable green/cream colour patch without distant glyph geometry.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.2,
-        "max_sampled_error_m": 0.2
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope replaces detailed source geometry."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve the measured source footprint, roof silhouette and entrance placement; bake facade detail into a fixed texture budget.",
+    "max_bytes": 450000,
+    "max_gpu_bytes": 2200000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "roof": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      },
+      "shopfront": {
+        "atlas": [
+          256,
+          64
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65,
+        "source_parts": [
+          "shopfront",
+          "architecture"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.65
+      }
+    }
+  }
 }

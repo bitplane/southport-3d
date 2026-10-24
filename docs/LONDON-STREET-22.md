@@ -12,17 +12,9 @@ Coordinates retain the common memorial origin and 43.5293-degree site yaw. Local
 
 ## Construction and viewing levels
 
-The upper glass has a real continuous opening behind seven curved chordal strips per storey, with dark spandrel bands, swept stone returns and eighteen small inset lights. Stone reveals, large rails, stepped piers, terminal profile and recessed shop entrance remain geometry at every level. Roof deck, parapets and low rooflights are closed meshes. Ground/paving belongs to the public-realm asset.
+The upper glass has a real continuous opening behind seven curved chordal strips per storey, with dark spandrel bands, swept stone returns and eighteen small inset lights. Detail and Walk retain stone reveals, rails, stepped piers and the recessed entrance. District preserves their main silhouette with baked surface detail. Roof deck, parapets and low rooflights are closed meshes. Ground/paving belongs to the public-realm asset.
 
-| Feature | Detail | Walk | District |
-| --- | --- | --- | --- |
-| Stone envelope, reveals and rounded cap | Authored geometry | Keep silhouette/depth | Keep silhouette/depth |
-| Curved glazed storeys and return lights | Thin steel bars and glazing | Keep silhouette and joinery | Keep silhouette and joinery |
-| Historical fascia | Shallow lettering | Baked receiver | Smaller baked receiver |
-| Roof, parapets and rooflights | Authored envelope | Keep | Keep |
-| Stone joints and handle | Geometry | Keep | Omit |
-
-No whole-building decimation is used. Near-detail joinery depth was reduced after exported review showed excessive shadows. The inexpensive glazing assemblies remain geometry at all levels because planar replacements introduced a conspicuous shadow/colour shift. The fascia is the baked feature; its lettering accounts for most reduced geometry.
+Detail and Walk retain their authored geometry and existing sign bake. District is an independent envelope described below; no whole-building decimation is used.
 
 ## Validation and remaining uncertainty
 
@@ -36,13 +28,7 @@ A clearer frontal photograph from [Modern Mooch](https://modernmooch.com/2025/04
 
 The hidden roof remains below the observed shoulders; its exact height is estimated. Side-wall end caps terminate within the rear wall instead of overlapping its outer surface. Validation checks all21 curved glazing panels,18 return lights, visible left entrance, centred crown and non-overlapping rear-wall junction, alongside the original closure and registration checks.
 
-Full build, all twelve GLBs and Detail/Walk/District front, oblique and roof renders were checked after the final correction. Glazing remains geometry at all levels to preserve the curved silhouette and avoid colour changes from flat bake receivers. Fascia lettering is baked at reduced levels. No reference image pixels are published.
-
-| Level | Triangles | GLB bytes including textures |
-| --- | ---: | ---: |
-| Detail | 9,314 | 2,248,644 |
-| Walk | 6,772 | 2,064,884 |
-| District | 6,424 | 1,080,616 |
+The earlier architectural audit checked the full build, all twelve GLBs and front, oblique and roof renders. Detail and Walk retain the glazing assemblies; District retains the curvature with seven continuous baked receiver strips. Fascia lettering is baked at reduced levels. No reference image pixels are published.
 
 Local viewer reports caught the curved bay's base overlapping the historical
 fascia and an open entrance cheek. The base now clears the fascia crown, with a
@@ -57,3 +43,13 @@ A later oblique snag exposed the stepped overlap between the fascia board and
 its backing, plus a 15 mm slit above the door rail. The board now has one full
 rectangular outline with its backing meeting the rear face; the transom meets
 the rail. Depth and entrance visibility probes cover these joins.
+
+## Current District envelope
+
+The cylindrical glazed shaft keeps its seven-chord silhouette, swept returns and projecting crown. The long flat roof, parapets and recessed entrance remain geometric. Fine joinery, ribs, cap moulding, lettering and rooflights are represented by the projected maps; rooflights no longer protrude at District distance. This uses curved receivers rather than flattening the distinctive bay into a facade plane.
+
+The four parts use architecture 256 × 128, roof 128 × 128, shopfront 256 × 64 and rear 128 × 128 atlases, each with colour, tangent normal and roughness maps. Topology and atlas dimensions are independent of added Detail geometry. The common geographic transform and existing dimensional estimates are unchanged.
+
+Published total: **168 triangles, 90,540 bytes including textures, 1,330,750 estimated GPU bytes**. Source construction/validation, float32 receiver overlap checks, sampled projection, actual bake coverage and normal validity, and export budgets pass. Visual acceptance is delegated to the project owner for this LoD rollout; no new architectural evidence or visual inspection is claimed.
+
+Comparison: `/reviews/southport.london-street.london-street-22/index.html`. Private baseline, preflight and bake reports are under `../output/london-22-district-pilot/`; generated files remain outside Git.

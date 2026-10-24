@@ -12,26 +12,29 @@ The pitched main roof and deeper narrow rear wing are reconstructed from aerial 
 
 - Detail retains wall apertures, shallow window frames, sill projection, shopfront recess, sign glyphs, minor joints and fittings.
 - Walk retains the architectural geometry and replaces the fascia lettering/emblem with a 512 px baked receiver.
-- District retains the roof and rear-wing silhouettes, wall apertures and shopfront frame. Eight upper windows use two shared baked prototypes at 256 px, and tiny joints, alarm, handle and pipe are omitted. No global decimation is used.
+- District uses an independent fixed-budget envelope; see the current budgets below.
 
 `python3 tools/project.py build southport.london-street.london-street-18` builds and validates the source. Validation checks eight unobscured upper apertures, both closed roof shells, finite UV geometry, packed authored textures and bounds along the neighbouring division. `--stage render` generates front, oblique, roof, rear and shopfront views. Publication uses the ordinary catalog and exact mesh-rule coverage.
 
-The final package has12 classified part/level GLBs. Combined exported-GLB front, oblique and rear renders with Betfred are reviewed at all three levels; live viewer review remains limited by the browser session failure.
+The package has twelve classified part/level GLBs. Earlier exported front, oblique and rear renders with Betfred established the source geometry; current District acceptance follows the owner-led process below.
 
-| Level | Placed triangles | GLB bytes, including textures | Embedded image bytes |
-| --- | ---: | ---: | ---: |
-| detail | 5,940 | 1,241,320 | 655,390 |
-| walk | 2,750 | 999,616 | 676,093 |
-| district | 1,658 | 430,092 | 173,079 |
-
-These are this building's four streaming parts, not town-wide totals. The two window prototypes share baked maps across each row. Textures include authored brick/slate and baked sign/windows; no downloaded photographic pixels are embedded.
+The source uses four streaming parts. Textures include authored brick/slate and baked sign/windows; no downloaded photographic pixels are embedded.
 
 Independent paired audit with 20 on 22 October 2026 removed coplanar party-wall end caps from the outer rear-wall plane. The former black rear junction stripes disappear in rebuilt all-level combined renders. The roof seam, ridge cap, frontage and parcel registration are unchanged; see the independent audit in [20 London Street](LONDON-STREET-20.md).
 
 The first local viewer snag exposed gaps above the fascia and beside the recessed
 entrance. The shopfront now has a continuous fascia infill, closed side returns
 and soffit, and the narrow right sidelight visible in the same 2020 auction
-photograph. Stone end piers meet the head cladding. These closure surfaces remain
-at every LoD; no interior room was added. A grid of exterior rays checks the
+photograph. Stone end piers meet the head cladding. Detail and Walk retain these closure surfaces; District projects them onto its entrance receiver; no interior room was added. A grid of exterior rays checks the
 opening within the front half-metre so missing panels cannot pass by hitting a
 remote rear wall. Exported views are checked from the report's saved camera.
+
+## Current District envelope
+
+The northern half of the shared 18–20 hip, the narrow rear wing with its two roof pitches, the open northern yard and the recessed entrance remain geometric. Windows, mouldings, sign lettering, pipework and rooflight detail are projected into the fixed atlases. The main rear wall is split around the wing ridge so the junction has neither an overlapping wall nor triangular holes.
+
+The four parts use architecture 256 × 128, roof 128 × 128, shopfront 256 × 64 and rear 128 × 128 atlases, each with colour, tangent normal and roughness maps. Topology and atlas dimensions are independent of added Detail geometry. The common geographic transform and existing dimensional estimates are unchanged.
+
+Published total: **60 triangles, 85,580 bytes including textures, 1,318,008 estimated GPU bytes**. Source construction/validation, float32 receiver overlap checks, sampled projection, actual bake coverage and normal validity, and export budgets pass. Visual acceptance is delegated to the project owner for this LoD rollout; no new architectural evidence or visual inspection is claimed.
+
+Comparison: `/reviews/southport.london-street.london-street-18/index.html`. Private baseline, preflight and bake reports are under `../output/london-18-district-pilot/`; generated files remain outside Git.
