@@ -202,7 +202,8 @@ def raised_lawn(points, south, west, east):
             for a,b in [((x,y),(x+2,y)),((x+2,y),(x+2,y+2)),((x+2,y+2),(x,y+2)),((x,y+2),(x,y))]:cell=halfplane(cell,a,b,True)
             if len(cell)>2:surface('christ',cell,'grass',40,rise)
 
-raised_lawn([(-128,-17.8),(-105,-17.8),(-103,-13),(-104,16.9),(-127.7,16.9)],-17.8,-128,-103)
+# Terminate the raised turf inside the west retaining wall, not beyond its outer face.
+raised_lawn([(-127.7,-17.8),(-105,-17.8),(-103,-13),(-104,16.9),(-127.7,16.9)],-17.8,-127.7,-103)
 corner=[(-78.3+3*math.cos(i*math.pi/24),14.8+3*math.sin(i*math.pi/24)) for i in range(13)]
 lawn_corner=[(-78.3+2.8*math.cos(i*math.pi/24),14.8+2.8*math.sin(i*math.pi/24)) for i in range(13)]
 raised_lawn([(-97.4,-16),(-79.5,-16),(-77,-15.2),(-75.5,-13)]+lawn_corner+[(-97.7,17.6)],-16,-97.7,-72.5)

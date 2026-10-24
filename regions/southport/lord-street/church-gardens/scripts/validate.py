@@ -58,3 +58,12 @@ for x,y in [(-85,0),(-115,0)]:
     z,name=ground_height(x,y);assert 'grass' in name and abs(z-(-.0075-.022*y+.45))<.002
 for x,y in [(-82,-24.5),(-91,-28.5),(-80,-20.4)]:
     z,name=ground_height(x,y);assert 'grass' not in name and abs(z-(-.0075-.022*y))<.002
+
+# Raised grass must remain behind the west retaining wall, not protrude through
+# its exposed outside face. Check exported surfaces at several wall stations.
+for y in (-14,-8,0,8,15):
+ z,name=ground_height(-127.92,y)
+ assert 'grass' not in name,('Turf outside retaining wall',y,name)
+ z,name=ground_height(-127.48,y)
+ assert 'grass' in name,('Missing lawn behind retaining wall',y,name)
+print('West retaining wall contains the raised lawn')
