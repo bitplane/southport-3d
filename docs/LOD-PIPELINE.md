@@ -174,3 +174,10 @@ features such as chimney pots; use this to prevent rays crossing neighbouring
 features. Reflected local coordinate frames must reverse winding after the
 geographic transform. Preserve courtyards and recesses explicitly instead of
 baking them onto a filled bounding box.
+
+Preflight every part's receiver geometry, source material support and triangle
+budget before beginning texture bakes. The shared baker now does this for the
+whole asset, so a malformed late part fails immediately rather than after earlier
+parts have spent minutes baking. Coplanar overlap reports remain candidates to
+inspect; a valid UV layout or normal bake does not prove that adjacent envelopes
+have only one visible surface.

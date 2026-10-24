@@ -24,7 +24,7 @@ def surfaces(asset):
             s.quad('portal soffit '+str(i),[(door-1.35,0,3.08),(door+1.35,0,3.08),(door+1.35,-1.18,3.08),(door-1.35,-1.18,3.08)])
             # Match current source steps; a separate snag will correct Detail and
             # then update these shared large access dimensions together.
-            for k in range(3):s.box(f'portal step {i} {k}',(door-1.35,.73-k*.28,0),(door+1.35,1.03-k*.28,.10+k*.13),omit=('bottom','rear'))
+            for k in range(3):s.box(f'portal step {i} {k}',(door-1.35,.73-k*.28,0),(door+1.35,1.01-k*.28,.10+k*.13),omit=('bottom','rear'))
     front('upper main wall',0,w,0,11,e)
     for i,x in enumerate(bays):
         path=[(x-1.725,0),(x-1.23,1.08),(x+1.23,1.08),(x+1.725,0)]
@@ -36,7 +36,7 @@ def surfaces(asset):
     # One fascia envelope replaces dozens of independent signage bakes.
     s.box('continuous fascia',(0,1.02,3.18),(w,1.335,3.80),omit=('bottom','rear'),weight=2)
     for l,h in [(bays[1],bays[2]),(bays[3],bays[4])]:
-        s.box('paired attic bridge '+str(l),(l-1.725,0,11.025),(h+1.725,1.13,11.575),omit=('bottom','rear'))
+        s.box('paired attic bridge '+str(l),(l+1.725,0,11.025),(h-1.725,1.13,11.575),omit=('rear','left','right'))
     s.part='rear-wings'
     s.quad('west main',[(0,-dep,0),(0,0,0),(0,0,e),(0,-dep,e)][::-1])
     s.quad('east main',[(w,-dep,0),(w,0,0),(w,0,e),(w,-dep,e)])

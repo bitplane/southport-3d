@@ -30,7 +30,7 @@ Run `python3 tools/project.py build southport.lord-street.st-georges-place-terra
 
 Current published sizes are recorded in the generated package manifest. Historical review figures above do not certify the new District envelope.
 
-The current District package contains 730 triangles, 374,340 bytes including
-textures, and 7,426,214 estimated GPU bytes. The previous package used 18,602
+The current District package contains 726 triangles, 371,980 bytes including
+textures, and 7,426,098 estimated GPU bytes. The previous package used 18,602
 triangles, 3,364,580 bytes and 68,411,434 estimated GPU bytes. Detail and Walk are
 unchanged by this envelope replacement.

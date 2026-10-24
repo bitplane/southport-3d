@@ -146,6 +146,8 @@ def build(spec,asset,dest,sources):
         sources={key:[o for o in objects if not pattern.search(o.name)] for key,objects in sources.items()}
         report['source_omissions'].append(dict(omission,objects=matches))
 
+    # Preflight every receiver and source material before the first costly bake.
+    pending=[]
     for part,faces in surfaces.items():
         config=recipe['parts'][part];size=config['atlas']
         selected=[obj for key in config.get('source_parts',[part]) for obj in sources[key]]
@@ -165,6 +167,10 @@ def build(spec,asset,dest,sources):
         target,rects=receiver('Bake '+part,unique,size)
         low,all_rects=receiver('District '+part,faces,size,{i:rects[j] for i,j in enumerate(indices)})
         if triangles(low)>config['max_triangles']:raise ValueError('Envelope exceeds fixed triangle budget: '+part)
+        pending.append((part,faces,config,selected,unique,target,low,rects,all_rects))
+
+    for part,faces,config,selected,unique,target,low,rects,all_rects in pending:
+        size=config['atlas']
         folder=dest/'maps'/'district'/part;folder.mkdir(parents=True)
         checks=bake(selected,target,size,rects,folder,config['cage_m'],unique)
         low.data.materials.append(target.data.materials[0]);data=target.data
