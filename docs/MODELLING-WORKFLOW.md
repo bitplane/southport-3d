@@ -85,6 +85,13 @@ Give each feature a reasoned keep, omit, replacement, generator or selective-dec
 
 Use `tools/project.py` for builds, renders, LoD baking and local publication. Its POSIX file locks allow different assets to build concurrently and reject a second writer to the same asset. Publication takes the catalog lock and all asset locks before building or copying packages. Retry after the competing operation finishes; do not delete lock files. Direct Blender invocations bypass these protections.
 
+The owner permits one Blender session per agent, concurrent across agents. On
+Brett's machine, user-1001.slice has aggregate MemoryHigh=56G, MemoryMax=64G and
+MemorySwapMax=2G; these are shared user limits, not per-job allowances. OOM failure
+is an accepted tradeoff for concurrency. If a job is killed, report the failure
+and reduce its memory use before retrying rather than repeating it unchanged.
+Keep the existing writer locks and checked publication path.
+
 Run a complete build and the asset's declared geometry checks after geometry changes. Inspect affected renders, then publish locally and inspect Detail, Walk and District in the browser. Check the assembled scene, ground following, neighbouring seams and close-up clearance; a standalone render cannot establish these. Record what was actually inspected and any remaining uncertainty.
 
 For orthographic combined renders, place the camera behind the entire scene

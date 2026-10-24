@@ -21,5 +21,6 @@ For an LoD-only rollout where the user explicitly takes visual acceptance, keep
 automated mesh/bake/budget checks and publish reviewable increments; do not claim
 unperformed visual checks or impose a long render/browser review on each asset.
 This exception does not waive evidence gathering for new architecture or permit
-changing major dimensions to simplify baking. Coordinate Blender jobs across
-agents; one job at a time is the current working policy.
+changing major dimensions to simplify baking. Each agent may run one Blender job concurrently with other agents. Retain
+per-asset writer locks and the catalog publication lock; see the concurrency
+policy in docs/MODELLING-WORKFLOW.md.
