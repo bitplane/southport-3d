@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -155,8 +155,8 @@
         "reason": "Retain authored wall openings, distinctive hood spacing, roof silhouette, rear rooflight notch, open access guardrail and recessed bank entrance; low-cost structural geometry."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Keep independently authored roof, rear projections, wall openings and coarse shopfront masses. Open guardrail/ladder remain inexpensive silhouette geometry, not a solid proxy."
+        "strategy": "omit",
+        "reason": "Fixed-budget envelope replaces detail meshes; shared atlases retain appearance without scaling topology with window detail."
       }
     },
     {
@@ -167,13 +167,8 @@
         "reason": "Preserve sash depth and security bars at walking distance; repeated front prototypes share mesh data."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Bake each repeated sash/barred-window module onto a shared shallow receiver; wall apertures and surrounding hood geometry remain physical.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4
+        "strategy": "omit",
+        "reason": "Fixed-budget envelope replaces detail meshes; shared atlases retain appearance without scaling topology with window detail."
       }
     },
     {
@@ -189,13 +184,8 @@
         "max_sampled_error_m": 0.4
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Retain reduced-resolution frontage identity on simple panels.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4
+        "strategy": "omit",
+        "reason": "Fixed-budget envelope replaces detail meshes; shared atlases retain appearance without scaling topology with window detail."
       }
     },
     {
@@ -207,8 +197,53 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit eaves dentils, tiny controls, joints and minor pipes below useful district screen size; retain roof and entrance envelopes."
+        "reason": "Fixed-budget envelope replaces detail meshes; shared atlases retain appearance without scaling topology with window detail."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve the analytic hip and court/stair cutouts, stepped party boundary, service decks and rear yard. Retain door depth and chimney/rooflight silhouettes; omit fine ladder and railings.",
+    "max_bytes": 1300000,
+    "max_gpu_bytes": 9000000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.6
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 200,
+        "cage_m": 0.3
+      },
+      "shopfront": {
+        "atlas": [
+          512,
+          128
+        ],
+        "max_triangles": 80,
+        "cage_m": 1,
+        "source_parts": [
+          "shopfront",
+          "architecture",
+          "rear"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 250,
+        "cage_m": 0.6
+      }
+    }
+  }
 }

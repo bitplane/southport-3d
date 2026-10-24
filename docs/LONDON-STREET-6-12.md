@@ -24,7 +24,7 @@ profile was locked during this repair.
 
 ## Levels and review
 
-Architecture, roof, shopfront and rear stream independently. Wall apertures, roof shape, hood spacing and entrance recess remain authored geometry at all levels. Walk preserves sash depth; District replaces repeated window modules with baked panels. Both reduced levels bake signs onto simple receivers. District omits dentils, small joints, controls and minor pipes. No global decimation is used. Texture caps are 512 px at Walk and 256 px at District.
+Architecture, roof, shopfront and rear stream independently. Walk preserves the existing sash and architectural detail. District uses the fixed-budget envelope below: roof shape, court/stair cutouts and entrance depth remain explicit while windows and signage use shared atlases. No global decimation is used. Both reduced levels cap individual texture dimensions at 512 pixels.
 
 Build with `python3 tools/project.py build southport.london-street.london-street-6-12`; add `--stage render` for front, roof, side, rear and shopfront inspection images. The validator checks all 24 front windows are unobscured, the bank door recess, registration bounds, packed maps and finite UV meshes. The research catalogue records exact URLs, capture dates and remaining uncertainty. Reference screenshots stay outside Git.
 
@@ -97,3 +97,20 @@ separate glazed shop door and black four-panel offices door with two letterboxes
 a knob, overlight, threshold and granite jambs. Temporary letting boards and
 interiors are excluded. Sizes are calibrated estimates from the supplied photos.
 Ray checks sample the previous fascia and doorway gaps in the assembled building.
+
+## Fixed-budget District envelope
+
+District uses authored wall surfaces and the shared analytic roof planes, clipped
+against the existing rear court and neighbouring stair clearances. It keeps the
+stepped northern boundary, lower rear eave, three service-deck sections, open
+ladder yard, recessed Halifax entrance, chimney and pitched rooflight. Fine rails
+and the ladder are omitted rather than filled with an opaque box. Individual
+windows and signs become baked appearance in shared part atlases. Topology is
+independent of the number of detailed window/frame subdivisions. The existing
+architectural dimensions and uncertainties remain; the owner handles visual
+acceptance after automated technical checks.
+
+Checked District export: **182 triangles, 475,284 bytes including textures and
+6,314,167 bytes estimated GPU memory**, down from 8,384 triangles, 1,389,756
+bytes and 14,457,077 GPU bytes. Geometry, coplanar receiver scan, bake coverage,
+normals and publication budgets pass. Visual acceptance remains with the owner.
