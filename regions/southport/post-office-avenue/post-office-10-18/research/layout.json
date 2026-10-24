@@ -1,0 +1,36 @@
+{
+  "origin_site_xy": [
+    70.785,
+    -56.478
+  ],
+  "local_rotation_degrees": -90.12712129312358,
+  "base_z": 0.7845,
+  "width": 27.043066560580737,
+  "depth_start": 8.38868243528148,
+  "depth_end": 8.779308059294884,
+  "footprint_site_xy": [
+    [
+      79.172,
+      -56.646
+    ],
+    [
+      70.785,
+      -56.478
+    ],
+    [
+      70.725,
+      -83.521
+    ],
+    [
+      79.5,
+      -83.796
+    ]
+  ],
+  "osm_way": 371742619,
+  "block_plan": "../../london-square/public-realm/research/st-georges-block.json",
+  "upper_floor": 6.6,
+  "eaves": 9.05,
+  "ridge": 11.65,
+  "bays": 5,
+  "appearance": "August 2024 Street View; later tenant changes noted separately, not combined into the facade."
+}

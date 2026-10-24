@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "southport.post-office-avenue.post-office-10-18",
+  "name": "10\u201318 Post Office Avenue",
+  "region": "southport",
+  "area": "post-office-avenue",
+  "status": "exterior-with-provisional-rear",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "five-bay-red-brick-front",
+    "half-timbered-upper-storey",
+    "three-cross-gables",
+    "Anchor-Street-return",
+    "mapped-rear-envelope"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Exterior only. August 2024 frontage; inaccessible rear windows remain unmodelled. Replaces mapped placeholder OSM371742619 after review.",
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "build_inputs": {
+    "validate": [
+      "regions/southport/post-office-avenue/post-office-10-18/scripts/check_package.py"
+    ]
+  }
+}

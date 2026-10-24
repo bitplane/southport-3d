@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/post-office-10-18.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Post Office Avenue",
+  "status": "August 2024 frontage and Anchor return; estimated heights and roof pitches, rear windows unobserved.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "street-facade",
+      "name": "Five shop bays and half-timbered gables",
+      "collection": "street-facade"
+    },
+    {
+      "id": "roof",
+      "name": "Hipped main ridge and three cross-gables",
+      "collection": "roof"
+    },
+    {
+      "id": "rear-and-ends",
+      "name": "Anchor return and mapped rear walls",
+      "collection": "rear-and-ends"
+    }
+  ],
+  "views": [
+    {
+      "name": "Post Office Avenue",
+      "position": [
+        40.749574905718184,
+        16.7845,
+        72.41140012068317
+      ],
+      "target": [
+        71.75393597260137,
+        6.2844999999999995,
+        70.4801842253628
+      ]
+    },
+    {
+      "name": "Anchor corner",
+      "position": [
+        52.696296971289364,
+        14.7845,
+        96.43796524947331
+      ],
+      "target": [
+        72.73618404496753,
+        6.2844999999999995,
+        78.48238321841046
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        50.700739260439235,
+        42.7845,
+        94.43353280544666
+      ],
+      "target": [
+        74.75392858875895,
+        7.7844999999999995,
+        70.4868402752452
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      67.75394581772461,
+      2.4844999999999997,
+      70.47130949218628
+    ],
+    "target": [
+      70.75393843388218,
+      4.7844999999999995,
+      70.47796554206867
+    ]
+  },
+  "rules": [
+    {
+      "id": "structural-envelope",
+      "match": "^(Envelope|Frame|Window|Trim|Roof) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain the low-cost pierced wall shells, arched shop openings, timber framework, roof valleys and silhouette. No global decimation of window arches."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Preserve primary roof and gable identity, corner glazing and major timber grid. Current cost is modest; finer lead and pipes are removed separately."
+      }
+    },
+    {
+      "id": "fine-lead-and-handles",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Lead came and small handles are subordinate to retained pane/frame divisions."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Subpixel lead and small fittings do not justify individual mesh bars."
+      }
+    },
+    {
+      "id": "rainwater",
+      "match": "^Fitting ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Visible facade drainage remains useful at street distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Narrow pipes disappear at district scale; eaves silhouette remains."
+      }
+    },
+    {
+      "id": "authored-signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain shallow authored letters; baking eleven tiny signs separately at512pixels inflated Walk memory above Detail. Fine glazing leadwork is omitted independently."
+      },
+      "district": {
+        "strategy": "replace",
+        "shape": "box",
+        "uv": "box",
+        "bake": true,
+        "cage_extrusion_m": 0.1,
+        "max_sampled_error_m": 0.12,
+        "reason": "Keep sign colour/identity on a small receiver, eliminating tiny text triangles."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Whole pierced-facade appearance baked onto mapped wall envelopes; preserve three cross-gables, joined valleys and chimney silhouette with topology independent of fine frames or lettering.",
+    "max_bytes": 1000000,
+    "max_gpu_bytes": 6291456,
+    "parts": {
+      "street-facade": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 100,
+        "cage_m": 0.4
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 400,
+        "cage_m": 0.4
+      },
+      "rear-and-ends": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 100,
+        "cage_m": 0.4
+      }
+    }
+  }
+}

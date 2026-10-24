@@ -243,7 +243,8 @@ for x,y in [(151,-91),(151,-93),(218,-60),(223.9,-95.7),(224.3,-59.3),(231,-59.4
  assert ob and any(m.name=='Authored asphalt' for m in ob.data.materials),(x,y,'Blocked block circulation',ob.name if ob else None)
  assert abs(p.z-(layout['grade']['origin_z']+layout['grade']['dz_dy']*max(-36,min(36,y))-.12))<.002,(x,y,'Road grade mismatch')
 placeholders=[o for o in meshes if o.name.startswith('Placeholder OSM ')]
-assert len(placeholders)==4,'Missing mapped provisional volumes'
+assert len(placeholders)==3,'Missing mapped provisional volumes'
+assert not any(o.name.startswith('Placeholder OSM 371742619 ') for o in meshes),'Detailed Post Office terrace still has placeholder'
 for ob in placeholders:
  bm=bmesh.new();bm.from_mesh(ob.data)
  assert all(e.is_manifold for e in bm.edges),(ob.name,'Open placeholder shell')

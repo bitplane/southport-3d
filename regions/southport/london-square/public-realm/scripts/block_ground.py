@@ -120,7 +120,7 @@ def build_block(ctx, existing_roads, anchor_north, anchor_south):
                 if len(piece)>2:clipped('Marking parking bay',piece,white,buildings+reserve,z=-.109)
     # Low-detail rear building volumes occupy mapped footprints, not guessed boxes.
     material=ctx['mat']('Provisional rear building volume',(.39,.37,.33))
-    for key,height in [('371742618',7.5),('371742619',11),('371742620',8.5),('51826175',6.5)]:
+    for key,height in [('371742618',7.5),('371742620',8.5),('51826175',6.5)]:
         points=ways[key]['xy'][:-1]
         if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(points,points[1:]+points[:1]))<0:points.reverse()
         m=Mesh('Placeholder OSM '+key+' estimated height')

@@ -1,0 +1,59 @@
+{
+  "front": "Observed from three August 2024 panoramas along Post Office Avenue. Five shop bays, gables over alternating bays, segmental ground shop arches and paired first-floor sashes.",
+  "south_anchor": "Observed on August 2024 corner panorama and independent listing photo. Half-timbering wraps upper floor; two first-floor and two ground openings.",
+  "north_passage": "Observed at gated passage beside No8; brick end wall, partly occluded by cinema.",
+  "rear": "Aerial only. Maintain footprint and conservative blank wall; window positions not established.",
+  "roof": "Aerial plus front obliques. Main longitudinal ridge and three transverse gables; pitches and chimney heights estimated. 3D unavailable.",
+  "measurement_inputs": {
+    "mapped_front_endpoints": [
+      [
+        70.785,
+        -56.478
+      ],
+      [
+        70.725,
+        -83.521
+      ]
+    ],
+    "front_length_m": 27.043066560580737,
+    "mapped_end_depths_m": [
+      8.38868243528148,
+      8.779308059294884
+    ],
+    "front_rhythm": "Five shop bays across 27.043 m gives mean 5.409 m; split sizes estimated near equal, checked against frontage photographs.",
+    "height_estimate": "Ground shop arches ~2.9m, first-floor sill ~3.85m and top ~5.8m, timber band starts ~6.6m and eaves ~9.05m; gable rise ~2.6m. Relative proportions measured visually against repeated window spans; uncertainty ~0.4m vertical, not survey.",
+    "aerial_scale_bar": {
+      "capture": "private output/post-office-aerial-close.png, 1440x1000 pixels",
+      "scale_bar_pixels": [
+        [
+          1304,
+          995
+        ],
+        [
+          1417,
+          995
+        ]
+      ],
+      "scale_bar_m": 10,
+      "front_roof_edge_pixels": [
+        [
+          534,
+          328
+        ],
+        [
+          741,
+          553
+        ]
+      ],
+      "estimated_roof_edge_m": 27.06,
+      "uncertainty": "Endpoints manually read to roughly 5 pixels; roof overhang/parallax also affects length. Compare to mapped wall 27.043m, do not replace wall control with roof pixels."
+    },
+    "gable_count": 3,
+    "gable_centres_fraction": [
+      0.1,
+      0.5,
+      0.9
+    ]
+  },
+  "review_status": "Source renders and first exported Detail/Walk/District compared at the Anchor corner. Four upper lights and full Anchor timber return corrected; first export revealed excessive Walk sign bake memory, now replaced with retained lettering. Final publication review recorded in docs/POST-OFFICE-10-18.md."
+}

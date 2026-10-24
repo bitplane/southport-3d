@@ -1,0 +1,60 @@
+{
+  "sources": [
+    {
+      "url": "https://www.openstreetmap.org/way/371742619",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0",
+      "use": "Existing block-plan footprint. Front 27.043 m, end depths 8.389 and 8.779 m; retain alley north and Anchor corner."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6486546,-3.0028765,10a,90y,45h,105t/data=!3m4!1e1!3m2!1sSG_TE301oqDTZqnwnL-S9Q!2e0",
+      "capture_date": "2024-08",
+      "attribution": "Google Street View",
+      "use": "Middle front: Nos 12 and 14, segmental shop arches, first-floor sash pairs, cream Ripley facade, upper timber band. Closer upward view confirms four upper lights per bay and stepped brick corbels below the gabled bay."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6485921,-3.0027749,11a,90y,10h,100t/data=!3m4!1e1!3m2!1skpuDOUbGHtDURL2J_i8bcQ!2e0",
+      "capture_date": "2024-08",
+      "attribution": "Google Street View",
+      "use": "Nos 14,16,18 facade and upper-floor leaded glazing."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6484835,-3.0027657,11a,90y,5h,102t/data=!3m4!1e1!3m2!1sVP0pQ_BHIWWi60fE9BRFqA!2e0",
+      "capture_date": "2024-08",
+      "attribution": "Google Street View",
+      "use": "Full terrace from Anchor junction; three gables, corner return with two ground arched windows, two first-floor windows and upper timber/glazing band."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6487201,-3.0029815,10a,90y,55h,105t/data=!3m4!1e1!3m2!1s4ixhy0cDffT_fcVPx3_lMw!2e0",
+      "capture_date": "2024-08",
+      "attribution": "Google Street View",
+      "use": "North end at No10 beside gated passage to No8 Bijou; unadorned brick side exposed along passage."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6486334,-3.0026906,88m/data=!3m1!1e3",
+      "attribution": "Google / Airbus / Maxar imagery",
+      "use": "Roof plan: longitudinal main ridge with three front cross-gables; rear slope, stacks and narrow rear access gap. Acquisition date unknown."
+    },
+    {
+      "url": "https://www.loopnet.com/Listing/18-Post-Office-Av-Southport/28926014/",
+      "attribution": "LoopNet / property listing photograph",
+      "use": "Clear front/Anchor corner photograph. Listing describes three storeys; historical Nicholls and Barnes signage differs from August 2024 VC Law, so use for permanent architecture only."
+    },
+    {
+      "url": "https://www.mapillary.com/app/?lat=53.648522459072&lng=-3.0026805913402&z=17&pKey=4277166228994775",
+      "attribution": "Mapillary contributor davidsong",
+      "use": "Image displayed along Anchor Street, facing away from the target corner; no useful rear coverage obtained."
+    },
+    {
+      "url": "https://standupforsouthport.com/the-hobby-post-opens-in-southport-with-new-shop-and-experiences-for-fantasy-fans/",
+      "attribution": "Stand Up For Southport / Southport BID",
+      "use": "June 2026 report identifies later Hobby Post at 10-12. Documented tenant change; model uses consistent August 2024 street appearance."
+    }
+  ],
+  "limitations": [
+    "Google Maps reports 3D Earth view is not available in this browser session; no successful mesh orbit claimed. Used detailed satellite and street/corner photographs instead.",
+    "Rear Street View attempt at 53.64873,-3.00255 snapped to Anchor Street; rear fenestration remains unobserved, not inferred absent.",
+    "Mapillary query located Anchor tracks but none through Post Office Avenue or the rear courtyard.",
+    "Web search for Wikimedia images yielded no useful target-specific photograph.",
+    "No interior or small unreadable poster text reproduced. Reference captures remain private outside Git."
+  ]
+}
