@@ -1,0 +1,63 @@
+{
+  "represented_appearance": "July 2026 Street View for tenancy and street facade; undated Google 3D for roof and rear shape.",
+  "front": {
+    "sources": [
+      "street-south",
+      "street-front",
+      "street-north",
+      "savills-photo"
+    ],
+    "observed": "Six tall segmental-headed windows beneath nine narrow sashes; separate canted single-window terminal bay with round upper head and triangular pediment. Continuous red brick, pale ground storey, cornice modillions, keystones, pilasters and current Jackpot frontage.",
+    "confidence": "high for composition; medium for metric dimensions and carved depth"
+  },
+  "south_side": {
+    "sources": [
+      "street-south",
+      "google-3d"
+    ],
+    "observed": "Party junction to the taller pale Occulo range. Wall largely hidden.",
+    "missing": "No invented openings on buried party surfaces."
+  },
+  "north_side": {
+    "sources": [
+      "street-north",
+      "google-3d"
+    ],
+    "observed": "Party junction to taller Empire/Neville Buildings; terminal bay belongs to this range, not its neighbour.",
+    "missing": "Hidden lower party construction."
+  },
+  "rear": {
+    "sources": [
+      "google-3d",
+      "google-plan"
+    ],
+    "observed": "Attached taller rear wing with pale courtyard-facing long side and regular dark openings; gabled outer end. Lower brick volume near Occulo faces this courtyard. Open space between rear extensions.",
+    "confidence": "low to medium: coarse photogrammetry",
+    "missing": "No ground-level courtyard photographs found. Exact door arrangements, finish condition, drainage and stair access deferred rather than invented. User previously reports private Parkinson Books courtyard coverage unavailable."
+  },
+  "roof": {
+    "sources": [
+      "google-3d",
+      "google-plan"
+    ],
+    "observed": "Broad truncated slate hip, long raised rectangular cover, lower wing roof and separate small roof. Multi-pane rooflight visible by north rear attachment.",
+    "confidence": "medium for silhouette, low for precise equipment and cover construction",
+    "missing": "No invented chimney pots. Fine flashing and rooflight dimensions approximate."
+  },
+  "ground_and_footprint": {
+    "sources": [
+      "google-plan",
+      "google-3d",
+      "street-front"
+    ],
+    "observed": "Continuous frontage from Occulo to Empire; no open street passage through this range. Rear courtyard must stay open.",
+    "confidence": "medium; shared Occulo registration retained",
+    "contradictions": "Google elevated roof scale is affected by perspective. Street panorama angle estimates suggest an approximately 2\u20133 m discrepancy in existing neighbour registration, but unknown panorama FOV calibration prevents a unilateral correction. Recorded as an area survey limitation."
+  },
+  "additional_searches": [
+    "Savills and auction listings yielded clear frontal image and address evidence; 119 square metres is the shop unit, not full building area.",
+    "Allsop catalogue text loaded but PDF pages denied by CDN; no unseen plans treated as evidence.",
+    "Mapillary loaded tracks and an opposite-facing photograph; no useful courtyard image obtained.",
+    "Web search for 3\u20139 Nevill heritage and images returned combined Occulo holding descriptions, not an additional rear survey."
+  ]
+}

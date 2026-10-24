@@ -1,0 +1,36 @@
+{
+  "massing_review": {
+    "reference_views": [
+      "savills-photo",
+      "google-3d",
+      "street-front"
+    ],
+    "model_views": [
+      "massing-front.png",
+      "massing-rear.png"
+    ],
+    "observed": "Six-plus-nine upper window rhythm and terminal bay match composition. Main hip and two rear volumes distinguish the range. Rear wing initially too wide against roof image and shared block boundary; reduced from 7 to 5 m before detailing. Front render was poorly lit; adjusted illumination, not materials, for review.",
+    "remaining": "Rear openings are approximate photogrammetric reconstructions. Street registration retained to avoid an unverified unilateral neighbour move."
+  },
+  "export_review": {
+    "date": "2026-10-24",
+    "references": [
+      "street-front",
+      "street-north",
+      "savills-photo",
+      "google-3d",
+      "google-plan"
+    ],
+    "comparisons": [
+      "Front render and Detail/Walk exports preserve six-plus-nine rhythm, separate terminal bay, recessed shops and projecting cornice against frontal photographs. Carved foliage remains an approximation, signage is readable authored typography rather than a traced logo.",
+      "District front retains facade composition and roof silhouette in 84 triangles; relief, window depth and lettering are baked into shared atlases.",
+      "Assembled front joins Occulo and reserved Empire placeholder without retaining a placeholder through the new footprint. Rear wing/court reservation preserves the gap between extensions.",
+      "Rear oblique comparison showed the four-column pale window range belongs on the long courtyard-facing wing side, not its outer gable. Corrected before completion; low brick wing openings likewise face the court."
+    ],
+    "limits": [
+      "No ground-level rear photography; window sizes and finishes remain provisional.",
+      "Neighbour registration discrepancy is recorded in coverage.json; no unilateral neighbour move.",
+      "Empire and the rest of the west Lord Street block remain placeholders. Private yard ground and inaccessible party elevations are deferred."
+    ]
+  }
+}

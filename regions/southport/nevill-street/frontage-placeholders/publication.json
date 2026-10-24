@@ -79,6 +79,16 @@
       "id": "funland",
       "name": "Funland \u2014 placeholder",
       "collection": "funland"
+    },
+    {
+      "id": "west-nevill-empire",
+      "name": "Empire / Neville Buildings \u2014 placeholder",
+      "collection": "west-nevill-empire"
+    },
+    {
+      "id": "occulo-rear-infill",
+      "name": "Occulo rear infill \u2014 placeholder",
+      "collection": "occulo-rear-infill"
     }
   ],
   "views": [

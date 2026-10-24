@@ -1,0 +1,82 @@
+{
+  "sources": [
+    {
+      "id": "street-south",
+      "url": "https://www.google.com/maps/@53.6490354,-3.0049344,3a,100y,255h,100t/data=!3m4!1e1!3m2!1sejcjyCvRcMnpM7LFZIkM_Q!2e0",
+      "capture_date": "2026-07",
+      "notes": "Rendered south oblique: Occulo boundary, plain side shop, segmental stone heads, slate-hidden front parapet."
+    },
+    {
+      "id": "street-front",
+      "url": "https://www.google.com/maps/@53.6491001,-3.0050372,3a,90y,225h,112t/data=!3m4!1e1!3m2!1s1fBbLW6lu9TpTuIdmwBmGw!2e0",
+      "capture_date": "2026-07",
+      "notes": "Rendered central frontage, six tall and nine smaller windows plus terminal bay. Current Silcocks fascia and frosted neighbouring shop."
+    },
+    {
+      "id": "street-north",
+      "url": "https://www.google.com/maps/@53.6492323,-3.0052505,3a,80y,200h,112t/data=!3m4!1e1!3m2!1s2Gv0y7_5CwiDS9PNJWxWvA!2e0",
+      "capture_date": "2026-07",
+      "notes": "Rendered north oblique distinguishes terminal pediment and carved doorway from adjacent Empire/Neville Buildings."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6484609,-3.0052146,73a,35y,39.59t/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "notes": "Actual photogrammetry inspected in four quarter-turn orbits and closer rear oblique. Truncated hip, rectangular top cover, rear wing and lower attached volume. Distorted roof pixels are not survey dimensions."
+    },
+    {
+      "id": "google-plan",
+      "url": "https://www.google.com/maps/@53.6490026,-3.0052146,60m/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "notes": "Top-down roof plan inspected. Ground scale 5 m about 84 px, but elevated roofs are enlarged by perspective/parallax; relative proportions and registered neighbour boundaries govern dimensions."
+    },
+    {
+      "id": "savills",
+      "url": "https://auctions.savills.co.uk/auctions/13--14-may-2025-187/5-7-nevill-street-southport-merseyside-pr9-0de-16565",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "notes": "Full frontal 1500x1000 exterior photograph inspected. Shop unit area 119 square metres is not the full architectural footprint. Photo date not supplied; same masonry and shop layout as July 2026, obsolete hanging estate sign omitted."
+    },
+    {
+      "id": "savills-photo",
+      "url": "https://resize.auctions.savills.co.uk/resized/images/w1500/lots/177/14833/40ae4a97a6bc959e489868b0b215647b.jpeg",
+      "capture_date": null,
+      "notes": "Reference photograph only; no pixels included in generated materials."
+    },
+    {
+      "id": "allsop",
+      "url": "https://images1.showcase.com/d2/QhHWSHmFjsH093x3kglepAuiPPilS4ObdAo5AhcM2r8/document.pdf",
+      "capture_date": "2024-11",
+      "notes": "Indexed catalogue text identifies combined 367 Lord Street and 3\u20139 Nevill Street holding. PDF image retrieval denied by CDN; plans not inspected and no dimensions inferred from them."
+    },
+    {
+      "id": "operator",
+      "url": "https://www.silcock-leisure.co.uk/amusements/jackpot/",
+      "capture_date": null,
+      "notes": "Official operator identity corroboration. Linked image retrieval via web tool failed; frontage detail taken from verified imagery instead."
+    },
+    {
+      "id": "licence",
+      "url": "https://www.gamblingcommission.gov.uk/public-register/premises/full/144",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "notes": "Confirms Jackpot Unit 1 and Unit 2 at 5\u20137 Nevill Street."
+    },
+    {
+      "id": "mapillary",
+      "url": "https://www.mapillary.com/app/?lat=53.649124050157&lng=-3.0049172874608&z=17&pKey=371877387589828",
+      "capture_date": "2019-08-29",
+      "author": "davidsong",
+      "notes": "Coverage tracks and photograph loaded successfully; selected image faces opposite Bistrot Pierre frontage, so it supplies context only, not detail for 3\u20139 Nevill."
+    },
+    {
+      "id": "maps-photos",
+      "url": "https://www.google.com/maps/search/Silcocks+Jackpot+Amusements+Southport/",
+      "capture_date": "2026-04",
+      "author": "Arthur Belgrove",
+      "notes": "Maps place gallery inspected: seven photos, close fascia/display photo uploaded May 2026 and captured April 2026. Recessed burgundy frontage, cream kick panels, script sign and stone cornice. No rear photographs shown."
+    }
+  ]
+}

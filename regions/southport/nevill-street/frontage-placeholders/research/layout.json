@@ -248,80 +248,56 @@
       "osm_way": "375534421",
       "footprint": [
         [
-          -9.452,
-          90.309
-        ],
-        [
-          -21.403,
-          90.192
-        ],
-        [
-          -21.482,
-          78.613
-        ],
-        [
-          -48.326,
-          78.396
-        ],
-        [
-          -69.289,
-          78.334
-        ],
-        [
-          -68.968,
-          69.523
-        ],
-        [
-          -81.119,
-          69.78
-        ],
-        [
-          -81.841,
-          46.238
-        ],
-        [
-          -50.348,
-          46.261
-        ],
-        [
-          -50.422,
-          59.443
-        ],
-        [
-          -45.827,
-          59.47
-        ],
-        [
-          -45.754,
-          46.288
+          -33.253475,
+          71.693551
         ],
         [
           -33.593,
           46.543551
         ],
         [
-          -33.253475,
-          71.693551
+          -45.754,
+          46.288
         ],
         [
-          -24.463475,
-          71.876999
+          -45.827,
+          59.47
         ],
         [
-          -24.722,
-          52.727
+          -50.422,
+          59.443
         ],
         [
-          -20.222,
-          52.821
+          -50.348,
+          46.261
         ],
         [
-          -20.0762,
-          63.620915
+          -81.841,
+          46.238
         ],
         [
-          -9.8162,
-          63.835956
+          -81.119,
+          69.78
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -30.161867,
+          78.542834
+        ],
+        [
+          -30.253487,
+          71.756161
         ]
       ],
       "height_m": 12,
@@ -332,7 +308,7 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Residual terrace after Occulo and survey-scaled Coffee King plus its open alley/courtyard reservation. Remaining parcel splits provisional.",
+      "footprint_confidence": "Residual Lord Street block after 3\u20139 Nevill and its open rear court reservation; pending detailed parcel survey.",
       "replace_with": null,
       "original_combined_footprint": [
         [
@@ -460,7 +436,85 @@
         ]
       ],
       "foundation_z_max_m": -0.8,
-      "foundation_basis": "Extend below the provisional -0.73 m Parkinson Books passage datum; retain the independently estimated roof height."
+      "foundation_basis": "Extend below the provisional -0.73 m Parkinson Books passage datum; retain the independently estimated roof height.",
+      "before_nevill_3_9_footprint": [
+        [
+          -9.452,
+          90.309
+        ],
+        [
+          -21.403,
+          90.192
+        ],
+        [
+          -21.482,
+          78.613
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -33.593,
+          46.543551
+        ],
+        [
+          -33.253475,
+          71.693551
+        ],
+        [
+          -24.463475,
+          71.876999
+        ],
+        [
+          -24.722,
+          52.727
+        ],
+        [
+          -20.222,
+          52.821
+        ],
+        [
+          -20.0762,
+          63.620915
+        ],
+        [
+          -9.8162,
+          63.835956
+        ]
+      ]
     },
     {
       "id": "lord-block-infill",
@@ -953,8 +1007,77 @@
       ],
       "footprint_confidence": "2025 survey scaled to shared Lord Street alignment; rear finishes deferred",
       "replace_with": "southport.nevill-street.coffee-king"
+    },
+    {
+      "osm_way": "375534421",
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "replace_with": null,
+      "id": "west-nevill-empire",
+      "footprint": [
+        [
+          -21.403,
+          90.192
+        ],
+        [
+          -9.452,
+          90.309
+        ],
+        [
+          -9.585075,
+          80.636046
+        ],
+        [
+          -21.46989,
+          80.38801
+        ]
+      ],
+      "footprint_confidence": "Retained portion of old block after 3\u20139 Nevill replacement; architectural shape not researched here."
+    },
+    {
+      "osm_way": "375534421",
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "replace_with": null,
+      "id": "occulo-rear-infill",
+      "footprint": [
+        [
+          -20.0762,
+          63.620915
+        ],
+        [
+          -20.222,
+          52.821
+        ],
+        [
+          -24.722,
+          52.727
+        ],
+        [
+          -24.576188,
+          63.527915
+        ]
+      ],
+      "footprint_confidence": "Retained portion of old block after 3\u20139 Nevill replacement; architectural shape not researched here."
     }
   ],
   "policy": "Google 3D multi-angle shape and aerial comparison govern interpretation. OSM is a seed, not authority. Flat tops are placeholder height bounds, not asserted flat roofs. Joined mapped ranges are not individual legal parcels.",
-  "replacement_rule": "Set replace_with to the published detailed asset ID and disable its volume in the same coordinated publication. Keep the geographic footprint ID for future boundary corrections."
+  "replacement_rule": "Set replace_with to the published detailed asset ID and disable its volume in the same coordinated publication. Keep the geographic footprint ID for future boundary corrections.",
+  "nevill_3_9_reservation": {
+    "asset": "southport.nevill-street.nevill-street-3-9",
+    "basis": "Footprint and open rear court separated from old combined block; Empire and Occulo rear infill remain explicit placeholders.",
+    "source": "regions/southport/nevill-street/nevill-street-3-9/research/layout.json"
+  }
 }

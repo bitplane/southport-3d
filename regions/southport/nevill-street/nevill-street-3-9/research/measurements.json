@@ -1,0 +1,72 @@
+{
+  "method": "Frontal image ratios calibrated to the shared block footprint, cross-checked against actual 3D shape. Estimates, not a building survey.",
+  "front_photo": {
+    "source": "savills-photo",
+    "working_capture": "../references/nevill-next-building/savills-front.png",
+    "landmarks_px": {
+      "left_party_edge": [
+        45,
+        580
+      ],
+      "right_end_bay_edge": [
+        1145,
+        580
+      ],
+      "ground_y": 850,
+      "main_cornice_y": 125,
+      "first_floor_sill_y": 580,
+      "middle_band_y": 353,
+      "first_window_spring_y": 435,
+      "upper_window_spring_y": 240
+    },
+    "frontage_px": 1100,
+    "adopted_frontage_m": 16.8,
+    "scale_m_per_px": 0.01527,
+    "calculation": "1100 px / 16.8 m = 65.48 px/m. (850-125)/65.48 = 11.07 m apparent cornice height, with perspective/ground uncertainty ~0.6 m. Adopt 11.6 m after comparison to 3D and adjacent cornice levels. First-floor sill (850-580)/65.48 = 4.12 m; adopt 4.3 m. Middle sill (850-353)/65.48 = 7.59 m; adopt 8.05 m after front Street View comparison.",
+    "uncertainty_m": {
+      "frontage": 1.0,
+      "cornice": 0.7,
+      "openings": 0.15
+    }
+  },
+  "roof_plan": {
+    "source": "google-plan",
+    "working_capture": "../references/nevill-next-building/roof-plan-north.png",
+    "ground_scale_px_per_5m": 84,
+    "main_roof_front_corners_px": [
+      [
+        705,
+        270
+      ],
+      [
+        958,
+        528
+      ]
+    ],
+    "main_depth_px_approx": 193,
+    "ratio_depth_to_frontage": 0.534,
+    "adopted_main_depth_m": 9.0,
+    "calculation": "Projected frontage sqrt(253^2+258^2)=361 px; depth/frontage 193/361=.534. Adopt 16.8*.534=8.98 m depth. Do not use raw ground scale on elevated roofs.",
+    "wing_dimensions_m": [
+      5.0,
+      11.5
+    ],
+    "wing_basis": "Relative 3D/plan proportions; approximate, may include connected historic rear accommodation.",
+    "height_estimates_m": {
+      "main_roof_eave": 11.35,
+      "main_roof_top": 13.15,
+      "rear_wing_eave": 10.25,
+      "rear_wing_ridge": 12.15,
+      "low_rear_eave": 5.6,
+      "low_rear_ridge": 7.25
+    }
+  },
+  "registration": {
+    "shared_start_site": [
+      -9.8162,
+      63.835956
+    ],
+    "basis": "Existing Occulo affine party boundary, retained exactly to avoid cracks. New range uses same shear values.",
+    "limitation": "Potential 2\u20133 m overall registration discrepancy remains to be resolved through a coordinated Occulo/Empire survey; not concealed by moving roads."
+  }
+}
