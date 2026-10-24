@@ -216,9 +216,19 @@ def build_extensions(ctx):
             part=('sw-garden-ground' if x<-41 else 'roads') if x<0 else 'ne-garden-ground'
             line('Marking service parking bay end',[(x,y),(x,y-1.8)],.10,white,part,-.109)
     part='ne-garden-ground'
-    for side,edge,back in [('south',ordinate(front,118),ordinate(front,118)-1),('north',ordinate(garden,118),ordinate(garden,118)+1)]:
-        rect('Surface Sainsbury ramp '+side,116.8,min(edge,back),119.2,max(edge,back),mixed,part,.023)
-        rect('Tactile Sainsbury '+side,116.8,min(edge,back),119.2,max(edge,back),tactile,part,.024)
+    for side,curve,direction in [('south',front,-1),('north',garden,1)]:
+        x0,x1=116.8,119.2
+        y0,y1=ordinate(curve,x0),ordinate(curve,x1)
+        landing=[(x0,y0),(x1,y1),(x1,y1+direction),(x0,y0+direction)]
+        ob=polygon('Tactile Sainsbury '+side,landing,tactile,part,.024)
+        ob['crossing_edge_y0']=y0;ob['crossing_edge_y1']=y1
+        ob['crossing_direction']=direction
+        # Side cheeks close the dropped landing against the retained pavement.
+        for x,y in [(x0,y0),(x1,y1)]:
+            m=Mesh('Kerb crossing ramp cheek '+side)
+            points=[(x,y,0),(x,y,-.12),(x,y+direction,0)]
+            if (x==x0)==(direction>0):points.reverse()
+            m.add(points,[(0,1,2)]);finish(m,kerb,part)
     for x in [116.8,119.2]:
         for y in range(math.ceil(ordinate(front,118)),math.floor(ordinate(garden,118))+1):rect('Marking Sainsbury crossing stud',x-.05,y-.05,x+.05,y+.05,white,part,-.109)
     # Screenshot-supported shop-facing garden edge, added without duplicating core posts.

@@ -331,3 +331,16 @@ for ob in meshes:
             if abs(face.normal.z)>.5:
                 assert face.normal.z>0,('Inverted kerb top escapes pavement cutout',ob.name)
 print('Kerb tops face upward for ground cutout ownership')
+
+# Dropped landings follow the sloping kerb in plan; no raised paving wedge
+# survives between a rectangular ramp edge and the actual kerb line.
+for south in (True,False):
+    direction=-1 if south else 1
+    for x in (116.82,117.4,118,118.6,119.18):
+        edge=(-18.2+(x-108)*1.75/43) if south else (-12.2+(x-108)*1.5/35)
+        for distance in (.02,.5,.98):
+            y=edge+direction*distance
+            ob,p=ground_hit(x,y)
+            expected=layout['grade']['origin_z']+layout['grade']['dz_dy']*y-.12*(1-distance)
+            assert ob and p and abs(p.z-expected)<.001,(south,x,distance,'Raised crossing remnant',p.z if p else None,expected)
+print('Sloping crossing edges meet road and footway without raised wedges')

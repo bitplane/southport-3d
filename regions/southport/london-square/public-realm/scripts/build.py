@@ -295,11 +295,13 @@ for part,collection in collections.items():
 # Tactile crossing at the mapped Sainsbury's path: drop the pavement to the
 # carriageway at each kerb while retaining the higher rear landing.
 for ob in collections['ne-garden-ground'].objects:
- if ob.name.startswith('Surface Sainsbury ramp') or ob.name.startswith('Tactile Sainsbury'):
-  south='south' in ob.name
-  low=min(v.co.y for v in ob.data.vertices);high=max(v.co.y for v in ob.data.vertices)
+ if ob.name.startswith('Tactile Sainsbury'):
+  y0,y1=ob['crossing_edge_y0'],ob['crossing_edge_y1']
+  direction=ob['crossing_direction']
   for vertex in ob.data.vertices:
-   fraction=max(0,min(1,(vertex.co.y-low)/(high-low) if south else (high-vertex.co.y)/(high-low)))
+   edge=y0+(y1-y0)*(vertex.co.x-116.8)/2.4
+   distance=(vertex.co.y-edge)*direction
+   fraction=1-max(0,min(1,distance))
    vertex.co.z=grade(vertex.co.y)-.12*fraction
 
 # Drop the London Street landing edge to road level; keep adjoining footway level.

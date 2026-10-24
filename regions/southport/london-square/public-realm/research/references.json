@@ -215,6 +215,14 @@
       "reviewed": "2026-10-24",
       "use": "Rounded Post Office Avenue mouth has continuous double yellow lines around the kerb, rather than disconnected perpendicular strokes. Adopted estimated 1.4 m quadratic corner returns, sharing their curve between paving, kerb and both paint edges. Reverse view confirms paving and yellow lines remain continuous outside the garden: its provisional internal path must not overrun the registered garden boundary into the road.",
       "rights": "Reference only; no imagery redistributed."
+    },
+    {
+      "id": "sainsbury-dropped-landing-2024",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=1L2SfgiHc0AtTirmuR42MA&heading=165&pitch=-25&fov=85",
+      "capture_date": "2024-08",
+      "reviewed": "2026-10-24",
+      "use": "Tactile dropped crossing outside the store is part of the pavement, meeting the carriageway rather than a floating board. Ramp outlines now follow the registered sloping kerb at both ends; height interpolation uses that same edge, and side cheeks close the drop. Placement and 1 m depth remain estimates.",
+      "rights": "Reference only; no imagery redistributed."
     }
   ],
   "limitations": [
