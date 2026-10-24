@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -122,8 +122,8 @@
         "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
+        "strategy": "omit",
+        "reason": "Replaced by an independently authored fixed-budget whole-building envelope; fine appearance is baked into shared atlases."
       }
     },
     {
@@ -134,13 +134,8 @@
         "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Bake only shallow painted glazing/frame detail into its existing recessed opening; stone surrounds remain explicit.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.45,
-        "max_sampled_error_m": 0.3
+        "strategy": "omit",
+        "reason": "Replaced by an independently authored fixed-budget whole-building envelope; fine appearance is baked into shared atlases."
       }
     },
     {
@@ -151,8 +146,8 @@
         "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Preserve measured envelope, true openings, canted bays, stone crosses, gables, roof valleys and circulation."
+        "strategy": "omit",
+        "reason": "Replaced by an independently authored fixed-budget whole-building envelope; fine appearance is baked into shared atlases."
       }
     },
     {
@@ -164,7 +159,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit fine masonry relief and chimney pots below district projected size; chimney masses remain."
+        "reason": "Replaced by an independently authored fixed-budget whole-building envelope; fine appearance is baked into shared atlases."
       }
     },
     {
@@ -178,11 +173,8 @@
         "reason": "Reduce only interpreted organic enrichment and finials; architectural arches stay intact."
       },
       "district": {
-        "strategy": "decimate",
-        "ratio": 0.35,
-        "uv": "smart",
-        "bake": false,
-        "reason": "Reduce irregular enrichment moderately: more aggressive collapse visibly deformed the round gable medallions."
+        "strategy": "omit",
+        "reason": "Replaced by an independently authored fixed-budget whole-building envelope; fine appearance is baked into shared atlases."
       }
     },
     {
@@ -198,13 +190,8 @@
         "max_sampled_error_m": 0.3
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Retain inscription colour and position at reduced texture resolution.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.45,
-        "max_sampled_error_m": 0.3
+        "strategy": "omit",
+        "reason": "Replaced by an independently authored fixed-budget whole-building envelope; fine appearance is baked into shared atlases."
       }
     },
     {
@@ -215,9 +202,77 @@
         "reason": "Retain thin canted glazing returns and visible arch heads."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "A front bounding panel occludes the separately authored arched upper lights; preserve these inexpensive canted sash meshes."
+        "strategy": "omit",
+        "reason": "Replaced by an independently authored fixed-budget whole-building envelope; fine appearance is baked into shared atlases."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve historic gables, dormers, canted bays, chimneys and the open raised courtyard with mapped rear ranges. Ornament, individual windows, railings and garden furniture become appearance or are omitted below district size.",
+    "max_bytes": 2000000,
+    "max_gpu_bytes": 16777216,
+    "parts": {
+      "historic-front": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 800,
+        "cage_m": 0.8,
+        "source_parts": [
+          "historic-front",
+          "shopfronts"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 2000,
+        "cage_m": 0.8,
+        "source_parts": [
+          "roof",
+          "historic-front",
+          "rear-range"
+        ]
+      },
+      "rear-range": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 400,
+        "cage_m": 0.8,
+        "source_parts": [
+          "rear-range"
+        ]
+      },
+      "shopfronts": {
+        "atlas": [
+          512,
+          128
+        ],
+        "max_triangles": 150,
+        "cage_m": 0.6,
+        "source_parts": [
+          "historic-front",
+          "shopfronts"
+        ]
+      },
+      "courtyard-ground": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 150,
+        "cage_m": 0.8,
+        "source_parts": [
+          "courtyard-ground",
+          "rear-range"
+        ]
+      }
+    }
+  }
 }

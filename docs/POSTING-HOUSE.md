@@ -10,7 +10,7 @@ The geographic frame matches NatWest and the memorial: origin 53.6486555, -3.004
 
 ## Viewing levels
 
-The primary envelope, openings, canted bays, roofs, gables, transoms, mouldings and balcony rails remain explicit geometry. Walk omits fine joints, dentils and small chimney pots, selectively simplifies organic enrichment and bakes lettering. District also bakes shallow rectangular sash/glazing detail into recessed panels. Arched glazing and 132's canted sash frames remain geometry: a trial bounding-panel bake hid the separately authored arched upper lights. Aggressive carving collapse visibly damaged the round gable medallions, so the District reduction is deliberately moderate.
+Detail preserves the researched architectural geometry. Walk omits fine joints, dentils and small chimney pots, selectively simplifies organic enrichment and bakes lettering. District uses the independent envelope described below; earlier per-window replacement trials no longer define its topology.
 
 Package sizes are being recalculated during the block review; see generated package reports for the current build.
 
@@ -23,3 +23,24 @@ The rear follows the heritage photograph's unequal opening groups, tall central 
 The Anchor Street recess descends to a basement garage shutter. Its walkable ramp shares an aperture with the public-realm pavement; the photo establishes the descent, while the 1.55 m drop over roughly 2.8 m remains an estimate. It is not an assumed passage into the courtyard. The shared lane has asphalt, black vehicle/pedestrian gates and brick piers, based on August 2024 Street View. Gate widths and concealed service openings remain uncertain.
 
 Validation checks finite geometry/UVs, roof closure, clear glazing (including dormers and rear attic panes), geographic boundaries and publication classification. Street and oblique comparisons are required in addition to these mechanical checks. The current rear render was compared with the heritage rear photograph and the garden photograph; window grouping and roof clearance are corrected, while exact historic gable widths, glazed-connector dimensions and Post Office Avenue opening positions remain approximate. Interiors are excluded.
+
+## Fixed-budget District envelope
+
+District replaces the old feature-by-feature reduction with a dimensioned envelope
+in `scripts/district.py`. The historic gables, three dormers, chimney stacks,
+132's canted bays and roof, tapered rear block and open raised courtyard remain.
+The roof is assembled from small authored solid operands with resolved unions;
+its topology does not depend on detailed window or ornament meshes. Courtyard
+furniture, fine balustrades, pots and finials are omitted at this distance.
+
+Each existing streaming part has one colour/normal/roughness atlas. Front, roof
+and rear use 512×512; shops use 512×128 and ground 256×256. Budgets cover the complete
+GLBs and estimated decoded GPU resources, not just compressed image sizes.
+This rollout retains the existing architectural evidence and uncertainty; visual
+acceptance is handed to the owner after automated package checks.
+
+Checked District export: **1,692 triangles, 1,084,120 bytes including embedded
+textures, 14,916,990 bytes estimated GPU memory**. The previous representation
+used 69,578 triangles, 8,316,524 bytes and 45,626,008 GPU bytes. Receiver geometry,
+projection coverage, normals and publication budgets pass; visual acceptance
+remains with the owner.

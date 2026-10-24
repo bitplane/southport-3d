@@ -34,6 +34,12 @@ and material/draw-call counts matter even when triangle counts are tiny. Prefer
 one bounded atlas material per streaming part, with shared appearance only where
 it is justified. Keep source texture resolution independent of exported atlas size.
 
+Before launching a bake, calculate the atlas memory floor: the current three-map
+RGBA colour/normal/roughness set with mipmaps costs approximately `16 × width ×
+height` bytes per part. Sum all parts and allow additional space for mesh buffers;
+a compressed GLB can be much smaller than its decoded GPU allocation. A budget
+below that floor cannot pass, regardless of how simple the mesh is.
+
 Use geometry for negative spaces, roof outline, large projections and distinct
 columns. Use low-sided tapered cylinders with coarse capitals for isolated round
 columns, rectangular prisms for square piers, and surface bakes for shallow attached
