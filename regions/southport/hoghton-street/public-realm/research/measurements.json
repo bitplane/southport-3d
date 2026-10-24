@@ -1,0 +1,34 @@
+{
+  "units": "metres",
+  "aerial_controls": [
+    {
+      "pixel": [
+        800,
+        500
+      ],
+      "lat_lon": [
+        53.65,
+        -2.99985
+      ]
+    },
+    {
+      "pixel": [
+        1000,
+        600
+      ],
+      "lat_lon": [
+        53.649365,
+        -2.997705
+      ]
+    }
+  ],
+  "conversion": "100 px = 0.000635 latitude degrees (~70.69 m); 200 px = 0.002145 longitude degrees (~141.55 m). North-up, ~0.707 m per pixel. Roof parallax limits wall precision.",
+  "observed_widths": "Hoghton approximately 16\u201318 px between kerbs (~11.3\u201312.7 m). Existing London throat is 12 m. Secondary street widths estimated 6.5\u20138 m; footways 1.8\u20132.4 m.",
+  "height_inputs": "Street View two-storey rows estimated 3.2\u20133.6 m floor intervals plus 2\u20133 m roof; broad three-storey ranges 12\u201313 m; small sheds 4.5 m. Flat massing tops are envelopes, not reconstructed roofs.",
+  "uncertainty": {
+    "plan_m": "1\u20133",
+    "height_m": "2\u20134"
+  },
+  "scope": "Marked block expanded to bounded street edges; detailed ornament, windows and roof profiles deferred.",
+  "tower": "Holy Trinity tower separated at the north frontage corner; 11 by approximately 12 m provisional envelope, 30.5 m height +/-4 m. Low-resolution 3D and street panorama establish silhouette, not exact details."
+}

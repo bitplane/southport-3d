@@ -1,0 +1,2035 @@
+{
+  "schema_version": 1,
+  "bounds": [
+    11.5,
+    600,
+    -290,
+    -35
+  ],
+  "outer": [
+    [
+      11.5,
+      -35
+    ],
+    [
+      600,
+      -35
+    ],
+    [
+      600,
+      -290
+    ],
+    [
+      368,
+      -290
+    ],
+    [
+      368,
+      -255
+    ],
+    [
+      11.5,
+      -239
+    ]
+  ],
+  "tile_cuts": [
+    11.5,
+    115,
+    225,
+    320,
+    410,
+    505,
+    600
+  ],
+  "block_plan": "regions/southport/hoghton-street/frontage-placeholders/research/layout.json",
+  "existing_block_plans": [
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+    "regions/southport/station-quarter/frontage-placeholders/research/layout.json"
+  ],
+  "extra_building_cutouts": [
+    [
+      [
+        187.777,
+        -14.688
+      ],
+      [
+        202.96,
+        -14.263
+      ],
+      [
+        203.202,
+        -23.244
+      ],
+      [
+        188.031,
+        -23.665
+      ]
+    ],
+    [
+      [
+        159.144,
+        -16.922
+      ],
+      [
+        177.396,
+        -16.419
+      ],
+      [
+        178.371,
+        -51.952
+      ],
+      [
+        160.131,
+        -52.452
+      ]
+    ],
+    [
+      [
+        30.953,
+        12.667
+      ],
+      [
+        31.379,
+        -11.967
+      ],
+      [
+        35.767,
+        -11.898
+      ],
+      [
+        35.349,
+        12.744
+      ]
+    ],
+    [
+      [
+        153.896,
+        -67.84
+      ],
+      [
+        151.193,
+        -18.442
+      ],
+      [
+        108.66,
+        -20.201
+      ],
+      [
+        108.743,
+        -30.46
+      ],
+      [
+        110.248,
+        -70.397
+      ]
+    ],
+    [
+      [
+        30.722,
+        -51.785
+      ],
+      [
+        30.362,
+        -23.145
+      ],
+      [
+        7.591,
+        -23.164
+      ],
+      [
+        7.4,
+        -52.385
+      ]
+    ],
+    [
+      [
+        26.335,
+        -54.65
+      ],
+      [
+        8.223,
+        -55.025
+      ],
+      [
+        8.764,
+        -79.767
+      ],
+      [
+        27.061,
+        -79.399
+      ]
+    ],
+    [
+      [
+        64.858,
+        -39.639
+      ],
+      [
+        64.254,
+        -21.746
+      ],
+      [
+        33.119,
+        -22.801
+      ],
+      [
+        33.723,
+        -40.694
+      ]
+    ],
+    [
+      [
+        108.66,
+        -20.201
+      ],
+      [
+        71.141,
+        -21.671
+      ],
+      [
+        70.587,
+        -53.603
+      ],
+      [
+        79.103,
+        -53.893
+      ],
+      [
+        79.27,
+        -31.097
+      ],
+      [
+        84.031,
+        -31.229
+      ],
+      [
+        84.59,
+        -43.229
+      ],
+      [
+        92.452,
+        -42.407
+      ],
+      [
+        91.937,
+        -32.152
+      ],
+      [
+        96.311,
+        -31.916
+      ],
+      [
+        96.965,
+        -42.533
+      ],
+      [
+        105.208,
+        -41.826
+      ],
+      [
+        104.815,
+        -31.442
+      ],
+      [
+        108.743,
+        -30.46
+      ]
+    ],
+    [
+      [
+        89.16,
+        -49.73
+      ],
+      [
+        89.16,
+        -50.73
+      ],
+      [
+        79.16,
+        -50.73
+      ],
+      [
+        79.16,
+        -53.83
+      ],
+      [
+        89.16,
+        -53.83
+      ],
+      [
+        89.16,
+        -53.93
+      ],
+      [
+        88.41,
+        -53.93
+      ],
+      [
+        88.41,
+        -57.03
+      ],
+      [
+        89.16,
+        -57.03
+      ],
+      [
+        89.16,
+        -61.36
+      ],
+      [
+        90.16,
+        -61.4547
+      ],
+      [
+        90.16,
+        -64.3547
+      ],
+      [
+        98.26,
+        -65.1222
+      ],
+      [
+        98.26,
+        -62.2222
+      ],
+      [
+        107.63,
+        -63.11
+      ],
+      [
+        108.27,
+        -51.98
+      ],
+      [
+        98.25,
+        -51.41
+      ],
+      [
+        98.31,
+        -48.86
+      ]
+    ],
+    [
+      [
+        79.172,
+        -56.646
+      ],
+      [
+        70.785,
+        -56.478
+      ],
+      [
+        70.725,
+        -83.521
+      ],
+      [
+        79.5,
+        -83.796
+      ]
+    ],
+    [
+      [
+        83.188,
+        -84.317
+      ],
+      [
+        103.765,
+        -87.356
+      ],
+      [
+        104.919,
+        -79.54
+      ],
+      [
+        104.721,
+        -79.511
+      ],
+      [
+        105.364,
+        -75.158
+      ],
+      [
+        103.583,
+        -74.895
+      ],
+      [
+        104.62,
+        -67.871
+      ],
+      [
+        98.289,
+        -66.937
+      ],
+      [
+        96.609,
+        -78.313
+      ],
+      [
+        92.454,
+        -77.7
+      ],
+      [
+        93.623,
+        -69.785
+      ],
+      [
+        87.192,
+        -68.836
+      ],
+      [
+        86.024,
+        -76.75
+      ],
+      [
+        84.342,
+        -76.502
+      ]
+    ],
+    [
+      [
+        229.42,
+        -4.315
+      ],
+      [
+        224.983,
+        -4.368
+      ],
+      [
+        224.819,
+        9.591
+      ],
+      [
+        229.257,
+        9.644
+      ]
+    ],
+    [
+      [
+        64.858,
+        -39.639
+      ],
+      [
+        65.499,
+        -76.96
+      ],
+      [
+        36.69,
+        -76.447
+      ],
+      [
+        33.723,
+        -40.694
+      ]
+    ]
+  ],
+  "roads": [
+    {
+      "id": "hoghton",
+      "name": "Hoghton Street",
+      "points": [
+        [
+          8.5,
+          -144
+        ],
+        [
+          25,
+          -144
+        ],
+        [
+          40,
+          -146.8
+        ],
+        [
+          61.484,
+          -148.825
+        ],
+        [
+          93.553,
+          -150.715
+        ],
+        [
+          204.823,
+          -156.614
+        ],
+        [
+          225.734,
+          -158.667
+        ],
+        [
+          246.1,
+          -159.588
+        ],
+        [
+          321.235,
+          -163.221
+        ],
+        [
+          333.639,
+          -164.102
+        ],
+        [
+          349.07,
+          -164.912
+        ],
+        [
+          353.875,
+          -165.161
+        ],
+        [
+          368.798,
+          -165.949
+        ],
+        [
+          386.034,
+          -167.474
+        ],
+        [
+          390.928,
+          -167.917
+        ],
+        [
+          404.389,
+          -169.142
+        ],
+        [
+          439.394,
+          -171.41
+        ],
+        [
+          490.165,
+          -174.268
+        ],
+        [
+          502.284,
+          -174.894
+        ],
+        [
+          518.524,
+          -175.857
+        ]
+      ],
+      "width": 12,
+      "footway": 2.4,
+      "markings": "parking and centre dashes",
+      "basis": "12 m London mouth retained; aerial and August 2019 Street View show two running lanes plus parking edges."
+    },
+    {
+      "id": "hill",
+      "name": "Hill Street",
+      "points": [
+        [
+          219.58,
+          21
+        ],
+        [
+          219.961,
+          -6.062
+        ],
+        [
+          222.111,
+          -21.523
+        ],
+        [
+          224.285,
+          -59.271
+        ],
+        [
+          223.91,
+          -95.688
+        ],
+        [
+          224.15,
+          -104
+        ],
+        [
+          225.734,
+          -158.667
+        ]
+      ],
+      "width": 7,
+      "footway": 2,
+      "basis": "Existing source centreline and widths retained to handover; continues to Hoghton."
+    },
+    {
+      "id": "castle",
+      "name": "Castle Street",
+      "points": [
+        [
+          224.285,
+          -59.271
+        ],
+        [
+          273.574,
+          -60.307
+        ],
+        [
+          321.379,
+          -61.315
+        ],
+        [
+          369.806,
+          -62.329
+        ]
+      ],
+      "width": 7,
+      "footway": 1.8,
+      "basis": "Matches existing Castle road mouth; narrow pavement visible in aerial."
+    },
+    {
+      "id": "24475771",
+      "name": "Union Street",
+      "points": [
+        [
+          372.23,
+          25.309
+        ],
+        [
+          371.606,
+          -4.329
+        ],
+        [
+          369.804,
+          -62.329
+        ],
+        [
+          368.771,
+          -147.13
+        ],
+        [
+          368.733,
+          -150.38
+        ],
+        [
+          368.797,
+          -165.948
+        ]
+      ],
+      "width": 7,
+      "footway": 2,
+      "basis": "Exact canonical Lord corridor centreline and width retained at Y=-35 handover; widths provisional elsewhere."
+    },
+    {
+      "id": "24477639",
+      "name": "Church Street",
+      "points": [
+        [
+          361.424,
+          -525.92
+        ],
+        [
+          361.031,
+          -515.536
+        ],
+        [
+          361.967,
+          -497.171
+        ],
+        [
+          362.884,
+          -479.172
+        ],
+        [
+          364.352,
+          -450.38
+        ],
+        [
+          364.954,
+          -429.579
+        ],
+        [
+          366.042,
+          -379.315
+        ],
+        [
+          367.804,
+          -331.273
+        ],
+        [
+          367.753,
+          -278.729
+        ],
+        [
+          367.73,
+          -249.197
+        ],
+        [
+          367.788,
+          -208.717
+        ],
+        [
+          368.283,
+          -187.722
+        ],
+        [
+          368.376,
+          -183.773
+        ],
+        [
+          368.798,
+          -165.949
+        ]
+      ],
+      "width": 8,
+      "footway": 2,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "24477644",
+      "name": "Mornington Road",
+      "points": [
+        [
+          225.734,
+          -158.667
+        ],
+        [
+          226.636,
+          -241.115
+        ],
+        [
+          226.677,
+          -274.565
+        ],
+        [
+          226.505,
+          -301.993
+        ],
+        [
+          227.201,
+          -377.167
+        ],
+        [
+          227.062,
+          -413.777
+        ],
+        [
+          226.926,
+          -451.495
+        ],
+        [
+          227.221,
+          -509.491
+        ]
+      ],
+      "width": 7,
+      "footway": 2,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "24943951",
+      "name": "Wright Street",
+      "points": [
+        [
+          226.636,
+          -241.115
+        ],
+        [
+          168.664,
+          -238.556
+        ],
+        [
+          142.937,
+          -237.425
+        ],
+        [
+          112.37,
+          -236.071
+        ],
+        [
+          55.494,
+          -232.081
+        ],
+        [
+          -1.938,
+          -231.924
+        ]
+      ],
+      "width": 6.5,
+      "footway": 1.8,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "371920672",
+      "name": "Wright Street",
+      "points": [
+        [
+          226.636,
+          -241.115
+        ],
+        [
+          270.623,
+          -244.331
+        ],
+        [
+          318.577,
+          -247.845
+        ],
+        [
+          367.73,
+          -249.197
+        ]
+      ],
+      "width": 6.5,
+      "footway": 1.8,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "372328877",
+      "name": "Wright Street",
+      "points": [
+        [
+          367.73,
+          -249.197
+        ],
+        [
+          417.241,
+          -251.657
+        ],
+        [
+          434.294,
+          -252.502
+        ]
+      ],
+      "width": 6.5,
+      "footway": 1.8,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "23081889",
+      "name": "Manchester Road",
+      "points": [
+        [
+          533.24,
+          -26.303
+        ],
+        [
+          528.816,
+          -54.805
+        ]
+      ],
+      "width": 7,
+      "footway": 2.2,
+      "basis": "Exact canonical Lord corridor centreline and width retained at Y=-35 handover; widths provisional elsewhere."
+    },
+    {
+      "id": "707832696",
+      "name": "Manchester Road",
+      "points": [
+        [
+          528.819,
+          -54.806
+        ],
+        [
+          525.801,
+          -95.222
+        ],
+        [
+          520.304,
+          -145.72
+        ],
+        [
+          518.524,
+          -175.857
+        ],
+        [
+          517.422,
+          -196.092
+        ],
+        [
+          517.563,
+          -216.954
+        ],
+        [
+          522.903,
+          -242.248
+        ],
+        [
+          526.948,
+          -253.338
+        ],
+        [
+          537.675,
+          -282.781
+        ],
+        [
+          553.383,
+          -317.233
+        ],
+        [
+          558.539,
+          -325.831
+        ],
+        [
+          590.212,
+          -378.781
+        ],
+        [
+          600.763,
+          -397.479
+        ],
+        [
+          625.016,
+          -440.477
+        ],
+        [
+          629.108,
+          -447.129
+        ],
+        [
+          632.756,
+          -453.358
+        ],
+        [
+          638.472,
+          -460.83
+        ],
+        [
+          642.115,
+          -465.579
+        ],
+        [
+          661.068,
+          -486.517
+        ],
+        [
+          687.935,
+          -510.38
+        ],
+        [
+          702.791,
+          -523.08
+        ],
+        [
+          708.32,
+          -527.119
+        ],
+        [
+          713.694,
+          -530.735
+        ],
+        [
+          731.013,
+          -542.212
+        ],
+        [
+          786.999,
+          -569.616
+        ],
+        [
+          832.443,
+          -593.055
+        ],
+        [
+          872.278,
+          -614.697
+        ],
+        [
+          884.881,
+          -622.201
+        ],
+        [
+          925.184,
+          -644.979
+        ],
+        [
+          935.142,
+          -650.83
+        ],
+        [
+          967.494,
+          -668.143
+        ],
+        [
+          993.273,
+          -681.638
+        ]
+      ],
+      "width": 8,
+      "footway": 2.2,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "707832697",
+      "name": "Court Road",
+      "points": [
+        [
+          528.819,
+          -54.806
+        ],
+        [
+          510.976,
+          -51.429
+        ]
+      ],
+      "width": 6.5,
+      "footway": 1.8,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "24477839",
+      "name": "Court Road",
+      "points": [
+        [
+          510.974,
+          -51.429
+        ],
+        [
+          512.83,
+          -10.923
+        ],
+        [
+          513.414,
+          -7.271
+        ],
+        [
+          512.59,
+          -4.584
+        ],
+        [
+          509.34,
+          -3.57
+        ],
+        [
+          505.574,
+          -3.769
+        ],
+        [
+          479.901,
+          -3.702
+        ],
+        [
+          445.505,
+          -3.61
+        ],
+        [
+          439.28,
+          -3.668
+        ],
+        [
+          437.441,
+          -3.687
+        ],
+        [
+          371.606,
+          -4.329
+        ]
+      ],
+      "width": 4,
+      "footway": 1.8,
+      "basis": "Exact canonical Lord corridor centreline and width retained at Y=-35 handover; widths provisional elsewhere."
+    },
+    {
+      "id": "24477843",
+      "name": "Court Road",
+      "points": [
+        [
+          673.206,
+          -81.753
+        ],
+        [
+          669.336,
+          -85.693
+        ],
+        [
+          664.646,
+          -87.517
+        ],
+        [
+          603.091,
+          -74.369
+        ],
+        [
+          542.441,
+          -61.543
+        ],
+        [
+          528.819,
+          -54.806
+        ]
+      ],
+      "width": 6.5,
+      "footway": 1.8,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "24475113",
+      "name": "Queen's Road",
+      "points": [
+        [
+          1166.4,
+          -213.82
+        ],
+        [
+          1158.456,
+          -212.66
+        ],
+        [
+          1116.677,
+          -210.483
+        ],
+        [
+          1094.259,
+          -209.316
+        ],
+        [
+          1028.529,
+          -205.114
+        ],
+        [
+          953.345,
+          -200.393
+        ],
+        [
+          920.298,
+          -198.679
+        ],
+        [
+          903.427,
+          -197.7
+        ],
+        [
+          875.618,
+          -196.202
+        ],
+        [
+          865.888,
+          -195.619
+        ],
+        [
+          829.16,
+          -193.68
+        ],
+        [
+          803.559,
+          -192.714
+        ],
+        [
+          777.261,
+          -191.148
+        ],
+        [
+          767.23,
+          -190.662
+        ],
+        [
+          740.448,
+          -189.787
+        ],
+        [
+          723.613,
+          -189.211
+        ],
+        [
+          704.454,
+          -188.284
+        ],
+        [
+          670.445,
+          -186.654
+        ],
+        [
+          667.191,
+          -186.496
+        ],
+        [
+          633.952,
+          -184.908
+        ],
+        [
+          631.181,
+          -184.779
+        ],
+        [
+          605.363,
+          -181.779
+        ],
+        [
+          592.845,
+          -180.528
+        ],
+        [
+          573.262,
+          -178.83
+        ],
+        [
+          518.524,
+          -175.857
+        ]
+      ],
+      "width": 8,
+      "footway": 2.2,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "191947623",
+      "name": "Hoghton Grove",
+      "points": [
+        [
+          439.394,
+          -171.41
+        ],
+        [
+          442.959,
+          -123.806
+        ],
+        [
+          444.221,
+          -106.872
+        ]
+      ],
+      "width": 4.2,
+      "footway": 1.2,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "67571429",
+      "name": "Bradley Street",
+      "points": [
+        [
+          617.646,
+          -281.027
+        ],
+        [
+          603.447,
+          -252.737
+        ],
+        [
+          591.389,
+          -219.081
+        ],
+        [
+          592.845,
+          -180.528
+        ]
+      ],
+      "width": 5.5,
+      "footway": 1.5,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "67571430",
+      "name": "Walton Street",
+      "points": [
+        [
+          592.845,
+          -180.528
+        ],
+        [
+          603.091,
+          -74.369
+        ]
+      ],
+      "width": 5.5,
+      "footway": 1.5,
+      "basis": "OSM route compared with 3D/aerial; kerb widths estimated, not surveyed."
+    },
+    {
+      "id": "191948960",
+      "name": "Hoghton Place",
+      "points": [
+        [
+          40.203,
+          -147.573
+        ],
+        [
+          42.128,
+          -105.826
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "371919823",
+      "name": "Private service access",
+      "points": [
+        [
+          61.484,
+          -148.825
+        ],
+        [
+          58.849,
+          -190.036
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "372024986",
+      "name": "Private service access",
+      "points": [
+        [
+          333.639,
+          -164.102
+        ],
+        [
+          332.195,
+          -172.358
+        ],
+        [
+          330.621,
+          -174.685
+        ],
+        [
+          327.631,
+          -176.942
+        ],
+        [
+          323.669,
+          -179.551
+        ],
+        [
+          321.551,
+          -182.222
+        ],
+        [
+          318.577,
+          -247.845
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "372046886",
+      "name": "Private service access",
+      "points": [
+        [
+          321.235,
+          -163.221
+        ],
+        [
+          321.801,
+          -118.249
+        ],
+        [
+          310.511,
+          -117.535
+        ],
+        [
+          311.155,
+          -98.616
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "372055261",
+      "name": "Private service access",
+      "points": [
+        [
+          437.443,
+          -3.687
+        ],
+        [
+          435.379,
+          -96.952
+        ],
+        [
+          408.797,
+          -97.419
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "372055264",
+      "name": "Private service access",
+      "points": [
+        [
+          479.903,
+          -3.702
+        ],
+        [
+          479.476,
+          -48.299
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "372328880",
+      "name": "Private service access",
+      "points": [
+        [
+          404.389,
+          -169.142
+        ],
+        [
+          400.007,
+          -206.635
+        ],
+        [
+          396.708,
+          -209.658
+        ],
+        [
+          367.788,
+          -208.717
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "372328885",
+      "name": "Private service access",
+      "points": [
+        [
+          417.241,
+          -251.657
+        ],
+        [
+          421.186,
+          -216.052
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "731081536",
+      "name": "Private service access",
+      "points": [
+        [
+          270.623,
+          -244.331
+        ],
+        [
+          272.124,
+          -224.108
+        ],
+        [
+          268.534,
+          -223.845
+        ],
+        [
+          269.347,
+          -207.697
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "731081537",
+      "name": "Private service access",
+      "points": [
+        [
+          273.574,
+          -60.307
+        ],
+        [
+          273.448,
+          -89.728
+        ],
+        [
+          291.053,
+          -90.192
+        ],
+        [
+          290.891,
+          -115.004
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "731094450",
+      "name": "Private service access",
+      "points": [
+        [
+          168.664,
+          -238.556
+        ],
+        [
+          170.091,
+          -198.272
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "731094451",
+      "name": "Private service access",
+      "points": [
+        [
+          321.379,
+          -61.315
+        ],
+        [
+          321.713,
+          -34.885
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "731094452",
+      "name": "Private service access",
+      "points": [
+        [
+          142.937,
+          -237.425
+        ],
+        [
+          142.943,
+          -231.996
+        ],
+        [
+          142.96,
+          -205.756
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "688094623",
+      "name": "Private service access",
+      "points": [
+        [
+          490.165,
+          -174.268
+        ],
+        [
+          487.636,
+          -198.045
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "696571690",
+      "name": "Private service access",
+      "points": [
+        [
+          442.959,
+          -123.806
+        ],
+        [
+          458.426,
+          -123.543
+        ],
+        [
+          464.296,
+          -117.651
+        ],
+        [
+          478.676,
+          -118.475
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "1090020998",
+      "name": "Private service access",
+      "points": [
+        [
+          573.262,
+          -178.83
+        ],
+        [
+          572.921,
+          -187.304
+        ],
+        [
+          573.355,
+          -203.853
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "1090020999",
+      "name": "Private service access",
+      "points": [
+        [
+          572.921,
+          -187.304
+        ],
+        [
+          562.903,
+          -187.752
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    },
+    {
+      "id": "1098037008",
+      "name": "Private service access",
+      "points": [
+        [
+          605.363,
+          -181.779
+        ],
+        [
+          605.886,
+          -162.853
+        ]
+      ],
+      "width": 3.2,
+      "footway": 0,
+      "basis": "Visible rear access preserved as a narrow provisional lane, private status not certified."
+    }
+  ],
+  "junction_radius_m": 1.5,
+  "existing_ground_exclusions": [
+    [
+      [
+        25,
+        100
+      ],
+      [
+        218,
+        100
+      ],
+      [
+        218,
+        -35
+      ],
+      [
+        218.0,
+        -35.0
+      ],
+      [
+        218.0,
+        -102.29910862291119
+      ],
+      [
+        158.5417965524514,
+        -103.40560647581982
+      ],
+      [
+        149.65949732112804,
+        -101.68665342260805
+      ],
+      [
+        115.40035882590307,
+        -98.51328170566407
+      ],
+      [
+        103.40038907123754,
+        -97.4012845083984
+      ],
+      [
+        82.40053379540346,
+        -95.45629791261281
+      ],
+      [
+        67.00832721722483,
+        -94.030647700933
+      ],
+      [
+        49.1774147545704,
+        -92.09974007928352
+      ],
+      [
+        25.70978947615861,
+        -90.0
+      ],
+      [
+        25,
+        -91
+      ]
+    ],
+    [
+      [
+        -300,
+        -154
+      ],
+      [
+        25,
+        -154
+      ],
+      [
+        25,
+        100
+      ],
+      [
+        -300,
+        100
+      ]
+    ],
+    [
+      [
+        214.0805450022683,
+        20.922574371660048
+      ],
+      [
+        214.46635526751487,
+        -6.481093339894096
+      ],
+      [
+        216.632857032526,
+        -22.06076021842329
+      ],
+      [
+        218.78337025920666,
+        -59.40095031995999
+      ],
+      [
+        218.4091824849137,
+        -95.73907345709594
+      ],
+      [
+        218.65229125094652,
+        -104.1587403873644
+      ],
+      [
+        229.6477087490535,
+        -103.8412596126356
+      ],
+      [
+        229.41081751508628,
+        -95.63692654290406
+      ],
+      [
+        229.78662974079333,
+        -59.14104968004001
+      ],
+      [
+        227.58914296747398,
+        -20.98523978157671
+      ],
+      [
+        225.45564473248515,
+        -5.642906660105904
+      ],
+      [
+        225.07945499773172,
+        21.077425628339952
+      ]
+    ],
+    [
+      [
+        224.21152067986299,
+        -62.77022859920758
+      ],
+      [
+        235.926520679863,
+        -63.01622859920758
+      ],
+      [
+        236.073479320137,
+        -56.01777140079243
+      ],
+      [
+        224.358479320137,
+        -55.771771400792424
+      ]
+    ],
+    [
+      [
+        25,
+        -76
+      ],
+      [
+        26.29021052384139,
+        -77.0
+      ],
+      [
+        50.4565852454296,
+        -79.16225992071648
+      ],
+      [
+        68.30767278277517,
+        -81.095352299067
+      ],
+      [
+        83.3873473937393,
+        -84.80189981031171
+      ],
+      [
+        104.28135589734238,
+        -87.89200496144383
+      ],
+      [
+        116.42436144628398,
+        -87.46061602368388
+      ],
+      [
+        151.49850267887197,
+        -88.80134657739195
+      ],
+      [
+        159.6682034475486,
+        -90.38239352418019
+      ],
+      [
+        223.7889845294348,
+        -89.18912661599788
+      ],
+      [
+        233.87891100707108,
+        -89.00112798588928
+      ],
+      [
+        234.12108899292892,
+        -101.99887201411072
+      ],
+      [
+        224.0310154705652,
+        -102.18687338400213
+      ],
+      [
+        158.5417965524514,
+        -103.40560647581982
+      ],
+      [
+        149.65949732112804,
+        -101.68665342260805
+      ],
+      [
+        115.40035882590307,
+        -98.51328170566407
+      ],
+      [
+        103.40038907123754,
+        -97.4012845083984
+      ],
+      [
+        82.40053379540346,
+        -95.45629791261281
+      ],
+      [
+        67.00832721722483,
+        -94.030647700933
+      ],
+      [
+        49.1774147545704,
+        -92.09974007928352
+      ],
+      [
+        25.70978947615861,
+        -90.0
+      ],
+      [
+        25,
+        -91
+      ]
+    ]
+  ],
+  "parking_courts": [
+    {
+      "id": "372024987",
+      "polygon": [
+        [
+          339.676,
+          -242.784
+        ],
+        [
+          340.897,
+          -209.95
+        ],
+        [
+          317.991,
+          -209.011
+        ],
+        [
+          316.343,
+          -242.514
+        ]
+      ],
+      "basis": "OSM parking reservation compared with aerial; stall layout provisional."
+    },
+    {
+      "id": "372046887",
+      "polygon": [
+        [
+          318.462,
+          -90.665
+        ],
+        [
+          299.055,
+          -90.285
+        ],
+        [
+          297.198,
+          -120.503
+        ],
+        [
+          317.49,
+          -120.986
+        ]
+      ],
+      "basis": "OSM parking reservation compared with aerial; stall layout provisional."
+    },
+    {
+      "id": "372328879",
+      "polygon": [
+        [
+          416.496,
+          -178.892
+        ],
+        [
+          382.059,
+          -176.181
+        ],
+        [
+          374.619,
+          -183.131
+        ],
+        [
+          374.171,
+          -216.071
+        ],
+        [
+          401.801,
+          -216.799
+        ],
+        [
+          404.099,
+          -188.704
+        ],
+        [
+          415.327,
+          -189.282
+        ]
+      ],
+      "basis": "OSM parking reservation compared with aerial; stall layout provisional."
+    },
+    {
+      "id": "372328886",
+      "polygon": [
+        [
+          426.349,
+          -243.526
+        ],
+        [
+          430.639,
+          -210.967
+        ],
+        [
+          414.658,
+          -209.482
+        ],
+        [
+          412.647,
+          -241.979
+        ]
+      ],
+      "basis": "OSM parking reservation compared with aerial; stall layout provisional."
+    }
+  ],
+  "landscaped_reservations": [
+    {
+      "id": "trinity-west",
+      "polygon": [
+        [
+          472,
+          -278
+        ],
+        [
+          483,
+          -278
+        ],
+        [
+          483,
+          -205
+        ],
+        [
+          472,
+          -205
+        ]
+      ]
+    },
+    {
+      "id": "church-forecourt",
+      "polygon": [
+        [
+          480,
+          -213
+        ],
+        [
+          512,
+          -213
+        ],
+        [
+          512,
+          -186
+        ],
+        [
+          480,
+          -186
+        ]
+      ]
+    },
+    {
+      "id": "hoghton-grove-garden",
+      "polygon": [
+        [
+          433,
+          -113
+        ],
+        [
+          442,
+          -113
+        ],
+        [
+          442,
+          -85
+        ],
+        [
+          433,
+          -85
+        ]
+      ]
+    },
+    {
+      "id": "court-garden",
+      "polygon": [
+        [
+          482,
+          -65
+        ],
+        [
+          497,
+          -65
+        ],
+        [
+          497,
+          -47
+        ],
+        [
+          482,
+          -47
+        ]
+      ]
+    }
+  ],
+  "budgets": {
+    "triangles_per_level": 45000,
+    "download_bytes_per_level": 8000000,
+    "gpu_bytes_per_level": 12000000
+  },
+  "limits": "Provisional footprint/height volumes and street canvas. Plan uncertainty around 1\u20133 m, height uncertainty 2\u20134 m. Flat tops denote height bounds, not roof form. Private yard surfaces and parking endpoints estimated; no detailed architecture or street furniture."
+}

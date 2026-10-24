@@ -12,6 +12,8 @@ The [Occulo Lounge / former Waterstones building](docs/OCCULO-LOUNGE.md) replace
 
 The [Stanley Street / Bath Street block plan](docs/STANLEY-QUARTER.md) adds rear building placeholders, narrow pavements, private forecourts and connecting roads from Nevill to Bold Street.
 
+The [Hoghton Street block plan](docs/HOGHTON-QUARTER.md) extends the canvas behind Lord Street towards Manchester Road, with 75 building volumes, connecting streets, pavements, rear access and parking courts.
+
 The [Lord Street block plan](docs/LORD-STREET-BLOCK-PLAN.md) extends both frontages and the road/landscape canvas between the Duke Street and Leicester Street roundabouts, using provisional replaceable building volumes.
 
 The [NatWest bank at 130 Lord Street](docs/NATWEST.md) adds the opposite corner: sandstone street elevations, Dutch gables, pierced parapets and intersecting slate roofs.

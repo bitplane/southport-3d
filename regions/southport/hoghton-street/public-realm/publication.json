@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Hoghton Street quarter",
+  "status": "Provisional footprint/height volumes and street canvas. Plan uncertainty around 1\u20133 m, height uncertainty 2\u20134 m. Flat tops denote height bounds, not roof form. Private yard surfaces and parking endpoints estimated; no detailed architecture or street furniture.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "section-00",
+      "name": "Hoghton section 1",
+      "collection": "section-00",
+      "ground": true
+    },
+    {
+      "id": "section-01",
+      "name": "Hoghton section 2",
+      "collection": "section-01",
+      "ground": true
+    },
+    {
+      "id": "section-02",
+      "name": "Hoghton section 3",
+      "collection": "section-02",
+      "ground": true
+    },
+    {
+      "id": "section-03",
+      "name": "Hoghton section 4",
+      "collection": "section-03",
+      "ground": true
+    },
+    {
+      "id": "section-04",
+      "name": "Hoghton section 5",
+      "collection": "section-04",
+      "ground": true
+    },
+    {
+      "id": "section-05",
+      "name": "Hoghton section 6",
+      "collection": "section-05",
+      "ground": true
+    }
+  ],
+  "views": [
+    {
+      "name": "Hoghton quarter",
+      "position": [
+        -120,
+        560,
+        700
+      ],
+      "target": [
+        300,
+        0,
+        150
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Bounded planar ground; keep exact kerbs, road markings and shared seams while reducing authored map size."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed low-cost street envelope independent of future detailed buildings. Regional merged tiles are a separate later level."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      100,
+      2,
+      145
+    ],
+    "target": [
+      160,
+      2,
+      151
+    ]
+  }
+}

@@ -1,0 +1,2825 @@
+{
+  "schema_version": 1,
+  "blocks": [
+    {
+      "id": "way-30141961",
+      "name": "Stokers",
+      "footprint": [
+        [
+          360.164,
+          -97.36
+        ],
+        [
+          360.052,
+          -142.947
+        ],
+        [
+          326.132,
+          -142.861
+        ],
+        [
+          326.221,
+          -107.186
+        ],
+        [
+          320.385,
+          -107.169
+        ],
+        [
+          320.413,
+          -97.262
+        ]
+      ],
+      "height_m": 13,
+      "replace_with": null,
+      "source_way": "30141961",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-51826177",
+      "name": "Provisional building 51826177",
+      "footprint": [
+        [
+          296.283,
+          -145.092
+        ],
+        [
+          296.434,
+          -131.769
+        ],
+        [
+          298.705,
+          -131.793
+        ],
+        [
+          298.762,
+          -126.703
+        ],
+        [
+          305.701,
+          -126.785
+        ],
+        [
+          305.646,
+          -131.968
+        ],
+        [
+          309.757,
+          -132.019
+        ],
+        [
+          309.806,
+          -127.752
+        ],
+        [
+          318.524,
+          -127.849
+        ],
+        [
+          318.368,
+          -141.55
+        ],
+        [
+          316.023,
+          -141.518
+        ],
+        [
+          315.982,
+          -145.317
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "51826177",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-51826178",
+      "name": "Provisional building 51826178",
+      "footprint": [
+        [
+          294.418,
+          -136.718
+        ],
+        [
+          296.377661,
+          -136.739903
+        ],
+        [
+          296.283,
+          -145.092
+        ],
+        [
+          297.187913,
+          -145.102336
+        ],
+        [
+          297.175,
+          -146.261
+        ],
+        [
+          271.326,
+          -145.966
+        ],
+        [
+          271.439,
+          -136.123
+        ],
+        [
+          274.82,
+          -136.157
+        ],
+        [
+          275.011,
+          -119.065
+        ],
+        [
+          281.667,
+          -119.139
+        ],
+        [
+          281.476,
+          -135.847
+        ],
+        [
+          283.345,
+          -135.872
+        ],
+        [
+          283.521,
+          -120.224
+        ],
+        [
+          289.868,
+          -120.296
+        ],
+        [
+          289.828,
+          -123.836
+        ],
+        [
+          294.572,
+          -123.89
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "51826178",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-51826179",
+      "name": "Provisional building 51826179",
+      "footprint": [
+        [
+          254.718,
+          -145.189
+        ],
+        [
+          254.851,
+          -141.14
+        ],
+        [
+          253.279,
+          -141.09
+        ],
+        [
+          253.574,
+          -132.511
+        ],
+        [
+          255.792,
+          -132.591
+        ],
+        [
+          256.059,
+          -124.722
+        ],
+        [
+          266.048,
+          -125.061
+        ],
+        [
+          265.751,
+          -133.622
+        ],
+        [
+          268.201,
+          -133.707
+        ],
+        [
+          267.939,
+          -141.35
+        ],
+        [
+          265.576,
+          -141.27
+        ],
+        [
+          265.429,
+          -145.554
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "51826179",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-51826180",
+      "name": "Provisional building 51826180",
+      "footprint": [
+        [
+          352.547,
+          -86.332
+        ],
+        [
+          275.536,
+          -86.169
+        ],
+        [
+          275.555,
+          -79.692
+        ],
+        [
+          274.193,
+          -79.688
+        ],
+        [
+          274.216,
+          -72.325
+        ],
+        [
+          362.429,
+          -72.519
+        ],
+        [
+          362.385,
+          -93.22
+        ],
+        [
+          352.533,
+          -93.197
+        ]
+      ],
+      "height_m": 10,
+      "replace_with": null,
+      "source_way": "51826180",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-51826181",
+      "name": "Provisional building 51826181",
+      "footprint": [
+        [
+          271.686,
+          -95.271
+        ],
+        [
+          271.352,
+          -106.975
+        ],
+        [
+          266.036,
+          -106.823
+        ],
+        [
+          266.362,
+          -95.127
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "51826181",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-51826182",
+      "name": "Provisional building 51826182",
+      "footprint": [
+        [
+          242.055,
+          -103.374
+        ],
+        [
+          234.676,
+          -103.688
+        ],
+        [
+          233.565,
+          -73.291
+        ],
+        [
+          242.94,
+          -73.184
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "51826182",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-51826183",
+      "name": "Provisional building 51826183",
+      "footprint": [
+        [
+          255.45,
+          -80.784
+        ],
+        [
+          244.634,
+          -80.904
+        ],
+        [
+          244.543,
+          -72.665
+        ],
+        [
+          255.36,
+          -72.545
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "51826183",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-51826184",
+      "name": "Provisional building 51826184",
+      "footprint": [
+        [
+          272.011,
+          -82.436
+        ],
+        [
+          256.676,
+          -82.608
+        ],
+        [
+          256.565,
+          -72.416
+        ],
+        [
+          271.893,
+          -72.252
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "51826184",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-51826185",
+      "name": "Provisional building 51826185",
+      "footprint": [
+        [
+          243.392,
+          -122.009
+        ],
+        [
+          247.412,
+          -121.974
+        ],
+        [
+          247.493,
+          -129.744
+        ],
+        [
+          249.606,
+          -129.724
+        ],
+        [
+          249.7,
+          -139.071
+        ],
+        [
+          246.005,
+          -139.109
+        ],
+        [
+          246.033,
+          -142.605
+        ],
+        [
+          235.676,
+          -142.701
+        ],
+        [
+          235.638,
+          -139.302
+        ],
+        [
+          233.864,
+          -139.321
+        ],
+        [
+          233.771,
+          -129.253
+        ],
+        [
+          236.641,
+          -129.231
+        ],
+        [
+          236.51,
+          -115.18
+        ],
+        [
+          243.326,
+          -115.114
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "51826185",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371917209",
+      "name": "Provisional building 371917209",
+      "footprint": [
+        [
+          151.397,
+          -135.665
+        ],
+        [
+          151.97,
+          -126.966
+        ],
+        [
+          154.242,
+          -127.113
+        ],
+        [
+          155.278,
+          -111.269
+        ],
+        [
+          166.092,
+          -111.976
+        ],
+        [
+          164.475,
+          -136.527
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371917209",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371917210",
+      "name": "Provisional building 371917210",
+      "footprint": [
+        [
+          167.02,
+          -137.47
+        ],
+        [
+          167.458,
+          -127.783
+        ],
+        [
+          169.303,
+          -127.862
+        ],
+        [
+          169.652,
+          -120.271
+        ],
+        [
+          178.214,
+          -120.666
+        ],
+        [
+          177.837,
+          -129.014
+        ],
+        [
+          179.756,
+          -129.101
+        ],
+        [
+          179.35,
+          -138.036
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371917210",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371917211",
+      "name": "Provisional building 371917211",
+      "footprint": [
+        [
+          181.226,
+          -141.446
+        ],
+        [
+          182.129,
+          -128.807
+        ],
+        [
+          196.571,
+          -129.383
+        ],
+        [
+          195.956,
+          -142.494
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371917211",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371917212",
+      "name": "Provisional building 371917212",
+      "footprint": [
+        [
+          197.948,
+          -122.568
+        ],
+        [
+          202.76,
+          -122.657
+        ],
+        [
+          202.658,
+          -128.455
+        ],
+        [
+          207.976,
+          -128.548
+        ],
+        [
+          208.032,
+          -125.269
+        ],
+        [
+          210.601,
+          -125.315
+        ],
+        [
+          210.831,
+          -112.436
+        ],
+        [
+          216.595,
+          -112.538
+        ],
+        [
+          216.122,
+          -138.098
+        ],
+        [
+          197.674,
+          -137.754
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371917212",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371919559",
+      "name": "Provisional building 371919559",
+      "footprint": [
+        [
+          201.481,
+          -191.364
+        ],
+        [
+          201.36,
+          -194.826
+        ],
+        [
+          195.283,
+          -194.612
+        ],
+        [
+          195.887,
+          -177.728
+        ],
+        [
+          210.422,
+          -178.254
+        ],
+        [
+          209.947,
+          -191.668
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371919559",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371919560",
+      "name": "Provisional building 371919560",
+      "footprint": [
+        [
+          169.12,
+          -188.536
+        ],
+        [
+          169.279,
+          -186.491
+        ],
+        [
+          163.915,
+          -186.064
+        ],
+        [
+          164.842,
+          -174.338
+        ],
+        [
+          175.085,
+          -175.148
+        ],
+        [
+          173.991,
+          -188.926
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371919560",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371919561",
+      "name": "Provisional building 371919561",
+      "footprint": [
+        [
+          160.618,
+          -185.865
+        ],
+        [
+          150.06,
+          -185.339
+        ],
+        [
+          150.66,
+          -173.288
+        ],
+        [
+          161.223,
+          -173.818
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371919561",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371919562",
+      "name": "Provisional building 371919562",
+      "footprint": [
+        [
+          138.392,
+          -197.823
+        ],
+        [
+          139.065,
+          -184.66
+        ],
+        [
+          126.089,
+          -183.987
+        ],
+        [
+          125.418,
+          -197.015
+        ],
+        [
+          119.15,
+          -196.695
+        ],
+        [
+          120.422,
+          -171.971
+        ],
+        [
+          146.14,
+          -173.294
+        ],
+        [
+          144.866,
+          -198.155
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "371919562",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371919821",
+      "name": "Provisional building 371919821",
+      "footprint": [
+        [
+          115.532,
+          -176.907
+        ],
+        [
+          93.678,
+          -175.569
+        ],
+        [
+          94.002,
+          -169.997
+        ],
+        [
+          94.2,
+          -166.454
+        ],
+        [
+          116.059,
+          -167.98
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371919821",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371919822",
+      "name": "Provisional building 371919822",
+      "footprint": [
+        [
+          93.06,
+          -184.794
+        ],
+        [
+          81.481,
+          -184.711
+        ],
+        [
+          81.404,
+          -189.075
+        ],
+        [
+          76.674,
+          -189.388
+        ],
+        [
+          76.501,
+          -178.859
+        ],
+        [
+          61.783,
+          -178.574
+        ],
+        [
+          62.757,
+          -168.399
+        ],
+        [
+          94.002,
+          -169.997
+        ],
+        [
+          93.678,
+          -175.569
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371919822",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371920187",
+      "name": "Provisional building 371920187",
+      "footprint": [
+        [
+          33.954,
+          -173.265
+        ],
+        [
+          33.851,
+          -169.129
+        ],
+        [
+          13.774,
+          -168.114
+        ],
+        [
+          13.744,
+          -171.279
+        ],
+        [
+          24.525,
+          -171.11
+        ],
+        [
+          24.05,
+          -182.129
+        ],
+        [
+          6.489,
+          -181.599
+        ],
+        [
+          7.922,
+          -156.828
+        ],
+        [
+          57.467,
+          -159.473
+        ],
+        [
+          56.857,
+          -173.987
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "371920187",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371920340",
+      "name": "Provisional building 371920340",
+      "footprint": [
+        [
+          28.895,
+          -193.641
+        ],
+        [
+          19.952,
+          -193.436
+        ],
+        [
+          20.052,
+          -197.355
+        ],
+        [
+          29.522,
+          -196.785
+        ],
+        [
+          29.883,
+          -202.44
+        ],
+        [
+          19.731,
+          -201.947
+        ],
+        [
+          19.624,
+          -206.083
+        ],
+        [
+          23.749,
+          -205.764
+        ],
+        [
+          23.793,
+          -211.533
+        ],
+        [
+          19.765,
+          -211.53
+        ],
+        [
+          19.751,
+          -219.592
+        ],
+        [
+          26.179,
+          -219.542
+        ],
+        [
+          25.837,
+          -227.508
+        ],
+        [
+          7.864,
+          -227.862
+        ],
+        [
+          7.995,
+          -186.116
+        ],
+        [
+          28.718,
+          -186.671
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371920340",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371920673",
+      "name": "Provisional building 371920673",
+      "footprint": [
+        [
+          207.098,
+          -236.036
+        ],
+        [
+          195.008,
+          -235.484
+        ],
+        [
+          195.552,
+          -206.275
+        ],
+        [
+          208.508,
+          -206.806
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371920673",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371920674",
+      "name": "Provisional building 371920674",
+      "footprint": [
+        [
+          181.756,
+          -229.067
+        ],
+        [
+          180.956,
+          -175.597
+        ],
+        [
+          190.302,
+          -175.493
+        ],
+        [
+          189.383,
+          -229.296
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "371920674",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371920675",
+      "name": "Provisional building 371920675",
+      "footprint": [
+        [
+          150.351,
+          -226.995
+        ],
+        [
+          150.348,
+          -215.492
+        ],
+        [
+          162.573,
+          -215.604
+        ],
+        [
+          162.294,
+          -227.116
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371920675",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371920676",
+      "name": "Provisional building 371920676",
+      "footprint": [
+        [
+          161.565,
+          -201.749
+        ],
+        [
+          150.216,
+          -201.471
+        ],
+        [
+          150.367,
+          -195.564
+        ],
+        [
+          161.71,
+          -195.838
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "371920676",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371920677",
+      "name": "Provisional building 371920677",
+      "footprint": [
+        [
+          62.061,
+          -215.012
+        ],
+        [
+          77.928,
+          -216.158
+        ],
+        [
+          77.241,
+          -225.609
+        ],
+        [
+          61.379,
+          -224.468
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "371920677",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-371920678",
+      "name": "Provisional building 371920678",
+      "footprint": [
+        [
+          79.373,
+          -216.15
+        ],
+        [
+          95.848,
+          -217.029
+        ],
+        [
+          96.351,
+          -207.696
+        ],
+        [
+          61.848,
+          -205.858
+        ],
+        [
+          62.485,
+          -193.92
+        ],
+        [
+          92.15,
+          -195.506
+        ],
+        [
+          92.393,
+          -190.977
+        ],
+        [
+          114.947,
+          -192.181
+        ],
+        [
+          113.023,
+          -228.17
+        ],
+        [
+          78.825,
+          -226.346
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "371920678",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372024979",
+      "name": "Southport Centre For Health & Wellbeing",
+      "footprint": [
+        [
+          342.95,
+          -241.119
+        ],
+        [
+          345.002,
+          -207.708
+        ],
+        [
+          328.896,
+          -206.718
+        ],
+        [
+          330.034,
+          -188.208
+        ],
+        [
+          344.757,
+          -189.112
+        ],
+        [
+          345.129,
+          -183.048
+        ],
+        [
+          356.166,
+          -183.721
+        ],
+        [
+          352.608,
+          -241.711
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "372024979",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372024980",
+      "name": "Southport Auto Centre",
+      "footprint": [
+        [
+          273.897,
+          -234.313
+        ],
+        [
+          274.586,
+          -215.959
+        ],
+        [
+          285.324,
+          -216.18
+        ],
+        [
+          284.629,
+          -234.205
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372024980",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372024981",
+      "name": "Provisional building 372024981",
+      "footprint": [
+        [
+          253.82,
+          -239.056
+        ],
+        [
+          254.322,
+          -233.852
+        ],
+        [
+          259.717,
+          -234.371
+        ],
+        [
+          260.13,
+          -230.095
+        ],
+        [
+          265.023,
+          -230.567
+        ],
+        [
+          264.712,
+          -233.788
+        ],
+        [
+          268.425,
+          -234.152
+        ],
+        [
+          267.822,
+          -240.411
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372024981",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372024982",
+      "name": "Provisional building 372024982",
+      "footprint": [
+        [
+          239.856,
+          -230.197
+        ],
+        [
+          243.539,
+          -178.667
+        ],
+        [
+          262.317,
+          -179.708
+        ],
+        [
+          261.743,
+          -191.492
+        ],
+        [
+          254.211,
+          -190.924
+        ],
+        [
+          253.33,
+          -199.008
+        ],
+        [
+          261.404,
+          -199.676
+        ],
+        [
+          260.511,
+          -211.356
+        ],
+        [
+          253.963,
+          -211.093
+        ],
+        [
+          253.521,
+          -219.165
+        ],
+        [
+          259.53,
+          -219.775
+        ],
+        [
+          258.849,
+          -231.673
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372024982",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372024983",
+      "name": "Provisional building 372024983",
+      "footprint": [
+        [
+          277.487,
+          -193.304
+        ],
+        [
+          273.891,
+          -193.036
+        ],
+        [
+          273.368,
+          -200.14
+        ],
+        [
+          265.604,
+          -199.566
+        ],
+        [
+          266.038,
+          -193.668
+        ],
+        [
+          264.264,
+          -193.533
+        ],
+        [
+          265.273,
+          -179.997
+        ],
+        [
+          278.402,
+          -180.969
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372024983",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372024984",
+      "name": "Provisional building 372024984",
+      "footprint": [
+        [
+          296.18,
+          -181.951
+        ],
+        [
+          295.535,
+          -194.127
+        ],
+        [
+          294.045,
+          -194.048
+        ],
+        [
+          293.242,
+          -209.407
+        ],
+        [
+          276.902,
+          -208.549
+        ],
+        [
+          277.487,
+          -193.304
+        ],
+        [
+          278.402,
+          -180.969
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372024984",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372024985",
+      "name": "Provisional building 372024985",
+      "footprint": [
+        [
+          308.054,
+          -199.525
+        ],
+        [
+          308.456,
+          -193.305
+        ],
+        [
+          298.536,
+          -192.664
+        ],
+        [
+          299.217,
+          -182.164
+        ],
+        [
+          314.071,
+          -183.131
+        ],
+        [
+          312.982,
+          -199.846
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372024985",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372047551",
+      "name": "Provisional building 372047551",
+      "footprint": [
+        [
+          236.588,
+          -109.896
+        ],
+        [
+          243.239,
+          -110.348
+        ],
+        [
+          243.326,
+          -115.114
+        ],
+        [
+          236.51,
+          -115.18
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372047551",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372049066",
+      "name": "Provisional building 372049066",
+      "footprint": [
+        [
+          237.46,
+          -38.561
+        ],
+        [
+          238.912,
+          -38.527
+        ],
+        [
+          239.234,
+          -54.064
+        ],
+        [
+          232.576,
+          -54.203
+        ],
+        [
+          232.024,
+          -28.284
+        ],
+        [
+          237.243,
+          -28.174
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372049066",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372055656",
+      "name": "Provisional building 372055656",
+      "footprint": [
+        [
+          495.294,
+          -133.708
+        ],
+        [
+          481.761,
+          -133.305
+        ],
+        [
+          482.237,
+          -127.4
+        ],
+        [
+          484.63,
+          -103.556
+        ],
+        [
+          486.531,
+          -80.228
+        ],
+        [
+          487.902,
+          -55.658
+        ],
+        [
+          501.318,
+          -56.442
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372055656",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372055657",
+      "name": "YMCA",
+      "footprint": [
+        [
+          493.086,
+          -155.04
+        ],
+        [
+          447.192,
+          -151.963
+        ],
+        [
+          448.656,
+          -135.773
+        ],
+        [
+          481.369,
+          -137.569
+        ],
+        [
+          481.761,
+          -133.305
+        ],
+        [
+          495.294,
+          -133.708
+        ]
+      ],
+      "height_m": 13,
+      "replace_with": null,
+      "source_way": "372055657",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372055658",
+      "name": "Holy Trinity",
+      "footprint": [
+        [
+          501.137,
+          -226.868
+        ],
+        [
+          499.672,
+          -240.616
+        ],
+        [
+          493.864,
+          -239.612
+        ],
+        [
+          493.275,
+          -248.711
+        ],
+        [
+          488.147,
+          -248.676
+        ],
+        [
+          486.962,
+          -253.661
+        ],
+        [
+          474.85,
+          -251.829
+        ],
+        [
+          475.965,
+          -243.537
+        ],
+        [
+          467.671,
+          -242.429
+        ],
+        [
+          473.968,
+          -204.606
+        ],
+        [
+          488.0,
+          -205.969158
+        ],
+        [
+          488.0,
+          -218.0
+        ],
+        [
+          496.611929,
+          -218.0
+        ],
+        [
+          495.496,
+          -226.024
+        ]
+      ],
+      "height_m": 17,
+      "replace_with": null,
+      "source_way": "372055658",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372055659",
+      "name": "Homeport House",
+      "footprint": [
+        [
+          405.118,
+          -149.674
+        ],
+        [
+          405.991,
+          -135.917
+        ],
+        [
+          418.489,
+          -136.719
+        ],
+        [
+          418.914,
+          -130.092
+        ],
+        [
+          433.059,
+          -130.999
+        ],
+        [
+          432.318,
+          -142.701
+        ],
+        [
+          435.314,
+          -142.891
+        ],
+        [
+          434.756,
+          -151.574
+        ]
+      ],
+      "height_m": 13,
+      "replace_with": null,
+      "source_way": "372055659",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372055660",
+      "name": "Provisional building 372055660",
+      "footprint": [
+        [
+          381.879,
+          -148.327
+        ],
+        [
+          382.753,
+          -137.98
+        ],
+        [
+          400.867,
+          -139.51
+        ],
+        [
+          399.993,
+          -149.857
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372055660",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372055707",
+      "name": "Provisional building 372055707",
+      "footprint": [
+        [
+          379.458,
+          -128.831
+        ],
+        [
+          380.021,
+          -106.012
+        ],
+        [
+          389.927,
+          -106.256
+        ],
+        [
+          389.357,
+          -129.083
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372055707",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372328878",
+      "name": "Liverpool Community Health",
+      "footprint": [
+        [
+          402.642,
+          -227.133
+        ],
+        [
+          405.013,
+          -190.693
+        ],
+        [
+          414.668,
+          -191.451
+        ],
+        [
+          411.836,
+          -226.9
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "372328878",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372328882",
+      "name": "Provisional building 372328882",
+      "footprint": [
+        [
+          440.844,
+          -268.151
+        ],
+        [
+          441.83,
+          -250.586
+        ],
+        [
+          468.742,
+          -251.477
+        ],
+        [
+          467.328,
+          -269.204
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372328882",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372328883",
+      "name": "Provisional building 372328883",
+      "footprint": [
+        [
+          435.102,
+          -203.568
+        ],
+        [
+          436.33,
+          -189.581
+        ],
+        [
+          459.002,
+          -191.572
+        ],
+        [
+          457.773,
+          -205.559
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372328883",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-372328884",
+      "name": "Provisional building 372328884",
+      "footprint": [
+        [
+          432.701,
+          -203.115
+        ],
+        [
+          426.768,
+          -202.684
+        ],
+        [
+          426.258,
+          -209.754
+        ],
+        [
+          420.239,
+          -209.317
+        ],
+        [
+          420.766,
+          -201.941
+        ],
+        [
+          416.395,
+          -201.628
+        ],
+        [
+          417.323,
+          -188.675
+        ],
+        [
+          433.655,
+          -189.849
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "372328884",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-375221737",
+      "name": "Provisional building 375221737",
+      "footprint": [
+        [
+          588.089,
+          -62.436
+        ],
+        [
+          589.372,
+          -57.099
+        ],
+        [
+          611.744,
+          -62.491
+        ],
+        [
+          610.461,
+          -67.828
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "375221737",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1041189123",
+      "name": "Provisional building 1041189123",
+      "footprint": [
+        [
+          448.06,
+          -68.695
+        ],
+        [
+          439.207,
+          -68.683
+        ],
+        [
+          439.22,
+          -61.924
+        ],
+        [
+          448.078,
+          -61.94
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "1041189123",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1041189124",
+      "name": "Provisional building 1041189124",
+      "footprint": [
+        [
+          448.762,
+          -86.035
+        ],
+        [
+          441.785,
+          -85.657
+        ],
+        [
+          441.972,
+          -77.298
+        ],
+        [
+          448.844,
+          -77.392
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "1041189124",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1041189125",
+      "name": "Provisional building 1041189125",
+      "footprint": [
+        [
+          462.507,
+          -105.25
+        ],
+        [
+          450.425,
+          -105.303
+        ],
+        [
+          450.297,
+          -74.12
+        ],
+        [
+          462.362,
+          -74.065
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "1041189125",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1041189126",
+      "name": "Provisional building 1041189126",
+      "footprint": [
+        [
+          457.023,
+          -122.165
+        ],
+        [
+          448.122,
+          -121.648
+        ],
+        [
+          449.003,
+          -106.225
+        ],
+        [
+          457.907,
+          -106.73
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "1041189126",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1041189127",
+      "name": "Provisional building 1041189127",
+      "footprint": [
+        [
+          479.712,
+          -133.278
+        ],
+        [
+          479.548,
+          -135.041
+        ],
+        [
+          450.8,
+          -134.57
+        ],
+        [
+          451.078,
+          -126.344
+        ],
+        [
+          482.237,
+          -127.4
+        ],
+        [
+          481.761,
+          -133.305
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "1041189127",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1041189128",
+      "name": "Provisional building 1041189128",
+      "footprint": [
+        [
+          432.41,
+          -123.32
+        ],
+        [
+          423.104,
+          -123.401
+        ],
+        [
+          422.961,
+          -107.926
+        ],
+        [
+          432.269,
+          -107.832
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1041189128",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704165",
+      "name": "Provisional building 1043704165",
+      "footprint": [
+        [
+          555.284,
+          -70.719
+        ],
+        [
+          566.126,
+          -71.866
+        ],
+        [
+          565.596,
+          -76.86
+        ],
+        [
+          562.776,
+          -76.561
+        ],
+        [
+          561.319,
+          -90.377
+        ],
+        [
+          550.743,
+          -89.267
+        ],
+        [
+          552.413,
+          -73.473
+        ],
+        [
+          551.453,
+          -72.453
+        ],
+        [
+          551.655,
+          -70.295
+        ],
+        [
+          552.881,
+          -69.081
+        ],
+        [
+          555.433,
+          -69.355
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704165",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704166",
+      "name": "Provisional building 1043704166",
+      "footprint": [
+        [
+          580.568,
+          -77.816
+        ],
+        [
+          579.75,
+          -86.697
+        ],
+        [
+          577.475,
+          -86.486
+        ],
+        [
+          577.267,
+          -88.745
+        ],
+        [
+          571.583,
+          -88.213
+        ],
+        [
+          571.861,
+          -85.191
+        ],
+        [
+          569.409,
+          -84.965
+        ],
+        [
+          570.157,
+          -76.848
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704166",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704167",
+      "name": "Provisional building 1043704167",
+      "footprint": [
+        [
+          593.977,
+          -81.204
+        ],
+        [
+          593.05,
+          -89.643
+        ],
+        [
+          580.669,
+          -88.277
+        ],
+        [
+          581.604,
+          -79.829
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704167",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704168",
+      "name": "Provisional building 1043704168",
+      "footprint": [
+        [
+          594.514,
+          -96.207
+        ],
+        [
+          594.166,
+          -99.716
+        ],
+        [
+          597.569,
+          -100.062
+        ],
+        [
+          596.819,
+          -107.625
+        ],
+        [
+          586.669,
+          -106.612
+        ],
+        [
+          587.178,
+          -101.477
+        ],
+        [
+          583.473,
+          -101.104
+        ],
+        [
+          584.061,
+          -95.168
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704168",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704169",
+      "name": "Provisional building 1043704169",
+      "footprint": [
+        [
+          590.383,
+          -108.144
+        ],
+        [
+          590.038,
+          -114.542
+        ],
+        [
+          584.16,
+          -114.225
+        ],
+        [
+          584.505,
+          -107.827
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "1043704169",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704170",
+      "name": "Provisional building 1043704170",
+      "footprint": [
+        [
+          594.4,
+          -134.899
+        ],
+        [
+          594.139,
+          -139.963
+        ],
+        [
+          587.97,
+          -139.646
+        ],
+        [
+          588.23,
+          -134.581
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "1043704170",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704171",
+      "name": "Provisional building 1043704171",
+      "footprint": [
+        [
+          593.397,
+          -146.368
+        ],
+        [
+          593.088,
+          -151.34
+        ],
+        [
+          586.812,
+          -150.953
+        ],
+        [
+          587.122,
+          -145.98
+        ]
+      ],
+      "height_m": 4.5,
+      "replace_with": null,
+      "source_way": "1043704171",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704172",
+      "name": "Provisional building 1043704172",
+      "footprint": [
+        [
+          589.729,
+          -155.029
+        ],
+        [
+          589.17,
+          -164.048
+        ],
+        [
+          559.825,
+          -162.213
+        ],
+        [
+          560.389,
+          -153.198
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704172",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704173",
+      "name": "Provisional building 1043704173",
+      "footprint": [
+        [
+          554.543,
+          -154.83
+        ],
+        [
+          559.232,
+          -155.584
+        ],
+        [
+          557.904,
+          -163.919
+        ],
+        [
+          554.405,
+          -163.358
+        ],
+        [
+          553.892,
+          -166.571
+        ],
+        [
+          544.746,
+          -165.115
+        ],
+        [
+          546.933,
+          -151.47
+        ],
+        [
+          554.876,
+          -152.736
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704173",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704174",
+      "name": "Provisional building 1043704174",
+      "footprint": [
+        [
+          556.132,
+          -134.629
+        ],
+        [
+          555.839,
+          -137.083
+        ],
+        [
+          564.837,
+          -138.169
+        ],
+        [
+          564.104,
+          -144.229
+        ],
+        [
+          556.438,
+          -143.303
+        ],
+        [
+          556.073,
+          -146.35
+        ],
+        [
+          546.881,
+          -145.249
+        ],
+        [
+          548.264,
+          -133.695
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704174",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704175",
+      "name": "Provisional building 1043704175",
+      "footprint": [
+        [
+          557.719,
+          -118.817
+        ],
+        [
+          556.466,
+          -130.77
+        ],
+        [
+          547.879,
+          -129.875
+        ],
+        [
+          549.127,
+          -117.918
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704175",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704176",
+      "name": "Provisional building 1043704176",
+      "footprint": [
+        [
+          562.273,
+          -107.911
+        ],
+        [
+          561.402,
+          -115.821
+        ],
+        [
+          549.105,
+          -114.473
+        ],
+        [
+          549.648,
+          -109.599
+        ],
+        [
+          553.718,
+          -110.057
+        ],
+        [
+          554.061,
+          -107.004
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704176",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "way-1043704177",
+      "name": "Provisional building 1043704177",
+      "footprint": [
+        [
+          558.18,
+          -99.295
+        ],
+        [
+          568.663,
+          -100.609
+        ],
+        [
+          568.08,
+          -105.275
+        ],
+        [
+          559.477,
+          -104.196
+        ],
+        [
+          559.165,
+          -106.68
+        ],
+        [
+          550.102,
+          -105.548
+        ],
+        [
+          551.492,
+          -94.37
+        ],
+        [
+          558.684,
+          -95.259
+        ]
+      ],
+      "height_m": 9.5,
+      "replace_with": null,
+      "source_way": "1043704177",
+      "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
+    },
+    {
+      "id": "trinity-tower",
+      "name": "Holy Trinity tower height placeholder",
+      "footprint": [
+        [
+          498.148,
+          -206.955
+        ],
+        [
+          496.611929,
+          -218.0
+        ],
+        [
+          488.0,
+          -218.0
+        ],
+        [
+          488.0,
+          -205.969158
+        ]
+      ],
+      "height_m": 30.5,
+      "replace_with": null,
+      "source_way": "372055658",
+      "evidence": "Tower at the north frontage corner is observed in the four 3D views and August 2019 street panorama. Approximate 11 by 12 m envelope; height estimated at 30.5 m (+/-4 m). No architectural details asserted."
+    },
+    {
+      "id": "way-371900482-front",
+      "name": "Hoghton/London frontage 371900482-front",
+      "source_way": "371900482",
+      "footprint": [
+        [
+          7.89,
+          -135.947
+        ],
+        [
+          7.972,
+          -85.679
+        ],
+        [
+          26.0,
+          -86.761011
+        ],
+        [
+          26.0,
+          -136.757887
+        ]
+      ],
+      "height_m": 15,
+      "replace_with": null,
+      "evidence": "Calibrated aerial and 3D orbit show this previously unmodelled frontage. Existing core research retained its outline but did not publish a building. Tall London office and low rear ranges split approximately; detailed roof/elevation survey deferred."
+    },
+    {
+      "id": "way-371900482-rear",
+      "name": "Hoghton/London frontage 371900482-rear",
+      "source_way": "371900482",
+      "footprint": [
+        [
+          48.293,
+          -88.099
+        ],
+        [
+          47.909,
+          -98.39
+        ],
+        [
+          40.419,
+          -97.862
+        ],
+        [
+          39.492,
+          -137.362
+        ],
+        [
+          26.0,
+          -136.757887
+        ],
+        [
+          26.0,
+          -86.761011
+        ]
+      ],
+      "height_m": 7.5,
+      "replace_with": null,
+      "evidence": "Calibrated aerial and 3D orbit show this previously unmodelled frontage. Existing core research retained its outline but did not publish a building. Tall London office and low rear ranges split approximately; detailed roof/elevation survey deferred."
+    },
+    {
+      "id": "way-371902025-front",
+      "name": "Hoghton/London frontage 371902025-front",
+      "source_way": "371902025",
+      "footprint": [
+        [
+          42.955003,
+          -122.0
+        ],
+        [
+          105.630343,
+          -122.0
+        ],
+        [
+          105.568,
+          -122.853
+        ],
+        [
+          105.266,
+          -127.127
+        ],
+        [
+          104.811,
+          -133.297
+        ],
+        [
+          86.667,
+          -132.336
+        ],
+        [
+          86.762,
+          -135.943
+        ],
+        [
+          62.725,
+          -134.758
+        ],
+        [
+          62.168,
+          -138.85
+        ],
+        [
+          42.128,
+          -138.131
+        ]
+      ],
+      "height_m": 11.5,
+      "replace_with": null,
+      "evidence": "Calibrated aerial and 3D orbit show this previously unmodelled frontage. Existing core research retained its outline but did not publish a building. Tall London office and low rear ranges split approximately; detailed roof/elevation survey deferred."
+    },
+    {
+      "id": "way-371902025-rear",
+      "name": "Hoghton/London frontage 371902025-rear",
+      "source_way": "371902025",
+      "footprint": [
+        [
+          43.711,
+          -107.254
+        ],
+        [
+          50.833,
+          -107.355
+        ],
+        [
+          51.289,
+          -91.881
+        ],
+        [
+          64.483,
+          -92.209
+        ],
+        [
+          63.722,
+          -110.724
+        ],
+        [
+          69.9,
+          -111.234
+        ],
+        [
+          71.54,
+          -93.738
+        ],
+        [
+          88.968,
+          -96.229
+        ],
+        [
+          88.455,
+          -98.521
+        ],
+        [
+          107.271,
+          -99.552
+        ],
+        [
+          105.630343,
+          -122.0
+        ],
+        [
+          42.955003,
+          -122.0
+        ]
+      ],
+      "height_m": 6.5,
+      "replace_with": null,
+      "evidence": "Calibrated aerial and 3D orbit show this previously unmodelled frontage. Existing core research retained its outline but did not publish a building. Tall London office and low rear ranges split approximately; detailed roof/elevation survey deferred."
+    },
+    {
+      "id": "way-371917207",
+      "name": "Hoghton/London frontage 371917207",
+      "source_way": "371917207",
+      "footprint": [
+        [
+          105.266,
+          -127.127
+        ],
+        [
+          109.055,
+          -127.517
+        ],
+        [
+          108.078,
+          -133.805
+        ],
+        [
+          133.726,
+          -135.231
+        ],
+        [
+          135.55,
+          -102.739
+        ],
+        [
+          126.998,
+          -102.2
+        ],
+        [
+          126.608,
+          -109.23
+        ],
+        [
+          122.342,
+          -109.247
+        ],
+        [
+          122.607,
+          -104.677
+        ],
+        [
+          115.858,
+          -104.193
+        ],
+        [
+          114.759,
+          -117.029
+        ],
+        [
+          110.485,
+          -116.853
+        ],
+        [
+          109.567,
+          -123.29
+        ],
+        [
+          105.568,
+          -122.853
+        ],
+        [
+          105.266,
+          -127.127
+        ]
+      ],
+      "height_m": 10.5,
+      "replace_with": null,
+      "evidence": "Calibrated aerial and 3D orbit show this previously unmodelled frontage. Existing core research retained its outline but did not publish a building. Tall London office and low rear ranges split approximately; detailed roof/elevation survey deferred."
+    },
+    {
+      "id": "way-371917208",
+      "name": "Hoghton/London frontage 371917208",
+      "source_way": "371917208",
+      "footprint": [
+        [
+          135.619,
+          -135.125
+        ],
+        [
+          136.337,
+          -125.996
+        ],
+        [
+          138.137,
+          -126.047
+        ],
+        [
+          139.066,
+          -118.055
+        ],
+        [
+          136.411,
+          -117.928
+        ],
+        [
+          137.751,
+          -99.962
+        ],
+        [
+          144.785,
+          -100.548
+        ],
+        [
+          142.957,
+          -118.051
+        ],
+        [
+          147.518,
+          -118.115
+        ],
+        [
+          146.501,
+          -126.592
+        ],
+        [
+          148.496,
+          -126.629
+        ],
+        [
+          148.078,
+          -136.227
+        ],
+        [
+          135.619,
+          -135.125
+        ]
+      ],
+      "height_m": 10.5,
+      "replace_with": null,
+      "evidence": "Calibrated aerial and 3D orbit show this previously unmodelled frontage. Existing core research retained its outline but did not publish a building. Tall London office and low rear ranges split approximately; detailed roof/elevation survey deferred."
+    },
+    {
+      "id": "way-371917213",
+      "name": "Hoghton/London frontage 371917213",
+      "source_way": "371917213",
+      "footprint": [
+        [
+          213.076,
+          -99.736
+        ],
+        [
+          198.09,
+          -99.933
+        ],
+        [
+          197.53,
+          -118.64
+        ],
+        [
+          205.502,
+          -118.812
+        ],
+        [
+          205.415,
+          -115.398
+        ],
+        [
+          210.97,
+          -110.326
+        ],
+        [
+          213.157,
+          -110.361
+        ],
+        [
+          213.076,
+          -99.736
+        ]
+      ],
+      "height_m": 10.5,
+      "replace_with": null,
+      "evidence": "Calibrated aerial and 3D orbit show this previously unmodelled frontage. Existing core research retained its outline but did not publish a building. Tall London office and low rear ranges split approximately; detailed roof/elevation survey deferred."
+    }
+  ],
+  "existing_block_plans": [
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+    "regions/southport/station-quarter/frontage-placeholders/research/layout.json"
+  ],
+  "budgets": {
+    "triangles_per_level": 12000,
+    "download_bytes_per_level": 1500000,
+    "gpu_bytes_per_level": 2500000
+  },
+  "limits": "Provisional footprint/height volumes and street canvas. Plan uncertainty around 1\u20133 m, height uncertainty 2\u20134 m. Flat tops denote height bounds, not roof form. Private yard surfaces and parking endpoints estimated; no detailed architecture or street furniture."
+}

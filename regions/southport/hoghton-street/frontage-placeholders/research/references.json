@@ -1,0 +1,51 @@
+{
+  "sources": [
+    {
+      "id": "osm-seed",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=-3.014,53.639,-2.988,53.657",
+      "accessed": "2026-10-24",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0",
+      "use": "Seed road routes and exterior wall polygons, checked against aerial/3D, not treated as authoritative."
+    },
+    {
+      "id": "maps-3d",
+      "url": "https://www.google.com/maps/@53.6436254,-3.0007,869a,35y,39.21t/data=!3m1!1e3",
+      "accessed": "2026-10-24",
+      "use": "Four-direction actual photogrammetry orbit; rear wings, height steps, open yards and general footprint checked. Texture date unspecified."
+    },
+    {
+      "id": "maps-plan",
+      "url": "https://www.google.com/maps/@53.6499999,-3.0007051,707m/data=!3m1!1e3",
+      "accessed": "2026-10-24",
+      "use": "North-up image calibrated with two context-menu geographic controls and overlaid OSM wall seeds."
+    },
+    {
+      "id": "hoghton-south-street",
+      "url": "https://www.google.com/maps/@53.6482615,-3.0017311,11a,90y,45h,90t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDa_f_xuAE!2e10",
+      "capture_date": "2019-08",
+      "accessed": "2026-10-24",
+      "use": "VR 360 TV panorama: two running lanes, parking, broad slab pavements, mixed two/three-storey frontage."
+    },
+    {
+      "id": "hill-street",
+      "url": "https://www.google.com/maps/@53.6491302,-2.9999641,10a,90y,45h,90t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDa3f-I3AE!2e10",
+      "capture_date": "2019-08",
+      "accessed": "2026-10-24",
+      "use": "VR 360 TV panorama: frontage forecourts distinct from public pavement, parking edges and road centre dashes."
+    },
+    {
+      "id": "church-street",
+      "url": "https://www.google.com/maps/@53.649946,-2.9983393,10a,90y,45h,90t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDa_bT_jgE!2e10",
+      "capture_date": "2019-08",
+      "accessed": "2026-10-24",
+      "use": "VR 360 TV panorama: bus-stop bay, church tower and grounds, residential forecourts."
+    },
+    {
+      "id": "manchester-street",
+      "url": "https://www.google.com/maps/@53.6506715,-2.9967873,10a,90y,45h,90t/data=!3m4!1e1!3m2!1sRcp90L_-h9KAeFSnpVp6EQ!2e0",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-24",
+      "use": "Google Street View junction approach. Dated restrictions not claimed to be a current legal inventory."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "southport.hoghton-street.public-realm",
+  "name": "Hoghton Street quarter \u2014 roads, pavements and courts",
+  "region": "southport",
+  "area": "hoghton-street",
+  "status": "provisional-public-realm",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "section-00",
+    "section-01",
+    "section-02",
+    "section-03",
+    "section-04",
+    "section-05"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Provisional footprint/height volumes and street canvas. Plan uncertainty around 1\u20133 m, height uncertainty 2\u20134 m. Flat tops denote height bounds, not roof form. Private yard surfaces and parking endpoints estimated; no detailed architecture or street furniture.",
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/hoghton-street/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+    ],
+    "validate": [
+      "regions/southport/hoghton-street/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/station-quarter/frontage-placeholders/research/layout.json"
+    ]
+  }
+}

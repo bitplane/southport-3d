@@ -1,0 +1,29 @@
+{
+  "reviewed": "2026-10-24",
+  "references": [
+    "maps-plan",
+    "maps-3d",
+    "hoghton-south-street",
+    "hill-street",
+    "church-street",
+    "manchester-street"
+  ],
+  "comparisons": [
+    "Calibrated aerial overlay compared with source footprint plan; four actual 3D directions inspected for rear wings, open courts and height changes.",
+    "Blender ground plan compared with aerial routes and access gaps.",
+    "All 81 exported parts inspected at Detail, Walk and District; overview and Hoghton/Hill close view reviewed.",
+    "Assembled viewer overview contains all 81 new parts with no asset errors; adjoining London/Hill/Castle/Lord exports pass 117 seam probes."
+  ],
+  "corrections": [
+    "Do not treat every outline in the old St George block research extract as an already-modelled building; add the missing Hoghton frontage.",
+    "Do not add narrow footprint residuals beside the already detailed Anchor terrace/cinema.",
+    "Retain exact Court/Manchester/Union source road widths at the Lord corridor handover.",
+    "Retain the Hill pavement outer boundary rather than excluding an oversized rectangle."
+  ],
+  "limitations": [
+    "Placeholder height bounds, flat tops and approximate private court treatments; detailed architecture and street furniture deferred.",
+    "Native neighbouring overlap audit retains microscopic float32 edge residues; see HOGHTON-QUARTER.md.",
+    "No ground-level survey of private rear elevations or actual terrain."
+  ],
+  "private_outputs": "../output/hoghton-quarter/"
+}

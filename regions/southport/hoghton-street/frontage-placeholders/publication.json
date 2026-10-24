@@ -1,0 +1,440 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Hoghton Street quarter",
+  "status": "Provisional footprint/height volumes and street canvas. Plan uncertainty around 1\u20133 m, height uncertainty 2\u20134 m. Flat tops denote height bounds, not roof form. Private yard surfaces and parking endpoints estimated; no detailed architecture or street furniture.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "way-30141961",
+      "name": "Stokers \u2014 placeholder",
+      "collection": "way-30141961"
+    },
+    {
+      "id": "way-51826177",
+      "name": "Provisional building 51826177 \u2014 placeholder",
+      "collection": "way-51826177"
+    },
+    {
+      "id": "way-51826178",
+      "name": "Provisional building 51826178 \u2014 placeholder",
+      "collection": "way-51826178"
+    },
+    {
+      "id": "way-51826179",
+      "name": "Provisional building 51826179 \u2014 placeholder",
+      "collection": "way-51826179"
+    },
+    {
+      "id": "way-51826180",
+      "name": "Provisional building 51826180 \u2014 placeholder",
+      "collection": "way-51826180"
+    },
+    {
+      "id": "way-51826181",
+      "name": "Provisional building 51826181 \u2014 placeholder",
+      "collection": "way-51826181"
+    },
+    {
+      "id": "way-51826182",
+      "name": "Provisional building 51826182 \u2014 placeholder",
+      "collection": "way-51826182"
+    },
+    {
+      "id": "way-51826183",
+      "name": "Provisional building 51826183 \u2014 placeholder",
+      "collection": "way-51826183"
+    },
+    {
+      "id": "way-51826184",
+      "name": "Provisional building 51826184 \u2014 placeholder",
+      "collection": "way-51826184"
+    },
+    {
+      "id": "way-51826185",
+      "name": "Provisional building 51826185 \u2014 placeholder",
+      "collection": "way-51826185"
+    },
+    {
+      "id": "way-371917209",
+      "name": "Provisional building 371917209 \u2014 placeholder",
+      "collection": "way-371917209"
+    },
+    {
+      "id": "way-371917210",
+      "name": "Provisional building 371917210 \u2014 placeholder",
+      "collection": "way-371917210"
+    },
+    {
+      "id": "way-371917211",
+      "name": "Provisional building 371917211 \u2014 placeholder",
+      "collection": "way-371917211"
+    },
+    {
+      "id": "way-371917212",
+      "name": "Provisional building 371917212 \u2014 placeholder",
+      "collection": "way-371917212"
+    },
+    {
+      "id": "way-371919559",
+      "name": "Provisional building 371919559 \u2014 placeholder",
+      "collection": "way-371919559"
+    },
+    {
+      "id": "way-371919560",
+      "name": "Provisional building 371919560 \u2014 placeholder",
+      "collection": "way-371919560"
+    },
+    {
+      "id": "way-371919561",
+      "name": "Provisional building 371919561 \u2014 placeholder",
+      "collection": "way-371919561"
+    },
+    {
+      "id": "way-371919562",
+      "name": "Provisional building 371919562 \u2014 placeholder",
+      "collection": "way-371919562"
+    },
+    {
+      "id": "way-371919821",
+      "name": "Provisional building 371919821 \u2014 placeholder",
+      "collection": "way-371919821"
+    },
+    {
+      "id": "way-371919822",
+      "name": "Provisional building 371919822 \u2014 placeholder",
+      "collection": "way-371919822"
+    },
+    {
+      "id": "way-371920187",
+      "name": "Provisional building 371920187 \u2014 placeholder",
+      "collection": "way-371920187"
+    },
+    {
+      "id": "way-371920340",
+      "name": "Provisional building 371920340 \u2014 placeholder",
+      "collection": "way-371920340"
+    },
+    {
+      "id": "way-371920673",
+      "name": "Provisional building 371920673 \u2014 placeholder",
+      "collection": "way-371920673"
+    },
+    {
+      "id": "way-371920674",
+      "name": "Provisional building 371920674 \u2014 placeholder",
+      "collection": "way-371920674"
+    },
+    {
+      "id": "way-371920675",
+      "name": "Provisional building 371920675 \u2014 placeholder",
+      "collection": "way-371920675"
+    },
+    {
+      "id": "way-371920676",
+      "name": "Provisional building 371920676 \u2014 placeholder",
+      "collection": "way-371920676"
+    },
+    {
+      "id": "way-371920677",
+      "name": "Provisional building 371920677 \u2014 placeholder",
+      "collection": "way-371920677"
+    },
+    {
+      "id": "way-371920678",
+      "name": "Provisional building 371920678 \u2014 placeholder",
+      "collection": "way-371920678"
+    },
+    {
+      "id": "way-372024979",
+      "name": "Southport Centre For Health & Wellbeing \u2014 placeholder",
+      "collection": "way-372024979"
+    },
+    {
+      "id": "way-372024980",
+      "name": "Southport Auto Centre \u2014 placeholder",
+      "collection": "way-372024980"
+    },
+    {
+      "id": "way-372024981",
+      "name": "Provisional building 372024981 \u2014 placeholder",
+      "collection": "way-372024981"
+    },
+    {
+      "id": "way-372024982",
+      "name": "Provisional building 372024982 \u2014 placeholder",
+      "collection": "way-372024982"
+    },
+    {
+      "id": "way-372024983",
+      "name": "Provisional building 372024983 \u2014 placeholder",
+      "collection": "way-372024983"
+    },
+    {
+      "id": "way-372024984",
+      "name": "Provisional building 372024984 \u2014 placeholder",
+      "collection": "way-372024984"
+    },
+    {
+      "id": "way-372024985",
+      "name": "Provisional building 372024985 \u2014 placeholder",
+      "collection": "way-372024985"
+    },
+    {
+      "id": "way-372047551",
+      "name": "Provisional building 372047551 \u2014 placeholder",
+      "collection": "way-372047551"
+    },
+    {
+      "id": "way-372049066",
+      "name": "Provisional building 372049066 \u2014 placeholder",
+      "collection": "way-372049066"
+    },
+    {
+      "id": "way-372055656",
+      "name": "Provisional building 372055656 \u2014 placeholder",
+      "collection": "way-372055656"
+    },
+    {
+      "id": "way-372055657",
+      "name": "YMCA \u2014 placeholder",
+      "collection": "way-372055657"
+    },
+    {
+      "id": "way-372055658",
+      "name": "Holy Trinity \u2014 placeholder",
+      "collection": "way-372055658"
+    },
+    {
+      "id": "way-372055659",
+      "name": "Homeport House \u2014 placeholder",
+      "collection": "way-372055659"
+    },
+    {
+      "id": "way-372055660",
+      "name": "Provisional building 372055660 \u2014 placeholder",
+      "collection": "way-372055660"
+    },
+    {
+      "id": "way-372055707",
+      "name": "Provisional building 372055707 \u2014 placeholder",
+      "collection": "way-372055707"
+    },
+    {
+      "id": "way-372328878",
+      "name": "Liverpool Community Health \u2014 placeholder",
+      "collection": "way-372328878"
+    },
+    {
+      "id": "way-372328882",
+      "name": "Provisional building 372328882 \u2014 placeholder",
+      "collection": "way-372328882"
+    },
+    {
+      "id": "way-372328883",
+      "name": "Provisional building 372328883 \u2014 placeholder",
+      "collection": "way-372328883"
+    },
+    {
+      "id": "way-372328884",
+      "name": "Provisional building 372328884 \u2014 placeholder",
+      "collection": "way-372328884"
+    },
+    {
+      "id": "way-375221737",
+      "name": "Provisional building 375221737 \u2014 placeholder",
+      "collection": "way-375221737"
+    },
+    {
+      "id": "way-1041189123",
+      "name": "Provisional building 1041189123 \u2014 placeholder",
+      "collection": "way-1041189123"
+    },
+    {
+      "id": "way-1041189124",
+      "name": "Provisional building 1041189124 \u2014 placeholder",
+      "collection": "way-1041189124"
+    },
+    {
+      "id": "way-1041189125",
+      "name": "Provisional building 1041189125 \u2014 placeholder",
+      "collection": "way-1041189125"
+    },
+    {
+      "id": "way-1041189126",
+      "name": "Provisional building 1041189126 \u2014 placeholder",
+      "collection": "way-1041189126"
+    },
+    {
+      "id": "way-1041189127",
+      "name": "Provisional building 1041189127 \u2014 placeholder",
+      "collection": "way-1041189127"
+    },
+    {
+      "id": "way-1041189128",
+      "name": "Provisional building 1041189128 \u2014 placeholder",
+      "collection": "way-1041189128"
+    },
+    {
+      "id": "way-1043704165",
+      "name": "Provisional building 1043704165 \u2014 placeholder",
+      "collection": "way-1043704165"
+    },
+    {
+      "id": "way-1043704166",
+      "name": "Provisional building 1043704166 \u2014 placeholder",
+      "collection": "way-1043704166"
+    },
+    {
+      "id": "way-1043704167",
+      "name": "Provisional building 1043704167 \u2014 placeholder",
+      "collection": "way-1043704167"
+    },
+    {
+      "id": "way-1043704168",
+      "name": "Provisional building 1043704168 \u2014 placeholder",
+      "collection": "way-1043704168"
+    },
+    {
+      "id": "way-1043704169",
+      "name": "Provisional building 1043704169 \u2014 placeholder",
+      "collection": "way-1043704169"
+    },
+    {
+      "id": "way-1043704170",
+      "name": "Provisional building 1043704170 \u2014 placeholder",
+      "collection": "way-1043704170"
+    },
+    {
+      "id": "way-1043704171",
+      "name": "Provisional building 1043704171 \u2014 placeholder",
+      "collection": "way-1043704171"
+    },
+    {
+      "id": "way-1043704172",
+      "name": "Provisional building 1043704172 \u2014 placeholder",
+      "collection": "way-1043704172"
+    },
+    {
+      "id": "way-1043704173",
+      "name": "Provisional building 1043704173 \u2014 placeholder",
+      "collection": "way-1043704173"
+    },
+    {
+      "id": "way-1043704174",
+      "name": "Provisional building 1043704174 \u2014 placeholder",
+      "collection": "way-1043704174"
+    },
+    {
+      "id": "way-1043704175",
+      "name": "Provisional building 1043704175 \u2014 placeholder",
+      "collection": "way-1043704175"
+    },
+    {
+      "id": "way-1043704176",
+      "name": "Provisional building 1043704176 \u2014 placeholder",
+      "collection": "way-1043704176"
+    },
+    {
+      "id": "way-1043704177",
+      "name": "Provisional building 1043704177 \u2014 placeholder",
+      "collection": "way-1043704177"
+    },
+    {
+      "id": "trinity-tower",
+      "name": "Holy Trinity tower height placeholder \u2014 placeholder",
+      "collection": "trinity-tower"
+    },
+    {
+      "id": "way-371900482-front",
+      "name": "Hoghton/London frontage 371900482-front \u2014 placeholder",
+      "collection": "way-371900482-front"
+    },
+    {
+      "id": "way-371900482-rear",
+      "name": "Hoghton/London frontage 371900482-rear \u2014 placeholder",
+      "collection": "way-371900482-rear"
+    },
+    {
+      "id": "way-371902025-front",
+      "name": "Hoghton/London frontage 371902025-front \u2014 placeholder",
+      "collection": "way-371902025-front"
+    },
+    {
+      "id": "way-371902025-rear",
+      "name": "Hoghton/London frontage 371902025-rear \u2014 placeholder",
+      "collection": "way-371902025-rear"
+    },
+    {
+      "id": "way-371917207",
+      "name": "Hoghton/London frontage 371917207 \u2014 placeholder",
+      "collection": "way-371917207"
+    },
+    {
+      "id": "way-371917208",
+      "name": "Hoghton/London frontage 371917208 \u2014 placeholder",
+      "collection": "way-371917208"
+    },
+    {
+      "id": "way-371917213",
+      "name": "Hoghton/London frontage 371917213 \u2014 placeholder",
+      "collection": "way-371917213"
+    }
+  ],
+  "views": [
+    {
+      "name": "Hoghton quarter",
+      "position": [
+        -120,
+        560,
+        700
+      ],
+      "target": [
+        300,
+        0,
+        150
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "placeholder-volumes",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already minimal untextured footprint prisms; no decorative detail to reduce."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Untextured footprint prisms with fixed total budget of 12000 triangles, independent of future architecture detail."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      100,
+      2,
+      145
+    ],
+    "target": [
+      160,
+      2,
+      151
+    ]
+  }
+}
