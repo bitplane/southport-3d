@@ -103,13 +103,19 @@ def sign(name,text,width,height,transform,bg=True):
     bpy.context.view_layer.objects.active=label;bpy.ops.object.convert(target='MESH')
     m.add([tuple(label.matrix_world@v.co) for v in label.data.vertices],[tuple(f.vertices) for f in label.data.polygons],1)
     bpy.data.objects.remove(label,do_unlink=True)
-    # Three interlocking angular arrows, interpreted NatWest emblem.
-    size=height*.32
+    # Three flat chevrons derive from the visible faces of isometric cubes.
+    # Keep small separations and centre logo-only plates; do not collapse the
+    # three components into a triangle or substitute recycling arrows.
+    size=height*.23
+    emblem_x=-width*.40 if text else 0.0
+    poly=[(-1,0),(-.5,.866),(.5,.866),(1,0),(.5,-.866),(0,0)]
     for i in range(3):
         theta=math.tau*i/3
-        poly=[(-.4,-.2),(.1,-.2),(.1,-.45),(.7,.0),(.1,.45),(.1,.2),(-.4,.2)]
-        points=[(-width*.40+size*(x*math.cos(theta)-y*math.sin(theta)),size*(x*math.sin(theta)+y*math.cos(theta)),.03) for x,y in poly]
-        m.outline([(x,y) for x,y,z in points],.02,.035,2)
+        points=[(emblem_x+size*(.94*x*math.cos(theta)-(.94*y+.866)*math.sin(theta)),
+                 size*(.94*x*math.sin(theta)+(.94*y+.866)*math.cos(theta))) for x,y in poly]
+        m.outline(points,0,.015,2)
+        if not text:
+            m.outline([(-x,y) for x,y in reversed(points)],-.065,-.05,2)
     return finish(m,'bank-frontage',[purple if bg else plain[1],white,red],transform)
 
 
@@ -274,7 +280,10 @@ for elevation,frame,width,bays in facades:
                 instance('urn',lambda:urn('Ornament parapet urn'),frame@Matrix.Translation((a+(i+1)*width_part,13.22,.15)),mats=[plain[1]])
     sign(elevation+' fascia','NatWest',3.2,.58,frame@Matrix.Translation((11.45 if front_face else 6.83,5.66,.09)),False)
     # Projecting purple corner signs face each approach.
-    bracket=frame@Matrix.Translation((width-.55 if front_face else .65,4.75,.65))
+    sign_u=width-.55 if front_face else .65
+    for height in (4.52,4.98):
+        box('Fine projecting sign bracket',(sign_u,height,.46),(.045,.045,.70),'bank-frontage',black,transform=frame)
+    bracket=frame@Matrix.Translation((sign_u,4.75,1.15))
     bracket=bracket@Matrix.Rotation(math.pi/2,4,'Y')
     sign(elevation+' projecting','',.72,.72,bracket)
 

@@ -54,7 +54,7 @@ for ob in meshes:
 front_heads=[o for o in meshes if o.name.startswith('Trim surround Window cross lord')]
 assert len(front_heads)==3
 assert all(max(abs(v.co.x) for v in o.data.vertices)<3.35/2 for o in front_heads), 'Upper hoods overlap'
-points=[ob.matrix_world@v.co for ob in meshes for v in ob.data.vertices]
+points=[ob.matrix_world@v.co for ob in meshes if 'projecting' not in ob.name for v in ob.data.vertices]
 assert min(p.x for p in points)>D['x_min']-1.3
 assert max(p.x for p in points)<33.2  # Boundary stops at Posting House; kiosk trim projects 2 cm.
 assert min(p.y for p in points)>D['rear_y']-.5
@@ -177,3 +177,24 @@ for ob in (hood,arch):
 errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
 assert not errors,errors[:8]
 print('Entrance hood/window moulding ownership passed')
+
+# Projecting emblems stay within their plates and keep the open three-chevron centre.
+for ob in [o for o in meshes if o.name.startswith('Sign ')]:
+    red_faces=[f for f in ob.data.polygons if f.material_index==2]
+    red_points=[ob.data.vertices[i].co for f in red_faces for i in f.vertices]
+    board=[ob.data.vertices[i].co for f in ob.data.polygons if f.material_index==0 for i in f.vertices]
+    assert min(p.x for p in red_points)>=min(p.x for p in board)-1e-5,(ob.name,'Emblem left of plate')
+    assert max(p.x for p in red_points)<=max(p.x for p in board)+1e-5,(ob.name,'Emblem right of plate')
+    if 'projecting' in ob.name:
+        assert max(abs(v.co.x) for v in ob.data.vertices)<=.361
+        assert len([f for f in red_faces if all(ob.data.vertices[i].co.z<-.05 for i in f.vertices)])>0, 'Reverse emblem absent'
+        hit,p,n,i=ob.ray_cast(Vector((0,0,.2)),Vector((0,0,-1)))
+        assert hit and ob.data.polygons[i].material_index==0,(ob.name,'Collapsed emblem centre')
+    tris=[];labels=[]
+    for f in red_faces:
+        tris.append([tuple(ob.data.vertices[i].co) for i in f.vertices]);labels.append(str(f.index))
+    assert not overlaps(tris,labels,min_area=1e-6),(ob.name,'Overlapping logo chevrons')
+for ob in [o for o in meshes if o.name.startswith('Door wall handrail')]:
+    # The first tube is the graspable rail; the later tubes are mounting brackets.
+    assert max(abs(v.co.x) for v in list(ob.data.vertices)[:24])<1.04,(ob.name,'Rail crosses jamb')
+print('Sign bounds, separate emblem chevrons and rail clearance passed')

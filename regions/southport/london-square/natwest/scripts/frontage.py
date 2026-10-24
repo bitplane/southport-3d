@@ -57,9 +57,12 @@ def entrance_steps(frame, finish, stone, black):
         m=Mesh('Trim entrance step')
         m.add(v,[tuple(range(n)),tuple(reversed(range(n,2*n)))]+[(j,j+n,(j+1)%n+n,(j+1)%n) for j in range(n)])
         finish(m,'bank-frontage',[stone],frame)
+    # Keep the graspable rail inside the 1.14 m half-width reveal. Only its
+    # short mounting brackets reach the stone; the old slanted X coordinates
+    # pushed the rail itself through the jamb.
     for side in (-1,1):
         m=Mesh('Door wall handrail')
-        m.tube([(side*1.28,1.04,.66),(side*1.13,1.24,-.04)],.032,sides=12)
-        for x,y,z in ((side*1.28,1.04,.66),(side*1.13,1.24,-.04)):
-            m.tube([(x,y,z),(x+side*.10,y-.04,z)],.022,sides=8)
+        m.tube([(side*1.00,1.04,.66),(side*1.00,1.24,-.04)],.032,sides=12)
+        for x,y,z in ((side*1.00,1.04,.66),(side*1.00,1.24,-.04)):
+            m.tube([(x,y,z),(x+side*.16,y-.10,min(z,.14))],.022,sides=8)
         finish(m,'bank-frontage',[black],frame)

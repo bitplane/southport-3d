@@ -245,8 +245,25 @@
       }
     },
     {
+      "id": "projecting-signs",
+      "match": "^Sign .* projecting",
+      "walk": {
+        "strategy": "replace",
+        "reason": "Bake both emblem faces onto a shallow six-face box; a single panel loses the reverse mark.",
+        "shape": "box",
+        "uv": "box",
+        "bake": true,
+        "cage_extrusion_m": 0.1,
+        "max_sampled_error_m": 0.1
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
+      }
+    },
+    {
       "id": "signs",
-      "match": "^Sign ",
+      "match": "^Sign (?!.* projecting)",
       "walk": {
         "strategy": "replace",
         "reason": "Bake lettering and emblem onto its shallow sign receiver.",

@@ -4,7 +4,7 @@ from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/natwest.blend'))
 s=bpy.context.scene
-views=[('building',(-28,15,26),(18,-35,8),47),('front',(19,20,12),(19,-24,10),27),
+views=[('handrails',(22.3,-18,2.1),(22.3,-23.16,1.8),4),('projecting-signs',(3,-18,5.2),(7.5,-24,5.4),4),('building',(-28,15,26),(18,-35,8),47),('front',(19,20,12),(19,-24,10),27),
        ('london',(-29,-37,13),(8,-37,9),34),('roof',(-12,0,48),(19,-37,8),43),
        ('entrance',(-3,-5,9),(10.5,-23.2,4),11),('gable',(27,0,16),(27,-23,15.3),9),
        ('balcony',(19,-5,10),(19,-23,8.5),8),
