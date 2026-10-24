@@ -223,5 +223,151 @@
     "bus": "Positive-X side Y125\u2013156, approximately2.2m wide; Apr2020 middle-route photo",
     "parking": "Negative-X side Y118\u2013145, approximately1.9m wide; bounds visually estimated",
     "note": "Partial observed paint only; no claim of current legal restrictions."
-  }
+  },
+  "block_plan": "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+  "block_ground_areas": [
+    {
+      "id": "bath-parking",
+      "material": "asphalt",
+      "polygon": [
+        [
+          9.739,
+          147.635
+        ],
+        [
+          46.35,
+          147.404
+        ],
+        [
+          46.4,
+          160.0
+        ],
+        [
+          10.0,
+          160.3
+        ]
+      ],
+      "basis": "Aerial Bath Street parking strip; boundaries estimated against adjoining arcade and road."
+    },
+    {
+      "id": "bath-north-forecourt",
+      "material": "paving",
+      "polygon": [
+        [
+          7.9,
+          168.8
+        ],
+        [
+          20.8,
+          168.8
+        ],
+        [
+          26,
+          174
+        ],
+        [
+          26,
+          186
+        ],
+        [
+          10,
+          186
+        ],
+        [
+          8,
+          175
+        ]
+      ],
+      "basis": "Aerial outdoor seating/forecourt around northern Bath corner; no building inferred in the open wedge."
+    },
+    {
+      "id": "apartment-service-yard",
+      "material": "asphalt",
+      "polygon": [
+        [
+          -19.475,
+          179.117
+        ],
+        [
+          -17.074,
+          190.794
+        ],
+        [
+          -24.854,
+          192.596
+        ],
+        [
+          -22.444,
+          199.042
+        ],
+        [
+          -39.022,
+          195.444
+        ],
+        [
+          -44.23,
+          219.431
+        ],
+        [
+          -74.116,
+          212.936
+        ],
+        [
+          -71.3,
+          198
+        ],
+        [
+          -55,
+          190
+        ]
+      ],
+      "basis": "Google oblique shows open L-shaped apartment parking yard reached from the mapped private entrance; outer rear limits estimated."
+    },
+    {
+      "id": "west-lord-frontage-apron",
+      "material": "paving",
+      "polygon": [
+        [
+          -81.84,
+          41
+        ],
+        [
+          -9.45,
+          41
+        ],
+        [
+          -9.45,
+          47.1
+        ],
+        [
+          -81.84,
+          47.1
+        ]
+      ],
+      "basis": "Observed broad Lord Street return pavement between existing square edge and the mapped/imagery-checked block frontage; outer cut remains provisional."
+    },
+    {
+      "id": "east-lord-frontage-apron",
+      "material": "paving",
+      "polygon": [
+        [
+          9.03,
+          41
+        ],
+        [
+          34.19,
+          41
+        ],
+        [
+          34.19,
+          45.43
+        ],
+        [
+          9.03,
+          45.43
+        ]
+      ],
+      "basis": "Observed lower corner approach; footprint clipping owns the final building edge."
+    }
+  ]
 }

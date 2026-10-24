@@ -1,0 +1,683 @@
+{
+  "schema_version": 1,
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "grade": {
+    "start_y": 41,
+    "start_z": -0.7995,
+    "top_y": 248.07,
+    "top_z": 2.2,
+    "basis": "Observed Nevill rises to Promenade; total rise visually estimated, not surveyed. Piecewise linear, flat on Promenade and forecourt."
+  },
+  "blocks": [
+    {
+      "id": "east-lord-corner",
+      "osm_way": "264188612",
+      "footprint": [
+        [
+          9.031,
+          69.174
+        ],
+        [
+          9.191,
+          44.855
+        ],
+        [
+          21.696,
+          45.258
+        ],
+        [
+          21.388,
+          69.335
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "east-lord-return",
+      "osm_way": "150615099",
+      "footprint": [
+        [
+          33.735,
+          80.283
+        ],
+        [
+          26.273,
+          80.216
+        ],
+        [
+          20.324,
+          80.095
+        ],
+        [
+          8.885,
+          79.952
+        ],
+        [
+          9.031,
+          69.174
+        ],
+        [
+          21.388,
+          69.335
+        ],
+        [
+          21.696,
+          45.258
+        ],
+        [
+          34.189,
+          45.428
+        ],
+        [
+          34.075,
+          57.743
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "east-stanley-corner",
+      "osm_way": "375391230",
+      "footprint": [
+        [
+          20.324,
+          80.095
+        ],
+        [
+          20.208,
+          96.91
+        ],
+        [
+          8.89,
+          96.684
+        ],
+        [
+          8.885,
+          79.952
+        ]
+      ],
+      "height_m": 10.5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "stanley-rear-range",
+      "osm_way": "375391231",
+      "footprint": [
+        [
+          45.221,
+          96.119
+        ],
+        [
+          26.139,
+          95.959
+        ],
+        [
+          26.273,
+          80.216
+        ],
+        [
+          33.735,
+          80.283
+        ],
+        [
+          45.358,
+          80.389
+        ]
+      ],
+      "height_m": 9,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "west-lord-block",
+      "osm_way": "375534421",
+      "footprint": [
+        [
+          -9.452,
+          90.309
+        ],
+        [
+          -21.403,
+          90.192
+        ],
+        [
+          -21.482,
+          78.613
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -10.043,
+          47.035
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "lord-block-infill",
+      "osm_way": "267014392",
+      "footprint": [
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -50.422,
+          59.443
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "west-cable-corner",
+      "osm_way": "376047289",
+      "footprint": [
+        [
+          -9.775,
+          92.642
+        ],
+        [
+          -9.756,
+          105.644
+        ],
+        [
+          -19.186,
+          105.651
+        ],
+        [
+          -19.198,
+          96.988
+        ],
+        [
+          -25.415,
+          96.997
+        ],
+        [
+          -25.422,
+          92.659
+        ]
+      ],
+      "height_m": 10.5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "cable-rear-range",
+      "osm_way": "376047288",
+      "footprint": [
+        [
+          -21.596,
+          97.5
+        ],
+        [
+          -21.706,
+          105.404
+        ],
+        [
+          -49.362,
+          105.021
+        ],
+        [
+          -49.253,
+          97.118
+        ]
+      ],
+      "height_m": 7.5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "middle-yard-outbuilding",
+      "osm_way": "376047287",
+      "footprint": [
+        [
+          -22.686,
+          114.441
+        ],
+        [
+          -22.807,
+          121.174
+        ],
+        [
+          -29.061,
+          121.066
+        ],
+        [
+          -28.936,
+          114.329
+        ]
+      ],
+      "height_m": 3.5,
+      "height_uncertainty_m": 1.5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "west-middle-terrace",
+      "osm_way": "376047286",
+      "footprint": [
+        [
+          -39.557,
+          167.978
+        ],
+        [
+          -13.677,
+          174.193
+        ],
+        [
+          -10.256,
+          113.366
+        ],
+        [
+          -20.615,
+          113.641
+        ],
+        [
+          -21.201,
+          123.764
+        ],
+        [
+          -24.583,
+          123.567
+        ],
+        [
+          -25.141,
+          137.072
+        ],
+        [
+          -40.191,
+          137.334
+        ],
+        [
+          -49.244,
+          137.643
+        ],
+        [
+          -48.41,
+          151.944
+        ],
+        [
+          -37.631,
+          152.33
+        ],
+        [
+          -37.802,
+          146.335
+        ],
+        [
+          -34.76,
+          146.624
+        ],
+        [
+          -35.153,
+          157.622
+        ],
+        [
+          -22.623,
+          157.619
+        ],
+        [
+          -23.263,
+          161.42
+        ],
+        [
+          -31.978,
+          161.193
+        ],
+        [
+          -32.316,
+          165.982
+        ],
+        [
+          -39.258,
+          164.93
+        ]
+      ],
+      "height_m": 11.5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "east-amusement-block",
+      "osm_way": "375393549",
+      "footprint": [
+        [
+          46.297,
+          139.071
+        ],
+        [
+          46.35,
+          147.404
+        ],
+        [
+          9.739,
+          147.635
+        ],
+        [
+          9.481,
+          107.73
+        ],
+        [
+          12.487,
+          105.242
+        ],
+        [
+          45.581,
+          105.035
+        ],
+        [
+          45.618,
+          110.697
+        ],
+        [
+          42.298,
+          110.718
+        ],
+        [
+          42.332,
+          116.781
+        ],
+        [
+          32.746,
+          116.844
+        ],
+        [
+          32.877,
+          139.152
+        ]
+      ],
+      "height_m": 10.5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "promenade-apartments",
+      "osm_way": "30141910",
+      "footprint": [
+        [
+          -31.244,
+          239.568
+        ],
+        [
+          -22.444,
+          199.042
+        ],
+        [
+          -39.022,
+          195.444
+        ],
+        [
+          -44.23,
+          219.431
+        ],
+        [
+          -74.116,
+          212.936
+        ],
+        [
+          -77.715,
+          229.467
+        ]
+      ],
+      "height_m": 26,
+      "height_uncertainty_m": 4,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "east-upper-terrace-baths",
+      "osm_way": "375395556",
+      "footprint": [
+        [
+          18.935,
+          185.33
+        ],
+        [
+          12.162,
+          185.376
+        ],
+        [
+          12.484,
+          221.843
+        ],
+        [
+          13.795,
+          255.958
+        ],
+        [
+          47.066,
+          266.054
+        ],
+        [
+          47.565,
+          263.86
+        ],
+        [
+          50.039,
+          253.08
+        ],
+        [
+          47.42,
+          252.191
+        ],
+        [
+          54.343,
+          227.097
+        ],
+        [
+          28.014,
+          220.065
+        ],
+        [
+          27.996,
+          201.565
+        ],
+        [
+          21.135,
+          201.634
+        ],
+        [
+          20.958,
+          198.87
+        ],
+        [
+          20.881,
+          194.305
+        ],
+        [
+          19.136,
+          194.259
+        ]
+      ],
+      "height_m": 10.5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    },
+    {
+      "id": "funland",
+      "osm_way": "29090007",
+      "footprint": [
+        [
+          -41.083,
+          365.358
+        ],
+        [
+          -12.828,
+          373.402
+        ],
+        [
+          2.273,
+          316.297
+        ],
+        [
+          -25.848,
+          308.863
+        ],
+        [
+          -30.826,
+          327.18
+        ],
+        [
+          -33.705,
+          338.099
+        ]
+      ],
+      "height_m": 7,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
+      "replace_with": null
+    }
+  ],
+  "policy": "Google 3D multi-angle shape and aerial comparison govern interpretation. OSM is a seed, not authority. Flat tops are placeholder height bounds, not asserted flat roofs. Joined mapped ranges are not individual legal parcels.",
+  "replacement_rule": "Set replace_with to the published detailed asset ID and disable its volume in the same coordinated publication. Keep the geographic footprint ID for future boundary corrections."
+}

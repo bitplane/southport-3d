@@ -1,0 +1,68 @@
+{
+  "method": "Screen coordinate samples from Google Maps context menu; affine conversion within each flat local view. All imagery stays private. These calibrate comparison overlays, not a metric-height survey.",
+  "samples": {
+    "bath-north-plan.png": {
+      "pixels": [
+        [
+          800,
+          500
+        ],
+        [
+          1000,
+          500
+        ],
+        [
+          800,
+          700
+        ]
+      ],
+      "lat_lon": [
+        [
+          53.649901,
+          -3.005916
+        ],
+        [
+          53.649901,
+          -3.005647
+        ],
+        [
+          53.649742,
+          -3.005916
+        ]
+      ],
+      "approx_metres_per_pixel": 0.0885
+    },
+    "lower-plan.png": {
+      "pixels": [
+        [
+          800,
+          500
+        ],
+        [
+          1000,
+          500
+        ],
+        [
+          800,
+          700
+        ]
+      ],
+      "lat_lon": [
+        [
+          53.6493,
+          -3.005165
+        ],
+        [
+          53.6493,
+          -3.004629
+        ],
+        [
+          53.648982,
+          -3.005165
+        ]
+      ],
+      "approx_metres_per_pixel": 0.177
+    }
+  },
+  "height_method": "Coarse visual classes, not pixel-measured elevations: low service buildings 3.5 m; ordinary two/three-storey ranges including roof envelope 7.5\u201312 m; tall apartment block 26 m. Uncertainty stored per block. Flat placeholder top does not represent roof pitch."
+}

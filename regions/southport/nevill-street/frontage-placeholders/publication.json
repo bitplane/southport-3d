@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "Provisional footprint and height volumes \u2014 both street sides to Funland. Flat tops are bounds, not reconstructed roofs.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "east-lord-corner",
+      "name": "East Lord Corner \u2014 placeholder",
+      "collection": "east-lord-corner"
+    },
+    {
+      "id": "east-lord-return",
+      "name": "East Lord Return \u2014 placeholder",
+      "collection": "east-lord-return"
+    },
+    {
+      "id": "east-stanley-corner",
+      "name": "East Stanley Corner \u2014 placeholder",
+      "collection": "east-stanley-corner"
+    },
+    {
+      "id": "stanley-rear-range",
+      "name": "Stanley Rear Range \u2014 placeholder",
+      "collection": "stanley-rear-range"
+    },
+    {
+      "id": "west-lord-block",
+      "name": "West Lord Block \u2014 placeholder",
+      "collection": "west-lord-block"
+    },
+    {
+      "id": "lord-block-infill",
+      "name": "Lord Block Infill \u2014 placeholder",
+      "collection": "lord-block-infill"
+    },
+    {
+      "id": "west-cable-corner",
+      "name": "West Cable Corner \u2014 placeholder",
+      "collection": "west-cable-corner"
+    },
+    {
+      "id": "cable-rear-range",
+      "name": "Cable Rear Range \u2014 placeholder",
+      "collection": "cable-rear-range"
+    },
+    {
+      "id": "middle-yard-outbuilding",
+      "name": "Middle Yard Outbuilding \u2014 placeholder",
+      "collection": "middle-yard-outbuilding"
+    },
+    {
+      "id": "west-middle-terrace",
+      "name": "West Middle Terrace \u2014 placeholder",
+      "collection": "west-middle-terrace"
+    },
+    {
+      "id": "east-amusement-block",
+      "name": "East Amusement Block \u2014 placeholder",
+      "collection": "east-amusement-block"
+    },
+    {
+      "id": "promenade-apartments",
+      "name": "Promenade Apartments \u2014 placeholder",
+      "collection": "promenade-apartments"
+    },
+    {
+      "id": "east-upper-terrace-baths",
+      "name": "East Upper Terrace Baths \u2014 placeholder",
+      "collection": "east-upper-terrace-baths"
+    },
+    {
+      "id": "funland",
+      "name": "Funland \u2014 placeholder",
+      "collection": "funland"
+    }
+  ],
+  "views": [
+    {
+      "name": "Nevill block plan",
+      "position": [
+        0,
+        370,
+        -190
+      ],
+      "target": [
+        0,
+        0,
+        -190
+      ]
+    },
+    {
+      "name": "Nevill massing",
+      "position": [
+        200,
+        170,
+        -50
+      ],
+      "target": [
+        -10,
+        8,
+        -190
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      1,
+      1.6,
+      -60
+    ],
+    "target": [
+      1,
+      1.6,
+      -100
+    ]
+  },
+  "rules": [
+    {
+      "id": "placeholder-volumes",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already minimal untextured footprint prisms; no decorative detail to reduce."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Already fixed-budget untextured placeholders, fewer than 2000 triangles in total. Detailed replacements must author their own bounded baked District envelope."
+      }
+    }
+  ]
+}

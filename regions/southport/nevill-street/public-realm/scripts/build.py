@@ -9,6 +9,7 @@ from southport3d.geometry import Mesh
 from southport3d.planar import subtract,area,halfplane
 D=json.loads((ROOT/'research/layout.json').read_text())
 OSM=json.loads((ROOT/'research/route-osm.json').read_text())
+BLOCK_PLAN=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/D['block_plan']).read_text())
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene
@@ -245,6 +246,36 @@ for point,other in [(start,end),(end,start)]:
 # Visible upper give-way line, with no invented words or live signal state.
 for x in [-25+i*.8 for i in range(12)]:
     quad('upper give way dash',x,260.8,x+.35,260.9,'white',300,level(True))
+# Block-plan surfaces observed in the aerial/3D review. Public realm owns these
+# open spaces, independently of replaceable building placeholders.
+for region in D.get('block_ground_areas',[]):
+ surface(region['id'],region['polygon'],region['material'],8,level(region['material']=='asphalt'))
+# Tie the approximate old footway envelope to the nearest verified frontage.
+# Only street-facing edges are eligible; rear/party edges do not gain paving.
+footprints=[b['footprint'] for b in BLOCK_PLAN['blocks']]
+def street_intersections(y):
+ result=[]
+ for poly in footprints:
+  for a,b in zip(poly,poly[1:]+poly[:1]):
+   if min(a[1],b[1])<=y<max(a[1],b[1]):
+    t=(y-a[1])/(b[1]-a[1]);result.append(a[0]+t*(b[0]-a[0]))
+ return result
+for poly in footprints:
+ for a,b in zip(poly,poly[1:]+poly[:1]):
+  y=(a[1]+b[1])/2;x=(a[0]+b[0])/2
+  if not 45<y<260 or abs(a[1]-b[1])<.1:continue
+  centre=station(min(y,248.07))[0];side=1 if x>centre else -1
+  ahead=[v for v in street_intersections(y) if (v-centre)*side>0]
+  if not ahead or abs(x-(min(ahead) if side>0 else max(ahead)))>.01:continue
+  surface('frontage tie-in',[a,b,(b[0]-side*2.1,b[1]),(a[0]-side*2.1,a[1])],'paving',5)
+# Triangulated footprints clip every surface once, including the old broad
+# apron. Footprints are ground outlines; do not trim to roof overhangs.
+building_cutters=[]
+for poly in footprints:
+ v=[Vector((x,y,0)) for x,y in poly]
+ for tri in tessellate_polygon([v]):
+  building_cutters.append(ccw([poly[k] if isinstance(k,int) else (k.x,k.y) for k in tri]))
+
 # Compile mutually exclusive horizontal surfaces. Paint cuts the road rather
 # than hovering on nearly coplanar faces, preserving distant-view stability.
 rows.sort(key=lambda row:row[3])
@@ -264,6 +295,9 @@ for index,(name,poly,mat,priority,zfun) in enumerate(rows):
   fragments=[piece for fragment in fragments for piece in subtract(fragment,ccw(cutter))]
   if not fragments:
       break
+ for cutter in building_cutters:
+  fragments=[piece for fragment in fragments for piece in subtract(fragment,cutter)]
+  if not fragments:break
  for fragment in fragments:
   for part,ya,yb in zip(parts,bounds,bounds[1:]):
    p=halfplane(fragment,(-1000,ya),(1000,ya),True)

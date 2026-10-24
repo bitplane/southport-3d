@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.frontage-placeholders",
+  "name": "Nevill Street \u2014 provisional blocks on both sides to Funland",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "provisional-block-plan",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "east-lord-corner",
+    "east-lord-return",
+    "east-stanley-corner",
+    "stanley-rear-range",
+    "west-lord-block",
+    "lord-block-infill",
+    "west-cable-corner",
+    "cable-rear-range",
+    "middle-yard-outbuilding",
+    "west-middle-terrace",
+    "east-amusement-block",
+    "promenade-apartments",
+    "east-upper-terrace-baths",
+    "funland"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "build_inputs": {
+    "validate": [
+      "regions/southport/nevill-street/public-realm/research/layout.json"
+    ]
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Google 3D/aerial checked block-plan footprints and coarse height bounds. No facade, roof-form or tenant reconstruction. Ground remains owned by Nevill public realm.",
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only."
+}

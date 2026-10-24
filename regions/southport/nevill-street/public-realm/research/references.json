@@ -68,12 +68,24 @@
       "observations": [
         "Middle Nevill view toward monument shows buff slabs, thin red kerbside bands, broad asphalt with a yellow bus bay and opposite white parking bay. Widths and bay extents estimated; furniture excluded."
       ]
+    },
+    {
+      "id": "block-plan-review",
+      "url": "https://www.google.com/maps/@53.649901,-3.006023,20z/data=!3m1!1e3",
+      "author": "Google Maps imagery providers shown in page",
+      "reviewed": "2026-10-24",
+      "observations": [
+        "Four Google 3D headings plus lower, Bath and upper aerial plans inspected; see adjacent frontage-placeholders research records for measurement inputs.",
+        "Bath Street arcade parking and northern outdoor forecourt remain open; mapped apartment service entrance connects to observed L-shaped yard.",
+        "New ground surfaces have estimated outer boundaries and retain the existing estimated grade; all building footprints are excluded."
+      ]
     }
   ],
   "limitations": [
     "No downloaded reference images embedded or committed.",
     "Widths, crossfalls, tactile dimensions and longitudinal height profile are estimates.",
     "No street furniture, carousel, Funland building, promenade beyond bounded crossing area or regional landscape in this pass.",
-    "White/yellow paint, pavement colour and kerb families are dated interpretations, not verified current traffic-regulation plans."
+    "White/yellow paint, pavement colour and kerb families are dated interpretations, not verified current traffic-regulation plans.",
+    "Block-plan paving and yard additions reviewed 2026-10-24 remain provisional; no current traffic-regulation or survey claim."
   ]
 }

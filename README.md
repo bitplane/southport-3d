@@ -6,7 +6,7 @@ The memorial asset contains the obelisk, two colonnades and clustered lamps. A s
 
 The [Lord Street church gardens](docs/LORD-STREET-GARDENS.md) add Christ Church’s lawns, walls and approaches and the St George’s hedge garden, with road/pavement joins coordinated across neighbouring assets. [Christ Church](docs/CHRIST-CHURCH.md) and [St George’s Church](docs/ST-GEORGES-CHURCH.md) now add their researched exterior architecture, including the modern annexes and rear hall.
 
-The [Nevill Street corridor](docs/NEVILL-STREET.md) continues the roads and pavements from the monument to the Promenade crossing and Funland frontage, with mapped registration and estimated widths and levels. The [Marine Parade junction extension](docs/MARINE-PARADE-JUNCTION.md) continues northeast along the Promenade through the next junction, with crossing refuges informed by July 2026 Street View.
+The [Nevill Street corridor](docs/NEVILL-STREET.md) continues the roads and pavements from the monument to the Promenade crossing and Funland frontage, with mapped registration and estimated widths and levels. The [Nevill block plan](docs/NEVILL-BLOCK-PLAN.md) adds provisional footprint/height volumes on both street sides to Funland, with checked open forecourts and rear access. The [Marine Parade junction extension](docs/MARINE-PARADE-JUNCTION.md) continues northeast along the Promenade through the next junction, with crossing refuges informed by July 2026 Street View.
 
 The [NatWest bank at 130 Lord Street](docs/NATWEST.md) adds the opposite corner: sandstone street elevations, Dutch gables, pierced parapets and intersecting slate roofs.
 

@@ -69,3 +69,18 @@ for ob in meshes:
 assert paint_samples>0
 report={'minimum_triangle_area_m2':minimum_triangle_area,'joined_edge_junctions':conform['inserted_edge_junctions'],'paint_triangle_samples':paint_samples,'ground_parts':len(publication['parts']),'objects':len(meshes),'triangles':sum(len(o.data.loop_triangles) for o in meshes),'checks':'finite meshes, UVs, packed authored maps, no ownership overlap south of seam, square road elevation, continuous route and three part seams','uncertainty':'Mapped registration with estimated widths and grade; checks establish geometric continuity, not survey accuracy.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2));print(report)
+
+# The block plan keeps open spaces navigable and excludes floor below volumes.
+for x,y in [(23,154),(18,177),(12,185.2),(-45,201),(-60,205),(-40,44),(25,43),(11.5,210)]:sample(x,y)
+from mathutils.geometry import tessellate_polygon
+plan=json.loads((Path(__import__('os').environ['SOUTHPORT_REPO_ROOT'])/D['block_plan']).read_text())
+excluded_samples=0
+for block in plan['blocks']:
+ poly=block['footprint'];v=[Vector((x,y,0)) for x,y in poly]
+ for tri in tessellate_polygon([v]):
+  pts=[v[i] if isinstance(i,int) else i for i in tri];p=sum(pts,Vector())/3
+  if not 41<p.y<316:continue
+  hit,*_=bpy.context.scene.ray_cast(deps,Vector((p.x,p.y,40)),Vector((0,0,-1)),distance=80)
+  assert not hit,(block['id'],tuple(p),'ground intrudes into building footprint')
+  excluded_samples+=1
+print('Open forecourts/yard covered; building footprint samples excluded:',excluded_samples)

@@ -1,0 +1,37 @@
+{
+  "reviewed": "2026-10-24",
+  "sources": [
+    {
+      "id": "google-3d-orbit",
+      "urls": [
+        "https://www.google.com/maps/@53.6468503,-3.007,433a,35y,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.65005,-3.001602,433a,35y,270h,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6532496,-3.0070006,433a,35y,180h,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.65005,-3.0123992,433a,35y,90h,39.37t/data=!3m1!1e3"
+      ],
+      "observed": "Photogrammetric buildings actually rendered using NVIDIA GPU browser. Four headings inspected: joined lower terraces, irregular rear wings/courtyards, two middle amusement blocks, tall L-shaped apartments and low Funland hall. Dates of source captures not established. Distorted fine edges are not tracing authority."
+    },
+    {
+      "id": "google-plan-comparison",
+      "urls": [
+        "https://www.google.com/maps/@53.6493,-3.00538,19z/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.649901,-3.006023,20z/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6505,-3.0075,19z/data=!3m1!1e3"
+      ],
+      "observed": "Lower and Bath Street mapped outlines overlaid on the actual aerial using coordinate samples. Main exterior extents agree at block-plan precision. Apparent unmapped gaps beside Bath Street are parking and cafe forecourt, not missing buildings. Upper plan and four obliques establish the apartment yard and Funland separation across Promenade. Exact subdivision and eaves overhangs deferred."
+    },
+    {
+      "id": "osm-seed",
+      "url": "https://www.openstreetmap.org/copyright",
+      "observed": "Selected attributed outlines retained for reproducible metric controls; names/occupancies are not accepted as current without photographic support."
+    }
+  ],
+  "private_captures": "../references/nevill-block/; imagery and browser profiles are not source assets or published textures",
+  "limitations": [
+    "No facade or roof-detail reconstruction in this pass.",
+    "Height bounds estimated from broad storey/roof proportions in 3D; typical uncertainty 2\u20134 m.",
+    "Google photogrammetry can distort rooflines, vegetation and wall bases.",
+    "Boundary offsets roughly 1\u20132 m remain possible; not cadastral or engineering survey.",
+    "Side/rear elevations have block-scale oblique coverage, not close Street View research. Detailed replacements require that additional evidence."
+  ]
+}

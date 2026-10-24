@@ -123,3 +123,15 @@ Validation measures each constructed marking centreline against its receiving
 kerb segment, then independently checks exported yellow-triangle interiors
 against all finite side-road mouths. These checks establish geometric placement,
 not the current legal extent of parking restrictions.
+
+## Nevill block-plan integration
+
+The [Nevill block plan](NEVILL-BLOCK-PLAN.md) adds independently replaceable,
+neutral building volumes on both street sides and at Funland. Its Google 3D/aerial
+review preserves the open Bath Street forecourts and apartment service yard.
+This public-realm asset references that canonical footprint plan as an explicit
+build dependency. Frontage strips meet those edges, and all horizontal surfaces
+are clipped out of building footprints. Bath Street parking/forecourt surfaces,
+the apartment yard and the lower Lord Street return approaches are bounded
+additions; heights and exact outer limits remain provisional. The historic road
+centreline/kerb/paint interpretation is retained, not claimed as a current survey.
