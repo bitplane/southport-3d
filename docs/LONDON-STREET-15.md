@@ -61,3 +61,22 @@ windows including nine attic aperture probes, shop arch edges closed under front
 clearance from NatWest, William Hill and the remaining placeholders, and an alley
 kept clear below the eaves with a ray reaching its rear closure. `--stage render`
 produces front, overview, alley, roof and shop views.
+
+## Fixed-budget District envelope
+
+The independent District mesh keeps the two canted upper bays, deep north
+porch, measured symmetric street roof with skew rear hip, short entrance lean-to,
+stepped rear ranges and open alley. Fine timbering, leadwork, lettering and small
+rooflights become atlas appearance; there is no invented chimney or central ridge
+on the entrance roof. Atlases are 512×256 architecture, 128×128 roof and 256×128
+shopfront/rear. The source measurements and their uncertainties remain unchanged.
+
+This replaces the historical per-feature District policies described above.
+Detail and Walk retain their recipes. The owner handles visual acceptance;
+automated geometry, projection, atlas and publication checks remain required.
+
+Checked District export: **164 triangles, 212,996 bytes including textures
+and 3,427,880 bytes estimated GPU memory**, down from 6,090 triangles,
+980,964 bytes and 5,474,074 GPU bytes. Receiver overlap and sampled
+projection checks pass, as do actual bake coverage, normals and export budgets.
+Visual acceptance remains with the owner.

@@ -81,3 +81,22 @@ The middle and low rear decks now terminate inside the brick wall thickness.
 Their exposed vertical edges previously shared the rear wall plane, causing
 flickering pale stripes in the saved Glebe Place views. Geometry checks keep
 both slab ends at least 170 mm inside their owning masonry face.
+
+## Fixed-budget District envelope
+
+The independent District mesh keeps the tall six-bay frontage, Glebe return,
+recessed upper side wall, sloping front roof and two lower deck heights. The
+entrance remains recessed with real returns and a soffit; glazing bars, signs,
+brick detail and small side services become baked appearance or are omitted.
+Atlases are 256×256 architecture and 256×128 roof/shopfront/rear. Registration
+uses the same 0.02418-radian rotation as the detailed source.
+
+This replaces the historical per-feature District policies described above.
+Detail and Walk retain their recipes. The owner handles visual acceptance;
+automated geometry, projection, atlas and publication checks remain required.
+
+Checked District export: **52 triangles, 176,976 bytes including textures
+and 2,627,144 bytes estimated GPU memory**, down from 1,688 triangles,
+664,840 bytes and 5,057,707 GPU bytes. Receiver overlap and sampled
+projection checks pass, as do actual bake coverage, normals and export budgets.
+Visual acceptance remains with the owner.

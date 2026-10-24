@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -129,8 +129,8 @@
         "reason": "Retain authored walls with real window and arch apertures, the jetty and oriel steps, both roof silhouettes, the open side alley and the simple rear range."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "The jettied, stepped front, street gable, arched openings and alley gap are the building's distant identity; these envelopes are already simple boxes and prisms."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     },
     {
@@ -141,8 +141,8 @@
         "reason": "Black-and-white framing is the defining architecture; keep its physical relief for walking inspection."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Keep the single king-post gable, braces and stepped oriel framing as geometry; these carry the building identity across non-planar faces."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     },
     {
@@ -153,13 +153,8 @@
         "reason": "Keep mullions, transoms and leaded cames as geometry near walking distance."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Bake leaded lights to shallow receivers while the wall openings stay physical.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     },
     {
@@ -171,8 +166,64 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit thin ironwork, small scroll and spandrel carvings, scalloped brackets, historical shop lettering and fittings at district scale."
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve researched footprint, roof silhouette, entrances and rear height changes; project fine facade appearance into shared fixed-size atlases.",
+    "max_bytes": 1000000,
+    "max_gpu_bytes": 4000000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture",
+          "roof",
+          "rear"
+        ]
+      },
+      "shopfront": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "shopfront",
+          "architecture"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture",
+          "rear"
+        ]
+      }
+    }
+  }
 }

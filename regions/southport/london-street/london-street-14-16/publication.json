@@ -116,8 +116,8 @@
         "reason": "Keep coarse stepped envelope, tall blank parapet and recessed shop entry; inexpensive physical silhouette."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Keep low-cost envelope and roof steps rather than flattening the distinctive tall front into a box."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     },
     {
@@ -133,13 +133,8 @@
         "max_sampled_error_m": 0.4
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Bake hand-authored Betfred lettering onto fascia panels to retain shop identity at reduced geometry.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     },
     {
@@ -151,7 +146,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit tiny hardware, satellite dishes and fine granite joints below useful screen size."
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     },
     {
@@ -162,17 +157,8 @@
         "reason": "Retain thin frames and real apertures at pedestrian distance."
       },
       "district": {
-        "strategy": "generator",
-        "reason": "Bake frame and glazing onto a stepped silhouette matching the projecting sill; avoid opaque bounding-panel corners outside the actual window.",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4,
-        "generator": "components:window_receiver",
-        "settings": {
-          "width": 1.18,
-          "height": 1.8
-        }
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     },
     {
@@ -183,18 +169,65 @@
         "reason": "Retain thin frames and real apertures at pedestrian distance."
       },
       "district": {
-        "strategy": "generator",
-        "reason": "Bake frame and glazing onto a stepped silhouette matching the projecting sill; avoid opaque bounding-panel corners outside the actual window.",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4,
-        "generator": "components:window_receiver",
-        "settings": {
-          "width": 0.96,
-          "height": 0.7
-        }
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve researched footprint, roof silhouette, entrances and rear height changes; project fine facade appearance into shared fixed-size atlases.",
+    "max_bytes": 1000000,
+    "max_gpu_bytes": 3300000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture",
+          "roof",
+          "rear"
+        ]
+      },
+      "shopfront": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "shopfront",
+          "architecture"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture",
+          "rear"
+        ]
+      }
+    }
+  }
 }
