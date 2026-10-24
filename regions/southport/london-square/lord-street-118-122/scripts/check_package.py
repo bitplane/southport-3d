@@ -15,8 +15,24 @@ def check(package,recipe):
             if coverage<.95:
                 raise ValueError(f"{row['source_object']} {channel}: {coverage:.1%} coverage; inspect projection cage")
         checked+=1
-    if not checked:raise ValueError('No window bake checks found')
-    print(f'Window bake coverage passed for {checked} prototypes')
+    if 'district_envelope' in spec:
+        import math
+        parts=report.get('envelope',{}).get('parts',{})
+        if set(parts)!=set(spec['district_envelope']['parts']):
+            raise ValueError('Missing District envelope appearance checks')
+        for name,part in parts.items():
+            checks=part['bake_checks']
+            for channel in ('base-color','normal','roughness'):
+                coverage=checks[channel]['receiver_coverage']
+                if not math.isfinite(coverage) or coverage<.97:
+                    raise ValueError(f'{name} {channel}: missed envelope projection')
+            for key in ('raw_invalid_normal_fraction','invalid_normal_fraction'):
+                invalid=checks['normal'][key]
+                if not math.isfinite(invalid) or invalid>.01:
+                    raise ValueError(f'{name}: invalid envelope normals')
+            checked+=1
+    if not checked:raise ValueError('No window/envelope bake checks found')
+    print(f'Window/envelope bake coverage passed for {checked} receivers')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--package',type=Path,required=True);parser.add_argument('--recipe',type=Path,required=True);args=parser.parse_args();check(args.package,args.recipe)

@@ -243,6 +243,11 @@ Practical lessons from the rollout:
   make Walk use more memory than Detail even while its triangle count falls.
   Retain inexpensive glyph geometry or use a bounded shared atlas when separate
   textures cost more than the geometry they replace.
+- Migrate asset-specific appearance guards when replacing per-feature bakes.
+  Require complete envelope map coverage/normal checks instead of obsolete
+  per-window prototypes. Declare each `publication_checks` script under
+  `build_inputs.validate` as well, so a guard change refreshes the isolated
+  runtime script even when the master and package are reused.
 - Source snapshots must stay fixed throughout packaging. Coordinate shared-tool
   edits between active bakes; an otherwise successful bake is rejected if its
   inputs change. Failed packages leave the previous published catalog intact.

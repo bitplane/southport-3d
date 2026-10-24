@@ -60,3 +60,23 @@ def test_envelope_budget_rejects_texture_floor_before_baking():
     # This is only a necessary lower bound. Export still checks actual buffers.
     spec['district_envelope']['max_gpu_bytes']=floor+1
     validate_publication(spec)
+
+
+def test_terrace_envelope_guard_checks_coverage_and_normals(tmp_path):
+    import copy
+    import pytest
+    script=ROOT/'regions/southport/london-square/lord-street-118-122/scripts/check_package.py'
+    loader=importlib.util.spec_from_file_location('terrace_appearance_check',script)
+    module=importlib.util.module_from_spec(loader);loader.loader.exec_module(module)
+    recipe=tmp_path/'recipe.json';recipe.write_text(json.dumps({'district_envelope':{'parts':{'architecture':{}}}}))
+    checks={channel:{'receiver_coverage':1.0} for channel in ('base-color','normal','roughness')}
+    checks['normal'].update(raw_invalid_normal_fraction=0.0,invalid_normal_fraction=0.0)
+    report={'prototypes':[],'envelope':{'parts':{'architecture':{'bake_checks':checks}}}}
+    assembly=tmp_path/'assembly.json';assembly.write_text(json.dumps(report))
+    module.check(tmp_path,recipe)
+    for channel,key,value in [('base-color','receiver_coverage',.5),('normal','raw_invalid_normal_fraction',.1),('normal','invalid_normal_fraction',float('nan'))]:
+        broken=copy.deepcopy(report);broken['envelope']['parts']['architecture']['bake_checks'][channel][key]=value
+        assembly.write_text(json.dumps(broken))
+        with pytest.raises(ValueError):module.check(tmp_path,recipe)
+    report['envelope']['parts']={};assembly.write_text(json.dumps(report))
+    with pytest.raises(ValueError,match='Missing District'):module.check(tmp_path,recipe)

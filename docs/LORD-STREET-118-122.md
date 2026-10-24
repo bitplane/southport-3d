@@ -59,12 +59,11 @@ front, oblique terrace and roof views.
 
 ## LOD and validation
 
-Three parts separate architecture, roof and shopfront. Their inexpensive walls,
-openings, parapets, glazing frames and awning profiles remain at all levels.
-Walk replaces sign glyphs with baked panels. District also replaces six repeated
-upper windows with one shared baked prototype and omits handles, hinges, glazing beads, awning arms, ATM controls and festoon bulbs.
-The colour patches, door recesses, window divisions and coarse ATM remain;
-these define the frontage even when the fine fittings are subpixel. Texture caps are 512 for Walk and 256 for District. No global decimation.
+Three parts separate architecture, roof and shopfront. Detail retains the full
+architectural source; Walk retains its existing feature policies and baked signs.
+District uses the independent envelope described below, with major recesses and
+the awning kept geometric and fine features carried by shared atlases. Historical
+District measurements and review notes below refer to the previous recipe.
 
 Measured after the second exterior audit, including all three streaming parts:
 
@@ -150,3 +149,22 @@ bins, parked vehicles, tiny warning text and hidden interiors are omitted.
 Simple wall, window, door and stair solids remain at all LoDs; fine rails,
 pipework and fan faces follow the existing Fine-detail rule. Brickwork uses
 an authored metric repeating map; none of the reference pixels is distributed.
+
+## Fixed-budget District envelope
+
+The independent District mesh preserves the panelled upper frontage, parapet,
+stepped service annex, three recessed shop doors and Mamma Mia awning. Its two
+escape stairs have a fixed 19 treads each; fine rails, projecting shop signs and
+small service fittings are omitted. No deep door soffit is invented where the
+source has an open transom assembly. Windows, sign lettering and brick/panel
+appearance use shared 512×256 architecture/shopfront and 256×256 roof atlases.
+The recipe retains the researched dimensions and their uncertainty. The owner
+handles visual acceptance following automated geometry/bake/budget checks.
+
+Checked District export: **596 triangles, 255,340 bytes including textures and
+5,303,691 bytes estimated GPU memory**, down from 5,212 triangles, 1,020,948
+bytes and 9,254,868 GPU bytes. Receiver overlap scan passes; actual architecture
+and shopfront coverage exceeds 99.8%, with valid normal maps and export budgets.
+The appearance guard now accepts checked whole-part envelope maps and remains
+a declared validation dependency on cached publications. Visual acceptance is
+left to the owner.

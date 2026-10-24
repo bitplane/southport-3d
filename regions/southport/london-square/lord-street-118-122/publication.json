@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -150,8 +150,8 @@
         "reason": "Inexpensive panel walls, door recesses, roof parapet and awning silhouettes retain street scale."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Retain small authored envelope and distinctly coloured frontage; no global decimation."
+        "strategy": "omit",
+        "reason": "Independent whole-part envelope supersedes detailed per-feature District geometry."
       }
     },
     {
@@ -162,13 +162,8 @@
         "reason": "Small repeated dark window frames retain recess parallax."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Bake six narrow window frames onto shared panels; retain independent wall openings.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.35
+        "strategy": "omit",
+        "reason": "Independent whole-part envelope supersedes detailed per-feature District geometry."
       }
     },
     {
@@ -184,13 +179,8 @@
         "max_sampled_error_m": 0.35
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Retain frontage identity with lower resolution sign textures.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.35
+        "strategy": "omit",
+        "reason": "Independent whole-part envelope supersedes detailed per-feature District geometry."
       }
     },
     {
@@ -202,8 +192,51 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit subpixel joinery beads, hinges, controls and bulbs; coarse doors, sign receivers and ATM envelope remain."
+        "reason": "Independent whole-part envelope supersedes detailed per-feature District geometry."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve the stepped rear annex, parapet, three inset entrances, restaurant awning and fixed coarse escapes; bake windows, panels and lettering.",
+    "max_bytes": 1200000,
+    "max_gpu_bytes": 6000000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 600,
+        "cage_m": 0.5,
+        "source_parts": [
+          "architecture"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 150,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture",
+          "roof"
+        ]
+      },
+      "shopfront": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 150,
+        "cage_m": 0.65,
+        "source_parts": [
+          "shopfront",
+          "architecture"
+        ]
+      }
+    }
+  }
 }

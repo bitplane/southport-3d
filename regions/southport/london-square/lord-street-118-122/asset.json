@@ -32,5 +32,10 @@
   "scope": "Exterior terrace adjoining Prezzo towards Christ Church; 2026 Bugle Tap frontage with Sam Thai and Mamma Mia reference signs. Rear and metric dimensions estimated, no interiors.",
   "publication_checks": [
     "check_package.py"
-  ]
+  ],
+  "build_inputs": {
+    "validate": [
+      "regions/southport/london-square/lord-street-118-122/scripts/check_package.py"
+    ]
+  }
 }
