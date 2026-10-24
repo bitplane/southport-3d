@@ -163,3 +163,44 @@ for source in meshes:
  assert not [hit for hit in overlaps(boundary_tri,boundary_labels,min_area=1e-5) if hit[0]!=hit[1]],source.name
 assert transom_probes==90
 print('90 clear bay transoms; lead crossings and exposed arch faces have no overlap')
+
+# Walkable entrance route: two risers and a continuous landing, not three
+# isolated stair boxes separated from the recessed door by an empty floor.
+ox,oy=d['origin_site_xy'];nx,ny=d['north_basis'];base=d['base_z']
+def registered_point(x,y,z):
+ return Vector((ox+math.cos(angle)*x+nx*y,oy+math.sin(angle)*x+ny*y,base+z))
+portal_probes=0
+for x in d['flat_centres']:
+ for y,z in ((.525,.01),(.20,.15),(-.40,.15),(-1.0,.15),(-1.20,.18)):
+  hit,p,n,i,target,mat=bpy.context.scene.ray_cast(dep,registered_point(x,y,1),Vector((0,0,-1)),distance=1.1)
+  assert hit and target.name.startswith('Portal '),('Missing entrance floor',x,y,target.name if hit else None)
+  assert abs(p.z-base-z)<1e-4,('Wrong entrance level',x,y,p.z-base,z)
+  portal_probes+=1
+site=Matrix(((math.cos(angle),nx,0,ox),(math.sin(angle),ny,0,oy),(0,0,1,base),(0,0,0,1)))
+local=lambda ob:[site.inverted()@ob.matrix_world@v.co for v in ob.data.vertices]
+number=bpy.data.objects['Lettering entrance 140']
+rails=[o for o in meshes if o.name.startswith('Door recessed horizontal rail')]
+assert min(v.y for v in local(number))>max(v.y for o in rails for v in local(o))+.02,'140 still behind door rail'
+for ob in meshes:
+ if ob.name.startswith('Door recessed timber'):
+  assert abs(min(v.z for v in local(ob))-.15)<1e-4,'Door bottom does not meet landing'
+print('Entrance landing/threshold probes passed:',portal_probes,'and 140 clear of rail')
+
+# Numeral faces must be visible through the portal, not merely in front of a rail.
+outward=Vector((-math.sin(angle),math.cos(angle),0));number_probes=0
+for face in number.data.polygons:
+ normal=(number.matrix_world.to_3x3().inverted().transposed()@face.normal).normalized()
+ if normal.dot(outward)<.9:continue
+ point=number.matrix_world@face.center
+ hit,p,n,i,target,mat=bpy.context.scene.ray_cast(dep,point+outward*3,-outward,distance=3.1)
+ assert hit and target==number,('Obscured140',target.name if hit else None)
+ number_probes+=1
+ if number_probes==5:break
+assert number_probes==5
+print('140 numeral faces unobscured from outside')
+
+# The arched door head must close the recess above the rectangular frame.
+for x in (6.15,18.775,31.4):
+ hit,p,n,i,target,mat=bpy.context.scene.ray_cast(dep,registered_point(x,2,2.91),-outward,distance=4)
+ assert hit and target.name.startswith('Door recessed timber'),('Open arched door head',x,target.name if hit else None)
+print('All three arched door heads are closed')

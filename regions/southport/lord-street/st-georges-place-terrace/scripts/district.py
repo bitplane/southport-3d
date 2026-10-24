@@ -18,13 +18,13 @@ def surfaces(asset):
             front('door left '+str(i),l,door-1.35,0,0,11)
             front('door right '+str(i),door+1.35,h,0,0,11)
             front('door head '+str(i),door-1.35,door+1.35,0,3.08,11)
-            front('recessed door '+str(i),door-1.35,door+1.35,-1.18,.12,3.08)
+            front('recessed door '+str(i),door-1.35,door+1.35,-1.18,.15,3.08)
             s.quad('portal left '+str(i),[(door-1.35,0,.12),(door-1.35,-1.18,.12),(door-1.35,-1.18,3.08),(door-1.35,0,3.08)])
             s.quad('portal right '+str(i),[(door+1.35,-1.18,.12),(door+1.35,0,.12),(door+1.35,0,3.08),(door+1.35,-1.18,3.08)])
             s.quad('portal soffit '+str(i),[(door-1.35,0,3.08),(door+1.35,0,3.08),(door+1.35,-1.18,3.08),(door-1.35,-1.18,3.08)])
-            # Match current source steps; a separate snag will correct Detail and
-            # then update these shared large access dimensions together.
-            for k in range(3):s.box(f'portal step {i} {k}',(door-1.35,.73-k*.28,0),(door+1.35,1.01-k*.28,.10+k*.13),omit=('bottom','rear'))
+            # Same two risers and continuous recessed landing as Detail.
+            s.box('portal lower step '+str(i),(door-1.35,.35,-.30),(door+1.35,.70,.01),omit=('bottom','rear'))
+            s.box('portal landing '+str(i),(door-1.35,-1.35,-.30),(door+1.35,.35,.15),omit=('bottom',))
     front('upper main wall',0,w,0,11,e)
     for i,x in enumerate(bays):
         path=[(x-1.725,0),(x-1.23,1.08),(x+1.23,1.08),(x+1.725,0)]

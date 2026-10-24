@@ -36,7 +36,13 @@ def finish(m,part='frontage',mats=None,frame=None,authored_winding=False):
  for f in ob.data.polygons:
   axes=sorted(sorted(range(3),key=lambda i:abs(f.normal[i]))[:2])
   for li in f.loop_indices:
-   p=ob.data.vertices[ob.data.loops[li].vertex_index].co;uv.data[li].uv=(p[axes[0]]/2.95,p[axes[1]]/1.92)
+   p=ob.data.vertices[ob.data.loops[li].vertex_index].co
+   if m.name.startswith('Portal deep brick jamb'):
+    # Jamb meshes are authored in facade XY: Y is height, Z is recess.
+    # Sorting local axes on the side face incorrectly made depth vertical.
+    u,v=(p.z,p.y) if abs(f.normal.x)>.5 else ((p.x,p.z) if abs(f.normal.y)>.5 else (p.x,p.y))
+    uv.data[li].uv=(u/2.95,v/1.92)
+   else:uv.data[li].uv=(p[axes[0]]/2.95,p[axes[1]]/1.92)
  ob.matrix_world=world@(frame or Matrix.Identity(4));return ob
 
 box_prototypes={}
@@ -225,27 +231,40 @@ for x0,x1 in ((BAYS[1],BAYS[2]),(BAYS[3],BAYS[4])):
  # Square date hopper and cast downpipe, unreadable date not fabricated.
  box('Fitting square hopper',(mid,.16,10.5),(.27,.28,.34),material=black)
  box('Fitting square rainwater pipe',(mid,.11,5.4),(.09,.12,10.5),material=black)
-# Recessed shared entrance portals with three steps and visible inner doors.
+# Two shallow projecting risers lead to a recessed landing (August 2024).
 for i,x in enumerate(FLATS):
  af=ff@Matrix.Translation((W-x,0,0))
- # Curved brick outer opening is already cut from facade; deep jambs now line it.
  finish(ring('Portal brick rounded reveal',2.7,.12,3.08,.65,.18,.03),mats=[brick],frame=af)
- for sign in (-1,1):box('Portal deep brick jamb',(sign*1.33,1.55,-.62),(.16,3.0,1.24),frame=af)
- box('Portal pale soffit',(0,2.93,-.62),(2.5,.18,1.24),material=white,frame=af)
- box('Door recessed timber',(0,1.53,-1.28),(2.47,2.82,.14),material=blue if i==1 else black,frame=af)
- for dx in (-.61,.61):box('Door inset glazing',(dx,1.76,-1.18),(.96,1.7,.04),material=glass,frame=af)
- for z in (.42,2.71):box('Door recessed horizontal rail',(0,z,-1.13),(2.44,.10,.1),material=white,frame=af)
- box('Door centre stile',(0,1.54,-1.12),(.14,2.85,.12),material=white,frame=af)
- for k in range(3):box('Portal entrance step',(x,.88-k*.28,.05+k*.065),(2.7,.30,.10+k*.13),material=stone)
- # No interior rooms, only externally visible threshold finish and door numerals.
- if i==2:label('Lettering entrance 140','140',(x,-1.10,2.73),(0,1,0),.24,.65,gold)
+ for sign in (-1,1):box('Portal deep brick jamb',(sign*1.33,1.22,-.62),(.16,2.34,1.24),frame=af)
+ # Continuous curved lining replaces the flat slab and tall jamb corners which
+ # projected through the arch as small triangular fins in the snag images.
+ inside=roundtop(2.5,.15,2.94,.55)[2:]
+ outside=roundtop(2.82,.15,3.10,.71)[2:]
+ n=len(inside);m=Mesh('Portal curved soffit');faces=[]
+ for j in range(n-1):
+  k=j+1
+  faces.extend([(j,k,n+k,n+j),(2*n+j,3*n+j,3*n+k,2*n+k),
+                (j,2*n+j,2*n+k,k),(n+j,n+k,3*n+k,3*n+j)])
+ faces.extend([(0,n,3*n,2*n),(n-1,3*n-1,4*n-1,2*n-1)])
+ m.add([(u,z,depth) for depth in (-1.24,-.01) for loop in (inside,outside) for u,z in loop],faces)
+ finish(m,mats=[white],frame=af)
+ m=Mesh('Door recessed timber');m.outline(roundtop(2.5,.15,2.94,.55),-1.35,-1.21)
+ finish(m,mats=[blue if i==1 else black],frame=af)
+ for dx in (-.61,.61):box('Door inset glazing',(dx,1.65,-1.18),(.96,1.85,.04),material=glass,frame=af)
+ for z in (.64,2.65):box('Door recessed horizontal rail',(0,z,-1.13),(2.40,.10,.10),material=white,frame=af)
+ for dx in (-1.20,0,1.20):box('Door recessed upright',(dx,1.515,-1.12),(.10,2.73,.12),material=white,frame=af)
+ box('Portal lower entrance step',(x,.525,-.145),(2.7,.35,.31),material=stone)
+ box('Portal recessed landing',(x,-.50,-.075),(2.7,1.70,.45),material=stone)
+ # The door meets the landing at .15m, with a fine projecting threshold.
+ box('Portal door threshold',(x,-1.20,.165),(2.50,.18,.03),material=stone)
+ if i==2:label('Lettering entrance 140','140',(x,-1.045,2.73),(0,1,0),.24,.65,gold)
 # Continuous carved fascia zone in black and ivory.
 fascia_before=set(C['frontage'].objects)
 for a,b in ((0,12.5),(12.5,25),(25,W)):
  box('Sign ivory fascia',((a+b)/2,1.14,3.43),(b-a,.20,.43),material=white)
 for z in (3.18,3.69):box('Sign black fascia rail',(W/2,1.18,z),(W+.15,.31,.11),material=black)
 for i in range(90):box('Ornament fascia dentil',(.15+i*(W-.3)/89,1.22,3.76),(.15,.25,.10),material=black)
-for x in [0]+FLATS+[W]:
+for x in [0,W]+[side for x in FLATS for side in (x-1.55,x+1.55)]:
  m=Mesh('Ornament fascia bracket');m.outline([(-.15,2.82),(.15,2.82),(.33,3.22),(-.33,3.22)],0,.46);finish(m,mats=[black],frame=face_matrix((x,.65,0),(0,1,0)))
 # Observed August2024 occupancy labels, not a claim of permanent future use.
 label('Lettering BTR','BTR  Brown Turner Ross',(35.3,1.30,3.43),(0,1,0),.24,4.3,teal)

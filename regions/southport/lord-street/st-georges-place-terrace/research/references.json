@@ -6,9 +6,10 @@
       "use": "Existing elevations,materials,floor levels; proposed changes excluded"
     },
     {
-      "title": "August2024 Street View frontage",
+      "title": "August 2024 Street View frontage and entrance thresholds",
       "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=UGdUPxjAHcWArsM4mK8HXA&heading=135&pitch=15&fov=90",
-      "use": "Verified actual pixels,wide view of complete frontage"
+      "use": "Actual wide frontage and closer level view: two shallow entrance risers, recessed tiled landing and inner doors. Landing depth and riser heights estimated from visible proportions.",
+      "capture_date": "2024-08"
     },
     {
       "title": "Post Office Avenue side",

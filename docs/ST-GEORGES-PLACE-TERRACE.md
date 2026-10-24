@@ -22,15 +22,10 @@ District uses a separately authored envelope in `scripts/district.py`. Six whole
 
 The frontage atlas is 512×512, the roof atlas 256×256 and the rear atlas 512×256. Triangle budgets are 500, 600 and 150 respectively, with an asset budget of 1.4 MB download and 9 MiB estimated GPU storage. Thin chimney pots use a smaller projection cage than the large surfaces to avoid sampling neighbouring pots. No reference photographs are embedded.
 
-The existing entrance-step snag is deliberately retained in all levels pending its coordinated architectural correction. Rear elevations and decorative carving retain the source model's documented uncertainty. This LoD rollout has automated bake, geometry and package validation; visual acceptance is handed to the project owner.
+The entrances have two shallow risers and continuous recessed landings in every level. Sampled published pavement at the three front steps is 0.431–0.452m; the lower tread is 0.590m and landing 0.730m in the site frame. Their hidden bases extend below pavement. These estimated access dimensions follow the August 2024 reference, not a measured survey. Door bottoms meet the landing, edge stiles close the jamb gaps, jamb brick courses remain horizontal and the 140 numerals sit in front of the rail. Rear elevations and decorative carving retain the source model's documented uncertainty. The entrance correction is checked in the assembled viewer, with automated floor-contact, numeral visibility and arched door-head closure probes.
 
 ## Rebuild and review
 
 Run `python3 tools/project.py build southport.lord-street.st-georges-place-terrace`, then the same command with `--stage render`. The publication recipe splits frontage, roof and rear wings. Validation checks finite UV meshes, packed authored textures, six bays, 90 transoms, three recessed doors, ten closed roof solids, 36 unobscured upper bay glazing probes and 99 sash probes and registered site bounds.
 
 Current published sizes are recorded in the generated package manifest. Historical review figures above do not certify the new District envelope.
-
-The current District package contains 726 triangles, 371,980 bytes including
-textures, and 7,426,098 estimated GPU bytes. The previous package used 18,602
-triangles, 3,364,580 bytes and 68,411,434 estimated GPU bytes. Detail and Walk are
-unchanged by this envelope replacement.
