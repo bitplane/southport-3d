@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Stanley Street quarter",
+  "status": "Provisional roads, narrow pavements, private paved courts and planted reservations. No detailed street furniture, private garden design or current legal restrictions. Exact existing boundary datums retained; interior levels estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "west-ground",
+      "collection": "west-ground",
+      "name": "West Stanley/Bath ground",
+      "ground": true
+    },
+    {
+      "id": "middle-ground",
+      "collection": "middle-ground",
+      "name": "Middle Stanley/Bath ground",
+      "ground": true
+    },
+    {
+      "id": "east-ground",
+      "collection": "east-ground",
+      "name": "East Stanley/Bath ground",
+      "ground": true
+    }
+  ],
+  "views": [
+    {
+      "name": "Stanley block plan",
+      "position": [
+        310,
+        230,
+        -340
+      ],
+      "target": [
+        125,
+        0,
+        -115
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Bounded planar ground; keep exact kerbs, road markings and shared seams while reducing authored map size."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed low-cost street envelope independent of future detailed buildings. Regional merged tiles are a separate later level."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      70,
+      2,
+      -100.5
+    ],
+    "target": [
+      120,
+      2,
+      -100
+    ]
+  }
+}

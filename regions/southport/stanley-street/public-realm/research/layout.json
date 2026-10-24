@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "bounds": [
+    20,
+    250,
+    65,
+    175
+  ],
+  "tile_cuts": [
+    20,
+    90,
+    160,
+    250
+  ],
+  "block_plan": "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
+  "existing_block_plans": [
+    "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json"
+  ],
+  "roads": [
+    {
+      "id": "stanley",
+      "points": [
+        [
+          1.4,
+          101.1
+        ],
+        [
+          30,
+          100.683495
+        ],
+        [
+          100.249,
+          100.196
+        ],
+        [
+          223.835,
+          99.196
+        ],
+        [
+          270,
+          98.57
+        ]
+      ],
+      "width": 6.2,
+      "basis": "OSM checked against aerial; initial tangent preserves existing Nevill stub exactly."
+    },
+    {
+      "id": "bath",
+      "points": [
+        [
+          -1.81,
+          165.421
+        ],
+        [
+          30,
+          165.458182
+        ],
+        [
+          147.194,
+          164.676
+        ],
+        [
+          224.228,
+          162.218
+        ],
+        [
+          270,
+          162.464
+        ]
+      ],
+      "width": 6.8,
+      "basis": "Aerial centreline, wide private forecourts kept separate from the carriageway."
+    },
+    {
+      "id": "bold",
+      "points": [
+        [
+          223.473,
+          25.333
+        ],
+        [
+          223.834,
+          99.195
+        ],
+        [
+          224.227,
+          162.218
+        ],
+        [
+          223.878,
+          224.564
+        ],
+        [
+          224.588,
+          280.715
+        ],
+        [
+          223.959,
+          323.95
+        ]
+      ],
+      "width": 7,
+      "basis": "Existing Lord corridor centreline and width retained exactly at Y65; route checked against aerial and Street View."
+    }
+  ],
+  "junction_radius_m": 1.4,
+  "footway_width_m": 1.6,
+  "existing_ground_exclusions": [
+    [
+      [
+        9.739,
+        147.635
+      ],
+      [
+        46.35,
+        147.404
+      ],
+      [
+        46.4,
+        160.0
+      ],
+      [
+        10.0,
+        160.3
+      ]
+    ],
+    [
+      [
+        7.9,
+        168.8
+      ],
+      [
+        20.8,
+        168.8
+      ],
+      [
+        26,
+        174
+      ],
+      [
+        26,
+        186
+      ],
+      [
+        10,
+        186
+      ],
+      [
+        8,
+        175
+      ]
+    ],
+    [
+      [
+        -19.475,
+        179.117
+      ],
+      [
+        -17.074,
+        190.794
+      ],
+      [
+        -24.854,
+        192.596
+      ],
+      [
+        -22.444,
+        199.042
+      ],
+      [
+        -39.022,
+        195.444
+      ],
+      [
+        -44.23,
+        219.431
+      ],
+      [
+        -74.116,
+        212.936
+      ],
+      [
+        -71.3,
+        198
+      ],
+      [
+        -55,
+        190
+      ]
+    ],
+    [
+      [
+        -81.84,
+        41
+      ],
+      [
+        -9.45,
+        41
+      ],
+      [
+        -9.45,
+        47.1
+      ],
+      [
+        -81.84,
+        47.1
+      ]
+    ],
+    [
+      [
+        9.03,
+        41
+      ],
+      [
+        34.19,
+        41
+      ],
+      [
+        34.19,
+        45.43
+      ],
+      [
+        9.03,
+        45.43
+      ]
+    ],
+    [
+      [
+        -33.593,
+        46.543551
+      ],
+      [
+        -24.803,
+        46.726999
+      ],
+      [
+        -24.463475,
+        71.876999
+      ],
+      [
+        -33.253475,
+        71.693551
+      ]
+    ],
+    [
+      [
+        1.3257360300251628,
+        96.00054072839447
+      ],
+      [
+        21.925736030025163,
+        95.70054072839447
+      ],
+      [
+        22.074263969974837,
+        105.89945927160552
+      ],
+      [
+        1.474263969974837,
+        106.19945927160552
+      ]
+    ],
+    [
+      [
+        1.25,
+        114.93
+      ],
+      [
+        -22.0,
+        114.93
+      ],
+      [
+        -22.0,
+        104.53
+      ],
+      [
+        1.25,
+        104.53
+      ]
+    ],
+    [
+      [
+        -1.8034703796224592,
+        160.02000394777386
+      ],
+      [
+        23.006529620377542,
+        160.05000394777386
+      ],
+      [
+        22.993470379622458,
+        170.84999605222612
+      ],
+      [
+        -1.816529620377541,
+        170.81999605222612
+      ]
+    ],
+    [
+      [
+        -7.077696793644188,
+        187.13541289622057
+      ],
+      [
+        -25.347696793644186,
+        182.60541289622057
+      ],
+      [
+        -22.652303206355814,
+        171.7345871037794
+      ],
+      [
+        -4.382303206355813,
+        176.2645871037794
+      ]
+    ],
+    [
+      [
+        -8.523304434946205,
+        196.9577339232147
+      ],
+      [
+        -21.843304434946205,
+        194.0077339232147
+      ],
+      [
+        -20.156695565053795,
+        186.3922660767853
+      ],
+      [
+        -6.836695565053795,
+        189.3422660767853
+      ]
+    ]
+  ],
+  "exclusion_basis": "Exact existing Nevill side-road footway polygons and authored forecourts. Existing Lord corridor owns all Y<65. Building plans clip both private grounds and public pavements.",
+  "landscaped_reservations": [
+    {
+      "id": "bath-west-forecourt",
+      "polygon": [
+        [
+          78,
+          147
+        ],
+        [
+          88,
+          147
+        ],
+        [
+          88,
+          158
+        ],
+        [
+          78,
+          158
+        ]
+      ]
+    },
+    {
+      "id": "bath-middle-forecourt",
+      "polygon": [
+        [
+          108,
+          148
+        ],
+        [
+          113,
+          148
+        ],
+        [
+          113,
+          158
+        ],
+        [
+          108,
+          158
+        ]
+      ]
+    },
+    {
+      "id": "stanley-mid-garden",
+      "polygon": [
+        [
+          91,
+          106
+        ],
+        [
+          104,
+          106
+        ],
+        [
+          104,
+          123
+        ],
+        [
+          91,
+          123
+        ]
+      ]
+    },
+    {
+      "id": "stanley-east-garden",
+      "polygon": [
+        [
+          181,
+          116
+        ],
+        [
+          199,
+          116
+        ],
+        [
+          199,
+          133
+        ],
+        [
+          181,
+          133
+        ]
+      ]
+    },
+    {
+      "id": "bath-bold-corner-garden",
+      "polygon": [
+        [
+          199,
+          146
+        ],
+        [
+          216,
+          146
+        ],
+        [
+          216,
+          158
+        ],
+        [
+          199,
+          158
+        ]
+      ]
+    }
+  ],
+  "landscape_basis": "Approximate planted/garden reservations visible in aerial; not a species or lawn survey. All building and access cutouts take precedence.",
+  "parking": {
+    "stanley_south_x": [
+      35,
+      205
+    ],
+    "bold_west_y": [
+      [
+        70,
+        90
+      ],
+      [
+        108,
+        151
+      ],
+      [
+        170,
+        175
+      ]
+    ],
+    "bay_width_m": 2.1,
+    "basis": "Dated Street View shows south-side Stanley and west-side Bold parking. Exact endpoints are provisional."
+  },
+  "budgets": {
+    "triangles_per_level": 20000,
+    "download_bytes_per_level": 2500000,
+    "gpu_bytes_per_level": 10000000
+  },
+  "limits": "Provisional roads, narrow pavements, private paved courts and planted reservations. No detailed street furniture, private garden design or current legal restrictions. Exact existing boundary datums retained; interior levels estimated."
+}

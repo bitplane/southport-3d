@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "origin_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "yaw_from_east_degrees": 43.5293,
+  "snag": "7236c4031bc04e71b23c78e192bf35fc",
+  "snag_ground_projection_site_xy": [
+    [
+      0.4,
+      53.4
+    ],
+    [
+      9.7,
+      193.4
+    ],
+    [
+      236.2,
+      124.6
+    ],
+    [
+      231.5,
+      55.0
+    ]
+  ],
+  "scope": "Complete the natural Stanley/Bath/Bold street block within and immediately adjoining the perspective snag rectangle, preserving the existing Nevill and Lord frontages. Ground ends at Bath north pavement and Bold junction edge; whole boundary building outlines are retained rather than sliced to the screenshot box.",
+  "calibration": [
+    {
+      "source": "registered-aerial overview",
+      "centre_pixel": [
+        800,
+        550
+      ],
+      "centre_lat_lon": [
+        53.65002,
+        -3.00435
+      ],
+      "control_pixel": [
+        1000,
+        650
+      ],
+      "control_lat_lon": [
+        53.649702,
+        -3.003277
+      ],
+      "metres_per_pixel_approx": 0.354
+    },
+    {
+      "source": "registered-aerial central",
+      "centre_pixel": [
+        800,
+        550
+      ],
+      "centre_lat_lon": [
+        53.64995,
+        -3.00429
+      ],
+      "control_pixel": [
+        1000,
+        650
+      ],
+      "control_lat_lon": [
+        53.649791,
+        -3.003754
+      ],
+      "metres_per_pixel_approx": 0.1777
+    }
+  ],
+  "dimensions": {
+    "stanley_carriageway_m": 6.2,
+    "bath_carriageway_m": 6.8,
+    "bold_carriageway_m": 7,
+    "typical_footway_m": 1.6,
+    "footway_basis": "Visually calibrated against building gaps and parked vehicles; exact Nevill stub and Lord boundary widths retained for continuity."
+  },
+  "coverage": {
+    "plan": "Two calibrated aerials with OSM overlay plus close Bold aerial",
+    "street": "Stanley two headings July 2026; Bath and Bold August 2024; Bold/Stanley July 2026",
+    "roof_rear": "Current aerials and two earlier saved Google 3D context views; no close roof reconstruction",
+    "missing": "Detailed elevations, hidden courtyard furnishings and surveyed levels deferred"
+  }
+}

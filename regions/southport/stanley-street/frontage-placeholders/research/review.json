@@ -1,0 +1,49 @@
+{
+  "reviewed": "2026-10-24",
+  "scope": "Block plan only: provisional external volumes, roads, pavements, private courts and landscape reservations.",
+  "comparisons": [
+    {
+      "view": "Blender plan and assembled viewer overview",
+      "sources": [
+        "registered-aerial",
+        "saved-3d-context"
+      ],
+      "observations": "Separate Bath ranges and forecourts, lower Stanley rear outbuildings, long southern terrace and Lord-frontage rear access remain visible. Existing Nevill and Lord volumes are not duplicated. Flat tops deliberately reserve heights, not roofs."
+    },
+    {
+      "view": "Stanley and Bath ground plan, Stanley mouth pedestrian view",
+      "sources": [
+        "stanley-july-2026",
+        "bath-august-2024",
+        "bold-stanley-july-2026"
+      ],
+      "observations": "Narrow public footways stay distinct from wider private courts. Rounded Bold returns, north Stanley and both Bath yellow lines, south Stanley/west Bold broken parking edges are retained. Stub paint continues through the old/new ownership seam."
+    },
+    {
+      "view": "Assembled viewer Detail/Walk/District",
+      "observations": "All 27 new parts verified loaded at each requested level. Shapes remain stable; lower levels reduce paving texture size. Private review captures are under ../output/stanley-quarter."
+    }
+  ],
+  "checks": {
+    "road_samples": 559,
+    "footprint_exclusion_samples": 618,
+    "exported_seam_probes": 51,
+    "stanley_related_published_coplanar_findings": {
+      "detail": 0,
+      "walk": 0,
+      "district": 0
+    },
+    "triangles_per_level": 7293,
+    "download_bytes": {
+      "detail": 1293288,
+      "walk": 1184652,
+      "district": 1159120
+    }
+  },
+  "limitations": [
+    "Plan offsets approximately 1\u20132 m and heights approximately 2\u20134 m uncertain.",
+    "Fine facades, roof forms, boundaries, lamps and detailed planting deferred.",
+    "Saved 3D captures support context; a fresh live orbit was not obtained during initial research.",
+    "Unrelated pre-existing neighbour audit findings remain outside this block-plan task."
+  ]
+}

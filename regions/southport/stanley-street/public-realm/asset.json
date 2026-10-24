@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "southport.stanley-street.public-realm",
+  "name": "Stanley, Bath and Bold Street \u2014 roads, pavements and rear grounds",
+  "region": "southport",
+  "area": "stanley-street",
+  "status": "provisional-public-realm",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "west-ground",
+    "middle-ground",
+    "east-ground"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Provisional roads, narrow pavements, private paved courts and planted reservations. No detailed street furniture, private garden design or current legal restrictions. Exact existing boundary datums retained; interior levels estimated.",
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
+      "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+    ],
+    "validate": [
+      "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
+      "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json"
+    ]
+  }
+}

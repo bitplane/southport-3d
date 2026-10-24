@@ -205,6 +205,12 @@ for road in D['side_roads']:
   start=tuple(a[k]+(b[k]-a[k])*.56+side*w/2*(nx,ny)[k] for k in [0,1])
   end=tuple(b[k]+side*w/2*(nx,ny)[k] for k in [0,1])
   kerb(start,end,-side)
+  # Continue the Stanley/Bath owner's inward kerb offsets across this stub.
+  if road['name'] in ['Stanley Street','Bath Street']:
+   for inset in [.185,.365]:
+    pa=tuple(start[k]-side*inset*(nx,ny)[k] for k in [0,1])
+    pb=tuple(end[k]-side*inset*(nx,ny)[k] for k in [0,1])
+    strip(road['name']+' continuing double yellow',pa,pb,.07,'yellow',300,level(True))
 # Running centre dashes, interrupted around staggered side-road mouths.
 for y in range(51,241,6):
  if any(abs(y-j)<6 for j in [101.1,109.73,165.42,181.7,193.15]):

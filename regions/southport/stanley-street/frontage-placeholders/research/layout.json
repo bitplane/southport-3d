@@ -1,0 +1,771 @@
+{
+  "schema_version": 1,
+  "blocks": [
+    {
+      "id": "way-375379271",
+      "footprint": [
+        [
+          230.354,
+          73.734
+        ],
+        [
+          230.447,
+          94.957
+        ],
+        [
+          238.961,
+          94.914
+        ],
+        [
+          238.95,
+          92.545
+        ],
+        [
+          243.691,
+          92.525
+        ],
+        [
+          243.681,
+          90.446
+        ],
+        [
+          247.317,
+          90.431
+        ],
+        [
+          247.281,
+          84.262
+        ],
+        [
+          239.598,
+          84.298
+        ],
+        [
+          239.557,
+          73.697
+        ]
+      ],
+      "height_m": 11,
+      "replace_with": null,
+      "source_way": "375379271",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375391232",
+      "footprint": [
+        [
+          79.018,
+          81.611
+        ],
+        [
+          49.852,
+          81.709
+        ],
+        [
+          49.903,
+          95.357
+        ],
+        [
+          79.068,
+          95.259
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "375391232",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375391233",
+      "footprint": [
+        [
+          80.905,
+          62.252
+        ],
+        [
+          81.336,
+          84.291
+        ],
+        [
+          97.867,
+          84.218
+        ],
+        [
+          97.414,
+          62.923
+        ]
+      ],
+      "height_m": 8,
+      "replace_with": null,
+      "source_way": "375391233",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375391234-south",
+      "footprint": [
+        [
+          137.0,
+          96.138399
+        ],
+        [
+          137.0,
+          85.365185
+        ],
+        [
+          102.89,
+          85.664
+        ],
+        [
+          102.981,
+          96.433
+        ]
+      ],
+      "height_m": 11,
+      "replace_with": null,
+      "source_way": "375391234",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375391234-middle",
+      "footprint": [
+        [
+          159.0,
+          95.947881
+        ],
+        [
+          159.0,
+          85.172457
+        ],
+        [
+          137.0,
+          85.365185
+        ],
+        [
+          137.0,
+          96.138399
+        ]
+      ],
+      "height_m": 8,
+      "replace_with": null,
+      "source_way": "375391234",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375391234-north",
+      "footprint": [
+        [
+          183.236,
+          95.738
+        ],
+        [
+          183.138,
+          84.961
+        ],
+        [
+          159.0,
+          85.172457
+        ],
+        [
+          159.0,
+          95.947881
+        ]
+      ],
+      "height_m": 11,
+      "replace_with": null,
+      "source_way": "375391234",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375391235",
+      "footprint": [
+        [
+          186.719,
+          81.881
+        ],
+        [
+          186.69,
+          93.347
+        ],
+        [
+          201.759,
+          93.374
+        ],
+        [
+          201.788,
+          81.907
+        ]
+      ],
+      "height_m": 10,
+      "replace_with": null,
+      "source_way": "375391235",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375391760",
+      "footprint": [
+        [
+          203.931,
+          63.796
+        ],
+        [
+          203.714,
+          79.356
+        ],
+        [
+          206.493,
+          79.388
+        ],
+        [
+          206.277,
+          95.208
+        ],
+        [
+          214.057,
+          95.571
+        ],
+        [
+          214.571,
+          63.423
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "375391760",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392812",
+      "footprint": [
+        [
+          206.349,
+          105.027
+        ],
+        [
+          206.661,
+          133.934
+        ],
+        [
+          195.951,
+          134.051
+        ],
+        [
+          196.071,
+          144.562
+        ],
+        [
+          215.395,
+          144.354
+        ],
+        [
+          214.963,
+          104.936
+        ]
+      ],
+      "height_m": 10,
+      "replace_with": null,
+      "source_way": "375392812",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392813",
+      "footprint": [
+        [
+          170.742,
+          133.371
+        ],
+        [
+          170.713,
+          144.377
+        ],
+        [
+          192.717,
+          144.432
+        ],
+        [
+          192.754,
+          133.434
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "375392813",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392814",
+      "footprint": [
+        [
+          166.77,
+          135.915
+        ],
+        [
+          166.839,
+          127.681
+        ],
+        [
+          156.549,
+          127.599
+        ],
+        [
+          156.404,
+          143.905
+        ],
+        [
+          168.631,
+          144.005
+        ],
+        [
+          168.695,
+          135.929
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "375392814",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392815",
+      "footprint": [
+        [
+          152.696,
+          135.221
+        ],
+        [
+          152.715,
+          119.48
+        ],
+        [
+          142.01,
+          119.469
+        ],
+        [
+          142.006,
+          128.01
+        ],
+        [
+          138.128,
+          128.009
+        ],
+        [
+          138.113,
+          135.639
+        ],
+        [
+          136.453,
+          135.635
+        ],
+        [
+          136.436,
+          144.172
+        ],
+        [
+          153.813,
+          144.186
+        ],
+        [
+          153.824,
+          135.623
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "375392815",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392816",
+      "footprint": [
+        [
+          133.606,
+          113.726
+        ],
+        [
+          133.516,
+          107.27
+        ],
+        [
+          119.814,
+          107.619
+        ],
+        [
+          120.476,
+          144.731
+        ],
+        [
+          133.862,
+          144.605
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "375392816",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392817",
+      "footprint": [
+        [
+          133.606,
+          113.726
+        ],
+        [
+          154.93,
+          113.43
+        ],
+        [
+          154.901,
+          111.062
+        ],
+        [
+          160.555,
+          110.988
+        ],
+        [
+          160.495,
+          106.9
+        ],
+        [
+          133.516,
+          107.27
+        ]
+      ],
+      "height_m": 5,
+      "replace_with": null,
+      "source_way": "375392817",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392818",
+      "footprint": [
+        [
+          162.597,
+          115.283
+        ],
+        [
+          168.612,
+          115.158
+        ],
+        [
+          168.446,
+          106.763
+        ],
+        [
+          162.423,
+          106.88
+        ]
+      ],
+      "height_m": 5,
+      "replace_with": null,
+      "source_way": "375392818",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392819",
+      "footprint": [
+        [
+          170.684,
+          106.034
+        ],
+        [
+          170.816,
+          120.419
+        ],
+        [
+          181.292,
+          120.324
+        ],
+        [
+          181.168,
+          105.948
+        ]
+      ],
+      "height_m": 10,
+      "replace_with": null,
+      "source_way": "375392819",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392820",
+      "footprint": [
+        [
+          192.151,
+          112.48
+        ],
+        [
+          200.679,
+          112.317
+        ],
+        [
+          200.536,
+          104.761
+        ],
+        [
+          181.799,
+          105.118
+        ],
+        [
+          182.007,
+          116.267
+        ],
+        [
+          192.223,
+          116.082
+        ]
+      ],
+      "height_m": 7,
+      "replace_with": null,
+      "source_way": "375392820",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392821",
+      "footprint": [
+        [
+          118.934,
+          120.125
+        ],
+        [
+          113.145,
+          120.066
+        ],
+        [
+          112.955,
+          112.661
+        ],
+        [
+          105.754,
+          112.285
+        ],
+        [
+          106.634,
+          144.568
+        ],
+        [
+          118.781,
+          144.499
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "375392821",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392822",
+      "footprint": [
+        [
+          103.926,
+          136.055
+        ],
+        [
+          102.539,
+          136.052
+        ],
+        [
+          102.597,
+          122.317
+        ],
+        [
+          93.784,
+          122.275
+        ],
+        [
+          93.73,
+          135.469
+        ],
+        [
+          91.497,
+          135.456
+        ],
+        [
+          91.461,
+          144.749
+        ],
+        [
+          103.891,
+          144.794
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "375392822",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392823",
+      "footprint": [
+        [
+          89.689,
+          121.251
+        ],
+        [
+          77.545,
+          121.333
+        ],
+        [
+          77.69,
+          144.671
+        ],
+        [
+          89.842,
+          144.597
+        ]
+      ],
+      "height_m": 11,
+      "replace_with": null,
+      "source_way": "375392823",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392824",
+      "footprint": [
+        [
+          75.256,
+          118.886
+        ],
+        [
+          69.176,
+          118.904
+        ],
+        [
+          69.167,
+          115.78
+        ],
+        [
+          61.922,
+          115.799
+        ],
+        [
+          62.011,
+          145.133
+        ],
+        [
+          75.336,
+          145.096
+        ]
+      ],
+      "height_m": 12,
+      "replace_with": null,
+      "source_way": "375392824",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375392825",
+      "footprint": [
+        [
+          60.22,
+          136.301
+        ],
+        [
+          57.506,
+          136.3
+        ],
+        [
+          57.502,
+          130.623
+        ],
+        [
+          59.355,
+          130.629
+        ],
+        [
+          59.36,
+          115.469
+        ],
+        [
+          52.169,
+          115.467
+        ],
+        [
+          52.148,
+          137.643
+        ],
+        [
+          49.743,
+          137.64
+        ],
+        [
+          49.741,
+          145.15
+        ],
+        [
+          60.211,
+          145.154
+        ]
+      ],
+      "height_m": 11,
+      "replace_with": null,
+      "source_way": "375392825",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375393550",
+      "footprint": [
+        [
+          76.793,
+          104.974
+        ],
+        [
+          76.72,
+          113.979
+        ],
+        [
+          89.52,
+          114.088
+        ],
+        [
+          89.597,
+          105.078
+        ]
+      ],
+      "height_m": 6.5,
+      "replace_with": null,
+      "source_way": "375393550",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    },
+    {
+      "id": "way-375393551",
+      "footprint": [
+        [
+          62.214,
+          104.62
+        ],
+        [
+          62.066,
+          113.651
+        ],
+        [
+          68.296,
+          113.752
+        ],
+        [
+          68.36,
+          109.346
+        ],
+        [
+          73.62,
+          109.431
+        ],
+        [
+          73.699,
+          104.811
+        ]
+      ],
+      "height_m": 6.5,
+      "replace_with": null,
+      "source_way": "375393551",
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+    }
+  ],
+  "existing_block_plans": [
+    "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json"
+  ],
+  "budgets": {
+    "triangles_per_level": 8000,
+    "download_bytes_per_level": 500000,
+    "gpu_bytes_per_level": 1000000
+  },
+  "limits": "Placeholder external volumes only. Aerial checked plan; 3D Earth unavailable. Height bounds estimated, roof forms deferred. Broad terrace divisions follow visible roof/storey changes, not cadastral boundaries."
+}

@@ -1,0 +1,61 @@
+{
+  "reviewed": "2026-10-24",
+  "sources": [
+    {
+      "id": "registered-aerial",
+      "urls": [
+        "https://www.google.com/maps/@53.65002,-3.00435,350a,35y,0h,0t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.64995,-3.00429,190a,35y,0h,0t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6507,-3.00335,150a,35y,0h,0t/data=!3m1!1e3"
+      ],
+      "observed": "North-up overview, geographic projection of the snag box and close OSM overlay inspected. Rear ranges, open gardens/courts, Bath forecourt setbacks and the Bold junction were compared with visible external walls/roofs. Image capture dates not established."
+    },
+    {
+      "id": "saved-3d-context",
+      "urls": [
+        "https://www.google.com/maps/@53.6515988,-3.0055506,433a,35y,180h,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.65005,-3.001602,433a,35y,270h,39.37t/data=!3m1!1e3"
+      ],
+      "observed": "Inspected saved earlier GPU captures central-3d-n.png and oblique-east.png. They show the connected Lord/Stanley rear ranges, lower outbuildings, separate Bath houses, gardens and forecourts. These are coarse context views, not elevation measurements. During initial research the headed browser could not render 3D Earth and reported unavailable hardware WebGL. The saved 3D captures were inspected again during the completion pass."
+    },
+    {
+      "id": "stanley-july-2026",
+      "url": "https://www.google.com/maps/@53.6499699,-3.0042405,3a,90y,45h,85t/data=!3m4!1e1!3m2!1suxdKI0iUk92IUbX7AM_Dfw!2e0",
+      "capture_date": "2026-07",
+      "observed": "Both headings inspected at 26 Stanley Street. Narrow pavements; north-side double yellows, south-side parked cars with broken bay-edge marking, ordinary short-arm LED lamps. Rear gardens/walls on north side, mixed two/three-storey south ranges."
+    },
+    {
+      "id": "bath-august-2024",
+      "url": "https://www.google.com/maps/@53.6503294,-3.0050286,3a,90y,45h,85t/data=!3m4!1e1!3m2!1snXiMw9-fwj2TP8y-Yafs6Q!2e0",
+      "capture_date": "2024-08",
+      "observed": "Deep private parking/garden forecourts, low boundaries, narrow block-paved footways, two-way carriageway with double yellows on both edges, traditional lantern columns. Three-storey houses and larger club ranges; no detailed facades reconstructed."
+    },
+    {
+      "id": "bold-august-2024",
+      "url": "https://www.google.com/maps/@53.6509086,-3.0032237,3a,90y,135h,82t/data=!3m4!1e1!3m2!1s0EcgXhttuUezzFTwdc0oVQ!2e0",
+      "capture_date": "2024-08",
+      "observed": "West-side parking bay, east-side double yellows, footway setbacks and shopfront accesses. Broad two-storey Animal Barn range versus taller east-side corner."
+    },
+    {
+      "id": "bold-stanley-july-2026",
+      "url": "https://www.google.com/maps/@53.650717,-3.0028828,3a,90y,315h,80t/data=!3m4!1e1!3m2!1s0YRqbgFKCpQykhi1hTYrqQ!2e0",
+      "capture_date": "2026-07",
+      "observed": "Rounded kerb return and double yellow bend at the Stanley/Bold junction; parking stays on west side of Bold. Fine equipment, canopy columns and road regulation signs deferred."
+    },
+    {
+      "id": "osm-seed",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-3.0068,53.6487,-3.0015,53.6515",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0; https://www.openstreetmap.org/copyright",
+      "observed": "Attributed route and external outline controls checked against the calibrated aerial, not treated as authoritative building truth. New rear ranges exclude the existing canonical Lord and Nevill building envelopes."
+    }
+  ],
+  "private_captures": "../references/stanley-quarter/, plus earlier ../references/lord-street-blocks/central-3d-n.png and ../references/nevill-block/oblique-east.png. Reference pixels are not published or committed.",
+  "limitations": [
+    "External block plan only; placeholder flat tops are height bounds, not actual roofs.",
+    "Plan offsets approximately 1\u20132 m and heights approximately 2\u20134 m uncertain; not surveyed.",
+    "Ground grade continues existing Nevill and Lord boundaries; longitudinal levels are provisional.",
+    "Forecourt material divisions, parking extents and marking endpoints are approximate dated interpretations, not current regulatory information.",
+    "No detailed facades, private garden furniture, lamps, cars or full planting in this pass.",
+    "Live 3D Earth was unavailable during initial research; earlier saved coarse 3D views provide supporting roof/rear context only."
+  ]
+}

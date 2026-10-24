@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Stanley Street quarter",
+  "status": "Placeholder external volumes only. Aerial checked plan; 3D Earth unavailable. Height bounds estimated, roof forms deferred. Broad terrace divisions follow visible roof/storey changes, not cadastral boundaries.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "way-375379271",
+      "name": "way-375379271 \u2014 placeholder",
+      "collection": "way-375379271"
+    },
+    {
+      "id": "way-375391232",
+      "name": "way-375391232 \u2014 placeholder",
+      "collection": "way-375391232"
+    },
+    {
+      "id": "way-375391233",
+      "name": "way-375391233 \u2014 placeholder",
+      "collection": "way-375391233"
+    },
+    {
+      "id": "way-375391234-south",
+      "name": "way-375391234-south \u2014 placeholder",
+      "collection": "way-375391234-south"
+    },
+    {
+      "id": "way-375391234-middle",
+      "name": "way-375391234-middle \u2014 placeholder",
+      "collection": "way-375391234-middle"
+    },
+    {
+      "id": "way-375391234-north",
+      "name": "way-375391234-north \u2014 placeholder",
+      "collection": "way-375391234-north"
+    },
+    {
+      "id": "way-375391235",
+      "name": "way-375391235 \u2014 placeholder",
+      "collection": "way-375391235"
+    },
+    {
+      "id": "way-375391760",
+      "name": "way-375391760 \u2014 placeholder",
+      "collection": "way-375391760"
+    },
+    {
+      "id": "way-375392812",
+      "name": "way-375392812 \u2014 placeholder",
+      "collection": "way-375392812"
+    },
+    {
+      "id": "way-375392813",
+      "name": "way-375392813 \u2014 placeholder",
+      "collection": "way-375392813"
+    },
+    {
+      "id": "way-375392814",
+      "name": "way-375392814 \u2014 placeholder",
+      "collection": "way-375392814"
+    },
+    {
+      "id": "way-375392815",
+      "name": "way-375392815 \u2014 placeholder",
+      "collection": "way-375392815"
+    },
+    {
+      "id": "way-375392816",
+      "name": "way-375392816 \u2014 placeholder",
+      "collection": "way-375392816"
+    },
+    {
+      "id": "way-375392817",
+      "name": "way-375392817 \u2014 placeholder",
+      "collection": "way-375392817"
+    },
+    {
+      "id": "way-375392818",
+      "name": "way-375392818 \u2014 placeholder",
+      "collection": "way-375392818"
+    },
+    {
+      "id": "way-375392819",
+      "name": "way-375392819 \u2014 placeholder",
+      "collection": "way-375392819"
+    },
+    {
+      "id": "way-375392820",
+      "name": "way-375392820 \u2014 placeholder",
+      "collection": "way-375392820"
+    },
+    {
+      "id": "way-375392821",
+      "name": "way-375392821 \u2014 placeholder",
+      "collection": "way-375392821"
+    },
+    {
+      "id": "way-375392822",
+      "name": "way-375392822 \u2014 placeholder",
+      "collection": "way-375392822"
+    },
+    {
+      "id": "way-375392823",
+      "name": "way-375392823 \u2014 placeholder",
+      "collection": "way-375392823"
+    },
+    {
+      "id": "way-375392824",
+      "name": "way-375392824 \u2014 placeholder",
+      "collection": "way-375392824"
+    },
+    {
+      "id": "way-375392825",
+      "name": "way-375392825 \u2014 placeholder",
+      "collection": "way-375392825"
+    },
+    {
+      "id": "way-375393550",
+      "name": "way-375393550 \u2014 placeholder",
+      "collection": "way-375393550"
+    },
+    {
+      "id": "way-375393551",
+      "name": "way-375393551 \u2014 placeholder",
+      "collection": "way-375393551"
+    }
+  ],
+  "views": [
+    {
+      "name": "Stanley block plan",
+      "position": [
+        310,
+        230,
+        -340
+      ],
+      "target": [
+        125,
+        0,
+        -115
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "placeholder-volumes",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already minimal untextured footprint prisms; no decorative detail to reduce."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Untextured footprint prisms with fixed total budget of 8000 triangles, independent of future architecture detail."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      70,
+      2,
+      -100.5
+    ],
+    "target": [
+      120,
+      2,
+      -100
+    ]
+  }
+}

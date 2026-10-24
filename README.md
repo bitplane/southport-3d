@@ -10,6 +10,8 @@ The [Nevill Street corridor](docs/NEVILL-STREET.md) continues the roads and pave
 
 The [Occulo Lounge / former Waterstones building](docs/OCCULO-LOUNGE.md) replaces the Nevill Street corner placeholder with its Portland-stone arcades, fluted columns, carved entrance and flat roof. Beside it, [Coffee King / The Old Bank at 365 Lord Street](docs/COFFEE-KING.md) adds the red-granite colonnade and surveyed pitched roof, reserving the passage to Parkinson Books for a later courtyard survey. Across Nevill Street, [377–385 Lord Street / former Bistrot Pierre](docs/LORD-STREET-377-385.md) adds the rounded classical corner, Ionic columns and continuous iron canopy, with a separately budgeted District envelope.
 
+The [Stanley Street / Bath Street block plan](docs/STANLEY-QUARTER.md) adds rear building placeholders, narrow pavements, private forecourts and connecting roads from Nevill to Bold Street.
+
 The [Lord Street block plan](docs/LORD-STREET-BLOCK-PLAN.md) extends both frontages and the road/landscape canvas between the Duke Street and Leicester Street roundabouts, using provisional replaceable building volumes.
 
 The [NatWest bank at 130 Lord Street](docs/NATWEST.md) adds the opposite corner: sandstone street elevations, Dutch gables, pierced parapets and intersecting slate roofs.

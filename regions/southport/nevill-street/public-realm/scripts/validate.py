@@ -63,7 +63,14 @@ for ob in meshes:
    a,b=road['centre'],road['end'];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
    along=((p.x-a[0])*dx+(p.y-a[1])*dy)/length
    across=abs((p.x-a[0])*(-dy)+(p.y-a[1])*dx)/length
-   assert not (.002<along<length-.002 and across<road['width']/2-.002),(road['name'],tuple(p),'paint blocks junction')
+   # Stanley/Bath now continue into the new block owner. Longitudinal
+   # double yellows are valid only in their two narrow edge bands beyond
+   # the Nevill mouth; transverse paint through the opening still fails.
+   inset=road['width']/2-across
+   continuing=(road['name'] in ['Stanley Street','Bath Street'] and
+               along>=length*.56-.002 and
+               (abs(inset-.185)<.036 or abs(inset-.365)<.036))
+   assert continuing or not (.002<along<length-.002 and across<road['width']/2-.002),(road['name'],tuple(p),'paint blocks junction')
   paint_samples+=1
 assert paint_samples>0
 report={'minimum_triangle_area_m2':minimum_triangle_area,'joined_edge_junctions':conform['inserted_edge_junctions'],'paint_triangle_samples':paint_samples,'ground_parts':len(publication['parts']),'objects':len(meshes),'triangles':sum(len(o.data.loop_triangles) for o in meshes),'checks':'finite meshes, UVs, packed authored maps, no ownership overlap south of seam, square road elevation, continuous route and three part seams','uncertainty':'Mapped registration with estimated widths and grade; checks establish geometric continuity, not survey accuracy.'}
@@ -107,3 +114,14 @@ for side,key in [(-1,'west_kerb'),(1,'east_kerb')]:
  back,_=sample(x+side*1.28,y)
  assert abs(back-z)<.004,(key,'landing does not meet pavement')
 print('Nevill crossing ramps join road and back of pavement')
+
+# The two continuation stripes actually reach the outgoing ownership seams.
+for road in D['side_roads']:
+ if road['name'] not in ['Stanley Street','Bath Street']:continue
+ a,b=road['centre'],road['end'];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy);nx,ny=-dy/length,dx/length
+ for side in [-1,1]:
+  for inset in [.185,.365]:
+   x=b[0]-.02*dx/length+side*(road['width']/2-inset)*nx
+   y=b[1]-.02*dy/length+side*(road['width']/2-inset)*ny
+   _,ob=sample(x,y);assert ob.name.endswith(' yellow'),(road['name'],side,inset,ob.name)
+print('Stanley and Bath double yellows reach adjoining owner')
