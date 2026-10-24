@@ -29,3 +29,5 @@ Keep review prompts read-only; this authorization does not extend to edits, push
 or publication by Claude. Use an available permitted execution mechanism; recorded
 user authorization does not override runtime restrictions. Avoid duplicate reviews
 when the user has already started one.
+
+Browser sessions expire after five idle minutes, including research browsers launched through MCP code. Prefer existing tabs; use browser_close when finished. After expiry, reopen the URL, recreate page variables and continue. See docs/SETUP.md for lifecycle details.

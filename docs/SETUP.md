@@ -31,6 +31,25 @@ The launcher runs normal Chrome on its offscreen Ozone display backend with its 
 
 The pinned Playwright MCP's browser_mouse_drag_xy moves to its end point in a single mousemove, which Street View ignores. On each start the launcher runs `patch-mcp.mjs`, which idempotently adds interpolated steps to that move in the installed bundle, so the fix survives `npm ci`. If a Playwright upgrade changes the bundle, the patch fails loudly instead of launching unpatched. The concurrency probe checks the drag through the real MCP tool. The launcher also deletes `output/session.*` directories untouched for a day.
 
+Extra browsers launched inside `browser_run_code_unsafe` through the session's
+`browserType().launch()` or `launchPersistentContext()` now belong to that MCP
+session too. The lifecycle patch closes them when the parent disconnects,
+including idle expiry and explicit `browser_close`. This uses the existing
+five-minute timeout; there is no additional supervisor or resource quota.
+Prefer tabs in the existing browser. Close the session when research finishes.
+After expiry the next tool call creates a fresh browser: reopen the required URL,
+reject consent again if needed, recreate any page variables and continue. Do not
+assume custom `page.map`/`page.researchBrowser` handles survive between calls.
+Browsers launched separately from a shell or attached via CDP are not owned by
+this mechanism. Abrupt termination of the whole MCP process remains outside this
+idle-cleanup fix.
+
+Changes apply when the MCP server next starts; closing only its Chrome browser
+does not reload server code. `node --test tools/browser/browser-lifecycle.test.cjs`
+checks ownership and launch races without Chrome. The concurrency probe also
+checks real idle cleanup, explicit close and automatic recreation, using a short
+test timeout (`SOUTHPORT_BROWSER_IDLE_MS`; normal default is 300000).
+
 Usage notes for agents are in the model-southport skill: one browser call at a time, a short wait before the first screenshot, and "Reject all" on Google's consent page.
 
 The launcher does not need an X-forwarded desktop. If the agent environment cannot launch Chrome, the MCP process needs host execution permission or an administrator-configured external MCP connection; a repository script cannot grant that permission. Do not use an arbitrary remote-debugging endpoint or expose a personal browser profile. Local MCP registrations and credentials stay out of Git. `SOUTHPORT_BROWSER_CLI` can explicitly select an already installed Playwright MCP CLI for local diagnostics; normal setup uses the repository's pinned installation.

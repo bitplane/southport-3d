@@ -28,5 +28,5 @@ esac
 exec node "$browser_cli" \
   --browser chrome "${browser_mode_args[@]}" --sandbox --caps vision \
   --viewport-size 1440,1000 \
-  --isolated --idle-timeout 300000 --timeout-navigation 30000 \
+  --isolated --idle-timeout "${SOUTHPORT_BROWSER_IDLE_MS:-300000}" --timeout-navigation 30000 \
   --output-dir "$browser_session_dir"

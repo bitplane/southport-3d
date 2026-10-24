@@ -12,12 +12,13 @@ const directory = dirname(fileURLToPath(import.meta.url));
 const output = join(directory, 'probe-output');
 await mkdir(output, { recursive: true });
 class Session {
-  constructor(name) {
+  constructor(name, idleMs = 300000) {
     this.name = name;
     this.next = 0;
     this.pending = new Map();
     this.child = spawn('bash', [join(directory, 'run-mcp.sh')], {
       stdio: ['pipe', 'pipe', 'inherit'],
+      env: { ...process.env, SOUTHPORT_BROWSER_IDLE_MS: String(idleMs) },
     });
     createInterface({ input: this.child.stdout }).on('line', line => {
       let response;
@@ -106,6 +107,40 @@ try {
   assert.ok(stepped.includes('DRAG_OK'), stepped);
   report.checks.drag = 'browser_mouse_drag_xy sends intermediate moves';
   await sessions[1].closeBrowser();
+  const idle = new Session('idle', 3000);
+  sessions.push(idle);
+  await idle.initialize();
+  // Deliberately create research browsers through unsafe code, as agents do.
+  await idle.code(`async page => {
+    const type = page.context().browser().browserType();
+    const child = await type.launch({channel:'chrome',headless:true,chromiumSandbox:true});
+    type.__southportProbeChildren = [child];
+    page.expirySentinel = true;
+    return 'CHILD_CREATED';
+  }`);
+  await new Promise(resolve => setTimeout(resolve, 5500));
+  const expired = await idle.code(`async page => {
+    const children = page.context().browser().browserType().__southportProbeChildren;
+    if (!children || children.some(child => child.isConnected())) throw new Error('Research browser survived idle expiry');
+    if (page.expirySentinel) throw new Error('Parent page survived idle expiry');
+    await page.setContent('<title>Recovered</title>');
+    return 'IDLE_RECOVERY_OK';
+  }`);
+  assert.ok(expired.includes('IDLE_RECOVERY_OK'), expired);
+  report.checks.idle = 'Idle expiry closes research browser; next call recreates usable parent';
+  await idle.code(`async page => {
+    const type = page.context().browser().browserType();
+    type.__southportProbeChildren = [await type.launch({channel:'chrome',headless:true,chromiumSandbox:true})];
+  }`);
+  await idle.closeBrowser();
+  const closed = await idle.code(`async page => {
+    const children = page.context().browser().browserType().__southportProbeChildren;
+    if (!children || children.some(child => child.isConnected())) throw new Error('Research browser survived explicit close');
+    return 'CLOSE_OK';
+  }`);
+  assert.ok(closed.includes('CLOSE_OK'), closed);
+  report.checks.researchClose = 'Explicit close also closes research browsers';
+  await idle.closeBrowser();
   report.passed = true;
 } catch (error) {
   report.error = String(error);
