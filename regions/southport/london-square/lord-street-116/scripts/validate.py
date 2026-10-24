@@ -74,3 +74,22 @@ for name,u in [('Fixture collection door 0',14.0),('Fixture collection door 1',1
   direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
   hit,p,n,index,target,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=1.5)
   assert hit and target==ob,('Collection door obstructed',name,dx,target.name if target else None)
+
+# On vertical brick edges, texture U stays fixed and V follows physical height.
+# This catches the former ninety-degree turn on the court utility-box end.
+brick_vertical_edges=0
+for ob in meshes:
+ uv=ob.data.uv_layers.active.data
+ for face in ob.data.polygons:
+  if ob.data.materials[face.material_index].name!='Roof parapet brick':continue
+  loops=list(face.loop_indices)
+  for a,b in zip(loops,loops[1:]+loops[:1]):
+   A=ob.matrix_world@ob.data.vertices[ob.data.loops[a].vertex_index].co
+   B=ob.matrix_world@ob.data.vertices[ob.data.loops[b].vertex_index].co
+   d=B-A
+   if abs(d.x)+abs(d.y)<1e-5 and abs(d.z)>.1:
+    delta=uv[b].uv-uv[a].uv
+    assert abs(delta.x)<1e-5 and abs(abs(delta.y/d.z)-1/.30)<1e-4,(ob.name,'Rotated brick courses',tuple(delta),tuple(d))
+    brick_vertical_edges+=1
+assert brick_vertical_edges>20
+print('Horizontal brick-course UV probes:',brick_vertical_edges)

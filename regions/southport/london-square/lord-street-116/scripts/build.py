@@ -48,7 +48,13 @@ def finish(mesh,part='architecture',mats=None,transform=None):
    # Glazed pier tiles are narrow vertical rectangles, not metre-wide courses.
    mat=ob.data.materials[f.material_index]
    sx,sy=(.32,1.2) if mat==redtile else (.88,.30) if mat==roofbrick else (10,10) if mat==roofmat else (3.2,2.4) if mat==stone else (3.2,4.8)
-   uv.data[li].uv=(v[axes[0]]/sx,v[axes[1]]/sy)
+   uv_axes=axes
+   if mat==roofbrick:
+    # Facade frames use local Y as height; their end faces must not turn
+    # brick courses vertically just because sorted projection axes are Y,Z.
+    vertical=max(range(3),key=lambda i:abs(transform[2][i])) if transform is not None else 2
+    if vertical in axes:uv_axes=[next(i for i in axes if i!=vertical),vertical]
+   uv.data[li].uv=(v[uv_axes[0]]/sx,v[uv_axes[1]]/sy)
  if transform is not None:ob.matrix_world=transform
  return ob
 
