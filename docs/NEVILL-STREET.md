@@ -135,3 +135,24 @@ are clipped out of building footprints. Bath Street parking/forecourt surfaces,
 the apartment yard and the lower Lord Street return approaches are bounded
 additions; heights and exact outer limits remain provisional. The historic road
 centreline/kerb/paint interpretation is retained, not claimed as a current survey.
+
+### Lord Street mouth
+
+The junction uses a shared kerb trace in
+`london-square/public-realm/research/nevill-junction.json`. London Square owns
+all ground south of site Y41; Nevill owns ground north of it. Derive kerbs,
+paving borders and edge paint from this trace rather than adding independent
+rectangles over the old road neck. The two corners are asymmetric.
+
+July 2026 Street View supplies the railing form, crossing openings and offset
+signal supports. A north-up satellite trace fixes the plan, with approximately
+0.4m uncertainty; rail dimensions, grades and furniture setbacks remain
+estimates. The eastern central refuge has raised ends and a flush passage.
+Crossing blister maps and red paviour maps are procedurally authored. Corner
+railings retain open panels at every LoD, with fewer pickets in District.
+
+The trace tapers to the older Lord Street corridor at X +/-41. Those outer
+joins are continuity estimates, not a survey of the rest of Lord Street.
+Google's fresh 3D view was unavailable during this pass; satellite and several
+panorama headings were checked instead. Movable cafe furniture and hanging
+flower displays are outside this junction geometry pass.

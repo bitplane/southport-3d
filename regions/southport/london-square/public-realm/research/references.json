@@ -223,6 +223,19 @@
       "reviewed": "2026-10-24",
       "use": "Tactile dropped crossing outside the store is part of the pavement, meeting the carriageway rather than a floating board. Ramp outlines now follow the registered sloping kerb at both ends; height interpolation uses that same edge, and side cheeks close the drop. Placement and 1 m depth remain estimates.",
       "rights": "Reference only; no imagery redistributed."
+    },
+    {
+      "id": "nevill-junction-july-2026",
+      "url": "https://www.google.com/maps/@53.6488949,-3.0047303,3a,95y,270h,75t/data=!3m4!1e1!3m2!1s-9yOVX_5xl7W5vykYmf_uw!2e0",
+      "capture_date": "2026-07",
+      "reviewed": "2026-10-24",
+      "observations": [
+        "Asymmetric rounded pavement corners, red paviour borders, buff tactile crossing across Nevill and Lord Street.",
+        "Black open three-rail guard panels with heavy posts, ball finials and pickets below the middle rail; offset grey signal supports.",
+        "Eastern Lord Street central refuge has raised ends and a flush crossing channel."
+      ],
+      "measurement_record": "regions/southport/london-square/public-realm/research/nevill-junction.json",
+      "limitations": "Satellite kerb trace calibrated to geographic coordinates; approximately 0.4m uncertainty. Grade, rail dimensions and signal placements estimated. Fresh Google 3D was unavailable; north-up satellite and multiple July 2026 panorama headings used. No third-party imagery distributed."
     }
   ],
   "limitations": [

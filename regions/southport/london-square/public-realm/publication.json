@@ -808,6 +808,84 @@
         "uv": "smart",
         "bake": false
       }
+    },
+    {
+      "id": "junction-railing-west-kerb",
+      "match": "^Junction railing west_kerb$",
+      "walk": {
+        "strategy": "generator",
+        "generator": "nevill_junction:build_lod",
+        "settings": {
+          "key": "west_kerb",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain curved open rail panels, reduce pickets and profile sides."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "nevill_junction:build_lod",
+        "settings": {
+          "key": "west_kerb",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain curved open rail panels, reduce pickets and profile sides."
+      }
+    },
+    {
+      "id": "junction-railing-east-kerb",
+      "match": "^Junction railing east_kerb$",
+      "walk": {
+        "strategy": "generator",
+        "generator": "nevill_junction:build_lod",
+        "settings": {
+          "key": "east_kerb",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain curved open rail panels, reduce pickets and profile sides."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "nevill_junction:build_lod",
+        "settings": {
+          "key": "east_kerb",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain curved open rail panels, reduce pickets and profile sides."
+      }
+    },
+    {
+      "id": "junction-offset-signal",
+      "match": "^Furniture offset-pedestrian ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "offset-pedestrian",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain observed bent signal support using reduced signal profiles."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "furniture_lod:build_lod",
+        "settings": {
+          "kind": "offset-pedestrian",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain observed bent signal support using reduced signal profiles."
+      }
     }
   ]
 }

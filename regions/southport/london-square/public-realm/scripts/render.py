@@ -8,6 +8,8 @@ scene=bpy.context.scene
 import sys
 selected=sys.argv[sys.argv.index('--final')+1:] if '--final' in sys.argv else []
 for name,position,target,scale in [
+    ('nevill-junction',(0,40,80),(0,40,0),85),
+    ('nevill-corner',(-2,25,8),(-12,39,0),29),
     ('post-office-mouth',(60,-32,12),(68,-18,0),20),
     ('posting-footway',(50,-84,3),(48,-77,1),12),
     ('posting-wall',(37,-81,2.6),(38.2,-76.5,1.7),5),

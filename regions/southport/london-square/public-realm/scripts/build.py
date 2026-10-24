@@ -96,6 +96,9 @@ def edge(name,pts,part):
  for i in range(len(pts)):
   j=(i+1)%len(pts)
   if abs(outer[i][0])>40.9 and abs(outer[j][0])>40.9:continue  # open scene boundary, not a kerb
+  if abs(outer[i][1]-21)<1e-5 and abs(outer[j][1]-21)<1e-5:
+   midpoint=(outer[i][0]+outer[j][0])/2
+   if -23.4<midpoint<-20.6 or 23.1<midpoint<25.9:continue
   m.add([(outer[i][0],outer[i][1],-.12),(outer[j][0],outer[j][1],-.12),(outer[j][0],outer[j][1],.004),(outer[i][0],outer[i][1],.004),(inner[i][0],inner[i][1],.004),(inner[j][0],inner[j][1],.004)],[(0,1,2,3),(3,2,5,4)])
  finish(m,kerb,part)
  # Cut the pair at the actual tile boundary, not the expanded offset polygon.
@@ -113,7 +116,7 @@ prezzo_curve=[(-12.4+6.2*math.cos(t),-27.3+6.2*math.sin(t))
 prezzo_approach=[(-41,-21.1)]+prezzo_curve
 
 # Road base is continuous. Red surfacing is the island-loop material observed in imagery.
-rect('Surface roads',-41,-27,41,36,asphalt,'roads',-.12)
+rect('Surface roads',-41,-27,41,31,asphalt,'roads',-.12)
 rect('Surface London neck',-10,-36,8.5,-27,asphalt,'roads',-.12)
 polygon('Surface red island carriageways',[(-18,21),(18,21),(14,19),(13,16),(13.1,-19),
  (8,-19.9),(5.5,-21.4),(4.3,-25.3),(4.3,-28),(-6.2,-28),
@@ -154,7 +157,7 @@ for s in [-1,1]:
   polygon('Surface NatWest corner pavement',[(4.3,-27),(41,-27),(41,-19.9),
    (8,-19.9),(6.5,-20.3),(5.4,-21),(4.7,-22.4),(4.35,-24.5),(4.3,-25.3)],mixed,'perimeter')
  x0,x1=sorted([s*(6.2 if s<0 else 4.3),s*(10 if s<0 else 8.5)]);rect('Surface London neck footway',x0,-36,x1,(-29 if s<0 else -27),mixed,'perimeter')
- x0,x1=sorted([s*6,s*41]);rect('Surface perimeter north approximate',x0,31,x1,36,mixed,'perimeter')
+ # The traced Nevill junction owns the northern footway.
 # The mapped Prezzo corner reveals the old generic footway was too far back.
 # Retain building registration and give its doorway an estimated continuous approach.
 from southport3d.landscape import capped_wall
@@ -213,9 +216,11 @@ for i,record in enumerate(D['furniture']):
 for side in [-1,1]:
  pts=[(side*6.95,y,grade(y)+.0075) for y in [-10,-7.5,-5,-2.5,0,2.5,5,7.5,10]]
  m=sagging_chain(pts);m.name='Chain island '+str(side);m.finish(fm,collections['island-furniture'])
- label='ne' if side>0 else 'sw';pts=[(side*x,y,grade(y)) for x,y in [(14.2,17),(15.5,19),(18,20),(22,20)]]
+ label='ne' if side>0 else 'sw';pts=[(side*x,y,grade(y)) for x,y in [(14.2,17),(15.5,19),(18,20),(19.5,20)]]
  m=guardrail(pts);m.name='Guardrail '+label;m.finish(fm,collections[label+'-furniture'])
 build_extensions(globals())
+from nevill_junction import build_junction, drop_landings
+build_junction(globals())
 
 # Remove underlying surfaces rather than relying on millimetre depth offsets.
 # This prevents z-fighting in browsers and other GLB viewers, at oblique distances.
@@ -309,6 +314,8 @@ for o in collections['london-3-ground'].objects:
  if o.name.startswith(('Surface crossing ramp','Tactile London')):
   for v in o.data.vertices:
    v.co.z-=.12*max(0,min(1,(5.4-abs(v.co.x))/1.1))
+
+drop_landings(globals())
 
 # Pools are horizontal even though surrounding lawn/edging follows the site grade.
 # Do this after the plan cutouts, so the lawn cannot fill the basin at its high end.

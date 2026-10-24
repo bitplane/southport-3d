@@ -344,3 +344,20 @@ for south in (True,False):
             expected=layout['grade']['origin_z']+layout['grade']['dz_dy']*y-.12*(1-distance)
             assert ob and p and abs(p.z-expected)<.001,(south,x,distance,'Raised crossing remnant',p.z if p else None,expected)
 print('Sloping crossing edges meet road and footway without raised wedges')
+
+# Junction regressions: traced corners replace the generic square mouth, the
+# boundary has ground on its south side, and crossing lips meet the road.
+for x,y,paving in [(-10.3,39.8,True),(8.1,38.2,True),(-3.17,39.8,False),(2.17,40.98,False),(-8.17,40.98,True),(7.17,40.98,True)]:
+ ob,p=ground_hit(x,y)
+ assert ob,(x,y,'Nevill junction hole')
+ materials=[m.name for m in ob.data.materials]
+ assert ('Authored mixed rectangular paving' in materials)==paving,(x,y,materials)
+for x,edge in [(-22.1,36.37),(24.3,33.76)]:
+ ob,p=ground_hit(x,edge+.03)
+ expected=-.0075-.022*min(36,edge+.03)-.12*(1-.03/1.25)
+ assert ob and abs(p.z-expected)<.003,(x,'northern dropped landing',p)
+ ob,p=ground_hit(x,20.98)
+ assert ob and abs(p.z-(-.0075-.022*20.98-.12*(20.98-19.75)/1.25))<.003,(x,'memorial dropped landing',p)
+ob,p=ground_hit(24.33,26.11)
+assert ob and abs(p.z-(-.0075-.022*26.11-.12))<.003,'Refuge passage must be flush'
+print('Nevill junction corner coverage, shared seam and dropped crossing landings validated')

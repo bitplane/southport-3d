@@ -29,3 +29,15 @@ joints=((bx+(rows%2)*.5)%1<.035)|(by%1<.035)
 pixels=np.array([72,75,72])[None,None,:]+rng.normal(0,2,(n,n,1))
 pixels[joints]*=.70
 Image.fromarray(np.uint8(np.clip(pixels,0,255))).save(out/'service-road.png')
+
+# Junction border paviours and 60mm blister tactile spacing, authored in metres.
+bx=xx/n*18;by=yy/n*36;rows=np.floor(by).astype(int)
+joints=((bx+(rows%2)*.5)%1<.035)|(by%1<.035)
+pixels=np.array([133,101,84])[None,None,:]+rng.normal(0,2,(n,n,1));pixels[joints]*=.72
+Image.fromarray(np.uint8(np.clip(pixels,0,255))).save(out/'junction-brick.png')
+u=(xx/n*3.6+.03)%.06-.03;v=(yy/n*3.6+.03)%.06-.03
+height=.004*np.maximum(0,1-(u*u+v*v)/.012**2)
+dy,dx=np.gradient(height,3.6/n);normal=np.stack([-dx,-dy,np.ones_like(dx)],2);normal/=np.linalg.norm(normal,axis=2,keepdims=True)
+Image.fromarray(np.uint8(np.clip((normal+1)*127.5,0,255))).save(out/'junction-tactile-normal.png')
+pixels=np.array([157,149,128])[None,None,:]+rng.normal(0,1.5,(n,n,1))
+Image.fromarray(np.uint8(np.clip(pixels,0,255))).save(out/'junction-tactile.png')

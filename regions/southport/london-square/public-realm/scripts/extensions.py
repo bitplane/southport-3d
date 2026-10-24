@@ -79,7 +79,7 @@ def build_extensions(ctx):
     east_return=[(70.154,-27)]+corner_curve(70.154,False)+span(front,70.154+1.4,154)[1:]
     # The old square ends exactly at x=+/-41. Shared coordinates avoid doubled floors.
     # North-side footway is widened to include the mapped bench and bus-stop line.
-    for a,b in [(-41,-6),(6,41)]:rect('Surface north footway continuation',a,36,b,41,mixed,'perimeter')
+    # Northern footway is authored by nevill_junction from a shared kerb trace.
     for side,x0,x1,label in [(1,41,154,'ne'),(-1,-73,-41,'sw')]:
         part=label+'-garden-ground';fp=label+'-garden-furniture'
         rect('Surface extended carriageways',x0,-27,x1,41,asphalt,part,-.12)
@@ -343,7 +343,7 @@ def build_extensions(ctx):
     # Mapped benches on the north pavement opposite the monument.
     for node_id,node in osm['nodes'].items():
         x,y=node['xy'];kind={'bench':'bench','waste_basket':'bin'}.get(node['tags'].get('amenity'))
-        if kind and -41<x<41 and 31<y<41:
+        if kind and -41<x<41 and 38.2<y<41 and abs(x)>25:
             furnishing(kind,x,y,0,'ne-furniture' if x>0 else 'sw-furniture','OSM node '+node_id)
     build_rear_streets(ctx)
     ctx['extension_furniture_count']=count

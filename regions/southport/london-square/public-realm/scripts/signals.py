@@ -42,13 +42,16 @@ def person(mesh,z,walking,material,segments):
     disc(mesh,0,-.241,z+.058,.018,material,segments,.003)
 
 
-def signal(kind,level='detail',name=None):
+def signal(kind,level='detail',name=None,offset=False):
     pedestrian=kind=='pedestrian';fine=level=='detail';coarse=level=='district'
     n={'detail':32,'walk':16,'district':8}[level]
     mesh=Mesh(name or kind)
     centre=2.4 if pedestrian else 3.05
     height=.58 if pedestrian else .90
-    mesh.lathe((0,0),[(0,.057),(.12,.057),(centre+height/2-.05,.045)],n,1)
+    profile=[(0,.057),(.12,.057)]
+    if offset:profile += [(z,.045) for z in [1.65,1.75,1.85,1.95,2.05,2.15,2.2]]
+    profile.append((centre+height/2-.05,.045))
+    mesh.lathe((0,0),profile,n,1)
     # Rear brackets attach a separate dark housing to the post.
     for h in [centre-height*.35,centre+height*.35]:
         mesh.box((0,-.065,h),(.065,.15,.045),0)
@@ -70,4 +73,10 @@ def signal(kind,level='detail',name=None):
         disc(mesh,0,-.188,1.0,.022,2,n,.012)
         if not coarse:
             mesh.box((0,-.188,1.105),(.085,.004,.032),2)
+    if offset:
+        vertices=[]
+        for x,y,z in mesh.vertices:
+            t=max(0,min(1,(z-1.65)/.55))
+            vertices.append((x+.30*t*t*(3-2*t),y,z))
+        mesh.vertices=vertices
     return mesh

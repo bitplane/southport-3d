@@ -8,6 +8,8 @@ from lord_street_lamps import lamp
 from london_furniture import stainless_bin,led_lamp
 
 def furniture(kind,level="detail",name=None):
+    if kind=="offset-pedestrian":
+        return signal('pedestrian',level,name,offset=True)
     if kind=="stainless-bin":return stainless_bin(level,name)
     if kind=="london-led":return led_lamp(level,name)
     if kind=="lord-street-lamp":return lamp(level,name)

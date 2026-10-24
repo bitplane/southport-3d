@@ -32,14 +32,16 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Roads and pavements from London Square north seam through Nevill Street to the Promenade crossing and Funland frontage approach. No buildings, carousel, interiors or street furniture. Observed 2019/2020 imagery; not a reconstruction of proposed 2026 highway changes.",
+  "scope": "Roads and pavements from London Square north seam through Nevill Street to the Promenade crossing and Funland frontage approach. No buildings, carousel, interiors or street furniture. Observed 2019/2020 imagery; not a reconstruction of proposed 2026 highway changes. Lord Street mouth corrected using July 2026 Street View and satellite kerb tracing; its furniture belongs to London Square.",
   "licensing": "OSM-derived layout, OpenStreetMap contributors ODbL 1.0; photographic reference links only, all maps procedurally authored.",
   "build_inputs": {
     "master": [
-      "regions/southport/nevill-street/frontage-placeholders/research/layout.json"
+      "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+      "regions/southport/london-square/public-realm/research/nevill-junction.json"
     ],
     "validate": [
-      "regions/southport/nevill-street/frontage-placeholders/research/layout.json"
+      "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+      "regions/southport/london-square/public-realm/research/nevill-junction.json"
     ]
   }
 }

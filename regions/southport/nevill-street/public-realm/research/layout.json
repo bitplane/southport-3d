@@ -107,16 +107,12 @@
     ]
   ],
   "seam": {
-    "road_start_y": 36,
+    "road_start_y": 41,
     "pavement_start_y": 41,
-    "road_x_bounds_at_36": [
-      -6,
-      6
-    ],
     "pavement_z": -0.7995,
     "road_drop": 0.12,
     "owner_south_of_seam": "southport.london-square.public-realm",
-    "rule": "New road only X[-6,6] between Y36 and41; new footways begin at Y41. Existing north footway stops at Y41. No skirts across asset seams."
+    "rule": "London Square owns all surfaces south of Y41; Nevill owns north of Y41. Both kerbs come from the shared junction trace."
   },
   "grade": {
     "start_y": 41,
@@ -126,7 +122,7 @@
     "basis": "Observed Nevill rises to Promenade; total rise visually estimated, not surveyed. Piecewise linear, flat on Promenade and forecourt."
   },
   "part_boundaries_y": [
-    36,
+    41,
     95,
     185,
     248.07,
@@ -407,5 +403,6 @@
         ]
       ]
     }
-  ]
+  ],
+  "junction_plan": "regions/southport/london-square/public-realm/research/nevill-junction.json"
 }

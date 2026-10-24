@@ -10,6 +10,19 @@ from southport3d.planar import subtract,area,halfplane
 D=json.loads((ROOT/'research/layout.json').read_text())
 OSM=json.loads((ROOT/'research/route-osm.json').read_text())
 BLOCK_PLAN=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/D['block_plan']).read_text())
+J=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/D['junction_plan']).read_text())
+def traced_x(key,y):
+ points=J[key]
+ for a,b in zip(points,points[1:]):
+  if a[1]<=y<=b[1]:return a[0]+(b[0]-a[0])*(y-a[1])/(b[1]-a[1])
+ raise ValueError((key,y))
+# Both assets derive the boundary from the same trace, including all bends.
+station_ys=sorted({p[1] for key in ['west_kerb','east_kerb'] for p in J[key] if p[1]>=41}|set(J['nevill_crossing_y']))
+new_stations=[]
+for y in station_ys:
+ left,right=traced_x('west_kerb',y),traced_x('east_kerb',y)
+ new_stations.append([y,(left+right)/2,(right-left)/2,-10,9.2])
+D['stations_y_centre_halfwidth_left_right']=new_stations+[p for p in D['stations_y_centre_halfwidth_left_right'] if p[0]>48]
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene
@@ -37,6 +50,7 @@ def material(name,colour,texture=None):
   m.node_tree.links.new(q.outputs['Normal'],p.inputs['Normal'])
  return m
 mats={'paving':material('Authored pale Nevill slabs',(.60,.58,.52),'paving'),'brick':material('Authored red brick bands',(.4,.22,.17),'brick'),'asphalt':material('Authored asphalt',(.08,.09,.09),'asphalt'),'kerb':material('Granite kerb',(.43,.43,.40)),'white':material('Worn white paint',(.72,.71,.65)),'yellow':material('Worn yellow paint',(.64,.48,.12)),'tactile':material('Estimated buff tactile pads',(.57,.40,.25),'tactile')}
+mats['junction-tactile']=material('Junction buff tactile',(.48,.45,.35),'junction-tactile')
 rows=[]
 verticals=[]
 def grade(y):
@@ -119,9 +133,18 @@ for road in D['side_roads']:
  assert len(hits)==2,(road['name'],hits)
  mouth_breaks[side].append((min(hits),max(hits)))
 (ROOT/'research/marking-mouths.json').write_text(json.dumps(mouth_breaks,indent=2))
-# Exactly fill the pre-existing square's central open neck; outside this rectangle
-# its Y36–41 footway belongs to London Square, not this asset.
-quad('square road seam',-6,36,6,41,'asphalt',100,level(True))
+# London Square now owns the complete road and both corners below Y41.
+# Retain the tiny continuation of the preceding kerb cap above Y41.
+# Clipping an offset only after extending it through the seam avoids wedges.
+from southport3d.road import parallel
+for side,key in [(-1,'west_kerb'),(1,'east_kerb')]:
+ curve=J[key]
+ for a,b in zip(curve,curve[1:]):
+  if b[1]==41:kerb(a,b,-side)
+ inner=parallel(curve,-side*.30);outer=parallel(curve,-side*.58)
+ for i in range(len(curve)-1):
+  if curve[i+1][1]<41:continue
+  surface('junction red edge band',[inner[i],inner[i+1],outer[i+1],outer[i]],'brick',140)
 ys=sorted(set([v for pairs in mouth_breaks.values() for pair in pairs for v in pair]+[r[0] for r in D['stations_y_centre_halfwidth_left_right']]+[45,118,125,145,156,97.7,104.5,106.1,113.3,161.8,169.1,177.1,186.4,190.5,195.7,245.7,246.8]))
 for ya,yb in zip(ys,ys[1:]):
  ca,ha,la,ra=station(ya)
@@ -136,12 +159,12 @@ for ya,yb in zip(ys,ys[1:]):
   midpoint=(ya+yb)/2
   breaks=list(mouth_breaks[side])
   # Crossings are open, with separately authored ramps rather than a kerb barrier.
-  breaks += [(246.8,249.5)]
+  breaks += [(246.8,249.5),tuple(J['nevill_crossing_y'])]
   if any(a<midpoint<b for a,b in breaks):
       continue
   kerb((edgea,ya),(edgeb,yb),-side)
   # Red paviour band behind the kerb, observed on the lower street; breadth estimated.
-  surface('red edge band',[(edgea+side*.32,ya),(edgea+side*.77,ya),(edgeb+side*.77,yb),(edgeb+side*.32,yb)],'brick',140)
+  if ya>=48:surface('red edge band',[(edgea+side*.32,ya),(edgea+side*.77,ya),(edgeb+side*.77,yb),(edgeb+side*.32,yb)],'brick',140)
   bay=(side>0 and 125<=midpoint<=156) or (side<0 and 118<=midpoint<=145)
   if ya>=41 and not bay:
    for offset in [.18,.36]:
@@ -149,6 +172,24 @@ for ya,yb in zip(ys,ys[1:]):
     marking_segments.append({'kerb':[(edgea,ya),(edgeb,yb)],'paint':[pa,pb],'offset':offset})
     strip('double yellow',pa,pb,.07,'yellow',300,level(True))
 (ROOT/'research/marking-centrelines.json').write_text(json.dumps(marking_segments,indent=2))
+# Nevill signal crossing: kerb-free buff landings and sparse worn studs.
+ya,yb=J['nevill_crossing_y']
+for side in [-1,1]:
+ ca,ha,la,ra=station(ya);cb,hb,lb,rb=station(yb)
+ ea,eb=ca+side*ha,cb+side*hb
+ def landing(x,y,side=side):
+  c,h,_,_=station(y);distance=(x-(c+side*h))*side
+  return grade(y)-.12*max(0,min(1,1-distance/1.3))
+ for aa,bb in zip(ys,ys[1:]):
+  if aa<ya or bb>yb:continue
+  ca,ha,_,_=station(aa);cb,hb,_,_=station(bb)
+  ea,eb=ca+side*ha,cb+side*hb
+  surface('Nevill crossing tactile',[(ea,aa),(eb,bb),(eb+side*1.3,bb),(ea+side*1.3,aa)],'junction-tactile',210,landing)
+for y in [ya,yb]:
+ c,h,_,_=station(y)
+ for j in range(10):
+  x=c-h+.25+(2*h-.5)*j/9
+  quad('Nevill crossing stud',x-.045,y-.045,x+.045,y+.045,'white',300,level(True))
 # Short branches establish junction bounds without modelling the full side streets.
 for road in D['side_roads']:
  a=road['centre']

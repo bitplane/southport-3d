@@ -10,19 +10,18 @@ assert meshes and all(o.data.polygons and o.data.uv_layers for o in meshes)
 assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.co)
 assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
 points=[o.matrix_world@v.co for o in meshes for v in o.data.vertices]
-assert min(v.y for v in points)>=36-1e-5
+assert min(v.y for v in points)>=41-1e-5
 assert max(v.y for v in points)<317
-# The existing square owns everything except its open 12m road neck below Y41.
-assert all(-6-1e-5<=v.x<=6+1e-5 for v in points if v.y<41-1e-5)
-seam=[v for v in points if abs(v.y-36)<1e-5];assert seam
-assert all(abs(v.z-(-.9195))<1e-5 for v in seam)
+# Y41 is a full-width ownership seam. No corridor floor extends below it.
+seam=[v for v in points if abs(v.y-41)<1e-5];assert seam
+assert all(-.920< v.z < -.795 for v in seam)
 bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get()
 def sample(x,y):
  hit,p,n,idx,ob,m=bpy.context.scene.ray_cast(deps,Vector((x,y,20)),Vector((0,0,-1)),distance=30)
  assert hit,(x,y,'ground hole')
  return p.z,ob
 # Route centre samples are deliberately spaced independently of construction rows.
-for y in range(37,248,3):
+for y in range(42,248,3):
  stations=D['stations_y_centre_halfwidth_left_right'];centre=0
  for a,b in zip(stations,stations[1:]):
   if y<=b[0]:
@@ -91,3 +90,20 @@ for region in D.get('block_ground_areas',[]):
   hit,position,*_=bpy.context.scene.ray_cast(deps,Vector((x,y,40)),Vector((0,0,-1)),distance=80)
   assert hit,(region['id'],x,y,'access ground missing')
   if 'height_m' in region:assert abs(position.z-region['height_m'])<.002,(region['id'],tuple(position),'access ground datum')
+
+# Independently test the crossing corridor and both lowered landings. The
+# crossing has no kerb wall; grade and sloping pad must meet at the kerb edge.
+J=json.loads((Path(__import__('os').environ['SOUTHPORT_REPO_ROOT'])/D['junction_plan']).read_text())
+y=46.4
+def edge_x(key):
+ for a,b in zip(J[key],J[key][1:]):
+  if a[1]<=y<=b[1]:return a[0]+(b[0]-a[0])*(y-a[1])/(b[1]-a[1])
+g=D['grade'];z=g['start_z']+(y-g['start_y'])*(g['top_z']-g['start_z'])/(g['top_y']-g['start_y'])
+for side,key in [(-1,'west_kerb'),(1,'east_kerb')]:
+ x=edge_x(key)
+ pad,_=sample(x+side*.02,y);road,_=sample(x-side*.02,y)
+ assert abs(pad-road)<.004,(key,'raised crossing kerb',pad,road,x)
+ assert abs(road-(z-.12))<.002
+ back,_=sample(x+side*1.28,y)
+ assert abs(back-z)<.004,(key,'landing does not meet pavement')
+print('Nevill crossing ramps join road and back of pavement')
