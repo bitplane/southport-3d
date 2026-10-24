@@ -10,7 +10,7 @@ Fine sculpture is an authored interpretation rather than a scan. Hidden rear/par
 
 ## Levels and review
 
-Detail uses individual shallow ashlar relief, window profiles and full ornament. Walk drops the individual ashlar skins in favour of the coursed wall material, simplifies irregular ornament and bakes signs. District additionally bakes the shallow glazing/painted-frame assemblies onto recessed panels while retaining the stone mullions, surrounds and projecting cornices, reduces the open parapet scrolls and omits small fittings. Arches, gable silhouettes, oculi, balconies, roof junctions and chimney bodies stay geometric. No global building decimation is applied.
+Detail uses individual shallow ashlar relief, window profiles and full ornament. Walk drops the individual ashlar skins in favour of the coursed wall material, simplifies irregular ornament and bakes signs. District uses the independent fixed-budget envelope described below. Its authored gables, entrances, roof junctions and open parapet retain the broad shape; shared atlases carry fine surface appearance. No global building decimation is applied.
 
 Validation checks finite metric geometry, packed maps, three gables/oculi and balconies, two cash machines, four stacks, footprint limits, unobscured principal windows and a genuinely lower internal roof deck. Render bookmarks cover both elevations, roof, entrance, gable and balcony. Local publication supplies the same views in the combined town scene, with pavements owned by the public-realm assets.
 
@@ -113,3 +113,21 @@ buildings beyond the return are placeholder boxes in
 The K6 exterior follows the November 2020 front and oblique Street View images of this particular kiosk: vermilion body, gold crown, black base, inset telephone panel, heavy door surround and eight rows of wide centre panes with narrow margin lights. Original casting photographs supplement the roof and glazing beads; generated seller images were excluded. The cap curves in both directions and the rear is solid. The cup handle, hinge placement and fine crown relief are interpretations of the standard type where the local image is unclear. Glazing remains opaque; no unsupported interior is modelled.
 
 The adopted 0.91 m base and 2.54 m overall height are approximate K6 dimensions, checked against local photographic proportions, not site measurements. Detail retains glazing beads, vents, hinges and crown arches. Walk reduces curved sampling and removes the tiny beads/vents. District keeps all eight pane rows and the roof silhouette, simplifies the crown and omits hardware and telephone lettering. Generator checks protect the three glazed elevations, solid rear, compound cap and decreasing triangle counts.
+
+## Fixed-budget District envelope
+
+District uses bounded whole-elevation receivers with shaped Dutch gable shoulders,
+coarse turret shafts, open parapet rails, entrance recesses and the boundary kiosk.
+The roof reuses only the dimensioned five-volume union generator, independent of
+window/ornament topology; chimney groups and the lower service deck remain.
+Fine carving, windows and signage are baked into shared colour/normal/roughness
+atlases (512×512 architecture, 512×256 roof, 512×128 frontage). Explicit budgets
+fail publication if topology or packaged resources grow beyond the design limits.
+This does not improve the source model's documented geometric estimates. Visual
+acceptance of the new District representation belongs to the owner after the
+technical checks; Detail and Walk retain their existing feature policies.
+
+Checked District export: **1,542 triangles, 688,984 bytes including textures and
+7,527,375 bytes estimated GPU memory**, down from 65,163 triangles, 4,855,588
+bytes and 12,078,204 GPU bytes. Geometry, coplanar receiver scan, bake coverage,
+normals and publication budgets pass. Visual acceptance remains with the owner.

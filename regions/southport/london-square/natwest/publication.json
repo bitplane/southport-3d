@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -150,8 +150,8 @@
         "reason": "Retain authored openings, depths, floor profiles, access, roof junctions and silhouette."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Coarse architectural geometry preserves arched openings, gables, balconies, roof valleys and chimney masses."
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -163,7 +163,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Use coarse coursed material rather than individual block skins."
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -174,13 +174,8 @@
         "reason": "Keep the observed two separate single-light windows and compact individual heads; no invented crossing bars."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Retain compact stone heads and aperture depths; bake only the shallow single-pane glazing and painted perimeter frame.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.4,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -191,13 +186,8 @@
         "reason": "Keep transoms, mullions, narrow-window pediments and consoles at walking distances."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Keep stone surrounds, cornices, transoms and mullions as explicit depth geometry. Bake only shallow glazing and painted frame details onto a recessed panel, avoiding unsupported faces in a solid proxy.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.4,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -208,13 +198,8 @@
         "reason": "Keep transoms, mullions, narrow-window pediments and consoles at walking distances."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Keep stone surrounds, cornices, transoms and mullions as explicit depth geometry. Bake only shallow glazing and painted frame details onto a recessed panel, avoiding unsupported faces in a solid proxy.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.4,
-        "max_sampled_error_m": 0.25
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -225,8 +210,8 @@
         "reason": "Keep true curved arched surrounds, keystones and circular window openings."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "These openings define the bank; low-cost explicit arches and oculi stay geometric."
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -240,11 +225,8 @@
         "bake": false
       },
       "district": {
-        "strategy": "decimate",
-        "reason": "Retain small sculptural silhouette and relief colour with coarse interpreted carving.",
-        "ratio": 0.18,
-        "uv": "smart",
-        "bake": false
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -258,11 +240,8 @@
         "bake": false
       },
       "district": {
-        "strategy": "decimate",
-        "reason": "Retain coarse open strapwork rather than fill the pierced parapet with a flat box.",
-        "ratio": 0.25,
-        "uv": "smart",
-        "bake": false
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -278,13 +257,8 @@
         "max_sampled_error_m": 0.6
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Retain bank identity at reduced texture size.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.7,
-        "max_sampled_error_m": 0.6
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -296,7 +270,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit tiny iron curls, handles and pots; structural balcony rails and chimney stacks remain."
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     },
     {
@@ -313,15 +287,51 @@
         "reason": "Retain three eight-row margin-glazed elevations, solid back, inset door, gold crown and compound curved cap; reduce roof and crown sampling and omit tiny beads/vents."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "boundary:build_lod",
-        "settings": {
-          "level": "district"
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Retain the characteristic eight-row glazing and compound roof silhouette; coarsen roof sampling, replace crown arches by a gold silhouette, omit handle, hinges and small trim. Separate telephone lettering is omitted at District."
+        "strategy": "omit",
+        "reason": "Replace with fixed-budget facade and roof envelopes, retaining silhouette and baking fine appearance into shared part atlases."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve shaped Dutch gables, coarse turrets, open parapets, dimensioned joined roof ranges, chimney groups, two entrance recesses and the boundary kiosk. Ornament and window detail become baked appearance.",
+    "max_bytes": 1600000,
+    "max_gpu_bytes": 11000000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 1000,
+        "cage_m": 0.65,
+        "source_parts": [
+          "architecture"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 1000,
+        "cage_m": 0.6,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "bank-frontage": {
+        "atlas": [
+          512,
+          128
+        ],
+        "max_triangles": 200,
+        "cage_m": 0.65,
+        "source_parts": [
+          "bank-frontage",
+          "architecture"
+        ]
+      }
+    }
+  }
 }
