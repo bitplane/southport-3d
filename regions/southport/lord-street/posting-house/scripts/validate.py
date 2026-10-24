@@ -227,3 +227,15 @@ for ob in [o for o in meshes if o.name.startswith('Envelope front bay')]:
   if max(p.y for p in points)>=5.5:continue
   assert min(abs(points[0].z),abs(points[0].z+.4))<1e-5,(ob.name,'Extra ground-floor depth cap',points[0].z)
 print('Ground-floor wall retains only its original front and rear planes')
+
+# Each arcade jamb must meet a physical plinth all the way to ground level.
+edges=D['historic_bay_edges']
+for i in (1,2,3):
+    a,b=edges[i:i+2];c=(a+b)/2;rx=(b-a)/2-.57
+    ob=bpy.data.objects['Arch ground arcade '+str(i)]
+    for side in (-1,1):
+        u=c+side*(rx+.13)
+        for z in (.015,.245,.48,.52,.57):
+            hit,point,normal,index=ob.ray_cast(Vector((u,z,1)),Vector((0,0,-1)))
+            assert hit and point.z>.27,('Unsupported arcade jamb',i,side,z)
+print('All six arcade jamb bases reach the pavement')

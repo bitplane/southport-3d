@@ -112,7 +112,14 @@ for i,(a,b,c) in enumerate(zip(edges,edges[1:],bays)):
         m=Mesh('Arch ground arcade '+str(i));ellipse_band(m,c,spring,rx,ry,.25,.26)
         ellipse_band(m,c,spring,rx+.29,ry+.29,.12,.32)
         for side in (-1,1):
-            u=c+side*(rx+.13);m.box((u,2.15,.12),(.26,3.20,.32));m.box((u,spring,.22),(.5,.16,.45))
+            u=c+side*(rx+.13)
+            m.box((u,2.15,.12),(.26,3.20,.32))
+            # The arcade jamb bears on a stone base, not an air gap.
+            # Its upper edge meets the jamb at .55 m; the wider plinth and
+            # shallow ledge are fitted from the clear November 2020 frontage.
+            m.box((u,.245,.14),(.42,.49,.40))
+            m.box((u,.52,.16),(.48,.06,.44))
+            m.box((u,spring,.22),(.5,.16,.45))
         m.outline([(c-.14,4.82),(c+.14,4.82),(c+.28,5.48),(c-.28,5.48)],.08,.40)
         finish(m,frame=frame)
         m=Mesh('Glazing ground arch '+str(i));m.outline(opening(c,1.12,spring,rx,ry),-.24,-.20,0)
