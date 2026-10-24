@@ -6,7 +6,7 @@ meshes=[o for o in bpy.context.scene.objects if o.type=='MESH']
 assert all(o.data.polygons and o.data.uv_layers for o in meshes)
 assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.co)
 assert len([o for o in meshes if o.name.startswith('Window dormer')])==9
-assert len([o for o in meshes if o.name.startswith('Sign ')])==12
+assert len([o for o in meshes if o.name.startswith('Sign ')])==11
 assert len([o for o in meshes if o.name.startswith('Roof chimney')])==6
 assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
 points=[o.matrix_world@v.co for o in meshes for v in o.data.vertices]
@@ -176,3 +176,13 @@ for names in [('Envelope rear wing west','Envelope end bay Lord flats'),
  errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
  assert not errors,errors[:8]
 print('Rear/flats and Lord Street/party-return surface ownership verified')
+
+# Transom lettering is attached to the recessed glass, not floating outside
+# the stone reveal. Sample beside the white lettering to find the glazing.
+transom_signs=[o for o in meshes if o.name.startswith("Sign PREZZO transom")]
+assert len(transom_signs)==4
+for ob in transom_signs:
+ origin=ob.matrix_world@Vector((.62,.10,-.02))
+ direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+ hit,p,n,i,found,m=bpy.context.scene.ray_cast(depsgraph,origin,direction,distance=.03)
+ assert hit and found.name.startswith("Window shop"),("Floating transom sign",ob.name,found.name if found else None)

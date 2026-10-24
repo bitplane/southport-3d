@@ -277,8 +277,8 @@ bpy.context.view_layer.objects.active=t;t.select_set(True);bpy.ops.object.conver
 m=Mesh('Sign PREZZO');m.box((0,0,0),(1.35,.31,.025),3)
 m.add([tuple(t.matrix_world@v.co) for v in t.data.vertices],[tuple(f.vertices) for f in t.data.polygons],4);bpy.data.objects.remove(t,do_unlink=True)
 instance('sign',m,'shopfront',corner@Matrix.Translation((L/2,3.65,-.085)))
-for frame,us in [(front,[2.05,9.55,17.05]),(side,[2.8,10.0])]:
- for u in us:instance('sign',Mesh('Sign PREZZO transom'),'shopfront',frame@Matrix.Translation((u,4.40,.10)))
+for frame,us in [(front,[2.05,9.55,17.05]),(side,[10.0])]:
+ for u in us:instance('sign',Mesh('Sign PREZZO transom'),'shopfront',frame@Matrix.Translation((u,4.40,-.096)))
 from frontage_detail import add_frontage
 add_frontage(finish,front,side,corner,flen,slen,L,shopmats,brass,lantern,ROOT)
 from end_bays import add_end_bays
