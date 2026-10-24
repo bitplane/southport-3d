@@ -1,0 +1,59 @@
+{
+  "units": "metres",
+  "inputs": [
+    {
+      "source": "P01 floor plan",
+      "private_capture": "../references/anchor-rear-buildings/15-floorplan.png",
+      "values": {
+        "front_room_width_internal_m": 4.8,
+        "rear_wing_width_internal_m": 2.7,
+        "first_front_rooms_depth_chain_m": [
+          3.5,
+          4.2
+        ],
+        "first_rear_rooms_depth_chain_m": [
+          6.4,
+          4.1
+        ],
+        "second_rear_kitchen_depth_m": 4.9,
+        "second_wc_depth_m": 1.6
+      },
+      "calculation": "Front external width estimated 4.8+0.4=5.2m. Four similarly sized properties imply 20.8m total; overhead roof width provides independent approximate check. Party wall allocations and plaster/brick thickness are not surveyed."
+    },
+    {
+      "source": "A01 overhead screenshot",
+      "private_capture": "../references/anchor-rear-buildings/roof-close.png",
+      "scale_bar": {
+        "label_m": 5,
+        "css_width_px": 111,
+        "scale_m_per_px": 0.04504504504504504
+      },
+      "front_eaves_pixel_endpoints": [
+        [
+          980,
+          1083
+        ],
+        [
+          1358,
+          817
+        ]
+      ],
+      "calculation": "sqrt(378^2+266^2)*5/111=20.82m. Roof parallax shifts absolute location; do not use elevated eaves as wall-ground registration."
+    },
+    {
+      "source": "OSM 371742620 checked against photographs",
+      "retained_ground_control_site_xy": [
+        103.679,
+        -87.956
+      ],
+      "calculation": "Original OSM front segment is 19.27m, approximately 1.5m narrower than the plan and roof evidence. Widen westward to 20.8m and treat the street-facing OSM edge as projected shop-bay control. Main wall is moved 0.60m inward along its normal, giving west wall corner [83.188, -84.317]. Shop bays project 0.44\u20130.69m. Absolute registration remains provisional to about 1m; review against the kerb and neighbouring access gap."
+    }
+  ],
+  "uncertainty_m": {
+    "width": 0.5,
+    "absolute_registration": 1.0,
+    "height": 0.7,
+    "unseen_rear": 0.8
+  },
+  "height_method": "Three storeys with approximately 3.2 m floor pitch, cross-checked against door/window proportions and standalone/assembled views. No surveyed height is available."
+}

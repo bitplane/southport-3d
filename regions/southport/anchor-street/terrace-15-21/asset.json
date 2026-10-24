@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "southport.anchor-street.terrace-15-21",
+  "name": "15\u201321 Anchor Street",
+  "region": "southport",
+  "area": "anchor-street",
+  "status": "Researched exterior; hidden elevations and heights estimated",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "four-premise-frontage",
+    "stepped-rear-wings",
+    "shop-bays",
+    "slate-roofs"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Four-premise terrace, measured from number15 floorplans and overhead imagery; detailed work in progress."
+}

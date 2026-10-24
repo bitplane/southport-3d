@@ -1,0 +1,68 @@
+{
+  "units": "metres",
+  "source": "C06 private roof-close.png",
+  "scale_bar_m": 5,
+  "scale_bar_css_px": 111,
+  "image_map_centre_px": [
+    836,
+    550
+  ],
+  "map_centre_lat_lon": [
+    53.64885,
+    -3.00263
+  ],
+  "trace_px": [
+    [
+      496,
+      384
+    ],
+    [
+      630,
+      230
+    ],
+    [
+      668,
+      272
+    ],
+    [
+      838,
+      128
+    ],
+    [
+      998,
+      317
+    ],
+    [
+      672,
+      573
+    ]
+  ],
+  "roof_to_wall_registration_shift_site_m": [
+    -1.5,
+    -3.75
+  ],
+  "registration_method": "Estimated shift aligns western visible wall/front approach with OSM 371742618 and access passage. Roof perspective/parallax is substantial; a roof trace is not survey data. North-edge step is observed, original rectangle cannot express it.",
+  "width_from_trace_m": 11.63,
+  "depth_from_trace_m": 19.11,
+  "elevation_method": "C02/C04 show two storeys, paired first-floor windows and about 3.1m door/fanlight, supporting estimated 7.25m eaves. Main ridge estimated 9.75m.",
+  "uncertainty_m": {
+    "footprint": 1.0,
+    "eaves": 0.6,
+    "ridge": 0.8,
+    "porch": 0.25
+  },
+  "access_range": {
+    "observed": "Low windowed brick range along the north side of the approach in the dated front photograph and Street View.",
+    "estimated_local_uv": [
+      1,
+      4.1,
+      -10,
+      0
+    ],
+    "estimated_height_m": [
+      3.2,
+      3.5
+    ],
+    "uncertainty_m": 1.0
+  }
+}

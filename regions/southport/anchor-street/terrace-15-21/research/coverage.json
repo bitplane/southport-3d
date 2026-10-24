@@ -1,0 +1,64 @@
+{
+  "stage": "Published exterior reconstruction; evidence gaps retained below",
+  "appearance": "Use 2026 auction and July 2026 side where evidenced; older 2020 street images only for unchanged architecture. Do not reproduce reference photographs as textures.",
+  "front": {
+    "sources": [
+      "P01",
+      "S01",
+      "S02"
+    ],
+    "confidence": "high",
+    "observed": "Four projecting shop bays; eight upper windows on each of two upper floors; recessed doors; brick flat parapet and stepped end stacks.",
+    "missing": "Current tenants at western two units need confirmation."
+  },
+  "east": {
+    "sources": [
+      "S03"
+    ],
+    "confidence": "high for visible areas",
+    "observed": "White painted lower end, exposed brick upper wall, small PVC windows, rear external steel stair."
+  },
+  "west": {
+    "sources": [
+      "S02"
+    ],
+    "confidence": "medium",
+    "observed": "Exposed brick end and narrow gated passage.",
+    "missing": "Northern return obscured by neighbours."
+  },
+  "rear": {
+    "sources": [
+      "A01",
+      "S03",
+      "P01"
+    ],
+    "confidence": "medium",
+    "missing": "Western rear courtyard windows not yet seen; no invented rows."
+  },
+  "roof": {
+    "sources": [
+      "A01"
+    ],
+    "confidence": "medium",
+    "missing": "No current live 3D. Both ANGLE gl and gl-egl browsers show 3D Earth unavailable; parent independently found NVIDIA driver unavailable. Older private central-3d-n.png gives broad oblique, insufficient for fine detail."
+  },
+  "ground": {
+    "sources": [
+      "A01",
+      "P01",
+      "S03"
+    ],
+    "confidence": "medium",
+    "observed": "OSM 371742620 is a seed only; plan widths and satellite courtyard boundaries will refine it."
+  },
+  "searches": [
+    {
+      "query": "Google Images 17 Anchor Street Southport",
+      "result": "Found measured auction floorplan and full-front photograph."
+    },
+    {
+      "query": "Mapillary Southport Anchor Street via web search",
+      "result": "No useful indexed imagery; direct map still to investigate."
+    }
+  ]
+}

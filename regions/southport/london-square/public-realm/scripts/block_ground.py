@@ -111,7 +111,29 @@ def build_block(ctx, existing_roads, anchor_outer):
         x,y,z=m.vertices[index]
         m.vertices[index]=(x,wall_a[1]+slope*(x-wall_a[0]),z)
     m.finish([gatebrick,ctx['kerb']],ctx['collections']['block-furniture'])
-    clipped('Surface rear courts',ground,ctx['mixed'],[parking]+reserve)
+    service_apron=[(106,-93),(121,-94),(122.452,-77.937),(122.229,-72.213),(110.248,-70.397),(105.364,-75.158)]
+    cinema_path=[(70.9,-54.20),(89.16,-54.20),(89.16,-56.70),(79.4,-56.70),(79.4,-56.48),(70.9,-56.48)]
+    clipped('Surface rear courts',ground,ctx['mixed'],[parking,cinema_path,service_apron]+reserve+buildings)
+    clipped('Surface Anchor loading apron',service_apron,ctx['asphalt'],existing_roads[:2]+[parking]+buildings,z=-.12)
+    clipped('Surface Bijou entrance passage',cinema_path,ctx['pale'],reserve+buildings)
+    # South low boundary is visible along the approach; northern boundary is
+    # the windowed access range owned by the cinema asset.
+    m=capped_wall([(79.5,-56.6,grade(-56.6)),(88.9,-56.6,grade(-56.6))],height=1.65,width=.24,name='Wall Bijou passage south')
+    passage_brick=ctx['mat']('Bijou passage brick courses',(.42,.23,.14),'junction-brick')
+    ob=m.finish([passage_brick,ctx['kerb']],ctx['collections']['block-furniture'])
+    uv=ob.data.uv_layers.new(name='Metric wall brick')
+    for face in ob.data.polygons:
+        for li in face.loop_indices:
+            v=ob.data.vertices[ob.data.loops[li].vertex_index].co
+            uv.data[li].uv=(v.x/4.05,v.z/2.70)
+    # Closed iron entrance leaves and spear finials are visible in August 2024.
+    m=Mesh('Street Bijou entrance gate');gx=71.12;gy0=-56.43;gy1=-54.0;base=grade(-55)
+    for z in (.35,1.25):m.box((gx,(gy0+gy1)/2,base+z),(.065,gy1-gy0,.055))
+    for y in (gy0,(gy0+gy1)/2,gy1):m.box((gx,y,base+.77),(.075,.075,1.54))
+    for i in range(13):
+        y=gy0+.08+i*(gy1-gy0-.16)/12;m.box((gx,y,base+.76),(.025,.025,1.45))
+        m.add([(gx-.05,y-.05,base+1.49),(gx+.05,y-.05,base+1.49),(gx+.05,y+.05,base+1.49),(gx-.05,y+.05,base+1.49),(gx,y,base+1.70)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4),(3,2,1,0)])
+    m.finish([iron],ctx['collections']['block-furniture'])
     clipped('Surface Sainsburys parking',parking,ctx['asphalt'],reserve,z=-.12)
     # Open access apron joins parking to Anchor; no kerb or paint across its mouth.
     clipped('Surface car park Anchor access',entrance,ctx['asphalt'],z=-.12,dest=street)
@@ -134,7 +156,7 @@ def build_block(ctx, existing_roads, anchor_outer):
                 if len(piece)>2:clipped('Marking parking bay',piece,white,buildings+reserve,z=-.109)
     # Low-detail rear building volumes occupy mapped footprints, not guessed boxes.
     material=ctx['mat']('Provisional rear building volume',(.39,.37,.33))
-    for key,height in [('371742618',7.5),('371742620',8.5),('51826175',6.5)]:
+    for key,height in [('51826175',6.5)]:
         points=ways[key]['xy'][:-1]
         if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(points,points[1:]+points[:1]))<0:points.reverse()
         m=Mesh('Placeholder OSM '+key+' estimated height')

@@ -8,9 +8,14 @@ def build_rear_streets(ctx):
     polygon=ctx['polygon'];part='rear-streets-ground'
     # Ownership starts at the existing Anchor stub X25 and front strip Y-27.
     # Anchor widens to the nine-metre stub, then follows mapped centreline bends.
-    anchor=[(25,-83.5),(26,-83.5),(49.817,-85.631),(67.658,-87.563),(150.579,-95.244),(159.105,-96.894),(223.91,-95.688),(234,-95.5)]
+    anchor=[(25,-83.5),(26,-83.5),(49.817,-85.631),(67.658,-87.563),(83,-88.984),(104,-90.929),(116,-92.041),(150.579,-95.244),(159.105,-96.894),(223.91,-95.688),(234,-95.5)]
     avenue=[(68.154,-27),(68.0803,-36),(67.658,-87.563)]
     an=parallel(anchor,4);aso=parallel(anchor,-4)
+    # Calibrated Anchor shopfront section: the mapped road line lies only
+    # about 3.4m from the shop bays. A symmetric 8m ribbon cut into 15–21.
+    # Keep south ownership fixed; trace the north kerb about 1.3m off the bays.
+    for i,width in ((4,2.9),(5,1.75),(6,3.0)):
+        an[i]=parallel(anchor,width)[i]
     an[0]=(25,-79);aso[0]=(25,-88)
     an[1]=(26,-79);aso[1]=(26,-88)
     aw=parallel(avenue,-2);ae=parallel(avenue,2)
@@ -22,7 +27,10 @@ def build_rear_streets(ctx):
     hill=[(219.58,21),(219.961,-6.062),(222.111,-21.523),(224.285,-59.271),(223.91,-95.688),(224.15,-104)]
     roads.append(parallel(hill,-3.5)+list(reversed(parallel(hill,3.5))))
     roads.append([(147.5,-86),(154.5,-86),(154.5,-96),(147.5,-96)])
+    roads.append([(106,-70),(121,-70),(121,-96),(106,-96)])
     anchor_outer=parallel(anchor,6.5)
+    for i,width in ((4,4.2),(5,3.05),(6,4.6)):
+        anchor_outer[i]=parallel(anchor,width)[i]
     anchor_outer[0]=(25,-76)
     # Footways are genuinely cut out at the T-junction, not layered over roads.
     for name,edge,outer in [
@@ -51,7 +59,7 @@ def build_rear_streets(ctx):
         for a,b in zip(curve,curve[1:]):
             cuts=[(a,b)]
             # Open vehicular access to Sainsbury's from Anchor, and Hill junction.
-            for lo,hi in ([(147.5,154.5),(219.8,228)] if name!='Anchor south' else [(219.8,228)]):
+            for lo,hi in ([(106,121),(147.5,154.5),(219.8,228)] if name!='Anchor south' else [(219.8,228)]):
                 trimmed=[]
                 for p,q in cuts:
                     if abs(q[0]-p[0])<1e-9:

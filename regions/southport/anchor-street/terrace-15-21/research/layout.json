@@ -1,0 +1,103 @@
+{
+  "phase": "detail",
+  "origin_site_xy": [
+    83.188,
+    -84.317
+  ],
+  "rotation_degrees": -8.4,
+  "base_z": 0.7845,
+  "width": 20.8,
+  "main_depth": 7.9,
+  "eaves": 9.65,
+  "parapet": 9.95,
+  "ridge": 11.5,
+  "units": [
+    {
+      "number": 21,
+      "u": [
+        0,
+        5.2
+      ]
+    },
+    {
+      "number": 19,
+      "u": [
+        5.2,
+        10.4
+      ]
+    },
+    {
+      "number": 17,
+      "u": [
+        10.4,
+        15.6
+      ]
+    },
+    {
+      "number": 15,
+      "u": [
+        15.6,
+        20.8
+      ]
+    }
+  ],
+  "rear_volumes": [
+    {
+      "name": "west paired rear wing",
+      "u": [
+        1.7,
+        8.2
+      ],
+      "v": [
+        7.9,
+        15.9
+      ],
+      "eaves": 8.9,
+      "ridge": 10.5,
+      "confidence": "roof measured; hidden elevations provisional"
+    },
+    {
+      "name": "east paired upper wing",
+      "u": [
+        12.4,
+        18.8
+      ],
+      "v": [
+        7.9,
+        14.3
+      ],
+      "eaves": 9.0,
+      "ridge": 10.45,
+      "confidence": "number 15 measured floorplan; shared 17 wing inferred from roof"
+    },
+    {
+      "name": "east lower wing",
+      "u": [
+        12.4,
+        18.8
+      ],
+      "v": [
+        14.3,
+        19.4
+      ],
+      "eaves": 6.5,
+      "ridge": 7.55,
+      "confidence": "floorplan and side photograph"
+    },
+    {
+      "name": "15 ground storage",
+      "u": [
+        18.8,
+        20.6
+      ],
+      "v": [
+        7.9,
+        12.3
+      ],
+      "eaves": 3.05,
+      "ridge": 3.15,
+      "confidence": "floorplan and side photograph"
+    }
+  ],
+  "notes": "Measured frontage and approximate external rear-wing dimensions, compared with street and overhead photographs. Absolute heights and hidden roof sections remain estimates."
+}

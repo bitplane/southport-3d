@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "A01",
+      "url": "https://www.google.com/maps/@53.64885,-3.00263,48m/data=!3m1!1e3",
+      "capture_date": null,
+      "access_date": "2026-10-24",
+      "observed": "Overhead slate roof, four-unit frontage bar, two principal paired rear wings, lower eastern extensions, separate garden courts and western/eastern access gaps. Roof displacement relative to ground must be accounted for.",
+      "private_capture": "../references/anchor-rear-buildings/roof-close.png"
+    },
+    {
+      "id": "S01",
+      "url": "https://www.google.com/maps/@53.6487098,-3.0022316,3a,90y,310h,105t/data=!3m4!1e1!3m2!1sCoCXkH61dBwprEBaJwv3uQ!2e0",
+      "capture_date": "2020-11",
+      "access_date": "2026-10-24",
+      "observed": "Eastern front, three storeys, thin PVC frames, shallow brick segmental arches, projecting shop bays and recessed doors."
+    },
+    {
+      "id": "S02",
+      "url": "https://www.google.com/maps/@53.6485958,-3.0024863,3a,90y,25h,110t/data=!3m4!1e1!3m2!1sQ9urYt68FGgnww8E9jO7Cg!2e0",
+      "capture_date": "2020-11",
+      "access_date": "2026-10-24",
+      "observed": "Western side brickwork, narrow gated gap, whole front receding eastward."
+    },
+    {
+      "id": "S03",
+      "url": "https://www.google.com/maps/@53.648841,-3.0021606,3a,90y,275h,105t/data=!3m4!1e1!3m2!1su_eIQNR8ADwvO5hQto6mPg!2e0",
+      "capture_date": "2026-07",
+      "access_date": "2026-10-24",
+      "observed": "Eastern return white ground-floor paint, two small upper windows, stepped rear wing with blue doors and external stairs, single-storey service structures, Bijou blocked arched gable partly visible."
+    },
+    {
+      "id": "P01",
+      "url": "https://www.pugh-auctions.com/property/202601211344sq_0yu4",
+      "capture_date": null,
+      "access_date": "2026-10-24",
+      "observed": "2026 auction publication: full frontage photo confirms four units 15\u201321 and eight upper window axes. Measured internal plan of 15 gives ground 74.0m2, first 65.7m2, second 54.5m2. Front internal width 4.8m; rear wing internal width 2.7m. Plans labelled approximate, not to scale.",
+      "private_capture": "../references/anchor-rear-buildings/15-floorplan.png"
+    },
+    {
+      "id": "I01",
+      "url": "https://thaihousespamassage.co.uk/contact/",
+      "capture_date": null,
+      "access_date": "2026-10-24",
+      "observed": "Business identity and address 17 Anchor Street."
+    }
+  ]
+}

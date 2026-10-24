@@ -1,0 +1,51 @@
+{
+  "stage": "Published exterior reconstruction; evidence gaps retained below",
+  "west_front": {
+    "sources": [
+      "C02",
+      "C03",
+      "C04"
+    ],
+    "confidence": "high",
+    "observed": "Paired upper windows; ornate central porch; lower side windows partly hidden by courtyard walls."
+  },
+  "east_rear": {
+    "sources": [
+      "C05"
+    ],
+    "confidence": "medium",
+    "observed": "Blocked arched upper opening, steep gable, external stair fragment.",
+    "missing": "Lower rear wall obscured by supermarket/service structures."
+  },
+  "south": {
+    "sources": [
+      "C06"
+    ],
+    "confidence": "low",
+    "observed": "Long low lean-to and roof vents.",
+    "missing": "Direct windows/doors not yet observed; keep blank provisional surfaces."
+  },
+  "north": {
+    "sources": [
+      "C06"
+    ],
+    "confidence": "low",
+    "observed": "Projecting western roof volume; narrow gap to St George\u2019s rear yards.",
+    "missing": "Ground-level elevation hidden."
+  },
+  "roof": {
+    "sources": [
+      "C06"
+    ],
+    "confidence": "medium",
+    "missing": "Live Google 3D disabled by current NVIDIA driver failure. Older private central-3d-n.png only broad oblique."
+  },
+  "ground": {
+    "sources": [
+      "C04",
+      "C06"
+    ],
+    "confidence": "medium",
+    "observed": "Access from Post Office Avenue; OSM rectangle omits porch/lean-to and is only a starting hypothesis."
+  }
+}

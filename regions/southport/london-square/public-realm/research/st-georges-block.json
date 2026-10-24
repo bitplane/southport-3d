@@ -868,6 +868,84 @@
       },
       "xy": [
         [
+          89.16,
+          -49.73
+        ],
+        [
+          89.16,
+          -50.73
+        ],
+        [
+          79.16,
+          -50.73
+        ],
+        [
+          79.16,
+          -53.83
+        ],
+        [
+          89.16,
+          -53.83
+        ],
+        [
+          89.16,
+          -53.93
+        ],
+        [
+          88.41,
+          -53.93
+        ],
+        [
+          88.41,
+          -57.03
+        ],
+        [
+          89.16,
+          -57.03
+        ],
+        [
+          89.16,
+          -61.36
+        ],
+        [
+          90.16,
+          -61.4547
+        ],
+        [
+          90.16,
+          -64.3547
+        ],
+        [
+          98.26,
+          -65.1222
+        ],
+        [
+          98.26,
+          -62.2222
+        ],
+        [
+          107.63,
+          -63.11
+        ],
+        [
+          108.27,
+          -51.98
+        ],
+        [
+          98.25,
+          -51.41
+        ],
+        [
+          98.31,
+          -48.86
+        ],
+        [
+          89.16,
+          -49.73
+        ]
+      ],
+      "osm_seed_xy": [
+        [
           106.542,
           -62.132
         ],
@@ -887,7 +965,10 @@
           106.542,
           -62.132
         ]
-      ]
+      ],
+      "replacement_asset": "southport.post-office-avenue.bijou-cinema",
+      "measurement_record": "../../../post-office-avenue/bijou-cinema/research/measurements.json",
+      "note": "Compound roof trace, porch, southern lean-to and photographed low northern entrance range replace the simple OSM rectangle. Absolute position and attachment widths estimated within about 1m."
     },
     "371742619": {
       "tags": {
@@ -921,6 +1002,68 @@
         "building": "yes"
       },
       "xy": [
+        [
+          83.188,
+          -84.317
+        ],
+        [
+          103.765,
+          -87.356
+        ],
+        [
+          104.919,
+          -79.54
+        ],
+        [
+          104.721,
+          -79.511
+        ],
+        [
+          105.364,
+          -75.158
+        ],
+        [
+          103.583,
+          -74.895
+        ],
+        [
+          104.62,
+          -67.871
+        ],
+        [
+          98.289,
+          -66.937
+        ],
+        [
+          96.609,
+          -78.313
+        ],
+        [
+          92.454,
+          -77.7
+        ],
+        [
+          93.623,
+          -69.785
+        ],
+        [
+          87.192,
+          -68.836
+        ],
+        [
+          86.024,
+          -76.75
+        ],
+        [
+          84.342,
+          -76.502
+        ],
+        [
+          83.188,
+          -84.317
+        ]
+      ],
+      "osm_seed_xy": [
         [
           103.679,
           -87.956
@@ -973,7 +1116,10 @@
           103.679,
           -87.956
         ]
-      ]
+      ],
+      "replacement_asset": "southport.anchor-street.terrace-15-21",
+      "measurement_record": "../../../anchor-street/terrace-15-21/research/measurements.json",
+      "note": "Number 15 internal floorplan and overhead 5m/111px scale refine frontage to 20.8m, with a 0.6m shop-bay projection outside this wall footprint. Original OSM seed retained. Heights remain estimates."
     },
     "371900482": {
       "tags": {

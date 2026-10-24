@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-24",
+  "stage": "Published model comparison",
+  "reference_views": [
+    "Dated 2021 frontage photograph",
+    "August 2024 passage Street View",
+    "July 2026 Anchor Street rear view",
+    "Calibrated overhead roof image"
+  ],
+  "published_views": [
+    "Original snag neighbourhood view",
+    "Terrace frontage at Detail, Walk and District",
+    "Bijou entrance passage at Detail, Walk and District",
+    "Anchor return and roof/footprint obliques"
+  ],
+  "verified": [
+    "Actual streaming part levels inspected through window.southport.getState; no loading errors on either building.",
+    "Frontage rhythm, porch/shop projections and main roof setbacks compared with private reference photographs.",
+    "Replacement volumes are distinct from the neighbouring buildings; previous placeholders are removed together with the ground correction.",
+    "Passage floor and street footway remain open; service entrance has asphalt and interrupted kerb/edge markings."
+  ],
+  "review_corrections": [
+    "Closed the coarse parapet or doorway edge gaps exposed by deliberately forcing District at close range.",
+    "Slate UV courses follow each roof face contour, with an approximately 0.30 m width and 0.15 m exposed course."
+  ],
+  "limitations": [
+    "Hidden north/south openings remain restrained; roof pitch, absolute placement and attachment dimensions are estimates.",
+    "Google Earth 3D was unavailable; compound roof inferred from calibrated overhead and limited street-level evidence."
+  ],
+  "private_comparisons": "../output/anchor-rear-buildings/published-*.png",
+  "review_budget": "Temporarily raised only the browser-intercepted catalog budget for forced all-Detail inspection; production streaming budget unchanged."
+}

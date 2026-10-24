@@ -1,0 +1,54 @@
+{
+  "phase": "detail",
+  "origin_site_xy": [
+    89.16,
+    -49.73
+  ],
+  "rotation_degrees": -90,
+  "base_z": 0.7845,
+  "front_width": 11.63,
+  "eaves": 7.25,
+  "ridge": 9.75,
+  "footprint_uv": [
+    [
+      0,
+      0
+    ],
+    [
+      11.63,
+      0
+    ],
+    [
+      13.38,
+      18.47
+    ],
+    [
+      2.25,
+      19.11
+    ],
+    [
+      1.68,
+      9.09
+    ],
+    [
+      -0.87,
+      9.15
+    ]
+  ],
+  "door_u": 5.75,
+  "roof_ridge_uv": [
+    [
+      5.8,
+      4.5
+    ],
+    [
+      6.2,
+      9.12
+    ],
+    [
+      7.815,
+      18.79
+    ]
+  ],
+  "notes": "Roof-edge trace adjusted by estimated parallax; footprint uncertainty remains about 1m. North step and southern lean-to are evidenced overhead. Heights estimated from two-storey elevation and door proportions."
+}

@@ -78,7 +78,7 @@ print('SW return road has one physical surface after priority flattening')
 rear_paving=[ob for ob in bpy.data.collections['rear-streets-ground'].objects
              if any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials)]
 for ob in rear_paving:ob.data.calc_loop_triangles()
-for x,y in [(25.31354,-77.78526),(25.88249,-77.31763),(80.137,-83.4137),(110.137,-86.3137)]:
+for x,y in [(25.31354,-77.78526),(25.88249,-77.31763),(83.1,-85.55),(105.1,-88.30)]:
  hits=[]
  for ob in rear_paving:
   for triangle in ob.data.loop_triangles:
@@ -86,6 +86,20 @@ for x,y in [(25.31354,-77.78526),(25.88249,-77.31763),(80.137,-83.4137),(110.137
    if hit is not None:hits.append(hit.z)
  assert len(hits)==1,(x,y,'Duplicated or missing Anchor footway fragments',hits)
 print('Anchor footway cutter fragments have one pavement layer')
+
+# The narrow cinema passage must have a single continuous floor between its
+# building-owned north range and the public-realm southern boundary.
+passage=list(bpy.data.collections['block-ground'].objects)
+for ob in passage:ob.data.calc_loop_triangles()
+for x,y in [(72.31,-55.13),(80.31,-55.13),(87.71,-55.13)]:
+ hits=[]
+ for ob in passage:
+  for triangle in ob.data.loop_triangles:
+   hit=intersect_ray_tri(*(ob.data.vertices[i].co for i in triangle.vertices),Vector((0,0,-1)),Vector((x,y,10)),True)
+   if hit is not None:hits.append(hit.z)
+ assert len(hits)==1,(x,y,'Missing or duplicated Bijou passage floor',hits)
+print('Bijou passage floor has one continuous surface')
+
 
 # The photographed garden row extends, rather than duplicates, the core row.
 front=json.loads((ROOT/'research/streets.json').read_text())['sw_frontage_2024']
@@ -166,10 +180,10 @@ print('Rounded Prezzo pavement and open carriageway validated')
 
 # New routes must be continuous driveable surfaces, including their shared
 # T-junction and the existing stub. These rays exclude building models.
-for x,y in [(25,-83.5),(40,-84.8),(67.66,-87.56),(100,-90.55),(150,-95.2),(68.1,-28),(68,-50),(67.8,-75),(67.7,-83)]:
+for x,y in [(25,-83.5),(40,-84.8),(67.66,-87.56),(100,-90.55),(110,-86.3),(115,-81),(150,-95.2),(68.1,-28),(68,-50),(67.8,-75),(67.7,-83)]:
  ob,p=ground_hit(x,y)
  assert ob and any(m.name=='Authored asphalt' for m in ob.data.materials),(x,y,'Road extension blocked or missing')
-for x,y in [(40,-79),(80,-83.5),(110,-86.3),(80,-94.4),(65.1,-40),(70.8,-45),(-11,-80),(-11,-90),(85,-20),(125,-18.5)]:
+for x,y in [(40,-79),(80,-83.5),(80,-94.4),(65.1,-40),(70.8,-45),(-11,-80),(-11,-90),(85,-20),(125,-18.5)]:
  ob,p=ground_hit(x,y)
  assert ob and any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(x,y,ob.name if ob else None,'New frontage pavement missing')
 print('Post Office / Anchor connection and new frontage paving validated')
@@ -243,7 +257,9 @@ for x,y in [(151,-91),(151,-93),(218,-60),(223.9,-95.7),(224.3,-59.3),(231,-59.4
  assert ob and any(m.name=='Authored asphalt' for m in ob.data.materials),(x,y,'Blocked block circulation',ob.name if ob else None)
  assert abs(p.z-(layout['grade']['origin_z']+layout['grade']['dz_dy']*max(-36,min(36,y))-.12))<.002,(x,y,'Road grade mismatch')
 placeholders=[o for o in meshes if o.name.startswith('Placeholder OSM ')]
-assert len(placeholders)==3,'Missing mapped provisional volumes'
+assert len(placeholders)==1,'Missing mapped provisional volumes'
+assert not any(o.name.startswith('Placeholder OSM 371742618 ') for o in meshes),'Detailed Bijou still has placeholder'
+assert not any(o.name.startswith('Placeholder OSM 371742620 ') for o in meshes),'Detailed Anchor terrace still has placeholder'
 assert not any(o.name.startswith('Placeholder OSM 371742619 ') for o in meshes),'Detailed Post Office terrace still has placeholder'
 for ob in placeholders:
  bm=bmesh.new();bm.from_mesh(ob.data)

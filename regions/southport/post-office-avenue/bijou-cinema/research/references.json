@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "C01",
+      "url": "https://southportbijoucinema.co.uk/about/",
+      "capture_date": null,
+      "access_date": "2026-10-24",
+      "observed": "Official identity, 8 Post Office Avenue, two storeys, front entrance requires temporary ramp, ground auditorium/bar and upper lounge."
+    },
+    {
+      "id": "C02",
+      "url": "https://cinematreasures.org/theaters/60955/photos/358459",
+      "capture_date": "2021-10-26",
+      "access_date": "2026-10-24",
+      "author": "David Simpson",
+      "observed": "Western entrance elevation with paired first-floor windows, stepped brick porch/parapet, pediment, fanlight, cream stone bands, black panelled door and red signs. Private photograph retained outside source control."
+    },
+    {
+      "id": "C03",
+      "url": "https://www.visitsouthport.com/blog/post/southports-winners-of-the-liverpool-city-region-tourism-awards/",
+      "capture_date": null,
+      "access_date": "2026-10-24",
+      "observed": "Close photograph of gauged brick semicircular arch, keystone, cream triangular pediment and consoles."
+    },
+    {
+      "id": "C04",
+      "url": "https://www.google.com/maps/@53.6487201,-3.0029815,3a,30y,45h,95t/data=!3m4!1e1!3m2!1s4ixhy0cDffT_fcVPx3_lMw!2e0",
+      "capture_date": "2024-08",
+      "access_date": "2026-10-24",
+      "observed": "Entrance at end of passage between 6 and 10 Post Office Avenue; metal gate, stone paving, no gap closure."
+    },
+    {
+      "id": "C05",
+      "url": "https://www.google.com/maps/@53.648841,-3.0021606,3a,40y,288h,102t/data=!3m4!1e1!3m2!1su_eIQNR8ADwvO5hQto6mPg!2e0",
+      "capture_date": "2026-07",
+      "access_date": "2026-10-24",
+      "observed": "Eastern gable partly visible beside supermarket; blocked tall arched opening and cream impost/sill, external stair glimpse."
+    },
+    {
+      "id": "C06",
+      "url": "https://www.google.com/maps/@53.64885,-3.00263,48m/data=!3m1!1e3",
+      "capture_date": null,
+      "access_date": "2026-10-24",
+      "observed": "Roof is compound pitched slate, hipped western end and eastern gable; small southern lean-to, northern projecting roof step, rooftop stacks and vents."
+    }
+  ]
+}

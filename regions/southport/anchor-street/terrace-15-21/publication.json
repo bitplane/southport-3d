@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/terrace-15-21.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Anchor Street",
+  "status": "Researched exterior; hidden elevations and heights estimated",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 1024
+    },
+    "district": {
+      "texture_size": 1024
+    }
+  },
+  "parts": [
+    {
+      "id": "walls",
+      "name": "walls",
+      "collection": "walls"
+    },
+    {
+      "id": "roof",
+      "name": "roof",
+      "collection": "roof"
+    },
+    {
+      "id": "joinery",
+      "name": "joinery",
+      "collection": "joinery"
+    }
+  ],
+  "views": [
+    {
+      "name": "Anchor Street",
+      "position": [
+        145.2893,
+        8,
+        16.4623
+      ],
+      "target": [
+        126.005,
+        5,
+        -3.8383
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Subpixel brick and slate joints at distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Bake appearance onto independent envelope."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve roof silhouette, openings, shop bays and stairs."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replace with fixed envelope."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed surfaces retain four projecting bays, stepped rear wings, roof pitches and coarse chimneys; window frames, lettering, brickwork and small pots bake or disappear. Escape stair omitted at District distance.",
+    "max_bytes": 2200000,
+    "max_gpu_bytes": 28000000,
+    "parts": {
+      "walls": {
+        "atlas": [
+          1024,
+          1024
+        ],
+        "max_triangles": 350,
+        "cage_m": 0.9,
+        "source_parts": [
+          "walls",
+          "joinery"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 450,
+        "cage_m": 0.65,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "joinery": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 40,
+        "cage_m": 0.35,
+        "source_parts": [
+          "joinery"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      130.8261,
+      1.8,
+      1.2368
+    ],
+    "target": [
+      126.6938,
+      4,
+      -3.1133
+    ]
+  }
+}
