@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.corridor-public-realm",
+  "name": "Lord Street \u2014 provisional roads and open spaces",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "provisional-block-plan",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "section-00",
+    "section-01",
+    "section-02",
+    "section-03",
+    "section-04",
+    "section-05",
+    "section-06",
+    "section-07",
+    "section-09",
+    "section-10",
+    "section-11",
+    "section-12",
+    "section-13",
+    "section-14"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Both sides, Duke Street to Leicester Street roundabouts. Ground ownership excludes the existing centre and Nevill corridor.",
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json"
+    ]
+  }
+}

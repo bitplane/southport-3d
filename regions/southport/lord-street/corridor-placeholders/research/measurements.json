@@ -1,0 +1,117 @@
+{
+  "units": "metres",
+  "method": "Google flat-map context coordinates calibrate an affine overlay; oblique imagery establishes relative heights and separate volumes. Pixel comparison is a block-scale check, not cadastral evidence.",
+  "calibration": {
+    "duke-plan.png": {
+      "pixels": [
+        [
+          800,
+          500
+        ],
+        [
+          1000,
+          500
+        ],
+        [
+          800,
+          700
+        ]
+      ],
+      "lat_lon": [
+        [
+          53.644422,
+          -3.011759
+        ],
+        [
+          53.644422,
+          -3.010686
+        ],
+        [
+          53.643786,
+          -3.011759
+        ]
+      ]
+    },
+    "central-plan.png": {
+      "pixels": [
+        [
+          800,
+          500
+        ],
+        [
+          1000,
+          500
+        ],
+        [
+          800,
+          700
+        ]
+      ],
+      "lat_lon": [
+        [
+          53.6484,
+          -3.005121
+        ],
+        [
+          53.6484,
+          -3.004048
+        ],
+        [
+          53.647764,
+          -3.005121
+        ]
+      ]
+    },
+    "mid-south-plan.png": {
+      "pixels": [
+        [
+          800,
+          500
+        ],
+        [
+          1000,
+          500
+        ],
+        [
+          800,
+          700
+        ]
+      ],
+      "lat_lon": [
+        [
+          53.646155,
+          -3.008683
+        ],
+        [
+          53.646155,
+          -3.00761
+        ],
+        [
+          53.645519,
+          -3.008683
+        ]
+      ]
+    }
+  },
+  "overview_metres_per_pixel": 0.354,
+  "endpoints_site_xy": {
+    "duke": [
+      -745.9,
+      17.1
+    ],
+    "leicester": [
+      546,
+      19
+    ]
+  },
+  "length_between_islands_m": 1291.9,
+  "height_method": "Coarse storey/roof envelope visual classes, not a height survey: ordinary terraces12\u201316 m; substantial civic/hotel ranges16\u201323 m; southern apartment ranges25 m; Court Road towers22/35 m; far Leicester tower40 m. Individual uncertainty is retained in layout.json.",
+  "shape_changes": [
+    "Travelodge outline split at site X=-658 between lower terrace and taller hotel.",
+    "Southern apartment range split into three taller masses and lower connectors.",
+    "Wayfarers south frontage split into two height classes.",
+    "Shelbourne provisional footprint uses documented calibrated plan pixels because seed extract omits it.",
+    "Overlapping Hulme frontage party boundary repaired without changing the outer street alignment.",
+    "Vincent Hotel upper mass separated from the lower connected Market Street range at provisional X=-292 m."
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street",
+  "status": "Provisional block plan between Duke Street and Leicester Street roundabouts; geometric extents checked against aerial/3D, dimensions and ground levels estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "section-00",
+      "name": "Duke Street roundabout",
+      "collection": "section-00",
+      "ground": true
+    },
+    {
+      "id": "section-01",
+      "name": "Garrick Parade",
+      "collection": "section-01",
+      "ground": true
+    },
+    {
+      "id": "section-02",
+      "name": "Wellington Street and Kingsway",
+      "collection": "section-02",
+      "ground": true
+    },
+    {
+      "id": "section-03",
+      "name": "Portland Street and Prince of Wales",
+      "collection": "section-03",
+      "ground": true
+    },
+    {
+      "id": "section-04",
+      "name": "Market Street and Forum Court",
+      "collection": "section-04",
+      "ground": true
+    },
+    {
+      "id": "section-05",
+      "name": "Eastbank Street and Atkinson",
+      "collection": "section-05",
+      "ground": true
+    },
+    {
+      "id": "section-06",
+      "name": "Town Hall forecourt",
+      "collection": "section-06",
+      "ground": true
+    },
+    {
+      "id": "section-07",
+      "name": "Wayfarers frontage",
+      "collection": "section-07",
+      "ground": true
+    },
+    {
+      "id": "section-09",
+      "name": "Nevill east frontage",
+      "collection": "section-09",
+      "ground": true
+    },
+    {
+      "id": "section-10",
+      "name": "Bold Street approach",
+      "collection": "section-10",
+      "ground": true
+    },
+    {
+      "id": "section-11",
+      "name": "Hill Street gardens",
+      "collection": "section-11",
+      "ground": true
+    },
+    {
+      "id": "section-12",
+      "name": "Seabank Road and Union Street",
+      "collection": "section-12",
+      "ground": true
+    },
+    {
+      "id": "section-13",
+      "name": "Court Road gardens",
+      "collection": "section-13",
+      "ground": true
+    },
+    {
+      "id": "section-14",
+      "name": "Leicester Street roundabout",
+      "collection": "section-14",
+      "ground": true
+    }
+  ],
+  "views": [
+    {
+      "name": "Lord Street south",
+      "position": [
+        -420,
+        350,
+        220
+      ],
+      "target": [
+        -420,
+        0,
+        -15
+      ]
+    },
+    {
+      "name": "Lord Street north",
+      "position": [
+        390,
+        350,
+        220
+      ],
+      "target": [
+        390,
+        0,
+        -15
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -180,
+      1.6,
+      -39
+    ],
+    "target": [
+      -210,
+      1.6,
+      -39
+    ]
+  },
+  "rules": [
+    {
+      "id": "provisional-ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already minimal untextured provisional geometry."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed-budget block-plan geometry has no decorative detail. Detailed replacements require independent bounded District envelopes."
+      }
+    }
+  ]
+}

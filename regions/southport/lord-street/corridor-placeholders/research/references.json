@@ -1,0 +1,47 @@
+{
+  "reviewed": "2026-10-24",
+  "sources": [
+    {
+      "id": "google-3d-orbit",
+      "urls": [
+        "https://www.google.com/maps/@53.6412214,-3.012188,433a,35y,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.644422,-3.0067891,433a,35y,270h,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6476226,-3.0121886,433a,35y,180h,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6429553,-3.009112,433a,35y,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6493546,-3.0091126,433a,35y,180h,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6452011,-3.00555,433a,35y,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6515988,-3.0055506,433a,35y,180h,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6479677,-3.000227,433a,35y,39.37t/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.651165,-2.9948328,433a,35y,270h,39.37t/data=!3m1!1e3"
+      ],
+      "observed": "Actual GPU-rendered photogrammetry inspected from multiple headings along the complete corridor. Duke planted island is much smaller than the Leicester island. Garrick Parade and garden-side Lord Street are separate access routes. Low hotel terrace versus Travelodge upper volume; three tall ranges on the opposite southern frontage; Prince of Wales irregular court; Wayfarers arcade rear; Atkinson/Town Hall scale; Court Road apartment towers and their low rear connection. Source imagery capture dates not established."
+    },
+    {
+      "id": "google-plan-comparison",
+      "urls": [
+        "https://www.google.com/maps/@53.644422,-3.012188,18z/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.646155,-3.009112,18z/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.6484,-3.00555,18z/data=!3m1!1e3",
+        "https://www.google.com/maps/@53.651165,-3.000227,18z/data=!3m1!1e3"
+      ],
+      "observed": "Selected OSM outlines overlaid on flat aerials for block-scale comparison. Main street ranges and open courts broadly correspond, but roof overhangs, vegetation and photo parallax prevent survey-grade wall placement. Shelbourne corner missing in seed extract is explicitly traced as a provisional aerial envelope. Party boundary overlap between ways 376073284 and 376073459 corrected to shared vertices."
+    },
+    {
+      "id": "osm-seed",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=-3.014,53.639,-2.988,53.657",
+      "retrieved": "2026-10-24",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0; https://www.openstreetmap.org/copyright",
+      "observed": "Reproducible attributed route and outline controls only; not authoritative building truth. Roads include observed forks around endpoint islands, the intermediate Coronation Walk splitter and garden service routes."
+    }
+  ],
+  "private_captures": "../references/lord-street-blocks/; no reference pixels are committed or published",
+  "limitations": [
+    "Block plan only. No claim of modelled elevations, roof slopes, chimney stacks, canopies or garden furniture.",
+    "Heights are coarse 3D visual classes with 3\u20135 m uncertainty; detailed building work requires measured elevation views.",
+    "Flat caps represent height bounds, not flat real roofs.",
+    "Joined mapped ranges need subdivision when individual buildings are researched.",
+    "Ground follows the existing centre datum; longitudinal grade, kerb widths, lawns and current road markings require later close survey.",
+    "Paths beneath trees are provisional mapped routes; green extents are landscape reservations rather than exact lawn beds.",
+    "Rear spaces beyond the bounded ground envelope remain outside this pass."
+  ]
+}

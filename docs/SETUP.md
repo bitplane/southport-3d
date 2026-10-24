@@ -82,3 +82,5 @@ open Layers → More, enable Globe view, select Satellite and then 3D. Some dire
 3D URLs still reset to the flat map; enable it through the controls and navigate
 within that session. Ctrl-drag rotates the view; ordinary arrow keys pan. Verify
 a perspective screenshot rather than assuming a supported WebGL context suffices.
+
+The Lord Street corridor ground asset also uses the GEOS C library (GEOS 3.10+; Debian `libgeos-c1t64`, or `libgeos-c1v5` on older releases). See [its block-plan notes](LORD-STREET-BLOCK-PLAN.md) for the local planar-geometry bridge and evidence limits. No Shapely installation is required.

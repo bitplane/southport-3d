@@ -1,0 +1,6466 @@
+{
+  "schema_version": 1,
+  "block_plan": "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+  "grade": {
+    "formula": "-0.0075 - 0.022 * clamp(y, -36, 36)",
+    "basis": "Existing London Square seam datum extended provisionally; no longitudinal height survey."
+  },
+  "bounds": [
+    -800,
+    590,
+    -35,
+    65
+  ],
+  "tile_cuts": [
+    -800,
+    -700,
+    -600,
+    -500,
+    -400,
+    -300,
+    -200,
+    -136,
+    -80,
+    0,
+    100,
+    218,
+    300,
+    400,
+    500,
+    590
+  ],
+  "excluded_rectangles": [
+    [
+      -136,
+      218,
+      -150,
+      41
+    ],
+    [
+      -81.84,
+      34.19,
+      41,
+      200
+    ]
+  ],
+  "roads": [
+    {
+      "id": "23081763",
+      "name": "service access",
+      "points": [
+        [
+          531.294,
+          32.216
+        ],
+        [
+          535.556,
+          35.86
+        ],
+        [
+          540.669,
+          38.157
+        ],
+        [
+          546.221,
+          38.933
+        ],
+        [
+          551.761,
+          38.108
+        ],
+        [
+          556.857,
+          35.769
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk": "left",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23081889",
+      "name": "Manchester Road",
+      "points": [
+        [
+          533.24,
+          -26.303
+        ],
+        [
+          528.816,
+          -54.805
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Manchester Road",
+        "ref": "B5425",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23085553",
+      "name": "Lord Street",
+      "points": [
+        [
+          -9.696,
+          25.547
+        ],
+        [
+          -70.436,
+          25.393
+        ],
+        [
+          -84.065,
+          25.55
+        ],
+        [
+          -101.574,
+          25.753
+        ],
+        [
+          -110.012,
+          25.846
+        ],
+        [
+          -131.085,
+          25.966
+        ],
+        [
+          -186.583,
+          26.282
+        ],
+        [
+          -202.829,
+          26.376
+        ],
+        [
+          -225.033,
+          26.848
+        ],
+        [
+          -227.937,
+          26.904
+        ],
+        [
+          -235.132,
+          27.061
+        ],
+        [
+          -245.58,
+          27.282
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lanes": "4",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk:both:surface": "paving_stones",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "23085560",
+      "name": "service access",
+      "points": [
+        [
+          -753.919,
+          26.262
+        ],
+        [
+          -752.924,
+          27.051
+        ],
+        [
+          -750.762,
+          28.283
+        ],
+        [
+          -748.406,
+          29.039
+        ],
+        [
+          -744.411,
+          29.221
+        ],
+        [
+          -740.647,
+          28.133
+        ],
+        [
+          -738.279,
+          26.651
+        ],
+        [
+          -737.921,
+          26.357
+        ]
+      ],
+      "width_m": 8,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23085573",
+      "name": "Duke Street",
+      "points": [
+        [
+          -743.7,
+          59.591
+        ],
+        [
+          -742.055,
+          80.599
+        ],
+        [
+          -740.989,
+          93.236
+        ],
+        [
+          -737.445,
+          127.194
+        ],
+        [
+          -735.36,
+          148.875
+        ],
+        [
+          -734.327,
+          160.76
+        ],
+        [
+          -734.558,
+          171.343
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "maxspeed": "30 mph",
+        "name": "Duke Street",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23085717",
+      "name": "Leicester Street",
+      "points": [
+        [
+          553.225,
+          410.939
+        ],
+        [
+          556.547,
+          369.628
+        ],
+        [
+          556.999,
+          360.724
+        ],
+        [
+          557.351,
+          353.603
+        ],
+        [
+          552.309,
+          278.061
+        ],
+        [
+          542.156,
+          96.564
+        ],
+        [
+          541.895,
+          86.479
+        ],
+        [
+          541.412,
+          56.491
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "20 mph",
+        "name": "Leicester Street",
+        "ref": "B5245",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23120493",
+      "name": "Duke Street",
+      "points": [
+        [
+          -748.819,
+          5.342
+        ],
+        [
+          -750.763,
+          -4.435
+        ],
+        [
+          -754.804,
+          -41.837
+        ],
+        [
+          -759.995,
+          -114.95
+        ],
+        [
+          -760.257,
+          -118.57
+        ],
+        [
+          -767.256,
+          -195.923
+        ],
+        [
+          -769.574,
+          -229.757
+        ],
+        [
+          -777.802,
+          -313.204
+        ],
+        [
+          -780.598,
+          -345.54
+        ],
+        [
+          -791.362,
+          -470.276
+        ],
+        [
+          -794.48,
+          -513.499
+        ],
+        [
+          -798.546,
+          -552.873
+        ],
+        [
+          -803.573,
+          -605.338
+        ],
+        [
+          -804.058,
+          -612.354
+        ],
+        [
+          -804.608,
+          -620.722
+        ],
+        [
+          -804.687,
+          -624.178
+        ],
+        [
+          -805.2,
+          -635.467
+        ],
+        [
+          -814.663,
+          -732.62
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "lanes": "2",
+        "lit": "no",
+        "maxspeed": "20 mph",
+        "name": "Duke Street",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23120497",
+      "name": "Nelson Street",
+      "points": [
+        [
+          -499.369,
+          -47.066
+        ],
+        [
+          -633.424,
+          -44.949
+        ],
+        [
+          -754.804,
+          -41.837
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "unclassified",
+        "maxspeed": "20 mph",
+        "name": "Nelson Street",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23158339",
+      "name": "London Street",
+      "points": [
+        [
+          2.515,
+          -23.286
+        ],
+        [
+          2.107,
+          -65.429
+        ],
+        [
+          1.891,
+          -82.988
+        ],
+        [
+          1.881,
+          -137.808
+        ],
+        [
+          0.551,
+          -144.113
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "maxspeed": "20 mph",
+        "name": "London Street",
+        "oneway": "yes",
+        "sidewalk": "left",
+        "source": "npe",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23158341",
+      "name": "Seabank Road",
+      "points": [
+        [
+          372.23,
+          25.309
+        ],
+        [
+          371.737,
+          88.959
+        ],
+        [
+          371.675,
+          97.171
+        ],
+        [
+          371.286,
+          164.361
+        ],
+        [
+          371.52,
+          227.351
+        ],
+        [
+          372.632,
+          275.734
+        ],
+        [
+          369.293,
+          331.723
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "lane_markings": "no",
+        "maxspeed": "20 mph",
+        "name": "Seabank Road",
+        "postal_code": "PR9 0EJ",
+        "source": "npe",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23158343",
+      "name": "Coronation Walk",
+      "points": [
+        [
+          -495.03,
+          53.91
+        ],
+        [
+          -493.345,
+          113.664
+        ],
+        [
+          -490.524,
+          175.209
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Coronation Walk",
+        "ref": "B5245",
+        "sidewalk:both": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "23158351",
+      "name": "Portland Street",
+      "points": [
+        [
+          -497.717,
+          -10.235
+        ],
+        [
+          -501.243,
+          4.353
+        ],
+        [
+          -502.33,
+          15.366
+        ],
+        [
+          -502.619,
+          19.249
+        ],
+        [
+          -502.777,
+          21.333
+        ],
+        [
+          -502.423,
+          24.897
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "cycleway:right": "lane",
+        "highway": "tertiary",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Portland Street",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "24459705",
+      "name": "London Square",
+      "points": [
+        [
+          10.292,
+          25.722
+        ],
+        [
+          10.204,
+          14.459
+        ],
+        [
+          8.651,
+          -6.452
+        ],
+        [
+          6.629,
+          -10.995
+        ],
+        [
+          3.227,
+          -18.619
+        ],
+        [
+          2.515,
+          -23.286
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "lane_markings": "no",
+        "maxspeed": "20 mph",
+        "name": "London Square",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "24475677",
+      "name": "Bold Street",
+      "points": [
+        [
+          223.959,
+          323.95
+        ],
+        [
+          224.588,
+          280.715
+        ],
+        [
+          223.878,
+          224.564
+        ],
+        [
+          224.227,
+          162.218
+        ],
+        [
+          223.834,
+          99.195
+        ],
+        [
+          223.473,
+          25.333
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "residential",
+        "maxspeed": "20 mph",
+        "name": "Bold Street",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "24475771",
+      "name": "Union Street",
+      "points": [
+        [
+          372.23,
+          25.309
+        ],
+        [
+          371.606,
+          -4.329
+        ],
+        [
+          369.804,
+          -62.329
+        ],
+        [
+          368.771,
+          -147.13
+        ],
+        [
+          368.733,
+          -150.38
+        ],
+        [
+          368.797,
+          -165.948
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "cycleway": "*",
+        "highway": "unclassified",
+        "maxspeed": "20 mph",
+        "name": "Union Street",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "24475773",
+      "name": "Hill Street",
+      "points": [
+        [
+          219.58,
+          26
+        ],
+        [
+          219.58,
+          21
+        ],
+        [
+          219.961,
+          -6.062
+        ],
+        [
+          222.111,
+          -21.523
+        ],
+        [
+          224.285,
+          -59.271
+        ],
+        [
+          223.91,
+          -95.688
+        ],
+        [
+          224.15,
+          -104
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Exact existing Hill Street centreline and 7 m carriageway at the shared seam; beyond the retained route this remains visually estimated.",
+      "tags": {
+        "cycleway": "*",
+        "highway": "residential",
+        "maxspeed": "20 mph",
+        "name": "Hill Street",
+        "postal_code": "PR9 0NW",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "24477839",
+      "name": "Court Road",
+      "points": [
+        [
+          510.974,
+          -51.429
+        ],
+        [
+          512.83,
+          -10.923
+        ],
+        [
+          513.414,
+          -7.271
+        ],
+        [
+          512.59,
+          -4.584
+        ],
+        [
+          509.34,
+          -3.57
+        ],
+        [
+          505.574,
+          -3.769
+        ],
+        [
+          479.901,
+          -3.702
+        ],
+        [
+          445.505,
+          -3.61
+        ],
+        [
+          439.28,
+          -3.668
+        ],
+        [
+          437.441,
+          -3.687
+        ],
+        [
+          371.606,
+          -4.329
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "residential",
+        "maxspeed": "20 mph",
+        "name": "Court Road",
+        "oneway": "yes"
+      }
+    },
+    {
+      "id": "24479444",
+      "name": "Kingsway",
+      "points": [
+        [
+          -567.349,
+          29.302
+        ],
+        [
+          -568.627,
+          45.594
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "name": "Kingsway",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "24481127",
+      "name": "Wellington Street",
+      "points": [
+        [
+          -635.609,
+          -104.78
+        ],
+        [
+          -633.424,
+          -44.949
+        ],
+        [
+          -632.222,
+          -7.384
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "residential",
+        "maxspeed": "20 mph",
+        "name": "Wellington Street",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "24481128",
+      "name": "Garrick Parade",
+      "points": [
+        [
+          -686.568,
+          28.366
+        ],
+        [
+          -685.831,
+          34.191
+        ],
+        [
+          -683.629,
+          39.162
+        ],
+        [
+          -681.384,
+          41.697
+        ],
+        [
+          -677.085,
+          44.691
+        ],
+        [
+          -672.445,
+          46.318
+        ],
+        [
+          -568.627,
+          45.594
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "residential",
+        "lit": "yes",
+        "maxspeed": "20 mph",
+        "name": "Garrick Parade",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "24943574",
+      "name": "St George's Place",
+      "points": [
+        [
+          150.512,
+          25.947
+        ],
+        [
+          149.87,
+          -14.699
+        ],
+        [
+          118.19,
+          -17.247
+        ],
+        [
+          105.894,
+          -18.234
+        ],
+        [
+          69.935,
+          -17.163
+        ],
+        [
+          68.235,
+          -17.114
+        ],
+        [
+          38.968,
+          -17.764
+        ],
+        [
+          24.22,
+          -18.094
+        ],
+        [
+          3.227,
+          -18.619
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "unclassified",
+        "name": "St George's Place",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "24943581",
+      "name": "Post Office Avenue",
+      "points": [
+        [
+          67.658,
+          -87.563
+        ],
+        [
+          68.235,
+          -17.114
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "residential",
+        "maxspeed": "20 mph",
+        "name": "Post Office Avenue"
+      }
+    },
+    {
+      "id": "25335293",
+      "name": "Lord Street",
+      "points": [
+        [
+          -6.425,
+          -18.586
+        ],
+        [
+          -64.647,
+          -18.906
+        ],
+        [
+          -67.852,
+          -17.136
+        ],
+        [
+          -69.23,
+          -14.553
+        ],
+        [
+          -70.436,
+          25.393
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "unclassified",
+        "lane_markings": "no",
+        "maxspeed": "20 mph",
+        "name": "Lord Street",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "paving_stones",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "41754749",
+      "name": "Lord Street",
+      "points": [
+        [
+          -497.784,
+          -11.569
+        ],
+        [
+          -507.716,
+          -10.825
+        ],
+        [
+          -632.222,
+          -7.384
+        ],
+        [
+          -724.211,
+          -3.08
+        ],
+        [
+          -727.601,
+          -2.577
+        ],
+        [
+          -730.989,
+          -1.094
+        ],
+        [
+          -734.612,
+          1.549
+        ],
+        [
+          -736.639,
+          3.276
+        ],
+        [
+          -740.012,
+          6.479
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "residential",
+        "maxspeed": "20 mph",
+        "name": "Lord Street",
+        "sidewalk": "both",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "41754750",
+      "name": "Wellington Street",
+      "points": [
+        [
+          -630.296,
+          29.479
+        ],
+        [
+          -632.222,
+          -7.384
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "residential",
+        "lit": "yes",
+        "maxspeed": "20 mph",
+        "name": "Wellington Street",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "42028332",
+      "name": "Hulme Street",
+      "points": [
+        [
+          -422.088,
+          28.271
+        ],
+        [
+          -419.112,
+          41.089
+        ],
+        [
+          -407.993,
+          88.903
+        ],
+        [
+          -360.481,
+          79.712
+        ],
+        [
+          -321.249,
+          76.577
+        ],
+        [
+          -281.372,
+          77.465
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "unclassified",
+        "name": "Hulme Street",
+        "oneway": "yes"
+      }
+    },
+    {
+      "id": "42029208",
+      "name": "Lord Street",
+      "points": [
+        [
+          -737.921,
+          26.357
+        ],
+        [
+          -731.257,
+          28.41
+        ],
+        [
+          -717.945,
+          30.151
+        ],
+        [
+          -711.731,
+          30.973
+        ],
+        [
+          -700.794,
+          31.976
+        ],
+        [
+          -687.698,
+          28.287
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "42029215",
+      "name": "Lord Street",
+      "points": [
+        [
+          -492.4,
+          24.88
+        ],
+        [
+          -502.423,
+          24.897
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "yes",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "42029241",
+      "name": "Kingsway",
+      "points": [
+        [
+          -568.627,
+          45.594
+        ],
+        [
+          -575.743,
+          105.463
+        ],
+        [
+          -576.486,
+          111.742
+        ],
+        [
+          -575.827,
+          127.899
+        ],
+        [
+          -574.156,
+          169.072
+        ],
+        [
+          -574.024,
+          190.672
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "name": "Kingsway",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "67571439",
+      "name": "service access",
+      "points": [
+        [
+          -866.226,
+          151.294
+        ],
+        [
+          -866.269,
+          137.654
+        ],
+        [
+          -866.371,
+          102.53
+        ],
+        [
+          -859.549,
+          96.586
+        ],
+        [
+          -858.303,
+          84.332
+        ],
+        [
+          -847.327,
+          70.651
+        ],
+        [
+          -844.39,
+          61.212
+        ],
+        [
+          -846.927,
+          43.126
+        ],
+        [
+          -845.846,
+          37.385
+        ],
+        [
+          -839.246,
+          35.721
+        ],
+        [
+          -822.535,
+          39.899
+        ],
+        [
+          -814.357,
+          42.233
+        ],
+        [
+          -808.898,
+          45.078
+        ],
+        [
+          -806.087,
+          49.578
+        ],
+        [
+          -805.171,
+          55.218
+        ],
+        [
+          -806.307,
+          60.949
+        ],
+        [
+          -809.828,
+          66.612
+        ],
+        [
+          -817.264,
+          77.438
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "residential",
+        "maxspeed": "20 mph"
+      }
+    },
+    {
+      "id": "148371142",
+      "name": "service access",
+      "points": [
+        [
+          -342.193,
+          -17.285
+        ],
+        [
+          -339.586,
+          -17.367
+        ],
+        [
+          -255.171,
+          -18.559
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "168128792",
+      "name": "Bank Passage",
+      "points": [
+        [
+          -201.891,
+          52.57
+        ],
+        [
+          -201.908,
+          87.224
+        ],
+        [
+          -202.296,
+          106.723
+        ],
+        [
+          -208.507,
+          136.207
+        ]
+      ],
+      "width_m": 3.5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "foot": "yes",
+        "highway": "service",
+        "name": "Bank Passage",
+        "service": "alley",
+        "surface": "paved"
+      }
+    },
+    {
+      "id": "168128795",
+      "name": "service access",
+      "points": [
+        [
+          439.28,
+          -3.668
+        ],
+        [
+          439.389,
+          23.665
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "residential",
+        "maxspeed": "20 mph",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "342955331",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -245.58,
+          27.282
+        ],
+        [
+          -245.942,
+          16.601
+        ],
+        [
+          -247.357,
+          -7.68
+        ],
+        [
+          -255.171,
+          -18.559
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "name": "Eastbank Street",
+        "oneway": "yes",
+        "ref": "A570",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "source": "npe",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "342955334",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -255.171,
+          -18.559
+        ],
+        [
+          -259.181,
+          -8.946
+        ],
+        [
+          -259.626,
+          5.971
+        ],
+        [
+          -259.764,
+          27.659
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lanes": "3",
+        "maxspeed": "30 mph",
+        "name": "Eastbank Street",
+        "oneway": "yes",
+        "ref": "A570",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "source": "npe",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "343403479",
+      "name": "service access",
+      "points": [
+        [
+          -486.621,
+          -43.285
+        ],
+        [
+          -499.33,
+          -42.82
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "source": "Bing"
+      }
+    },
+    {
+      "id": "343403483",
+      "name": "service access",
+      "points": [
+        [
+          -462.235,
+          -15.966
+        ],
+        [
+          -456.673,
+          -13.818
+        ],
+        [
+          -453.975,
+          -10.777
+        ],
+        [
+          -450.352,
+          -6.695
+        ],
+        [
+          -445.988,
+          3.054
+        ],
+        [
+          -442.167,
+          11.416
+        ],
+        [
+          -437.966,
+          24.959
+        ],
+        [
+          -437.031,
+          28.463
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "source": "Bing"
+      }
+    },
+    {
+      "id": "343403485",
+      "name": "service access",
+      "points": [
+        [
+          -483.79,
+          24.9
+        ],
+        [
+          -483.635,
+          19.947
+        ],
+        [
+          -483.356,
+          10.976
+        ],
+        [
+          -483.379,
+          2.215
+        ],
+        [
+          -481.302,
+          -5.562
+        ],
+        [
+          -479.684,
+          -10.077
+        ],
+        [
+          -478.0,
+          -12.414
+        ],
+        [
+          -473.564,
+          -14.432
+        ],
+        [
+          -469.196,
+          -15.648
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "source": "Bing"
+      }
+    },
+    {
+      "id": "343403488",
+      "name": "Portland Street",
+      "points": [
+        [
+          -497.717,
+          -10.235
+        ],
+        [
+          -497.784,
+          -11.569
+        ],
+        [
+          -499.33,
+          -42.82
+        ],
+        [
+          -499.369,
+          -47.066
+        ],
+        [
+          -501.859,
+          -93.557
+        ],
+        [
+          -502.243,
+          -142.831
+        ],
+        [
+          -502.721,
+          -204.668
+        ],
+        [
+          -504.403,
+          -288.438
+        ],
+        [
+          -505.171,
+          -311.109
+        ],
+        [
+          -509.639,
+          -443.606
+        ],
+        [
+          -511.782,
+          -493.774
+        ],
+        [
+          -513.976,
+          -545.92
+        ],
+        [
+          -516.736,
+          -599.248
+        ],
+        [
+          -516.726,
+          -605.905
+        ],
+        [
+          -517.028,
+          -609.672
+        ],
+        [
+          -517.187,
+          -612.177
+        ],
+        [
+          -517.319,
+          -616.09
+        ],
+        [
+          -517.525,
+          -622.343
+        ],
+        [
+          -519.139,
+          -721.792
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "maxspeed": "20 mph",
+        "name": "Portland Street"
+      }
+    },
+    {
+      "id": "343403491",
+      "name": "Portland Street",
+      "points": [
+        [
+          -492.4,
+          24.88
+        ],
+        [
+          -492.955,
+          19.343
+        ],
+        [
+          -493.137,
+          17.427
+        ],
+        [
+          -494.12,
+          13.862
+        ],
+        [
+          -495.212,
+          8.45
+        ],
+        [
+          -497.717,
+          -10.235
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Portland Street",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "343403492",
+      "name": "service access",
+      "points": [
+        [
+          -453.975,
+          -10.777
+        ],
+        [
+          -450.294,
+          -13.522
+        ],
+        [
+          -444.537,
+          -13.938
+        ],
+        [
+          -418.998,
+          -14.032
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "source": "Bing"
+      }
+    },
+    {
+      "id": "343403497",
+      "name": "service access",
+      "points": [
+        [
+          -445.988,
+          3.054
+        ],
+        [
+          -439.938,
+          1.146
+        ],
+        [
+          -420.37,
+          0.706
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "source": "Bing"
+      }
+    },
+    {
+      "id": "343403508",
+      "name": "service access",
+      "points": [
+        [
+          -478.0,
+          -12.414
+        ],
+        [
+          -482.366,
+          -17.479
+        ],
+        [
+          -484.92,
+          -20.733
+        ],
+        [
+          -485.905,
+          -25.832
+        ],
+        [
+          -486.621,
+          -43.285
+        ],
+        [
+          -488.219,
+          -82.532
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "source": "Bing"
+      }
+    },
+    {
+      "id": "371199520",
+      "name": "service access",
+      "points": [
+        [
+          -131.358,
+          -22.693
+        ],
+        [
+          -131.312,
+          13.023
+        ],
+        [
+          -131.085,
+          25.966
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "surface": "paving_stones"
+      }
+    },
+    {
+      "id": "371741204",
+      "name": "London Square",
+      "points": [
+        [
+          -6.425,
+          -18.586
+        ],
+        [
+          -7.743,
+          -13.756
+        ],
+        [
+          -9.947,
+          -5.69
+        ],
+        [
+          -9.678,
+          15.181
+        ],
+        [
+          -9.696,
+          25.547
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "lane_markings": "no",
+        "maxspeed": "20 mph",
+        "name": "London Square",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "372055261",
+      "name": "service access",
+      "points": [
+        [
+          437.441,
+          -3.687
+        ],
+        [
+          435.377,
+          -96.951
+        ],
+        [
+          408.795,
+          -97.419
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service"
+      }
+    },
+    {
+      "id": "372055264",
+      "name": "service access",
+      "points": [
+        [
+          479.901,
+          -3.702
+        ],
+        [
+          479.474,
+          -48.298
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service"
+      }
+    },
+    {
+      "id": "375540626",
+      "name": "service access",
+      "points": [
+        [
+          -246.82,
+          27.308
+        ],
+        [
+          -245.267,
+          34.385
+        ],
+        [
+          -242.483,
+          38.665
+        ],
+        [
+          -238.391,
+          40.09
+        ],
+        [
+          -233.683,
+          40.132
+        ],
+        [
+          -230.042,
+          39.729
+        ],
+        [
+          -227.037,
+          38.486
+        ],
+        [
+          -225.81,
+          35.878
+        ],
+        [
+          -225.033,
+          26.848
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "376073729",
+      "name": "Waverley Street",
+      "points": [
+        [
+          -281.372,
+          77.465
+        ],
+        [
+          -281.872,
+          42.564
+        ],
+        [
+          -281.876,
+          27.26
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "unclassified",
+        "maxspeed": "20 mph",
+        "name": "Waverley Street",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "376073730",
+      "name": "Lord Street",
+      "points": [
+        [
+          -281.876,
+          27.26
+        ],
+        [
+          -339.186,
+          28.101
+        ],
+        [
+          -422.088,
+          28.271
+        ],
+        [
+          -437.031,
+          28.463
+        ],
+        [
+          -450.098,
+          28.455
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "376074651",
+      "name": "Lord Street",
+      "points": [
+        [
+          -502.423,
+          24.897
+        ],
+        [
+          -514.924,
+          25.303
+        ],
+        [
+          -537.902,
+          29.059
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk": "both",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "424590084",
+      "name": "Coronation Walk",
+      "points": [
+        [
+          -500.961,
+          32.72
+        ],
+        [
+          -499.243,
+          37.307
+        ],
+        [
+          -498.215,
+          40.507
+        ],
+        [
+          -497.41,
+          43.672
+        ],
+        [
+          -497.134,
+          44.777
+        ],
+        [
+          -495.906,
+          49.414
+        ],
+        [
+          -495.03,
+          53.91
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Coronation Walk",
+        "oneway": "yes",
+        "ref": "B5245",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "442257211",
+      "name": "Lord Street",
+      "points": [
+        [
+          -567.349,
+          29.302
+        ],
+        [
+          -573.238,
+          29.292
+        ],
+        [
+          -596.197,
+          29.161
+        ],
+        [
+          -598.926,
+          29.143
+        ],
+        [
+          -601.818,
+          29.173
+        ],
+        [
+          -630.296,
+          29.479
+        ],
+        [
+          -650.354,
+          29.632
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "ref": "A565",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "442257213",
+      "name": "Lord Street",
+      "points": [
+        [
+          -245.58,
+          27.282
+        ],
+        [
+          -246.82,
+          27.308
+        ],
+        [
+          -251.304,
+          27.407
+        ],
+        [
+          -259.764,
+          27.659
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lanes": "4",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk:both:surface": "paving_stones",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "468143700",
+      "name": "Lord Street West",
+      "points": [
+        [
+          -794.092,
+          1.38
+        ],
+        [
+          -801.613,
+          -1.901
+        ],
+        [
+          -824.869,
+          -8.936
+        ],
+        [
+          -846.25,
+          -12.178
+        ],
+        [
+          -866.933,
+          -13.611
+        ],
+        [
+          -897.051,
+          -10.78
+        ],
+        [
+          -913.15,
+          -8.154
+        ],
+        [
+          -945.416,
+          -2.899
+        ],
+        [
+          -980.259,
+          0.306
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "name": "Lord Street West",
+        "ref": "A565",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "537925491",
+      "name": "Market Street",
+      "points": [
+        [
+          -339.186,
+          28.101
+        ],
+        [
+          -341.712,
+          -10.034
+        ],
+        [
+          -342.193,
+          -17.285
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "unclassified",
+        "name": "Market Street",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "731090905",
+      "name": "service access",
+      "points": [
+        [
+          575.055,
+          83.246
+        ],
+        [
+          599.719,
+          82.663
+        ],
+        [
+          601.56,
+          81.928
+        ],
+        [
+          602.895,
+          80.66
+        ],
+        [
+          603.806,
+          79.118
+        ],
+        [
+          604.919,
+          76.372
+        ],
+        [
+          605.172,
+          73.429
+        ],
+        [
+          603.231,
+          34.693
+        ],
+        [
+          602.528,
+          20.606
+        ]
+      ],
+      "width_m": 3.5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "service": "parking_aisle"
+      }
+    },
+    {
+      "id": "731094451",
+      "name": "service access",
+      "points": [
+        [
+          321.378,
+          -61.314
+        ],
+        [
+          321.712,
+          -34.885
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service"
+      }
+    },
+    {
+      "id": "731354124",
+      "name": "service access",
+      "points": [
+        [
+          587.462,
+          21.436
+        ],
+        [
+          586.53,
+          9.179
+        ],
+        [
+          585.993,
+          -0.383
+        ],
+        [
+          584.732,
+          -23.046
+        ],
+        [
+          583.816,
+          -39.617
+        ],
+        [
+          583.024,
+          -53.758
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "access": "private",
+        "highway": "service"
+      }
+    },
+    {
+      "id": "870393038",
+      "name": "service access",
+      "points": [
+        [
+          202.321,
+          -60.701
+        ],
+        [
+          201.552,
+          -26.13
+        ],
+        [
+          185.478,
+          -26.476
+        ],
+        [
+          186.298,
+          -50.025
+        ],
+        [
+          186.702,
+          -61.632
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "913355392",
+      "name": "service access",
+      "points": [
+        [
+          583.816,
+          -39.617
+        ],
+        [
+          607.712,
+          -42.541
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "access": "private",
+        "highway": "service"
+      }
+    },
+    {
+      "id": "1041188358",
+      "name": "service access",
+      "points": [
+        [
+          541.895,
+          86.479
+        ],
+        [
+          556.113,
+          84.488
+        ],
+        [
+          555.107,
+          58.098
+        ]
+      ],
+      "width_m": 3.5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "service": "parking_aisle"
+      }
+    },
+    {
+      "id": "1105140003",
+      "name": "Nevill Street",
+      "points": [
+        [
+          1.246,
+          25.579
+        ],
+        [
+          1.398,
+          101.098
+        ]
+      ],
+      "width_m": 7,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "maxspeed": "30 mph",
+        "name": "Nevill Street",
+        "source": "npe",
+        "source:name": "OS_OpenData_Locator",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1105140004",
+      "name": "Lord Street",
+      "points": [
+        [
+          37.604,
+          25.771
+        ],
+        [
+          10.292,
+          25.722
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1105140005",
+      "name": "Lord Street",
+      "points": [
+        [
+          420.027,
+          24.14
+        ],
+        [
+          372.23,
+          25.309
+        ],
+        [
+          342.048,
+          25.084
+        ],
+        [
+          223.473,
+          25.333
+        ],
+        [
+          219.532,
+          25.467
+        ],
+        [
+          189.584,
+          25.681
+        ],
+        [
+          150.512,
+          25.947
+        ],
+        [
+          115.088,
+          25.895
+        ],
+        [
+          99.42,
+          25.87
+        ],
+        [
+          66.814,
+          25.814
+        ],
+        [
+          37.604,
+          25.771
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1107612595",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -270.323,
+          -173.397
+        ],
+        [
+          -263.071,
+          -120.314
+        ],
+        [
+          -261.57,
+          -108.981
+        ],
+        [
+          -260.896,
+          -103.893
+        ],
+        [
+          -260.351,
+          -99.037
+        ],
+        [
+          -258.965,
+          -84.616
+        ],
+        [
+          -258.074,
+          -72.842
+        ],
+        [
+          -257.022,
+          -62.049
+        ],
+        [
+          -256.096,
+          -49.31
+        ],
+        [
+          -255.171,
+          -18.559
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Eastbank Street",
+        "ref": "A570",
+        "sidewalk": "both",
+        "source": "npe",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1168366027",
+      "name": "service access",
+      "points": [
+        [
+          572.088,
+          0.681
+        ],
+        [
+          585.993,
+          -0.383
+        ]
+      ],
+      "width_m": 3.5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "service": "parking_aisle"
+      }
+    },
+    {
+      "id": "1168366028",
+      "name": "service access",
+      "points": [
+        [
+          586.53,
+          9.179
+        ],
+        [
+          628.576,
+          7.377
+        ]
+      ],
+      "width_m": 3.5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "service",
+        "service": "parking_aisle"
+      }
+    },
+    {
+      "id": "1185373213",
+      "name": "Lord Street",
+      "points": [
+        [
+          528.575,
+          10.126
+        ],
+        [
+          525.917,
+          13.249
+        ],
+        [
+          522.753,
+          15.456
+        ],
+        [
+          519.442,
+          17.22
+        ],
+        [
+          516.357,
+          18.446
+        ],
+        [
+          513.609,
+          19.414
+        ],
+        [
+          500.148,
+          23.648
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk": "both",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1185373214",
+      "name": "Albert Road",
+      "points": [
+        [
+          586.382,
+          21.526
+        ],
+        [
+          578.981,
+          19.175
+        ],
+        [
+          576.592,
+          18.174
+        ],
+        [
+          574.173,
+          16.71
+        ],
+        [
+          569.492,
+          13.296
+        ],
+        [
+          561.389,
+          6.606
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "trunk",
+        "maxspeed": "30 mph",
+        "name": "Albert Road",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk": "both",
+        "source:name": "OS_OpenData_Locator",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1185373215",
+      "name": "Leicester Street",
+      "points": [
+        [
+          531.294,
+          32.216
+        ],
+        [
+          534.566,
+          37.337
+        ],
+        [
+          536.808,
+          41.642
+        ],
+        [
+          538.559,
+          45.689
+        ],
+        [
+          539.536,
+          48.155
+        ],
+        [
+          540.639,
+          51.529
+        ],
+        [
+          541.412,
+          56.491
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Leicester Street",
+        "oneway": "yes",
+        "ref": "B5245",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1185373216",
+      "name": "Manchester Road",
+      "points": [
+        [
+          559.422,
+          4.545
+        ],
+        [
+          545.017,
+          -9.393
+        ],
+        [
+          541.089,
+          -13.432
+        ],
+        [
+          537.321,
+          -18.174
+        ],
+        [
+          533.24,
+          -26.303
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Manchester Road",
+        "oneway": "yes",
+        "ref": "B5425",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1185373217",
+      "name": "Leicester Street",
+      "points": [
+        [
+          541.412,
+          56.491
+        ],
+        [
+          542.699,
+          52.72
+        ],
+        [
+          544.621,
+          49.359
+        ],
+        [
+          547.748,
+          45.389
+        ],
+        [
+          552.326,
+          40.273
+        ],
+        [
+          556.857,
+          35.769
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Leicester Street",
+        "oneway": "yes",
+        "ref": "B5245",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1185373218",
+      "name": "Manchester Road",
+      "points": [
+        [
+          533.24,
+          -26.303
+        ],
+        [
+          533.315,
+          -11.835
+        ],
+        [
+          534.132,
+          -6.347
+        ],
+        [
+          534.22,
+          -2.546
+        ],
+        [
+          533.788,
+          1.089
+        ],
+        [
+          532.791,
+          4.6
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "30 mph",
+        "name": "Manchester Road",
+        "oneway": "yes",
+        "ref": "B5425",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1185373219",
+      "name": "Lord Street",
+      "points": [
+        [
+          500.148,
+          23.648
+        ],
+        [
+          514.795,
+          26.363
+        ],
+        [
+          519.162,
+          26.698
+        ],
+        [
+          522.638,
+          27.357
+        ],
+        [
+          526.384,
+          28.896
+        ],
+        [
+          530.286,
+          30.963
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk": "both",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1185373220",
+      "name": "Albert Road",
+      "points": [
+        [
+          561.349,
+          31.779
+        ],
+        [
+          567.033,
+          28.298
+        ],
+        [
+          573.189,
+          25.245
+        ],
+        [
+          578.64,
+          23.214
+        ],
+        [
+          586.382,
+          21.526
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "trunk",
+        "maxspeed": "30 mph",
+        "name": "Albert Road",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk": "both",
+        "source:name": "OS_OpenData_Locator",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1192602408",
+      "name": "service access",
+      "points": [
+        [
+          561.349,
+          31.779
+        ],
+        [
+          564.719,
+          25.891
+        ],
+        [
+          565.897,
+          19.198
+        ],
+        [
+          564.742,
+          12.511
+        ],
+        [
+          561.389,
+          6.606
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk": "left",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1192602409",
+      "name": "service access",
+      "points": [
+        [
+          528.575,
+          10.126
+        ],
+        [
+          526.767,
+          15.312
+        ],
+        [
+          526.447,
+          20.791
+        ],
+        [
+          527.655,
+          26.153
+        ],
+        [
+          530.286,
+          30.963
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk": "left",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1192602411",
+      "name": "service access",
+      "points": [
+        [
+          559.422,
+          4.545
+        ],
+        [
+          554.584,
+          1.31
+        ],
+        [
+          549.009,
+          -0.381
+        ],
+        [
+          543.19,
+          -0.365
+        ],
+        [
+          537.62,
+          1.349
+        ],
+        [
+          532.791,
+          4.6
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk": "left",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1192921790",
+      "name": "service access",
+      "points": [
+        [
+          -753.292,
+          7.502
+        ],
+        [
+          -755.134,
+          9.252
+        ],
+        [
+          -756.565,
+          11.348
+        ],
+        [
+          -757.899,
+          15.318
+        ],
+        [
+          -758.027,
+          17.512
+        ],
+        [
+          -757.763,
+          19.687
+        ],
+        [
+          -757.073,
+          21.888
+        ],
+        [
+          -755.967,
+          23.924
+        ],
+        [
+          -753.919,
+          26.262
+        ]
+      ],
+      "width_m": 8,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1225926111",
+      "name": "Lord Street",
+      "points": [
+        [
+          -259.764,
+          27.659
+        ],
+        [
+          -277.205,
+          27.368
+        ],
+        [
+          -281.876,
+          27.26
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lanes": "4",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk:both:surface": "paving_stones",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1295716165",
+      "name": "service access",
+      "points": [
+        [
+          0.551,
+          -144.113
+        ],
+        [
+          -1.583,
+          -136.052
+        ],
+        [
+          -2.262,
+          -65.593
+        ],
+        [
+          -1.934,
+          -23.19
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "access": "no",
+        "bicycle": "yes",
+        "highway": "tertiary",
+        "oneway": "yes",
+        "psv": "yes",
+        "sidewalk": "left"
+      }
+    },
+    {
+      "id": "1301396939",
+      "name": "Lord Street",
+      "points": [
+        [
+          -687.698,
+          28.287
+        ],
+        [
+          -700.332,
+          23.476
+        ],
+        [
+          -706.279,
+          22.447
+        ],
+        [
+          -710.695,
+          21.898
+        ],
+        [
+          -713.906,
+          21.171
+        ],
+        [
+          -718.257,
+          19.992
+        ],
+        [
+          -721.904,
+          18.788
+        ],
+        [
+          -724.132,
+          17.88
+        ],
+        [
+          -726.936,
+          16.566
+        ],
+        [
+          -730.157,
+          14.621
+        ],
+        [
+          -733.608,
+          12.081
+        ],
+        [
+          -736.541,
+          9.339
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1301396940",
+      "name": "Lord Street West",
+      "points": [
+        [
+          -753.292,
+          7.502
+        ],
+        [
+          -757.461,
+          8.269
+        ],
+        [
+          -761.362,
+          8.674
+        ],
+        [
+          -766.999,
+          8.44
+        ],
+        [
+          -771.126,
+          7.554
+        ],
+        [
+          -774.806,
+          6.305
+        ],
+        [
+          -794.092,
+          1.38
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "name": "Lord Street West",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1301396941",
+      "name": "Duke Street",
+      "points": [
+        [
+          -752.924,
+          27.051
+        ],
+        [
+          -750.899,
+          30.333
+        ],
+        [
+          -749.487,
+          33.352
+        ],
+        [
+          -748.564,
+          36.191
+        ],
+        [
+          -746.916,
+          43.301
+        ],
+        [
+          -743.7,
+          59.591
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "maxspeed": "30 mph",
+        "name": "Duke Street",
+        "oneway": "yes",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1301396942",
+      "name": "Duke Street",
+      "points": [
+        [
+          -743.7,
+          59.591
+        ],
+        [
+          -741.6,
+          43.302
+        ],
+        [
+          -741.077,
+          40.624
+        ],
+        [
+          -740.234,
+          37.736
+        ],
+        [
+          -738.778,
+          33.128
+        ],
+        [
+          -738.279,
+          26.651
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "maxspeed": "30 mph",
+        "name": "Duke Street",
+        "oneway": "yes",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1301396944",
+      "name": "Lord Street West",
+      "points": [
+        [
+          -794.092,
+          1.38
+        ],
+        [
+          -777.409,
+          11.987
+        ],
+        [
+          -767.492,
+          17.828
+        ],
+        [
+          -761.838,
+          21.164
+        ],
+        [
+          -753.919,
+          26.262
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "name": "Lord Street West",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1301396947",
+      "name": "Lord Street",
+      "points": [
+        [
+          -655.015,
+          29.468
+        ],
+        [
+          -686.568,
+          28.366
+        ],
+        [
+          -687.698,
+          28.287
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1301396948",
+      "name": "service access",
+      "points": [
+        [
+          -737.921,
+          26.357
+        ],
+        [
+          -736.741,
+          25.175
+        ],
+        [
+          -735.345,
+          23.234
+        ],
+        [
+          -734.351,
+          21.062
+        ],
+        [
+          -733.816,
+          18.788
+        ],
+        [
+          -733.725,
+          16.46
+        ],
+        [
+          -734.61,
+          12.54
+        ],
+        [
+          -736.541,
+          9.339
+        ]
+      ],
+      "width_m": 8,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1301396949",
+      "name": "service access",
+      "points": [
+        [
+          -736.541,
+          9.339
+        ],
+        [
+          -738.145,
+          7.746
+        ],
+        [
+          -740.012,
+          6.479
+        ],
+        [
+          -742.958,
+          5.332
+        ],
+        [
+          -746.009,
+          4.975
+        ],
+        [
+          -748.819,
+          5.342
+        ],
+        [
+          -750.732,
+          5.992
+        ],
+        [
+          -753.292,
+          7.502
+        ]
+      ],
+      "width_m": 8,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk": "left",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1311642907",
+      "name": "service access",
+      "points": [
+        [
+          -537.902,
+          29.059
+        ],
+        [
+          -515.689,
+          32.708
+        ],
+        [
+          -500.961,
+          32.72
+        ],
+        [
+          -494.717,
+          32.731
+        ],
+        [
+          -486.045,
+          32.739
+        ],
+        [
+          -483.803,
+          32.743
+        ],
+        [
+          -476.234,
+          32.462
+        ],
+        [
+          -473.228,
+          32.34
+        ],
+        [
+          -468.85,
+          32.034
+        ],
+        [
+          -450.098,
+          28.455
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "trunk",
+        "lit": "yes",
+        "oneway": "yes",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1311642908",
+      "name": "Lord Street",
+      "points": [
+        [
+          -537.902,
+          29.059
+        ],
+        [
+          -567.349,
+          29.302
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lane_markings": "yes",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "ref": "A565",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1311642909",
+      "name": "Lord Street",
+      "points": [
+        [
+          -450.098,
+          28.455
+        ],
+        [
+          -469.711,
+          25.283
+        ],
+        [
+          -473.279,
+          25.187
+        ],
+        [
+          -483.79,
+          24.9
+        ],
+        [
+          -492.4,
+          24.88
+        ]
+      ],
+      "width_m": 5,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "yes",
+        "ref": "A565",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "yes",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1311642910",
+      "name": "Coronation Walk",
+      "points": [
+        [
+          -493.419,
+          43.582
+        ],
+        [
+          -492.256,
+          39.959
+        ],
+        [
+          -490.739,
+          37.32
+        ],
+        [
+          -489.592,
+          35.816
+        ],
+        [
+          -488.445,
+          34.619
+        ],
+        [
+          -487.373,
+          33.708
+        ],
+        [
+          -486.045,
+          32.739
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "lit": "yes",
+        "name": "Coronation Walk",
+        "oneway": "yes",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1311642914",
+      "name": "Coronation Walk",
+      "points": [
+        [
+          -495.03,
+          53.91
+        ],
+        [
+          -494.169,
+          47.104
+        ],
+        [
+          -493.419,
+          43.582
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "secondary",
+        "lit": "yes",
+        "name": "Coronation Walk",
+        "oneway": "yes",
+        "sidewalk:both": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1389761342",
+      "name": "Lord Street",
+      "points": [
+        [
+          500.148,
+          23.648
+        ],
+        [
+          485.149,
+          23.648
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1389761346",
+      "name": "Lord Street",
+      "points": [
+        [
+          485.149,
+          23.648
+        ],
+        [
+          439.389,
+          23.665
+        ],
+        [
+          420.027,
+          24.14
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1421710598",
+      "name": "Lord Street",
+      "points": [
+        [
+          1.246,
+          25.579
+        ],
+        [
+          -9.696,
+          25.547
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1421710603",
+      "name": "London Square",
+      "points": [
+        [
+          -1.934,
+          -23.19
+        ],
+        [
+          -6.425,
+          -18.586
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "lane_markings": "no",
+        "maxspeed": "20 mph",
+        "name": "London Square",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1421710604",
+      "name": "London Square",
+      "points": [
+        [
+          2.515,
+          -23.286
+        ],
+        [
+          -1.934,
+          -23.19
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "tertiary",
+        "lane_markings": "no",
+        "maxspeed": "20 mph",
+        "name": "London Square",
+        "oneway": "yes",
+        "sidewalk": "right",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1421710605",
+      "name": "Lord Street",
+      "points": [
+        [
+          10.292,
+          25.722
+        ],
+        [
+          1.246,
+          25.579
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1421733381",
+      "name": "Lord Street",
+      "points": [
+        [
+          -650.354,
+          29.632
+        ],
+        [
+          -655.015,
+          29.468
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "30 mph",
+        "name": "Lord Street",
+        "oneway": "no",
+        "ref": "A565",
+        "sidewalk": "both",
+        "sidewalk:both:surface": "paving_stones",
+        "surface": "asphalt",
+        "wikidata": "Q6679981"
+      }
+    },
+    {
+      "id": "1421733382",
+      "name": "service access",
+      "points": [
+        [
+          556.857,
+          35.769
+        ],
+        [
+          561.349,
+          31.779
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk": "left",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1421733401",
+      "name": "Albert Road",
+      "points": [
+        [
+          1172.066,
+          18.135
+        ],
+        [
+          1149.936,
+          18.138
+        ],
+        [
+          1069.541,
+          18.168
+        ],
+        [
+          1024.277,
+          18.191
+        ],
+        [
+          860.006,
+          19.685
+        ],
+        [
+          690.521,
+          20.728
+        ],
+        [
+          682.392,
+          20.65
+        ],
+        [
+          651.378,
+          20.632
+        ],
+        [
+          617.324,
+          20.614
+        ],
+        [
+          602.528,
+          20.606
+        ],
+        [
+          587.462,
+          21.436
+        ],
+        [
+          586.382,
+          21.526
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "trunk",
+        "maxspeed": "30 mph",
+        "name": "Albert Road",
+        "ref": "A565",
+        "sidewalk": "both",
+        "source:name": "OS_OpenData_Locator",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1421733405",
+      "name": "service access",
+      "points": [
+        [
+          530.286,
+          30.963
+        ],
+        [
+          531.294,
+          32.216
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk": "left",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1421757423",
+      "name": "service access",
+      "points": [
+        [
+          532.791,
+          4.6
+        ],
+        [
+          530.439,
+          7.173
+        ],
+        [
+          528.575,
+          10.126
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk": "left",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1421757424",
+      "name": "service access",
+      "points": [
+        [
+          561.389,
+          6.606
+        ],
+        [
+          559.422,
+          4.545
+        ]
+      ],
+      "width_m": 10,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "bicycle": "yes",
+        "foot": "yes",
+        "highway": "trunk",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "maxspeed": "30 mph",
+        "ref": "A565",
+        "sidewalk": "left",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "id": "1471490071",
+      "name": "Market Street",
+      "points": [
+        [
+          -342.193,
+          -17.285
+        ],
+        [
+          -343.365,
+          -77.803
+        ]
+      ],
+      "width_m": 4,
+      "width_basis": "Estimated from imagery; route checked against aerial.",
+      "tags": {
+        "highway": "unclassified",
+        "maxspeed": "20 mph",
+        "name": "Market Street",
+        "oneway": "yes"
+      }
+    }
+  ],
+  "landscaped_areas": [
+    {
+      "id": "42083826",
+      "polygon": [
+        [
+          42.414,
+          -13.82
+        ],
+        [
+          71.428,
+          -11.933
+        ],
+        [
+          146.685,
+          -11.412
+        ],
+        [
+          146.441,
+          19.496
+        ],
+        [
+          41.134,
+          17.904
+        ],
+        [
+          41.651,
+          2.535
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "42083827",
+      "polygon": [
+        [
+          -41.878,
+          16.827
+        ],
+        [
+          -41.735,
+          -13.832
+        ],
+        [
+          -58.745,
+          -14.102
+        ],
+        [
+          -69.18,
+          -13.571
+        ],
+        [
+          -99.335,
+          -16.785
+        ],
+        [
+          -115.926,
+          -18.375
+        ],
+        [
+          -243.334,
+          -17.643
+        ],
+        [
+          -239.347,
+          15.296
+        ],
+        [
+          -234.758,
+          18.383
+        ],
+        [
+          -100.937,
+          17.302
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "167320913",
+      "polygon": [
+        [
+          -509.75,
+          19.942
+        ],
+        [
+          -516.79,
+          21.01
+        ],
+        [
+          -535.147,
+          24.046
+        ],
+        [
+          -552.931,
+          24.342
+        ],
+        [
+          -589.821,
+          22.767
+        ],
+        [
+          -613.955,
+          21.771
+        ],
+        [
+          -619.555,
+          20.504
+        ],
+        [
+          -621.993,
+          17.937
+        ],
+        [
+          -623.472,
+          -0.05
+        ],
+        [
+          -618.791,
+          -1.81
+        ],
+        [
+          -604.078,
+          -4.562
+        ],
+        [
+          -597.015,
+          -4.332
+        ],
+        [
+          -580.643,
+          -2.196
+        ],
+        [
+          -549.083,
+          -2.006
+        ],
+        [
+          -530.273,
+          -4.996
+        ],
+        [
+          -512.743,
+          -5.051
+        ],
+        [
+          -505.827,
+          -1.364
+        ],
+        [
+          -506.089,
+          4.013
+        ],
+        [
+          -508.204,
+          8.463
+        ],
+        [
+          -507.933,
+          12.351
+        ],
+        [
+          -507.772,
+          16.114
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "172902403",
+      "polygon": [
+        [
+          -634.104,
+          21.12
+        ],
+        [
+          -695.866,
+          21.691
+        ],
+        [
+          -701.674,
+          20.76
+        ],
+        [
+          -716.649,
+          17.681
+        ],
+        [
+          -723.127,
+          15.498
+        ],
+        [
+          -730.338,
+          10.264
+        ],
+        [
+          -732.137,
+          7.335
+        ],
+        [
+          -730.416,
+          4.089
+        ],
+        [
+          -721.476,
+          1.6
+        ],
+        [
+          -634.92,
+          -3.086
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "343403476",
+      "polygon": [
+        [
+          -480.441,
+          -0.622
+        ],
+        [
+          -480.219,
+          21.876
+        ],
+        [
+          -440.984,
+          22.913
+        ],
+        [
+          -449.934,
+          1.506
+        ],
+        [
+          -452.779,
+          -4.881
+        ],
+        [
+          -455.585,
+          -7.835
+        ],
+        [
+          -459.257,
+          -10.934
+        ],
+        [
+          -462.142,
+          -12.093
+        ],
+        [
+          -469.111,
+          -11.937
+        ],
+        [
+          -472.957,
+          -10.985
+        ],
+        [
+          -477.175,
+          -8.115
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "372054835",
+      "polygon": [
+        [
+          432.866,
+          3.376
+        ],
+        [
+          432.94,
+          7.928
+        ],
+        [
+          431.512,
+          8.178
+        ],
+        [
+          430.541,
+          9.101
+        ],
+        [
+          429.646,
+          16.829
+        ],
+        [
+          384.945,
+          17.761
+        ],
+        [
+          384.574,
+          11.219
+        ],
+        [
+          384.523,
+          9.978
+        ],
+        [
+          383.397,
+          9.128
+        ],
+        [
+          382.243,
+          8.766
+        ],
+        [
+          381.824,
+          2.73
+        ],
+        [
+          383.07,
+          2.345
+        ],
+        [
+          384.001,
+          1.63
+        ],
+        [
+          384.602,
+          0.567
+        ],
+        [
+          430.436,
+          0.664
+        ],
+        [
+          430.738,
+          1.836
+        ],
+        [
+          431.865,
+          3.022
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "372054836",
+      "polygon": [
+        [
+          472.96,
+          11.965
+        ],
+        [
+          473.253,
+          19.21
+        ],
+        [
+          445.627,
+          19.367
+        ],
+        [
+          443.018,
+          17.071
+        ],
+        [
+          444.138,
+          -1.313
+        ],
+        [
+          460.097,
+          -1.825
+        ],
+        [
+          476.128,
+          -1.945
+        ],
+        [
+          473.507,
+          3.401
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "372054940",
+      "polygon": [
+        [
+          515.317,
+          5.232
+        ],
+        [
+          515.725,
+          7.807
+        ],
+        [
+          513.542,
+          8.039
+        ],
+        [
+          512.451,
+          9.812
+        ],
+        [
+          512.149,
+          16.67
+        ],
+        [
+          481.226,
+          17.563
+        ],
+        [
+          481.632,
+          8.687
+        ],
+        [
+          479.952,
+          7.934
+        ],
+        [
+          479.651,
+          4.888
+        ],
+        [
+          481.762,
+          4.188
+        ],
+        [
+          482.374,
+          2.685
+        ],
+        [
+          513.105,
+          2.712
+        ],
+        [
+          513.629,
+          4.624
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "375231766",
+      "polygon": [
+        [
+          560.942,
+          17.517
+        ],
+        [
+          560.884,
+          22.026
+        ],
+        [
+          559.471,
+          26.316
+        ],
+        [
+          556.824,
+          29.967
+        ],
+        [
+          553.2,
+          32.657
+        ],
+        [
+          548.928,
+          34.12
+        ],
+        [
+          544.418,
+          34.228
+        ],
+        [
+          540.079,
+          32.976
+        ],
+        [
+          536.333,
+          30.469
+        ],
+        [
+          533.508,
+          26.95
+        ],
+        [
+          531.882,
+          22.737
+        ],
+        [
+          531.582,
+          18.446
+        ],
+        [
+          532.539,
+          14.251
+        ],
+        [
+          534.658,
+          10.504
+        ],
+        [
+          537.774,
+          7.528
+        ],
+        [
+          541.608,
+          5.575
+        ],
+        [
+          545.848,
+          4.818
+        ],
+        [
+          550.13,
+          5.311
+        ],
+        [
+          554.076,
+          7.013
+        ],
+        [
+          557.377,
+          9.788
+        ],
+        [
+          559.731,
+          13.387
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "720543134",
+      "polygon": [
+        [
+          -491.028,
+          17.865
+        ],
+        [
+          -484.388,
+          18.359
+        ],
+        [
+          -485.239,
+          -3.786
+        ],
+        [
+          -484.714,
+          -15.755
+        ],
+        [
+          -492.799,
+          -14.877
+        ],
+        [
+          -494.749,
+          -7.082
+        ],
+        [
+          -493.402,
+          8.65
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "720543135",
+      "polygon": [
+        [
+          -415.516,
+          -14.438
+        ],
+        [
+          -363.736,
+          -16.52
+        ],
+        [
+          -363.146,
+          -10.017
+        ],
+        [
+          -341.712,
+          -10.034
+        ],
+        [
+          -263.605,
+          -10.701
+        ],
+        [
+          -265.405,
+          24.174
+        ],
+        [
+          -331.061,
+          24.574
+        ],
+        [
+          -437.966,
+          24.959
+        ],
+        [
+          -442.167,
+          11.416
+        ],
+        [
+          -437.39,
+          8.905
+        ],
+        [
+          -413.672,
+          7.824
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "720543136",
+      "polygon": [
+        [
+          155.472,
+          19.7
+        ],
+        [
+          156.092,
+          -11.013
+        ],
+        [
+          165.857,
+          -14.808
+        ],
+        [
+          178.907,
+          -14.799
+        ],
+        [
+          179.656,
+          -21.636
+        ],
+        [
+          186.721,
+          -23.358
+        ],
+        [
+          185.901,
+          -13.874
+        ],
+        [
+          204.215,
+          -13.076
+        ],
+        [
+          204.459,
+          -22.658
+        ],
+        [
+          217.112,
+          -23.239
+        ],
+        [
+          214.567,
+          14.769
+        ],
+        [
+          212.315,
+          18.674
+        ],
+        [
+          205.601,
+          19.74
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "720543137",
+      "polygon": [
+        [
+          229.302,
+          14.206
+        ],
+        [
+          230.885,
+          17.002
+        ],
+        [
+          236.026,
+          21.284
+        ],
+        [
+          344.952,
+          17.996
+        ],
+        [
+          357.869,
+          18.746
+        ],
+        [
+          363.601,
+          17.154
+        ],
+        [
+          366.875,
+          -10.43
+        ],
+        [
+          230.246,
+          -12.7
+        ],
+        [
+          230.065,
+          10.994
+        ],
+        [
+          228.737,
+          11.043
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "725071164",
+      "polygon": [
+        [
+          -559.184,
+          48.216
+        ],
+        [
+          -558.194,
+          39.276
+        ],
+        [
+          -552.981,
+          37.779
+        ],
+        [
+          -508.05,
+          38.057
+        ],
+        [
+          -505.453,
+          38.922
+        ],
+        [
+          -503.292,
+          40.785
+        ],
+        [
+          -502.143,
+          43.777
+        ],
+        [
+          -502.052,
+          47.744
+        ],
+        [
+          -501.965,
+          48.936
+        ]
+      ],
+      "basis": "Mapped landscaped extent compared with aerial; paths separately replace lawn. Trees and planting details deferred."
+    },
+    {
+      "id": "duke-island",
+      "polygon": [
+        [
+          -740.6999999999999,
+          17.1
+        ],
+        [
+          -740.7999165419031,
+          18.114469674483868
+        ],
+        [
+          -741.0958264309413,
+          19.089953848298467
+        ],
+        [
+          -741.5763580160267,
+          19.98896521170193
+        ],
+        [
+          -742.2230447378299,
+          20.77695526217005
+        ],
+        [
+          -743.011034788298,
+          21.423641983973237
+        ],
+        [
+          -743.9100461517015,
+          21.904173569058692
+        ],
+        [
+          -744.8855303255161,
+          22.2000834580968
+        ],
+        [
+          -745.9,
+          22.3
+        ],
+        [
+          -746.9144696744838,
+          22.2000834580968
+        ],
+        [
+          -747.8899538482984,
+          21.904173569058692
+        ],
+        [
+          -748.7889652117019,
+          21.423641983973237
+        ],
+        [
+          -749.57695526217,
+          20.77695526217005
+        ],
+        [
+          -750.2236419839733,
+          19.98896521170193
+        ],
+        [
+          -750.7041735690586,
+          19.089953848298467
+        ],
+        [
+          -751.0000834580968,
+          18.11446967448387
+        ],
+        [
+          -751.1,
+          17.1
+        ],
+        [
+          -751.0000834580968,
+          16.085530325516135
+        ],
+        [
+          -750.7041735690586,
+          15.110046151701535
+        ],
+        [
+          -750.2236419839733,
+          14.211034788298072
+        ],
+        [
+          -749.57695526217,
+          13.423044737829954
+        ],
+        [
+          -748.7889652117019,
+          12.776358016026766
+        ],
+        [
+          -747.8899538482984,
+          12.295826430941311
+        ],
+        [
+          -746.9144696744838,
+          11.999916541903204
+        ],
+        [
+          -745.9,
+          11.900000000000002
+        ],
+        [
+          -744.8855303255161,
+          11.999916541903204
+        ],
+        [
+          -743.9100461517015,
+          12.295826430941311
+        ],
+        [
+          -743.011034788298,
+          12.776358016026766
+        ],
+        [
+          -742.2230447378299,
+          13.423044737829954
+        ],
+        [
+          -741.5763580160267,
+          14.21103478829807
+        ],
+        [
+          -741.0958264309413,
+          15.110046151701532
+        ],
+        [
+          -740.7999165419031,
+          16.08553032551613
+        ]
+      ],
+      "basis": "Small planted island visible in Google plan and 3D; radius estimated 5.2 m."
+    }
+  ],
+  "paths": [
+    {
+      "id": "24948284",
+      "points": [
+        [
+          -255.171,
+          -18.559
+        ],
+        [
+          -243.268,
+          -22.297
+        ],
+        [
+          -186.481,
+          -22.625
+        ],
+        [
+          -163.162,
+          -22.805
+        ],
+        [
+          -131.358,
+          -22.693
+        ],
+        [
+          -127.222,
+          -22.583
+        ],
+        [
+          -127.749,
+          -68.406
+        ],
+        [
+          -128.321,
+          -125.072
+        ],
+        [
+          -129.023,
+          -131.866
+        ]
+      ],
+      "width_m": 4
+    },
+    {
+      "id": "216492719",
+      "points": [
+        [
+          -69.23,
+          -14.553
+        ],
+        [
+          -86.844,
+          -20.344
+        ],
+        [
+          -99.921,
+          -20.467
+        ],
+        [
+          -115.248,
+          -22.059
+        ],
+        [
+          -127.222,
+          -22.583
+        ]
+      ],
+      "width_m": 4
+    },
+    {
+      "id": "371199522",
+      "points": [
+        [
+          -101.574,
+          25.753
+        ],
+        [
+          -100.937,
+          17.302
+        ],
+        [
+          -100.718,
+          14.161
+        ],
+        [
+          -99.388,
+          -13.602
+        ],
+        [
+          -99.335,
+          -16.785
+        ],
+        [
+          -99.921,
+          -20.467
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "764423972",
+      "points": [
+        [
+          -185.373,
+          -10.412
+        ],
+        [
+          -187.278,
+          -10.368
+        ],
+        [
+          -188.437,
+          -10.342
+        ],
+        [
+          -191.326,
+          -9.302
+        ],
+        [
+          -193.729,
+          -7.387
+        ],
+        [
+          -195.393,
+          -4.808
+        ],
+        [
+          -196.151,
+          -1.831
+        ],
+        [
+          -196.067,
+          -0.775
+        ],
+        [
+          -195.912,
+          1.227
+        ],
+        [
+          -194.714,
+          4.051
+        ],
+        [
+          -192.67,
+          6.346
+        ],
+        [
+          -189.902,
+          7.909
+        ],
+        [
+          -186.771,
+          8.465
+        ],
+        [
+          -185.406,
+          8.244
+        ],
+        [
+          -183.632,
+          7.956
+        ],
+        [
+          -180.836,
+          6.436
+        ],
+        [
+          -178.7,
+          4.085
+        ],
+        [
+          -177.467,
+          1.148
+        ],
+        [
+          -177.367,
+          -0.375
+        ],
+        [
+          -177.266,
+          -2.022
+        ],
+        [
+          -178.129,
+          -5.086
+        ],
+        [
+          -179.959,
+          -7.693
+        ],
+        [
+          -182.444,
+          -9.494
+        ],
+        [
+          -185.373,
+          -10.412
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "764423973",
+      "points": [
+        [
+          -185.406,
+          8.244
+        ],
+        [
+          -186.583,
+          26.282
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "764423974",
+      "points": [
+        [
+          -226.131,
+          -0.636
+        ],
+        [
+          -196.067,
+          -0.775
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "764423975",
+      "points": [
+        [
+          -177.367,
+          -0.375
+        ],
+        [
+          -158.906,
+          -0.408
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "764423976",
+      "points": [
+        [
+          -187.278,
+          -10.368
+        ],
+        [
+          -186.481,
+          -22.625
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1041199835",
+      "points": [
+        [
+          115.088,
+          25.895
+        ],
+        [
+          116.387,
+          8.571
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1041199836",
+      "points": [
+        [
+          118.015,
+          -4.737
+        ],
+        [
+          118.19,
+          -17.247
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1041199837",
+      "points": [
+        [
+          124.233,
+          2.776
+        ],
+        [
+          123.629,
+          4.87
+        ],
+        [
+          122.375,
+          6.645
+        ],
+        [
+          120.626,
+          7.937
+        ],
+        [
+          118.554,
+          8.601
+        ],
+        [
+          116.387,
+          8.571
+        ],
+        [
+          114.272,
+          7.801
+        ],
+        [
+          112.528,
+          6.387
+        ],
+        [
+          111.35,
+          4.466
+        ],
+        [
+          110.873,
+          2.278
+        ],
+        [
+          111.142,
+          0.042
+        ],
+        [
+          112.144,
+          -1.97
+        ],
+        [
+          113.745,
+          -3.551
+        ],
+        [
+          115.781,
+          -4.503
+        ],
+        [
+          118.015,
+          -4.737
+        ],
+        [
+          120.139,
+          -4.236
+        ],
+        [
+          121.982,
+          -3.1
+        ],
+        [
+          123.367,
+          -1.422
+        ],
+        [
+          124.152,
+          0.611
+        ],
+        [
+          124.233,
+          2.776
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1041199838",
+      "points": [
+        [
+          69.935,
+          -17.163
+        ],
+        [
+          68.72,
+          -0.47
+        ],
+        [
+          66.814,
+          25.814
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1041199839",
+      "points": [
+        [
+          68.72,
+          -0.47
+        ],
+        [
+          76.594,
+          -1.425
+        ],
+        [
+          82.749,
+          -1.222
+        ],
+        [
+          89.273,
+          0.472
+        ],
+        [
+          95.948,
+          2.422
+        ],
+        [
+          103.33,
+          2.902
+        ],
+        [
+          108.267,
+          2.159
+        ],
+        [
+          110.873,
+          2.278
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1041199840",
+      "points": [
+        [
+          37.604,
+          25.771
+        ],
+        [
+          37.819,
+          18.888
+        ],
+        [
+          38.882,
+          -14.856
+        ],
+        [
+          38.968,
+          -17.764
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1041199841",
+      "points": [
+        [
+          40.297,
+          18.776
+        ],
+        [
+          42.03,
+          -14.838
+        ],
+        [
+          38.882,
+          -14.856
+        ],
+        [
+          7.597,
+          -15.063
+        ],
+        [
+          8.209,
+          -11.698
+        ],
+        [
+          10.342,
+          -7.843
+        ],
+        [
+          10.823,
+          5.549
+        ],
+        [
+          11.512,
+          9.408
+        ],
+        [
+          12.419,
+          12.738
+        ],
+        [
+          14.485,
+          15.842
+        ],
+        [
+          16.861,
+          18.008
+        ],
+        [
+          19.764,
+          19.196
+        ],
+        [
+          24.094,
+          19.52
+        ],
+        [
+          37.819,
+          18.888
+        ],
+        [
+          40.297,
+          18.776
+        ]
+      ],
+      "width_m": 4
+    },
+    {
+      "id": "1301396945",
+      "points": [
+        [
+          -766.778,
+          4.237
+        ],
+        [
+          -766.999,
+          8.44
+        ],
+        [
+          -767.492,
+          17.828
+        ],
+        [
+          -767.709,
+          22.073
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1301396946",
+      "points": [
+        [
+          -712.711,
+          40.364
+        ],
+        [
+          -711.731,
+          30.973
+        ],
+        [
+          -711.239,
+          26.268
+        ],
+        [
+          -706.829,
+          26.562
+        ],
+        [
+          -706.279,
+          22.447
+        ],
+        [
+          -705.31,
+          15.17
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1311642911",
+      "points": [
+        [
+          -473.179,
+          41.397
+        ],
+        [
+          -473.228,
+          32.34
+        ],
+        [
+          -473.279,
+          25.187
+        ],
+        [
+          -473.307,
+          20.53
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1311642915",
+      "points": [
+        [
+          -507.155,
+          19.197
+        ],
+        [
+          -502.619,
+          19.249
+        ],
+        [
+          -492.955,
+          19.343
+        ],
+        [
+          -489.454,
+          19.379
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1311642916",
+      "points": [
+        [
+          -481.773,
+          20.02
+        ],
+        [
+          -483.635,
+          19.947
+        ],
+        [
+          -485.493,
+          19.869
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1311642917",
+      "points": [
+        [
+          -485.493,
+          19.869
+        ],
+        [
+          -489.454,
+          19.379
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1311642918",
+      "points": [
+        [
+          -473.307,
+          20.53
+        ],
+        [
+          -481.773,
+          20.02
+        ]
+      ],
+      "width_m": 2
+    },
+    {
+      "id": "1340142455",
+      "points": [
+        [
+          -40.29,
+          -15.435
+        ],
+        [
+          -9.013,
+          -15.237
+        ],
+        [
+          -9.667,
+          -11.882
+        ],
+        [
+          -11.847,
+          -8.046
+        ],
+        [
+          -12.504,
+          5.337
+        ],
+        [
+          -13.243,
+          9.187
+        ],
+        [
+          -14.197,
+          12.503
+        ],
+        [
+          -16.301,
+          15.577
+        ],
+        [
+          -18.707,
+          17.709
+        ],
+        [
+          -21.622,
+          18.866
+        ],
+        [
+          -25.957,
+          19.13
+        ],
+        [
+          -39.68,
+          18.317
+        ],
+        [
+          -40.29,
+          -15.435
+        ]
+      ],
+      "width_m": 4
+    }
+  ],
+  "surface_policy": "Provisional public-space canvas; ordinary paving clipped to building footprints, road routes and planted areas. Side roads stop at outer ownership bounds. No legal parking restrictions inferred.",
+  "building_cutouts": [
+    {
+      "id": "existing-51826176",
+      "polygon": [
+        [
+          159.144,
+          -16.922
+        ],
+        [
+          177.396,
+          -16.418
+        ],
+        [
+          178.37,
+          -51.952
+        ],
+        [
+          160.13,
+          -52.451
+        ]
+      ]
+    },
+    {
+      "id": "existing-653815606",
+      "polygon": [
+        [
+          64.857,
+          -39.639
+        ],
+        [
+          65.499,
+          -76.96
+        ],
+        [
+          36.69,
+          -76.447
+        ],
+        [
+          33.722,
+          -40.694
+        ]
+      ]
+    },
+    {
+      "id": "existing-371741580",
+      "polygon": [
+        [
+          30.722,
+          -51.785
+        ],
+        [
+          30.361,
+          -23.145
+        ],
+        [
+          7.591,
+          -23.164
+        ],
+        [
+          7.4,
+          -52.385
+        ]
+      ]
+    },
+    {
+      "id": "existing-51826175",
+      "polygon": [
+        [
+          187.777,
+          -14.688
+        ],
+        [
+          202.959,
+          -14.263
+        ],
+        [
+          203.201,
+          -23.244
+        ],
+        [
+          188.031,
+          -23.665
+        ]
+      ]
+    },
+    {
+      "id": "existing-371203338",
+      "polygon": [
+        [
+          153.895,
+          -67.839
+        ],
+        [
+          151.192,
+          -18.442
+        ],
+        [
+          108.659,
+          -20.201
+        ],
+        [
+          108.743,
+          -30.46
+        ],
+        [
+          110.248,
+          -70.397
+        ]
+      ]
+    },
+    {
+      "id": "existing-342955330",
+      "polygon": [
+        [
+          -36.263,
+          12.583
+        ],
+        [
+          -36.419,
+          -11.896
+        ],
+        [
+          -32.041,
+          -11.925
+        ],
+        [
+          -31.885,
+          12.555
+        ]
+      ]
+    },
+    {
+      "id": "existing-371203985",
+      "polygon": [
+        [
+          -76.684,
+          -25.666
+        ],
+        [
+          -76.682,
+          -24.055
+        ],
+        [
+          -12.757,
+          -23.364
+        ],
+        [
+          -9.559,
+          -26.034
+        ],
+        [
+          -9.829,
+          -63.518
+        ],
+        [
+          -29.944,
+          -63.464
+        ],
+        [
+          -30.714,
+          -40.715
+        ],
+        [
+          -46.735,
+          -41.218
+        ],
+        [
+          -46.598,
+          -65.024
+        ],
+        [
+          -43.182,
+          -65.137
+        ],
+        [
+          -42.706,
+          -76.122
+        ],
+        [
+          -52.773,
+          -75.817
+        ],
+        [
+          -54.625,
+          -107.361
+        ],
+        [
+          -37.137,
+          -108.619
+        ],
+        [
+          -35.187,
+          -81.054
+        ],
+        [
+          -26.178,
+          -80.537
+        ],
+        [
+          -26.851,
+          -69.366
+        ],
+        [
+          -11.877,
+          -68.788
+        ],
+        [
+          -10.421,
+          -128.992
+        ],
+        [
+          -11.59,
+          -131.583
+        ],
+        [
+          -13.549,
+          -132.869
+        ],
+        [
+          -123.196,
+          -122.877
+        ],
+        [
+          -123.644,
+          -94.138
+        ],
+        [
+          -123.762,
+          -71.087
+        ],
+        [
+          -89.926,
+          -71.739
+        ],
+        [
+          -76.272,
+          -71.382
+        ]
+      ]
+    },
+    {
+      "id": "existing-264188612",
+      "polygon": [
+        [
+          9.031,
+          69.174
+        ],
+        [
+          9.191,
+          44.855
+        ],
+        [
+          21.696,
+          45.258
+        ],
+        [
+          21.388,
+          69.335
+        ]
+      ]
+    },
+    {
+      "id": "existing-371742617",
+      "polygon": [
+        [
+          108.659,
+          -20.201
+        ],
+        [
+          71.141,
+          -21.671
+        ],
+        [
+          70.586,
+          -53.602
+        ],
+        [
+          79.102,
+          -53.892
+        ],
+        [
+          79.269,
+          -31.097
+        ],
+        [
+          84.031,
+          -31.229
+        ],
+        [
+          84.59,
+          -43.229
+        ],
+        [
+          92.452,
+          -42.407
+        ],
+        [
+          91.937,
+          -32.152
+        ],
+        [
+          96.311,
+          -31.916
+        ],
+        [
+          96.965,
+          -42.532
+        ],
+        [
+          105.208,
+          -41.826
+        ],
+        [
+          104.815,
+          -31.442
+        ],
+        [
+          108.743,
+          -30.46
+        ]
+      ]
+    },
+    {
+      "id": "existing-375534421",
+      "polygon": [
+        [
+          -9.452,
+          90.309
+        ],
+        [
+          -21.403,
+          90.192
+        ],
+        [
+          -21.482,
+          78.613
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -10.043,
+          47.035
+        ]
+      ]
+    },
+    {
+      "id": "existing-267014392",
+      "polygon": [
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -50.422,
+          59.443
+        ]
+      ]
+    },
+    {
+      "id": "existing-371741772",
+      "polygon": [
+        [
+          64.857,
+          -39.639
+        ],
+        [
+          64.253,
+          -21.746
+        ],
+        [
+          33.118,
+          -22.801
+        ],
+        [
+          33.722,
+          -40.694
+        ]
+      ]
+    },
+    {
+      "id": "existing-150615099",
+      "polygon": [
+        [
+          33.735,
+          80.283
+        ],
+        [
+          26.273,
+          80.216
+        ],
+        [
+          20.324,
+          80.095
+        ],
+        [
+          8.885,
+          79.952
+        ],
+        [
+          9.031,
+          69.174
+        ],
+        [
+          21.388,
+          69.335
+        ],
+        [
+          21.696,
+          45.258
+        ],
+        [
+          34.189,
+          45.428
+        ],
+        [
+          34.075,
+          57.743
+        ]
+      ]
+    },
+    {
+      "id": "existing-371202092",
+      "polygon": [
+        [
+          -87.12,
+          -29.448
+        ],
+        [
+          -99.743,
+          -29.295
+        ],
+        [
+          -100.073,
+          -23.607
+        ],
+        [
+          -105.303,
+          -23.46
+        ],
+        [
+          -104.965,
+          -29.14
+        ],
+        [
+          -112.262,
+          -29.425
+        ],
+        [
+          -111.208,
+          -52.075
+        ],
+        [
+          -113.859,
+          -52.136
+        ],
+        [
+          -114.461,
+          -61.928
+        ],
+        [
+          -89.832,
+          -60.728
+        ],
+        [
+          -89.926,
+          -71.739
+        ],
+        [
+          -76.272,
+          -71.382
+        ],
+        [
+          -76.684,
+          -25.666
+        ],
+        [
+          -82.469,
+          -25.913
+        ],
+        [
+          -83.961,
+          -26.707
+        ],
+        [
+          -84.317,
+          -27.858
+        ],
+        [
+          -84.374,
+          -29.278
+        ]
+      ]
+    },
+    {
+      "id": "existing-342955335",
+      "polygon": [
+        [
+          30.953,
+          12.666
+        ],
+        [
+          31.379,
+          -11.967
+        ],
+        [
+          35.767,
+          -11.898
+        ],
+        [
+          35.349,
+          12.744
+        ]
+      ]
+    }
+  ],
+  "excluded_polygons": [
+    {
+      "id": "existing-hill-street-road-and-footways",
+      "polygon": [
+        [
+          214.0805450022683,
+          20.922574371660048
+        ],
+        [
+          214.46635526751487,
+          -6.481093339894096
+        ],
+        [
+          216.632857032526,
+          -22.06076021842329
+        ],
+        [
+          218.78337025920666,
+          -59.40095031995999
+        ],
+        [
+          218.4091824849137,
+          -95.73907345709594
+        ],
+        [
+          218.65229125094652,
+          -104.1587403873644
+        ],
+        [
+          229.6477087490535,
+          -103.8412596126356
+        ],
+        [
+          229.41081751508628,
+          -95.63692654290406
+        ],
+        [
+          229.78662974079333,
+          -59.14104968004001
+        ],
+        [
+          227.58914296747398,
+          -20.98523978157671
+        ],
+        [
+          225.45564473248515,
+          -5.642906660105904
+        ],
+        [
+          225.07945499773172,
+          21.077425628339952
+        ]
+      ],
+      "source": "regions/southport/london-square/public-realm/scripts/block_ground.py",
+      "basis": "Exact existing road and outer footway ribbon. Existing core clips the west side at X218; new exclusion preserves the complete union."
+    }
+  ]
+}

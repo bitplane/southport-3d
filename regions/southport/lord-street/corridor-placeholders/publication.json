@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street",
+  "status": "Provisional block plan between Duke Street and Leicester Street roundabouts; geometric extents checked against aerial/3D, dimensions and ground levels estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "way-30142777",
+      "name": "Grand rear hall \u2014 placeholder",
+      "collection": "way-30142777"
+    },
+    {
+      "id": "way-30142798",
+      "name": "Mecca Bingo Hall \u2014 placeholder",
+      "collection": "way-30142798"
+    },
+    {
+      "id": "way-30142815",
+      "name": "Leicester Street tower context \u2014 placeholder",
+      "collection": "way-30142815"
+    },
+    {
+      "id": "way-42028244",
+      "name": "Wayfarers Arcade \u2014 placeholder",
+      "collection": "way-42028244"
+    },
+    {
+      "id": "way-42083657",
+      "name": "Town Hall \u2014 placeholder",
+      "collection": "way-42083657"
+    },
+    {
+      "id": "way-51826173",
+      "name": "Court Road east apartment tower \u2014 placeholder",
+      "collection": "way-51826173"
+    },
+    {
+      "id": "way-120114010",
+      "name": "Forum Court \u2014 placeholder",
+      "collection": "way-120114010"
+    },
+    {
+      "id": "way-148377934",
+      "name": "Lord Street West United Church \u2014 placeholder",
+      "collection": "way-148377934"
+    },
+    {
+      "id": "way-167319679",
+      "name": "B&M Bargains \u2014 placeholder",
+      "collection": "way-167319679"
+    },
+    {
+      "id": "way-343403507",
+      "name": "Prince of Wales \u2014 placeholder",
+      "collection": "way-343403507"
+    },
+    {
+      "id": "way-370723024",
+      "name": "Alexander House Care Centre \u2014 placeholder",
+      "collection": "way-370723024"
+    },
+    {
+      "id": "way-370726912-terrace",
+      "name": "Travelodge-terrace \u2014 placeholder",
+      "collection": "way-370726912-terrace"
+    },
+    {
+      "id": "way-370726912-hotel",
+      "name": "Travelodge-hotel \u2014 placeholder",
+      "collection": "way-370726912-hotel"
+    },
+    {
+      "id": "way-370726915",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-370726915"
+    },
+    {
+      "id": "way-371112880",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-371112880"
+    },
+    {
+      "id": "way-371112882-1",
+      "name": "Lord Street frontage range-1 \u2014 placeholder",
+      "collection": "way-371112882-1"
+    },
+    {
+      "id": "way-371112882-2",
+      "name": "Lord Street frontage range-2 \u2014 placeholder",
+      "collection": "way-371112882-2"
+    },
+    {
+      "id": "way-371112882-3",
+      "name": "Lord Street frontage range-3 \u2014 placeholder",
+      "collection": "way-371112882-3"
+    },
+    {
+      "id": "way-371112882-4",
+      "name": "Lord Street frontage range-4 \u2014 placeholder",
+      "collection": "way-371112882-4"
+    },
+    {
+      "id": "way-371112882-5",
+      "name": "Lord Street frontage range-5 \u2014 placeholder",
+      "collection": "way-371112882-5"
+    },
+    {
+      "id": "way-371112885",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-371112885"
+    },
+    {
+      "id": "way-371140808-retail",
+      "name": "Market Street adjoining lower range \u2014 placeholder",
+      "collection": "way-371140808-retail"
+    },
+    {
+      "id": "way-371140808-vincent",
+      "name": "Vincent Hotel upper volume \u2014 placeholder",
+      "collection": "way-371140808-vincent"
+    },
+    {
+      "id": "way-371196091",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-371196091"
+    },
+    {
+      "id": "way-371196093",
+      "name": "Atkinson and rear complex \u2014 placeholder",
+      "collection": "way-371196093"
+    },
+    {
+      "id": "way-372049057",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372049057"
+    },
+    {
+      "id": "way-372049058",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372049058"
+    },
+    {
+      "id": "way-372049059",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372049059"
+    },
+    {
+      "id": "way-372049060",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372049060"
+    },
+    {
+      "id": "way-372049061",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372049061"
+    },
+    {
+      "id": "way-372049062",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372049062"
+    },
+    {
+      "id": "way-372049063",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372049063"
+    },
+    {
+      "id": "way-372049064",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372049064"
+    },
+    {
+      "id": "way-372049065",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372049065"
+    },
+    {
+      "id": "way-372055260",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372055260"
+    },
+    {
+      "id": "way-372055262",
+      "name": "Court Road west apartment tower \u2014 placeholder",
+      "collection": "way-372055262"
+    },
+    {
+      "id": "way-372055263",
+      "name": "Court Road rear apartment tower \u2014 placeholder",
+      "collection": "way-372055263"
+    },
+    {
+      "id": "way-372055265",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372055265"
+    },
+    {
+      "id": "way-372310681",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-372310681"
+    },
+    {
+      "id": "way-375221732",
+      "name": "Manchester Road corner \u2014 placeholder",
+      "collection": "way-375221732"
+    },
+    {
+      "id": "way-375232069",
+      "name": "Leicester Street corner range \u2014 placeholder",
+      "collection": "way-375232069"
+    },
+    {
+      "id": "way-375232070",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375232070"
+    },
+    {
+      "id": "way-375232071",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375232071"
+    },
+    {
+      "id": "way-375232308",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375232308"
+    },
+    {
+      "id": "way-375232760",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375232760"
+    },
+    {
+      "id": "way-375380927",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375380927"
+    },
+    {
+      "id": "way-375380928",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375380928"
+    },
+    {
+      "id": "way-375380929",
+      "name": "Bold Hotel \u2014 placeholder",
+      "collection": "way-375380929"
+    },
+    {
+      "id": "way-375388377",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375388377"
+    },
+    {
+      "id": "way-375388378",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375388378"
+    },
+    {
+      "id": "way-375388656",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375388656"
+    },
+    {
+      "id": "way-375389847",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375389847"
+    },
+    {
+      "id": "way-375534419",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375534419"
+    },
+    {
+      "id": "way-375538202-south",
+      "name": "Wayfarers south frontage range-south \u2014 placeholder",
+      "collection": "way-375538202-south"
+    },
+    {
+      "id": "way-375538202-north",
+      "name": "Wayfarers south frontage range-north \u2014 placeholder",
+      "collection": "way-375538202-north"
+    },
+    {
+      "id": "way-375538206",
+      "name": "Scarisbrick Hotel north range \u2014 placeholder",
+      "collection": "way-375538206"
+    },
+    {
+      "id": "way-375540625",
+      "name": "Scarisbrick Hotel south range \u2014 placeholder",
+      "collection": "way-375540625"
+    },
+    {
+      "id": "way-375541154",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-375541154"
+    },
+    {
+      "id": "way-376064301",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-376064301"
+    },
+    {
+      "id": "way-376064893",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-376064893"
+    },
+    {
+      "id": "way-376073284",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-376073284"
+    },
+    {
+      "id": "way-376073459",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-376073459"
+    },
+    {
+      "id": "way-376074699",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-376074699"
+    },
+    {
+      "id": "way-376075747",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-376075747"
+    },
+    {
+      "id": "way-1355151954",
+      "name": "Atkinson north wing \u2014 placeholder",
+      "collection": "way-1355151954"
+    },
+    {
+      "id": "way-1370054624",
+      "name": "Lord Street frontage range \u2014 placeholder",
+      "collection": "way-1370054624"
+    },
+    {
+      "id": "shelbourne-corner",
+      "name": "Shelbourne corner \u2014 provisional aerial trace \u2014 placeholder",
+      "collection": "shelbourne-corner"
+    }
+  ],
+  "views": [
+    {
+      "name": "Lord Street south",
+      "position": [
+        -420,
+        350,
+        220
+      ],
+      "target": [
+        -420,
+        0,
+        -15
+      ]
+    },
+    {
+      "name": "Lord Street north",
+      "position": [
+        390,
+        350,
+        220
+      ],
+      "target": [
+        390,
+        0,
+        -15
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -180,
+      1.6,
+      -39
+    ],
+    "target": [
+      -210,
+      1.6,
+      -39
+    ]
+  },
+  "rules": [
+    {
+      "id": "placeholder-volumes",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already minimal untextured provisional geometry."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed-budget block-plan geometry has no decorative detail. Detailed replacements require independent bounded District envelopes."
+      }
+    }
+  ]
+}

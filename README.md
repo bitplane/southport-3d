@@ -8,6 +8,8 @@ The [Lord Street church gardens](docs/LORD-STREET-GARDENS.md) add Christ Church�
 
 The [Nevill Street corridor](docs/NEVILL-STREET.md) continues the roads and pavements from the monument to the Promenade crossing and Funland frontage, with mapped registration and estimated widths and levels. The [Nevill block plan](docs/NEVILL-BLOCK-PLAN.md) adds provisional footprint/height volumes on both street sides to Funland, with checked open forecourts and rear access. The [Marine Parade junction extension](docs/MARINE-PARADE-JUNCTION.md) continues northeast along the Promenade through the next junction, with crossing refuges informed by July 2026 Street View.
 
+The [Lord Street block plan](docs/LORD-STREET-BLOCK-PLAN.md) extends both frontages and the road/landscape canvas between the Duke Street and Leicester Street roundabouts, using provisional replaceable building volumes.
+
 The [NatWest bank at 130 Lord Street](docs/NATWEST.md) adds the opposite corner: sandstone street elevations, Dutch gables, pierced parapets and intersecting slate roofs.
 
 The adjoining [Posting House and 132 Lord Street](docs/POSTING-HOUSE.md) continue that frontage, with the [Sainsbury’s building](docs/SAINSBURYS.md) farther along the existing street canvas. [6–12 London Street](docs/LONDON-STREET-6-12.md) adds Halifax and the adjoining frontage beside Glebe Place. Each asset has independent source, evidence records and three viewing levels; hidden surfaces and visually estimated dimensions remain documented limitations.

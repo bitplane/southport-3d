@@ -1,0 +1,3435 @@
+{
+  "schema_version": 1,
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "grade": {
+    "formula": "-0.0075 - 0.022 * clamp(y, -36, 36)",
+    "basis": "Existing London Square seam datum extended provisionally; no longitudinal height survey."
+  },
+  "blocks": [
+    {
+      "id": "way-30142777",
+      "name": "Grand rear hall",
+      "osm_way": "30142777",
+      "footprint": [
+        [
+          404.356,
+          -24.385
+        ],
+        [
+          433.801,
+          -24.765
+        ],
+        [
+          433.16,
+          -73.427
+        ],
+        [
+          403.723,
+          -73.04
+        ]
+      ],
+      "height_m": 14,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-30142798",
+      "name": "Mecca Bingo Hall",
+      "osm_way": "30142798",
+      "footprint": [
+        [
+          -617.058,
+          93.827
+        ],
+        [
+          -583.897,
+          92.435
+        ],
+        [
+          -582.325,
+          53.325
+        ],
+        [
+          -638.114,
+          56.313
+        ],
+        [
+          -637.213,
+          90.141
+        ],
+        [
+          -623.412,
+          89.821
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-30142815",
+      "name": "Leicester Street tower context",
+      "osm_way": "30142815",
+      "footprint": [
+        [
+          563.47,
+          76.071
+        ],
+        [
+          583.254,
+          76.194
+        ],
+        [
+          583.305,
+          69.129
+        ],
+        [
+          600.389,
+          69.237
+        ],
+        [
+          600.693,
+          69.24
+        ],
+        [
+          600.828,
+          47.693
+        ],
+        [
+          582.735,
+          47.576
+        ],
+        [
+          582.683,
+          55.302
+        ],
+        [
+          563.601,
+          55.189
+        ]
+      ],
+      "height_m": 40,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-42028244",
+      "name": "Wayfarers Arcade",
+      "osm_way": "42028244",
+      "footprint": [
+        [
+          -117.393,
+          81.116
+        ],
+        [
+          -132.105,
+          80.842
+        ],
+        [
+          -137.419,
+          80.977
+        ],
+        [
+          -137.287,
+          94.624
+        ],
+        [
+          -131.596,
+          95.021
+        ],
+        [
+          -131.904,
+          103.683
+        ],
+        [
+          -136.281,
+          103.817
+        ],
+        [
+          -136.338,
+          112.409
+        ],
+        [
+          -132.049,
+          112.679
+        ],
+        [
+          -131.821,
+          145.273
+        ],
+        [
+          -99.329,
+          151.857
+        ],
+        [
+          -100.171,
+          138.439
+        ],
+        [
+          -104.881,
+          138.568
+        ],
+        [
+          -104.593,
+          127.347
+        ],
+        [
+          -100.788,
+          127.28
+        ],
+        [
+          -101.173,
+          74.566
+        ],
+        [
+          -101.838,
+          46.762
+        ],
+        [
+          -108.906,
+          46.46
+        ],
+        [
+          -110.795,
+          46.55
+        ],
+        [
+          -112.667,
+          46.639
+        ],
+        [
+          -117.539,
+          46.492
+        ]
+      ],
+      "height_m": 15,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-42083657",
+      "name": "Town Hall",
+      "osm_way": "42083657",
+      "footprint": [
+        [
+          -158.643,
+          -75.97
+        ],
+        [
+          -160.905,
+          -26.684
+        ],
+        [
+          -132.718,
+          -26.222
+        ],
+        [
+          -131.928,
+          -75.276
+        ]
+      ],
+      "height_m": 16,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-51826173",
+      "name": "Court Road east apartment tower",
+      "osm_way": "51826173",
+      "footprint": [
+        [
+          507.688,
+          -9.831
+        ],
+        [
+          506.389,
+          -30.292
+        ],
+        [
+          499.31,
+          -29.755
+        ],
+        [
+          485.108,
+          -28.686
+        ],
+        [
+          481.326,
+          -28.394
+        ],
+        [
+          481.906,
+          -13.959
+        ],
+        [
+          486.535,
+          -14.211
+        ],
+        [
+          486.901,
+          -8.509
+        ]
+      ],
+      "height_m": 35,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-120114010",
+      "name": "Forum Court",
+      "osm_way": "120114010",
+      "footprint": [
+        [
+          -415.775,
+          -39.265
+        ],
+        [
+          -386.231,
+          -41.504
+        ],
+        [
+          -378.167,
+          -42.117
+        ],
+        [
+          -365.256,
+          -43.097
+        ],
+        [
+          -364.784,
+          -23.401
+        ],
+        [
+          -414.431,
+          -21.41
+        ]
+      ],
+      "height_m": 19,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-148377934",
+      "name": "Lord Street West United Church",
+      "osm_way": "148377934",
+      "footprint": [
+        [
+          -785.693,
+          -23.119
+        ],
+        [
+          -769.849,
+          -24.843
+        ],
+        [
+          -773.039,
+          -54.271
+        ],
+        [
+          -788.884,
+          -52.546
+        ]
+      ],
+      "height_m": 18,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-167319679",
+      "name": "B&M Bargains",
+      "osm_way": "167319679",
+      "footprint": [
+        [
+          -527.482,
+          99.446
+        ],
+        [
+          -566.812,
+          100.188
+        ],
+        [
+          -560.422,
+          51.157
+        ],
+        [
+          -533.767,
+          51.462
+        ],
+        [
+          -532.77,
+          74.345
+        ],
+        [
+          -532.351,
+          84.05
+        ],
+        [
+          -527.33,
+          83.933
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-343403507",
+      "name": "Prince of Wales",
+      "osm_way": "343403507",
+      "footprint": [
+        [
+          -415.833,
+          -20.769
+        ],
+        [
+          -462.32,
+          -19.724
+        ],
+        [
+          -462.235,
+          -15.966
+        ],
+        [
+          -462.142,
+          -12.093
+        ],
+        [
+          -469.111,
+          -11.937
+        ],
+        [
+          -469.196,
+          -15.648
+        ],
+        [
+          -469.287,
+          -19.815
+        ],
+        [
+          -479.847,
+          -19.58
+        ],
+        [
+          -481.59,
+          -20.964
+        ],
+        [
+          -482.934,
+          -80.12
+        ],
+        [
+          -460.049,
+          -80.641
+        ],
+        [
+          -459.755,
+          -67.608
+        ],
+        [
+          -472.053,
+          -67.334
+        ],
+        [
+          -471.404,
+          -38.992
+        ],
+        [
+          -468.932,
+          -39.053
+        ],
+        [
+          -469.425,
+          -60.879
+        ],
+        [
+          -455.606,
+          -61.201
+        ],
+        [
+          -455.708,
+          -65.572
+        ],
+        [
+          -443.392,
+          -65.511
+        ],
+        [
+          -440.0,
+          -56.326
+        ],
+        [
+          -439.629,
+          -40.051
+        ],
+        [
+          -416.284,
+          -40.577
+        ]
+      ],
+      "height_m": 23,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-370723024",
+      "name": "Alexander House Care Centre",
+      "osm_way": "370723024",
+      "footprint": [
+        [
+          -695.212,
+          -38.274
+        ],
+        [
+          -694.318,
+          -20.222
+        ],
+        [
+          -735.67,
+          -18.189
+        ],
+        [
+          -736.647,
+          -37.928
+        ],
+        [
+          -722.453,
+          -38.621
+        ],
+        [
+          -722.213,
+          -33.674
+        ],
+        [
+          -702.845,
+          -34.631
+        ],
+        [
+          -703.002,
+          -37.89
+        ]
+      ],
+      "height_m": 15,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-370726912-terrace",
+      "name": "Travelodge-terrace",
+      "osm_way": "370726912",
+      "footprint": [
+        [
+          -658,
+          63.0656
+        ],
+        [
+          -688.047,
+          64.287
+        ],
+        [
+          -688.161,
+          61.523
+        ],
+        [
+          -688.362,
+          56.54
+        ],
+        [
+          -664.482,
+          55.582
+        ],
+        [
+          -662.152,
+          55.487
+        ],
+        [
+          -662.401,
+          49.351
+        ],
+        [
+          -658,
+          49.1773
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-370726912-hotel",
+      "name": "Travelodge-hotel",
+      "osm_way": "370726912",
+      "footprint": [
+        [
+          -640.167,
+          96.832
+        ],
+        [
+          -656.119,
+          97.476
+        ],
+        [
+          -657.519,
+          63.046
+        ],
+        [
+          -658,
+          63.0656
+        ],
+        [
+          -658,
+          49.1773
+        ],
+        [
+          -656.954,
+          49.136
+        ],
+        [
+          -656.742,
+          54.417
+        ],
+        [
+          -641.909,
+          53.822
+        ]
+      ],
+      "height_m": 22,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-370726915",
+      "name": "Lord Street frontage range",
+      "osm_way": "370726915",
+      "footprint": [
+        [
+          -364.784,
+          -23.401
+        ],
+        [
+          -347.14,
+          -24.285
+        ],
+        [
+          -347.255,
+          -42.647
+        ],
+        [
+          -365.256,
+          -43.097
+        ]
+      ],
+      "height_m": 14,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371112880",
+      "name": "Lord Street frontage range",
+      "osm_way": "371112880",
+      "footprint": [
+        [
+          -637.696,
+          -40.891
+        ],
+        [
+          -638.618,
+          -21.79
+        ],
+        [
+          -692.422,
+          -20.871
+        ],
+        [
+          -693.089,
+          -28.652
+        ],
+        [
+          -690.501,
+          -28.592
+        ],
+        [
+          -690.655,
+          -39.378
+        ]
+      ],
+      "height_m": 14,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371112882-1",
+      "name": "Lord Street frontage range-1",
+      "osm_way": "371112882",
+      "footprint": [
+        [
+          -616.98,
+          -41.224
+        ],
+        [
+          -628.343,
+          -41.085
+        ],
+        [
+          -627.966,
+          -16.478
+        ],
+        [
+          -593,
+          -16.7952
+        ],
+        [
+          -593,
+          -35.3835
+        ],
+        [
+          -617.099,
+          -35.399
+        ]
+      ],
+      "height_m": 25,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371112882-2",
+      "name": "Lord Street frontage range-2",
+      "osm_way": "371112882",
+      "footprint": [
+        [
+          -593,
+          -16.7952
+        ],
+        [
+          -590.709,
+          -16.816
+        ],
+        [
+          -591.365,
+          -24.884
+        ],
+        [
+          -587.351,
+          -24.49
+        ],
+        [
+          -587,
+          -18.4068
+        ],
+        [
+          -587,
+          -35.3796
+        ],
+        [
+          -593,
+          -35.3835
+        ]
+      ],
+      "height_m": 8,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371112882-3",
+      "name": "Lord Street frontage range-3",
+      "osm_way": "371112882",
+      "footprint": [
+        [
+          -587,
+          -18.4068
+        ],
+        [
+          -586.753,
+          -14.126
+        ],
+        [
+          -562.741,
+          -14.228
+        ],
+        [
+          -562.816,
+          -22.278
+        ],
+        [
+          -560,
+          -22.2061
+        ],
+        [
+          -560,
+          -35.3622
+        ],
+        [
+          -587,
+          -35.3796
+        ]
+      ],
+      "height_m": 25,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371112882-4",
+      "name": "Lord Street frontage range-4",
+      "osm_way": "371112882",
+      "footprint": [
+        [
+          -560,
+          -22.2061
+        ],
+        [
+          -555.056,
+          -22.08
+        ],
+        [
+          -555,
+          -21.5448
+        ],
+        [
+          -555,
+          -35.359
+        ],
+        [
+          -560,
+          -35.3622
+        ]
+      ],
+      "height_m": 8,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371112882-5",
+      "name": "Lord Street frontage range-5",
+      "osm_way": "371112882",
+      "footprint": [
+        [
+          -555,
+          -21.5448
+        ],
+        [
+          -554.362,
+          -15.447
+        ],
+        [
+          -529.41,
+          -16.686
+        ],
+        [
+          -529.501,
+          -17.874
+        ],
+        [
+          -530.14,
+          -26.633
+        ],
+        [
+          -525.675,
+          -26.407
+        ],
+        [
+          -525.662,
+          -35.34
+        ],
+        [
+          -555,
+          -35.3589
+        ]
+      ],
+      "height_m": 25,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371112885",
+      "name": "Lord Street frontage range",
+      "osm_way": "371112885",
+      "footprint": [
+        [
+          -506.169,
+          -43.447
+        ],
+        [
+          -505.482,
+          -19.242
+        ],
+        [
+          -529.501,
+          -17.874
+        ],
+        [
+          -530.14,
+          -26.633
+        ],
+        [
+          -525.675,
+          -26.407
+        ],
+        [
+          -513.568,
+          -26.853
+        ],
+        [
+          -513.983,
+          -36.239
+        ],
+        [
+          -516.596,
+          -36.306
+        ],
+        [
+          -516.853,
+          -43.293
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371140808-retail",
+      "name": "Market Street adjoining lower range",
+      "osm_way": "371140808",
+      "footprint": [
+        [
+          -292,
+          -22.846022737549255
+        ],
+        [
+          -317.323,
+          -22.424
+        ],
+        [
+          -317.581,
+          -25.157
+        ],
+        [
+          -337.54,
+          -24.468
+        ],
+        [
+          -339.619,
+          -66.483
+        ],
+        [
+          -337.794,
+          -69.706
+        ],
+        [
+          -335.452,
+          -71.715
+        ],
+        [
+          -331.825,
+          -73.042
+        ],
+        [
+          -328.446,
+          -73.058
+        ],
+        [
+          -316.061,
+          -71.65
+        ],
+        [
+          -316.053,
+          -67.619
+        ],
+        [
+          -316.285,
+          -58.694
+        ],
+        [
+          -328.044,
+          -58.992
+        ],
+        [
+          -326.975,
+          -41.092
+        ],
+        [
+          -319.446,
+          -41.442
+        ],
+        [
+          -319.092,
+          -47.106
+        ],
+        [
+          -292,
+          -46.67477499618845
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371140808-vincent",
+      "name": "Vincent Hotel upper volume",
+      "osm_way": "371140808",
+      "footprint": [
+        [
+          -280.961,
+          -46.341
+        ],
+        [
+          -267.011,
+          -46.419
+        ],
+        [
+          -266.241,
+          -25.47
+        ],
+        [
+          -286.404,
+          -25.447
+        ],
+        [
+          -286.361,
+          -22.94
+        ],
+        [
+          -292,
+          -22.846022737549255
+        ],
+        [
+          -292,
+          -46.67477499618845
+        ],
+        [
+          -286.297,
+          -46.584
+        ],
+        [
+          -286.652,
+          -32.644
+        ],
+        [
+          -276.078,
+          -32.923
+        ],
+        [
+          -276.476,
+          -38.487
+        ],
+        [
+          -281.156,
+          -38.939
+        ]
+      ],
+      "height_m": 24,
+      "height_uncertainty_m": 4,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371196091",
+      "name": "Lord Street frontage range",
+      "osm_way": "371196091",
+      "footprint": [
+        [
+          -226.016,
+          -5.199
+        ],
+        [
+          -226.131,
+          -0.636
+        ],
+        [
+          -226.202,
+          2.011
+        ],
+        [
+          -228.552,
+          4.796
+        ],
+        [
+          -232.263,
+          5.173
+        ],
+        [
+          -234.65,
+          2.267
+        ],
+        [
+          -234.928,
+          -5.623
+        ],
+        [
+          -232.662,
+          -8.88
+        ],
+        [
+          -228.584,
+          -8.87
+        ]
+      ],
+      "height_m": 5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-371196093",
+      "name": "Atkinson and rear complex",
+      "osm_way": "371196093",
+      "footprint": [
+        [
+          -204.455,
+          -54.346
+        ],
+        [
+          -203.315,
+          -27.776
+        ],
+        [
+          -245.842,
+          -28.772
+        ],
+        [
+          -248.741,
+          -60.258
+        ],
+        [
+          -249.723,
+          -79.054
+        ],
+        [
+          -246.925,
+          -81.713
+        ],
+        [
+          -197.714,
+          -80.264
+        ],
+        [
+          -197.575,
+          -75.759
+        ],
+        [
+          -183.689,
+          -75.53
+        ],
+        [
+          -185.144,
+          -91.959
+        ],
+        [
+          -198.773,
+          -92.693
+        ],
+        [
+          -198.625,
+          -88.427
+        ],
+        [
+          -250.128,
+          -88.773
+        ],
+        [
+          -251.441,
+          -107.716
+        ],
+        [
+          -248.872,
+          -112.398
+        ],
+        [
+          -167.133,
+          -119.493
+        ],
+        [
+          -164.229,
+          -79.753
+        ],
+        [
+          -166.394,
+          -53.252
+        ]
+      ],
+      "height_m": 18,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372049057",
+      "name": "Lord Street frontage range",
+      "osm_way": "372049057",
+      "footprint": [
+        [
+          361.869,
+          -55.344
+        ],
+        [
+          362.21,
+          -10.743
+        ],
+        [
+          351.722,
+          -10.929
+        ],
+        [
+          352.738,
+          -43.937
+        ],
+        [
+          349.181,
+          -43.782
+        ],
+        [
+          349.165,
+          -56.004
+        ]
+      ],
+      "height_m": 13,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372049058",
+      "name": "Lord Street frontage range",
+      "osm_way": "372049058",
+      "footprint": [
+        [
+          345.088,
+          -11.091
+        ],
+        [
+          330.217,
+          -11.274
+        ],
+        [
+          330.432,
+          -28.982
+        ],
+        [
+          345.303,
+          -28.799
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372049059",
+      "name": "Lord Street frontage range",
+      "osm_way": "372049059",
+      "footprint": [
+        [
+          328.853,
+          -11.406
+        ],
+        [
+          316.187,
+          -11.519
+        ],
+        [
+          316.372,
+          -32.162
+        ],
+        [
+          329.046,
+          -32.041
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372049060",
+      "name": "Lord Street frontage range",
+      "osm_way": "372049060",
+      "footprint": [
+        [
+          314.448,
+          -12.985
+        ],
+        [
+          302.584,
+          -13.26
+        ],
+        [
+          302.851,
+          -24.906
+        ],
+        [
+          305.379,
+          -24.851
+        ],
+        [
+          305.454,
+          -27.962
+        ],
+        [
+          303.212,
+          -28.013
+        ],
+        [
+          303.677,
+          -48.246
+        ],
+        [
+          314.226,
+          -47.996
+        ],
+        [
+          313.769,
+          -28.338
+        ],
+        [
+          310.52,
+          -28.415
+        ],
+        [
+          310.353,
+          -21.147
+        ],
+        [
+          314.631,
+          -21.05
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372049061",
+      "name": "Lord Street frontage range",
+      "osm_way": "372049061",
+      "footprint": [
+        [
+          299.817,
+          -12.704
+        ],
+        [
+          282.348,
+          -13.322
+        ],
+        [
+          282.53,
+          -18.562
+        ],
+        [
+          287.332,
+          -18.394
+        ],
+        [
+          287.876,
+          -33.513
+        ],
+        [
+          300.552,
+          -33.056
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372049062",
+      "name": "Lord Street frontage range",
+      "osm_way": "372049062",
+      "footprint": [
+        [
+          279.676,
+          -12.58
+        ],
+        [
+          266.855,
+          -12.761
+        ],
+        [
+          266.982,
+          -21.833
+        ],
+        [
+          279.804,
+          -21.653
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372049063",
+      "name": "Lord Street frontage range",
+      "osm_way": "372049063",
+      "footprint": [
+        [
+          262.842,
+          -24.841
+        ],
+        [
+          263.042,
+          -12.885
+        ],
+        [
+          254.464,
+          -12.736
+        ],
+        [
+          254.265,
+          -24.692
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372049064",
+      "name": "Lord Street frontage range",
+      "osm_way": "372049064",
+      "footprint": [
+        [
+          229.419,
+          -4.315
+        ],
+        [
+          224.982,
+          -4.368
+        ],
+        [
+          224.818,
+          9.591
+        ],
+        [
+          229.256,
+          9.644
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372049065",
+      "name": "Lord Street frontage range",
+      "osm_way": "372049065",
+      "footprint": [
+        [
+          249.761,
+          -12.936
+        ],
+        [
+          231.376,
+          -13.789
+        ],
+        [
+          232.001,
+          -27.157
+        ],
+        [
+          237.209,
+          -26.915
+        ],
+        [
+          236.987,
+          -22.082
+        ],
+        [
+          250.163,
+          -21.471
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372055260",
+      "name": "Lord Street frontage range",
+      "osm_way": "372055260",
+      "footprint": [
+        [
+          433.801,
+          -24.765
+        ],
+        [
+          433.478,
+          -9.411
+        ],
+        [
+          377.151,
+          -11.148
+        ],
+        [
+          376.739,
+          -28.414
+        ],
+        [
+          390.81,
+          -27.762
+        ],
+        [
+          390.726,
+          -29.402
+        ],
+        [
+          390.617,
+          -31.509
+        ],
+        [
+          398.812,
+          -31.448
+        ],
+        [
+          398.765,
+          -24.11
+        ],
+        [
+          404.356,
+          -24.385
+        ]
+      ],
+      "height_m": 15,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372055262",
+      "name": "Court Road west apartment tower",
+      "osm_way": "372055262",
+      "footprint": [
+        [
+          470.45,
+          -27.121
+        ],
+        [
+          470.335,
+          -9.815
+        ],
+        [
+          442.677,
+          -9.997
+        ],
+        [
+          442.788,
+          -27.298
+        ]
+      ],
+      "height_m": 22,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372055263",
+      "name": "Court Road rear apartment tower",
+      "osm_way": "372055263",
+      "footprint": [
+        [
+          469.311,
+          -55.749
+        ],
+        [
+          469.49,
+          -40.212
+        ],
+        [
+          442.902,
+          -41.041
+        ],
+        [
+          441.858,
+          -56.31
+        ]
+      ],
+      "height_m": 22,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372055265",
+      "name": "Lord Street frontage range",
+      "osm_way": "372055265",
+      "footprint": [
+        [
+          499.31,
+          -29.755
+        ],
+        [
+          497.501,
+          -52.266
+        ],
+        [
+          483.252,
+          -51.688
+        ],
+        [
+          485.108,
+          -28.686
+        ]
+      ],
+      "height_m": 5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-372310681",
+      "name": "Lord Street frontage range",
+      "osm_way": "372310681",
+      "footprint": [
+        [
+          389.314,
+          -100.5
+        ],
+        [
+          389.108,
+          -92.535
+        ],
+        [
+          385.601,
+          -92.72
+        ],
+        [
+          385.822,
+          -71.65
+        ],
+        [
+          389.885,
+          -71.072
+        ],
+        [
+          388.399,
+          -35.252
+        ],
+        [
+          398.259,
+          -35.191
+        ],
+        [
+          398.812,
+          -31.448
+        ],
+        [
+          390.617,
+          -31.509
+        ],
+        [
+          390.726,
+          -29.402
+        ],
+        [
+          376.981,
+          -30.133
+        ],
+        [
+          375.763,
+          -100.94
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375221732",
+      "name": "Manchester Road corner",
+      "osm_way": "375221732",
+      "footprint": [
+        [
+          579.788,
+          -57.854
+        ],
+        [
+          567.05,
+          -54.306
+        ],
+        [
+          567.366,
+          -47.037
+        ],
+        [
+          573.888,
+          -47.367
+        ],
+        [
+          575.909,
+          -28.789
+        ],
+        [
+          570.266,
+          -28.311
+        ],
+        [
+          570.895,
+          -18.653
+        ],
+        [
+          583.173,
+          -19.092
+        ],
+        [
+          583.381,
+          -12.703
+        ],
+        [
+          569.235,
+          -12.439
+        ],
+        [
+          569.304,
+          -15.192
+        ],
+        [
+          560.392,
+          -14.295
+        ],
+        [
+          559.812,
+          -25.951
+        ],
+        [
+          557.802,
+          -25.5
+        ],
+        [
+          555.565,
+          -45.837
+        ],
+        [
+          557.587,
+          -46.285
+        ],
+        [
+          555.631,
+          -58.107
+        ],
+        [
+          565.928,
+          -59.09
+        ],
+        [
+          565.71,
+          -60.603
+        ],
+        [
+          578.918,
+          -63.139
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375232069",
+      "name": "Leicester Street corner range",
+      "osm_way": "375232069",
+      "footprint": [
+        [
+          460.011,
+          52.579
+        ],
+        [
+          459.391,
+          42.758
+        ],
+        [
+          523.918,
+          42.232
+        ],
+        [
+          523.25,
+          93.427
+        ],
+        [
+          512.245,
+          93.472
+        ],
+        [
+          512.555,
+          55.774
+        ],
+        [
+          491.74,
+          56.002
+        ],
+        [
+          491.613,
+          52.515
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375232070",
+      "name": "Lord Street frontage range",
+      "osm_way": "375232070",
+      "footprint": [
+        [
+          457.643,
+          42.929
+        ],
+        [
+          458.158,
+          52.42
+        ],
+        [
+          453.044,
+          52.18
+        ],
+        [
+          453.033,
+          60.897
+        ],
+        [
+          445.411,
+          60.921
+        ],
+        [
+          445.316,
+          43.154
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375232071",
+      "name": "Lord Street frontage range",
+      "osm_way": "375232071",
+      "footprint": [
+        [
+          442.929,
+          42.873
+        ],
+        [
+          442.831,
+          50.827
+        ],
+        [
+          439.24,
+          50.63
+        ],
+        [
+          439.113,
+          59.886
+        ],
+        [
+          432.136,
+          59.927
+        ],
+        [
+          432.482,
+          50.893
+        ],
+        [
+          429.54,
+          50.709
+        ],
+        [
+          429.743,
+          43.085
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375232308",
+      "name": "Lord Street frontage range",
+      "osm_way": "375232308",
+      "footprint": [
+        [
+          426.397,
+          43.07
+        ],
+        [
+          426.453,
+          52.843
+        ],
+        [
+          424.773,
+          52.857
+        ],
+        [
+          424.846,
+          65.685
+        ],
+        [
+          418.429,
+          65.732
+        ],
+        [
+          418.348,
+          53.249
+        ],
+        [
+          414.342,
+          53.277
+        ],
+        [
+          414.422,
+          66.084
+        ],
+        [
+          407.252,
+          66.124
+        ],
+        [
+          407.186,
+          54.318
+        ],
+        [
+          405.575,
+          54.328
+        ],
+        [
+          405.647,
+          66.466
+        ],
+        [
+          400.88,
+          66.496
+        ],
+        [
+          400.795,
+          52.466
+        ],
+        [
+          400.739,
+          43.23
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375232760",
+      "name": "Lord Street frontage range",
+      "osm_way": "375232760",
+      "footprint": [
+        [
+          400.739,
+          43.23
+        ],
+        [
+          376.432,
+          43.566
+        ],
+        [
+          376.419,
+          65.473
+        ],
+        [
+          387.87,
+          65.005
+        ],
+        [
+          388.356,
+          58.801
+        ],
+        [
+          398.045,
+          59.162
+        ],
+        [
+          398.113,
+          52.297
+        ],
+        [
+          400.795,
+          52.466
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375380927",
+      "name": "Lord Street frontage range",
+      "osm_way": "375380927",
+      "footprint": [
+        [
+          240.229,
+          72.183
+        ],
+        [
+          229.635,
+          72.374
+        ],
+        [
+          229.164,
+          44.861
+        ],
+        [
+          263.353,
+          44.274
+        ],
+        [
+          263.534,
+          55.08
+        ],
+        [
+          248.288,
+          55.345
+        ],
+        [
+          248.455,
+          65.044
+        ],
+        [
+          240.114,
+          65.183
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375380928",
+      "name": "Lord Street frontage range",
+      "osm_way": "375380928",
+      "footprint": [
+        [
+          265.929,
+          44.514
+        ],
+        [
+          337.366,
+          44.548
+        ],
+        [
+          337.071,
+          59.814
+        ],
+        [
+          320.969,
+          58.835
+        ],
+        [
+          320.597,
+          69.537
+        ],
+        [
+          316.522,
+          69.339
+        ],
+        [
+          316.614,
+          54.634
+        ],
+        [
+          302.204,
+          54.458
+        ],
+        [
+          302.508,
+          68.219
+        ],
+        [
+          266.271,
+          68.049
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375380929",
+      "name": "Bold Hotel",
+      "osm_way": "375380929",
+      "footprint": [
+        [
+          363.329,
+          45.695
+        ],
+        [
+          363.658,
+          81.403
+        ],
+        [
+          350.819,
+          81.531
+        ],
+        [
+          350.761,
+          75.491
+        ],
+        [
+          344.072,
+          75.549
+        ],
+        [
+          344.178,
+          87.348
+        ],
+        [
+          340.385,
+          87.389
+        ],
+        [
+          339.994,
+          45.906
+        ]
+      ],
+      "height_m": 16,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375388377",
+      "name": "Lord Street frontage range",
+      "osm_way": "375388377",
+      "footprint": [
+        [
+          168.049,
+          45.462
+        ],
+        [
+          168.546,
+          68.02
+        ],
+        [
+          174.569,
+          68.257
+        ],
+        [
+          173.951,
+          60.153
+        ],
+        [
+          178.825,
+          60.36
+        ],
+        [
+          179.487,
+          69.88
+        ],
+        [
+          185.267,
+          70.025
+        ],
+        [
+          185.288,
+          62.757
+        ],
+        [
+          202.958,
+          62.877
+        ],
+        [
+          202.911,
+          58.085
+        ],
+        [
+          206.622,
+          58.428
+        ],
+        [
+          206.887,
+          60.91
+        ],
+        [
+          214.98,
+          60.961
+        ],
+        [
+          214.662,
+          44.512
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375388378",
+      "name": "Lord Street frontage range",
+      "osm_way": "375388378",
+      "footprint": [
+        [
+          165.859,
+          44.948
+        ],
+        [
+          166.159,
+          55.84
+        ],
+        [
+          164.909,
+          55.876
+        ],
+        [
+          165.537,
+          78.802
+        ],
+        [
+          159.178,
+          78.977
+        ],
+        [
+          158.255,
+          45.154
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375388656",
+      "name": "Lord Street frontage range",
+      "osm_way": "375388656",
+      "footprint": [
+        [
+          155.761,
+          45.067
+        ],
+        [
+          156.229,
+          68.62
+        ],
+        [
+          148.546,
+          68.503
+        ],
+        [
+          148.148,
+          77.74
+        ],
+        [
+          140.057,
+          77.703
+        ],
+        [
+          140.282,
+          68.952
+        ],
+        [
+          137.705,
+          69.296
+        ],
+        [
+          137.376,
+          79.114
+        ],
+        [
+          130.35,
+          79.354
+        ],
+        [
+          130.633,
+          55.241
+        ],
+        [
+          128.324,
+          55.177
+        ],
+        [
+          127.975,
+          68.882
+        ],
+        [
+          101.348,
+          70.178
+        ],
+        [
+          100.928,
+          44.644
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375389847",
+      "name": "Lord Street frontage range",
+      "osm_way": "375389847",
+      "footprint": [
+        [
+          97.324,
+          45.995
+        ],
+        [
+          97.254,
+          54.506
+        ],
+        [
+          76.262,
+          54.318
+        ],
+        [
+          76.197,
+          61.397
+        ],
+        [
+          70.608,
+          61.347
+        ],
+        [
+          70.517,
+          71.752
+        ],
+        [
+          60.037,
+          71.65
+        ],
+        [
+          60.073,
+          67.808
+        ],
+        [
+          36.524,
+          67.593
+        ],
+        [
+          36.614,
+          57.772
+        ],
+        [
+          34.075,
+          57.743
+        ],
+        [
+          34.189,
+          45.428
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375534419",
+      "name": "Lord Street frontage range",
+      "osm_way": "375534419",
+      "footprint": [
+        [
+          -101.838,
+          46.762
+        ],
+        [
+          -85.751,
+          46.989
+        ],
+        [
+          -85.412,
+          74.411
+        ],
+        [
+          -101.173,
+          74.566
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375538202-south",
+      "name": "Wayfarers south frontage range-south",
+      "osm_way": "375538202",
+      "footprint": [
+        [
+          -172,
+          47.2999
+        ],
+        [
+          -199.915,
+          47.714
+        ],
+        [
+          -199.777,
+          76.494
+        ],
+        [
+          -192.488,
+          77.002
+        ],
+        [
+          -192.74,
+          86.806
+        ],
+        [
+          -199.61,
+          86.96
+        ],
+        [
+          -200.483,
+          104.157
+        ],
+        [
+          -186.551,
+          104.511
+        ],
+        [
+          -185.81,
+          84.261
+        ],
+        [
+          -172,
+          84.1284
+        ]
+      ],
+      "height_m": 16,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375538202-north",
+      "name": "Wayfarers south frontage range-north",
+      "osm_way": "375538202",
+      "footprint": [
+        [
+          -117.539,
+          46.492
+        ],
+        [
+          -172,
+          47.2999
+        ],
+        [
+          -172,
+          84.1284
+        ],
+        [
+          -167.277,
+          84.083
+        ],
+        [
+          -167.545,
+          77.536
+        ],
+        [
+          -158.405,
+          77.989
+        ],
+        [
+          -158.08,
+          95.107
+        ],
+        [
+          -138.79,
+          95.054
+        ],
+        [
+          -138.536,
+          81.009
+        ],
+        [
+          -137.419,
+          80.977
+        ],
+        [
+          -132.105,
+          80.842
+        ],
+        [
+          -117.393,
+          81.116
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375538206",
+      "name": "Scarisbrick Hotel north range",
+      "osm_way": "375538206",
+      "footprint": [
+        [
+          -204.474,
+          47.484
+        ],
+        [
+          -203.995,
+          86.981
+        ],
+        [
+          -214.311,
+          86.631
+        ],
+        [
+          -214.63,
+          66.636
+        ],
+        [
+          -225.598,
+          66.108
+        ],
+        [
+          -225.995,
+          46.356
+        ]
+      ],
+      "height_m": 23,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375540625",
+      "name": "Scarisbrick Hotel south range",
+      "osm_way": "375540625",
+      "footprint": [
+        [
+          -230.141,
+          46.916
+        ],
+        [
+          -229.243,
+          76.172
+        ],
+        [
+          -228.94,
+          87.001
+        ],
+        [
+          -239.586,
+          86.811
+        ],
+        [
+          -239.877,
+          94.811
+        ],
+        [
+          -248.299,
+          94.596
+        ],
+        [
+          -248.129,
+          46.116
+        ]
+      ],
+      "height_m": 23,
+      "height_uncertainty_m": 5,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375541154",
+      "name": "Lord Street frontage range",
+      "osm_way": "375541154",
+      "footprint": [
+        [
+          -256.205,
+          46.265
+        ],
+        [
+          -256.337,
+          75.931
+        ],
+        [
+          -271.132,
+          76.796
+        ],
+        [
+          -271.524,
+          72.532
+        ],
+        [
+          -276.417,
+          73.034
+        ],
+        [
+          -276.615,
+          46.614
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376064301",
+      "name": "Lord Street frontage range",
+      "osm_way": "376064301",
+      "footprint": [
+        [
+          -457.741,
+          45.894
+        ],
+        [
+          -456.198,
+          56.082
+        ],
+        [
+          -450.249,
+          80.74
+        ],
+        [
+          -464.484,
+          84.005
+        ],
+        [
+          -469.597,
+          58.83
+        ],
+        [
+          -476.493,
+          59.455
+        ],
+        [
+          -467.87,
+          96.957
+        ],
+        [
+          -472.053,
+          97.23
+        ],
+        [
+          -470.515,
+          107.423
+        ],
+        [
+          -486.643,
+          107.958
+        ],
+        [
+          -489.595,
+          54.735
+        ],
+        [
+          -489.021,
+          51.871
+        ],
+        [
+          -487.268,
+          49.223
+        ],
+        [
+          -484.65,
+          47.228
+        ],
+        [
+          -480.935,
+          46.386
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376064893",
+      "name": "Lord Street frontage range",
+      "osm_way": "376064893",
+      "footprint": [
+        [
+          -455.856,
+          45.808
+        ],
+        [
+          -453.573,
+          57.658
+        ],
+        [
+          -436.117,
+          55.369
+        ],
+        [
+          -431.861,
+          68.999
+        ],
+        [
+          -418.886,
+          67.606
+        ],
+        [
+          -423.327,
+          44.633
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376073284",
+      "name": "Lord Street frontage range",
+      "osm_way": "376073284",
+      "footprint": [
+        [
+          -342.949,
+          46.692
+        ],
+        [
+          -342.11,
+          61.678
+        ],
+        [
+          -342.259,
+          64.721
+        ],
+        [
+          -342.455,
+          68.777
+        ],
+        [
+          -405.612,
+          71.425
+        ],
+        [
+          -404.9,
+          75.739
+        ],
+        [
+          -409.525,
+          75.956
+        ],
+        [
+          -415.959,
+          46.631
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376073459",
+      "name": "Lord Street frontage range",
+      "osm_way": "376073459",
+      "footprint": [
+        [
+          -285.122,
+          70.893
+        ],
+        [
+          -291.218,
+          70.512
+        ],
+        [
+          -290.742,
+          64.747
+        ],
+        [
+          -342.259,
+          64.721
+        ],
+        [
+          -342.11,
+          61.678
+        ],
+        [
+          -342.949,
+          46.692
+        ],
+        [
+          -284.833,
+          46.805
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null,
+      "correction": "Use the adjoining range shared party boundary. The two raw OSM ways overlap by about 2.4 square metres; retaining both produced duplicate caps."
+    },
+    {
+      "id": "way-376074699",
+      "name": "Lord Street frontage range",
+      "osm_way": "376074699",
+      "footprint": [
+        [
+          -505.195,
+          73.531
+        ],
+        [
+          -514.092,
+          73.937
+        ],
+        [
+          -514.028,
+          81.199
+        ],
+        [
+          -524.931,
+          81.792
+        ],
+        [
+          -524.858,
+          73.908
+        ],
+        [
+          -532.77,
+          74.345
+        ],
+        [
+          -533.767,
+          51.462
+        ],
+        [
+          -505.714,
+          49.857
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376075747",
+      "name": "Lord Street frontage range",
+      "osm_way": "376075747",
+      "footprint": [
+        [
+          -688.776,
+          50.193
+        ],
+        [
+          -688.362,
+          56.54
+        ],
+        [
+          -688.161,
+          61.523
+        ],
+        [
+          -692.152,
+          61.614
+        ],
+        [
+          -691.983,
+          69.561
+        ],
+        [
+          -700.68,
+          69.747
+        ],
+        [
+          -700.86,
+          61.472
+        ],
+        [
+          -708.055,
+          61.629
+        ],
+        [
+          -707.909,
+          68.383
+        ],
+        [
+          -714.461,
+          68.528
+        ],
+        [
+          -714.612,
+          61.854
+        ],
+        [
+          -717.401,
+          61.908
+        ],
+        [
+          -717.273,
+          67.483
+        ],
+        [
+          -719.655,
+          67.534
+        ],
+        [
+          -720.219,
+          80.784
+        ],
+        [
+          -728.207,
+          81.524
+        ],
+        [
+          -729.37,
+          51.061
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-1355151954",
+      "name": "Atkinson north wing",
+      "osm_way": "1355151954",
+      "footprint": [
+        [
+          -200.89,
+          -30.617
+        ],
+        [
+          -200.836,
+          -51.427
+        ],
+        [
+          -163.943,
+          -51.343
+        ],
+        [
+          -163.994,
+          -30.521
+        ]
+      ],
+      "height_m": 17,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "way-1370054624",
+      "name": "Lord Street frontage range",
+      "osm_way": "1370054624",
+      "footprint": [
+        [
+          -152.409,
+          5.166
+        ],
+        [
+          -148.532,
+          5.137
+        ],
+        [
+          -145.745,
+          1.844
+        ],
+        [
+          -145.422,
+          -8.028
+        ],
+        [
+          -148.551,
+          -11.504
+        ],
+        [
+          -152.71,
+          -11.361
+        ],
+        [
+          -155.763,
+          -7.571
+        ],
+        [
+          -155.838,
+          1.652
+        ]
+      ],
+      "height_m": 5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "replace_with": null
+    },
+    {
+      "id": "shelbourne-corner",
+      "name": "Shelbourne corner \u2014 provisional aerial trace",
+      "osm_way": null,
+      "footprint": [
+        [
+          -767.523,
+          69.324
+        ],
+        [
+          -755.935,
+          66.617
+        ],
+        [
+          -754.266,
+          50.384
+        ],
+        [
+          -755.575,
+          42.839
+        ],
+        [
+          -763.069,
+          42.145
+        ],
+        [
+          -767.201,
+          47.047
+        ],
+        [
+          -768.164,
+          55.286
+        ],
+        [
+          -771.0,
+          58.468
+        ]
+      ],
+      "height_m": 15,
+      "height_uncertainty_m": 4,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison"
+      ],
+      "footprint_confidence": "Approximate roof outline traced in duke-plan.png. Ground-wall registration and hidden rear uncertain by 3 m; missing from OSM seed.",
+      "replace_with": null
+    }
+  ],
+  "policy": "Google 3D and aerial shape comparison govern interpretation; OSM is a metric seed. Flat caps are height envelopes, not reconstructed roofs. Ranges are not legal parcels.",
+  "replacement_rule": "Set replace_with and remove publication part together when detailed replacement is published; public realm retains canonical footprint cutout."
+}
