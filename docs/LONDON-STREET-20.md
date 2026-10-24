@@ -35,3 +35,23 @@ one closed masonry surface. This removes overlapping end caps beside the taller
 neighbour while preserving the stepped profile at every LoD. Dentils remain
 separate for the District omission rule. Validation checks shell closure and
 rays against the two upper cornice courses, including their ends.
+
+## Fixed-budget District envelope
+
+The independent District mesh retains the classical frontage, southern end of
+the shared 18–20 hip, low rear service wing and two shallow recessed entrances.
+Door jamb receivers follow actual frame depths instead of inventing deep masonry
+reveals. Windows, cornices, signs and surface details become atlas appearance;
+the rear rooflight remains a small geometric mass. Atlases are 256×256
+architecture and 256×128 roof/shopfront/rear. The existing geographic rotation
+and architectural estimates are retained.
+
+This replaces the historical per-feature District policies described above.
+Detail and Walk retain their recipes. The owner handles visual acceptance;
+automated geometry, projection, atlas and publication checks remain required.
+
+Checked District export: **68 triangles, 178,652 bytes including textures
+and 2,628,685 bytes estimated GPU memory**, down from 2,318 triangles,
+525,976 bytes and 4,689,873 GPU bytes. Receiver overlap and sampled
+projection checks pass, as do actual bake coverage, normals and export budgets.
+Visual acceptance remains with the owner.

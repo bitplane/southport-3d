@@ -129,8 +129,8 @@
         "reason": "Retain authored wall apertures, two roof silhouettes, shopfront recess and simple rear wing envelope."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Retain authored wall apertures, two roof silhouettes, shopfront recess and simple rear wing envelope."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     },
     {
@@ -146,13 +146,8 @@
         "max_sampled_error_m": 0.4
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Bake four shared sash sizes to shallow receivers; preserve grouped composition and real wall openings.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.5,
-        "max_sampled_error_m": 0.4
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     },
     {
@@ -164,8 +159,64 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit small cornice dentils and fittings; preserve the continuous moulding profile and all window openings."
+        "reason": "Independent fixed-budget whole-part envelope replaces detailed feature topology."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Preserve researched footprint, roof silhouette, entrances and rear height changes; project fine facade appearance into shared fixed-size atlases.",
+    "max_bytes": 1000000,
+    "max_gpu_bytes": 3300000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture",
+          "roof",
+          "rear"
+        ]
+      },
+      "shopfront": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "shopfront",
+          "architecture"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture",
+          "rear"
+        ]
+      }
+    }
+  }
 }
