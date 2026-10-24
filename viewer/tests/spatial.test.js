@@ -25,3 +25,11 @@ test('part filtering, hysteresis and revision consistency',()=>{
  assert.equal(mergeCells([{assets:[asset]}],[400,1,0],250,64,[{asset,part:asset.parts[0]}]).length,0);
  assert.throws(()=>mergeCells([{assets:[asset,{...asset,assetRevision:'two'}]}],[0,0,0],250,64),/Mixed asset/);
 });
+
+test('visible coverage wins over nearby and retained content under pressure',()=>{
+ const levels={district:{gpuBytesEstimate:20}};
+ const candidates=[{key:'retained',priority:2,ground:true,distance:1,wanted:'district',levels},
+  {key:'nearby',priority:1,ground:true,distance:2,wanted:'district',levels},
+  {key:'visible',priority:0,distance:1000,wanted:'district',levels}];
+ assert.deepEqual([...admit(candidates,20).levels.keys()],['visible']);
+});

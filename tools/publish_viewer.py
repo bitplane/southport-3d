@@ -168,7 +168,7 @@ def _publish(args, assets, fingerprint, build, retained=()):
 def install_viewer(dist):
     """Install one coherent snapshot of viewer sources, returning its identity."""
     names=('index.html','style.css','app.js','lod.js','streamer.js','snags.js','view-state.js',
-           'live.js','spatial.js','spatial-streamer.js')
+           'live.js','spatial.js','spatial-streamer.js','view-volume.js')
     snapshot={name:(ROOT/'viewer'/name).read_bytes() for name in names}
     if any((ROOT/'viewer'/name).read_bytes()!=data for name,data in snapshot.items()):
         raise ValueError('Viewer sources changed during snapshot')

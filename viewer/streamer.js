@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { viewVolume } from './view-volume.js';
 import { chooseLevel } from './lod.js';
 import { admit, estimatedBytes, horizontalDistance } from './spatial.js';
 
@@ -14,8 +15,11 @@ export class Streamer {
     this.entries=[];this.loader=new GLTFLoader();this.cache=new Map();this.pending=0;this.bytes=0;
     this.budget=256*1024*1024;this.radius=Infinity;this.margin=64;this.wireframe=false;this.frozen=false;this.staging=false;
     this.anisotropy=Math.max(1,Math.min(16,maxAnisotropy));
-    for(const asset of catalog.assets){
-      const group=new THREE.Group();group.position.fromArray(asset.position);group.rotation.y=asset.rotationY;scene.add(group);group.updateMatrixWorld(true);
+    this.addAssets(catalog.assets);
+  }
+  addAssets(assets){
+    for(const asset of assets){
+      const group=new THREE.Group();group.position.fromArray(asset.position);group.rotation.y=asset.rotationY;this.scene.add(group);group.updateMatrixWorld(true);
       for(const part of asset.parts){
         const slot=new THREE.Group();group.add(slot);
         const box=new THREE.Box3(new THREE.Vector3().fromArray(part.bounds[0]),new THREE.Vector3().fromArray(part.bounds[1])).applyMatrix4(group.matrixWorld);
@@ -25,15 +29,19 @@ export class Streamer {
   }
   update(camera,settings,force){
     if(this.frozen)return;
-    const candidates=[];
+    const candidates=[],now=performance.now();
+    const view=this.viewAware?viewVolume(camera,this.radius,this.margin):null;
     for(const entry of this.entries){
       entry.distance=entry.box.distanceToPoint(camera.position);
       const bounds=[entry.box.min.toArray(),entry.box.max.toArray()];
-      const nearby=horizontalDistance(bounds,camera.position.toArray())<=this.radius+(entry.current?this.margin:0);
+      const nearby=view?view.includes(bounds):horizontalDistance(bounds,camera.position.toArray())<=this.radius+(entry.current?this.margin:0);
+      if(nearby)entry.lastSeen=now;
+      const retained=entry.lastSeen!==undefined&&now-entry.lastSeen<(this.retentionMs??0);
+      entry.priority=nearby?(view?.visible(bounds)?0:1):2;
       const desired=entry.part.fixedLevel || chooseLevel(entry.distance,entry.current,force,settings,Object.keys(entry.part.levels));
-      entry.desired=nearby?desired:null;
-      if(nearby)candidates.push({key:this.entryKey(entry),ground:entry.part.ground,distance:entry.distance,
-        wanted:desired,fixed:!!entry.part.fixedLevel,levels:entry.part.levels});
+      entry.desired=nearby?desired:retained?(entry.part.fixedLevel||(entry.part.levels.district?'district':desired)):null;
+      if(entry.desired)candidates.push({key:this.entryKey(entry),priority:entry.priority,ground:entry.part.ground,distance:entry.distance,
+        wanted:entry.desired,fixed:!!entry.part.fixedLevel,levels:entry.part.levels});
     }
     const selection=admit(candidates,this.budget).levels;
     for(const entry of this.entries){
@@ -45,7 +53,7 @@ export class Streamer {
       if(entry.wanted&&this.cache.has(key))this.activate(entry,entry.wanted);
     }
     this.evict();
-    const queue=this.entries.filter(e=>e.wanted && !e.loading && e.current!==e.wanted).sort((a,b)=>(a.part.fixedLevel?-1:0)-(b.part.fixedLevel?-1:0)||a.distance-b.distance);
+    const queue=this.entries.filter(e=>e.wanted && !e.loading && e.current!==e.wanted).sort((a,b)=>a.priority-b.priority||(a.part.fixedLevel?-1:0)-(b.part.fixedLevel?-1:0)||a.distance-b.distance);
     for(const entry of queue){
       if(this.pending>=2)break;
       // Show an inexpensive complete part while its selected level is fetched.
@@ -111,15 +119,22 @@ export class Streamer {
       }
     }
   }
-  removeAssets(ids){
-    const removed=this.entries.filter(e=>ids.has(e.asset.id));
+  removeEntries(removed){
+    const retired=new Set(removed);
     const groups=new Set(removed.map(e=>e.slot.parent));
-    for(const entry of removed){entry.retired=true;entry.loading?.controller.abort();}
-    for(const group of groups)group?.removeFromParent();
+    for(const entry of removed){entry.retired=true;entry.loading?.controller.abort();entry.slot.removeFromParent();}
+    for(const group of groups)if(group&&!group.children.length)group.removeFromParent();
     for(const [key,record] of this.cache){
-      if(ids.has(record.entry.asset.id)){dispose(record.root);this.cache.delete(key);}
+      if(retired.has(record.entry)){dispose(record.root);this.cache.delete(key);}
     }
-    this.entries=this.entries.filter(e=>!ids.has(e.asset.id));
+    this.entries=this.entries.filter(e=>!retired.has(e));
+  }
+  removeAssets(ids){this.removeEntries(this.entries.filter(e=>ids.has(e.asset.id)));}
+  reconcile(assets){
+    const wanted=new Set(assets.flatMap(a=>a.parts.map(p=>`${a.id}/${p.id}`)));
+    this.removeEntries(this.entries.filter(e=>!wanted.has(this.entryKey(e))));
+    const existing=new Set(this.entries.map(e=>this.entryKey(e)));
+    this.addAssets(assets.map(a=>({...a,parts:a.parts.filter(p=>!existing.has(`${a.id}/${p.id}`))})).filter(a=>a.parts.length));
   }
   destroy(){this.removeAssets(new Set(this.entries.map(e=>e.asset.id)));}
   adopt(staged,ids){

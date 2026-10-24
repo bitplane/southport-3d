@@ -12,7 +12,7 @@ export function admit(candidates,budget){
   // Ground first, then nearest parts. Every admitted part fits individually and
   // collectively; a huge part cannot silently override the budget.
   let used=0;const result=new Map();
-  const ordered=[...candidates].sort((a,b)=>Number(!!b.ground)-Number(!!a.ground)||a.distance-b.distance||a.key.localeCompare(b.key));
+  const ordered=[...candidates].sort((a,b)=>(a.priority??0)-(b.priority??0)||Number(!!b.ground)-Number(!!a.ground)||a.distance-b.distance||a.key.localeCompare(b.key));
   const levels=e=>(e.fixed?[e.wanted]:['detail','walk','district'].slice(Math.max(0,['detail','walk','district'].indexOf(e.wanted)))).filter(l=>e.levels[l]);
   // Establish coarse coverage before spending remaining space on refinements.
   // Nearby detail must not crowd out buildings that would fit at District.

@@ -155,11 +155,17 @@ start at 64 m and increase by factors of four. A small origin-crossing object do
 not become a root-level object. The bootstrap contains cell descriptors and asset
 names/views, not every part. Paging this descriptor list is future work if needed.
 
-Defaults are a 250 m horizontal load radius, 64 m retention margin, 256 MiB
-estimated payload budget and up to 128 MiB additional replacement staging space.
+Selection includes the camera frustum (up to its 3 km far plane) and a 250 m
+near-camera safety area. A 64 m padding prefetches content at view edges, and an
+8-second grace period retains recently visible cells/parts during turns and pans.
+This also works in high orbit: visible ground is not limited to a fixed circle
+below the camera. Defaults are a 256 MiB estimated payload budget and up to
+128 MiB additional replacement staging space.
 Set `viewer/world.json:streaming.radius`, `margin`, and `budget` to change the
 published policy. These are payload estimates, not a cap on all browser/GPU RAM.
-Ground is prioritised; coarse coverage is admitted before refinement. Forced
+Visible parts take priority over nearby/offscreen retention; ground is prioritised
+within each class, and coarse coverage is admitted before refinement. Retention
+is expendable under memory pressure. Forced
 Detail remains budgeted and geographically bounded. Distant active models are
 removed and disposed; requests are aborted and obsolete decodes are discarded.
 Parts that do not fit are labelled deferred in state/status rather than exceeding
@@ -175,8 +181,11 @@ bootstrap; old resources retain the same 24-hour retirement grace period.
 
 Live updates compare the current spatial working set and stage changed assets'
 loaded parts. All cells come from one bootstrap revision; a per-asset revision
-prevents mixed-version assembly. Moving across a 16 m planning cell cancels and
-replans pending work. Replacement failure or an oversized existing-asset batch
+prevents mixed-version assembly. Travel transactions follow cell membership, finish without cancellation by small
+camera movements, then replan for the latest view. Unchanged asset parts keep
+their roots, caches and downloads as adjacent parts enter or leave. Only a new
+publication revision cancels an outstanding transaction. Late cell fetches wait
+for the next unfrozen update before changing scene membership. Replacement failure or an oversized existing-asset batch
 keeps the previous scene and reports the failure; reload is a fallback for such
 batches. Initial loading is progressive. Snag capture freezes adoption and records
 both the applied `sceneRevision` and legacy `catalogRevision`, plus exact loaded

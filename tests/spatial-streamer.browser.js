@@ -15,7 +15,7 @@ async () => {
    return {key:id,uri,sha256:digest,bounds:[[x,0,0],[x+2,5,2]]};
  }
  const near=await cell('near',0),far=await cell('far',1000);
- const root={revision:'one',cells:[near,far],streaming:{radius:100,margin:16,budget:100,stagingBudget:100}};
+ const root={revision:'one',cells:[near,far],streaming:{radius:100,margin:16,retentionMs:0,budget:100,stagingBudget:100}};
  window.fetch=(url,opts)=>{
    if(!String(url).startsWith('https://spatial-fixture.invalid/'))return oldFetch(url,opts);
    const name=new URL(url).pathname.slice(1);requests.push(name);
@@ -26,6 +26,8 @@ async () => {
  const settings={detailDistance:8,districtDistance:70};
  const mesh=()=>{const r=new THREE.Group();r.add(new THREE.Mesh(new THREE.BoxGeometry(),new THREE.MeshBasicMaterial()));return r;};
  manager.current.loader.parseAsync=async()=>({scene:mesh()});
+ const prepare=manager.prepareSnapshot.bind(manager);
+ manager.prepareSnapshot=(...args)=>{prepare(...args);if(manager.staged)manager.staged.streamer.loader.parseAsync=async()=>({scene:mesh()});};
  async function tick(){if(manager.staged)manager.staged.streamer.loader.parseAsync=async()=>({scene:mesh()});manager.update(camera,settings,'district');await new Promise(r=>setTimeout(r,2));}
  async function until(check){for(let i=0;i<200;i++){await tick();if(check())return;}throw new Error('Spatial fixture timed out: '+manager.message);}
  try{
