@@ -67,3 +67,16 @@ for y in (-14,-8,0,8,15):
  z,name=ground_height(-127.48,y)
  assert 'grass' in name,('Missing lawn behind retaining wall',y,name)
 print('West retaining wall contains the raised lawn')
+
+# Every glass corner must have a metal cap above it at each generated level.
+# The former diamond-shaped cap left the square head's corners exposed.
+for level in ('detail','walk','district'):
+ ob=lantern(level).finish([])
+ bpy.context.view_layer.update()
+ for x,y in ((-.21,-.21),(.21,-.21),(.21,.21),(-.21,.21),(0,0)):
+  hit,p,n,index=ob.ray_cast(Vector((x,y,3.95)),Vector((0,0,-1)),distance=.40)
+  assert hit and ob.data.polygons[index].material_index==0,('Open lantern cap',level,x,y,hit,tuple(p),index,ob.data.polygons[index].material_index if hit else None)
+ hit,p,n,index=ob.ray_cast(Vector((0,0,3.10)),Vector((0,0,-1)),distance=.10)
+ assert hit,('Missing lantern lower tray',level)
+ bpy.data.objects.remove(ob,do_unlink=True)
+print('Square lantern cap and lower tray close every LOD head')

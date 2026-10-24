@@ -29,7 +29,10 @@ def lantern(level='detail', name='Lantern'):
              [(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],2)
     for x,y in [(-1,-1),(1,-1),(1,1),(-1,1)]:
         mesh.tube([(x*.10,y*.10,3.08),(x*.21,y*.21,3.57)],.018,0,max(4,n//2))
-    mesh.lathe((0,0),[(3.55,.30),(3.60,.30),(3.78,.07),(3.83,.055)],4,0)
+    # Square glazing needs a square cap, not a four-segment diamond lathe.
+    # The projecting cap covers all four glass corners and the sloping stiles.
+    mesh.rect_profile((0,0),[(3.57,.48,.48),(3.62,.48,.48),(3.78,.10,.10),(3.83,.08,.08)],0)
+    mesh.rect_profile((0,0),[(3.04,.20,.20),(3.08,.23,.23)],0)
     mesh.ellipsoid((0,0,3.87),(.06,.06,.08),0,n,max(3,n//2))
     return mesh
 
