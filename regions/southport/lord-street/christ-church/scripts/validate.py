@@ -37,7 +37,7 @@ triangles=sum(len(p.vertices)-2 for o in objects for p in o.data.polygons)
 (ROOT/'research/validation.json').write_text(json.dumps({'objects':len(objects),'triangles':triangles,'checks':['four open tower elevations','eight pointed bell windows','three roundel windows','open main doorway','closed tower roof deck','five modern side windows','finite UV meshes','site bounds','packed authored maps']},indent=2))
 print('Christ Church geometry, openings, roof deck and site bounds passed',triangles)
 
-# The cafe has a real glazed opening, a round corner and a separate raised porch.
+# The cafe has a real glazed opening, a round corner and a separate lower porch.
 bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get()
 front=bpy.data.objects['Envelope cafe front']
 for u,h in [(1.1,1.4),(2.3,1.4),(4.2,1.4),(2.5,2.6)]:
@@ -47,7 +47,7 @@ for u,h in [(1.1,1.4),(2.3,1.4),(4.2,1.4),(2.5,2.6)]:
     assert hit and ob.name.startswith('Window cafe glazing'),('Cafe glazing blocked',u,h,ob.name if hit else None)
 assert len([o for o in objects if o.name.startswith('Envelope cafe curved brick')])==24
 cap=bpy.data.objects['Roof cafe rounded flat'];porch=bpy.data.objects['Roof cafe entrance canopy']
-assert min(v.co.z for v in porch.data.vertices)>max(v.co.z for v in cap.data.vertices)+.1
+assert max(v.co.z for v in porch.data.vertices)<min(v.co.z for v in cap.data.vertices),'Porch ridge must remain below cafe cap'
 assert max(v.co.x for v in porch.data.vertices)<min(v.co.x for v in cap.data.vertices)-.1
 # Close the formerly exposed hall side above the lower flat annex.
 side=bpy.data.objects['Envelope cafe west return']
@@ -133,3 +133,23 @@ for ob in quoins:
     assert abs(min(v.co.z for v in ob.data.vertices))<1e-6,ob.name
     assert abs(max(v.co.z for v in ob.data.vertices)-.063)<1e-6,ob.name
 print('All 312 tower quoins meet masonry without embedded corner faces')
+
+# Porch supports meet the timber beam and roof; a former 60mm gap left the
+# canopy floating. The measured aerial plan is narrow and projects outward.
+canopy=bpy.data.objects['Roof cafe entrance canopy']
+verts=[canopy.matrix_world@v.co for v in canopy.data.vertices]
+assert abs(max(v.x for v in verts)-min(v.x for v in verts)-2.9)<1e-4
+assert abs(max(v.y for v in verts)-min(v.y for v in verts)-4.9)<1e-4
+beam=bpy.data.objects['Trim porch cross beam']
+assert abs(max(v.co.z for v in beam.data.vertices)-min(v.z for v in verts))<1e-4
+for capital in [o for o in objects if o.name.startswith('Trim porch pier capital')]:
+ assert abs(max(v.co.z for v in capital.data.vertices)-min(v.co.z for v in beam.data.vertices))<1e-4
+for pier in [o for o in objects if o.name.startswith('Pier cafe porch')]:
+ assert abs(max(v.co.z for v in pier.data.vertices)-(.58+2.72))<1e-4
+assert any('timber' in m.name.lower() for m in canopy.data.materials),'Missing timber gable/soffit'
+print('Cafe porch plan and continuous support levels verified')
+
+connector=bpy.data.objects['Envelope cafe connector']
+for x in (-89.50,-84.45):
+ assert connector.ray_cast(Vector((x,-28,1.5)),Vector((0,-1,0)),distance=3)[0],('Open connector jamb seam',x)
+print('Porch backing joins both adjacent walls without light slots')

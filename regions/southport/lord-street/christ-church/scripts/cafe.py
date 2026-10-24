@@ -6,6 +6,11 @@ from southport3d.geometry import Mesh, face_matrix, text_object
 from components import wall, rect, roof
 
 
+# Estimated from the 10m aerial scale and August 2024 Street View.
+# Long ridge runs toward the recessed doors; the narrow gable faces the garden.
+PORCH = {'x0':-88.475,'x1':-85.575,'y0':-29.57,'y1':-24.67,
+         'eaves':3.02,'ridge':3.87,'pier_top':2.72,'pier_y':-25.03}
+
 def build_cafe(finish, box, z0, brick, cladding, glass, frame_mat, wood, slate, metal):
     front=face_matrix((-76.68,-25.9,z0),(0,1,0))
     # Straight glazed frontage runs into a quarter-round corner, not a wide box.
@@ -65,8 +70,26 @@ def build_cafe(finish, box, z0, brick, cladding, glass, frame_mat, wood, slate, 
     t=face_matrix((-83.05,-25.98,z0),( -.325,.946,0))
     box('Trim cafe noticeboard',(0,1.68,.08),(1.02,1.13,.13),'modern-hall',wood,t)
     box('Trim cafe noticeboard inset',(0,1.68,.155),(.88,.99,.025),'modern-hall',metal,t)
-    # Porch is independent of the cafe roof: eaves above its cap, clear lateral gap.
-    for x in (-89.15,-84.9):box('Pier cafe porch',(x,-27.3,z0+2.18),(.34,.38,4.36),'modern-hall',brick)
-    finish(roof('Roof cafe entrance canopy',-89.40,-84.65,-29.55,-26.90,z0+4.42,z0+5.25,0),'roofs',[slate])
+    # Narrow, projecting timber-gabled porch. Side passages remain open.
+    p=PORCH
+    for x in (p['x0']+.30,p['x1']-.30):
+        box('Pier cafe porch',(x,p['pier_y'],z0+p['pier_top']/2),(.40,.40,p['pier_top']),'modern-hall',brick)
+        box('Trim porch pier capital',(x,p['pier_y'],z0+2.78),(.48,.48,.12),'modern-hall',frame_mat)
+    box('Trim porch cross beam',((p['x0']+p['x1'])/2,p['pier_y'],z0+2.93),(2.70,.24,.18),'modern-hall',wood)
+    m=roof('Roof cafe entrance canopy',p['x0'],p['x1'],p['y0'],p['y1'],z0+p['eaves'],z0+p['ridge'],0)
+    # Underside and triangular gable ends are timber, only pitched faces slate.
+    m.indices=[1,1,0,1,0]
+    finish(m,'roofs',[slate,wood])
+    # Projecting timber verge boards frame the visible garden-facing gable.
+    middle=(p['x0']+p['x1'])/2
+    for left in (True,False):
+        end=p['x0'] if left else p['x1'];direction=1 if left else -1
+        poly=[(end-.06*direction,p['eaves']-.03),(middle,p['ridge']+.06),
+              (middle,p['ridge']-.14),(end+.12*direction,p['eaves']-.14)]
+        if not left:poly.reverse()
+        m=Mesh('Trim porch timber verge')
+        m.add([(x,y,z0+z) for y in (p['y1'],p['y1']+.12) for x,z in poly],
+              [(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
+        finish(m,'modern-hall',[wood])
     box('Door cafe porch backing',(-87.025,-29.52,z0+1.75),(4.30,.12,3.50),'modern-hall',wood)
     for x in (-88.45,-87.025,-85.6):box('Window cafe porch glazing',(x,-29.44,z0+1.90),(1.20,.035,2.80),'modern-hall',glass)

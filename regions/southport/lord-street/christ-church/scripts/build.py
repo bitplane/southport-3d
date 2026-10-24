@@ -217,7 +217,7 @@ finish(wall('Envelope cafe porch return',
             [(0,0),(shoulder_width,0),(shoulder_width,shoulder_top(shoulder_width)),(0,shoulder_top(0))],
             [],.30),'modern-hall',[brick],face_matrix((-89.55,-29.60,z0),(0,1,0)))
 # The continuous hall side and cross-gable are built together in rear_hall.py.
-box('Envelope cafe connector',(-86.975,-29.72,z0+2.075),(4.85,.30,4.15),'modern-hall',newbrick)
+box('Envelope cafe connector',(-86.85,-29.72,z0+2.075),(5.40,.30,4.15),'modern-hall',newbrick)
 build_cafe(finish,box,z0,newbrick,cladding,glass,cream,wood,slate,metal)
 # Separate closed roofs do not intersect: lower annex roof ends at nave wall.
 from rear_hall import build_rear

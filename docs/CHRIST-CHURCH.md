@@ -69,14 +69,18 @@ photo. They establish the quarter-round corner, buff lower brickwork, weathered
 vertical metal fascia, full-height white-framed glazing with opening top lights,
 central paired doors and the two-line café/1821 sign. The previous broad box and
 three separate windows have been replaced. The small porch stands separately
-beside the round corner, with eaves above the café cap; its pitch and dimensions
-remain estimates. A full-height hall return closes the former gap above the annex.
+beside the round corner, with its ridge below the café cap. August 2024 Street
+View and the 10m scale in the aerial support an estimated 2.9m-wide, 4.9m-deep
+porch: a long ridge towards the recessed doors, a timber gable towards the garden,
+and two brick piers with pale caps supporting a continuous timber beam. Estimated
+eaves/ridge heights are 3.02/3.87m above the building base; roof pitch and hidden
+connections remain uncertain. Its sides are open passages, not missing walls. A full-height hall return closes the former gap above the annex.
 The image carrying a Dola AI watermark was not used to infer interior detail.
 No interior, temporary posters or photographic texture pixels were reproduced.
 
-The rounded envelope, cladding seams, porch and glazing remain geometric across
-all levels; low-cost 24-segment curvature is retained. The authored sign letters
-and rules bake to a shallow receiver at Walk/District. Validation checks clear
+Detail and Walk retain the rounded envelope, cladding seams, porch and glazing.
+District uses its own coarse curved frontage and porch receiver; fine trim and
+lettering bake into the shared atlases. Validation checks clear
 glazing rays, separated cafe/porch roofs and closure of the exposed hall return.
 
 ## Supplied facade photographs (reports 87c169 / 53ae49)

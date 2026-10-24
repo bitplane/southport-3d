@@ -6,6 +6,7 @@ from blender_envelope import Surfaces
 from southport3d.geometry import face_matrix
 from southport3d.planar import subtract,area
 from components import pointed,roof
+from cafe import PORCH
 
 
 def surfaces(asset):
@@ -84,8 +85,12 @@ def surfaces(asset):
     wall('annex west',(-89.55,-61.25),(-89.55,-71.55),0,3.9)
     wall('middle step',(-89.5,-34.9),(-76.7,-34.9),4.24,5.4)
     wall('rear step',(-76.7,-54.1),(-89.5,-54.1),3.99,5.4)
-    wall('porch backing',(-84.55,-29.52),(-89.4,-29.52),0,4.15)
-    for x in (-89.15,-84.9):s.box('porch pier '+str(x),(x-.17,-27.49,0),(x+.17,-27.11,4.36))
+    wall('porch backing',(-84.4,-29.55),(-89.55,-29.6),0,4.15)
+    porch=PORCH
+    for x in (porch['x0']+.30,porch['x1']-.30):
+        s.box('porch pier '+str(x),(x-.20,porch['pier_y']-.20,0),(x+.20,porch['pier_y']+.20,2.72))
+        s.box('porch capital '+str(x),(x-.24,porch['pier_y']-.24,2.72),(x+.24,porch['pier_y']+.24,2.84),omit=('bottom','top'))
+    s.box('porch cross beam',(-88.375,porch['pier_y']-.12,2.84),(-85.675,porch['pier_y']+.12,3.02),omit=('top',))
     wall('cafe front',(-76.68,-25.9),(-82.4,-25.9),-.12,4.35)
     arc=[(-82.4+2*math.cos(math.pi/2+i*math.pi/12),-27.9+2*math.sin(math.pi/2+i*math.pi/12)) for i in range(7)]
     for i,(a,b) in enumerate(zip(arc,arc[1:])):wall('cafe round '+str(i),a,b,-.12,4.35)
@@ -113,8 +118,8 @@ def surfaces(asset):
         s.quad('annex deck '+str(ya),[(-89.55,ya,h+.09),(-76.55,ya,h+.09),(-76.55,yb,h+.09),(-89.55,yb,h+.09)])
     plan=[(-76.55,-29.55),(-76.55,-25.78),(-82.4,-25.78)]+[(-82.4+2.12*math.cos(math.pi/2+i*math.pi/12),-27.9+2.12*math.sin(math.pi/2+i*math.pi/12)) for i in range(1,7)]+[(-84.52,-29.55)]
     for i in range(1,len(plan)-1):s.triangle('cafe cap '+str(i),[(*p,4.30) for p in (plan[0],plan[i],plan[i+1])])
-    m=roof('porch roof',-89.4,-84.65,-29.55,-26.9,4.42,5.25,0)
-    for i,ids in enumerate(m.faces[1:]):
+    m=roof('porch roof',porch['x0'],porch['x1'],porch['y0'],porch['y1'],porch['eaves'],porch['ridge'],0)
+    for i,ids in enumerate(m.faces):
         v=[m.vertices[j] for j in ids];(s.quad if len(v)==4 else s.triangle)('porch roof '+str(i),v)
     # Repeated small rooflights become roof-atlas appearance, not 15 extra boxes.
     return s.result
