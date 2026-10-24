@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.willow-grove",
+  "name": "Willow Grove \u2014 387\u2013389 Lord Street and former Boots, Nevill Street",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "researched-exterior",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "paired-arcaded-lord-facade",
+    "boots-balconies",
+    "open-canopies",
+    "pitched-roof-and-lantern",
+    "stanley-service-wing"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Joined T-shaped exterior including service wing and retained open yard; interiors excluded. Fine ornament and hidden roof details approximated."
+}

@@ -1,0 +1,70 @@
+{
+  "basis": "Plan registered to the existing corner affine frame; dimensions estimated from sources, not surveyed.",
+  "inputs": [
+    {
+      "source": "Jenics July 2019 licensing plan",
+      "private_file": "../references/willow-grove/floor-plan.webp",
+      "image_px": [
+        1732,
+        1206
+      ],
+      "scale_bar_px": {
+        "zero": [
+          1447,
+          980
+        ],
+        "ten_metres": [
+          1644,
+          980
+        ]
+      },
+      "ground_landmarks_px": {
+        "lord_front_top": [
+          1317,
+          649
+        ],
+        "lord_front_bottom": [
+          1317,
+          884
+        ],
+        "stanley_end_top": [
+          295,
+          649
+        ],
+        "nevill_front_left": [
+          649,
+          1104
+        ],
+        "nevill_front_right": [
+          849,
+          1104
+        ],
+        "rear_yard_corner": [
+          649,
+          884
+        ]
+      },
+      "calculations": {
+        "pixels_per_m": 19.7,
+        "lord_width_m": 11.93,
+        "lord_to_stanley_m": 51.88,
+        "nevill_width_m": 10.15,
+        "nevill_wing_depth_m": 11.17
+      },
+      "limitations": "Drawing says do not scale. Raster plan is indicative; use relative layout, checked against aerials. Registered Lord frontage 12.493m is 4.7% wider than scale-bar result; rear depth 51.28m differs 1.2%; do not force both dimensions from one uncertain raster scale."
+    },
+    {
+      "source": "Google roof-plan-close capture, north-east rotated view",
+      "observed": "Pitched Lord frontage; lower connecting roofs; large pyramidal rooflight over Boots rear; narrow tall brick service strip reaches Stanley Street, with an open yard alongside. Four 3D headings corroborate relative heights."
+    },
+    {
+      "source": "Jenics 2023 photo page 2 plus May 2011 Street View",
+      "facade_ratios": "Two equal bays. Four first-floor semicircular lights and four shorter shallow arched second-floor lights per bay. Approximate first-light opening width / total facade width 0.077; height / total frontage width 0.246. Canopy falls below first-floor sill. Parapet lower than adjoining corner raised panel."
+    },
+    {
+      "source": "Jenics 2023 photo page 3 plus July 2026 Nevill Street View",
+      "facade_ratios": "Three equal large arched upper windows, three lower rectangular windows and individual projecting balconies. Flat high parapet with small central top window. Projected first floor sills just above canopy; second balcony approximately 9.6m. Heights approximate \u00b10.8m."
+    }
+  ],
+  "chosen_appearance": "Vacant refurbished exterior August 2023; architectural elements checked against July 2026 Street View. Historical Willow Grove lettering omitted; no hypothetical new tenant signs."
+}

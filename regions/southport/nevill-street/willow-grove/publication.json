@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/willow-grove.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord / Nevill / Stanley Street",
+  "status": "Refurbished vacant August 2023 appearance; measured estimates and provisional hidden roof details.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 1024
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "lord",
+      "name": "lord",
+      "collection": "lord"
+    },
+    {
+      "id": "nevill",
+      "name": "nevill",
+      "collection": "nevill"
+    },
+    {
+      "id": "rear",
+      "name": "rear",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "roof",
+      "collection": "roof"
+    },
+    {
+      "id": "canopy",
+      "name": "canopy",
+      "collection": "canopy"
+    }
+  ],
+  "views": [
+    {
+      "name": "Willow Grove",
+      "position": [
+        10,
+        12,
+        -25
+      ],
+      "target": [
+        -23,
+        8,
+        -64
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Small carved leaves, ashlar joints and roof seams fade at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Appearance projected onto fixed authored envelope."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain true openings, paired arcades, balconies, pierced parapet and open canopies."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed envelope replaces detailed topology."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "T-shaped measured footprint, pitched front roof, high Boots roof/lantern, service tower and open delivery yard; coarse open canopies and balcony platforms. Fine parapet holes, foliage, thin rails and vents become appearance or omissions.",
+    "max_bytes": 2200000,
+    "max_gpu_bytes": 5000000,
+    "parts": {
+      "lord": {
+        "atlas": [
+          512,
+          128
+        ],
+        "max_triangles": 250,
+        "cage_m": 0.65,
+        "source_parts": [
+          "lord"
+        ]
+      },
+      "nevill": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 250,
+        "cage_m": 0.65,
+        "source_parts": [
+          "nevill"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 250,
+        "cage_m": 0.65,
+        "source_parts": [
+          "rear"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 400,
+        "cage_m": 0.65,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "canopy": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 400,
+        "cage_m": 0.65,
+        "source_parts": [
+          "canopy"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      27,
+      1,
+      40
+    ],
+    "target": [
+      27,
+      6,
+      45
+    ]
+  }
+}

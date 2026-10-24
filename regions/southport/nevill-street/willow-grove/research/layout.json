@@ -1,0 +1,71 @@
+{
+  "phase": "detail",
+  "origin": [
+    53.6486555,
+    -3.0043401
+  ],
+  "x": 9.191,
+  "y": 44.855,
+  "shear_x": -0.00658,
+  "shear_y": 0.03223,
+  "base_z": -0.75,
+  "front_left": 12.505,
+  "front_width": 12.493,
+  "back": 51.28,
+  "wing_start": 24.319,
+  "wing_end": 35.1,
+  "rear_strip_left": 17.1,
+  "roof_front_depth": 9.5,
+  "front_eaves": 12.3,
+  "front_ridge": 14.65,
+  "front_parapet": 13.35,
+  "link_roof": 10.1,
+  "boots_roof": 16.1,
+  "boots_parapet": 17.1,
+  "rear_roof": 14.25,
+  "rear_tower_roof": 17.1,
+  "rooflight": {
+    "x": [
+      13.8,
+      22.5
+    ],
+    "y": [
+      25.8,
+      33.9
+    ],
+    "base": 16.4,
+    "apex": 18.1
+  },
+  "first_windows": {
+    "bottom": 4.85,
+    "spring": 7.36,
+    "rise": 0.56,
+    "radius": 0.48
+  },
+  "second_windows": {
+    "bottom": 9.05,
+    "spring": 10.63,
+    "rise": 0.23,
+    "radius": 0.49
+  },
+  "bay_centres": [
+    3.09,
+    9.34
+  ],
+  "light_offsets": [
+    -1.86,
+    -0.62,
+    0.62,
+    1.86
+  ],
+  "boots_bays": [
+    1.8,
+    5.39,
+    8.98
+  ],
+  "uncertainty_m": {
+    "plan": 0.8,
+    "elevations": 0.8,
+    "hidden_roofs": 1.2
+  }
+}

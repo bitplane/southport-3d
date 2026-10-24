@@ -1,0 +1,43 @@
+{
+  "massing_comparison": {
+    "references": [
+      "jenics-photos pages 2\u20133",
+      "google-3d four headings",
+      "licensing-plan"
+    ],
+    "model_views": [
+      "private output/willow-grove/massing-neighbourhood.png",
+      "build renders lord, nevill, roof"
+    ],
+    "findings": [
+      "Lord width and two equal four-light bays align with adjacent corner; parapet sits approximately 1.1m below corner plain parapet.",
+      "Three Boots bays and two open balcony tiers preserved; flat roof/lightwell higher than Lord frontage.",
+      "T footprint and narrow service range retain delivery-yard negative space.",
+      "First review found roof slab end caps overlapping facade skins; corrected before published geometry.",
+      "Nevill canopy needs taller vertical frieze relative to Lord canopy; corrected in detail pass."
+    ],
+    "limitations": [
+      "Metric heights remain approximately \u00b10.8m; lower connecting roof volume and small plant placement \u00b11.2m.",
+      "Current tenant unverified; selected documented vacant August 2023 appearance, with no historical/new name invented."
+    ]
+  },
+  "export_review": {
+    "views": [
+      "Detail and Walk front/roof",
+      "Detail Nevill and Stanley elevations",
+      "District front/roof",
+      "assembled neighbourhood and rear"
+    ],
+    "checks": [
+      "All source aperture and open-yard probes pass.",
+      "Coplanar shell check passes.",
+      "Exported brick image textures preserve colour across levels; procedural-only shader was replaced.",
+      "District retains raised roof parapets and independent 512x128 / 256px atlases."
+    ],
+    "limitations": [
+      "Small carved masks and capitals are approximate.",
+      "District close-up loses rail infill and pierced parapet depth by design.",
+      "No interiors or unverified tenant signage."
+    ]
+  }
+}

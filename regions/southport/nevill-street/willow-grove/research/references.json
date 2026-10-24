@@ -1,0 +1,75 @@
+{
+  "sources": [
+    {
+      "id": "jenics-brochure",
+      "url": "https://www.jenics.com/wp-content/uploads/2023/10/Jenics-Southport-Brochure-Sept23.pdf",
+      "capture_date": "2023-08",
+      "accessed": "2026-10-24",
+      "observed": "Aerial labelled joined property and approximate floor areas."
+    },
+    {
+      "id": "jenics-photos",
+      "url": "https://www.jenics.com/wp-content/uploads/2023/08/Southport-Photography-20230821.pdf",
+      "capture_date": "2023-08",
+      "accessed": "2026-10-24",
+      "observed": "Pages 1\u20133 inspected: refurbished Lord shopfront, pierced parapet, arches and Nevill balconies."
+    },
+    {
+      "id": "licensing-plan",
+      "url": "https://www.jenics.com/wp-content/uploads/2023/03/387-389-Lord-St-Licensing-plan-jpg.webp",
+      "capture_date": "2019-07",
+      "accessed": "2026-10-24",
+      "observed": "Scaled T-shaped plan; open Stanley service yard. Interiors not modelled."
+    },
+    {
+      "id": "historic-england",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379651",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "observed": "Confirms listed paired palazzo facade, unequal-bay iron canopy and pierced parapet."
+    },
+    {
+      "id": "lord-2011",
+      "url": "https://www.google.com/maps/@53.6489219,-3.0043251,3a,50y,350h,108t/data=!3m4!1e1!3m2!1s1cZ-TjdnAwAbhmq41LMGpg!2e0",
+      "capture_date": "2011-05",
+      "accessed": "2026-10-24",
+      "observed": "Upper facade arches/capitals and rear chimney. Old branding excluded."
+    },
+    {
+      "id": "nevill-2026",
+      "url": "https://www.google.com/maps/@53.6490354,-3.0049344,3a,65y,330h,108t/data=!3m4!1e1!3m2!1sejcjyCvRcMnpM7LFZIkM_Q!2e0",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-24",
+      "observed": "Nevill facade, balconies, quoin courses, blank shopfront."
+    },
+    {
+      "id": "stanley-2026",
+      "url": "https://www.google.com/maps/@53.649469,-3.0051379,3a,75y,105h,112t/data=!3m4!1e1!3m2!1sfcHhjQV3Li6qQnwA2VlsPw!2e0",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-24",
+      "observed": "Service tower, staggered barred windows, vents, yard and visible white-painted courtyard wall."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6492973,-3.0026291,155a,35y,270h,39.51t/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "observed": "Fresh four-direction orbit and overhead; all rendered imagery inspected."
+    },
+    {
+      "id": "mapillary",
+      "url": "https://www.mapillary.com/app/?pKey=498175297977616",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "observed": "Image by davidsong loads; confirms former Willow Grove adjacent to Bistrot. Mostly lower facade; no extra roof evidence."
+    },
+    {
+      "id": "wikimedia-search",
+      "url": "https://commons.wikimedia.org/wiki/Category:Nevill_Street,_Southport",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "observed": "Search located Willow Grove image 6485700; direct page fetch failed. Not used as measured evidence."
+    }
+  ],
+  "rights": "Reference captures private and not published. Geometry and procedural appearance authored from observations."
+}

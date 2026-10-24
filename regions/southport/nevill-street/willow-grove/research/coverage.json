@@ -1,0 +1,58 @@
+{
+  "stage": "evidence-gathered-before-geometry",
+  "lord_front": {
+    "sources": [
+      "jenics-photos",
+      "lord-2011"
+    ],
+    "confidence": "high for counts and arrangement; medium for metric heights",
+    "missing": "Fine carved foliage is approximate, not a scanned relief."
+  },
+  "nevill_front": {
+    "sources": [
+      "jenics-photos",
+      "nevill-2026"
+    ],
+    "confidence": "high for three bays and balcony arrangement",
+    "missing": "Unseen interior and unreadable small notices omitted."
+  },
+  "roof": {
+    "sources": [
+      "google-3d",
+      "jenics-brochure"
+    ],
+    "confidence": "medium",
+    "missing": "Exact small duct routing and inaccessible roof pitches uncertain \u00b11.2m."
+  },
+  "rear_stanley": {
+    "sources": [
+      "stanley-2026",
+      "licensing-plan",
+      "google-3d"
+    ],
+    "confidence": "medium",
+    "missing": "Some yard walls blocked by van/gates; keep unobserved openings unadorned."
+  },
+  "party_sides": {
+    "sources": [
+      "google-3d"
+    ],
+    "confidence": "low for hidden surfaces",
+    "missing": "No invented windows behind neighbouring buildings."
+  },
+  "ground": {
+    "sources": [
+      "licensing-plan",
+      "google-3d",
+      "stanley-2026"
+    ],
+    "confidence": "medium",
+    "observed": "Open yard retained, canopies leave pavement open; existing ground owned by public realm."
+  },
+  "searches": {
+    "google_photos": "Jenics photos/aerial supplied clearer exterior coverage than place search. Google place-linked panorama Man To Man is nearby but not a new date control.",
+    "mapillary": "Successfully loaded target photo, lower-front corroboration only.",
+    "web_and_heritage": "Historic England listing and Jenics plan/photo pack inspected.",
+    "wikimedia": "Category identified relevant file; direct file page failed fetch."
+  }
+}

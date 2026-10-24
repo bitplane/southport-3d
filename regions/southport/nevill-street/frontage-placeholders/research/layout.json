@@ -110,14 +110,14 @@
       ],
       "height_m": 12,
       "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
+      "status": "replaced-by-detailed-asset",
       "evidence": [
         "google-3d-orbit",
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null,
+      "footprint_confidence": "Joined Willow Grove / former Boots facade replaced on checked plan. Licensing plan and Google 3D show additional narrow service wing through to Stanley Street; included in replacement and removed from stanley-rear-range.",
+      "replace_with": "southport.nevill-street.willow-grove",
       "before_corner_registration_footprint": [
         [
           33.735,
@@ -198,6 +198,34 @@
           96.119
         ],
         [
+          33.851578,
+          96.940686
+        ],
+        [
+          33.958042,
+          80.760686
+        ],
+        [
+          45.358,
+          80.389
+        ]
+      ],
+      "height_m": 9,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Residual range after the Willow Grove service tower/wing is removed. West boundary shares detailed affine frame; rear yard remains open.",
+      "replace_with": null,
+      "before_willow_grove_footprint": [
+        [
+          45.221,
+          96.119
+        ],
+        [
           26.139,
           95.959
         ],
@@ -213,17 +241,7 @@
           45.358,
           80.389
         ]
-      ],
-      "height_m": 9,
-      "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
-      "evidence": [
-        "google-3d-orbit",
-        "google-plan-comparison",
-        "osm-seed"
-      ],
-      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      ]
     },
     {
       "id": "west-lord-block",
