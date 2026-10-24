@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -124,8 +124,8 @@
         "reason": "Retain inexpensive envelopes, real openings, stepped brick courses, entrance geometry and distinctive facade proportions."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Retain inexpensive envelopes, real openings, stepped brick courses and recognisable roof/service silhouette."
+        "strategy": "omit",
+        "reason": "Whole-part authored envelope replaces fine source topology with bounded shared atlases."
       }
     },
     {
@@ -136,8 +136,8 @@
         "reason": "Keep the open structural lattice, translucent roof and spanning beams rather than baking a solid obstruction."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Canopy holes and continuous roof edge distinguish the frontage at distance; this modest explicit structure remains."
+        "strategy": "omit",
+        "reason": "Whole-part authored envelope replaces fine source topology with bounded shared atlases."
       }
     },
     {
@@ -154,14 +154,8 @@
         "reason": "Rebuild the same black-base and white-shaft iron column with fewer radial samples."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:column_lod",
-        "settings": {
-          "segments": 6
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Retain closed tapered column and capital profile with six sides, preserving support spacing and silhouette."
+        "strategy": "omit",
+        "reason": "Whole-part authored envelope replaces fine source topology with bounded shared atlases."
       }
     },
     {
@@ -172,12 +166,8 @@
         "reason": "Curved iron knees and small circle ornament remain visible during close walking."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:bracket_lod",
-        "settings": {},
-        "uv": "smart",
-        "bake": false,
-        "reason": "Retain curved support knee with fewer samples, omit small inset circles."
+        "strategy": "omit",
+        "reason": "Whole-part authored envelope replaces fine source topology with bounded shared atlases."
       }
     },
     {
@@ -189,7 +179,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Fine ventilation and shutter slats are subpixel; their metal receiving cabinet/shutter envelopes remain."
+        "reason": "Whole-part authored envelope replaces fine source topology with bounded shared atlases."
       }
     },
     {
@@ -200,8 +190,8 @@
         "reason": "These modest raised glyph meshes preserve crisp brand lettering and open negative space. Baking isolated letters to an opaque rectangle would cover the surrounding brick; a future regional wall atlas can replace the complete receiving wall."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "These modest raised glyph meshes preserve crisp brand lettering and open negative space. Baking isolated letters to an opaque rectangle would cover the surrounding brick; a future regional wall atlas can replace the complete receiving wall."
+        "strategy": "omit",
+        "reason": "Whole-part authored envelope replaces fine source topology with bounded shared atlases."
       }
     },
     {
@@ -224,20 +214,8 @@
         "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:ring_lod",
-        "settings": {
-          "width": 4.15,
-          "bottom": 0.12,
-          "top": 4.08,
-          "radius": 0.92,
-          "border": 0.075,
-          "depth": 0.06,
-          "steps": 4
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
+        "strategy": "omit",
+        "reason": "Whole-part authored envelope replaces fine source topology with bounded shared atlases."
       }
     },
     {
@@ -260,20 +238,8 @@
         "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:ring_lod",
-        "settings": {
-          "width": 1.52,
-          "bottom": 5.7,
-          "top": 12.75,
-          "radius": 0.76,
-          "border": 0.18,
-          "depth": 0.27,
-          "steps": 4
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
+        "strategy": "omit",
+        "reason": "Whole-part authored envelope replaces fine source topology with bounded shared atlases."
       }
     },
     {
@@ -296,21 +262,47 @@
         "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:ring_lod",
-        "settings": {
-          "width": 0.88,
-          "bottom": 6,
-          "top": 9.65,
-          "radius": 0.44,
-          "border": 0.13,
-          "depth": 0.07,
-          "steps": 4
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Regenerate the same rounded window profile with fewer angular samples; keep openings and surrounding brick/white trim geometry."
+        "strategy": "omit",
+        "reason": "Whole-part authored envelope replaces fine source topology with bounded shared atlases."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Keep stepped frontage, registered skew footprint, two hipped ranges, service plant and open six-sided canopy columns. Omit transparent glazing and fine lattice at District rather than filling their negative space.",
+    "max_bytes": 1500000,
+    "max_gpu_bytes": 6500000,
+    "source_omissions": [
+      {
+        "match": "^Canopy translucent pane",
+        "reason": "Transparent canopy glazing is omitted at District; current opaque atlas projection must not turn it into a solid sheet."
+      }
+    ],
+    "parts": {
+      "frontage": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 50,
+        "cage_m": 0.65
+      },
+      "canopy": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 1800,
+        "cage_m": 0.12
+      },
+      "roof-service": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 400,
+        "cage_m": 0.6
+      }
+    }
+  }
 }
