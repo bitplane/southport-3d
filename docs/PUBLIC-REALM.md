@@ -4,6 +4,23 @@ The `southport.london-square.public-realm` asset owns the area's ground and ordi
 
 The area shares the memorial's origin, site orientation and estimated 2.2% northwest fall. `research/layout.json` separates placements and dimensions from mesh construction. `research/references.json` records dated observations, links, attribution and uncertainties. The aerial panorama (January 2025), ground panorama (June 2018), Mapillary sequence (July 2019) and existing OSM geometry are complementary evidence, not a claim of a single-date survey.
 
+## Junction and tile boundary rules
+
+Give each junction one explicit kerb curve, including its photographed corner
+returns. Derive footway boundaries and both edges of each yellow stripe from
+that curve. Offset the complete curve before clipping to an ownership tile;
+independently offset perpendicular road segments leave disconnected corners.
+Paint strips must share their mitred edge vertices, not just centreline endpoints.
+Kerb tops must face upward on both sides of the directed curve: downward faces
+are excluded by the ground cutter and would leave overlapping pavement below.
+
+Clip garden paths to their registered ground boundary. A stale rectangular path
+endpoint can otherwise cover a moved pavement, kerb and road markings. Verify
+junctions with downward surface/material probes and a pedestrian camera at every
+published level. When a new corridor takes ownership, remove the old continuation
+road, paving and paint together; overlapping last-good stubs remain visible even
+when each asset is individually valid.
+
 ## Working spatial split
 
 The initial five walkable surface parts cover the two forecourts, island, roads and outer continuity paving. The initial three separate furniture parts cover the forecourts and island. Ground-following rays therefore cannot mistake a bench, bollard or signal for the pavement. Each part streams independently in the existing viewer; no viewer-specific asset code was added.

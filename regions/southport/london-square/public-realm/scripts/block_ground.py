@@ -32,11 +32,7 @@ def build_block(ctx, existing_roads, anchor_outer):
     roads=existing_roads+[hillpoly,castlepoly,exit_apron]
     for name,poly in [('Hill Street',hillpoly),('Castle Street mouth',castlepoly),('Sainsburys Hill exit',exit_apron)]:
         clipped('Surface '+name,poly if name=='Sainsburys Hill exit' else east(poly),ctx['asphalt'],z=-.12,dest=street)
-    polygon('Surface Lord Street Hill junction',[(218,21),(236,21),(236,31),(218,31)],ctx['asphalt'],street,-.12)
-    polygon('Surface Lord north continuation',[(218,31),(236,31),(236,41),(218,41)],ctx['mixed'],street)
-    clipped('Surface Lord south continuation',[(218,19),(236,19),(236,21),(218,21)],ctx['mixed'],roads,dest=street)
-    for x in range(216,236,6):
-        if min(x+2,236)>max(x,218):line('Marking Lord continuation',[(max(x,218),25.6),(min(x+2,236),25.6)],.1,ctx['white'],street,-.109)
+    # Lord Street east of X218 belongs to corridor-public-realm.
     # Footways are cut by every road and junction mouth, including existing Anchor.
     for edge,outer in [(left,parallel(hill,-5.5)),(right,parallel(hill,5.5))]:
         for i in range(len(edge)-1):

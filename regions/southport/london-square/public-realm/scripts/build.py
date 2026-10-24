@@ -54,7 +54,10 @@ def open_kerb(points,inside,part):
  mesh=Mesh('Kerb aligned street edge')
  for i,(a,b) in enumerate(zip(points,points[1:])):
   p,q=inner[i],inner[i+1]
-  mesh.add([(a[0],a[1],-.12),(b[0],b[1],-.12),(b[0],b[1],.004),(a[0],a[1],.004),(p[0],p[1],.004),(q[0],q[1],.004)],[(0,1,2,3),(3,2,5,4)])
+  # Top faces must point upward on either side of the directed kerb. The
+  # ground cutter skips downward faces, otherwise leaving paving underneath.
+  top=(3,2,5,4) if inside>0 else (4,5,2,3)
+  mesh.add([(a[0],a[1],-.12),(b[0],b[1],-.12),(b[0],b[1],.004),(a[0],a[1],.004),(p[0],p[1],.004),(q[0],q[1],.004)],[(0,1,2,3),top])
  return finish(mesh,kerb,part)
 
 
@@ -65,16 +68,19 @@ def london_kerb(side):
 
 def paint_edge(name, points, side, part, bounds=None, closed=False):
  from southport3d.planar import halfplane
- for _, (a,b) in marking_segments(points, side, bounds, closed):
-  dx,dy=b[0]-a[0],b[1]-a[1]
-  length=math.hypot(dx,dy)
-  nx,ny=-dy/length*.075/2,dx/length*.075/2
-  poly=[(a[0]-nx,a[1]-ny),(b[0]-nx,b[1]-ny),(b[0]+nx,b[1]+ny),(a[0]+nx,a[1]+ny)]
-  if bounds:
-   x0,y0,x1,y1=bounds
-   for c,d in [((x0,y0),(x1,y0)),((x1,y0),(x1,y1)),((x1,y1),(x0,y1)),((x0,y1),(x0,y0))]:
-    poly=halfplane(poly,c,d,True)
-  if len(poly)>=3:polygon('Marking '+name,poly,yellow,part,-.111)
+ # Offset both paint edges along the whole kerb curve, so neighbouring
+ # segments share exact mitred vertices instead of separate rectangle ends.
+ for distance in (.18,.36):
+  left=parallel(points,side*distance+.075/2,closed)
+  right=parallel(points,side*distance-.075/2,closed)
+  for i in range(len(left)-1):
+   poly=[left[i],right[i],right[i+1],left[i+1]]
+   if bounds:
+    x0,y0,x1,y1=bounds
+    for c,d in [((x0,y0),(x1,y0)),((x1,y0),(x1,y1)),((x1,y1),(x0,y1)),((x0,y1),(x0,y0))]:
+     poly=halfplane(poly,c,d,True)
+   if len(poly)>=3:polygon('Marking '+name,poly,yellow,part,-.111)
+
 
 
 def offset(pts,amount):
@@ -326,7 +332,12 @@ for collection in collections.values():
 
 # Resolve boundary T-junctions across all ground parts together, including
 # painted strips and the independent street tiles. Furniture stays instanced.
-from southport3d.conform import conform
+import southport3d.conform as conforming
+# Broad 0.2 mm insertion admitted off-edge points into thin kerb caps,
+# creating inverted triangle fans. Keep only genuinely shared boundaries.
+conforming.GRID=1e-6
+conforming.TOLERANCE=1e-7
+conform=conforming.conform
 compiled={}
 for part,collection in collections.items():
  if part.endswith('-furniture'):continue
@@ -339,6 +350,8 @@ for part,collection in collections.items():
    for tri in tessellate_polygon([[Vector(p) for p in pts]]):
     mesh.add([pts[v] if isinstance(v,int) else tuple(v) for v in tri],[(0,1,2)])
   compiled[ob.name]=mesh
+import numpy as np
+for mesh in compiled.values():mesh.vertices=np.asarray(mesh.vertices,dtype=np.float32).tolist()
 compiled,report=conform(compiled)
 for name,mesh in compiled.items():
  ob=bpy.data.objects[name]
@@ -353,6 +366,17 @@ for name,mesh in compiled.items():
 # Clipping meeting road strips can leave zero-area slivers after float conversion.
 # Remove those faces in the new corridor rather than exporting invalid normals.
 import bmesh
+# A near-collinear cap fan can fold after float32 rounding even with strict
+# insertion tolerance. Discard only microscopic inverted residues; larger
+# inverted tops remain an error in validation, never silently reversed.
+for ob in bpy.data.objects:
+ if ob.type=='MESH' and ob.name.startswith('Kerb aligned street edge'):
+  bm=bmesh.new();bm.from_mesh(ob.data);bm.normal_update()
+  bad=[f for f in bm.faces if f.normal.z<-.5 and f.calc_area()<1e-5]
+  if bad:
+   print('Discarding float32 kerb cap residues',ob.name,len(bad),sum(f.calc_area() for f in bad))
+   bmesh.ops.delete(bm,geom=bad,context='FACES_ONLY');bm.to_mesh(ob.data);ob.data.update()
+  bm.free()
 for ob in list(collections['rear-streets-ground'].objects)+list(collections['block-ground'].objects):
  bm=bmesh.new();bm.from_mesh(ob.data)
  bad=[f for f in bm.faces if f.calc_area()<1e-7]

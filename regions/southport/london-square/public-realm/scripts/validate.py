@@ -303,3 +303,31 @@ print('Posting footway seam and mitred wall contact verified')
 gate=bpy.data.objects["Street Posting lane gate"]
 hit,point,normal,index=gate.ray_cast(Vector((27.2,-80,1.3)),Vector((0,1,0)))
 assert hit and point.y>-78.0,"Myers side-gate contact missing"
+
+# Garden entrance asphalt stops inside the registered garden, not over its kerb.
+for x in (67,68,69,115.5,116.5,117.5):
+    y=-13.6+(x-64)*1.4/44 if x<108 else -12.2+(x-108)*1.5/35
+    ob,p=ground_hit(x,y-.55)
+    assert ob and p and p.z<layout['grade']['origin_z']+layout['grade']['dz_dy']*y-.10,('Garden path spills onto service road',x,y,ob.name if ob else None)
+# Offset strips remain present on both sides of each rounded mouth corner.
+from southport3d.road import parallel
+for x,west in ((66.154,True),(70.154,False)):
+    def frontage_y(u):
+        return -19.6-(u-64)*.05/7 if u<=71 else -19.65+(u-71)*1.45/37
+    y=frontage_y(x);r=1.4
+    p0=(x-r,frontage_y(x-r)) if west else (x,y-r)
+    p1=(x,y);p2=(x,y-r) if west else (x+r,frontage_y(x+r))
+    curve=[tuple((1-t)**2*p0[k]+2*(1-t)*t*p1[k]+t*t*p2[k] for k in (0,1)) for t in [j/8 for j in range(9)]]
+    for offset in (.18,.36):
+        paint=parallel(curve,offset)
+        for a,b in zip(paint[1:-2],paint[2:-1]):
+            ob,p=ground_hit((a[0]+b[0])/2,(a[1]+b[1])/2)
+            assert ob and any(m.name=='Faded yellow road marking' for m in ob.data.materials),('Missing rounded mouth paint',x,offset,a,b)
+print('Garden path containment and rounded junction paint checked')
+
+for ob in meshes:
+    if ob.name.startswith('Kerb aligned street edge'):
+        for face in ob.data.polygons:
+            if abs(face.normal.z)>.5:
+                assert face.normal.z>0,('Inverted kerb top escapes pavement cutout',ob.name)
+print('Kerb tops face upward for ground cutout ownership')

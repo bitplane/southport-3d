@@ -67,6 +67,16 @@ def build_extensions(ctx):
             if a[0]<=x<=b[0] and b[0]>a[0]:return a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0])
         raise ValueError(x)
     def span(curve,a,b):return [(a,ordinate(curve,a))]+[v for v in curve if a<v[0]<b]+[(b,ordinate(curve,b))]
+    # Rounded Post Office Avenue returns observed in November 2020 Street View.
+    # One curve owns paving, kerb and paint; radius is a visual estimate.
+    def corner_curve(x,west,r=1.4):
+        y=ordinate(front,x)
+        p0=(x-r,ordinate(front,x-r)) if west else (x,y-r)
+        p1=(x,y)
+        p2=(x,y-r) if west else (x+r,ordinate(front,x+r))
+        return [tuple((1-t)**2*p0[k]+2*(1-t)*t*p1[k]+t*t*p2[k] for k in (0,1)) for t in [j/8 for j in range(9)]]
+    west_return=span(front,41,66.154-1.4)[:-1]+corner_curve(66.154,True)+[(66.154,-27)]
+    east_return=[(70.154,-27)]+corner_curve(70.154,False)+span(front,70.154+1.4,154)[1:]
     # The old square ends exactly at x=+/-41. Shared coordinates avoid doubled floors.
     # North-side footway is widened to include the mapped bench and bus-stop line.
     for a,b in [(-41,-6),(6,41)]:rect('Surface north footway continuation',a,36,b,41,mixed,'perimeter')
@@ -79,8 +89,8 @@ def build_extensions(ctx):
         if side==1:
             # Leave the mapped Post Office Avenue mouth open, including the
             # 1.8/1.1m footways on either side of its four-metre carriageway.
-            for a,b in [(41,66.154),(70.154,154)]:
-                polygon('Surface registered frontage',[(a,-27),(b,-27)]+list(reversed(span(front,a,b))),mixed,part)
+            polygon('Surface registered frontage west',[(41,-27)]+list(reversed(west_return)),mixed,part)
+            polygon('Surface registered frontage east',east_return+[(154,-27)],mixed,part)
             polygon('Surface St Georges service blocks',front+list(reversed(garden[:-2]+[(154,-10.7)])),roadpavers,part,-.117)
         if side==-1:
             # Continue the Prezzo approach along the registered terrace and BHF frontage.
@@ -113,7 +123,7 @@ def build_extensions(ctx):
                 radius=path['width']/2
                 polygon('Surface garden path join',[(px+radius*math.cos(j*math.tau/16),py+radius*math.sin(j*math.tau/16)) for j in range(16)],pathmat,part,.018)
         for x in ([68,116.5] if side==1 else []):
-            line('Surface garden entrance path',[(x,-14.8),(x,20.5)],2.6,pathmat,part,.019)
+            polygon('Surface garden entrance path',[(x-1.3,ordinate(garden,x-1.3)),(x+1.3,ordinate(garden,x+1.3)),(x+1.3,20.5),(x-1.3,20.5)],pathmat,part,.019)
         # Rectangular reflecting pool is behind each colonnade. Coping follows the
         # site slope; water is deliberately a flat plane, with a shallow basin.
         a,b=sorted([side*44,side*61]);rect('Surface pool bed',a,-2.5,b,2.5,water,part,.025)
@@ -138,11 +148,9 @@ def build_extensions(ctx):
         curb([(x0,31),(x1,31)],part,1)
         if side==-1:curb([(x1,-21.1),(-72,-21.1),(-72,21)],part,1)
         else:
-            for a,b in [(41,66.154),(70.154,116.8),(119.2,154)]:curb(span(front,a,b),part)
-            for x,side_sign in [(66.154,1),(70.154,-1)]:
-                curve=[(x,-27),(x,ordinate(front,x))]
-                curb(curve,part,side_sign)
-                paint_edge('Post Office mouth edge',curve,-side_sign,part)
+            curb(west_return,part)
+            curb([p for p in east_return if p[0]<116.8]+[(116.8,ordinate(front,116.8))],part)
+            curb(span(front,119.2,154),part)
         # One phase and one kerb setback across all Lord Street ownership seams.
         for x in range(math.floor(x0/6)*6,math.ceil(x1/6)*6,6):
             start,end=max(x0,x),min(x1,x+2)
@@ -168,7 +176,10 @@ def build_extensions(ctx):
         else:
             curb(span(garden,41,116.8),part,1)
             curb(span(garden,119.2,147)+[(147,21)],part,1)
-            for a,b in [(41,66.154),(70.154,154)]:paint_edge('St Georges frontage',span(front,a,b),1,part,bounds)
+            # Derive paint from each continuous kerb return before clipping.
+            # Separate perpendicular strokes leave conspicuous open corners.
+            paint_edge('St Georges frontage west return',west_return,1,part,bounds)
+            paint_edge('St Georges frontage east return',east_return,1,part,bounds)
             paint_edge('St Georges garden edge',garden,-1,part,bounds)
             curb([(154,-10.8),(154,21)],part)
             for y in range(-8,19,3):line('Marking St Georges taxi bay',[(151.8,y),(151.8,min(y+1.2,19))],.10,yellow,part,-.109)
