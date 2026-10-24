@@ -1,0 +1,60 @@
+{
+  "units": "metres",
+  "inputs": [
+    {
+      "view": "roof-plan.png (private)",
+      "scale_bar_m": 5,
+      "scale_bar_pixels": 59,
+      "front_roof_pixels": 170,
+      "return_roof_pixels": 191,
+      "calculation": "170*5/59=14.41; 191*5/59=16.19. Roof edges are irregular/overhanging. Adopt main wall width 14.76, return 16.8 with \u00b10.8 m plan uncertainty, checked against block seed front corner (-10.043,47.035)."
+    },
+    {
+      "view": "wikimedia-front.png (826 \u00d7 1100 review reduction)",
+      "landmarks_pixels": {
+        "street_base_y": 1000,
+        "ground_cornice_y": 600,
+        "column_base_y": 555,
+        "capital_y": 279,
+        "entablature_y": 211,
+        "pediment_apex_y": 110,
+        "front_width_base_px": 665,
+        "front_width_upper_px": 590
+      },
+      "calculation": "Lower height ratio 400/665*14.76=8.88 m. Upper base-capital ratio 276/590*14.76=6.90 m. Allow perspective and uncertain street line; adopt cornice 8.50, shaft/base-capital 6.80, entablature 17.25, apex 19.70. Height uncertainty \u00b11.4 m; no survey claim."
+    },
+    {
+      "view": "3d-north.png / roof-plan.png",
+      "observation": "Roof notch on party side after front strip, rectangular taller structure in opposite rear corner. Two square rooflights along the return direction. Notch adopted 4.5 wide after 6.0 depth; exact ownership of lower infill obscured."
+    }
+  ],
+  "registration": "Retain Nevill block-plan street front. Shear aligns the 14.76 m front to existing (-10.043,47.035) corner; return tracks same seed edge. Ground datum estimated from shared Nevill grade.",
+  "elevation_breakdown": {
+    "ground_glazing": [
+      0.82,
+      5.3
+    ],
+    "arch_spring": 5.55,
+    "elliptical_arch_rise": 1.12,
+    "upper_tall_glazing": [
+      9.55,
+      12.65
+    ],
+    "upper_square_glazing": [
+      14.15,
+      15.3
+    ],
+    "column_profile": [
+      8.95,
+      15.75
+    ],
+    "entablature": [
+      15.75,
+      17.25
+    ],
+    "pediment": [
+      17.25,
+      19.7
+    ]
+  }
+}

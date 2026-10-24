@@ -218,8 +218,24 @@
           46.288
         ],
         [
-          -10.043,
-          47.035
+          -24.803,
+          46.727
+        ],
+        [
+          -24.722,
+          52.727
+        ],
+        [
+          -20.222,
+          52.821
+        ],
+        [
+          -20.0762,
+          63.620915
+        ],
+        [
+          -9.8162,
+          63.835956
         ]
       ],
       "height_m": 12,
@@ -230,8 +246,63 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      "footprint_confidence": "Residual combined block after measured Occulo Lounge corner cut-out; shared bank boundary follows its sheared L-shaped plan. Remaining internal parcel divisions provisional.",
+      "replace_with": null,
+      "original_combined_footprint": [
+        [
+          -9.452,
+          90.309
+        ],
+        [
+          -21.403,
+          90.192
+        ],
+        [
+          -21.482,
+          78.613
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -10.043,
+          47.035
+        ]
+      ],
+      "replaced_corner_asset": "southport.nevill-street.occulo-lounge"
     },
     {
       "id": "lord-block-infill",

@@ -1,0 +1,43 @@
+{
+  "width": 14.76,
+  "depth": 16.8,
+  "x": -24.803,
+  "y": 46.727,
+  "base_z": -0.73,
+  "shear_x": 0.0135,
+  "shear_y": 0.02087,
+  "notch_width": 4.5,
+  "notch_start": 6.0,
+  "ground_cornice": 8.5,
+  "column_base": 8.95,
+  "column_top": 15.75,
+  "entablature_top": 17.25,
+  "pediment_peak": 19.7,
+  "roof_z": 17.35,
+  "attic_top": 18.9,
+  "front_bays": [
+    3.15,
+    7.38,
+    11.61
+  ],
+  "side_bays": [
+    2.35,
+    6.38,
+    10.41,
+    14.44
+  ],
+  "front_columns": [
+    1.03,
+    5.265,
+    9.495,
+    13.73
+  ],
+  "side_columns": [
+    0.45,
+    4.365,
+    8.395,
+    12.425,
+    16.35
+  ],
+  "phase": "detail"
+}

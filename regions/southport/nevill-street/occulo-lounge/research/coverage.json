@@ -1,0 +1,58 @@
+{
+  "represented_appearance": "Occulo Lounge exterior as observed in May/July 2026, supplemented by undated operator exterior and 2013 architectural detail. No old Waterstones lettering, temporary bins or people.",
+  "elevations": {
+    "lord_street": {
+      "sources": [
+        "front-photo",
+        "operator",
+        "maps-place-photo",
+        "lord-sphere"
+      ],
+      "confidence": "high for pattern; medium for metric scale",
+      "observed": "Three bays; four giant fluted columns; central triangular entrance hood with tall cartouche; segmental central first-floor hood; three balustrades; three lion masks; main pediment oculus and mutules."
+    },
+    "nevill_street": {
+      "sources": [
+        "nevill-sv",
+        "google-3d"
+      ],
+      "confidence": "high for pattern; medium for depths",
+      "observed": "Four ground windows with differing tympanum carving; five upper columns; four balustrades; long horizontal cornice; pink/gold OCCULO LOUNGE sign. Fourth historic door currently reads as window in July 2026; model current glazing."
+    },
+    "party_side": {
+      "sources": [
+        "google-3d"
+      ],
+      "confidence": "medium-low",
+      "observed": "Partly hidden by lower adjoining shop; rear-facing white elevations with windows and a notch. Hidden lower surfaces restrained, no invented entrances."
+    },
+    "rear": {
+      "sources": [
+        "google-3d"
+      ],
+      "confidence": "low-medium",
+      "observed": "High pale return wall, small raised roof box; adjoining red-brick block partly hides lower rear. No accessible rear Street View found; opening counts uncertain."
+    },
+    "roof": {
+      "sources": [
+        "google-3d",
+        "google-plan"
+      ],
+      "confidence": "medium",
+      "observed": "Flat roof, two square rooflights, raised rear box; taller front strip/pediment. Do not give whole building a pitched roof."
+    },
+    "footprint": {
+      "sources": [
+        "google-plan",
+        "google-3d"
+      ],
+      "confidence": "medium",
+      "observed": "Must split from west-lord-block; retain adjoining red-brick terrace and Lord Street shop. Rear notch approximate; lower ownership uncertain."
+    }
+  },
+  "limitations": [
+    "Relief carving is an authored interpretation of visible silhouettes and motifs, not a scan.",
+    "No interior, unreadable lettering or hidden fixtures inferred.",
+    "Height/roof registration remains an image-derived estimate."
+  ]
+}

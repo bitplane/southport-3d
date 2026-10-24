@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/occulo.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "Occulo Lounge 2026 exterior; metric dimensions and rear details estimated. Relief carving is an authored interpretation.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 1024
+    },
+    "district": {
+      "texture_size": 1024
+    }
+  },
+  "parts": [
+    {
+      "id": "facades",
+      "name": "Portland stone street elevations",
+      "collection": "facades"
+    },
+    {
+      "id": "roof",
+      "name": "Flat roof, parapets and rooflights",
+      "collection": "roof"
+    },
+    {
+      "id": "frontage",
+      "name": "Cafe entrance and signage",
+      "collection": "frontage"
+    }
+  ],
+  "views": [
+    {
+      "name": "Corner",
+      "position": [
+        12,
+        20,
+        -10
+      ],
+      "target": [
+        -17,
+        9,
+        -54
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Sub-centimetre cornice drops, entrance leaf beading and pediment mutules disappear at walking distance; larger carvings remain."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Bake into fixed facade envelope."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain fluted giant columns, windows, carved tympana and door surround for street-level inspection."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent envelope replaces detailed topology."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -17,
+      1,
+      40
+    ],
+    "target": [
+      -17,
+      7,
+      47
+    ]
+  },
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Independent L-shaped roof and street envelope; nine low-sided giant columns, entrance recess and main pediment retained. Glazing, flutes, balustrades and carvings become baked appearance.",
+    "max_bytes": 2500000,
+    "max_gpu_bytes": 13000000,
+    "parts": {
+      "facades": {
+        "atlas": [
+          1024,
+          512
+        ],
+        "max_triangles": 1200,
+        "cage_m": 1.1,
+        "source_parts": [
+          "facades",
+          "frontage"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 350,
+        "cage_m": 0.7,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "frontage": {
+        "atlas": [
+          128,
+          256
+        ],
+        "max_triangles": 30,
+        "cage_m": 0.65,
+        "source_parts": [
+          "frontage"
+        ]
+      }
+    }
+  }
+}

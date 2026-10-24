@@ -1,0 +1,68 @@
+{
+  "sources": [
+    {
+      "id": "listing",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379649",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "notes": "National Provincial Bank, 1925\u201327. Three front bays, four return bays. Used to identify architectural vocabulary, not to infer unobserved details."
+    },
+    {
+      "id": "front-photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Waterstone%27s,_Lord_Street,_Southport.JPG",
+      "capture_date": "2013-02-02",
+      "author": "Rept0n1x",
+      "licence": "CC BY-SA 3.0",
+      "notes": "Full 3240 \u00d7 4320 front photograph inspected privately; old Waterstones sign excluded from represented appearance."
+    },
+    {
+      "id": "operator",
+      "url": "https://thelounges.co.uk/occulo/",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "notes": "Current official exterior photograph BMS4594: entrance carving, ESTABLISHED 1833 plaque, pink/gold sign, white glazing and cafe furniture. No image pixels enter model."
+    },
+    {
+      "id": "nevill-sv",
+      "url": "https://www.google.com/maps/@53.6490354,-3.0049344,3a,100y,207h,120t/data=!3m4!1e1!3m2!1sejcjyCvRcMnpM7LFZIkM_Q!2e0",
+      "capture_date": "2026-07",
+      "notes": "Rendered panorama verified: four window bays, five attached fluted columns, varied carved tympana, fine white glazing, sign on first-floor sill band."
+    },
+    {
+      "id": "lord-sphere",
+      "url": "https://www.google.com/maps/@53.6486356,-3.0050044,3a,75y,320h,108t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDavam71wE!2e10",
+      "capture_date": "2019-07",
+      "author": "VR 360 TV",
+      "notes": "Low-resolution but rendered front from farther back; proportions and neighbouring party alignment."
+    },
+    {
+      "id": "maps-place-photo",
+      "url": "https://www.google.com/maps/search/Occulo+Lounge+Southport/",
+      "capture_date": "2026-05",
+      "author": "Arthur Belgrove",
+      "photo_id": "CIABIhAogji_PrRmN9FGc5gGZy2n",
+      "notes": "Exterior photo inspected in Maps photo gallery; south/front oblique, entrance recess, plinth and current cafe frontage. First unrelated Saucy Bird photo disregarded."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6496693,-3.0058208,115a,35y,146.25h,39.54t/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "notes": "GPU photogrammetry visually checked at headings 0, 76.5, 146.25 and 222.75 degrees. Flat roof with two lights, rear raised flat box, front pediment and rear notch. Capture year not supplied."
+    },
+    {
+      "id": "google-plan",
+      "url": "https://www.google.com/maps/@53.6489626,-3.0050241,148a,35y,222.75h/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "notes": "Top-down view; 5 m scale spans approximately 59 pixels. Photogrammetric roof is distorted; paired with seed walls and multiple obliques."
+    },
+    {
+      "id": "mapillary",
+      "url": "https://www.mapillary.com/app/?lat=53.64895&lng=-3.0051&z=18",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "notes": "Map loaded after declining optional cookies but no imagery tracks appeared in this session. No architectural observation taken from Mapillary."
+    }
+  ]
+}

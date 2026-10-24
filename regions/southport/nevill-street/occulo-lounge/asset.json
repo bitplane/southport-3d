@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.occulo-lounge",
+  "name": "Occulo Lounge \u2014 former National Provincial Bank, 367 Lord Street",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "researched-exterior-with-documented-estimates",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "rusticated-arcade",
+    "fluted-doric-columns",
+    "balustraded-windows",
+    "carved-entrance",
+    "pediment-and-oculus",
+    "flat-roof-and-rooflights",
+    "cafe-signage"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "2026 exterior; image-derived dimensions. No interior. Photographic links only; relief is independently authored interpretation."
+}

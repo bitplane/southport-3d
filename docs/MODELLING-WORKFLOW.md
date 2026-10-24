@@ -118,6 +118,15 @@ scoped geometric check, not a claim to detect every depth-buffer artefact or to
 audit all existing assets automatically. Add affected neighbours to the selected
 surfaces when their boundary is being changed.
 
+For walls or pediments cut around openings, construct continuous front/back
+skins and explicit opening reveals. Extruding every clipped fragment creates
+internal caps; their edges can shimmer in WebGL even when a same-facing
+coplanar audit passes. Conform shared boundary vertices before triangulation,
+and mitre continuous cornices instead of overlapping their end boxes. The
+Occulo pediment/oculus is an example: compare the browser export as well as the
+Blender render. Check the viewer's *loaded* levels during review, since its
+memory budget can substitute Walk or District for a requested Detail level.
+
 For an audit of the existing published map, run
 `python3 tools/audit_published_coplanar.py`. It checks all three complete viewing
 levels, including cross-asset overlaps, and writes a review queue under
