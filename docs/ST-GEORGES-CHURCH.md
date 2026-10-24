@@ -6,7 +6,7 @@ Clear September 2021 photographs establish the front and oblique tower views. Th
 
 The current exterior includes real window and doorway apertures, recessed diamond-leaded glazing, stepped buttresses, three moulded portal orders and colonnettes, the floral porch roundel, open parapets, bell louvres and a closed slate roof shell. Heights, small projections and fine ornament are visually interpreted estimates. Verified November 2020 car-park panoramas establish the plain high rear gable and attached brick hall with a perpendicular pitched roof, sash windows, red side door and stone bands. The combined church/hall footprint is constrained by OSM 51826176 and the neighbouring supermarket. The hall ends approximately 15 m ahead of Sainsbury’s rear wall, leaving parking access clear; its roof division and width are calibrated from aerial corners. Nave window widths follow the five-bay spacing with clearance for buttresses. Exact wall offsets and the hidden south elevation remain estimated; interior detail is deferred. The historic asset name does not claim current ownership or services.
 
-Detail retains the full window tracery. Walk and District rebuild the same arches and mullions with fewer curve samples, preserving their openings and proportions. District bakes only shallow diamond-lead glazing onto separate recessed receivers, retaining the pointed arch caps and stone tracery. Small organic crockets and friezes use selective simplification; distant pinnacles retain explicitly generated tapered bodies while omitting foliage; gutters and fine door boarding disappear at District. No whole-building decimation is used.
+Detail retains the full window tracery. Walk rebuilds arches and mullions with fewer curve samples. District uses the independent envelope below, retaining major negative spaces and skyline features while baking fine surface appearance.
 
 The first full build passes checks for finite UV meshes, packed textures, ten nave windows, eight bell openings, four pinnacles, eight lucarnes, manifold roof/spire surfaces, visible recessed glazing and doorway, roof-ray continuity and footprint bounds. All three standalone publication levels bake successfully. Fresh front/side/rear Street View pixels and satellite imagery were verified in an independent isolated Chrome session. Updated front and rear master renders and exported LoD comparisons were inspected; the root coordinator owns combined-viewer publication.
 
@@ -19,7 +19,7 @@ The exterior now has 264 meshes with exact publication coverage. The validation 
 | Walk | 108,514 | 9.64 MB | 1.76 MB |
 | District | 85,514 | 7.66 MB | 0.47 MB |
 
-These are standalone assembled package totals including all three parts, with texture caps applied. District is a neighbourhood inspection model, not a future whole-town proxy. The outer architectural shell still retains substantial detail; regional envelope/atlas baking remains a future stage.
+These are standalone assembled package totals including all three parts, with texture caps applied. The table records the former District recipe; current envelope figures are reported below. Regional multi-building aggregation remains separate.
 
 Exported front and rear comparisons at all three levels caught and resolved two issues: shared wall extrusion endcaps produced coincident black corner strips, and blanket ornament reduction removed pinnacle bodies. Joined facades now omit their shared endcaps; pinnacle bodies have their own silhouette-preserving generator.
 
@@ -54,6 +54,25 @@ tower wall closes the roof junction. Counts and roof clearance rays cover these
 changes. Dimensions, concealed details and the exact masonry condition remain
 visually estimated; this is an exterior reconstruction, not a survey.
 
-Walk and District keep the new buttress silhouette and weathering geometry.
+Walk keeps the buttress weathering geometry; District keeps its coarse silhouette.
 Tracery generators use the same corrected forms with fewer curve samples;
-District continues to bake fine glazing leadwork onto recessed receivers.
+District bakes fine glazing leadwork into the whole elevation atlas.
+
+## Fixed-budget District envelope
+
+District uses independently authored nave, tower and spire surfaces. It retains
+the hall's perpendicular gable, the tower notch in the nave roof, buttress
+profiles, recessed belfry openings, an open parapet, the octagonal spire, eight
+lucarnes and four corner pinnacles. Fine stone carving, window tracery and courses
+move into shared baked appearance; the mapped registration and researched height
+profile are retained. Atlas sets are 512×512 for nave/tower and 256×512 for spire,
+with explicit triangle, download and GPU budgets. This is an LoD-only change;
+architectural estimates remain documented above. Visual acceptance is delegated
+to the owner following the automated package checks.
+
+Checked District export: **1,678 triangles, 1,038,556 bytes including textures
+and 10,703,677 bytes estimated GPU memory**. The previous representation used
+99,052 triangles, 10,700,280 bytes and 17,215,949 GPU bytes. Receiver geometry,
+projection coverage, normals and publication budgets pass. The coplanar scan
+reported only five sub-0.00001 m² edge candidates at float32 precision; visual
+acceptance remains with the owner.
