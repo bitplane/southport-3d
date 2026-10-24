@@ -239,6 +239,10 @@ Practical lessons from the rollout:
   numerical degenerate triangles before exporting; never inherit the detailed
   roof's decorative tessellation. Clip shared boundaries so one visible surface
   owns each location.
+- Compare actual GLB and GPU totals across all three levels. A per-sign bake can
+  make Walk use more memory than Detail even while its triangle count falls.
+  Retain inexpensive glyph geometry or use a bounded shared atlas when separate
+  textures cost more than the geometry they replace.
 - Source snapshots must stay fixed throughout packaging. Coordinate shared-tool
   edits between active bakes; an otherwise successful bake is rejected if its
   inputs change. Failed packages leave the previous published catalog intact.

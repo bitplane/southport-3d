@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -124,8 +124,8 @@
         "reason": "Keep architectural envelopes, actual Gothic openings, battlements, porch and roof silhouette."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Coarse wall, buttress and roof geometry preserves silhouette, voids and setbacks; no filled box substitution."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -137,7 +137,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Fine diamond leading and small fittings are subpixel; major stone mullions and window openings remain."
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -152,7 +152,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Small entrance buds are subpixel; arch orders and cross remain represented by their coarse geometry."
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -174,19 +174,8 @@
         "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:build_lod",
-        "settings": {
-          "kind": "window",
-          "width": 1.6,
-          "bottom": 15.15,
-          "spring": 18.45,
-          "window_kind": "louvre",
-          "level": "district"
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -208,19 +197,8 @@
         "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:build_lod",
-        "settings": {
-          "kind": "window",
-          "width": 1.92,
-          "bottom": 7.4,
-          "spring": 9.4,
-          "window_kind": "blocked",
-          "level": "district"
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -242,19 +220,8 @@
         "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:build_lod",
-        "settings": {
-          "kind": "window",
-          "width": 1.92,
-          "bottom": 7.4,
-          "spring": 9.4,
-          "window_kind": "glass",
-          "level": "district"
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -276,19 +243,8 @@
         "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:build_lod",
-        "settings": {
-          "kind": "window",
-          "width": 2.0,
-          "bottom": 3.5,
-          "spring": 6.15,
-          "window_kind": "glass",
-          "level": "district"
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -310,19 +266,8 @@
         "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:build_lod",
-        "settings": {
-          "kind": "window",
-          "width": 2.0,
-          "bottom": 4.35,
-          "spring": 6.75,
-          "window_kind": "glass",
-          "level": "district"
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Regenerate fewer curved arch/tracery samples while retaining recess depth, mullions, lancet openings and louvre blades; plain authored materials need no photographic bake."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -333,8 +278,8 @@
         "reason": "Already simple inset rectangular glazing and frames."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Low-cost planes and frames preserve large visible glazing areas."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -352,15 +297,8 @@
         "reason": "Reduce circular sampling but preserve recessed glass, four spokes, central roundel and open diamond surround."
       },
       "district": {
-        "strategy": "generator",
-        "generator": "components:build_lod",
-        "settings": {
-          "kind": "roundel",
-          "level": "district"
-        },
-        "uv": "smart",
-        "bake": false,
-        "reason": "Reduce circular sampling but preserve recessed glass, four spokes, central roundel and open diamond surround."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     },
     {
@@ -376,14 +314,50 @@
         "reason": "Bake authored lettering and rules onto the shallow two-line sign receiver; preserve the rounded building and window recesses geometrically."
       },
       "district": {
-        "strategy": "replace",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.25,
-        "max_sampled_error_m": 0.2,
-        "reason": "Bake authored lettering and rules onto the shallow two-line sign receiver; preserve the rounded building and window recesses geometrically."
+        "strategy": "omit",
+        "reason": "Independent fixed-budget whole-building surfaces replace detailed feature topology at District."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Retain tower battlements, Gothic wing silhouettes, entrance recesses, octagonal stair turret, cross-gabled hall, rounded cafe and open porch. Bake tracery, masonry and small rooflights.",
+    "max_bytes": 1500000,
+    "max_gpu_bytes": 6500000,
+    "parts": {
+      "historic-front": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 2200,
+        "cage_m": 0.7,
+        "source_parts": [
+          "historic-front"
+        ]
+      },
+      "modern-hall": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 350,
+        "cage_m": 0.65,
+        "source_parts": [
+          "modern-hall"
+        ]
+      },
+      "roofs": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 400,
+        "cage_m": 0.5,
+        "source_parts": [
+          "roofs"
+        ]
+      }
+    }
+  }
 }

@@ -19,15 +19,12 @@ windows and the turret. Aerial and supplied rear photographs establish the inter
 are not stored in Git or embedded in textures. Stone, brick and slate maps are
 deterministically authored materials.
 
-The structural envelope, roof slopes, battlements, buttresses, window recesses
-and coarse mullions stay geometric at all levels. Walk and District regenerate
-Gothic curves and round-window circles with fewer samples. Fine diamond leadwork,
-small quoin skins and downpipes are omitted in the reduced levels. Tiny entrance
-crockets are selectively simplified at Walk and omitted at District. No global
-decimation is applied, and no solid-box proxy fills Gothic openings. The opaque
-materials are shared with the master, so curve simplification does not replace
-stone with a differently coloured bake. District reduces authored texture sizes
-to 256 pixels; Walk uses 512.
+Detail retains the full architectural source. Walk retains the structural
+geometry with fewer Gothic curve samples and omits fine leadwork and fittings.
+District uses the independent fixed-budget envelope described below, preserving
+major silhouettes and entrances while baking surface appearance. Historical
+District review notes later in this document describe the previous recipe;
+they do not constitute visual acceptance of the replacement.
 
 Build and render:
 
@@ -125,3 +122,20 @@ roof pitch or height measurement. Private snag 2a2a1aec and the supplied cafe
 aerial establish the affected junction; August 2024 Street View was rechecked
 for the cafe-side context. Ray checks sample the sloping closure and above-roof
 clearance, and the adjoining wall skins receive a coplanar-overlap check.
+
+## Fixed-budget District envelope
+
+The independent District mesh retains the tower and open battlements, inset main
+and wing doors, Gothic wing skyline, staged buttresses, octagonal stair turret,
+T-shaped hall roof, stepped annex and rounded cafe/porch. The two roof operands
+are bounded analytic masses, independent of decorative mesh detail. Closed
+window/louvre appearance and small rooflights are baked into shared atlases;
+tracery, small ironwork and mouldings do not add receiver topology. Atlas sizes
+are 512×256 historic frontage, 512×256 modern hall and 256×256 roofs. Existing
+research estimates remain; visual acceptance belongs to the owner for this pass.
+
+Checked District export: **1,490 triangles, 638,396 bytes including textures and
+5,421,465 bytes estimated GPU memory**, down from 52,778 triangles, 4,725,600
+bytes and 6,969,764 GPU bytes. Sampled rays had no misses; actual bake coverage,
+normals and export budgets pass. Receiver overlap candidates are limited to
+13 float32 edge slivers below 0.00001 m²; visual acceptance remains with the owner.
