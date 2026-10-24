@@ -53,6 +53,31 @@ async () => {
     while(bounded.pending)await new Promise(resolve=>setTimeout(resolve,1));
     assert(bounded.entries[0].current==='detail','Expensive District bootstrap blocked cheaper Detail');
     assert(bounded.residentBytes<=bounded.budget,'Admission exceeded budget');
+    // A selected upgrade fits after releasing its old fallback, but not beside
+    // it. Never bootstrap that same fallback again after making room.
+    const upgrade=make('upgrade');instances.push(upgrade);upgrade.budget=100;
+    upgrade.entries[0].part.levels={walk:{uri:'walk.glb',gpuBytesEstimate:20},district:{uri:'coarse.glb',gpuBytesEstimate:10}};
+    upgrade.addAssets([{id:'background',position:[0,0,0],rotationY:0,parts:[{id:'ground',name:'ground',ground:true,fixedLevel:'district',bounds:[[0,0,0],[1,1,1]],levels:{district:{uri:'ground.glb',gpuBytesEstimate:75}}}]}]);
+    upgrade.loader.parseAsync=async()=>({scene:mesh()});
+    await upgrade.load(upgrade.entries[1],'district');await upgrade.load(upgrade.entries[0],'district');
+    for(let i=0;i<8;i++){
+      upgrade.update(new THREE.PerspectiveCamera(),{detailDistance:8,districtDistance:70},'walk');
+      while(upgrade.pending)await new Promise(resolve=>setTimeout(resolve,1));
+      assert(upgrade.residentBytes<=upgrade.budget,'Upgrade exceeded memory budget');
+    }
+    assert(upgrade.entries[0].current==='walk','Upgrade kept evicting and reloading its coarse fallback');
+    // When the reserved replacement already fits alongside the active mesh,
+    // counting it twice must not make the visible mesh disappear mid-download.
+    upgrade.budget=120;upgrade.entries[0].wanted='district';
+    await upgrade.load(upgrade.entries[0],'district');upgrade.activate(upgrade.entries[0],'district');upgrade.evict();
+    let finishUpgrade;
+    upgrade.loader.parseAsync=()=>new Promise(resolve=>finishUpgrade=resolve);
+    upgrade.update(new THREE.PerspectiveCamera(),{detailDistance:8,districtDistance:70},'walk');
+    while(!finishUpgrade)await new Promise(resolve=>setTimeout(resolve,1));
+    upgrade.update(new THREE.PerspectiveCamera(),{detailDistance:8,districtDistance:70},'walk');
+    const retained=upgrade.entries[0].current==='district';
+    finishUpgrade({scene:mesh()});while(upgrade.pending)await new Promise(resolve=>setTimeout(resolve,1));
+    assert(retained,'Reserved replacement was counted twice and hid its active fallback');
     return 'Streamer lifecycle checks passed';
   } finally {
     window.fetch=originalFetch;

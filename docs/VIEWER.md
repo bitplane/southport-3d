@@ -144,6 +144,9 @@ Live-update policy checks: `node tests/live-policy.mjs`. Python regression tests
 `tests/streamer-lifecycle.browser.js` is a Playwright `page.evaluate` function for
 a loaded viewer page. It checks versioned caches, batch adoption, reporting freezes
 and disposal of superseded asynchronous decodes using isolated fixture scenes.
+It also checks that memory-constrained upgrades progress to the selected level
+instead of reloading their coarse fallback, and that reserved replacements are
+not counted twice when deciding whether to retain the visible mesh.
 
 ## Spatial working set
 

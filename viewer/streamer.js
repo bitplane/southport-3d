@@ -48,7 +48,7 @@ export class Streamer {
       entry.wanted=selection.get(this.entryKey(entry))||null;
       entry.deferred=!!entry.desired&&!entry.wanted;
       if(entry.loading && (!entry.wanted || (entry.current!==null&&entry.loading.level!==entry.wanted)))entry.loading.controller.abort();
-      if(!entry.wanted){entry.slot.clear();entry.current=null;}
+      if(!entry.wanted){entry.slot.clear();entry.current=null;entry.replacing=false;}
       const key=this.key(entry,entry.wanted);
       if(entry.wanted&&this.cache.has(key))this.activate(entry,entry.wanted);
     }
@@ -57,7 +57,9 @@ export class Streamer {
     for(const entry of queue){
       if(this.pending>=2)break;
       // Show an inexpensive complete part while its selected level is fetched.
-      const fallback=!this.staging && entry.current===null && entry.part.levels.district && !entry.failed.has('district') && entry.wanted!=='district' ? 'district' : entry.wanted;
+      // If eviction made room for an upgrade, fetch that upgrade directly.
+      // Bootstrapping District again would repeat the same eviction forever.
+      const fallback=!this.staging && !entry.replacing && entry.current===null && entry.part.levels.district && !entry.failed.has('district') && entry.wanted!=='district' ? 'district' : entry.wanted;
       const available=this.budget-this.residentBytes-this.reservedBytes;
       // A baked District GLB can cost more memory than its detailed geometry.
       // Do not let an unaffordable bootstrap block an affordable wanted level.
@@ -98,7 +100,7 @@ export class Streamer {
   activate(entry,level){
     if(this.frozen || entry.retired)return;
     const cached=this.cache.get(this.key(entry,level));if(!cached)return;
-    cached.used=performance.now();
+    cached.used=performance.now();entry.replacing=false;
     if(entry.current===level)return;
     entry.slot.clear();entry.slot.add(cached.root);entry.current=level;this.onChange();
   }
@@ -108,13 +110,14 @@ export class Streamer {
     for(const [key,r] of this.cache){
       if(r.entry.current!==r.level && r.entry.wanted!==r.level){dispose(r.root);this.cache.delete(key);}
     }
-    // Release old oversized levels before their smaller replacement is fetched.
+    // Release an active level only if both it and the selected replacement
+    // cannot coexist. An in-flight replacement is already in reservedBytes.
     for(const entry of this.entries){
       if(entry.current&&entry.wanted&&entry.current!==entry.wanted){
-        const target=estimatedBytes(entry.part.levels[entry.wanted]);
+        const target=entry.loading?.level===entry.wanted || this.cache.has(this.key(entry,entry.wanted)) ? 0 : estimatedBytes(entry.part.levels[entry.wanted]);
         if(this.residentBytes+this.reservedBytes+target>this.budget){
           const key=this.key(entry,entry.current),r=this.cache.get(key);
-          entry.slot.clear();entry.current=null;if(r){dispose(r.root);this.cache.delete(key);}
+          entry.slot.clear();entry.current=null;entry.replacing=true;if(r){dispose(r.root);this.cache.delete(key);}
         }
       }
     }
