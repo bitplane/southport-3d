@@ -292,7 +292,7 @@
           256,
           256
         ],
-        "max_triangles": 1800,
+        "max_triangles": 2200,
         "cage_m": 0.12
       },
       "roof-service": {

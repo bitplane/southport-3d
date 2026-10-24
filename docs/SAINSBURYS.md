@@ -2,7 +2,7 @@
 
 `southport.lord-street.sainsburys` adds the brick store immediately beside St George’s Church. Its registration uses OpenStreetMap way 371203338 and the common London Square metric frame. The modern frontage is reconstructed from verified August 2024 Street View pixels, with November 2020 side/rear and July 2026 loading-side views. Satellite imagery establishes the two front hipped roof ranges and the broad flat store roof. Reference links and uncertainties are recorded under the asset’s research directory; no downloaded images are included or used as texture pixels.
 
-The street elevation has nine projecting tall upper bays, their pebble-finished spandrels and stepped brick corbels, a lower church-side wing with four arched windows, and nine rounded shop openings. The continuous canopy has translucent glass panes, white rafters, open diamond lattice, curved ornamental knee brackets and eight tapered columns with black bases. Exterior brand lettering, entrance doors and readable information-board words are included. Rear service doors, ventilation grilles, loading shutters and their hood complete the observed elevations.
+The street elevation has nine projecting tall upper bays, their pebble-finished spandrels and stepped brick corbels, a lower church-side wing with five arched windows on both its front and church-facing return, and nine rounded shop openings. The continuous canopy has translucent glass panes, white rafters, open diamond lattice, curved ornamental knee brackets and ten tapered columns with black bases. Exterior brand lettering, entrance doors and readable information-board words are included. Rear service doors, ventilation grilles, loading shutters and their hood complete the observed elevations.
 
 The hidden party wall, all heights, small projections and rooftop plant dimensions remain estimates. The mapped footprint’s small skew is simplified while retaining the front registration and approximate rear extent. The surrounding car park, trolley stores, retaining walls and public paving belong to area assets; this asset owns only the building and attached canopies. Interiors are deferred. Store glass is a tinted opaque exterior approximation, while the canopy glazing retains transparency.
 
@@ -24,7 +24,7 @@ Totals cover all three streaming parts with texture caps applied. All 486 source
 
 The retained August 2024 front and July 2026 rear Street View captures were
 compared with exported front, canopy, roof and rear views at all three levels.
-The nine projecting upper bays, lower four-window wing, rounded shop openings,
+The nine projecting upper bays, lower five-window wing, rounded shop openings,
 open canopy structure and rear loading arrangement were retained. Roof plant
 placement, opaque glazing and concealed dimensions remain approximations.
 
@@ -44,7 +44,7 @@ registration against the public pavement. Live browser review was unavailable.
 ## Fixed-budget District envelope
 
 The separate `scripts/district.py` retains the registered skew plan, stepped front,
-two hipped roof ranges, rear access structure, five plant masses and eight canopy
+two hipped roof ranges, rear access structure, five plant masses and ten canopy
 columns. Three colour/normal/roughness atlas sets are fixed at 512×256 frontage,
 256×256 canopy and 512×256 roofs/service walls. Fine lattice, ornamental knees
 and transparent canopy panes are omitted at District; they are not replaced with
@@ -63,3 +63,12 @@ Checked District export: **1,788 triangles, 471,664 bytes including textures and
 bytes and 9,176,606 GPU bytes. Preflight reports zero sampled projection misses;
 receiver coplanar scan, actual bake coverage/normals and export budgets pass.
 Visual acceptance remains with the owner, particularly the omitted canopy panes.
+
+The church-side canopy wraps around the corner, with two return columns and
+a corner column. June 2018 contributor panorama CIHM0ogKEICAgID48_3Z2gE shows
+five return arches and the red cash-machine panel near the street corner;
+August 2024 road imagery confirms the canopy structure. The ATM has a recessed
+cabinet, blank screen and cash slot; unreadable notices are omitted. Return
+length, window spacing and cabinet dimensions remain visual estimates recorded
+in research/references.json. The District canopy triangle cap is 2200 for the
+expanded physical extent; atlas sizes remain unchanged.

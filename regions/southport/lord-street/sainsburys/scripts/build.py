@@ -25,6 +25,7 @@ brick=mat('Warm red brick',(.25,.072,.035),'brick');slate=mat('Dark grey slate',
 panel=mat('Pebbled spandrel',(.376,.279,.191),'spandrel');roofmat=mat('Pale flat roof membrane',(.533,.521,.456),'roof')
 white=mat('Painted ivory ironwork',(.79,.80,.74),rough=.52);black=mat('Black iron column bases',(.025,.029,.026),rough=.58)
 glass=mat('Window blue grey opaque glass',(.22,.30,.31),rough=.32);upperglass=mat('Upper pale glazing',(.52,.59,.58),rough=.38)
+atmred=mat('Cash machine red surround',(.43,.035,.025))
 orange=mat('Sainsburys orange lettering',(.88,.23,.065));dark=mat('Dark sign backing',(.045,.045,.041));metal=mat('Service steel',(.31,.36,.35),rough=.48)
 canopyglass=mat('Canopy translucent glazing',(.60,.68,.65),rough=.31)
 sh=canopyglass.node_tree.nodes.get('Principled BSDF');sh.inputs['Alpha'].default_value=.42
@@ -73,7 +74,7 @@ for u in centres:holes.append([(x+u,z) for x,z in roundtop(shopwidth,.12,4.08,.9
 # Nine tall projecting upper bays belong to the larger right-hand block.
 upperx=[2.6+i*(MW-5.2)/8 for i in range(9)]
 for x in upperx:holes.append([(u+W-x,z) for u,z in roundtop(1.52,5.7,12.75,.76)])
-lowx=[MW+5.2+i*1.55 for i in range(4)]
+lowx=[MW+4.0+i*1.55 for i in range(5)]
 for x in lowx:holes.append([(u+W-x,z) for u,z in roundtop(.88,6.0,9.65,.44)])
 poly=[(0,0),(W,0),(W,PH),(W-MW,PH),(W-MW,LH),(0,LH)]
 finish(wall('Envelope stepped front lower',rect(0,0,W,LH),holes),frame=ff,authored_winding=True)
@@ -110,7 +111,7 @@ for i,x in enumerate(upperx):
 # Horizontal corbel band stops between projecting windows.
 for a,b in zip([.05]+[x+1.02 for x in upperx],[x-1.02 for x in upperx]+[MW-.05]):
  for k in range(5):box('Course upper brick band',((a+b)/2,.035+.025*k,10.6+.095*k),(max(.08,b-a),.07+.05*k,.09))
-# Church wing has four simpler tall semicircular-headed upper windows.
+# Church wing has five simpler tall semicircular-headed upper windows.
 for x in lowx:
  af=ff@Matrix.Translation((W-x,0,0));instance('low-ring',lambda:ring('Window church wing brick arch',.88,6.0,9.65,.44,.13,.07),af)
  m=Mesh('Window church wing glazing');m.outline(roundtop(.86,6.02,9.63,.43),-.17,-.13);instance('low-glass',lambda:m,af,mats=[upperglass])
@@ -133,14 +134,33 @@ for name,origin,normal,length in [('north',(W,-DEP,0),(1,0,0),DEP),('south',(0,0
  frame=face_matrix(origin,normal);holes=[]
  if name=='north':
   holes=[rect(2.3,.1,3.5,2.45),rect(9.6,.1,11.4,2.45),rect(17.1,.1,20.7,3.05),rect(12.7,5.4,14.4,7.8)]
+  for u in [41.1+i*1.55 for i in range(5)]:holes.append([(x+u,z) for x,z in roundtop(.88,6.0,9.65,.44)])
+  holes.append(rect(46.7,.70,47.5,1.95))
  if name=='rear':holes=[rect(1.2,.1,4.6,3.5),rect(5.5,.1,8.9,3.5)]
  finish(wall('Envelope '+name,rect(0,0,length,RH),holes),'roof-service',frame=frame,authored_winding=True)
  box('Course '+name+' parapet',(length/2,RH+.07,-.09),(length,.14,.45),'roof-service',metal,frame)
  # Brick rectangular panel relief at lower storey.
  for u in [1.0+i*4.0 for i in range(int(length/4))]:
+  if name=='north' and u>38:continue
   box('Course '+name+' panel pier',(u,2.10,.06),(.22,4.2,.13),'roof-service',brick,frame)
   if u+3.7<length:box('Course '+name+' panel lintel',(u+1.9,4.1,.06),(3.6,.16,.13),'roof-service',brick,frame)
  if name=='north':
+  for u in [41.1+i*1.55 for i in range(5)]:
+   af=frame@Matrix.Translation((u,0,0))
+   instance('side-low-ring',lambda:ring('Window church wing brick arch side',.88,6.0,9.65,.44,.13,.07),af,'roof-service')
+   m=Mesh('Window church side glazing');m.outline(roundtop(.86,6.02,9.63,.43),-.17,-.13);instance('side-low-glass',lambda:m,af,'roof-service',[upperglass])
+   box('Window church side transom',(0,8.9,-.075),(.87,.05,.1),'roof-service',metal,af)
+  # Observed on the return, close to the front corner (June 2018 garden sphere).
+  # Cabinet dimensions estimated from the adjacent canopy column; screen content omitted.
+  box('Door ATM recessed cabinet',(47.1,1.325,-.08),(.78,1.23,.10),'roof-service',metal,frame)
+  box('Fitting ATM dark screen',(47.1,1.65,-.015),(.48,.34,.035),'roof-service',dark,frame)
+  box('Fitting ATM keypad shelf',(47.1,1.19,.055),(.48,.07,.18),'roof-service',metal,frame)
+  box('Fitting ATM cash slot',(47.1,.98,.005),(.38,.055,.025),'roof-service',dark,frame)
+  # Frame the aperture without an opaque sign panel across the machine.
+  for a,b in [(45.65,46.7),(47.5,48.55)]:box('Sign ATM surround',((a+b)/2,1.325,.085),(b-a,1.25,.10),'roof-service',atmred,frame)
+  box('Sign ATM header',(47.1,2.375,.085),(2.9,.85,.10),'roof-service',atmred,frame)
+  box('Sign ATM foot',(47.1,.535,.085),(2.9,.33,.10),'roof-service',atmred,frame)
+  label('Lettering cash machine','Cash machine',(W+.15,-DEP+47.1,2.55),(1,0,0),.29,2.65,white,'roof-service')
   for u in (2.9,10.5):box('Door north service leaf',(u,1.28,-.13),(1.15,2.35,.14),'roof-service',metal,frame)
   box('Door north customer glazing',(18.9,1.57,-.12),(3.55,2.94,.15),'roof-service',glass,frame)
   for u in (17.2,18.9,20.6):box('Door north entry stiles',(u,1.57,-.025),(.08,3.02,.10),'roof-service',white,frame)
@@ -193,7 +213,7 @@ for x,y,w,d,h in [(8,-23,5,3,1.3),(20,-30,6,3.6,1.6),(31,-22,4,3,1.0),(28,-42,6,
  finish(m,'roof-service',[black])
 
 # Continuous white glazed street canopy and local cast-iron columns.
-projection=D['canopy_projection'];columnxs=[.25+i*(W-.5)/7 for i in range(8)]
+projection=D['canopy_projection'];columnxs=[.25+i*(W-.5)/7 for i in range(8)];columnxs[-1]=W+projection
 for x in columnxs:
  instance('cast-column',lambda:column('Canopy cast column'),Matrix.Translation((x,projection,0)),'canopy',[black,white])
  af=face_matrix((x,projection,0),(0,1,0));instance('knee-bracket',lambda:bracket('Canopy ornamental knee'),af,'canopy',[white])
@@ -215,6 +235,31 @@ for i in range(49):
 # Side return beams connect to the wall and prevent a floating canopy end.
 for x in (.02,W-.02):
  m=Mesh('Canopy end frame');m.tube([(x,0,4.8),(x,projection,4.8),(x,0,5.38),(x,0,4.8)],.045,sides=6);finish(m,'canopy',[white])
+
+# Church-facing canopy return: observed in garden and road panoramas.
+# Two return columns join the existing corner column; exact bay lengths estimated.
+for y in (-3.8,-10.6):
+ instance('cast-column',lambda:column('Canopy cast column'),Matrix.Translation((W+projection,y,0)),'canopy',[black,white])
+ af=face_matrix((W+projection,y,0),(1,0,0));instance('knee-bracket',lambda:bracket('Canopy ornamental knee'),af,'canopy',[white])
+for z in (4.34,4.79):
+ box('Canopy return beam',(W+projection,-3.9,z),(.095,13.8,.08),'canopy',white)
+ box('Canopy corner beam',(W+projection/2,projection,z),(projection,.095,.08),'canopy',white)
+m=Mesh('Canopy return diamond trellis')
+for i in range(22):
+ y=-10.8+i*13.8/22;Y=-10.8+(i+1)*13.8/22
+ for a,b in [(4.35,4.78),(4.78,4.35)]:m.tube([(W+projection,y,a),(W+projection,Y,b)],.023,sides=5)
+ m.tube([(W+projection,y,4.35),(W+projection,y,4.78)],.024,sides=5)
+for i in range(5):
+ x=W+i*projection/5;X=W+(i+1)*projection/5
+ for a,b in [(4.35,4.78),(4.78,4.35)]:m.tube([(x,projection,a),(X,projection,b)],.023,sides=5)
+finish(m,'canopy',[white])
+for i in range(17):
+ y=-10.8+i*10.8/16
+ m=Mesh('Canopy return rafter');m.tube([(W,y,5.36),(W+projection,y,4.84)],.031,sides=6);finish(m,'canopy',[white])
+ if i<16:
+  Y=-10.8+(i+1)*10.8/16;m=Mesh('Canopy translucent pane return');m.add([(W,y+.035,5.35),(W+projection,y+.035,4.85),(W+projection,Y-.035,4.85),(W,Y-.035,5.35)],[(0,1,2,3)]);finish(m,'canopy',[canopyglass])
+m=Mesh('Canopy corner hip rafter');m.tube([(W,0,5.36),(W+projection,projection,4.84)],.04,sides=6);finish(m,'canopy',[white])
+m=Mesh('Canopy translucent pane corner');m.add([(W,0,5.35),(W+projection,0,4.85),(W+projection,projection,4.85),(W,projection,4.85)],[(0,1,2),(0,2,3)]);finish(m,'canopy',[canopyglass])
 
 # Block-plan registration: the rear wall is skew to the street facade.
 def registered(p):

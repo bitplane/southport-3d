@@ -50,13 +50,15 @@ def surfaces(asset):
     # Six sides, fixed source profile. Deliberately omit glass and fine lattice;
     # neither becomes an opaque wall under the canopy.
     rings=[(0,.16),(.12,.17),(.18,.13),(.58,.13),(.68,.18),(.74,.15),(1,.10),(1.06,.12),(1.06,.09),(3.5,.067),(3.55,.12),(3.66,.13),(3.72,.20),(3.82,.20),(3.88,.12),(4.25,.095)]
-    for col in range(8):
-        x=.25+col*(W-.5)/7
+    positions=[(.25+col*(W-.5)/7,projection) for col in range(8)]
+    positions[-1]=(W+projection,projection)
+    positions.extend([(W+projection,-3.8),(W+projection,-10.6)])
+    for col,(x,y) in enumerate(positions):
         for j,((z,r),(Z,R)) in enumerate(zip(rings,rings[1:])):
             for k in range(6):
                 a=math.tau*k/6;b=math.tau*(k+1)/6
-                s.quad(f'column {col} {j} {k}',[(x+r*math.cos(a),projection+r*math.sin(a),z),(x+r*math.cos(b),projection+r*math.sin(b),z),(x+R*math.cos(b),projection+R*math.sin(b),Z),(x+R*math.cos(a),projection+R*math.sin(a),Z)],cage=.07)
-        s.box('column head '+str(col),(x-.11,projection-.11,4.19),(x+.11,projection+.11,4.37),omit=('bottom',),cage=.04)
+                s.quad(f'column {col} {j} {k}',[(x+r*math.cos(a),y+r*math.sin(a),z),(x+r*math.cos(b),y+r*math.sin(b),z),(x+R*math.cos(b),y+R*math.sin(b),Z),(x+R*math.cos(a),y+R*math.sin(a),Z)],cage=.07)
+        s.box('column head '+str(col),(x-.11,y-.11,4.19),(x+.11,y+.11,4.37),omit=('bottom',),cage=.04)
     # Identical painted columns share one metric prototype and one atlas set.
     # Bilinear footprint registration is for walls, not a reason to give each
     # iron column a microscopically different radial deformation.
@@ -68,10 +70,13 @@ def surfaces(asset):
             templates[key]=[tuple(round(v*32768)/32768 for v in p) for p in face['vertices']]
             face['vertices']=templates[key]
         else:
-            centre=world((.25+col*(W-.5)/7,projection,0));delta=[round((centre[j]-origin[j])*32768)/32768 for j in range(3)]
+            centre=world((*positions[col],0));delta=[round((centre[j]-origin[j])*32768)/32768 for j in range(3)]
             face['vertices']=[tuple(p[j]+delta[j] for j in range(3)) for p in templates[key]]
         face['atlas_key']='column '+key
     for z in (4.34,4.79):s.box('front beam '+str(z),(0,projection-.0475,z-.04),(W,projection+.0475,z+.04),omit=('left','right'),cage=.04,weight=.08)
+    for z in (4.34,4.79):
+        s.box('return beam '+str(z),(W+projection-.0475,-10.8,z-.04),(W+projection+.0475,projection,z+.04),omit=('front','rear'),cage=.04,weight=.08)
+        s.box('corner beam '+str(z),(W,projection-.0475,z-.04),(W+projection,projection+.0475,z+.04),omit=('left','right'),cage=.04,weight=.08)
     # Keep eight real rafters, spaced by the original indices; coarse triangular
     # tubes project onto their source six-sided tubes without introducing a lid.
     from mathutils import Vector

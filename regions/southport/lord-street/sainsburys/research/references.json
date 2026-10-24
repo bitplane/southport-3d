@@ -34,6 +34,23 @@
       "capture": "Acquisition unknown; accessed 2026-10-22",
       "attribution": "Google Maps / Airbus",
       "observed": "Satellite pixels inspected: broad pale flat rear store roof, irregular plant/ducts, two dark pitched roofs behind stepped street frontage. Main roof footprint and relationship to church hall confirmed."
+    },
+    {
+      "id": "church-garden-return",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6495545,-3.0024238&heading=35&pitch=0&fov=60",
+      "capture_date": "2018-06",
+      "attribution": "Jomo / Google Maps contributor panorama",
+      "accessed": "2026-10-24",
+      "observed": "Panorama CIHM0ogKEICAgID48_3Z2gE inspected at headings35 and25: five narrow arched windows on church-facing return, five on low front wing, canopy wraps around corner with return columns and diamond lattice. Red cash-machine panel is on the side return close to front corner; machine screen/cash slot visible, small notices unreadable. This corrects earlier four-window front count.",
+      "measurements": "Return extent estimated10.8m using existing roof depth; window centres41.1..47.3m from rear on50m side, spacing1.55m. ATM centre47.1m from rear, cabinet0.8x1.25m and panel2.9m wide estimated against columns; not survey measurements. Lower cabinet partly occluded by hedge."
+    },
+    {
+      "id": "church-corner-close",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=sj28ZK5n8z_QZXVdm3fDPw&heading=110&pitch=0&fov=45",
+      "capture_date": "2024-08",
+      "attribution": "Google Street View",
+      "accessed": "2026-10-24",
+      "observed": "Close street view confirms canopy wraps beside church with corner and two return columns, black bases and white shafts. Wall-mounted small notices are unreadable and omitted."
     }
   ],
   "uncertainties": [
