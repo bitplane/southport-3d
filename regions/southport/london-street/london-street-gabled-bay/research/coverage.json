@@ -1,0 +1,17 @@
+{
+  "reviewed": "2026-10-24",
+  "snag": "dfd22b737ae043a89d9e36e335f42ec7",
+  "status": "Exterior reconstruction with estimated metric dimensions; unverified rear openings remain plain.",
+  "front": "May 2011 Google London Street panorama inspected in full, not a crop.",
+  "chapel_return": "June 2017 contributor panorama inspected along return; end access passage visible.",
+  "corner": "August 2019 panorama inspected, clock turret visible.",
+  "roof": "Four actual Google GPU 3D compass views and top-down plan inspected. Roof exterior shape checked against these; rooftop equipment locations approximate.",
+  "rear": "3D rear envelope inspected from north and west; ground-level rear openings remain unverified and are not invented.",
+  "current_fitout": "LoopNet actual recent Chapel photo and official Hays display photo inspected; labels limited to these. Older views used for architectural openings and roof silhouette.",
+  "known_defect": "The old overlapping station-quarter corner placeholder is retired; this stable asset now owns the continuous corner range.",
+  "limitations": [
+    "Dimensions not surveyed.",
+    "Existing gabled-bay rear deck and roof are provisional hypotheses, not authoritative shapes."
+  ],
+  "mapillary": "Opened local area, declined optional cookies, waited and inspected screenshot; map tiles and imagery did not load. No Mapillary pixels claimed."
+}

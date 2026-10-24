@@ -12,5 +12,134 @@
     -68.7886
   ],
   "registration_radians": 0.02418,
-  "uncertainty": "Single observed cream gabled bay immediately south of 24. Postal number and tenant not asserted. Width 5 m, upper depth 8.3 m and ground depth 18.2 m are estimates. Roof cross-section shared with 24; rear is conservative."
+  "uncertainty": "Outside wall controls inherited from aerial-checked block plan (roughly 1m). Upper facade/roof heights and shop subdivisions are image-ratio estimates (roughly 0.5m). Interior rooftop plant and rear room dimensions are approximate, not surveyed.",
+  "corner_footprint": [
+    [
+      -11.8772,
+      -107.05
+    ],
+    [
+      -11.877026219980795,
+      -129.0106084169384
+    ],
+    [
+      -13.108304593156506,
+      -131.5715876374222
+    ],
+    [
+      -15.097848562063932,
+      -132.81084741478293
+    ],
+    [
+      -40.48532790572555,
+      -129.87665025098238
+    ],
+    [
+      -39.95185805889431,
+      -107.81850821569333
+    ],
+    [
+      -38.0,
+      -107.05
+    ]
+  ],
+  "facades": [
+    {
+      "edge": 0,
+      "name": "London",
+      "gables": [
+        [
+          2.5,
+          2.25
+        ],
+        [
+          14.2,
+          2.25
+        ]
+      ],
+      "windows": [
+        1.5,
+        3.5,
+        7.7,
+        10.4,
+        13.2,
+        15.2,
+        19.2
+      ],
+      "shops": [
+        [
+          0.22,
+          4.78,
+          ""
+        ],
+        [
+          5.1,
+          11.5,
+          ""
+        ],
+        [
+          11.8,
+          17,
+          "Hays Travel"
+        ],
+        [
+          17.3,
+          21.5,
+          "Hays Travel"
+        ]
+      ]
+    },
+    {
+      "edge": 3,
+      "name": "Chapel",
+      "gables": [
+        [
+          7.6,
+          2.25
+        ],
+        [
+          20.5,
+          2.25
+        ]
+      ],
+      "windows": [
+        2.8,
+        6.6,
+        8.6,
+        12.1,
+        15.3,
+        19.5,
+        21.5,
+        24.2
+      ],
+      "shops": [
+        [
+          0.25,
+          4.7,
+          "Hays Travel"
+        ],
+        [
+          5.0,
+          16.1,
+          "WATERSTONES"
+        ],
+        [
+          16.4,
+          25.25,
+          "RIVER ISLAND"
+        ]
+      ]
+    }
+  ],
+  "roof_run": 3.75,
+  "roof_inner_level": 7.25,
+  "roof_room": {
+    "bounds": [
+      -37,
+      -25,
+      -119,
+      -108.2
+    ],
+    "height": 9.7
+  }
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "southport.london-street.london-street-gabled-bay",
-  "name": "London Street \u2014 cream gabled bay south of 24",
+  "name": "London / Chapel Street corner \u2014 gabled shops and clock",
   "region": "southport",
   "area": "london-street",
   "status": "researched-exterior-estimated-dimensions",
@@ -12,10 +12,10 @@
   ],
   "site_rotation_from_east_degrees": 43.5293,
   "components": [
-    "cream-gabled-elevation",
-    "two-white-sashes",
-    "joined-cross-gable-roof",
-    "dark-shopfront"
+    "four-cream-gables",
+    "two-street-shopfronts",
+    "continuous-roof-and-service-deck",
+    "clock-turret"
   ],
   "lods": [
     "detail",
@@ -30,5 +30,5 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Single observed gabled frontage immediately south of 24. Postal number and tenant unresolved; unreadable lettering is omitted. Dimensions and rear are estimated."
+  "scope": "Continuous two-storey corner range including the previously isolated gabled bay, current evidenced Hays/Waterstones/River Island shopfronts, roof and clock. No interiors; unseen rear details estimated."
 }

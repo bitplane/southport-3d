@@ -1,0 +1,17 @@
+{
+  "reviewed": "2026-10-24",
+  "reference_comparisons": {
+    "London": "Full 2011 panorama compared with master front and assembled saved snag view: two gables, middle two-window bay and corner window; old masking volume removed.",
+    "Chapel": "Recent LoopNet photograph compared with master Chapel and exported overview: two gables, River Island/Waterstones/Hays rhythm, clock, brick/render boundaries.",
+    "roof": "Four Google 3D orbits and north-up plan compared with master roof and exported overview; perimeter pitches, inner flat deck and rear room retained.",
+    "mixed_levels": "Assembled Chapel camera exposed missing plain corner at District architecture/Detail shopfront. Receiver masonry ownership corrected, scene rechecked and regression ray added.",
+    "exports": "Actual Detail, Walk and District loaded in isolated review; overview screenshots inspected. Whole-town saved snag camera and Chapel view checked separately."
+  },
+  "private_outputs": "../output/london-street-26-30/",
+  "limits": [
+    "No surveyed dimensions.",
+    "Rear ground-level openings remain unverified.",
+    "Rear room/plant geometry approximate; minor weather-vane ornament and clock lettering omitted.",
+    "Adjacent Oxfam rear interpretation retained; neighbouring Tudor passage needs its own detailed placeholder replacement."
+  ]
+}

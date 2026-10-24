@@ -29,12 +29,64 @@
       "observations": [
         "Lists 26 London Street for tattoo business, but not adequate to tie exact frontage or upper entrance; postal number not asserted."
       ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6479006,-3.0030286,3a,75y,235h,92t/data=!3m4!1e1!3m2!1sH-HR50mMQGyXgyO8Ltl3wA!2e0",
+      "capture_date": "2011-05",
+      "observations": [
+        "Full London frontage: two cream projecting gables, two windows per gable, plain two-window middle bay and single corner window. Continuous brick piers and glazed Toni & Guy units; narrow Tranzform frontage adjacent Oxfam."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6475675,-3.0032328,3a,90y,20h,95t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDEqI_H7QE!2e10",
+      "capture_date": "2017-06",
+      "observations": [
+        "Chapel return: two cream gables; single bay next to narrow passage beside Tudor frontage. Broad glazed River Island frontage then shuttered former Peacocks; whole structure is two storeys."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.647723,-3.0028227,3a,90y,260h,90t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDavf3ltgE!2e10",
+      "capture_date": "2019-08",
+      "observations": [
+        "Chamfered corner, small pale clock turret with pointed cap; Hays blue/yellow fascia."
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6478395,-3.0050878,147a,35y,90h,39.52t/data=!3m1!1e3",
+      "capture_date": null,
+      "reviewed": "2026-10-24",
+      "observations": [
+        "Actual GPU 3D rendered and inspected from four compass directions. Continuous roof perimeter along London and Chapel, two projecting gables on each street, shared flat inner service roof with plant and raised rectangular rear range. Earlier three-storey placeholder interpretation is wrong."
+      ]
+    },
+    {
+      "url": "https://standupforsouthport.com/opening-date-revealed-for-new-waterstones-bookshop-in-southport/",
+      "published": "2022-08-24",
+      "observations": [
+        "Article identifies new Waterstones at 59 Chapel Street between River Island and Hays, replacing Peacocks. Text inspected; image retrieval currently returned HTTP429, so photographs not yet claimed inspected."
+      ]
+    },
+    {
+      "url": "https://www.loopnet.co.uk/listing/55-61-chapel-st-southport/16983315/",
+      "image_url": "https://images.loopnet.co.uk/i2/K5Npb4VeiqX5uppnJBltgkzD4ks2XKJ4IjSzoMyvcC8/112/image.jpg",
+      "capture_date": null,
+      "observations": [
+        "Actual 1350x900 photograph inspected. Two-storey Chapel facade: four-gable complex, brick-edged render, narrow white window frames, Waterstones black fascia with inset entrance, River Island pale fascia, blue Hays corner entrance numbered57, small clock tower with lead skirt, gold dial and weather vane. Date not established; Waterstones signage establishes post2022 appearance."
+      ]
+    },
+    {
+      "url": "https://www.haystravel.co.uk/branches/southport/",
+      "image_url": "https://locator.uberall.com/uberall-userpics-prod-optimized/4581242/medium_JxK7zs6J3j.jpg",
+      "capture_date": null,
+      "observations": [
+        "Actual official branch photograph inspected. White Hays fascia, blue display transom, narrow yellow horizontal strip, dark tiled plinth, red soldier-course beneath cream bay. Temporary advertising is not reconstructed."
+      ]
     }
   ],
   "limitations": [
-    "Provisional geographic identity; possible 26/28 subdivision is unresolved.",
-    "Single 5 m frontage only: no assumption that 26\u201330 is one parcel.",
-    "Hidden rear, dimensions and shop entrance placement estimated. Unreadable tenant lettering and projecting sign graphics omitted.",
-    "No authoritative property boundary or newer facade pixels; this is a dated architectural reconstruction."
+    "Metric heights and roof-room dimensions remain estimated; no survey.",
+    "Unseen rear openings are not invented; plain rear envelope is provisional.",
+    "London northern shop identities are not established by newer imagery; omit historical Tranzform/Toni & Guy lettering rather than claiming those tenants remain.",
+    "No reference photographs embedded in textures; no interiors or temporary advertising."
   ]
 }

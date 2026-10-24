@@ -1,31 +1,82 @@
-# London Street — cream gabled bay south of 24
+# London / Chapel Street corner
 
-A single observed frontage immediately south of Oxfam at 24 London Street. Its postal number and tenant are unresolved, so the asset has a geographic name. Secondary directories and an older Goad map disagree over the nearby numbering; they do not establish that this bay is 26, 28 or part of 30. No subdivision or lettering is invented.
+The stable `southport.london-street.london-street-gabled-bay` asset now covers the
+continuous two-storey corner range, including the previously isolated cream bay.
+It replaces the station-quarter `chapel-london-corner` placeholder, which wrongly
+represented three storeys and overlapped the existing bay's windows/shopfront.
+The original northern boundary with Oxfam is retained. The external corner and
+Chapel return follow the block plan; this is not a cadastral subdivision.
 
-## Evidence and extent
+## Evidence and dimensions
 
-The retained May 2011 Street View frame and its enlarged crop show a cream front gable, brick edge piers, two white sash windows, a narrow high vent, dark fascia and glazed shopfront. The shared aerial shows the cross-gable joining the continuous pitched frontage roof. These are actual retained reference pixels; no unavailable brochure image is claimed as evidence. References remain outside Git, with links and limitations in `research/references.json`.
+Four actual Google Maps 3D compass views and a north-up roof view establish the
+continuous perimeter pitches, four cross-gables, flat inner service roof and
+raised rear room. Full May 2011 London Street and June 2017 Chapel Street
+panoramas establish the window rhythm and the narrow passage at the western end.
+An August 2019 corner panorama shows the clock turret. The recent LoopNet
+55–61 Chapel Street photograph provides much clearer brick/render edges, frames,
+clock/lead skirt, Waterstones entrance, River Island fascia and Hays corner door.
+The official Hays branch photograph confirms its white fascia, blue transom,
+yellow strip and dark plinth. Sources and private capture locations are recorded
+under `research/`; photographs are never distributed or baked into textures.
+Mapillary loaded its interface but no map/imagery during this pass.
 
-The northern edge meets 24 exactly at local Y −107.05; the estimated southern edge is −112.05. Width 5 m, main depth 8.3 m, ground depth 18.2 m, eaves 7.25 m and ridge 9.2 m are approximate dimensions calibrated to the neighbouring roof. The asset uses the established common origin, base 0.7845 m and 0.02418-radian block adjustment. These are not survey measurements or authoritative property boundaries.
+The registered London frontage is approximately 22 m, excluding the chamfer;
+the Chapel return is approximately 25.6 m. Eaves 7.25 m and ridge 9.2 m above the
+shared 0.7845 m pavement datum remain image-ratio estimates, roughly ±0.5 m.
+The roof run is 3.75 m (about 27.5 degrees). The mapped outside walls have roughly
+1 m registration uncertainty. The larger plan does not turn old estimated shop
+boundaries into survey measurements.
 
-## Geometry and LOD
+Current evidenced signage is used for Hays, Waterstones and River Island.
+Unconfirmed northern London Street units retain plain dark fascias: historical
+Tranzform/Toni & Guy lettering is not presented as current occupation.
+Temporary window advertisements and interior merchandise are omitted.
 
-The roof is one closed shell formed from the union of the main pitch and front cross-gable. Shared valley edges avoid intersecting overlapping roof planes. The cream triangle is flush with the facade below. Two true wall apertures contain inexpensive sash assemblies; the vent keeps a dark inset and detailed slats. The shop has glazing and an inset entrance, but illegible lettering and projecting sign graphics are omitted. The plain lower rear envelope and loading door position are conservative estimates. Public realm owns pavement and ground.
+## Construction and viewing levels
 
-Detail and Walk retain the authored geometry. District uses the independent envelope described below. No global decimation is used.
+Wall skins have real upper apertures and explicit opening reveals. Thin white
+frames, brick-bordered cream gables, projecting sills, shopfront mullions,
+recessed entrances, drainage and clock details remain physical nearby. Roof
+planes form a complete partition of the footprint; shared valley/hip edges are
+conformed before float32 export and the shallow slab is closed. Wall heads end
+beneath its rim, avoiding coplanar skins. Materials use authored metric repeats.
 
-## Review and limitations
+Detail and Walk deliberately retain this modest mesh. District uses an
+independent 416-triangle envelope, retaining the roof silhouette, gables, rear
+room and clock case. Joinery, signage, brickwork and clock faces become baked
+appearance. Tiny plant fittings and the vane are omitted. Atlas dimensions are
+fixed: architecture/shopfront 512×128, roof 256×256, rear 128×128. Further ornament
+does not enlarge this envelope. Sources are batched by part and reduction policy
+to keep selected-to-active baking inexpensive.
 
-Full build and validation check UVs, finite geometry, packed generated textures, both unobstructed windows, manifold roof/deck/end closures, rear wall junctions, three unique display stiles, and exact northern boundary and registration with 24. The earlier architectural audit inspected all twelve exported part/level GLBs and compared front, oblique and roof views, including a combined master view with 22 and 24. Current District acceptance follows the owner-led process below.
+## Verification and limits
 
-The next southern frontage is not included. The continuous roof ends in a closed export boundary that the next asset should meet without an invented hip. Rear access, precise shop-door proportions, hidden roof details, current tenant identity and postal subdivision need stronger evidence. No interiors are modelled.
+The master checks finite UV geometry, packed maps, complete roof-plan area,
+closed outward roof topology, fifteen unobscured upper openings and same-facing
+coplanar shell overlaps. The envelope preflight found no sampled projection
+misses; real bake coverage, normal validity and export budgets are required.
+Master front, Chapel, overview and roof images were compared with the references.
+The assembled viewer is checked from the original snag camera and around the
+corner, with actual loaded levels inspected rather than assuming the quality
+selector has finished loading.
 
-## Current District envelope
+Hidden rear openings remain unverified and plain. The raised service room and
+plant dimensions/locations are estimates from 3D imagery. Clock time is illustrative;
+its small animal weather-vane ornament and fine dial lettering are not reproduced.
+The two-facet mapped corner approximates the photographed chamfer. The adjacent
+Oxfam's earlier rear-roof interpretation is retained and needs a separate future
+rear-elevation review; this pass does not claim a surveyed reconstruction.
 
-The front cross-gable meets the main roof along shared valley edges; the adjoining ridge and eaves match 24. The lower rear store and recessed shop door remain geometric. Sashes, vent, bargeboard, pipework and fascia detail are projected into the fixed atlases. Unreadable lettering remains absent. Tiny gaps already present around the source entrance are not filled by invented projection surfaces.
+Published export totals (embedded textures included):
 
-The four parts use architecture 256 × 128, roof 128 × 128, shopfront 256 × 64 and rear 128 × 128 atlases, each with colour, tangent normal and roughness maps. Topology and atlas dimensions are independent of added Detail geometry. The common geographic transform and existing dimensional estimates are unchanged.
+| Level | Triangles | Download | Estimated GPU |
+| --- | ---: | ---: | ---: |
+| Detail | 15,710 | 2.25 MB | 6.93 MB |
+| Walk | 15,710 | 2.25 MB | 6.93 MB |
+| District | 416 | 241 KB | 3.46 MB |
 
-Published total: **68 triangles, 87,372 bytes including textures, 1,319,689 estimated GPU bytes**. Source construction/validation, float32 receiver overlap checks, sampled projection, actual bake coverage and normal validity, and export budgets pass. Visual acceptance is delegated to the project owner for this LoD rollout; no new architectural evidence or visual inspection is claimed.
-
-Comparison: `/reviews/southport.london-street.london-street-gabled-bay/index.html`. Private baseline, preflight and bake reports are under `../output/london-gabled-bay-district-pilot/`; generated files remain outside Git.
+A regression ray checks the lower plain corner in the District architecture
+receiver. It must stay present when the shopfront streams at Detail; ownership
+cannot migrate between parts at different levels. Validation also requires the
+old overlapping placeholder to be retired in its source plan and publication.

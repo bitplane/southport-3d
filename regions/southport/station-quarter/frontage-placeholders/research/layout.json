@@ -49,9 +49,9 @@
         ]
       ],
       "height_m": 12.5,
-      "replace_with": null,
+      "replace_with": "southport.london-street.london-street-gabled-bay",
       "source_way": "371203985",
-      "evidence": "Waterstones/Hays continuation: aerial external boundary, 2019 street view three storeys; height bound estimated. Northern seam follows London Street 24 orientation."
+      "evidence": "Replaced by continuously modelled two-storey London/Chapel corner. Four actual Google 3D orbits and street photographs correct the former three-storey estimate and remove its overlap with the previously modelled gabled bay."
     },
     {
       "id": "chapel-jd-range",

@@ -21,11 +21,6 @@
   },
   "parts": [
     {
-      "id": "chapel-london-corner",
-      "name": "Chapel London Corner \u2014 placeholder",
-      "collection": "chapel-london-corner"
-    },
-    {
       "id": "chapel-jd-range",
       "name": "Chapel Jd Range \u2014 placeholder",
       "collection": "chapel-jd-range"

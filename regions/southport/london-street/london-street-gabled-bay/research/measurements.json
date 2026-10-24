@@ -1,0 +1,19 @@
+{
+  "method": "Existing mapped outline remains the metric anchor. Compare the full London facade May2011 and Chapel listing against this registered outline, rather than fitting each shop independently.",
+  "inputs": {
+    "london_frontage_m": 21.961,
+    "chapel_frontage_m": 25.556,
+    "first_gabled_bay_m": 5.0,
+    "upper_window_height_m": 1.45,
+    "eaves_m": 7.25,
+    "ridge_m": 9.2,
+    "window_to_eaves_reference_ratio": "London May2011: roughly 60px window / 350px eaves-ground; perspective varies across frontage, therefore retained eaves estimate\u00b10.5m.",
+    "roof_run_m": 3.75,
+    "roof_pitch_degrees": 27.5
+  },
+  "limits": [
+    "Do not interpret historical street photos as current shop tenancy.",
+    "Current shop signs only where recent listing/official image actually inspected. Unconfirmed London units have no invented tenant signage.",
+    "Clock proportions relative to slate slope from recent Chapel listing; no measured clock height."
+  ]
+}
