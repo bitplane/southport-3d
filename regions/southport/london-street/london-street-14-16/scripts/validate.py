@@ -74,3 +74,23 @@ for ob in meshes:
 errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
 assert not errors,errors[:8]
 print('Shop head and front/rear corner surface ownership passed')
+
+# Upward views beneath the projecting sign must encounter the entrance ceiling,
+# including the strip beyond the glass/head plane.
+for out in (-.3,.08,.18):
+ origin=front@Vector((entry,2.9,out));direction=(front.to_3x3()@Vector((0,1,0))).normalized()
+ hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=.3)
+ assert hit and found.name=="Shop entrance soffit",("Open fascia underside",out,found.name if found else None)
+
+# Close the 65 mm strip between the transom top and ceiling at the recess back.
+origin=front@Vector((entry,3.015,-.3));direction=(front.to_3x3()@Vector((0,0,-1))).normalized()
+hit,p,n,i,found,m=bpy.context.scene.ray_cast(deps,origin,direction,distance=.5)
+assert hit and found.name=="Shop entrance transom",("Open transom head",found.name if found else None)
+
+# District jamb/ceiling edges must actually join, rather than end 150 mm apart.
+from district import surfaces
+faces={f["name"]:f["vertices"] for f in surfaces(ROOT)["shopfront"]}
+soffit=faces["entry soffit"]
+for u in (entry-.75,entry+.75):
+ jamb=faces["entry return "+str(u)]
+ assert sum(any((Vector(p)-Vector(q)).length<1e-5 for q in soffit) for p in jamb)==2,"Open District portal corner"

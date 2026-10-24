@@ -185,11 +185,13 @@ for u in [entry-.37,entry+.37]:
  for offset in [-.35,.35]:elevation_box('Shop entrance stile',u+offset,1.23,.045,2.44,.07,-.48,red,'shopfront')
  for h in [.06,2.42]:elevation_box('Shop door rail',u,h,.70,.055,.07,-.48,red,'shopfront')
  elevation_box('Fine door pull',u+.23,1.2,.025,.45,.07,-.43,metal,'shopfront')
-elevation_box('Shop entrance transom',entry,2.72,1.50,.49,.04,-.52,glass,'shopfront')
+elevation_box('Shop entrance transom',entry,2.7525,1.50,.555,.04,-.52,glass,'shopfront')
 elevation_box('Shop entrance header rail',entry,2.45,1.50,.06,.09,-.47,red,'shopfront')
 for u in [entry-.75,entry+.75]:
  elevation_box('Shop entrance side return',u,1.525,.055,3.05,.57,-.435,red,'shopfront')
-elevation_box('Shop entrance soffit',entry,3.06,1.55,.06,.77,-.335,blue,'shopfront')
+# Close beneath the projecting fascia lip, including the formerly exposed
+# 165 mm strip between the entrance ceiling and the fascia front.
+elevation_box('Shop entrance soffit',entry,3.06875,1.55,.0775,.935,-.2525,blue,'shopfront')
 elevation_box('Shop continuous glazing head',width/2,3.105,width-.72,.11,.24,-.12,red,'shopfront')
 for a,b in [(.36,entry-.75),(entry+.75,width-.36)]:
  elevation_box('Shop display sill',(a+b)/2,.025,b-a,.05,.12,-.19,granite,'shopfront')

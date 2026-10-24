@@ -40,6 +40,15 @@
       "observations": [
         "Whole urban block envelope; individual parcel subdivisions not surveyed."
       ]
+    },
+    {
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=nFTJmqDiryzEt4m_Q4mEeQ&heading=250&pitch=0&fov=50",
+      "capture_date": "2024-08",
+      "reviewed": "2026-10-24",
+      "attribution": "Google Street View",
+      "observations": [
+        "Red round entrance posts support the projecting fascia above recessed doors. The entrance head is enclosed; no exposed brick strip beneath the sign. Exact soffit depth follows the modelled fascia projection, not a survey."
+      ]
     }
   ],
   "limitations": [

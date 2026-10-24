@@ -32,8 +32,8 @@ def surfaces(asset):
     s.part='shopfront';entry=w*.31;a,b=entry-.75,entry+.75
     wall('left shop',(xf,ys),(xf,ys+a),0,4.09)
     wall('right shop',(xf,ys+b),(xf,yn),0,4.09)
-    wall('entrance fascia',(xf,ys+a),(xf,ys+b),3.09,4.09)
-    wall('inset entrance',(xf-.52,ys+a),(xf-.52,ys+b),0,3.09)
-    for u in (a,b):s.quad('entry return '+str(u),[(xf-.15,ys+u,0),(xf-.72,ys+u,0),(xf-.72,ys+u,3.03),(xf-.15,ys+u,3.03)])
-    s.quad('entry soffit',[(xf-.72,ys+a,3.03),(xf-.72,ys+b,3.03),(xf+.05,ys+b,3.03),(xf+.05,ys+a,3.03)])
+    wall('entrance fascia',(xf,ys+a),(xf,ys+b),3.03,4.09)
+    wall('inset entrance',(xf-.52,ys+a),(xf-.52,ys+b),0,3.03)
+    for u in (a,b):s.quad('entry return '+str(u),[(xf,ys+u,0),(xf-.52,ys+u,0),(xf-.52,ys+u,3.03),(xf,ys+u,3.03)])
+    s.quad('entry soffit',[(xf-.52,ys+a,3.03),(xf-.52,ys+b,3.03),(xf,ys+b,3.03),(xf,ys+a,3.03)])
     return s.result
