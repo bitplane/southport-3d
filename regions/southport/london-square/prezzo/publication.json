@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -228,8 +228,8 @@
         "reason": "Coarse authored walls, real openings, moulding profiles, roof forms and chimney silhouettes remain visible at walking distance. Stepped rear wings, escape treads/platforms and primary rails remain open geometry; duct silhouette is retained."
       },
       "district": {
-        "strategy": "keep",
-        "reason": "Keep street openings, chamfered corner, mansard, dormers and chimney skyline; these envelopes are already inexpensive. Rear escape stringers/treads and principal railing remain real open structures; do not collapse recesses into bounding boxes."
+        "strategy": "omit",
+        "reason": "Replace with independently authored fixed-budget envelope; bake surface detail into shared atlases."
       }
     },
     {
@@ -240,13 +240,8 @@
         "reason": "Small repeated sash meshes retain real frame parallax for walking; mesh prototypes are shared."
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Flatten sash glazing bars and sill detail onto a baked rectangular receiver; preserve the separate wall opening and stone surround.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.6,
-        "max_sampled_error_m": 0.45
+        "strategy": "omit",
+        "reason": "Replace with independently authored fixed-budget envelope; bake surface detail into shared atlases."
       }
     },
     {
@@ -262,13 +257,8 @@
         "max_sampled_error_m": 0.45
       },
       "district": {
-        "strategy": "replace",
-        "reason": "Retain signage colour and lettering on a small baked panel at reduced resolution.",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.6,
-        "max_sampled_error_m": 0.45
+        "strategy": "omit",
+        "reason": "Replace with independently authored fixed-budget envelope; bake surface detail into shared atlases."
       }
     },
     {
@@ -280,7 +270,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Tiny repeated teeth disappear; retain the stepped cornice profile."
+        "reason": "Replace with independently authored fixed-budget envelope; bake surface detail into shared atlases."
       }
     },
     {
@@ -298,15 +288,8 @@
         "bake": false
       },
       "district": {
-        "strategy": "generator",
-        "reason": "Retain shaft and capital envelope; omit flute ribs and tiny volute spirals.",
-        "generator": "components:build_lod",
-        "settings": {
-          "kind": "pilaster",
-          "level": "district"
-        },
-        "uv": "smart",
-        "bake": false
+        "strategy": "omit",
+        "reason": "Replace with independently authored fixed-budget envelope; bake surface detail into shared atlases."
       }
     },
     {
@@ -318,7 +301,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Sub-centimetre bevels do not affect district silhouette; retain the coarse wall envelope and authored stone map."
+        "reason": "Replace with independently authored fixed-budget envelope; bake surface detail into shared atlases."
       }
     },
     {
@@ -330,7 +313,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Omit small moulding subdivisions and decorative strokes; retain major surrounds, pediment and silhouette."
+        "reason": "Replace with independently authored fixed-budget envelope; bake surface detail into shared atlases."
       }
     },
     {
@@ -342,7 +325,7 @@
       },
       "district": {
         "strategy": "omit",
-        "reason": "Small fittings vanish at district range; entrances and sign faces remain."
+        "reason": "Replace with independently authored fixed-budget envelope; bake surface detail into shared atlases."
       }
     },
     {
@@ -358,14 +341,58 @@
         "reason": "Bake shallow carved panel and pendant to a normal-mapped receiver; preserve their appearance above the menu without small carving triangles."
       },
       "district": {
-        "strategy": "replace",
-        "shape": "panel",
-        "uv": "planar-xy",
-        "bake": true,
-        "cage_extrusion_m": 0.3,
-        "max_sampled_error_m": 0.2,
-        "reason": "Retain the framed stone patch in a reduced-resolution bake."
+        "strategy": "omit",
+        "reason": "Replace with independently authored fixed-budget envelope; bake surface detail into shared atlases."
       }
     }
-  ]
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Retain the chamfered street corner, inset terminal entrances, mansard/dormers/chimney groups, stepped rear wings and open escape wells. Bake fine masonry, windows and signage; omit tiny railings and hardware.",
+    "max_bytes": 1600000,
+    "max_gpu_bytes": 11000000,
+    "source_omissions": [
+      {
+        "match": "^Hardware corner lantern",
+        "reason": "Subpixel metallic lantern fittings omitted at District; opaque dielectric envelope bake does not represent metallic response."
+      }
+    ],
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 650,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture",
+          "roof"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 700,
+        "cage_m": 0.5,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "shopfront": {
+        "atlas": [
+          512,
+          128
+        ],
+        "max_triangles": 150,
+        "cage_m": 0.6,
+        "source_parts": [
+          "shopfront",
+          "architecture"
+        ]
+      }
+    }
+  }
 }

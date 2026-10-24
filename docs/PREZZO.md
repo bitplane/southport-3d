@@ -1,5 +1,26 @@
 # Prezzo, 128 Lord Street
 
+## Fixed-budget District envelope
+
+The independent envelope in `scripts/district.py` retains the chamfered corner,
+three recessed street entrances, street mansard, nine dormers, six chimney stacks,
+three pot groups and the stepped rear wings. Coarse landing slabs and six broad treads per flight
+retain the open escape wells; fine treads, rails, aerials and small
+hardware are omitted. Fine windows, stonework and signage are projected into
+three shared atlas sets (architecture 512×512, roof 512×256, shopfront 512×128).
+Metallic corner lanterns are explicitly excluded from the dielectric source bake.
+Detail and Walk retain their existing recipes. Dimensions and rear uncertainty
+are inherited from the reviewed model, not reinterpreted for the LoD rollout.
+The owner handles visual acceptance; automated build, bake and budget checks remain.
+
+Checked District export: **940 triangles, 492,920 bytes including textures and
+7,438,424 bytes estimated GPU memory**, down from 25,708 triangles, 4,158,784
+bytes and 26,036,018 GPU bytes. Geometry, bake coverage, normal maps, publication
+budgets and the existing window/relief appearance check pass. Visual acceptance
+remains with the owner.
+
+Earlier modelling and review records below describe the source architecture and the former District implementation; the envelope policy above supersedes those older District recipes.
+
 The first adjoining building uses the ordinary asset/publication contract:
 `regions/southport/london-square/prezzo/`. No viewer changes or building-specific
 publisher branches were needed. Select **Prezzo — 128 Lord Street** in the local
