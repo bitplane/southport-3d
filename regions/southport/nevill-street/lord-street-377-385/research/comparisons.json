@@ -1,0 +1,45 @@
+{
+  "massing_review": {
+    "date": "2026-10-24",
+    "views": [
+      "corner",
+      "lord",
+      "nevill",
+      "roof"
+    ],
+    "references": [
+      "nevill-full.png",
+      "lord-rectified.png",
+      "roof-fresh.png",
+      "3d-roof-front.png"
+    ],
+    "findings": [
+      "Six straight Nevill bays, two straight Lord Street bays and one curved corner correctly arranged. Flat service roof with small rear recess, separate neighbouring Papa\u2019s.",
+      "Canopy outer band too shallow in first render: deepen from 0.34 m to 0.9 m overall open frieze and shorten posts to 3.15 m.",
+      "Upper panes need 25/50/25 percent widths instead of equal thirds. Increase Ionic shaft radii to match pier gaps.",
+      "Removed coincident parapet/wall face and opened balustrade behind corner rail."
+    ],
+    "uncertainty": "No survey drawings recovered; overall height remains\u00b11 m and roof lightwell\u00b11.5 m."
+  },
+  "final_review": {
+    "date": "2026-10-24",
+    "views": [
+      "corner",
+      "nevill",
+      "capital",
+      "roof"
+    ],
+    "findings": [
+      "Close Nevill reference shows a smooth stepped cornice, not dentils; model now follows its projecting arched pavilions and rounded corner.",
+      "Low parapet piers above the straight Ionic columns and outer-light ventilator bars retained in the second-floor windows match the reference.",
+      "Roof render preserves flat outline, connected service run and estimated rear recess. Hidden rear elevations remain plain."
+    ],
+    "technical_checks": {
+      "detail_triangles": 75100,
+      "district_triangles": 808,
+      "sampled_projection_misses": 0,
+      "aperture_probes": 16
+    },
+    "exported_view_review": "Recorded in docs/LORD-STREET-377-385.md after publication."
+  }
+}

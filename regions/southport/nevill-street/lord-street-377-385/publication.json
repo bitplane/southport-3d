@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/lord-street-377-385.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "July 2026 exterior; approximate hidden rear/lightwell; canopy glazing represented as opaque dielectric.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 1024
+    },
+    "district": {
+      "texture_size": 1024
+    }
+  },
+  "parts": [
+    {
+      "id": "facades",
+      "name": "facades",
+      "collection": "facades"
+    },
+    {
+      "id": "roof",
+      "name": "roof",
+      "collection": "roof"
+    },
+    {
+      "id": "frontage",
+      "name": "frontage",
+      "collection": "frontage"
+    },
+    {
+      "id": "canopy",
+      "name": "canopy",
+      "collection": "canopy"
+    }
+  ],
+  "views": [
+    {
+      "name": "Lord / Nevill corner",
+      "position": [
+        -34,
+        12,
+        -23
+      ],
+      "target": [
+        -28,
+        7,
+        -51
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Sub-centimetre joints, carved reeds, fine capital scrolls and rooftop louvres fade at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Project appearance onto fixed independent envelope."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain curved corner, open canopy, Ionic shaft profiles, real window apertures and entrance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replace with bounded envelope; no global decimation."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed six-segment rounded corner, four coarse Ionic shafts, flat roof with rear service notch, open canopy with six hexagonal supports and chamfered entrance. Fine detail changes appearance, not envelope topology.",
+    "max_bytes": 1700000,
+    "max_gpu_bytes": 14000000,
+    "parts": {
+      "facades": {
+        "atlas": [
+          512,
+          1024
+        ],
+        "max_triangles": 950,
+        "cage_m": 0.65,
+        "source_parts": [
+          "facades",
+          "frontage"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 240,
+        "cage_m": 0.75,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "frontage": {
+        "atlas": [
+          512,
+          128
+        ],
+        "max_triangles": 20,
+        "cage_m": 0.35,
+        "source_parts": [
+          "frontage"
+        ]
+      },
+      "canopy": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 250,
+        "cage_m": 0.35,
+        "source_parts": [
+          "canopy"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      5,
+      1,
+      40
+    ],
+    "target": [
+      12,
+      4,
+      47
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "phase": "detail",
+  "x": 9.191,
+  "y": 44.855,
+  "width": 12.505,
+  "depth": 24.319,
+  "shear_x": -0.00658,
+  "shear_y": 0.03223,
+  "base_z": -0.75,
+  "radius": 3.1,
+  "roof_z": 13.85,
+  "cornice_z": 13.05,
+  "parapet_z": 14.45,
+  "raised_parapet_z": 14.98,
+  "canopy_inner_z": 4.55,
+  "canopy_outer_z": 3.15,
+  "canopy_depth": 3.05,
+  "first_window": [
+    4.75,
+    8.8
+  ],
+  "second_window": [
+    9.55,
+    12.25
+  ],
+  "front_bays": [
+    {
+      "u": 5.15,
+      "w": 2.55,
+      "arch": true
+    },
+    {
+      "u": 9.72,
+      "w": 2.75,
+      "arch": false
+    }
+  ],
+  "side_bays": [
+    {
+      "u": 5.15,
+      "w": 2.55,
+      "arch": true
+    },
+    {
+      "u": 8.75,
+      "w": 2.65,
+      "arch": false
+    },
+    {
+      "u": 12.25,
+      "w": 2.65,
+      "arch": false
+    },
+    {
+      "u": 15.75,
+      "w": 2.65,
+      "arch": false
+    },
+    {
+      "u": 19.45,
+      "w": 2.55,
+      "arch": true
+    },
+    {
+      "u": 22.75,
+      "w": 2.15,
+      "arch": false
+    }
+  ],
+  "lightwell": {
+    "x": [
+      7.4,
+      10.6
+    ],
+    "y": [
+      22.1,
+      24.319
+    ],
+    "bottom_z": 8.7
+  },
+  "uncertainty_m": {
+    "plan": 0.75,
+    "height": 1.0,
+    "lightwell": 1.5
+  },
+  "canopy_posts_front": [
+    4.5,
+    12.15
+  ],
+  "canopy_posts_side": [
+    5.1,
+    10.9,
+    16.7,
+    23.8
+  ]
+}

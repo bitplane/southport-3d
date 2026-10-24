@@ -1,0 +1,59 @@
+{
+  "reviewed_on": "2026-10-24",
+  "elevations": {
+    "lord_street": {
+      "status": "observed",
+      "sources": [
+        "google-lord-2011",
+        "google-corner-2026",
+        "visiter-2017"
+      ],
+      "notes": "Frontal 2011 upper facade, current 2026 oblique and 2017 unobscured replacement shopfront. Two straight bays and a curved corner, not the adjacent Papa\u2019s facade."
+    },
+    "nevill_street": {
+      "status": "observed",
+      "sources": [
+        "google-nevill-2026",
+        "google-corner-2026"
+      ],
+      "notes": "Six straight bays. Two arched second-floor windows, central Ionic columns, end plain bay. Continuous glass and iron canopy."
+    },
+    "roof": {
+      "status": "observed-with-estimates",
+      "sources": [
+        "google-roof-2026",
+        "prior-google-3d",
+        "sefton-2017"
+      ],
+      "notes": "Fresh close satellite plus prior roof/front/east/rear-orbit captures. Flat membrane roof, ventilation runs and white equipment cabinet. Small rear-edge service/lightwell recess approximated; no invented pitched roof."
+    },
+    "rear": {
+      "status": "partly-obscured",
+      "sources": [
+        "google-roof-2026",
+        "prior-google-3d",
+        "sefton-2017"
+      ],
+      "notes": "Party boundaries enclosed by neighbouring ranges. No unobstructed street-level view of rear walls found; blank masonry retained rather than invented windows."
+    }
+  },
+  "access_attempts": [
+    {
+      "source": "Google Maps 3D",
+      "result": "Fresh offscreen ANGLE gl-egl returned no WebGL2. SwiftShader returned WebGL2 but Google disabled Earth/3 D. Reused existing project orbit captures, checked against fresh satellite."
+    },
+    {
+      "source": "Sefton planning documents",
+      "result": "Summary for DC/2017/00058 loaded and confirms glazing replacement and rooftop/lightwell duct. Documents tab returned 504 on four requests; no measured drawings obtained."
+    },
+    {
+      "source": "Mapillary",
+      "result": "Map and image sequence opened successfully with SwiftShader. Selected image 178101944103733 faces the memorial, not this frontage; no additional dimensional evidence taken from it."
+    },
+    {
+      "source": "Google place and web images",
+      "result": "Investigated current Saucy Bird BID photos; published images inspected are interiors, insufficient to establish changed external signs. Use dated July 2026 exterior and record forthcoming tenant."
+    }
+  ],
+  "private_captures": "../references/nevill-east-corner/ and ../references/occulo/; imagery excluded from source control"
+}

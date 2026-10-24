@@ -1,0 +1,36 @@
+{
+  "units": "metres",
+  "survey": false,
+  "inputs": [
+    {
+      "source": "Prior roof-plan.png",
+      "scale_bar_m": 5,
+      "scale_bar_pixels": 59,
+      "target_return_roof_pixels": 295,
+      "target_front_roof_pixels": 145,
+      "calculation": "295*5/59=25.0 m; 145*5/59=12.29 m. Roof parallax and projecting cornice introduce uncertainty. Retain ground-seed width 12.505/depth 24.319 after comparison with fresh overhead; neither is a cadastral survey."
+    },
+    {
+      "source": "lord-rectified.png (May 2011 panorama)",
+      "landmarks_pixels": {
+        "ground_y": 798,
+        "main_cornice_y": 330,
+        "raised_panel_y": 290,
+        "front_extent_x": [
+          405,
+          820
+        ]
+      },
+      "calculation": "Approximate full-front height/width ratio 508/415*12.505=15.31 m. Curved corner foreshortens horizontal span and perspective changes scale; adopt raised parapet 14.98 m, normal parapet 14.45 m, cornice 13.05 m with \u00b11.0 m uncertainty. Compare with 19.7 m Occulo opposite."
+    },
+    {
+      "source": "July 2026 Nevill panorama",
+      "observations": "Six straight bays; tall first windows around 4.05 m, shorter second windows 2.70 m. Arched bays at both ends of central three-bay Ionic group. Lord Street has arched bay then square-ended rectangular bay."
+    },
+    {
+      "source": "Fresh roof-fresh.png",
+      "observations": "Roof outline approximately 12.5 by 24.3 m, rounded street corner approximately 3.1 m radius; rear-edge recess about 3.2 by 2.2 m. Recess dimensions \u00b11.5 m. Plant position traced relative to roof outline, not inferred from plumbing conventions."
+    }
+  ],
+  "registration": "Shared Nevill footprint corner(9.191,44.855), shear(-0.00658,0.03223). Ground remains owned by public realm. Main roof is flat; tiny rear-edge recess is a provisional interpretation of satellite and planning lightwell reference."
+}

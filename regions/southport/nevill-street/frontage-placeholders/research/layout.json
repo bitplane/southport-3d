@@ -18,6 +18,38 @@
       "osm_way": "264188612",
       "footprint": [
         [
+          9.030981,
+          69.174
+        ],
+        [
+          9.17784,
+          46.855
+        ],
+        [
+          11.191,
+          44.91946
+        ],
+        [
+          21.696,
+          45.258036
+        ],
+        [
+          21.535981,
+          69.577036
+        ]
+      ],
+      "height_m": 14.98,
+      "height_uncertainty_m": 1.0,
+      "status": "replaced-by-detailed-asset",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Street-wall extent checked against aerial imagery. Ground entrance is chamfered; upper facade rounded. Neighbour shares the replacement\u2019s affine party wall, correcting the seed boundary by at most 0.28 m. Plan uncertainty approximately 0.75 m; hidden roof lightwell dimensions provisional.",
+      "replace_with": "southport.nevill-street.lord-street-377-385",
+      "original_seed_footprint": [
+        [
           9.031,
           69.174
         ],
@@ -33,6 +65,48 @@
           21.388,
           69.335
         ]
+      ]
+    },
+    {
+      "id": "east-lord-return",
+      "osm_way": "150615099",
+      "footprint": [
+        [
+          33.735,
+          80.283
+        ],
+        [
+          26.273,
+          80.216
+        ],
+        [
+          20.324,
+          80.095
+        ],
+        [
+          8.885,
+          79.952
+        ],
+        [
+          9.030981,
+          69.174
+        ],
+        [
+          21.535981,
+          69.577036
+        ],
+        [
+          21.696,
+          45.258036
+        ],
+        [
+          34.189,
+          45.428
+        ],
+        [
+          34.075,
+          57.743
+        ]
       ],
       "height_m": 12,
       "height_uncertainty_m": 3,
@@ -43,12 +117,8 @@
         "osm-seed"
       ],
       "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
-    },
-    {
-      "id": "east-lord-return",
-      "osm_way": "150615099",
-      "footprint": [
+      "replace_with": null,
+      "before_corner_registration_footprint": [
         [
           33.735,
           80.283
@@ -85,17 +155,7 @@
           34.075,
           57.743
         ]
-      ],
-      "height_m": 12,
-      "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
-      "evidence": [
-        "google-3d-orbit",
-        "google-plan-comparison",
-        "osm-seed"
-      ],
-      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      ]
     },
     {
       "id": "east-stanley-corner",

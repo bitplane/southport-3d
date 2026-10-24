@@ -21,11 +21,6 @@
   },
   "parts": [
     {
-      "id": "east-lord-corner",
-      "name": "East Lord Corner \u2014 placeholder",
-      "collection": "east-lord-corner"
-    },
-    {
       "id": "east-lord-return",
       "name": "East Lord Return \u2014 placeholder",
       "collection": "east-lord-return"

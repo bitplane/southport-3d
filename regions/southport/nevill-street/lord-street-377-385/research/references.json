@@ -1,0 +1,67 @@
+{
+  "sources": [
+    {
+      "id": "google-corner-2026",
+      "url": "https://www.google.com/maps/@53.6488949,-3.0047303,3a,95y,32h,82t/data=!3m4!1e1!3m2!1s-9yOVX_5xl7W5vykYmf_uw!2e0",
+      "capture_date": "2026-07",
+      "observed": "Corner glazing, curved upper stone facade, canopy and current shopfront."
+    },
+    {
+      "id": "google-nevill-2026",
+      "url": "https://www.google.com/maps/@53.6490354,-3.0049344,3a,85y,52h,101t/data=!3m4!1e1!3m2!1sejcjyCvRcMnpM7LFZIkM_Q!2e0",
+      "capture_date": "2026-07",
+      "observed": "Nevill bay count, windows, Ionic capitals, spandrels and canopy brackets."
+    },
+    {
+      "id": "google-lord-2011",
+      "url": "https://www.google.com/maps/@53.6489219,-3.0043251,3a,65y,320h,102t/data=!3m4!1e1!3m2!1s1cZ-TjdnAwAbhmq41LMGpg!2e0",
+      "capture_date": "2011-05",
+      "observed": "Lord Street upper facade and proportion; old Russell and Bromley shopfront is not copied."
+    },
+    {
+      "id": "google-roof-2026",
+      "url": "https://www.google.com/maps/@53.64912,-3.00460,53a,35y,0h,0t/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "observed": "Flat roof, plant and outline. Capture date not supplied by satellite UI."
+    },
+    {
+      "id": "prior-google-3d",
+      "url": "https://www.google.com/maps/@53.6490,-3.0046,100a,35y,45t/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-24",
+      "observed": "Previously captured roof/front/east/rear orbits in private Occulo research show this neighbouring building. Fresh 3 D unavailable; not represented as new orbit acquisition."
+    },
+    {
+      "id": "sefton-2017",
+      "url": "https://pa.sefton.gov.uk/online-applications/applicationDetails.do?keyVal=OJKPYANWFPP00&activeTab=summary",
+      "capture_date": "2017-03-22",
+      "observed": "Approved conversion, first-floor glazing replacement, second-floor glazing refurbishment and rooftop ventilation with extract within lightwell."
+    },
+    {
+      "id": "sefton-canopy",
+      "url": "https://sefton.gov.uk/media/2034/lord-street-appraisal-nov-17-chapters-5-to-7.pdf",
+      "capture_date": "2017-11",
+      "observed": "377\u2013385 Lord Street canopy originally cantilevered, later adapted with columns."
+    },
+    {
+      "id": "visiter-2017",
+      "url": "https://www.southportvisiter.co.uk/whats-on/food-drink-news/gallery/first-look-inside-southports-bistrot-13896198",
+      "capture_date": "2017-11",
+      "observed": "New dark-framed glazing, chamfered double entrance and horizontal fascia visible while canopy removed."
+    },
+    {
+      "id": "saucy-bird-2026",
+      "url": "https://www.yoursouthport.com/blog/new-saucy-bird-restaurant-in-southport-opens-on-monday",
+      "capture_date": "2026-10",
+      "observed": "Incoming Saucy Bird tenant opens 26 October; inspected images show interiors, not sufficient to replace external lettering."
+    },
+    {
+      "id": "mapillary-attempt",
+      "url": "https://www.mapillary.com/app/?pKey=178101944103733",
+      "capture_date": null,
+      "observed": "Successfully opened image, but points away from target. No target dimensions inferred."
+    }
+  ],
+  "rights": "Linked reference imagery only. No downloaded reference pixels published or committed. Architectural geometry and ornamental approximations authored from observations."
+}
