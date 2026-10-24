@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "southport.west-street.frontage-placeholders",
+  "name": "West Street quarter \u2014 provisional building envelopes",
+  "region": "southport",
+  "area": "west-street",
+  "status": "provisional-block-plan",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "west-street-hall",
+    "albert-victoria-range",
+    "byng-house",
+    "cable-court-apartments",
+    "cable-south-rear-range",
+    "cable-north-rear-range"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Provisional block plan: checked external footprints, estimated height bounds and private court limits. Plan uncertainty about 1\u20133 m; height uncertainty 2\u20133 m. Flat tops are envelope bounds, not reconstructed roofs. No detailed architecture or furniture.",
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only."
+}

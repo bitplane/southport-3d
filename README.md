@@ -58,3 +58,7 @@ Open http://localhost:8765. Use orbit or walking controls, and View settings to 
 Python, JSON and numeric NPZ relief data are source. Blender scenes, GLBs, textures and renders are generated outputs. Historical sculpting scripts may need privately acquired photographs to regenerate relief source data. Reference images, browser profiles and caches are excluded; the source catalogue contains links and attribution.
 
 Read [contribution instructions](CONTRIBUTING.md), [agent instructions](AGENTS.md) and [rights/provenance](RIGHTS.md) before contributing. The default branch is `master`. The `memorial-source-baseline` tag preserves the imported construction source before the shared-library extraction.
+
+The [West Street quarter](docs/WEST-STREET-QUARTER.md) adds the missing rear-block
+envelopes, Cable Street end, West Street continuation, access courts and planted
+reservations southwest of Nevill Street. Buildings remain provisional placeholders.

@@ -63,11 +63,11 @@ for ob in meshes:
    a,b=road['centre'],road['end'];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
    along=((p.x-a[0])*dx+(p.y-a[1])*dy)/length
    across=abs((p.x-a[0])*(-dy)+(p.y-a[1])*dx)/length
-   # Stanley/Bath now continue into the new block owner. Longitudinal
+   # The four public side streets continue into adjoining owners. Longitudinal
    # double yellows are valid only in their two narrow edge bands beyond
    # the Nevill mouth; transverse paint through the opening still fails.
    inset=road['width']/2-across
-   continuing=(road['name'] in ['Stanley Street','Bath Street'] and
+   continuing=(road['name'] in ['Stanley Street','Bath Street','Cable Street','West Street'] and
                along>=length*.56-.002 and
                (abs(inset-.185)<.036 or abs(inset-.365)<.036))
    assert continuing or not (.002<along<length-.002 and across<road['width']/2-.002),(road['name'],tuple(p),'paint blocks junction')
@@ -117,7 +117,7 @@ print('Nevill crossing ramps join road and back of pavement')
 
 # The two continuation stripes actually reach the outgoing ownership seams.
 for road in D['side_roads']:
- if road['name'] not in ['Stanley Street','Bath Street']:continue
+ if road['name'] not in ['Stanley Street','Bath Street','Cable Street','West Street']:continue
  a,b=road['centre'],road['end'];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy);nx,ny=-dy/length,dx/length
  for side in [-1,1]:
   for inset in [.185,.365]:

@@ -1,0 +1,9 @@
+{
+  "reviewed": "2026-10-24",
+  "plan": "Registered rotated Google aerial with OSM overlay and missing-building traces.",
+  "roof_and_massing": "Actual four-direction Google 3D orbit; only external footprint and height bounds modelled.",
+  "street": "West Street August 2024 and Cable Street November 2020 panoramas viewed.",
+  "not_modelled": "Detailed elevations and roofs, undercrofts, furniture, current signs/regulations, private garden details.",
+  "comparison": "Isolated uniform Detail/Walk/District exports and assembled neighbourhood. West Street road centre corrected after close hall-footway review.",
+  "limitations": "All volumes are provisional. No private rear photographs, Mapillary or heritage evidence is asserted."
+}

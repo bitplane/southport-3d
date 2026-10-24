@@ -1,0 +1,31 @@
+{
+  "sources": [
+    {
+      "id": "osm-seed",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=-3.014,53.639,-2.988,53.657",
+      "accessed": "2026-10-24",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0",
+      "use": "Seed extents/routes only; checked against Google 3D and registered plan."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.645602,-3.0068,433a,35y,39.37t/data=!3m1!1e3",
+      "accessed": "2026-10-24",
+      "use": "Actual four-direction photogrammetry orbit; missing back ranges, Byng and Albert/Victoria envelopes, open gardens and access courts. Imagery date unspecified."
+    },
+    {
+      "id": "west-view",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=usplmlctwD1SVD9CSzt_zg&heading=235",
+      "accessed": "2026-10-24",
+      "capture_date": "2024-08",
+      "use": "West Street narrow carriageway, double yellow lines, modest pavements, hall and planted enclosures."
+    },
+    {
+      "id": "cable-view",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=qc6zNSKbb1fYiF706RY1gg&heading=235",
+      "accessed": "2026-10-24",
+      "capture_date": "2020-11",
+      "use": "Cable Street gated end and four-storey apartment range, yellow lines, small pavements."
+    }
+  ]
+}

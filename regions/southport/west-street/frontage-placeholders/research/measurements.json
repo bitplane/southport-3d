@@ -1,0 +1,138 @@
+{
+  "capture_date": "2026-10-24",
+  "method": "Three context-menu coordinate controls register the rotated flat view; inspected overlay before adopting outlines. Not a survey.",
+  "controls": [
+    {
+      "pixel": [
+        800,
+        500
+      ],
+      "latlon": [
+        53.648549,
+        -3.006801
+      ]
+    },
+    {
+      "pixel": [
+        1000,
+        700
+      ],
+      "latlon": [
+        53.647917,
+        -3.007865
+      ]
+    },
+    {
+      "pixel": [
+        1000,
+        500
+      ],
+      "latlon": [
+        53.647935,
+        -3.006801
+      ]
+    }
+  ],
+  "traced_roof_outlines": [
+    {
+      "id": "cable-court-apartments",
+      "height_bound_m": 12,
+      "pixels": [
+        [
+          638,
+          403
+        ],
+        [
+          653,
+          394
+        ],
+        [
+          665,
+          405
+        ],
+        [
+          667,
+          391
+        ],
+        [
+          672,
+          387
+        ],
+        [
+          681,
+          393
+        ],
+        [
+          691,
+          389
+        ],
+        [
+          703,
+          405
+        ],
+        [
+          685,
+          422
+        ],
+        [
+          672,
+          410
+        ],
+        [
+          657,
+          425
+        ]
+      ]
+    },
+    {
+      "id": "cable-south-rear-range",
+      "height_bound_m": 8,
+      "pixels": [
+        [
+          636,
+          347
+        ],
+        [
+          652,
+          331
+        ],
+        [
+          684,
+          363
+        ],
+        [
+          667,
+          380
+        ]
+      ]
+    },
+    {
+      "id": "cable-north-rear-range",
+      "height_bound_m": 7.5,
+      "pixels": [
+        [
+          571,
+          369
+        ],
+        [
+          590,
+          350
+        ],
+        [
+          614,
+          374
+        ],
+        [
+          595,
+          393
+        ]
+      ]
+    }
+  ],
+  "missing_coverage": "Private rear gardens, wall bases obscured by eaves/trees, current parking restrictions and detailed elevations are not verified.",
+  "west_street_alignment": {
+    "correction_site_y_m": -1.5,
+    "basis": "Overlaying retained OSM road centre on calibrated aerial places it near the hall-side carriageway edge. Move centre toward Lord Street, preserving the exact Nevill tangent. Estimated correction, not survey.",
+    "width_estimate_m": 5.8
+  }
+}

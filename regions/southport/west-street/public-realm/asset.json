@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "southport.west-street.public-realm",
+  "name": "West Street and Cable Street \u2014 roads and rear grounds",
+  "region": "southport",
+  "area": "west-street",
+  "status": "provisional-public-realm",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "section-00",
+    "section-01",
+    "section-02",
+    "section-03"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Provisional ground and private yards, 1\u20133 m plan uncertainty; dated markings, not a current regulation inventory. Existing boundary levels retained, interior grade estimated. No furniture or tree survey.",
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/west-street/frontage-placeholders/research/layout.json",
+      "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+    ],
+    "validate": [
+      "regions/southport/west-street/frontage-placeholders/research/layout.json",
+      "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+    ]
+  }
+}

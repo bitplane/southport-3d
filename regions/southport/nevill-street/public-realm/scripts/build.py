@@ -205,8 +205,8 @@ for road in D['side_roads']:
   start=tuple(a[k]+(b[k]-a[k])*.56+side*w/2*(nx,ny)[k] for k in [0,1])
   end=tuple(b[k]+side*w/2*(nx,ny)[k] for k in [0,1])
   kerb(start,end,-side)
-  # Continue the Stanley/Bath owner's inward kerb offsets across this stub.
-  if road['name'] in ['Stanley Street','Bath Street']:
+  # Continue the adjoining street owner's inward kerb offsets across this stub.
+  if road['name'] in ['Stanley Street','Bath Street','Cable Street','West Street']:
    for inset in [.185,.365]:
     pa=tuple(start[k]-side*inset*(nx,ny)[k] for k in [0,1])
     pb=tuple(end[k]-side*inset*(nx,ny)[k] for k in [0,1])

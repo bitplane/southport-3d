@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "West Street quarter",
+  "status": "Provisional block plan: checked external footprints, estimated height bounds and private court limits. Plan uncertainty about 1\u20133 m; height uncertainty 2\u20133 m. Flat tops are envelope bounds, not reconstructed roofs. No detailed architecture or furniture.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "west-street-hall",
+      "name": "west-street-hall \u2014 placeholder",
+      "collection": "west-street-hall"
+    },
+    {
+      "id": "albert-victoria-range",
+      "name": "albert-victoria-range \u2014 placeholder",
+      "collection": "albert-victoria-range"
+    },
+    {
+      "id": "byng-house",
+      "name": "byng-house \u2014 placeholder",
+      "collection": "byng-house"
+    },
+    {
+      "id": "cable-court-apartments",
+      "name": "cable-court-apartments \u2014 placeholder",
+      "collection": "cable-court-apartments"
+    },
+    {
+      "id": "cable-south-rear-range",
+      "name": "cable-south-rear-range \u2014 placeholder",
+      "collection": "cable-south-rear-range"
+    },
+    {
+      "id": "cable-north-rear-range",
+      "name": "cable-north-rear-range \u2014 placeholder",
+      "collection": "cable-north-rear-range"
+    }
+  ],
+  "views": [
+    {
+      "name": "West Street block plan",
+      "position": [
+        -260,
+        190,
+        -340
+      ],
+      "target": [
+        -95,
+        0,
+        -140
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "placeholder-volumes",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already minimal untextured footprint prisms; no decorative detail to reduce."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Untextured footprint prisms with fixed total budget of 12000 triangles, independent of future architecture detail."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -60,
+      2,
+      -168
+    ],
+    "target": [
+      -120,
+      2,
+      -153
+    ]
+  }
+}

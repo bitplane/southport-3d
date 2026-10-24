@@ -281,43 +281,55 @@
       "material": "asphalt",
       "polygon": [
         [
-          -19.475,
-          179.117
+          -55.0,
+          190.0
         ],
         [
-          -17.074,
-          190.794
-        ],
-        [
-          -24.854,
-          192.596
-        ],
-        [
-          -22.444,
-          199.042
-        ],
-        [
-          -39.022,
-          195.444
-        ],
-        [
-          -44.23,
-          219.431
+          -71.3,
+          198.0
         ],
         [
           -74.116,
           212.936
         ],
         [
-          -71.3,
-          198
+          -44.23,
+          219.431
         ],
         [
-          -55,
-          190
+          -39.022,
+          195.444
+        ],
+        [
+          -22.444,
+          199.042
+        ],
+        [
+          -24.854,
+          192.596
+        ],
+        [
+          -17.074,
+          190.794
+        ],
+        [
+          -19.475,
+          179.117
+        ],
+        [
+          -24.894401,
+          180.777221
+        ],
+        [
+          -25.347697,
+          182.605413
+        ],
+        [
+          -28.395399,
+          181.849743
         ]
       ],
-      "basis": "Google oblique shows open L-shaped apartment parking yard reached from the mapped private entrance; outer rear limits estimated."
+      "basis": "Google oblique shows open L-shaped apartment parking yard reached from the mapped private entrance; outer rear limits estimated. West Street continuation owns the road and pavement strip along the yard edge."
     },
     {
       "id": "west-lord-frontage-apron",

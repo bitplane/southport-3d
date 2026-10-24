@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "West Street quarter",
+  "status": "Provisional ground and private yards, 1\u20133 m plan uncertainty; dated markings, not a current regulation inventory. Existing boundary levels retained, interior grade estimated. No furniture or tree survey.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "section-00",
+      "name": "West Street section 1",
+      "collection": "section-00",
+      "ground": true
+    },
+    {
+      "id": "section-01",
+      "name": "West Street section 2",
+      "collection": "section-01",
+      "ground": true
+    },
+    {
+      "id": "section-02",
+      "name": "West Street section 3",
+      "collection": "section-02",
+      "ground": true
+    },
+    {
+      "id": "section-03",
+      "name": "West Street section 4",
+      "collection": "section-03",
+      "ground": true
+    }
+  ],
+  "views": [
+    {
+      "name": "West Street quarter",
+      "position": [
+        -260,
+        190,
+        -340
+      ],
+      "target": [
+        -95,
+        0,
+        -140
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Bounded planar ground; keep exact kerbs, road markings and shared seams while reducing authored map size."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed low-cost street envelope independent of future detailed buildings. Regional merged tiles are a separate later level."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -60,
+      2,
+      -168
+    ],
+    "target": [
+      -120,
+      2,
+      -153
+    ]
+  }
+}
