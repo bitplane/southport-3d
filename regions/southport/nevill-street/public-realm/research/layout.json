@@ -368,6 +368,44 @@
         ]
       ],
       "basis": "Observed lower corner approach; footprint clipping owns the final building edge."
+    },
+    {
+      "id": "Parkinson Books passage and provisional rear court",
+      "polygon": [
+        [
+          -33.593,
+          46.543551
+        ],
+        [
+          -24.803,
+          46.726999
+        ],
+        [
+          -24.463475,
+          71.876999
+        ],
+        [
+          -33.253475,
+          71.693551
+        ]
+      ],
+      "material": "asphalt",
+      "height_m": -0.73,
+      "basis": "Coffee King A002 January 2025 measured plan gives alley and rear access; footprint cutters exclude the building. Surface finish, levels and courtyard details deferred pending owner photographs.",
+      "ground_probes": [
+        [
+          -32.715,
+          48.5617
+        ],
+        [
+          -32.486,
+          65.5617
+        ],
+        [
+          -30.218,
+          70.6072
+        ]
+      ]
     }
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "phase": "detail",
+  "width": 7.24,
+  "x": -32.043,
+  "y": 46.5759,
+  "base_z": -0.73,
+  "shear_x": 0.0135,
+  "shear_y": 0.02087,
+  "front_height": 14.98,
+  "roof_front_z": 14.45,
+  "roof_ridge_z": 16.0,
+  "roof_ridge_y": 6.05,
+  "roof_rear_y": 13.5,
+  "roof_rear_z": 10.7,
+  "wing_end_y": 19.15,
+  "wing_height": 7.22,
+  "rear_end_y": 25.15,
+  "rear_height": 3.0,
+  "alley_width": 1.55,
+  "bays": [
+    1.435,
+    3.585,
+    5.75
+  ],
+  "columns": [
+    0.38,
+    2.52,
+    4.675,
+    6.86
+  ],
+  "basis": "A002/A003 survey drawings dated 2025, checked against April/May 2026 exterior photos and saved multi-angle Maps 3D. Rear finishes awaiting owner photographs."
+}

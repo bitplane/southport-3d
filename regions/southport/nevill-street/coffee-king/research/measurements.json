@@ -1,0 +1,72 @@
+{
+  "units": "metres",
+  "method": "A003 rendered to 4000 x 2830 px. A0 landscape length 3370 pt = 1188.86 mm at 1:50 yields 67.29 px/m. Checked against drawn 4.635 m ground datum (~312 px) and 1.34 m door width (~90 px).",
+  "front_crop_origin_px": [
+    310,
+    480
+  ],
+  "front_controls_crop_px": {
+    "left": 137,
+    "right": 624,
+    "pavement_y": 1098,
+    "parapet_top_y": 90,
+    "cornice_bottom_y": 227,
+    "first_window_bottom_y": 575,
+    "first_window_top_y": 441,
+    "second_window_bottom_y": 363,
+    "second_window_top_y": 228,
+    "fascia_bottom_y": 665,
+    "fascia_top_y": 623
+  },
+  "derived_front_m": {
+    "width": 7.24,
+    "height": 14.98,
+    "ground_arch_spring": 3.88,
+    "ground_arch_crown": 4.635,
+    "first_window": [
+      7.77,
+      9.77
+    ],
+    "second_window": [
+      10.93,
+      12.93
+    ],
+    "left_upper_strip": 0.61,
+    "left_lower_pier": 0.22
+  },
+  "section_crop_origin_px": [
+    1400,
+    120
+  ],
+  "section_controls_crop_px": {
+    "front_x": 91,
+    "ridge_x": 499,
+    "rear_eaves_x": 995,
+    "wing_end_x": 1375,
+    "ground_y": 1134,
+    "ridge_y": 67,
+    "front_roof_y": 171,
+    "rear_eaves_y": 424,
+    "wing_roof_y": 649
+  },
+  "plan_dimensions_m": {
+    "customer_width_internal": 6.3,
+    "total_depth_internal": 25.1,
+    "front_to_step_chain": [
+      9.085,
+      1.78,
+      6.765,
+      0.835,
+      6.72
+    ],
+    "alley_width_estimated_from_scale": 1.55
+  },
+  "uncertainty_m": {
+    "frontage": 0.12,
+    "front_elevation": 0.2,
+    "roof_profile": 0.35,
+    "site_registration": 0.5,
+    "rear_route": 0.6
+  },
+  "notes": "Drawing dimensions describe existing survey but field accuracy is not independently verified. Plan/site registration follows shared Occulo street frame; footprint exceptions recorded separately. A003 left upper strip x96..137 is 0.61 m beyond the colonnade; its 0.4 m return depth is provisional. Passage mouth is about 1.33 m beside the lower pier."
+}

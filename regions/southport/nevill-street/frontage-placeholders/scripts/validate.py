@@ -20,7 +20,7 @@ for block in D['blocks']:
  for x,y in block['footprint']:
   matches=[v for v in o.data.vertices if abs(v.co.x-x)<1e-4 and abs(v.co.y-y)<1e-4]
   assert len(matches)==2,(o.name,'footprint changed',x,y)
-  assert abs(min(v.co.z for v in matches)-grade(y))<1e-4,(o.name,'floating base')
+  assert abs(min(v.co.z for v in matches)-min(grade(y),block.get('foundation_z_max_m',grade(y))))<1e-4,(o.name,'floating base')
  o.data.calc_loop_triangles();triangles+=len(o.data.loop_triangles)
  for t in o.data.loop_triangles:
   a,b,c=(o.data.vertices[i].co for i in t.vertices);assert (b-a).cross(c-a).length>1e-9

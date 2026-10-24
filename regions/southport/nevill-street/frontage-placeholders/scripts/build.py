@@ -23,7 +23,7 @@ for block in D['blocks']:
  c=bpy.data.collections.new(block['id']);s.collection.children.link(c)
  p=block['footprint']
  if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(p,p[1:]+p[:1]))<0:p=list(reversed(p))
- n=len(p);base=[(x,y,grade(y)) for x,y in p];z=grade(sum(y for x,y in p)/n)+block['height_m']
+ n=len(p);base=[(x,y,min(grade(y),block.get('foundation_z_max_m',grade(y)))) for x,y in p];z=grade(sum(y for x,y in p)/n)+block['height_m']
  top=[(x,y,z) for x,y in p];m=Mesh('Massing '+block['id'])
  m.add(base+top,[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)])
  vectors=[Vector((x,y,0)) for x,y in p]

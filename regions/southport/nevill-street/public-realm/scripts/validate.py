@@ -84,3 +84,10 @@ for block in plan['blocks']:
   assert not hit,(block['id'],tuple(p),'ground intrudes into building footprint')
   excluded_samples+=1
 print('Open forecourts/yard covered; building footprint samples excluded:',excluded_samples)
+
+# Authored access routes may declare ground probes independently of their cutters.
+for region in D.get('block_ground_areas',[]):
+ for x,y in region.get('ground_probes',[]):
+  hit,position,*_=bpy.context.scene.ray_cast(deps,Vector((x,y,40)),Vector((0,0,-1)),distance=80)
+  assert hit,(region['id'],x,y,'access ground missing')
+  if 'height_m' in region:assert abs(position.z-region['height_m'])<.002,(region['id'],tuple(position),'access ground datum')

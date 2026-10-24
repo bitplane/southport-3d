@@ -3,8 +3,8 @@
 The former National Provincial Bank / Waterstones at the southwest corner of
 Nevill Street is a separate asset, `southport.nevill-street.occulo-lounge`.
 Its L-shaped footprint replaces the corner of the Nevill `west-lord-block`
-placeholder; the neighbouring Lord Street shop and Nevill terrace remain
-placeholders. This is the current Occulo exterior, not the former bookshop.
+placeholder; [Coffee King](COFFEE-KING.md) replaces the adjoining Lord Street
+shop, while the Nevill terrace remains provisional. This is the current Occulo exterior, not the former bookshop.
 
 The construction follows three Lord Street bays and four Nevill Street bays,
 with nine giant fluted Doric columns, rusticated ground-floor arcades,

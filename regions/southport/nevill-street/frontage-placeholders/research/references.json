@@ -24,6 +24,20 @@
       "id": "osm-seed",
       "url": "https://www.openstreetmap.org/copyright",
       "observed": "Selected attributed outlines retained for reproducible metric controls; names/occupancies are not accepted as current without photographic support."
+    },
+    {
+      "id": "coffee-king-survey-A002-A003",
+      "urls": [
+        "https://docs.planning.org.uk/20250811/30/SYQFYNNWGIO00/46xhx6rk1g83isvf.pdf",
+        "https://docs.planning.org.uk/20250811/30/SYQFYNNWGIO00/ws3hecdus0s76guc.pdf"
+      ],
+      "capture_date": "2025-01-31",
+      "observed": "Survey-scaled replacement envelope beside Occulo; open route to Parkinson Books and provisional rear court. See coffee-king/research/measurements.json for controls and estimates."
+    },
+    {
+      "id": "owner-alley-note",
+      "capture_date": "2026-10-24",
+      "observed": "Owner identifies Parkinson Books passage and tiny courtyard; detailed photographs pending. Ground material and levels remain provisional."
     }
   ],
   "private_captures": "../references/nevill-block/; imagery and browser profiles are not source assets or published textures",

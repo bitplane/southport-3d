@@ -1,0 +1,53 @@
+{
+  "front": {
+    "sources": [
+      "survey-elevation",
+      "opening",
+      "maps-photos",
+      "street-front",
+      "mapillary"
+    ],
+    "confidence": "high for visible composition; metric registration estimated"
+  },
+  "roof": {
+    "sources": [
+      "survey-elevation",
+      "google-3d"
+    ],
+    "confidence": "medium-high principal pitches and steps; no guessed chimneys"
+  },
+  "left_alley": {
+    "sources": [
+      "survey-plan",
+      "opening",
+      "owner"
+    ],
+    "confidence": "medium route, low finishes; front mouth visible, deeper elevations deferred"
+  },
+  "right_party": {
+    "sources": [
+      "google-3d"
+    ],
+    "confidence": "medium envelope, no invented hidden windows"
+  },
+  "rear_courtyard": {
+    "sources": [
+      "survey-plan",
+      "google-3d",
+      "owner"
+    ],
+    "confidence": "provisional envelope only; photographic pass deferred"
+  },
+  "searches": {
+    "wikimedia": "Searched for Monsoon/365 Lord Street; no additional useful individual facade photograph found.",
+    "maps": "Operator May 2026 gallery and July 2019 rendered panorama inspected; other nearby spheres returned no imagery.",
+    "mapillary": "2019 frontage image rendered.",
+    "fresh_3d": "GL/EGL browser returned no WebGL context; GL fallback used software. Existing saved same-block multi-angle captures inspected instead."
+  },
+  "comparison": {
+    "massing": "Front elevation and main roof/wing profiles compared against TCD A003 before detailed work. Shared frontage terminates at Occulo edge.",
+    "detail": "April 2026 photo compared with front/entrance renders; pedestal steps, arch spandrel bounds, door panels, crown tips and upper trims refined.",
+    "rear": "Stepped massing compared with existing survey and saved rotated photogrammetry; no hidden doors or facade subdivisions inferred.",
+    "courtyard": "Reserved provisional access space; photographic detail explicitly deferred."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.coffee-king",
+  "name": "Coffee King / The Old Bank, 365 Lord Street",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "survey-scaled-exterior-with-deferred-courtyard",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "granite-colonnade",
+    "arched-shopfront",
+    "sandstone-upper-facade",
+    "asymmetric-slate-roof",
+    "rear-massing"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "2026 exterior; 2025 survey drawings scaled and compared with photos. Rear courtyard details deferred."
+}

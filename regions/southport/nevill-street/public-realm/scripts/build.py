@@ -249,7 +249,8 @@ for x in [-25+i*.8 for i in range(12)]:
 # Block-plan surfaces observed in the aerial/3D review. Public realm owns these
 # open spaces, independently of replaceable building placeholders.
 for region in D.get('block_ground_areas',[]):
- surface(region['id'],region['polygon'],region['material'],8,level(region['material']=='asphalt'))
+ surface(region['id'],region['polygon'],region['material'],8,
+         (lambda x,y,z=region['height_m']:z) if 'height_m' in region else level(region['material']=='asphalt'))
 # Tie the approximate old footway envelope to the nearest verified frontage.
 # Only street-facing edges are eligible; rear/party edges do not gain paving.
 footprints=[b['footprint'] for b in BLOCK_PLAN['blocks']]

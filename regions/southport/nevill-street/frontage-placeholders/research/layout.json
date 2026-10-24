@@ -218,8 +218,16 @@
           46.288
         ],
         [
-          -24.803,
-          46.727
+          -33.593,
+          46.543551
+        ],
+        [
+          -33.253475,
+          71.693551
+        ],
+        [
+          -24.463475,
+          71.876999
         ],
         [
           -24.722,
@@ -246,7 +254,7 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Residual combined block after measured Occulo Lounge corner cut-out; shared bank boundary follows its sheared L-shaped plan. Remaining internal parcel divisions provisional.",
+      "footprint_confidence": "Residual terrace after Occulo and survey-scaled Coffee King plus its open alley/courtyard reservation. Remaining parcel splits provisional.",
       "replace_with": null,
       "original_combined_footprint": [
         [
@@ -302,7 +310,79 @@
           47.035
         ]
       ],
-      "replaced_corner_asset": "southport.nevill-street.occulo-lounge"
+      "replaced_corner_asset": "southport.nevill-street.occulo-lounge",
+      "before_coffee_king_footprint": [
+        [
+          -9.452,
+          90.309
+        ],
+        [
+          -21.403,
+          90.192
+        ],
+        [
+          -21.482,
+          78.613
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -24.803,
+          46.727
+        ],
+        [
+          -24.722,
+          52.727
+        ],
+        [
+          -20.222,
+          52.821
+        ],
+        [
+          -20.0762,
+          63.620915
+        ],
+        [
+          -9.8162,
+          63.835956
+        ]
+      ],
+      "foundation_z_max_m": -0.8,
+      "foundation_basis": "Extend below the provisional -0.73 m Parkinson Books passage datum; retain the independently estimated roof height."
     },
     {
       "id": "lord-block-infill",
@@ -747,6 +827,54 @@
       ],
       "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
       "replace_with": null
+    },
+    {
+      "id": "coffee-king",
+      "osm_way": null,
+      "footprint": [
+        [
+          -32.263,
+          46.571309
+        ],
+        [
+          -24.803,
+          46.726999
+        ],
+        [
+          -24.463475,
+          71.876999
+        ],
+        [
+          -28.003475,
+          71.803119
+        ],
+        [
+          -28.084475,
+          65.803119
+        ],
+        [
+          -31.784475,
+          65.7259
+        ],
+        [
+          -32.0376,
+          46.9759
+        ],
+        [
+          -32.2576,
+          46.971309
+        ]
+      ],
+      "height_m": 16,
+      "height_uncertainty_m": 0.35,
+      "status": "replaced-by-detailed-asset",
+      "evidence": [
+        "coffee-king-survey-A002-A003",
+        "google-3d-orbit",
+        "owner-alley-note"
+      ],
+      "footprint_confidence": "2025 survey scaled to shared Lord Street alignment; rear finishes deferred",
+      "replace_with": "southport.nevill-street.coffee-king"
     }
   ],
   "policy": "Google 3D multi-angle shape and aerial comparison govern interpretation. OSM is a seed, not authority. Flat tops are placeholder height bounds, not asserted flat roofs. Joined mapped ranges are not individual legal parcels.",

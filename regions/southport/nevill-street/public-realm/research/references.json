@@ -79,6 +79,20 @@
         "Bath Street arcade parking and northern outdoor forecourt remain open; mapped apartment service entrance connects to observed L-shaped yard.",
         "New ground surfaces have estimated outer boundaries and retain the existing estimated grade; all building footprints are excluded."
       ]
+    },
+    {
+      "id": "coffee-king-survey-A002-A003",
+      "urls": [
+        "https://docs.planning.org.uk/20250811/30/SYQFYNNWGIO00/46xhx6rk1g83isvf.pdf",
+        "https://docs.planning.org.uk/20250811/30/SYQFYNNWGIO00/ws3hecdus0s76guc.pdf"
+      ],
+      "capture_date": "2025-01-31",
+      "observed": "Survey-scaled replacement envelope beside Occulo; open route to Parkinson Books and provisional rear court. See coffee-king/research/measurements.json for controls and estimates."
+    },
+    {
+      "id": "owner-alley-note",
+      "capture_date": "2026-10-24",
+      "observed": "Owner identifies Parkinson Books passage and tiny courtyard; detailed photographs pending. Ground material and levels remain provisional."
     }
   ],
   "limitations": [

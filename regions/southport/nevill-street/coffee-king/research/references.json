@@ -1,0 +1,64 @@
+{
+  "sources": [
+    {
+      "id": "survey-plan",
+      "url": "https://docs.planning.org.uk/20250811/30/SYQFYNNWGIO00/46xhx6rk1g83isvf.pdf",
+      "capture_date": "2025-01-31",
+      "notes": "TCD A002 rev2, existing ground floor and lower roof plan; dimension chains and open alley route. Private reference only."
+    },
+    {
+      "id": "survey-elevation",
+      "url": "https://docs.planning.org.uk/20250811/30/SYQFYNNWGIO00/ws3hecdus0s76guc.pdf",
+      "capture_date": "2025-01-31",
+      "notes": "TCD A003 rev3, front elevation and longitudinal sections. Dimensions used to calibrate geometry; drawing kept private."
+    },
+    {
+      "id": "listing",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379648",
+      "capture_date": null,
+      "notes": "Identifies 1898 Robert Todd bank and red granite/sandstone materials; historic signage is superseded."
+    },
+    {
+      "id": "opening",
+      "url": "https://lbndaily.co.uk/free-drinks-for-first-50-customers-of-new-coffee-shop/",
+      "image_url": "https://lbndaily.co.uk/wp-content/uploads/2026/04/CoffeeKing-02.jpg",
+      "capture_date": "2026-04",
+      "author": "Andrew Brown / Stand Up For Southport",
+      "notes": "Full exterior photograph: stone, columns, windows, crown signs and closed gold security doors."
+    },
+    {
+      "id": "maps-photos",
+      "url": "https://www.google.com/maps/search/Coffee+King+Southport/",
+      "capture_date": "2026-05",
+      "notes": "Operator photo CIABIhCr9YLSBy5_GW1FyEHriPOM confirms current shopfront; open door is an alternative operating position."
+    },
+    {
+      "id": "street-front",
+      "url": "https://www.google.com/maps/@53.6486356,-3.0050044,3a,65y,302.43h,105t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDavam71wE!2e10",
+      "capture_date": "2019-07",
+      "author": "VR 360 TV",
+      "notes": "Rendered front oblique shows proportions with Occulo and Lakeland; Patisserie Valerie signage not modelled."
+    },
+    {
+      "id": "mapillary",
+      "url": "https://www.mapillary.com/app/?pKey=319861092876170",
+      "capture_date": "2019-10-09",
+      "author": "davidsong",
+      "notes": "Rendered street frontage preview and navigable image; ground arches and neighbouring alignment visible, top cropped."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6496693,-3.0058208,115a,35y,146.25h,39.54t/data=!3m1!1e3",
+      "capture_date": null,
+      "notes": "Saved rotated photogrammetry from adjacent Occulo research reviewed: 3d-north, 3d-rear-orbit and roof-plan. Main ridge runs across frontage, two unequal pitches, stepped rear wings. Fresh GL/EGL hardware session failed to create WebGL; saved captures retain roof evidence."
+    },
+    {
+      "id": "owner",
+      "url": null,
+      "capture_date": "2026-10-24",
+      "notes": "Owner identifies passage to Parkinson Books and tiny courtyard; detailed photographs promised later. Do not invent hidden courtyard details."
+    }
+  ],
+  "private_directory": "../references/coffee-king",
+  "represented_appearance": "2026 Coffee King, security doors closed as April exterior photograph; no interior."
+}

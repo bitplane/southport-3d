@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/coffee-king.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "2026 exterior; 2025 survey drawings scaled and compared with photos. Rear courtyard details deferred.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 1024
+    },
+    "district": {
+      "texture_size": 1024
+    }
+  },
+  "parts": [
+    {
+      "id": "facades",
+      "name": "facades",
+      "collection": "facades"
+    },
+    {
+      "id": "roof",
+      "name": "roof",
+      "collection": "roof"
+    },
+    {
+      "id": "frontage",
+      "name": "frontage",
+      "collection": "frontage"
+    }
+  ],
+  "views": [
+    {
+      "name": "Lord Street",
+      "position": [
+        -37,
+        12,
+        -22
+      ],
+      "target": [
+        -28,
+        7,
+        -47
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Small ashlar joints, modillions and slate joints become negligible at street distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Bake onto fixed envelope."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve arched glazing, Tuscan profiles, lettering and entrance at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replace with independent bounded envelope."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed frontage with four octagonal columns, closed doorway recess, asymmetric pitches and stepped rear massing.",
+    "max_bytes": 1500000,
+    "max_gpu_bytes": 13000000,
+    "parts": {
+      "facades": {
+        "atlas": [
+          512,
+          1024
+        ],
+        "max_triangles": 650,
+        "cage_m": 0.85,
+        "source_parts": [
+          "facades",
+          "frontage"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 100,
+        "cage_m": 0.6,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "frontage": {
+        "atlas": [
+          128,
+          256
+        ],
+        "max_triangles": 20,
+        "cage_m": 0.35,
+        "source_parts": [
+          "frontage"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      -28.4,
+      1,
+      42
+    ],
+    "target": [
+      -28.4,
+      3,
+      47
+    ]
+  }
+}
