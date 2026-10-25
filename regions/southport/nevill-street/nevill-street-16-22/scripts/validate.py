@@ -39,3 +39,20 @@ for name,p,direction,distance,wanted in [('gate',(-1,12.1,2.08),(1,0,0),2,True),
  assert hit==wanted,(name,'missing or obstructed',hit)
  if hit:assert normal.dot(ray)<-.5,(name,'inward facing surface',normal)
 print('Four independently located yard probes passed')
+
+# Measured geometry, not source constants: the glyphs must clear the real duct.
+sign=[o for o in meshes if o.name=='Architecture return lettering']
+duct=[o for o in meshes if o.name.startswith('Architecture return duct') and 'bracket' not in o.name]
+assert sign and duct
+zs=lambda obs:[(o.matrix_world@v.co).z-D['base_z'] for o in obs for v in o.data.vertices]
+a,b=zs(sign),zs(duct)
+assert min(a)-max(b)>.25,('duct/letter clearance',min(a),max(b))
+assert 3.60<min(a)<3.70 and max(a)<4.13,('fascia glyph bounds',min(a),max(a))
+assert 3.32<max(b)<3.37 and 2.98<min(b)<3.04,('duct vertical registration',min(b),max(b))
+print('Return glyph/duct clearance',min(a)-max(b),'metres')
+
+for u in (.8,2,4.4):
+ ray=(T.to_3x3()@Vector((1,0,0))).normalized()
+ hit,at,normal,face,ob,mat=s.ray_cast(deps,T@Vector((-2,D['depth']-u,3.18)),ray,distance=2)
+ assert hit and ob.name.startswith('Architecture return duct') and normal.dot(ray)<-.8,('duct winding',u,hit,ob.name if ob else None,tuple(normal))
+print('Three outward duct surface probes passed')

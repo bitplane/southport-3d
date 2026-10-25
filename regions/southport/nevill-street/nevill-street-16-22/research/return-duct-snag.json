@@ -1,0 +1,47 @@
+{
+  "snag": "7944a7458d1e4a278b40aecd4fa6451c",
+  "accessed": "2026-10-25",
+  "scope": "Treat Street Stanley return fascia and extraction run; selected public-realm asset is unrelated to the marked building fittings.",
+  "sources": [
+    {
+      "url": "https://www.google.com/maps/@53.649469,-3.0051379,3a,55y,147h,115t/data=!3m4!1e1!3m2!1sfcHhjQV3Li6qQnwA2VlsPw!2e0",
+      "capture": "July 2026",
+      "observations": "Actual loaded image: pale brick backing with two aligned tall barred windows, dark downpipe, louvres on left service side, low white-clad shed, brick projection against Nevill rear with boarded lower door, brick boundary and narrow screened gate."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6494036,-3.0052502,3a,70y,99h,104t/data=!3m4!1e1!3m2!1sjbyt35roNRtt1Gt0KkU8YA!2e0",
+      "capture": "July 2026",
+      "observations": "Oblique confirms tower blank upper party side, narrow gate against door2, boundary wall; access lane to left remains open."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6497519,-3.00505,53a,35y,180h,39.61t/data=!3m1!1e3",
+      "capture": "undated",
+      "observations": "Actual GPU photogrammetry at four headings0,270,180,90: narrow courtyard, shallow front/steep rear roof, lower rear projection and shed; existing main footprint remains consistent."
+    },
+    {
+      "url": "https://www.mapillary.com/app/?lat=53.6494&lng=-3.0052&z=19",
+      "observations": "Browser loaded street map, no image track or usable courtyard photograph appeared after loading. No Mapillary imagery used."
+    }
+  ],
+  "observations": [
+    "High fascia above duct, with clear separation; readable Treat Street wording retained. Small round logos are not transcribed or invented.",
+    "Duct wraps the rear corner, runs across the upper door/shop zone and bends back into the wall. Joint collars and short suspended supports visible.",
+    "Four actual Google3D headings and two loaded July2026 street panoramas establish corner/yard context; no change to roof or main footprint.",
+    "Clear oblique panorama shows wording occupies approximately60% of pink return fascia width, offset toward rear; unreadable small round logos occupy the remaining ends. Lettering width follows this ratio rather than stretching across entire strip."
+  ],
+  "estimated_metres": {
+    "fascia_bottom": 3.57,
+    "fascia_top": 4.13,
+    "lettering_centre": 3.86,
+    "lettering_height": 0.42,
+    "duct_axis": 3.18,
+    "duct_diameter": 0.32,
+    "duct_wall_projection": 0.55,
+    "elbow_centreline_radius": 0.35,
+    "wall_entry_u": 4.8,
+    "lettering_width": 4.5,
+    "lettering_centre_u": 6.05
+  },
+  "uncertainty": "Fascia height and pipe scale inferred against door and stone course; approximately0.15m height and0.3m horizontal uncertainty. Connections behind masonry/around yard corner are not visible; end caps are buried and no hidden equipment invented.",
+  "lod": "Detail and Walk retain letter meshes, duct bends, collars and brackets. District keeps unchanged independent118-triangle envelope and fixed atlases; appearance is projected onto existing return receiver, small pipe projection and bracket gaps omitted."
+}

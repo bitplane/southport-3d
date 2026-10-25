@@ -149,14 +149,20 @@ if DETAIL:
  def letters(body,u,z,w,h,colour=gold,frame=F,out=.165):
   ob=text_object('Fine tenant '+body,body,(0,0,0),(0,0,1),h,w,font,colour,extrude=.002,collection=C['frontage'],fit_bounds=True);M=frame@Matrix.Translation((u,z,out))@ob.matrix_world.copy();bpy.context.view_layer.objects.active=ob;ob.select_set(True);bpy.ops.object.convert(target='MESH');ob.select_set(False);ob.data.transform(M);ob.matrix_world=Matrix.Identity(4)
   if not ob.data.uv_layers:ob.data.uv_layers.new()
+  return ob
  for a,b,col,label in shops:letters(label,(a+b)/2,3.47,b-a-.25,.33,white if col==pink else gold)
- letters('Treat Street',(3+L-c)/2,3.48,L-c-3.3,.42,white,SIDE,.04)
+ # Applied fascia follows the observed high strip, clear of the extraction run.
+ box('Architecture return fascia pink',((3+L-c)/2,3.85,.045),(L-c-3,.56,.09),pink,frame=SIDE)
+ box('Architecture return fascia blank',(0.6,3.85,.045),(1.2,.56,.09),white,frame=SIDE)
+ box('Architecture return fascia dark',(2.1,3.85,.045),(1.8,.56,.09),black,frame=SIDE)
+ ob=letters('Treat Street',6.05,3.86,4.5,.42,white,SIDE,.10);ob.name='Architecture return lettering'
  # Stanley entrance, extraction duct and observed downpipes; no invented rear doors.
  panel('Architecture Stanley entrance',rect(.72,.05,2.03,2.75),.015,black,frame=SIDE)
  border('Architecture Stanley door casing',rect(.60,.02,2.15,2.88),rect(.72,.05,2.03,2.75),.04,stone,frame=SIDE)
  letters('2',1.38,2.35,.16,.18,white,SIDE,.04)
  for z in (.6,1.25,1.95):border('Fine door recessed panel',rect(.83,z,1.89,z+.48),rect(.89,z+.06,1.83,z+.42),.03,iron,frame=SIDE)
- m=Mesh('Architecture extraction duct');m.tube([(1.4,3.45,.55),(5.8,3.45,.55)],.16,sides=16);finish(m,material=steel,frame=SIDE)
+ from return_services import build as build_return_services
+ build_return_services((Mesh,finish,box,SIDE,steel,iron))
  for frame,u,height in [(SIDE,.13,12.7),(F,W-.06,12.3),(BACK,W-.15,10.5)]:
   m=Mesh('Fine rainwater pipe');m.tube([(u,.2,.19),(u,height,.19)],.045,sides=8);finish(m,'rear' if frame==BACK else 'frontage',iron,frame)
 
@@ -187,7 +193,7 @@ ownership=partition([o for group in C.values() for o in group.objects if o.type=
 for part in C:
  groups={}
  for ob in list(C[part].objects):
-  if ob.type=='MESH' and not ob.name.startswith(('Shell ','Glazing ')):groups.setdefault('Fine' if ob.name.startswith('Fine ') else 'Architecture',[]).append(ob)
+  if ob.type=='MESH' and not ob.name.startswith(('Shell ','Glazing ','Architecture return ')):groups.setdefault('Fine' if ob.name.startswith('Fine ') else 'Architecture',[]).append(ob)
  for kind,obs in groups.items():
   bpy.ops.object.select_all(action='DESELECT')
   for ob in obs:ob.select_set(True)

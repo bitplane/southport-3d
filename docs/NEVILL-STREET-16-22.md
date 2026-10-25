@@ -110,3 +110,37 @@ Its existing budget remains unchanged: 118 triangles, 224348 download bytes and
 Source overlap/winding checks and exported probes cover the new volume, gate,
 boundary and open lane. The broad exported check retains only the known
 approximately 1.12 mm² frontage numerical edge residual in Detail/Walk.
+
+## Treat Street return duct and fascia
+
+The separate October 2026 duct snag marks the building return, despite having
+selected the nearby public realm. The clear July 2026 oblique shows the name on
+a high applied fascia and a lower duct with bends at both ends, collars and short
+supports. The name occupies about 60% of the pink strip, rather than its entire
+width. Source links and uncertainty are recorded in research/return-duct-snag.json.
+Small round promotional images and unreadable logo lettering are omitted.
+
+The estimated fascia extends from 3.57 to 4.13 m, with the 0.42 m lettering
+centred at 3.86 m. The 0.32 m pipe is centred at 3.18 m, projects 0.55 m and turns
+around the rear corner and back into the shop wall. Hidden connections remain
+restrained estimates. Its planar bend frame avoids twisting at wall-normal legs.
+Detail and Walk retain the lettering, bent pipe, collars and brackets as
+independently inspectable meshes. District keeps the same fixed envelope and
+atlas dimensions; the small pipe projection becomes baked appearance.
+
+The saved master has 0.296 m vertical clearance between the actual glyph bounds
+and the pipe/collars. Source checks measure that gap, verify the sign stays below
+the stone course and probe outward-facing pipe surfaces. The existing all-mesh
+coplanar guard and courtyard probes still pass. The package check repeats the
+clearance and whole-asset overlap checks on the actual Detail and Walk GLBs.
+
+Final published totals are 20902 triangles, 2978824 download bytes and 6439491
+estimated GPU bytes for each of Detail and Walk; District remains 118 triangles,
+223292 download bytes and 6305525 estimated GPU bytes. The exported neighbour
+audit retains the same recorded numerical frontage sliver and old Willow roof
+contacts, with no new duct, courtyard or ground conflicts.
+Actual published Detail, Walk and District were compared from the original
+snag camera and an oblique with Willow, Embassy, placeholders and both Nevill
+and Stanley ground loaded. The bent run clears the fascia in each view; adjoining
+pavement and yard seams remain supported. Private captures are retained outside
+Git under /tmp/queued-duct-* and the disposable local review page.
