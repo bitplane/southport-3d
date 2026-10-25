@@ -1,7 +1,7 @@
 """Photo-led exterior relief; dimensions are visually calibrated estimates."""
 import math
 from southport3d.geometry import Mesh,face_matrix
-from components import arch_ring,ring
+from components import arch_ring,ring,pointed,clipped,tracery_solid
 
 
 def wing_detail(finish,box,tr,sign,a,b,inner,outer,stone,wood,glass,metal):
@@ -12,12 +12,25 @@ def wing_detail(finish,box,tr,sign,a,b,inner,outer,stone,wood,glass,metal):
             arch_ring(m,outer+dx,4.35,6.18,.29,.045,.09,.10,12)
         arch_ring(m,outer+dx,6.82,9.04-abs(dx)*.87,.29,.045,.09,.10,12)
     arch_ring(m,outer,8.63,9.47,.22,.045,.09,.10,12)
+    # Blind panels stop at the full dressed window surround. They must not
+    # cross its glazing or share exposed front faces with its arch mouldings.
+    outline=pointed(outer,4.17,6.75,1.215)
+    pieces=[]
+    for face in m.faces:
+        points=[m.vertices[i] for i in face]
+        if all(abs(p[2]-.10)<1e-7 for p in points):
+            polygon=[(p[0],p[1]) for p in points]
+            signed=sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(polygon,polygon[1:]+polygon[:1]))
+            if signed<0:polygon.reverse()
+            pieces.extend(clipped(polygon,[outline]))
+    m=Mesh('Trim wing blind tracery')
+    tracery_solid(m,pieces,back=.01,front=.10)
     finish(m,mats=[stone],transform=tr)
     # Recessed stone panels below the inner glazing are clearly visible.
     m=Mesh('Trim inner window apron')
     for dx in [-.5,.5]:
         m.box((inner+dx,3.12,.025),(.85,.65,.10))
-        for sx in [-.46,.46]:m.box((inner+dx+sx,3.12,.09),(.06,.76,.10))
+        for sx in [-.46,.46]:m.box((inner+dx+sx,3.03,.09),(.06,.58,.10))
     m.box((inner,2.73,.07),(2.30,.13,.22));finish(m,mats=[stone],transform=tr)
     # Quatrefoil spandrels above the paired side doors.
     m=Mesh('Ornament side door spandrels')

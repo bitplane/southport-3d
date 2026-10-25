@@ -153,3 +153,25 @@ connector=bpy.data.objects['Envelope cafe connector']
 for x in (-89.50,-84.45):
  assert connector.ray_cast(Vector((x,-28,1.5)),Vector((0,-1,0)),distance=3)[0],('Open connector jamb seam',x)
 print('Porch backing joins both adjacent walls without light slots')
+
+# Changed wing prototypes: glazing stays inside an actual masonry aperture;
+# the door centre stile must reach its pointed head rather than float below it.
+from coplanar import check_blender
+wings=[o for o in objects if o.name.startswith('Window Gothic wing')]
+doors=[o for o in objects if o.name.startswith('Door wing pointed')]
+assert len(wings)==4 and len(doors)==2
+# One complete wing prototype includes component interfaces; the opposite wing
+# instances the same window family and mirrors the door/wall construction.
+check_blender([bpy.data.objects[n] for n in (
+    'Envelope Gothic wing','Window Gothic wing inner','Window Gothic wing outer',
+    'Door wing pointed','Trim wing blind tracery')])
+for ob in [o for o in objects if o.name.startswith('Envelope Gothic wing')]:
+    check_blender([ob])
+    sign=1 if sum(v.co.x for v in ob.data.vertices)>0 else -1
+    for u,h in [(sign*7.65,1.6),(sign*7.65,5.5),(sign*4.25,4.5)]:
+        assert not ob.ray_cast(Vector((u,h,2)),Vector((0,0,-1)),distance=3)[0],('Filled wing opening',ob.name,u,h)
+for ob in doors:
+    centre=(min(v.co.x for v in ob.data.vertices)+max(v.co.x for v in ob.data.vertices))/2
+    hit,p,n,i=ob.ray_cast(Vector((centre,2.75,1)),Vector((0,0,-1)),distance=2)
+    assert hit and ob.data.polygons[i].material_index==1,'Door stile stops short of pointed head'
+print('Four wing window and two doorway prototypes: coplanar ownership and open masonry verified')

@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
 from cafe import build_cafe
-from components import rect,pointed,wall,gothic_window,leadwork,arch_ring,roundel,roof,ring,clipped
+from components import rect,pointed,wall,gothic_window,wing_window,wing_leadwork,wing_door,wing_wall,leadwork,arch_ring,roundel,roof,ring,clipped
 D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
@@ -145,21 +145,12 @@ for sign in [-1,1]:
     a=tw/2;b=9.57;inner_c=sign*4.25;outer_c=sign*7.65
     poly=[(sign*a,0),(sign*b,0),(sign*b,8.4),(sign*7.65,10.35),(sign*5.85,8.5),(sign*a,9.9)]
     if sign<0:poly.reverse()
-    holes=[pointed(inner_c,3.5,6.15,1.0),pointed(outer_c,4.35,6.75,1.02),pointed(outer_c,0,1.85,.68)]
-    finish(wall('Envelope Gothic wing',poly,holes),transform=tr)
+    holes=[pointed(inner_c,3.32,6.15,1.10),pointed(outer_c,4.17,6.75,1.10),pointed(outer_c,0,1.85,.81)]
+    finish(wing_wall('Envelope Gothic wing',poly,holes),transform=tr)
     for xc,bottom,spring in [(inner_c,3.5,6.15),(outer_c,4.35,6.75)]:
-        instance('wing-'+str(bottom),lambda b=bottom,sp=spring:gothic_window('Window Gothic wing '+('inner' if b==3.5 else 'outer'),2.0,b,sp),tr@Matrix.Translation((xc,0,0)),[trim,glass,wood])
-        instance('wing-lead-'+str(bottom),lambda b=bottom,sp=spring:leadwork('Fine wing diamond lead',2,b,sp),tr@Matrix.Translation((xc,0,0)),[lead])
-    m=Mesh('Door wing pointed');m.outline(pointed(outer_c,0,1.85,.68),-.32,-.28,2);arch_ring(m,outer_c,0,1.85,.68,.16,.18,.12)
-    m.box((outer_c,.36,-.23),(1.32,.72,.10),1)
-    for dx in [-.61,0,.61]:m.box((outer_c+dx,1.2,-.21),(.075,2.4,.10),1)
-    m.box((outer_c,.76,-.21),(1.28,.075,.10),1)
-    for dx in [-.31,.31]:
-        m.box((outer_c+dx,.36,-.17),(.42,.44,.035),1)
-    arch_ring(m,outer_c,.75,1.85,.59,.06,.10,-.18,16,1)
-    # Rectangular square hood and small carved spandrels above each side doorway.
-    for x in [outer_c-.96,outer_c+.96]:m.box((x,1.56,.09),(.12,3.12,.22))
-    m.box((outer_c,3.15,.09),(2.04,.16,.22));finish(m,mats=[trim,doorwood,glass],transform=tr)
+        instance('wing-'+str(bottom),lambda b=bottom,sp=spring:wing_window('Window Gothic wing '+('inner' if b==3.5 else 'outer'),2.0,b,sp),tr@Matrix.Translation((xc,0,0)),[trim,glass,wood])
+        instance('wing-lead-'+str(bottom),lambda b=bottom,sp=spring:wing_leadwork('Fine wing diamond lead',2,b,sp),tr@Matrix.Translation((xc,0,0)),[lead])
+    finish(wing_door('Door wing pointed',outer_c),mats=[trim,doorwood,glass],transform=tr)
     for x in [sign*5.8,sign*9.57]:
         m=Mesh('Buttress wing')
         for h0,h1,w,d in [(0,.55,.90,.70),(.55,3.2,.62,.50),(3.2,7.9,.44,.34),(7.9,10.0,.38,.30)]:

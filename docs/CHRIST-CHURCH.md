@@ -127,6 +127,34 @@ aerial establish the affected junction; August 2024 Street View was rechecked
 for the cafe-side context. Ray checks sample the sloping closure and above-roof
 clearance, and the adjoining wall skins receive a coplanar-overlap check.
 
+## Wing doors and tracery
+
+The four wing windows use paired elongated upper lights with cusped lower
+heads, distinct from the tower's roundel pattern. Their glazing is recessed;
+Detail carries continuous diamond leading, while Walk preserves the same
+stone pattern with fewer curve samples and omits the fine lead. Both pointed
+side doors have a centre stile reaching the head, lower panels, a rail at
+approximately one third of the opening height, and joined arched timber frames.
+These proportions come from the private supplied close photographs, with
+measurements and coverage limits in
+[the wing evidence record](../regions/southport/lord-street/christ-church/research/wing-joinery-review.md).
+Carved cusp profiles, joinery depth and glass appearance remain approximations.
+
+Tracery and timber branches are unioned before extrusion. The concave wing
+gables are triangulated before aperture clipping; continuous masonry skins and
+opening reveals replace the internal caps of individually extruded fragments.
+The validator checks a complete wing prototype, including its two windows,
+door, blind tracery and wall interfaces, plus both wing walls for coplanar
+overlaps. It casts through the masonry apertures and checks that the
+door stile reaches its pointed head. This is scoped protection of the affected
+features, not a claim that every old tower ornament is overlap-free.
+
+Actual Detail and Walk exports were compared with the close photos from private
+snag 87c1696b1a404712a447b59ec406298a. Oblique views of both wings confirmed the
+elongated tracery, connected leading, full-height door stile and lower panels.
+The repaired masonry no longer shows diagonal fragment-cap lines beneath the
+windows. Roof, footprint, tower-window family and ground are unchanged.
+
 ## Fixed-budget District envelope
 
 The independent District mesh retains the tower and open battlements, inset main
@@ -138,8 +166,23 @@ tracery, small ironwork and mouldings do not add receiver topology. Atlas sizes
 are 512×256 historic frontage, 512×256 modern hall and 256×256 roofs. Existing
 research estimates remain; visual acceptance belongs to the owner for this pass.
 
-Checked District export: **1,490 triangles, 638,396 bytes including textures and
-5,421,465 bytes estimated GPU memory**, down from 52,778 triangles, 4,725,600
-bytes and 6,969,764 GPU bytes. Sampled rays had no misses; actual bake coverage,
+Current checked District export: **1,518 triangles, 638,008 bytes including
+textures and 5,424,324 bytes estimated GPU memory**. Its fixed receiver topology
+and atlas sizes do not grow with the new wing tracery. Sampled rays had no misses; actual bake coverage,
 normals and export budgets pass. Receiver overlap candidates are limited to
 13 float32 edge slivers below 0.00001 m²; visual acceptance remains with the owner.
+
+
+The final uniform exported audit checks all three church representations. It
+finds no coplanar overlap involving the revised wing windows, doors or blind
+tracery, including their wall interfaces. The only wing-wall findings retained
+are the two pre-existing downward-facing tower-buttress foundation contacts at
+site elevation 0.58 m (approximately 0.0374 m² per side), buried at ground level.
+Other older church components remain outside this snag's cleanup scope; the
+full generated report is in `build/christ-wing-audit/`, not source control.
+The assembled town was inspected at the saved snag camera with the new Detail
+tile loaded, zero failed loads and the streamer settled. Moving outward loaded
+Walk at about 66 m and District at about 239 m; both retained the church in its
+block, and the distant view settled with no failed loads. Fine carving, glazing
+colour/patterns beyond the observed diamond leading, and metric dimensions
+remain interpreted rather than surveyed.

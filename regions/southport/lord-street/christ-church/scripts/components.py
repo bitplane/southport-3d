@@ -71,6 +71,145 @@ def gothic_window(name,width=1.8,bottom=0,spring=2.5,kind='glass',steps=16):
     return m
 
 
+def tracery_solid(mesh,polygons,back=-.15,front=.025,material=0,disjoint=False):
+    """Union planar moulding strokes before extruding their exposed boundary.
+
+    No internal fragment caps or coincident stroke faces at branching points.
+    """
+    from collections import Counter
+    from southport3d.planar import area
+    import southport3d.conform as conform_module
+    def clean(poly):
+        result=[]
+        for p in poly:
+            if not result or math.dist(p,result[-1])>1e-9:result.append(p)
+        if len(result)>1 and math.dist(result[0],result[-1])<1e-9:result.pop()
+        return result
+    pieces=[]
+    for polygon in polygons:
+        pending=[polygon]
+        for existing in ([] if disjoint else pieces):
+            pending=[clean(p) for candidate in pending for p in subtract(candidate,existing) if area(p)>1e-8]
+            if not pending:break
+        pieces.extend(pending)
+    skin=Mesh('tracery skin')
+    for p in pieces:skin.add([(*v,0) for v in p],[tuple(range(len(p)))])
+    old_grid,old_tol=conform_module.GRID,conform_module.TOLERANCE
+    try:
+        conform_module.GRID=1e-6;conform_module.TOLERANCE=2e-6
+        skin=conform_module.conform({'skin':skin})[0]['skin']
+    finally:
+        conform_module.GRID=old_grid;conform_module.TOLERANCE=old_tol
+    counts=Counter();directed={}
+    for face in skin.faces:
+        points=[skin.vertices[i] for i in face]
+        for a,b in zip(points,points[1:]+points[:1]):
+            key=tuple(sorted((a,b)));counts[key]+=1;directed[key]=(a,b)
+        mesh.add([(x,y,front) for x,y,z in points],[tuple(range(len(points)))],material)
+        mesh.add([(x,y,back) for x,y,z in points],[tuple(reversed(range(len(points))))],material)
+    for edge,count in counts.items():
+        if count!=1:continue
+        a,b=directed[edge]
+        mesh.add([(a[0],a[1],back),(b[0],b[1],back),(b[0],b[1],front),(a[0],a[1],front)],[(0,1,2,3)],material)
+
+
+def wing_wall(name,polygon,holes):
+    """Continuous wall skins and true reveal boundaries, without fragment caps."""
+    m=Mesh(name)
+    from mathutils import Vector
+    from mathutils.geometry import tessellate_polygon
+    triangles=tessellate_polygon([[Vector((x,y,0)) for x,y in polygon]])
+    pieces=[p for triangle in triangles for p in clipped([polygon[v] if isinstance(v,int) else (v.x,v.y) for v in triangle],holes)]
+    tracery_solid(m,pieces,back=-.42,front=0,disjoint=True)
+    return m
+
+
+def wing_door(name,x):
+    m=Mesh(name)
+    m.outline(pointed(x,0,1.85,.68),-.34,-.30,2)
+    arch_ring(m,x,0,1.85,.68,.13,.40,.10)
+    inner=pointed(x,0,1.85,.60,24);outer=pointed(x,0,1.85,.675,24)
+    timber=[rect(x-.675,0,x-.60,1.85),rect(x+.60,0,x+.675,1.85)]
+    timber += [[inner[i],outer[i],outer[i+1],inner[i+1]] for i in range(2,len(inner)-1)]
+    timber += [rect(x-.0525,0,x+.0525,1.85+math.sqrt(3)*.60)]
+    for side in [-1,1]:
+        c=x+side*.326
+        # Lower panels terminate at 1 m rail (~33% of doorway height).
+        m.box((c,.50,-.2825),(.547,.87,.025),1)
+        for h in [.065,.97]:timber.append(rect(c-.2735,h-.065,c+.2735,h+.065))
+        for dx in [-.235,.235]:timber.append(rect(c+dx-.03,.13,c+dx+.03,.905))
+    # All timber faces are a single union; curved head and centre stile join.
+    tracery_solid(m,timber,back=-.27,front=-.16,material=1)
+    for side in [-1,1]:m.box((x+side*.96,1.535,.085),(.12,3.07,.17))
+    m.box((x,3.15,.085),(2.04,.16,.17))
+    return m
+
+
+def wing_window(name,width=2,bottom=0,spring=2.5,steps=16):
+    """Paired elongated upper lights, traced from supplied close front photos.
+
+    Unlike the tower, these wings have no circular roundel. The two long
+    upper lights branch from the cusped heads of the lower pair.
+    """
+    m=Mesh(name);r=width/2
+    m.outline(pointed(0,bottom,spring,r,steps),-.28,-.24,1)
+    for radius,w,depth,out in [(r,.10,.38,.10),(r+.135,.075,.12,.17)]:
+        arch_ring(m,0,bottom,spring,radius,w,depth,out,steps)
+    m.box((0,bottom-.09,.03),(width+.42,.18,.30))
+    # Mullion joins the central branching point, with no floating end.
+    branch=spring+.12
+    strokes=[rect(-.0525,bottom,.0525,branch)]
+    # Cubic segments give the characteristic trefoil shoulders of each light.
+    def curve(points,radius=.044):
+        out=[]
+        for a,b,c,d in zip(points[0::3],points[1::3],points[2::3],points[3::3]):
+            for j in range(steps):
+                t=j/steps;u=1-t
+                out.append((r*(u*u*u*a[0]+3*u*u*t*b[0]+3*u*t*t*c[0]+t*t*t*d[0]),
+                            spring+r*(u*u*u*a[1]+3*u*u*t*b[1]+3*u*t*t*c[1]+t*t*t*d[1]),-.055))
+        out.append((r*points[-1][0],spring+r*points[-1][1],-.055))
+        for a,b in zip(out,out[1:]):
+            dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
+            nx,ny=-dy/length*radius,dx/length*radius
+            strokes.append([(a[0]-nx,a[1]-ny),(b[0]-nx,b[1]-ny),(b[0]+nx,b[1]+ny),(a[0]+nx,a[1]+ny)])
+        # Rounded joints are part of the union, not overlaid disks.
+        for x,y,z in out:
+            strokes.append([(x+radius*math.cos(j*math.tau/8),y+radius*math.sin(j*math.tau/8)) for j in range(8)])
+    for sign in [-1,1]:
+        def trace(points,rad=.044):curve([(sign*x,y) for x,y in points],rad)
+        trace([(0,.12),(.04,.39),(.19,.49),(.29,.48),(.18,.61),(.30,.79),(.46,.67),(.56,.82),(.76,.59),(.64,.48),(.81,.49),(.93,.31),(.94,.02)])
+        # Elongated top lights share the narrow centre stem at the apex.
+        trace([(.13,.79),(.05,1.00),(.12,1.36),(.17,1.52),(.28,1.45),(.46,1.25),(.48,1.10),(.52,.92),(.40,.79),(.29,.82),(.22,.75),(.17,.75),(.13,.79)],.038)
+        # Upper cusp and short central stem connect to the main head.
+    curve([(0,.12),(0,.52),(0,1.12),(0,1.66)],.043)
+    tracery_solid(m,strokes)
+    return m
+
+
+def wing_leadwork(name,width,bottom,spring):
+    """Continuous diagonal strips clipped inside each lower glazed light."""
+    m=Mesh(name);r=width/2
+    # Glazing owns the back; 8 mm lead sits on its front. Crossing strips have
+    # distinct back/front depths, reflecting lapped lead without coplanar faces.
+    for sign in [-1,1]:
+        x0,x1=sorted((sign*.065,sign*(r-.055)))
+        y0,y1=bottom+.035,spring+.06
+        for slope in [-1.45,1.45]:
+            for k in range(-35,36):
+                intercept=bottom+k*.33
+                candidates=[]
+                for x in [x0,x1]:
+                    y=slope*x+intercept
+                    if y0<=y<=y1:candidates.append((x,y))
+                for y in [y0,y1]:
+                    x=(y-intercept)/slope
+                    if x0<x<x1:candidates.append((x,y))
+                if len(candidates)==2:
+                    z=-.224 if slope<0 else -.215
+                    m.tube([(*p,z) for p in candidates],.006,sides=4)
+    return m
+
+
 def leadwork(name,width,bottom,spring,steps=16):
     """Fine diamond leading; separate detail-only mesh over recessed glazing."""
     m=Mesh(name);outline=pointed(0,bottom,spring,width/2,steps)
@@ -114,6 +253,8 @@ def build_lod(name,settings,asset_directory):
     """Regenerate known Gothic curves; preserve jambs, depth and pierced tracery."""
     if settings['kind']=='roundel':
         mesh=roundel(name,segments=24 if settings['level']=='walk' else 12)
+    elif settings.get('window_kind')=='wing':
+        mesh=wing_window(name,settings['width'],settings['bottom'],settings['spring'],steps=8)
     else:
         mesh=gothic_window(name,settings['width'],settings['bottom'],settings['spring'],settings.get('window_kind','glass'),steps=8 if settings['level']=='walk' else 4)
     return mesh.finish([])

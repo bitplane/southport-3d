@@ -235,7 +235,7 @@
           "width": 2.0,
           "bottom": 3.5,
           "spring": 6.15,
-          "window_kind": "glass",
+          "window_kind": "wing",
           "level": "walk"
         },
         "uv": "smart",
@@ -258,7 +258,7 @@
           "width": 2.0,
           "bottom": 4.35,
           "spring": 6.75,
-          "window_kind": "glass",
+          "window_kind": "wing",
           "level": "walk"
         },
         "uv": "smart",
