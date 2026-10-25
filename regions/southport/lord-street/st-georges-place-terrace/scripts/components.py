@@ -160,7 +160,7 @@ def street_wall_lod(name,settings,asset_directory):
 
 
 def fascia_receiver(name,settings,asset_directory):
-    m=Mesh(name);w=settings['width'];m.add([(0,3.215,.168),(w,3.215,.168),(w,3.645,.168),(0,3.645,.168)],[(0,1,2,3)])
+    m=Mesh(name);w=settings['width'];m.add([(0,3.215,.128),(w,3.215,.128),(w,3.645,.128),(0,3.645,.128)],[(0,1,2,3)])
     return m.finish([])
 
 

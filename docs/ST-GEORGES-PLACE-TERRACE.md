@@ -37,3 +37,14 @@ retain the same 12 triangles and silhouette per face; the coarse whole-building
 District envelope remains independent. Validate the actual exported Walk view
 as well as its flat atlas: increasing texture resolution cannot correct a
 misdirected projection ray.
+
+The pale fascia face clears the projecting bay timbers by 60 mm in the authored
+frame, with lettering in front and the black edge rails retained. Visibility
+rays cross the former interference band across all three sign fields. HW's
+magenta window panel and Brighouses glazing lettering belong to their individual
+bay-face bake sources. Those two faces have unique prototypes, so their signs
+cannot be copied onto the other bays or disappear behind the Walk receivers.
+The publisher ray-samples the actual Detail, Walk and District GLBs and their
+base-colour textures: the magenta panel must remain visible in its own bay and
+absent from the other five. District preserves the colour patch; it does not
+promise readable small lettering at that atlas resolution.

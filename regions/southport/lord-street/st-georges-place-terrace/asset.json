@@ -33,5 +33,8 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Exterior of St Georges Mansions adjoining Sainsburys,including three mapped rear wings; interiors and separate rear buildings excluded."
+  "scope": "Exterior of St Georges Mansions adjoining Sainsburys,including three mapped rear wings; interiors and separate rear buildings excluded.",
+  "publication_checks": [
+    "validate.py"
+  ]
 }

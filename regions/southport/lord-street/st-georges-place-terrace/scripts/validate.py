@@ -1,3 +1,68 @@
+"""Source geometry checks and exported sign-visibility regression."""
+import sys
+
+def check_exported_sign():
+    # Publication calls this pure-Python path; ordinary validation runs in Blender.
+    import argparse,io,json,math,sys
+    from pathlib import Path
+    import numpy as np
+    from PIL import Image
+    REPO=next(p for p in Path(__file__).resolve().parents if (p/'tools/check_lods.py').is_file())
+    sys.path.insert(0,str(REPO/'tools'))
+    from check_lods import read_glb,array,matrix
+    p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);p.add_argument('--recipe',type=Path,required=True);a=p.parse_args()
+    d=json.loads((a.recipe.parent/'research/layout.json').read_text())
+    angle=math.radians(d['local_rotation_degrees']);ox,oy=d['origin_site_xy'];nx,ny=d['north_basis']
+    def world(x,y,z):return np.array([ox+math.cos(angle)*x+nx*y,d['base_z']+z,-oy-math.sin(angle)*x-ny*y])
+    direction=world(0,-1,0)-world(0,0,0);direction/=np.linalg.norm(direction)
+    manifest=json.loads((a.package/'manifest.json').read_text());results={}
+    for level in ['detail','walk','district']:
+     row=next(r for r in manifest['files'] if r['level']==level and r['part']=='frontage')
+     doc,binary=read_glb(a.package/row['path']);pieces=[];images={}
+     def visit(i,parent):
+      node=doc['nodes'][i];transform=parent@matrix(node)
+      if 'mesh'in node:
+       for prim in doc['meshes'][node['mesh']]['primitives']:
+        pos=array(doc,binary,prim['attributes']['POSITION']);pos=pos@transform[:3,:3].T+transform[:3,3]
+        indices=array(doc,binary,prim['indices']).ravel().reshape(-1,3)
+        uv=array(doc,binary,prim['attributes']['TEXCOORD_0']) if 'TEXCOORD_0'in prim['attributes'] else np.zeros((len(pos),2))
+        pieces.append((pos[indices],uv[indices],prim['material']))
+      for child in node.get('children',[]):visit(child,transform)
+     for i in doc['scenes'][doc.get('scene',0)]['nodes']:visit(i,np.eye(4))
+     def sample(origin):
+      best=None
+      for t,uv,mi in pieces:
+       e1=t[:,1]-t[:,0];e2=t[:,2]-t[:,0];h=np.cross(np.broadcast_to(direction,e2.shape),e2);det=np.einsum('ij,ij->i',e1,h)
+       with np.errstate(divide='ignore',invalid='ignore'):
+        delta=origin-t[:,0];u=np.einsum('ij,ij->i',delta,h)/det;q=np.cross(delta,e1);v=q@direction/det;distance=np.einsum('ij,ij->i',e2,q)/det
+       with np.errstate(invalid='ignore'):valid=(abs(det)>1e-10)&(u>=-1e-7)&(v>=-1e-7)&(u+v<=1+1e-7)&(distance>0)
+       if not valid.any():continue
+       k=np.argmin(np.where(valid,distance,np.inf))
+       if best is None or distance[k]<best[0]:best=(distance[k],uv[k,0]*(1-u[k]-v[k])+uv[k,1]*u[k]+uv[k,2]*v[k],mi)
+      assert best is not None,(level,'panel ray missed facade')
+      _,uv,mi=best;mat=doc['materials'][mi]['pbrMetallicRoughness'];colour=np.array(mat.get('baseColorFactor',[1,1,1,1]))[:3]
+      if 'baseColorTexture'in mat:
+       texture=mat['baseColorTexture'];assert not texture.get('extensions'),'Handle texture transform before sampling'
+       image=doc['textures'][texture['index']]['source']
+       if image not in images:
+        view=doc['bufferViews'][doc['images'][image]['bufferView']];start=view.get('byteOffset',0)
+        images[image]=np.asarray(Image.open(io.BytesIO(binary[start:start+view['byteLength']])).convert('RGB'))/255
+       im=images[image];x=int((uv[0]%1)*im.shape[1]);y=int((uv[1]%1)*im.shape[0]);colour=colour*im[y,x]
+      return colour
+     fractions=[]
+     for x in d['bay_centres']:
+      colours=[sample(world(x+dx,4,z)) for dx in np.linspace(-.85,.85,9) for z in [.65,.72,.79]]
+      pink=[r>g*1.7 and b>g*1.35 and r>.15 for r,g,b in colours]
+      fractions.append(sum(pink)/len(pink))
+     assert fractions[4]>.3,(level,'HW panel disappeared',fractions)
+     assert all(v<.10 for i,v in enumerate(fractions) if i!=4),(level,'Sign cloned into another bay',fractions)
+     results[level]=fractions
+    print('Exported HW magenta panel coverage by bay:',results)
+
+if '--package' in sys.argv:
+    check_exported_sign()
+    raise SystemExit(0)
+
 import json,math
 from pathlib import Path
 import bpy,bmesh
@@ -204,3 +269,22 @@ for x in (6.15,18.775,31.4):
  hit,p,n,i,target,mat=bpy.context.scene.ray_cast(dep,registered_point(x,2,2.91),-outward,distance=4)
  assert hit and target.name.startswith('Door recessed timber'),('Open arched door head',x,target.name if hit else None)
 print('All three arched door heads are closed')
+
+# Fascia background must cover projecting bay timbers throughout its sign field.
+# Probe along the former black bar height, above lettering, in each assembly.
+fascia_rays=0
+for ob in meshes:
+ if not ob.name.startswith('Assembly street fascia '):continue
+ for u in [i*.2 for i in range(1,62)]:
+  origin=ob.matrix_world@Vector((u,3.56,.5))
+  direction=(ob.matrix_world.to_3x3()@Vector((0,0,-1))).normalized()
+  hit,p,n,index,target,_=bpy.context.scene.ray_cast(dep,origin,direction,distance=.8)
+  assert hit and target==ob,(ob.name,u,'Fascia obscured',target.name if target else None)
+  # Lettering belongs to this assembly too; the obstruction was a separate bay.
+  fascia_rays+=1
+# The unique magenta panel must be part of exactly one bay bake, not a separate
+# sign behind the coarse window plane, and must never clone onto the other bays.
+magenta=[o for o in meshes if any(m and m.name=='HW magenta board' for m in o.data.materials)]
+assert len(magenta)==1 and magenta[0].name.startswith('Assembly bay front storey 0'),[o.name for o in magenta]
+assert sum(1 for o in meshes if o.data==magenta[0].data)==1,'Sign cloned across bay prototypes'
+print('Clear fascia rays and unique signed bay bake source',fascia_rays)

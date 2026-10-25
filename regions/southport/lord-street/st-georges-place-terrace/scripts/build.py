@@ -193,7 +193,15 @@ def bay(x,index):
    instance('spandrel-'+str(storey)+'-'+typ,lambda:wall('Bay ivory transom spandrel',rect(.04,top+.02,length-.04,h-.13),cutouts,thickness=.07),frame,mats=[white],authored_winding=True)
    # Thin white inner sill around the lower glass.
    box('Window bay inner sill',(length/2,apron+.03,-.02),(length-.10,.075,.13),material=white,frame=frame)
-   assemble('Assembly bay '+typ+' storey '+str(storey),set(C['frontage'].objects)-before,frame,'frontage',('bay',storey,typ))
+   # Window signage belongs to this face's bake source. A separate panel is
+   # otherwise hidden behind the Walk replacement box's outer frame envelope.
+   if storey==0 and seg==1 and index==4:
+    box('Sign HW magenta field',(x,1.115,.85),(2.2,.06,.52),material=pink)
+    label('Lettering HW board','HW COMMERCIAL',(x,1.16,.85),(0,1,0),.21,2.05,white)
+   if storey==0 and seg==1 and index==3:
+    label('Lettering Brighouses glazing','BRIGHOUSES\nSOLICITORS',(x,1.16,1.6),(0,1,0),.43,1.9,gold)
+   signage=index if storey==0 and seg==1 and index in (3,4) else None
+   assemble('Assembly bay '+typ+' storey '+str(storey),set(C['frontage'].objects)-before,frame,'frontage',('bay',storey,typ,signage))
  # Four higher oriels continue into half-timbered attic; outer two stop below attic.
  tall=index not in (0,5);top=13.55 if tall else 11.15
  if tall:
@@ -261,22 +269,19 @@ for i,x in enumerate(FLATS):
 # Continuous carved fascia zone in black and ivory.
 fascia_before=set(C['frontage'].objects)
 for a,b in ((0,12.5),(12.5,25),(25,W)):
- box('Sign ivory fascia',((a+b)/2,1.14,3.43),(b-a,.20,.43),material=white)
+ box('Sign ivory fascia',((a+b)/2,1.20,3.43),(b-a,.20,.43),material=white)
 for z in (3.18,3.69):box('Sign black fascia rail',(W/2,1.18,z),(W+.15,.31,.11),material=black)
 for i in range(90):box('Ornament fascia dentil',(.15+i*(W-.3)/89,1.22,3.76),(.15,.25,.10),material=black)
 for x in [0,W]+[side for x in FLATS for side in (x-1.55,x+1.55)]:
  m=Mesh('Ornament fascia bracket');m.outline([(-.15,2.82),(.15,2.82),(.33,3.22),(-.33,3.22)],0,.46);finish(m,mats=[black],frame=face_matrix((x,.65,0),(0,1,0)))
 # Observed August2024 occupancy labels, not a claim of permanent future use.
-label('Lettering BTR','BTR  Brown Turner Ross',(35.3,1.30,3.43),(0,1,0),.24,4.3,teal)
-label('Lettering solicitors','Solicitors',(31.2,1.30,3.43),(0,1,0),.23,2.8,black)
-label('Lettering HW fascia','HW COMMERCIAL',(27.05,1.30,3.43),(0,1,0),.31,3.65,black)
-label('Lettering Brighouses fascia','BRIGHOUSES',(18.8,1.30,3.43),(0,1,0),.33,10.4,blue)
+label('Lettering BTR','BTR  Brown Turner Ross',(35.3,1.32,3.43),(0,1,0),.24,4.3,teal)
+label('Lettering solicitors','Solicitors',(31.2,1.32,3.43),(0,1,0),.23,2.8,black)
+label('Lettering HW fascia','HW COMMERCIAL',(27.05,1.32,3.43),(0,1,0),.31,3.65,black)
+label('Lettering Brighouses fascia','BRIGHOUSES',(18.8,1.32,3.43),(0,1,0),.33,10.4,blue)
 for a,b in ((0,12.5),(12.5,25),(25,W)):
  members={o for o in set(C['frontage'].objects)-fascia_before if o.name.startswith(('Sign ivory fascia','Lettering ')) and a<=(world.inverted()@o.matrix_world).translation.x<=b}
- assemble('Assembly street fascia '+str(int(a)),members,face_matrix((b,1.14,0),(0,1,0)),'frontage')
-box('Sign HW magenta field',(BAYS[4],1.115,.85),(2.2,.06,.52),material=pink)
-label('Lettering HW board','HW COMMERCIAL',(BAYS[4],1.16,.85),(0,1,0),.21,2.05,white)
-label('Lettering Brighouses glazing','BRIGHOUSES\nSOLICITORS',(BAYS[3],1.16,1.6),(0,1,0),.43,1.9,gold)
+ assemble('Assembly street fascia '+str(int(a)),members,face_matrix((b,1.20,0),(0,1,0)),'frontage')
 # Roof helper produces closed solids; all roof intersections hidden inside mass.
 def hip(name,x0,x1,y0,y1,eave,ridge,axis='x'):
  if axis=='y':
