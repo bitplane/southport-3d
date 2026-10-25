@@ -52,3 +52,9 @@ for path in [D['block_plan'],*D['existing_block_plans']]:
 check_blender(obs)
 report={'triangles':tris,'objects':len(obs),'road_samples':count,'footprint_exclusion_samples':footprint_samples,'checks':'Road continuity, footways, neighbour ownership, tile seams, finite nondegenerate float32 triangles, same-facing coplanar overlap.','limitations':D['limits']}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# Bounded service yard has one walkable owner; structures have no floor beneath.
+for x,y in [(24,87),(24,93),(24,95.5)]:
+ h=sample(x,y,False);assert h[0][0].endswith('service-yard'),h
+for x,y in [(20.9,92),(23.5,82)]:assert not hits(x,y),('new service footprint',x,y,hits(x,y))
+print('Three service-yard support and two footprint exclusion probes passed')

@@ -1,0 +1,107 @@
+{
+  "snag": "949840c7415e44d6add305628091e433",
+  "accessed": "2026-10-25",
+  "scope": "Stanley-facing yard: Nevill rear service projection and boundary/gate; Willow courtyard backing and side openings plus low shed. Existing main footprints and estimated ground remain.",
+  "appearance": "July 2026 Street View, undated Google3D contextual roofs",
+  "sources": [
+    {
+      "url": "https://www.google.com/maps/@53.649469,-3.0051379,3a,55y,147h,115t/data=!3m4!1e1!3m2!1sfcHhjQV3Li6qQnwA2VlsPw!2e0",
+      "capture": "July 2026",
+      "observations": "Actual loaded image: pale brick backing with two aligned tall barred windows, dark downpipe, louvres on left service side, low white-clad shed, brick projection against Nevill rear with boarded lower door, brick boundary and narrow screened gate."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6494036,-3.0052502,3a,70y,99h,104t/data=!3m4!1e1!3m2!1sjbyt35roNRtt1Gt0KkU8YA!2e0",
+      "capture": "July 2026",
+      "observations": "Oblique confirms tower blank upper party side, narrow gate against door2, boundary wall; access lane to left remains open."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6497519,-3.00505,53a,35y,180h,39.61t/data=!3m1!1e3",
+      "capture": "undated",
+      "observations": "Actual GPU photogrammetry at four headings0,270,180,90: narrow courtyard, shallow front/steep rear roof, lower rear projection and shed; existing main footprint remains consistent."
+    },
+    {
+      "url": "https://www.mapillary.com/app/?lat=53.6494&lng=-3.0052&z=19",
+      "observations": "Browser loaded street map, no image track or usable courtyard photograph appeared after loading. No Mapillary imagery used."
+    }
+  ],
+  "coverage": {
+    "front": "Existing front evidence retained; second fresh oblique shows Stanley return.",
+    "rear": "Street-visible courtyard openings and volumes researched; private access not entered.",
+    "sides": "Willow facing side observed from Stanley; hidden surfaces restrained.",
+    "roof": "Four actual3D viewpoints support existing main roofs and new low volumes. Exact shed falls/flashings estimated.",
+    "ground": "Existing separate Stanley court remains owner; new architecture sits on existing court without duplicate slab."
+  },
+  "measurements": {
+    "registration": "Existing surveyed-style dimensions are photographic estimates: yard ~5.8m wide, ~17m deep between Nevill rear and Willow wing. Main coordinates preserved.",
+    "inputs": "1440x1000 retained rear-access image: gate approximately155px vs door103px, wall190px vs gate155px; gate top/door top comparable. Perspective makes these ratios approximate. Adopt1.55m gate,1.8m wall and2.2m gate height,2.5m wall. Rear projection visible width~125px vs1.0m distant window~75px: adopt1.45m projection.",
+    "projection_m": {
+      "u": [
+        3.3,
+        6.4
+      ],
+      "v": [
+        11.35,
+        12.8
+      ],
+      "height": 5.7
+    },
+    "gate_m": {
+      "u": -0.12,
+      "v": [
+        11.35,
+        12.9
+      ],
+      "height": 2.2
+    },
+    "wall_m": {
+      "u": -0.12,
+      "v": [
+        12.9,
+        14.7
+      ],
+      "height": 2.5
+    },
+    "uncertainty_m": {
+      "small_features": 0.3,
+      "rear_registration": 0.7,
+      "height": 0.8
+    },
+    "projection_review": "3D comparison keeps the small attached volume to3.1m along the rear rather than the initial overlong6.2m hypothesis. One previously guessed lower rear window at that attachment is omitted because the projection occludes it and imagery does not establish it. The sloping roof/end wall meet continuously."
+  },
+  "ownership": "Nevill owns its rear projection and boundary/gate; Willow owns its backing/side wall apertures and white shed. Ground remains Stanley. No new duplicate floors.",
+  "lod": "Detail/Walk retain structural yard volumes, gate and apertures. Fine gate/slat/rib samples are deliberate. District gains fixed authored low-volume/gate receivers within existing budgets, never derives topology from detailed mesh.",
+  "limits": "Hidden yard furniture, precise rainwater routes, small signs, plant labels and private openings remain unverified and are not invented. Final comparisons recorded in building docs.",
+  "willow_registration": {
+    "old_hidden_features_x_m": [
+      5.2,
+      5.5,
+      7
+    ],
+    "correct_visible_court_x_m": [
+      11.3,
+      17.1
+    ],
+    "window_centre_x_m": 14.2,
+    "window_centre_heights_m": [
+      5.8,
+      11.8
+    ],
+    "window_size_m": [
+      1.4,
+      2.0
+    ],
+    "shed_bounds_m": [
+      [
+        12.1,
+        35.1,
+        0.5
+      ],
+      [
+        16.7,
+        38.1,
+        3.2
+      ]
+    ],
+    "limits": "Window heights retained from prior estimates; width/placement now checked against actual visible courtyard, with real apertures. Side vent placement estimated \u00b1.5m."
+  }
+}

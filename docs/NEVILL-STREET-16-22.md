@@ -89,3 +89,24 @@ panel/pole envelope clears the canopy's outer edge at X=5.84 by over 0.8m;
 placement remains estimated. Ground validation checks both pole positions on
 pavement and horizontal canopy clearance, rather than shortening the sign to
 fit beneath the glazing.
+
+## Stanley yard correction, October 2026
+
+The marked yard was researched again in July 2026 Street View from two positions
+and actual Google 3D from four headings. The rear projection is estimated at
+3.1 m along the wall, 1.45 m deep and 5.7 m high; the screened gate is 1.55 m
+wide and 2.2 m high. A 1.8 m boundary wall completes the entrance beside door 2.
+An earlier, overlong projection was rejected in the assembled comparison.
+One previously guessed lower rear window conflicted with the observed projection
+and was removed. Unseen interiors and unreadable small notices remain omitted.
+See research/stanley-yard-snag.json for source links, measurements and gaps.
+
+The projection has outward faces, a sloping closed roof and a recessed boarded
+door. The attached back belongs to the existing wall. No building floor covers
+the independently owned Stanley delivery lane. District adds fixed structural
+faces and a screened-gate receiver; narrow reed gaps are deliberately absent.
+Its existing budget remains unchanged: 118 triangles, 224348 download bytes and
+6305523 estimated GPU bytes. Detail and Walk each have 19816 triangles.
+Source overlap/winding checks and exported probes cover the new volume, gate,
+boundary and open lane. The broad exported check retains only the known
+approximately 1.12 mm² frontage numerical edge residual in Detail/Walk.

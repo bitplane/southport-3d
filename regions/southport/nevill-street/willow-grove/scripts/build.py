@@ -184,10 +184,19 @@ outline=[(A,0),(W,0),(W,B),(R,B),(R,Z),(0,Z),(0,Y),(A,Y)]
 boundaries=[((W,0),(W,9.5),12.3),((W,9.5),(W,Y),10.1),((W,Y),(W,Z),16.1),((W,Z),(W,48),14.25),((W,48),(W,B),17.1),((W,B),(R,B),17.1),((R,B),(R,48),17.1),((R,48),(R,Z),14.25),((R,Z),(0,Z),16.1),((0,Z),(0,Y),17.1),((0,Y),(A,Y),16.1),((A,Y),(A,9.5),10.1),((A,9.5),(A,0),12.3)]
 # Rear tower windows and service apertures from Stanley view.
 rear_holes=[rect(R+.85,6.5,R+2.1,8.3),rect(R+3.15,7.4,R+4.45,9.45),rect(R+.85,10.1,R+2.1,12.05),rect(R+3.15,10.95,R+4.45,12.85),rect(R+5.8,10.6,R+7.05,12.5),rect(R+.85,14.2,R+2.1,15.95),rect(R+3.15,14.8,R+4.45,16.35),rect(R+5.8,14.0,R+7.05,15.6)]
+CM=face_matrix((0,Z,0),(0,1,0));SM=face_matrix((R,0,0),(-1,0,0))
+court_holes=[rect(-14.9,z-1,-13.5,z+1) for z in (5.8,11.8)]
+side_holes=[rect(-y-.85,5.3,-y+.85,7.2) for y in (40.5,44.8)]
 rearM=Matrix(((1,0,0,0),(0,0,1,B),(0,1,0,0),(0,0,0,1)))
 for a,b,h in boundaries:
  if a[0]==0 and b[0]==0:continue
  h-=.1202
+ if a==(R,Z) and b==(0,Z):
+  wall('courtyard backing lower',rect(-R,0,0,14.3),court_holes,paintbrick,'rear',CM)
+  wall('courtyard backing upper',rect(-R,14.3,0,h),[],brick,'rear',CM);continue
+ if a==(R,48) and b==(R,Z):
+  wall('courtyard side lower',rect(-48,0,-Z,4.4),[],paintbrick,'rear',SM)
+  wall('courtyard side upper',rect(-48,4.4,-Z,h),side_holes,brick,'rear',SM);continue
  if a[1]==B and b[1]==B:wall('Stanley service tower',rect(R,0,W,h),rear_holes,brick,'rear',rearM);continue
  m=Mesh('Shell wall external');m.add([(*a,0),(*b,0),(*b,h),(*a,h)],[(0,1,2,3)]);finish(m,'rear',paintbrick if a==(R,Z) else brick)
 for i,p in enumerate(rear_holes):
@@ -247,14 +256,28 @@ for x,y in [(3,28),(3,30),(3,32)]:
 # Discreet service fixtures, backed by aerial volumes; exact duct routes estimated.
 box('Roof link plant',(18,18,10.70),(2.0,3.0,1.2),metal,'roof',None)
 tube('Roof flue',[(16,13,10.1),(16,13,12.7),(17,13,12.7)],.18,metal,'roof',None,12)
-# Courtyard wall uses actual observed barred openings but no invented internal fitout.
-CM=face_matrix((0,Z,0),(0,1,0))
-for x,z,w,h in [(5.2,5.8,1.4,2.0),(5.2,11.8,1.4,2.0)]:
- # face_matrix points -X for north-facing wall; invert local coordinate accordingly.
- u=-x;box('Courtyard window',(u,z,.04),(w,h,.09),glass,'rear',CM)
- for j in range(7):box('Courtyard bars',(u-w/2+(j+.5)*w/7,z,.12),(.025,h,.04),iron,'rear',CM)
-box('Courtyard roller shutter',(5.5,Z+.03,1.8),(3,.06,3.6),shop,'rear',None)
-tube('Courtyard exhaust',[(7,Z+.28,0),(7,Z+.28,7.4)],.15,metal,'rear',None,12)
+# The observed court occupies local x11.3..17.1, not the concealed x5..7.
+for z in (5.8,11.8):
+ u=-14.2;w=1.4;h=2.0
+ panel('Courtyard glazing',rect(u-w/2,z-h/2,u+w/2,z+h/2),-.12,glass,'rear',CM)
+ for x in (u-w/2+.035,u+w/2-.035):box('Courtyard window jamb',(x,z,-.055),(.07,h,.10),frame,'rear',CM)
+ for zz in (z-h/2+.035,z+h/2-.035):box('Courtyard window rail',(u,zz,-.055),(w-.14,.07,.10),frame,'rear',CM)
+ for j in range(7):box('Courtyard bars',(u-w/2+(j+.5)*w/7,z,.08),(.025,h,.04),iron,'rear',CM)
+ box('Courtyard sill',(u,z-h/2-.06,.12),(w+.18,.12,.24),shade,'rear',CM)
+ box('Courtyard lintel',(u,z+h/2+.10,.06),(w+.18,.20,.12),stone,'rear',CM)
+for y in (40.5,44.8):
+ u=-y;panel('Courtyard vent recess',rect(u-.85,5.3,u+.85,7.2),-.14,black,'rear',SM)
+ for j in range(17):box('Courtyard vent blade',(u,5.34+j*.108,-.045),(1.7,.035,.15),iron,'rear',SM)
+ for zz in (5.24,7.3):box('Courtyard vent sill',(u,zz,.10),(1.85,.12,.20),shade,'rear',SM)
+# Low white-clad shed below the backing windows. Attached rear skin omitted.
+m=Mesh('Courtyard low shed')
+for p in [[(12.1,Z,0.5),(12.1,Z+3.0,.5),(12.1,Z+3.0,3.0),(12.1,Z,3.2)],[(16.7,Z+3.0,.5),(16.7,Z,.5),(16.7,Z,3.2),(16.7,Z+3.0,3.0)],[(12.1,Z+3.0,.5),(16.7,Z+3.0,.5),(16.7,Z+3.0,3.0),(12.1,Z+3.0,3.0)]]:m.add(p,[(0,1,2,3)])
+m.faces=[tuple(reversed(f)) for f in m.faces];finish(m,'rear',frame)
+m=Mesh('Courtyard shed roof');m.add([(16.7,Z,3.2),(16.7,Z+3.0,3.0),(12.1,Z+3.0,3.0),(12.1,Z,3.2)],[(0,1,2,3)]);finish(m,'rear',lead)
+for j in range(14):box('Fine courtyard cladding joint',(14.4,Z+3.015,.60+j*.17),(4.6,.015,.012),shade,'rear',None)
+tube('Courtyard exhaust',[(16.2,Z+.30,.5),(16.2,Z+.30,6.8),(16.2,Z+.20,7.4)],.15,metal,'rear',None,12)
+tube('Courtyard downpipe',[(13.05,Z+.08,.5),(13.05,Z+.08,13.8)],.045,iron,'rear',None,8)
+# Check attachment/joinery prototypes before repeating them in exports.
 # Canopies remain open, with cast-iron posts and scroll brackets.
 for name,M,width in [('Lord',F,D['front_width']),('Nevill',N,NW)]:
  depth=3.02;inner=4.58;outer=3.68 if name=='Lord' else 4.00;fascia=outer-.17 if name=='Lord' else 3.25;positions=[.25,4.20,8.80,width-.22] if name=='Lord' else [.28,width-.28]
@@ -284,11 +307,16 @@ if DETAIL:
    z=e+(h-e)*yy/ridge;cut=hip*yy/ridge
    actual_y=yy if side==0 else D['roof_front_depth']-yy
    tube('Fine slate course',[(A+cut,actual_y,z+.008),(W-cut,actual_y,z+.008)],.007,shade,'roof',None,4)
+# Named prototype audit covers each new courtyard shell/fitting interface.
+import os
+sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
+from coplanar import check_blender
+check_blender([o for o in s.objects if o.type=='MESH' and ('Courtyard' in o.name or 'courtyard' in o.name)])
 # Semantic batching keeps bake source object count bounded.
 families={}
 for ob in list(s.objects):
  if ob.type!='MESH':continue
- kind='Rooflight bars' if ob.name.startswith('Rooflight glazing bar') else 'Fine' if ob.name.startswith('Fine ') else 'Shell' if ob.name.startswith('Shell ') else 'Architecture'
+ kind='Courtyard shells' if ob.name.startswith('Shell wall courtyard') else 'Courtyard fittings' if ob.name.startswith(('Courtyard ','Fine courtyard')) else 'Rooflight bars' if ob.name.startswith('Rooflight glazing bar') else 'Fine' if ob.name.startswith('Fine ') else 'Shell' if ob.name.startswith('Shell ') else 'Architecture'
  families.setdefault((ob.users_collection[0].name,kind),[]).append(ob)
 for (part,kind),obs in families.items():
  bpy.ops.object.select_all(action='DESELECT')

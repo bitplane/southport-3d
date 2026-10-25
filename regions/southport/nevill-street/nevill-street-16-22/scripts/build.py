@@ -96,10 +96,11 @@ panel('Glazing chamfer',chhole,-.16,glass,frame=CH)
 border('Architecture chamfer sash',chhole,rect(.36,4.72,cw-.36,11.78),-.06,white,frame=CH)
 for z in (7.45,8.42,10.1):box('Architecture chamfer rail',(cw/2,z,-.04),(cw-.60,.07,.06),white,frame=CH)
 # Actual brick rear is visible from the service yard. Lower coverage is occluded.
-rearholes=[rect(u-.44,z,u+.44,z+1.5) for u in (2.0,5.4,9.0,12.5,15.1) for z in (4.9,8.2)]
+rearholes=[rect(u-.44,z,u+.44,z+1.5) for u in (2.0,5.4,9.0,12.5,15.1) for z in (4.9,8.2) if not (u==12.5 and z==4.9)]
 wall('rear brick',rect(0,0,W,D['rear_eave']),rearholes,BACK,brick,'rear')
 for u in (2.0,5.4,9.0,12.5,15.1):
  for z in (4.9,8.2):
+  if u==12.5 and z==4.9:continue # Unverified lower aperture conflicts with observed service projection.
   panel('Glazing estimated rear',rect(u-.44,z,u+.44,z+1.5),-.12,glass,'rear',BACK)
   border('Architecture rear sash',rect(u-.44,z,u+.44,z+1.5),rect(u-.39,z+.06,u+.39,z+1.44),-.05,white,'rear',BACK)
   box('Architecture rear sill',(u,z-.06,.06),(1.02,.11,.20),stone,'rear',BACK)
@@ -172,6 +173,10 @@ if DETAIL:
   u=a+(b-a)*j/32;m=Mesh('Fine canopy glazing bar');m.tube([(u,0,zi+.025),(u,v,zo+.025)],.018,sides=5);finish(m,'roof',iron)
  for j in range(1,4):
   t=j/4;box('Fine canopy cross rail',((a+b)/2,v*t,zi+(zo-zi)*t+.025),(b-a,.035,.035),iron,'roof',T)
+
+# Research-backed yard attachment and boundary, with no duplicate court slab.
+from courtyard import build as build_courtyard
+build_courtyard((Mesh,finish,box,T,brick,wood,iron,stone,lead))
 
 # Explicit single ownership of shared capital/cornice planes, including backs.
 sys.path.insert(0,str(REPO/'tools'))

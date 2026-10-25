@@ -31,5 +31,13 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Joined T-shaped exterior including service wing and retained open yard; interiors excluded. Fine ornament and hidden roof details approximated."
+  "scope": "Joined T-shaped exterior including service wing and retained open yard; interiors excluded. Fine ornament and hidden roof details approximated.",
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "build_inputs": {
+    "validate": [
+      "regions/southport/nevill-street/willow-grove/scripts/check_package.py"
+    ]
+  }
 }

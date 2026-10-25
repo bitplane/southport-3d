@@ -22,3 +22,26 @@ height or the coarse representation changes.
 Each rooflight corner-to-apex glazing bar is owned by one perimeter edge.
 The saved-mesh validator checks the glazing bars separately for coplanar
 overlap, including exact duplicates at shared corners.
+
+## Stanley courtyard correction, October 2026
+
+Fresh July 2026 Street View and four Google 3D headings showed that previous
+courtyard fittings were registered behind the Nevill neighbour. The visible
+backing now has two real barred openings centred at local x=14.2 m, z=5.8/11.8 m,
+and the exposed service side has two recessed louvres. A low white-clad shed
+occupies x=12.1–16.7 m and extends 3 m into the yard, with its roof falling from
+3.2 to 3.0 m. Its metal exhaust and the backing downpipe follow the observed
+positions. Dimensions are image-based estimates, not a measured survey.
+Research records document both visible coverage and hidden-side uncertainty.
+
+Wall meshes own real apertures; reveals, sills and lintels meet without duplicate
+visible planes. Scoped source overlap tests cover courtyard shells/fittings;
+actual export probes test openings, outward faces and the unfilled delivery lane.
+District has an independent four-face shed receiver, retaining the same budget.
+Published totals are 70690/42058/428 triangles for Detail/Walk/District;
+District is 208256 download bytes and 4240475 estimated GPU bytes.
+The adjoining-ground audit found no new courtyard coplanar conflicts. A broader
+District scan also flags four pre-existing roof self-contacts in the unchanged
+roof receiver (export-local X26.060–33.958, Y13.5–15.23, Z−80.761–−80.506;
+three approximately 0.04482 m² and one 0.00399 m²). These are outside the repaired
+rear receiver and are not represented as cleared by the courtyard regression.

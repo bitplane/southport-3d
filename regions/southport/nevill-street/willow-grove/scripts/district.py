@@ -31,6 +31,8 @@ def surfaces(asset):
  s.part='rear'
  boundaries=[((W,0),(W,9.5),12.3),((W,9.5),(W,Y),10.1),((W,Y),(W,Z),16.1),((W,Z),(W,48),14.25),((W,48),(W,B),17.1),((W,B),(R,B),17.1),((R,B),(R,48),17.1),((R,48),(R,Z),14.25),((R,Z),(0,Z),16.1),((0,Y),(A,Y),16.1),((A,Y),(A,9.5),10.1),((A,9.5),(A,0),12.3)]
  for i,(a,b,h) in enumerate(boundaries):s.quad('external '+str(i),[(*a,0),(*b,0),(*b,h),(*a,h)],cage=.30)
+ for name,points in [('left',[(12.1,Z,.5),(12.1,Z,3.2),(12.1,Z+3,3),(12.1,Z+3,.5)]),('right',[(16.7,Z+3,.5),(16.7,Z+3,3),(16.7,Z,3.2),(16.7,Z,.5)]),('front',[(12.1,Z+3,.5),(12.1,Z+3,3),(16.7,Z+3,3),(16.7,Z+3,.5)])]:s.quad('courtyard shed '+name,points,cage=.2)
+ s.quad('courtyard shed roof',[(16.7,Z,3.2),(16.7,Z+3.0,3.0),(12.1,Z+3.0,3.0),(12.1,Z,3.2)],cage=.2)
  s.part='roof';e=d['front_eaves'];h=d['front_ridge'];depth=d['roof_front_depth'];ridge=depth/2;hip=2.6
  s.quad('front slate',[(A,0,e),(W,0,e),(W-hip,ridge,h),(A+hip,ridge,h)],cage=.15)
  s.triangle('right hip',[(W,0,e),(W,depth,e),(W-hip,ridge,h)],cage=.15)

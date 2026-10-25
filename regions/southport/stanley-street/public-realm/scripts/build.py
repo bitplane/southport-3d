@@ -10,6 +10,7 @@ from southport3d.road import parallel
 from plan_geometry import Plan
 from datum import grade
 D=json.loads((ROOT/'research/layout.json').read_text())
+YARD=json.loads((ROOT/'research/stanley-yard-snag.json').read_text())
 bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene; s.unit_settings.system='METRIC'
 def rect(a,b,c,d): return [(a,c),(b,c),(b,d),(a,d)]
@@ -22,7 +23,7 @@ def union(gs):
  return P.polygons([t for g in gs for t in P.triangles(g)])
 road_full=P.polygons([ribbon(r['points'],r['width']) for r in D['roads']])
 road_full=buffer(buffer(road_full,D['junction_radius_m']),-D['junction_radius_m'])
-cutters=list(D['existing_ground_exclusions'])
+cutters=list(D['existing_ground_exclusions'])+[v['polygon'] for v in YARD['structures']]
 for path in [D['block_plan'],*D['existing_block_plans']]:
  cutters += [b['footprint'] for b in json.loads((REPO/path).read_text())['blocks']]
 available=P.difference(P.polygons([rect(*D['bounds'])]),P.polygons(cutters))
@@ -31,6 +32,8 @@ foot=P.difference(P.intersection(buffer(road_full,D['footway_width_m']),availabl
 remaining=P.difference(P.difference(available,road),foot)
 green=P.intersection(remaining,P.polygons([p['polygon'] for p in D['landscaped_reservations']]))
 courts=P.difference(remaining,green)
+yard=P.intersection(courts,P.polygons([YARD['yard']]))
+courts=P.difference(courts,yard)
 # Stripes are inward offsets of the SAME continuous road union. Clipping comes
 # after offsetting, so neither the ownership boundary nor a junction gets a cap.
 yellow_full=union([P.difference(buffer(road_full,-a),buffer(road_full,-b)) for a,b in [(.15,.22),(.33,.40)]])
@@ -52,7 +55,7 @@ for x in [219.35,219.85]:
  for ya in np.arange(96.35,99.1,.9):white_rows.append(rect(x,x+.18,ya,min(ya+.6,99.1)))
 white=P.difference(P.intersection(P.polygons(white_rows),road),yellow)
 asphalt=P.difference(P.difference(road,yellow),white)
-materials={'asphalt':(.085,.092,.093),'paving':(.30,.27,.23),'courts':(.36,.35,.33),'green':(.16,.23,.10),'yellow':(.75,.57,.12),'white':(.72,.73,.69),'kerb':(.40,.40,.37)}
+materials={'asphalt':(.085,.092,.093),'paving':(.30,.27,.23),'courts':(.36,.35,.33),'service-yard':(.105,.11,.11),'green':(.16,.23,.10),'yellow':(.75,.57,.12),'white':(.72,.73,.69),'kerb':(.40,.40,.37)}
 mats={}
 for name,colour in materials.items():
  m=bpy.data.materials.new('Stanley '+name);m.use_nodes=True;m.diffuse_color=(*colour,1)
@@ -70,7 +73,7 @@ for name,lo,hi in zip(['west','middle','east'],D['tile_cuts'],D['tile_cuts'][1:]
  cuts=[lo,*[x for x in [34.19,50.19] if lo<x<hi],hi]
  for a,b in zip(cuts,cuts[1:]):
   cell=P.polygons([rect(a,b,D['bounds'][2],D['bounds'][3])])
-  for mat,g in [('asphalt',asphalt),('paving',foot),('courts',courts),('green',green),('yellow',yellow),('white',white)]:
+  for mat,g in [('asphalt',asphalt),('paving',foot),('courts',courts),('service-yard',yard),('green',green),('yellow',yellow),('white',white)]:
    m=compiled.setdefault((name,mat),Mesh('Ground '+name+' '+mat))
    for tri in P.triangles(P.intersection(g,cell)):m.add([(x,y,0) for x,y in tri],[(0,1,2)])
 P.close()

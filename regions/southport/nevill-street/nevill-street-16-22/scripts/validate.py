@@ -28,3 +28,14 @@ assert not [row for row in residual if row[2]>5e-6],residual[:12]
 report={'objects':len(meshes),'triangles':count,'minimum_triangle_area':minimum,'coplanar_numeric_residuals':residual,'status':'Finite triangulated surfaces, UVs, explicit chamfer and unequal roof planes. All meshes checked for coplanar conflicts above 5 square millimetres; smaller float32 candidates reported.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2))
 print(report)
+
+# Independently positioned service-yard probes guard registration and winding.
+from mathutils import Vector,Matrix
+D=json.loads((ROOT/'research/layout.json').read_text())
+T=Matrix(((-.0003,1,0,D['x']),(-1,.0125,0,D['y']),(0,0,1,D['base_z']),(0,0,0,1)))
+s=bpy.context.scene;deps=bpy.context.evaluated_depsgraph_get()
+for name,p,direction,distance,wanted in [('gate',(-1,12.1,2.08),(1,0,0),2,True),('wall',(-1,13.8,1.5),(1,0,0),2,True),('open delivery lane',(-1,15.5,1.5),(1,0,0),3,False),('rear projection',(6,14,4),(0,-1,0),2,True)]:
+ ray=(T.to_3x3()@Vector(direction)).normalized();hit,at,normal,face,ob,mat=s.ray_cast(deps,T@Vector(p),ray,distance=distance)
+ assert hit==wanted,(name,'missing or obstructed',hit)
+ if hit:assert normal.dot(ray)<-.5,(name,'inward facing surface',normal)
+print('Four independently located yard probes passed')

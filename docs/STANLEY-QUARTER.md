@@ -74,3 +74,19 @@ and retained 3D captures. The viewer was checked with all 27 new parts actually
 loaded at Detail, Walk and District. Research links, measurement inputs and
 remaining uncertainties are in each asset's `research/` directory. Private review
 captures and audit reports stay outside Git in `../output/stanley-quarter/`.
+
+
+The October 2026 yard repair beside Nevill 16–22 replaces only the bounded
+courtyard colour mask with dark service asphalt, cuts out the observed rear
+projection and Willow shed footprints, and keeps the delivery lane open.
+The existing public-realm asset remains its sole ground owner. New probes check
+three supported yard points and both building exclusions; the full road,
+footprint and coplanar ground checks also pass. Levels remain estimates.
+
+Actual published GLBs were reviewed together with both buildings, frontage
+placeholders and Embassy at Detail, Walk and District, from the saved report
+camera and a clear elevated oblique. A disposable local comparison avoided the
+town-wide forced Detail cache limit; screenshots and comparison files remain
+outside Git. A 19 m exported-ground route at site x=24, y=103 down to84 had
+96 supported samples at every LoD, with a largest adjacent height change of
+0.1171 m. This is a geometric support check, not a surveyed access assessment.

@@ -27,6 +27,7 @@ for y in (39,44,49):
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
 from coplanar import check_blender
 check_blender([o for o in obs if o.name.startswith('Shell ')])
+check_blender([o for o in obs if o.name.startswith('Courtyard') or o.name=='Shell rear'])
 rooflight_bars=[o for o in obs if o.name.startswith('Rooflight bars')]
 assert rooflight_bars
 check_blender(rooflight_bars)
@@ -46,3 +47,10 @@ coarse=[p for face in surfaces(ROOT)['roof'] if face['name'].startswith('chimney
 assert coarse and abs(min(p[2] for p in coarse)-(D['base_z']+lo[2]))<1e-6,'District chimney base differs'
 report={'triangles':tris,'aperture_probes':n,'yard_probes':3,'chimney_contact_probes':3,'phase':D['phase']}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+
+# Correctly registered courtyard windows/vents are apertures, not wall overlays.
+for name,p,direction in [('backing window',(14.2,D['wing_end']+1,5.8),(0,-1,0)),('side vent',(16.0,40.5,6.0),(1,0,0))]:
+ ray=(T.to_3x3()@Vector(direction)).normalized();hit,at,normal,face,ob,mat=s.ray_cast(deps,T@Vector(p),ray,distance=2)
+ assert hit and not ob.name.startswith(('Shell','Courtyard shells')),(name,ob.name if hit else None)
+ assert normal.dot(ray)<-.5,(name,normal)
+print('Two registered courtyard aperture probes passed')

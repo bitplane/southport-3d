@@ -32,5 +32,13 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "July 2026 exterior of the Stanley corner block: Treat Street, R.D.s Bar, AK Nails & Spa, Istanbul Barber. Ground is separately owned. Metric estimates; private rear access only partially visible."
+  "scope": "July 2026 exterior of the Stanley corner block: Treat Street, R.D.s Bar, AK Nails & Spa, Istanbul Barber. Ground is separately owned. Metric estimates; private rear access only partially visible.",
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "build_inputs": {
+    "validate": [
+      "regions/southport/nevill-street/nevill-street-16-22/scripts/check_package.py"
+    ]
+  }
 }

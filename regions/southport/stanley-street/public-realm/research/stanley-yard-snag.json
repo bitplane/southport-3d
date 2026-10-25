@@ -1,0 +1,68 @@
+{
+  "snag": "949840c7415e44d6add305628091e433",
+  "evidence": "July2026 Google Street View fcHhjQV3Li6qQnwA2VlsPw: dark asphalt private yard between service walls; see Nevill16\u201322 and Willow research/stanley-yard-snag.json for loaded imagery and measured estimates.",
+  "height_policy": "Existing Stanley grade retained exactly. Bounded colour replacement owns the same ground surface; two building footprints excluded. No additional walking surface.",
+  "yard": [
+    [
+      20.15,
+      79.8
+    ],
+    [
+      26.5,
+      79.8
+    ],
+    [
+      26.5,
+      97.2
+    ],
+    [
+      20.15,
+      97.2
+    ]
+  ],
+  "structures": [
+    {
+      "id": "Nevill rear projection",
+      "polygon": [
+        [
+          20.23901,
+          93.525875
+        ],
+        [
+          20.238080000000004,
+          90.42587499999999
+        ],
+        [
+          21.688080000000003,
+          90.44399999999999
+        ],
+        [
+          21.68901,
+          93.544
+        ]
+      ]
+    },
+    {
+      "id": "Willow white shed",
+      "polygon": [
+        [
+          21.060042,
+          80.344983
+        ],
+        [
+          25.660041999999997,
+          80.493241
+        ],
+        [
+          25.640302,
+          83.493241
+        ],
+        [
+          21.040302,
+          83.344983
+        ]
+      ]
+    }
+  ],
+  "limits": "Structural coordinates shared from asset recipe dimensions; photographic estimates, not surveyed footprint. The colour mask clips against existing ground/road/footway ownership."
+}

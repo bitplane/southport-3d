@@ -19,4 +19,6 @@ def surfaces(asset):
  s.quad('glazed canopy',[(a,0,zi),(a,v,zo),(b,v,zo),(b,0,zi)])
  s.quad('canopy underside',[(b,0,zi-.015),(b,v,zo-.015),(a,v,zo-.015),(a,0,zi-.015)])
  for u in (3.4,9.0,15.7):s.box('canopy post',(u-.045,v-.045,0),(u+.045,v+.045,zo),weight=.15,cage=.08)
+ from courtyard import district
+ district(s)
  return s.result
