@@ -50,6 +50,13 @@
       "id": "mapillary-search",
       "url": "https://www.mapillary.com/app/?lat=53.6494&lng=-3.0052&z=19",
       "observations": "Web-tool access failed; indexed search no useful target photograph. Not used as geometry evidence."
+    },
+    {
+      "id": "roof-colour-review",
+      "url": "https://www.google.com/maps/@53.6493215,-3.0050984,113a,35y,90h/data=!3m1!1e3",
+      "accessed": "2026-10-25",
+      "capture_date": null,
+      "observations": "Loaded flat aerial shows the broad shallow roof as dark charcoal against the adjacent lighter flat roofs and slate hip. Previous uniform pale lead appearance was incorrect. Colour corrected independently of the existing measured roof shape. Exact covering composition cannot be established from these pixels; described as covering rather than asserting lead or bitumen."
     }
   ]
 }

@@ -105,9 +105,11 @@ for u in (2.0,5.4,9.0,12.5,15.1):
   border('Architecture rear sash',rect(u-.44,z,u+.44,z+1.5),rect(u-.39,z+.06,u+.39,z+1.44),-.05,white,'rear',BACK)
   box('Architecture rear sill',(u,z-.06,.06),(1.02,.11,.20),stone,'rear',BACK)
 wall('party',[(0,0),(L,0),(L,D['rear_eave']),(D['ridge_v'],D['ridge']),(0,D['front_eave'])],[],PARTY,brick,'rear')
+# Aerial review shows a dark charcoal shallow covering, not pale sheet metal.
+membrane=mat('Dark charcoal shallow roof covering',(.065,.070,.075),rough=.92)
 # Coordinated roof boundary; slate rear and hip, shallow membrane front.
 for name,p in roof(D):
- m=Mesh('Shell roof '+name);m.add(p,[tuple(range(len(p)))]);finish(m,'roof',lead if name=='front' else slate)
+ m=Mesh('Shell roof '+name);m.add(p,[tuple(range(len(p)))]);finish(m,'roof',membrane if name=='front' else slate)
 # Inward parapet closure on the Stanley end: the photographed raised side
 # cornice stands above the descending hip. Close its back and cap explicitly.
 m=Mesh('Shell Stanley parapet closure')

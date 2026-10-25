@@ -56,3 +56,10 @@ for u in (.8,2,4.4):
  hit,at,normal,face,ob,mat=s.ray_cast(deps,T@Vector((-2,D['depth']-u,3.18)),ray,distance=2)
  assert hit and ob.name.startswith('Architecture return duct') and normal.dot(ray)<-.8,('duct winding',u,hit,ob.name if ob else None,tuple(normal))
 print('Three outward duct surface probes passed')
+
+# The broad shallow roof must not inherit pale lead from the yard fittings.
+front=bpy.data.objects.get('Shell roof front')
+assert front is not None
+material=front.data.materials[0]
+colour=material.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value
+assert max(colour[:3])<.10 and material.name=='Dark charcoal shallow roof covering',('Pale front roof regression',material.name,tuple(colour))
