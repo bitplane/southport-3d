@@ -5,14 +5,10 @@
     -3.0043401
   ],
   "lodPolicy": {
-    "detailDistance": 8,
-    "districtDistance": 70,
-    "hysteresis": 0.15
+    "errorTarget": 8
   },
-  "description": "Metric LoD distance bands and bounded spatial residency. Regional aggregate geometry and textures are future work.",
+  "description": "Screen-space-error LoD over a 3D Tiles hierarchy (tools/tileset.py) and the viewer memory budget in bytes.",
   "streaming": {
-    "radius": 250,
-    "margin": 64,
-    "budget": 268435456
+    "budget": 1073741824
   }
 }

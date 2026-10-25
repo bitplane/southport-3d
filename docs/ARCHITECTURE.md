@@ -18,7 +18,9 @@ The runner locks each asset across build/export/render/LoD operations. Publicati
 
 Metric parallel road-edge curves and ownership clipping live in `southport3d/road.py`. Use the same kerb curve for both paint offsets and clip it at the shared site station; a tile boundary is not a kerb return.
 
-The viewer reads a compact `scene.json` bootstrap and content-addressed loose cell
-manifests generated from the union of all published LoD bounds. The flat
-`catalog.json` remains for whole-map audits. Source geographic folders do not
-determine runtime cells. See [VIEWER.md](VIEWER.md) for residency and live updates.
+The viewer reads a compact `scene.json` bootstrap naming a content-addressed
+3D Tiles tileset. `tools/tileset.py` builds it from the published per-part GLBs:
+one LoD unit per building (parts merged per level), District → Walk → Detail
+chains, and a quadtree of merged distant proxies. The flat `catalog.json` remains
+for whole-map audits. Source geographic folders do not determine runtime tiles.
+See [VIEWER.md](VIEWER.md) for selection, memory and live updates.

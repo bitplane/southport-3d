@@ -1,8 +1,26 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { chooseLevel, evictionCandidates } from '../lod.js';
-const settings={detailDistance:8,districtDistance:70},available=['detail','walk','district'];
-test('distance bands and manual override',()=>{assert.equal(chooseLevel(2,null,'auto',settings,available),'detail');assert.equal(chooseLevel(30,null,'auto',settings,available),'walk');assert.equal(chooseLevel(200,null,'auto',settings,available),'district');assert.equal(chooseLevel(2,'detail','district',settings,available),'district');});
-test('hysteresis prevents repeated switching at a boundary',()=>{assert.equal(chooseLevel(8.5,'detail','auto',settings,available),'detail');assert.equal(chooseLevel(7,'walk','auto',settings,available),'walk');assert.equal(chooseLevel(72,'walk','auto',settings,available),'walk');assert.equal(chooseLevel(65,'district','auto',settings,available),'district');});
-test('partial levels remain viewable without inventing resources',()=>{assert.equal(chooseLevel(300,null,'auto',settings,['detail']),'detail');assert.equal(chooseLevel(10,null,'auto',settings,[]),null);});
-test('cache eviction preserves active models and removes least recently used first',()=>{const records=[{key:'active',bytes:50,active:true,used:0},{key:'old',bytes:30,active:false,used:1},{key:'new',bytes:30,active:false,used:2}];assert.deepEqual(evictionCandidates(records,80),['old']);assert.deepEqual(evictionCandidates(records,20),['old','new']);});
+import { countLevels, forcedError, tileLevel } from '../lod.js';
+
+const proxy={proxy:'lite',rank:0}, district={level:'district',rank:1}, walk={level:'walk',rank:2}, detail={level:'detail',rank:3};
+test('automatic selection leaves screen-space error alone',()=>{
+  for(const extras of [proxy,district,walk,detail])assert.equal(forcedError(extras,true,'auto'),null);
+});
+test('forced levels refine coarser tiles and stop at the first tile reaching the level',()=>{
+  assert.equal(forcedError(proxy,true,'district'),Infinity);
+  assert.equal(forcedError(district,true,'district'),0);
+  assert.equal(forcedError(district,true,'walk'),Infinity);
+  assert.equal(forcedError(walk,true,'walk'),0);
+  assert.equal(forcedError(walk,true,'detail'),Infinity);
+  assert.equal(forcedError(detail,false,'detail'),0);
+});
+test('collapsed tiles serving several levels stop at any level they draw',()=>{
+  // District and Walk content were identical, so one tile draws Walk for both.
+  assert.equal(forcedError({level:'walk',rank:1},true,'district'),0);
+  // A leaf cannot refine further even when coarser than requested.
+  assert.equal(forcedError({level:'walk',rank:2},false,'detail'),0);
+});
+test('drawn tiles are summarised by level',()=>{
+  assert.equal(tileLevel(proxy),'lite proxy');
+  assert.deepEqual(countLevels([proxy,district,district,detail]),{'lite proxy':1,district:2,detail:1});
+});

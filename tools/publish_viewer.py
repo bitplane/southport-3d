@@ -158,17 +158,16 @@ def _publish(args, assets, fingerprint, build, retained=()):
     catalog['viewerVersion']=viewer_version
     catalog['revision']=hashlib.sha256(json.dumps(catalog,sort_keys=True).encode()).hexdigest()
     temporary=dist/'catalog.json.tmp';temporary.write_text(json.dumps(catalog,indent=2)+'\n');temporary.replace(dist/'catalog.json')
-    from spatial_index import index_catalog
-    _, cells = index_catalog(ROOT)
-    retire_resources(dist,uris(catalog) | cells)
+    from tileset import index_scene
+    _, tiles = index_scene(ROOT)
+    retire_resources(dist,uris(catalog) | tiles)
     print('Viewer package ready:',dist,flush=True)
     print('Serve with: python3 tools/serve.py   →   http://127.0.0.1:8765',flush=True)
 
 
 def install_viewer(dist):
     """Install one coherent snapshot of viewer sources, returning its identity."""
-    names=('index.html','style.css','app.js','lod.js','streamer.js','snags.js','view-state.js',
-           'live.js','spatial.js','spatial-streamer.js','view-volume.js')
+    names=('index.html','style.css','app.js','lod.js','tiles.js','snags.js','view-state.js','live.js')
     snapshot={name:(ROOT/'viewer'/name).read_bytes() for name in names}
     if any((ROOT/'viewer'/name).read_bytes()!=data for name,data in snapshot.items()):
         raise ValueError('Viewer sources changed during snapshot')
@@ -186,11 +185,13 @@ def retire_resources(dist, current, now=None):
     retired=json.loads(retired_path.read_text()) if retired_path.exists() else {}
     published={p.relative_to(dist).as_posix() for p in (dist/'assets').rglob('*.glb')}
     published.update(p.relative_to(dist).as_posix() for p in (dist/'cells').glob('*.json'))
+    published.update(p.relative_to(dist).as_posix() for p in (dist/'tiles').glob('*.glb'))
+    published.update(p.relative_to(dist).as_posix() for p in (dist/'tiles').glob('*.json'))
     for uri in published-current:retired.setdefault(uri,now)
     for uri in list(retired):
         if uri in current or uri not in published:del retired[uri]
         elif now-retired[uri]>86400:
             path=(dist/uri).resolve()
-            if any(path.is_relative_to((dist/folder).resolve()) for folder in ('assets','cells')):path.unlink(missing_ok=True)
+            if any(path.is_relative_to((dist/folder).resolve()) for folder in ('assets','cells','tiles')):path.unlink(missing_ok=True)
             del retired[uri]
     tmp=dist/'retired-resources.json.tmp';tmp.write_text(json.dumps(retired));tmp.replace(retired_path)

@@ -2,13 +2,15 @@
 
 The working levels are:
 
-| Level | Purpose | Starting automatic band |
+| Level | Purpose | Approximate automatic band (1000 px tall view) |
 | --- | --- | --- |
-| **Detail** | Close inspection of carvings, lettering, shop fronts and architecture | Within 8 m of a part's bounds |
+| **Detail** | Close inspection of carvings, lettering, shop fronts and architecture | Within ~8 m of a building |
 | **Walk** | Ground-level exploration with reduced geometry and baked detail | Between Detail and District |
-| **District** | Looking across a square or several buildings; retain recognisable envelopes and openings | Beyond 70 m of a part's bounds |
+| **District** | Looking across a square or several buildings; retain recognisable envelopes and openings | Beyond ~70 m of a building |
 
-These are adjustable starting bands, not claims of perceptual equivalence. The viewer applies 15% hysteresis to avoid flickering between levels. Changing zoom changes camera distance. It selects each part independently; Detail for the obelisk does not require Detail for every colonnade. Larger towns will need visibility and screen-space scheduling refinements. Loose spatial cells now bound loading; merged regional geometry/textures and screen-space error selection remain deferred.
+The viewer renders an [OGC 3D Tiles](https://docs.ogc.org/cs/22-025r4/22-025r4.html) hierarchy with [3DTilesRendererJS](https://github.com/NASA-AMMOS/3DTilesRendererJS) and chooses levels by **screen-space error**: each tile declares how far (in metres) it may deviate from the next finer one, and is refined when that error would exceed the allowed number of pixels. Bands therefore scale with field of view, window size and pixel ratio rather than being fixed distances. The unit of selection is a **building**: all of its parts switch level together. Distances are measured to the building's oriented bounding box, not a world-axis box around it.
+
+Refinement is REPLACE: a coarser tile stays drawn until everything replacing it has loaded, so moving or turning never leaves gaps, and levels cross-fade over 300 ms instead of popping. When the memory budget is reached, refinement pauses and coarser tiles remain; nothing that is drawn is unloaded to make room. Far away, merged proxies cover groups of buildings (see Tiles and memory below).
 
 ## Build and open
 
@@ -35,10 +37,10 @@ The viewer uses a version-pinned Three.js 0.180.0 import map from jsDelivr; no N
 
 - Orbit: drag to rotate, scroll to move closer, right-drag to pan. WASD or arrows move the target and camera together horizontally relative to the view; Shift moves faster. Movement scales with viewing distance. Overview explicitly resets the view.
 - Walk: WASD or arrows, Shift to move faster, drag to look. Capture mouse enables pointer lock; Escape releases it. Switching to Walk keeps your horizontal position and heading, placing your eyes 1.7 m above the ground below. If ground is still loading or absent, the camera stays at its current height and retries without jumping to a saved spawn. Walking follows the ground at a 1.7 m eye height. This is an inspection navigator, not a collision/physics simulation: it can pass through walls.
-- View settings: force a level, change the automatic distance bands, change rendering resolution, and toggle wireframe/shadows. Statistics show placed triangles, transfer bytes and approximate resident GPU resource bytes.
+- View settings: force a level, change the allowed on-screen error (lower is sharper and loads more), choose the memory budget, change rendering resolution, and toggle wireframe/shadows. Statistics show drawn triangles, tile bytes transferred and the renderer's resident estimate.
 - The viewer remembers camera position, orientation, orbit target and navigation mode in local storage, including across hard refreshes. Each browser/origin keeps its own view. Clearing site data resets it; unavailable storage simply disables persistence. Snag links and restored snag cameras continue to work without a location picker.
 
-Parts normally appear first at District, then refine within the memory budget. Each model streamer allows two concurrent downloads. Obsolete fetches are cancelled; distant active models are retired as well as cached versions. A replacement usually keeps the old LoD visible, but it may release that version first if both cannot fit. See Spatial working set below for admission, deferral and staging limits.
+On opening, the whole town appears within seconds as merged proxies, then refines where you look. Forcing a level refines every tile in view down to that level (still within the memory budget); collapsed tiles whose levels are identical count as each level they stand in for.
 
 ## Adding a building
 
@@ -54,9 +56,10 @@ The common world frame is **east, up, south** in metres. Publication computes ho
 ## Files and checks
 
 - `build/<asset>/package/`: generated levels, reused bake maps, assembly coverage and validated package metadata.
-- `dist/catalog.json`: complete audit/admin inventory, including bounds, transforms, level URLs, hashes and sizes. The browser uses `scene.json` and nearby cell manifests.
-- `dist/assets/<asset>/`: content-addressed GLBs with embedded textures. Hard links are used on the same filesystem to avoid duplicate disk blocks.
-- The catalog changes only after all assets validate. Retired model and cell resources are retained for at least 24 hours, then pruned during subsequent publications.
+- `dist/catalog.json`: complete audit/admin inventory, including bounds, transforms, level URLs, hashes and sizes. The browser uses `scene.json` and the tileset it names.
+- `dist/assets/<asset>/`: content-addressed per-part GLBs with embedded textures (the tile builder's input). Hard links are used on the same filesystem to avoid duplicate disk blocks.
+- `dist/tiles/`: content-addressed tileset JSON and merged tile GLBs, built by `tools/tileset.py`; `build/tiles-cache/` remembers which recipe produced which tile so unchanged tiles are not rebuilt.
+- The catalog changes only after all assets validate. Retired model and tile resources are retained for at least 24 hours, then pruned during subsequent publications.
 
 The master remains read-only during LOD assembly. Each source prototype is processed once per compatible material/scale group, then reused for its instances. Texture dimensions are capped per level; normals are renormalised after downsampling. The source and recipe signatures invalidate stale outputs. GLBs are checked for positions, indices, transforms, texture embedding, budgets and non-increasing placed triangle counts. The original full memorial validators still run when its master changes.
 
@@ -64,11 +67,14 @@ Run source and policy tests with:
 
 ```sh
 python3 tools/project.py check
-python3 -m unittest discover -s tests -v
+python3 -m pytest tests
 node --test viewer/tests/*.test.js
+node tests/run-browser.mjs http://127.0.0.1:8765/   # needs tools/browser Playwright and Chrome
 ```
 
-Current limitations: no regional tiling, full collision physics, KTX2/mesh compression, GPU instance batching across parts, or automatic visual-quality certification. District deliberately retains some architectural envelopes and openings while reducing/omitting heavy detail; it is not the tiny whole-town proxy discussed for future regional views.
+`tests/tiles.browser.js` flies the loaded viewer from the overview to street level, pans away and back, forces each level and swaps in a fresh tileset. It fails if any building in view is ever left without a drawn tile covering it, if a forced level is not honoured, or if a swap empties the scene. Pass a byte budget as a second argument to repeat it under memory pressure.
+
+Current limitations: no full collision physics, KTX2/mesh compression, GPU instance batching, or automatic visual-quality certification. Distant proxies reuse District geometry with reduced or flattened textures; they are not separately simplified envelopes, so the whole-town proxy carries all District triangles.
 
 ## First memorial package measurements (2026-10-22, before separate ground asset)
 
@@ -88,7 +94,7 @@ The separate public-realm asset now replaces the memorial’s old ground part in
 
 ## Long signs and texture filtering
 
-The streamer applies anisotropic filtering to loaded material textures, capped
+The viewer applies anisotropic filtering to loaded material textures, capped
 at 16 and the device's reported limit (1 when unsupported). Long narrow sign
 panels can otherwise look blurred despite sharp bake pixels, because ordinary
 mip filtering discards detail along their long axis. The 118–122 Lord Street
@@ -115,21 +121,17 @@ notification when the catalog or spatial scene bootstrap changes; clients also c
 and on returning to the tab, so static hosting and older servers still work.
 Restart `tools/serve.py` after installing the event endpoint. No new port is needed.
 
-Changed assets load in a separate scene, then swap together between frames;
-unchanged assets keep their caches. Additions, removals, transforms and bounds are
-included. A newer publication cancels an obsolete replacement batch. Failed loads
-keep the existing scene and report the failure; movement, a new publication or reload retries the working set. View settings contains
-**Pause live updates**. Reporting a snag automatically freezes updates and late LoD
-activations; the report records the catalog revision and loaded resource filenames.
+A new publication names a new content-addressed tileset. The viewer loads it
+hidden alongside the current one, for the current camera, and swaps the two
+between frames once the new view has settled (fully loaded, or as far as the
+budget allows). Unchanged tiles keep their URLs, so they come from the browser
+cache. The replacement has its own memory budget while it loads, so memory use
+can briefly reach twice the budget during a swap. A
+newer publication replaces an obsolete pending one. View settings contains
+**Pause live updates**. Reporting a snag freezes tile selection and swaps;
+the report records the scene revision and the drawn tiles' resource names.
 Camera position, mode and settings survive a swap. Walking rechecks ground height
 at the same horizontal location. There is still no building collision physics.
-
-A replacement batch has a 128 MiB estimated GPU-resource budget in addition to the
-current scene. Oversized batches try District before refinement; if an existing-asset replacement at District
-exceeds the staging budget, the viewer reports the failure and keeps its old geometry. Reload can apply a new initial working set. Estimates are not a hard cap on
-browser RAM or texture-decoding allocations. Two replacement downloads can run
-alongside the ordinary streamer's two requests. Pausing prevents application of a
-batch; requests already in flight may finish offscreen.
 
 Viewer-code, catalog-schema and geographic-frame changes show a reload notice
 instead of attempting an unsafe hot swap. Reference assets retired from a catalog
@@ -141,63 +143,40 @@ Blender edits. Publish related building and ground changes in one command.
 Live-update policy checks: `node tests/live-policy.mjs`. Python regression tests in
 `tests/test_live_publication.py` cover retirement/reactivation and event delivery.
 
-`tests/streamer-lifecycle.browser.js` is a Playwright `page.evaluate` function for
-a loaded viewer page. It checks versioned caches, batch adoption, reporting freezes
-and disposal of superseded asynchronous decodes using isolated fixture scenes.
-It also checks that memory-constrained upgrades progress to the selected level
-instead of reloading their coarse fallback, and that reserved replacements are
-not counted twice when deciding whether to retain the visible mesh.
+## Tiles and memory
 
-## Spatial working set
+`tools/tileset.py` builds the hierarchy from the published catalog; publication
+runs it automatically and `python3 tools/project.py index` reruns it (add
+`--viewer` to install viewer code changes) without rebuilding any building.
 
-The browser fetches `scene.json`, then only nearby hashed `cells/*.json` manifests.
-The flat `catalog.json` is retained for audits, not browser discovery. Each part
-appears once, in a metric cell chosen by centre and horizontal extent; published
-bounds conservatively include every LoD after its world transform. Cell sizes
-start at 64 m and increase by factors of four. A small origin-crossing object does
-not become a root-level object. The bootstrap contains cell descriptors and asset
-names/views, not every part. Paging this descriptor list is future work if needed.
+- **Units.** Each asset is one unit, so its parts are merged per level into one
+  GLB and always switch together. Assets wider than 96 m (roads, public realm) or
+  whose merged Detail would exceed 64 MB (the war memorial) become one unit per part.
+  Fixed-level parts draw their fixed level in every tile.
+- **Unit chain.** District → Walk → Detail, each tile REPLACE-refining to the next.
+  Consecutive levels with identical content collapse into one tile (most ground),
+  so crossing a band never re-downloads the same mesh.
+- **Proxies.** Buildings and ground get separate quadtrees over unit centres, so
+  wide ground sections do not swell building cells. Leaf cells (at most 128 m or
+  six units) hold a merged District proxy with textures capped at 128 px and no
+  normal/roughness maps; inner nodes are empty. The root holds the whole town
+  with textures replaced by their mean colour, so the first frame shows
+  everything and a view keeps at most the root plus one cell per area resident.
+- **Errors and caps.** Geometric errors are Detail 0, Walk 0.06 m, District 0.52 m,
+  cell proxy 1.5 m, root 40 m. With the default 8 px target on a
+  1000 px tall 50° view, District gives way to Walk at about 70 m and Walk to
+  Detail at about 8 m. Textures are capped at 4096 / 2048 / 512 px for
+  Detail / Walk / District. Change these in `tools/tileset.py`; the default pixel
+  target is `viewer/world.json:lodPolicy.errorTarget`.
+- **Budget.** `viewer/world.json:streaming.budget` (default 1 GiB) is the renderer's
+  cache cap, measured as its estimate of geometry and texture bytes. Fully refined
+  street views at the default error target need roughly 420–630 MB (the war
+  memorial is the heaviest); the overview needs under 50 MB. When the tiles a view
+  needs do not fit, the viewer raises its effective error target step by step until
+  a complete coarser set fits, and relaxes it again when there is room. A camera
+  very close to a heavy building still needs that building's fine tiles, so a small
+  budget can leave such views on coarse proxies; they stay complete, never blank.
 
-Selection includes the camera frustum (up to its 3 km far plane) and a 250 m
-near-camera safety area. A 64 m padding prefetches content at view edges, and an
-8-second grace period retains recently visible cells/parts during turns and pans.
-This also works in high orbit: visible ground is not limited to a fixed circle
-below the camera. Defaults are a 256 MiB estimated payload budget and up to
-128 MiB additional replacement staging space.
-Set `viewer/world.json:streaming.radius`, `margin`, and `budget` to change the
-published policy. These are payload estimates, not a cap on all browser/GPU RAM.
-Visible parts take priority over nearby/offscreen retention; ground is prioritised
-within each class, and coarse coverage is admitted before refinement. Retention
-is expendable under memory pressure. Forced
-Detail remains budgeted and geographically bounded. Distant active models are
-removed and disposed; requests are aborted and obsolete decodes are discarded.
-Parts that do not fit are labelled deferred in state/status rather than exceeding
-the budget. Current assets can still exceed this budget even at District: they
-need further LoD optimisation. No distant aggregate exists outside the horizon.
-
-`python3 tools/project.py index` regenerates cells from the last-good published
-catalog without rebuilding a building. Add `--viewer` to publish viewer code changes
-without rebuilding any asset. Old catalog formats recover other LoD
-bounds from matching package metadata or the published GLBs. Regular publication
-also writes the spatial index. Immutable cells and GLBs precede the atomic scene
-bootstrap; old resources retain the same 24-hour retirement grace period.
-
-Live updates compare the current spatial working set and stage changed assets'
-loaded parts. All cells come from one bootstrap revision; a per-asset revision
-prevents mixed-version assembly. Travel transactions follow cell membership, finish without cancellation by small
-camera movements, then replan for the latest view. Unchanged asset parts keep
-their roots, caches and downloads as adjacent parts enter or leave. Only a new
-publication revision cancels an outstanding transaction. Late cell fetches wait
-for the next unfrozen update before changing scene membership. Replacement failure or an oversized existing-asset batch
-keeps the previous scene and reports the failure; reload is a fallback for such
-batches. Initial loading is progressive. Snag capture freezes adoption and records
-both the applied `sceneRevision` and legacy `catalogRevision`, plus exact loaded
-resource URLs. Camera persistence remains unchanged.
-
-The server now observes both catalog and scene updates. An already running older
-server still signals ordinary asset publications; index-only changes are caught
-by the 15-second browser poll until that server is restarted.
-
-`window.southport.getState()` reports loaded parts with asset IDs, deferred flags,
-cell count, estimated residency/budget and staging bytes. It contains only the
-current working set; do not map parts by flat catalog array order.
+`window.southport.getState()` reports the drawn tiles with their unit, level and
+resource, level counts, whether the view has settled, the resident estimate and
+whether the budget is full.

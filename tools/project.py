@@ -195,7 +195,7 @@ def main():
     elif args.command == 'check':
         check()
     elif args.command == 'index':
-        from spatial_index import index_catalog
+        from tileset import index_scene
         with asset_lock(ROOT, 'catalog'):
             if args.viewer:
                 from publish_viewer import install_viewer
@@ -205,8 +205,8 @@ def main():
                 catalog.pop('revision',None)
                 catalog['revision']=hashlib.sha256(json.dumps(catalog,sort_keys=True).encode()).hexdigest()
                 temporary=path.with_suffix('.json.tmp');temporary.write_text(json.dumps(catalog,indent=2)+'\n');temporary.replace(path)
-            scene, _ = index_catalog(ROOT)
-        print(f"Indexed {len(scene['cells'])} spatial cells: {scene['revision']}")
+            scene, files = index_scene(ROOT)
+        print(f"Indexed {len(files)} tile resources ({scene['tileset']}): {scene['revision']}")
     elif args.command == 'publish':
         from publish_viewer import publish
         # Publication owns all asset locks before invoking the unlocked builder.

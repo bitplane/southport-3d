@@ -2,16 +2,15 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { SpatialStreamer } from './spatial-streamer.js';
-import { chooseLevel, formatBytes } from './lod.js';
+import { Town } from './tiles.js';
+import { countLevels, formatBytes, tileLevel } from './lod.js';
 import { installSnags } from './snags.js';
 import { readView, writeView } from './view-state.js';
-import { changedAssets, compatible, watchCatalog } from './live.js';
+import { compatible, watchCatalog } from './live.js';
 
 const $=id=>document.getElementById(id), viewport=$('viewport');
 const showError=message=>{$('error').textContent=message;$('error').hidden=false;console.error(message);};
-let renderer,streamer,mode='orbit',catalog,frames=0,lastStats=0,lastStream=0,lastSave=0,viewReady=false,lastSaved=null;
-const settings={detailDistance:8,districtDistance:70};
+let renderer,town,mode='orbit',catalog,frames=0,lastStats=0,lastSave=0,viewReady=false,lastSaved=null,transferred=0;
 const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5df');scene.fog=new THREE.Fog('#dce5df',250,1400);
 const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.05,3000);
 const keys=new Set(),clock=new THREE.Clock(),ray=new THREE.Raycaster();
@@ -19,11 +18,10 @@ const vector=new THREE.Vector3(),down=new THREE.Vector3(0,-1,0);
 let orbit,walkControl,drag=null,walkFloor=0,reporting=false,dropPending=false,dropTimer=0;
 let pendingCatalog=null;
 let livePaused=false,liveConnected=true,reloadNeeded=false,liveMessage='';
-let groundRevision=null;
 function liveStatus(){
   $('live-status').textContent=reloadNeeded?'Viewer update available — reload when ready':
     reporting?'Updates paused while reporting':livePaused?(liveMessage||'Updates paused'):
-    streamer?.staged||streamer?.loading?'Downloading nearby models…':!liveConnected?'Checking for updates — connection interrupted':liveMessage||'Live updates on';
+    town?.staging?'Downloading updated models…':!liveConnected?'Checking for updates — connection interrupted':liveMessage||'Live updates on';
   $('live-reload').hidden=!reloadNeeded;
 }
 function receiveCatalog(next){
@@ -31,32 +29,25 @@ function receiveCatalog(next){
   if(!compatible(catalog,next)){reloadNeeded=true;pendingCatalog=null;liveStatus();return;}
   pendingCatalog=next;liveStatus();
 }
+function tilesetURL(c){return new URL(c.tileset,new URL('scene.json',location.href)).href;}
 function updateLive(){
-  streamer.setPaused(livePaused||reloadNeeded);
   if(reporting||livePaused||reloadNeeded||!pendingCatalog)return;
-  catalog=pendingCatalog;pendingCatalog=null;streamer.setCatalog(catalog);
+  catalog=pendingCatalog;pendingCatalog=null;town.load(tilesetURL(catalog),catalog.revision);
   liveMessage='';liveStatus();
 }
 
 function status(){
-  if(!streamer)return;
+  if(!town)return;
   liveStatus();
-  const revision=streamer.appliedCatalog?.revision;
-  if(revision&&revision!==groundRevision){
-    groundRevision=revision;
-    if(mode==='walk'){
-      scene.updateMatrixWorld(true);
-      ray.set(new THREE.Vector3(camera.position.x,camera.position.y+5,camera.position.z),down);ray.far=Infinity;
-      const hit=ray.intersectObjects(streamer.groundRoots,true).find(h=>h.face);
-      if(hit){walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;}
-    }
-  }
-  const ready=streamer.entries.filter(e=>e.current).length, failed=streamer.entries.some(e=>e.failed.size);
-  const deferred=streamer.entries.filter(e=>e.deferred).length;
-  $('status').textContent=streamer.pending?`Loading detail · ${ready}/${streamer.entries.length} parts ready`:failed?'Some detail could not load':`${ready} parts ready${deferred?` · ${deferred} deferred by budget`:''} · ${mode==='walk'?'Walking':'Exploring'}`;
-  $('status-dot').classList.toggle('ready',!streamer.pending && ready>0 && !failed);
-  $('downloaded').textContent=formatBytes(streamer.bytes);$('resident').textContent=formatBytes(streamer.residentBytes);
+  const drawn=town.drawn.length,busy=town.busy,failed=town.current?.stats.failed;
+  const full=town.current?.lruCache.isFull();
+  $('status').textContent=busy?`Loading detail · ${drawn} tiles shown · ${busy} loading`:failed?'Some detail could not load':`${drawn} tiles shown${full?' · memory budget reached, some detail held back':''} · ${mode==='walk'?'Walking':'Exploring'}`;
+  $('status-dot').classList.toggle('ready',!busy && drawn>0 && !failed);
+  $('downloaded').textContent=formatBytes(transferred);$('resident').textContent=formatBytes(town.residentBytes);
   if(renderer)renderer.shadowMap.needsUpdate=true;
+}
+function setErrorTarget(value){
+  town.settings.errorTarget=value;$('error-target').value=value;$('error-output').textContent=value+' px';
 }
 function assetPoint(asset,p){return new THREE.Vector3().fromArray(p).applyAxisAngle(new THREE.Vector3(0,1,0),asset.rotationY).add(new THREE.Vector3().fromArray(asset.position));}
 function overview(){
@@ -83,7 +74,17 @@ function restoreSavedView(){
   return true;
 }
 function nearestAsset(){
-  return streamer.entries.reduce((best,e)=>!best||e.box.distanceToPoint(camera.position)<best.box.distanceToPoint(camera.position)?e:best,null)?.asset||catalog.assets[0];
+  const near=town.drawn.filter(t=>t.extras?.unit).map(t=>[t.engineData.boundingVolume.distanceToPoint(camera.position),t]).sort((a,b)=>a[0]-b[0])[0];
+  const id=near?.[1].extras.unit.split('/')[0];
+  return catalog.assets.find(a=>a.id===id)||catalog.assets[0];
+}
+// Walking re-finds the ground after a model swap at the same horizontal location.
+function regroundAfterSwap(){
+  if(mode!=='walk')return;
+  scene.updateMatrixWorld(true);
+  ray.set(new THREE.Vector3(camera.position.x,camera.position.y+5,camera.position.z),down);ray.far=Infinity;
+  const hit=ray.intersectObjects(town.groundRoots,true).find(h=>h.face);
+  if(hit){walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;}
 }
 function setMode(next){
   if(next===mode)return;
@@ -104,7 +105,7 @@ function updateModeUI(){
 function dropToGround(){
   scene.updateMatrixWorld(true);
   ray.set(new THREE.Vector3(camera.position.x,camera.position.y+.05,camera.position.z),down);ray.far=Infinity;
-  const hit=ray.intersectObjects(streamer.groundRoots,true).find(h=>h.face);
+  const hit=ray.intersectObjects(town.groundRoots,true).find(h=>h.face);
   if(!hit)return; // Unmodelled/unloaded ground: stay here, never use a remote spawn.
   walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;
 }
@@ -133,13 +134,16 @@ function walk(dt){
     // Ground-following only: no collision physics in this first inspection viewer.
     if(dropPending)return;
     ray.set(new THREE.Vector3(camera.position.x,walkFloor+.6,camera.position.z),down);ray.far=5;
-    const hit=ray.intersectObjects(streamer.groundRoots,true).find(h=>h.face && h.point.y<=walkFloor+.45);
+    const hit=ray.intersectObjects(town.groundRoots,true).find(h=>h.face && h.point.y<=walkFloor+.45);
     if(hit)walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;
   }
 }
 function animate(now){
   requestAnimationFrame(animate);const dt=clock.getDelta();walk(dt);moveOrbit(dt);if(mode==='orbit'&&!reporting)orbit.update();
-  if(streamer && !reporting && now-lastStream>200){updateLive();streamer.update(camera,settings,$('quality').value);lastStream=now;}
+  if(town){
+    updateLive();camera.updateMatrixWorld();
+    if(town.update()){regroundAfterSwap();status();}
+  }
   renderer.render(scene,camera);frames++;
   if(now-lastSave>500){saveView();lastSave=now;}
   if(now-lastStats>1000){$('fps').textContent=`${Math.round(frames*1000/(now-lastStats))} fps`;$('triangles').textContent=renderer.info.render.triangles.toLocaleString();frames=0;lastStats=now;status();}
@@ -159,17 +163,23 @@ async function init(){
   window.addEventListener('keyup',e=>keys.delete(e.code));window.addEventListener('blur',()=>{keys.clear();drag=null;});
   $('orbit').onclick=()=>{setMode('orbit');viewport.focus();};$('walk').onclick=()=>{setMode('walk');viewport.focus();};$('home').onclick=()=>{overview();saveView();viewport.focus();};$('capture').onclick=()=>walkControl.lock();
   $('settings-toggle').onclick=()=>{const open=$('settings-panel').hidden;$('settings-panel').hidden=!open;$('settings-toggle').setAttribute('aria-expanded',open);};
-  for(const [id,key] of [['detail','detailDistance'],['district','districtDistance']])$(id+'-distance').oninput=()=>{settings[key]=Number($(id+'-distance').value);$(id+'-output').textContent=settings[key]+' m';};
-  $('resolution').oninput=()=>{$('resolution-output').textContent=$('resolution').value+'×';resize();};$('wireframe').onchange=()=>streamer?.setWireframe($('wireframe').checked);$('shadows').onchange=()=>{renderer.shadowMap.enabled=$('shadows').checked;renderer.shadowMap.needsUpdate=true;};$('retry').onclick=()=>location.reload();
-  const manifestURL=new URL('scene.json',location.href);const response=await fetch(manifestURL,{cache:'no-store'});if(!response.ok)throw new Error('The scene package is not ready yet. Reload in a moment.');catalog=await response.json();if(!catalog.assets?.length||!Array.isArray(catalog.cells))throw new Error('No buildings are available in this package.');
-  settings.detailDistance=catalog.lodPolicy.detailDistance;settings.districtDistance=catalog.lodPolicy.districtDistance;
-  streamer=new SpatialStreamer(scene,catalog,manifestURL,status,showError,renderer.capabilities.getMaxAnisotropy());
-  for(const option of $('quality').options)if(option.value!=='auto')option.disabled=false;
+  $('error-target').oninput=()=>setErrorTarget(Number($('error-target').value));
+  $('budget').onchange=()=>{town.settings.budget=Number($('budget').value)*1e6;};
+  $('quality').onchange=()=>{town.settings.forced=$('quality').value;};
+  $('resolution').oninput=()=>{$('resolution-output').textContent=$('resolution').value+'×';resize();};$('wireframe').onchange=()=>town?.setWireframe($('wireframe').checked);$('shadows').onchange=()=>{renderer.shadowMap.enabled=$('shadows').checked;renderer.shadowMap.needsUpdate=true;};$('retry').onclick=()=>location.reload();
+  const manifestURL=new URL('scene.json',location.href);const response=await fetch(manifestURL,{cache:'no-store'});if(!response.ok)throw new Error('The scene package is not ready yet. Reload in a moment.');catalog=await response.json();if(!catalog.assets?.length||!catalog.tileset)throw new Error('No buildings are available in this package.');
+  town=new Town(scene,camera,renderer,{anisotropy:Math.min(16,renderer.capabilities.getMaxAnisotropy())});
+  town.settings.budget=catalog.streaming.budget;setErrorTarget(catalog.lodPolicy.errorTarget??8);
+  const megabytes=String(Math.round(town.settings.budget/1e6));
+  if(![...$('budget').options].some(o=>o.value===megabytes))$('budget').add(new Option(formatBytes(town.settings.budget),megabytes));
+  $('budget').value=megabytes;
+  town.load(tilesetURL(catalog),catalog.revision);
+  new PerformanceObserver(list=>{for(const e of list.getEntries())if(e.name.includes('/tiles/'))transferred+=e.transferSize||e.encodedBodySize||0;}).observe({type:'resource',buffered:true});
   if(!restoreSavedView())overview();viewReady=true;resize();window.addEventListener('resize',resize);
   window.addEventListener('pagehide',saveView);window.addEventListener('beforeunload',saveView);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)saveView();});
   const snags=installSnags({
-    setActive(active){reporting=active;streamer.frozen=active;liveStatus();keys.clear();drag=null;orbit.enabled=!active&&mode==='orbit';if(active)walkControl.unlock();},
+    setActive(active){reporting=active;town.frozen=active;liveStatus();keys.clear();drag=null;orbit.enabled=!active&&mode==='orbit';if(active)walkControl.unlock();},
     capture(){
       renderer.render(scene,camera);
       const canvas=document.createElement('canvas'),source=renderer.domElement;
@@ -178,21 +188,19 @@ async function init(){
       canvas.getContext('2d').drawImage(source,0,0,canvas.width,canvas.height);
       const target=mode==='orbit'?orbit.target.clone():camera.position.clone().addScaledVector(camera.getWorldDirection(new THREE.Vector3()),12);
       return {screenshot:canvas.toDataURL('image/jpeg',.92),view:{
-        catalogRevision:(streamer.appliedCatalog||catalog).catalogRevision,sceneRevision:(streamer.appliedCatalog||catalog).revision,asset:nearestAsset().id,mode,worldOrigin:catalog.worldOrigin,coordinateSystem:catalog.coordinateSystem,
+        catalogRevision:catalog.catalogRevision,sceneRevision:town.revision,asset:nearestAsset().id,mode,worldOrigin:catalog.worldOrigin,coordinateSystem:catalog.coordinateSystem,
         camera:{position:camera.position.toArray(),quaternion:camera.quaternion.toArray(),target:target.toArray(),fov:camera.fov,aspect:camera.aspect},
         viewport:{width:innerWidth,height:innerHeight,imageWidth:canvas.width,imageHeight:canvas.height},
-        quality:$('quality').value,settings:{...settings},wireframe:$('wireframe').checked,shadows:$('shadows').checked,
-        parts:streamer.entries.filter(e=>e.current).map(e=>({asset:e.asset.id,part:e.part.id,level:e.current,resource:e.part.levels[e.current]?.uri})),pending:streamer.pending
+        quality:$('quality').value,settings:{errorTarget:town.settings.errorTarget,budget:town.settings.budget},wireframe:$('wireframe').checked,shadows:$('shadows').checked,
+        tiles:town.drawn.map(t=>({unit:t.extras?.unit??null,level:tileLevel(t.extras),resource:t.content?.uri})),pending:town.busy
       }};
     },
     restore(view){
       setMode('orbit');camera.position.fromArray(view.camera.position);camera.quaternion.fromArray(view.camera.quaternion);
       camera.fov=view.camera.fov;camera.updateProjectionMatrix();orbit.target.fromArray(view.camera.target);orbit.update();
-      $('quality').value=view.quality;
-      for(const [id,key] of [['detail','detailDistance'],['district','districtDistance']])if(Number.isFinite(view.settings?.[key])){
-        settings[key]=view.settings[key];$(id+'-distance').value=settings[key];$(id+'-output').textContent=settings[key]+' m';
-      }
-      $('wireframe').checked=!!view.wireframe;streamer.setWireframe(!!view.wireframe);
+      $('quality').value=view.quality;town.settings.forced=view.quality;
+      if(Number.isFinite(view.settings?.errorTarget))setErrorTarget(view.settings.errorTarget);
+      $('wireframe').checked=!!view.wireframe;town.setWireframe(!!view.wireframe);
       $('shadows').checked=!!view.shadows;renderer.shadowMap.enabled=!!view.shadows;renderer.shadowMap.needsUpdate=true;
     }
   });
@@ -202,8 +210,9 @@ async function init(){
   liveStatus();
   $('snag-new').disabled=false;$('snag-queue').disabled=false;
   const snagId=new URLSearchParams(location.search).get('snag');if(snagId)snags.openReport(snagId);
-  // Read-only state gives contributors a stable way to inspect browser runs.
-  window.southport={getState:()=>({revision:(streamer.appliedCatalog||catalog).revision,requestedRevision:catalog.revision,live:{paused:livePaused,reporting,staging:!!streamer.staged,queued:pendingCatalog?.revision,reloadNeeded,message:liveMessage},mode,camera:camera.position.toArray(),target:orbit.target.toArray(),quality:$('quality').value,textureAnisotropy:streamer.anisotropy,pending:streamer.pending,transferred:streamer.bytes,resident:streamer.residentBytes,budget:streamer.budget,reserved:streamer.reservedBytes,stagedBytes:streamer.stagedBytes,cells:streamer.nodes.size,streamingMessage:streamer.message,triangles:renderer.info.render.triangles,parts:streamer.entries.map(e=>({asset:e.asset.id,id:e.part.id,deferred:e.deferred,level:e.current,wanted:e.wanted,distance:e.distance,error:[...e.failed]}))})};
+  // Read-only state gives contributors a stable way to inspect browser runs;
+  // town/camera/orbit are exposed for scripted browser tests.
+  window.southport={town,camera,orbit,getState:()=>{const drawn=town.drawn;return {revision:town.revision,requestedRevision:catalog.revision,live:{paused:livePaused,reporting,staging:town.staging,queued:pendingCatalog?.revision,reloadNeeded,message:liveMessage},mode,camera:camera.position.toArray(),target:orbit.target.toArray(),quality:$('quality').value,errorTarget:town.settings.errorTarget,textureAnisotropy:town.options.anisotropy,pending:town.busy,settled:!!town.current?.settled&&!town.staging,transferred,resident:town.residentBytes,budget:town.settings.budget,budgetFull:!!town.current?.lruCache.isFull(),failed:town.current?.stats.failed??0,triangles:renderer.info.render.triangles,levels:countLevels(drawn.map(t=>t.extras)),tiles:drawn.map(t=>({unit:t.extras?.unit??null,level:tileLevel(t.extras),resource:t.content?.uri,distance:t.traversal.distanceFromCamera}))};}};
   requestAnimationFrame(animate);
 }
 init().catch(e=>{showError(e.message);$('status').textContent='Unable to open scene';});

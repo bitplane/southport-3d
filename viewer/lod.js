@@ -1,26 +1,20 @@
-/** Viewer policy; distances are metres to a part's bounding box, not its centre. */
-export const LEVELS = ['detail', 'walk', 'district'];
-export function chooseLevel(distance, current, forced, settings, available) {
-  if (!available.length) return null;
-  if (forced !== 'auto') return available.includes(forced) ? forced : nearestAvailable(forced, available);
-  const close = settings.detailDistance, far = settings.districtDistance, h = .15;
-  let wanted = distance < close ? 'detail' : distance > far ? 'district' : 'walk';
-  if (current === 'detail' && distance < close * (1 + h)) wanted = 'detail';
-  if (current === 'walk' && distance > close * (1 - h) && distance < far * (1 + h)) wanted = 'walk';
-  if (current === 'district' && distance > far * (1 - h)) wanted = 'district';
-  return nearestAvailable(wanted, available);
+/** Viewer LoD policy over the published tile tree (see tools/tileset.py). */
+export const LEVELS = ['district', 'walk', 'detail'];
+// A unit tile draws its finest level; proxies (no level) rank below District.
+const rank = extras => LEVELS.indexOf(extras?.level) + 1;
+/**
+ * View error for a forced level, or null for automatic screen-space selection.
+ * Coarser tiles refine without limit; the first tile at or beyond the level stops.
+ */
+export function forcedError(extras, hasChildren, forced) {
+  if (!LEVELS.includes(forced)) return null;
+  return hasChildren && rank(extras) < LEVELS.indexOf(forced) + 1 ? Infinity : 0;
 }
-function nearestAvailable(wanted, available) {
-  const i = LEVELS.indexOf(wanted);
-  return [...available].sort((a,b) => Math.abs(LEVELS.indexOf(a)-i)-Math.abs(LEVELS.indexOf(b)-i))[0];
-}
-export function evictionCandidates(records, budget) {
-  let total = records.reduce((n,r)=>n+r.bytes,0);
-  const evict = [];
-  for (const item of records.filter(r=>!r.active).sort((a,b)=>a.used-b.used)) {
-    if (total <= budget) break;
-    evict.push(item.key); total -= item.bytes;
-  }
-  return evict;
+/** Label for a drawn tile: its level, or the proxy kind for merged distant content. */
+export function tileLevel(extras) { return extras?.level || (extras?.proxy ? `${extras.proxy} proxy` : 'unknown'); }
+export function countLevels(tiles) {
+  const counts = {};
+  for (const t of tiles) counts[tileLevel(t)] = (counts[tileLevel(t)] || 0) + 1;
+  return counts;
 }
 export function formatBytes(n) { return `${(n/1e6).toFixed(n<1e6?2:1)} MB`; }
