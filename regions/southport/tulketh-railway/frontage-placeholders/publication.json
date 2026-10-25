@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Tulketh and railway",
+  "status": "Station canopy and platforms, Tulketh/Bridge/Wesley streets, parking courts, London Street railway edge and tracks under existing Eastbank bridge. Provisional metric envelopes, not finished buildings.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "way-30141945",
+      "name": "Southport station canopy envelope; platforms remain open below",
+      "collection": "way-30141945"
+    },
+    {
+      "id": "way-42019165",
+      "name": "parking envelope",
+      "collection": "way-42019165"
+    },
+    {
+      "id": "way-29090021",
+      "name": "yes envelope",
+      "collection": "way-29090021"
+    },
+    {
+      "id": "way-371896316",
+      "name": "commercial envelope",
+      "collection": "way-371896316"
+    },
+    {
+      "id": "way-962581676",
+      "name": "yes envelope",
+      "collection": "way-962581676"
+    },
+    {
+      "id": "way-371896669",
+      "name": "commercial envelope",
+      "collection": "way-371896669"
+    },
+    {
+      "id": "way-30141996",
+      "name": "yes envelope",
+      "collection": "way-30141996"
+    },
+    {
+      "id": "way-371725359",
+      "name": "yes envelope",
+      "collection": "way-371725359"
+    },
+    {
+      "id": "way-371921765",
+      "name": "yes envelope",
+      "collection": "way-371921765"
+    },
+    {
+      "id": "way-49898463",
+      "name": "yes envelope",
+      "collection": "way-49898463"
+    },
+    {
+      "id": "way-371921524",
+      "name": "yes envelope",
+      "collection": "way-371921524"
+    },
+    {
+      "id": "way-372019467",
+      "name": "yes envelope",
+      "collection": "way-372019467"
+    },
+    {
+      "id": "way-372019469",
+      "name": "yes envelope",
+      "collection": "way-372019469"
+    },
+    {
+      "id": "way-372022242",
+      "name": "yes envelope",
+      "collection": "way-372022242"
+    },
+    {
+      "id": "way-371861934",
+      "name": "yes envelope",
+      "collection": "way-371861934"
+    },
+    {
+      "id": "way-371866527",
+      "name": "yes envelope",
+      "collection": "way-371866527"
+    },
+    {
+      "id": "way-840332227",
+      "name": "yes envelope",
+      "collection": "way-840332227"
+    },
+    {
+      "id": "way-372019466",
+      "name": "yes envelope",
+      "collection": "way-372019466"
+    },
+    {
+      "id": "way-372019465",
+      "name": "yes envelope",
+      "collection": "way-372019465"
+    },
+    {
+      "id": "way-371896320",
+      "name": "yes envelope",
+      "collection": "way-371896320"
+    },
+    {
+      "id": "way-371866526",
+      "name": "yes envelope",
+      "collection": "way-371866526"
+    },
+    {
+      "id": "way-372022241",
+      "name": "yes envelope",
+      "collection": "way-372022241"
+    },
+    {
+      "id": "way-371896872",
+      "name": "commercial envelope",
+      "collection": "way-371896872"
+    },
+    {
+      "id": "way-372022250",
+      "name": "yes envelope",
+      "collection": "way-372022250"
+    },
+    {
+      "id": "way-371722977",
+      "name": "yes envelope",
+      "collection": "way-371722977"
+    },
+    {
+      "id": "way-371867300",
+      "name": "yes envelope",
+      "collection": "way-371867300"
+    },
+    {
+      "id": "way-371896318",
+      "name": "yes envelope",
+      "collection": "way-371896318"
+    },
+    {
+      "id": "way-371862545",
+      "name": "yes envelope",
+      "collection": "way-371862545"
+    },
+    {
+      "id": "way-840332228",
+      "name": "yes envelope",
+      "collection": "way-840332228"
+    },
+    {
+      "id": "way-372019468",
+      "name": "yes envelope",
+      "collection": "way-372019468"
+    },
+    {
+      "id": "way-372022249",
+      "name": "yes envelope",
+      "collection": "way-372022249"
+    },
+    {
+      "id": "way-371896319",
+      "name": "yes envelope",
+      "collection": "way-371896319"
+    },
+    {
+      "id": "way-372022248",
+      "name": "yes envelope",
+      "collection": "way-372022248"
+    },
+    {
+      "id": "way-371896880",
+      "name": "yes envelope",
+      "collection": "way-371896880"
+    },
+    {
+      "id": "way-371866529",
+      "name": "yes envelope",
+      "collection": "way-371866529"
+    },
+    {
+      "id": "way-371896874",
+      "name": "yes envelope",
+      "collection": "way-371896874"
+    },
+    {
+      "id": "way-371861933",
+      "name": "yes envelope",
+      "collection": "way-371861933"
+    },
+    {
+      "id": "way-371896881",
+      "name": "yes envelope",
+      "collection": "way-371896881"
+    },
+    {
+      "id": "way-371896877",
+      "name": "yes envelope",
+      "collection": "way-371896877"
+    },
+    {
+      "id": "way-372022247",
+      "name": "yes envelope",
+      "collection": "way-372022247"
+    },
+    {
+      "id": "way-371921523",
+      "name": "yes envelope",
+      "collection": "way-371921523"
+    },
+    {
+      "id": "way-372022246",
+      "name": "yes envelope",
+      "collection": "way-372022246"
+    },
+    {
+      "id": "way-371896882",
+      "name": "yes envelope",
+      "collection": "way-371896882"
+    },
+    {
+      "id": "way-371896879",
+      "name": "yes envelope",
+      "collection": "way-371896879"
+    },
+    {
+      "id": "way-371896883",
+      "name": "yes envelope",
+      "collection": "way-371896883"
+    },
+    {
+      "id": "way-371896875",
+      "name": "yes envelope",
+      "collection": "way-371896875"
+    },
+    {
+      "id": "way-371896878",
+      "name": "yes envelope",
+      "collection": "way-371896878"
+    },
+    {
+      "id": "way-371866528",
+      "name": "yes envelope",
+      "collection": "way-371866528"
+    },
+    {
+      "id": "way-371896876",
+      "name": "yes envelope",
+      "collection": "way-371896876"
+    }
+  ],
+  "views": [
+    {
+      "name": "Tulketh railway block",
+      "position": [
+        -140,
+        550,
+        390
+      ],
+      "target": [
+        -140,
+        0,
+        390
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -190,
+      3,
+      340
+    ],
+    "target": [
+      -190,
+      3,
+      400
+    ]
+  },
+  "rules": [
+    {
+      "id": "massing",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Fixed footprint envelope only."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Already minimal envelope; later architecture replaces this asset part."
+      }
+    }
+  ]
+}

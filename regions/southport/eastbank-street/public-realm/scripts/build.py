@@ -30,7 +30,11 @@ rail_area=line(rail_points,12)
 deck_points=[[-337.3,-617],[-332.7,-590]]
 deck_outline=parallel(deck_points,-5.5)+list(reversed(parallel(deck_points,5.5)))
 deck_area=P.polygons([deck_outline])
-available=P.difference(available,P.difference(rail_area,deck_area))
+# The station block now traces the full curved railway reservation. Preserve
+# that opening at the shared boundary; only the bridge deck crosses above it.
+rail_plan=REPO/'regions/southport/tulketh-railway/public-realm/research/layout.json'
+rail_opening=P.polygons(json.loads(rail_plan.read_text())['rail_reservation'])
+available=P.difference(available,P.difference(union([rail_area,rail_opening]),deck_area))
 road=P.intersection(available,roads)
 foot=P.difference(P.intersection(available,buffer(roads,D['footway_width_m'])),road)
 remaining=P.difference(P.difference(available,road),foot)
@@ -97,6 +101,22 @@ def finish(m,mat,collection):
    v=ob.data.vertices[ob.data.loops[li].vertex_index].co;uv.data[li].uv=(v.x,v.y)
  return ob
 for (name,mat),m in compiled.items():finish(m,mat,name)
+# Close the exposed cutting boundaries down to the independent rail datum.
+# The deck opening itself stays clear; only ground edges beside the reservation
+# receive a retaining envelope. Fine masonry and real bank slopes are deferred.
+contains=P.lib.GEOSCovers_r;contains.restype=C.c_char;contains.argtypes=[C.c_void_p,C.c_void_p,C.c_void_p]
+opening=P.difference(union([rail_area,rail_opening]),buffer(deck_area,.01))
+banks=Mesh('Structure railway retaining envelope')
+for hits in edges.values():
+ if len(hits)!=1:continue
+ name,mat,a,b=hits[0];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
+ if length<.001:continue
+ x=(a[0]+b[0])/2+dy/length*.003;y=(a[1]+b[1])/2-dx/length*.003
+ point=P.own(P.read(P.context,P.reader,f'POINT ({x} {y})'.encode()))
+ if contains(P.context,opening,point)!=b'\x01':continue
+ za=grade(*a[:2])-(.12 if mat in road_mats else 0);zb=grade(*b[:2])-(.12 if mat in road_mats else 0)
+ banks.add([(a[0],a[1],0),(b[0],b[1],0),(b[0],b[1],zb),(a[0],a[1],za)],[(0,1,2,3)])
+finish(banks,'structure','bridge-structure')
 rail=SURFACES.surface('eastbank-rail-cutting');m=Mesh('Ground railway cutting')
 for tri in P.triangles(P.intersection(rail_area,P.polygons([rect(-385,-285,-620,-580)]))):
  for lifted in rail.lift_triangle(tri):m.add(lifted,[(0,1,2)])

@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Tulketh and railway",
+  "status": "Station canopy and platforms, Tulketh/Bridge/Wesley streets, parking courts, London Street railway edge and tracks under existing Eastbank bridge. Provisional metric envelopes, not finished buildings.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "section-0-ground",
+      "name": "Tulketh section 0 ground",
+      "collection": "section-0-ground",
+      "ground": true,
+      "support_surface": "southport/tulketh-road-level"
+    },
+    {
+      "id": "section-0-rail",
+      "name": "Tulketh section 0 rail",
+      "collection": "section-0-rail"
+    },
+    {
+      "id": "section-1-ground",
+      "name": "Tulketh section 1 ground",
+      "collection": "section-1-ground",
+      "ground": true,
+      "support_surface": "southport/tulketh-road-level"
+    },
+    {
+      "id": "section-1-rail",
+      "name": "Tulketh section 1 rail",
+      "collection": "section-1-rail"
+    },
+    {
+      "id": "section-2-ground",
+      "name": "Tulketh section 2 ground",
+      "collection": "section-2-ground",
+      "ground": true,
+      "support_surface": "southport/tulketh-road-level"
+    },
+    {
+      "id": "section-2-rail",
+      "name": "Tulketh section 2 rail",
+      "collection": "section-2-rail"
+    },
+    {
+      "id": "section-3-ground",
+      "name": "Tulketh section 3 ground",
+      "collection": "section-3-ground",
+      "ground": true,
+      "support_surface": "southport/tulketh-road-level"
+    },
+    {
+      "id": "section-3-rail",
+      "name": "Tulketh section 3 rail",
+      "collection": "section-3-rail"
+    },
+    {
+      "id": "rail-ground",
+      "name": "Station and cutting ground",
+      "collection": "rail-ground",
+      "ground": true,
+      "support_surface": "southport/eastbank-rail-cutting"
+    },
+    {
+      "id": "platform-ground",
+      "name": "Station platforms",
+      "collection": "platform-ground",
+      "ground": true,
+      "support_surface": "southport/station-platforms"
+    }
+  ],
+  "views": [
+    {
+      "name": "Tulketh railway block",
+      "position": [
+        -140,
+        550,
+        390
+      ],
+      "target": [
+        -140,
+        0,
+        390
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -190,
+      3,
+      340
+    ],
+    "target": [
+      -190,
+      3,
+      400
+    ]
+  },
+  "rules": [
+    {
+      "id": "ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve owned ground and distinct support heights."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed bounded ground mesh independent of architecture."
+      }
+    },
+    {
+      "id": "structure",
+      "match": "^Structure ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Minimal rails and retaining edges."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Low polygon rails retain railway alignment at distance."
+      }
+    }
+  ]
+}

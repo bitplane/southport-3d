@@ -28,6 +28,13 @@ def hits(x,y):
  return result
 # Same XY supports two distinct levels, without filling the bridge opening.
 h=hits(-334.3,-602);assert len(h)==2,h;assert abs(min(z for _,z in h))<1e-5;assert abs(max(z for _,z in h)-(grade(-334.3,-602)-.12))<5e-5
+# Retaining envelopes must not seal the rail tunnel at the deck edges.
+for y in [-604.94,-600.42]:
+ for o in obs:
+  if 'retaining envelope' not in o.name:continue
+  for direction in [-1,1]:
+   hit=o.ray_cast(Vector((-334.3,y,1.7)),Vector((direction,.06*direction,0)),distance=15)
+   assert not hit[0],('Retaining wall blocks railway',y,direction)
 samples=0
 for y in range(-688,-35,2):
  points=[p for r in D['roads']if r['name']=='Eastbank Street'for p in r['points']]

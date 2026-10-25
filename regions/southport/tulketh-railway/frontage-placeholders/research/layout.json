@@ -1,0 +1,2169 @@
+{
+  "schema_version": 1,
+  "blocks": [
+    {
+      "id": "way-30141945",
+      "footprint": [
+        [
+          -51.483,
+          -269.842
+        ],
+        [
+          -58.001,
+          -270.007
+        ],
+        [
+          -57.529,
+          -330.49
+        ],
+        [
+          -62.154,
+          -330.472
+        ],
+        [
+          -63.365,
+          -330.473
+        ],
+        [
+          -67.23,
+          -330.471
+        ],
+        [
+          -68.296,
+          -330.472
+        ],
+        [
+          -73.767,
+          -330.464
+        ],
+        [
+          -80.171,
+          -330.461
+        ],
+        [
+          -81.5,
+          -330.442
+        ],
+        [
+          -85.019,
+          -330.477
+        ],
+        [
+          -86.422,
+          -330.45
+        ],
+        [
+          -91.046,
+          -330.479
+        ],
+        [
+          -95.43,
+          -330.476
+        ],
+        [
+          -96.769,
+          -330.478
+        ],
+        [
+          -101.143,
+          -330.484
+        ],
+        [
+          -104.071,
+          -330.481
+        ],
+        [
+          -104.719,
+          -241.519
+        ],
+        [
+          -104.803151,
+          -237.134604
+        ],
+        [
+          -102.004986,
+          -236.025153
+        ],
+        [
+          -101.691478,
+          -235.822507
+        ],
+        [
+          -101.370987,
+          -235.631044
+        ],
+        [
+          -101.370986,
+          -235.631043
+        ],
+        [
+          -101.348493,
+          -235.600807
+        ],
+        [
+          -101.316848,
+          -235.580352
+        ],
+        [
+          -101.104747,
+          -235.273148
+        ],
+        [
+          -100.881928,
+          -234.97362
+        ],
+        [
+          -98.118928,
+          -229.15362
+        ],
+        [
+          -97.932905,
+          -228.518927
+        ],
+        [
+          -97.100702,
+          -222.0
+        ],
+        [
+          -61.6,
+          -222.0
+        ],
+        [
+          -61.6,
+          -211.39
+        ],
+        [
+          -43.0,
+          -211.39
+        ],
+        [
+          -39.830964,
+          -211.39
+        ],
+        [
+          -39.740769,
+          -213.861333
+        ],
+        [
+          -40.10735,
+          -213.928806
+        ],
+        [
+          -40.467595,
+          -214.16212
+        ],
+        [
+          -40.711133,
+          -214.515533
+        ],
+        [
+          -40.800887,
+          -214.935242
+        ],
+        [
+          -40.723194,
+          -215.35735
+        ],
+        [
+          -40.48988,
+          -215.717595
+        ],
+        [
+          -39.699503,
+          -216.530949
+        ],
+        [
+          -39.649,
+          -269.83
+        ],
+        [
+          -43.486,
+          -269.731
+        ],
+        [
+          -50.086,
+          -269.972
+        ]
+      ],
+      "height_m": 2.4,
+      "replace_with": null,
+      "source_osm_way": "30141945",
+      "name": "Southport station canopy envelope; platforms remain open below",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      },
+      "base_z_m": 4.4
+    },
+    {
+      "id": "way-42019165",
+      "footprint": [
+        [
+          -187.5,
+          -375.473
+        ],
+        [
+          -177.736,
+          -309.56
+        ],
+        [
+          -172.144,
+          -271.866
+        ],
+        [
+          -107.353,
+          -279.95
+        ],
+        [
+          -107.68,
+          -340.411
+        ],
+        [
+          -129.171,
+          -338.068
+        ],
+        [
+          -137.325,
+          -386.133
+        ],
+        [
+          -141.321,
+          -388.817
+        ],
+        [
+          -182.645,
+          -383.601
+        ],
+        [
+          -182.313202,
+          -381.496423
+        ],
+        [
+          -182.247074,
+          -381.504708
+        ],
+        [
+          -181.4298,
+          -381.446004
+        ],
+        [
+          -180.697203,
+          -381.079011
+        ],
+        [
+          -180.697201,
+          -381.079009
+        ],
+        [
+          -180.160813,
+          -380.459601
+        ],
+        [
+          -179.902292,
+          -379.682074
+        ],
+        [
+          -179.960996,
+          -378.8648
+        ],
+        [
+          -180.327989,
+          -378.132203
+        ],
+        [
+          -180.947399,
+          -377.595813
+        ],
+        [
+          -181.724926,
+          -377.337292
+        ],
+        [
+          -182.011546,
+          -377.301381
+        ],
+        [
+          -182.021,
+          -376.517
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "42019165",
+      "name": "parking envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-29090021",
+      "footprint": [
+        [
+          37.198115,
+          -650.0
+        ],
+        [
+          36.493984,
+          -650.0
+        ],
+        [
+          10.101,
+          -569.692
+        ],
+        [
+          55.0,
+          -554.951867
+        ],
+        [
+          55.0,
+          -644.113826
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "29090021",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896316",
+      "footprint": [
+        [
+          -153.951,
+          -466.301
+        ],
+        [
+          -151.688,
+          -453.036
+        ],
+        [
+          -148.076,
+          -431.931
+        ],
+        [
+          -143.269,
+          -432.245
+        ],
+        [
+          -143.108,
+          -430.064
+        ],
+        [
+          -156.325,
+          -428.763
+        ],
+        [
+          -158.0,
+          -440.146
+        ],
+        [
+          -165.65,
+          -439.251
+        ],
+        [
+          -161.272,
+          -414.283
+        ],
+        [
+          -142.887,
+          -417.3
+        ],
+        [
+          -141.306,
+          -410.941
+        ],
+        [
+          -126.013,
+          -412.509
+        ],
+        [
+          -123.648,
+          -398.388
+        ],
+        [
+          -108.77,
+          -400.622
+        ],
+        [
+          -107.634,
+          -415.09
+        ],
+        [
+          -104.349,
+          -415.877
+        ],
+        [
+          -108.201,
+          -439.84
+        ],
+        [
+          -115.754,
+          -438.622
+        ],
+        [
+          -120.177,
+          -469.903
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896316",
+      "name": "commercial envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-962581676",
+      "footprint": [
+        [
+          -119.929,
+          -255.844
+        ],
+        [
+          -120.182,
+          -259.32
+        ],
+        [
+          -124.336,
+          -258.951
+        ],
+        [
+          -124.094,
+          -255.065
+        ],
+        [
+          -147.984,
+          -252.009
+        ],
+        [
+          -146.982,
+          -246.068
+        ],
+        [
+          -155.788,
+          -244.857
+        ],
+        [
+          -156.809,
+          -252.916
+        ],
+        [
+          -152.505,
+          -253.549
+        ],
+        [
+          -153.921,
+          -264.534
+        ],
+        [
+          -170.752,
+          -262.717
+        ],
+        [
+          -166.653,
+          -235.841
+        ],
+        [
+          -105.728,
+          -244.66
+        ],
+        [
+          -105.317,
+          -257.917
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "962581676",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896669",
+      "footprint": [
+        [
+          -164.517,
+          -444.995
+        ],
+        [
+          -165.345,
+          -451.01
+        ],
+        [
+          -151.688,
+          -453.036
+        ],
+        [
+          -153.951,
+          -466.301
+        ],
+        [
+          -196.799,
+          -461.082
+        ],
+        [
+          -193.612,
+          -441.171
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896669",
+      "name": "commercial envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-30141996",
+      "footprint": [
+        [
+          -206.571,
+          -603.511
+        ],
+        [
+          -188.911,
+          -604.657
+        ],
+        [
+          -193.04,
+          -646.827
+        ],
+        [
+          -209.486,
+          -646.052
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "30141996",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371725359",
+      "footprint": [
+        [
+          -229.967,
+          -233.857
+        ],
+        [
+          -227.597,
+          -219.435
+        ],
+        [
+          -220.05,
+          -220.677
+        ],
+        [
+          -220.914,
+          -225.936
+        ],
+        [
+          -202.006,
+          -229.035
+        ],
+        [
+          -201.077,
+          -223.362
+        ],
+        [
+          -183.799,
+          -226.202
+        ],
+        [
+          -187.214,
+          -246.956
+        ],
+        [
+          -215.109,
+          -242.368
+        ],
+        [
+          -214.141,
+          -236.454
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371725359",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371921765",
+      "footprint": [
+        [
+          18.042,
+          -274.916
+        ],
+        [
+          28.099,
+          -274.858
+        ],
+        [
+          28.157,
+          -284.233
+        ],
+        [
+          8.621,
+          -284.345
+        ],
+        [
+          8.451,
+          -255.764
+        ],
+        [
+          38.617,
+          -255.585
+        ],
+        [
+          38.692,
+          -268.861
+        ],
+        [
+          18.006,
+          -268.986
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371921765",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-49898463",
+      "footprint": [
+        [
+          -241.856,
+          -614.903
+        ],
+        [
+          -243.385,
+          -639.583
+        ],
+        [
+          -266.91,
+          -636.306
+        ],
+        [
+          -264.816,
+          -619.654
+        ],
+        [
+          -258.812,
+          -619.493
+        ],
+        [
+          -257.943,
+          -614.469
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "49898463",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371921524",
+      "footprint": [
+        [
+          7.817,
+          -252.244
+        ],
+        [
+          7.794,
+          -236.623
+        ],
+        [
+          37.816,
+          -236.568
+        ],
+        [
+          37.825,
+          -241.444
+        ],
+        [
+          37.846,
+          -252.181
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371921524",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372019467",
+      "footprint": [
+        [
+          21.418,
+          -360.067
+        ],
+        [
+          21.214,
+          -346.208
+        ],
+        [
+          46.675,
+          -345.828
+        ],
+        [
+          46.888,
+          -360.233
+        ],
+        [
+          50.359,
+          -360.183
+        ],
+        [
+          50.465,
+          -367.438
+        ],
+        [
+          39.644,
+          -367.6
+        ],
+        [
+          39.529,
+          -359.799
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372019467",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372019469",
+      "footprint": [
+        [
+          21.777,
+          -385.02
+        ],
+        [
+          42.988,
+          -390.829
+        ],
+        [
+          40.63,
+          -398.907
+        ],
+        [
+          9.227,
+          -391.784
+        ],
+        [
+          7.342,
+          -389.026
+        ],
+        [
+          7.791,
+          -374.145
+        ],
+        [
+          17.866,
+          -374.211
+        ],
+        [
+          17.852,
+          -386.604
+        ],
+        [
+          20.851,
+          -387.519
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372019469",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372022242",
+      "footprint": [
+        [
+          9.631,
+          -433.839
+        ],
+        [
+          8.009,
+          -433.803
+        ],
+        [
+          8.563,
+          -422.0
+        ],
+        [
+          40.166,
+          -422.925
+        ],
+        [
+          40.093,
+          -434.555
+        ],
+        [
+          19.888,
+          -434.078
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372022242",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371861934",
+      "footprint": [
+        [
+          -242.917,
+          -477.123
+        ],
+        [
+          -244.35,
+          -484.897
+        ],
+        [
+          -261.201,
+          -482.278
+        ],
+        [
+          -259.289,
+          -463.489
+        ],
+        [
+          -229.131,
+          -466.634
+        ],
+        [
+          -229.723,
+          -473.073
+        ],
+        [
+          -251.592,
+          -470.371
+        ],
+        [
+          -252.422,
+          -476.169
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371861934",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371866527",
+      "footprint": [
+        [
+          -230.845,
+          -510.439
+        ],
+        [
+          -229.712,
+          -502.579
+        ],
+        [
+          -236.964,
+          -501.524
+        ],
+        [
+          -235.566,
+          -491.889
+        ],
+        [
+          -219.841,
+          -494.161
+        ],
+        [
+          -223.71,
+          -520.901
+        ],
+        [
+          -238.156,
+          -518.816
+        ],
+        [
+          -236.813,
+          -509.575
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371866527",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-840332227",
+      "footprint": [
+        [
+          -119.059,
+          -548.196
+        ],
+        [
+          -123.236,
+          -575.719
+        ],
+        [
+          -132.789,
+          -574.213
+        ],
+        [
+          -129.241,
+          -546.584
+        ]
+      ],
+      "height_m": 4.0,
+      "replace_with": null,
+      "source_osm_way": "840332227",
+      "name": "Railway service building envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      },
+      "base_z_m": 0.0
+    },
+    {
+      "id": "way-372019466",
+      "footprint": [
+        [
+          6.87,
+          -323.6
+        ],
+        [
+          18.752,
+          -323.556
+        ],
+        [
+          18.837,
+          -345.961
+        ],
+        [
+          6.955,
+          -346.006
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372019466",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372019465",
+      "footprint": [
+        [
+          22.727,
+          -322.542
+        ],
+        [
+          43.69,
+          -322.711
+        ],
+        [
+          43.585,
+          -335.047
+        ],
+        [
+          22.629,
+          -334.87
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372019465",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896320",
+      "footprint": [
+        [
+          -167.844,
+          -434.403
+        ],
+        [
+          -169.814,
+          -434.236
+        ],
+        [
+          -170.343,
+          -439.046
+        ],
+        [
+          -193.127,
+          -434.615
+        ],
+        [
+          -191.41,
+          -424.761
+        ],
+        [
+          -166.909,
+          -428.275
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896320",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371866526",
+      "footprint": [
+        [
+          -241.704,
+          -509.32
+        ],
+        [
+          -242.981,
+          -518.118
+        ],
+        [
+          -267.364,
+          -514.24
+        ],
+        [
+          -265.843,
+          -505.444
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371866526",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372022241",
+      "footprint": [
+        [
+          40.166,
+          -422.925
+        ],
+        [
+          40.085,
+          -411.839
+        ],
+        [
+          45.577,
+          -412.85
+        ],
+        [
+          46.338,
+          -420.02
+        ],
+        [
+          52.221,
+          -419.729
+        ],
+        [
+          50.617,
+          -435.586
+        ],
+        [
+          40.093,
+          -434.555
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372022241",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896872",
+      "footprint": [
+        [
+          -129.525,
+          -475.978
+        ],
+        [
+          -131.263,
+          -488.222
+        ],
+        [
+          -148.328,
+          -485.799
+        ],
+        [
+          -146.598,
+          -473.563
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896872",
+      "name": "commercial envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372022250",
+      "footprint": [
+        [
+          52.669,
+          -454.762
+        ],
+        [
+          53.791,
+          -446.692
+        ],
+        [
+          55.0,
+          -446.860928
+        ],
+        [
+          55.0,
+          -465.25638
+        ],
+        [
+          49.457,
+          -464.485
+        ],
+        [
+          50.847,
+          -454.505
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372022250",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371722977",
+      "footprint": [
+        [
+          -204.382,
+          -293.215
+        ],
+        [
+          -203.363,
+          -285.953
+        ],
+        [
+          -199.363,
+          -286.513
+        ],
+        [
+          -199.005,
+          -283.952
+        ],
+        [
+          -190.592,
+          -285.126
+        ],
+        [
+          -193.477,
+          -305.677
+        ],
+        [
+          -201.843,
+          -304.501
+        ],
+        [
+          -200.343,
+          -293.781
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371722977",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371867300",
+      "footprint": [
+        [
+          -270.647,
+          -534.644
+        ],
+        [
+          -255.644,
+          -536.919
+        ],
+        [
+          -257.658,
+          -550.191
+        ],
+        [
+          -272.656,
+          -547.92
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371867300",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896318",
+      "footprint": [
+        [
+          -181.211,
+          -410.221
+        ],
+        [
+          -190.617,
+          -409.162
+        ],
+        [
+          -187.961,
+          -393.614
+        ],
+        [
+          -172.865,
+          -395.84
+        ],
+        [
+          -173.963,
+          -403.932
+        ],
+        [
+          -180.1,
+          -402.785
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896318",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371862545",
+      "footprint": [
+        [
+          -291.314,
+          -442.019
+        ],
+        [
+          -291.575,
+          -443.721
+        ],
+        [
+          -279.795,
+          -445.576
+        ],
+        [
+          -280.026534,
+          -447.042539
+        ],
+        [
+          -299.099658,
+          -443.90857
+        ],
+        [
+          -298.62,
+          -440.867
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371862545",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-840332228",
+      "footprint": [
+        [
+          -103.423,
+          -544.286
+        ],
+        [
+          -109.152,
+          -543.343
+        ],
+        [
+          -103.815,
+          -510.995
+        ],
+        [
+          -98.086,
+          -511.938
+        ]
+      ],
+      "height_m": 4.0,
+      "replace_with": null,
+      "source_osm_way": "840332228",
+      "name": "Railway service building envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      },
+      "base_z_m": 0.0
+    },
+    {
+      "id": "way-372019468",
+      "footprint": [
+        [
+          24.389,
+          -369.615
+        ],
+        [
+          18.313,
+          -369.631
+        ],
+        [
+          18.317,
+          -372.06
+        ],
+        [
+          7.323,
+          -372.089
+        ],
+        [
+          7.296,
+          -359.979
+        ],
+        [
+          19.363,
+          -359.942
+        ],
+        [
+          19.368,
+          -362.465
+        ],
+        [
+          24.371,
+          -362.458
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372019468",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372022249",
+      "footprint": [
+        [
+          35.579,
+          -453.39
+        ],
+        [
+          36.858,
+          -444.917
+        ],
+        [
+          45.39,
+          -446.205
+        ],
+        [
+          44.113,
+          -454.696
+        ],
+        [
+          45.493,
+          -454.901
+        ],
+        [
+          44.239,
+          -463.244
+        ],
+        [
+          32.66,
+          -461.503
+        ],
+        [
+          33.92,
+          -453.135
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372022249",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896319",
+      "footprint": [
+        [
+          -181.819,
+          -423.477
+        ],
+        [
+          -191.937,
+          -422.049
+        ],
+        [
+          -190.4,
+          -411.195
+        ],
+        [
+          -174.293,
+          -413.476
+        ],
+        [
+          -175.524,
+          -422.225
+        ],
+        [
+          -181.52,
+          -421.381
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896319",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372022248",
+      "footprint": [
+        [
+          21.281,
+          -451.063
+        ],
+        [
+          22.524,
+          -443.307
+        ],
+        [
+          30.634,
+          -444.609
+        ],
+        [
+          29.413,
+          -452.246
+        ],
+        [
+          31.329,
+          -452.547
+        ],
+        [
+          30.02,
+          -460.746
+        ],
+        [
+          18.089,
+          -458.84
+        ],
+        [
+          19.389,
+          -450.755
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372022248",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896880",
+      "footprint": [
+        [
+          -196.995,
+          -548.029
+        ],
+        [
+          -207.259,
+          -546.647
+        ],
+        [
+          -206.071,
+          -537.78
+        ],
+        [
+          -196.907,
+          -539.008
+        ],
+        [
+          -197.605,
+          -544.226
+        ],
+        [
+          -187.351,
+          -545.598
+        ],
+        [
+          -188.409,
+          -553.514
+        ],
+        [
+          -197.567,
+          -552.291
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896880",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371866529",
+      "footprint": [
+        [
+          -214.668,
+          -458.863
+        ],
+        [
+          -217.629,
+          -477.5
+        ],
+        [
+          -224.753,
+          -476.367
+        ],
+        [
+          -221.792,
+          -457.73
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371866529",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896874",
+      "footprint": [
+        [
+          -192.628,
+          -493.249
+        ],
+        [
+          -200.16,
+          -492.527
+        ],
+        [
+          -199.106,
+          -482.259
+        ],
+        [
+          -184.102,
+          -484.274
+        ],
+        [
+          -185.15,
+          -491.816
+        ],
+        [
+          -192.026,
+          -490.919
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896874",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371861933",
+      "footprint": [
+        [
+          -248.655,
+          -448.933
+        ],
+        [
+          -249.378,
+          -454.618
+        ],
+        [
+          -247.739,
+          -454.685
+        ],
+        [
+          -248.717,
+          -463.321
+        ],
+        [
+          -258.23,
+          -462.146
+        ],
+        [
+          -256.08,
+          -448.251
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371861933",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896881",
+      "footprint": [
+        [
+          -217.792,
+          -555.542
+        ],
+        [
+          -223.963,
+          -554.594
+        ],
+        [
+          -223.108,
+          -549.095
+        ],
+        [
+          -225.729,
+          -548.693
+        ],
+        [
+          -224.554,
+          -541.027
+        ],
+        [
+          -213.398,
+          -542.734
+        ],
+        [
+          -214.584,
+          -550.421
+        ],
+        [
+          -216.945,
+          -550.051
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896881",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896877",
+      "footprint": [
+        [
+          -179.94,
+          -517.094
+        ],
+        [
+          -179.452,
+          -513.581
+        ],
+        [
+          -173.406,
+          -514.411
+        ],
+        [
+          -173.230466,
+          -513.131298
+        ],
+        [
+          -166.077761,
+          -514.134385
+        ],
+        [
+          -167.802,
+          -526.552
+        ],
+        [
+          -174.435,
+          -525.64
+        ],
+        [
+          -173.376,
+          -518.001
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896877",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372022247",
+      "footprint": [
+        [
+          18.078,
+          -448.189
+        ],
+        [
+          16.311,
+          -458.517
+        ],
+        [
+          7.664,
+          -457.043
+        ],
+        [
+          9.258,
+          -447.672
+        ],
+        [
+          11.226,
+          -448.006
+        ],
+        [
+          11.945,
+          -443.79
+        ],
+        [
+          16.508,
+          -444.563
+        ],
+        [
+          15.949,
+          -447.824
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372022247",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371921523",
+      "footprint": [
+        [
+          37.825,
+          -241.444
+        ],
+        [
+          47.569,
+          -241.61
+        ],
+        [
+          47.38,
+          -252.194
+        ],
+        [
+          37.846,
+          -252.181
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371921523",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-372022246",
+      "footprint": [
+        [
+          16.508,
+          -444.563
+        ],
+        [
+          11.945,
+          -443.79
+        ],
+        [
+          8.985,
+          -443.236
+        ],
+        [
+          9.631,
+          -433.839
+        ],
+        [
+          19.888,
+          -434.078
+        ],
+        [
+          17.984,
+          -444.752
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "372022246",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896882",
+      "footprint": [
+        [
+          -240.234,
+          -539.091
+        ],
+        [
+          -228.844,
+          -540.667
+        ],
+        [
+          -230.006,
+          -549.037
+        ],
+        [
+          -241.391,
+          -547.465
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896882",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896879",
+      "footprint": [
+        [
+          -205.927,
+          -522.655
+        ],
+        [
+          -196.768,
+          -523.571
+        ],
+        [
+          -197.822,
+          -534.04
+        ],
+        [
+          -206.98,
+          -533.124
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896879",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896883",
+      "footprint": [
+        [
+          -252.521,
+          -537.521
+        ],
+        [
+          -242.149,
+          -538.961
+        ],
+        [
+          -243.354,
+          -547.673
+        ],
+        [
+          -253.734,
+          -546.242
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896883",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896875",
+      "footprint": [
+        [
+          -200.46,
+          -494.653
+        ],
+        [
+          -192.669,
+          -495.928
+        ],
+        [
+          -194.388,
+          -506.378
+        ],
+        [
+          -202.183,
+          -505.1
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896875",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896878",
+      "footprint": [
+        [
+          -202.445737,
+          -509.576841
+        ],
+        [
+          -194.587923,
+          -510.809884
+        ],
+        [
+          -195.929,
+          -519.9
+        ],
+        [
+          -203.797,
+          -518.736
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896878",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371866528",
+      "footprint": [
+        [
+          -217.706,
+          -481.433
+        ],
+        [
+          -219.322,
+          -491.737
+        ],
+        [
+          -226.866,
+          -490.558
+        ],
+        [
+          -225.256,
+          -480.25
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371866528",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    },
+    {
+      "id": "way-371896876",
+      "footprint": [
+        [
+          -148.278,
+          -502.368
+        ],
+        [
+          -149.561,
+          -511.498
+        ],
+        [
+          -156.335,
+          -510.544
+        ],
+        [
+          -155.053,
+          -501.414
+        ]
+      ],
+      "height_m": 8.0,
+      "replace_with": null,
+      "source_osm_way": "371896876",
+      "name": "yes envelope",
+      "status": "provisional footprint; height estimated from 3D/storeys",
+      "uncertainty_m": {
+        "footprint": 1.5,
+        "height": 2.0
+      }
+    }
+  ],
+  "existing_block_plans": [
+    "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
+    "regions/southport/eastbank-street/frontage-placeholders/research/layout.json",
+    "regions/southport/hoghton-street/frontage-placeholders/research/layout.json",
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json"
+  ],
+  "budgets": {
+    "triangles_per_level": 25000,
+    "download_bytes_per_level": 2500000,
+    "gpu_texture_bytes": 0
+  }
+}

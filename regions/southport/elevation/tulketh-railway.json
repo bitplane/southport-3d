@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "datum": "southport-memorial-estimated-local-zero",
+  "frame": "Memorial site XY metres; yaw from east 43.5293 degrees",
+  "includes": [
+    "eastbank.json"
+  ],
+  "controls": {},
+  "surfaces": {
+    "tulketh-pavement": {
+      "bounds": [
+        -345,
+        60,
+        -655,
+        -135
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        -1
+      ],
+      "profile": [
+        {
+          "distance_m": 35,
+          "control": "eastbank-lord-seam"
+        },
+        {
+          "distance_m": 36,
+          "control": "chapel-paving"
+        },
+        {
+          "distance_m": 180,
+          "control": "chapel-paving"
+        },
+        {
+          "distance_m": 300,
+          "control": "eastbank-talbot-approach"
+        },
+        {
+          "distance_m": 430,
+          "control": "eastbank-part-street"
+        },
+        {
+          "distance_m": 530,
+          "control": "eastbank-riding-street"
+        },
+        {
+          "distance_m": 590,
+          "control": "eastbank-bridge-north"
+        },
+        {
+          "distance_m": 615,
+          "control": "eastbank-bridge-south"
+        },
+        {
+          "distance_m": 670,
+          "control": "eastbank-south-approach"
+        },
+        {
+          "distance_m": 710,
+          "control": "eastbank-roundabout"
+        },
+        {
+          "distance_m": 747,
+          "control": "eastbank-roundabout-exits"
+        }
+      ]
+    },
+    "tulketh-rail": {
+      "bounds": [
+        -345,
+        60,
+        -655,
+        -135
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "rail-cutting"
+        }
+      ]
+    }
+  },
+  "notes": "Provisional transverse extension of Eastbank approach heights preserves the existing shared boundary. Independent railway height retained below bridge. Cross-street gradients are not surveyed and need later refinement; uncertainty up to 1.5 m."
+}

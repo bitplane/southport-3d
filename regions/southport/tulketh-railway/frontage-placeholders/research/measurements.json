@@ -1,0 +1,63 @@
+{
+  "units": "metres",
+  "calibration": [
+    {
+      "pixel": [
+        612,
+        627
+      ],
+      "lat_lon": [
+        53.645346,
+        -3.002979
+      ]
+    },
+    {
+      "pixel": [
+        1050,
+        750
+      ],
+      "lat_lon": [
+        53.644955,
+        -3.00063
+      ]
+    }
+  ],
+  "viewport": [
+    1440,
+    1000
+  ],
+  "inputs": "Google flat aerial, private aerial-close.png; linear local fit across 160 m; roof parallax remains.",
+  "estimated_widths": {
+    "tulketh_carriageway": 7.2,
+    "bridge_street_carriageway": 5.8,
+    "footways": 2.0
+  },
+  "uncertainty": {
+    "footprint_m": 1.5,
+    "building_height_m": 2.0,
+    "ground_height_m": 1.5
+  },
+  "limits": "Bounds and clear access spaces precede architecture. Platform heights, canopy structure, parking bay lines and exact roof forms are provisional.",
+  "southern_calibration": [
+    {
+      "pixel": [
+        625,
+        508
+      ],
+      "lat_lon": [
+        53.643425,
+        -3.00241
+      ]
+    },
+    {
+      "pixel": [
+        1029,
+        300
+      ],
+      "lat_lon": [
+        53.644086,
+        -3.000242
+      ]
+    }
+  ]
+}

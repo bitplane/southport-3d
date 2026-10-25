@@ -1,0 +1,31 @@
+{
+  "sources": [
+    {
+      "id": "google-plan",
+      "url": "https://www.google.com/maps/@53.64575,-3.0024,330m/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "notes": "Loaded aerial, calibrated with two coordinate controls. Private footprint overlay compared against station canopy, multi-storey parking, industrial courts, terraced plots and side streets. Roof parallax is not a ground survey."
+    },
+    {
+      "id": "google-orbit",
+      "url": "https://www.google.com/maps/@53.6455997,-3.0115663,869a,35y,90h,39.21t/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "notes": "Four actual photogrammetric rotations inspected around station/Tulketh/Eastbank block. Confirms canopy over open tracks, large car park, smaller pitched/industrial volumes, railway fan and road bridge. Building heights estimated, roof detail deferred."
+    },
+    {
+      "id": "tulketh-street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.64562,-3.00309&heading=145&pitch=0&fov=90",
+      "capture_date": "2011-05",
+      "accessed": "2026-10-25",
+      "notes": "Loaded Google panorama opposite multi-storey car park looking south. About 7 m carriageway, slab pavements, yellow edge lines, low buildings/parking courts and curved lamp arms. Historical image; current shop identity and temporary structures not inferred."
+    },
+    {
+      "id": "osm",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-3.0075,53.6420,-2.9965,53.6480",
+      "capture_date": "2026-10-25",
+      "notes": "Attributed seed only, compared with actual aerial/3D views. OpenStreetMap contributors, ODbL 1.0. Railway topology and platform polygons retained provisionally; not a signalling model."
+    }
+  ]
+}

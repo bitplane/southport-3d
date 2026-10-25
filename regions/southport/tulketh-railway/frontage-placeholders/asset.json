@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "southport.tulketh-railway.frontage-placeholders",
+  "name": "Tulketh and station railway frontage-placeholders",
+  "region": "southport",
+  "area": "tulketh-railway",
+  "status": "provisional-block-plan",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "way-30141945",
+    "way-42019165",
+    "way-29090021",
+    "way-371896316",
+    "way-962581676",
+    "way-371896669",
+    "way-30141996",
+    "way-371725359",
+    "way-371921765",
+    "way-49898463",
+    "way-371921524",
+    "way-372019467",
+    "way-372019469",
+    "way-372022242",
+    "way-371861934",
+    "way-371866527",
+    "way-840332227",
+    "way-372019466",
+    "way-372019465",
+    "way-371896320",
+    "way-371866526",
+    "way-372022241",
+    "way-371896872",
+    "way-372022250",
+    "way-371722977",
+    "way-371867300",
+    "way-371896318",
+    "way-371862545",
+    "way-840332228",
+    "way-372019468",
+    "way-372022249",
+    "way-371896319",
+    "way-372022248",
+    "way-371896880",
+    "way-371866529",
+    "way-371896874",
+    "way-371861933",
+    "way-371896881",
+    "way-371896877",
+    "way-372022247",
+    "way-371921523",
+    "way-372022246",
+    "way-371896882",
+    "way-371896879",
+    "way-371896883",
+    "way-371896875",
+    "way-371896878",
+    "way-371866528",
+    "way-371896876"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Station canopy and platforms, Tulketh/Bridge/Wesley streets, parking courts, London Street railway edge and tracks under existing Eastbank bridge. Provisional metric envelopes, not finished buildings.",
+  "licensing": "OSM contributors ODbL 1.0; imagery linked only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/tulketh-railway.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/tulketh-railway.json"
+    ]
+  }
+}
