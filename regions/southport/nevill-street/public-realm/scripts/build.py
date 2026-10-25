@@ -316,6 +316,8 @@ for poly in footprints:
   ahead=[v for v in street_intersections(y) if (v-centre)*side>0]
   if not ahead or abs(x-(min(ahead) if side>0 else max(ahead)))>.01:continue
   surface('frontage tie-in',[a,b,(b[0]-side*2.1,b[1]),(a[0]-side*2.1,a[1])],'paving',5)
+from stanley_corner import replace as replace_stanley_corner
+replace_stanley_corner(ROOT,Path(os.environ['SOUTHPORT_REPO_ROOT']),rows,verticals,surface,grade)
 # Triangulated footprints clip every surface once, including the old broad
 # apron. Footprints are ground outlines; do not trim to roof overhangs.
 building_cutters=[]
@@ -388,6 +390,8 @@ for (part,mat),mesh in compiled.items():
    v=ob.data.vertices[ob.data.loops[li].vertex_index].co
    uv.data[li].uv=(v.x/3.6,v.y/3.6)
  ob['placement_status']='OSM registered, widths and heights estimated from linked imagery'
+from corner_furniture import build as build_corner_furniture
+build_corner_furniture(s,mats,grade)
 for im in bpy.data.images:
  if im.source=='FILE':
      im.pack()

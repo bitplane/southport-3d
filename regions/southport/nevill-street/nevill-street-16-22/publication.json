@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/nevill-street-16-22.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "July 2026 street appearance, undated Google 3D roof; estimated measurements.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "frontage",
+      "name": "Rusticated stone street elevations and shops",
+      "collection": "frontage"
+    },
+    {
+      "id": "rear",
+      "name": "Red brick rear, party wall and access return",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "Asymmetric hip and glazed canopy",
+      "collection": "roof"
+    }
+  ],
+  "views": [
+    {
+      "name": "Front",
+      "position": [
+        -18,
+        13,
+        -87
+      ],
+      "target": [
+        14,
+        6,
+        -88
+      ]
+    },
+    {
+      "name": "Corner",
+      "position": [
+        -10,
+        23,
+        -112
+      ],
+      "target": [
+        14,
+        6,
+        -88
+      ]
+    },
+    {
+      "name": "Rear",
+      "position": [
+        39,
+        22,
+        -106
+      ],
+      "target": [
+        14,
+        6,
+        -88
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      2,
+      1.7,
+      -90
+    ],
+    "target": [
+      9,
+      6,
+      -90
+    ]
+  },
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^(Shell|Architecture|Glazing) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain actual apertures, stone profiles, roof silhouette and modest shop joinery."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent bounded receivers replace these source meshes."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Small lettering and fine details remain modest; retain for walking."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Bake fine appearance, omit tiny projected fittings."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed authored chamfered envelope and asymmetric roof with open canopy; independent of stone coursing, frames and lettering.",
+    "max_bytes": 2000000,
+    "max_gpu_bytes": 7000000,
+    "parts": {
+      "frontage": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 400,
+        "cage_m": 0.65
+      },
+      "rear": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.6
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 700,
+        "cage_m": 0.8
+      }
+    }
+  }
+}

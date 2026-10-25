@@ -4,7 +4,8 @@ from pathlib import Path
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 publication=json.loads((Path(__import__('os').environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/nevill-street/public-realm/publication.json').read_text())
-assert all(part.get('ground') is True for part in publication['parts']), 'Every corridor part must participate in viewer ground following'
+assert all(part.get('ground') is True for part in publication['parts'] if part['id'].endswith('-ground')), 'Every ground part must participate in viewer ground following'
+assert all(not part.get('ground',False) for part in publication['parts'] if part['id']=='stanley-furniture'), 'Furniture must not participate in floor following'
 D=json.loads((ROOT/'research/layout.json').read_text());meshes=[o for o in bpy.context.scene.objects if o.type=='MESH']
 assert meshes and all(o.data.polygons and o.data.uv_layers for o in meshes)
 assert all(math.isfinite(c) for o in meshes for v in o.data.vertices for c in v.co)
@@ -55,10 +56,20 @@ for segment in json.loads((ROOT/'research/marking-centrelines.json').read_text()
 # Edge paint must not run across a side-road mouth. Test actual exported paint
 # triangle interiors against the independent finite-width junction corridors.
 paint_samples=0
+corner=json.loads((ROOT/'research/stanley-corner.json').read_text())
+def segment_distance(p,a,b):
+ dx,dy=b[0]-a[0],b[1]-a[1];t=max(0,min(1,((p.x-a[0])*dx+(p.y-a[1])*dy)/(dx*dx+dy*dy)))
+ return math.hypot(p.x-a[0]-t*dx,p.y-a[1]-t*dy)
 for ob in meshes:
  if not ob.name.endswith(' yellow'):continue
  for tri in ob.data.loop_triangles:
   p=sum((ob.data.vertices[i].co for i in tri.vertices),Vector())/3
+  x0,y0,x1,y1=corner['bounds']
+  if x0+.002<p.x<x1-.002 and y0+.002<p.y<y1-.002:
+   dist=min(segment_distance(p,a,b) for curve in corner['curves'].values() for a,b in zip(curve,curve[1:]))
+   assert min(abs(dist-.185),abs(dist-.365))<.045,(tuple(p),dist,'junction stripe not on shared rounded kerb')
+   paint_samples+=1
+   continue
   for road in D['side_roads']:
    a,b=road['centre'],road['end'];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
    along=((p.x-a[0])*dx+(p.y-a[1])*dy)/length
@@ -125,3 +136,13 @@ for road in D['side_roads']:
    y=b[1]-.02*dy/length+side*(road['width']/2-inset)*ny
    _,ob=sample(x,y);assert ob.name.endswith(' yellow'),(road['name'],side,inset,ob.name)
 print('Stanley and Bath double yellows reach adjoining owner')
+
+# Work-window seams retain the pre-existing road and footway datum. These
+# samples straddle cuts, rather than merely checking generated curve vertices.
+for x,y,dx,dy in [(1,91,0,.003),(1,116,0,.003),(-13,109.73,.003,0),(19,100.84,.003,0),(19,97.90,.003,0),(-13,106.70,.003,0)]:
+ za,oa=sample(x-dx,y-dy);zb,ob=sample(x+dx,y+dy)
+ assert abs(za-zb)<.001,(x,y,'corner cut height seam',za,zb)
+ assert oa.name.split()[-1]==ob.name.split()[-1],(x,y,'corner cut material seam',oa.name,ob.name)
+for x,y in [(5.6,95.0),(7.0,96.4),(10.8,97.2),(9.0,104.8),(6.5,106.4)]:
+ z,ob=sample(x,y);assert not ob.name.endswith('asphalt'),(x,y,'corner apron missing')
+print('Stanley/Cable work-window seams and rounded corner apron probes passed')

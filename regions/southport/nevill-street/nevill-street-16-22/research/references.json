@@ -1,0 +1,55 @@
+{
+  "accessed": "2026-10-25",
+  "rights": "Reference imagery \u00a9 Google and its licensors, privately retained outside Git. OSM seed \u00a9 OpenStreetMap contributors ODbL. All published textures authored procedurally, no source imagery pixels.",
+  "sources": [
+    {
+      "id": "street-front",
+      "url": "https://www.google.com/maps/@53.6492323,-3.0052505,3a,85y,48h,105t/data=!3m4!1e1!3m2!1s2Gv0y7_5CwiDS9PNJWxWvA!2e0",
+      "capture": "July 2026",
+      "observations": "Three giant segmental arches spanning two storeys; rusticated piers, cream painted sash/spandrel panels, four ground shops. Canopy edge hides roof in this view."
+    },
+    {
+      "id": "stanley",
+      "url": "https://www.google.com/maps/@53.6494036,-3.0052502,3a,105y,110h,119t/data=!3m4!1e1!3m2!1sjbyt35roNRtt1Gt0KkU8YA!2e0",
+      "capture": "July 2026",
+      "observations": "Chamfered corner with narrow window, full arch on Stanley return, red brick strip with two narrow windows; pink Treat Street frontage, surviving glazed canopy."
+    },
+    {
+      "id": "rear-access",
+      "url": "https://www.google.com/maps/@53.649469,-3.0051379,3a,100y,185h,108t/data=!3m4!1e1!3m2!1sfcHhjQV3Li6qQnwA2VlsPw!2e0",
+      "capture": "July 2026",
+      "observations": "Entrance number 2, silver horizontal extraction duct, drainpipes, low wall and closed gate into narrow yard. Upper rear brick/window groups partly visible; private yard not entered."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6493215,-3.0050984,113a,35y,90h/data=!3m1!1e3",
+      "capture": "undated composite, accessed 2026-10-25",
+      "observations": "Actual photogrammetric mesh loaded using Globe view. Captures at headings 0,90,180,270 around 87 m altitude resolve asymmetric roof: broad shallow membrane front slope, steep slate rear pitch, hipped Stanley end; rear yard separates neighbouring Willow Grove service tower."
+    },
+    {
+      "id": "osm-seed",
+      "url": "https://www.openstreetmap.org/way/375391230",
+      "observations": "Retained seed in block layout. Rectangular seed requires observed corner chamfer; approximate 16.7 by 11.35 metre extent."
+    },
+    {
+      "id": "ak-address",
+      "url": "https://aknailsspabooking.setmore.com/",
+      "observations": "Business-owned booking page identifies 18 Nevill Street."
+    },
+    {
+      "id": "historic-architect",
+      "url": "https://manchestervictorianarchitects.org.uk/buildings/business-premises-neville-street-southport",
+      "observations": "1888 Hurst and Bolshaw business premises on Nevill/Stanley corner, separate office/cellar approach from Stanley. Attribution provisional pending matching historic illustration."
+    },
+    {
+      "id": "supplement-search",
+      "url": "https://www.southporttownscape.org.uk/the-project/built-on-sand-exhibition/built-on-sand-nevill-street",
+      "observations": "Townscape historic context; image search for 18\u201322 Nevill yielded mostly unrelated Australian Southport and 42\u201350 Nevill. No useful additional current roof photography."
+    },
+    {
+      "id": "mapillary-search",
+      "url": "https://www.mapillary.com/app/?lat=53.6494&lng=-3.0052&z=19",
+      "observations": "Web-tool access failed; indexed search no useful target photograph. Not used as geometry evidence."
+    }
+  ]
+}

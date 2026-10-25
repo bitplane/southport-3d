@@ -1,0 +1,38 @@
+{
+  "status": "reviewed-and-published",
+  "comparisons": [
+    {
+      "stage": "massing",
+      "views": [
+        "build/renders/overview.png",
+        "3d-roof-east.png",
+        "street-front-road.png",
+        "street-stanley-full.png"
+      ],
+      "findings": "Three giant front bays, single return bay and chamfer align with imagery; 16.73 m frontage and 11.35 m depth replace the registered rectangle. Asymmetric ridge and rear lower eave match close rear 3D views. Render exposed uncapped Stanley parapet behind the roof hip: add physical parapet thickness/caps before publication. Roof face initial flat-top interpretation rejected after four-direction orbit.",
+      "limits": "Perspective-based height estimates \u00b10.8 m; private rear lower openings remain unknown."
+    },
+    {
+      "stage": "detail-and-published-envelope",
+      "findings": "Overview render and actual District/Walk viewer inspected with adjoining Willow Grove and Stanley/Cable ground. Cornice rear gaps closed, curtain treatment corrected, footprint chamfer and asymmetric roof retained. Ground review corrected outgoing Cable paint gaps and exact main-road boundary coordinates. Two picnic tables and direction board are separately classified furniture.",
+      "exported_audit": "Native coplanar scanner over Detail/Walk/District plus Willow Grove/placeholders/Nevill/Stanley/West ground: no new building cross-asset conflicts. One approximately 1.12 square millimetre internal float32 capital-edge sliver in Detail/Walk; District none. Source regression enforces 5 square millimetres across all building meshes.",
+      "costs": {
+        "detail_triangles": 19461,
+        "walk_triangles": 19461,
+        "district_triangles": 90,
+        "detail_bytes": 2789368,
+        "walk_bytes": 2789368,
+        "district_bytes": 222724,
+        "district_gpu_bytes": 6302665
+      },
+      "viewing_levels": "Walk and Detail are deliberately identical compact geometry and share a collapsed tile resource; forced Walk therefore reports detail for this unit. Actual District separate resource checked, pending0/settledtrue/failed0."
+    },
+    {
+      "stage": "rear-and-roof",
+      "findings": "Final standalone rear render inspected together with actual Detail assembled rear view. Steep slate rear pitch, shallow membrane front, Stanley hip and parapet backs remain continuous; neighbouring Willow Grove wing partially occludes the private rear wall as in imagery. The existing open yard is retained.",
+      "private_capture": "../output/stanley-corner-detail-rear.png",
+      "limitations": "Rear lower details remain obscured; upper sash placement estimated from available evidence."
+    }
+  ],
+  "outstanding": []
+}

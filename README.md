@@ -62,3 +62,7 @@ Read [contribution instructions](CONTRIBUTING.md), [agent instructions](AGENTS.m
 The [West Street quarter](docs/WEST-STREET-QUARTER.md) adds the missing rear-block
 envelopes, Cable Street end, West Street continuation, access courts and planted
 reservations southwest of Nevill Street. Buildings remain provisional placeholders.
+
+[16–22 Nevill Street and the Stanley corner](docs/NEVILL-STREET-16-22.md) add the
+rusticated arched frontage, chamfer and unequal roof pitches, alongside the rounded
+Stanley/Cable junction mouths, coordinated kerbs and limited observed furniture.

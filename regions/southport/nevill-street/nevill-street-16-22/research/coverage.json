@@ -1,0 +1,56 @@
+{
+  "appearance": "July 2026 visible exterior, undated roof composite used for shape only. Older Google business labels BBs Bar disagree with July 2026 R.D.s Bar frontage.",
+  "private_captures": "../references/stanley-corner/",
+  "front": {
+    "sources": [
+      "street-front"
+    ],
+    "confidence": "high composition, medium metric dimensions"
+  },
+  "stanley": {
+    "sources": [
+      "stanley",
+      "rear-access"
+    ],
+    "confidence": "high visible composition"
+  },
+  "party": {
+    "sources": [
+      "google-3d"
+    ],
+    "confidence": "mostly concealed by adjacent building; unornamented closure only"
+  },
+  "rear": {
+    "sources": [
+      "rear-access",
+      "google-3d"
+    ],
+    "confidence": "medium upper wall; low lower wall",
+    "missing": "Private yard rear ground doors and exact upper sash widths occluded. No guessed rear ground openings."
+  },
+  "roof": {
+    "sources": [
+      "google-3d"
+    ],
+    "views": [
+      "3d-roof-south.png",
+      "3d-roof-west.png",
+      "3d-roof-north.png",
+      "3d-roof-east.png",
+      "plan.png"
+    ],
+    "confidence": "medium silhouette; shallow front finish inferred from contrasting texture",
+    "correction": "Initial south oblique looked flat. Three subsequent close views resolve an unequal pitched roof with ridge toward the rear, not a flat-top placeholder."
+  },
+  "ground": {
+    "sources": [
+      "google-3d",
+      "street-front",
+      "stanley",
+      "rear-access"
+    ],
+    "confidence": "medium metric widths",
+    "observations": "Rounded red block corner aprons, buff tactile crossings, main Nevill pale slabs with red kerb band; staggered Stanley/Cable junction mouths."
+  },
+  "missing_supplementary": "Image/web searches did not locate current private-yard coverage. Mapillary app was not accessible via web tool (2026-10-25); search returned no indexed relevant panorama. Wikimedia search found 2018 Silcocks arcade farther up Nevill, not target elevations."
+}

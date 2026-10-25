@@ -17,7 +17,8 @@
     "kerbs",
     "crossings",
     "side-road-mouths",
-    "pier-forecourt-approach"
+    "pier-forecourt-approach",
+    "stanley-corner-furniture"
   ],
   "lods": [
     "detail",
@@ -32,7 +33,7 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Roads and pavements from London Square north seam through Nevill Street to the Promenade crossing and Funland frontage approach. No buildings, carousel, interiors or street furniture. Observed 2019/2020 imagery; not a reconstruction of proposed 2026 highway changes. Lord Street mouth corrected using July 2026 Street View and satellite kerb tracing; its furniture belongs to London Square.",
+  "scope": "Roads and pavements from London Square north seam through Nevill Street to the Promenade crossing and Funland frontage approach. No buildings, carousel or interiors. Observed 2019/2020 imagery; not a reconstruction of proposed 2026 highway changes. Lord Street mouth corrected using July 2026 Street View and satellite kerb tracing; its furniture belongs to London Square. Stanley/Cable corner returns and limited observed sign/tables use July2026 evidence; approximate metric placement.",
   "licensing": "OSM-derived layout, OpenStreetMap contributors ODbL 1.0; photographic reference links only, all maps procedurally authored.",
   "build_inputs": {
     "master": [

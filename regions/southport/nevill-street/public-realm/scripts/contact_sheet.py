@@ -1,7 +1,7 @@
 from pathlib import Path
 from PIL import Image,ImageDraw
 root=Path(__file__).resolve().parents[1]/'renders'
-names=['corridor','monument-seam','middle-junctions','promenade','paving','crossing']
+names=['corridor','monument-seam','middle-junctions','promenade','paving','crossing','stanley-corner']
 names=[name for name in names if (root/(name+'.png')).exists()]
 assert names, 'No review renders produced'
 sheet=Image.new('RGB',(1200,1380),(32,35,34));draw=ImageDraw.Draw(sheet)

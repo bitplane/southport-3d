@@ -46,7 +46,7 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Street-wall extent checked against aerial imagery. Ground entrance is chamfered; upper facade rounded. Neighbour shares the replacement’s affine party wall, correcting the seed boundary by at most 0.28 m. Plan uncertainty approximately 0.75 m; hidden roof lightwell dimensions provisional.",
+      "footprint_confidence": "Street-wall extent checked against aerial imagery. Ground entrance is chamfered; upper facade rounded. Neighbour shares the replacement\u2019s affine party wall, correcting the seed boundary by at most 0.28 m. Plan uncertainty approximately 0.75 m; hidden roof lightwell dimensions provisional.",
       "replace_with": "southport.nevill-street.lord-street-377-385",
       "original_seed_footprint": [
         [
@@ -162,6 +162,38 @@
       "osm_way": "375391230",
       "footprint": [
         [
+          8.889646,
+          95.504
+        ],
+        [
+          8.88498,
+          79.952
+        ],
+        [
+          20.23498,
+          80.093875
+        ],
+        [
+          20.24,
+          96.825875
+        ],
+        [
+          10.07,
+          96.69875
+        ]
+      ],
+      "height_m": 14.22,
+      "height_uncertainty_m": 0.9,
+      "status": "replaced-by-detailed-asset",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Existing registered outline checked in four close Google3D orbits and July2026 Street View; 1.18m chamfer at Stanley corner. Rear yard left open; estimated plan uncertainty .65m.",
+      "replace_with": "southport.nevill-street.nevill-street-16-22",
+      "original_seed_footprint": [
+        [
           20.324,
           80.095
         ],
@@ -177,17 +209,7 @@
           8.885,
           79.952
         ]
-      ],
-      "height_m": 10.5,
-      "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
-      "evidence": [
-        "google-3d-orbit",
-        "google-plan-comparison",
-        "osm-seed"
-      ],
-      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      ]
     },
     {
       "id": "stanley-rear-range",
@@ -308,7 +330,7 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Residual Lord Street block after 3–9 Nevill and its open rear court reservation; pending detailed parcel survey.",
+      "footprint_confidence": "Residual Lord Street block after 3\u20139 Nevill and its open rear court reservation; pending detailed parcel survey.",
       "replace_with": null,
       "original_combined_footprint": [
         [
@@ -1070,8 +1092,8 @@
           80.404299
         ]
       ],
-      "footprint_confidence": "Retained portion of old block after 3–9 Nevill replacement; architectural shape not researched here.",
-      "notes": "Replaced by Neville Buildings / Empire. Frontage retained at 3–9 party datum; 11.1 m rear depth and curved corner from 3D/photo comparison. Passage to Salaars retained."
+      "footprint_confidence": "Retained portion of old block after 3\u20139 Nevill replacement; architectural shape not researched here.",
+      "notes": "Replaced by Neville Buildings / Empire. Frontage retained at 3\u20139 party datum; 11.1 m rear depth and curved corner from 3D/photo comparison. Passage to Salaars retained."
     },
     {
       "osm_way": "375534421",
@@ -1103,7 +1125,7 @@
           63.527915
         ]
       ],
-      "footprint_confidence": "Retained portion of old block after 3–9 Nevill replacement; architectural shape not researched here."
+      "footprint_confidence": "Retained portion of old block after 3\u20139 Nevill replacement; architectural shape not researched here."
     }
   ],
   "policy": "Google 3D multi-angle shape and aerial comparison govern interpretation. OSM is a seed, not authority. Flat tops are placeholder height bounds, not asserted flat roofs. Joined mapped ranges are not individual legal parcels.",

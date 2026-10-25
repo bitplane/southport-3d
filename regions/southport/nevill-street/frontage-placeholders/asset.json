@@ -14,7 +14,6 @@
   "components": [
     "east-lord-corner",
     "east-lord-return",
-    "east-stanley-corner",
     "stanley-rear-range",
     "west-lord-block",
     "lord-block-infill",

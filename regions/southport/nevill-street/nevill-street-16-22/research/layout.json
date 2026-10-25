@@ -1,0 +1,39 @@
+{
+  "phase": "detail",
+  "x": 8.89,
+  "y": 96.684,
+  "base_z": -0.24,
+  "width": 16.732,
+  "depth": 11.35,
+  "chamfer": 1.18,
+  "front_eave": 13.08,
+  "rear_eave": 10.72,
+  "ridge": 14.22,
+  "ridge_v": 6.65,
+  "hip_run": 3.8,
+  "parapet": 13.55,
+  "window_centres": [
+    4.2,
+    9.14,
+    14.08
+  ],
+  "window_width": 3.42,
+  "window_bottom": 4.65,
+  "window_spring": 10.45,
+  "window_rise": 1.52,
+  "canopy": {
+    "start": 1.18,
+    "end": 16.732,
+    "depth": 3.05,
+    "inner_z": 4.22,
+    "outer_z": 3.38
+  },
+  "uncertainty_m": {
+    "plan": 0.65,
+    "height": 0.8,
+    "roof": 0.9,
+    "hidden_rear_openings": 1.0
+  },
+  "placeholder": "east-stanley-corner",
+  "block_plan": "regions/southport/nevill-street/frontage-placeholders/research/layout.json"
+}

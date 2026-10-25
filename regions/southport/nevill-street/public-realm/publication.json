@@ -7,7 +7,7 @@
     "elevation_m": 0
   },
   "area_name": "Nevill Street",
-  "status": "OSM-registered roads and pavements; widths/grades estimated, no buildings or furnishings. 2019/2020 appearance; proposed highway scheme not modelled.",
+  "status": "Mapped corridor with July2026 Stanley/Cable corners and observed corner furniture; widths and grades estimated.",
   "levels": {
     "detail": {
       "texture_size": null
@@ -43,6 +43,12 @@
       "name": "Promenade crossing and Funland approach",
       "collection": "promenade-ground",
       "ground": true
+    },
+    {
+      "id": "stanley-furniture",
+      "name": "Stanley corner direction sign and picnic tables",
+      "collection": "stanley-furniture",
+      "ground": false
     }
   ],
   "views": [
@@ -135,6 +141,18 @@
       "district": {
         "strategy": "keep",
         "reason": "Retain the bounded inexpensive ground envelope and navigable crossings, reducing repeating map sizes rather than decimating shared seams."
+      }
+    },
+    {
+      "id": "corner-furniture",
+      "match": "^Furniture ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Three compact metric furniture objects; open leg and post silhouette retained."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Bounded low-poly sign and tables, no tiny hardware or separate textures."
       }
     }
   ]

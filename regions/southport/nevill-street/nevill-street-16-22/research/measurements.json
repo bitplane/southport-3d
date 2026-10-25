@@ -1,0 +1,97 @@
+{
+  "units": "metres",
+  "status": "Visual estimates, not survey",
+  "footprint": {
+    "seed_way": "375391230",
+    "seed_points": [
+      [
+        20.324,
+        80.095
+      ],
+      [
+        20.208,
+        96.91
+      ],
+      [
+        8.89,
+        96.684
+      ],
+      [
+        8.885,
+        79.952
+      ]
+    ],
+    "calculation": "Front length 96.684 - 79.952 = 16.732; rear distance approximately 11.35. Preserve registration and add 1.18 m chamfer seen in three views.",
+    "uncertainty": 0.65
+  },
+  "front_image": {
+    "file": "street-front-road.png",
+    "size": [
+      1440,
+      1000
+    ],
+    "landmarks_px": {
+      "left_stone_edge": [
+        430,
+        190
+      ],
+      "right_stone_edge": [
+        1040,
+        190
+      ],
+      "shop_sill": [
+        720,
+        740
+      ],
+      "upper_sill": [
+        720,
+        495
+      ],
+      "spring": [
+        720,
+        290
+      ],
+      "cornice": [
+        720,
+        174
+      ]
+    },
+    "ratios": "Front width around 610 px; repeated bays approx 190 px. Perspective-corrected width 16.73 gives approx 3.4 m window opening and 4.94 m centre spacing. Height from door datum and neighbouring storeys; wide-angle projection makes raw vertical scale nonuniform.",
+    "storeys_estimated": [
+      0,
+      4.25,
+      8.42,
+      13.55
+    ]
+  },
+  "roof_plan": {
+    "file": "plan.png",
+    "landmarks_px": {
+      "front_corner": [
+        674,
+        574
+      ],
+      "front_party": [
+        844,
+        417
+      ],
+      "rear_corner": [
+        570,
+        499
+      ],
+      "rear_party": [
+        735,
+        334
+      ],
+      "ridge_corner": [
+        643,
+        490
+      ],
+      "ridge_party": [
+        786,
+        350
+      ]
+    },
+    "interpretation": "Ridge roughly 0.59 of plan depth from front. Stanley hip runs approximately 3.8 m. Front eave 13.08, rear 10.72, ridge 14.22 relative to building base; uncertainty about .9 m. Heights cross-checked against nearby cornice and three roof orbits."
+  }
+}

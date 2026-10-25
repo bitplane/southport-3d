@@ -21,11 +21,6 @@
   },
   "parts": [
     {
-      "id": "east-stanley-corner",
-      "name": "East Stanley Corner \u2014 placeholder",
-      "collection": "east-stanley-corner"
-    },
-    {
       "id": "stanley-rear-range",
       "name": "Stanley Rear Range \u2014 placeholder",
       "collection": "stanley-rear-range"
