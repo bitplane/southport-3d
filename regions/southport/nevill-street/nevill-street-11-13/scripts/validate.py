@@ -33,9 +33,29 @@ for o in fine:
  mesh=o.data;bpy.data.objects.remove(o);bpy.data.meshes.remove(mesh)
 # Openings must genuinely pass through street brick into separate glazing.
 d=json.loads((ROOT/'research/layout.json').read_text());x,y,z=d['origin'];bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get();probes=0
-for u,w in d['first_windows']:
- q=u+w*.22;p=Vector((x+.0135*q+.45,y+q+.02087*.45,z+5.18));direction=Vector((-1,-.02087,0)).normalized();hit,point,n,i,o,M=bpy.context.scene.ray_cast(deps,p,direction,distance=1)
- assert hit and o.name.startswith('Glazing '),(u,o.name if o else None);probes+=1
+# Sample the interiors and edges of every pane at both storeys. A single
+# centre ray missed pilasters and capitals clipping the edges of the glazing.
+windows=[(u,w,4.35,2.58,2 if w<.7 else 3) for u,w in d['first_windows']]
+windows += [(u,1.06,8.18,2.43,3) for u in d['upper_windows']]
+for u,w,bottom,height,cols in windows:
+ for col in range(cols):
+  left=u-w/2+.045+col*(w-.09)/cols+.010
+  right=u-w/2+.045+(col+1)*(w-.09)/cols-.010
+  for row in range(4):
+   low=bottom+.045+row*(height-.09)/4+.012
+   high=bottom+.045+(row+1)*(height-.09)/4-.012
+   for fx in (.15,.5,.85):
+    for fz in (.15,.5,.85):
+     q=left+(right-left)*fx;zz=low+(high-low)*fz
+     if zz<4.54:continue  # The observed balcony ledge masks the bottom of this storey.
+     p=Vector((x+.0135*q+.55,y+q+.02087*.55,z+zz))
+     direction=Vector((-1,-.02087,0)).normalized()
+     hit,point,n,i,o,M=bpy.context.scene.ray_cast(deps,p,direction,distance=1)
+     while hit and o.data.materials[o.data.polygons[i].material_index].name=='Black painted wrought iron':
+      p=point+direction*.001
+      hit,point,n,i,o,M=bpy.context.scene.ray_cast(deps,p,direction,distance=1)
+     assert hit and o.name.startswith('Glazing '),(u,zz,q,o.name if o else None,o.data.materials[o.data.polygons[i].material_index].name if o else None,list(point))
+     probes+=1
 assert all(im.packed_file for im in bpy.data.images if im.source=='FILE')
 report={'triangles':triangles,'window_probes':probes,'checks':['finite float32 geometry','nondegenerate triangles','closed outward hip roof','real street window apertures','all architectural meshes and non-iron ornament overlap regression','packed authored textures'],'limitations':['Decorative iron-loop welds remain subject to the exported audit; three tiny self-overlap groups are recorded in review.json. Other architecture and ornament are checked together.']}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

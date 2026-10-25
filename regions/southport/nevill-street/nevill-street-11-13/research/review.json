@@ -24,7 +24,7 @@
     ],
     "comparisons": [
       "Front and rear inspected from actual Detail, Walk and independently baked District GLBs in the local comparison viewer. Main facade rhythm, current gable infill, central balcony and rounded shop corner remain legible.",
-      "Assembled 3D Tiles view confirms the replacement joins 3–9 Nevill Street, leaves the Salaars passage open and removes the previous grey placeholder. Actual loaded unit and level checked through the viewer runtime state.",
+      "Assembled 3D Tiles view confirms the replacement joins 3\u20139 Nevill Street, leaves the Salaars passage open and removes the previous grey placeholder. Actual loaded unit and level checked through the viewer runtime state.",
       "District rear inspection exposed an 8 cm roof inset gap. Replaced with a 10 cm projecting eave whose pitch intersects the wall tops, and conformed the roof edge to the curved corner. Follow-up District rear capture confirms the gap is closed.",
       "Rear openings retain thin joinery and pale weathered masonry observed in close 3D; no ornate street architraves repeated behind.",
       "District front and roof receiver faces have exclusive ownership; gable/dormer cheeks and backs are included for orbit views.",
@@ -42,7 +42,7 @@
     "date": "2026-10-25",
     "private_report": "build/empire-audit-unbatched/detail.json",
     "method": "Complete exported GLB scan using native coplanar scanner, temporarily preserving component names to identify and repair repeated prototype conflicts.",
-    "result": "All architectural and non-iron ornament overlaps removed. Three small decorative ironwork self-intersections remain (41 triangle pairs, about 0.0004 m² summed pair area) at loop/weld joins. Scope is narrow, not whole-asset suppression.",
+    "result": "All architectural and non-iron ornament overlaps removed. Three small decorative ironwork self-intersections remain (41 triangle pairs, about 0.0004 m\u00b2 summed pair area) at loop/weld joins. Scope is narrow, not whole-asset suppression.",
     "repairs": [
       "Shared group-window divider boundaries and omitted hidden seam caps.",
       "Radial corner reveal/glazing/stone-band endpoints replace intersecting chord extrusions.",
@@ -51,8 +51,16 @@
     ],
     "published_audit": {
       "report": "build/empire-audit-final/report.md",
-      "scope": "Empire, 3–9 Nevill, Nevill placeholders, Nevill ground and West Street ground, all three uniform levels",
-      "result": "No cross-asset findings touching Empire. Detail/Walk only contain the documented ironwork weld group. District reports four approximately square-millimetre triangle-pair slivers at float32 gable seams (summed area 0.00000401 m²), not a visible duplicate facade."
+      "scope": "Empire, 3\u20139 Nevill, Nevill placeholders, Nevill ground and West Street ground, all three uniform levels",
+      "result": "No cross-asset findings touching Empire. Detail/Walk only contain the documented ironwork weld group. District reports four approximately square-millimetre triangle-pair slivers at float32 gable seams (summed area 0.00000401 m\u00b2), not a visible duplicate facade."
     }
+  },
+  "window_clearance": {
+    "date": "2026-10-25",
+    "reference": "street-current",
+    "observation": "July 2026 panorama revisited at 55 degree field of view. Brick pilasters occupy the solid piers; carved supports separate the grouped lower windows. Neither cuts across a glazed pane.",
+    "correction": "Upper brick pilasters centred within the solid piers. Lower pilaster and capital widths derived from actual neighbouring window edges, with foliage confined to that width.",
+    "validation": "1101 rays across pane interiors and edges on both storeys reach glazing. Excludes only the bottom masked by the observed balcony ledge; rays continue through the separate iron guard. Architectural and non-iron ornament coplanar checks pass.",
+    "limits": "Carved ornament remains an approximation; metric dimensions remain estimated."
   }
 }

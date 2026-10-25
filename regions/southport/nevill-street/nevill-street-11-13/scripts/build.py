@@ -256,10 +256,16 @@ if DETAIL:
    # Two moulded sloping sides stop short of the central carved crest.
    A=(u+sg*.72,7.30);B=(u+sg*.18,7.70);du=B[0]-A[0];dz=B[1]-A[1];ln=math.hypot(du,dz);ox=-dz/ln*.055;oz=du/ln*.055
    poly('Architecture broken pediment',[(A[0]-ox,A[1]-oz),(B[0]-ox,B[1]+oz),(B[0]+ox,B[1]+oz+.05),(A[0]+ox,A[1]+oz+.05)],.29,clean,thickness=.20)
-   box('Architecture lower window pilaster',(u+sg*.62,5.72,.10),(.14,2.48,.22),stone)
-   box('Architecture pilaster capital',(u+sg*.62,6.91,.21),(.27,.27,.30),clean)
+   # Fit the support to the actual masonry pier between this window and its
+   # narrow neighbour. Fixed offsets previously put capitals over the panes.
+   idx=next(i for i,p in enumerate(D['first_windows']) if abs(p[0]-u)<.001)
+   neighbour,nw=D['first_windows'][idx+sg]
+   edges=sorted((u+sg*1.02/2,neighbour-sg*nw/2))
+   pier=sum(edges)/2;clear=edges[1]-edges[0]-.02
+   box('Architecture lower window pilaster',(pier,5.72,.10),(min(.14,clear),2.48,.22),stone)
+   box('Architecture pilaster capital',(pier,6.91,.21),(clear,.27,.30),clean)
    m=Mesh('Fine capital leaves')
-   for j in range(3):leaf(m,u+sg*.62,6.66,.255,.30,(-.5+j*.5),.05)
+   for j in range(3):leaf(m,pier,6.66,.255,.30,(-.15+j*.15),.035)
    finish(m,material=stone,frame=F)
   m=Mesh('Fine pediment round crest');m.closed_ring((u,7.56,.31),.12,.035,segments=24,sections=6);finish(m,material=stone,frame=F)
   for j in range(7):box('Fine frieze inset',(u-.51+j*.17,7.15,.335),(.08,.10,.02),shade)
@@ -273,7 +279,8 @@ if DETAIL:
  for zz in (13.45,14.02,14.44):
   width=1.22 if zz==14.02 else 1.98;box('Architecture gable stone string',(c,zz,.09),(width,.10,.20),stone,'roof')
  for sg in (-1,1):
-  box('Architecture tall brick pilaster',(c+sg*1.20,10.10,.035),(.20,3.70,.10),brick)
+  # Centre on the solid pier, clear of both adjoining stone architraves.
+  box('Architecture tall brick pilaster',(c+sg*.85,10.10,.035),(.20,3.70,.10),brick)
   box('Architecture gable block',(c+sg*.80,14.14,.17),(.36,.34,.34),stone,'roof')
  box('Architecture gable keystone',(c,13.81,.21),(.28,.29,.31),stone,'roof')
  m=Mesh('Fine gable peak ball');m.lathe((c,0),[(15.44,.015),(15.49,.065),(15.56,.070),(15.62,.01)],segments=12);finish(m,'roof',stone)
