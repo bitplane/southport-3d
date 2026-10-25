@@ -27,5 +27,19 @@ for y in (39,44,49):
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
 from coplanar import check_blender
 check_blender([o for o in obs if o.name.startswith('Shell ')])
-report={'triangles':tris,'aperture_probes':n,'yard_probes':3,'phase':D['phase']}
+# Horizontal rays just above the hip must hit the stack, not pass through an
+# air gap beneath it. The old 13.55 m master base fails all three probes.
+right=D['front_left']+D['front_width']
+roof_at_outer=D['front_eaves']+(D['front_ridge']-D['front_eaves'])*.05/2.6
+for y in (6.3,6.9,7.5):
+ hit,at,normal,i,o,m=s.ray_cast(deps,T@Vector((right+.5,y,roof_at_outer+.08)),(T.to_3x3()@Vector((-1,0,0))).normalized(),distance=1.5)
+ assert hit and o.name=='Architecture roof',('detached chimney',y,o.name if hit else None)
+sys.path.insert(0,str(ROOT/'scripts'))
+from roof_controls import chimney_bounds
+lo,hi=chimney_bounds(D)
+assert lo[2]<roof_at_outer and hi[2]==16.75
+from district import surfaces
+coarse=[p for face in surfaces(ROOT)['roof'] if face['name'].startswith('chimney ') for p in face['vertices']]
+assert coarse and abs(min(p[2] for p in coarse)-(D['base_z']+lo[2]))<1e-6,'District chimney base differs'
+report={'triangles':tris,'aperture_probes':n,'yard_probes':3,'chimney_contact_probes':3,'phase':D['phase']}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

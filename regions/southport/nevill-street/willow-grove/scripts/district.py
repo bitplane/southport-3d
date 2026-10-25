@@ -1,6 +1,7 @@
 """Fixed-budget T-shaped envelope sharing dimensions, never detailed topology."""
 import json,math
 from blender_envelope import Surfaces
+from roof_controls import chimney_bounds
 
 def surfaces(asset):
  d=json.loads((asset/'research/layout.json').read_text());A=d['front_left'];W=A+d['front_width'];B=d['back'];Y=d['wing_start'];Z=d['wing_end'];R=d['rear_strip_left']
@@ -44,7 +45,7 @@ def surfaces(asset):
  s.box('lantern curb',(x0-.175,y0-.175,16.1),(x1+.175,y1+.175,16.5),cage=.2,weight=.5)
  p=[(x0,y0,zz),(x1,y0,zz),(x1,y1,zz),(x0,y1,zz)]
  for i,(a,b) in enumerate(zip(p,p[1:]+p[:1])):s.triangle('lantern '+str(i),[a,b,(cx,cy,ap)],cage=.18)
- s.box('chimney',(W-1.15,6.10,13.8),(W-.05,7.70,16.80),cage=.30)
+ s.box('chimney',*chimney_bounds(d),cage=.30)
  for i,dx in enumerate((-.29,.29)):
   for j,dy in enumerate((-.52,0,.52)):s.box(f'pot {i} {j}',(W-.60+dx-.12,6.9+dy-.12,16.80),(W-.60+dx+.12,6.9+dy+.12,17.4),cage=.18,weight=.4)
  # Only major rooftop plant, not every grille or pipe.

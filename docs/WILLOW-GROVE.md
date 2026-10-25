@@ -11,3 +11,10 @@ Metric heights are estimated within approximately 0.8 m. The licensing drawing i
 Detail and Walk share the envelope and major openings. Walk omits fine ornament, joints and roof courses. District is an independent fixed-budget T-shaped envelope with baked colour/normal atlases, coarse balconies, open canopy posts, chimney pots, raised parapets and rooflight. Its topology and texture sizes do not increase with ornament. Each facade owns its wall and joinery across levels to avoid mixed-level openings. District is intended for distance; pierced parapet and balcony infill become baked appearance.
 
 The master checks finite geometry, aperture clearance, an open yard and coplanar shell overlaps. Exported Detail, Walk and District are reviewed separately in the browser; adjoining assets are checked in the town viewer. The reusable comparison page is generated with `tools/create_lod_review.py` and is not tracked.
+
+The front chimney shaft continues into the hip roof at the shared eaves datum.
+Detail/Walk and District use the same shaft bounds; the crown and pots retain
+their established heights. Three low horizontal contact probes check the saved
+master mesh just above the roof, and the validator checks the District receiver's
+base against that same datum. This prevents a floating stack when either roof
+height or the coarse representation changes.

@@ -8,6 +8,7 @@ sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'l
 from southport3d.geometry import Mesh,face_matrix
 from southport3d.conform import conform
 from components import rect,cuts,arch,ring
+from roof_controls import chimney_bounds
 D=json.loads((ROOT/'research/layout.json').read_text());A=D['front_left'];W=A+D['front_width'];B=D['back'];Y=D['wing_start'];Z=D['wing_end'];R=D['rear_strip_left'];DETAIL=D['phase']=='detail'
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC';C={}
@@ -231,7 +232,8 @@ for a,b in [((x0,y0,zz),(x1,y0,zz)),((x1,y0,zz),(x1,y1,zz)),((x1,y1,zz),(x0,y1,z
  for j in range(5):
   t=j/4;p=tuple(a[k]*(1-t)+b[k]*t for k in range(3));tube('Rooflight glazing bar',[p,(cx,cy,ap)],.028,metal,'roof',None)
 # Front chimney is clearly present behind the Lord parapet, with twin rows of pots.
-box('Roof chimney shaft',(W-.60,6.9,15.15),(1.10,1.60,3.20),brick,'roof',None)
+lo,hi=chimney_bounds(D)
+box('Roof chimney shaft',tuple((a+b)/2 for a,b in zip(lo,hi)),tuple(b-a for a,b in zip(lo,hi)),brick,'roof',None)
 for zz in (14.6,16.0,16.72):box('Roof chimney course',(W-.60,6.9,zz),(1.25,1.75,.16),shade,'roof',None)
 for dx in (-.29,.29):
  for dy in (-.52,0,.52):
