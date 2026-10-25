@@ -78,3 +78,13 @@ for name in ('Envelope service annex rear', 'Envelope service annex returns'):
 errors=[hit for hit in overlaps(triangles,labels,min_area=1e-4) if hit[0]!=hit[1]]
 assert not errors,errors[:8]
 print('Reported wall/return surface ownership verified')
+
+# Door head returns must hide the wall cavity when viewed upward from the entry.
+for ob in [o for o in meshes if o.name.startswith('Shop door head reveal ')]:
+ for v in (-.28,-.16,-.06):
+  centre=sum((p.co for p in ob.data.vertices),Vector())/len(ob.data.vertices)
+  origin=ob.matrix_world@Vector((centre.x,2.95,v))
+  direction=ob.matrix_world.to_3x3()@Vector((0,1,0))
+  hit,point,normal,index,found,matrix=bpy.context.scene.ray_cast(deps,origin,direction,distance=.25)
+  assert hit and found==ob,(ob.name,'open head return',v,found.name if found else None)
+print('All three recessed door heads close the cavity above the door')

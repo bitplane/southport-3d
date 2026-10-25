@@ -168,3 +168,8 @@ and shopfront coverage exceeds 99.8%, with valid normal maps and export budgets.
 The appearance guard now accepts checked whole-part envelope maps and remains
 a declared validation dependency on cached publications. Visual acceptance is
 left to the owner.
+
+Door recesses include a continuous head return between the side jambs and the
+recessed leaf. The fascia does not substitute for that soffit. Upward ray probes
+cover three depths of each head; the District envelope also closes the opening
+at its head. This prevents the wall cavity showing above the Bugle Tap entrance.

@@ -32,7 +32,9 @@ def build_frontages(D,box,finish,sign,frame,mats,material):
   # Rear-set door is modelled closed, preserving the photographed recessed threshold.
   doorout=-.45 if mamma else -.40
   box('Shop recessed door '+name,doorx,1.56,doorw,3.08,.07,doorout,glass,'shopfront')
-  for x in [leftedge,rightedge]:box('Shop door reveal '+name,x,1.56,.065,3.08,.42,-.22,dark,'shopfront')
+  for x in [leftedge,rightedge]:box('Shop door reveal '+name,x,1.68,.065,3.32,.42,-.22,dark,'shopfront')
+  # Close the head of the recessed opening; the sign is not a door soffit.
+  box('Shop door head reveal '+name,doorx,3.22,doorw-.065,.24,.42,-.22,dark,'shopfront')
   box('Shop threshold '+name,doorx,.035,doorw,.07,.50,-.22,metal if sam else dark,'shopfront')
   m=Mesh('Shop door joinery '+name)
   rectangle(m,doorx,1.56,doorw,3.08,.06,doorout+.055,.055)

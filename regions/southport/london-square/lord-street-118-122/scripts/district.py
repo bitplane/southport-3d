@@ -36,6 +36,7 @@ def surfaces(asset):
         panel('front '+name,last,l,0,5.2)
         panel('door head '+name,l,r,3.1,5.2)
         panel('door '+name,l,r,0,3.1,.45 if name=='mamma-mia' else .4)
+        s.quad('door soffit '+name,[(x1-l,yf,3.1),(x1-l,yf-.42,3.1),(x1-r,yf-.42,3.1),(x1-r,yf,3.1)])
         for side in (l,r):s.quad('door jamb '+name+str(side),[(x1-side,yf,0),(x1-side,yf-.42,0),(x1-side,yf-.42,3.1),(x1-side,yf,3.1)])
         panel('front return '+name,r,b,0,5.2);last=b
         if name=='mamma-mia':
