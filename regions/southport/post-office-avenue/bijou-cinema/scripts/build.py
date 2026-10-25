@@ -65,7 +65,7 @@ cream=material('Warm painted stone',(.68,.63,.50));red=material('Bijou burgundy 
 front_holes=[rect(x-.43,4.78,x+.43,6.60) for x in (1.3,2.75,8.1,9.55)]
 front_holes+=[ellipse_arch(u,0,2.36,.82,.82,24)]
 front_holes+=[rect(x-.37,1.2,x+.37,2.5) for x in (8.2,9.75)]
-F=wall('west frontage',(0,0),(W,0),H,front_holes,mat=brick)
+F=wall('west frontage',(0,0),(W,0),H-.12,front_holes,mat=brick)
 for i,x in enumerate((1.3,2.75,8.1,9.55)):window('upper '+str(i),F,x,4.78,6.60,.86)
 for x in (8.1,9.55):
  box('Upper sash centre bar',(x,5.69,-.06),(.028,1.78,.08),'joinery',white,F)
@@ -73,7 +73,7 @@ for i,x in enumerate((8.2,9.75)):window('ground '+str(i),F,x,1.2,2.5,.74)
 # Other walls follow the measured skew and northern step. Hidden openings stay
 # restrained rather than receiving a fabricated repeating window pattern.
 for i in range(1,len(poly)):
- a=poly[i];b=poly[(i+1)%len(poly)];wall('perimeter '+str(i),a,b,H)
+ a=poly[i];b=poly[(i+1)%len(poly)];wall('perimeter '+str(i),a,b,H-.12)
 # Compound roof. A western hip joins the narrower eastern gable section at the
 # real north step; these vertices are shared, so no intersecting roof boxes.
 A=(0,0,H);B=(W,0,H);RC=(13.38,18.47,H);D1=(2.25,19.11,H);E=(1.68,9.09,H);G=(-.87,9.15,H)
@@ -183,7 +183,9 @@ wall('access range north upper',(1,0),(1,-10),3.5,bottom=3.2)
 # Repeated source parts are batched to avoid per-object bake setup overhead.
 groups={}
 for ob in list(bpy.context.scene.objects):
- if ob.type=='MESH':groups.setdefault((ob.users_collection[0].name,'Wall exterior' if ob.name.startswith('Wall ') else 'Architecture'),[]).append(ob)
+ if ob.type!='MESH':continue
+ family='Roof envelope' if ob.name.startswith(('Roof compound slate','Roof eaves')) else 'Wall exterior' if ob.name.startswith('Wall ') else 'Architecture'
+ groups.setdefault((ob.users_collection[0].name,family),[]).append(ob)
 for (part,family),objects in groups.items():
  if len(objects)<2:continue
  bpy.ops.object.select_all(action='DESELECT')

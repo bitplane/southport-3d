@@ -10,8 +10,8 @@ def surfaces(asset):
  s=Surfaces(['walls','roof','joinery'],T);poly=d['footprint_uv'];W=d['front_width'];H=d['eaves'];u=d['door_u']
  def front(name,x,X,z,Z,y=0):s.quad(name,[(x,y,z),(X,y,z),(X,y,Z),(x,y,Z)])
  # Preserve the deep porch entry while small window reveals project into walls.
- front('front left',0,u-1.55,0,H);front('front right',u+1.55,W,0,H)
- front('above porch',u-1.55,u+1.55,3.42,H)
+ front('front left',0,u-1.55,0,H-.12);front('front right',u+1.55,W,0,H-.12)
+ front('above porch',u-1.55,u+1.55,3.42,H-.12)
  front('porch left',u-1.55,u-.86,0,3.42,-.75)
  front('porch right',u+.86,u+1.55,0,3.42,-.75)
  front('porch door head',u-.86,u+.86,3.22,3.42,-.75)
@@ -38,7 +38,7 @@ def surfaces(asset):
  s.quad('door threshold',[(u-.91,-.87,0),(u+.91,-.87,0),(u+.91,.03,0),(u-.91,.03,0)])
  for i in range(1,len(poly)):
   p,q=poly[i],poly[(i+1)%len(poly)]
-  s.quad('wall '+str(i),[(*p,0),(*q,0),(*q,H),(*p,H)])
+  s.quad('wall '+str(i),[(*p,0),(*q,0),(*q,H-.12),(*p,H-.12)])
  A=(0,0,H);B=(W,0,H);RC=(13.38,18.47,H);D=(2.25,19.11,H);E=(1.68,9.09,H);G=(-.87,9.15,H)
  S=(12.49,9.12,H);R0=(5.8,4.5,d['ridge']);R1=(6.2,9.12,d['ridge']);R2=(7.815,18.79,d['ridge'])
  s.triangle('east gable',[RC,D,R2]);s.part='roof'

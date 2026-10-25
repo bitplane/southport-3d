@@ -85,15 +85,15 @@ for j in range(4):
  m=Mesh('Roof shop canopy '+str(j));m.add([(bay-1.77,0,3.55),(bay+1.77,0,3.55),(bay+1.77,-.69,3.22),(bay-1.77,-.69,3.22)],[(0,3,2,1)]);finish(m,'roof',slate)
 # Side walls with observed small side windows at number15.
 sideholes=[rect(3.45,z,4.30,z+.90) for z in (4.45,7.25)]
-Fr=wall('east main',(W,0),(W,dep),D['eaves'],sideholes)
+Fr=wall('east main',(W,0),(W,dep),D['eaves']-.18,sideholes)
 for i,z in enumerate((4.45,7.25)):window('east main '+str(i),Fr,3.875,z,z+.90,.85)
-wall('west main',(0,dep),(0,0),D['eaves'])
+wall('west main',(0,dep),(0,0),D['eaves']-.18)
 # Main rear skin is split around attachment volumes, preserving courtyard gaps.
 attached=[rect(v['u'][0],0,v['u'][1],v['eaves']) for v in D['rear_volumes'] if v['v'][0]==dep]
 # Rear face runs right-to-left, so opening coordinates are mirrored.
-wall('main rear',(W,dep),(0,dep),D['eaves'],[[(W-x,z) for x,z in reversed(p)] for p in attached])
+wall('main rear',(W,dep),(0,dep),D['eaves']-.18,[[(W-x,z) for x,z in reversed(p)] for p in attached])
 # Closed simple hipped main roof; source facets and District receiver share only dimensions.
-def hip(name,x0,x1,y0,y1,eave,ridge,axis='x'):
+def hip(name,x0,x1,y0,y1,eave,ridge,axis='x',omit_edges=()):
  swap=axis=='y'
  if swap:x0,x1,y0,y1=y0,y1,x0,x1
  inset=min((x1-x0)*.28,(y1-y0)*.48);cy=(y0+y1)/2
@@ -103,23 +103,25 @@ def hip(name,x0,x1,y0,y1,eave,ridge,axis='x'):
  if swap:f=[tuple(reversed(q)) for q in f]
  m=Mesh('Roof '+name);m.add(v,f)
  for i in range(4):
+  if i in omit_edges:continue
   j=(i+1)%4;p=[v[j],v[i],(v[i][0],v[i][1],eave-.18),(v[j][0],v[j][1],eave-.18)]
   m.add(p,[(3,2,1,0) if swap else (0,1,2,3)])
  finish(m,'roof',slate)
-hip('main',0,W,0,dep,D['eaves'],D['ridge'])
+# Front parapet owns its plane through the eave; no slate strip overlays it.
+hip('main',0,W,0,dep,D['eaves'],D['ridge'],omit_edges=(0,))
 for v in D['rear_volumes']:
  name=v['name'];x,X=v['u'];y,Y=v['v'];h=v['eaves']
  # Internal connecting end at y is omitted; other outside surfaces explicit.
  side=[]
  if name=='east paired upper wing':side=[rect(.30,6.55,1.12,8.55),rect(2.85,7.25,3.65,8.30),rect(1.20,3.65,2.05,5.15),rect(5.20,3.30,6.05,5.25)]
  if name=='east lower wing':side=[rect(1.05,4.05,1.90,5.35)]
- E=wall(name+' east',(X,y),(X,Y),h,side)
+ E=wall(name+' east',(X,y),(X,Y),h-.18,side)
  for k,p in enumerate(side):
   lo=p[0][1];hi=p[2][1];u=(p[0][0]+p[1][0])/2;w=p[1][0]-p[0][0]
   if (name=='east paired upper wing' and k in (0,3)):box('Rear blue door '+str(k),(u,(lo+hi)/2,-.13),(w,hi-lo,.10),'joinery',blue,E)
   else:window(name+' '+str(k),E,u,lo,hi,w)
- wall(name+' north',(X,Y),(x,Y),h,bottom=6.5 if name=='east paired upper wing' else 0)
- wall(name+' west',(x,Y),(x,y),h)
+ wall(name+' north',(X,Y),(x,Y),h-.18,bottom=6.5 if name=='east paired upper wing' else 0)
+ wall(name+' west',(x,Y),(x,y),h-.18)
  hip(name,x,X,y,Y,h,v['ridge'],axis='y')
 # Main parapet top and back meet the roof; front is already owned by facade.
 box('Parapet cap',(W/2,.12,H+.035),(W,.27,.07),'walls',brick)
@@ -200,7 +202,8 @@ label('spa massage','SPA',10.95,2.08,-.162,.12,.36,gold)
 groups={}
 for ob in list(bpy.context.scene.objects):
  if ob.type!='MESH':continue
- family='Wall exterior' if ob.name.startswith('Wall ') else 'Fine details' if ob.name.startswith('Fine ') else 'Architecture'
+ roof_envelope=ob.name in ['Roof main']+['Roof '+v['name'] for v in D['rear_volumes']]
+ family='Roof envelope' if roof_envelope else 'Wall exterior' if ob.name.startswith('Wall ') else 'Fine details' if ob.name.startswith('Fine ') else 'Architecture'
  groups.setdefault((ob.users_collection[0].name,family),[]).append(ob)
 for (part,family),objects in groups.items():
  if len(objects)<2:continue

@@ -12,5 +12,7 @@ for o in obs:
   assert (b-a).cross(c-a).length>1e-10,(o.name,'degenerate')
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
 from coplanar import check_blender
-check_blender([o for o in obs if o.name.startswith('Wall ')])
+assert any(o.name.startswith("Wall exterior") for o in obs)
+assert any(o.name.startswith("Roof envelope") for o in obs)
+check_blender([o for o in obs if o.name.startswith(('Wall exterior','Roof envelope'))])
 (ROOT/'research/validation.json').write_text(json.dumps({'triangles':total,'objects':len(obs)},indent=2)+'\n')

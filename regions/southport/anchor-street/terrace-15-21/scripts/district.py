@@ -25,21 +25,23 @@ def surfaces(asset):
    x=bay+side*1.64;p=[(x,0,0),(x,-.44,0),(x,-.44,3.22),(x,0,3.22)];s.quad('bay cheek '+str(j)+str(side),p if side==1 else list(reversed(p)))
   front('bay upper backing '+str(j),bay-1.64,bay+1.64,3.22,3.60)
   s.part='roof';s.quad('canopy '+str(j),[(bay-1.77,-.69,3.22),(bay+1.77,-.69,3.22),(bay+1.77,0,3.55),(bay-1.77,0,3.55)]);s.part='walls'
- s.quad('east main',[(W,0,0),(W,dep,0),(W,dep,d['eaves']),(W,0,d['eaves'])])
- s.quad('west main',[(0,dep,0),(0,0,0),(0,0,d['eaves']),(0,dep,d['eaves'])])
+ s.quad('east main',[(W,0,0),(W,dep,0),(W,dep,d['eaves']-.18),(W,0,d['eaves']-.18)])
+ s.quad('west main',[(0,dep,0),(0,0,0),(0,0,d['eaves']-.18),(0,dep,d['eaves']-.18)])
  # Rear courtyard front has no false solid fill across the real wing gaps.
  intervals=[(0,1.7,0),(1.7,8.2,8.9),(8.2,12.4,0),(12.4,18.8,9.0),(18.8,20.6,3.05),(20.6,W,0)]
  for i,(x,X,z) in enumerate(intervals):
-  s.quad('main rear '+str(i),[(X,dep,z),(x,dep,z),(x,dep,d['eaves']),(X,dep,d['eaves'])])
+  s.quad('main rear '+str(i),[(X,dep,z),(x,dep,z),(x,dep,d['eaves']-.18),(X,dep,d['eaves']-.18)])
  for v in d['rear_volumes']:
   name=v['name'];x,X=v['u'];y,Y=v['v'];h=v['eaves']
-  s.quad(name+' east',[(X,y,0),(X,Y,0),(X,Y,h),(X,y,h)])
-  s.quad(name+' west',[(x,Y,0),(x,y,0),(x,y,h),(x,Y,h)])
+  s.quad(name+' east',[(X,y,0),(X,Y,0),(X,Y,h-.18),(X,y,h-.18)])
+  s.quad(name+' west',[(x,Y,0),(x,y,0),(x,y,h-.18),(x,Y,h-.18)])
   z=6.5 if name=='east paired upper wing' else 0
-  s.quad(name+' end',[(X,Y,z),(x,Y,z),(x,Y,h),(X,Y,h)])
+  s.quad(name+' end',[(X,Y,z),(x,Y,z),(x,Y,h-.18),(X,Y,h-.18)])
  s.quad('parapet top',[(0,0,H+.07),(W,0,H+.07),(W,.24,H+.07),(0,.24,H+.07)])
  s.quad('parapet back',[(W,.24,d['eaves']),(0,.24,d['eaves']),(0,.24,H+.07),(W,.24,H+.07)])
  s.part='roof';s.hip('main',0,W,0,dep,d['eaves'],d['ridge'])
+ # The raised brick parapet owns the front edge at all viewing levels.
+ s.result['roof']=[f for f in s.result['roof'] if f['name']!='main edge 0']
  for v in d['rear_volumes']:s.hip(v['name'],*v['u'],*v['v'],v['eaves'],v['ridge'],axis='y')
  for u in (.38,5.2,10.4,20.42):s.box('chimney '+str(u),(u-.275,3.525,9.0),(u+.275,4.675,12.51))
  for u,v,z in [(4.95,11.3,10.9),(15.60,10.7,10.9)]:s.box('rear chimney '+str(u),(u-.315,v-.515,z-.55),(u+.315,v+.515,z+.66))

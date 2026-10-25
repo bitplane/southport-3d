@@ -45,6 +45,13 @@ Bijou keeps the compound roof, coarse chimneys, lean-to and entrance projection.
 Source meshes are batched by streaming part and feature family to avoid repeatedly
 initialising a bake for hundreds of small objects.
 
+The vertical roof fascia owns the upper 180 mm of the terrace side/rear walls
+and 120 mm of Bijou’s perimeter walls. Masonry ends at its underside; the
+terrace’s raised front parapet owns that plane instead, with no overlaid slate
+fascia. This partition is identical in the detailed generator and District
+receiver. Saved-mesh validation checks exterior walls together with the roof
+envelope, so a duplicate wall/fascia interface fails before publication.
+
 ## Limits and acceptance
 
 Absolute registration is estimated to about 1 m. Rear roof heights and hidden
