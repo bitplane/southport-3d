@@ -146,3 +146,12 @@ for x,y,dx,dy in [(1,91,0,.003),(1,116,0,.003),(-13,109.73,.003,0),(19,100.84,.0
 for x,y in [(5.6,95.0),(7.0,96.4),(10.8,97.2),(9.0,104.8),(6.5,106.4)]:
  z,ob=sample(x,y);assert not ob.name.endswith('asphalt'),(x,y,'corner apron missing')
 print('Stanley/Cable work-window seams and rounded corner apron probes passed')
+
+# Direction board sits outside the adjacent canopy, including its pole radii.
+board=bpy.data.objects['Furniture direction board']
+verts=[board.matrix_world@v.co for v in board.data.vertices]
+assert max(v.x for v in verts)<5.84-.30,'Direction sign intersects or crowds glazed canopy'
+for yy in (95.4-.56,95.4+.56):
+ zz,ob=sample(4.9,yy)
+ assert not ob.name.endswith('asphalt'),('Direction sign pole in carriageway',yy)
+print('Stanley direction sign clears canopy and both poles stand on paving')

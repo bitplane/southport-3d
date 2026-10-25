@@ -82,3 +82,10 @@ details remain estimates rather than certified visual equivalence.
 The final Detail rear/roof view also settled with zero pending or failed loads.
 The steep slate rear and hipped end were checked against the private close 3D
 orbits; the adjoining wing partly obscures the rear wall in the assembled view.
+
+The separate public-realm direction board stands on the kerb side of the canopy
+(site X=4.9, Y=95.4), following the retained July 2026 front-road view. Its entire
+panel/pole envelope clears the canopy's outer edge at X=5.84 by over 0.8m;
+placement remains estimated. Ground validation checks both pole positions on
+pavement and horizontal canopy clearance, rather than shortening the sign to
+fit beneath the glazing.
