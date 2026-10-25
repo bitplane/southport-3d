@@ -1,0 +1,32 @@
+{
+  "snag": "8d301ce1027647ed82f76578335316e5",
+  "accessed": "2026-10-25",
+  "target": "Burlington Buildings front parapet panel; selected public realm was unrelated. Saved tile state confirms Walk.",
+  "cause": "Existing evidence-backed inscription was omitted by the Fine rule at Walk.",
+  "evidence": {
+    "front": {
+      "url": "https://www.google.com/maps/@53.6491576,-3.0039782,3a,35y,315h,112t/data=!3m4!1e1!3m2!1sYt6QpKjGHI_fQNNfah9QIg!2e0",
+      "capture": "July 2026",
+      "observed": "Loaded panorama clearly reads BURLINGTON BUILDINGS on pale parapet panel. Fresh visual confirmation; no inferred lettering.",
+      "private_capture": "tools/browser/output/session.MrJeQi9n/page-2026-10-25T12-19-24-453Z.png"
+    },
+    "roof_context": {
+      "url": "https://www.google.com/maps/@53.649287,-3.0042221,107a,35y,180h,39.56t/data=!3m1!1e3",
+      "observed": "Actual GPU-backed 3D inspected at headings 0,270,180,90. Main front pitch, rear wings/courts, Willow and distinct gabled range visible. No main shape changes required for lettering correction.",
+      "private_captures": "/tmp/queued-burlington-roof-{1,2,3,4}.png"
+    },
+    "supplementary": "Fresh web search located Historic England AA059475 archive attribution and historic construction image context; neither required to infer text. Existing Mapillary 199688081873890 and documented coverage retained."
+  },
+  "dimensions": {
+    "panel_m": [
+      5.0,
+      0.54
+    ],
+    "glyph_height_m": 0.31,
+    "max_width_m": 4.4,
+    "status": "Panel and glyph height retain existing photographic estimates; width updated to .88 of panel and visible glyph bounds centred from the fresh image ratios. No footprint or ground datum change.",
+    "image_measurement": "Fresh 1440x1000 Street View: approximately 285px panel width / 249px text width; 31px panel height / 19px letter height. Perspective approximate, not survey."
+  },
+  "policy": "Detail and Walk retain the same inexpensive glyph mesh. Independent fixed-budget District continues to bake the appearance; no receiver topology/atlas changes.",
+  "validation": "Master and package checks require glyph geometry and inscription/panel surface ownership. Final measured results and visual acceptance are recorded in docs/BURLINGTON-BUILDINGS.md after publication."
+}

@@ -13,7 +13,11 @@ for level in ['detail','walk','district']:
  infos=[inspect_glb(f)for f in files];triangles=sum(r['triangles']for r in infos);download=sum(r['bytes']for r in infos);gpu=sum(r['gpuBytesEstimate']for r in infos)
  assert triangles<=({'detail':40000,'walk':35000,'district':1750}[level]),(level,triangles)
  if level=='district':assert download<=2400000 and gpu<=5800000,(download,gpu)
- ts=np.concatenate([t for f in files for t,_ in primitives(f,{'rotationY':0,'position':[0,0,0]})]);assert np.isfinite(ts).all()
+ exported=[(t,owner) for f in files for t,owner in primitives(f,{'rotationY':0,'position':[0,0,0]})]
+ if level in ('detail','walk'):
+  lettering=[t for t,owner in exported if owner['node']=='Architecture Burlington inscription']
+  assert len(lettering)==1 and len(lettering[0])>100,(level,'missing Burlington inscription')
+ ts=np.concatenate([t for t,_ in exported]);assert np.isfinite(ts).all()
  # Export axes are x,up,-y. Test projected triangle containment at four court centres.
  court_hits=[]
  for x,y in [(10,18),(16.5,18),(16.5,25),(10,26)]:

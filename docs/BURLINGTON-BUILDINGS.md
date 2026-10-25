@@ -25,8 +25,8 @@ included. Textures are procedural; no reference-image pixels are published.
 Detail includes the unequal window groups, pale replacement infill, shaped
 heads, pierced parapet, name panel, projecting cafe bay, recessed entrances,
 shutters, curved verandah, individual posts, rooflights and chimney fittings.
-Walk omits fine shutter slats, tiny valance drops, brick dentils and the small
-inscription. District uses four independently authored receiver parts and baked
+Walk retains the inexpensive building-name glyph geometry; it omits fine
+shutter slats, tiny valance drops and brick dentils. District uses four independently authored receiver parts and baked
 atlases; it keeps the roof valleys, rear courts, projected bay, parapet silhouette
 and open canopy. Its limits are 1,750 triangles, 2.4 MB download and 5.8 MB
 estimated GPU memory, independent of added fine geometry.
@@ -69,3 +69,25 @@ python regions/southport/lord-street/burlington-buildings/scripts/check_site.py
 ```
 
 Final publication and viewer recheck used scene revision `6fc02f263a3f719550070b237388fe1c0ea8b7d4ed8eebc6e5210da223780e48`. All 39 published paving probes and 15 actual canopy post-foot checks passed; the maximum paving-interface discrepancy was 0.000219 m. The five shopfront piers extend to the foundation at Detail and Walk. All six unequal viewing-level combinations with Willow Grove also produced zero cross-asset coplanar candidates.
+
+## Parapet inscription snag
+
+The saved report loaded Walk, whose old `Fine` rule omitted the existing
+BURLINGTON BUILDINGS inscription. Fresh July 2026 Street View confirms the text;
+its measured image ratios also centre the glyph bounds on the panel and leave
+side margins. Detail and Walk now retain the same modest glyph mesh. District
+keeps its existing independent 494-triangle envelope and atlas dimensions.
+
+The full master build, inscription/panel coplanar regression and exported-glyph
+guard passed. Actual published Detail/Walk inscription and panel surfaces have
+no coplanar conflicts. All 39 paving probes and 15 canopy support checks still
+pass (maximum discrepancy 0.000219 m). The updated front render and original
+snag camera were reviewed in the assembled viewer at loaded Detail, Walk and
+District, including the neighbour boundary. The name is legible at Detail/Walk;
+District carries reduced baked appearance appropriate to its distant budget.
+Private captures are `/tmp/queued-burlington-report-{detail,walk,district}.png`.
+Scene revision: `6c67d6bfd2251913f1ba18af1a09e0c77d264fff0a13e93c624e4805bea3f08c`.
+
+Final Detail/Walk/District counts are 31,088 / 25,880 / 494 triangles; downloads
+are 4,473,812 / 3,544,240 / 402,400 bytes. Ground, main envelope and neighbour
+footprints retain their documented estimates; this pass corrects the inscription.

@@ -189,9 +189,9 @@ if DETAIL:
  box('Trim name panel',(16.65,13.28,.055),(5.0,.54,.11),cream)
  # Actual observed inscription, independent of current tenant signs.
  font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf')
- def label(name,body,x,z,size,width,material=black,out=.12):
-  ob=text_object(name,body,(x,z,out),(0,0,1),size,width,font,material,collection=C['front']);bpy.context.view_layer.objects.active=ob;ob.select_set(True);bpy.ops.object.convert(target='MESH');ob.data.transform(T@F@ob.matrix_world);ob.matrix_world=Matrix.Identity(4);ob.select_set(False)
- label('Fine Burlington name','BURLINGTON BUILDINGS',16.65,13.16,.31,4.85)
+ def label(name,body,x,z,size,width,material=black,out=.12,fit=False):
+  ob=text_object(name,body,(x,z,out),(0,0,1),size,width,font,material,collection=C['front'],fit_bounds=fit);bpy.context.view_layer.objects.active=ob;ob.select_set(True);bpy.ops.object.convert(target='MESH');ob.data.transform(T@F@ob.matrix_world);ob.matrix_world=Matrix.Identity(4);ob.select_set(False)
+ label('Architecture Burlington inscription','BURLINGTON BUILDINGS',16.65,13.28,.31,4.4,fit=True)
  label('Shop lettering Works','The Works',5.23,3.64,.34,5.0,white,out=.15)
  label('Shop lettering Menswear','MAN TO MAN',14.27,3.65,.22,6.2,white,out=.15)
  label('Shop lettering Cafe','CAFFE DOLCE',22.65,3.65,.24,5.4,cream,out=.15)

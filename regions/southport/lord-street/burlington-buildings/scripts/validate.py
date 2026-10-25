@@ -7,13 +7,15 @@ from shapes import transform
 from coplanar import check_blender,overlaps
 D=json.loads((ROOT/'research/layout.json').read_text());bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/burlington-buildings.blend'));s=bpy.context.scene;bpy.context.view_layer.update();obs=[o for o in s.objects if o.type=='MESH'];triangles=0
 for o in obs:
- assert o.data.uv_layers or o.name.startswith(('Fine Burlington','Shop lettering')),o.name
+ assert o.data.uv_layers or o.name.startswith(('Architecture Burlington inscription','Shop lettering')),o.name
  o.data.calc_loop_triangles();triangles+=len(o.data.loop_triangles)
  for v in o.data.vertices:assert all(math.isfinite(n) for n in v.co)
  for t in o.data.loop_triangles:
   a,b,c=[o.matrix_world@o.data.vertices[i].co for i in t.vertices];assert (b-a).cross(c-a).length>1e-10,(o.name,'degenerate triangle')
 selections={'structural_shell':[o for o in obs if o.name.startswith('Shell')],'roof_slopes':[o for o in obs if o.name.startswith(('Roof continuous','Roof works','Roof middle','Roof cafe'))],'all_repeated_window_joinery':[o for o in obs if o.name.startswith('Joinery')],'canopy_top_and_underside':[o for o in obs if o.name.startswith('Canopy glass')]}
 selections['window_prototypes_and_shell_interfaces']=[o for o in obs if o.name=='Shell front main' or o.name.startswith(('Joinery','Door return','Trim south ','Trim middle first','Trim middle second','Trim name first','Trim name second','Trim cafe first','Trim cafe second','Trim upper head','Trim moulded head'))]
+selections['inscription_and_panel']=[o for o in obs if o.name in ('Architecture Burlington inscription','Trim name panel')]
+assert len(selections['inscription_and_panel'])==2
 for name,selected in selections.items():
  assert selected,name
  if name!='window_prototypes_and_shell_interfaces':check_blender(selected)
