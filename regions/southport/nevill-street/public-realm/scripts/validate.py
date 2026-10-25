@@ -155,3 +155,19 @@ for yy in (95.4-.56,95.4+.56):
  zz,ob=sample(4.9,yy)
  assert not ob.name.endswith('asphalt'),('Direction sign pole in carriageway',yy)
 print('Stanley direction sign clears canopy and both poles stand on paving')
+
+# Parking is a real lowered recess with one floor, not a painted raised footway.
+for y in [58,67,78,89]:
+ # Between the shared mouth endpoint and the unmodified Y95 corridor station.
+ t=(y-48)/(95-48);edge=-4.65+(-2.21+4.65)*t
+ z,o=sample(edge-1,y)
+ assert o.name.endswith(' parking'),(y,o.name,'missing inset parking')
+ z2,o2=sample(edge-2.5,y)
+ assert abs(z2-z-.12)<.001,(y,z,z2,'missing rear kerb height')
+ hits=[]
+ for ob in meshes:
+  if not ob.name.startswith('Surface '):continue
+  h=ob.ray_cast(Vector((edge-1,y,20)),Vector((0,0,-1)))
+  if h[0]:hits.append(ob.name)
+ assert len(hits)==1,(y,hits,'stacked parking floors')
+print('Inset parking has one lowered floor and raised pedestrian rear edge')

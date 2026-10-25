@@ -50,6 +50,7 @@ def material(name,colour,texture=None):
   m.node_tree.links.new(q.outputs['Normal'],p.inputs['Normal'])
  return m
 mats={'paving':material('Authored pale Nevill slabs',(.60,.58,.52),'paving'),'brick':material('Authored red brick bands',(.4,.22,.17),'brick'),'asphalt':material('Authored asphalt',(.08,.09,.09),'asphalt'),'kerb':material('Granite kerb',(.43,.43,.40)),'white':material('Worn white paint',(.72,.71,.65)),'yellow':material('Worn yellow paint',(.64,.48,.12)),'tactile':material('Estimated buff tactile pads',(.57,.40,.25),'tactile')}
+mats['parking']=material('Inset grey block parking',(.26,.28,.26),'parking')
 mats['junction-tactile']=material('Junction buff tactile',(.48,.45,.35),'junction-tactile')
 rows=[]
 verticals=[]
@@ -93,6 +94,9 @@ def station(y):
    t=max(0,(y-a[0])/(b[0]-a[0]))
    return [a[i]+t*(b[i]-a[i]) for i in range(1,5)]
  return points[-1][1:]
+BAY=D['lower_inset_parking']
+def parking_width(y):
+ return BAY['width_m']*max(0,min(1,(y-BAY['start_y'])/(BAY['full_start_y']-BAY['start_y']),(BAY['end_y']-y)/(BAY['end_y']-BAY['full_end_y'])))
 def marking_point(y,side,offset):
  # Intersect the two parallel offset lines at a bend (miter join). Offsetting
  # only X made the perpendicular kerb setback vary on angled transitions.
@@ -145,7 +149,7 @@ for side,key in [(-1,'west_kerb'),(1,'east_kerb')]:
  for i in range(len(curve)-1):
   if curve[i+1][1]<41:continue
   surface('junction red edge band',[inner[i],inner[i+1],outer[i+1],outer[i]],'brick',140)
-ys=sorted(set([v for pairs in mouth_breaks.values() for pair in pairs for v in pair]+[r[0] for r in D['stations_y_centre_halfwidth_left_right']]+[45,118,125,145,156,97.7,104.5,106.1,113.3,161.8,169.1,177.1,186.4,190.5,195.7,245.7,246.8]))
+ys=sorted(set([v for pairs in mouth_breaks.values() for pair in pairs for v in pair]+[r[0] for r in D['stations_y_centre_halfwidth_left_right']]+[BAY['start_y'],BAY['full_start_y'],BAY['full_end_y'],BAY['end_y'],45,118,125,145,156,97.7,104.5,106.1,113.3,161.8,169.1,177.1,186.4,190.5,195.7,245.7,246.8]))
 for ya,yb in zip(ys,ys[1:]):
  ca,ha,la,ra=station(ya)
  cb,hb,lb,rb=station(yb)
@@ -162,6 +166,14 @@ for ya,yb in zip(ys,ys[1:]):
   breaks += [(246.8,249.5),tuple(J['nevill_crossing_y'])]
   if any(a<midpoint<b for a,b in breaks):
       continue
+  if side==-1 and BAY['start_y']<=ya and yb<=BAY['end_y']:
+   # Replace the former raised footway; a flush stone strip borders the road.
+   backa=edgea-parking_width(ya);backb=edgeb-parking_width(yb)
+   surface('inset parking',[(edgea,ya),(edgeb,yb),(backb,yb),(backa,ya)],'parking',170,level(True))
+   kerb((backa,ya),(backb,yb),1)
+   surface('parking rear red band',[(backa-.32,ya),(backb-.32,yb),(backb-.77,yb),(backa-.77,ya)],'brick',140)
+   surface('parking flush road border',[(edgea,ya),(edgeb,yb),(edgeb-min(.18,parking_width(yb)),yb),(edgea-min(.18,parking_width(ya)),ya)],'kerb',175,level(True))
+   continue
   kerb((edgea,ya),(edgeb,yb),-side)
   # Red paviour band behind the kerb, observed on the lower street; breadth estimated.
   if ya>=48:surface('red edge band',[(edgea+side*.32,ya),(edgea+side*.77,ya),(edgeb+side*.77,yb),(edgeb+side*.32,yb)],'brick',140)

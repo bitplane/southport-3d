@@ -416,5 +416,13 @@
       ]
     }
   ],
-  "junction_plan": "regions/southport/london-square/public-realm/research/nevill-junction.json"
+  "junction_plan": "regions/southport/london-square/public-realm/research/nevill-junction.json",
+  "lower_inset_parking": {
+    "start_y": 54.0,
+    "full_start_y": 56.0,
+    "full_end_y": 93.0,
+    "end_y": 95.0,
+    "width_m": 2.15,
+    "evidence": "User photo and July 2026 Street View panoramas ejcjyCvRcMnpM7LFZIkM_Q and 2Gv0y7_5CwiDS9PNJWxWvA show recessed grey block paving on west side beyond Occulo, past Silcock toward Empire. Continuous pale flush road border and raised footway at rear, chamfered end return. Ends estimated against modelled facade stations, \u00b11.5m; width estimated \u00b10.25m. Do not extend the road-edge double yellow through the recess."
+  }
 }

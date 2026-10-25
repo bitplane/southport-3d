@@ -106,6 +106,13 @@
       ],
       "measurement_record": "regions/southport/london-square/public-realm/research/nevill-junction.json",
       "limitations": "Satellite kerb trace calibrated to geographic coordinates; approximately 0.4m uncertainty. Grade, rail dimensions and signal placements estimated. Fresh Google 3D was unavailable; north-up satellite and multiple July 2026 panorama headings used. No third-party imagery distributed."
+    },
+    {
+      "id": "inset-parking-user-report",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=ejcjyCvRcMnpM7LFZIkM_Q&heading=310&pitch=-20",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-25",
+      "observed": "Private snag 194223c6432d4655b09e0b8f5151f7e7 photo plus July 2026 Street View from both ends: inset dark grey block-paved parallel parking, pale flush road border, raised rear kerb and angled end. Replaces former uninterrupted slabs and yellow stripes. Bounds/width estimated in layout; photo not distributed."
     }
   ],
   "limitations": [
