@@ -16,3 +16,8 @@ assert any(o.name.startswith("Wall exterior") for o in obs)
 assert any(o.name.startswith("Roof envelope") for o in obs)
 check_blender([o for o in obs if o.name.startswith(('Wall exterior','Roof envelope'))])
 (ROOT/'research/validation.json').write_text(json.dumps({'triangles':total,'objects':len(obs)},indent=2)+'\n')
+
+# Bay plinth spans the full width; piers start at its top, never through it.
+shop=[o for o in obs if o.name.startswith("Shop masonry")]
+assert shop
+check_blender(shop)

@@ -50,7 +50,9 @@ and 120 mm of Bijou’s perimeter walls. Masonry ends at its underside; the
 terrace’s raised front parapet owns that plane instead, with no overlaid slate
 fascia. This partition is identical in the detailed generator and District
 receiver. Saved-mesh validation checks exterior walls together with the roof
-envelope, so a duplicate wall/fascia interface fails before publication.
+envelope, so a duplicate wall/fascia interface fails before publication. The
+terrace shop piers start above the full-width plinth instead of intersecting it;
+a separate saved-mesh check protects that interface.
 
 ## Limits and acceptance
 

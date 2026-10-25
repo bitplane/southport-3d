@@ -75,7 +75,7 @@ for j in range(4):
  door=j*5.2+(4.65 if j<2 else .55);bay=j*5.2+(1.95 if j<2 else 3.05)
  box('Door recess '+str(j),(door,1.52,-.20),(.86,3.04,.055),'joinery',blue if j==3 else white if j==2 else black,F)
  # Exposed bay front and cheeks. Inner backing avoids an open void around glazing.
- for x in (bay-1.52,bay+1.52):box('Shop bay pier',(x,1.55,.22),(.24,3.10,.44),'walls',brick,F)
+ for x in (bay-1.52,bay+1.52):box('Shop bay pier',(x,(.64+3.10)/2,.22),(.24,3.10-.64,.44),'walls',brick,F)
  box('Shop bay plinth',(bay,.32,.22),(3.28,.64,.44),'walls',brick,F)
  window('shop '+str(j),F,bay,.65,2.98,2.78,sill=None)
  # Window projects in front of main wall; shift its frame/glass family outward.
@@ -203,7 +203,7 @@ groups={}
 for ob in list(bpy.context.scene.objects):
  if ob.type!='MESH':continue
  roof_envelope=ob.name in ['Roof main']+['Roof '+v['name'] for v in D['rear_volumes']]
- family='Roof envelope' if roof_envelope else 'Wall exterior' if ob.name.startswith('Wall ') else 'Fine details' if ob.name.startswith('Fine ') else 'Architecture'
+ family='Shop masonry' if ob.name.startswith(('Shop bay pier','Shop bay plinth')) else 'Roof envelope' if roof_envelope else 'Wall exterior' if ob.name.startswith('Wall ') else 'Fine details' if ob.name.startswith('Fine ') else 'Architecture'
  groups.setdefault((ob.users_collection[0].name,family),[]).append(ob)
 for (part,family),objects in groups.items():
  if len(objects)<2:continue
