@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.burlington-buildings",
+  "name": "Burlington Buildings \u2014 393\u2013407 Lord Street",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "photo-researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "four-unequal-facade-divisions",
+    "curved-verandah",
+    "asymmetric-main-roof",
+    "three-rear-wings"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Coherent Burlington block from Willow Grove to the separate gabled range. Hidden rear details restrained and estimated; interiors excluded.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/lord-burlington.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/lord-burlington.json"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "licensing": "Reference links only; procedural materials. Retained footprint registration derives from OpenStreetMap contributors, ODbL1.0. No reference imagery embedded."
+}

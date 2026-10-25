@@ -1,0 +1,89 @@
+{
+  "sources": [
+    {
+      "id": "google-front-2026",
+      "url": "https://www.google.com/maps/@53.6491576,-3.0039782,3a,75y,315h,100t/data=!3m4!1e1!3m2!1sYt6QpKjGHI_fQNNfah9QIg!2e0",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-25",
+      "observed": "Current front facade, modern infill windows, parapet name panel, curved canopy and shop fronts."
+    },
+    {
+      "id": "google-front-2011",
+      "url": "https://www.google.com/maps/@53.6489219,-3.0043251,3a,50y,15.64h,108t/data=!3m4!1e1!3m2!1s1cZ-TjdnAwAbhmq41LMGpg!2e0",
+      "capture_date": "2011-05",
+      "accessed": "2026-10-25",
+      "observed": "Cross-check historic architectural divisions; historical tenants not copied."
+    },
+    {
+      "id": "google-roof",
+      "url": "https://www.google.com/maps/@53.6493757,-3.0033948,67a,35y,259.75h,39.59t/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "observed": "Four close orbit headings 0,82,175,260 degrees and top view; common ridge, three unequal rear wings and yards."
+    },
+    {
+      "id": "google-plan",
+      "url": "https://www.google.com/maps/@53.64930,-3.00410,20z/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "observed": "Frontage registration and relative roof outlines, with parallax uncertainty."
+    },
+    {
+      "id": "google-stanley",
+      "url": "https://www.google.com/maps/@53.6495938,-3.0049136,3a,75y,104.82h,115.45t/data=!3m4!1e1!3m2!1sebeI6VmoOipO-Bdh2ixFqQ!2e0",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-25",
+      "observed": "Stanley approach blocked by Shamraat/Oast buildings and gated access; does not expose complete Burlington rear."
+    },
+    {
+      "id": "owner-residential",
+      "url": "https://tustin.co.uk/projects/burlington-apartments-393-lord-street-southport/",
+      "capture_date": "2019",
+      "accessed": "2026-10-25",
+      "observed": "Owner identifies nine apartments created in 2014 above shops at 393."
+    },
+    {
+      "id": "owner-retail",
+      "url": "https://tustin.co.uk/projects/393-407-lord-street-southport/",
+      "capture_date": "2019",
+      "accessed": "2026-10-25",
+      "observed": "Owner groups three shops at 393\u2013407."
+    },
+    {
+      "id": "cafe-floor-plan",
+      "url": "https://tustin.co.uk/wp-content/uploads/2019/06/405-407-Lord-Street-Brochure-Details.pdf",
+      "capture_date": "2019-04-30",
+      "accessed": "2026-10-25",
+      "observed": "Photo and three floor plans with room dimensions. Not a survey; ground length differs from upper roof outline."
+    },
+    {
+      "id": "heritage-photo",
+      "url": "https://historicengland.org.uk/images-books/photos/item/AA059475",
+      "capture_date": "2006-02-09",
+      "accessed": "2026-10-25",
+      "observed": "Archive catalogue identifies Burlington Buildings at 399\u2013401; no measured rear coverage."
+    },
+    {
+      "id": "mapillary-search",
+      "url": "https://www.mapillary.com/app/?lat=53.6492&lng=-3.004&z=18",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "observed": "Mapillary coverage search; results recorded in coverage."
+    },
+    {
+      "id": "osm-block-plan",
+      "url": "../corridor-placeholders/research/footprints-osm.json",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "observed": "OSM way 375389847 is a joined terrace, not one building. Front southwest portion is replaced; remaining range preserved."
+    },
+    {
+      "id": "mapillary-front",
+      "url": "https://www.mapillary.com/app/?pKey=199688081873890",
+      "capture_date": "2019-09-07",
+      "accessed": "2026-10-25",
+      "observed": "Actual davidsong image loaded and inspected; pale window infill, cafe bay and canopy. Private rear courts have no mapped image track."
+    }
+  ],
+  "rights": "Private reference images are not published or committed. Authored geometry and procedural materials only. OSM source retains OpenStreetMap contributor attribution / ODbL."
+}

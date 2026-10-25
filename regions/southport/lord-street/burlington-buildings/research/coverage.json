@@ -1,0 +1,65 @@
+{
+  "represented_appearance": "July 2026 exterior; dated 2019 floor plan supports hidden layout only.",
+  "front": {
+    "sources": [
+      "google-front-2026",
+      "google-front-2011",
+      "cafe-floor-plan"
+    ],
+    "confidence": "high for composition; metric heights estimated",
+    "observed": [
+      "four unequal facade divisions",
+      "modern pale infill stacks",
+      "BURLINGTON BUILDINGS name panel",
+      "pierced parapet rail and four finial piers",
+      "curved glazed iron verandah",
+      "The Works, Man To Man and Caffe Dolce frontages"
+    ]
+  },
+  "southwest_side": {
+    "sources": [
+      "google-roof"
+    ],
+    "observed": "Party wall against Willow Grove; only upper roof/stack interface visible. Existing Willow boundary chimney remains its owner.",
+    "missing": "Hidden party wall and internal openings not invented."
+  },
+  "northeast_side": {
+    "sources": [
+      "google-roof",
+      "google-front-2026"
+    ],
+    "observed": "Adjoins distinct gabled range beyond cafe; shared roof edge retained.",
+    "missing": "Hidden party wall."
+  },
+  "rear": {
+    "sources": [
+      "google-roof",
+      "google-stanley",
+      "cafe-floor-plan"
+    ],
+    "observed": "Three unequal pitched wings and low rear extensions with open intervening courts; pale replacement windows sparsely visible in photogrammetry.",
+    "missing": "Ground-level rear walls obscured by Stanley properties and gated accesses. No invented repeated rear ornament."
+  },
+  "roof": {
+    "sources": [
+      "google-roof",
+      "google-plan"
+    ],
+    "observed": "Long asymmetric ridge; three rear cross-gables, rooflights and brick stacks.",
+    "uncertainty": "Photogrammetry blurs small fittings, chimney pots and junctions. Survey heights unavailable."
+  },
+  "ground": {
+    "sources": [
+      "osm-block-plan",
+      "google-plan",
+      "cafe-floor-plan"
+    ],
+    "observed": "Front line follows existing block frame. Rear upper outline does not include all low extensions. Alleys retained.",
+    "uncertainty": "Footprints estimated \u00b11.2m, level referenced to adjacent published paving rather than sea level."
+  },
+  "supplementary": {
+    "mapillary": "Actual davidsong 7Sep2019 image199688081873890 loaded and inspected; confirms lower facade and canopy, no additional private-court coverage.",
+    "web_searches": "Burlington rear/roof and Wikimedia queries yielded owner front photos and Historic England archive catalogue, no usable additional rear elevation.",
+    "rear_openings": "Only cafe rear apertures supported by the2019 upper-floor plan are reconstructed. Obscured other rear walls retain provisional restrained brick, not invented regular windows."
+  }
+}

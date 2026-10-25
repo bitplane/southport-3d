@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/burlington-buildings.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street / Burlington Buildings",
+  "status": "July2026 frontage; rear openings restrained where imagery is obscured. Reconstructed metric estimates.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "front",
+      "name": "front",
+      "collection": "front"
+    },
+    {
+      "id": "rear",
+      "name": "rear",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "roof",
+      "collection": "roof"
+    },
+    {
+      "id": "canopy",
+      "name": "canopy",
+      "collection": "canopy"
+    }
+  ],
+  "views": [
+    {
+      "name": "Burlington Buildings",
+      "position": [
+        26.53636,
+        12,
+        -41.75909
+      ],
+      "target": [
+        1.70595,
+        7,
+        -66.44614
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Thin valance and shutter slats fade at walking distances; physical major frame and shutter remain."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Fixed envelope bakes appearance without carrying fine topology."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain real facade openings, unequal wings, roof valleys, shop recesses and open verandah."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replaced by independent dimension-driven receiver surfaces."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed four-part envelope preserves asymmetric roof and three rear wings/courts, projected cafe bay, chimneys and open curved canopy. Small parapet perforations, lettering, thin rails and rooflights become baked appearance; hidden details remain provisional.",
+    "max_bytes": 2400000,
+    "max_gpu_bytes": 5800000,
+    "parts": {
+      "front": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.75,
+        "source_parts": [
+          "front"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.4,
+        "source_parts": [
+          "rear"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 600,
+        "cage_m": 0.28,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "canopy": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 350,
+        "cage_m": 0.18,
+        "source_parts": [
+          "canopy"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      6.52703,
+      1.0,
+      -61.37099
+    ],
+    "target": [
+      2.39468,
+      1.0,
+      -65.72112
+    ]
+  }
+}

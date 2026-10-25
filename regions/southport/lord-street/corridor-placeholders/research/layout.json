@@ -2608,7 +2608,7 @@
     },
     {
       "id": "way-375389847",
-      "name": "Lord Street frontage range",
+      "name": "Lord Street frontage range northeast of Burlington Buildings",
       "osm_way": "375389847",
       "footprint": [
         [
@@ -2644,20 +2644,12 @@
           67.808
         ],
         [
-          36.524,
-          67.593
+          59.927281494001036,
+          67.80666960470552
         ],
         [
-          36.614,
-          57.772
-        ],
-        [
-          34.075,
-          57.743
-        ],
-        [
-          34.189,
-          45.428
+          60.07300356696527,
+          45.66045790801408
         ]
       ],
       "height_m": 12,
@@ -2668,7 +2660,7 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
+      "footprint_confidence": "Original OSM envelope retained northeast of the researched Burlington party-line. Burlington is separately replaced with its actual wing/court footprint.",
       "replace_with": null
     },
     {
@@ -3429,6 +3421,134 @@
       ],
       "footprint_confidence": "Approximate roof outline traced in duke-plan.png. Ground-wall registration and hidden rear uncertain by 3 m; missing from OSM seed.",
       "replace_with": null
+    },
+    {
+      "id": "burlington-main",
+      "name": "Burlington Buildings main",
+      "footprint": [
+        [
+          34.189,
+          45.428
+        ],
+        [
+          60.073,
+          45.660956
+        ],
+        [
+          59.98746,
+          58.660956
+        ],
+        [
+          34.10346,
+          58.428
+        ]
+      ],
+      "height_m": 15.8,
+      "height_uncertainty_m": 1,
+      "status": "replaced-detailed-asset",
+      "evidence": [
+        "Burlington close Google 3D orbits",
+        "2019 cafe plan",
+        "July 2026 Street View"
+      ],
+      "footprint_confidence": "Researched reconstruction; rear plan \u00b11.2m; open courts preserved.",
+      "replace_with": "southport.lord-street.burlington-buildings"
+    },
+    {
+      "id": "burlington-works",
+      "name": "Burlington Buildings works",
+      "footprint": [
+        [
+          36.50346,
+          58.4496
+        ],
+        [
+          43.30346,
+          58.5108
+        ],
+        [
+          43.21792,
+          71.5108
+        ],
+        [
+          36.41792,
+          71.4496
+        ]
+      ],
+      "height_m": 13.6,
+      "height_uncertainty_m": 1,
+      "status": "replaced-detailed-asset",
+      "evidence": [
+        "Burlington close Google 3D orbits",
+        "2019 cafe plan",
+        "July 2026 Street View"
+      ],
+      "footprint_confidence": "Researched reconstruction; rear plan \u00b11.2m; open courts preserved.",
+      "replace_with": "southport.lord-street.burlington-buildings"
+    },
+    {
+      "id": "burlington-middle",
+      "name": "Burlington Buildings middle",
+      "footprint": [
+        [
+          45.10346,
+          58.527
+        ],
+        [
+          48.10346,
+          58.554
+        ],
+        [
+          48.041608,
+          67.954
+        ],
+        [
+          45.041608,
+          67.927
+        ]
+      ],
+      "height_m": 13.6,
+      "height_uncertainty_m": 1,
+      "status": "replaced-detailed-asset",
+      "evidence": [
+        "Burlington close Google 3D orbits",
+        "2019 cafe plan",
+        "July 2026 Street View"
+      ],
+      "footprint_confidence": "Researched reconstruction; rear plan \u00b11.2m; open courts preserved.",
+      "replace_with": "southport.lord-street.burlington-buildings"
+    },
+    {
+      "id": "burlington-cafe",
+      "name": "Burlington Buildings cafe",
+      "footprint": [
+        [
+          53.50346,
+          58.6026
+        ],
+        [
+          59.98746,
+          58.660956
+        ],
+        [
+          59.888102,
+          73.760956
+        ],
+        [
+          53.404102,
+          73.7026
+        ]
+      ],
+      "height_m": 13.6,
+      "height_uncertainty_m": 1,
+      "status": "replaced-detailed-asset",
+      "evidence": [
+        "Burlington close Google 3D orbits",
+        "2019 cafe plan",
+        "July 2026 Street View"
+      ],
+      "footprint_confidence": "Researched reconstruction; rear plan \u00b11.2m; open courts preserved.",
+      "replace_with": "southport.lord-street.burlington-buildings"
     }
   ],
   "policy": "Google 3D and aerial shape comparison govern interpretation; OSM is a metric seed. Flat caps are height envelopes, not reconstructed roofs. Ranges are not legal parcels.",

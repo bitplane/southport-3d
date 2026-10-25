@@ -1,0 +1,17 @@
+{
+  "budget_before_build": {
+    "detail_triangles": 150000,
+    "walk_triangles": 150000,
+    "district_triangles": 1750,
+    "district_glb_bytes": 2400000,
+    "district_gpu_bytes": 5800000,
+    "atlas_memory_floor_bytes": 4718592
+  },
+  "projection_groups": {
+    "front": "front only, maximum0.75m cage for recessed shopfronts; cafe bay receiving geometry retained",
+    "rear": "rear only, maximum0.4m; hidden aperture estimates not enhanced",
+    "roof": "roof only, maximum0.28m; fixed valley planes and stacks",
+    "canopy": "canopy only, maximum0.18m; open posts and curved skins"
+  },
+  "independence": "district.py consumes dimensional recipe and fixed architectural surfaces; no detailed mesh enumeration. Atlas dimensions and topology are invariant to extra trim/slats/lettering."
+}

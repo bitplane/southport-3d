@@ -1,0 +1,298 @@
+{
+  "date": "2026-10-25",
+  "snag": "c213bd51065b473fa2d039c05abf5a43",
+  "scope": "Whole coherent Burlington range393\u2013407; adjacent separate gabled building remains placeholder.",
+  "reference_comparison": {
+    "main_shape": "Before ornament, matched front and roof renders to measured facade divisions, four close Google3D orbits and plan registration.",
+    "final": "Reviewed final front/roof/rear/oblique Blender renders and actual assembled viewer against July2026 front panorama, 2019 Mapillary, 3D roof orbits and cafe floor plan. Unequal windows, pierced parapet/name panel, canopy profile, three rear wings and low additions agree in composition. Estimated metric heights and hidden rear walls remain limitations.",
+    "private_reference_directory": "../references/lord-street-393",
+    "private_review_directory": "../output/lord-street-393"
+  },
+  "actual_export_metrics": [
+    {
+      "level": "detail",
+      "triangles": 31084,
+      "bytes": 4474168,
+      "gpu_bytes": 9212251,
+      "open_courts": 4
+    },
+    {
+      "level": "walk",
+      "triangles": 22944,
+      "bytes": 3263716,
+      "gpu_bytes": 8350051,
+      "open_courts": 4
+    },
+    {
+      "level": "district",
+      "triangles": 494,
+      "bytes": 402700,
+      "gpu_bytes": 4777728,
+      "open_courts": 4
+    }
+  ],
+  "coplanar_audits": [
+    {
+      "level": "detail",
+      "cross_asset_candidates": 0,
+      "accepted_edge_residuals": [
+        {
+          "a": "Shell front main",
+          "b": "Trim cafe bay skirt",
+          "pairs": 1,
+          "area_m2": 6.866377913916644e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim name second lintel",
+          "pairs": 1,
+          "area_m2": 5.7649968436238215e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim name first sill",
+          "pairs": 1,
+          "area_m2": 5.764996842461123e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim name first lintel",
+          "pairs": 1,
+          "area_m2": 5.764996842461123e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim name second sill",
+          "pairs": 1,
+          "area_m2": 5.764996842461123e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim south first sill",
+          "pairs": 1,
+          "area_m2": 5.531256090207659e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim south first lintel",
+          "pairs": 1,
+          "area_m2": 5.531256090041126e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim south second sill",
+          "pairs": 1,
+          "area_m2": 5.531256089737115e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim middle second 2 sill",
+          "pairs": 1,
+          "area_m2": 1.6411079964070985e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim cafe second 2 sill",
+          "pairs": 1,
+          "area_m2": 1.4304959699677506e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim middle second 4 sill",
+          "pairs": 1,
+          "area_m2": 1.2509166381347026e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell cafe rear gable",
+          "b": "Trim rear kitchen light sill",
+          "pairs": 1,
+          "area_m2": 1.0572022571229966e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell cafe rear gable",
+          "b": "Trim rear kitchen light lintel",
+          "pairs": 1,
+          "area_m2": 1.0572022571188767e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        }
+      ]
+    },
+    {
+      "level": "walk",
+      "cross_asset_candidates": 0,
+      "accepted_edge_residuals": [
+        {
+          "a": "Shell front main",
+          "b": "Trim cafe bay skirt",
+          "pairs": 1,
+          "area_m2": 6.8663779141859595e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim name second lintel",
+          "pairs": 1,
+          "area_m2": 5.7649968436238215e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim name first lintel",
+          "pairs": 1,
+          "area_m2": 5.764996842461123e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim name first sill",
+          "pairs": 1,
+          "area_m2": 5.764996842461123e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim name second sill",
+          "pairs": 1,
+          "area_m2": 5.764996842461123e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim south first sill",
+          "pairs": 1,
+          "area_m2": 5.531256090207659e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim south second sill",
+          "pairs": 1,
+          "area_m2": 5.531256089737115e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim south first lintel",
+          "pairs": 1,
+          "area_m2": 5.53125608957687e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim middle second 2 sill",
+          "pairs": 1,
+          "area_m2": 1.6411079965250597e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim cafe second 2 sill",
+          "pairs": 1,
+          "area_m2": 1.4304959700395248e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell front main",
+          "b": "Trim middle second 4 sill",
+          "pairs": 1,
+          "area_m2": 1.2509166381247279e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell cafe rear gable",
+          "b": "Trim rear kitchen light sill",
+          "pairs": 1,
+          "area_m2": 1.057202257126466e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        },
+        {
+          "a": "Shell cafe rear gable",
+          "b": "Trim rear kitchen light lintel",
+          "pairs": 1,
+          "area_m2": 1.0572022571195272e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        }
+      ]
+    },
+    {
+      "level": "district",
+      "cross_asset_candidates": 0,
+      "accepted_edge_residuals": [
+        {
+          "a": "District roof",
+          "b": "District roof",
+          "pairs": 1,
+          "area_m2": 1.9032262020251298e-06,
+          "reason": "Float32 shared-edge clipping residue; bounded below 0.00001m\u00b2. No positive-area architectural overlay retained."
+        }
+      ]
+    }
+  ],
+  "neighbours": [
+    "southport.nevill-street.willow-grove",
+    "southport.lord-street.corridor-placeholders",
+    "southport.lord-street.corridor-public-realm",
+    "southport.stanley-street.public-realm"
+  ],
+  "audit_scope": "All actual published GLB triangles of these five assets at each uniform LoD, verified content hashes and catalog transforms. Reported result is Burlington-specific: other assets have pre-existing candidates outside this task.",
+  "ground_support": [
+    {
+      "level": "detail",
+      "threshold_samples": 8,
+      "post_samples": 5,
+      "maximum_difference_m": 0.00021884721341325353,
+      "method": "Barycentric interpolation of actual exported Lord corridor paving versus named local elevation interface. Threshold probe 15mm outside the facade gives conservative <0.3mm discrepancy; post centre contact <0.001mm."
+    },
+    {
+      "level": "walk",
+      "threshold_samples": 8,
+      "post_samples": 5,
+      "maximum_difference_m": 0.00021884721341325353,
+      "method": "Barycentric interpolation of actual exported Lord corridor paving versus named local elevation interface. Threshold probe 15mm outside the facade gives conservative <0.3mm discrepancy; post centre contact <0.001mm."
+    },
+    {
+      "level": "district",
+      "threshold_samples": 8,
+      "post_samples": 5,
+      "maximum_difference_m": 0.00021884721341325353,
+      "method": "Barycentric interpolation of actual exported Lord corridor paving versus named local elevation interface. Threshold probe 15mm outside the facade gives conservative <0.3mm discrepancy; post centre contact <0.001mm."
+    }
+  ],
+  "viewer": {
+    "tested_scene_revision": "1fc55aceaf7d383bf31ccc023f1050a2009fd0bae33a8d2c35ffeda8a10732a5",
+    "residency": "Explicit Burlington unit at requested detail/walk/district with pending0 settledtrue failed0 before matched captures. Wide roof view hit global memory budget but Burlington Detail remained resident.",
+    "captures": [
+      "viewer-detail-front.png",
+      "viewer-detail-roof.png",
+      "viewer-detail-rear.png",
+      "viewer-detail-willow-seam.png",
+      "viewer-walk-front.png",
+      "viewer-district-front.png",
+      "viewer-walk-entrance.png"
+    ],
+    "walking": "Actual Walk mode entered below canopy at site47,42; camera height0.900500011m equals existing paving -0.7995m plus1.7m eye height. No canopy-top jump.",
+    "transition": "Requested Detail\u2192Walk\u2192District and checked actual resident unit after each settle; retained frontage, roofs and open courts.",
+    "saved_camera_correction": "Publication view and walk_spawn now explicitly transformed from site frame into viewer east/up/south coordinates.",
+    "final_cleanup": "Restored the exposed street-beam end caps after checking the party-line cap ownership; only the beam buried in the shop piers omits its end caps. This adds four Detail/Walk triangles. Shopfront brick piers also extend to the documented foundation level beneath the sloping pavement, rather than ending at the level shop floor."
+  },
+  "limits": [
+    "No rear ground-level photo coverage beyond gated Stanley accesses.",
+    "Cafe rear apertures are plan-supported estimates; other hidden rear openings deferred.",
+    "Dimensions and small roof fittings are photogrammetric estimates, not surveyed.",
+    "District deliberately closes small parapet perforations and bakes facade openings; fine ornament omitted.",
+    "No interiors or unobserved new streetscape inventory."
+  ],
+  "actual_export_metrics_note": "Metrics below refer to the initial reviewed export before four restored street-beam end-cap triangles; final totals are captured by check_package.py on publication."
+}

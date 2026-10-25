@@ -1,0 +1,144 @@
+{
+  "inputs": [
+    {
+      "source": "google-plan",
+      "private_capture": "../references/lord-street-393/plan-north.png",
+      "viewport_px": [
+        1440,
+        1000
+      ],
+      "zoom": 20,
+      "centre_lat_lon": [
+        53.6493,
+        -3.0041
+      ],
+      "metres_per_px": 0.08849,
+      "scale_check": "10m scale bar about113px; roof-edge samples are distorted by parallax.",
+      "landmarks_px": {
+        "southwest_roof_front": [
+          454,
+          633
+        ],
+        "northeast_roof_front": [
+          663,
+          449
+        ]
+      },
+      "calculation": "sqrt(209\u00b2+184\u00b2)*0.08849=24.65m; registered block front25.884m differs5%, within photographic roof/ground ambiguity. Adopt block front endpoints, not raw roof offset.",
+      "chosen_front_endpoints": [
+        [
+          34.189,
+          45.428
+        ],
+        [
+          60.073,
+          45.661
+        ]
+      ]
+    },
+    {
+      "source": "cafe-floor-plan",
+      "page": 3,
+      "room_dimensions_m": {
+        "front_ground_cafe": [
+          21.86,
+          4.43
+        ],
+        "rear_ground_kitchen": [
+          6.13,
+          4.27
+        ],
+        "first_front_cafe": [
+          13.85,
+          4.56
+        ],
+        "first_rear_storage": [
+          7.57,
+          3.21
+        ],
+        "first_rear_kitchen": [
+          3.91,
+          3.21
+        ]
+      },
+      "calculation": "Ground cafe+kitchen length about28m supports low rear extension beyond upper rear eaves. External dimensions include estimated walls; marketing plan explicitly not to scale."
+    },
+    {
+      "source": "google-front-2026",
+      "private_capture": "../references/lord-street-393/front-current.png",
+      "facade_divider_px": [
+        130,
+        250,
+        455,
+        600,
+        750
+      ],
+      "ratio_calculation": "Widths120:205:145:150; perspective is stronger at left. Registered four divisions5.05,8.85,5.50,6.484m; refine in matched main-shape review.",
+      "height_landmarks_px": {
+        "canopy_wall": 536,
+        "first_sill": 517,
+        "first_lintel": 438,
+        "second_sill": 403,
+        "second_lintel": 327,
+        "parapet_coping": 286
+      },
+      "height_method": "Scale against frontage and adjacent13.35m Willow parapet; upper lights about2.4m and storey interval4.0m. Roof heights estimated independently from multiple3D orbits."
+    }
+  ],
+  "status": "All dimensions are reconstruction estimates, not measured building survey.",
+  "main_shape_review": "2026-10-25 initial front and roof renders inspected against July 2026 Street View and four close 3D orbits. Four unequal divisions and three unequal cross-gables agree in composition. Five-light middle upper group and three-light cafe group corrected before detail. Main ridge position, valleys and retained yards match the visible arrangement. Metric heights and hidden rear fenestration remain estimates. Initial copies retained privately as output/lord-street-393/massing-*.png.",
+  "block_replacement": {
+    "original_way": "375389847",
+    "original_footprint": [
+      [
+        97.324,
+        45.995
+      ],
+      [
+        97.254,
+        54.506
+      ],
+      [
+        76.262,
+        54.318
+      ],
+      [
+        76.197,
+        61.397
+      ],
+      [
+        70.608,
+        61.347
+      ],
+      [
+        70.517,
+        71.752
+      ],
+      [
+        60.037,
+        71.65
+      ],
+      [
+        60.073,
+        67.808
+      ],
+      [
+        36.524,
+        67.593
+      ],
+      [
+        36.614,
+        57.772
+      ],
+      [
+        34.075,
+        57.743
+      ],
+      [
+        34.189,
+        45.428
+      ]
+    ],
+    "method": "Northeast portion remains placeholder; four disjoint-at-boundary replacement rectangles describe main body and three wings including ground-floor extensions. Courtyards are no longer hidden inside the old solid cutout."
+  }
+}
