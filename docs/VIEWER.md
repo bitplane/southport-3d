@@ -180,3 +180,7 @@ runs it automatically and `python3 tools/project.py index` reruns it (add
 `window.southport.getState()` reports the drawn tiles with their unit, level and
 resource, level counts, whether the view has settled, the resident estimate and
 whether the budget is full.
+
+Ground parts may declare `support_surface` to preserve a named support layer
+across LoDs and live replacement. Walking retains nearby support rather than
+snapping onto an overhead bridge or a lower floor. See [ELEVATION.md](ELEVATION.md).

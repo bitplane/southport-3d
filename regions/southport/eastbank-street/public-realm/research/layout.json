@@ -1,0 +1,1715 @@
+{
+  "schema_version": 1,
+  "elevation_plan": "regions/southport/elevation/eastbank.json",
+  "block_plan": "regions/southport/eastbank-street/frontage-placeholders/research/layout.json",
+  "existing_block_plans": [
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+    "regions/southport/station-quarter/frontage-placeholders/research/layout.json"
+  ],
+  "bounds": [
+    -430,
+    -180,
+    -747,
+    -35
+  ],
+  "study_polygons": [
+    [
+      [
+        -395.28966,
+        -719.85066
+      ],
+      [
+        -395.95006,
+        -718.43255
+      ],
+      [
+        -399.73778,
+        -705.19766
+      ],
+      [
+        -399.92763,
+        -703.64488
+      ],
+      [
+        -400.22527,
+        -696.7469
+      ],
+      [
+        -400.00527,
+        -690.5379
+      ],
+      [
+        -399.91973,
+        -688.94266
+      ],
+      [
+        -399.89371,
+        -688.58056
+      ],
+      [
+        -399.7503,
+        -686.98932
+      ],
+      [
+        -398.4353,
+        -674.86532
+      ],
+      [
+        -397.19,
+        -668.21217
+      ],
+      [
+        -396.79269,
+        -666.73075
+      ],
+      [
+        -394.54169,
+        -660.34735
+      ],
+      [
+        -393.54104,
+        -658.08238
+      ],
+      [
+        -392.96026,
+        -654.03057
+      ],
+      [
+        -392.86596,
+        -653.4047
+      ],
+      [
+        -392.8435,
+        -653.26263
+      ],
+      [
+        -392.74023,
+        -652.63835
+      ],
+      [
+        -384.37523,
+        -604.23635
+      ],
+      [
+        -384.31007,
+        -603.86863
+      ],
+      [
+        -384.29492,
+        -603.78517
+      ],
+      [
+        -384.22671,
+        -603.41841
+      ],
+      [
+        -381.07463,
+        -586.85894
+      ],
+      [
+        -373.67019,
+        -540.90185
+      ],
+      [
+        -373.67901,
+        -537.51814
+      ],
+      [
+        -373.63613,
+        -536.56713
+      ],
+      [
+        -373.24781,
+        -532.39174
+      ],
+      [
+        -371.48381,
+        -519.91074
+      ],
+      [
+        -371.35666,
+        -519.06982
+      ],
+      [
+        -371.32592,
+        -518.87901
+      ],
+      [
+        -371.18256,
+        -518.04085
+      ],
+      [
+        -370.06974,
+        -511.89264
+      ],
+      [
+        -369.34818,
+        -498.08993
+      ],
+      [
+        -369.06446,
+        -494.89797
+      ],
+      [
+        -368.97367,
+        -494.17584
+      ],
+      [
+        -368.4584,
+        -491.01306
+      ],
+      [
+        -367.8714,
+        -488.08606
+      ],
+      [
+        -367.86054,
+        -488.03212
+      ],
+      [
+        -367.85807,
+        -488.01989
+      ],
+      [
+        -367.8472,
+        -487.96619
+      ],
+      [
+        -362.2322,
+        -460.3257
+      ],
+      [
+        -357.64733,
+        -429.73302
+      ],
+      [
+        -355.14016,
+        -412.69959
+      ],
+      [
+        -353.76025,
+        -403.30107
+      ],
+      [
+        -332.86395,
+        -261.1572
+      ],
+      [
+        -332.55526,
+        -259.32664
+      ],
+      [
+        -332.47636,
+        -258.91227
+      ],
+      [
+        -332.39098,
+        -258.51022
+      ],
+      [
+        -330.31605,
+        -244.66213
+      ],
+      [
+        -329.83034,
+        -241.43302
+      ],
+      [
+        -329.384,
+        -238.4577
+      ],
+      [
+        -328.03964,
+        -228.27284
+      ],
+      [
+        -327.98947,
+        -227.90472
+      ],
+      [
+        -327.97772,
+        -227.82114
+      ],
+      [
+        -327.92447,
+        -227.45369
+      ],
+      [
+        -323.96024,
+        -200.88586
+      ],
+      [
+        -318.83175,
+        -166.46951
+      ],
+      [
+        -311.63362,
+        -113.78087
+      ],
+      [
+        -310.1458,
+        -102.54737
+      ],
+      [
+        -309.5358,
+        -97.9425
+      ],
+      [
+        -309.08886,
+        -93.96025
+      ],
+      [
+        -307.78779,
+        -80.42292
+      ],
+      [
+        -306.93429,
+        -69.14448
+      ],
+      [
+        -306.89584,
+        -68.67043
+      ],
+      [
+        -306.88651,
+        -68.56267
+      ],
+      [
+        -306.84288,
+        -68.08847
+      ],
+      [
+        -305.84936,
+        -57.89538
+      ],
+      [
+        -305.04254,
+        -46.79601
+      ],
+      [
+        -304.68771,
+        -35.0
+      ],
+      [
+        -206.64339,
+        -35.0
+      ],
+      [
+        -207.11815,
+        -50.78327
+      ],
+      [
+        -207.15618,
+        -51.7173
+      ],
+      [
+        -207.16708,
+        -51.92945
+      ],
+      [
+        -207.22494,
+        -52.86245
+      ],
+      [
+        -208.15094,
+        -65.60144
+      ],
+      [
+        -208.19348,
+        -66.14068
+      ],
+      [
+        -208.2039,
+        -66.26324
+      ],
+      [
+        -208.25312,
+        -66.80253
+      ],
+      [
+        -209.2537,
+        -77.06802
+      ],
+      [
+        -210.10471,
+        -88.31351
+      ],
+      [
+        -210.14062,
+        -88.75816
+      ],
+      [
+        -210.1493,
+        -88.85921
+      ],
+      [
+        -210.18975,
+        -89.30378
+      ],
+      [
+        -211.57575,
+        -103.72478
+      ],
+      [
+        -211.61073,
+        -104.07402
+      ],
+      [
+        -211.61899,
+        -104.15334
+      ],
+      [
+        -211.65672,
+        -104.50207
+      ],
+      [
+        -212.20172,
+        -109.35807
+      ],
+      [
+        -212.25281,
+        -109.79371
+      ],
+      [
+        -212.26492,
+        -109.89265
+      ],
+      [
+        -212.32035,
+        -110.32774
+      ],
+      [
+        -212.99427,
+        -115.41519
+      ],
+      [
+        -214.4952,
+        -126.74763
+      ],
+      [
+        -214.50702,
+        -126.8362
+      ],
+      [
+        -214.50975,
+        -126.8565
+      ],
+      [
+        -214.52196,
+        -126.94659
+      ],
+      [
+        -221.77397,
+        -180.02959
+      ],
+      [
+        -221.81096,
+        -180.29441
+      ],
+      [
+        -221.81955,
+        -180.35454
+      ],
+      [
+        -221.85813,
+        -180.61891
+      ],
+      [
+        -227.03113,
+        -215.33391
+      ],
+      [
+        -227.03191,
+        -215.33914
+      ],
+      [
+        -230.93649,
+        -241.50722
+      ],
+      [
+        -232.28336,
+        -251.71116
+      ],
+      [
+        -232.33593,
+        -252.09634
+      ],
+      [
+        -232.34827,
+        -252.18381
+      ],
+      [
+        -232.40422,
+        -252.56838
+      ],
+      [
+        -232.91622,
+        -255.98138
+      ],
+      [
+        -233.40002,
+        -259.19773
+      ],
+      [
+        -235.71395,
+        -274.64086
+      ],
+      [
+        -236.01618,
+        -276.41075
+      ],
+      [
+        -236.09305,
+        -276.81144
+      ],
+      [
+        -236.15401,
+        -277.09753
+      ],
+      [
+        -256.8004,
+        -417.54136
+      ],
+      [
+        -258.18075,
+        -426.94293
+      ],
+      [
+        -260.70133,
+        -444.06749
+      ],
+      [
+        -260.70966,
+        -444.12384
+      ],
+      [
+        -260.71158,
+        -444.13679
+      ],
+      [
+        -260.72018,
+        -444.19444
+      ],
+      [
+        -265.50218,
+        -476.10244
+      ],
+      [
+        -265.68512,
+        -477.22406
+      ],
+      [
+        -265.72998,
+        -477.47839
+      ],
+      [
+        -265.9418,
+        -478.59481
+      ],
+      [
+        -271.66907,
+        -506.78798
+      ],
+      [
+        -272.36582,
+        -520.11607
+      ],
+      [
+        -272.59972,
+        -522.8961
+      ],
+      [
+        -272.67284,
+        -523.5256
+      ],
+      [
+        -273.08244,
+        -526.28514
+      ],
+      [
+        -274.58074,
+        -534.5631
+      ],
+      [
+        -275.56438,
+        -541.52273
+      ],
+      [
+        -275.57421,
+        -545.93576
+      ],
+      [
+        -275.63155,
+        -546.98237
+      ],
+      [
+        -276.12586,
+        -551.57419
+      ],
+      [
+        -284.43286,
+        -603.13319
+      ],
+      [
+        -284.5365,
+        -603.74864
+      ],
+      [
+        -284.56104,
+        -603.88827
+      ],
+      [
+        -284.67329,
+        -604.50159
+      ],
+      [
+        -287.87755,
+        -621.33523
+      ],
+      [
+        -296.05174,
+        -668.63312
+      ],
+      [
+        -296.13826,
+        -669.2367
+      ],
+      [
+        -295.28883,
+        -671.42117
+      ],
+      [
+        -293.49339,
+        -674.91902
+      ],
+      [
+        -290.83213,
+        -681.28994
+      ],
+      [
+        -290.34427,
+        -682.77627
+      ],
+      [
+        -288.15012,
+        -696.36652
+      ],
+      [
+        -288.14544,
+        -697.93085
+      ],
+      [
+        -290.25828,
+        -711.53396
+      ],
+      [
+        -290.73724,
+        -713.02318
+      ],
+      [
+        -296.95029,
+        -725.30763
+      ],
+      [
+        -297.866,
+        -726.57596
+      ],
+      [
+        -307.57103,
+        -736.3392
+      ],
+      [
+        -308.83386,
+        -737.26248
+      ],
+      [
+        -321.08094,
+        -743.54887
+      ],
+      [
+        -322.56727,
+        -744.03673
+      ],
+      [
+        -336.15752,
+        -746.23088
+      ],
+      [
+        -337.72185,
+        -746.23556
+      ],
+      [
+        -340.49229,
+        -745.80526
+      ],
+      [
+        -344.54034,
+        -746.96378
+      ],
+      [
+        -344.8366,
+        -747.0
+      ],
+      [
+        -350.429,
+        -747.0
+      ],
+      [
+        -359.85069,
+        -746.66617
+      ],
+      [
+        -361.38615,
+        -746.36689
+      ],
+      [
+        -374.31981,
+        -741.65194
+      ],
+      [
+        -375.68763,
+        -740.89283
+      ],
+      [
+        -386.5312,
+        -732.41197
+      ],
+      [
+        -387.5975,
+        -731.26733
+      ]
+    ]
+  ],
+  "roads": [
+    {
+      "id": "23158329",
+      "name": "Roundabout",
+      "points": [
+        [
+          -340.358,
+          -725.878
+        ],
+        [
+          -344.235,
+          -726.079
+        ],
+        [
+          -348.035,
+          -725.279
+        ],
+        [
+          -351.507,
+          -723.532
+        ],
+        [
+          -354.412,
+          -720.956
+        ],
+        [
+          -355.724,
+          -719.204
+        ]
+      ],
+      "width": 5,
+      "junction": "roundabout",
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "23158346",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -345.994,
+          -671.713
+        ],
+        [
+          -344.456,
+          -660.983
+        ],
+        [
+          -336.091,
+          -612.581
+        ]
+      ],
+      "width": 8.4,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "24475020",
+      "name": "Riding Street",
+      "points": [
+        [
+          -342.418,
+          -528.572
+        ],
+        [
+          -338.639,
+          -528.186
+        ],
+        [
+          -322.966,
+          -526.768
+        ]
+      ],
+      "width": 6.2,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "24475034",
+      "name": "Part Street",
+      "points": [
+        [
+          -954.771,
+          -477.139
+        ],
+        [
+          -889.51,
+          -474.401
+        ],
+        [
+          -791.362,
+          -470.276
+        ],
+        [
+          -651.217,
+          -460.368
+        ],
+        [
+          -597.191,
+          -453.974
+        ],
+        [
+          -509.639,
+          -443.606
+        ],
+        [
+          -444.877,
+          -436.018
+        ],
+        [
+          -410.244,
+          -431.96
+        ],
+        [
+          -383.382,
+          -428.812
+        ],
+        [
+          -345.457,
+          -424.365
+        ],
+        [
+          -342.102,
+          -423.975
+        ],
+        [
+          -306.661,
+          -419.825
+        ]
+      ],
+      "width": 6.2,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "24475055",
+      "name": "Talbot Street",
+      "points": [
+        [
+          -284.385,
+          -268.284
+        ],
+        [
+          -295.562,
+          -267.355
+        ],
+        [
+          -323.682,
+          -268.925
+        ],
+        [
+          -504.403,
+          -288.438
+        ],
+        [
+          -559.518,
+          -293.43
+        ],
+        [
+          -660.58,
+          -302.586
+        ],
+        [
+          -692.526,
+          -305.481
+        ],
+        [
+          -695.933,
+          -305.791
+        ],
+        [
+          -777.802,
+          -313.204
+        ]
+      ],
+      "width": 6.2,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "24492852",
+      "name": "Bridge Grove",
+      "points": [
+        [
+          -355.193,
+          -702.205
+        ],
+        [
+          -358.027,
+          -699.374
+        ],
+        [
+          -359.831,
+          -695.879
+        ],
+        [
+          -358.041,
+          -681.166
+        ],
+        [
+          -351.082,
+          -623.859
+        ],
+        [
+          -353.615,
+          -614.205
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "24948322",
+      "name": "Service access",
+      "points": [
+        [
+          -190.582,
+          -84.674
+        ],
+        [
+          -258.965,
+          -84.616
+        ]
+      ],
+      "width": 7,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "24949563",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -336.091,
+          -612.581
+        ],
+        [
+          -332.809,
+          -595.339
+        ]
+      ],
+      "width": 7.8,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "24949564",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -306.661,
+          -419.825
+        ],
+        [
+          -305.28,
+          -410.419
+        ],
+        [
+          -284.385,
+          -268.284
+        ],
+        [
+          -284.173,
+          -267.38
+        ],
+        [
+          -281.857,
+          -251.923
+        ],
+        [
+          -281.374,
+          -248.712
+        ],
+        [
+          -280.862,
+          -245.299
+        ],
+        [
+          -279.461,
+          -234.685
+        ],
+        [
+          -275.496,
+          -208.112
+        ]
+      ],
+      "width": 8.4,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "41754751",
+      "name": "Princes Street",
+      "points": [
+        [
+          -275.496,
+          -208.112
+        ],
+        [
+          -341.743,
+          -206.965
+        ],
+        [
+          -502.721,
+          -204.668
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "172903471",
+      "name": "Wesley Street",
+      "points": [
+        [
+          -181.001,
+          -281.324
+        ],
+        [
+          -284.173,
+          -267.38
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "191951968",
+      "name": "Queen Anne Street",
+      "points": [
+        [
+          -336.98,
+          -165.842
+        ],
+        [
+          -270.323,
+          -173.397
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "191953310",
+      "name": "Bridge Street",
+      "points": [
+        [
+          -217.294,
+          -530.175
+        ],
+        [
+          -222.038,
+          -531.778
+        ],
+        [
+          -307.232,
+          -519.928
+        ],
+        [
+          -310.736,
+          -519.439
+        ],
+        [
+          -321.299,
+          -517.558
+        ]
+      ],
+      "width": 6.2,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "195014767",
+      "name": "Hodge Street",
+      "points": [
+        [
+          -256.096,
+          -49.31
+        ],
+        [
+          -312.587,
+          -50.614
+        ]
+      ],
+      "width": 7,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "343403475",
+      "name": "Scarisbrick New Road",
+      "points": [
+        [
+          -323.888,
+          -745.961
+        ],
+        [
+          -329.128,
+          -736.331
+        ],
+        [
+          -334.123,
+          -730.648
+        ],
+        [
+          -340.358,
+          -725.878
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "343403486",
+      "name": "St James Street",
+      "points": [
+        [
+          -385.701,
+          -716.875
+        ],
+        [
+          -368.357,
+          -713.16
+        ],
+        [
+          -362.739,
+          -711.05
+        ],
+        [
+          -357.881,
+          -708.541
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "343403487",
+      "name": "Virginia Street",
+      "points": [
+        [
+          -303.489,
+          -715.453
+        ],
+        [
+          -329.768,
+          -718.112
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "343403490",
+      "name": "St James Street",
+      "points": [
+        [
+          -355.724,
+          -719.204
+        ],
+        [
+          -385.701,
+          -716.875
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "343403494",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -345.994,
+          -671.713
+        ],
+        [
+          -343.798,
+          -681.875
+        ],
+        [
+          -340.039,
+          -691.542
+        ],
+        [
+          -337.086,
+          -697.295
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "343403496",
+      "name": "Scarisbrick New Road",
+      "points": [
+        [
+          -331.148,
+          -720.255
+        ],
+        [
+          -323.888,
+          -745.961
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "343403498",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -351.256,
+          -698.482
+        ],
+        [
+          -351.036,
+          -692.273
+        ],
+        [
+          -349.721,
+          -680.149
+        ],
+        [
+          -345.994,
+          -671.713
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "343403501",
+      "name": "Virginia Street",
+      "points": [
+        [
+          -329.484,
+          -704.64
+        ],
+        [
+          -320.269,
+          -710.814
+        ],
+        [
+          -312.308,
+          -713.432
+        ],
+        [
+          -303.489,
+          -715.453
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "371861926",
+      "name": "Service access",
+      "points": [
+        [
+          -305.28,
+          -410.419
+        ],
+        [
+          -269.045,
+          -415.3
+        ],
+        [
+          -266.192,
+          -393.213
+        ]
+      ],
+      "width": 7,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "371862546",
+      "name": "Service access",
+      "points": [
+        [
+          -309.179,
+          -436.932
+        ],
+        [
+          -270.795,
+          -443.239
+        ],
+        [
+          -273.114,
+          -460.09
+        ]
+      ],
+      "width": 7,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "792849712",
+      "name": "Southbank Road",
+      "points": [
+        [
+          -319.158,
+          -1249.579
+        ],
+        [
+          -340.529,
+          -1165.206
+        ],
+        [
+          -352.437,
+          -1118.181
+        ],
+        [
+          -368.768,
+          -1051.831
+        ],
+        [
+          -377.417,
+          -1015.917
+        ],
+        [
+          -381.947,
+          -984.222
+        ],
+        [
+          -383.236,
+          -928.107
+        ],
+        [
+          -378.322,
+          -849.096
+        ],
+        [
+          -374.69,
+          -785.357
+        ],
+        [
+          -365.57,
+          -743.183
+        ],
+        [
+          -361.946,
+          -729.261
+        ],
+        [
+          -358.069,
+          -724.653
+        ],
+        [
+          -354.412,
+          -720.956
+        ]
+      ],
+      "width": 7,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1105885211",
+      "name": "Yellow House Lane",
+      "points": [
+        [
+          -313.961,
+          -468.84
+        ],
+        [
+          -348.138,
+          -472.732
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1105885212",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -313.961,
+          -468.84
+        ],
+        [
+          -309.179,
+          -436.932
+        ],
+        [
+          -306.661,
+          -419.825
+        ]
+      ],
+      "width": 8.4,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1105885213",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -322.966,
+          -526.768
+        ],
+        [
+          -321.299,
+          -517.558
+        ],
+        [
+          -320.415,
+          -500.648
+        ],
+        [
+          -319.828,
+          -497.721
+        ],
+        [
+          -313.961,
+          -468.84
+        ]
+      ],
+      "width": 8.4,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1105885397",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -332.809,
+          -595.339
+        ],
+        [
+          -324.502,
+          -543.78
+        ],
+        [
+          -324.73,
+          -539.249
+        ],
+        [
+          -322.966,
+          -526.768
+        ]
+      ],
+      "width": 8.4,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1107612594",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -275.496,
+          -208.112
+        ],
+        [
+          -270.323,
+          -173.397
+        ]
+      ],
+      "width": 10,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1107612595",
+      "name": "Eastbank Street",
+      "points": [
+        [
+          -270.323,
+          -173.397
+        ],
+        [
+          -263.071,
+          -120.314
+        ],
+        [
+          -261.57,
+          -108.981
+        ],
+        [
+          -260.896,
+          -103.893
+        ],
+        [
+          -260.351,
+          -99.037
+        ],
+        [
+          -258.965,
+          -84.616
+        ],
+        [
+          -258.074,
+          -72.842
+        ],
+        [
+          -257.022,
+          -62.049
+        ],
+        [
+          -256.096,
+          -49.31
+        ],
+        [
+          -255.171,
+          -18.559
+        ]
+      ],
+      "width": 10,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1225926112",
+      "name": "Roundabout",
+      "points": [
+        [
+          -351.256,
+          -698.482
+        ],
+        [
+          -346.748,
+          -696.515
+        ],
+        [
+          -341.85,
+          -696.101
+        ],
+        [
+          -337.086,
+          -697.295
+        ]
+      ],
+      "width": 5,
+      "junction": "roundabout",
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1225926113",
+      "name": "Roundabout",
+      "points": [
+        [
+          -331.148,
+          -720.255
+        ],
+        [
+          -333.726,
+          -722.873
+        ],
+        [
+          -336.853,
+          -724.785
+        ],
+        [
+          -340.358,
+          -725.878
+        ]
+      ],
+      "width": 5,
+      "junction": "roundabout",
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1225926157",
+      "name": "Roundabout",
+      "points": [
+        [
+          -329.484,
+          -704.64
+        ],
+        [
+          -328.165,
+          -709.086
+        ],
+        [
+          -328.259,
+          -713.726
+        ],
+        [
+          -329.768,
+          -718.112
+        ]
+      ],
+      "width": 5,
+      "junction": "roundabout",
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1421710597",
+      "name": "Roundabout",
+      "points": [
+        [
+          -355.724,
+          -719.204
+        ],
+        [
+          -357.318,
+          -715.862
+        ],
+        [
+          -358.057,
+          -712.243
+        ],
+        [
+          -357.881,
+          -708.541
+        ]
+      ],
+      "width": 5,
+      "junction": "roundabout",
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1421710606",
+      "name": "Roundabout",
+      "points": [
+        [
+          -357.881,
+          -708.541
+        ],
+        [
+          -356.905,
+          -705.215
+        ],
+        [
+          -355.193,
+          -702.205
+        ],
+        [
+          -353.394,
+          -700.167
+        ],
+        [
+          -351.256,
+          -698.482
+        ]
+      ],
+      "width": 5,
+      "junction": "roundabout",
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1421757430",
+      "name": "Roundabout",
+      "points": [
+        [
+          -329.768,
+          -718.112
+        ],
+        [
+          -331.148,
+          -720.255
+        ]
+      ],
+      "width": 5,
+      "junction": "roundabout",
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1421757442",
+      "name": "Roundabout",
+      "points": [
+        [
+          -337.086,
+          -697.295
+        ],
+        [
+          -333.984,
+          -699.106
+        ],
+        [
+          -331.399,
+          -701.607
+        ],
+        [
+          -329.484,
+          -704.64
+        ]
+      ],
+      "width": 5,
+      "junction": "roundabout",
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    },
+    {
+      "id": "1471490070",
+      "name": "King Street",
+      "points": [
+        [
+          -258.074,
+          -72.842
+        ],
+        [
+          -343.365,
+          -77.803
+        ]
+      ],
+      "width": 5,
+      "junction": null,
+      "evidence": "OSM centreline seed, compared to Google satellite and four 3D orbits; width estimated from road/vehicle scale."
+    }
+  ],
+  "footway_width_m": 2.5,
+  "tile_cuts": [
+    -747,
+    -670,
+    -580,
+    -450,
+    -300,
+    -180,
+    -35
+  ],
+  "budgets": {
+    "triangles_per_level": 35000,
+    "download_bytes_per_level": 3000000
+  },
+  "limits": "Ground and building-height datum estimated, not surveyed. Road widths and junction mouth shapes estimated from dated imagery; detailed markings remain provisional."
+}

@@ -1,0 +1,1998 @@
+{
+  "schema_version": 1,
+  "elevation_plan": "regions/southport/elevation/eastbank.json",
+  "budgets": {
+    "triangles_per_level": 20000,
+    "download_bytes_per_level": 1000000,
+    "gpu_texture_bytes": 0
+  },
+  "blocks": [
+    {
+      "id": "way-371861930",
+      "source_way": "371861930",
+      "footprint": [
+        [
+          -263.335,
+          -430.826
+        ],
+        [
+          -276.331,
+          -428.661
+        ],
+        [
+          -275.375,
+          -422.951
+        ],
+        [
+          -262.38,
+          -425.116
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371861928",
+      "source_way": "371861928",
+      "footprint": [
+        [
+          -253.625,
+          -418.171
+        ],
+        [
+          -255.453,
+          -431.697
+        ],
+        [
+          -261.54,
+          -430.766
+        ],
+        [
+          -259.719,
+          -417.372
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371866524",
+      "source_way": "371866524",
+      "footprint": [
+        [
+          -280.909,
+          -513.334
+        ],
+        [
+          -290.205,
+          -512.073
+        ],
+        [
+          -289.071,
+          -502.909
+        ],
+        [
+          -279.778,
+          -503.922
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371868029",
+      "source_way": "371868029",
+      "footprint": [
+        [
+          -329.354,
+          -486.337
+        ],
+        [
+          -339.016,
+          -485.711
+        ],
+        [
+          -337.68293,
+          -475.81887
+        ],
+        [
+          -336.39404,
+          -475.67209
+        ],
+        [
+          -327.73,
+          -476.657
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-1053017480",
+      "source_way": "1053017480",
+      "footprint": [
+        [
+          -305.733,
+          -160.779
+        ],
+        [
+          -306.27861,
+          -165.04453
+        ],
+        [
+          -328.70918,
+          -162.50222
+        ],
+        [
+          -328.124,
+          -157.918
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371191681",
+      "source_way": "371191681",
+      "footprint": [
+        [
+          -315.168,
+          -158.219
+        ],
+        [
+          -314.669,
+          -151.753
+        ],
+        [
+          -308.326,
+          -152.175
+        ],
+        [
+          -308.176,
+          -144.563
+        ],
+        [
+          -302.818,
+          -144.049
+        ],
+        [
+          -303.203,
+          -152.435
+        ],
+        [
+          -304.812,
+          -152.289
+        ],
+        [
+          -305.464,
+          -159.346
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371866525",
+      "source_way": "371866525",
+      "footprint": [
+        [
+          -269.258,
+          -513.915
+        ],
+        [
+          -278.308,
+          -512.396
+        ],
+        [
+          -275.998,
+          -499.943
+        ],
+        [
+          -267.84,
+          -500.86
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371867299",
+      "source_way": "371867299",
+      "footprint": [
+        [
+          -273.48,
+          -534.915
+        ],
+        [
+          -275.152,
+          -545.058
+        ],
+        [
+          -286.004,
+          -543.271
+        ],
+        [
+          -284.32,
+          -533.125
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371867298",
+      "source_way": "371867298",
+      "footprint": [
+        [
+          -288.824,
+          -544.86
+        ],
+        [
+          -299.555,
+          -543.357
+        ],
+        [
+          -297.927,
+          -531.775
+        ],
+        [
+          -287.197,
+          -533.279
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371868437",
+      "source_way": "371868437",
+      "footprint": [
+        [
+          -366.137,
+          -484.638
+        ],
+        [
+          -357.752,
+          -485.018
+        ],
+        [
+          -357.702,
+          -483.96
+        ],
+        [
+          -348.825,
+          -484.378
+        ],
+        [
+          -349.202,
+          -492.449
+        ],
+        [
+          -357.747,
+          -492.055
+        ],
+        [
+          -357.813,
+          -493.466
+        ],
+        [
+          -366.526,
+          -493.066
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371138312",
+      "source_way": "371138312",
+      "footprint": [
+        [
+          -282.50272,
+          -55.17095
+        ],
+        [
+          -276.96676,
+          -55.04317
+        ],
+        [
+          -277.207,
+          -61.176
+        ],
+        [
+          -275.137,
+          -61.009
+        ],
+        [
+          -275.20726,
+          -55.00255
+        ],
+        [
+          -267.89909,
+          -54.83385
+        ],
+        [
+          -268.2,
+          -63.775
+        ],
+        [
+          -270.855,
+          -66.35
+        ],
+        [
+          -282.643,
+          -65.778
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371861927",
+      "source_way": "371861927",
+      "footprint": [
+        [
+          -250.714,
+          -400.439
+        ],
+        [
+          -253.004,
+          -416.98
+        ],
+        [
+          -261.724,
+          -415.775
+        ],
+        [
+          -259.442,
+          -399.241
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371862545",
+      "source_way": "371862545",
+      "footprint": [
+        [
+          -280.02653,
+          -447.04254
+        ],
+        [
+          -281.241,
+          -454.735
+        ],
+        [
+          -300.332,
+          -451.723
+        ],
+        [
+          -299.09966,
+          -443.90857
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371866523",
+      "source_way": "371866523",
+      "footprint": [
+        [
+          -299.362,
+          -501.67
+        ],
+        [
+          -291.335,
+          -502.217
+        ],
+        [
+          -292.733,
+          -511.391
+        ],
+        [
+          -308.046,
+          -509.527
+        ],
+        [
+          -306.471,
+          -497.849
+        ],
+        [
+          -299.315,
+          -498.536
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371861925",
+      "source_way": "371861925",
+      "footprint": [
+        [
+          -275.921,
+          -359.298
+        ],
+        [
+          -278.534,
+          -375.701
+        ],
+        [
+          -288.804,
+          -374.067
+        ],
+        [
+          -286.191,
+          -357.664
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371867743",
+      "source_way": "371867743",
+      "footprint": [
+        [
+          -346.238,
+          -488.647
+        ],
+        [
+          -339.027,
+          -489.325
+        ],
+        [
+          -338.941,
+          -487.165
+        ],
+        [
+          -329.273,
+          -488.503
+        ],
+        [
+          -331.389,
+          -501.355
+        ],
+        [
+          -339.758,
+          -500.422
+        ],
+        [
+          -339.378,
+          -498.25
+        ],
+        [
+          -347.029,
+          -497.154
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371861931",
+      "source_way": "371861931",
+      "footprint": [
+        [
+          -250.881,
+          -398.545
+        ],
+        [
+          -261.38722,
+          -396.99741
+        ],
+        [
+          -260.98526,
+          -393.88556
+        ],
+        [
+          -260.97156,
+          -393.6113
+        ],
+        [
+          -261.00289,
+          -392.5167
+        ],
+        [
+          -261.10398,
+          -391.9786
+        ],
+        [
+          -261.31889,
+          -391.3764
+        ],
+        [
+          -259.519,
+          -379.146
+        ],
+        [
+          -248.27,
+          -380.804
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371867301",
+      "source_way": "371867301",
+      "footprint": [
+        [
+          -347.965,
+          -514.398
+        ],
+        [
+          -346.922,
+          -504.303
+        ],
+        [
+          -341.12,
+          -504.902
+        ],
+        [
+          -340.858,
+          -502.356
+        ],
+        [
+          -331.103,
+          -503.363
+        ],
+        [
+          -332.625,
+          -518.1
+        ],
+        [
+          -341.874,
+          -517.144
+        ],
+        [
+          -341.656,
+          -515.047
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371148136",
+      "source_way": "371148136",
+      "footprint": [
+        [
+          -320.183,
+          -183.933
+        ],
+        [
+          -318.459,
+          -172.873
+        ],
+        [
+          -302.622,
+          -175.219
+        ],
+        [
+          -303.361,
+          -180.873
+        ],
+        [
+          -298.461,
+          -181.367
+        ],
+        [
+          -299.57,
+          -187.162
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-370696769",
+      "source_way": "370696769",
+      "footprint": [
+        [
+          -382.734,
+          -702.773
+        ],
+        [
+          -393.776,
+          -702.833
+        ],
+        [
+          -393.865,
+          -683.709
+        ],
+        [
+          -382.827,
+          -683.662
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-370696770",
+      "source_way": "370696770",
+      "footprint": [
+        [
+          -376.3,
+          -683.966
+        ],
+        [
+          -366.073,
+          -684.515
+        ],
+        [
+          -367.058,
+          -702.787
+        ],
+        [
+          -379.804,
+          -702.102
+        ],
+        [
+          -379.166,
+          -690.318
+        ],
+        [
+          -376.647,
+          -690.454
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371861929",
+      "source_way": "371861929",
+      "footprint": [
+        [
+          -255.453,
+          -431.697
+        ],
+        [
+          -260.947,
+          -467.688
+        ],
+        [
+          -267.034,
+          -466.757
+        ],
+        [
+          -261.54,
+          -430.766
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371138311",
+      "source_way": "371138311",
+      "footprint": [
+        [
+          -288.284,
+          -67.022
+        ],
+        [
+          -314.412,
+          -67.903
+        ],
+        [
+          -314.754,
+          -58.874
+        ],
+        [
+          -288.313,
+          -57.213
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371716717",
+      "source_way": "371716717",
+      "footprint": [
+        [
+          -208.861,
+          -256.379
+        ],
+        [
+          -244.086,
+          -251.153
+        ],
+        [
+          -243.059,
+          -244.237
+        ],
+        [
+          -207.833,
+          -249.463
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371862979",
+      "source_way": "371862979",
+      "footprint": [
+        [
+          -291.225,
+          -482.853
+        ],
+        [
+          -291.637,
+          -485.04
+        ],
+        [
+          -304.979,
+          -482.731
+        ],
+        [
+          -302.828,
+          -470.341
+        ],
+        [
+          -283.969,
+          -473.27
+        ],
+        [
+          -284.31,
+          -474.989
+        ],
+        [
+          -281.355,
+          -475.385
+        ],
+        [
+          -282.936,
+          -484.063
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371862978",
+      "source_way": "371862978",
+      "footprint": [
+        [
+          -282.101,
+          -465.603
+        ],
+        [
+          -283.097,
+          -471.135
+        ],
+        [
+          -303.475,
+          -467.515
+        ],
+        [
+          -301.284,
+          -454.919
+        ],
+        [
+          -287.264,
+          -457.443
+        ],
+        [
+          -287.476,
+          -458.654
+        ],
+        [
+          -278.3176,
+          -460.30585
+        ],
+        [
+          -278.30871,
+          -460.74321
+        ],
+        [
+          -278.21209,
+          -461.28214
+        ],
+        [
+          -277.85261,
+          -462.31649
+        ],
+        [
+          -277.59418,
+          -462.79918
+        ],
+        [
+          -276.93266,
+          -463.67183
+        ],
+        [
+          -276.89223,
+          -463.71065
+        ],
+        [
+          -277.387,
+          -466.457
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371862980",
+      "source_way": "371862980",
+      "footprint": [
+        [
+          -277.929,
+          -494.178
+        ],
+        [
+          -279.106,
+          -500.092
+        ],
+        [
+          -306.542,
+          -495.863
+        ],
+        [
+          -304.751,
+          -484.436
+        ],
+        [
+          -297.699,
+          -485.577
+        ],
+        [
+          -297.809,
+          -486.671
+        ],
+        [
+          -281.39,
+          -488.863
+        ],
+        [
+          -282.115,
+          -493.717
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371862544",
+      "source_way": "371862544",
+      "footprint": [
+        [
+          -283.103,
+          -427.263
+        ],
+        [
+          -282.434,
+          -423.646
+        ],
+        [
+          -277.399,
+          -424.391
+        ],
+        [
+          -278.147,
+          -429.423
+        ],
+        [
+          -273.426,
+          -430.499
+        ],
+        [
+          -274.60961,
+          -437.29181
+        ],
+        [
+          -298.86097,
+          -433.30699
+        ],
+        [
+          -296.0522,
+          -416.95944
+        ],
+        [
+          -284.33005,
+          -418.53846
+        ],
+        [
+          -284.757,
+          -422.069
+        ],
+        [
+          -289.792,
+          -421.324
+        ],
+        [
+          -290.539,
+          -426.142
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371874535",
+      "source_way": "371874535",
+      "footprint": [
+        [
+          -301.861,
+          -220.576
+        ],
+        [
+          -345.099,
+          -219.637
+        ],
+        [
+          -344.953,
+          -212.576
+        ],
+        [
+          -301.707,
+          -213.506
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-370696771",
+      "source_way": "370696771",
+      "footprint": [
+        [
+          -405.687,
+          -656.787
+        ],
+        [
+          -394.67,
+          -657.012
+        ],
+        [
+          -394.84,
+          -655.131
+        ],
+        [
+          -382.063,
+          -655.553
+        ],
+        [
+          -382.648,
+          -671.594
+        ],
+        [
+          -399.531,
+          -672.4
+        ],
+        [
+          -398.982,
+          -669.513
+        ],
+        [
+          -405.136,
+          -668.796
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371148138",
+      "source_way": "371148138",
+      "footprint": [
+        [
+          -288.669,
+          -197.271
+        ],
+        [
+          -288.132,
+          -193.621
+        ],
+        [
+          -296.809,
+          -192.226
+        ],
+        [
+          -293.43883,
+          -175.05423
+        ],
+        [
+          -280.65939,
+          -176.50267
+        ],
+        [
+          -284.258,
+          -203.166
+        ],
+        [
+          -303.432,
+          -202.532
+        ],
+        [
+          -302.836,
+          -196.511
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371874537",
+      "source_way": "371874537",
+      "footprint": [
+        [
+          -347.258,
+          -221.21
+        ],
+        [
+          -321.426,
+          -222.442
+        ],
+        [
+          -322.456,
+          -235.866
+        ],
+        [
+          -352.022,
+          -235.125
+        ],
+        [
+          -351.18,
+          -223.596
+        ],
+        [
+          -347.304,
+          -223.731
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371861031",
+      "source_way": "371861031",
+      "footprint": [
+        [
+          -279.991,
+          -310.229
+        ],
+        [
+          -276.53,
+          -285.48
+        ],
+        [
+          -270.324,
+          -286.324
+        ],
+        [
+          -271.305,
+          -292.961
+        ],
+        [
+          -257.126,
+          -296.343
+        ],
+        [
+          -259.501,
+          -313.003
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371723949",
+      "source_way": "371723949",
+      "footprint": [
+        [
+          -274.3385,
+          -264.42052
+        ],
+        [
+          -271.177,
+          -238.562
+        ],
+        [
+          -254.222,
+          -240.757
+        ],
+        [
+          -256.061,
+          -257.082
+        ],
+        [
+          -259.944,
+          -256.801
+        ],
+        [
+          -261.29807,
+          -266.18297
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371868028",
+      "source_way": "371868028",
+      "footprint": [
+        [
+          -341.5,
+          -437.904
+        ],
+        [
+          -321.235,
+          -437.533
+        ],
+        [
+          -325.046,
+          -457.189
+        ],
+        [
+          -330.991,
+          -460.785
+        ],
+        [
+          -344.824,
+          -459.712
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-370697284",
+      "source_way": "370697284",
+      "footprint": [
+        [
+          -336.716,
+          -542.909
+        ],
+        [
+          -334.862,
+          -544.349
+        ],
+        [
+          -342.686,
+          -593.618
+        ],
+        [
+          -351.977,
+          -592.208
+        ],
+        [
+          -345.093,
+          -557.83
+        ],
+        [
+          -346.77,
+          -543.999
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371150730",
+      "source_way": "371150730",
+      "footprint": [
+        [
+          -336.804,
+          -194.752
+        ],
+        [
+          -333.34482,
+          -170.53123
+        ],
+        [
+          -322.86196,
+          -171.71937
+        ],
+        [
+          -324.014,
+          -177.791
+        ],
+        [
+          -326.673,
+          -177.199
+        ],
+        [
+          -328.553,
+          -190.875
+        ],
+        [
+          -307.457,
+          -192.121
+        ],
+        [
+          -307.36,
+          -202.471
+        ],
+        [
+          -332.838,
+          -201.145
+        ],
+        [
+          -335.603,
+          -199.486
+        ],
+        [
+          -336.653,
+          -197.199
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371861932",
+      "source_way": "371861932",
+      "footprint": [
+        [
+          -276.174,
+          -404.305
+        ],
+        [
+          -272.98481,
+          -404.81924
+        ],
+        [
+          -273.57551,
+          -409.3923
+        ],
+        [
+          -293.58393,
+          -406.69709
+        ],
+        [
+          -288.606,
+          -378.247
+        ],
+        [
+          -263.888,
+          -381.752
+        ],
+        [
+          -264.5035,
+          -388.28204
+        ],
+        [
+          -265.2507,
+          -388.0627
+        ],
+        [
+          -265.7937,
+          -387.99256
+        ],
+        [
+          -266.8883,
+          -388.02389
+        ],
+        [
+          -267.4264,
+          -388.12498
+        ],
+        [
+          -268.45774,
+          -388.49303
+        ],
+        [
+          -268.93827,
+          -388.75546
+        ],
+        [
+          -269.66334,
+          -389.31464
+        ],
+        [
+          -279.636,
+          -388.042
+        ],
+        [
+          -280.947,
+          -396.578
+        ],
+        [
+          -274.713,
+          -397.402
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371723951",
+      "source_way": "371723951",
+      "footprint": [
+        [
+          -243.656,
+          -229.068
+        ],
+        [
+          -240.275,
+          -229.562
+        ],
+        [
+          -241.626,
+          -238.811
+        ],
+        [
+          -272.204,
+          -234.346
+        ],
+        [
+          -269.444,
+          -215.441
+        ],
+        [
+          -242.247,
+          -219.413
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371723948",
+      "source_way": "371723948",
+      "footprint": [
+        [
+          -196.561,
+          -267.833
+        ],
+        [
+          -194.278,
+          -250.379
+        ],
+        [
+          -187.155,
+          -251.311
+        ],
+        [
+          -190.36774,
+          -275.76942
+        ],
+        [
+          -255.32161,
+          -266.99071
+        ],
+        [
+          -254.439,
+          -260.25
+        ]
+      ],
+      "height_m": 8.5,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-370697283",
+      "source_way": "370697283",
+      "footprint": [
+        [
+          -304.456,
+          -544.674
+        ],
+        [
+          -308.824,
+          -544.348
+        ],
+        [
+          -315.975,
+          -592.813
+        ],
+        [
+          -325.769,
+          -593.505
+        ],
+        [
+          -321.71,
+          -563.85698
+        ],
+        [
+          -318.62775,
+          -544.72644
+        ],
+        [
+          -318.60809,
+          -544.54381
+        ],
+        [
+          -318.55993,
+          -543.66466
+        ],
+        [
+          -318.55952,
+          -543.48097
+        ],
+        [
+          -318.65651,
+          -541.55349
+        ],
+        [
+          -316.859,
+          -528.424
+        ],
+        [
+          -302.203,
+          -530.662
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371861029",
+      "source_way": "371861029",
+      "footprint": [
+        [
+          -221.784,
+          -295.477
+        ],
+        [
+          -224.624,
+          -295.113
+        ],
+        [
+          -223.293,
+          -287.887
+        ],
+        [
+          -247.559,
+          -285.026
+        ],
+        [
+          -248.624,
+          -290.171
+        ],
+        [
+          -255.068,
+          -289.578
+        ],
+        [
+          -253.933,
+          -283.009
+        ],
+        [
+          -264.318,
+          -281.42
+        ],
+        [
+          -265.816,
+          -286.799
+        ],
+        [
+          -270.324,
+          -286.324
+        ],
+        [
+          -276.53,
+          -285.48
+        ],
+        [
+          -274.126,
+          -273.177
+        ],
+        [
+          -204.551,
+          -283.151
+        ],
+        [
+          -205.557,
+          -290.332
+        ],
+        [
+          -211.139,
+          -289.866
+        ],
+        [
+          -213.224,
+          -302.12
+        ],
+        [
+          -223.184,
+          -300.304
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-370696774",
+      "source_way": "370696774",
+      "footprint": [
+        [
+          -334.024,
+          -647.079
+        ],
+        [
+          -328.377,
+          -611.924
+        ],
+        [
+          -322.276,
+          -613.098
+        ],
+        [
+          -322.649,
+          -616.997
+        ],
+        [
+          -320.65,
+          -617.422
+        ],
+        [
+          -321.05,
+          -619.99
+        ],
+        [
+          -317.341,
+          -620.75
+        ],
+        [
+          -318.161,
+          -625.513
+        ],
+        [
+          -321.404,
+          -625.028
+        ],
+        [
+          -321.937,
+          -629.88
+        ],
+        [
+          -319.174,
+          -630.478
+        ],
+        [
+          -320.179,
+          -635.618
+        ],
+        [
+          -322.938,
+          -635.409
+        ],
+        [
+          -323.851,
+          -640.652
+        ],
+        [
+          -318.997,
+          -641.195
+        ],
+        [
+          -319.946,
+          -645.959
+        ],
+        [
+          -324.921,
+          -644.902
+        ],
+        [
+          -325.524,
+          -649.043
+        ],
+        [
+          -320.66,
+          -649.671
+        ],
+        [
+          -323.392,
+          -662.952
+        ],
+        [
+          -331.219,
+          -661.352
+        ],
+        [
+          -332.252,
+          -670.151
+        ],
+        [
+          -324.159,
+          -671.989
+        ],
+        [
+          -326.66,
+          -686.702
+        ],
+        [
+          -335.509,
+          -685.451
+        ],
+        [
+          -336.778,
+          -676.66
+        ],
+        [
+          -337.075,
+          -665.093
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371873704",
+      "source_way": "371873704",
+      "footprint": [
+        [
+          -300.874,
+          -243.009
+        ],
+        [
+          -300.63,
+          -241.583
+        ],
+        [
+          -311.292,
+          -239.96
+        ],
+        [
+          -310.888,
+          -237.58
+        ],
+        [
+          -315.254,
+          -237.118
+        ],
+        [
+          -312.895,
+          -221.978
+        ],
+        [
+          -300.068,
+          -222.693
+        ],
+        [
+          -299.07273,
+          -211.95443
+        ],
+        [
+          -289.66179,
+          -212.11737
+        ],
+        [
+          -287.056,
+          -212.3
+        ],
+        [
+          -285.393,
+          -214.248
+        ],
+        [
+          -291.047,
+          -249.028
+        ],
+        [
+          -313.658,
+          -251.408
+        ],
+        [
+          -314.965,
+          -244.794
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371861032",
+      "source_way": "371861032",
+      "footprint": [
+        [
+          -286.402,
+          -354.715
+        ],
+        [
+          -280.362,
+          -312.717
+        ],
+        [
+          -251.615,
+          -316.15
+        ],
+        [
+          -254.164,
+          -342.593
+        ],
+        [
+          -275.219,
+          -339.436
+        ],
+        [
+          -277.742,
+          -355.725
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-30142878",
+      "source_way": "30142878",
+      "footprint": [
+        [
+          -375.29,
+          -391.189
+        ],
+        [
+          -377.754,
+          -388.848
+        ],
+        [
+          -377.831,
+          -385.643
+        ],
+        [
+          -374.69,
+          -383.161
+        ],
+        [
+          -326.855,
+          -389.54
+        ],
+        [
+          -322.749,
+          -362.196
+        ],
+        [
+          -310.29,
+          -363.882
+        ],
+        [
+          -317.246,
+          -404.918
+        ],
+        [
+          -376.338,
+          -397.226
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371873703",
+      "source_way": "371873703",
+      "footprint": [
+        [
+          -326.21,
+          -302.206
+        ],
+        [
+          -322.852,
+          -288.736
+        ],
+        [
+          -298.55,
+          -285.552
+        ],
+        [
+          -297.271,
+          -287.319
+        ],
+        [
+          -307.636,
+          -356.853
+        ],
+        [
+          -328.947,
+          -354.742
+        ],
+        [
+          -319.905,
+          -303.942
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-30141997",
+      "source_way": "30141997",
+      "footprint": [
+        [
+          -291.476,
+          -676.288
+        ],
+        [
+          -321.226,
+          -670.951
+        ],
+        [
+          -310.692,
+          -612.219
+        ],
+        [
+          -301.66,
+          -613.843
+        ],
+        [
+          -302.38,
+          -617.858
+        ],
+        [
+          -286.425,
+          -620.731
+        ],
+        [
+          -293.502,
+          -660.131
+        ],
+        [
+          -288.732,
+          -660.993
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-30142799",
+      "source_way": "30142799",
+      "footprint": [
+        [
+          -308.176,
+          -144.563
+        ],
+        [
+          -314.439,
+          -145.169
+        ],
+        [
+          -328.623,
+          -146.544
+        ],
+        [
+          -334.264,
+          -88.044
+        ],
+        [
+          -304.817,
+          -85.202
+        ],
+        [
+          -299.18,
+          -143.697
+        ],
+        [
+          -302.818,
+          -144.049
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    },
+    {
+      "id": "way-371191852",
+      "source_way": "371191852",
+      "footprint": [
+        [
+          -304.817,
+          -85.202
+        ],
+        [
+          -305.087,
+          -84.116
+        ],
+        [
+          -275.596,
+          -83.834
+        ],
+        [
+          -273.687,
+          -83.866
+        ],
+        [
+          -272.683,
+          -84.667
+        ],
+        [
+          -272.561,
+          -86.072
+        ],
+        [
+          -273.507,
+          -87.738
+        ],
+        [
+          -275.04,
+          -89.352
+        ],
+        [
+          -273.937,
+          -90.231
+        ],
+        [
+          -272.193,
+          -90.598
+        ],
+        [
+          -273.912,
+          -107.497
+        ],
+        [
+          -280.459,
+          -167.791
+        ],
+        [
+          -300.61,
+          -164.755
+        ],
+        [
+          -297.294,
+          -148.897
+        ],
+        [
+          -300.438,
+          -148.643
+        ],
+        [
+          -299.18,
+          -143.697
+        ]
+      ],
+      "height_m": 7.0,
+      "replace_with": null,
+      "evidence": "Google 3D/aerial corridor comparison supports footprint envelope; OSM seed retained. Heights provisional \u00b13m; frontage/rear features deferred."
+    }
+  ],
+  "existing_block_plans": [
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+    "regions/southport/station-quarter/frontage-placeholders/research/layout.json"
+  ],
+  "limits": "Footprint placeholders only. OSM seed checked against multi-direction Google3D; ground edges \u00b11\u20132m, heights \u00b13m and slopes unmeasured. Hidden rear volumes remain provisional."
+}

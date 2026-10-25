@@ -50,3 +50,12 @@ def test_event_stream_announces_only_changed_catalog(tmp_path):
     output = handler.wfile.getvalue()
     assert output.count(b'event: catalog') == 2
     assert b': keepalive' in output
+
+
+def test_published_viewer_includes_its_local_module_dependencies(tmp_path):
+    import re
+    from publish_viewer import install_viewer
+    install_viewer(tmp_path)
+    for script in tmp_path.glob('*.js'):
+        for relative in re.findall(r"(?:from\s*|import\s*)['\"](\./[^'\"]+)['\"]", script.read_text()):
+            assert (script.parent/relative).is_file(), (script.name, relative)

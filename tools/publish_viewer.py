@@ -132,6 +132,7 @@ def _publish(args, assets, fingerprint, build, retained=()):
             # Prefer detailed bounds for stable switching at every level.
             baseline=next((f for f in files if f['level']=='detail'),files[0])
             result={'id':part['id'],'name':part['name'],'bounds':baseline['bounds'],'ground':part.get('ground',False),'levels':{}}
+            if part.get('support_surface'):result['supportSurface']=part['support_surface']
             if part.get('fixed_level'):result['fixedLevel']=part['fixed_level']
             for item in files:
                 result['levels'][item['level']]={k:item[k] for k in ('bytes','sha256','triangles','uniqueTriangles','gpuBytesEstimate','bounds')}
@@ -167,7 +168,7 @@ def _publish(args, assets, fingerprint, build, retained=()):
 
 def install_viewer(dist):
     """Install one coherent snapshot of viewer sources, returning its identity."""
-    names=('index.html','style.css','app.js','lod.js','tiles.js','snags.js','view-state.js','live.js')
+    names=('index.html','style.css','app.js','lod.js','tiles.js','snags.js','view-state.js','live.js','ground-support.js')
     snapshot={name:(ROOT/'viewer'/name).read_bytes() for name in names}
     if any((ROOT/'viewer'/name).read_bytes()!=data for name,data in snapshot.items()):
         raise ValueError('Viewer sources changed during snapshot')

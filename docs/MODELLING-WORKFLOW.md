@@ -100,7 +100,7 @@ or buildings even when the framing looks correct, producing black openings or
 diagonal missing regions. Moving the camera backward along that axis preserves
 orthographic framing; check this before treating such patches as mesh defects.
 
-Keep parallel contributors on separate asset directories. Coordinate shared-library, catalog and viewer changes separately. Shared-library edits currently invalidate every asset conservatively, so schedule a complete rebuild for those changes. More selective dependencies and regional texture atlases can wait until their cost justifies the added machinery.
+Keep parallel contributors on separate asset directories. Coordinate shared-library, catalog and viewer changes separately. The incremental runner tracks consumed shared files; declare external geometry inputs and verify affected dependencies. New Python module membership can still invalidate conservatively. Regional texture atlases remain separate work.
 
 Before adding a new `asset.json`, create every file it declares: discovery validates the whole registry, so an incomplete manifest blocks other agents' builds. Assign one coordinator to local publication after the participating assets are ready. Each browser MCP process must use the isolated launcher described in [SETUP.md](SETUP.md); a shared disk profile prevents simultaneous browser sessions. Keep screenshots under the owning asset's ignored references directory or let MCP choose a filename in its unique session output directory.
 
@@ -173,3 +173,7 @@ keep the representations aligned; added decorative meshes must not grow District
 geometry or atlases. Publish and measure all three levels as part of delivery.
 When the user explicitly takes visual review for an LoD rollout, record that
 handoff, retain automated technical checks, and leave visual acceptance to them.
+
+For ground-height work, establish the bounded elevation plan and evidence before
+detailing surfaces. Follow [ELEVATION.md](ELEVATION.md), including profile-break,
+entrance/support, neighbouring-seam and multi-level walking checks.

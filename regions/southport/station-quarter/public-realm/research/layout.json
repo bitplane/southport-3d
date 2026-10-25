@@ -1,6 +1,5 @@
 {
   "schema_version": 1,
-  "datum_m": 0.7845,
   "block_plan": "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
   "existing_block_plan": "regions/southport/lord-street/corridor-placeholders/research/layout.json",
   "bounds": [
@@ -605,10 +604,5 @@
   },
   "ownership": "Chapel pedestrian corridor, bounded arcade/station entrances. Ends at Eastbank east pavement edge; full highway scheme deferred. London Square retains x>=-4.3 at the Chapel mouth and its existing north/south approach footways. Existing and new building footprints are hard ground exclusions; elevated entrance bridge does not cut the floor.",
   "uncertainty": "Paving families observed in 2017/2026 views; pattern bands and furniture positions estimated. No grade survey. No temporary works or business signs.",
-  "entrance_ramp": {
-    "start_x_m": -5.3,
-    "kerb_x_m": -4.3,
-    "drop_m": 0.12,
-    "evidence": "Estimated shallow transition to the existing London Street road datum; exact ramp run not surveyed."
-  }
+  "elevation_plan": "regions/southport/elevation/station-approach.json"
 }

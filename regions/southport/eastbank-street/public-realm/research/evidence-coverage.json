@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "coverage": {
+    "plan": "Loaded satellite plus eight actual Google 3D views, including narrower bridge aerial. OSM retained as seed only.",
+    "north_frontages": "Whole-corridor 3D roof and frontage context; no detailed elevation modelling in this placeholder pass.",
+    "middle_frontages": "Loaded August 2019 VR360TV road panorama, paired 2/3-storey blocks and front setbacks.",
+    "bridge": "Loaded August 2024 Google Street View north and south from 136 Eastbank Street; low parapets and visible crest/descent.",
+    "roundabout": "Loaded August 2019 VR360TV panorama at north approach, plus aerial ring and exits.",
+    "rear": "Oblique 3D roof bounds only; occluded courts/grades provisional."
+  },
+  "measurement_inputs": {
+    "bridge_aerial": {
+      "url": "https://www.google.com/maps/@53.64268,-3.00176,150m/data=!3m1!1e3",
+      "private_capture": "../references/eastbank/bridge-aerial-close.png",
+      "scale_bar": "10 m bar approximately 118 px; widths depend on exact edge and orthophoto/parallax.",
+      "road_width_estimate_m": 7.8,
+      "deck_width_estimate_m": 11,
+      "width_uncertainty_m": 1.5,
+      "method": "Bridge road spans roughly85\u201395pixels perpendicular to centreline; parapet-to-parapet envelope roughly120\u2013140pixels. Compared with Street View narrow slab footways."
+    },
+    "heights": "No measured elevation values. Inherited north control 0.7845 m, provisional bridge crest 5.1 m and roundabout 3.1 m. Profiles encode visible rise/descent and estimated clearance; uncertainty up to 1.5 m.",
+    "footprints": "Projected OSM geographic coordinates using memorial tangent frame; visible Google 3D roof/front setbacks checked collectively. Parallax, eaves and missing rear views leave1\u20132m uncertainty; no claim of surveyed individual footprints."
+  },
+  "comparison": "First assembled review showed excessive bridge width and incomplete roundabout exit stubs. Revised widths from close aerial and included all connected roundabout arms. Placeholder roofs intentionally remain flat height envelopes.",
+  "missing": "Detailed facade/roof geometry, measured ground control, parapet mosaic design, street lamp placements, private rear access details."
+}

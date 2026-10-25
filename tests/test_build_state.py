@@ -131,3 +131,17 @@ def test_generated_research_survives_between_stages_and_is_checked(recipe):
     s.execute('master')
     assert (root/'build/test.asset/research/materials.json').read_text()=='generated material manifest'
     assert not (root/'build/test.asset/research/export-report.json').exists()
+
+
+def test_bounded_elevation_file_only_invalidates_its_consumer(recipe):
+    root,source,make=recipe
+    geo=root/'regions/elevation';geo.mkdir()
+    (geo/'chapel.json').write_text('{"height":0.7845}')
+    (geo/'eastbank.json').write_text('{"height":4}')
+    p=source/'scripts/build.py'
+    p.write_text(p.read_text()+"\nfrom pathlib import Path\nimport json\nheight=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/elevation/chapel.json').read_text())['height']\n")
+    make().execute('master')
+    (geo/'eastbank.json').write_text('{"height":5}')
+    assert make().reason('master') is None
+    (geo/'chapel.json').write_text('{"height":0.8}')
+    assert 'chapel.json' in make().reason('master')

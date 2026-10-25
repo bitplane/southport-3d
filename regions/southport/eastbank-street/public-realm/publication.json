@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Eastbank Street",
+  "status": "Eastbank frontage/road canvas from existing Lord/Chapel edge to bridge and roundabout. Estimated profile, provisional envelopes, no detailed architecture.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "section-0-ground",
+      "name": "Eastbank section0 ground",
+      "collection": "section-0-ground",
+      "ground": true,
+      "support_surface": "southport/eastbank-road-level"
+    },
+    {
+      "id": "section-1-ground",
+      "name": "Eastbank section1 ground",
+      "collection": "section-1-ground",
+      "ground": true,
+      "support_surface": "southport/eastbank-road-level"
+    },
+    {
+      "id": "section-2-ground",
+      "name": "Eastbank section2 ground",
+      "collection": "section-2-ground",
+      "ground": true,
+      "support_surface": "southport/eastbank-road-level"
+    },
+    {
+      "id": "section-3-ground",
+      "name": "Eastbank section3 ground",
+      "collection": "section-3-ground",
+      "ground": true,
+      "support_surface": "southport/eastbank-road-level"
+    },
+    {
+      "id": "section-4-ground",
+      "name": "Eastbank section4 ground",
+      "collection": "section-4-ground",
+      "ground": true,
+      "support_surface": "southport/eastbank-road-level"
+    },
+    {
+      "id": "section-5-ground",
+      "name": "Eastbank section5 ground",
+      "collection": "section-5-ground",
+      "ground": true,
+      "support_surface": "southport/eastbank-road-level"
+    },
+    {
+      "id": "rail-ground",
+      "name": "Railway cutting below bridge",
+      "collection": "rail-ground",
+      "ground": true,
+      "support_surface": "southport/eastbank-rail-cutting"
+    },
+    {
+      "id": "bridge-structure",
+      "name": "Bridge and road fittings",
+      "collection": "bridge-structure"
+    }
+  ],
+  "views": [
+    {
+      "name": "Eastbank bridge corridor",
+      "position": [
+        -650,
+        550,
+        980
+      ],
+      "target": [
+        -305,
+        3,
+        400
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -334,
+      6.7,
+      602
+    ],
+    "target": [
+      -330,
+      6.7,
+      580
+    ]
+  },
+  "rules": [
+    {
+      "id": "ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Fixed profile and kerb geometry; only textures reduce."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Preserve slope changes and bridge openings exactly."
+      }
+    },
+    {
+      "id": "structure",
+      "match": "^Structure ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already bounded simple structural silhouette."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Coarse structure preserves bridge clearance and parapets."
+      }
+    }
+  ]
+}

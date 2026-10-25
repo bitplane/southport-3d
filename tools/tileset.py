@@ -303,7 +303,8 @@ class Builder:
     def sources(self, unit, level):
         asset = unit['asset']
         matrix = yaw_matrix(asset['position'], asset['rotationY'])
-        return [(record, matrix, {'asset': asset['id'], 'part': part['id'], 'ground': bool(part.get('ground'))})
+        return [(record, matrix, {'asset': asset['id'], 'part': part['id'], 'ground': bool(part.get('ground')),
+                                 **({'supportSurface':part['supportSurface']} if part.get('supportSurface') else {})})
                 for part, record in level_sources(unit, level)]
 
     def unit_tile(self, unit):

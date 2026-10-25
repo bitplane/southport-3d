@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Eastbank Street",
+  "status": "Eastbank frontage/road canvas from existing Lord/Chapel edge to bridge and roundabout. Estimated profile, provisional envelopes, no detailed architecture.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "way-371861930",
+      "name": "way-371861930 provisional building",
+      "collection": "way-371861930"
+    },
+    {
+      "id": "way-371861928",
+      "name": "way-371861928 provisional building",
+      "collection": "way-371861928"
+    },
+    {
+      "id": "way-371866524",
+      "name": "way-371866524 provisional building",
+      "collection": "way-371866524"
+    },
+    {
+      "id": "way-371868029",
+      "name": "way-371868029 provisional building",
+      "collection": "way-371868029"
+    },
+    {
+      "id": "way-1053017480",
+      "name": "way-1053017480 provisional building",
+      "collection": "way-1053017480"
+    },
+    {
+      "id": "way-371191681",
+      "name": "way-371191681 provisional building",
+      "collection": "way-371191681"
+    },
+    {
+      "id": "way-371866525",
+      "name": "way-371866525 provisional building",
+      "collection": "way-371866525"
+    },
+    {
+      "id": "way-371867299",
+      "name": "way-371867299 provisional building",
+      "collection": "way-371867299"
+    },
+    {
+      "id": "way-371867298",
+      "name": "way-371867298 provisional building",
+      "collection": "way-371867298"
+    },
+    {
+      "id": "way-371868437",
+      "name": "way-371868437 provisional building",
+      "collection": "way-371868437"
+    },
+    {
+      "id": "way-371138312",
+      "name": "way-371138312 provisional building",
+      "collection": "way-371138312"
+    },
+    {
+      "id": "way-371861927",
+      "name": "way-371861927 provisional building",
+      "collection": "way-371861927"
+    },
+    {
+      "id": "way-371862545",
+      "name": "way-371862545 provisional building",
+      "collection": "way-371862545"
+    },
+    {
+      "id": "way-371866523",
+      "name": "way-371866523 provisional building",
+      "collection": "way-371866523"
+    },
+    {
+      "id": "way-371861925",
+      "name": "way-371861925 provisional building",
+      "collection": "way-371861925"
+    },
+    {
+      "id": "way-371867743",
+      "name": "way-371867743 provisional building",
+      "collection": "way-371867743"
+    },
+    {
+      "id": "way-371861931",
+      "name": "way-371861931 provisional building",
+      "collection": "way-371861931"
+    },
+    {
+      "id": "way-371867301",
+      "name": "way-371867301 provisional building",
+      "collection": "way-371867301"
+    },
+    {
+      "id": "way-371148136",
+      "name": "way-371148136 provisional building",
+      "collection": "way-371148136"
+    },
+    {
+      "id": "way-370696769",
+      "name": "way-370696769 provisional building",
+      "collection": "way-370696769"
+    },
+    {
+      "id": "way-370696770",
+      "name": "way-370696770 provisional building",
+      "collection": "way-370696770"
+    },
+    {
+      "id": "way-371861929",
+      "name": "way-371861929 provisional building",
+      "collection": "way-371861929"
+    },
+    {
+      "id": "way-371138311",
+      "name": "way-371138311 provisional building",
+      "collection": "way-371138311"
+    },
+    {
+      "id": "way-371716717",
+      "name": "way-371716717 provisional building",
+      "collection": "way-371716717"
+    },
+    {
+      "id": "way-371862979",
+      "name": "way-371862979 provisional building",
+      "collection": "way-371862979"
+    },
+    {
+      "id": "way-371862978",
+      "name": "way-371862978 provisional building",
+      "collection": "way-371862978"
+    },
+    {
+      "id": "way-371862980",
+      "name": "way-371862980 provisional building",
+      "collection": "way-371862980"
+    },
+    {
+      "id": "way-371862544",
+      "name": "way-371862544 provisional building",
+      "collection": "way-371862544"
+    },
+    {
+      "id": "way-371874535",
+      "name": "way-371874535 provisional building",
+      "collection": "way-371874535"
+    },
+    {
+      "id": "way-370696771",
+      "name": "way-370696771 provisional building",
+      "collection": "way-370696771"
+    },
+    {
+      "id": "way-371148138",
+      "name": "way-371148138 provisional building",
+      "collection": "way-371148138"
+    },
+    {
+      "id": "way-371874537",
+      "name": "way-371874537 provisional building",
+      "collection": "way-371874537"
+    },
+    {
+      "id": "way-371861031",
+      "name": "way-371861031 provisional building",
+      "collection": "way-371861031"
+    },
+    {
+      "id": "way-371723949",
+      "name": "way-371723949 provisional building",
+      "collection": "way-371723949"
+    },
+    {
+      "id": "way-371868028",
+      "name": "way-371868028 provisional building",
+      "collection": "way-371868028"
+    },
+    {
+      "id": "way-370697284",
+      "name": "way-370697284 provisional building",
+      "collection": "way-370697284"
+    },
+    {
+      "id": "way-371150730",
+      "name": "way-371150730 provisional building",
+      "collection": "way-371150730"
+    },
+    {
+      "id": "way-371861932",
+      "name": "way-371861932 provisional building",
+      "collection": "way-371861932"
+    },
+    {
+      "id": "way-371723951",
+      "name": "way-371723951 provisional building",
+      "collection": "way-371723951"
+    },
+    {
+      "id": "way-371723948",
+      "name": "way-371723948 provisional building",
+      "collection": "way-371723948"
+    },
+    {
+      "id": "way-370697283",
+      "name": "way-370697283 provisional building",
+      "collection": "way-370697283"
+    },
+    {
+      "id": "way-371861029",
+      "name": "way-371861029 provisional building",
+      "collection": "way-371861029"
+    },
+    {
+      "id": "way-370696774",
+      "name": "way-370696774 provisional building",
+      "collection": "way-370696774"
+    },
+    {
+      "id": "way-371873704",
+      "name": "way-371873704 provisional building",
+      "collection": "way-371873704"
+    },
+    {
+      "id": "way-371861032",
+      "name": "way-371861032 provisional building",
+      "collection": "way-371861032"
+    },
+    {
+      "id": "way-30142878",
+      "name": "way-30142878 provisional building",
+      "collection": "way-30142878"
+    },
+    {
+      "id": "way-371873703",
+      "name": "way-371873703 provisional building",
+      "collection": "way-371873703"
+    },
+    {
+      "id": "way-30141997",
+      "name": "way-30141997 provisional building",
+      "collection": "way-30141997"
+    },
+    {
+      "id": "way-30142799",
+      "name": "way-30142799 provisional building",
+      "collection": "way-30142799"
+    },
+    {
+      "id": "way-371191852",
+      "name": "way-371191852 provisional building",
+      "collection": "way-371191852"
+    }
+  ],
+  "views": [
+    {
+      "name": "Eastbank bridge corridor",
+      "position": [
+        -650,
+        550,
+        980
+      ],
+      "target": [
+        -305,
+        3,
+        400
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -334,
+      6.7,
+      602
+    ],
+    "target": [
+      -330,
+      6.7,
+      580
+    ]
+  },
+  "rules": [
+    {
+      "id": "massing",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Fixed footprint envelope only."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Already minimal envelope; detailed architecture is a separate replacement."
+      }
+    }
+  ]
+}

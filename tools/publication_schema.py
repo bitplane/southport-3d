@@ -149,11 +149,15 @@ def validate_publication(spec):
     parts = rows(spec['parts'], 'parts')
     for i, part in enumerate(parts):
         where = f'parts[{i}]'
-        fields(part, {'id', 'name', 'collection'}, {'ground', 'fixed_level'}, where)
+        fields(part, {'id', 'name', 'collection'}, {'ground', 'fixed_level', 'support_surface'}, where)
         for key in ('name', 'collection'):
             text(part[key], where + '.' + key)
         if 'ground' in part and type(part['ground']) is not bool:
             raise ValueError(f'{where}.ground: expected boolean')
+        if 'support_surface' in part:
+            text(part['support_surface'], where + '.support_surface')
+            if not part.get('ground'):
+                raise ValueError(f'{where}: support_surface requires ground:true')
         if 'fixed_level' in part and part['fixed_level'] not in LEVELS:
             raise ValueError(f'{where}.fixed_level: unknown level')
     unique_ids(parts, 'parts')

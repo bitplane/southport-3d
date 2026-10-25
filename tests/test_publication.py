@@ -80,3 +80,12 @@ def test_terrace_envelope_guard_checks_coverage_and_normals(tmp_path):
         with pytest.raises(ValueError):module.check(tmp_path,recipe)
     report['envelope']['parts']={};assembly.write_text(json.dumps(report))
     with pytest.raises(ValueError,match='Missing District'):module.check(tmp_path,recipe)
+
+
+def test_named_support_surfaces_require_walkable_parts():
+    import pytest
+    from publication_schema import validate_publication
+    p=ROOT/'regions/southport/station-quarter/public-realm/publication.json'
+    spec=json.loads(p.read_text());validate_publication(spec)
+    spec['parts'][0]['ground']=False
+    with pytest.raises(ValueError,match='support_surface requires'):validate_publication(spec)

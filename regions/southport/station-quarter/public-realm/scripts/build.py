@@ -5,14 +5,15 @@ from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT'])
 sys.path[:0]=[str(REPO/'lib'),str(ROOT/'scripts'),str(REPO/'regions/southport/lord-street/corridor-public-realm/scripts')]
 from southport3d.geometry import Mesh
+from southport3d.elevation import Elevations
 from plan_geometry import Plan
 from furniture_lod import furniture,finish
 D=json.loads((ROOT/'research/layout.json').read_text());B=json.loads((REPO/D['block_plan']).read_text());OLD=json.loads((REPO/D['existing_block_plan']).read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
-s=bpy.context.scene;s.unit_settings.system='METRIC';z=D['datum_m']
-ramp=D['entrance_ramp']
-def grade(x):
- return z-ramp['drop_m']*max(0,min(1,(x-ramp['start_x_m'])/(ramp['kerb_x_m']-ramp['start_x_m'])))
+s=bpy.context.scene;s.unit_settings.system='METRIC'
+surface=Elevations(REPO/D['elevation_plan']).surface('chapel-pedestrian')
+def grade(x,y):
+ return surface.height(x,y)
 cols={}
 for region in ['west','middle','east']:
  for kind in ['ground','furniture']:
@@ -54,10 +55,10 @@ for name,lo,hi in zip(['west','middle','east'],D['tile_cuts'],D['tile_cuts'][1:]
  for mat,g in [('paving',paved),('route',route),('strip',strips)]:
   m=Mesh('Ground '+name+' '+mat)
   # The ramp break is a real shared edge, not a sloping giant triangle.
-  cuts=[lo,*[v for v in [ramp['start_x_m']] if lo<v<hi],hi]
+  cuts=[lo,*[v for v in [line[0][0] for line in surface.breaklines()] if lo<v<hi],hi]
   for a,b in zip(cuts,cuts[1:]):
    patch=P.intersection(g,P.polygons([rect(a,b,-300,0)]))
-   for tri in P.triangles(patch):m.add([(x,y,grade(x)) for x,y in tri],[(0,1,2)])
+   for tri in P.triangles(patch):m.add([(x,y,grade(x,y)) for x,y in tri],[(0,1,2)])
   if m.faces:compiled[(name,mat)]=m
 P.close()
 # Noded ground boundaries remain exact after float32 conversion.
@@ -73,7 +74,7 @@ for (name,mat),m in compiled.items():
 # Furniture is separate from ground ray casting. A local generator keeps LODs consistent.
 for i,row in enumerate(D['placements']):
  x,y=row['xy'];region='west' if x<-170 else 'middle' if x<-95 else 'east';name=f"Furniture {row['kind']} {i:02d}"
- ob=finish(furniture(row['kind'],'detail',name),fm,cols[region+'-furniture']);ob.location=(x,y,z);ob.rotation_euler.z=math.radians(row['rotation_degrees'])
+ ob=finish(furniture(row['kind'],'detail',name),fm,cols[region+'-furniture']);ob.location=(x,y,grade(x,y));ob.rotation_euler.z=math.radians(row['rotation_degrees'])
  uv=ob.data.uv_layers.new(name='Local furnishing UV')
  for poly in ob.data.polygons:
   for li in poly.loop_indices:

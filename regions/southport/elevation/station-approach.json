@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "datum": "southport-memorial-estimated-local-zero",
+  "frame": "Memorial site XY metres; yaw from east 43.5293 degrees",
+  "controls": {
+    "chapel-paving": {
+      "height_m": 0.7845,
+      "uncertainty_m": 0.15,
+      "status": "legacy-estimate-preserved",
+      "evidence": "Station-quarter layout existing datum and 0.12m entrance drop; no surveyed elevation. Preserved by migration."
+    },
+    "london-road-entrance": {
+      "height_m": 0.6645,
+      "uncertainty_m": 0.15,
+      "status": "legacy-estimate-preserved",
+      "evidence": "Station-quarter layout existing datum and 0.12m entrance drop; no surveyed elevation. Preserved by migration."
+    }
+  },
+  "surfaces": {
+    "chapel-pedestrian": {
+      "bounds": [
+        -270,
+        0,
+        -180,
+        -95
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        1,
+        0
+      ],
+      "profile": [
+        {
+          "distance_m": -5.3,
+          "control": "chapel-paving"
+        },
+        {
+          "distance_m": -4.3,
+          "control": "london-road-entrance"
+        }
+      ],
+      "description": "Existing Chapel paving with one metre London Street entrance ramp. Bounds are query bounds; ground ownership polygons remain with public realm."
+    }
+  }
+}

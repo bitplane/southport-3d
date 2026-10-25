@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { chooseSupport, supportId } from './ground-support.js';
 import { Town } from './tiles.js';
 import { countLevels, formatBytes, tileLevel } from './lod.js';
 import { installSnags } from './snags.js';
@@ -16,6 +17,7 @@ const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.05,3000);
 const keys=new Set(),clock=new THREE.Clock(),ray=new THREE.Raycaster();
 const vector=new THREE.Vector3(),down=new THREE.Vector3(0,-1,0);
 let orbit,walkControl,drag=null,walkFloor=0,reporting=false,dropPending=false,dropTimer=0;
+let walkSupport=null;
 let pendingCatalog=null;
 let livePaused=false,liveConnected=true,reloadNeeded=false,liveMessage='';
 function liveStatus(){
@@ -82,9 +84,9 @@ function nearestAsset(){
 function regroundAfterSwap(){
   if(mode!=='walk')return;
   scene.updateMatrixWorld(true);
-  ray.set(new THREE.Vector3(camera.position.x,camera.position.y+5,camera.position.z),down);ray.far=Infinity;
-  const hit=ray.intersectObjects(town.groundRoots,true).find(h=>h.face);
-  if(hit){walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;}
+  ray.set(new THREE.Vector3(camera.position.x,walkFloor+.6,camera.position.z),down);ray.far=1.2;
+  const hit=chooseSupport(ray.intersectObjects(town.groundRoots,true),walkFloor,walkSupport);
+  if(hit){walkSupport=supportId(hit.object);walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;}
 }
 function setMode(next){
   if(next===mode)return;
@@ -93,7 +95,7 @@ function setMode(next){
     walkControl.unlock();camera.getWorldDirection(vector);orbit.target.copy(camera.position).addScaledVector(vector,12);orbit.update();
   }else{
     // Keep position and heading; ground may still be streaming beneath us.
-    walkFloor=camera.position.y-1.7;dropPending=true;dropTimer=0;dropToGround();
+    walkSupport=null;walkFloor=camera.position.y-1.7;dropPending=true;dropTimer=0;dropToGround();
   }
   updateModeUI();
 }
@@ -107,7 +109,7 @@ function dropToGround(){
   ray.set(new THREE.Vector3(camera.position.x,camera.position.y+.05,camera.position.z),down);ray.far=Infinity;
   const hit=ray.intersectObjects(town.groundRoots,true).find(h=>h.face);
   if(!hit)return; // Unmodelled/unloaded ground: stay here, never use a remote spawn.
-  walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;
+  walkSupport=supportId(hit.object);walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;dropPending=false;
 }
 function moveOrbit(dt){
   if(mode!=='orbit'||reporting)return;
@@ -133,9 +135,9 @@ function walk(dt){
   if(x||z){const scale=speed/Math.max(1,Math.hypot(x,z));walkControl.moveRight(x*scale);walkControl.moveForward(z*scale);
     // Ground-following only: no collision physics in this first inspection viewer.
     if(dropPending)return;
-    ray.set(new THREE.Vector3(camera.position.x,walkFloor+.6,camera.position.z),down);ray.far=5;
-    const hit=ray.intersectObjects(town.groundRoots,true).find(h=>h.face && h.point.y<=walkFloor+.45);
-    if(hit)walkFloor=hit.point.y;camera.position.y=walkFloor+1.7;
+    ray.set(new THREE.Vector3(camera.position.x,walkFloor+.6,camera.position.z),down);ray.far=1.2;
+    const hit=chooseSupport(ray.intersectObjects(town.groundRoots,true),walkFloor,walkSupport);
+    if(hit){walkSupport=supportId(hit.object);walkFloor=hit.point.y;}camera.position.y=walkFloor+1.7;
   }
 }
 function animate(now){

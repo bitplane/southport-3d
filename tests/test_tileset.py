@@ -140,3 +140,14 @@ def test_oriented_box_follows_asset_yaw():
     # The long local x axis now runs along -z; the box is not inflated to an AABB.
     assert [round(v, 6) for v in box[3:6]] == [0, 0, -10]
     assert [round(v, 6) for v in box[9:12]] == [1, 0, 0]
+
+
+def test_support_surface_identity_survives_all_proxy_modes(tmp_path):
+    source=tmp_path/'source.glb';glb(source)
+    for mode in ('detail','walk','district','lite','flat'):
+        merger=tileset.Merger(mode)
+        matrix=[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]
+        merger.add(source,matrix,{'ground':True,'supportSurface':'eastbank/deck'})
+        output=tmp_path/(mode+'.glb');output.write_bytes(merger.glb())
+        doc,_=read_glb(output)
+        assert doc['nodes'][doc['scenes'][0]['nodes'][0]]['extras']['supportSurface']=='eastbank/deck'

@@ -3,6 +3,9 @@ import bpy,json,math,os,sys
 from pathlib import Path
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT'])
+sys.path.insert(0,str(REPO/'lib'))
+from southport3d.elevation import Elevations
+surface=Elevations(REPO/'regions/southport/elevation/station-approach.json').surface('chapel-pedestrian')
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 D=json.loads((ROOT/'research/layout.json').read_text());obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];ground=[o for o in obs if o.name.startswith('Ground ')]
 assert obs and ground
@@ -16,13 +19,15 @@ assert sum(len(o.data.loop_triangles) for o in obs)<D['budgets']['detail_triangl
 def hits(x,y):
  return [(o,o.ray_cast(Vector((x,y,30)),Vector((0,0,-1)))) for o in ground if o.ray_cast(Vector((x,y,30)),Vector((0,0,-1)))[0]]
 def sample(x,y):
- r=D['entrance_ramp'];expected=D['datum_m']-r['drop_m']*max(0,min(1,(x-r['start_x_m'])/(r['kerb_x_m']-r['start_x_m'])))
+ expected=surface.height(x,y)
  h=hits(x,y);assert h,(x,y,'missing ground');assert all(abs(hit[1].z-expected)<1e-5 for o,hit in h);return h
 for a,b in zip(D['centreline'],D['centreline'][1:]):
  for i in range(20):
   t=(i+.5)/20;sample(a[0]*(1-t)+b[0]*t,a[1]*(1-t)+b[1]*t)
 for p in [(-55,-160),(-55,-175),(-128,-110),(-162,-100),(-164,-168),(-5,-144)]:sample(*p)
-for row in D['placements']:sample(*row['xy'])
+for i,row in enumerate(D['placements']):
+ sample(*row['xy'])
+ ob=bpy.data.objects[f"Furniture {row['kind']} {i:02d}"];assert abs(ob.location.z-surface.height(*row['xy']))<1e-6
 for x in [-5.301,-5.299,-4.301]:sample(x,-144)
 # London owns these points; this asset must not duplicate its existing footways.
 for p in [(-8,-136),(-8,-152),(0,-144)]:assert not hits(*p),(p,'London ownership overlap')

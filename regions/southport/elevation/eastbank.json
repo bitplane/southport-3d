@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "datum": "southport-memorial-estimated-local-zero",
+  "frame": "Memorial site XY metres; yaw from east43.5293degrees",
+  "controls": {
+    "eastbank-lord-seam": {
+      "height_m": 0.7625,
+      "status": "legacy-estimate-preserved",
+      "uncertainty_m": 0.15,
+      "evidence": "Existing Lord/Chapel ground seam"
+    },
+    "eastbank-talbot-approach": {
+      "height_m": 1.2,
+      "status": "visual-estimate",
+      "uncertainty_m": 1,
+      "evidence": "Google3D four-direction orbit and Aug2024/Aug2019 Street View show rise/crest/descent; metric relative height estimated, no survey."
+    },
+    "eastbank-part-street": {
+      "height_m": 2.1,
+      "status": "visual-estimate",
+      "uncertainty_m": 1.2,
+      "evidence": "Google3D four-direction orbit and Aug2024/Aug2019 Street View show rise/crest/descent; metric relative height estimated, no survey."
+    },
+    "eastbank-riding-street": {
+      "height_m": 3.5,
+      "status": "visual-estimate",
+      "uncertainty_m": 1.5,
+      "evidence": "Google3D four-direction orbit and Aug2024/Aug2019 Street View show rise/crest/descent; metric relative height estimated, no survey."
+    },
+    "eastbank-bridge-north": {
+      "height_m": 4.9,
+      "status": "visual-estimate",
+      "uncertainty_m": 1.5,
+      "evidence": "Google3D four-direction orbit and Aug2024/Aug2019 Street View show rise/crest/descent; metric relative height estimated, no survey."
+    },
+    "eastbank-bridge-south": {
+      "height_m": 5.1,
+      "status": "visual-estimate",
+      "uncertainty_m": 1.5,
+      "evidence": "Google3D four-direction orbit and Aug2024/Aug2019 Street View show rise/crest/descent; metric relative height estimated, no survey."
+    },
+    "eastbank-south-approach": {
+      "height_m": 3.9,
+      "status": "visual-estimate",
+      "uncertainty_m": 1.5,
+      "evidence": "Google3D four-direction orbit and Aug2024/Aug2019 Street View show rise/crest/descent; metric relative height estimated, no survey."
+    },
+    "eastbank-roundabout": {
+      "height_m": 3.1,
+      "status": "visual-estimate",
+      "uncertainty_m": 1.5,
+      "evidence": "Google3D four-direction orbit and Aug2024/Aug2019 Street View show rise/crest/descent; metric relative height estimated, no survey."
+    },
+    "eastbank-roundabout-exits": {
+      "height_m": 3.1,
+      "status": "visual-estimate",
+      "uncertainty_m": 1.5,
+      "evidence": "Google3D four-direction orbit and Aug2024/Aug2019 Street View show rise/crest/descent; metric relative height estimated, no survey."
+    },
+    "rail-cutting": {
+      "height_m": 0,
+      "status": "visual-estimate",
+      "uncertainty_m": 1.5,
+      "evidence": "Railway visible below Eastbank deck in Google3D. Relative cutting depth estimated; not a measured clearance."
+    }
+  },
+  "surfaces": {
+    "eastbank-pavement": {
+      "bounds": [
+        -440,
+        -170,
+        -750,
+        -34
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        -1
+      ],
+      "profile": [
+        {
+          "distance_m": 35,
+          "control": "eastbank-lord-seam"
+        },
+        {
+          "distance_m": 36,
+          "control": "chapel-paving"
+        },
+        {
+          "distance_m": 180,
+          "control": "chapel-paving"
+        },
+        {
+          "distance_m": 300,
+          "control": "eastbank-talbot-approach"
+        },
+        {
+          "distance_m": 430,
+          "control": "eastbank-part-street"
+        },
+        {
+          "distance_m": 530,
+          "control": "eastbank-riding-street"
+        },
+        {
+          "distance_m": 590,
+          "control": "eastbank-bridge-north"
+        },
+        {
+          "distance_m": 615,
+          "control": "eastbank-bridge-south"
+        },
+        {
+          "distance_m": 670,
+          "control": "eastbank-south-approach"
+        },
+        {
+          "distance_m": 710,
+          "control": "eastbank-roundabout"
+        },
+        {
+          "distance_m": 747,
+          "control": "eastbank-roundabout-exits"
+        }
+      ]
+    },
+    "eastbank-road": {
+      "bounds": [
+        -440,
+        -170,
+        -750,
+        -34
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        -1
+      ],
+      "profile": [
+        {
+          "distance_m": 35,
+          "control": "eastbank-lord-seam"
+        },
+        {
+          "distance_m": 36,
+          "control": "chapel-paving"
+        },
+        {
+          "distance_m": 180,
+          "control": "chapel-paving"
+        },
+        {
+          "distance_m": 300,
+          "control": "eastbank-talbot-approach"
+        },
+        {
+          "distance_m": 430,
+          "control": "eastbank-part-street"
+        },
+        {
+          "distance_m": 530,
+          "control": "eastbank-riding-street"
+        },
+        {
+          "distance_m": 590,
+          "control": "eastbank-bridge-north"
+        },
+        {
+          "distance_m": 615,
+          "control": "eastbank-bridge-south"
+        },
+        {
+          "distance_m": 670,
+          "control": "eastbank-south-approach"
+        },
+        {
+          "distance_m": 710,
+          "control": "eastbank-roundabout"
+        },
+        {
+          "distance_m": 747,
+          "control": "eastbank-roundabout-exits"
+        }
+      ],
+      "offset_m": -0.12
+    },
+    "eastbank-rail-cutting": {
+      "bounds": [
+        -440,
+        -170,
+        -750,
+        -34
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        -1
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "rail-cutting"
+        }
+      ]
+    }
+  },
+  "notes": "Independent road deck and railway cutting surfaces overlap in XY. Bounds restrict queries; ownership polygons restrict generated mesh. Road profile is provisional and must not be represented as surveyed.",
+  "includes": [
+    "station-approach.json"
+  ]
+}

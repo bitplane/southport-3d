@@ -24,3 +24,7 @@ one LoD unit per building (parts merged per level), District → Walk → Detail
 chains, and a quadtree of merged distant proxies. The flat `catalog.json` remains
 for whole-map audits. Source geographic folders do not determine runtime tiles.
 See [VIEWER.md](VIEWER.md) for selection, memory and live updates.
+
+Shared bounded elevation profiles live in `southport3d.elevation`; geographic
+controls and uncertainty live under `regions/southport/elevation/`. Ground assets
+keep ownership polygons and reference named surfaces. See [ELEVATION.md](ELEVATION.md).

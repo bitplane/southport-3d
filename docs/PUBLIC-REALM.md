@@ -312,3 +312,9 @@ The new owner meets X=-4.3 m between Y=-150 and -138 m and the retained London
 footways at X=-12.5 m outside that interval, with a shallow ramp to the road
 level. See [Station quarter](STATION-QUARTER.md) for footprint, ground and
 streaming ownership through to Eastbank Street.
+
+## Shared heights for new areas
+
+Use [ELEVATION.md](ELEVATION.md) for new slopes, bridge levels and height-rule
+migrations. Existing areas keep their current grades until deliberately migrated;
+do not extrapolate the memorial slope into new streets.

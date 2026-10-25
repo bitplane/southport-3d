@@ -66,3 +66,7 @@ reservations southwest of Nevill Street. Buildings remain provisional placeholde
 [16–22 Nevill Street and the Stanley corner](docs/NEVILL-STREET-16-22.md) add the
 rusticated arched frontage, chamfer and unequal roof pitches, alongside the rounded
 Stanley/Cable junction mouths, coordinated kerbs and limited observed furniture.
+
+The [Eastbank Street canvas](docs/EASTBANK-STREET.md) continues to the railway
+bridge and roundabout, with provisional frontage envelopes. It pilots the
+[shared elevation workflow](docs/ELEVATION.md) for road profiles and layered ground.

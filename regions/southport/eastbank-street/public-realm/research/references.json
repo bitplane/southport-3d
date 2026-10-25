@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "url": "https://www.google.com/maps/@53.6440,-3.0032,650m/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "use": "Loaded satellite plus four whole-corridor and four closer 3D rotations. Road alignment, railway bridge, front/rear footprint context and roof-height envelopes."
+    },
+    {
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.64269,-3.00175&heading=145&pitch=0&fov=90",
+      "capture_date": "2024-08",
+      "use": "Actual Google Street View north and south from136 Eastbank St. Raised slab footways, red/grey edge strip, double yellow near bridge, panelled parapets, white curved lanterns, approach gradients."
+    },
+    {
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.64405,-3.00338&heading=145&pitch=0&fov=90",
+      "capture_date": "2019-08",
+      "use": "Loaded VR 360 TV road panorama; middle approach and two/three-storey frontage envelopes."
+    },
+    {
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.64194,-3.00086&heading=330&pitch=0&fov=90",
+      "capture_date": "2019-08",
+      "use": "Loaded VR 360 TV panorama from roundabout approach. Raised pedestrian splitter and railings; road climbs northwards."
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-3.008,53.640,-2.999,53.648",
+      "capture_date": "2026-10-25",
+      "use": "Attributed centreline/footprint seed only; checked against actual imagery. OSM contributors ODbL 1.0."
+    }
+  ]
+}

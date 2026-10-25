@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "southport.eastbank-street.frontage-placeholders",
+  "name": "Eastbank Street bridge frontage-placeholders",
+  "region": "southport",
+  "area": "eastbank-street",
+  "status": "provisional-block-plan",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "way-371861930",
+    "way-371861928",
+    "way-371866524",
+    "way-371868029",
+    "way-1053017480",
+    "way-371191681",
+    "way-371866525",
+    "way-371867299",
+    "way-371867298",
+    "way-371868437",
+    "way-371138312",
+    "way-371861927",
+    "way-371862545",
+    "way-371866523",
+    "way-371861925",
+    "way-371867743",
+    "way-371861931",
+    "way-371867301",
+    "way-371148136",
+    "way-370696769",
+    "way-370696770",
+    "way-371861929",
+    "way-371138311",
+    "way-371716717",
+    "way-371862979",
+    "way-371862978",
+    "way-371862980",
+    "way-371862544",
+    "way-371874535",
+    "way-370696771",
+    "way-371148138",
+    "way-371874537",
+    "way-371861031",
+    "way-371723949",
+    "way-371868028",
+    "way-370697284",
+    "way-371150730",
+    "way-371861932",
+    "way-371723951",
+    "way-371723948",
+    "way-370697283",
+    "way-371861029",
+    "way-370696774",
+    "way-371873704",
+    "way-371861032",
+    "way-30142878",
+    "way-371873703",
+    "way-30141997",
+    "way-30142799",
+    "way-371191852"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Eastbank frontage/road canvas from existing Lord/Chapel edge to bridge and roundabout. Estimated profile, provisional envelopes, no detailed architecture.",
+  "licensing": "OSM contributor geometry under ODbL1.0; reference photographs linked only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/eastbank.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/eastbank.json"
+    ]
+  }
+}

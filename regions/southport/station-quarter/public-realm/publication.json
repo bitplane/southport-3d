@@ -24,19 +24,22 @@
       "id": "west-ground",
       "name": "West Chapel ground",
       "collection": "west-ground",
-      "ground": true
+      "ground": true,
+      "support_surface": "southport/chapel-pedestrian"
     },
     {
       "id": "middle-ground",
       "name": "Middle Chapel ground",
       "collection": "middle-ground",
-      "ground": true
+      "ground": true,
+      "support_surface": "southport/chapel-pedestrian"
     },
     {
       "id": "east-ground",
       "name": "East Chapel ground",
       "collection": "east-ground",
-      "ground": true
+      "ground": true,
+      "support_surface": "southport/chapel-pedestrian"
     },
     {
       "id": "west-furniture",
