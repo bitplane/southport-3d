@@ -1,0 +1,1140 @@
+{
+  "schema_version": 1,
+  "datum": "southport-memorial-estimated-local-zero",
+  "frame": "Memorial site XY metres; yaw43.5293 degrees from east.",
+  "includes": [
+    "marine-drive.json"
+  ],
+  "controls": {
+    "south-lord-seam": {
+      "height_m": -0.7995,
+      "uncertainty_m": 0.25,
+      "status": "legacy-estimate-preserved",
+      "evidence": "Existing Lord Street Y65 boundary and West Street X−172 datum."
+    },
+    "south-upper": {
+      "height_m": 2.2,
+      "uncertainty_m": 0.6,
+      "status": "visual-estimate",
+      "evidence": "Existing northern Promenade datum and the loaded3D park context; no surveyed level."
+    },
+    "south-lido": {
+      "height_m": 1.0,
+      "uncertainty_m": 0.5,
+      "status": "visual-estimate",
+      "evidence": "Estimated Marine Walk2.2m minus the Historic England description of a1.2m drop; lake edge is not surveyed."
+    },
+    "south-esplanade-crest": {
+      "height_m": 4.2,
+      "uncertainty_m": 1.3,
+      "status": "visual-estimate",
+      "evidence": "Opposing close Google3D views show the Esplanade above the lower gardens. Estimated2m above the2.2m park plateau; Historic England confirms retaining walls. No surveyed level."
+    },
+    "south-esplanade-toe": {
+      "height_m": 1.8807264234316898,
+      "uncertainty_m": 0.6,
+      "status": "legacy-estimate-preserved",
+      "evidence": "Exactmainlandgradeatthe southernEsplanadeprofilehandoverY250.029. Preventsstepacrossthecarriageway."
+    },
+    "south-esplanade-approach": {
+      "height_m": 2.0251607427439993,
+      "uncertainty_m": 0.6,
+      "status": "legacy-estimate-preserved",
+      "evidence": "Same mainland grade through the Esplanade ownership boundary, before its estimated rise."
+    },
+    "south-parking-north-0-0-0": {
+      "height_m": 2.9222124226817314,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-0-0-1": {
+      "height_m": 3.076357927463455,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-0-1-0": {
+      "height_m": 2.8363758116631015,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-0-1-1": {
+      "height_m": 3.000959720544655,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-1-0-0": {
+      "height_m": 2.836375797253522,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-1-0-1": {
+      "height_m": 2.922683026275891,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-1-1-0": {
+      "height_m": 2.8151651077513815,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-1-1-1": {
+      "height_m": 2.9114343291490847,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-2-0-0": {
+      "height_m": 2.19961390949441,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-2-0-1": {
+      "height_m": 2.91158513220625,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-2-1-0": {
+      "height_m": 2.19967886334922,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-north-2-1-1": {
+      "height_m": 2.815721531850578,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-middle-0-0-0": {
+      "height_m": 3.2255681580657622,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-middle-0-0-1": {
+      "height_m": 3.4606015818303266,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-middle-0-1-0": {
+      "height_m": 3.2255681580657622,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-middle-0-1-1": {
+      "height_m": 3.4606015818303284,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-middle-1-0-0": {
+      "height_m": 2.199112463990325,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-middle-1-0-1": {
+      "height_m": 3.4612538240413997,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-middle-1-1-0": {
+      "height_m": 2.199286312011168,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-middle-1-1-1": {
+      "height_m": 3.2511339385728064,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-0-0-0": {
+      "height_m": 4.2,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-0-1-0": {
+      "height_m": 4.134262490684648,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-0-1-1": {
+      "height_m": 4.200100457149077,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-1-0-0": {
+      "height_m": 4.134290016408396,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-1-0-1": {
+      "height_m": 4.2000729314253284,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-1-1-0": {
+      "height_m": 4.112256712200715,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-1-1-1": {
+      "height_m": 4.200135522287956,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-2-0-0": {
+      "height_m": 3.776897252538408,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-2-0-1": {
+      "height_m": 4.200616866119137,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-2-1-0": {
+      "height_m": 3.6643078738210733,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-2-1-1": {
+      "height_m": 4.113191299938585,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-3-0-0": {
+      "height_m": 3.58145276146898,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-3-0-1": {
+      "height_m": 3.7780387313943313,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-3-1-0": {
+      "height_m": 3.472051164680277,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-3-1-1": {
+      "height_m": 3.6661495212843853,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-4-0-0": {
+      "height_m": 2.78991319956023,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-4-0-1": {
+      "height_m": 3.5825495959311615,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-4-1-0": {
+      "height_m": 2.773438968437226,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-4-1-1": {
+      "height_m": 3.47417930639169,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-5-0-0": {
+      "height_m": 2.1994750312930655,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-5-0-1": {
+      "height_m": 2.791010389992575,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-5-1-0": {
+      "height_m": 2.1992274906214817,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-parking-south-5-1-1": {
+      "height_m": 2.7752970375137807,
+      "uncertainty_m": 1.3,
+      "status": "estimated-access-grade",
+      "evidence": "Bounded planar access ramp joining existing estimated Esplanade profile to 2.2m lower parking. XY follows mapped entrance checked in actual Google3D; levels and slope are provisional, not surveyed."
+    },
+    "south-bank-apron-high": {
+      "height_m": -0.6795,
+      "uncertainty_m": 0.25,
+      "status": "legacy-seam-connection",
+      "evidence": "Bank Passage meets the retained Lord Street pavement at local height−0.7995m. Road face subtracts0.12m; ramp control compensates only within its bounded2m apron."
+    },
+    "south-bank-apron-low": {
+      "height_m": -0.770529120587241,
+      "uncertainty_m": 0.25,
+      "status": "legacy-seam-connection",
+      "evidence": "Matches named mainland profile exactly atY67 before continuing the provisional alley grade."
+    }
+  },
+  "surfaces": {
+    "south-mainland": {
+      "bounds": [
+        -1000,
+        100,
+        0,
+        1000
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 65,
+          "control": "south-lord-seam"
+        },
+        {
+          "distance_m": 272.07,
+          "control": "south-upper"
+        }
+      ]
+    },
+    "south-lido": {
+      "bounds": [
+        -1000,
+        100,
+        200,
+        600
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        1,
+        0
+      ],
+      "profile": [
+        {
+          "distance_m": -523,
+          "control": "south-upper"
+        },
+        {
+          "distance_m": -508,
+          "control": "south-lido"
+        },
+        {
+          "distance_m": -70,
+          "control": "south-lido"
+        },
+        {
+          "distance_m": -45,
+          "control": "south-upper"
+        }
+      ]
+    },
+    "south-water": {
+      "bounds": [
+        -1000,
+        1500,
+        0,
+        1000
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "marine-lake"
+        }
+      ]
+    },
+    "south-venetian": {
+      "bounds": [
+        -350,
+        -200,
+        300,
+        520
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "south-upper"
+        }
+      ]
+    },
+    "south-esplanade": {
+      "bounds": [
+        -1000,
+        100,
+        200,
+        700
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 250.029,
+          "control": "south-esplanade-toe"
+        },
+        {
+          "distance_m": 260,
+          "control": "south-esplanade-approach"
+        },
+        {
+          "distance_m": 300,
+          "control": "south-esplanade-crest"
+        },
+        {
+          "distance_m": 480,
+          "control": "south-esplanade-crest"
+        },
+        {
+          "distance_m": 565,
+          "control": "south-upper"
+        }
+      ]
+    },
+    "south-nevill-return": {
+      "bounds": [
+        -81.84100000000001,
+        100.001,
+        0,
+        1000
+      ],
+      "axis_origin": [
+        0,
+        41
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "south-lord-seam"
+        },
+        {
+          "distance_m": 207.07,
+          "control": "south-upper"
+        }
+      ]
+    },
+    "south-west-blend": {
+      "bounds": [
+        -97.84100000000001,
+        -81.839,
+        0,
+        1000
+      ],
+      "axis_origin": [
+        -97.84,
+        65
+      ],
+      "axis_direction": [
+        1.5,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "south-lord-seam"
+        },
+        {
+          "distance_m": 114.86176963235819,
+          "control": "south-upper"
+        }
+      ]
+    },
+    "south-esplanade-access-ramp": {
+      "bounds": [
+        -660,
+        -615,
+        350,
+        425
+      ],
+      "axis_origin": [
+        -646.505,
+        367.155
+      ],
+      "axis_direction": [
+        15.659999999999968,
+        43.791000000000054
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "south-esplanade-crest"
+        },
+        {
+          "distance_m": 8,
+          "control": "south-esplanade-crest"
+        },
+        {
+          "distance_m": 27,
+          "control": "south-upper"
+        },
+        {
+          "distance_m": 46.50685197903642,
+          "control": "south-upper"
+        }
+      ]
+    },
+    "south-parking-north-0-0": {
+      "bounds": [
+        -790.723134765625,
+        -779.804453125,
+        527.7547705078125,
+        534.3060205078125
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -1.1864517424685323e-06,
+        -0.9999999999992962
+      ],
+      "profile": [
+        {
+          "distance_m": -534.3050952952198,
+          "control": "south-parking-north-0-0-0"
+        },
+        {
+          "distance_m": -527.7538423428539,
+          "control": "south-parking-north-0-0-1"
+        }
+      ]
+    },
+    "south-parking-north-0-1": {
+      "bounds": [
+        -790.723134765625,
+        -779.804453125,
+        530.95923828125,
+        537.9539697265625
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        6.474798359320371e-06,
+        -0.9999999999790384
+      ],
+      "profile": [
+        {
+          "distance_m": -537.9590722160167,
+          "control": "south-parking-north-0-1-0"
+        },
+        {
+          "distance_m": -530.9643579782278,
+          "control": "south-parking-north-0-1-1"
+        }
+      ]
+    },
+    "south-parking-north-1-0": {
+      "bounds": [
+        -788.0655419921875,
+        -779.5618994140625,
+        534.2860205078125,
+        537.9539697265625
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -2.0631894349851175e-05,
+        -0.9999999997871625
+      ],
+      "profile": [
+        {
+          "distance_m": -537.9377105333836,
+          "control": "south-parking-north-1-0-0"
+        },
+        {
+          "distance_m": -534.2699313446849,
+          "control": "south-parking-north-1-0-1"
+        }
+      ]
+    },
+    "south-parking-north-1-1": {
+      "bounds": [
+        -788.0655419921875,
+        -779.5618994140625,
+        534.7640478515625,
+        538.855458984375
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        1.828339301496568e-05,
+        -0.9999999998328587
+      ],
+      "profile": [
+        {
+          "distance_m": -538.8698588629579,
+          "control": "south-parking-north-1-1-0"
+        },
+        {
+          "distance_m": -534.7783009816001,
+          "control": "south-parking-north-1-1-1"
+        }
+      ]
+    },
+    "south-parking-north-2-0": {
+      "bounds": [
+        -787.6082666015625,
+        -770.89283203125,
+        534.7640478515625,
+        551.8742578125
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.18897736717053978,
+        -0.9819814431532253
+      ],
+      "profile": [
+        {
+          "distance_m": -396.2472727698239,
+          "control": "south-parking-north-2-0-0"
+        },
+        {
+          "distance_m": -377.8067461987629,
+          "control": "south-parking-north-2-0-1"
+        }
+      ]
+    },
+    "south-parking-north-2-1": {
+      "bounds": [
+        -787.6082666015625,
+        -770.89283203125,
+        538.835458984375,
+        555.9456689453125
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.45238192218310674,
+        -0.8918243080797459
+      ],
+      "profile": [
+        {
+          "distance_m": -143.43345490687778,
+          "control": "south-parking-north-2-1-0"
+        },
+        {
+          "distance_m": -124.2502608673555,
+          "control": "south-parking-north-2-1-1"
+        }
+      ]
+    },
+    "south-parking-middle-0-0": {
+      "bounds": [
+        -771.13353515625,
+        -763.1822607421875,
+        511.4244482421875,
+        521.4133203125
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        9.177103339412369e-06,
+        -0.9999999999578905
+      ],
+      "profile": [
+        {
+          "distance_m": -521.420386169445,
+          "control": "south-parking-middle-0-0-0"
+        },
+        {
+          "distance_m": -511.43145211489593,
+          "control": "south-parking-middle-0-0-1"
+        }
+      ]
+    },
+    "south-parking-middle-0-1": {
+      "bounds": [
+        -769.956533203125,
+        -762.0052587890625,
+        511.4244482421875,
+        521.4133203125
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        9.177103341018447e-06,
+        -0.9999999999578905
+      ],
+      "profile": [
+        {
+          "distance_m": -521.4203861694463,
+          "control": "south-parking-middle-0-1-0"
+        },
+        {
+          "distance_m": -511.4314521148971,
+          "control": "south-parking-middle-0-1-1"
+        }
+      ]
+    },
+    "south-parking-middle-1-0": {
+      "bounds": [
+        -763.2022607421875,
+        -748.5904638671875,
+        509.4996435546875,
+        520.367177734375
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.9909278563019399,
+        -0.13439487938475117
+      ],
+      "profile": [
+        {
+          "distance_m": 673.3235657956501,
+          "control": "south-parking-middle-1-0-0"
+        },
+        {
+          "distance_m": 687.5442998987714,
+          "control": "south-parking-middle-1-0-1"
+        }
+      ]
+    },
+    "south-parking-middle-1-1": {
+      "bounds": [
+        -762.0252587890625,
+        -747.4134619140625,
+        509.4996435546875,
+        520.367177734375
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.9914117247472828,
+        0.13077764347784293
+      ],
+      "profile": [
+        {
+          "distance_m": 808.7937475425019,
+          "control": "south-parking-middle-1-1-0"
+        },
+        {
+          "distance_m": 823.5319474706941,
+          "control": "south-parking-middle-1-1-1"
+        }
+      ]
+    },
+    "south-parking-south-0-0": {
+      "bounds": [
+        -734.4224755859375,
+        -723.881357421875,
+        471.056650390625,
+        476.943349609375
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "south-parking-south-0-0-0"
+        }
+      ]
+    },
+    "south-parking-south-0-1": {
+      "bounds": [
+        -734.4224755859375,
+        -723.881357421875,
+        475.356455078125,
+        482.79955078125
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.14730389816849077,
+        -0.9890912807139526
+      ],
+      "profile": [
+        {
+          "distance_m": -370.0926329093439,
+          "control": "south-parking-south-0-1-0"
+        },
+        {
+          "distance_m": -363.53879706295186,
+          "control": "south-parking-south-0-1-1"
+        }
+      ]
+    },
+    "south-parking-south-1-0": {
+      "bounds": [
+        -729.3885400390625,
+        -723.6270849609375,
+        475.356455078125,
+        482.79955078125
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0.4007034603171045,
+        -0.9162078022424273
+      ],
+      "profile": [
+        {
+          "distance_m": -734.6100581415878,
+          "control": "south-parking-south-1-0-0"
+        },
+        {
+          "distance_m": -725.5902268794937,
+          "control": "south-parking-south-1-0-1"
+        }
+      ]
+    },
+    "south-parking-south-1-1": {
+      "bounds": [
+        -729.3885400390625,
+        -723.6270849609375,
+        475.4676611328125,
+        483.733388671875
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.34960278306382014,
+        -0.9368980169015363
+      ],
+      "profile": [
+        {
+          "distance_m": -198.96299339845652,
+          "control": "south-parking-south-1-1-0"
+        },
+        {
+          "distance_m": -192.4785389657789,
+          "control": "south-parking-south-1-1-1"
+        }
+      ]
+    },
+    "south-parking-south-2-0": {
+      "bounds": [
+        -727.253896484375,
+        -717.2725927734375,
+        475.4676611328125,
+        483.733388671875
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.8414680202731529,
+        -0.54030692282959
+      ],
+      "profile": [
+        {
+          "distance_m": 345.15468610354714,
+          "control": "south-parking-south-2-0-0"
+        },
+        {
+          "distance_m": 352.023593317435,
+          "control": "south-parking-south-2-0-1"
+        }
+      ]
+    },
+    "south-parking-south-2-1": {
+      "bounds": [
+        -727.253896484375,
+        -717.2725927734375,
+        478.2472021484375,
+        486.0667626953125
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.7705032341786885,
+        -0.6374360878709183
+      ],
+      "profile": [
+        {
+          "distance_m": 246.39342454794064,
+          "control": "south-parking-south-2-1-0"
+        },
+        {
+          "distance_m": 252.01102979125864,
+          "control": "south-parking-south-2-1-1"
+        }
+      ]
+    },
+    "south-parking-south-3-0": {
+      "bounds": [
+        -721.919423828125,
+        -714.30494140625,
+        478.2472021484375,
+        486.0667626953125
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.7151594273772077,
+        -0.6989613676259256
+      ],
+      "profile": [
+        {
+          "distance_m": 174.95084141578639,
+          "control": "south-parking-south-3-0-0"
+        },
+        {
+          "distance_m": 178.69810022486973,
+          "control": "south-parking-south-3-0-1"
+        }
+      ]
+    },
+    "south-parking-south-3-1": {
+      "bounds": [
+        -721.919423828125,
+        -714.30494140625,
+        480.5433447265625,
+        487.2166650390625
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.6535025836197218,
+        -0.7569242849865161
+      ],
+      "profile": [
+        {
+          "distance_m": 102.00979776595288,
+          "control": "south-parking-south-3-1-0"
+        },
+        {
+          "distance_m": 103.8715060450943,
+          "control": "south-parking-south-3-1-1"
+        }
+      ]
+    },
+    "south-parking-south-4-0": {
+      "bounds": [
+        -720.433095703125,
+        -704.8612158203125,
+        480.5433447265625,
+        490.8254296875
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.5776319684643494,
+        -0.816297316550778
+      ],
+      "profile": [
+        {
+          "distance_m": 6.494829732523035,
+          "control": "south-parking-south-4-0-0"
+        },
+        {
+          "distance_m": 20.346739948194635,
+          "control": "south-parking-south-4-0-1"
+        }
+      ]
+    },
+    "south-parking-south-4-1": {
+      "bounds": [
+        -720.433095703125,
+        -704.8612158203125,
+        487.1966650390625,
+        492.830556640625
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.17590031228506767,
+        -0.9844079845968416
+      ],
+      "profile": [
+        {
+          "distance_m": -359.3325901250556,
+          "control": "south-parking-south-4-1-0"
+        },
+        {
+          "distance_m": -352.87748370169714,
+          "control": "south-parking-south-4-1-1"
+        }
+      ]
+    },
+    "south-parking-south-5-0": {
+      "bounds": [
+        -715.2668359375,
+        -704.8612158203125,
+        490.8054296875,
+        502.9754541015625
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        -0.16126593023380378,
+        -0.9869109887653627
+      ],
+      "profile": [
+        {
+          "distance_m": -381.9774405048112,
+          "control": "south-parking-south-5-0-0"
+        },
+        {
+          "distance_m": -370.709428699892,
+          "control": "south-parking-south-5-0-1"
+        }
+      ]
+    },
+    "south-parking-south-5-1": {
+      "bounds": [
+        -717.9036767578125,
+        -709.4683935546875,
+        492.810556640625,
+        502.9754541015625
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0.3545487414493016,
+        -0.9350375339721482
+      ],
+      "profile": [
+        {
+          "distance_m": -721.8462493965934,
+          "control": "south-parking-south-5-1-0"
+        },
+        {
+          "distance_m": -714.3891289666816,
+          "control": "south-parking-south-5-1-1"
+        }
+      ]
+    },
+    "south-bank-apron": {
+      "bounds": [
+        -208,
+        -196,
+        64,
+        68
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 65,
+          "control": "south-bank-apron-high"
+        },
+        {
+          "distance_m": 67,
+          "control": "south-bank-apron-low"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,458 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "South Marine Lake and seaward quarter",
+  "status": "Provisional block plan from Duke Street and West Street through Kings Gardens, the southern Marine Lake, Princes Park and west Ocean Plaza. Widths ±1–2 m, footprints ±1–3 m and heights ±2–3 m; no surveyed levels. Flat building tops are height bounds. Pier, ride equipment, detailed balustrades and small garden features are deferred.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "way-30141969",
+      "name": "Ocean Plaza cinema/leisure roof-height envelope (placeholder)",
+      "collection": "way-30141969"
+    },
+    {
+      "id": "way-30141983",
+      "name": "Brewers Fayre (placeholder)",
+      "collection": "way-30141983"
+    },
+    {
+      "id": "way-30142868",
+      "name": "Morrisons (placeholder)",
+      "collection": "way-30142868"
+    },
+    {
+      "id": "way-42020211",
+      "name": "Splash World (placeholder)",
+      "collection": "way-42020211"
+    },
+    {
+      "id": "way-42249116",
+      "name": "Provisional building 42249116 (placeholder)",
+      "collection": "way-42249116"
+    },
+    {
+      "id": "way-51826172",
+      "name": "Provisional building 51826172 (placeholder)",
+      "collection": "way-51826172"
+    },
+    {
+      "id": "way-167319677",
+      "name": "Silcock's Restaurant (placeholder)",
+      "collection": "way-167319677"
+    },
+    {
+      "id": "way-167320911",
+      "name": "Provisional building 167320911 (placeholder)",
+      "collection": "way-167320911"
+    },
+    {
+      "id": "way-167349039",
+      "name": "Lakeside Cafe (placeholder)",
+      "collection": "way-167349039"
+    },
+    {
+      "id": "way-167349041",
+      "name": "Provisional building 167349041 (placeholder)",
+      "collection": "way-167349041"
+    },
+    {
+      "id": "way-170138154",
+      "name": "Provisional building 170138154 (placeholder)",
+      "collection": "way-170138154"
+    },
+    {
+      "id": "way-232168485",
+      "name": "Provisional building 232168485 (placeholder)",
+      "collection": "way-232168485"
+    },
+    {
+      "id": "way-342955344",
+      "name": "Premier Inn (placeholder)",
+      "collection": "way-342955344"
+    },
+    {
+      "id": "way-370725264",
+      "name": "Provisional building 370725264 (placeholder)",
+      "collection": "way-370725264"
+    },
+    {
+      "id": "way-370725265",
+      "name": "Provisional building 370725265 (placeholder)",
+      "collection": "way-370725265"
+    },
+    {
+      "id": "way-375395866",
+      "name": "Provisional building 375395866 (placeholder)",
+      "collection": "way-375395866"
+    },
+    {
+      "id": "way-375396108",
+      "name": "Provisional building 375396108 (placeholder)",
+      "collection": "way-375396108"
+    },
+    {
+      "id": "way-376044815",
+      "name": "Provisional building 376044815 (placeholder)",
+      "collection": "way-376044815"
+    },
+    {
+      "id": "way-376044816",
+      "name": "Provisional building 376044816 (placeholder)",
+      "collection": "way-376044816"
+    },
+    {
+      "id": "way-376044817",
+      "name": "Provisional building 376044817 (placeholder)",
+      "collection": "way-376044817"
+    },
+    {
+      "id": "way-376044818",
+      "name": "Provisional building 376044818 (placeholder)",
+      "collection": "way-376044818"
+    },
+    {
+      "id": "way-376044819",
+      "name": "Provisional building 376044819 (placeholder)",
+      "collection": "way-376044819"
+    },
+    {
+      "id": "way-376059451",
+      "name": "Act (placeholder)",
+      "collection": "way-376059451"
+    },
+    {
+      "id": "way-376059452",
+      "name": "Provisional building 376059452 (placeholder)",
+      "collection": "way-376059452"
+    },
+    {
+      "id": "way-376059453",
+      "name": "Provisional building 376059453 (placeholder)",
+      "collection": "way-376059453"
+    },
+    {
+      "id": "way-376062032",
+      "name": "Provisional building 376062032 (placeholder)",
+      "collection": "way-376062032"
+    },
+    {
+      "id": "way-376062033",
+      "name": "Provisional building 376062033 (placeholder)",
+      "collection": "way-376062033"
+    },
+    {
+      "id": "way-376062034",
+      "name": "Provisional building 376062034 (placeholder)",
+      "collection": "way-376062034"
+    },
+    {
+      "id": "way-376062035",
+      "name": "Provisional building 376062035 (placeholder)",
+      "collection": "way-376062035"
+    },
+    {
+      "id": "way-376062036",
+      "name": "Provisional building 376062036 (placeholder)",
+      "collection": "way-376062036"
+    },
+    {
+      "id": "way-376062037",
+      "name": "Provisional building 376062037 (placeholder)",
+      "collection": "way-376062037"
+    },
+    {
+      "id": "way-376062714",
+      "name": "Royal Clifton Hotel roof-height envelope (placeholder)",
+      "collection": "way-376062714"
+    },
+    {
+      "id": "way-376062715",
+      "name": "Promenade Residential Care Home (placeholder)",
+      "collection": "way-376062715"
+    },
+    {
+      "id": "way-376062716",
+      "name": "Provisional building 376062716 (placeholder)",
+      "collection": "way-376062716"
+    },
+    {
+      "id": "way-376062717",
+      "name": "Provisional building 376062717 (placeholder)",
+      "collection": "way-376062717"
+    },
+    {
+      "id": "way-376062718",
+      "name": "Provisional building 376062718 (placeholder)",
+      "collection": "way-376062718"
+    },
+    {
+      "id": "way-376062719",
+      "name": "Provisional building 376062719 (placeholder)",
+      "collection": "way-376062719"
+    },
+    {
+      "id": "way-376063741",
+      "name": "Provisional building 376063741 (placeholder)",
+      "collection": "way-376063741"
+    },
+    {
+      "id": "way-376063742",
+      "name": "Provisional building 376063742 (placeholder)",
+      "collection": "way-376063742"
+    },
+    {
+      "id": "way-376074029",
+      "name": "Provisional building 376074029 (placeholder)",
+      "collection": "way-376074029"
+    },
+    {
+      "id": "way-376075075",
+      "name": "Provisional building 376075075 (placeholder)",
+      "collection": "way-376075075"
+    },
+    {
+      "id": "way-721692659",
+      "name": "Provisional building 721692659 (placeholder)",
+      "collection": "way-721692659"
+    },
+    {
+      "id": "way-721692660",
+      "name": "Provisional building 721692660 (placeholder)",
+      "collection": "way-721692660"
+    },
+    {
+      "id": "way-721692670",
+      "name": "Provisional building 721692670 (placeholder)",
+      "collection": "way-721692670"
+    },
+    {
+      "id": "way-727542450",
+      "name": "Provisional building 727542450 (placeholder)",
+      "collection": "way-727542450"
+    },
+    {
+      "id": "way-727542462",
+      "name": "Provisional building 727542462 (placeholder)",
+      "collection": "way-727542462"
+    },
+    {
+      "id": "way-727542464",
+      "name": "Provisional building 727542464 (placeholder)",
+      "collection": "way-727542464"
+    },
+    {
+      "id": "way-727542465",
+      "name": "Provisional building 727542465 (placeholder)",
+      "collection": "way-727542465"
+    },
+    {
+      "id": "way-727542466",
+      "name": "Provisional building 727542466 (placeholder)",
+      "collection": "way-727542466"
+    },
+    {
+      "id": "way-727542467",
+      "name": "Provisional building 727542467 (placeholder)",
+      "collection": "way-727542467"
+    },
+    {
+      "id": "way-727542468",
+      "name": "Provisional building 727542468 (placeholder)",
+      "collection": "way-727542468"
+    },
+    {
+      "id": "way-727542469",
+      "name": "Provisional building 727542469 (placeholder)",
+      "collection": "way-727542469"
+    },
+    {
+      "id": "way-727542478",
+      "name": "Provisional building 727542478 (placeholder)",
+      "collection": "way-727542478"
+    },
+    {
+      "id": "way-727542479",
+      "name": "Provisional building 727542479 (placeholder)",
+      "collection": "way-727542479"
+    },
+    {
+      "id": "way-727542482",
+      "name": "Provisional building 727542482 (placeholder)",
+      "collection": "way-727542482"
+    },
+    {
+      "id": "way-727542483",
+      "name": "Provisional building 727542483 (placeholder)",
+      "collection": "way-727542483"
+    },
+    {
+      "id": "way-727542486",
+      "name": "Provisional building 727542486 (placeholder)",
+      "collection": "way-727542486"
+    },
+    {
+      "id": "way-727542489",
+      "name": "Provisional building 727542489 (placeholder)",
+      "collection": "way-727542489"
+    },
+    {
+      "id": "way-727542490",
+      "name": "Provisional building 727542490 (placeholder)",
+      "collection": "way-727542490"
+    },
+    {
+      "id": "way-727542495",
+      "name": "Provisional building 727542495 (placeholder)",
+      "collection": "way-727542495"
+    },
+    {
+      "id": "way-727542499",
+      "name": "Provisional building 727542499 (placeholder)",
+      "collection": "way-727542499"
+    },
+    {
+      "id": "way-727542501",
+      "name": "Provisional building 727542501 (placeholder)",
+      "collection": "way-727542501"
+    },
+    {
+      "id": "way-727542502",
+      "name": "Provisional building 727542502 (placeholder)",
+      "collection": "way-727542502"
+    },
+    {
+      "id": "way-727542503",
+      "name": "Provisional building 727542503 (placeholder)",
+      "collection": "way-727542503"
+    },
+    {
+      "id": "way-727542517",
+      "name": "Provisional building 727542517 (placeholder)",
+      "collection": "way-727542517"
+    },
+    {
+      "id": "way-727542518",
+      "name": "Provisional building 727542518 (placeholder)",
+      "collection": "way-727542518"
+    },
+    {
+      "id": "way-727542519",
+      "name": "Provisional building 727542519 (placeholder)",
+      "collection": "way-727542519"
+    },
+    {
+      "id": "way-727542522",
+      "name": "Provisional building 727542522 (placeholder)",
+      "collection": "way-727542522"
+    },
+    {
+      "id": "way-727542523",
+      "name": "Provisional building 727542523 (placeholder)",
+      "collection": "way-727542523"
+    },
+    {
+      "id": "way-727542526",
+      "name": "Provisional building 727542526 (placeholder)",
+      "collection": "way-727542526"
+    },
+    {
+      "id": "way-727542527",
+      "name": "Provisional building 727542527 (placeholder)",
+      "collection": "way-727542527"
+    },
+    {
+      "id": "way-727542528",
+      "name": "Provisional building 727542528 (placeholder)",
+      "collection": "way-727542528"
+    },
+    {
+      "id": "way-727752078",
+      "name": "Provisional building 727752078 (placeholder)",
+      "collection": "way-727752078"
+    },
+    {
+      "id": "way-1293848191",
+      "name": "Provisional building 1293848191 (placeholder)",
+      "collection": "way-1293848191"
+    },
+    {
+      "id": "way-1541366798",
+      "name": "Provisional building 1541366798 (placeholder)",
+      "collection": "way-1541366798"
+    },
+    {
+      "id": "way-49838476",
+      "name": "Morrisons petrol canopy (placeholder) (placeholder)",
+      "collection": "way-49838476"
+    }
+  ],
+  "views": [
+    {
+      "name": "Southern lake and seaward blocks",
+      "position": [
+        -850,
+        900,
+        100
+      ],
+      "target": [
+        -550,
+        2,
+        -200
+      ]
+    },
+    {
+      "name": "Kings Gardens and lido",
+      "position": [
+        -450,
+        180,
+        -400
+      ],
+      "target": [
+        -550,
+        2,
+        -100
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -520,
+      3.9,
+      100
+    ],
+    "target": [
+      -560,
+      3.9,
+      60
+    ]
+  },
+  "rules": [
+    {
+      "id": "massing",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Fixed footprint envelope only."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Already minimal envelope; detailed architecture is a separate replacement."
+      }
+    }
+  ]
+}

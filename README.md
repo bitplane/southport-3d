@@ -80,3 +80,7 @@ Promenade frontages, provisional building volumes and a separate bridge profile.
 The [Marine Way Bridge](docs/MARINE-WAY-BRIDGE.md) replaces its provisional silhouette
 with researched pylons, asymmetric stays, deck structure and parapets, alongside
 shared bridge paths and the separate lower promenade support level.
+
+The [south Marine Lake and seaward quarter plan](docs/MARINE-LAKE-SOUTH.md) completes
+the lake outline and connects the southern Promenade, Kings Gardens, Princes Park
+and west Ocean Plaza with provisional buildings, roads, paths and bounded grades.

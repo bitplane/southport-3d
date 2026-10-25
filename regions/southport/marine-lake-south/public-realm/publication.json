@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "South Marine Lake and seaward quarter",
+  "status": "Provisional block plan from Duke Street and West Street through Kings Gardens, the southern Marine Lake, Princes Park and west Ocean Plaza. Widths ±1–2 m, footprints ±1–3 m and heights ±2–3 m; no surveyed levels. Flat building tops are height bounds. Pier, ride equipment, detailed balustrades and small garden features are deferred.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "cell-00-ground",
+      "name": "Seaward quarter ground 00",
+      "collection": "cell-00-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-01-ground",
+      "name": "Seaward quarter ground 01",
+      "collection": "cell-01-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-02-ground",
+      "name": "Seaward quarter ground 02",
+      "collection": "cell-02-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-03-ground",
+      "name": "Seaward quarter ground 03",
+      "collection": "cell-03-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-04-ground",
+      "name": "Seaward quarter ground 04",
+      "collection": "cell-04-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-05-ground",
+      "name": "Seaward quarter ground 05",
+      "collection": "cell-05-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-06-ground",
+      "name": "Seaward quarter ground 06",
+      "collection": "cell-06-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-07-ground",
+      "name": "Seaward quarter ground 07",
+      "collection": "cell-07-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-08-ground",
+      "name": "Seaward quarter ground 08",
+      "collection": "cell-08-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-09-ground",
+      "name": "Seaward quarter ground 09",
+      "collection": "cell-09-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-10-ground",
+      "name": "Seaward quarter ground 10",
+      "collection": "cell-10-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-11-ground",
+      "name": "Seaward quarter ground 11",
+      "collection": "cell-11-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-12-ground",
+      "name": "Seaward quarter ground 12",
+      "collection": "cell-12-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-13-ground",
+      "name": "Seaward quarter ground 13",
+      "collection": "cell-13-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-14-ground",
+      "name": "Seaward quarter ground 14",
+      "collection": "cell-14-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-15-ground",
+      "name": "Seaward quarter ground 15",
+      "collection": "cell-15-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-16-ground",
+      "name": "Seaward quarter ground 16",
+      "collection": "cell-16-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-17-ground",
+      "name": "Seaward quarter ground 17",
+      "collection": "cell-17-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-18-ground",
+      "name": "Seaward quarter ground 18",
+      "collection": "cell-18-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-19-ground",
+      "name": "Seaward quarter ground 19",
+      "collection": "cell-19-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-20-ground",
+      "name": "Seaward quarter ground 20",
+      "collection": "cell-20-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-21-ground",
+      "name": "Seaward quarter ground 21",
+      "collection": "cell-21-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "cell-22-ground",
+      "name": "Seaward quarter ground 22",
+      "collection": "cell-22-ground",
+      "ground": true,
+      "support_surface": "southport/south-seaward-ground"
+    },
+    {
+      "id": "venetian-ground",
+      "name": "Venetian footbridge envelope",
+      "collection": "venetian-ground",
+      "ground": true,
+      "support_surface": "southport/south-venetian"
+    },
+    {
+      "id": "lake-water",
+      "name": "Remaining Marine Lake water",
+      "collection": "lake-water"
+    },
+    {
+      "id": "shore-walls",
+      "name": "Formal lake edge and retaining walls",
+      "collection": "shore-walls"
+    }
+  ],
+  "views": [
+    {
+      "name": "Southern lake and seaward blocks",
+      "position": [
+        -850,
+        900,
+        100
+      ],
+      "target": [
+        -550,
+        2,
+        -200
+      ]
+    },
+    {
+      "name": "Kings Gardens and lido",
+      "position": [
+        -450,
+        180,
+        -400
+      ],
+      "target": [
+        -550,
+        2,
+        -100
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -520,
+      3.9,
+      100
+    ],
+    "target": [
+      -560,
+      3.9,
+      60
+    ]
+  },
+  "rules": [
+    {
+      "id": "ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Identical sourced profiles and shared ownership outlines."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed low complexity canvas retains junctions and bridge levels."
+      }
+    },
+    {
+      "id": "structure",
+      "match": "^Structure ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already bounded schematic structure."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed budget silhouette; no detailed decoration."
+      }
+    }
+  ]
+}

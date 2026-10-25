@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "id": "southport.marine-lake-south.public-realm",
+  "name": "South Marine Lake / seaward quarter public-realm",
+  "region": "southport",
+  "area": "marine-lake-south",
+  "status": "provisional-block-plan",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "cell-00-ground",
+    "cell-01-ground",
+    "cell-02-ground",
+    "cell-03-ground",
+    "cell-04-ground",
+    "cell-05-ground",
+    "cell-06-ground",
+    "cell-07-ground",
+    "cell-08-ground",
+    "cell-09-ground",
+    "cell-10-ground",
+    "cell-11-ground",
+    "cell-12-ground",
+    "cell-13-ground",
+    "cell-14-ground",
+    "cell-15-ground",
+    "cell-16-ground",
+    "cell-17-ground",
+    "cell-18-ground",
+    "cell-19-ground",
+    "cell-20-ground",
+    "cell-21-ground",
+    "cell-22-ground",
+    "venetian-ground",
+    "lake-water",
+    "shore-walls"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Provisional block plan from Duke Street and West Street through Kings Gardens, the southern Marine Lake, Princes Park and west Ocean Plaza. Widths ±1–2 m, footprints ±1–3 m and heights ±2–3 m; no surveyed levels. Flat building tops are height bounds. Pier, ride equipment, detailed balustrades and small garden features are deferred.",
+  "licensing": "OSM contributor geometry under ODbL1.0; reference photographs linked only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/marine-lake-south.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/west-street/frontage-placeholders/research/layout.json",
+      "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+      "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
+      "regions/southport/marine-drive/frontage-placeholders/research/layout.json",
+      "regions/southport/marine-lake-south/frontage-placeholders/research/layout.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/marine-lake-south.json",
+      "tools/coplanar_scan.cpp",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/west-street/frontage-placeholders/research/layout.json",
+      "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+      "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
+      "regions/southport/marine-drive/frontage-placeholders/research/layout.json"
+    ]
+  },
+  "validation_checks": [
+    "check_ground_routes.py"
+  ]
+}

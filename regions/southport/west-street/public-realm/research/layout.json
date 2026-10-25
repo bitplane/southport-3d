@@ -34,7 +34,8 @@
   "block_plan": "regions/southport/west-street/frontage-placeholders/research/layout.json",
   "existing_block_plans": [
     "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
-    "regions/southport/lord-street/corridor-placeholders/research/layout.json"
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+    "regions/southport/marine-lake-south/frontage-placeholders/research/layout.json"
   ],
   "extra_building_cutouts": [
     [
@@ -201,6 +202,75 @@
       "width": 3,
       "footway": 0.3,
       "basis": "Mapped private drive visible beside Byng House; exact width estimated."
+    },
+    {
+      "id": "south-lake-join-24950616",
+      "name": "The Promenade",
+      "points": [
+        [
+          -439.298,
+          199.14
+        ],
+        [
+          -418.684,
+          196.325
+        ],
+        [
+          -398.911,
+          194.999
+        ],
+        [
+          -368.081,
+          195.791
+        ],
+        [
+          -328.8,
+          200.946
+        ],
+        [
+          -310.619,
+          204.173
+        ],
+        [
+          -305.653,
+          205.06
+        ],
+        [
+          -261.009,
+          214.148
+        ],
+        [
+          -255.335,
+          215.253
+        ],
+        [
+          -217.539,
+          222.371
+        ],
+        [
+          -177.696,
+          230.6
+        ],
+        [
+          -170.008,
+          232.371
+        ],
+        [
+          -132.793,
+          240.947
+        ],
+        [
+          -71.713,
+          254.69
+        ],
+        [
+          -61.508,
+          257.155
+        ]
+      ],
+      "width": 7.4,
+      "footway": 2.3,
+      "basis": "Same south-lake Promenade curve crosses the old West ownership cut; road and footway grades continue without a tile-edge kerb."
     }
   ],
   "junction_radius_m": 0.7,
@@ -925,6 +995,56 @@
         ]
       ],
       "basis": "Visible hotel rear yard, hardstanding estimated."
+    },
+    {
+      "id": "south-lake-join-parking-7",
+      "polygon": [
+        [
+          -76.626,
+          109.164
+        ],
+        [
+          -93.846,
+          109.124
+        ],
+        [
+          -91.818,
+          154.84
+        ],
+        [
+          -75.86,
+          157.661
+        ]
+      ],
+      "bay_markings": false,
+      "basis": "Same mapped parking court as the south-lake canvas; continuous lowered asphalt, no invented bay pattern at ownership cut."
+    },
+    {
+      "id": "south-lake-join-parking-8",
+      "polygon": [
+        [
+          -179.262,
+          105.248
+        ],
+        [
+          -158.463,
+          105.665
+        ],
+        [
+          -137.696,
+          107.618
+        ],
+        [
+          -137.204,
+          143.708
+        ],
+        [
+          -184.648,
+          135.238
+        ]
+      ],
+      "bay_markings": false,
+      "basis": "Same mapped parking court as the south-lake canvas; continuous lowered asphalt, no invented bay pattern at ownership cut."
     }
   ],
   "landscaped_reservations": [
@@ -982,5 +1102,15 @@
     "download_bytes_per_level": 2500000,
     "gpu_bytes_per_level": 8000000
   },
-  "limits": "Provisional ground and private yards, 1\u20133 m plan uncertainty; dated markings, not a current regulation inventory. Existing boundary levels retained, interior grade estimated. No furniture or tree survey."
+  "limits": "Provisional ground and private yards, 1\u20133 m plan uncertainty; dated markings, not a current regulation inventory. Existing boundary levels retained, interior grade estimated. No furniture or tree survey.",
+  "south_lake_handover": {
+    "roads": [
+      "south-lake-join-24950616"
+    ],
+    "parking_polygons": [
+      7,
+      8
+    ],
+    "basis": "Snag a996ab166e984318922eac83b3b68781: exact shared mapped road and parking ownership replaces former generic court at existing tile boundary. Geometry checked in actual3D; property detail remains provisional."
+  }
 }

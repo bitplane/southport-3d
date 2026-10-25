@@ -1,0 +1,3622 @@
+{
+  "schema_version": 1,
+  "blocks": [
+    {
+      "id": "way-30141969",
+      "name": "Ocean Plaza cinema/leisure roof-height envelope",
+      "osm_way": "30141969",
+      "footprint": [
+        [
+          -291.247,
+          788.339
+        ],
+        [
+          -291.575,
+          791.874
+        ],
+        [
+          -281.147,
+          792.84
+        ],
+        [
+          -281.612,
+          797.888
+        ],
+        [
+          -273.338,
+          798.656
+        ],
+        [
+          -273.882,
+          804.501
+        ],
+        [
+          -248.571,
+          806.851
+        ],
+        [
+          -248.089,
+          801.648
+        ],
+        [
+          -238.391,
+          802.554
+        ],
+        [
+          -238.04,
+          798.843
+        ],
+        [
+          -227.486,
+          799.826
+        ],
+        [
+          -227.032,
+          794.958
+        ],
+        [
+          -222.558,
+          795.376
+        ],
+        [
+          -223.085,
+          801.02
+        ],
+        [
+          -185.267,
+          804.569
+        ],
+        [
+          -184.644,
+          797.867
+        ],
+        [
+          -181.297,
+          761.554
+        ],
+        [
+          -176.997,
+          761.952
+        ],
+        [
+          -174.851,
+          738.679
+        ],
+        [
+          -221.283,
+          734.406
+        ],
+        [
+          -220.574675,
+          726.697192
+        ],
+        [
+          -222.988717,
+          725.325906
+        ],
+        [
+          -266.19,
+          721.345
+        ],
+        [
+          -266.88,
+          728.925
+        ],
+        [
+          -350.981,
+          721.175
+        ],
+        [
+          -356.624,
+          782.317
+        ]
+      ],
+      "height_m": 14,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-30141983",
+      "name": "Brewers Fayre",
+      "osm_way": "30141983",
+      "footprint": [
+        [
+          -284.079,
+          642.683
+        ],
+        [
+          -283.757,
+          638.769
+        ],
+        [
+          -305.653,
+          636.968
+        ],
+        [
+          -319.54,
+          635.819
+        ],
+        [
+          -320.186,
+          635.772
+        ],
+        [
+          -321.551,
+          635.657
+        ],
+        [
+          -323.354,
+          657.575
+        ],
+        [
+          -321.806,
+          657.701
+        ],
+        [
+          -316.589,
+          658.135
+        ],
+        [
+          -301.916,
+          659.335
+        ],
+        [
+          -302.245,
+          663.348
+        ],
+        [
+          -290.151,
+          664.343
+        ],
+        [
+          -289.871,
+          660.853
+        ],
+        [
+          -285.604,
+          661.206
+        ],
+        [
+          -285.365,
+          658.306
+        ]
+      ],
+      "height_m": 7,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-30142868",
+      "name": "Morrisons",
+      "osm_way": "30142868",
+      "footprint": [
+        [
+          -721.11,
+          196.368
+        ],
+        [
+          -692.774,
+          195.951
+        ],
+        [
+          -654.826,
+          197.674
+        ],
+        [
+          -644.04,
+          186.169
+        ],
+        [
+          -647.115,
+          156.002
+        ],
+        [
+          -652.562,
+          156.063
+        ],
+        [
+          -656.461,
+          94.39
+        ],
+        [
+          -661.466,
+          94.476
+        ],
+        [
+          -662.18,
+          87.171
+        ],
+        [
+          -679.092,
+          88.174
+        ],
+        [
+          -678.169,
+          118.051
+        ],
+        [
+          -696.755,
+          119.217
+        ],
+        [
+          -698.697,
+          99.765
+        ],
+        [
+          -728.314,
+          98.374
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-42020211",
+      "name": "Splash World",
+      "osm_way": "42020211",
+      "footprint": [
+        [
+          -768.567,
+          489.401
+        ],
+        [
+          -766.61,
+          487.112
+        ],
+        [
+          -748.91,
+          465.507
+        ],
+        [
+          -747.611,
+          466.577
+        ],
+        [
+          -744.175,
+          469.408
+        ],
+        [
+          -742.041381,
+          466.820725
+        ],
+        [
+          -742.59636,
+          466.141822
+        ],
+        [
+          -742.849586,
+          465.301229
+        ],
+        [
+          -742.761855,
+          464.427717
+        ],
+        [
+          -742.346523,
+          463.654271
+        ],
+        [
+          -741.666822,
+          463.09864
+        ],
+        [
+          -740.826229,
+          462.845414
+        ],
+        [
+          -739.952717,
+          462.933145
+        ],
+        [
+          -739.180228,
+          463.347963
+        ],
+        [
+          -710.592,
+          428.616
+        ],
+        [
+          -721.356,
+          419.756
+        ],
+        [
+          -713.651,
+          410.411
+        ],
+        [
+          -716.763,
+          407.854
+        ],
+        [
+          -713.245,
+          403.576
+        ],
+        [
+          -723.746,
+          394.927
+        ],
+        [
+          -727.242,
+          399.17
+        ],
+        [
+          -757.55,
+          374.22
+        ],
+        [
+          -766.181,
+          384.707
+        ],
+        [
+          -759.935,
+          389.845
+        ],
+        [
+          -784.306,
+          419.46
+        ],
+        [
+          -780.865,
+          422.287
+        ],
+        [
+          -807.171,
+          454.262
+        ],
+        [
+          -808.822,
+          456.26
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-42249116",
+      "name": "Provisional building 42249116",
+      "osm_way": "42249116",
+      "footprint": [
+        [
+          -196.314,
+          105.693
+        ],
+        [
+          -180.755,
+          108.094
+        ],
+        [
+          -185.45,
+          135.217
+        ],
+        [
+          -201.791,
+          131.993
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-51826172",
+      "name": "Provisional building 51826172",
+      "osm_way": "51826172",
+      "footprint": [
+        [
+          -602.37,
+          149.625
+        ],
+        [
+          -589.241,
+          149.038
+        ],
+        [
+          -590.731,
+          115.691
+        ],
+        [
+          -603.86,
+          116.279
+        ]
+      ],
+      "height_m": 20.200000000000003,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-167319677",
+      "name": "Silcock's Restaurant",
+      "osm_way": "167319677",
+      "footprint": [
+        [
+          -42.138,
+          335.24
+        ],
+        [
+          -41.863,
+          327.501
+        ],
+        [
+          -42.879,
+          327.284
+        ],
+        [
+          -42.041,
+          324.17
+        ],
+        [
+          -38.66,
+          311.654
+        ],
+        [
+          -63.508,
+          304.427
+        ],
+        [
+          -67.851,
+          322.217
+        ],
+        [
+          -67.3,
+          325.364
+        ],
+        [
+          -66.485,
+          327.506
+        ],
+        [
+          -64.162,
+          329.952
+        ],
+        [
+          -51.337,
+          333.814
+        ],
+        [
+          -51.214,
+          332.976
+        ]
+      ],
+      "height_m": 7,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-167320911",
+      "name": "Provisional building 167320911",
+      "osm_way": "167320911",
+      "footprint": [
+        [
+          -565.84,
+          267.466
+        ],
+        [
+          -579.529,
+          285.982
+        ],
+        [
+          -587.672,
+          279.959
+        ],
+        [
+          -573.982,
+          261.443
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-167349039",
+      "name": "Lakeside Cafe",
+      "osm_way": "167349039",
+      "footprint": [
+        [
+          -81.451,
+          350.705
+        ],
+        [
+          -83.992,
+          362.669
+        ],
+        [
+          -81.885,
+          362.971
+        ],
+        [
+          -82.181,
+          364.557
+        ],
+        [
+          -77.324,
+          365.655
+        ],
+        [
+          -77.047,
+          364.347
+        ],
+        [
+          -72.643,
+          365.4
+        ],
+        [
+          -71.83,
+          366.639
+        ],
+        [
+          -68.046,
+          367.221
+        ],
+        [
+          -66.843,
+          365.863
+        ],
+        [
+          -65.116,
+          357.851
+        ],
+        [
+          -66.131,
+          355.882
+        ],
+        [
+          -73.934,
+          353.713
+        ],
+        [
+          -73.875,
+          352.291
+        ]
+      ],
+      "height_m": 5,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-167349041",
+      "name": "Provisional building 167349041",
+      "osm_way": "167349041",
+      "footprint": [
+        [
+          -256.784,
+          241.472
+        ],
+        [
+          -256.049,
+          237.457
+        ],
+        [
+          -246.635,
+          239.185
+        ],
+        [
+          -247.375,
+          243.205
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-170138154",
+      "name": "Provisional building 170138154",
+      "osm_way": "170138154",
+      "footprint": [
+        [
+          -296.467,
+          537.469
+        ],
+        [
+          -294.555,
+          524.536
+        ],
+        [
+          -303.087,
+          523.275
+        ],
+        [
+          -302.803,
+          521.362
+        ],
+        [
+          -306.298,
+          520.844
+        ],
+        [
+          -308.353,
+          520.539
+        ],
+        [
+          -308.743,
+          523.166
+        ],
+        [
+          -316.765,
+          521.974
+        ],
+        [
+          -318.54,
+          533.978
+        ],
+        [
+          -310.277,
+          535.203
+        ],
+        [
+          -312.273,
+          538.112
+        ],
+        [
+          -311.858,
+          541.127
+        ],
+        [
+          -309.362,
+          543.362
+        ],
+        [
+          -306.852,
+          542.928
+        ],
+        [
+          -304.673,
+          541.103
+        ],
+        [
+          -304.364,
+          538.86
+        ],
+        [
+          -304.928,
+          536.217
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-232168485",
+      "name": "Provisional building 232168485",
+      "osm_way": "232168485",
+      "footprint": [
+        [
+          -108.496,
+          625.285
+        ],
+        [
+          -103.611,
+          626.663
+        ],
+        [
+          -99.508,
+          612.233
+        ],
+        [
+          -104.396,
+          610.842
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-342955344",
+      "name": "Premier Inn",
+      "osm_way": "342955344",
+      "footprint": [
+        [
+          -284.079,
+          642.683
+        ],
+        [
+          -285.365,
+          658.306
+        ],
+        [
+          -267.868,
+          659.681
+        ],
+        [
+          -268.031,
+          661.771
+        ],
+        [
+          -260.567,
+          662.357
+        ],
+        [
+          -260.453,
+          660.944
+        ],
+        [
+          -242.041,
+          662.401
+        ],
+        [
+          -242.629,
+          669.868
+        ],
+        [
+          -216.196,
+          671.951
+        ],
+        [
+          -215.35,
+          661.182
+        ],
+        [
+          -219.11,
+          660.884
+        ],
+        [
+          -218.568,
+          653.982
+        ],
+        [
+          -239.428,
+          652.333
+        ],
+        [
+          -238.946,
+          646.24
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-370725264",
+      "name": "Provisional building 370725264",
+      "osm_way": "370725264",
+      "footprint": [
+        [
+          -722.183,
+          519.529
+        ],
+        [
+          -704.077,
+          555.7
+        ],
+        [
+          -723.717,
+          565.529
+        ],
+        [
+          -733.251,
+          546.487
+        ],
+        [
+          -749.547,
+          554.644
+        ],
+        [
+          -758.119,
+          537.514
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-370725265",
+      "name": "Provisional building 370725265",
+      "osm_way": "370725265",
+      "footprint": [
+        [
+          -708.202,
+          593.904
+        ],
+        [
+          -708.842,
+          618.618
+        ],
+        [
+          -739.873,
+          617.817
+        ],
+        [
+          -739.237,
+          593.108
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375395866",
+      "name": "Provisional building 375395866",
+      "osm_way": "375395866",
+      "footprint": [
+        [
+          50.04,
+          253.082
+        ],
+        [
+          47.566,
+          263.861
+        ],
+        [
+          69.876,
+          269.691
+        ],
+        [
+          70.555,
+          267.004
+        ],
+        [
+          75.602,
+          247.101
+        ],
+        [
+          75.131,
+          246.366
+        ],
+        [
+          81.051,
+          226.893
+        ],
+        [
+          56.169,
+          219.622
+        ],
+        [
+          54.344,
+          227.098
+        ],
+        [
+          47.420252,
+          252.191086
+        ],
+        [
+          50.039,
+          253.08
+        ],
+        [
+          50.038647,
+          253.08154
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-375396108",
+      "name": "Provisional building 375396108",
+      "osm_way": "375396108",
+      "footprint": [
+        [
+          84.734,
+          271.114
+        ],
+        [
+          70.555,
+          267.004
+        ],
+        [
+          75.602,
+          247.101
+        ],
+        [
+          80.759,
+          248.621
+        ],
+        [
+          78.154,
+          257.759
+        ],
+        [
+          82.673,
+          259.009
+        ],
+        [
+          85.093,
+          249.677
+        ],
+        [
+          90.279,
+          251.046
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376044815",
+      "name": "Provisional building 376044815",
+      "osm_way": "376044815",
+      "footprint": [
+        [
+          -276.119231,
+          97.383222
+        ],
+        [
+          -275.219186,
+          104.90136
+        ],
+        [
+          -268.907,
+          104.653
+        ],
+        [
+          -269.888,
+          79.928
+        ],
+        [
+          -276.801,
+          80.2
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376044816",
+      "name": "Provisional building 376044816",
+      "osm_way": "376044816",
+      "footprint": [
+        [
+          -273.685,
+          113.706
+        ],
+        [
+          -256.117,
+          117.208
+        ],
+        [
+          -255.551,
+          107.964
+        ],
+        [
+          -274.899468,
+          107.571989
+        ],
+        [
+          -274.727454,
+          109.008833
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376044817",
+      "name": "Provisional building 376044817",
+      "osm_way": "376044817",
+      "footprint": [
+        [
+          -256.112,
+          78.526
+        ],
+        [
+          -255.573,
+          105.038
+        ],
+        [
+          -262.21,
+          105.17
+        ],
+        [
+          -262.749,
+          78.658
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376044818",
+      "name": "Provisional building 376044818",
+      "osm_way": "376044818",
+      "footprint": [
+        [
+          -247.549,
+          97.6
+        ],
+        [
+          -247.462,
+          119.612
+        ],
+        [
+          -228.843,
+          124.449
+        ],
+        [
+          -228.798,
+          110.173
+        ],
+        [
+          -240.22,
+          109.339
+        ],
+        [
+          -240.14,
+          97.563
+        ]
+      ],
+      "height_m": 13.8,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376044819",
+      "name": "Provisional building 376044819",
+      "osm_way": "376044819",
+      "footprint": [
+        [
+          -206.196,
+          108.463
+        ],
+        [
+          -232.343,
+          108.013
+        ],
+        [
+          -232.129,
+          95.266
+        ],
+        [
+          -206.795,
+          93.739
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376059451",
+      "name": "Act",
+      "osm_way": "376059451",
+      "footprint": [
+        [
+          -279.392,
+          132.915
+        ],
+        [
+          -281.267,
+          154.672
+        ],
+        [
+          -301.683,
+          151.833
+        ],
+        [
+          -298.298,
+          129.625
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376059452",
+      "name": "Provisional building 376059452",
+      "osm_way": "376059452",
+      "footprint": [
+        [
+          -269.678,
+          127.879
+        ],
+        [
+          -271.372,
+          129.488
+        ],
+        [
+          -272.093,
+          131.785
+        ],
+        [
+          -274.929,
+          165.08
+        ],
+        [
+          -258.752,
+          165.497
+        ],
+        [
+          -257.252,
+          132.826
+        ],
+        [
+          -258.516,
+          130.48
+        ],
+        [
+          -259.743676,
+          129.666901
+        ],
+        [
+          -265.836465,
+          128.273383
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376059453",
+      "name": "Provisional building 376059453",
+      "osm_way": "376059453",
+      "footprint": [
+        [
+          -224.096,
+          157.019
+        ],
+        [
+          -231.736,
+          156.4
+        ],
+        [
+          -230.414,
+          140.097
+        ],
+        [
+          -229.014,
+          140.211
+        ],
+        [
+          -228.893,
+          138.729
+        ],
+        [
+          -223.869,
+          139.131
+        ],
+        [
+          -224.001,
+          140.822
+        ],
+        [
+          -222.791,
+          140.917
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062032",
+      "name": "Provisional building 376062032",
+      "osm_way": "376062032",
+      "footprint": [
+        [
+          -170.551,
+          206.631
+        ],
+        [
+          -190.48,
+          202.992
+        ],
+        [
+          -186.535,
+          182.217
+        ],
+        [
+          -181.429,
+          183.109
+        ],
+        [
+          -183.065,
+          195.211
+        ],
+        [
+          -176.735,
+          196.231
+        ],
+        [
+          -173.755,
+          183.589
+        ],
+        [
+          -168.945,
+          184.562
+        ],
+        [
+          -171.769,
+          198.346
+        ],
+        [
+          -169.969,
+          198.678
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062033",
+      "name": "Provisional building 376062033",
+      "osm_way": "376062033",
+      "footprint": [
+        [
+          -166.523,
+          149.527
+        ],
+        [
+          -168.09,
+          169.885
+        ],
+        [
+          -178.137,
+          169.434
+        ],
+        [
+          -177.701,
+          156.26
+        ],
+        [
+          -188.773,
+          155.124
+        ],
+        [
+          -188.352,
+          145.834
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062034",
+      "name": "Provisional building 376062034",
+      "osm_way": "376062034",
+      "footprint": [
+        [
+          -189.365,
+          145.63
+        ],
+        [
+          -190.268,
+          154.011
+        ],
+        [
+          -209.511,
+          151.947
+        ],
+        [
+          -208.603,
+          143.561
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062035",
+      "name": "Provisional building 376062035",
+      "osm_way": "376062035",
+      "footprint": [
+        [
+          -193.741,
+          184.288
+        ],
+        [
+          -195.04,
+          200.568
+        ],
+        [
+          -210.467,
+          199.331
+        ],
+        [
+          -209.168,
+          183.051
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062036",
+      "name": "Provisional building 376062036",
+      "osm_way": "376062036",
+      "footprint": [
+        [
+          -218.076,
+          181.655
+        ],
+        [
+          -219.416,
+          195.764
+        ],
+        [
+          -236.635,
+          194.126
+        ],
+        [
+          -235.289,
+          180.012
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062037",
+      "name": "Provisional building 376062037",
+      "osm_way": "376062037",
+      "footprint": [
+        [
+          -249.324,
+          136.611
+        ],
+        [
+          -252.353,
+          191.845
+        ],
+        [
+          -239.589,
+          193.401
+        ],
+        [
+          -237.673,
+          181.785
+        ],
+        [
+          -245.814,
+          180.813
+        ],
+        [
+          -245.034,
+          168.787
+        ],
+        [
+          -240.124,
+          169.865
+        ],
+        [
+          -237.427913,
+          134.232211
+        ],
+        [
+          -246.161598,
+          132.572358
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062714",
+      "name": "Royal Clifton Hotel roof-height envelope",
+      "osm_way": "376062714",
+      "footprint": [
+        [
+          -316.903,
+          157.77
+        ],
+        [
+          -320.092,
+          177.32
+        ],
+        [
+          -326.558,
+          176.261
+        ],
+        [
+          -325.282,
+          168.416
+        ],
+        [
+          -323.328,
+          168.74
+        ],
+        [
+          -321.415,
+          157.034
+        ]
+      ],
+      "height_m": 16,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062715",
+      "name": "Promenade Residential Care Home",
+      "osm_way": "376062715",
+      "footprint": [
+        [
+          -328.949,
+          167.047
+        ],
+        [
+          -329.462,
+          176.317
+        ],
+        [
+          -348.936,
+          175.256
+        ],
+        [
+          -348.45,
+          166.426
+        ],
+        [
+          -346.51,
+          166.533
+        ],
+        [
+          -345.974,
+          156.78
+        ],
+        [
+          -342.553,
+          156.97
+        ],
+        [
+          -343.038,
+          165.753
+        ],
+        [
+          -338.315,
+          166.011
+        ],
+        [
+          -337.692,
+          154.625
+        ],
+        [
+          -330.174,
+          155.037
+        ],
+        [
+          -330.825,
+          166.941
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062716",
+      "name": "Provisional building 376062716",
+      "osm_way": "376062716",
+      "footprint": [
+        [
+          -324.759,
+          125.481
+        ],
+        [
+          -325.729,
+          134.079
+        ],
+        [
+          -336.627,
+          132.839
+        ],
+        [
+          -335.649,
+          124.249
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062717",
+      "name": "Provisional building 376062717",
+      "osm_way": "376062717",
+      "footprint": [
+        [
+          -338.576,
+          125.278
+        ],
+        [
+          -339.468,
+          138.087
+        ],
+        [
+          -345.588,
+          137.651
+        ],
+        [
+          -346.106,
+          144.991
+        ],
+        [
+          -354.953,
+          144.367
+        ],
+        [
+          -354.693,
+          140.742
+        ],
+        [
+          -364.462,
+          140.058
+        ],
+        [
+          -363.3,
+          123.538
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062718",
+      "name": "Provisional building 376062718",
+      "osm_way": "376062718",
+      "footprint": [
+        [
+          -380.48,
+          120.819
+        ],
+        [
+          -382.285,
+          143.876
+        ],
+        [
+          -388.787,
+          143.374
+        ],
+        [
+          -388.332,
+          137.568
+        ],
+        [
+          -399.472,
+          136.696
+        ],
+        [
+          -398.117,
+          119.44
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376062719",
+      "name": "Provisional building 376062719",
+      "osm_way": "376062719",
+      "footprint": [
+        [
+          -354.865,
+          173.901
+        ],
+        [
+          -383.51,
+          171.357
+        ],
+        [
+          -425.355,
+          167.823
+        ],
+        [
+          -468.108,
+          170.604
+        ],
+        [
+          -470.89,
+          170.836
+        ],
+        [
+          -467.954,
+          174.081
+        ],
+        [
+          -467.388,
+          176.507
+        ],
+        [
+          -469.734,
+          179.335
+        ],
+        [
+          -473.344,
+          179.232
+        ],
+        [
+          -474.951,
+          177.78
+        ],
+        [
+          -474.756,
+          175.629
+        ],
+        [
+          -477.548,
+          175.487
+        ],
+        [
+          -481.107,
+          169.518
+        ],
+        [
+          -482.469,
+          164.224
+        ],
+        [
+          -484.346,
+          144.773
+        ],
+        [
+          -476.099,
+          144.324
+        ],
+        [
+          -426.561,
+          141.624
+        ],
+        [
+          -426.531,
+          150.393
+        ],
+        [
+          -389.179,
+          153.481
+        ],
+        [
+          -388.817,
+          148.976
+        ],
+        [
+          -381.576,
+          149.528
+        ],
+        [
+          -378.57,
+          149.79
+        ],
+        [
+          -378.066,
+          144.121
+        ],
+        [
+          -366.269,
+          145.168
+        ],
+        [
+          -367.784,
+          162.16
+        ],
+        [
+          -364.978,
+          162.412
+        ],
+        [
+          -364.463,
+          156.564
+        ],
+        [
+          -353.408,
+          157.548
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376063741",
+      "name": "Provisional building 376063741",
+      "osm_way": "376063741",
+      "footprint": [
+        [
+          -458.374,
+          136.56
+        ],
+        [
+          -465.133,
+          136.64
+        ],
+        [
+          -465.317,
+          124.117
+        ],
+        [
+          -472.083,
+          124.188
+        ],
+        [
+          -471.682,
+          138.224
+        ],
+        [
+          -475.313,
+          138.004
+        ],
+        [
+          -476.099,
+          144.324
+        ],
+        [
+          -484.346,
+          144.773
+        ],
+        [
+          -487.064,
+          117.922
+        ],
+        [
+          -459.473,
+          115.879
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376063742",
+      "name": "Provisional building 376063742",
+      "osm_way": "376063742",
+      "footprint": [
+        [
+          -455.068,
+          140.606
+        ],
+        [
+          -445.094,
+          140.098
+        ],
+        [
+          -445.252,
+          137.009
+        ],
+        [
+          -443.366,
+          136.906
+        ],
+        [
+          -444.466,
+          114.996
+        ],
+        [
+          -452.347,
+          115.389
+        ],
+        [
+          -451.219,
+          137.702
+        ],
+        [
+          -452.795015,
+          137.779813
+        ],
+        [
+          -452.943143,
+          138.027216
+        ],
+        [
+          -453.648035,
+          138.550519
+        ],
+        [
+          -454.49953,
+          138.764237
+        ],
+        [
+          -455.169089,
+          138.665243
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376074029",
+      "name": "Provisional building 376074029",
+      "osm_way": "376074029",
+      "footprint": [
+        [
+          -284.561,
+          81.123
+        ],
+        [
+          -284.869,
+          110.02
+        ],
+        [
+          -286.777,
+          111.556
+        ],
+        [
+          -299.228,
+          109.073
+        ],
+        [
+          -299.154,
+          104.658
+        ],
+        [
+          -295.218,
+          104.328
+        ],
+        [
+          -295.482,
+          93.309
+        ],
+        [
+          -301.568,
+          92.718
+        ],
+        [
+          -302.097,
+          87.908
+        ],
+        [
+          -297.207,
+          88.361
+        ],
+        [
+          -296.862,
+          81.308
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-376075075",
+      "name": "Provisional building 376075075",
+      "osm_way": "376075075",
+      "footprint": [
+        [
+          -503.609,
+          120.049
+        ],
+        [
+          -520.516,
+          120.818
+        ],
+        [
+          -521.765,
+          84.602
+        ],
+        [
+          -504.724,
+          82.862
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-721692659",
+      "name": "Provisional building 721692659",
+      "osm_way": "721692659",
+      "footprint": [
+        [
+          -330.088,
+          494.095
+        ],
+        [
+          -329.717,
+          486.189
+        ],
+        [
+          -317.704,
+          486.754
+        ],
+        [
+          -318.075,
+          494.66
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-721692660",
+      "name": "Provisional building 721692660",
+      "osm_way": "721692660",
+      "footprint": [
+        [
+          -285.496,
+          499.18
+        ],
+        [
+          -284.606,
+          491.179
+        ],
+        [
+          -272.458,
+          492.537
+        ],
+        [
+          -273.349,
+          500.538
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-721692670",
+      "name": "Provisional building 721692670",
+      "osm_way": "721692670",
+      "footprint": [
+        [
+          -168.718,
+          811.097
+        ],
+        [
+          -165.587,
+          798.02
+        ],
+        [
+          -160.37,
+          799.267
+        ],
+        [
+          -163.506,
+          812.349
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542450",
+      "name": "Provisional building 727542450",
+      "osm_way": "727542450",
+      "footprint": [
+        [
+          -516.806,
+          733.449
+        ],
+        [
+          -516.005,
+          721.234
+        ],
+        [
+          -500.728,
+          722.322
+        ],
+        [
+          -501.596,
+          734.524
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542462",
+      "name": "Provisional building 727542462",
+      "osm_way": "727542462",
+      "footprint": [
+        [
+          -798.767,
+          559.575
+        ],
+        [
+          -802.643,
+          551.988
+        ],
+        [
+          -788.405,
+          544.711
+        ],
+        [
+          -784.536,
+          552.291
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542464",
+      "name": "Provisional building 727542464",
+      "osm_way": "727542464",
+      "footprint": [
+        [
+          -718.912,
+          734.05
+        ],
+        [
+          -716.401,
+          713.9
+        ],
+        [
+          -701.405,
+          715.776
+        ],
+        [
+          -703.915,
+          735.926
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542465",
+      "name": "Provisional building 727542465",
+      "osm_way": "727542465",
+      "footprint": [
+        [
+          -730.585,
+          762.919
+        ],
+        [
+          -729.177,
+          753.029
+        ],
+        [
+          -720.133,
+          754.31
+        ],
+        [
+          -721.541,
+          764.2
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542466",
+      "name": "Provisional building 727542466",
+      "osm_way": "727542466",
+      "footprint": [
+        [
+          -736.74,
+          755.376
+        ],
+        [
+          -735.057,
+          742.155
+        ],
+        [
+          -736.699,
+          741.949
+        ],
+        [
+          -735.629,
+          733.486
+        ],
+        [
+          -734.202,
+          733.666
+        ],
+        [
+          -732.589,
+          721.079
+        ],
+        [
+          -725.603,
+          721.966
+        ],
+        [
+          -727.154,
+          734.11
+        ],
+        [
+          -725.229,
+          734.355
+        ],
+        [
+          -726.319,
+          742.913
+        ],
+        [
+          -728.335,
+          742.648
+        ],
+        [
+          -730.058,
+          756.23
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542467",
+      "name": "Provisional building 727542467",
+      "osm_way": "727542467",
+      "footprint": [
+        [
+          -667.526,
+          740.787
+        ],
+        [
+          -665.606,
+          718.052
+        ],
+        [
+          -647.1,
+          719.618
+        ],
+        [
+          -649.363,
+          746.303
+        ],
+        [
+          -658.701,
+          745.517
+        ],
+        [
+          -658.365,
+          741.559
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542468",
+      "name": "Provisional building 727542468",
+      "osm_way": "727542468",
+      "footprint": [
+        [
+          -649.038,
+          747.009
+        ],
+        [
+          -632.204,
+          748.597
+        ],
+        [
+          -630.964,
+          735.397
+        ],
+        [
+          -647.799,
+          733.809
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542469",
+      "name": "Provisional building 727542469",
+      "osm_way": "727542469",
+      "footprint": [
+        [
+          -630.483,
+          734.649
+        ],
+        [
+          -629.427,
+          722.836
+        ],
+        [
+          -646.692,
+          721.303
+        ],
+        [
+          -647.748,
+          733.115
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542478",
+      "name": "Provisional building 727542478",
+      "osm_way": "727542478",
+      "footprint": [
+        [
+          -674.828,
+          639.939
+        ],
+        [
+          -673.569,
+          626.137
+        ],
+        [
+          -646.878,
+          628.588
+        ],
+        [
+          -648.14,
+          642.377
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542479",
+      "name": "Provisional building 727542479",
+      "osm_way": "727542479",
+      "footprint": [
+        [
+          -641.101,
+          619.83
+        ],
+        [
+          -639.558,
+          607.371
+        ],
+        [
+          -632.3,
+          608.276
+        ],
+        [
+          -633.85,
+          620.727
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542482",
+      "name": "Provisional building 727542482",
+      "osm_way": "727542482",
+      "footprint": [
+        [
+          -629.464,
+          562.898
+        ],
+        [
+          -628.123,
+          549.94
+        ],
+        [
+          -621.259,
+          550.651
+        ],
+        [
+          -622.595,
+          563.605
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542483",
+      "name": "Provisional building 727542483",
+      "osm_way": "727542483",
+      "footprint": [
+        [
+          -596.585,
+          531.127
+        ],
+        [
+          -589.74,
+          531.857
+        ],
+        [
+          -591.792,
+          551.233
+        ],
+        [
+          -594.335,
+          550.961
+        ],
+        [
+          -595.802,
+          564.823
+        ],
+        [
+          -604.597,
+          563.889
+        ],
+        [
+          -605.741,
+          574.679
+        ],
+        [
+          -609.012,
+          574.331
+        ],
+        [
+          -610.634,
+          589.629
+        ],
+        [
+          -619.09,
+          588.726
+        ],
+        [
+          -613.85,
+          539.452
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542486",
+      "name": "Provisional building 727542486",
+      "osm_way": "727542486",
+      "footprint": [
+        [
+          -669.124,
+          557.305
+        ],
+        [
+          -667.708,
+          540.498
+        ],
+        [
+          -657.657,
+          541.345
+        ],
+        [
+          -659.073,
+          558.152
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542489",
+      "name": "Provisional building 727542489",
+      "osm_way": "727542489",
+      "footprint": [
+        [
+          -676.902,
+          597.566
+        ],
+        [
+          -676.012,
+          587.984
+        ],
+        [
+          -664.448,
+          589.053
+        ],
+        [
+          -665.334,
+          598.63
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542490",
+      "name": "Provisional building 727542490",
+      "osm_way": "727542490",
+      "footprint": [
+        [
+          -671.03,
+          605.884
+        ],
+        [
+          -670.941,
+          606.859
+        ],
+        [
+          -671.176,
+          607.819
+        ],
+        [
+          -671.721,
+          608.644
+        ],
+        [
+          -672.498,
+          609.244
+        ],
+        [
+          -673.435,
+          609.55
+        ],
+        [
+          -674.423,
+          609.536
+        ],
+        [
+          -675.344,
+          609.199
+        ],
+        [
+          -676.082,
+          608.594
+        ],
+        [
+          -676.592,
+          607.789
+        ],
+        [
+          -676.81,
+          606.86
+        ],
+        [
+          -676.726,
+          605.905
+        ],
+        [
+          -676.342,
+          605.034
+        ],
+        [
+          -675.699,
+          604.331
+        ],
+        [
+          -674.861,
+          603.873
+        ],
+        [
+          -673.922,
+          603.702
+        ],
+        [
+          -672.982,
+          603.838
+        ],
+        [
+          -672.132,
+          604.274
+        ],
+        [
+          -671.445,
+          604.988
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542495",
+      "name": "Provisional building 727542495",
+      "osm_way": "727542495",
+      "footprint": [
+        [
+          -735.424,
+          590.607
+        ],
+        [
+          -734.931,
+          575.107
+        ],
+        [
+          -724.145,
+          575.454
+        ],
+        [
+          -724.323,
+          581.12
+        ],
+        [
+          -722.429,
+          581.179
+        ],
+        [
+          -722.743,
+          591.013
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542499",
+      "name": "Provisional building 727542499",
+      "osm_way": "727542499",
+      "footprint": [
+        [
+          -625.183,
+          527.493
+        ],
+        [
+          -624.869,
+          528.638
+        ],
+        [
+          -624.943,
+          529.815
+        ],
+        [
+          -625.406,
+          530.899
+        ],
+        [
+          -626.201,
+          531.777
+        ],
+        [
+          -627.235,
+          532.345
+        ],
+        [
+          -628.396,
+          532.542
+        ],
+        [
+          -629.564,
+          532.346
+        ],
+        [
+          -630.586,
+          531.797
+        ],
+        [
+          -631.369,
+          530.944
+        ],
+        [
+          -631.843,
+          529.89
+        ],
+        [
+          -631.95,
+          528.733
+        ],
+        [
+          -631.672,
+          527.608
+        ],
+        [
+          -631.058,
+          526.626
+        ],
+        [
+          -630.152,
+          525.903
+        ],
+        [
+          -629.067,
+          525.502
+        ],
+        [
+          -627.909,
+          525.477
+        ],
+        [
+          -626.799,
+          525.82
+        ],
+        [
+          -625.854,
+          526.519
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542501",
+      "name": "Provisional building 727542501",
+      "osm_way": "727542501",
+      "footprint": [
+        [
+          -670.685,
+          495.391
+        ],
+        [
+          -671.314,
+          488.971
+        ],
+        [
+          -664.095,
+          488.255
+        ],
+        [
+          -663.458,
+          494.683
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542502",
+      "name": "Provisional building 727542502",
+      "osm_way": "727542502",
+      "footprint": [
+        [
+          -624.037,
+          511.819
+        ],
+        [
+          -617.112,
+          510.86
+        ],
+        [
+          -616.935,
+          512.119
+        ],
+        [
+          -608.723,
+          510.982
+        ],
+        [
+          -608.829,
+          510.239
+        ],
+        [
+          -601.312,
+          509.194
+        ],
+        [
+          -602.105,
+          503.483
+        ],
+        [
+          -610.091,
+          504.589
+        ],
+        [
+          -610.241,
+          503.55
+        ],
+        [
+          -617.576,
+          504.575
+        ],
+        [
+          -617.407,
+          505.797
+        ],
+        [
+          -624.728,
+          506.809
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542503",
+      "name": "Provisional building 727542503",
+      "osm_way": "727542503",
+      "footprint": [
+        [
+          -579.682,
+          491.103
+        ],
+        [
+          -577.919,
+          483.656
+        ],
+        [
+          -568.372,
+          485.917
+        ],
+        [
+          -570.134,
+          493.365
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542517",
+      "name": "Provisional building 727542517",
+      "osm_way": "727542517",
+      "footprint": [
+        [
+          -543.11,
+          559.111
+        ],
+        [
+          -543.305,
+          539.658
+        ],
+        [
+          -533.539,
+          539.563
+        ],
+        [
+          -533.344,
+          559.015
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542518",
+      "name": "Provisional building 727542518",
+      "osm_way": "727542518",
+      "footprint": [
+        [
+          -717.701,
+          515.701
+        ],
+        [
+          -688.975,
+          506.593
+        ],
+        [
+          -684.991,
+          519.161
+        ],
+        [
+          -713.724,
+          528.261
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542519",
+      "name": "Provisional building 727542519",
+      "osm_way": "727542519",
+      "footprint": [
+        [
+          -698.972,
+          541.5
+        ],
+        [
+          -700.39,
+          535.447
+        ],
+        [
+          -689.783,
+          532.971
+        ],
+        [
+          -688.369,
+          539.029
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542522",
+      "name": "Provisional building 727542522",
+      "osm_way": "727542522",
+      "footprint": [
+        [
+          -548.643,
+          388.195
+        ],
+        [
+          -548.52,
+          378.667
+        ],
+        [
+          -540.283,
+          378.764
+        ],
+        [
+          -540.392,
+          388.296
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542523",
+      "name": "Provisional building 727542523",
+      "osm_way": "727542523",
+      "footprint": [
+        [
+          -578.41,
+          428.924
+        ],
+        [
+          -578.421,
+          438.837
+        ],
+        [
+          -563.957,
+          438.84
+        ],
+        [
+          -563.959,
+          428.923
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542526",
+      "name": "Provisional building 727542526",
+      "osm_way": "727542526",
+      "footprint": [
+        [
+          -386.714,
+          278.945
+        ],
+        [
+          -385.977,
+          272.057
+        ],
+        [
+          -377.817,
+          272.935
+        ],
+        [
+          -378.559,
+          279.828
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542527",
+      "name": "Provisional building 727542527",
+      "osm_way": "727542527",
+      "footprint": [
+        [
+          -295.469,
+          300.913
+        ],
+        [
+          -294.079,
+          292.116
+        ],
+        [
+          -285.859,
+          293.412
+        ],
+        [
+          -287.248,
+          302.209
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727542528",
+      "name": "Provisional building 727542528",
+      "osm_way": "727542528",
+      "footprint": [
+        [
+          -291.284,
+          315.608
+        ],
+        [
+          -289.789,
+          305.667
+        ],
+        [
+          -284.758,
+          306.431
+        ],
+        [
+          -286.261,
+          316.364
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-727752078",
+      "name": "Provisional building 727752078",
+      "osm_way": "727752078",
+      "footprint": [
+        [
+          -568.836,
+          464.218
+        ],
+        [
+          -567.657,
+          459.413
+        ],
+        [
+          -557.344,
+          461.945
+        ],
+        [
+          -558.522,
+          466.75
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-1293848191",
+      "name": "Provisional building 1293848191",
+      "osm_way": "1293848191",
+      "footprint": [
+        [
+          -811.391,
+          808.618
+        ],
+        [
+          -811.203,
+          805.568
+        ],
+        [
+          -814.409,
+          805.374
+        ],
+        [
+          -814.592,
+          808.419
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-1541366798",
+      "name": "Provisional building 1541366798",
+      "osm_way": "1541366798",
+      "footprint": [
+        [
+          -90.095,
+          373.902
+        ],
+        [
+          -89.62,
+          370.933
+        ],
+        [
+          -90.589,
+          369.396
+        ],
+        [
+          -92.89,
+          369.341
+        ],
+        [
+          -93.726,
+          369.782
+        ],
+        [
+          -94.241,
+          373.081
+        ],
+        [
+          -93.408,
+          374.179
+        ],
+        [
+          -90.867,
+          374.497
+        ]
+      ],
+      "height_m": 5.0,
+      "height_uncertainty_m": 2,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google3d-south-orbits",
+        "registered-aerial",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
+      "replace_with": null
+    },
+    {
+      "id": "way-49838476",
+      "name": "Morrisons petrol canopy (placeholder)",
+      "osm_way": "49838476",
+      "footprint": [
+        [
+          -759.073,
+          287.858
+        ],
+        [
+          -733.986,
+          285.737
+        ],
+        [
+          -733.666,
+          293.019
+        ],
+        [
+          -715.629,
+          292.482
+        ],
+        [
+          -718.396,
+          263.865
+        ],
+        [
+          -734.998,
+          264.236
+        ],
+        [
+          -734.825,
+          272.255
+        ],
+        [
+          -760.227,
+          274.045
+        ]
+      ],
+      "height_m": 4.8,
+      "base_clearance_m": 4.0,
+      "height_uncertainty_m": 1.5,
+      "status": "placeholder-canopy",
+      "evidence": [
+        "google3d-south-orbits",
+        "OSM-seed"
+      ],
+      "footprint_confidence": "Elevatedcanopy retainsroadbeneath; nofalsegroundsolid orguessedpillars.",
+      "replace_with": null
+    }
+  ],
+  "existing_block_plans": [
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+    "regions/southport/west-street/frontage-placeholders/research/layout.json",
+    "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+    "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
+    "regions/southport/marine-drive/frontage-placeholders/research/layout.json"
+  ],
+  "budgets": {
+    "triangles_per_level": 20000,
+    "download_bytes_per_level": 5000000,
+    "gpu_bytes_per_level": 15000000
+  },
+  "limits": "Provisional block plan from Duke Street and West Street through Kings Gardens, the southern Marine Lake, Princes Park and west Ocean Plaza. Widths ±1–2 m, footprints ±1–3 m and heights ±2–3 m; no surveyed levels. Flat building tops are height bounds. Pier, ride equipment, detailed balustrades and small garden features are deferred."
+}

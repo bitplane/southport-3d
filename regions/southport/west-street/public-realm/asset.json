@@ -37,13 +37,15 @@
       "regions/southport/west-street/frontage-placeholders/research/layout.json",
       "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
-      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",
+      "regions/southport/marine-lake-south/frontage-placeholders/research/layout.json"
     ],
     "validate": [
       "regions/southport/west-street/frontage-placeholders/research/layout.json",
       "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
-      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",
+      "regions/southport/marine-lake-south/frontage-placeholders/research/layout.json"
     ]
   }
 }

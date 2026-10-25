@@ -1,0 +1,979 @@
+{
+  "schema_version": 1,
+  "units": "metres",
+  "snag": "a996ab166e984318922eac83b3b68781",
+  "scope_projection": {
+    "method": "Ray-plane intersection of saved camera quaternion,fov50,aspect2.06465 atz2.2 then inverse43.5293siteyaw",
+    "box_site_approx": [
+      [
+        -821,
+        26
+      ],
+      [
+        -770,
+        498
+      ],
+      [
+        -25,
+        290
+      ],
+      [
+        -51,
+        49
+      ]
+    ],
+    "right_edge_site_approx": [
+      [
+        -694,
+        1196
+      ],
+      [
+        14,
+        646
+      ]
+    ]
+  },
+  "height_inputs": "Ground floors3.1\u20133.2m, three/fourstorey lodging groups12\u201316m includingroof allowance; visible lowretail5\u201310m; generic storeyclasses\u00b12\u20133m. OSMlevels retained onlywhere consistent with orbit.",
+  "plan_scale": {
+    "flat_reference_scale_m": 50,
+    "flat_scale_css_pixels": 137,
+    "m_per_pixel": 0.36496350364963503,
+    "source": "GoogleMaps17z atlat53.6475, viewport1440x1000; uncertainwall-edge2\u20138px=>0.7\u20132.9m"
+  },
+  "clearance_corrections": [
+    {
+      "osm_way": "30141969",
+      "original_footprint": [
+        [
+          -356.624,
+          782.317
+        ],
+        [
+          -291.247,
+          788.339
+        ],
+        [
+          -291.575,
+          791.874
+        ],
+        [
+          -281.147,
+          792.84
+        ],
+        [
+          -281.612,
+          797.888
+        ],
+        [
+          -273.338,
+          798.656
+        ],
+        [
+          -273.882,
+          804.501
+        ],
+        [
+          -248.571,
+          806.851
+        ],
+        [
+          -248.089,
+          801.648
+        ],
+        [
+          -238.391,
+          802.554
+        ],
+        [
+          -238.04,
+          798.843
+        ],
+        [
+          -227.486,
+          799.826
+        ],
+        [
+          -227.032,
+          794.958
+        ],
+        [
+          -222.558,
+          795.376
+        ],
+        [
+          -223.085,
+          801.02
+        ],
+        [
+          -185.267,
+          804.569
+        ],
+        [
+          -184.644,
+          797.867
+        ],
+        [
+          -181.297,
+          761.554
+        ],
+        [
+          -176.997,
+          761.952
+        ],
+        [
+          -174.851,
+          738.679
+        ],
+        [
+          -221.283,
+          734.406
+        ],
+        [
+          -220.47,
+          725.558
+        ],
+        [
+          -266.19,
+          721.345
+        ],
+        [
+          -266.88,
+          728.925
+        ],
+        [
+          -350.981,
+          721.175
+        ]
+      ],
+      "road_intersection_m2": 1.44679834805698,
+      "original_area_m2": 11872.888113000006,
+      "decision": "Reserve open mapped access at conflicting seed roof edge; wall position provisional\u00b12m. Loaded opposing3D establishes passage/open approach; no covered arch invented.",
+      "new_outlines": [
+        [
+          [
+            -291.247,
+            788.339
+          ],
+          [
+            -291.575,
+            791.874
+          ],
+          [
+            -281.147,
+            792.84
+          ],
+          [
+            -281.612,
+            797.888
+          ],
+          [
+            -273.338,
+            798.656
+          ],
+          [
+            -273.882,
+            804.501
+          ],
+          [
+            -248.571,
+            806.851
+          ],
+          [
+            -248.089,
+            801.648
+          ],
+          [
+            -238.391,
+            802.554
+          ],
+          [
+            -238.04,
+            798.843
+          ],
+          [
+            -227.486,
+            799.826
+          ],
+          [
+            -227.032,
+            794.958
+          ],
+          [
+            -222.558,
+            795.376
+          ],
+          [
+            -223.085,
+            801.02
+          ],
+          [
+            -185.267,
+            804.569
+          ],
+          [
+            -184.644,
+            797.867
+          ],
+          [
+            -181.297,
+            761.554
+          ],
+          [
+            -176.997,
+            761.952
+          ],
+          [
+            -174.851,
+            738.679
+          ],
+          [
+            -221.283,
+            734.406
+          ],
+          [
+            -220.574675,
+            726.697192
+          ],
+          [
+            -222.988717,
+            725.325906
+          ],
+          [
+            -266.19,
+            721.345
+          ],
+          [
+            -266.88,
+            728.925
+          ],
+          [
+            -350.981,
+            721.175
+          ],
+          [
+            -356.624,
+            782.317
+          ]
+        ]
+      ]
+    },
+    {
+      "osm_way": "42020211",
+      "original_footprint": [
+        [
+          -808.822,
+          456.26
+        ],
+        [
+          -768.567,
+          489.401
+        ],
+        [
+          -766.61,
+          487.112
+        ],
+        [
+          -748.91,
+          465.507
+        ],
+        [
+          -747.611,
+          466.577
+        ],
+        [
+          -744.175,
+          469.408
+        ],
+        [
+          -740.61,
+          465.085
+        ],
+        [
+          -710.592,
+          428.616
+        ],
+        [
+          -721.356,
+          419.756
+        ],
+        [
+          -713.651,
+          410.411
+        ],
+        [
+          -716.763,
+          407.854
+        ],
+        [
+          -713.245,
+          403.576
+        ],
+        [
+          -723.746,
+          394.927
+        ],
+        [
+          -727.242,
+          399.17
+        ],
+        [
+          -757.55,
+          374.22
+        ],
+        [
+          -766.181,
+          384.707
+        ],
+        [
+          -759.935,
+          389.845
+        ],
+        [
+          -784.306,
+          419.46
+        ],
+        [
+          -780.865,
+          422.287
+        ],
+        [
+          -807.171,
+          454.262
+        ]
+      ],
+      "road_intersection_m2": 7.747002961252409,
+      "original_area_m2": 5647.813599000003,
+      "decision": "Reserve open mapped access at conflicting seed roof edge; wall position provisional\u00b12m. Loaded opposing3D establishes passage/open approach; no covered arch invented.",
+      "new_outlines": [
+        [
+          [
+            -768.567,
+            489.401
+          ],
+          [
+            -766.61,
+            487.112
+          ],
+          [
+            -748.91,
+            465.507
+          ],
+          [
+            -747.611,
+            466.577
+          ],
+          [
+            -744.175,
+            469.408
+          ],
+          [
+            -742.041381,
+            466.820725
+          ],
+          [
+            -742.59636,
+            466.141822
+          ],
+          [
+            -742.849586,
+            465.301229
+          ],
+          [
+            -742.761855,
+            464.427717
+          ],
+          [
+            -742.346523,
+            463.654271
+          ],
+          [
+            -741.666822,
+            463.09864
+          ],
+          [
+            -740.826229,
+            462.845414
+          ],
+          [
+            -739.952717,
+            462.933145
+          ],
+          [
+            -739.180228,
+            463.347963
+          ],
+          [
+            -710.592,
+            428.616
+          ],
+          [
+            -721.356,
+            419.756
+          ],
+          [
+            -713.651,
+            410.411
+          ],
+          [
+            -716.763,
+            407.854
+          ],
+          [
+            -713.245,
+            403.576
+          ],
+          [
+            -723.746,
+            394.927
+          ],
+          [
+            -727.242,
+            399.17
+          ],
+          [
+            -757.55,
+            374.22
+          ],
+          [
+            -766.181,
+            384.707
+          ],
+          [
+            -759.935,
+            389.845
+          ],
+          [
+            -784.306,
+            419.46
+          ],
+          [
+            -780.865,
+            422.287
+          ],
+          [
+            -807.171,
+            454.262
+          ],
+          [
+            -808.822,
+            456.26
+          ]
+        ]
+      ]
+    },
+    {
+      "osm_way": "376044815",
+      "original_footprint": [
+        [
+          -276.801,
+          80.2
+        ],
+        [
+          -275.82,
+          104.925
+        ],
+        [
+          -268.907,
+          104.653
+        ],
+        [
+          -269.888,
+          79.928
+        ]
+      ],
+      "road_intersection_m2": 2.269139814066051,
+      "original_area_m2": 171.19075700000027,
+      "decision": "Reserve open mapped access at conflicting seed roof edge; wall position provisional\u00b12m. Loaded opposing3D establishes passage/open approach; no covered arch invented.",
+      "new_outlines": [
+        [
+          [
+            -276.119231,
+            97.383222
+          ],
+          [
+            -275.219186,
+            104.90136
+          ],
+          [
+            -268.907,
+            104.653
+          ],
+          [
+            -269.888,
+            79.928
+          ],
+          [
+            -276.801,
+            80.2
+          ]
+        ]
+      ]
+    },
+    {
+      "osm_way": "376044816",
+      "original_footprint": [
+        [
+          -256.117,
+          117.208
+        ],
+        [
+          -273.685,
+          113.706
+        ],
+        [
+          -275.047,
+          107.569
+        ],
+        [
+          -255.551,
+          107.964
+        ]
+      ],
+      "road_intersection_m2": 0.10573315958100853,
+      "original_area_m2": 141.7448430000001,
+      "decision": "Reserve open mapped access at conflicting seed roof edge; wall position provisional\u00b12m. Loaded opposing3D establishes passage/open approach; no covered arch invented.",
+      "new_outlines": [
+        [
+          [
+            -273.685,
+            113.706
+          ],
+          [
+            -256.117,
+            117.208
+          ],
+          [
+            -255.551,
+            107.964
+          ],
+          [
+            -274.899468,
+            107.571989
+          ],
+          [
+            -274.727454,
+            109.008833
+          ]
+        ]
+      ]
+    },
+    {
+      "osm_way": "376059452",
+      "original_footprint": [
+        [
+          -257.252,
+          132.826
+        ],
+        [
+          -258.752,
+          165.497
+        ],
+        [
+          -274.929,
+          165.08
+        ],
+        [
+          -272.093,
+          131.785
+        ],
+        [
+          -271.372,
+          129.488
+        ],
+        [
+          -269.678,
+          127.879
+        ],
+        [
+          -261.116,
+          128.758
+        ],
+        [
+          -258.516,
+          130.48
+        ]
+      ],
+      "road_intersection_m2": 1.8126919095284546,
+      "original_area_m2": 562.3991899999997,
+      "decision": "Reserve open mapped access at conflicting seed roof edge; wall position provisional\u00b12m. Loaded opposing3D establishes passage/open approach; no covered arch invented.",
+      "new_outlines": [
+        [
+          [
+            -269.678,
+            127.879
+          ],
+          [
+            -271.372,
+            129.488
+          ],
+          [
+            -272.093,
+            131.785
+          ],
+          [
+            -274.929,
+            165.08
+          ],
+          [
+            -258.752,
+            165.497
+          ],
+          [
+            -257.252,
+            132.826
+          ],
+          [
+            -258.516,
+            130.48
+          ],
+          [
+            -259.743676,
+            129.666901
+          ],
+          [
+            -265.836465,
+            128.273383
+          ]
+        ]
+      ]
+    },
+    {
+      "osm_way": "376062037",
+      "original_footprint": [
+        [
+          -239.589,
+          193.401
+        ],
+        [
+          -252.353,
+          191.845
+        ],
+        [
+          -249.324,
+          136.611
+        ],
+        [
+          -245.899,
+          132.237
+        ],
+        [
+          -237.394,
+          133.784
+        ],
+        [
+          -240.124,
+          169.865
+        ],
+        [
+          -245.034,
+          168.787
+        ],
+        [
+          -245.814,
+          180.813
+        ],
+        [
+          -237.673,
+          181.785
+        ]
+      ],
+      "road_intersection_m2": 3.6146415891621073,
+      "original_area_m2": 635.225431500001,
+      "decision": "Reserve open mapped access at conflicting seed roof edge; wall position provisional\u00b12m. Loaded opposing3D establishes passage/open approach; no covered arch invented.",
+      "new_outlines": [
+        [
+          [
+            -249.324,
+            136.611
+          ],
+          [
+            -252.353,
+            191.845
+          ],
+          [
+            -239.589,
+            193.401
+          ],
+          [
+            -237.673,
+            181.785
+          ],
+          [
+            -245.814,
+            180.813
+          ],
+          [
+            -245.034,
+            168.787
+          ],
+          [
+            -240.124,
+            169.865
+          ],
+          [
+            -237.427913,
+            134.232211
+          ],
+          [
+            -246.161598,
+            132.572358
+          ]
+        ]
+      ]
+    },
+    {
+      "osm_way": "376063742",
+      "original_footprint": [
+        [
+          -444.466,
+          114.996
+        ],
+        [
+          -443.366,
+          136.906
+        ],
+        [
+          -445.252,
+          137.009
+        ],
+        [
+          -445.094,
+          140.098
+        ],
+        [
+          -455.068,
+          140.606
+        ],
+        [
+          -455.209,
+          137.899
+        ],
+        [
+          -451.219,
+          137.702
+        ],
+        [
+          -452.347,
+          115.389
+        ]
+      ],
+      "road_intersection_m2": 1.6265729167200205,
+      "original_area_m2": 202.45697899999982,
+      "decision": "Reserve open mapped access at conflicting seed roof edge; wall position provisional\u00b12m. Loaded opposing3D establishes passage/open approach; no covered arch invented.",
+      "new_outlines": [
+        [
+          [
+            -455.068,
+            140.606
+          ],
+          [
+            -445.094,
+            140.098
+          ],
+          [
+            -445.252,
+            137.009
+          ],
+          [
+            -443.366,
+            136.906
+          ],
+          [
+            -444.466,
+            114.996
+          ],
+          [
+            -452.347,
+            115.389
+          ],
+          [
+            -451.219,
+            137.702
+          ],
+          [
+            -452.795015,
+            137.779813
+          ],
+          [
+            -452.943143,
+            138.027216
+          ],
+          [
+            -453.648035,
+            138.550519
+          ],
+          [
+            -454.49953,
+            138.764237
+          ],
+          [
+            -455.169089,
+            138.665243
+          ]
+        ]
+      ]
+    }
+  ],
+  "skipped_existing_osm_ids": [
+    "29090007",
+    "30141910",
+    "30142798",
+    "42028244",
+    "42128418",
+    "150615099",
+    "167319679",
+    "370726912",
+    "375391230",
+    "375391231",
+    "375391232",
+    "375392823",
+    "375392824",
+    "375392825",
+    "375393549",
+    "375393550",
+    "375393551",
+    "375395556",
+    "375538202",
+    "375540625",
+    "376047286",
+    "376047287",
+    "376047288",
+    "376047289",
+    "376059454",
+    "376062031",
+    "376064301"
+  ],
+  "ground_ownership": "New study subtracts oldMarine study and exact priorground exterior boundary interfaces; all old/newfootprints excluded. Lakewater is separately nonwalkable; bridges preserve separate support identity.",
+  "uncertainty": "Bounded Duke/West/Promenade to MarineDrive, KingsGardens, southernMarineLake, PrincesPark and westOceanPlaza. Roof-height placeholders and estimated grounds, widths\u00b11\u20132m/footprints\u00b11\u20133m/heights\u00b12\u20133m; not surveyed. Pier and ride equipment omitted. Lake formal lido and soft bank distinguished; fine balustrade, garden and Esplanade levels provisional.",
+  "raised_canopy": {
+    "osm_way": "49838476",
+    "base_clearance_m": 4,
+    "top_height_m": 4.8,
+    "reason": "Source layer1, actual3D canopy overforecourt. Retainfull outline as raisedslab, roadopenbeneath; supportsdeferred."
+  },
+  "omitted_seed_conflicts": [
+    {
+      "osm_way": "721692669",
+      "reason": "6.5m\u00b2substation outline mostlyonmappedaccessaxis; exactposition unresolved, excludedratherthan inventroadblock."
+    },
+    {
+      "osm_way": "375395419",
+      "reason": "Outline crosses northernquarterstudyboundaryX85 by57m and liesoutside snagboxX<0; avoids claiming unresearched adjacentBathblock/groundownership. Deferred outside thisseawardpass."
+    }
+  ],
+  "venetian_plan_controls": {
+    "url": "https://www.google.com/maps/@53.6492,-3.0115,18z/data=!3m1!1e3",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "control": {
+      "pixel": [
+        800,
+        500
+      ],
+      "context_menu_lat_lon": [
+        53.6492,
+        -3.011071
+      ]
+    },
+    "points": [
+      {
+        "pixel": [
+          827,
+          531
+        ],
+        "lat_lon": [
+          53.649101,
+          -3.010926
+        ]
+      },
+      {
+        "pixel": [
+          737,
+          458
+        ],
+        "lat_lon": [
+          53.649334,
+          -3.011409
+        ]
+      },
+      {
+        "pixel": [
+          620,
+          369
+        ],
+        "lat_lon": [
+          53.649617,
+          -3.012036
+        ]
+      },
+      {
+        "pixel": [
+          493,
+          267
+        ],
+        "lat_lon": [
+          53.649941,
+          -3.012718
+        ]
+      }
+    ],
+    "width": "14\u201315pixel acrossbridge, .354m/px =>5.0\u20135.3m; adopted5.2\u00b1.8m",
+    "correction": "OSM oldYahoomappingjogs removed; measuredcurrentaerialstraightspans instead. Axispoints\u00b1.6m duepixelcentering/railparallax; upperdeckheight2.2\u00b1.6m estimated."
+  },
+  "neighbour_boundary_precision_trims": [
+    {
+      "id": "way-375395866",
+      "removed_m2": 0.003482132999963144,
+      "original": [
+        [
+          69.876,
+          269.691
+        ],
+        [
+          47.566,
+          263.861
+        ],
+        [
+          50.04,
+          253.082
+        ],
+        [
+          47.42,
+          252.192
+        ],
+        [
+          54.344,
+          227.098
+        ],
+        [
+          56.169,
+          219.622
+        ],
+        [
+          81.051,
+          226.893
+        ],
+        [
+          75.131,
+          246.366
+        ],
+        [
+          75.602,
+          247.101
+        ],
+        [
+          70.555,
+          267.004
+        ]
+      ]
+    }
+  ],
+  "height_group_inputs": {
+    "Royal Clifton": "Four main storeys at roughly3.1m plus roof allowance\u224816m; observed in opposing close3D, \u00b13m.",
+    "Ocean Plaza leisure/cinema": "Tallest broad cinema roof roughly comparable to or above the12m Premier Inn;14m height bound, \u00b13m. A single flat cap does not reconstruct its unequal roof pitches.",
+    "Silcocks restaurant": "Two main floor/roof zones,7\u00b12m bound.",
+    "Other groups": "Storey intervals approximately3.1\u20133.2m; low service blocks3.5\u20135m. All heights are visual bounds, not surveys."
+  }
+}

@@ -68,3 +68,9 @@ the aerial and street images. The scoped neighbour audit retains microscopic
 float32 boundary residues in the private report; it does not claim the older
 map is free of unrelated conflicts. Review images, seam results and native audit
 reports stay under `../output/` or `../references/`, outside Git.
+
+The [south Marine Lake extension](MARINE-LAKE-SOUTH.md) carries the mapped
+Promenade approach and shared parking courts through this asset's northern and
+western ownership cuts. These surfaces now use the same road/parking height on
+both sides, preserving the existing building and courtyard exclusions. New
+parking interfaces add no guessed bay markings.

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "front": {
+    "evidence": "Loaded July 2026 Promenade and West Street panoramas; opposing actual textured Google 3D views.",
+    "observed": "Frontage groups, setbacks, broad storey counts and open entrances. Building volumes are provisional; individual facades are not reconstructed."
+  },
+  "side": {
+    "evidence": "Four close 3D orbits plus the wider assembled seafront orbit.",
+    "observed": "Royal Clifton returns, service blocks, lodging gaps and the Ocean Plaza groups. Hidden private wall positions remain uncertain."
+  },
+  "rear": {
+    "evidence": "Opposing actual 3D views along West Street and across the seafront blocks.",
+    "observed": "Roof and rear projections, open courts and access lanes. No ground-level private courtyard survey."
+  },
+  "roof": {
+    "evidence": "Actual textured 3D views, inspected from four directions.",
+    "observed": "Height groups and principal roof extents. Flat caps are upper height bounds; detailed roof geometry is deferred."
+  },
+  "terrain": {
+    "evidence": "Actual Google 3D and aerials, dated street panoramas, Historic England landform description.",
+    "observed": "Formal lowered lido, irregular planted northwest bank, raised Esplanade and broad access ramp. Metric heights remain estimates above the existing local datum."
+  },
+  "searched_unavailable": [
+    "Lower Promenade at53.6483951,-3.0122842 selected a January 2018 user panorama but reported No Street View and did not load.",
+    "Princes Park at53.6499908,-3.0127511 selected a February 2017 user panorama but did not load.",
+    "Esplanade at53.647034,-3.0147015 and53.64739,-3.01398 did not load.",
+    "Mapillary web search yielded no useful local evidence; no Mapillary panorama was inspected."
+  ],
+  "omissions": "Private plot wall survey, individual rides, pier, exact small garden features, ornamental balustrades and small current site changes are deferred."
+}

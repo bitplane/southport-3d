@@ -142,3 +142,8 @@ full neighbouring audit, and `cross-asset-triage.json`. Renders are under the
 ordinary asset build directories. The audited packages were confirmed unchanged
 through the subsequent Burlington scene publication (`6fc02f26…`).
 
+
+The [south Marine Lake extension](MARINE-LAKE-SOUTH.md) now fills the southern
+lake, Kings Gardens, Princes Park and west Ocean Plaza in separate assets. It
+yields this pass's authored study boundary and keeps the detailed Marine Way
+Bridge structure and profiles under their existing ownership.

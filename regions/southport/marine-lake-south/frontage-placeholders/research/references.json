@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "represented_appearance": "Google actual3D undated imagery, supported by Jul/Aug2026 street evidence and older OceanPlazaNov2015 frontage; small changing ride footprints omitted.",
+  "sources": [
+    {
+      "id": "google3d-south-orbits",
+      "url": "https://www.google.com/maps/@53.6474999,-3.0236607,866a,35y,90h,39.21t/data=!3m1!1e3",
+      "accessed": "2026-10-25",
+      "observations": "Loaded textured3D at opposing0/90/180/270 views, then432m close four-way orbit: Promenade lodging groups, WestStreet rears, detached service blocks, lower lake/lido, raised Esplanade and park. Source photographs kept private."
+    },
+    {
+      "id": "registered-aerial",
+      "url": "https://www.google.com/maps/@53.6475,-3.0129,17z/data=!3m1!1e3",
+      "accessed": "2026-10-25",
+      "observations": "Roof and road axes, southern lake perimeter and park path topology. Pixel scale50m\u2248137px at flat17z; close perspective20m\u224855px only for local horizontal controls, not screen-wide metre scale."
+    },
+    {
+      "id": "promenade-street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.647524,-3.010833&heading=300&pitch=0&fov=85",
+      "capture": "Jul2026",
+      "accessed": "2026-10-25",
+      "observations": "Actual loaded panorama: broad promenade footway, planted open garden boundary and asphalt road; no continuous wall across access."
+    },
+    {
+      "id": "west-street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6468711,-3.0098417&heading=180&pitch=0&fov=85",
+      "capture": "Jul2026",
+      "accessed": "2026-10-25",
+      "observations": "Narrow pavements,2\u20134storey backs and brick court wall with entrance gaps. Exact private wall tracing deferred rather than closing every forecourt."
+    },
+    {
+      "id": "ocean-street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6515148,-3.0147754&heading=270&pitch=0&fov=85",
+      "capture": "Nov2015",
+      "accessed": "2026-10-25",
+      "observations": "Actually loaded low leisure frontage and broad carpark/access aisle. Older tenant signs not reconstructed."
+    },
+    {
+      "id": "coast-street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6508441,-3.0182992&heading=135&pitch=0&fov=85",
+      "capture": "Aug2026",
+      "accessed": "2026-10-25",
+      "observations": "Loaded coastal asphalt shared path, rough grass/fence behind; no fabricated inland raised pavement."
+    },
+    {
+      "id": "historic-england-landform",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1001535",
+      "accessed": "2026-10-25",
+      "observations": "Historic terrain description establishes raisedEsplanade, lower lido1.2m belowMarineWalk and different irregularNWbank. Used as landform evidence, not current survey."
+    },
+    {
+      "id": "sefton-gardens",
+      "url": "https://sefton.gov.uk/around-sefton/parks-and-greenspaces/kings-gardens-in-southport/",
+      "accessed": "2026-10-25",
+      "observations": "Restored paths/access/garden and VenetianBridge context."
+    },
+    {
+      "id": "OSM-seed",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-3.027,53.639,-3.002,53.654",
+      "accessed": "2026-10-25",
+      "attribution": "\u00a9 OpenStreetMap contributors ODbL1.0; https://www.openstreetmap.org/copyright",
+      "observations": "Attributed seed checked against actual3D and dated street views; not ground truth."
+    },
+    {
+      "id": "coast-seaward-street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6508441,-3.0182992&heading=315&pitch=0&fov=85",
+      "capture": "Aug 2026",
+      "accessed": "2026-10-25",
+      "observations": "Actual fully loaded opposing panorama: asphalt footway, concrete sea wall about 0.7\u20130.8m high, elevated upper path and blue rails. Detailed steps/deck heights are deferred; coarse wall continues the existing northern envelope."
+    }
+  ]
+}

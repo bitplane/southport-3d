@@ -55,11 +55,12 @@ courts=P.difference(remaining,green)
 # Yellow lines are confined to observed junction approaches; parked lengths
 # retain white bay edges rather than inventing continuous restrictions.
 yellow_full=union([P.difference(buffer(road_full,-a),buffer(road_full,-b)) for a,b in [(.15,.22),(.33,.40)]])
-public_mask=union([buffer(P.polygons([road_polygon(r)]),.01) for r in D['roads'][:2]])
+public_mask=union([buffer(P.polygons([road_polygon(r)]),.01) for r in D['roads'] if r in D['roads'][:2] or r.get('name')=='The Promenade'])
 yellow=P.intersection(P.intersection(yellow_full,road),public_mask)
 # Observed parking court stalls, estimated bay endpoint positions.
 white_rows=[]
 for park in D['parking_courts']:
+ if not park.get('bay_markings',True):continue
  poly=park['polygon'];xmin=min(p[0] for p in poly);xmax=max(p[0] for p in poly);ymin=min(p[1] for p in poly);ymax=max(p[1] for p in poly)
  rows=[rect(xmin+1,min(xmin+5.5,xmax-1),y,y+.09) for y in np.arange(ymin+3,ymax-2,2.5)]
  white_rows+=P.triangles(P.intersection(P.polygons(rows),P.polygons([poly])))
