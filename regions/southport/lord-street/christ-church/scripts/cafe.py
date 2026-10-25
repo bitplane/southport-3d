@@ -72,14 +72,55 @@ def build_cafe(finish, box, z0, brick, cladding, glass, frame_mat, wood, slate, 
     box('Trim cafe noticeboard inset',(0,1.68,.155),(.88,.99,.025),'modern-hall',metal,t)
     # Narrow, projecting timber-gabled porch. Side passages remain open.
     p=PORCH
+    # The porch is reddish stained timber, not the almost black bell louvres.
+    porchwood=bpy.data.materials.new('Porch reddish stained timber');porchwood.use_nodes=True
+    porchwood.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(.145,.065,.058,1)
+    porchwood.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value=.78
+    infill=bpy.data.materials.new('Porch warm timber boarding');infill.use_nodes=True
+    infill.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(.19,.105,.055,1)
+    capmat=bpy.data.materials.new('Porch buff stone caps');capmat.use_nodes=True
+    capmat.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(.47,.39,.27,1)
     for x in (p['x0']+.30,p['x1']-.30):
         box('Pier cafe porch',(x,p['pier_y'],z0+p['pier_top']/2),(.40,.40,p['pier_top']),'modern-hall',brick)
-        box('Trim porch pier capital',(x,p['pier_y'],z0+2.78),(.48,.48,.12),'modern-hall',frame_mat)
-    box('Trim porch cross beam',((p['x0']+p['x1'])/2,p['pier_y'],z0+2.93),(2.70,.24,.18),'modern-hall',wood)
-    m=roof('Roof cafe entrance canopy',p['x0'],p['x1'],p['y0'],p['y1'],z0+p['eaves'],z0+p['ridge'],0)
-    # Underside and triangular gable ends are timber, only pitched faces slate.
-    m.indices=[1,1,0,1,0]
-    finish(m,'roofs',[slate,wood])
+        box('Trim porch pier capital',(x,p['pier_y'],z0+2.78),(.48,.48,.12),'modern-hall',capmat)
+    box('Trim porch cross beam',((p['x0']+p['x1'])/2,p['pier_y'],z0+2.93),(2.66,.24,.18),'modern-hall',porchwood)
+    middle=(p['x0']+p['x1'])/2
+    # Thin folded roof, with a genuine recessed gable rather than a solid wedge.
+    section=[(p['x0'],p['eaves']),(middle,p['ridge']-.10),(p['x1'],p['eaves']),
+             (p['x1'],p['eaves']+.10),(middle,p['ridge']),(p['x0'],p['eaves']+.10)]
+    m=Mesh('Roof cafe entrance canopy')
+    m.add([(x,y,z0+z) for y in (p['y0'],p['y1']) for x,z in section],
+          [tuple(range(6)),tuple(reversed(range(6,12)))],1)
+    for i in range(6):
+        j=(i+1)%6;m.add([(section[i][0],p['y0'],z0+section[i][1]),(section[i][0],p['y1'],z0+section[i][1]),
+                       (section[j][0],p['y1'],z0+section[j][1]),(section[j][0],p['y0'],z0+section[j][1])],
+                      [(0,1,2,3)],0 if i in (3,4) else 1)
+    ob=finish(m,'roofs',[slate,porchwood])
+    # Slate courses run parallel to the ridge; metric tile sizes, not facade UVs.
+    for face in ob.data.polygons:
+        for li in face.loop_indices:
+            v=ob.data.vertices[ob.data.loops[li].vertex_index].co
+            distance=math.hypot(v.x-middle,v.z-z0-p['ridge'])
+            ob.data.uv_layers.active.data[li].uv=((v.y-p['y0'])/1.6,distance/1.6)
+    # Separate horizontal infill boards sit behind the projecting barge boards.
+    apex=p['ridge']-.12;bottom=p['eaves'];half=(p['x1']-p['x0'])/2-.035
+    for i in range(math.ceil((apex-bottom)/.13)):
+        lo=bottom+i*.13;hi=min(apex,lo+.126)
+        if hi<=lo:continue
+        w0=half*(apex-lo)/(apex-bottom);w1=half*(apex-hi)/(apex-bottom)
+        m=Mesh('Trim porch recessed gable board')
+        poly=[(middle-w0,lo),(middle+w0,lo),(middle+w1,hi),(middle-w1,hi)]
+        m.add([(x,y,z0+z) for y in (p['y1']-.24,p['y1']-.20) for x,z in poly],
+              [(0,1,2,3),(7,6,5,4),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0)])
+        finish(m,'roofs',[infill])
+    # Tongue-and-groove backing closes the narrow joints; no daylight slivers.
+    m=Mesh('Trim porch gable backing')
+    m.add([(middle-half,p['y1']-.245,z0+bottom),(middle,p['y1']-.245,z0+apex),
+           (middle+half,p['y1']-.245,z0+bottom)],[(0,1,2)])
+    finish(m,'roofs',[porchwood])
+    # Long fascia joins the verge, above the pier caps, as in the close view.
+    for x in (p['x0']+.06,p['x1']-.06):
+        box('Trim porch side fascia',(x,(p['y0']+p['y1'])/2,z0+2.93),(.12,p['y1']-p['y0'],.18),'modern-hall',porchwood)
     # Projecting timber verge boards frame the visible garden-facing gable.
     middle=(p['x0']+p['x1'])/2
     for left in (True,False):
@@ -90,6 +131,6 @@ def build_cafe(finish, box, z0, brick, cladding, glass, frame_mat, wood, slate, 
         m=Mesh('Trim porch timber verge')
         m.add([(x,y,z0+z) for y in (p['y1'],p['y1']+.12) for x,z in poly],
               [(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
-        finish(m,'modern-hall',[wood])
+        finish(m,'roofs',[porchwood])
     box('Door cafe porch backing',(-87.025,-29.52,z0+1.75),(4.30,.12,3.50),'modern-hall',wood)
     for x in (-88.45,-87.025,-85.6):box('Window cafe porch glazing',(x,-29.44,z0+1.90),(1.20,.035,2.80),'modern-hall',glass)

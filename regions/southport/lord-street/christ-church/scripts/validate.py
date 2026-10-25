@@ -148,6 +148,13 @@ for pier in [o for o in objects if o.name.startswith('Pier cafe porch')]:
  assert abs(max(v.co.z for v in pier.data.vertices)-(.58+2.72))<1e-4
 assert any('timber' in m.name.lower() for m in canopy.data.materials),'Missing timber gable/soffit'
 print('Cafe porch plan and continuous support levels verified')
+boards=[o for o in objects if o.name.startswith('Trim porch recessed gable board')]
+assert len(boards)>=5,'Missing recessed horizontal gable boarding'
+assert all(max(v.co.y for v in o.data.vertices)<-24.8 for o in boards),'Gable infill must sit behind verge'
+check_porch=[o for o in objects if o.name.startswith(('Roof cafe entrance canopy','Trim porch','Pier cafe porch'))]
+from coplanar import check_blender
+check_blender(check_porch)
+print('Complete porch roof, boarding, fascia and support overlap check passed')
 
 connector=bpy.data.objects['Envelope cafe connector']
 for x in (-89.50,-84.45):

@@ -73,10 +73,17 @@ beside the round corner, with its ridge below the café cap. August 2024 Street
 View and the 10m scale in the aerial support an estimated 2.9m-wide, 4.9m-deep
 porch: a long ridge towards the recessed doors, a timber gable towards the garden,
 and two brick piers with pale caps supporting a continuous timber beam. Estimated
-eaves/ridge heights are 3.02/3.87m above the building base; roof pitch and hidden
+roof soffit/eaves/ridge heights are 3.02/3.12/3.87m above the building base; roof pitch and hidden
 connections remain uncertain. Its sides are open passages, not missing walls. A full-height hall return closes the former gap above the annex.
 The image carrying a Dola AI watermark was not used to infer interior detail.
 No interior, temporary posters or photographic texture pixels were reproduced.
+
+The porch has a thin folded roof, recessed horizontal timber gable boarding,
+reddish stained verge/side fascia, and buff stone caps. Slate courses follow the
+ridge at approximately 0.30m slate width and 0.20m course exposure. These details
+follow the August 2024 close Street View; board widths, shell depth and colours
+are estimated. Fresh three-direction Google 3D views confirm the small projecting
+roof and its relation to the cafe; they do not resolve timber joints.
 
 Detail and Walk retain the rounded envelope, cladding seams, porch and glazing.
 District uses its own coarse curved frontage and porch receiver; fine trim and
