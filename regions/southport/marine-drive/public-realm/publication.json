@@ -82,14 +82,16 @@
       "collection": "lake-water"
     },
     {
-      "id": "bridge-structure",
-      "name": "Marine Way bridge structure",
-      "collection": "bridge-structure"
-    },
-    {
       "id": "shore-walls",
       "name": "Shore walls and railings",
       "collection": "shore-walls"
+    },
+    {
+      "id": "lower-promenade-ground",
+      "name": "Lower promenade below Marine Way Bridge",
+      "collection": "lower-promenade-ground",
+      "ground": true,
+      "support_surface": "southport/marine-lower-promenade"
     }
   ],
   "views": [

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "southport.marine-drive.marine-way-bridge",
+  "name": "Marine Way Bridge",
+  "region": "southport",
+  "area": "marine-drive",
+  "status": "photo-researched-structure-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "pylons",
+    "deck",
+    "fittings"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Visible 150 m asymmetric cable-stayed bridge, shared ground separately owned by Marine public realm. Below-water foundations and concealed bearing internals omitted. Dimensions estimated from imagery, not surveyed.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/marine-drive.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/marine-drive.json",
+      "regions/southport/marine-drive/public-realm/scripts/check_mesh_ownership.py",
+      "tools/coplanar_scan.cpp"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "licensing": "Primary reference photographs linked only; procedural concrete texture. Registered road axis derives from OpenStreetMap contributors ODbL 1.0."
+}

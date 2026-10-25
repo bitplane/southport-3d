@@ -29,6 +29,6 @@ def hits(x,y):
   if h[0]:out.append((o.name,h[1].z))
  return out
 # Essential route continuity and ownership, including the exact old X85 seam.
-for x,y,z in [(85.01,292,2.08),(85.01,301,2.08),(85.01,308,2.2),(-15,440,3.28),(800,883,2.08),(1330,862,2.2)]:
+for x,y,z in [(85.01,292,2.08),(85.01,301,2.08),(85.01,308,2.2),(-15,440,6.055),(800,883,2.08),(1330,862,2.2)]:
  h=hits(x,y);assert h,(x,y,'ground absent');assert max(abs(v-z)for _,v in h)<.15,(x,y,h,z)
 report={'objects':len(obs),'triangles':count,'ground_triangles':ground_count,'structure_triangles':structure_count,'checks':'All triangle interiors agree with named profiles; full mesh coplanar audit; fixed budget; route/bridge/old boundary probes. No floor under the water; water is non-walkable.','limits':D['limits']};(ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

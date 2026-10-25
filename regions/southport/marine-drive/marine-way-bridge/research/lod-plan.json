@@ -1,0 +1,25 @@
+{
+  "detail": "Metric pylon/caps/crosshead, 18 individual stays with sheaths and collars, concrete deck edge/soffit/ribs, east piers, anchors, blue pierced parapets with horn brackets and wires, lantern bollards and drains. Ground remains independently owned by Marine public realm.",
+  "walk": "Keep structural silhouette, cable sleeves, lanterns and pierced parapets; omit fine tension wires, curved parapet horns and sleeve collars. Pylon and deck meshes are identical to Detail and collapse into shared streaming chains.",
+  "district": "Separately authored fixed structural envelope from dimensional controls. Retain two pylon legs and pointed caps, crosshead, 18 cables, deck fascia/soffit, piers and anchor masses. Main parapet posts and continuous rails retain open space; fine pickets, horns, wires, lantern cages, collars and bolt heads omitted. Shallow material/joint appearance baked on actual receivers.",
+  "budgets": {
+    "district_triangles": 6000,
+    "district_download_bytes": 4000000,
+    "district_gpu_bytes": 16000000,
+    "atlases": {
+      "pylons": [
+        512,
+        512
+      ],
+      "deck": [
+        512,
+        512
+      ],
+      "fittings": [
+        512,
+        512
+      ]
+    }
+  },
+  "projection_groups": "Each streaming part projects only its own source meshes; cable receivers use small cages, pylon/slab surfaces use bounded separate cages. Added fine geometry cannot add receiver topology or enlarge atlases."
+}

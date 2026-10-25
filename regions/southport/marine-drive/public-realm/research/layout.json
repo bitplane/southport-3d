@@ -1257,16 +1257,12 @@
           376.9
         ],
         [
-          -21.893,
-          467.522
-        ],
-        [
-          -32.6,
-          498.635
+          -39.527672,
+          518.728665
         ]
       ],
-      "width": 7.4,
-      "basis": "Mapped axis checked against actual Google3D; widths estimated from scale, lane counts and StreetView.",
+      "width": 6.4,
+      "basis": "Detailed bridge survey: registered retained axis extended to measured western anchor terraces; 150 m primary architect length; 6.4 +/-0.5 m two-lane road from aerial scale and Aug2024 Street View.",
       "bridge": true
     },
     {
@@ -12132,12 +12128,8 @@
       376.9
     ],
     [
-      -21.893,
-      467.522
-    ],
-    [
-      -32.6,
-      498.635
+      -39.527672,
+      518.728665
     ]
   ],
   "bridge_halfwidth": 7.1,
@@ -12147,7 +12139,7 @@
     "triangles_per_level": 90000,
     "download_bytes_per_level": 10000000,
     "gpu_bytes_per_level": 30000000,
-    "ground_triangles_per_level": 60000,
+    "ground_triangles_per_level": 65000,
     "structure_triangles_per_level": 30000
   },
   "limits": "Bounded block plan with VictoriaStreet175\u2013230m connecting strip to Fairway roundabout. Estimated widths\u00b10.8\u20132m, walls\u00b11\u20133m and heights\u00b12\u20133m. Neutral roof bounds, no reconstructed facade details. Marine Lake north of MarineParade; southern lake/park, pier and west OceanPlaza half deferred. Dunes/grades/thresholds not surveyed. Former theatre shown as provisional construction reservation following official2025 demolition evidence; current excavations/ramp/retaining wall geometry unresolved.",

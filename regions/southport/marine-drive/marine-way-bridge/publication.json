@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/marine-way-bridge.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Marine Way Bridge",
+  "status": "Primary-photo researched structure and August 2024 furnishings; estimated metric dimensions.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "pylons",
+      "name": "pylons",
+      "collection": "pylons"
+    },
+    {
+      "id": "deck",
+      "name": "deck",
+      "collection": "deck"
+    },
+    {
+      "id": "fittings",
+      "name": "fittings",
+      "collection": "fittings"
+    }
+  ],
+  "views": [
+    {
+      "name": "Marine Way Bridge",
+      "position": [
+        -370,
+        80,
+        -220
+      ],
+      "target": [
+        -330,
+        20,
+        -330
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Bridge fittings (wire|horn|collar) ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Sub-centimetre tension wires, small curved rail brackets and sleeve joint collars fade at walking distances; main pierced railing remains."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed structural envelope."
+      }
+    },
+    {
+      "id": "structure",
+      "match": "^(?!Bridge fittings (wire|horn|collar) ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain cable and pylon silhouettes, separated caps, open parapets, individual anchors and lantern posts."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replaced by independent fixed structural receiver surfaces."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Dimension-driven long-bridge envelope preserves both legs/caps, crosshead, asymmetric 18-cable layout, open rails, fascia, piers and anchor wedges. Fine pickets and fittings are omitted; surface character baked onto actual structural receivers.",
+    "max_bytes": 4000000,
+    "max_gpu_bytes": 16000000,
+    "parts": {
+      "pylons": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 1000,
+        "cage_m": 0.25
+      },
+      "deck": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 1200,
+        "cage_m": 0.2
+      },
+      "fittings": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 4000,
+        "cage_m": 0.08
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      -300.056337,
+      7.745275,
+      -297.234148
+    ],
+    "target": [
+      -335.545879,
+      8.0,
+      -315.686584
+    ]
+  }
+}

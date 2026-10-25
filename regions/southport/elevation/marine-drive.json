@@ -16,22 +16,22 @@
       "evidence": "Preserved Promenade/MarineParade neighbour datum; local zero estimated."
     },
     "marine-bridge-east": {
-      "height_m": 3.2,
-      "uncertainty_m": 1.2,
+      "height_m": 5.5,
+      "uncertainty_m": 1.0,
       "status": "visual-estimate",
-      "evidence": "Aug2024 bridge StreetView plus actual Google3D deck profile; visual relative height, no survey."
+      "evidence": "Marine Way Bridge primary architect southport05 visible east pier/soffit above preserved lower promenade; 2024 Street View and actual 3D. Shared bridge reconstruction, no survey."
     },
     "marine-bridge-crest": {
-      "height_m": 3.4,
-      "uncertainty_m": 1.2,
+      "height_m": 6.2,
+      "uncertainty_m": 1.0,
       "status": "visual-estimate",
-      "evidence": "Google3D shallow bridge crest; estimated relative height above lake."
+      "evidence": "Marine Way Bridge primary architect southport05 visible east pier/soffit above preserved lower promenade; 2024 Street View and actual 3D. Shared bridge reconstruction, no survey."
     },
     "marine-bridge-west": {
-      "height_m": 3.2,
-      "uncertainty_m": 1.2,
+      "height_m": 6.0,
+      "uncertainty_m": 1.0,
       "status": "visual-estimate",
-      "evidence": "Google3D/StreetView shallow deck; no survey."
+      "evidence": "Marine Way Bridge primary architect southport05 visible east pier/soffit above preserved lower promenade; 2024 Street View and actual 3D. Shared bridge reconstruction, no survey."
     },
     "marine-lake": {
       "height_m": 0.6,
@@ -44,6 +44,18 @@
       "uncertainty_m": 0.2,
       "status": "legacy-estimate-preserved",
       "evidence": "Existing Stanley north ground atY175 forX>=85; same linear estimate as Leicester, joined without extending a local copied grade function."
+    },
+    "marine-bridge-anchor": {
+      "height_m": 4.25,
+      "uncertainty_m": 1.0,
+      "status": "visual-estimate",
+      "evidence": "Marine Way Bridge primary architect southport05 visible east pier/soffit above preserved lower promenade; 2024 Street View and actual 3D. Shared bridge reconstruction, no survey."
+    },
+    "marine-bridge-end": {
+      "height_m": 3.8,
+      "uncertainty_m": 1.0,
+      "status": "visual-estimate",
+      "evidence": "Marine Way Bridge primary architect southport05 visible east pier/soffit above preserved lower promenade; 2024 Street View and actual 3D. Shared bridge reconstruction, no survey."
     }
   },
   "surfaces": {
@@ -142,12 +154,20 @@
           "control": "marine-bridge-east"
         },
         {
-          "distance_m": 440,
+          "distance_m": 435,
           "control": "marine-bridge-crest"
         },
         {
-          "distance_m": 498.635,
+          "distance_m": 475.1,
           "control": "marine-bridge-west"
+        },
+        {
+          "distance_m": 511.2,
+          "control": "marine-bridge-anchor"
+        },
+        {
+          "distance_m": 518.73,
+          "control": "marine-bridge-end"
         },
         {
           "distance_m": 540,
@@ -181,12 +201,20 @@
           "control": "marine-bridge-east"
         },
         {
-          "distance_m": 440,
+          "distance_m": 435,
           "control": "marine-bridge-crest"
         },
         {
-          "distance_m": 498.635,
+          "distance_m": 475.1,
           "control": "marine-bridge-west"
+        },
+        {
+          "distance_m": 511.2,
+          "control": "marine-bridge-anchor"
+        },
+        {
+          "distance_m": 518.73,
+          "control": "marine-bridge-end"
         },
         {
           "distance_m": 540,

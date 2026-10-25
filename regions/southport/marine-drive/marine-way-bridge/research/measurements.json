@@ -1,0 +1,100 @@
+{
+  "method": "Plan pixels use metric scale bar, source axis registered to existing memorial frame; photograph ratios are perspective estimates, not calibrated survey.",
+  "plan_inputs": {
+    "private_image": "../references/marine-way-bridge/plan-full.png",
+    "center_lat_lon": [
+      53.65151,
+      -3.0093343
+    ],
+    "center_pixel": [
+      756,
+      500
+    ],
+    "scale_m": 10,
+    "scale_pixels": 76,
+    "landmarks_pixels": {
+      "east_end": [
+        1327,
+        781
+      ],
+      "east_pier": [
+        1195,
+        710
+      ],
+      "pylon_midpoint_approx": [
+        622,
+        441
+      ],
+      "west_anchor": [
+        335,
+        278
+      ],
+      "west_end": [
+        300,
+        260
+      ]
+    },
+    "calculation": "10/76 m per pixel; rotate projected ENU into site yaw 43.5293 degrees. East end (8.94,378.79), east pier (2.78,397.53), pylon midpoint (-27.50,475.11), anchor (-40.11,516.67), west end (-41.82,521.56). Snap centreline controls to retained OSM axis, allowing roughly 2-3 m satellite parallax/edge ambiguity.",
+    "full_length_check_m": 150.9,
+    "deck_width_input": "plan-scale.png 10 m over 113 pixels; outer deck lines perpendicular separation approximately 200-210 pixels gives 17.7-18.6 m; rail-to-rail about 16 m; carriageway about 6.4 m.",
+    "width_uncertainty_m": 1.0
+  },
+  "primary_confirmed": {
+    "total_length_m": 150,
+    "source": "architect"
+  },
+  "dimension_estimates": [
+    {
+      "feature": "pylon tip above local lake",
+      "value_m": 56,
+      "uncertainty_m": 4,
+      "basis": "Tall pylon/main-span ratio in multiple 3D orbits and primary architect photos; published secondary dimensions corroborate 56 m but no primary surveyed drawing found."
+    },
+    {
+      "feature": "deck surface relative local datum",
+      "value_m": 6.2,
+      "uncertainty_m": 1,
+      "basis": "Architect southport05: eastern promenade at preserved 2.2 datum; pier visible shaft about 3 m, underside beam about .8-1 m; photograph projection uncertain."
+    },
+    {
+      "feature": "main span pier to pylon",
+      "value_m": 80,
+      "uncertainty_m": 3,
+      "basis": "Registered plan pixel endpoints approximately 77-83 m; primary side photo shows separate eastern support."
+    },
+    {
+      "feature": "leg axial/across diameters",
+      "value_m": [
+        2.1,
+        1.7
+      ],
+      "uncertainty_m": 0.3,
+      "basis": "Architect03/04 leg width compared with approximately .18 m white cable and documented overall pylon proportions."
+    },
+    {
+      "feature": "cap rise/crosshead height",
+      "value_m": [
+        2.2,
+        9.1
+      ],
+      "uncertainty_m": 0.8,
+      "basis": "Architect04/06 cap and six anchor-level pixel ratios; crosshead has dark flat faces and upper maintenance railing."
+    },
+    {
+      "feature": "pedestrian rail/bollard",
+      "value_m": [
+        1.1,
+        1.05
+      ],
+      "uncertainty_m": 0.15,
+      "basis": "Street-main people and lamp/railing ratios; pickets .14 m pitch, main posts approximately 3 m and lamps approximately 9 m."
+    }
+  ],
+  "observed_counts": {
+    "main_stays": 12,
+    "back_stays": 6,
+    "pylon_legs": 2,
+    "top_caps": 2
+  },
+  "contradictions": "Provisional 28 m apex, symmetrical fan and centre position rejected. Main deck extends farther west than old OSM bridge-tag endpoint. Published width varies 18-19 m; measured reconstruction adopts 18.5 m including edge beams, 16 m between rails. No exact engineering section obtained."
+}

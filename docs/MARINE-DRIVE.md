@@ -52,14 +52,16 @@ remain deferred rather than filling unknown boundaries with walls.
 
 `regions/southport/elevation/marine-drive.json` owns the named bounded mainland,
 road, bridge and water surfaces. It preserves the Leicester Y230 grade and
-existing 2.2 m Promenade datum. The shallow bridge pavement rises to an estimated
+existing 2.2 m Promenade datum. The original shallow bridge pavement rose to an estimated
 3.4 m, above water estimated at 0.6 m; these are metres above the memorial's
 estimated local zero, **not surveyed or sea-level heights**. Every profile break
 is split into the ground meshes. Buildings keep level top bounds; their foundations follow the mainland profile.
 Interior floors are not modelled. Bridge guardrails use the shared metric
-generator, remain upright and are seated on the bridge profile. The A-frame and
-stays are provisional silhouettes, with pylon height 28±5 m. Bridge joints and
-engineering details are outside this footprint pass.
+generator, remain upright and are seated on the bridge profile. The [detailed Marine Way Bridge](MARINE-WAY-BRIDGE.md) now replaces the
+provisional pylon/stays/railing/underside. It revises the shared bridge profile to
+an estimated 6.2 m crest, widens the ground to the observed rail lines and adds
+a separate 2.2 m lower-promenade support layer beneath the eastern end. Mainland
+and water heights remain unchanged. Bridge dimensions remain reconstructed estimates.
 
 Eight bounded ground parts share the `southport/marine-corridor` support identity.
 Water, bridge structure and seawall parts are non-ground. Islands remain separate
@@ -78,7 +80,10 @@ of mathematical overlap freedom. `check_published_seams.py` checks the actual
 three-level GLBs, neighbouring handovers, identical level geometry and budgets,
 and retains the neighbouring exported overlap review queue outside Git.
 
-## Review record
+## Original block-plan review record
+
+The figures below record the original block-plan publication before the detailed
+bridge replacement. Current bridge checks and costs are documented separately.
 
 All four affected assets built and validated, then published together through
 `project.py publish`: Marine ground/placeholders, Stanley ground and Leicester

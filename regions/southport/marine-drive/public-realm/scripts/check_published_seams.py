@@ -6,7 +6,7 @@ R=Path(__file__).resolve().parents[5];sys.path[:0]=[str(R/'tools'),str(R/'lib')]
 from audit_published_coplanar import primitives,audit_level
 from southport3d.elevation import Elevations
 E=Elevations(R/'regions/southport/elevation/marine-drive.json');D=json.load(open(R/'regions/southport/marine-drive/public-realm/research/layout.json'));cat=json.load(open(R/'dist/catalog.json'));c=math.cos(math.radians(43.5293));s=math.sin(math.radians(43.5293));out=R.parent/'output/marine-drive';out.mkdir(parents=True,exist_ok=True)
-ids=['southport.marine-drive.public-realm','southport.marine-drive.frontage-placeholders','southport.promenade.marine-parade-junction','southport.leicester-quarter.public-realm','southport.leicester-quarter.frontage-placeholders','southport.nevill-street.public-realm','southport.nevill-street.frontage-placeholders','southport.stanley-street.public-realm']
+ids=['southport.marine-drive.marine-way-bridge','southport.marine-drive.public-realm','southport.marine-drive.frontage-placeholders','southport.promenade.marine-parade-junction','southport.leicester-quarter.public-realm','southport.leicester-quarter.frontage-placeholders','southport.nevill-street.public-realm','southport.nevill-street.frontage-placeholders','southport.stanley-street.public-realm']
 selected=dict(cat,assets=[a for a in cat['assets']if a['id']in ids]);exe=out/'coplanar-scan';subprocess.run(['g++','-O3','-std=c++17',str(R/'tools/coplanar_scan.cpp'),'-o',str(exe)],check=True)
 np.seterr(invalid="ignore")
 rows=[];levels={};baseline={}
@@ -14,7 +14,7 @@ for level in ['detail','walk','district']:
  tris=[];labels=[];total_bytes=0;total_triangles=0
  for asset in selected['assets']:
   for part in asset['parts']:
-   own=asset['id'].startswith('southport.marine-drive.')
+   own=asset['id'] in ['southport.marine-drive.public-realm','southport.marine-drive.frontage-placeholders']
    values=[]
    for tri,src in primitives(R/'dist'/part['levels'][level]['uri'],asset):
     if own:total_triangles+=len(tri)
@@ -54,4 +54,4 @@ for level in ['detail','walk','district']:
  levels[level]={'triangles':total_triangles,'bytes':total_bytes}
  # Retain every exported overlap candidate, including older neighbour defects.
  audit_level(selected,R/'dist',level,exe,out)
-(out/'seam-probes.json').write_text(json.dumps({'revision':cat['revision'],'probes':rows,'levels':levels,'same_geometry_all_levels':True},indent=2)+'\n');print('Published seam probes passed',len(rows),levels)
+(out/'seam-probes.json').write_text(json.dumps({'revision':cat['revision'],'probes':rows,'levels':levels,'same_canvas_geometry_all_levels':True},indent=2)+'\n');print('Published seam probes passed',len(rows),levels)

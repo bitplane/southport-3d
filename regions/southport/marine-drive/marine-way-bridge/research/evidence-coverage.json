@@ -1,0 +1,64 @@
+{
+  "north_side": {
+    "sources": [
+      "maps-orbit",
+      "street-main",
+      "architect"
+    ],
+    "confidence": "high main form, medium dimensions",
+    "seen": "Lake-facing edge, pylon northern leg, rail and sheaths, outboard anchors; underside from oblique only."
+  },
+  "south_side": {
+    "sources": [
+      "architect",
+      "maps-orbit"
+    ],
+    "confidence": "high visible form",
+    "seen": "Full underside, transverse beam/rib rhythm, east circular pier, sloping concrete fascia, inclined pylon emerging from water."
+  },
+  "east_approach": {
+    "sources": [
+      "maps-plan",
+      "maps-orbit",
+      "street-back"
+    ],
+    "seen": "Two lanes and paired shared footways; lower promenade continues underneath. Bearing internals not visible."
+  },
+  "west_approach": {
+    "sources": [
+      "maps-plan",
+      "maps-orbit",
+      "street-west"
+    ],
+    "seen": "Widened rounded terraces, three concrete anchorage wedges per side, narrowing road approach; ground steps beyond bridge excluded from bridge structure."
+  },
+  "top": {
+    "sources": [
+      "architect",
+      "maps-orbit"
+    ],
+    "seen": "Distinct two caps and dark anchorage crosshead; small railing above crosshead. Internal maintenance access not seen."
+  },
+  "ground": {
+    "sources": [
+      "street-main",
+      "street-back",
+      "maps-plan"
+    ],
+    "seen": "Tan/grey shared surfaces, white longitudinal separators, linear drainage, double yellow edges and lantern bollards."
+  },
+  "failures": [
+    "Default browser reported 3D unavailable; separate managed GPU browser rendered actual 3D successfully.",
+    "Direct old Street View URL briefly opened globe view; api=1 pano URL loaded correctly.",
+    "Several coordinate panorama navigations initially black until reload; east-abutment point returned no imagery.",
+    "Mapillary app remained blank map canvas after optional-cookie rejection and repeated waits; no panorama evidence obtained.",
+    "Official architect/council and engineering-dimension searches yielded no dimensioned drawing. Historic England catalogue metadata viewed; full image not used."
+  ],
+  "missing": [
+    "Below-water foundations",
+    "Concealed bearings and structural reinforcement",
+    "North underside fine fixtures",
+    "Exact current inscriptions and bolt inventory"
+  ],
+  "private_captures": "../references/marine-way-bridge; all screenshots and photographs excluded from Git"
+}

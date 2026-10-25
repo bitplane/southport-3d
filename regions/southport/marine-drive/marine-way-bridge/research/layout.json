@@ -1,0 +1,56 @@
+{
+  "origin": [
+    9.305,
+    376.9
+  ],
+  "axis": [
+    -0.325551,
+    0.945524
+  ],
+  "pylon_station": 103.8,
+  "deck_length": 150,
+  "main_pier_station": 23.8,
+  "deck_half_width": 9.25,
+  "railing_offset": 8.0,
+  "road_half_width": 3.2,
+  "cycle_outer_offset": 4.7,
+  "pylon_base_offset": 10.4,
+  "pylon_top_offset": 1.55,
+  "pylon_base_z": 0.45,
+  "pylon_top_z": 56.6,
+  "pylon_radius_along": 1.05,
+  "pylon_radius_across": 0.85,
+  "crosshead_bottom": 44.3,
+  "crosshead_top": 53.4,
+  "fore_stations": [
+    31.8,
+    43.8,
+    55.8,
+    67.8,
+    79.8,
+    91.8
+  ],
+  "fore_levels": [
+    52.4,
+    51.05,
+    49.7,
+    48.35,
+    47.0,
+    45.65
+  ],
+  "back_stations": [
+    141.8,
+    139.8,
+    137.8
+  ],
+  "back_levels": [
+    52.4,
+    49.7,
+    47.0
+  ],
+  "rail_height": 1.1,
+  "rail_post_pitch": 3.0,
+  "rail_picket_pitch": 0.14,
+  "lamp_pitch": 9.0,
+  "limits": "Dimensions are a reconstruction, not an engineering survey. Below-water foundations, inaccessible bearing internals and unreadable plates omitted. Main current appearance follows August 2024 Street View; structural photos are older architect photographs."
+}

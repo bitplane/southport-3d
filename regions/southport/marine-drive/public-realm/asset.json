@@ -21,8 +21,8 @@
     "section-6-ground",
     "section-7-ground",
     "lake-water",
-    "bridge-structure",
-    "shore-walls"
+    "shore-walls",
+    "lower-promenade-ground"
   ],
   "lods": [
     "detail",
@@ -41,7 +41,9 @@
   "licensing": "OSM contributor geometry under ODbL1.0; reference photographs linked only.",
   "build_inputs": {
     "master": [
-      "regions/southport/elevation/marine-drive.json"
+      "regions/southport/elevation/marine-drive.json",
+      "regions/southport/marine-drive/marine-way-bridge/research/layout.json",
+      "regions/southport/marine-drive/marine-way-bridge/scripts/bridge_alignment.py"
     ],
     "validate": [
       "regions/southport/elevation/marine-drive.json",

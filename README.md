@@ -76,3 +76,7 @@ bridge and roundabout, with provisional frontage envelopes. It pilots the
 The [Marine Drive and north Marine Lake block plan](docs/MARINE-DRIVE.md) extends
 from Marine Parade through Ocean Plaza along the coast to Fairway, with connecting
 Promenade frontages, provisional building volumes and a separate bridge profile.
+
+The [Marine Way Bridge](docs/MARINE-WAY-BRIDGE.md) replaces its provisional silhouette
+with researched pylons, asymmetric stays, deck structure and parapets, alongside
+shared bridge paths and the separate lower promenade support level.

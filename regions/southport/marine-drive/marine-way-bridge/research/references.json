@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "represented_appearance": "Visible concrete bridge and August 2024 deck furnishings; primary architect photos inform structural form. Dimensions estimated and checked against mapped scale.",
+  "sources": [
+    {
+      "id": "architect",
+      "url": "https://www.nrsarchitects.com/marineway-bridge-southport",
+      "accessed": "2026-10-25",
+      "attribution": "Nicoll Russell Studios; linked photographs retained privately, not published",
+      "observations": "Primary project page confirms 150 m bridge. Photos southport02/03/04/05/06/07 show two elliptical legs, separate pointed caps, dark steel anchorage crosshead, six paired main stays, three paired backstays, edge anchors and underside ribs."
+    },
+    {
+      "id": "maps-orbit",
+      "url": "https://www.google.com/maps/@53.649479,-3.0092706,278a,35y,39.43t/data=!3m1!1e3",
+      "accessed": "2026-10-25",
+      "attribution": "Google textured 3D, date not exposed",
+      "observations": "Actual GPU-rendered textured 3D orbited through headings 0,92.5,185,277.5. Main span toward hotel, pylon near west bank, clustered backstays on two widened anchor terraces. Eastern lower promenade passes below deck."
+    },
+    {
+      "id": "maps-plan",
+      "url": "https://www.google.com/maps/@53.65151,-3.0093343,128m/data=!3m1!1e3",
+      "accessed": "2026-10-25",
+      "attribution": "Google, Airbus/Maxar",
+      "observations": "Plan scale, retaining edges, pylon position, main deck, west anchor flares and lake/promenade handovers. Elevated object parallax allowed."
+    },
+    {
+      "id": "street-main",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=yCdmHX4C_5VwUPmvyqcYgw&heading=290&pitch=0&fov=80",
+      "capture": "August 2024",
+      "accessed": "2026-10-25",
+      "observations": "Blue picket rails, curved outboard brackets and two tension wires, white stay sheaths/black collars, tan pedestrian surface, grey cycle strip, white separator, lantern bollards on separator, linear kerb drainage."
+    },
+    {
+      "id": "street-back",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=tB3Sq8MO5w4Ba-evuIvHHQ&heading=110&pitch=0&fov=85",
+      "capture": "August 2024",
+      "accessed": "2026-10-25",
+      "observations": "Opposite deck approach, outward pylon legs, lamps and railings on both sides, existing shallow road crest."
+    },
+    {
+      "id": "street-west",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65195,-3.01060&heading=100&pitch=10&fov=90",
+      "capture": "July 2019 VR 360 TV",
+      "accessed": "2026-10-25",
+      "observations": "Visible panorama despite no-imagery warning confirms three thick backstays per side anchored to three stepped concrete wedges on widened western terraces; surface colour older and not used as current paint evidence."
+    },
+    {
+      "id": "historic-england",
+      "url": "https://historicengland.org.uk/images-books/photos/item/DP139422",
+      "capture": "2010-10-21",
+      "accessed": "2026-10-25",
+      "observations": "Archive catalogue identifies southeast view of pylon; catalogue metadata checked, full archive photograph not relied on."
+    },
+    {
+      "id": "osm-registration",
+      "url": "https://www.openstreetmap.org/copyright",
+      "attribution": "OpenStreetMap contributors ODbL 1.0",
+      "observations": "Existing Marine corridor retained mapped axis; new dimensional controls checked against actual aerial/3D."
+    }
+  ]
+}

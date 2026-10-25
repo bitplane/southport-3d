@@ -31,7 +31,14 @@ study=P.difference(P.polygons(D['study_polygons']),P.polygons(D['neighbour_exclu
 blocks=[b for f in [D['block_plan'],*D['existing_block_plans']]for b in json.loads((REPO/f).read_text())['blocks']]
 # Bridge deck is an explicit land layer above water, with no full terrain floor.
 bridge_axis=[[29.8,310],*D['bridge_axis'],[-46.86,540]]
-bridge_zone=line(bridge_axis,14.2)
+# Researched deck top ends at the rail line; outboard sloping fascia is owned
+# by the independent bridge structure asset. Western anchor terraces flare.
+sys.path.insert(0,str(REPO/'regions/southport/marine-drive/marine-way-bridge/scripts'))
+from bridge_alignment import xy as bridge_xy,width as bridge_width,stations as bridge_stations
+bridge_st=[0.,23.8,103.8,122.,128.,134.,139.,143.,147.,150.]
+bridge_outline=[bridge_xy(t,-bridge_width(t))for t in bridge_st]+[bridge_xy(t,bridge_width(t))for t in reversed(bridge_st)]
+bridge_deck=P.polygons([bridge_outline])
+bridge_zone=union([bridge_deck,line([bridge_axis[0],bridge_xy(0,0)],14.2),line([bridge_xy(150,0),bridge_axis[-1]],14.2)])
 land=P.difference(P.difference(study,lake),P.polygons([b['footprint']for b in blocks]))
 available=union([land,P.intersection(study,bridge_zone)])
 # Union complete road curves before carving pavement: rounded mouth returns are
@@ -41,6 +48,10 @@ road_full=union([line(r['points'],r['width'])for r in D['roads']])
 road_full=P.difference(road_full,P.polygons([rect(85,110,275,330)]))
 road_full=P.difference(road_full,P.polygons([rect(15,45,310,330)]))
 road_full=union([road_full,P.polygons(D['seam_roads']+D['marine_seam_roads']),P.polygons([D['mini_roundabout']['road_outline']])])
+# Keep the old approach/junction axes; replace carriageway ownership only inside
+# the detailed bridge. Its observed narrow two-lane road is 6.4 m wide.
+bridge_road=P.polygons([[bridge_xy(0,-3.2),bridge_xy(145,-3.2),bridge_xy(150,-3.7),bridge_xy(150,3.7),bridge_xy(145,3.2),bridge_xy(0,3.2)]])
+road_full=union([P.difference(road_full,bridge_deck),bridge_road])
 road=P.intersection(available,road_full)
 parking=P.difference(P.intersection(available,P.polygons(D['parking_polygons'])),road)
 # Seaward MarineDrive path only: inland side is asphalt parking, as in Jul2026.
@@ -49,6 +60,14 @@ foot_full=buffer(P.difference(road_full,coast),D['footway_width_m'])
 coast_path=union([P.polygons([*parallel(r['points'],r['width']/2),*reversed(parallel(r['points'],r['width']/2+3.1))])for r in D['roads']if r['name']=='Marine Drive'and r['points'][-1][0]>r['points'][0][0]])
 paths=union([line(r['points'],r['width'])for r in D['paths']])
 foot=P.difference(P.difference(P.intersection(available,union([foot_full,coast_path,paths,P.polygons(D['seam_paving'])])),road),parking)
+foot=union([P.difference(foot,bridge_deck),P.difference(bridge_deck,road)])
+# These material bands replace pavement triangles; none are floating overlays.
+def bridge_strip(a,b):return P.polygons([[bridge_xy(0,a),bridge_xy(150,a),bridge_xy(150,b),bridge_xy(0,b)]])
+cycle=union([bridge_strip(-4.65,-3.34),bridge_strip(3.34,4.65)])
+separator=union([bridge_strip(-4.75,-4.65),bridge_strip(4.65,4.75)])
+drain=union([bridge_strip(-3.34,-3.2),bridge_strip(3.2,3.34)])
+cycle=P.intersection(cycle,foot);separator=P.intersection(separator,foot);drain=P.intersection(drain,foot)
+foot_plain=P.difference(P.difference(P.difference(foot,cycle),separator),drain)
 remaining=P.difference(P.difference(P.difference(available,road),foot),parking)
 green=P.intersection(remaining,P.polygons(D['green_polygons']+D['lake_islands']))
 # Northern dunes remain a broad planted reservation, rather than invented plots.
@@ -73,17 +92,17 @@ for r in D['roads']:
 centre=D['mini_roundabout']['centre'];disc=P.polygons([[(centre[0]+1.25*math.cos(i*math.tau/24),centre[1]+1.25*math.sin(i*math.tau/24))for i in range(24)]])
 white=P.intersection(P.difference(union([*white_paths,disc]),yellow),road)
 asphalt=P.difference(P.difference(road,yellow),white)
-colours={'asphalt':(.085,.09,.095),'paving':(.54,.52,.47),'courts':(.35,.34,.31),'green':(.19,.27,.12),'parking':(.18,.19,.19),'yellow':(.8,.62,.13),'white':(.8,.8,.76),'kerb':(.43,.43,.4),'structure':(.35,.36,.34),'construction':(.33,.26,.18),'water':(.08,.23,.29),'blue':(.08,.17,.24)}
+colours={'asphalt':(.085,.09,.095),'paving':(.54,.52,.47),'courts':(.35,.34,.31),'green':(.19,.27,.12),'parking':(.18,.19,.19),'yellow':(.8,.62,.13),'white':(.8,.8,.76),'kerb':(.43,.43,.4),'structure':(.35,.36,.34),'construction':(.33,.26,.18),'water':(.08,.23,.29),'blue':(.08,.17,.24),'cycle':(.30,.33,.32),'separator':(.82,.81,.75),'drain':(.065,.07,.065)}
 mats={}
 for name,col in colours.items():
  m=bpy.data.materials.new('Marine '+name);m.use_nodes=True;m.diffuse_color=(*col,1);p=m.node_tree.nodes['Principled BSDF'];p.inputs['Base Color'].default_value=(*col,1);p.inputs['Roughness'].default_value=.9;mats[name]=m
 collections={}
-for name in [*[f'section-{i}-ground'for i in range(8)],'lake-water','bridge-structure','shore-walls']:
+for name in [*[f'section-{i}-ground'for i in range(8)],'lake-water','lower-promenade-ground','shore-walls']:
  c=bpy.data.collections.new(name);s.collection.children.link(c);collections[name]=c
 compiled={};surfaces={}
 for i,(lo,hi)in enumerate(zip(D['tile_cuts'],D['tile_cuts'][1:])):
  name=f'section-{i}-ground';cell=P.polygons([rect(lo,hi,D['bounds'][2],930)])
- for mat,g in [('asphalt',asphalt),('paving',foot),('courts',courts),('construction',construction),('green',green),('parking',parking),('yellow',yellow),('white',white)]:
+ for mat,g in [('asphalt',asphalt),('paving',foot_plain),('cycle',cycle),('separator',separator),('drain',drain),('courts',courts),('construction',construction),('green',green),('parking',parking),('yellow',yellow),('white',white)]:
   g=P.intersection(g,cell)
   for region,surface in [('main',PAVEMENT),('bridge',BRIDGE)]:
    part=P.intersection(g,bridge_zone)if region=='bridge'else P.difference(g,bridge_zone)
@@ -91,6 +110,12 @@ for i,(lo,hi)in enumerate(zip(D['tile_cuts'],D['tile_cuts'][1:])):
    for tri in P.triangles(part):
     for lifted in surface.lift_triangle(tri):m.add([(x,y,0)for x,y,z in lifted],[(0,1,2)])
    if m.faces:compiled[(name,region,mat)]=m;surfaces[(name,region,mat)]=surface
+lower=P.intersection(P.intersection(land,bridge_deck),P.polygons([rect(-90,45,376.9,410)]))
+m=Mesh('Ground lower-promenade-ground lower paving')
+for tri in P.triangles(lower):
+ for lifted in PAVEMENT.lift_triangle(tri):m.add([(x,y,0)for x,y,z in lifted],[(0,1,2)])
+if m.faces:
+ compiled[('lower-promenade-ground','lower','paving')]=m;surfaces[('lower-promenade-ground','lower','paving')]=PAVEMENT
 import southport3d.conform as cf
 cf.GRID=1/8192;cf.TOLERANCE=.00019
 for m in compiled.values():m.vertices=np.asarray(m.vertices,dtype=np.float32).tolist()
@@ -104,6 +129,7 @@ curbs={}
 for hits in edges.values():
  low=[h for h in hits if h[0][2]in road_mats];high=[h for h in hits if h[0][2]not in road_mats]
  if not(low and high):continue
+ if low[0][0][1]!=high[0][0][1]:continue
  key,a,b=low[0];name,region,_=key;surface=surfaces[key];m=curbs.setdefault((name,region,'kerb'),Mesh('Ground '+name+' '+region+' kerb'));za,zb=surface.height(*a[:2]),surface.height(*b[:2]);m.add([(a[0],a[1],za-.12),(b[0],b[1],zb-.12),(b[0],b[1],zb),(a[0],a[1],za)],[(3,2,1,0)])
 for key,m in compiled.items():m.vertices=[(x,y,surfaces[key].height(x,y)-(.12 if key[2]in road_mats else 0))for x,y,z in m.vertices]
 compiled.update(curbs)
@@ -121,12 +147,7 @@ m=Mesh('Structure lake water');water=SURFACES.surface('marine-lake')
 for tri in P.triangles(P.intersection(study,lake)):
  for lifted in water.lift_triangle(tri):m.add(lifted,[(0,1,2)])
 finish(m,'water','lake-water')
-# Slab bottom and side faces only: its top is owned by road/footway polygons.
-deck=P.intersection(bridge_zone,P.polygons([rect(-90,45,376.9,498.635)]));m=Mesh('Structure bridge underside')
-for tri in P.triangles(deck):
- for t in BRIDGE.lift_triangle(tri):m.add([(x,y,z-.65)for x,y,z in t],[(2,1,0)])
-finish(m,'structure','bridge-structure')
-# Continuous blue parapet envelopes preserve safe edge silhouette at every level.
+# All bridge structural surfaces now belong to marine-way-bridge.
 def wall_strip(points,width,height,surface,name,mat,collection):
  outline=parallel(points,-width/2)+list(reversed(parallel(points,width/2)));m=Mesh('Structure '+name)
  for tri in P.triangles(P.polygons([outline])):
@@ -135,25 +156,6 @@ def wall_strip(points,width,height,surface,name,mat,collection):
   q=list(surface.edge_points(a,b))
   for a,b in zip(q,q[1:]):m.add([a,b,(b[0],b[1],b[2]+height),(a[0],a[1],a[2]+height)],[(0,1,2,3)])
  finish(m,mat,collection)
-from southport3d.street import guardrail
-for side in [-1,1]:
- edge=parallel(D['bridge_axis'],side*7.0);points=[]
- for a,b in zip(edge,edge[1:]):points.extend(list(BRIDGE.edge_points(a,b))[:-1])
- points.append((*edge[-1],BRIDGE.height(*edge[-1])))
- m=guardrail(points,height=1.12,picket_pitch=.16);m.name='Structure bridge guardrail '+str(side);finish(m,'blue','bridge-structure')
-# Provisional A-frame/pylon and stay silhouette from actual close 3D and
-# Aug2024 panorama. No joints, anchor hardware or engineering survey is claimed.
-a,b=D['bridge_axis'][0],D['bridge_axis'][-1];dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy);ux,uy=dx/length,dy/length;nx,ny=-uy,ux
-cx,cy=-13,442;z=BRIDGE.height(cx,cy);apex=(cx+ux*5,cy+uy*5,z+28)
-m=Mesh('Structure provisional bridge A frame')
-for side in [-1,1]:m.tube([(cx+side*nx*6,cy+side*ny*6,z),apex],.64,0,8)
-finish(m,'structure','bridge-structure')
-m=Mesh('Structure provisional bridge stays')
-for side in [-1,1]:
- for distance in [-54,-42,-30,30,42,54]:
-  x,y=cx+ux*distance+side*nx*6.4,cy+uy*distance+side*ny*6.4
-  m.tube([apex,(x,y,BRIDGE.height(x,y)+.12)],.045,0,5)
-finish(m,'structure','bridge-structure')
 # Metric low sea wall follows the outside of the observed seaward walking strip.
 wall_strip(parallel(D['coast_wall_axis'],6.85),.32,.8,PAVEMENT,'continuous sea wall','structure','shore-walls')
 P.close();(ROOT/'research/conform.json').write_text(json.dumps(report,indent=2)+'\n')

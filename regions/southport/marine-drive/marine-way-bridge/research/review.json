@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-25",
+  "snag": "8e44b7215267476da6d9c627d2a340ad",
+  "reference_comparison": {
+    "sources": "Primary architect photographs; four actual Google 3D headings; opposing August 2024 Street View plus western July 2019 panorama. See references.json and evidence-coverage.json.",
+    "observed_corrections": [
+      "Replaced symmetric provisional fan with six paired main stays and three paired western backstays.",
+      "Two inclined elliptical legs have separated pointed caps and a dark crosshead that widens downward.",
+      "Extended and widened western anchorage terraces; closed their retaining faces and abutment ends after assembled review.",
+      "Distinct tan footways, grey cycle strips, white separators, linear drains, blue pickets and outboard horns match deck-level evidence."
+    ],
+    "limitations": [
+      "Dimensions are image estimates except architect-confirmed 150 m total length.",
+      "No underwater foundations or concealed bearing internals reconstructed.",
+      "North underside small fixtures, inscriptions and exact bolt inventory lack adequate evidence.",
+      "Mapillary remained blank; no Mapillary evidence claimed."
+    ]
+  },
+  "master_review": {
+    "views": [
+      "overview",
+      "north",
+      "west",
+      "pylon-head",
+      "deck-detail",
+      "underside"
+    ],
+    "checks": "Finite/nonzero geometry; full coplanar scan; forty road/path headroom rays; 56.6 m pylon tip.",
+    "private_renders": "build/southport.marine-drive.marine-way-bridge/renders"
+  },
+  "export_review": {
+    "actual_levels": [
+      "detail",
+      "walk",
+      "district"
+    ],
+    "district": "Independent 6,000-triangle budget, three fixed 512-square atlas sets; clear open A-frame and rail silhouette. Fine pickets, lamps and outboard wires omitted. Thin cable and rail islands limit texture sampling.",
+    "viewer": "Forced all three levels in GPU-backed assembled viewer, settled with no failed requests; Detail east oblique, west anchors, close upper footway and lower promenade reviewed.",
+    "support": "123 exported integration samples plus 99 neighbouring seam samples. Actual Walk mode followed the sloping upper footway. Lower promenade remained at eye height 3.9 m while crossing the bridge projection, forcing District and swapping the staged tileset.",
+    "overlap": "Full float32 package scans and selected assembled cross-asset scans retain numerical/older-neighbour findings for review; no bridge internal or bridge/neighbour coplanar conflicts. Existing non-bridge findings are not asserted fixed."
+  },
+  "private_captures": "../output/marine-way-bridge; screenshots and generated checks excluded from Git"
+}
