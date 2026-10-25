@@ -1,0 +1,60 @@
+{
+  "represented_appearance": "July 2026 front, corroborated by August 2019; undated current Google 3D roofs.",
+  "front": {
+    "sources": [
+      "street-current",
+      "street-2019",
+      "archive-drawing"
+    ],
+    "observed": "Seven ground-adjacent first-floor sash axes, five wider upper axes, two broken lower pediments, two segmental upper pediments, central balcony, thin continuous lower ironwork, ornate raised gable and small flanking dormers.",
+    "confidence": "High composition; medium metric scale and stone profiles."
+  },
+  "north_side": {
+    "sources": [
+      "street-current",
+      "google-3d"
+    ],
+    "observed": "Rounded front corner with two tall windows and curved balconies, narrow gated passage to lower Salaars range.",
+    "missing": "Passage lower doors not visible, omitted. Rearward side openings approximate from photogrammetry."
+  },
+  "south_side": {
+    "sources": [
+      "street-current",
+      "google-3d"
+    ],
+    "observed": "Party wall abuts 3–9 Nevill; main roof rises above neighbour.",
+    "missing": "Concealed construction not represented."
+  },
+  "rear": {
+    "sources": [
+      "google-3d"
+    ],
+    "observed": "Pale weathered rear masonry and paired rectangular openings in close 3D imagery.",
+    "confidence": "Low to medium: photogrammetric openings, no verified ground-level rear photograph.",
+    "missing": "Rear doors, equipment, private yard and precise window sizes deferred."
+  },
+  "roof": {
+    "sources": [
+      "google-3d",
+      "google-plan",
+      "street-current"
+    ],
+    "observed": "Red-brown tiled hip with small plateau, long pitched front gable hood, four capped stacks, broad north and small south rooflights, and five narrow rear roof windows. Current corner lacks historical spire.",
+    "confidence": "Medium main shape from close four-direction 3D orbit; low exact glazing, caps and flashings. No unobserved pots added."
+  },
+  "ground_and_footprint": {
+    "sources": [
+      "google-plan",
+      "street-current"
+    ],
+    "observed": "Approximately 9.7 m frontage, 11.1 m depth, rounded street corner; retain shared party datum and passage.",
+    "limitation": "Google roof coordinates differ from existing block registration by about 2 m. Dimensions calibrated, position attached to existing neighbour rather than introducing a crack."
+  },
+  "additional_searches": [
+    "Sefton and FSA verify name and address.",
+    "Southport BID archive drawing consulted and distinguished from current photos.",
+    "Mapillary nearby image faces opposite; no usable Empire rear coverage found.",
+    "Cable panorama resolved to different private courtyard; not used as Empire evidence.",
+    "Your Southport current restaurant article found; image CDN download rejected, no unseen photograph used."
+  ]
+}

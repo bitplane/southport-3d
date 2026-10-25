@@ -1,0 +1,58 @@
+{
+  "massing_review": {
+    "status": "reviewed before ornament",
+    "date": "2026-10-25",
+    "references": [
+      "street-current",
+      "street-2019",
+      "google-3d",
+      "archive-drawing"
+    ],
+    "observed": "Main 9.67 m frontage and 11.1 m depth, hip, narrow curved corner, five upper and seven lower window axes compared with frontal/3D evidence. Historic corner spire absent. Close roof orbit resolves four existing capped stacks. Front review camera cropped the top/base; widened orthographic framing before detail review. Rear opening proportions remain estimates.",
+    "next": "Close current gable view obtained: corrected historical full-height window to low sash under brick infill."
+  },
+  "export_review": {
+    "date": "2026-10-25",
+    "references": [
+      "street-current",
+      "street-gable-close",
+      "street-2019",
+      "google-3d",
+      "google-plan",
+      "archive-drawing",
+      "google-3d-close"
+    ],
+    "comparisons": [
+      "Front and rear inspected from actual Detail, Walk and independently baked District GLBs in the local comparison viewer. Main facade rhythm, current gable infill, central balcony and rounded shop corner remain legible.",
+      "Assembled 3D Tiles view confirms the replacement joins 3–9 Nevill Street, leaves the Salaars passage open and removes the previous grey placeholder. Actual loaded unit and level checked through the viewer runtime state.",
+      "District rear inspection exposed an 8 cm roof inset gap. Replaced with a 10 cm projecting eave whose pitch intersects the wall tops, and conformed the roof edge to the curved corner. Follow-up District rear capture confirms the gap is closed.",
+      "Rear openings retain thin joinery and pale weathered masonry observed in close 3D; no ornate street architraves repeated behind.",
+      "District front and roof receiver faces have exclusive ownership; gable/dormer cheeks and backs are included for orbit views.",
+      "Close 48 m four-direction orbit used to correct small hip plateau, long gable hood, four capped stacks and five rear roof windows. Roof dimensions estimated from affine close overhead controls."
+    ],
+    "limits": [
+      "Exact rear and passage doors, windows and materials lack ground-level photographs; dimensions and rear window placements are provisional.",
+      "Stone carving and typographic logos are approximations; tiny unreadable print is omitted.",
+      "Detail and Walk retain the same modest full architecture; District is the separately bounded distant representation.",
+      "Absolute roof/ground registration discrepancy remains a coordinated block-survey issue, not silently corrected in this single asset."
+    ],
+    "final_runtime_record": "See docs/NEVILLE-BUILDINGS.md for final published counts and screenshots."
+  },
+  "surface_review": {
+    "date": "2026-10-25",
+    "private_report": "build/empire-audit-unbatched/detail.json",
+    "method": "Complete exported GLB scan using native coplanar scanner, temporarily preserving component names to identify and repair repeated prototype conflicts.",
+    "result": "All architectural and non-iron ornament overlaps removed. Three small decorative ironwork self-intersections remain (41 triangle pairs, about 0.0004 m² summed pair area) at loop/weld joins. Scope is narrow, not whole-asset suppression.",
+    "repairs": [
+      "Shared group-window divider boundaries and omitted hidden seam caps.",
+      "Radial corner reveal/glazing/stone-band endpoints replace intersecting chord extrusions.",
+      "Mitred gable cap, split sash cross bars, and cornice ownership at curved balcony.",
+      "Separate District front/dormer receiver ownership above the main cornice."
+    ],
+    "published_audit": {
+      "report": "build/empire-audit-final/report.md",
+      "scope": "Empire, 3–9 Nevill, Nevill placeholders, Nevill ground and West Street ground, all three uniform levels",
+      "result": "No cross-asset findings touching Empire. Detail/Walk only contain the documented ironwork weld group. District reports four approximately square-millimetre triangle-pair slivers at float32 gable seams (summed area 0.00000401 m²), not a visible duplicate facade."
+    }
+  }
+}

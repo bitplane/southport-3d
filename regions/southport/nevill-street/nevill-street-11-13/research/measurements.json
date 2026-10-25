@@ -1,0 +1,130 @@
+{
+  "method": "Four coordinate-labelled pixel controls from flat Google map, roof rectangle ratios, shared neighbour datum and facade proportions. Estimates, not survey.",
+  "plan": {
+    "private_capture": "../references/nevill-empire/plan.png",
+    "controls": [
+      {
+        "pixel": [
+          630,
+          465
+        ],
+        "lat_lon": [
+          53.649195,
+          -3.005357
+        ]
+      },
+      {
+        "pixel": [
+          720,
+          385
+        ],
+        "lat_lon": [
+          53.64913,
+          -3.005262
+        ]
+      },
+      {
+        "pixel": [
+          730,
+          560
+        ],
+        "lat_lon": [
+          53.649123,
+          -3.005473
+        ]
+      },
+      {
+        "pixel": [
+          820,
+          480
+        ],
+        "lat_lon": [
+          53.649058,
+          -3.005376
+        ]
+      }
+    ],
+    "calculation": "Front vector approximately 9.57 m; rear vector 9.66 m; depth approximately 11.08 m. Adopt frontage 9.67 m (existing shared width) and depth 11.10 m. Absolute roof edge projects about 2 m away from current neighbour datum; do not treat roof coordinate as ground survey.",
+    "uncertainty_m": {
+      "width": 0.5,
+      "depth": 0.7,
+      "absolute_registration": 2.5
+    }
+  },
+  "front": {
+    "source": "street-current",
+    "private_capture": "../references/nevill-empire/front-2026-centred.png",
+    "method": "Rectified composition from archive drawing cross-checked against current oblique photograph. Shared lower balcony level aligns neighbouring 3–9 first windows; five upper centres spread across flat 8.87 m wall.",
+    "dimensions_m": {
+      "lower_sill": 4.35,
+      "lower_head": 6.93,
+      "upper_sill": 8.18,
+      "upper_head": 10.61,
+      "eave": 11.9,
+      "corner_parapet": 12.7,
+      "central_gable_peak": 15.45
+    },
+    "uncertainty_m": {
+      "sill_levels": 0.3,
+      "gable_height": 0.6,
+      "window_widths": 0.12,
+      "carved_depths": 0.08
+    }
+  },
+  "roof": {
+    "eave_m": 11.9,
+    "hip_top_m": 14.7,
+    "inset_m": 3.9,
+    "basis": "Close 48 m Google 3D orbit in four directions and overhead pixel calibration. Estimated, not roof survey.",
+    "close_plan": {
+      "private_capture": "../references/nevill-empire/roof-plan-close.png",
+      "corners_px": [
+        [
+          647,
+          175
+        ],
+        [
+          398,
+          398
+        ],
+        [
+          883,
+          430
+        ],
+        [
+          647,
+          663
+        ]
+      ],
+      "method": "Affine basis from front south to front north (9.67 m), and front south to rear south (11.1 m).",
+      "hood_depth_m": 3.9,
+      "stacks_uv_m": [
+        [
+          9.42,
+          3.5
+        ],
+        [
+          9.42,
+          8.2
+        ],
+        [
+          0.2,
+          3.0
+        ],
+        [
+          3.7,
+          10.85
+        ]
+      ],
+      "uncertainty_m": 0.6
+    }
+  },
+  "registration": {
+    "origin": [
+      -9.5894,
+      80.635956,
+      -0.47
+    ],
+    "basis": "Exact terminal frontage datum of neighbouring 3–9 Nevill. Shared affine shear retained."
+  }
+}

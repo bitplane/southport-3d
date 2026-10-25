@@ -1,0 +1,105 @@
+{
+  "sources": [
+    {
+      "id": "street-current",
+      "url": "https://www.google.com/maps/@53.6492323,-3.0052505,3a,90y,224h,115t/data=!3m4!1e1!3m2!1s2Gv0y7_5CwiDS9PNJWxWvA!2e0",
+      "title": "Google Street View, 18 Nevill Street opposite Empire",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-25",
+      "credit": "Google",
+      "use": "Current front, rounded corner, windows, signage and neighbour gap; heading 218–245 degrees."
+    },
+    {
+      "id": "street-2019",
+      "url": "https://www.google.com/maps/@53.6492711,-3.005313,3a,85y,225h,107t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDa_dySQg!2e10",
+      "title": "VR360TV panorama, Nevill Street",
+      "capture_date": "2019-08",
+      "accessed": "2026-10-25",
+      "credit": "VR360TV via Google Maps",
+      "use": "Full front and central gable seen from farther along the street."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6483272,-3.0054,108a,35y,39.56t/data=!3m1!1e3",
+      "title": "Google actual 3D orbit around Empire",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "credit": "Google imagery",
+      "use": "Four cardinal oblique rotations: red tiled hip, rooflights, rear upper windows and neighbouring roofs. Copyright year is not an imagery date."
+    },
+    {
+      "id": "google-plan",
+      "url": "https://www.google.com/maps/@53.64913,-3.0054001,140a,35y,90h/data=!3m1!1e3",
+      "title": "Google flat overhead with four coordinate controls",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "credit": "Google imagery",
+      "use": "Roof proportions and passage. Elevated photogrammetric roof location cannot override shared neighbour datum without a block survey."
+    },
+    {
+      "id": "archive-drawing",
+      "url": "https://southportbid.com/businesses-offered-support-to-improve-historic-buildings-through-southport-townscape-heritage-project/",
+      "image_url": "https://standupforsouthport.com/wp-content/uploads/2021/07/NevilleBuildings-01.jpg",
+      "title": "Neville Buildings architectural drawing",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "credit": "Lancashire Archives, reproduced by Southport BID",
+      "use": "Clarifies seven lower and five upper window axes and mouldings. Historical corner spire and shopfront are not current. Current capped stacks are evidenced separately by close 3D imagery."
+    },
+    {
+      "id": "fsa",
+      "url": "https://ratings.food.gov.uk/business/114006/empire-southport",
+      "title": "Food Standards Agency Empire entry",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "credit": "Food Standards Agency",
+      "use": "Current address 11–13 Nevill Street; not geometric evidence."
+    },
+    {
+      "id": "sefton",
+      "url": "https://www.sefton.gov.uk/media/6655/target-buildings.pdf",
+      "title": "Sefton Townscape Heritage target buildings",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "credit": "Sefton Council",
+      "use": "11–13 Nevill Street identified as Neville Buildings."
+    },
+    {
+      "id": "mapillary-context",
+      "url": "https://www.mapillary.com/app/?lat=53.649124050157&lng=-3.0049172874608&z=17&pKey=371877387589828",
+      "title": "Nearby Mapillary image",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "credit": "davidsong / Mapillary",
+      "use": "Actually loaded and viewed, but faces opposite Bistrot Pierre. Not used to invent Empire rear details."
+    },
+    {
+      "id": "rear-search",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.648920,-3.005575&heading=25&pitch=20&fov=80",
+      "title": "Attempt to find a Cable Street rear view",
+      "capture_date": "2025-06",
+      "accessed": "2026-10-25",
+      "credit": "Goto Solutions via Google Maps",
+      "use": "Resolved to Ship & Anchor private courtyard panorama. Viewed, but wrong building and excluded from Empire modelling."
+    },
+    {
+      "id": "street-gable-close",
+      "url": "https://www.google.com/maps/@53.6492323,-3.0052505,3a,40y,227h,143t/data=!3m4!1e1!3m2!1s2Gv0y7_5CwiDS9PNJWxWvA!2e0",
+      "title": "Close current central gable and curved corner",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-25",
+      "credit": "Google",
+      "use": "Confirmed infilled historical gable window, surviving low sash, stone bands, curved corner window surrounds and sagging upper ironwork."
+    },
+    {
+      "id": "google-3d-close",
+      "url": "https://www.google.com/maps/@53.64913,-3.0054,48a,35y,90h,39.56t/data=!3m1!1e3",
+      "title": "Close Google 3D roof orbit and overhead",
+      "capture_date": null,
+      "accessed": "2026-10-25",
+      "credit": "Google imagery",
+      "use": "Four close oblique headings resolve small hip plateau, long front pitched hood, four capped stacks, two side rooflights, five rear roof windows and pale rear masonry. Wider block orbit was insufficient for these details."
+    }
+  ],
+  "rights": "Links and descriptive observations only. Captures private outside Git. Textures and geometry independently authored; source imagery is not redistributed."
+}

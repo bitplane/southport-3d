@@ -46,7 +46,7 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Street-wall extent checked against aerial imagery. Ground entrance is chamfered; upper facade rounded. Neighbour shares the replacement\u2019s affine party wall, correcting the seed boundary by at most 0.28 m. Plan uncertainty approximately 0.75 m; hidden roof lightwell dimensions provisional.",
+      "footprint_confidence": "Street-wall extent checked against aerial imagery. Ground entrance is chamfered; upper facade rounded. Neighbour shares the replacement’s affine party wall, correcting the seed boundary by at most 0.28 m. Plan uncertainty approximately 0.75 m; hidden roof lightwell dimensions provisional.",
       "replace_with": "southport.nevill-street.lord-street-377-385",
       "original_seed_footprint": [
         [
@@ -308,7 +308,7 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Residual Lord Street block after 3\u20139 Nevill and its open rear court reservation; pending detailed parcel survey.",
+      "footprint_confidence": "Residual Lord Street block after 3–9 Nevill and its open rear court reservation; pending detailed parcel survey.",
       "replace_with": null,
       "original_combined_footprint": [
         [
@@ -1010,35 +1010,68 @@
     },
     {
       "osm_way": "375534421",
-      "height_m": 12,
-      "height_uncertainty_m": 3,
+      "height_m": 15.45,
+      "height_uncertainty_m": 0.7,
       "status": "placeholder-massing",
       "evidence": [
         "google-3d-orbit",
         "google-plan-comparison",
         "osm-seed"
       ],
-      "replace_with": null,
+      "replace_with": "southport.nevill-street.nevill-street-11-13",
       "id": "west-nevill-empire",
       "footprint": [
         [
-          -21.403,
-          90.192
+          -9.5894,
+          80.635956
         ],
         [
-          -9.452,
-          90.309
+          -9.469655,
+          89.505956
         ],
         [
-          -9.585075,
-          80.636046
+          -9.48292,
+          89.661707
         ],
         [
-          -21.46989,
-          80.38801
+          -9.526418,
+          89.810832
+        ],
+        [
+          -9.598479,
+          89.947598
+        ],
+        [
+          -9.696333,
+          90.066751
+        ],
+        [
+          -9.816219,
+          90.163711
+        ],
+        [
+          -9.95353,
+          90.234753
+        ],
+        [
+          -10.10299,
+          90.277145
+        ],
+        [
+          -10.258855,
+          90.28926
+        ],
+        [
+          -20.558855,
+          90.074299
+        ],
+        [
+          -20.6894,
+          80.404299
         ]
       ],
-      "footprint_confidence": "Retained portion of old block after 3\u20139 Nevill replacement; architectural shape not researched here."
+      "footprint_confidence": "Retained portion of old block after 3–9 Nevill replacement; architectural shape not researched here.",
+      "notes": "Replaced by Neville Buildings / Empire. Frontage retained at 3–9 party datum; 11.1 m rear depth and curved corner from 3D/photo comparison. Passage to Salaars retained."
     },
     {
       "osm_way": "375534421",
@@ -1070,7 +1103,7 @@
           63.527915
         ]
       ],
-      "footprint_confidence": "Retained portion of old block after 3\u20139 Nevill replacement; architectural shape not researched here."
+      "footprint_confidence": "Retained portion of old block after 3–9 Nevill replacement; architectural shape not researched here."
     }
   ],
   "policy": "Google 3D multi-angle shape and aerial comparison govern interpretation. OSM is a seed, not authority. Flat tops are placeholder height bounds, not asserted flat roofs. Joined mapped ranges are not individual legal parcels.",

@@ -1,0 +1,92 @@
+{
+  "phase": "detail",
+  "origin": [
+    -9.5894,
+    80.635956,
+    -0.47
+  ],
+  "width": 9.67,
+  "depth": 11.1,
+  "cornice": 12.15,
+  "roof_eave": 11.9,
+  "roof_top": 14.7,
+  "roof_inset": 3.9,
+  "corner_radius": 0.8,
+  "gable_centre": 4.35,
+  "gable_width": 2.1,
+  "gable_shoulder": 14.65,
+  "gable_peak": 15.45,
+  "first_windows": [
+    [
+      0.42,
+      0.5
+    ],
+    [
+      1.35,
+      1.02
+    ],
+    [
+      2.3,
+      0.55
+    ],
+    [
+      4.35,
+      1.25
+    ],
+    [
+      6.4,
+      0.55
+    ],
+    [
+      7.35,
+      1.02
+    ],
+    [
+      8.28,
+      0.5
+    ]
+  ],
+  "upper_windows": [
+    0.95,
+    2.65,
+    4.35,
+    6.05,
+    7.75
+  ],
+  "base_policy": "Shared 3\u20139 Nevill party boundary and pavement datum retained. Google plan dimensions calibrated but absolute roof registration differs by approximately 2 m; do not move one building independently.",
+  "gable_depth": 3.9,
+  "stacks": [
+    [
+      9.42,
+      3.5,
+      11.9,
+      14.7,
+      0.8,
+      0.95
+    ],
+    [
+      9.42,
+      8.2,
+      11.9,
+      14.5,
+      0.8,
+      0.95
+    ],
+    [
+      0.2,
+      3.0,
+      11.9,
+      14.5,
+      0.72,
+      0.85
+    ],
+    [
+      3.7,
+      10.85,
+      12.0,
+      14.4,
+      0.82,
+      0.8
+    ]
+  ]
+}

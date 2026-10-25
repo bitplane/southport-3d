@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/nevill-street-11-13.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "July 2026 frontage; roof and rear from undated Google 3D. Estimated dimensions and carvings.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "frontage",
+      "name": "Neville Buildings ornate brick frontage",
+      "collection": "frontage"
+    },
+    {
+      "id": "rear",
+      "name": "Passage side and rear walls",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "Tiled hip, central gable and rooflights",
+      "collection": "roof"
+    }
+  ],
+  "views": [
+    {
+      "name": "Front",
+      "position": [
+        13,
+        10,
+        -86
+      ],
+      "target": [
+        -10,
+        7,
+        -86
+      ]
+    },
+    {
+      "name": "Overview",
+      "position": [
+        8,
+        24,
+        -110
+      ],
+      "target": [
+        -15,
+        7,
+        -86
+      ]
+    },
+    {
+      "name": "Rear",
+      "position": [
+        -40,
+        22,
+        -100
+      ],
+      "target": [
+        -20,
+        7,
+        -86
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -5,
+      1.7,
+      -86
+    ],
+    "target": [
+      -10,
+      6,
+      -86
+    ]
+  },
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^(Shell|Architecture|Glazing) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain actual apertures, stone profiles, roof silhouette and modest shop joinery."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent bounded receivers replace these source meshes."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Small lettering and fine details remain modest; retain for walking."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Bake fine appearance, omit tiny projected fittings."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Independent curved-corner envelope, hip and three front roof features. Fixed topology and atlas dimensions independent of carved detail.",
+    "max_bytes": 2000000,
+    "max_gpu_bytes": 7000000,
+    "parts": {
+      "frontage": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 400,
+        "cage_m": 0.8
+      },
+      "rear": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.6
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 400,
+        "cage_m": 0.8
+      }
+    }
+  }
+}
