@@ -12136,11 +12136,12 @@
   "footway_width_m": 2.6,
   "walls": [],
   "budgets": {
-    "triangles_per_level": 90000,
+    "triangles_per_level": 360000,
     "download_bytes_per_level": 10000000,
     "gpu_bytes_per_level": 30000000,
-    "ground_triangles_per_level": 65000,
-    "structure_triangles_per_level": 30000
+    "ground_triangles_per_level": 355000,
+    "structure_triangles_per_level": 30000,
+    "terrain_basis": "Fixed 5 m lattice with nine bounded 1.25 m refinements at sharp shoreline road gradients. Independent of building detail. Native road approximation capped at 0.25 m; bridge and water independent."
   },
   "limits": "Bounded block plan with VictoriaStreet175\u2013230m connecting strip to Fairway roundabout. Estimated widths\u00b10.8\u20132m, walls\u00b11\u20133m and heights\u00b12\u20133m. Neutral roof bounds, no reconstructed facade details. Marine Lake north of MarineParade; southern lake/park, pier and west OceanPlaza half deferred. Dunes/grades/thresholds not surveyed. Former theatre shown as provisional construction reservation following official2025 demolition evidence; current excavations/ramp/retaining wall geometry unresolved.",
   "bridge_uncertainty": "Deck width14.2\u00b11.6m from mapped parallel footways/3D; 28\u00b15m pylon visual silhouette, approximate stay anchors. Schematic block-plan structure, not engineering model.",

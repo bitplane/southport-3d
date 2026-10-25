@@ -119,7 +119,7 @@ if m.faces:
 import southport3d.conform as cf
 cf.GRID=1/8192;cf.TOLERANCE=.00019
 for m in compiled.values():m.vertices=np.asarray(m.vertices,dtype=np.float32).tolist()
-compiled,report=cf.conform(compiled)
+compiled,report=cf.conform(compiled,preserve_triangles=True)
 road_mats={'asphalt','yellow','white','parking'};edges=defaultdict(list)
 for key,m in compiled.items():
  for face in m.faces:

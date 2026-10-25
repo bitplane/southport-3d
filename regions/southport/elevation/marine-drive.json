@@ -60,39 +60,109 @@
   },
   "surfaces": {
     "marine-mainland": {
+      "type": "survey",
+      "terrain": "survey/terrain.json",
       "bounds": [
         -300,
         1500,
         175,
         1000
       ],
-      "axis_origin": [
-        0,
-        0
-      ],
-      "axis_direction": [
-        0,
-        1
-      ],
-      "profile": [
+      "grid_m": 5,
+      "offset_m": 0.12,
+      "evidence": "EA 2022 composite DTM, acquisition 2018/2019; see survey/terrain.json. Bridge deck and lake remain independent. MLEC ground changed after the survey and requires current construction reference.",
+      "refinements": [
         {
-          "distance_m": 175,
-          "control": "marine-stanley-175"
+          "bounds": [
+            -50,
+            -25,
+            495,
+            520
+          ],
+          "grid_m": 1.25,
+          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
         },
         {
-          "distance_m": 230,
-          "control": "marine-seam-230"
+          "bounds": [
+            170,
+            215,
+            845,
+            870
+          ],
+          "grid_m": 1.25,
+          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
         },
         {
-          "distance_m": 272.07,
-          "control": "marine-promenade"
+          "bounds": [
+            -5,
+            25,
+            360,
+            390
+          ],
+          "grid_m": 1.25,
+          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
         },
         {
-          "distance_m": 930,
-          "control": "marine-promenade"
+          "bounds": [
+            1220,
+            1255,
+            645,
+            680
+          ],
+          "grid_m": 1.25,
+          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
+        },
+        {
+          "bounds": [
+            1175,
+            1210,
+            650,
+            700
+          ],
+          "grid_m": 1.25,
+          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
+        },
+        {
+          "bounds": [
+            1095,
+            1120,
+            530,
+            555
+          ],
+          "grid_m": 1.25,
+          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
+        },
+        {
+          "bounds": [
+            495,
+            525,
+            825,
+            850
+          ],
+          "grid_m": 1.25,
+          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
+        },
+        {
+          "bounds": [
+            1110,
+            1135,
+            500,
+            525
+          ],
+          "grid_m": 1.25,
+          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
+        },
+        {
+          "bounds": [
+            1055,
+            1085,
+            555,
+            585
+          ],
+          "grid_m": 1.25,
+          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
         }
-      ],
-      "offset_m": 0
+      ]
     },
     "marine-road": {
       "bounds": [
@@ -242,6 +312,43 @@
         {
           "distance_m": 0,
           "control": "marine-lake"
+        }
+      ],
+      "offset_m": 0
+    }
+  },
+  "superseded_surfaces": {
+    "marine-mainland": {
+      "bounds": [
+        -300,
+        1500,
+        175,
+        1000
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 175,
+          "control": "marine-stanley-175"
+        },
+        {
+          "distance_m": 230,
+          "control": "marine-seam-230"
+        },
+        {
+          "distance_m": 272.07,
+          "control": "marine-promenade"
+        },
+        {
+          "distance_m": 930,
+          "control": "marine-promenade"
         }
       ],
       "offset_m": 0

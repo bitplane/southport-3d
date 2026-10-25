@@ -123,3 +123,36 @@ guides. It is not the migrated town. Recreate it after publication if needed.
 Use `python3 tools/project.py publish --package-only --asset <id>` to build and
 check all three LoDs without changing the live catalog. Publish the connected
 group normally only once its neighbours and detailed model attachments agree.
+
+
+## Waterfront staging
+
+Marine Drive mainland ground and placeholder foundations use the measured field.
+Nine bounded 1.25 m refinements resolve sharp shore gradients that a uniform 5 m
+lattice missed. The full ground validator checks 9,696 owned mainland road probes
+against native pixels (maximum difference 0.2496 m), triangle planes, ownership
+and a fixed 360,000-triangle regional budget. The current build has 351,499
+triangles. The existing ownership audit records sub-millimetre numerical residues
+separately; it does not certify every non-coplanar intersection.
+
+This region is **not** in the published migration review or the main town yet:
+its lake plane and bridge/approach profiles still have old levels. Those layers
+must be reconciled before assembled review. Do not interpret a successful isolated
+ground build as a usable waterfront publication.
+
+The survey predates work at the Marine Lake Events Centre. Sefton's
+[August 2025 earthworks update](https://www.sefton.gov.uk/mysefton-news/latest-news/marine-lake-events-centre-construction-moves-into-earthworks-stage/)
+records ground lowering; its
+[January 2026 update](https://www.sefton.gov.uk/mysefton-news/latest-news/vinci-announced-as-main-contractor-for-marine-lake-events-centre/)
+describes a new ramp from Upper Promenade. Keep that construction reservation
+provisional until current layout/level evidence is checked. The planning committee
+report for DC/2022/01391 identifies AECOM's 17 June 2022 flood risk assessment
+(MLEC-ACM-XX-XX-RP-W-OO2) and drainage strategy as potential level evidence; these
+underlying reports have not yet been obtained. Lake water remains an independent
+level, not an automatic interpretation of DTM interpolation over water.
+
+Next connected migrations: London Square and its gardens/approaches, Glebe Place,
+Eastbank and Tulketh railway layers, southern lake/park/esplanade, then all detailed
+building foundations and entrances. Check neighbouring exported seams together,
+followed by measured bridge deck/approach and underside-clearance corrections.
+No main-catalog elevation switch or pier modelling has been performed.
