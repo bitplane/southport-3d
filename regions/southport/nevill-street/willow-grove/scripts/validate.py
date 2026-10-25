@@ -27,6 +27,9 @@ for y in (39,44,49):
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'tools'))
 from coplanar import check_blender
 check_blender([o for o in obs if o.name.startswith('Shell ')])
+rooflight_bars=[o for o in obs if o.name.startswith('Rooflight bars')]
+assert rooflight_bars
+check_blender(rooflight_bars)
 # Horizontal rays just above the hip must hit the stack, not pass through an
 # air gap beneath it. The old 13.55 m master base fails all three probes.
 right=D['front_left']+D['front_width']

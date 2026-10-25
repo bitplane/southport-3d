@@ -229,7 +229,8 @@ box('Rooflight curb',(cx,cy,16.30),(x1-x0+.35,y1-y0+.35,.40),brick,'roof',None)
 m=Mesh('Rooflight glazing');m.add([(x0,y0,zz),(x1,y0,zz),(x1,y1,zz),(x0,y1,zz),(cx,cy,ap)],[(0,1,4),(1,2,4),(2,3,4),(3,0,4)]);finish(m,'roof',cglass)
 for a,b in [((x0,y0,zz),(x1,y0,zz)),((x1,y0,zz),(x1,y1,zz)),((x1,y1,zz),(x0,y1,zz)),((x0,y1,zz),(x0,y0,zz))]:
  tube('Rooflight perimeter',[a,b],.045,metal,'roof',None)
- for j in range(5):
+ # Each corner-to-apex bar belongs to the edge starting at that corner.
+ for j in range(4):
   t=j/4;p=tuple(a[k]*(1-t)+b[k]*t for k in range(3));tube('Rooflight glazing bar',[p,(cx,cy,ap)],.028,metal,'roof',None)
 # Front chimney is clearly present behind the Lord parapet, with twin rows of pots.
 lo,hi=chimney_bounds(D)
@@ -287,7 +288,7 @@ if DETAIL:
 families={}
 for ob in list(s.objects):
  if ob.type!='MESH':continue
- kind='Fine' if ob.name.startswith('Fine ') else 'Shell' if ob.name.startswith('Shell ') else 'Architecture'
+ kind='Rooflight bars' if ob.name.startswith('Rooflight glazing bar') else 'Fine' if ob.name.startswith('Fine ') else 'Shell' if ob.name.startswith('Shell ') else 'Architecture'
  families.setdefault((ob.users_collection[0].name,kind),[]).append(ob)
 for (part,kind),obs in families.items():
  bpy.ops.object.select_all(action='DESELECT')

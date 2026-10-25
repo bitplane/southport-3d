@@ -18,3 +18,7 @@ their established heights. Three low horizontal contact probes check the saved
 master mesh just above the roof, and the validator checks the District receiver's
 base against that same datum. This prevents a floating stack when either roof
 height or the coarse representation changes.
+
+Each rooflight corner-to-apex glazing bar is owned by one perimeter edge.
+The saved-mesh validator checks the glazing bars separately for coplanar
+overlap, including exact duplicates at shared corners.
