@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "southport.marine-drive.public-realm",
+  "name": "Marine Drive / north Marine Lake public-realm",
+  "region": "southport",
+  "area": "marine-drive",
+  "status": "provisional-block-plan",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "section-0-ground",
+    "section-1-ground",
+    "section-2-ground",
+    "section-3-ground",
+    "section-4-ground",
+    "section-5-ground",
+    "section-6-ground",
+    "section-7-ground",
+    "lake-water",
+    "bridge-structure",
+    "shore-walls"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Bounded block plan to Fairway roundabout. Estimated widths\u00b10.8\u20132m, walls\u00b11\u20133m and heights\u00b12\u20133m. Neutral roof bounds, no reconstructed facade details. Marine Lake north of MarineParade; southern lake/park, pier and west OceanPlaza half deferred. Dunes/grades/thresholds not surveyed.",
+  "licensing": "OSM contributor geometry under ODbL1.0; reference photographs linked only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/marine-drive.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/marine-drive.json",
+      "tools/coplanar_scan.cpp"
+    ]
+  }
+}

@@ -1,0 +1,671 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Marine Drive and Marine Lake north",
+  "status": "Bounded block plan to Fairway roundabout. Estimated widths\u00b10.8\u20132m, walls\u00b11\u20133m and heights\u00b12\u20133m. Neutral roof bounds, no reconstructed facade details. Marine Lake north of MarineParade; southern lake/park, pier and west OceanPlaza half deferred. Dunes/grades/thresholds not surveyed.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "way-30141970",
+      "name": "Waterside Lodge (placeholder)",
+      "collection": "way-30141970"
+    },
+    {
+      "id": "way-30141972",
+      "name": "Dunelm (placeholder)",
+      "collection": "way-30141972"
+    },
+    {
+      "id": "way-30141974",
+      "name": "Matalan (placeholder)",
+      "collection": "way-30141974"
+    },
+    {
+      "id": "way-30141980",
+      "name": "McDonald's (placeholder)",
+      "collection": "way-30141980"
+    },
+    {
+      "id": "way-51848971",
+      "name": "Provisional frontage volume 51848971 (placeholder)",
+      "collection": "way-51848971"
+    },
+    {
+      "id": "way-51848973",
+      "name": "Provisional frontage volume 51848973 (placeholder)",
+      "collection": "way-51848973"
+    },
+    {
+      "id": "way-51848975",
+      "name": "The Lakeside Inn (placeholder)",
+      "collection": "way-51848975"
+    },
+    {
+      "id": "way-51848977",
+      "name": "Provisional frontage volume 51848977 (placeholder)",
+      "collection": "way-51848977"
+    },
+    {
+      "id": "way-51848978",
+      "name": "Provisional frontage volume 51848978 (placeholder)",
+      "collection": "way-51848978"
+    },
+    {
+      "id": "way-51848979",
+      "name": "Provisional frontage volume 51848979 (placeholder)",
+      "collection": "way-51848979"
+    },
+    {
+      "id": "way-51848980",
+      "name": "Provisional frontage volume 51848980 (placeholder)",
+      "collection": "way-51848980"
+    },
+    {
+      "id": "way-51848981",
+      "name": "Provisional frontage volume 51848981 (placeholder)",
+      "collection": "way-51848981"
+    },
+    {
+      "id": "way-51848982",
+      "name": "Provisional frontage volume 51848982 (placeholder)",
+      "collection": "way-51848982"
+    },
+    {
+      "id": "way-52902208",
+      "name": "Pizza Hut (placeholder)",
+      "collection": "way-52902208"
+    },
+    {
+      "id": "way-167349525",
+      "name": "Waterfront Southport Hotel (placeholder)",
+      "collection": "way-167349525"
+    },
+    {
+      "id": "way-342493522",
+      "name": "Shoe Zone (placeholder)",
+      "collection": "way-342493522"
+    },
+    {
+      "id": "way-342493523",
+      "name": "Poundland Pet Hut (placeholder)",
+      "collection": "way-342493523"
+    },
+    {
+      "id": "way-342493524",
+      "name": "Pets at Home (placeholder)",
+      "collection": "way-342493524"
+    },
+    {
+      "id": "way-370725266",
+      "name": "The Guelder Rose (placeholder)",
+      "collection": "way-370725266"
+    },
+    {
+      "id": "way-370725267",
+      "name": "KFC (placeholder)",
+      "collection": "way-370725267"
+    },
+    {
+      "id": "way-370725637",
+      "name": "Provisional frontage volume 370725637 (placeholder)",
+      "collection": "way-370725637"
+    },
+    {
+      "id": "way-375396110",
+      "name": "Provisional frontage volume 375396110 (placeholder)",
+      "collection": "way-375396110"
+    },
+    {
+      "id": "way-375396397-piece-0",
+      "name": "Provisional frontage volume 375396397 (placeholder)",
+      "collection": "way-375396397-piece-0"
+    },
+    {
+      "id": "way-375396397-piece-1",
+      "name": "Provisional frontage volume 375396397 (placeholder)",
+      "collection": "way-375396397-piece-1"
+    },
+    {
+      "id": "way-376078080",
+      "name": "Lakeside Christian Centre (placeholder)",
+      "collection": "way-376078080"
+    },
+    {
+      "id": "way-376078083",
+      "name": "Revitalise Sandpipers (placeholder)",
+      "collection": "way-376078083"
+    },
+    {
+      "id": "way-376078533",
+      "name": "Provisional frontage volume 376078533 (placeholder)",
+      "collection": "way-376078533"
+    },
+    {
+      "id": "way-945126410",
+      "name": "Provisional frontage volume 945126410 (placeholder)",
+      "collection": "way-945126410"
+    },
+    {
+      "id": "way-945126411",
+      "name": "Provisional frontage volume 945126411 (placeholder)",
+      "collection": "way-945126411"
+    },
+    {
+      "id": "way-945126412",
+      "name": "Provisional frontage volume 945126412 (placeholder)",
+      "collection": "way-945126412"
+    },
+    {
+      "id": "way-945126413",
+      "name": "Provisional frontage volume 945126413 (placeholder)",
+      "collection": "way-945126413"
+    },
+    {
+      "id": "way-945126414",
+      "name": "Provisional frontage volume 945126414 (placeholder)",
+      "collection": "way-945126414"
+    },
+    {
+      "id": "way-945126415",
+      "name": "Provisional frontage volume 945126415 (placeholder)",
+      "collection": "way-945126415"
+    },
+    {
+      "id": "way-945126416",
+      "name": "Provisional frontage volume 945126416 (placeholder)",
+      "collection": "way-945126416"
+    },
+    {
+      "id": "way-945126417",
+      "name": "Provisional frontage volume 945126417 (placeholder)",
+      "collection": "way-945126417"
+    },
+    {
+      "id": "way-945126418",
+      "name": "Provisional frontage volume 945126418 (placeholder)",
+      "collection": "way-945126418"
+    },
+    {
+      "id": "way-945126419",
+      "name": "Provisional frontage volume 945126419 (placeholder)",
+      "collection": "way-945126419"
+    },
+    {
+      "id": "way-945140435",
+      "name": "Provisional frontage volume 945140435 (placeholder)",
+      "collection": "way-945140435"
+    },
+    {
+      "id": "way-945140437-piece-0",
+      "name": "Provisional frontage volume 945140437 (placeholder)",
+      "collection": "way-945140437-piece-0"
+    },
+    {
+      "id": "way-945140437-piece-1",
+      "name": "Provisional frontage volume 945140437 (placeholder)",
+      "collection": "way-945140437-piece-1"
+    },
+    {
+      "id": "way-945140438",
+      "name": "Provisional frontage volume 945140438 (placeholder)",
+      "collection": "way-945140438"
+    },
+    {
+      "id": "way-945160635",
+      "name": "Provisional frontage volume 945160635 (placeholder)",
+      "collection": "way-945160635"
+    },
+    {
+      "id": "way-945414614",
+      "name": "Provisional frontage volume 945414614 (placeholder)",
+      "collection": "way-945414614"
+    },
+    {
+      "id": "way-945414615",
+      "name": "Provisional frontage volume 945414615 (placeholder)",
+      "collection": "way-945414615"
+    },
+    {
+      "id": "way-945414616",
+      "name": "Provisional frontage volume 945414616 (placeholder)",
+      "collection": "way-945414616"
+    },
+    {
+      "id": "way-945414617",
+      "name": "Provisional frontage volume 945414617 (placeholder)",
+      "collection": "way-945414617"
+    },
+    {
+      "id": "way-945414618",
+      "name": "Provisional frontage volume 945414618 (placeholder)",
+      "collection": "way-945414618"
+    },
+    {
+      "id": "way-945414619",
+      "name": "Provisional frontage volume 945414619 (placeholder)",
+      "collection": "way-945414619"
+    },
+    {
+      "id": "way-945414620",
+      "name": "Provisional frontage volume 945414620 (placeholder)",
+      "collection": "way-945414620"
+    },
+    {
+      "id": "way-945414621",
+      "name": "Provisional frontage volume 945414621 (placeholder)",
+      "collection": "way-945414621"
+    },
+    {
+      "id": "way-945414622",
+      "name": "Provisional frontage volume 945414622 (placeholder)",
+      "collection": "way-945414622"
+    },
+    {
+      "id": "way-945414623",
+      "name": "Provisional frontage volume 945414623 (placeholder)",
+      "collection": "way-945414623"
+    },
+    {
+      "id": "way-945414625",
+      "name": "Queens Hotel Court (placeholder)",
+      "collection": "way-945414625"
+    },
+    {
+      "id": "way-945752357",
+      "name": "Provisional frontage volume 945752357 (placeholder)",
+      "collection": "way-945752357"
+    },
+    {
+      "id": "way-945752358",
+      "name": "Provisional frontage volume 945752358 (placeholder)",
+      "collection": "way-945752358"
+    },
+    {
+      "id": "way-945752359",
+      "name": "Provisional frontage volume 945752359 (placeholder)",
+      "collection": "way-945752359"
+    },
+    {
+      "id": "way-945752360",
+      "name": "Provisional frontage volume 945752360 (placeholder)",
+      "collection": "way-945752360"
+    },
+    {
+      "id": "way-945752361",
+      "name": "Provisional frontage volume 945752361 (placeholder)",
+      "collection": "way-945752361"
+    },
+    {
+      "id": "way-945752362",
+      "name": "Provisional frontage volume 945752362 (placeholder)",
+      "collection": "way-945752362"
+    },
+    {
+      "id": "way-1011509145",
+      "name": "Provisional frontage volume 1011509145 (placeholder)",
+      "collection": "way-1011509145"
+    },
+    {
+      "id": "way-1011528488",
+      "name": "Provisional frontage volume 1011528488 (placeholder)",
+      "collection": "way-1011528488"
+    },
+    {
+      "id": "way-1012865114",
+      "name": "Provisional frontage volume 1012865114 (placeholder)",
+      "collection": "way-1012865114"
+    },
+    {
+      "id": "way-1012865115",
+      "name": "Provisional frontage volume 1012865115 (placeholder)",
+      "collection": "way-1012865115"
+    },
+    {
+      "id": "way-1012865116",
+      "name": "Provisional frontage volume 1012865116 (placeholder)",
+      "collection": "way-1012865116"
+    },
+    {
+      "id": "way-1012865117",
+      "name": "Provisional frontage volume 1012865117 (placeholder)",
+      "collection": "way-1012865117"
+    },
+    {
+      "id": "way-1012865118",
+      "name": "Provisional frontage volume 1012865118 (placeholder)",
+      "collection": "way-1012865118"
+    },
+    {
+      "id": "way-1012865119",
+      "name": "Provisional frontage volume 1012865119 (placeholder)",
+      "collection": "way-1012865119"
+    },
+    {
+      "id": "way-1012865120",
+      "name": "Provisional frontage volume 1012865120 (placeholder)",
+      "collection": "way-1012865120"
+    },
+    {
+      "id": "way-1012865121",
+      "name": "Provisional frontage volume 1012865121 (placeholder)",
+      "collection": "way-1012865121"
+    },
+    {
+      "id": "way-1012865122",
+      "name": "Provisional frontage volume 1012865122 (placeholder)",
+      "collection": "way-1012865122"
+    },
+    {
+      "id": "way-1041187501",
+      "name": "Provisional frontage volume 1041187501 (placeholder)",
+      "collection": "way-1041187501"
+    },
+    {
+      "id": "way-1041187502",
+      "name": "Provisional frontage volume 1041187502 (placeholder)",
+      "collection": "way-1041187502"
+    },
+    {
+      "id": "way-1041187503",
+      "name": "Provisional frontage volume 1041187503 (placeholder)",
+      "collection": "way-1041187503"
+    },
+    {
+      "id": "way-1041187504",
+      "name": "Provisional frontage volume 1041187504 (placeholder)",
+      "collection": "way-1041187504"
+    },
+    {
+      "id": "way-1041187505",
+      "name": "Provisional frontage volume 1041187505 (placeholder)",
+      "collection": "way-1041187505"
+    },
+    {
+      "id": "way-1041187506",
+      "name": "Provisional frontage volume 1041187506 (placeholder)",
+      "collection": "way-1041187506"
+    },
+    {
+      "id": "way-1041187507",
+      "name": "Provisional frontage volume 1041187507 (placeholder)",
+      "collection": "way-1041187507"
+    },
+    {
+      "id": "way-1041187508",
+      "name": "Provisional frontage volume 1041187508 (placeholder)",
+      "collection": "way-1041187508"
+    },
+    {
+      "id": "way-1041187509",
+      "name": "Provisional frontage volume 1041187509 (placeholder)",
+      "collection": "way-1041187509"
+    },
+    {
+      "id": "way-1041187510",
+      "name": "Provisional frontage volume 1041187510 (placeholder)",
+      "collection": "way-1041187510"
+    },
+    {
+      "id": "way-1041187511",
+      "name": "Provisional frontage volume 1041187511 (placeholder)",
+      "collection": "way-1041187511"
+    },
+    {
+      "id": "way-1041187512",
+      "name": "Provisional frontage volume 1041187512 (placeholder)",
+      "collection": "way-1041187512"
+    },
+    {
+      "id": "way-1041187513",
+      "name": "Provisional frontage volume 1041187513 (placeholder)",
+      "collection": "way-1041187513"
+    },
+    {
+      "id": "way-1041187514",
+      "name": "Provisional frontage volume 1041187514 (placeholder)",
+      "collection": "way-1041187514"
+    },
+    {
+      "id": "way-1041187515",
+      "name": "Provisional frontage volume 1041187515 (placeholder)",
+      "collection": "way-1041187515"
+    },
+    {
+      "id": "way-1041187516",
+      "name": "Provisional frontage volume 1041187516 (placeholder)",
+      "collection": "way-1041187516"
+    },
+    {
+      "id": "way-1041187517",
+      "name": "Provisional frontage volume 1041187517 (placeholder)",
+      "collection": "way-1041187517"
+    },
+    {
+      "id": "way-1041187518",
+      "name": "Provisional frontage volume 1041187518 (placeholder)",
+      "collection": "way-1041187518"
+    },
+    {
+      "id": "way-1041187519",
+      "name": "Provisional frontage volume 1041187519 (placeholder)",
+      "collection": "way-1041187519"
+    },
+    {
+      "id": "way-1041187520",
+      "name": "Provisional frontage volume 1041187520 (placeholder)",
+      "collection": "way-1041187520"
+    },
+    {
+      "id": "way-1041187521",
+      "name": "Provisional frontage volume 1041187521 (placeholder)",
+      "collection": "way-1041187521"
+    },
+    {
+      "id": "way-1041187522",
+      "name": "Provisional frontage volume 1041187522 (placeholder)",
+      "collection": "way-1041187522"
+    },
+    {
+      "id": "way-1041187523",
+      "name": "Provisional frontage volume 1041187523 (placeholder)",
+      "collection": "way-1041187523"
+    },
+    {
+      "id": "way-1041187524",
+      "name": "Provisional frontage volume 1041187524 (placeholder)",
+      "collection": "way-1041187524"
+    },
+    {
+      "id": "way-1041187525",
+      "name": "Provisional frontage volume 1041187525 (placeholder)",
+      "collection": "way-1041187525"
+    },
+    {
+      "id": "way-1041187526",
+      "name": "Provisional frontage volume 1041187526 (placeholder)",
+      "collection": "way-1041187526"
+    },
+    {
+      "id": "way-1041187527",
+      "name": "Provisional frontage volume 1041187527 (placeholder)",
+      "collection": "way-1041187527"
+    },
+    {
+      "id": "way-1041187528",
+      "name": "Provisional frontage volume 1041187528 (placeholder)",
+      "collection": "way-1041187528"
+    },
+    {
+      "id": "way-1041187529",
+      "name": "Provisional frontage volume 1041187529 (placeholder)",
+      "collection": "way-1041187529"
+    },
+    {
+      "id": "way-1041187530",
+      "name": "Provisional frontage volume 1041187530 (placeholder)",
+      "collection": "way-1041187530"
+    },
+    {
+      "id": "way-1041197915",
+      "name": "Provisional frontage volume 1041197915 (placeholder)",
+      "collection": "way-1041197915"
+    },
+    {
+      "id": "way-1041198963",
+      "name": "Provisional frontage volume 1041198963 (placeholder)",
+      "collection": "way-1041198963"
+    },
+    {
+      "id": "way-1043696133",
+      "name": "Provisional frontage volume 1043696133 (placeholder)",
+      "collection": "way-1043696133"
+    },
+    {
+      "id": "way-1043696134",
+      "name": "Provisional frontage volume 1043696134 (placeholder)",
+      "collection": "way-1043696134"
+    },
+    {
+      "id": "way-1043696135",
+      "name": "Provisional frontage volume 1043696135 (placeholder)",
+      "collection": "way-1043696135"
+    },
+    {
+      "id": "way-1043696139",
+      "name": "Provisional frontage volume 1043696139 (placeholder)",
+      "collection": "way-1043696139"
+    },
+    {
+      "id": "way-1043696140",
+      "name": "Provisional frontage volume 1043696140 (placeholder)",
+      "collection": "way-1043696140"
+    },
+    {
+      "id": "way-1043697984",
+      "name": "Provisional frontage volume 1043697984 (placeholder)",
+      "collection": "way-1043697984"
+    },
+    {
+      "id": "way-1043697986",
+      "name": "Provisional frontage volume 1043697986 (placeholder)",
+      "collection": "way-1043697986"
+    },
+    {
+      "id": "way-1043697997",
+      "name": "Provisional frontage volume 1043697997 (placeholder)",
+      "collection": "way-1043697997"
+    },
+    {
+      "id": "way-1043697998",
+      "name": "Provisional frontage volume 1043697998 (placeholder)",
+      "collection": "way-1043697998"
+    },
+    {
+      "id": "way-1043697999",
+      "name": "Provisional frontage volume 1043697999 (placeholder)",
+      "collection": "way-1043697999"
+    },
+    {
+      "id": "way-1043702794",
+      "name": "Provisional frontage volume 1043702794 (placeholder)",
+      "collection": "way-1043702794"
+    },
+    {
+      "id": "way-1043702824",
+      "name": "Provisional frontage volume 1043702824 (placeholder)",
+      "collection": "way-1043702824"
+    },
+    {
+      "id": "way-1189162416",
+      "name": "Anelli Hotel & Amici Bar (placeholder)",
+      "collection": "way-1189162416"
+    },
+    {
+      "id": "way-1353637064",
+      "name": "Starbucks (placeholder)",
+      "collection": "way-1353637064"
+    }
+  ],
+  "views": [
+    {
+      "name": "Marine Drive and north lake",
+      "position": [
+        600,
+        850,
+        -350
+      ],
+      "target": [
+        600,
+        2,
+        -575
+      ]
+    },
+    {
+      "name": "Marine Parade bridge",
+      "position": [
+        -180,
+        140,
+        -240
+      ],
+      "target": [
+        -15,
+        3,
+        -440
+      ]
+    },
+    {
+      "name": "Fairway roundabout",
+      "position": [
+        1170,
+        130,
+        -660
+      ],
+      "target": [
+        1330,
+        2,
+        -862
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      112,
+      3.9,
+      -316
+    ],
+    "target": [
+      140,
+      3.9,
+      -323
+    ]
+  },
+  "rules": [
+    {
+      "id": "massing",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Fixed footprint envelope only."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Already minimal envelope; detailed architecture is a separate replacement."
+      }
+    }
+  ]
+}

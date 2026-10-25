@@ -1,0 +1,56 @@
+{
+  "front": {
+    "sources": [
+      "google-3d-close-orbits",
+      "central-close-orbit",
+      "promenade-street",
+      "fairway-street"
+    ],
+    "seen": "Frontage position, storey grouping, forecourts and major open entrances. Architecture not modelled.",
+    "confidence": "medium for massing, low for exact wall line"
+  },
+  "sides": {
+    "sources": [
+      "google-3d-close-orbits",
+      "central-close-orbit",
+      "albert-place-close-orbit"
+    ],
+    "seen": "Detached house gaps and side streets, hotel attached lower volumes; roof parallax explicitly uncertain."
+  },
+  "rear": {
+    "sources": [
+      "google-3d-close-orbits",
+      "registered-aerial",
+      "albert-place-close-orbit"
+    ],
+    "seen": "Hotel/theatre rear and open aprons from four opposing3D orbits. AlbertPlace/BackBath rear access verified close. Northern private yards only aerial/oblique, not individually researched elevations.",
+    "missing": "Obscured private walls and internal hotel carpark not resolved."
+  },
+  "roof": {
+    "sources": [
+      "google-3d-close-orbits",
+      "central-close-orbit",
+      "registered-aerial"
+    ],
+    "seen": "Main volume groups and height differences; flat placeholder caps intentionally remain envelope bounds, pitched roofs/spires omitted."
+  },
+  "ground": {
+    "sources": [
+      "drive-street",
+      "bridge-street",
+      "fairway-street",
+      "promenade-street",
+      "registered-aerial"
+    ],
+    "seen": "Road and pavement widths estimated; seawalk and low seawall, inland asphalt parking, bridge shared paths/blue railings, lake outline/islands, access gaps.",
+    "missing": "Exact dropped kerbs, drains, tactile layouts, property wall traces, hedge boundaries and threshold heights."
+  },
+  "failures_and_limits": [
+    "Initial Overpass request returned406; official OSM API succeeded.",
+    "First StreetView request atwrong lake coordinate reported no imagery; snapped to unrelated pano. Correct bridge roadway request loaded after reload.",
+    "Maps globe view resets after direct navigation; actual3D re-enabled for close orbits. Several expired5minute research sessions recreated.",
+    "Google Maps place card showed current hotel photo; official hotel site reviewed. No dimensioned elevation drawings found in official supplementary search; Mapillary was not separately investigated because no detailed elevations are being reconstructed."
+  ],
+  "private_captures": "../references/marine-*.png, excluded from source control",
+  "date_conflict_resolution": "Old Google3D/OSM theatre complex conflicts with official Sefton demolition completionMarch2025 and constructionSept2026. Two old footprint volumes removed; flat brown construction reservation is explicitly provisional, not current excavation survey."
+}

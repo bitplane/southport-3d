@@ -57,5 +57,11 @@
     "Forecourt material divisions, parking extents and marking endpoints are approximate dated interpretations, not current regulatory information.",
     "No detailed facades, private garden furniture, lamps, cars or full planting in this pass.",
     "Live 3D Earth was unavailable during initial research; earlier saved coarse 3D views provide supporting roof/rear context only."
-  ]
+  ],
+  "marine_drive_connection_note": {
+    "date": "2026-10-25",
+    "road": "Victoria Street",
+    "source": "regions/southport/marine-drive/public-realm/research/source-geometry.json",
+    "geometry": "Original OSM axis checked against actual Google3D close views; road/pavement arrangement owns the T-junction rather than leaving120mm pavement across the new connection. Existing building/courtyard ownership retained."
+  }
 }

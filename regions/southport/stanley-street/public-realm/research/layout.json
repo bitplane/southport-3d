@@ -102,6 +102,47 @@
       ],
       "width": 7,
       "basis": "Existing Lord corridor centreline and width retained exactly at Y65; route checked against aerial and Street View."
+    },
+    {
+      "id": "24478232",
+      "name": "Victoria Street",
+      "points": [
+        [
+          128.203,
+          312.534
+        ],
+        [
+          132.404,
+          304.444
+        ],
+        [
+          134.142,
+          300.229
+        ],
+        [
+          136.402,
+          292.969
+        ],
+        [
+          142.657,
+          259.498
+        ],
+        [
+          142.91,
+          258.29
+        ],
+        [
+          145.153,
+          221.275
+        ],
+        [
+          147.194,
+          164.676
+        ]
+      ],
+      "width": 6.2,
+      "basis": "Retained mapped axis checked in MarineDrive close Google3D/aerial. Width6.2\u00b11m. T-junction added to connect the new north-lake canvas; preserve existing neighbouring court exclusions.",
+      "bridge": false
     }
   ],
   "junction_radius_m": 1.4,

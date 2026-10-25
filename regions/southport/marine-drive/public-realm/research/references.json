@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "represented_appearance": "Provisional current block plan with older Google3D shape evidence cross-checked against dated2024\u20132026 StreetView and official2025/2026 changes. Former theatre omitted; new development footprint/retaining levels deferred.",
+  "sources": [
+    {
+      "id": "google-3d-close-orbits",
+      "url": "https://www.google.com/maps/@53.6519434,-3.0013033,428a,35y,270h,39.34t/data=!3m1!1e3",
+      "accessed": "2026-10-25",
+      "attribution": "Google imagery; imagery date not exposed in 3D",
+      "observations": "Four actual close photogrammetric orbits at hotel/theatre show curved hotel end, long hotel bar, lower attached conference volumes, separate theatre roof groups. Northern lake/Fairway two opposing close obliques show detached frontage groups, church/service centre, forecourts and continuous shoreline."
+    },
+    {
+      "id": "registered-aerial",
+      "url": "https://www.google.com/maps/@53.6584,-3.0035,17z/data=!3m1!1e3",
+      "accessed": "2026-10-25",
+      "attribution": "Google, Airbus/Maxar as displayed; captures private",
+      "observations": "MarineDrive seawalk and inland parking strip; Fairway roundabout, crescent-shaped northern lake and shoreline; OceanPlaza service courts."
+    },
+    {
+      "id": "bridge-street",
+      "url": "https://www.google.com/maps/@53.6514724,-3.0090977,14a,75y,340h,90t/data=!3m7!1e1!3m5!1syCdmHX4C_5VwUPmvyqcYgw!2e0!7i16384!8i8192",
+      "capture": "Aug 2024",
+      "accessed": "2026-10-25",
+      "observations": "Two lane road, broad shared footways, upright blue guardrails, double yellow road edges, structural pylon/stays. Relative deck height estimated."
+    },
+    {
+      "id": "drive-street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65935,-3.00476&heading=45&pitch=0&fov=75",
+      "capture": "Jul 2026",
+      "accessed": "2026-10-25",
+      "observations": "Two lanes, continuous low seawall outside seaward path, double yellow lines, inland asphalt parking separated by posts; no continuous raised inland footway."
+    },
+    {
+      "id": "OSM-seed",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-3.022,53.648,-2.992,53.667",
+      "accessed": "2026-10-25",
+      "attribution": "\u00a9 OpenStreetMap contributors, ODbL1.0; https://www.openstreetmap.org/copyright",
+      "observations": "Selected derived axes/outlines retained. Human authored seed checked against actual imagery; no claim of cadastral accuracy."
+    },
+    {
+      "id": "promenade-street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65356,-3.0038&heading=120&pitch=0&fov=75",
+      "capture": "Jul2026",
+      "accessed": "2026-10-25",
+      "observations": "Broad slab footway at Marine Gate grounds, brick boundary wall about0.9m, hedge setback, separate entrance gaps. Exact wall tracing deferred; no continuous invented property wall."
+    },
+    {
+      "id": "fairway-street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.66248,-2.99870&heading=135&pitch=0&fov=80",
+      "capture": "Aug2026",
+      "accessed": "2026-10-25",
+      "observations": "Fairway roundabout/exit has raised paved splitter, surrounding scrub, open side road and footway. Current construction yard visible; no invented buildings added."
+    },
+    {
+      "id": "hotel-official",
+      "url": "https://www.waterfrontsouthporthotel.co.uk/",
+      "accessed": "2026-10-25",
+      "observations": "Current Waterfront name and lake-front position; car park approach behind theatre, under hotel. Original OSM Bliss label is outdated and retained only in seed. Hidden basement architecture deferred."
+    },
+    {
+      "id": "central-close-orbit",
+      "url": "https://www.google.com/maps/@53.6523374,-3.003,428a,35y,39.37t/data=!3m1!1e3",
+      "accessed": "2026-10-25",
+      "observations": "Actual textured3D of middle frontage: detached gabled groups, planted forecourts, Knowsley/Leicester broad junction and small white mini-roundabout. 20m55CSSpixel flat-view scale check."
+    },
+    {
+      "id": "albert-place-close-orbit",
+      "url": "https://www.google.com/maps/@53.6502871,-3.0056,108a,35y,39.55t/data=!3m1!1e3",
+      "accessed": "2026-10-25",
+      "observations": "Close actual3D resolves a narrow ground-level open alley with courtyard walls, rear projections and access aprons. Original6.2m road estimate rejected; conservative access cut made at conflicting OSM roof edge."
+    },
+    {
+      "id": "theatre-demolition-official",
+      "url": "https://www.sefton.gov.uk/mysefton-news/latest-news/leading-contractor-graham-to-deliver-marine-lake-events-centre-in-southport/",
+      "published": "2025-03-26",
+      "accessed": "2026-10-25",
+      "observations": "Council states old theatre/convention complex demolition completed. Overrides earlierGoogle3D and OSM old theatre outline. Raw geometry retained, omitted as current volume."
+    },
+    {
+      "id": "mlec-progress-official",
+      "url": "https://sefton.gov.uk/mysefton-news/latest-news/marine-lake-events-centre-works-progressing-at-impressive-pace/",
+      "published": "2026-09-23",
+      "accessed": "2026-10-25",
+      "observations": "Council states excavations, sheet piling, retaining walls and access ramp completed, main construction beginning. No finished new theatre volume is justified."
+    }
+  ]
+}

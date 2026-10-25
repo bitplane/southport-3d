@@ -1,0 +1,1637 @@
+{
+  "coordinate_scale": "WGS84 local tangent approximation;111320m/degree, cos53.6486555 longitude, common43.5293degree yaw. Boundaries in metres. OSM retained as seed only.",
+  "plan_scale_check": {
+    "reference": "marine-central-plan.png private Google screenshot",
+    "centre": [
+      53.6554945,
+      -3.003
+    ],
+    "scale_bar_m": 20,
+    "scale_bar_css_px": 55,
+    "metres_per_px": 0.36363636363636365,
+    "observations": "Promenade two running lanes plus broad mouths and painted mini-roundabout, not a 26m raised central island. Typical narrow AlbertPlace alley about30CSSpx at20z equivalent2.6\u20133.0m; former6.2m estimate rejected."
+  },
+  "height_inputs": {
+    "hotel": "About7storeys including ground and roof bounds in four actual3D orbits; envelope24\u00b13m. Lower linked block13\u00b13m.",
+    "theatre": "Separate low/mid roof groups, main13\u00b13m; flat volume is outer bound, not reconstructed roof.",
+    "retail": "Broad single storey sheds about8\u00b12m; small restaurant5\u20137\u00b12m.",
+    "frontages": "Mostly2\u20133storeys plus pitched roofs:8\u201312\u00b13m, with small rear structures4.2\u00b12m.",
+    "bridge": "14.2\u00b11.6m deck between mapped side paths; shallow3.2\u20133.4m estimated pavement vs lake0.6m localzero; pylon28\u00b15m estimated from deck span/3D and StreetView. No surveyed heights."
+  },
+  "access_corrections": [
+    {
+      "building": "way-30141972",
+      "original_footprint": [
+        [
+          65.178,
+          678.056
+        ],
+        [
+          24.155,
+          674.142
+        ],
+        [
+          20.031,
+          717.243
+        ],
+        [
+          61.054,
+          721.158
+        ]
+      ],
+      "access_reservations": [
+        {
+          "road": "24943836",
+          "name": "access road",
+          "reserved_area_m2": 0.22564779712151833
+        }
+      ],
+      "basis": "Conservative open access reservations: clear rear/drive-through routes seen in close aerial context. OSM roof/wall outlines conflict with mapped axes here. Exact canopy/covered-passage geometry remains unresolved; no invented arch or covered link."
+    },
+    {
+      "building": "way-30141980",
+      "original_footprint": [
+        [
+          -65.826,
+          745.477
+        ],
+        [
+          -63.418,
+          718.639
+        ],
+        [
+          -65.262,
+          718.47
+        ],
+        [
+          -65.083,
+          716.474
+        ],
+        [
+          -63.252,
+          716.639
+        ],
+        [
+          -62.729,
+          710.875
+        ],
+        [
+          -75.19,
+          709.753
+        ],
+        [
+          -75.385,
+          711.904
+        ],
+        [
+          -78.725,
+          711.607
+        ],
+        [
+          -81.639,
+          744.054
+        ]
+      ],
+      "access_reservations": [
+        {
+          "road": "51864036",
+          "name": "drive-through",
+          "reserved_area_m2": 22.850408417221722
+        }
+      ],
+      "basis": "Conservative open access reservations: clear rear/drive-through routes seen in close aerial context. OSM roof/wall outlines conflict with mapped axes here. Exact canopy/covered-passage geometry remains unresolved; no invented arch or covered link."
+    },
+    {
+      "building": "way-375396397",
+      "original_footprint": [
+        [
+          137.065,
+          224.736
+        ],
+        [
+          118.992,
+          222.85
+        ],
+        [
+          114.863,
+          246.747
+        ],
+        [
+          123.052,
+          249.332
+        ],
+        [
+          121.29,
+          257.9
+        ],
+        [
+          131.208,
+          260.639
+        ]
+      ],
+      "access_reservations": [
+        {
+          "road": "375396398",
+          "name": "Albert Place",
+          "reserved_area_m2": 28.936882900526086
+        }
+      ],
+      "basis": "Conservative open access reservations: clear rear/drive-through routes seen in close aerial context. OSM roof/wall outlines conflict with mapped axes here. Exact canopy/covered-passage geometry remains unresolved; no invented arch or covered link."
+    },
+    {
+      "building": "way-945140437",
+      "original_footprint": [
+        [
+          156.413,
+          265.347
+        ],
+        [
+          157.482,
+          259.862
+        ],
+        [
+          151.742,
+          258.744
+        ],
+        [
+          150.68,
+          264.236
+        ]
+      ],
+      "access_reservations": [
+        {
+          "road": "945140436",
+          "name": "alley",
+          "reserved_area_m2": 12.16789462963758
+        }
+      ],
+      "basis": "Conservative open access reservations: clear rear/drive-through routes seen in close aerial context. OSM roof/wall outlines conflict with mapped axes here. Exact canopy/covered-passage geometry remains unresolved; no invented arch or covered link."
+    },
+    {
+      "building": "way-1012865116",
+      "original_footprint": [
+        [
+          1047.086,
+          543.975
+        ],
+        [
+          1048.832,
+          544.051
+        ],
+        [
+          1049.102,
+          538.452
+        ],
+        [
+          1052.432,
+          538.605
+        ],
+        [
+          1052.615,
+          534.639
+        ],
+        [
+          1038.347,
+          533.99
+        ],
+        [
+          1037.781,
+          546.366
+        ],
+        [
+          1046.954,
+          546.787
+        ]
+      ],
+      "access_reservations": [
+        {
+          "road": "1012865103",
+          "name": "driveway",
+          "reserved_area_m2": 3.977631071440869
+        }
+      ],
+      "basis": "Conservative open access reservations: clear rear/drive-through routes seen in close aerial context. OSM roof/wall outlines conflict with mapped axes here. Exact canopy/covered-passage geometry remains unresolved; no invented arch or covered link."
+    }
+  ],
+  "per_volume_dimensions": [
+    {
+      "id": "way-30141970",
+      "xy_bounds_m": [
+        53.258,
+        95.478,
+        746.761,
+        788.438
+      ],
+      "wall_area_m2": 735.7124850000015,
+      "height_bound_m": 7,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-30141972",
+      "xy_bounds_m": [
+        20.031,
+        65.178,
+        674.142,
+        721.063442
+      ],
+      "wall_area_m2": 1784.0705978693777,
+      "height_bound_m": 8,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-30141974",
+      "xy_bounds_m": [
+        -24.351,
+        39.992,
+        517.256,
+        587.668
+      ],
+      "wall_area_m2": 3839.469274499999,
+      "height_bound_m": 8,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-30141980",
+      "xy_bounds_m": [
+        -81.335276,
+        -62.729,
+        709.753,
+        745.477
+      ],
+      "wall_area_m2": 517.6491984387778,
+      "height_bound_m": 8,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-51848970",
+      "xy_bounds_m": [
+        122.819,
+        257.866,
+        333.619,
+        391.827
+      ],
+      "wall_area_m2": 4975.2264024999995,
+      "height_bound_m": 13,
+      "height_uncertainty_m": 3,
+      "publication_status": "retired: theatre demolished, research outline only"
+    },
+    {
+      "id": "way-51848971",
+      "xy_bounds_m": [
+        20.368,
+        81.773,
+        310.428,
+        392.991
+      ],
+      "wall_area_m2": 2983.069339,
+      "height_bound_m": 13,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-51848973",
+      "xy_bounds_m": [
+        367.7,
+        396.686,
+        385.521,
+        443.3
+      ],
+      "wall_area_m2": 838.9655114999994,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-51848974",
+      "xy_bounds_m": [
+        257.243,
+        271.866,
+        363.705,
+        375.814
+      ],
+      "wall_area_m2": 119.52091600000027,
+      "height_bound_m": 10,
+      "height_uncertainty_m": 3,
+      "publication_status": "retired: theatre demolished, research outline only"
+    },
+    {
+      "id": "way-51848975",
+      "xy_bounds_m": [
+        395.201,
+        406.147,
+        388.298,
+        399.32
+      ],
+      "wall_area_m2": 76.9847745,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-51848977",
+      "xy_bounds_m": [
+        601.823,
+        633.042,
+        418.974,
+        438.796
+      ],
+      "wall_area_m2": 370.5060365000006,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-51848978",
+      "xy_bounds_m": [
+        635.77,
+        660.249,
+        428.288,
+        451.089
+      ],
+      "wall_area_m2": 314.5785255000004,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-51848979",
+      "xy_bounds_m": [
+        659.492,
+        686.333,
+        436.83,
+        462.145
+      ],
+      "wall_area_m2": 420.9328414999995,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-51848980",
+      "xy_bounds_m": [
+        673.967,
+        685.625,
+        419.926,
+        434.256
+      ],
+      "wall_area_m2": 161.91100200000028,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-51848981",
+      "xy_bounds_m": [
+        640.552,
+        655.449,
+        409.352,
+        423.918
+      ],
+      "wall_area_m2": 134.45245700000024,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-51848982",
+      "xy_bounds_m": [
+        657.421,
+        683.765,
+        397.306,
+        415.375
+      ],
+      "wall_area_m2": 325.0074179999999,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-52902208",
+      "xy_bounds_m": [
+        -55.41,
+        -35.773,
+        649.309,
+        671.926
+      ],
+      "wall_area_m2": 361.7372565000004,
+      "height_bound_m": 8,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-167349525",
+      "xy_bounds_m": [
+        88.024,
+        127.859,
+        326.35,
+        412.063
+      ],
+      "wall_area_m2": 2203.1849544999995,
+      "height_bound_m": 24,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-342493522",
+      "xy_bounds_m": [
+        24.155,
+        67.472,
+        651.183,
+        678.056
+      ],
+      "wall_area_m2": 954.5506775000013,
+      "height_bound_m": 8,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-342493523",
+      "xy_bounds_m": [
+        26.244,
+        61.086,
+        608.746,
+        654.032
+      ],
+      "wall_area_m2": 1323.4392020000007,
+      "height_bound_m": 8,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-342493524",
+      "xy_bounds_m": [
+        30.171,
+        62.827,
+        590.442,
+        611.591
+      ],
+      "wall_area_m2": 572.1022400000004,
+      "height_bound_m": 8,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-370725266",
+      "xy_bounds_m": [
+        -96.451,
+        -60.795,
+        795.773,
+        826.678
+      ],
+      "wall_area_m2": 563.433012499999,
+      "height_bound_m": 7,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-370725267",
+      "xy_bounds_m": [
+        -27.731,
+        -11.073,
+        795.847,
+        826.616
+      ],
+      "wall_area_m2": 338.07056850000015,
+      "height_bound_m": 5,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-370725637",
+      "xy_bounds_m": [
+        -1.641,
+        10.725,
+        759.609,
+        776.218
+      ],
+      "wall_area_m2": 119.21742249999953,
+      "height_bound_m": 8,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-375396110",
+      "xy_bounds_m": [
+        86.987,
+        131.208,
+        252.507,
+        285.432
+      ],
+      "wall_area_m2": 815.7281290000002,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-375396397-piece-0",
+      "xy_bounds_m": [
+        114.863,
+        137.065,
+        222.85,
+        253.625404
+      ],
+      "wall_area_m2": 492.14150278989223,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-375396397-piece-1",
+      "xy_bounds_m": [
+        121.29,
+        131.88643,
+        253.929851,
+        260.639
+      ],
+      "wall_area_m2": 42.007380690729725,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-376078080",
+      "xy_bounds_m": [
+        1089.286,
+        1135.556,
+        615.975,
+        669.989
+      ],
+      "wall_area_m2": 1102.0819190000013,
+      "height_bound_m": 7,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-376078083",
+      "xy_bounds_m": [
+        1130.424,
+        1192.825,
+        676.715,
+        729.305
+      ],
+      "wall_area_m2": 1389.128764999998,
+      "height_bound_m": 9,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-376078533",
+      "xy_bounds_m": [
+        1100.999,
+        1118.086,
+        506.131,
+        522.549
+      ],
+      "wall_area_m2": 143.090444,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945126410",
+      "xy_bounds_m": [
+        189.301,
+        214.463,
+        225.752,
+        236.898
+      ],
+      "wall_area_m2": 193.27676899999986,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945126411",
+      "xy_bounds_m": [
+        190.858,
+        214.421,
+        231.965,
+        250.878
+      ],
+      "wall_area_m2": 315.3146674999997,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945126412",
+      "xy_bounds_m": [
+        186.666,
+        214.776,
+        251.953,
+        265.748
+      ],
+      "wall_area_m2": 284.68647350000003,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945126413",
+      "xy_bounds_m": [
+        178.416,
+        185.155,
+        267.073,
+        273.622
+      ],
+      "wall_area_m2": 33.1772430000001,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-945126414",
+      "xy_bounds_m": [
+        158.609,
+        168.686,
+        267.334,
+        274.118
+      ],
+      "wall_area_m2": 49.45496400000014,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-945126415",
+      "xy_bounds_m": [
+        185.087,
+        214.776,
+        265.415,
+        280.229
+      ],
+      "wall_area_m2": 249.19613799999962,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945126416",
+      "xy_bounds_m": [
+        184.956,
+        214.859,
+        280.184,
+        304.036
+      ],
+      "wall_area_m2": 458.77085850000066,
+      "height_bound_m": 11.600000000000001,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945126417",
+      "xy_bounds_m": [
+        145.425,
+        187.26,
+        269.561,
+        298.221
+      ],
+      "wall_area_m2": 623.1544339999998,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945126418",
+      "xy_bounds_m": [
+        75.131,
+        98.505,
+        221.06,
+        247.754
+      ],
+      "wall_area_m2": 267.29190849999975,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945126419",
+      "xy_bounds_m": [
+        95.613,
+        107.258,
+        224.268,
+        240.546
+      ],
+      "wall_area_m2": 117.13755049999992,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945140435",
+      "xy_bounds_m": [
+        149.803,
+        184.033,
+        223.081,
+        260.551
+      ],
+      "wall_area_m2": 716.2097265000002,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945140437-piece-0",
+      "xy_bounds_m": [
+        150.68,
+        156.678545,
+        262.600136,
+        265.347
+      ],
+      "wall_area_m2": 8.919747908193427,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-945140437-piece-1",
+      "xy_bounds_m": [
+        151.391684,
+        157.482,
+        258.744,
+        261.940701
+      ],
+      "wall_area_m2": 11.584635565525794,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-945140438",
+      "xy_bounds_m": [
+        149.713,
+        156.413,
+        264.236,
+        270.749
+      ],
+      "wall_area_m2": 31.68984500000017,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-945160635",
+      "xy_bounds_m": [
+        261.891,
+        292.539,
+        778.301,
+        804.666
+      ],
+      "wall_area_m2": 429.38711099999944,
+      "height_bound_m": 6,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-945414614",
+      "xy_bounds_m": [
+        256.437,
+        262.068,
+        236.87,
+        241.059
+      ],
+      "wall_area_m2": 22.174109499999847,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-945414615",
+      "xy_bounds_m": [
+        233.79,
+        256.056,
+        226.884,
+        248.648
+      ],
+      "wall_area_m2": 350.8007990000001,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945414616",
+      "xy_bounds_m": [
+        233.925,
+        254.485,
+        248.459,
+        262.096
+      ],
+      "wall_area_m2": 219.28635599999987,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945414617",
+      "xy_bounds_m": [
+        234.186,
+        252.337,
+        261.99,
+        276.479
+      ],
+      "wall_area_m2": 214.93855699999955,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945414618",
+      "xy_bounds_m": [
+        234.334,
+        247.635,
+        276.341,
+        287.713
+      ],
+      "wall_area_m2": 138.98067050000034,
+      "height_bound_m": 14.8,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945414619",
+      "xy_bounds_m": [
+        233.999,
+        248.069,
+        287.145,
+        308.256
+      ],
+      "wall_area_m2": 168.3197029999997,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945414620",
+      "xy_bounds_m": [
+        239.529,
+        262.954,
+        293.782,
+        312.577
+      ],
+      "wall_area_m2": 309.98168099999987,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945414621",
+      "xy_bounds_m": [
+        263.718,
+        281.637,
+        229.414,
+        243.092
+      ],
+      "wall_area_m2": 177.93310350000013,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945414622",
+      "xy_bounds_m": [
+        266.142,
+        281.089,
+        242.677,
+        255.281
+      ],
+      "wall_area_m2": 154.15083399999983,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945414623",
+      "xy_bounds_m": [
+        266.288,
+        281.089,
+        255.164,
+        267.441
+      ],
+      "wall_area_m2": 154.03793099999996,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945414625",
+      "xy_bounds_m": [
+        261.699,
+        281.118,
+        267.336,
+        316.815
+      ],
+      "wall_area_m2": 597.8456614999998,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945752357",
+      "xy_bounds_m": [
+        324.712,
+        351.889,
+        234.275,
+        268.364
+      ],
+      "wall_area_m2": 738.392061,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945752358",
+      "xy_bounds_m": [
+        325.208,
+        351.745,
+        270.464,
+        283.519
+      ],
+      "wall_area_m2": 261.0072005,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945752359",
+      "xy_bounds_m": [
+        299.413,
+        316.749,
+        230.23,
+        255.432
+      ],
+      "wall_area_m2": 395.5125839999998,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945752360",
+      "xy_bounds_m": [
+        299.221,
+        321.346,
+        255.286,
+        268.453
+      ],
+      "wall_area_m2": 209.61666049999982,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945752361",
+      "xy_bounds_m": [
+        299.961,
+        318.91,
+        268.309,
+        302.995
+      ],
+      "wall_area_m2": 558.5124280000005,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-945752362",
+      "xy_bounds_m": [
+        299.961,
+        351.955,
+        285.783,
+        332.099
+      ],
+      "wall_area_m2": 1158.461072499998,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1011509145",
+      "xy_bounds_m": [
+        70.418,
+        76.416,
+        801.754,
+        808.507
+      ],
+      "wall_area_m2": 38.13984149999994,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-1011528488",
+      "xy_bounds_m": [
+        -100.932,
+        -91.176,
+        657.067,
+        664.285
+      ],
+      "wall_area_m2": 42.43071999999966,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-1012865114",
+      "xy_bounds_m": [
+        1038.676,
+        1048.761,
+        491.248,
+        502.819
+      ],
+      "wall_area_m2": 105.17544750000103,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1012865115",
+      "xy_bounds_m": [
+        1038.465,
+        1054.57,
+        506.277,
+        517.557
+      ],
+      "wall_area_m2": 156.486216000001,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1012865116",
+      "xy_bounds_m": [
+        1037.793156,
+        1052.615,
+        533.99,
+        546.187416
+      ],
+      "wall_area_m2": 139.90519284556012,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1012865117",
+      "xy_bounds_m": [
+        1038.089,
+        1048.527,
+        520.213,
+        531.617
+      ],
+      "wall_area_m2": 114.34658600000097,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1012865118",
+      "xy_bounds_m": [
+        1062.312,
+        1078.814,
+        544.931,
+        560.784
+      ],
+      "wall_area_m2": 139.34791900000073,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1012865119",
+      "xy_bounds_m": [
+        1037.839,
+        1062.826,
+        554.401,
+        570.964
+      ],
+      "wall_area_m2": 255.09653700000138,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1012865120",
+      "xy_bounds_m": [
+        1080.914,
+        1096.938,
+        529.611,
+        549.072
+      ],
+      "wall_area_m2": 156.8210650000017,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1012865121",
+      "xy_bounds_m": [
+        1113.022,
+        1127.528,
+        487.575,
+        502.75
+      ],
+      "wall_area_m2": 126.79849250000099,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1012865122",
+      "xy_bounds_m": [
+        1089.375,
+        1108.117,
+        516.333,
+        535.013
+      ],
+      "wall_area_m2": 170.1947800000002,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187501",
+      "xy_bounds_m": [
+        969.95,
+        996.381,
+        558.574,
+        574.627
+      ],
+      "wall_area_m2": 298.48891899999995,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187502",
+      "xy_bounds_m": [
+        986.909,
+        996.484,
+        543.792,
+        555.555
+      ],
+      "wall_area_m2": 108.67732599999982,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187503",
+      "xy_bounds_m": [
+        984.086,
+        997.678,
+        530.785,
+        542.622
+      ],
+      "wall_area_m2": 138.5788965000001,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187504",
+      "xy_bounds_m": [
+        986.267,
+        997.099,
+        517.424,
+        529.615
+      ],
+      "wall_area_m2": 126.83883200000062,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187505",
+      "xy_bounds_m": [
+        986.197,
+        997.038,
+        504.467,
+        516.387
+      ],
+      "wall_area_m2": 121.57383249999944,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187506",
+      "xy_bounds_m": [
+        973.462,
+        997.047,
+        482.557,
+        501.93
+      ],
+      "wall_area_m2": 273.8119565000003,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187507",
+      "xy_bounds_m": [
+        956.966,
+        969.199,
+        482.079,
+        492.98
+      ],
+      "wall_area_m2": 124.04544999999993,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187508",
+      "xy_bounds_m": [
+        943.193,
+        955.795,
+        482.847,
+        493.523
+      ],
+      "wall_area_m2": 125.67958400000067,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187509",
+      "xy_bounds_m": [
+        926.839,
+        940.262,
+        480.09,
+        493.641
+      ],
+      "wall_area_m2": 150.1251104999996,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187510",
+      "xy_bounds_m": [
+        907.209,
+        922.002,
+        478.141,
+        493.029
+      ],
+      "wall_area_m2": 164.57168999999993,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187511",
+      "xy_bounds_m": [
+        868.973,
+        887.6,
+        475.053,
+        487.621
+      ],
+      "wall_area_m2": 224.9902440000006,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187512",
+      "xy_bounds_m": [
+        869.92,
+        883.191,
+        487.748,
+        512.994
+      ],
+      "wall_area_m2": 329.87722300000144,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187513",
+      "xy_bounds_m": [
+        866.558,
+        896.684,
+        516.592,
+        542.81
+      ],
+      "wall_area_m2": 398.508618999998,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187514",
+      "xy_bounds_m": [
+        897.155,
+        915.135,
+        531.012,
+        549.295
+      ],
+      "wall_area_m2": 193.1898075000001,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187515",
+      "xy_bounds_m": [
+        913.516,
+        934.749,
+        528.1,
+        556.444
+      ],
+      "wall_area_m2": 349.1999439999995,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187516",
+      "xy_bounds_m": [
+        930.984,
+        950.317,
+        541.134,
+        562.134
+      ],
+      "wall_area_m2": 244.0016519999993,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187517",
+      "xy_bounds_m": [
+        947.602,
+        965.531,
+        549.62,
+        568.243
+      ],
+      "wall_area_m2": 196.66441600000073,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187518",
+      "xy_bounds_m": [
+        951.475,
+        956.899,
+        531.949,
+        538.604
+      ],
+      "wall_area_m2": 20.001010000000207,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-1041187519",
+      "xy_bounds_m": [
+        915.883,
+        925.294,
+        514.571,
+        528.37
+      ],
+      "wall_area_m2": 64.71389399999948,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-1041187520",
+      "xy_bounds_m": [
+        918.778,
+        924.621,
+        511.588,
+        515.319
+      ],
+      "wall_area_m2": 12.454973999999671,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-1041187521",
+      "xy_bounds_m": [
+        906.428,
+        924.999,
+        499.938,
+        512.629
+      ],
+      "wall_area_m2": 108.12380850000056,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187522",
+      "xy_bounds_m": [
+        903.388,
+        914.513,
+        507.037,
+        524.748
+      ],
+      "wall_area_m2": 95.6280895000003,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187523",
+      "xy_bounds_m": [
+        771.968,
+        829.419,
+        480.193,
+        517.235
+      ],
+      "wall_area_m2": 931.1930920000016,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187524",
+      "xy_bounds_m": [
+        753.15,
+        771.842,
+        472.288,
+        494.12
+      ],
+      "wall_area_m2": 242.38839450000032,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187525",
+      "xy_bounds_m": [
+        724.588,
+        755.792,
+        465.635,
+        487.073
+      ],
+      "wall_area_m2": 364.7677020000002,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187526",
+      "xy_bounds_m": [
+        727.466,
+        743.425,
+        455.547,
+        465.143
+      ],
+      "wall_area_m2": 139.28038949999922,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187527",
+      "xy_bounds_m": [
+        765.475,
+        779.847,
+        456.161,
+        467.298
+      ],
+      "wall_area_m2": 155.80944399999964,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187528",
+      "xy_bounds_m": [
+        780.986,
+        797.297,
+        456.796,
+        473.722
+      ],
+      "wall_area_m2": 212.76186300000057,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187529",
+      "xy_bounds_m": [
+        799.401,
+        814.156,
+        458.049,
+        473.923
+      ],
+      "wall_area_m2": 175.01407500000008,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041187530",
+      "xy_bounds_m": [
+        816.104,
+        831.471,
+        461.796,
+        482.937
+      ],
+      "wall_area_m2": 258.99073350000003,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1041197915",
+      "xy_bounds_m": [
+        832.71,
+        840.298,
+        557.795,
+        563.315
+      ],
+      "wall_area_m2": 22.739511500000237,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-1041198963",
+      "xy_bounds_m": [
+        723.481,
+        750.367,
+        400.267,
+        418.864
+      ],
+      "wall_area_m2": 406.93259450000005,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043696133",
+      "xy_bounds_m": [
+        575.509,
+        596.205,
+        373.761,
+        392.979
+      ],
+      "wall_area_m2": 259.97683400000034,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043696134",
+      "xy_bounds_m": [
+        577.531,
+        589.449,
+        358.94,
+        371.417
+      ],
+      "wall_area_m2": 143.11451899999983,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043696135",
+      "xy_bounds_m": [
+        591.463,
+        597.998,
+        359.252,
+        365.432
+      ],
+      "wall_area_m2": 37.46533500000019,
+      "height_bound_m": 4.2,
+      "height_uncertainty_m": 2
+    },
+    {
+      "id": "way-1043696139",
+      "xy_bounds_m": [
+        607.927,
+        624.141,
+        365.683,
+        381.485
+      ],
+      "wall_area_m2": 158.30558499999952,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043696140",
+      "xy_bounds_m": [
+        624.189,
+        640.078,
+        359.538,
+        375.413
+      ],
+      "wall_area_m2": 151.50871349999989,
+      "height_bound_m": 11,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043697984",
+      "xy_bounds_m": [
+        574.001,
+        591.865,
+        328.795,
+        348.102
+      ],
+      "wall_area_m2": 253.8558924999997,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043697986",
+      "xy_bounds_m": [
+        593.282,
+        605.52,
+        329.714,
+        345.118
+      ],
+      "wall_area_m2": 153.13783400000023,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043697997",
+      "xy_bounds_m": [
+        592.954,
+        603.273,
+        292.074,
+        306.119
+      ],
+      "wall_area_m2": 121.25302900000034,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043697998",
+      "xy_bounds_m": [
+        571.419,
+        592.565,
+        290.935,
+        311.04
+      ],
+      "wall_area_m2": 284.9379530000001,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043697999",
+      "xy_bounds_m": [
+        572.927,
+        595.249,
+        312.73,
+        325.919
+      ],
+      "wall_area_m2": 249.63189199999974,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043702794",
+      "xy_bounds_m": [
+        600.144,
+        624.411,
+        251.136,
+        262.322
+      ],
+      "wall_area_m2": 265.3986669999997,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1043702824",
+      "xy_bounds_m": [
+        568.626,
+        585.511,
+        246.738,
+        263.371
+      ],
+      "wall_area_m2": 210.43094900000003,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1189162416",
+      "xy_bounds_m": [
+        414.004,
+        428.021,
+        226.663,
+        261.065
+      ],
+      "wall_area_m2": 470.2962174999999,
+      "height_bound_m": 12,
+      "height_uncertainty_m": 3
+    },
+    {
+      "id": "way-1353637064",
+      "xy_bounds_m": [
+        -127.927,
+        -109.915,
+        727.339,
+        749.886
+      ],
+      "wall_area_m2": 248.42054999999928,
+      "height_bound_m": 4.5,
+      "height_uncertainty_m": 2
+    }
+  ],
+  "north_seam_connections": "X85/Y310 use actual adjoining ground outlines including the pavement beyondnominalroadends; StanleyY175 and LeicesterY230 share their existing height controls. VictoriaStreet/Bath and BankSquare/Booth T-junctions added to existing ground recipes."
+}

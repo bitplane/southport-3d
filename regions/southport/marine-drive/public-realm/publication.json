@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Marine Drive and Marine Lake north",
+  "status": "Bounded block plan to Fairway roundabout. Estimated widths\u00b10.8\u20132m, walls\u00b11\u20133m and heights\u00b12\u20133m. Neutral roof bounds, no reconstructed facade details. Marine Lake north of MarineParade; southern lake/park, pier and west OceanPlaza half deferred. Dunes/grades/thresholds not surveyed.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "section-0-ground",
+      "name": "Marine corridor section 0",
+      "collection": "section-0-ground",
+      "ground": true,
+      "support_surface": "southport/marine-corridor"
+    },
+    {
+      "id": "section-1-ground",
+      "name": "Marine corridor section 1",
+      "collection": "section-1-ground",
+      "ground": true,
+      "support_surface": "southport/marine-corridor"
+    },
+    {
+      "id": "section-2-ground",
+      "name": "Marine corridor section 2",
+      "collection": "section-2-ground",
+      "ground": true,
+      "support_surface": "southport/marine-corridor"
+    },
+    {
+      "id": "section-3-ground",
+      "name": "Marine corridor section 3",
+      "collection": "section-3-ground",
+      "ground": true,
+      "support_surface": "southport/marine-corridor"
+    },
+    {
+      "id": "section-4-ground",
+      "name": "Marine corridor section 4",
+      "collection": "section-4-ground",
+      "ground": true,
+      "support_surface": "southport/marine-corridor"
+    },
+    {
+      "id": "section-5-ground",
+      "name": "Marine corridor section 5",
+      "collection": "section-5-ground",
+      "ground": true,
+      "support_surface": "southport/marine-corridor"
+    },
+    {
+      "id": "section-6-ground",
+      "name": "Marine corridor section 6",
+      "collection": "section-6-ground",
+      "ground": true,
+      "support_surface": "southport/marine-corridor"
+    },
+    {
+      "id": "section-7-ground",
+      "name": "Marine corridor section 7",
+      "collection": "section-7-ground",
+      "ground": true,
+      "support_surface": "southport/marine-corridor"
+    },
+    {
+      "id": "lake-water",
+      "name": "North Marine Lake water",
+      "collection": "lake-water"
+    },
+    {
+      "id": "bridge-structure",
+      "name": "Marine Way bridge structure",
+      "collection": "bridge-structure"
+    },
+    {
+      "id": "shore-walls",
+      "name": "Shore walls and railings",
+      "collection": "shore-walls"
+    }
+  ],
+  "views": [
+    {
+      "name": "Marine Drive and north lake",
+      "position": [
+        600,
+        850,
+        -350
+      ],
+      "target": [
+        600,
+        2,
+        -575
+      ]
+    },
+    {
+      "name": "Marine Parade bridge",
+      "position": [
+        -180,
+        140,
+        -240
+      ],
+      "target": [
+        -15,
+        3,
+        -440
+      ]
+    },
+    {
+      "name": "Fairway roundabout",
+      "position": [
+        1170,
+        130,
+        -660
+      ],
+      "target": [
+        1330,
+        2,
+        -862
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      112,
+      3.9,
+      -316
+    ],
+    "target": [
+      140,
+      3.9,
+      -323
+    ]
+  },
+  "rules": [
+    {
+      "id": "ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Identical sourced profiles and shared ownership outlines."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed low complexity canvas retains junctions and bridge levels."
+      }
+    },
+    {
+      "id": "structure",
+      "match": "^Structure ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already bounded schematic structure."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed budget silhouette; no detailed decoration."
+      }
+    }
+  ]
+}

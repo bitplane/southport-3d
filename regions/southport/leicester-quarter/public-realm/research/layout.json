@@ -452,6 +452,31 @@
         ]
       ],
       "basis": "Aerial-derived parking aisle lies south of Gordon House footprint. OSM runs on its wall; original seed retained. Approx3m correction is provisional."
+    },
+    {
+      "id": "24478228",
+      "name": "Bank Square",
+      "points": [
+        [
+          291.52,
+          338.125
+        ],
+        [
+          291.06,
+          319.247
+        ],
+        [
+          289.882,
+          269.299
+        ],
+        [
+          288.881,
+          226.982
+        ]
+      ],
+      "width": 6.2,
+      "basis": "Retained mapped axis checked in MarineDrive close Google3D/aerial. Width6.2\u00b11m. T-junction added to connect the new north-lake canvas; preserve existing neighbouring court exclusions.",
+      "bridge": false
     }
   ],
   "junction_radius_m": 1.4,
@@ -554,5 +579,5 @@
     "download_bytes_per_level": 3000000,
     "gpu_bytes_per_level": 12000000
   },
-  "limits": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1–3 m and heights ±3 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated."
+  "limits": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1\u20133 m and heights \u00b13 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated."
 }

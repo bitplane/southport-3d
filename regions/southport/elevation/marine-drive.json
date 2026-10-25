@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "datum": "southport-memorial-estimated-local-zero",
+  "frame": "Memorial site XY metres; yaw43.5293degrees from east",
+  "controls": {
+    "marine-seam-230": {
+      "height_m": 1.590597551552615,
+      "uncertainty_m": 0.2,
+      "status": "legacy-estimate-preserved",
+      "evidence": "Preserved Leicester north boundary grade at Y230."
+    },
+    "marine-promenade": {
+      "height_m": 2.2,
+      "uncertainty_m": 0.3,
+      "status": "legacy-estimate-preserved",
+      "evidence": "Preserved Promenade/MarineParade neighbour datum; local zero estimated."
+    },
+    "marine-bridge-east": {
+      "height_m": 3.2,
+      "uncertainty_m": 1.2,
+      "status": "visual-estimate",
+      "evidence": "Aug2024 bridge StreetView plus actual Google3D deck profile; visual relative height, no survey."
+    },
+    "marine-bridge-crest": {
+      "height_m": 3.4,
+      "uncertainty_m": 1.2,
+      "status": "visual-estimate",
+      "evidence": "Google3D shallow bridge crest; estimated relative height above lake."
+    },
+    "marine-bridge-west": {
+      "height_m": 3.2,
+      "uncertainty_m": 1.2,
+      "status": "visual-estimate",
+      "evidence": "Google3D/StreetView shallow deck; no survey."
+    },
+    "marine-lake": {
+      "height_m": 0.6,
+      "uncertainty_m": 1,
+      "status": "visual-estimate",
+      "evidence": "Visual lake level beneath raised shoreline; no surveyed level."
+    },
+    "marine-stanley-175": {
+      "height_m": 0.7938983677017434,
+      "uncertainty_m": 0.2,
+      "status": "legacy-estimate-preserved",
+      "evidence": "Existing Stanley north ground atY175 forX>=85; same linear estimate as Leicester, joined without extending a local copied grade function."
+    }
+  },
+  "surfaces": {
+    "marine-mainland": {
+      "bounds": [
+        -300,
+        1500,
+        175,
+        1000
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 175,
+          "control": "marine-stanley-175"
+        },
+        {
+          "distance_m": 230,
+          "control": "marine-seam-230"
+        },
+        {
+          "distance_m": 272.07,
+          "control": "marine-promenade"
+        },
+        {
+          "distance_m": 930,
+          "control": "marine-promenade"
+        }
+      ],
+      "offset_m": 0
+    },
+    "marine-road": {
+      "bounds": [
+        -300,
+        1500,
+        175,
+        1000
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 175,
+          "control": "marine-stanley-175"
+        },
+        {
+          "distance_m": 230,
+          "control": "marine-seam-230"
+        },
+        {
+          "distance_m": 272.07,
+          "control": "marine-promenade"
+        },
+        {
+          "distance_m": 930,
+          "control": "marine-promenade"
+        }
+      ],
+      "offset_m": -0.12
+    },
+    "marine-bridge": {
+      "bounds": [
+        -300,
+        1500,
+        175,
+        1000
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 310,
+          "control": "marine-promenade"
+        },
+        {
+          "distance_m": 376.9,
+          "control": "marine-bridge-east"
+        },
+        {
+          "distance_m": 440,
+          "control": "marine-bridge-crest"
+        },
+        {
+          "distance_m": 498.635,
+          "control": "marine-bridge-west"
+        },
+        {
+          "distance_m": 540,
+          "control": "marine-promenade"
+        }
+      ],
+      "offset_m": 0
+    },
+    "marine-bridge-road": {
+      "bounds": [
+        -300,
+        1500,
+        175,
+        1000
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 310,
+          "control": "marine-promenade"
+        },
+        {
+          "distance_m": 376.9,
+          "control": "marine-bridge-east"
+        },
+        {
+          "distance_m": 440,
+          "control": "marine-bridge-crest"
+        },
+        {
+          "distance_m": 498.635,
+          "control": "marine-bridge-west"
+        },
+        {
+          "distance_m": 540,
+          "control": "marine-promenade"
+        }
+      ],
+      "offset_m": -0.12
+    },
+    "marine-lake": {
+      "bounds": [
+        -300,
+        1500,
+        175,
+        1000
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "marine-lake"
+        }
+      ],
+      "offset_m": 0
+    }
+  }
+}

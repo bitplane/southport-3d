@@ -70,3 +70,7 @@ Stanley/Cable junction mouths, coordinated kerbs and limited observed furniture.
 The [Eastbank Street canvas](docs/EASTBANK-STREET.md) continues to the railway
 bridge and roundabout, with provisional frontage envelopes. It pilots the
 [shared elevation workflow](docs/ELEVATION.md) for road profiles and layered ground.
+
+The [Marine Drive and north Marine Lake block plan](docs/MARINE-DRIVE.md) extends
+from Marine Parade through Ocean Plaza along the coast to Fairway, with connecting
+Promenade frontages, provisional building volumes and a separate bridge profile.
