@@ -35,6 +35,11 @@ instances.
 
 ## Using the repair queue
 
+For prevention during new modelling, follow the required
+[surface ownership checks](MODELLING-WORKFLOW.md#surface-ownership-checks).
+The map-wide audit supplements asset validators; it does not replace prototype
+checks, exported-LoD review or inspection of the assembled viewer.
+
 Start with roof, facade and pavement joins that are visible from normal browsing
 positions. Use the finding's GLB node name to locate the corresponding generator.
 `near_viewer_xyz` is in East/up/south metres and locates the overlap's bounding
@@ -57,6 +62,12 @@ authorised, and rerun this audit. Compare source node pairs and resource hashes;
 numeric finding IDs are ranks within a run and can change when results change.
 
 ## Coverage limits
+
+The scanner reads `catalog.json` asset packages. The viewer now renders a 3D Tiles
+hierarchy, including merged distant content. A catalog audit alone does not prove
+that generated tile content is equivalent or that parent/child replacements are
+never rendered together. Check the actual tileset and runtime separately when
+investigating flicker after renderer or hierarchy changes.
 
 Each viewing level is scanned as a complete map, including overlaps between
 separate assets and parts. Mixed-LoD combinations are not enumerated. The scan

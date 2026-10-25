@@ -108,6 +108,37 @@ Before adding a new `asset.json`, create every file it declares: discovery valid
 
 Stage recipes, code, source links and meaningful checks. Exclude local reference images, generated scenes, baked textures, screenshots and browser state. Run `python3 tools/project.py check` after staging, plus the relevant tests. Explain the visible change, evidence and validation in the commit or PR; distinguish observed details from estimates. Use `master`. Public hosting is a separate step from generating the local viewer.
 
+## Surface ownership checks
+
+These checks are required for new assets and changed geometry during design,
+not deferred to a later map-wide cleanup:
+
+1. Establish which mesh owns each exposed surface at wall/roof joins, openings,
+   cornices, frames and ground boundaries. Check a prototype before repeating it
+   across a facade. Preserve architectural dimensions; remove duplicate surface
+   ownership rather than hiding conflicts with arbitrary depth offsets.
+2. Put scoped coplanar regressions in the asset's declared validation script.
+   Cover the exterior shell and separately check repeated trim/joinery prototypes
+   and their interfaces with the shell. A shell-only selection must not silently
+   stand for testing all decorative geometry. State the tested selections and
+   remaining coverage in the validation report. Ordinary builds/publication run
+   these declared checks; `project.py check` alone is only a source check.
+3. Check the actual exported Detail, Walk and independent District geometry.
+   Include neighbouring assets when changing shared boundaries. Inspect findings
+   for visibility, retaining exact surface identities and a reason for any
+   accepted buried contact or numerical residue. Do not blanket-exempt an asset
+   or describe an unreviewed finding as harmless. Store large generated audit
+   reports outside Git and meaningful regression checks in source.
+4. Review the assembled viewer from roof, street and seam viewpoints while
+   moving the camera and crossing LoD transitions. Verify which representations
+   actually loaded. A uniform-level scan cannot detect simultaneous replacement
+   tiles, mixed-LoD mismatches or every raster-depth artefact; compare the
+   current tileset's rendered content with isolated exports when flicker persists.
+5. Before completion, fix confirmed visible conflicts, rebuild and republish the
+   affected assets, then rerun the affected checks. Record unresolved defects
+   explicitly rather than marking the asset overlap-free. For staged publication,
+   keep those defects open for follow-up.
+
 For adjoining exterior wall skins, use `tools/coplanar.py` from the asset's
 validation script. Select the surfaces whose exterior ownership is defined and
 call `check_blender(objects)`. It reports positive-area overlap of same-facing
