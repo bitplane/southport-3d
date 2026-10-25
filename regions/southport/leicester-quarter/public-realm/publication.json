@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Leicester quarter",
+  "status": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1–3 m and heights ±3 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "west-ground",
+      "collection": "west-ground",
+      "name": "West Stanley/Bath ground",
+      "ground": true
+    },
+    {
+      "id": "middle-ground",
+      "collection": "middle-ground",
+      "name": "Middle Stanley/Bath ground",
+      "ground": true
+    },
+    {
+      "id": "east-ground",
+      "collection": "east-ground",
+      "name": "East Stanley/Bath ground",
+      "ground": true
+    },
+    {
+      "id": "return-ground",
+      "collection": "return-ground",
+      "name": "Leicester east return ground",
+      "ground": true
+    }
+  ],
+  "views": [
+    {
+      "name": "Leicester quarter block plan",
+      "position": [
+        440,
+        240,
+        -530
+      ],
+      "target": [
+        250,
+        0,
+        -390
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "ground",
+      "match": "^Ground ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Bounded planar ground; keep exact kerbs, road markings and shared seams while reducing authored map size."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed low-cost street envelope independent of future detailed buildings. Regional merged tiles are a separate later level."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      300,
+      2,
+      -163
+    ],
+    "target": [
+      360,
+      2,
+      -164
+    ]
+  }
+}

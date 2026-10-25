@@ -1,0 +1,36 @@
+{
+  "retrieved": "2026-10-25",
+  "sources": [
+    {
+      "id": "google-3d-orbit",
+      "url": "https://www.google.com/maps/@53.6485998,-3.0016,434a,35y,39.37t/data=!3m1!1e3",
+      "attribution": "Google Maps, imagery©2026Google",
+      "observed": "Actual 3D displayed and rotated to headings0/270/180; photos private orbit01/03/04."
+    },
+    {
+      "id": "google-plan-calibration",
+      "url": "https://www.google.com/maps/@53.6518,-3.0016,18z/data=!3m1!1e3",
+      "observed": "Registered wall/roof outlines, courtyards and access. Roof parallax limits precision."
+    },
+    {
+      "id": "street-view-july-2026",
+      "url": "https://www.google.com/maps/@53.652,-3.0021,3a,75y,120h,90t/data=!3m1!1e1",
+      "date": "July 2026",
+      "observed": "Bath/Seabank house storey classes, carriageway, narrow public footways, set-back private forecourts."
+    },
+    {
+      "id": "gordon-street",
+      "url": "https://www.google.com/maps/@53.6523,-3.0,3a,75y,275h,90t/data=!3m1!1e1",
+      "date": "July 2026",
+      "observed": "Gordon street/rear ranges; private courts remain open."
+    },
+    {
+      "id": "osm-seed",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=-3.014,53.639,-2.988,53.657",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0",
+      "retrieved": "2026-10-24",
+      "limitation": "Sparse building outlines; complemented by traced aerial envelopes."
+    }
+  ],
+  "limits": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1–3 m and heights ±3 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated."
+}

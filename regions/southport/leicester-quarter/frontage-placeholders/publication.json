@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/frontage-placeholders.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Leicester quarter",
+  "status": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1–3 m and heights ±3 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "way-375233714",
+      "name": "way-375233714 — placeholder",
+      "collection": "way-375233714"
+    },
+    {
+      "id": "way-375233717",
+      "name": "way-375233717 — placeholder",
+      "collection": "way-375233717"
+    },
+    {
+      "id": "way-375233718",
+      "name": "way-375233718 — placeholder",
+      "collection": "way-375233718"
+    },
+    {
+      "id": "way-375233721",
+      "name": "way-375233721 — placeholder",
+      "collection": "way-375233721"
+    },
+    {
+      "id": "way-375379272",
+      "name": "way-375379272 — placeholder",
+      "collection": "way-375379272"
+    },
+    {
+      "id": "way-375379273",
+      "name": "way-375379273 — placeholder",
+      "collection": "way-375379273"
+    },
+    {
+      "id": "way-375381420",
+      "name": "way-375381420 — placeholder",
+      "collection": "way-375381420"
+    },
+    {
+      "id": "stanley-training-main",
+      "name": "stanley-training-main — placeholder",
+      "collection": "stanley-training-main"
+    },
+    {
+      "id": "stanley-training-west",
+      "name": "stanley-training-west — placeholder",
+      "collection": "stanley-training-west"
+    },
+    {
+      "id": "bath-south-01",
+      "name": "bath-south-01 — placeholder",
+      "collection": "bath-south-01"
+    },
+    {
+      "id": "bath-south-02",
+      "name": "bath-south-02 — placeholder",
+      "collection": "bath-south-02"
+    },
+    {
+      "id": "bath-south-03",
+      "name": "bath-south-03 — placeholder",
+      "collection": "bath-south-03"
+    },
+    {
+      "id": "bath-south-04",
+      "name": "bath-south-04 — placeholder",
+      "collection": "bath-south-04"
+    },
+    {
+      "id": "bath-south-05",
+      "name": "bath-south-05 — placeholder",
+      "collection": "bath-south-05"
+    },
+    {
+      "id": "bath-south-06",
+      "name": "bath-south-06 — placeholder",
+      "collection": "bath-south-06"
+    },
+    {
+      "id": "norwood-front",
+      "name": "norwood-front — placeholder",
+      "collection": "norwood-front"
+    },
+    {
+      "id": "norwood-rear",
+      "name": "norwood-rear — placeholder",
+      "collection": "norwood-rear"
+    },
+    {
+      "id": "stanley-mid-range",
+      "name": "stanley-mid-range — placeholder",
+      "collection": "stanley-mid-range"
+    },
+    {
+      "id": "gordon-johnson-west",
+      "name": "gordon-johnson-west — placeholder",
+      "collection": "gordon-johnson-west"
+    },
+    {
+      "id": "johnson-west-01",
+      "name": "johnson-west-01 — placeholder",
+      "collection": "johnson-west-01"
+    },
+    {
+      "id": "johnson-west-02",
+      "name": "johnson-west-02 — placeholder",
+      "collection": "johnson-west-02"
+    },
+    {
+      "id": "seabank-east-01",
+      "name": "seabank-east-01 — placeholder",
+      "collection": "seabank-east-01"
+    },
+    {
+      "id": "bath-north-south-corner",
+      "name": "bath-north-south-corner — placeholder",
+      "collection": "bath-north-south-corner"
+    },
+    {
+      "id": "johnson-east-01",
+      "name": "johnson-east-01 — placeholder",
+      "collection": "johnson-east-01"
+    },
+    {
+      "id": "johnson-east-02",
+      "name": "johnson-east-02 — placeholder",
+      "collection": "johnson-east-02"
+    },
+    {
+      "id": "bath-north-south-01",
+      "name": "bath-north-south-01 — placeholder",
+      "collection": "bath-north-south-01"
+    },
+    {
+      "id": "bath-north-south-02",
+      "name": "bath-north-south-02 — placeholder",
+      "collection": "bath-north-south-02"
+    },
+    {
+      "id": "bath-north-south-03",
+      "name": "bath-north-south-03 — placeholder",
+      "collection": "bath-north-south-03"
+    },
+    {
+      "id": "gordon-north-01",
+      "name": "gordon-north-01 — placeholder",
+      "collection": "gordon-north-01"
+    },
+    {
+      "id": "gordon-north-02",
+      "name": "gordon-north-02 — placeholder",
+      "collection": "gordon-north-02"
+    },
+    {
+      "id": "gordon-north-03",
+      "name": "gordon-north-03 — placeholder",
+      "collection": "gordon-north-03"
+    },
+    {
+      "id": "gordon-north-04",
+      "name": "gordon-north-04 — placeholder",
+      "collection": "gordon-north-04"
+    },
+    {
+      "id": "gordon-leicester-corner",
+      "name": "gordon-leicester-corner — placeholder",
+      "collection": "gordon-leicester-corner"
+    },
+    {
+      "id": "leicester-west-01",
+      "name": "leicester-west-01 — placeholder",
+      "collection": "leicester-west-01"
+    },
+    {
+      "id": "leicester-west-02",
+      "name": "leicester-west-02 — placeholder",
+      "collection": "leicester-west-02"
+    },
+    {
+      "id": "leicester-west-03",
+      "name": "leicester-west-03 — placeholder",
+      "collection": "leicester-west-03"
+    },
+    {
+      "id": "leicester-west-04",
+      "name": "leicester-west-04 — placeholder",
+      "collection": "leicester-west-04"
+    },
+    {
+      "id": "bath-north-terminal",
+      "name": "bath-north-terminal — placeholder",
+      "collection": "bath-north-terminal"
+    },
+    {
+      "id": "bath-north-rear-01",
+      "name": "bath-north-rear-01 — placeholder",
+      "collection": "bath-north-rear-01"
+    },
+    {
+      "id": "bath-north-rear-02",
+      "name": "bath-north-rear-02 — placeholder",
+      "collection": "bath-north-rear-02"
+    },
+    {
+      "id": "bath-north-rear-03",
+      "name": "bath-north-rear-03 — placeholder",
+      "collection": "bath-north-rear-03"
+    },
+    {
+      "id": "bath-north-01",
+      "name": "bath-north-01 — placeholder",
+      "collection": "bath-north-01"
+    },
+    {
+      "id": "bath-north-02",
+      "name": "bath-north-02 — placeholder",
+      "collection": "bath-north-02"
+    },
+    {
+      "id": "bath-north-03",
+      "name": "bath-north-03 — placeholder",
+      "collection": "bath-north-03"
+    },
+    {
+      "id": "bath-north-04",
+      "name": "bath-north-04 — placeholder",
+      "collection": "bath-north-04"
+    },
+    {
+      "id": "bath-north-05",
+      "name": "bath-north-05 — placeholder",
+      "collection": "bath-north-05"
+    },
+    {
+      "id": "bath-north-06",
+      "name": "bath-north-06 — placeholder",
+      "collection": "bath-north-06"
+    },
+    {
+      "id": "windmill-range",
+      "name": "windmill-range — placeholder",
+      "collection": "windmill-range"
+    },
+    {
+      "id": "church-south-hall",
+      "name": "church-south-hall — placeholder",
+      "collection": "church-south-hall"
+    },
+    {
+      "id": "church-east-range",
+      "name": "church-east-range — placeholder",
+      "collection": "church-east-range"
+    },
+    {
+      "id": "st-marie-envelope",
+      "name": "St Marie church provisional height envelope — placeholder",
+      "collection": "st-marie-envelope"
+    },
+    {
+      "id": "bath-north-bold-corner",
+      "name": "Bath north / Bold lodging range — placeholder",
+      "collection": "bath-north-bold-corner"
+    },
+    {
+      "id": "way-169212140",
+      "name": "Gordon House — placeholder",
+      "collection": "way-169212140"
+    },
+    {
+      "id": "way-1043702813",
+      "name": "Leicester east return 1043702813 — placeholder",
+      "collection": "way-1043702813"
+    },
+    {
+      "id": "way-1043702816",
+      "name": "Leicester east return 1043702816 — placeholder",
+      "collection": "way-1043702816"
+    },
+    {
+      "id": "way-1043702817",
+      "name": "Leicester east return 1043702817 — placeholder",
+      "collection": "way-1043702817"
+    },
+    {
+      "id": "way-1043702818",
+      "name": "Leicester east return 1043702818 — placeholder",
+      "collection": "way-1043702818"
+    },
+    {
+      "id": "leicester-east-north",
+      "name": "Leicester east north lodging range — placeholder",
+      "collection": "leicester-east-north"
+    }
+  ],
+  "views": [
+    {
+      "name": "Leicester quarter block plan",
+      "position": [
+        440,
+        240,
+        -530
+      ],
+      "target": [
+        250,
+        0,
+        -390
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "placeholder-volumes",
+      "match": "^Massing ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already minimal untextured footprint prisms; no decorative detail to reduce."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Untextured footprint prisms with fixed total budget of 8000 triangles, independent of future architecture detail."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      300,
+      2,
+      -163
+    ],
+    "target": [
+      360,
+      2,
+      -164
+    ]
+  }
+}

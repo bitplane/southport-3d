@@ -1,0 +1,2043 @@
+{
+  "schema_version": 1,
+  "blocks": [
+    {
+      "id": "way-375233714",
+      "name": "way-375233714",
+      "footprint": [
+        [
+          390.543,
+          68.423
+        ],
+        [
+          377.804,
+          68.272
+        ],
+        [
+          377.517,
+          93.741
+        ],
+        [
+          395.806,
+          93.948
+        ],
+        [
+          395.906,
+          85.009
+        ],
+        [
+          390.353,
+          84.941
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "OSM seed checked in actual Google 3D and aerial; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null,
+      "osm_way": "375233714"
+    },
+    {
+      "id": "way-375233717",
+      "name": "way-375233717",
+      "footprint": [
+        [
+          399.732,
+          92.0
+        ],
+        [
+          400.059,
+          82.752
+        ],
+        [
+          427.612,
+          83.571
+        ],
+        [
+          427.387,
+          92.0
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "OSM seed checked in actual Google 3D and aerial; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions. Mapped roof-side edge overlapped observed carriageway; rear wall bound clipped to retain 1.6 m public footway. Correction ≤2.6 m, within parallax uncertainty; full source seed retained.",
+      "replace_with": null,
+      "osm_way": "375233717"
+    },
+    {
+      "id": "way-375233718",
+      "name": "way-375233718",
+      "footprint": [
+        [
+          451.526,
+          65.107
+        ],
+        [
+          451.33,
+          94.005
+        ],
+        [
+          438.599,
+          93.939
+        ],
+        [
+          438.86,
+          64.994
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "OSM seed checked in actual Google 3D and aerial; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null,
+      "osm_way": "375233718"
+    },
+    {
+      "id": "way-375233721",
+      "name": "way-375233721",
+      "footprint": [
+        [
+          453.667,
+          81.022
+        ],
+        [
+          453.641,
+          92.0
+        ],
+        [
+          459.065,
+          92.0
+        ],
+        [
+          459.072,
+          90.075
+        ],
+        [
+          490.352,
+          90.132
+        ],
+        [
+          490.347,
+          92.0
+        ],
+        [
+          502.079,
+          92.0
+        ],
+        [
+          502.127,
+          69.074
+        ],
+        [
+          491.164,
+          69.048
+        ],
+        [
+          491.134,
+          81.098
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "OSM seed checked in actual Google 3D and aerial; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions. Mapped roof-side edge overlapped observed carriageway; rear wall bound clipped to retain 1.6 m public footway. Correction ≤2.6 m, within parallax uncertainty; full source seed retained.",
+      "replace_with": null,
+      "osm_way": "375233721"
+    },
+    {
+      "id": "way-375379272",
+      "name": "way-375379272",
+      "footprint": [
+        [
+          299.957,
+          70.918
+        ],
+        [
+          300.551,
+          94.1
+        ],
+        [
+          250.763,
+          94.1
+        ],
+        [
+          250.56,
+          86.105
+        ],
+        [
+          287.752,
+          85.153
+        ],
+        [
+          287.397,
+          71.242
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "OSM seed checked in actual Google 3D and aerial; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions. Mapped roof-side edge overlapped observed carriageway; rear wall bound clipped to retain 1.6 m public footway. Correction ≤2.6 m, within parallax uncertainty; full source seed retained.",
+      "replace_with": null,
+      "osm_way": "375379272"
+    },
+    {
+      "id": "way-375379273",
+      "name": "way-375379273",
+      "footprint": [
+        [
+          338.45,
+          77.036
+        ],
+        [
+          338.381,
+          94.237
+        ],
+        [
+          304.277,
+          94.099
+        ],
+        [
+          304.338,
+          76.967
+        ],
+        [
+          315.142,
+          77.006
+        ],
+        [
+          315.109,
+          84.914
+        ],
+        [
+          332.138,
+          84.982
+        ],
+        [
+          332.169,
+          77.015
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "OSM seed checked in actual Google 3D and aerial; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null,
+      "osm_way": "375379273"
+    },
+    {
+      "id": "way-375381420",
+      "name": "way-375381420",
+      "footprint": [
+        [
+          335.04,
+          117.555
+        ],
+        [
+          320.037,
+          117.712
+        ],
+        [
+          319.912,
+          105.194
+        ],
+        [
+          326.98,
+          105.113
+        ],
+        [
+          327.053,
+          112.107
+        ],
+        [
+          334.981,
+          112.022
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "OSM seed checked in actual Google 3D and aerial; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null,
+      "osm_way": "375381420"
+    },
+    {
+      "id": "stanley-training-main",
+      "name": "stanley-training-main",
+      "footprint": [
+        [
+          250.5,
+          105.4
+        ],
+        [
+          303.5,
+          105.4
+        ],
+        [
+          303.5,
+          122.0
+        ],
+        [
+          250.5,
+          122.0
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "stanley-training-west",
+      "name": "stanley-training-west",
+      "footprint": [
+        [
+          250.5,
+          122
+        ],
+        [
+          266.7,
+          122
+        ],
+        [
+          266.7,
+          143.0
+        ],
+        [
+          250.5,
+          143.0
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-south-01",
+      "name": "bath-south-01",
+      "footprint": [
+        [
+          251,
+          147.6
+        ],
+        [
+          270,
+          147.6
+        ],
+        [
+          270,
+          158.0
+        ],
+        [
+          251,
+          158.0
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-south-02",
+      "name": "bath-south-02",
+      "footprint": [
+        [
+          275,
+          142.8
+        ],
+        [
+          287,
+          142.8
+        ],
+        [
+          287,
+          157.8
+        ],
+        [
+          275,
+          157.8
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-south-03",
+      "name": "bath-south-03",
+      "footprint": [
+        [
+          290,
+          145
+        ],
+        [
+          302,
+          145
+        ],
+        [
+          302,
+          158.0
+        ],
+        [
+          290,
+          158.0
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-south-04",
+      "name": "bath-south-04",
+      "footprint": [
+        [
+          307,
+          143.7
+        ],
+        [
+          319,
+          143.7
+        ],
+        [
+          319,
+          158.0
+        ],
+        [
+          307,
+          158.0
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-south-05",
+      "name": "bath-south-05",
+      "footprint": [
+        [
+          323,
+          141.8
+        ],
+        [
+          335,
+          141.8
+        ],
+        [
+          335,
+          158.6
+        ],
+        [
+          323,
+          158.6
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-south-06",
+      "name": "bath-south-06",
+      "footprint": [
+        [
+          340,
+          142.8
+        ],
+        [
+          354.7,
+          142.8
+        ],
+        [
+          354.7,
+          159
+        ],
+        [
+          340,
+          159
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "norwood-front",
+      "name": "norwood-front",
+      "footprint": [
+        [
+          350.0,
+          107.0
+        ],
+        [
+          363.0,
+          107.0
+        ],
+        [
+          363.0,
+          129.0
+        ],
+        [
+          350.0,
+          129.0
+        ]
+      ],
+      "height_m": 13,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "norwood-rear",
+      "name": "norwood-rear",
+      "footprint": [
+        [
+          337.0,
+          114.5
+        ],
+        [
+          350.0,
+          114.5
+        ],
+        [
+          350.0,
+          127.7
+        ],
+        [
+          337.0,
+          127.7
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "stanley-mid-range",
+      "name": "stanley-mid-range",
+      "footprint": [
+        [
+          306,
+          105.4
+        ],
+        [
+          319,
+          105.4
+        ],
+        [
+          319,
+          122.8
+        ],
+        [
+          306,
+          122.8
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "gordon-johnson-west",
+      "name": "gordon-johnson-west",
+      "footprint": [
+        [
+          378.0,
+          104.6
+        ],
+        [
+          404.6,
+          104.6
+        ],
+        [
+          404.6,
+          119.0
+        ],
+        [
+          378.0,
+          119.0
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "johnson-west-01",
+      "name": "johnson-west-01",
+      "footprint": [
+        [
+          390,
+          122.5
+        ],
+        [
+          405,
+          122.5
+        ],
+        [
+          405,
+          138.0
+        ],
+        [
+          390,
+          138.0
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "johnson-west-02",
+      "name": "johnson-west-02",
+      "footprint": [
+        [
+          390.5,
+          141
+        ],
+        [
+          405.2,
+          141
+        ],
+        [
+          405.2,
+          155.5
+        ],
+        [
+          390.5,
+          155.5
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "seabank-east-01",
+      "name": "seabank-east-01",
+      "footprint": [
+        [
+          378.5,
+          120.5
+        ],
+        [
+          388,
+          120.5
+        ],
+        [
+          388,
+          135.5
+        ],
+        [
+          378.5,
+          135.5
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-south-corner",
+      "name": "bath-north-south-corner",
+      "footprint": [
+        [
+          378.5,
+          144.0
+        ],
+        [
+          390.0,
+          144.0
+        ],
+        [
+          390.0,
+          159.2
+        ],
+        [
+          378.5,
+          159.2
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "johnson-east-01",
+      "name": "johnson-east-01",
+      "footprint": [
+        [
+          417.0,
+          105.8
+        ],
+        [
+          428.5,
+          105.8
+        ],
+        [
+          428.5,
+          126.5
+        ],
+        [
+          417.0,
+          126.5
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "johnson-east-02",
+      "name": "johnson-east-02",
+      "footprint": [
+        [
+          417,
+          131
+        ],
+        [
+          428,
+          131
+        ],
+        [
+          428,
+          143
+        ],
+        [
+          417,
+          143
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-south-01",
+      "name": "bath-north-south-01",
+      "footprint": [
+        [
+          416.8,
+          146.0
+        ],
+        [
+          431.5,
+          146.0
+        ],
+        [
+          431.5,
+          160.0
+        ],
+        [
+          416.8,
+          160.0
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-south-02",
+      "name": "bath-north-south-02",
+      "footprint": [
+        [
+          434.5,
+          145.4
+        ],
+        [
+          449,
+          145.4
+        ],
+        [
+          449,
+          160.5
+        ],
+        [
+          434.5,
+          160.5
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-south-03",
+      "name": "bath-north-south-03",
+      "footprint": [
+        [
+          452.0,
+          146
+        ],
+        [
+          466.4,
+          146
+        ],
+        [
+          466.4,
+          160.8
+        ],
+        [
+          452.0,
+          160.8
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "gordon-north-01",
+      "name": "gordon-north-01",
+      "footprint": [
+        [
+          435.0,
+          105.0
+        ],
+        [
+          448.4,
+          105.0
+        ],
+        [
+          448.4,
+          120.0
+        ],
+        [
+          435.0,
+          120.0
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "gordon-north-02",
+      "name": "gordon-north-02",
+      "footprint": [
+        [
+          451.0,
+          105.0
+        ],
+        [
+          466.0,
+          105.0
+        ],
+        [
+          466.0,
+          119.5
+        ],
+        [
+          451.0,
+          119.5
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "gordon-north-03",
+      "name": "gordon-north-03",
+      "footprint": [
+        [
+          472.2,
+          104.6
+        ],
+        [
+          484.5,
+          104.6
+        ],
+        [
+          484.5,
+          119.0
+        ],
+        [
+          472.2,
+          119.0
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "gordon-north-04",
+      "name": "gordon-north-04",
+      "footprint": [
+        [
+          493.0,
+          104.0
+        ],
+        [
+          509.0,
+          104.0
+        ],
+        [
+          509.0,
+          117.0
+        ],
+        [
+          493.0,
+          117.0
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "gordon-leicester-corner",
+      "name": "gordon-leicester-corner",
+      "footprint": [
+        [
+          514.0,
+          104.0
+        ],
+        [
+          532.0,
+          104.0
+        ],
+        [
+          532.0,
+          127.0
+        ],
+        [
+          514.0,
+          127.0
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "leicester-west-01",
+      "name": "leicester-west-01",
+      "footprint": [
+        [
+          517,
+          132
+        ],
+        [
+          532.5,
+          132
+        ],
+        [
+          532.5,
+          150
+        ],
+        [
+          517,
+          150
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "leicester-west-02",
+      "name": "leicester-west-02",
+      "footprint": [
+        [
+          516,
+          154
+        ],
+        [
+          534,
+          154
+        ],
+        [
+          534,
+          173
+        ],
+        [
+          516,
+          173
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "leicester-west-03",
+      "name": "leicester-west-03",
+      "footprint": [
+        [
+          517,
+          183
+        ],
+        [
+          535,
+          183
+        ],
+        [
+          535,
+          205
+        ],
+        [
+          517,
+          205
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "leicester-west-04",
+      "name": "leicester-west-04",
+      "footprint": [
+        [
+          517,
+          209
+        ],
+        [
+          535.5,
+          209
+        ],
+        [
+          535.5,
+          227
+        ],
+        [
+          517,
+          227
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-terminal",
+      "name": "bath-north-terminal",
+      "footprint": [
+        [
+          486.0,
+          155
+        ],
+        [
+          507,
+          155
+        ],
+        [
+          507,
+          177
+        ],
+        [
+          486.0,
+          177
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-rear-01",
+      "name": "bath-north-rear-01",
+      "footprint": [
+        [
+          474,
+          179.5
+        ],
+        [
+          483,
+          179.5
+        ],
+        [
+          483,
+          197
+        ],
+        [
+          474,
+          197
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-rear-02",
+      "name": "bath-north-rear-02",
+      "footprint": [
+        [
+          487.0,
+          193.0
+        ],
+        [
+          502.0,
+          193.0
+        ],
+        [
+          502.0,
+          210.0
+        ],
+        [
+          487.0,
+          210.0
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-rear-03",
+      "name": "bath-north-rear-03",
+      "footprint": [
+        [
+          484.0,
+          216
+        ],
+        [
+          505,
+          216
+        ],
+        [
+          505,
+          228.0
+        ],
+        [
+          484.0,
+          228.0
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-01",
+      "name": "bath-north-01",
+      "footprint": [
+        [
+          251,
+          194
+        ],
+        [
+          266,
+          194
+        ],
+        [
+          266,
+          219.0
+        ],
+        [
+          251,
+          219.0
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-02",
+      "name": "bath-north-02",
+      "footprint": [
+        [
+          274,
+          194
+        ],
+        [
+          286.0,
+          194
+        ],
+        [
+          286.0,
+          219.0
+        ],
+        [
+          274,
+          219.0
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-03",
+      "name": "bath-north-03",
+      "footprint": [
+        [
+          290,
+          194
+        ],
+        [
+          301,
+          194
+        ],
+        [
+          301,
+          216.5
+        ],
+        [
+          290,
+          216.5
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-04",
+      "name": "bath-north-04",
+      "footprint": [
+        [
+          307.0,
+          195
+        ],
+        [
+          318.8,
+          195
+        ],
+        [
+          318.8,
+          214
+        ],
+        [
+          307.0,
+          214
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-05",
+      "name": "bath-north-05",
+      "footprint": [
+        [
+          323,
+          196
+        ],
+        [
+          334.0,
+          196
+        ],
+        [
+          334.0,
+          216
+        ],
+        [
+          323,
+          216
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-06",
+      "name": "bath-north-06",
+      "footprint": [
+        [
+          338,
+          195
+        ],
+        [
+          350.0,
+          195
+        ],
+        [
+          350.0,
+          216
+        ],
+        [
+          338,
+          216
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "windmill-range",
+      "name": "windmill-range",
+      "footprint": [
+        [
+          355.0,
+          186.5
+        ],
+        [
+          365.5,
+          186.5
+        ],
+        [
+          365.5,
+          220.5
+        ],
+        [
+          355.0,
+          220.5
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "church-south-hall",
+      "name": "church-south-hall",
+      "footprint": [
+        [
+          391,
+          179
+        ],
+        [
+          402,
+          179
+        ],
+        [
+          402,
+          191
+        ],
+        [
+          391,
+          191
+        ]
+      ],
+      "height_m": 8,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "church-east-range",
+      "name": "church-east-range",
+      "footprint": [
+        [
+          428.0,
+          193.0
+        ],
+        [
+          440.0,
+          193.0
+        ],
+        [
+          440.0,
+          210.0
+        ],
+        [
+          428.0,
+          210.0
+        ]
+      ],
+      "height_m": 9,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "st-marie-envelope",
+      "name": "St Marie church provisional height envelope",
+      "footprint": [
+        [
+          389,
+          215
+        ],
+        [
+          404,
+          215
+        ],
+        [
+          404,
+          225
+        ],
+        [
+          414,
+          225
+        ],
+        [
+          414,
+          183
+        ],
+        [
+          402,
+          183
+        ],
+        [
+          402,
+          199
+        ],
+        [
+          389,
+          199
+        ]
+      ],
+      "height_m": 19,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "bath-north-bold-corner",
+      "name": "Bath north / Bold lodging range",
+      "footprint": [
+        [
+          231,
+          194
+        ],
+        [
+          246,
+          194
+        ],
+        [
+          246,
+          218
+        ],
+        [
+          231,
+          218
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "aerial registered outline; 1–3 m wall uncertainty including roof parallax. Broad ranges, not cadastral divisions.",
+      "replace_with": null
+    },
+    {
+      "id": "way-169212140",
+      "name": "Gordon House",
+      "footprint": [
+        [
+          563.397,
+          106.526
+        ],
+        [
+          565.246,
+          142.11
+        ],
+        [
+          585.15,
+          141.075
+        ],
+        [
+          585.028,
+          138.734
+        ],
+        [
+          579.078,
+          139.043
+        ],
+        [
+          577.848,
+          115.369
+        ],
+        [
+          583.975,
+          115.045
+        ],
+        [
+          583.477,
+          105.477
+        ]
+      ],
+      "height_m": 14,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "Retained OSM seed checked against registered aerial and actual Google 3D opposing orbits; walls uncertain1–3m, not surveyed.",
+      "replace_with": null,
+      "osm_way": "169212140"
+    },
+    {
+      "id": "way-1043702813",
+      "name": "Leicester east return 1043702813",
+      "footprint": [
+        [
+          597.414,
+          129.824
+        ],
+        [
+          602.691,
+          129.248
+        ],
+        [
+          602.307,
+          125.759
+        ],
+        [
+          597.038,
+          126.343
+        ]
+      ],
+      "height_m": 5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "Retained OSM seed checked against registered aerial and actual Google 3D opposing orbits; walls uncertain1–3m, not surveyed.",
+      "replace_with": null,
+      "osm_way": "1043702813"
+    },
+    {
+      "id": "way-1043702816",
+      "name": "Leicester east return 1043702816",
+      "footprint": [
+        [
+          591.242,
+          172.092
+        ],
+        [
+          590.851,
+          166.152
+        ],
+        [
+          587.41,
+          166.381
+        ],
+        [
+          587.193,
+          163.163
+        ],
+        [
+          581.785,
+          163.525
+        ],
+        [
+          581.903,
+          165.317
+        ],
+        [
+          573.158,
+          165.902
+        ],
+        [
+          572.594,
+          157.394
+        ],
+        [
+          578.122,
+          157.025
+        ],
+        [
+          577.981,
+          154.856
+        ],
+        [
+          595.781,
+          153.685
+        ],
+        [
+          595.378,
+          147.589
+        ],
+        [
+          564.707,
+          149.609
+        ],
+        [
+          566.289,
+          173.732
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "Retained OSM seed checked against registered aerial and actual Google 3D opposing orbits; walls uncertain1–3m, not surveyed.",
+      "replace_with": null,
+      "osm_way": "1043702816"
+    },
+    {
+      "id": "way-1043702817",
+      "name": "Leicester east return 1043702817",
+      "footprint": [
+        [
+          566.183,
+          190.845
+        ],
+        [
+          565.408,
+          176.55
+        ],
+        [
+          577.22,
+          175.907
+        ],
+        [
+          577.368,
+          178.592
+        ],
+        [
+          591.678,
+          177.819
+        ],
+        [
+          591.95,
+          182.858
+        ],
+        [
+          595.796,
+          182.643
+        ],
+        [
+          596.151,
+          189.216
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "Retained OSM seed checked against registered aerial and actual Google 3D opposing orbits; walls uncertain1–3m, not surveyed.",
+      "replace_with": null,
+      "osm_way": "1043702817"
+    },
+    {
+      "id": "way-1043702818",
+      "name": "Leicester east return 1043702818",
+      "footprint": [
+        [
+          567.566,
+          205.407
+        ],
+        [
+          566.797,
+          192.948
+        ],
+        [
+          587.77,
+          191.65
+        ],
+        [
+          588.117,
+          197.246
+        ],
+        [
+          584.846,
+          197.452
+        ],
+        [
+          585.272,
+          204.31
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "Retained OSM seed checked against registered aerial and actual Google 3D opposing orbits; walls uncertain1–3m, not surveyed.",
+      "replace_with": null,
+      "osm_way": "1043702818"
+    },
+    {
+      "id": "leicester-east-north",
+      "name": "Leicester east north lodging range",
+      "footprint": [
+        [
+          566,
+          209
+        ],
+        [
+          587,
+          209
+        ],
+        [
+          587,
+          229
+        ],
+        [
+          566,
+          229
+        ]
+      ],
+      "height_m": 11,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-calibration",
+        "street-view-july-2026"
+      ],
+      "footprint_confidence": "Registered aerial broad roof envelope; walls uncertain1–3m, not surveyed.",
+      "replace_with": null
+    }
+  ],
+  "existing_block_plans": [
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+    "regions/southport/stanley-street/frontage-placeholders/research/layout.json"
+  ],
+  "budgets": {
+    "triangles_per_level": 10000,
+    "download_bytes_per_level": 1500000,
+    "gpu_bytes_per_level": 3000000
+  },
+  "limits": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1–3 m and heights ±3 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated."
+}
