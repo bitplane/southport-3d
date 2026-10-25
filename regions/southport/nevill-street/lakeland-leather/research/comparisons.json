@@ -1,0 +1,18 @@
+{
+  "massing": {
+    "reviewed": "2026-10-25",
+    "views": [
+      "front",
+      "roof",
+      "corner"
+    ],
+    "references": [
+      "allsop-2019.png",
+      "front-2022.jpg",
+      "roof-plan-close.png",
+      "3d-rear-west.png"
+    ],
+    "findings": "Front width/height, oriel floor, great semicircle and paired upper arches agree with calibrated image ratios. Roof steps and rear notch compared with 3D; precise pitch/ground outline remains uncertain. Initial canopy column sign error found in front render and corrected before detail.",
+    "remaining": "Carving, frames, cornices and ironwork are added next; blank rear walls are deliberate evidence limits."
+  }
+}

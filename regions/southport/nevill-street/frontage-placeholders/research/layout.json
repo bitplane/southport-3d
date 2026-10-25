@@ -270,12 +270,8 @@
       "osm_way": "375534421",
       "footprint": [
         [
-          -33.253475,
-          71.693551
-        ],
-        [
-          -33.593,
-          46.543551
+          -40.593,
+          46.396453146
         ],
         [
           -45.754,
@@ -320,6 +316,18 @@
         [
           -30.253487,
           71.756161
+        ],
+        [
+          -33.253475,
+          71.693551
+        ],
+        [
+          -33.1772,
+          77.343551
+        ],
+        [
+          -40.1772,
+          77.196453146
         ]
       ],
       "height_m": 12,
@@ -330,7 +338,7 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Residual Lord Street block after 3\u20139 Nevill and its open rear court reservation; pending detailed parcel survey.",
+      "footprint_confidence": "Residual combined block after individual 355\u2013357 Lord Street extraction. Lakeland footprint estimated from four-angle Google 3D, frontage registered at preserved Parkinson passage. Other parcels remain placeholders.",
       "replace_with": null,
       "original_combined_footprint": [
         [
@@ -535,6 +543,60 @@
         [
           -9.8162,
           63.835956
+        ]
+      ],
+      "before_lakeland_footprint": [
+        [
+          -33.253475,
+          71.693551
+        ],
+        [
+          -33.593,
+          46.543551
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -30.161867,
+          78.542834
+        ],
+        [
+          -30.253487,
+          71.756161
         ]
       ]
     },
@@ -1160,6 +1222,38 @@
         ]
       ],
       "footprint_confidence": "Retained portion of old block after 3\u20139 Nevill replacement; architectural shape not researched here."
+    },
+    {
+      "id": "lakeland-leather",
+      "osm_way": null,
+      "footprint": [
+        [
+          -40.593,
+          46.396453146
+        ],
+        [
+          -33.593,
+          46.543551
+        ],
+        [
+          -33.1772,
+          77.343551
+        ],
+        [
+          -40.1772,
+          77.196453146
+        ]
+      ],
+      "height_m": 16.3,
+      "height_uncertainty_m": 0.4,
+      "status": "replaced-researched-exterior",
+      "evidence": [
+        "lakeland-actual-google-3d-2026-10-25",
+        "lakeland-allsop-2019-frontage",
+        "lakeland-street-view"
+      ],
+      "footprint_confidence": "Seven-metre individual frontage. Rear envelope estimated; existing Parkinson access reservation unchanged.",
+      "replace_with": "southport.nevill-street.lakeland-leather"
     }
   ],
   "policy": "Google 3D multi-angle shape and aerial comparison govern interpretation. OSM is a seed, not authority. Flat tops are placeholder height bounds, not asserted flat roofs. Joined mapped ranges are not individual legal parcels.",

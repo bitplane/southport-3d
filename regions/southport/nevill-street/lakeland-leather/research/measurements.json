@@ -1,0 +1,86 @@
+{
+  "units": "metres",
+  "frontage": {
+    "source": "allsop",
+    "gross": 7,
+    "uncertainty": 0.15
+  },
+  "elevation_calibration": {
+    "image": "allsop-2019.png at 1695x1472",
+    "bank_pixels": {
+      "ground_y": 690,
+      "parapet_y": 246
+    },
+    "bank_survey_height": 14.98,
+    "vertical_px_per_m": 29.64,
+    "lakeland_pixels": {
+      "ground_y": 690,
+      "parapet_y": 207,
+      "oriel_sill_y": 554,
+      "oriel_cornice_y": 478,
+      "pierced_parapet_y": 450,
+      "large_arch_apex_y": 374,
+      "upper_sill_y": 334,
+      "upper_arch_apex_y": 282,
+      "cornice_y": 242
+    },
+    "calculation": "(690 - landmark_y) / ((690-246)/14.98); estimates rounded, perspective/ground uncertainty approximately 0.35 m.",
+    "height_result": 16.3
+  },
+  "roof_calibration": {
+    "image": "roof-plan-close.png",
+    "front_corners_px": [
+      [
+        887,
+        290
+      ],
+      [
+        1034,
+        431
+      ]
+    ],
+    "rear_main_corners_px": [
+      [
+        750,
+        431
+      ],
+      [
+        849,
+        540
+      ]
+    ],
+    "rear_range_outer_landmarks_px": [
+      [
+        713,
+        462
+      ],
+      [
+        587,
+        553
+      ],
+      [
+        667,
+        713
+      ],
+      [
+        756,
+        691
+      ],
+      [
+        790,
+        605
+      ]
+    ],
+    "method": "Scale relative to 7 m frontage and cross-check quarter-turn obliques; photogrammetry displaced roof edges and unknown roof overhangs limit estimates.",
+    "uncertainty_m": 1.5,
+    "warning": "Front roof pitch and stepped rear roof are interpreted approximate planes, not survey. Rear ground perimeter cannot be certified from roof projection."
+  },
+  "registration": {
+    "right_front_boundary": [
+      -33.593,
+      46.543551
+    ],
+    "basis": "Existing Coffee King passage reservation fixed; extend 7 m southwest along frontage. No change to passage or courtyard reservation."
+  },
+  "shop_depth_conflict": "33.90 m agent figure not imposed as full-height geometry; rear envelope terminates at 30.8 m on existing provisional block. Future measured plan may revise it."
+}

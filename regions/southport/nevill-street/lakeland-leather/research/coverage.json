@@ -1,0 +1,72 @@
+{
+  "front": {
+    "sources": [
+      "allsop",
+      "front-2022",
+      "maps-photo",
+      "street-ne",
+      "street-front"
+    ],
+    "confidence": "high composition, medium metric heights",
+    "observed": [
+      "curved oriel with five granite colonettes",
+      "large semicircular square-pane glazing",
+      "two upper arched windows",
+      "paired side tourelles",
+      "carved spandrels",
+      "three unequal verandah bays",
+      "brown Lakeland fascia"
+    ],
+    "missing": "Fine carved face/figure anatomy cannot be resolved in available photographs; stylised relief only."
+  },
+  "right_side": {
+    "sources": [
+      "google-3d",
+      "street-front"
+    ],
+    "confidence": "low",
+    "observed": "Narrow passage beside Coffee King; upper party surface partly visible.",
+    "missing": "Deep alley openings and court finishes deferred to owner photographs."
+  },
+  "left_side": {
+    "sources": [
+      "google-3d",
+      "street-ne"
+    ],
+    "confidence": "medium envelope",
+    "observed": "Party join to taller Tudor gable at 353; mostly concealed.",
+    "missing": "No invented windows on concealed party face."
+  },
+  "rear": {
+    "sources": [
+      "google-3d"
+    ],
+    "confidence": "low-to-medium roof massing, low openings",
+    "observed": "Stepped roof range and lower rear volumes; neighbouring court stays open.",
+    "missing": "No street-level rear access imagery found; restrained blank surfaces, no invented door/ornament pattern."
+  },
+  "roof": {
+    "sources": [
+      "google-3d"
+    ],
+    "confidence": "medium topology, low pitches/heights",
+    "observed": "Front roof concealed by high parapet; descending main roof and lower rear wing, then low rear roofs.",
+    "missing": "Exact ridges and junctions are approximate; not inferred from OSM."
+  },
+  "ground": {
+    "sources": [
+      "google-3d",
+      "street-front",
+      "allsop"
+    ],
+    "confidence": "medium front, low rear",
+    "observed": "Narrow individual frontage and open passage; 3-bay canopy on pavement.",
+    "missing": "Rear parcel boundaries, court paving, levels and drains deferred."
+  },
+  "searches": {
+    "planning": "Search worked then repeated 504; no drawings obtained.",
+    "mapillary": "Existing 319861092876170 frontage source considered; 2019 Google and close facade photographs provide stronger detail. No new rear image obtained.",
+    "heritage": "Historic England 1379646 read with facade photograph.",
+    "place_photos": "22-image Lakeland gallery inspected; September 2025 frontage used."
+  }
+}

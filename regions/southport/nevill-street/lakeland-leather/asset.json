@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.lakeland-leather",
+  "name": "Lakeland Leather, 355\u2013357 Lord Street",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "researched-exterior-estimated-roof",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "curved-oriel",
+    "semicircular-feature-window",
+    "carved-sandstone-facade",
+    "iron-verandah",
+    "estimated-rear-envelope"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "September 2025 frontage appearance; actual four-angle Google 3D roof study. Hidden courtyard details deferred.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/nevill-street/public-realm/research/layout.json"
+    ],
+    "validate": [
+      "regions/southport/nevill-street/public-realm/research/layout.json"
+    ]
+  }
+}

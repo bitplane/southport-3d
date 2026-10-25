@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/lakeland-leather.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "September 2025 facade; calibrated dimensions, estimated roof/rear; courtyard details deferred.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 1024
+    },
+    "district": {
+      "texture_size": 1024
+    }
+  },
+  "parts": [
+    {
+      "id": "facades",
+      "name": "facades",
+      "collection": "facades"
+    },
+    {
+      "id": "roof",
+      "name": "roof",
+      "collection": "roof"
+    },
+    {
+      "id": "frontage",
+      "name": "frontage",
+      "collection": "frontage"
+    },
+    {
+      "id": "verandah",
+      "name": "verandah",
+      "collection": "verandah"
+    }
+  ],
+  "views": [
+    {
+      "name": "Lord Street",
+      "position": [
+        -42,
+        12,
+        -21
+      ],
+      "target": [
+        -37,
+        7,
+        -47
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Omit small leadwork, cornice dentils, cresting and fine sculptural figures; retain the architectural relief masses and major frames."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Bake onto fixed envelope."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain curved oriel, pierced parapet, arches, major carved scrolls, open iron posts and shopfront lettering."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replace with independent bounded envelope."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed roof planes and rear notch, polygonal oriel, recessed shop doorway, four low-sided verandah columns; facade carving and glazing bake to shared bounded atlases. Fine roundel perforations and filigree omitted at District.",
+    "max_bytes": 2200000,
+    "max_gpu_bytes": 18000000,
+    "parts": {
+      "facades": {
+        "atlas": [
+          512,
+          1024
+        ],
+        "max_triangles": 220,
+        "cage_m": 0.55,
+        "source_parts": [
+          "facades",
+          "frontage"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 80,
+        "cage_m": 0.3,
+        "source_parts": [
+          "roof",
+          "facades"
+        ]
+      },
+      "frontage": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 200,
+        "cage_m": 1.5,
+        "source_parts": [
+          "frontage",
+          "facades"
+        ]
+      },
+      "verandah": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 220,
+        "cage_m": 0.35,
+        "source_parts": [
+          "verandah"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      -37,
+      1,
+      42
+    ],
+    "target": [
+      -37,
+      3,
+      47
+    ]
+  }
+}

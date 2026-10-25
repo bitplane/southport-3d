@@ -1,0 +1,62 @@
+{
+  "accessed": "2026-10-25",
+  "private_directory": "../references/lakeland-leather",
+  "represented_appearance": "September 2025 Lakeland signage, verified against 2022 and 2019 frontage photos; Maps now marks business closed, present occupancy unconfirmed.",
+  "sources": [
+    {
+      "id": "listing",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379646",
+      "notes": "1901 Packer sandstone shop, granite oriel colonettes, Fred Sage 1925 iron verandah; historic architectural description."
+    },
+    {
+      "id": "allsop",
+      "url": "https://www.allsop.co.uk/api/file/6c5fbc6e-43e9-11e9-82f7-0242ac110002",
+      "date": "2019-02",
+      "notes": "7.00 m gross frontage; 6.50 m net, 33.90 m stated shop depth. Ground area 75.90 sq m conflicts with interpreting depth as full-width rectangle; not used for that inference. Full facade and neighbouring bank photograph."
+    },
+    {
+      "id": "front-2022",
+      "url": "https://standupforsouthport.com/wp-content/uploads/2022/06/LordStreet-01.jpg",
+      "date": "2022-06",
+      "author": "David Machell Architecture / Stand Up For Southport",
+      "notes": "Close facade, oriel, carved arches and verandah. Private study only; not projected as textures."
+    },
+    {
+      "id": "window-2022",
+      "url": "https://standupforsouthport.com/wp-content/uploads/2022/06/LordStreet-02.jpg",
+      "date": "2022-06",
+      "notes": "Interior view confirms large semicircular small-pane window; interiors not modelled."
+    },
+    {
+      "id": "maps-photo",
+      "url": "https://www.google.com/maps/place/LAKELAND+Leather/@53.6486276,-3.0049762,3a,75y,90t/data=!3m4!1e2!3m2!1sCIABIhDuxRv6oRWvolPBKRAC3Ij3!2e10",
+      "date": "2025-09",
+      "author": "Tilly\u2019s Home Videos",
+      "notes": "Rendered place photograph confirms brown fascia, white filigree verandah, granite colonettes, shop glazing."
+    },
+    {
+      "id": "street-ne",
+      "url": "https://www.google.com/maps/@53.6486356,-3.0050044,9a,65y,261.54h,105t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDavam71wE!2e10",
+      "date": "2019-07",
+      "author": "VR 360 TV",
+      "notes": "Actually navigated and rendered oblique; leftward drag revealed whole individual frontage and adjacent Tudor Caffe Nero."
+    },
+    {
+      "id": "street-front",
+      "url": "https://www.google.com/maps/@53.648576,-3.0051117,9a,70y,272.29h,108t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDa3aHWxQE!2e10",
+      "date": "2019-07",
+      "author": "VR 360 TV",
+      "notes": "Second actual panorama; shopfront and arch partly occluded by traffic signal, side of projecting oriel and passage mouth visible."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6488324,-3.0052427,72a,35y,90h/data=!3m1!1e3",
+      "notes": "Actual GPU photogrammetry inspected from headings 0/270/180/90 plus vertical plan, 2026-10-25. Private captures 3d-close-front, 3d-west, 3d-rear-north, 3d-rear-west, roof-plan-close. Roof outlines estimated; concealed ground/rear divisions unresolved."
+    },
+    {
+      "id": "planning-search",
+      "url": "https://pa.sefton.gov.uk/online-applications/search.do?action=simple&searchType=Application",
+      "notes": "Simple search 355 returned 75 items; expanding results and retrying returned repeated 504 Gateway Time-out. No survey drawings obtained."
+    }
+  ]
+}
