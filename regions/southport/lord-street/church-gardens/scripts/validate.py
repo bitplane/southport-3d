@@ -80,3 +80,13 @@ for level in ('detail','walk','district'):
  assert hit,('Missing lantern lower tray',level)
  bpy.data.objects.remove(ob,do_unlink=True)
 print('Square lantern cap and lower tray close every LOD head')
+
+# The side-approach asset owns this exact narrow lawn continuation. Remove all
+# former paving/grass/path layers together, rather than merely hiding a floor.
+for x,y in [(-125,-20),(-125,-26),(-119,-22),(-127.85,-25)]:
+    hits=[]
+    for ob in bpy.data.collections['christ-ground'].objects:
+        hit,p,n,index=ob.ray_cast(Vector((x,y,10)),Vector((0,0,-1)))
+        if hit:hits.append((ob.name,p.z))
+    assert not hits,(x,y,'approach ground ownership duplicated',hits)
+print('Christ Church side-approach ground handover is empty in old owner')

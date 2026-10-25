@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "bounds": [
+    -136,
+    -73,
+    -141,
+    -29.72
+  ],
+  "split_y": -70,
+  "garden_handover_source": "regions/southport/lord-street/church-gardens/research/layout.json",
+  "building_source": "regions/southport/lord-street/christ-church/research/layout.json",
+  "block_plans": [
+    "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+    "regions/southport/station-quarter/frontage-placeholders/research/layout.json"
+  ],
+  "station_ground_source": "regions/southport/station-quarter/public-realm/research/layout.json",
+  "lawn": [
+    [
+      -127.52,
+      -26.0
+    ],
+    [
+      -119.05,
+      -26.0
+    ],
+    [
+      -119.8,
+      -29.72
+    ],
+    [
+      -120.2,
+      -43.5
+    ],
+    [
+      -120.0,
+      -49
+    ],
+    [
+      -120.8,
+      -53.5
+    ],
+    [
+      -123.3,
+      -57.8
+    ],
+    [
+      -127.52,
+      -57.8
+    ]
+  ],
+  "brick_court": [
+    [
+      -120.5,
+      -29.72
+    ],
+    [
+      -110,
+      -29.72
+    ],
+    [
+      -110,
+      -58
+    ],
+    [
+      -113,
+      -66
+    ],
+    [
+      -123.8,
+      -70.5
+    ],
+    [
+      -128.0,
+      -67
+    ],
+    [
+      -124.6,
+      -59.5
+    ],
+    [
+      -121,
+      -54
+    ],
+    [
+      -120.2,
+      -45
+    ]
+  ],
+  "wall": {
+    "xy": [
+      [
+        -127.7,
+        -26.0
+      ],
+      [
+        -127.7,
+        -57.8
+      ],
+      [
+        -127.3,
+        -58.8
+      ],
+      [
+        -126.5,
+        -59.4
+      ],
+      [
+        -124.8,
+        -59.4
+      ]
+    ],
+    "height_m": 0.85,
+    "width_m": 0.28,
+    "evidence": "May 2011 pedestrian panorama: low red-brick retaining wall with pale coping, open service-court mouth. Metric size estimated. Northern end stops south of the retained cross-path, leaving the existing garden route open."
+  },
+  "hedges": [
+    {
+      "xy": [
+        [
+          -125.6,
+          -28
+        ],
+        [
+          -125.6,
+          -40
+        ]
+      ],
+      "height_m": 0.65,
+      "width_m": 0.9
+    }
+  ],
+  "trees": [
+    {
+      "xy": [
+        -123.8,
+        -29.2
+      ],
+      "scale": 0.68
+    },
+    {
+      "xy": [
+        -123.2,
+        -39.6
+      ],
+      "scale": 0.6
+    },
+    {
+      "xy": [
+        -123.4,
+        -47.3
+      ],
+      "scale": 0.54
+    }
+  ],
+  "placements": [
+    {
+      "kind": "bench",
+      "xy": [
+        -123.5,
+        -34.0
+      ],
+      "rotation_degrees": 0,
+      "surface": "grass",
+      "evidence": "Bench visible in May 2011 north-side pedestrian view; approximate registered location/orientation."
+    },
+    {
+      "kind": "bench",
+      "xy": [
+        -123.5,
+        -51.3
+      ],
+      "rotation_degrees": 0,
+      "surface": "grass",
+      "evidence": "Clearly visible slatted bench beside the wall in May 2011 south-side view; family reused, approximate location."
+    },
+    {
+      "kind": "bin",
+      "xy": [
+        -129.5,
+        -25.0
+      ],
+      "rotation_degrees": 0,
+      "surface": "paving",
+      "evidence": "Bin visible beside wall in north-side pedestrian view; approximate placement."
+    }
+  ],
+  "bollard_rows": [
+    {
+      "xy": [
+        [
+          -130.8,
+          -70.2
+        ],
+        [
+          -128.6,
+          -70.2
+        ],
+        [
+          -126.4,
+          -70.2
+        ],
+        [
+          -124.2,
+          -70.2
+        ]
+      ],
+      "evidence": "Four dark pedestrian bollards visible in May 2011 Corporation Street approach; spacing estimated."
+    },
+    {
+      "xy": [
+        [
+          -130.3,
+          -36.0
+        ],
+        [
+          -130.3,
+          -48.5
+        ]
+      ],
+      "evidence": "Slim Town Hall-side access posts visible in May 2011 side passage; positions estimated."
+    }
+  ],
+  "notice_board": {
+    "xy": [
+      -124.4,
+      -54.0
+    ],
+    "rotation_degrees": 0,
+    "evidence": "Two-post church notice board visible in May 2011 side-court view. Blank muted panel; unreadable text omitted."
+  },
+  "limits": "Broad layout checked against actual Google 3D and registered aerial. Local pedestrian panoramas are May 2011, so current exact furniture inventory is unverified. Plan±1–3 m, wall height ±0.15 m, lawn rise ±0.15 m. No architecture changes, text invention or precise species claims.",
+  "budgets": {
+    "detail": {
+      "max_triangles": 24000,
+      "max_download_bytes": 4000000,
+      "max_gpu_bytes": 16000000
+    },
+    "walk": {
+      "max_triangles": 14000,
+      "max_download_bytes": 2500000,
+      "max_gpu_bytes": 10000000
+    },
+    "district": {
+      "max_triangles": 8000,
+      "max_download_bytes": 1500000,
+      "max_gpu_bytes": 5000000
+    },
+    "basis": "Fixed raised ground/wall/board envelope and bounded furniture inventory; lower levels use independent family sampling, not whole-scene decimation."
+  },
+  "cross_path": {
+    "centreline": [
+      [
+        -73,
+        -20.4
+      ],
+      [
+        -86.8,
+        -20.34
+      ],
+      [
+        -99.9,
+        -20.47
+      ],
+      [
+        -115.25,
+        -22.06
+      ],
+      [
+        -128,
+        -22.6
+      ]
+    ],
+    "width_m": 5.0,
+    "basis": "Retain existing churchgarden cross-approach as clear paving; new wall, grass and furniture stay south of it."
+  }
+}

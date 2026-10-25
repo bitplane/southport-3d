@@ -1,0 +1,38 @@
+{
+  "units": "metres",
+  "snag": "89f88ed3aba2407cbbeda7a895dadb6c",
+  "aerial": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "centre": [
+      53.64721,
+      -3.0047
+    ],
+    "control": {
+      "pixel": [
+        800,
+        500
+      ],
+      "context_menu_lat_lon": [
+        53.64721,
+        -3.004485
+      ]
+    },
+    "pixel_steps": {
+      "longitude_degrees_per200px": 0.00053645,
+      "latitude_degrees_per200px": -0.00031795
+    },
+    "scale_m_per_pixel": 0.177,
+    "method": "Affine from retained LordStreet metric controls to satellite pixel coordinates. Roof parallax1–3 m, ground features manually compared in rotated site overlay."
+  },
+  "dimension_inputs": {
+    "passage": "Town Hall facade to wall: approximately3–4m in image; registered bounds leave4m clear beside wall.",
+    "wall": "Approximately10–12 brick courses at75 mm => 0.75–0.90 m; adopted 0.85±.15m. Width~0.28 m, coping+.04m each side.",
+    "lawn": "Retaining face and driveway edge interpreted as.45m central rise, graded to.07m edges; ±.15m.",
+    "bench": "Reuse metric1.9 m family; photographic count minimumtwo visible. Positions±2m, current inventory unverified.",
+    "grade": "Exact inherited church gardens grade−.0075−.022*clamp(Y,−36,36); same.7845m stationdatum south of−36."
+  },
+  "ownership": "New main rectangle cut against all church/neighbor footprints and existing station ground polygons. Narrowfrontlawn handover polygon is owned only by this asset; old church garden subtracts it. Ground separated from furniture, wall and tree meshes."
+}

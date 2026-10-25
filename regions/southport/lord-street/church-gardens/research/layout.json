@@ -24,8 +24,8 @@
     "road_drop": 0.12,
     "status": "Inherited estimated grade; not surveyed."
   },
-  "churches": "Christ Church southwest; St George\u2019s United Reformed Church northeast beside Sainsbury\u2019s. Buildings outside this asset.",
-  "uncertainty": "OSM gives paths and park envelopes. Widths, furniture spacing, levels, planting and wall heights are visually estimated, usually 1\u20133 m positional uncertainty. Tree forms are canopy proxies. No text invented on unreadable signs.",
+  "churches": "Christ Church southwest; St George’s United Reformed Church northeast beside Sainsbury’s. Buildings outside this asset.",
+  "uncertainty": "OSM gives paths and park envelopes. Widths, furniture spacing, levels, planting and wall heights are visually estimated, usually 1–3 m positional uncertainty. Tree forms are canopy proxies. No text invented on unreadable signs.",
   "trees": {
     "christ": [
       [
@@ -286,5 +286,24 @@
   },
   "seams": "Christ X=-73 meets London Square; St George X=154 meets St Georges Place. Shared main road kerbs Y21/31. No kerb or paint across a tile cut.",
   "bench_orientation_note": "Bench primitive backrest is local +Y and seat faces -Y. Garden-edge rows face out toward Lord Street (+Y, yaw180); rear rows face the southern footway (-Y,yaw0). Corrected from reversed original placements; exact positions remain estimated.",
-  "christ_snag_evidence": "Private user photo cbd4b778: retaining wall faces service-road end; lawn raised, interior path edged low. Approximate offsets and 0.45m rise, not surveyed."
+  "christ_snag_evidence": "Private user photo cbd4b778: retaining wall faces service-road end; lawn raised, interior path edged low. Approximate offsets and 0.45m rise, not surveyed.",
+  "approach_handover_polygon": [
+    [
+      -127.9,
+      -29.72
+    ],
+    [
+      -117.4,
+      -29.72
+    ],
+    [
+      -117.4,
+      -18.0
+    ],
+    [
+      -127.9,
+      -18.0
+    ]
+  ],
+  "approach_handover_note": "ChristChurch approach owns this exact ground polygon; former garden surfaces are cut out together. Existing west wall endsY−17.5 and remains the northern wall owner."
 }

@@ -1,7 +1,7 @@
 # Lord Street church gardens and road seams
 
 `southport.lord-street.church-gardens` adds the grounds in front of Christ Church
-and St George’s United Reformed Church. Church buildings remain separate future
+and St George’s United Reformed Church. Church buildings remain separate architectural
 assets. Actual Google Street View imagery was inspected from August 2024 and
 July 2026, with satellite views and the retained OpenStreetMap extract. Links,
 viewpoints and capture dates are in the asset’s research catalogue; no reference
@@ -110,3 +110,12 @@ follows the inner curve. Lord Street benches reuse the shared furniture model,
 with their backrests close to the wall; individual bench designs are deferred.
 The continuous wall shell is retained at every LoD, with masonry represented by
 authored repeating maps rather than downloaded photo pixels.
+
+## Side-court ground handover
+
+The [Christ Church side approach](CHRIST-CHURCH-APPROACH.md) now owns only the
+narrow continuation at X=-127.9..-117.4, Y=-29.72..-18.0 m, plus the new ground
+behind the original garden bound. This garden subtracts that exact polygon from
+all surface layers. The older wall, church frontage, roads and other garden
+remain in their existing ownership. A source regression checks that no previous
+paving or grass survives beneath the new owner.

@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/public-realm.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Christ Church side approach",
+  "status": "Broad layout checked against actualGoogle3D and registered aerial. Local pedestrian panoramas are May2011, so current exact furniture inventory is unverified. Plan±1–3m, wall height±.15m, lawn rise±.15m. No architecture changes, text invention or precise species claims.",
+  "levels": {
+    "detail": {
+      "texture_size": 256
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 64
+    }
+  },
+  "parts": [
+    {
+      "id": "court-ground",
+      "name": "Court Ground",
+      "collection": "court-ground",
+      "ground": true
+    },
+    {
+      "id": "passage-ground",
+      "name": "Passage Ground",
+      "collection": "passage-ground",
+      "ground": true
+    },
+    {
+      "id": "court-furniture",
+      "name": "Court Furniture",
+      "collection": "court-furniture"
+    },
+    {
+      "id": "passage-furniture",
+      "name": "Passage Furniture",
+      "collection": "passage-furniture"
+    }
+  ],
+  "views": [
+    {
+      "name": "Church side court and Corporation Street",
+      "position": [
+        -120,
+        80,
+        70
+      ],
+      "target": [
+        -40,
+        0,
+        125
+      ]
+    },
+    {
+      "name": "Town Hall side path",
+      "position": [
+        -67,
+        3,
+        111
+      ],
+      "target": [
+        -57,
+        2,
+        124
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -46,
+      2.48,
+      148
+    ],
+    "target": [
+      -62,
+      2.48,
+      130
+    ]
+  },
+  "rules": [
+    {
+      "id": "surfaces",
+      "match": "^Surface ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Partitioned slab, brick and raised lawn outlines retain one owner; reduce authored maps only."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed ground envelope, physical lawn edges and open approaches retained."
+      }
+    },
+    {
+      "id": "wall-board",
+      "match": "^(Wall|Street) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Continuous mitred wall/coping and plain noticeboard are bounded silhouettes."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed low-cost boundary shell independent of any future joinery or lettering."
+      }
+    },
+    {
+      "id": "bench",
+      "match": "^Furniture bench ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      }
+    },
+    {
+      "id": "bin",
+      "match": "^Furniture bin ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bin",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bin",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      }
+    },
+    {
+      "id": "bollard",
+      "match": "^Furniture bollard ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bollard",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "bollard",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      }
+    },
+    {
+      "id": "tree",
+      "match": "^Furniture tree ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "tree",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "tree",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      }
+    },
+    {
+      "id": "hedge",
+      "match": "^Furniture hedge ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "hedge",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "components:build_lod",
+        "settings": {
+          "kind": "hedge",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Reuse existing metric family and placements; reduce profile/crown sampling and omit small hardware. No photographic pixels."
+      }
+    }
+  ]
+}

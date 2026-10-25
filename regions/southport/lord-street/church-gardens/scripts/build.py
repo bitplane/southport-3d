@@ -262,6 +262,8 @@ strip('george',[(219.58,21),(219.961,-6.062),(222.111,-21.523),(224.285,-59.271)
 compiled={}
 for i,(place,poly,mat,priority,drop) in enumerate(rows):
     fragments=[poly]
+    if place=='christ':
+        fragments=[piece for fragment in fragments for piece in subtract(fragment,D.get('approach_handover_polygon',[]))] if D.get('approach_handover_polygon') else fragments
     minx,miny=min(p[0] for p in poly),min(p[1] for p in poly)
     maxx,maxy=max(p[0] for p in poly),max(p[1] for p in poly)
     for j,(other,cut,_,other_priority,_) in enumerate(rows):

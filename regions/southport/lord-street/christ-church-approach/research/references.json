@@ -1,0 +1,46 @@
+{
+  "accessed": "2026-10-25",
+  "sources": [
+    {
+      "id": "aerial",
+      "url": "https://www.google.com/maps/@53.64755,-3.00477,19z/data=!3m1!1e3",
+      "attribution": "Google / Airbus / Maxar Technologies",
+      "date": "Acquisition date unknown",
+      "observed": "Church-side garden, brick court, open Town Hall/Corporation route to Chapel."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6474,-2.9992012,433a,35y,270h,39.37t/data=!3m1!1e3",
+      "attribution": "Google Maps",
+      "observed": "Actual GPU 3D inspected at three opposing headings; footprint gaps and rear connection verified."
+    },
+    {
+      "id": "south-side",
+      "url": "https://www.google.com/maps/@53.6475,-3.005,3a,75y,325h,90t/data=!3m1!1e1",
+      "attribution": "Google Street View",
+      "date": "May 2011",
+      "observed": "Brick court, raised lawn, low wall/coping, slatted bench, open access mouth, notice board."
+    },
+    {
+      "id": "north-side",
+      "url": "https://www.google.com/maps/@53.6476993,-3.0054519,16a,85y,65h,105t/data=!3m4!1e1!3m2!1sxblOwKB3T_a7ldR6VDIUlA!2e0",
+      "attribution": "Google Street View",
+      "date": "May 2011",
+      "observed": "Town Hall passage slab paving, wall/hedge/tree strip, bench/bin."
+    },
+    {
+      "id": "corporation",
+      "url": "https://www.google.com/maps/@53.6472836,-3.0047962,3a,75y,325h,90t/data=!3m1!1e1",
+      "attribution": "Google Street View",
+      "date": "May 2011",
+      "observed": "Paved pedestrian link, four access bollards, strip materials; open connection toward church."
+    }
+  ],
+  "coverage": {
+    "ground": "Three actual 3Dorbits and two calibrated satellite views plus north/south May 2011 pedestrian panoramas",
+    "rear_link": "Corporation panorama loaded. Chapel-mouth query brieflyreturnedblank before loading; final modern mouth inventory not established. Existingstation ground handover retained.",
+    "buildings": "Existing registered footprint models used only for floor cutouts; architecture unchanged.",
+    "furniture": "Slatted benches, brickwall, coping, noticeboard and posts observed, sizes/positions estimated. Newer local pedestrian panorama unavailable at queried points; date kept explicit."
+  },
+  "limits": "Broad layout checked against actual Google 3D and registered aerial. Local pedestrian panoramas are May 2011, so current exact furniture inventory is unverified. Plan±1–3 m, wall height ±0.15 m, lawn rise ±0.15 m. No architecture changes, text invention or precise species claims."
+}

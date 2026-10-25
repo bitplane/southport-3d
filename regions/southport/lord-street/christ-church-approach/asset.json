@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.christ-church-approach",
+  "name": "Christ Church side court and Corporation Street approach",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "photo-researched-public-realm-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "court-ground",
+    "passage-ground",
+    "court-furniture",
+    "passage-furniture"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Broad layout checked against actualGoogle3D and registered aerial. Local pedestrian panoramas are May2011, so current exact furniture inventory is unverified. Plan±1–3m, wall height±.15m, lawn rise±.15m. No architecture changes, text invention or precise species claims.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/lord-street/church-gardens/research/layout.json",
+      "regions/southport/lord-street/christ-church/research/layout.json",
+      "regions/southport/station-quarter/public-realm/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+    ],
+    "validate": [
+      "regions/southport/lord-street/church-gardens/research/layout.json",
+      "regions/southport/lord-street/christ-church/research/layout.json",
+      "regions/southport/station-quarter/public-realm/research/layout.json",
+      "regions/southport/lord-street/corridor-placeholders/research/layout.json",
+      "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+    ]
+  },
+  "licensing": "Reference links only. Retained footprint exclusions from existing OSM-derived plans: OpenStreetMap contributors, ODbL1.0. No image pixels published.",
+  "publication_checks": [
+    "check_package.py"
+  ]
+}
