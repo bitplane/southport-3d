@@ -251,3 +251,17 @@ Practical lessons from the rollout:
 - Source snapshots must stay fixed throughout packaging. Coordinate shared-tool
   edits between active bakes; an otherwise successful bake is rejected if its
   inputs change. Failed packages leave the previous published catalog intact.
+
+### Straight-sided component bake cages
+
+For a shallow architectural box replacement, inspect the baked border from an
+oblique angle: an automatic cage around welded box corners can project sideways
+and curve otherwise straight mullions. A baked `replace`/`box` action with `box`
+UVs can opt into `"bake_projection": "face-normal"`. This gives each receiver face
+its own vertices before triangulation, preserving the closed geometric envelope,
+12 triangles and atlas layout while preventing averaged corner ray directions.
+It does not increase texture resolution or retain the detailed source mesh.
+Use this for planar architectural faces, not smooth cylindrical forms. The
+Blender regression is `tests/blender_bake_projection.py`; also inspect a real
+prototype bake and the assembled exported Walk asset. Unchanged actions retain
+the existing projection behaviour.

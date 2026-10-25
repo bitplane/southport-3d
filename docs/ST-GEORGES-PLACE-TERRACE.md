@@ -29,3 +29,11 @@ The entrances have two shallow risers and continuous recessed landings in every 
 Run `python3 tools/project.py build southport.lord-street.st-georges-place-terrace`, then the same command with `--stage render`. The publication recipe splits frontage, roof and rear wings. Validation checks finite UV meshes, packed authored textures, six bays, 90 transoms, three recessed doors, ten closed roof solids, 36 unobscured upper bay glazing probes and 99 sash probes and registered site bounds.
 
 Current published sizes are recorded in the generated package manifest. Historical review figures above do not certify the new District envelope.
+
+The Walk bay-face receivers use face-normal projection. Their former welded
+box cages skewed sampling near corners, creating curved pale wedges along the
+window edges despite straight source joinery. Face-local receiver vertices
+retain the same 12 triangles and silhouette per face; the coarse whole-building
+District envelope remains independent. Validate the actual exported Walk view
+as well as its flat atlas: increasing texture resolution cannot correct a
+misdirected projection ray.

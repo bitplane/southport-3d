@@ -161,7 +161,8 @@
         "bake": true,
         "cage_extrusion_m": 0.4,
         "max_sampled_error_m": 0.35,
-        "reason": "Bake each complete splayed bay face with apron,framing and transoms to its closed shallow envelope; the actual three-face bay projection is retained."
+        "reason": "Bake each planar bay face along its own normal, preserving straight frame edges without the welded box cage corner skew; retain the three-face bay projection.",
+        "bake_projection": "face-normal"
       },
       "district": {
         "strategy": "omit",

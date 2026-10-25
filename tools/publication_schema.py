@@ -58,7 +58,7 @@ def action(value, where):
     fields(value, {'strategy', 'reason'}, {
         'bake', 'uv', 'cage_extrusion_m', 'max_sampled_error_m',
         'shape', 'profile', 'segments', 'generator', 'settings',
-        'grid', 'source_npz', 'trim_empty', 'ratio',
+        'grid', 'source_npz', 'trim_empty', 'ratio', 'bake_projection',
     }, where)
     text(value['reason'], where + '.reason')
     strategy = value['strategy']
@@ -72,6 +72,10 @@ def action(value, where):
         raise ValueError(f'{where}: explicit boolean bake decision required')
     if value.get('uv') not in {'smart', 'planar-xy', 'lathe', 'box'}:
         raise ValueError(f'{where}: explicit supported UV layout required')
+    if 'bake_projection' in value:
+        if (value['bake_projection'] != 'face-normal' or not value['bake'] or
+                strategy != 'replace' or value.get('shape') != 'box' or value['uv'] != 'box'):
+            raise ValueError(f'{where}: face-normal projection requires a baked box replacement with box UVs')
     if value['bake']:
         for key in ('cage_extrusion_m', 'max_sampled_error_m'):
             number(value.get(key), where + '.' + key)

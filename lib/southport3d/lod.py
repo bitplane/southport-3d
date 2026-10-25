@@ -42,6 +42,10 @@ def load_recipe(path):
                 raise ValueError('Each action requires a supported strategy and a reason')
             if action['strategy'] == 'omit':
                 continue
+            if 'bake_projection' in action and (
+                    action['bake_projection'] != 'face-normal' or action['strategy'] != 'replace' or
+                    action.get('shape') != 'box' or action.get('uv') != 'box'):
+                raise ValueError('Face-normal projection requires a box replacement with box UVs')
             for key in ('cage_extrusion_m', 'max_sampled_error_m'):
                 value = action.get(key, target.get(key))
                 if not isinstance(value, (int, float)) or not math.isfinite(value) or value <= 0:

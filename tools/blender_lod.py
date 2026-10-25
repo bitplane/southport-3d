@@ -120,6 +120,21 @@ def reduce(high, name, action, level, asset_dir):
         mod.use_collapse_triangulate = True
         bpy.ops.object.modifier_apply(modifier=mod.name)
     obj.matrix_world = high.matrix_world.copy()
+    if action.get('bake_projection') == 'face-normal':
+        # A welded box's automatic cage averages adjacent vertex normals. Its
+        # corner rays therefore slide sideways and bend straight window edges.
+        # Give each planar face its own vertices BEFORE triangulation: rays stay
+        # perpendicular, while bounds, UV layout and triangle count are unchanged.
+        if strategy != 'replace' or action.get('shape') != 'box':
+            raise ValueError('Face-normal projection is supported for box replacements only')
+        original=obj.data;vertices=[];faces=[]
+        for poly in original.polygons:
+            start=len(vertices)
+            vertices.extend(tuple(original.vertices[i].co) for i in poly.vertices)
+            faces.append(tuple(range(start,len(vertices))))
+        mesh=bpy.data.meshes.new(original.name+' face-normal')
+        mesh.from_pydata(vertices,[],faces);mesh.update();obj.data=mesh
+        if not original.users:bpy.data.meshes.remove(original)
     select(obj)
     # Fix the diagonal BEFORE baking; glTF then sees the same tangent basis.
     mod = obj.modifiers.new('Bake triangulation', 'TRIANGULATE')
