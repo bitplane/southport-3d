@@ -90,3 +90,16 @@ for x,y in [(-125,-20),(-125,-26),(-119,-22),(-127.85,-25)]:
         if hit:hits.append((ob.name,p.z))
     assert not hits,(x,y,'approach ground ownership duplicated',hits)
 print('Christ Church side-approach ground handover is empty in old owner')
+
+# Every Lord Street pole keeps both unequal heads, with the high arm over road.
+from components import lord_lamp
+for place,placements in D['lord_street_lamps'].items():
+ poles=[o for o in bpy.data.collections[place+'-furniture'].objects if o.name.startswith('Furniture streetlight ')]
+ assert len(poles)==len(placements)
+ for o in poles:
+  assert any(abs(o.location.x-x)<.001 and abs(o.location.y-y)<.001 and abs(o.rotation_euler.z-math.radians(yaw))<.001 for x,y,yaw in placements)
+for level in ['detail','walk','district']:
+ m=lord_lamp(level)
+ for y,z in [(-1.35,6.65-.48-.30),(1.34,6.08-.48-.30)]:
+  assert any(abs(v[1]-y)<.34 and abs(v[2]-z)<.08 for v in m.vertices),(level,'missing pendant',y)
+print('Eight Lord Street twin poles and inward-facing road arms checked')

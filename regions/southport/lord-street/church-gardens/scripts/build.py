@@ -16,7 +16,7 @@ from southport3d.street import furniture
 from southport3d.planar import subtract, area, halfplane
 from southport3d.road import marking_segments
 from southport3d.conform import conform
-from components import hedge, lantern
+from components import hedge, lantern, lord_lamp
 from boundary import continuous_wall
 
 D = json.loads((ROOT / 'research/layout.json').read_text())
@@ -142,6 +142,7 @@ def item(place, kind,x,y,yaw=0,scale=(1,1,1)):
         if kind=='tree': mesh,materials=tree('detail','Tree '+place),tm
         elif kind=='hedge': mesh,materials=hedge('detail','Hedge '+place),foliage
         elif kind=='lantern': mesh,materials=lantern('detail','Lantern '+place),fm
+        elif kind=='streetlight': mesh,materials=lord_lamp('detail','Furniture streetlight '+place),fm
         else: mesh,materials=furniture(kind,'detail','Furniture '+kind+' '+place),fm
         ob=mesh.finish(materials,collections[place+'-furniture'])
         prototypes[kind]=ob
@@ -225,8 +226,7 @@ for x in [-102.2,-100.8,-99.4]:item('christ','bollard',x,12.6)
 for y in [-22.7,-20.8,-18.9]:item('christ','bollard',-74.0,y)
 for x,y in [(-104,20.0),(-126,19.8),(-75,-18.5)]:item('christ','bin',x,y)
 item('christ','lantern',-77.5,-16.8)
-item('christ','streetlight',-118,32.1)
-item('christ','streetlight',-86,32.1)
+for x,y,yaw in D['lord_street_lamps']['christ']:item('christ','streetlight',x,y,yaw)
 hedge_line('christ',[(-105,13.5),(-105,16.6)],.9)
 hedge_line('christ',[(-97,13.5),(-97,16.6)],.9)
 
@@ -246,7 +246,7 @@ hedge_line('george',[(193.2,17.6),(213.0,17.6)],.9)
 hedge_line('george',[(156.4,-10.5),(164,-13.8)],.8)
 wall('george',[(181,-13.5),(187,-13.5)],.45,True)
 for x,y in [(166,19.6),(191,19.8)]:item('george','bin',x,y)
-for x,y in [(163,32.1),(200,32.1)]:item('george','streetlight',x,y)
+for x,y,yaw in D['lord_street_lamps']['george']:item('george','streetlight',x,y,yaw)
 # White flagpole is visible beside the church entrance; neither flag nor text
 # is invented where the reference does not establish it.
 flag=Mesh('Street St George flagpole')

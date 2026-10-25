@@ -1,5 +1,11 @@
 """Authored garden silhouettes; planting dimensions are supplied by the layout."""
 import math
+import os
+import sys
+from pathlib import Path
+# Reuse the existing observed Lord Street family at every generated level.
+sys.path.insert(0,str(Path(os.environ["SOUTHPORT_REPO_ROOT"])/"regions/southport/london-square/public-realm/scripts"))
+from lord_street_lamps import lamp as lord_lamp
 from southport3d.geometry import Mesh
 from southport3d.street import furniture
 from southport3d.landscape import tree
@@ -39,6 +45,6 @@ def lantern(level='detail', name='Lantern'):
 
 def build_lod(name, settings, asset_dir):
     kind, level = settings['kind'], settings['level']
-    factory = {'tree': tree, 'hedge': hedge, 'lantern': lantern}.get(kind)
+    factory = {'tree': tree, 'hedge': hedge, 'lantern': lantern, 'streetlight': lord_lamp}.get(kind)
     mesh = factory(level, name) if factory else furniture(kind, level, name)
     return mesh.finish([])
