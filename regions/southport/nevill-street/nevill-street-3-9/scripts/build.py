@@ -177,7 +177,11 @@ slab('main',[p for name,p in roof_faces(D)])
 for name,spec in [('rear wing',D['rear_wing']),('low rear',D['low_rear'])]:slab(name,wing_roof(spec))
 # Raised rectangular central roof cover and rear multi-pane rooflight visible
 # in aerials. Exact construction is unknown; no guessed dormers or chimney pots.
-box('Architecture raised roof cover',(W/2,4.45,D['roof_top']+.07),(W-5.8,1.45,.14),lead,'roof',T)
+# Fresh plan and opposing obliques show a mottled dark infill, with only its
+# narrow perimeter flashing pale. The former all-lead material made an
+# unsupported bright solid bar in every viewing level. Construction remains
+# uncertain: use the observed slate-like finish, not invented glazing.
+box('Architecture raised roof cover',(W/2,4.45,D['roof_top']+.07),(W-5.8,1.45,.14),slate,'roof',T)
 if DETAIL:
  for u in (2.9,W-2.9):box('Fine roof cover curb',(u,4.45,D['roof_top']+.16),(.045,1.51,.05),lead,'roof',T)
  for v in (3.7,5.2):box('Fine roof cover curb',(W/2,v,D['roof_top']+.16),(W-5.8,.045,.05),lead,'roof',T)
