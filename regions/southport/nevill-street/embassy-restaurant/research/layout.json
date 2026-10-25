@@ -1,0 +1,14 @@
+{
+  "x": 9.481,
+  "y": 105.26,
+  "base_z": 0.13,
+  "width": 11.6,
+  "depth": 17.6,
+  "rear_depth": 35.9,
+  "eave": 10.5,
+  "ridge": 13.6,
+  "chamfer_u": 1.4,
+  "chamfer_v": 1.4,
+  "rear_height": 9.4,
+  "phase": "detail"
+}

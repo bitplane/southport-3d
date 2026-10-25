@@ -1,0 +1,77 @@
+{
+  "status": "visual estimates, not surveyed",
+  "inputs": [
+    {
+      "capture": "private output/embassy-plan-north.png",
+      "scale_bar_pixels": 114,
+      "scale_bar_m": 10,
+      "landmarks": {
+        "front_hip_left": [
+          552,
+          493
+        ],
+        "chamfer": [
+          620,
+          580
+        ],
+        "main_roof_rear_side": [
+          765,
+          455
+        ]
+      },
+      "calculation": "Front plus chamfer approximately 132 px /11.4 =11.6 m; long main roof side 191 px /11.4 =16.8 m plus eave/parallax allowance. Adopt17.6m. Full registered side depth35.9m retained.",
+      "uncertainty_m": 1.0
+    },
+    {
+      "capture": "private output/embassy-place-exterior.png",
+      "ratios": "Front first floor opening roughly2.3m tall; eave height approximately3.6 opening heights plus shop/pier context. Adopt10.5m eave, roof rise3.1m estimated from obliques.",
+      "height_uncertainty_m": 0.8
+    },
+    {
+      "capture": "private output/embassy-plan-north.png",
+      "landmarks": {
+        "chamfer_endpoints": [
+          [
+            620,
+            580
+          ],
+          [
+            641,
+            580
+          ]
+        ]
+      },
+      "calculation": "21px at11.4px/m =>1.84m chamfer; adopt1.4m on each axis =>1.98m. Supersedes oversized3.9m OSM chamfer.",
+      "uncertainty_m": 0.4
+    }
+  ],
+  "initial_dimensions": {
+    "x": 9.481,
+    "y": 105.26,
+    "base_z": 0.13,
+    "width": 11.6,
+    "depth": 17.6,
+    "rear_depth": 35.9,
+    "eave": 10.5,
+    "ridge": 13.6,
+    "chamfer_u": 2.49,
+    "chamfer_v": 3.006,
+    "rear_height": 9.4,
+    "phase": "massing"
+  },
+  "dimensions": {
+    "x": 9.481,
+    "y": 105.26,
+    "base_z": 0.13,
+    "width": 11.6,
+    "depth": 17.6,
+    "rear_depth": 35.9,
+    "eave": 10.5,
+    "ridge": 13.6,
+    "chamfer_u": 1.4,
+    "chamfer_v": 1.4,
+    "rear_height": 9.4,
+    "phase": "detail"
+  },
+  "refinement": "Current dimensions supersede the initial seed-based chamfer; documented top-down measurement governs."
+}

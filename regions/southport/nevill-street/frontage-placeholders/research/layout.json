@@ -771,6 +771,50 @@
       "osm_way": "375393549",
       "footprint": [
         [
+          9.540029,
+          116.860099
+        ],
+        [
+          9.739,
+          147.635
+        ],
+        [
+          46.35,
+          147.404
+        ],
+        [
+          46.297,
+          139.071
+        ],
+        [
+          32.877,
+          139.152
+        ],
+        [
+          32.746,
+          116.844
+        ],
+        [
+          42.332,
+          116.781
+        ],
+        [
+          42.331294,
+          116.655154
+        ]
+      ],
+      "height_m": 10.5,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Remaining Flavours/amusement block after Embassy street/roof registration. Embassy reserved on checked chamfer and stepped service range; other architecture remains provisional.",
+      "replace_with": null,
+      "before_embassy_footprint": [
+        [
           46.297,
           139.071
         ],
@@ -814,17 +858,7 @@
           32.877,
           139.152
         ]
-      ],
-      "height_m": 10.5,
-      "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
-      "evidence": [
-        "google-3d-orbit",
-        "google-plan-comparison",
-        "osm-seed"
-      ],
-      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      ]
     },
     {
       "id": "promenade-apartments",
@@ -1134,5 +1168,43 @@
     "asset": "southport.nevill-street.nevill-street-3-9",
     "basis": "Footprint and open rear court separated from old combined block; Empire and Occulo rear infill remain explicit placeholders.",
     "source": "regions/southport/nevill-street/nevill-street-3-9/research/layout.json"
+  },
+  "embassy_reservation": {
+    "asset": "southport.nevill-street.embassy-restaurant",
+    "footprint": [
+      [
+        9.490044,
+        106.66000000000001
+      ],
+      [
+        9.555935999999999,
+        116.86
+      ],
+      [
+        42.355936,
+        116.655
+      ],
+      [
+        42.316852999999995,
+        110.605
+      ],
+      [
+        45.416852999999996,
+        110.58562500000001
+      ],
+      [
+        45.381,
+        105.03562500000001
+      ],
+      [
+        10.881,
+        105.25125
+      ]
+    ],
+    "basis": "May\u2013July2026 street and four-angleGoogle3D; individual main and service volumes separated from combined OSM seed.",
+    "discarded_seed_slivers_m2": [
+      1.4831919062498855
+    ],
+    "frontage_correction": "Removed obsolete 16mm seed-line strip across new facade; remaining polygon begins at shared party-line/street-line intersection."
   }
 }

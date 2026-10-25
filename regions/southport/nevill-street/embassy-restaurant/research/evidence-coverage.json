@@ -1,0 +1,44 @@
+{
+  "front": {
+    "sources": [
+      "front-photo",
+      "corner"
+    ],
+    "confidence": "high appearance, estimated dimensions"
+  },
+  "side_stanley": {
+    "sources": [
+      "corner",
+      "stanley",
+      "stanley-back"
+    ],
+    "confidence": "high visible aperture arrangement; service depths estimated"
+  },
+  "roof": {
+    "sources": [
+      "google-3d"
+    ],
+    "confidence": "medium, photogrammetric silhouette and main planes only"
+  },
+  "rear": {
+    "sources": [
+      "google-3d",
+      "stanley-back"
+    ],
+    "confidence": "limited; private court elevation partly occluded, no invented decoration"
+  },
+  "party": {
+    "sources": [
+      "google-3d"
+    ],
+    "confidence": "abuts lower Flavours roof; no invented hidden windows"
+  },
+  "ground": {
+    "sources": [
+      "osm-seed",
+      "google-3d",
+      "corner"
+    ],
+    "confidence": "existing registered street datum; no surveyed heights"
+  }
+}

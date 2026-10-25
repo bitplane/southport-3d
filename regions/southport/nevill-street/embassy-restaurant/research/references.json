@@ -1,0 +1,56 @@
+{
+  "accessed": "2026-10-25",
+  "rights": "Imagery privately retained outside Git. Source links only. OSM contributors ODbL. All textures procedurally authored.",
+  "sources": [
+    {
+      "id": "operator",
+      "url": "https://www.silcock-leisure.co.uk/fish-and-chips/embassy-restaurant/",
+      "observation": "Operator confirms Embassy identity; licensing record gives 24\u201326 Nevill."
+    },
+    {
+      "id": "licensing",
+      "url": "https://modgov.sefton.gov.uk/moderngov/Data/Licensing%20and%20Regulatory%20Committee/20051128/Agenda/Appendix%2006.pdf",
+      "observation": "Embassy Restaurant 24\u201326 Nevill Street, Silcock Leisure."
+    },
+    {
+      "id": "front-photo",
+      "url": "https://www.google.com/maps/place/Silcock%27s+Embassy/",
+      "capture_date": "2026-05",
+      "credit": "Arthur Belgrove, Google Maps place photos",
+      "observation": "Two broad upper bays, cream sash first floor and four-light second floor; diamond brick band, red awnings and cream shop framing."
+    },
+    {
+      "id": "corner",
+      "url": "https://www.google.com/maps/@53.6494036,-3.0052502,3a,90y,310h,103t/data=!3m4!1e1!3m2!1sjbyt35roNRtt1Gt0KkU8YA!2e0",
+      "capture_date": "2026-07",
+      "observation": "Chamfer entrance, red fascia/canopy, one narrow window per storey; decorated Stanley bay."
+    },
+    {
+      "id": "stanley",
+      "url": "https://www.google.com/maps/@53.649469,-3.0051379,3a,90y,310h,104t/data=!3m4!1e1!3m2!1sfcHhjQV3Li6qQnwA2VlsPw!2e0",
+      "capture_date": "2026-07",
+      "observation": "Plain brick rearward elevation, cream painted blocked ground apertures, pale pipework, asymmetric upper windows."
+    },
+    {
+      "id": "stanley-back",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.64955,-3.00495&heading=285&pitch=18&fov=95",
+      "capture_date": "2026-07",
+      "observation": "Tall narrow rearward windows, service doors, windows, vents, numerous soil pipes; source screenshot actually rendered."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6495,-3.00518,100a,35y,0h,0t/data=!3m1!1e3",
+      "observation": "Actual GPU photogrammetric roof examined at four 90-degree orbits and top down; hipped front roof, rear gable, lower parapeted service roofs, rear yards. Composite capture date unknown."
+    },
+    {
+      "id": "osm-seed",
+      "url": "https://www.openstreetmap.org/way/375393549",
+      "observation": "Combined amusement block seed; individual Embassy separated using roof and street evidence."
+    },
+    {
+      "id": "mapillary",
+      "url": "https://www.mapillary.com/app/?lat=53.64946&lng=-3.00528&z=19",
+      "observation": "App loaded consent and controls but blank map; indexed search yielded no useful image. Not used as geometry evidence."
+    }
+  ]
+}
