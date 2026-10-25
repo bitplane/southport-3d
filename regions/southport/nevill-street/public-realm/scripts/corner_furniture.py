@@ -17,7 +17,7 @@ def build(scene,materials,grade):
   for u in (-.57,.57):
    m.tube([(u,-.62,.04),(u,-.18,.72)],.045,1,4);m.tube([(u,.62,.04),(u,.18,.72)],.045,1,4)
    m.box((u,0,.38),(.08,1.45,.075),1)
-  m.transform(Matrix.Translation((x,y,grade(y)))@Matrix.Rotation(angle,4,'Z'));o=m.finish(palette,c)
+  m.transform(Matrix.Translation((x,y,grade(y,x)))@Matrix.Rotation(angle,4,'Z'));o=m.finish(palette,c)
   o.data.uv_layers.new(name='Untextured furniture')
  # Two-pole direction panel seen at the rounded corner. Abstract bands retain
  # the photographed white/blue/brown hierarchy; tiny text not invented.
@@ -27,5 +27,5 @@ def build(scene,materials,grade):
  for zz in (2.95,3.37):m.box((-.47,-.061,zz),(.19,.02,.20),3)
  # Street View places the board on the kerb side of the glazed canopy.
  # The canopy ends at site X=5.84; the former X=6 placement cut its roof.
- m.transform(Matrix.Translation((4.9,95.4,grade(95.4)))@Matrix.Rotation(math.pi/2,4,'Z'));o=m.finish(palette,c);o.data.uv_layers.new(name='Untextured furniture')
+ m.transform(Matrix.Translation((4.9,95.4,grade(95.4,4.9)))@Matrix.Rotation(math.pi/2,4,'Z'));o=m.finish(palette,c);o.data.uv_layers.new(name='Untextured furniture')
  return c

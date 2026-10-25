@@ -14,7 +14,7 @@ import southport3d.conform as conforming
 conforming.TOLERANCE=1e-7
 conforming.GRID=1e-6
 conform=conforming.conform
-from datum import grade
+from datum import grade,SURFACE
 D=json.loads((ROOT/'research/layout.json').read_text())
 BLOCKS=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/D['block_plan']).read_text())
 D['building_cutouts'] += [{'id':b['id'],'polygon':b['footprint']} for b in BLOCKS['blocks']]
@@ -109,14 +109,14 @@ for ti,(lo,hi) in enumerate(zip(cuts,cuts[1:])):
   for mat,g in [('asphalt',road),('lawn',green),('paving',paved)]:
    m=compiled.setdefault((name,mat),Mesh('Ground '+name+' '+mat))
    for p in plan.triangles(plan.intersection(g,cell)):
-    m.add([(x,y,0) for x,y in p],[(0,1,2)])
+    for lifted in SURFACE.lift_triangle(p):m.add([(x,y,0) for x,y,z in lifted],[(0,1,2)])
  print(name,'triangles before conformance',sum(len(m.faces) for (n,_),m in compiled.items() if n==name),flush=True)
 plan.close()
 # Conform at a common plane first: road and footway boundaries must share XY
 # vertices even though their finished surfaces have a 120 mm height difference.
 import numpy as np
 for m in compiled.values():m.vertices=np.asarray(m.vertices,dtype=np.float32).tolist()
-compiled,report=conform(compiled)
+compiled,report=conform(compiled,preserve_triangles=True,weld_distance=5e-5)
 edge_mats=defaultdict(list)
 for (name,mat),m in compiled.items():
  for face in m.faces:

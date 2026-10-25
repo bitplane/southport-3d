@@ -102,5 +102,19 @@
   },
   "source_catalog": "research/references.json",
   "scope": "Provisional footprint/height volumes and street canvas. Plan uncertainty around 1\u20133 m, height uncertainty 2\u20134 m. Flat tops denote height bounds, not roof form. Private yard surfaces and parking endpoints estimated; no detailed architecture or street furniture.",
-  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only."
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/hoghton.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz"
+    ],
+    "validate": [
+      "regions/southport/elevation/hoghton.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz"
+    ]
+  }
 }

@@ -31,12 +31,13 @@ def publish(args, assets, fingerprint, build):
         if any(not (source/'publication.json').is_file() for source,_ in inventory.values()):
             raise ValueError('Selected asset has no publication recipe')
     with ExitStack() as locks:
-        locks.enter_context(asset_lock(ROOT, "catalog"))
+        if not getattr(args,'package_only',False):
+            locks.enter_context(asset_lock(ROOT, "catalog"))
         for key in sorted(inventory):
             locks.enter_context(asset_lock(ROOT, key))
         retained=[]
         catalog=ROOT/'dist/catalog.json'
-        if selected and catalog.exists():
+        if selected and catalog.exists() and not getattr(args,'package_only',False):
             retained=[entry for entry in json.loads(catalog.read_text())['assets'] if entry['id'] not in selected]
         return _publish(args, lambda: inventory, fingerprint, build, retained)
 
@@ -141,6 +142,9 @@ def _publish(args, assets, fingerprint, build, retained=()):
             entry['parts'].append(result)
         entries.append(entry)
     if not entries:raise ValueError('No publishable assets were found')
+    if getattr(args,'package_only',False):
+        print('Checked packages ready; live catalog and viewer unchanged:', ', '.join(e['id'] for e in entries),flush=True)
+        return entries
     dist=ROOT/'dist';dist.mkdir(exist_ok=True)
     old_catalog=json.loads((dist/'catalog.json').read_text()) if (dist/'catalog.json').exists() else {'assets':[]}
     def uris(catalog):return {f['uri'] for a in catalog['assets'] for p in a['parts'] for f in p['levels'].values()}

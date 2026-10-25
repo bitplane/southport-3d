@@ -7,12 +7,12 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'lib'))
 from southport3d.elevation import Elevations
 
 
-def test_chapel_migration_preserves_legacy_levels():
+def test_chapel_survey_preserves_relative_entrance_ramp():
     p=Path(__file__).resolve().parents[1]/'regions/southport/elevation/station-approach.json'
     surface=Elevations(p).surface('chapel-pedestrian')
     for x in [-270,-254,-170,-95,-5.301,-5.3,-5.299,-5,-4.301,-4.3,0]:
-        assert surface.height(x,-144)==pytest.approx(.7845-.12*max(0,min(1,(x+5.3))))
-    with pytest.raises(ValueError,match='outside'):surface.height(-271,-144)
+        assert surface.height(x,-144)==pytest.approx(surface.base.height(x,-144)-.12*max(0,min(1,(x+5.3))))
+    with pytest.raises(ValueError,match='outside'):surface.height(surface.bounds[0]-1,-144)
 
 
 def make_plan(tmp_path):

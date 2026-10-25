@@ -575,9 +575,12 @@
     }
   ],
   "budgets": {
-    "triangles_per_level": 24000,
-    "download_bytes_per_level": 3000000,
-    "gpu_bytes_per_level": 12000000
+    "triangles_per_level": 100000,
+    "download_bytes_per_level": 14000000,
+    "gpu_bytes_per_level": 18000000,
+    "terrain_basis": "Fixed 5 m measured lattice with local refinements, shared across LoDs; independent of architectural detail."
   },
-  "limits": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1\u20133 m and heights \u00b13 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated."
+  "limits": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1\u20133 m and heights \u00b13 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated.",
+  "elevation_plan": "regions/southport/elevation/leicester-quarter.json",
+  "elevation_surface": "leicester-quarter-pavement"
 }

@@ -507,9 +507,12 @@
     "basis": "Dated Street View shows south-side Stanley and west-side Bold parking. Exact endpoints are provisional."
   },
   "budgets": {
-    "triangles_per_level": 20000,
-    "download_bytes_per_level": 2500000,
-    "gpu_bytes_per_level": 10000000
+    "triangles_per_level": 100000,
+    "download_bytes_per_level": 14000000,
+    "gpu_bytes_per_level": 18000000,
+    "terrain_basis": "Fixed 5 m measured lattice with local refinements, shared across LoDs; independent of architectural detail."
   },
-  "limits": "Provisional roads, narrow pavements, private paved courts and planted reservations. No detailed street furniture, private garden design or current legal restrictions. Exact existing boundary datums retained; interior levels estimated."
+  "limits": "Provisional roads, narrow pavements, private paved courts and planted reservations. No detailed street furniture, private garden design or current legal restrictions. Exact existing boundary datums retained; interior levels estimated.",
+  "elevation_plan": "regions/southport/elevation/stanley-street.json",
+  "elevation_surface": "stanley-street-pavement"
 }

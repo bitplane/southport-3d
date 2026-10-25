@@ -43,7 +43,7 @@ def ribbon(points,width,offset=0):
   return out
  return edge(offset-width/2)+list(reversed(edge(offset+width/2)))
 P=Plan();available=P.polygons(D['ground_polygons'])
-cutters=list(D['exclusions'])+[b['footprint'] for b in B['blocks'] if not b.get('base_z_m')]+[b['footprint'] for b in OLD['blocks']]
+cutters=list(D['exclusions'])+[b['footprint'] for b in B['blocks'] if not b.get('clearance_above_ground_m')]+[b['footprint'] for b in OLD['blocks']]
 available=P.difference(available,P.polygons(cutters))
 route=P.intersection(available,P.polygons([ribbon(D['centreline'],D['route_width_m'])]))
 strips=P.intersection(available,P.polygons([ribbon(D['centreline'],D['furniture_strip_width_m'],side*D['furniture_strip_offset_m']) for side in [-1,1]]))
@@ -55,16 +55,17 @@ for name,lo,hi in zip(['west','middle','east'],D['tile_cuts'],D['tile_cuts'][1:]
  for mat,g in [('paving',paved),('route',route),('strip',strips)]:
   m=Mesh('Ground '+name+' '+mat)
   # The ramp break is a real shared edge, not a sloping giant triangle.
-  cuts=[lo,*[v for v in [line[0][0] for line in surface.breaklines()] if lo<v<hi],hi]
+  cuts=[lo,hi]
   for a,b in zip(cuts,cuts[1:]):
    patch=P.intersection(g,P.polygons([rect(a,b,-300,0)]))
-   for tri in P.triangles(patch):m.add([(x,y,grade(x,y)) for x,y in tri],[(0,1,2)])
+   for tri in P.triangles(patch):
+    for lifted in surface.lift_triangle(tri):m.add(lifted,[(0,1,2)])
   if m.faces:compiled[(name,mat)]=m
 P.close()
 # Noded ground boundaries remain exact after float32 conversion.
 import southport3d.conform as cf
 cf.GRID=1e-6;cf.TOLERANCE=1e-7
-compiled,report=cf.conform(compiled)
+compiled,report=cf.conform(compiled,preserve_triangles=True,weld_distance=5e-5)
 for (name,mat),m in compiled.items():
  ob=m.finish([mats[mat]],cols[name+'-ground']);bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.triangulate(bm,faces=list(bm.faces));bad=[f for f in bm.faces if f.calc_area()<1e-9];bmesh.ops.delete(bm,geom=bad,context='FACES_ONLY');bm.to_mesh(ob.data);bm.free()
  uv=ob.data.uv_layers.new(name='Metric slabs')

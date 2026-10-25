@@ -54,6 +54,10 @@ def check():
             json.loads(path.read_text())
         if path.suffix == '.npz':
             with np.load(path, allow_pickle=False) as data:
+                if name.startswith('regions/southport/elevation/survey/'):
+                    from southport3d.terrain import validate_tile
+                    validate_tile(data)
+                    continue
                 if not {'z', 'width', 'height'} <= set(data.files) <= {'z', 'width', 'height', 'origin_y'}:
                     raise ValueError(f'Unexpected relief payload: {name}')
                 if data['z'].ndim != 2 or any(not np.isfinite(data[k]).all() for k in data.files):
@@ -185,6 +189,7 @@ def main():
     lodder.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))
     publisher = sub.add_parser('publish', help='Build all publication recipes and prepare the local viewer')
     publisher.add_argument('--rebuild', action='store_true')
+    publisher.add_argument('--package-only', action='store_true', help='Build and check selected LoD packages without changing the live catalog or viewer')
     publisher.add_argument('--asset', action='append', default=[], help='Publish only this asset (repeatable), retaining other assets at their last published versions')
     publisher.add_argument('--threads', type=int, default=12)
     publisher.add_argument('--blender', default=os.environ.get('BLENDER', 'blender'))

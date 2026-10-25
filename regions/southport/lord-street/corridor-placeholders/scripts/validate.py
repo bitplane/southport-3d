@@ -7,11 +7,9 @@ bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/frontage-placeholders.blend')
 D=json.loads((ROOT/'research/layout.json').read_text())
 
 obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];assert len(obs)==sum(not b['replace_with'] for b in D['blocks'])
-def grade(x,y):
- z=-.0075-.022*max(-36,min(36,y))
- # Blend the known rising Nevill datum into its immediate corner neighbours.
- near=max(0,1-max(-81.84-x,x-34.19,0)/16)
- return z+max(0,min(207.07,y-41))*((2.2+.7995)/207.07)*near
+sys.path.insert(0,str(ROOT/'scripts'))
+from datum import grade,SURFACE
+
 triangles=0
 for block in D['blocks']:
  if block['replace_with']:continue
@@ -22,7 +20,7 @@ for block in D['blocks']:
  for x,y in block['footprint']:
   matches=[v for v in o.data.vertices if abs(v.co.x-x)<1e-4 and abs(v.co.y-y)<1e-4]
   assert len(matches)==2,(o.name,'footprint changed',x,y)
-  assert abs(min(v.co.z for v in matches)-grade(x,y))<1e-4,(o.name,'floating base')
+  assert min(v.co.z for v in matches)<=grade(x,y)-.049,(o.name,'floating base')
  o.data.calc_loop_triangles();triangles+=len(o.data.loop_triangles)
  for t in o.data.loop_triangles:
   a,b,c=(o.data.vertices[i].co for i in t.vertices);assert (b-a).cross(c-a).length>1e-9

@@ -8,7 +8,7 @@ sys.path[:0]=[str(REPO/'lib'),str(ROOT/'scripts'),str(REPO/'regions/southport/lo
 from southport3d.geometry import Mesh
 from southport3d.road import parallel
 from plan_geometry import Plan
-from datum import grade
+from datum import grade,SURFACE
 D=json.loads((ROOT/'research/layout.json').read_text())
 YARD=json.loads((ROOT/'research/stanley-yard-snag.json').read_text())
 bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
@@ -75,7 +75,8 @@ for name,lo,hi in zip(['west','middle','east'],D['tile_cuts'],D['tile_cuts'][1:]
   cell=P.polygons([rect(a,b,D['bounds'][2],D['bounds'][3])])
   for mat,g in [('asphalt',asphalt),('paving',foot),('courts',courts),('service-yard',yard),('green',green),('yellow',yellow),('white',white)]:
    m=compiled.setdefault((name,mat),Mesh('Ground '+name+' '+mat))
-   for tri in P.triangles(P.intersection(g,cell)):m.add([(x,y,0) for x,y in tri],[(0,1,2)])
+   for tri in P.triangles(P.intersection(g,cell)):
+    for lifted in SURFACE.lift_triangle(tri):m.add([(x,y,0) for x,y,z in lifted],[(0,1,2)])
 P.close()
 # Join road, paint, paving and cell boundaries on one plane before grading.
 import southport3d.conform as cf
@@ -95,7 +96,7 @@ for m in compiled.values():
    if -.00001<t<1.00001 and distance<.00003:
     v[0]=float(np.float32(round(v[0],4)));v[1]=float(np.float32(round(v[1],4)))
 
-compiled,report=cf.conform(compiled)
+compiled,report=cf.conform(compiled,preserve_triangles=True,weld_distance=5e-5)
 edge_mats=defaultdict(list);road_mats={'asphalt','yellow','white'}
 for (name,mat),m in compiled.items():
  for face in m.faces:

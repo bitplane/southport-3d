@@ -4,7 +4,7 @@ from pathlib import Path
 from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path[:0]=[str(ROOT/'scripts'),str(REPO/'tools')]
-from datum import grade
+from datum import grade,SURFACE
 from coplanar import overlaps
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 D=json.loads((ROOT/'research/layout.json').read_text());obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];ground=[o for o in obs if not o.name.endswith('kerb')]
@@ -14,6 +14,9 @@ for o in obs:
  o.data.calc_loop_triangles()
  for t in o.data.loop_triangles:
   a,b,c=(o.data.vertices[i].co for i in t.vertices);assert (b-a).cross(c-a).length>1e-10,(o.name,t.index)
+  if o in ground:
+   centre=(a+b+c)/3;expected=grade(centre.x,centre.y)-(.12 if any(o.name.endswith(' '+k) for k in ['asphalt','yellow','white']) else 0)
+   assert abs(centre.z-expected)<1e-4,(o.name,t.index,'terrain plane erased',centre.z,expected)
 tris=sum(len(o.data.loop_triangles) for o in obs);assert tris<D['budgets']['triangles_per_level'],tris
 
 def contains(p,x,y):

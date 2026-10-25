@@ -4,7 +4,7 @@ from pathlib import Path
 from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path[:0]=[str(ROOT/'scripts'),str(REPO/'tools')]
-from datum import grade
+from datum import grade,SURFACE
 from coplanar import overlaps
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 D=json.loads((ROOT/'research/layout.json').read_text());obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];ground=[o for o in obs if not o.name.endswith('kerb')]
@@ -14,6 +14,10 @@ for o in obs:
  o.data.calc_loop_triangles()
  for t in o.data.loop_triangles:
   a,b,c=(o.data.vertices[i].co for i in t.vertices);assert (b-a).cross(c-a).length>1e-10,(o.name,t.index)
+  if o in ground:
+   centre=(a+b+c)/3
+   expected=grade(centre.x,centre.y)-(.12 if any(o.name.endswith(' '+k) for k in ['asphalt','yellow','white']) else 0)
+   assert abs(centre.z-expected)<1e-4,(o.name,t.index,'terrain plane erased',centre.z,expected)
 tris=sum(len(o.data.loop_triangles) for o in obs);assert tris<D['budgets']['triangles_per_level'],tris
 
 def contains(p,x,y):
@@ -30,7 +34,7 @@ def hits(x,y):
   hit=o.ray_cast(Vector((x,y,80)),Vector((0,0,-1)))
   if hit[0]:out.append((o.name,hit[1].z))
  return out
-count=0
+count=0;survey_errors=[]
 for r in D['roads']:
  for a,b in zip(r['points'],r['points'][1:]):
   n=max(1,int(math.dist(a,b)/2))
@@ -39,6 +43,8 @@ for r in D['roads']:
    if not owned(x,y):continue
    h=hits(x,y);assert len(h)==1,(r['name'],x,y,h)
    assert abs(h[0][1]-(grade(x,y)-.12))<2e-5,(r['name'],x,y,h)
+   error=abs(h[0][1]-SURFACE.terrain.height(x,y));survey_errors.append(error)
+   assert error<.25,(r['name'],x,y,'terrain approximation exceeds 25 cm',error)
    count+=1
 footprint_samples=0
 for p in buildings:
@@ -61,5 +67,5 @@ residues=overlaps(triangles,labels)
 # Same 1e-5 m² reporting threshold used for the neighbouring corridor's
 # float32 boundary audit; preserve smaller findings in the report.
 assert not [r for r in residues if r[2]>1e-5],residues
-report={'triangles':tris,'objects':len(obs),'road_samples':count,'footprint_exclusion_samples':footprint_samples,'tile_seam_samples':seams,'float32_overlap_residues':residues,'overlap_area_limit_m2':1e-5,'checks':'Unique road floor, building exclusions, tile seams, finite nondegenerate float32 geometry, coplanar overlap.','limitations':D['limits']}
+report={'triangles':tris,'objects':len(obs),'road_samples':count,'survey_max_road_error_m':max(survey_errors),'footprint_exclusion_samples':footprint_samples,'tile_seam_samples':seams,'float32_overlap_residues':residues,'overlap_area_limit_m2':1e-5,'checks':'Unique road floor, building exclusions, tile seams, finite nondegenerate float32 geometry, coplanar overlap; triangle interiors preserve the shared terrain planes and owned road probes remain within 25 cm of native DTM.','limitations':D['limits']}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

@@ -14,9 +14,56 @@
       "uncertainty_m": 0.15,
       "status": "legacy-estimate-preserved",
       "evidence": "Station-quarter layout existing datum and 0.12m entrance drop; no surveyed elevation. Preserved by migration."
+    },
+    "chapel-entrance-zero": {
+      "height_m": 0,
+      "uncertainty_m": 0.03,
+      "status": "authored-relative-offset",
+      "evidence": "Retain existing entrance ramp above new survey terrain; zero adjustment at west landing."
+    },
+    "chapel-entrance-drop": {
+      "height_m": -0.12,
+      "uncertainty_m": 0.03,
+      "status": "authored-relative-offset",
+      "evidence": "Retain existing 0.12 m drop across one metre at London Street entrance. Not a LiDAR kerb measurement."
     }
   },
   "surfaces": {
+    "chapel-pedestrian": {
+      "type": "survey",
+      "terrain": "survey/terrain.json",
+      "bounds": [
+        -280,
+        10,
+        -235,
+        -60
+      ],
+      "grid_m": 5,
+      "offset_m": 0.12,
+      "evidence": "EA 2022 DTM; acquisition and provisional datum in survey/terrain.json. Former constant estimate superseded. Entrance kerb treatment requires local attachment review.",
+      "offset_profile": {
+        "axis_origin": [
+          0,
+          0
+        ],
+        "axis_direction": [
+          1,
+          0
+        ],
+        "profile": [
+          {
+            "distance_m": -5.3,
+            "control": "chapel-entrance-zero"
+          },
+          {
+            "distance_m": -4.3,
+            "control": "chapel-entrance-drop"
+          }
+        ]
+      }
+    }
+  },
+  "superseded_surfaces": {
     "chapel-pedestrian": {
       "bounds": [
         -270,

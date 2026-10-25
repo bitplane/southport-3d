@@ -41,5 +41,17 @@
   },
   "source_catalog": "research/references.json",
   "scope": "External outlines checked against calibrated north-up Google aerials. 3D Earth unavailable on this host (NVIDIA driver unavailable); all heights are provisional bounds. Internal block divisions denote visible roof ranges, not legal property boundaries.",
-  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only."
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/station-approach.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz"
+    ],
+    "validate": [
+      "regions/southport/elevation/station-approach.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz"
+    ]
+  }
 }

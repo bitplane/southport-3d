@@ -1300,5 +1300,7 @@
       1.4831919062498855
     ],
     "frontage_correction": "Removed obsolete 16mm seed-line strip across new facade; remaining polygon begins at shared party-line/street-line intersection."
-  }
+  },
+  "elevation_plan": "regions/southport/elevation/nevill.json",
+  "elevation_surface": "nevill-pavement"
 }

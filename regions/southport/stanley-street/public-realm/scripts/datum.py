@@ -1,5 +1,10 @@
-"""Continue the two existing boundary datums; interior levels are provisional."""
+"""Shared measured terrain for the road canvas and building foundations."""
+import os
+import sys
+from pathlib import Path
+REPO = Path(os.environ['SOUTHPORT_REPO_ROOT'])
+sys.path.insert(0, str(REPO/'lib'))
+from southport3d.elevation import Elevations
+SURFACE = Elevations(REPO/'regions/southport/elevation/stanley-street.json').surface('stanley-street-pavement')
 def grade(x,y):
-    slope=2.9995/207.07
-    near=max(0,min(1,(50.19-x)/16))
-    return -.7995+slope*(24*near+max(0,y-65))
+    return SURFACE.height(x,y)

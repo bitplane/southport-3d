@@ -25,7 +25,7 @@ def replace(root,repo,rows,verticals,surface,grade):
  verticals[:]=keep
  def add(name,poly,mat,priority=0,road=False):
   for tri in p.triangles(p.intersection(p.polygons([poly]),domain)):
-   surface(name,tri,mat,priority,lambda x,y:grade(y)-(.12 if road else 0))
+   surface(name,tri,mat,priority,lambda x,y:grade(y,x)-(.12 if road else 0))
  for tri in p.triangles(domain):surface('Stanley corner paving',tri,'paving',20)
  curves=d['curves'];south,north,ws,wn=[curves[k] for k in ['stanley_south','stanley_north','cable_south','cable_north']]
  main=[ws[-1],south[0],north[-1],wn[0]]

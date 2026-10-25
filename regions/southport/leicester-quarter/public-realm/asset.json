@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "southport.leicester-quarter.public-realm",
-  "name": "Leicester quarter — roads, pavements and rear grounds",
+  "name": "Leicester quarter \u2014 roads, pavements and rear grounds",
   "region": "southport",
   "area": "leicester-quarter",
   "status": "provisional-public-realm",
@@ -30,19 +30,34 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1–3 m and heights ±3 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated.",
+  "scope": "Provisional external height envelopes. Google 3D orbit and registered satellite used; widths uncertain 1\u20133 m and heights \u00b13 m. Broad ranges may contain several properties. No detailed roofs/facades. Interior yards and grades estimated.",
   "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
   "build_inputs": {
     "master": [
       "regions/southport/leicester-quarter/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
       "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
-      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",
+      "regions/southport/elevation/leicester-quarter.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-333000-418000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-418000.npz"
     ],
     "validate": [
       "regions/southport/leicester-quarter/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
-      "regions/southport/stanley-street/frontage-placeholders/research/layout.json"
+      "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
+      "regions/southport/elevation/leicester-quarter.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-333000-418000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-418000.npz"
     ]
-  }
+  },
+  "publication_checks": [
+    "check_package.py"
+  ]
 }

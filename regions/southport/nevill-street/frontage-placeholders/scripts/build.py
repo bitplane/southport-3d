@@ -15,15 +15,16 @@ def material(name,color):
  p=m.node_tree.nodes['Principled BSDF'];p.inputs['Base Color'].default_value=(*color,1);p.inputs['Roughness'].default_value=.9
  return m
 mats=[material('Provisional warm grey massing',(.38,.36,.32)),material('Provisional roof height bound',(.23,.25,.26))]
-def grade(y):
- g=D['grade'];t=max(0,min(1,(y-g['start_y'])/(g['top_y']-g['start_y'])))
- return g['start_z']+t*(g['top_z']-g['start_z'])
+sys.path.insert(0,str(ROOT/'scripts'))
+from datum import grade,SURFACE
+
 for block in D['blocks']:
  if block['replace_with']:continue
  c=bpy.data.collections.new(block['id']);s.collection.children.link(c)
  p=block['footprint']
  if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(p,p[1:]+p[:1]))<0:p=list(reversed(p))
- n=len(p);base=[(x,y,min(grade(y),block.get('foundation_z_max_m',grade(y)))) for x,y in p];z=grade(sum(y for x,y in p)/n)+block['height_m']
+ footing=min(point[2]for a,b in zip(p,p[1:]+p[:1])for point in SURFACE.edge_points(a,b))-.05
+ n=len(p);base=[(x,y,footing)for x,y in p];z=grade(sum(x for x,y in p)/n,sum(y for x,y in p)/n)+block['height_m']
  top=[(x,y,z) for x,y in p];m=Mesh('Massing '+block['id'])
  m.add(base+top,[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)])
  vectors=[Vector((x,y,0)) for x,y in p]

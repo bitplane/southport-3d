@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "datum": "southport-memorial-estimated-local-zero",
+  "frame": "Memorial site XY metres; yaw 43.5293 degrees from east",
+  "controls": {},
+  "surfaces": {
+    "leicester-quarter-pavement": {
+      "type": "survey",
+      "terrain": "survey/terrain.json",
+      "bounds": [
+        -15,
+        705,
+        15,
+        425
+      ],
+      "grid_m": 5,
+      "offset_m": 0.12,
+      "refinements": [],
+      "evidence": "EA 2022 DTM; acquisition and datum tie in survey/terrain.json. Carriageway follows measured grid; authored 0.12 m kerb remains explicit, not inferred from raster."
+    }
+  }
+}

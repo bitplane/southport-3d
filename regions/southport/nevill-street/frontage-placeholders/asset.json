@@ -40,7 +40,15 @@
   },
   "build_inputs": {
     "validate": [
-      "regions/southport/nevill-street/public-realm/research/layout.json"
+      "regions/southport/nevill-street/public-realm/research/layout.json",
+      "regions/southport/elevation/nevill.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz"
+    ],
+    "master": [
+      "regions/southport/elevation/nevill.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz"
     ]
   },
   "source_catalog": "research/references.json",

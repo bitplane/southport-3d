@@ -15,17 +15,16 @@ def material(name,color):
  p=m.node_tree.nodes['Principled BSDF'];p.inputs['Base Color'].default_value=(*color,1);p.inputs['Roughness'].default_value=.9
  return m
 mats=[material('Provisional warm grey massing',(.38,.36,.32)),material('Provisional roof height bound',(.23,.25,.26))]
-def grade(x,y):
- z=-.0075-.022*max(-36,min(36,y))
- # Blend the known rising Nevill datum into its immediate corner neighbours.
- near=max(0,1-max(-81.84-x,x-34.19,0)/16)
- return z+max(0,min(207.07,y-41))*((2.2+.7995)/207.07)*near
+sys.path.insert(0,str(ROOT/'scripts'))
+from datum import grade,SURFACE
+
 for block in D['blocks']:
  if block['replace_with']:continue
  c=bpy.data.collections.new(block['id']);s.collection.children.link(c)
  p=block['footprint']
  if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(p,p[1:]+p[:1]))<0:p=list(reversed(p))
- n=len(p);base=[(x,y,grade(x,y)) for x,y in p];z=grade(sum(x for x,y in p)/n,sum(y for x,y in p)/n)+block['height_m']
+ footing=min(point[2] for a,b in zip(p,p[1:]+p[:1]) for point in SURFACE.edge_points(a,b))-.05
+ n=len(p);base=[(x,y,footing) for x,y in p];z=grade(sum(x for x,y in p)/n,sum(y for x,y in p)/n)+block['height_m']
  top=[(x,y,z) for x,y in p];m=Mesh('Massing '+block['id'])
  m.add(base+top,[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)])
  vectors=[Vector((x,y,0)) for x,y in p]

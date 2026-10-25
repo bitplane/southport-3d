@@ -1,5 +1,10 @@
-"""Existing Nevill datum, blending to the Lord corridor at the south seam."""
+"""Shared measured terrain for the road canvas and building foundations."""
+import os
+import sys
+from pathlib import Path
+REPO = Path(os.environ['SOUTHPORT_REPO_ROOT'])
+sys.path.insert(0, str(REPO/'lib'))
+from southport3d.elevation import Elevations
+SURFACE = Elevations(REPO/'regions/southport/elevation/west-street.json').surface('west-street-pavement')
 def grade(x,y):
-    slope=2.9995/207.07
-    near=max(0,min(1,(x+97.84)/16))
-    return -.7995+slope*max(0,y-65+24*near)
+    return SURFACE.height(x,y)

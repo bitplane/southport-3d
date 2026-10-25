@@ -2027,9 +2027,12 @@
     }
   ],
   "budgets": {
-    "triangles_per_level": 45000,
-    "download_bytes_per_level": 8000000,
-    "gpu_bytes_per_level": 12000000
+    "triangles_per_level": 100000,
+    "download_bytes_per_level": 14000000,
+    "gpu_bytes_per_level": 18000000,
+    "terrain_basis": "Fixed 5 m measured ground lattice with bounded 2.5 m service-access refinement. Road interpolation target 0.25 m against native DTM; clipped at material and ownership boundaries, independent of building detail. Untouched triangles do not receive centroid fans."
   },
-  "limits": "Provisional footprint/height volumes and street canvas. Plan uncertainty around 1\u20133 m, height uncertainty 2\u20134 m. Flat tops denote height bounds, not roof form. Private yard surfaces and parking endpoints estimated; no detailed architecture or street furniture."
+  "limits": "Provisional footprint/height volumes and street canvas. Plan uncertainty around 1\u20133 m, height uncertainty 2\u20134 m. Flat tops denote height bounds, not roof form. Private yard surfaces and parking endpoints estimated; no detailed architecture or street furniture.",
+  "elevation_plan": "regions/southport/elevation/hoghton.json",
+  "elevation_surface": "hoghton-pavement"
 }

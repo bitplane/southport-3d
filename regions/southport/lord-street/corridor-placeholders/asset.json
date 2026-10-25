@@ -94,5 +94,27 @@
   },
   "source_catalog": "research/references.json",
   "scope": "Both sides, Duke Street to Leicester Street roundabouts. Footprint and height envelopes, no reconstructed facade or roof details.",
-  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only."
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/lord-corridor.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-332000-416000.npz",
+      "regions/southport/elevation/survey/dtm-332000-417000.npz",
+      "regions/southport/elevation/survey/dtm-333000-416000.npz",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-416000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz"
+    ],
+    "validate": [
+      "regions/southport/elevation/lord-corridor.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-332000-416000.npz",
+      "regions/southport/elevation/survey/dtm-332000-417000.npz",
+      "regions/southport/elevation/survey/dtm-333000-416000.npz",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-416000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz"
+    ]
+  }
 }

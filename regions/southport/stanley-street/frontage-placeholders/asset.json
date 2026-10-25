@@ -51,5 +51,17 @@
   },
   "source_catalog": "research/references.json",
   "scope": "Placeholder external volumes only. Aerial checked plan; 3D Earth unavailable. Height bounds estimated, roof forms deferred. Broad terrace divisions follow visible roof/storey changes, not cadastral boundaries.",
-  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only."
+  "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/stanley-street.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz"
+    ],
+    "validate": [
+      "regions/southport/elevation/stanley-street.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz"
+    ]
+  }
 }

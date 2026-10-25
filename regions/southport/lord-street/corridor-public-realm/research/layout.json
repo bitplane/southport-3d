@@ -6462,5 +6462,13 @@
       "source": "regions/southport/london-square/public-realm/scripts/block_ground.py",
       "basis": "Exact existing road and outer footway ribbon. Existing core clips the west side at X218; new exclusion preserves the complete union."
     }
-  ]
+  ],
+  "elevation_plan": "regions/southport/elevation/lord-corridor.json",
+  "elevation_surface": "lord-corridor-pavement",
+  "budgets": {
+    "triangles_per_level": 200000,
+    "download_bytes_per_level": 28000000,
+    "gpu_bytes_per_level": 36000000,
+    "terrain_basis": "Fixed 5 m measured lattice; independent of architectural detail."
+  }
 }

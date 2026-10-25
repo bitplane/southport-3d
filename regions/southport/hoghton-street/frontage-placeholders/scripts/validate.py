@@ -8,7 +8,7 @@ D=json.loads((ROOT/'research/layout.json').read_text())
 
 obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];assert len(obs)==sum(not b['replace_with'] for b in D['blocks'])
 sys.path.insert(0,str(ROOT/'scripts'))
-from datum import grade
+from datum import grade,SURFACE
 triangles=0
 for block in D['blocks']:
  if block['replace_with']:continue
@@ -19,12 +19,17 @@ for block in D['blocks']:
  for x,y in block['footprint']:
   matches=[v for v in o.data.vertices if abs(v.co.x-x)<1e-4 and abs(v.co.y-y)<1e-4]
   assert len(matches)>=2,(o.name,'footprint changed',x,y)
-  assert abs(min(v.co.z for v in matches)-grade(x,y))<1e-4,(o.name,'floating base')
+  assert min(v.co.z for v in matches)<=grade(x,y)-.049,(o.name,'floating base')
+ footing=min(v.co.z for v in o.data.vertices)
+ assert max(v.co.z for v in o.data.vertices)>max(grade(x,y) for x,y in block['footprint']),(o.name,'buried roof')
+ for a,b in zip(block['footprint'],block['footprint'][1:]+block['footprint'][:1]):
+  for x,y,z in SURFACE.edge_points(a,b):
+   assert footing<z-.049,(o.name,x,y,'foundation misses terrain break')
  o.data.calc_loop_triangles();triangles+=len(o.data.loop_triangles)
  for t in o.data.loop_triangles:
   a,b,c=(o.data.vertices[i].co for i in t.vertices);assert (b-a).cross(c-a).length>1e-9
 assert triangles<D['budgets']['triangles_per_level'],triangles
 sys.path.insert(0,str(REPO/'tools'));from coplanar import check_blender
 check_blender(obs)
-report={'blocks':len(obs),'triangles':triangles,'checks':'Closed positive volumes; exact retained footprint vertices; shared street grade; finite UV float32 geometry; no same-facing coplanar overlap; within the declared fixed triangle budget','limitation':'Geometry checks do not establish architectural or survey fidelity.'}
+report={'blocks':len(obs),'triangles':triangles,'checks':'Closed positive volumes; exact retained footprints; level roofs and buried footings covering every measured perimeter break; finite UV float32 geometry; no same-facing coplanar overlap; within the declared fixed triangle budget','limitation':'Placeholders have no entrance/floor detail. Above-ground heights remain estimated.'}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

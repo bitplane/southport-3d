@@ -1,3 +1,10 @@
-"""Lord Y65 and Stanley X250 handover; interior longitudinal grade unmeasured."""
+"""Shared measured terrain for the road canvas and building foundations."""
+import os
+import sys
+from pathlib import Path
+REPO = Path(os.environ['SOUTHPORT_REPO_ROOT'])
+sys.path.insert(0, str(REPO/'lib'))
+from southport3d.elevation import Elevations
+SURFACE = Elevations(REPO/'regions/southport/elevation/leicester-quarter.json').surface('leicester-quarter-pavement')
 def grade(x,y):
-    return -.7995+(2.9995/207.07)*max(0,y-65)
+    return SURFACE.height(x,y)

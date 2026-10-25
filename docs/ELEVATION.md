@@ -3,8 +3,11 @@
 New road/ground areas use named, bounded surfaces from
 `regions/southport/elevation/`. The shared evaluator is
 `lib/southport3d/elevation.py`. Heights remain metres above the memorial's
-**estimated local zero**. There is no surveyed sea-level conversion and the
-profile data must not be labelled a height survey.
+**estimated local zero**. Legacy profiles are visual estimates. The measured
+terrain reference now supplies a provisional conversion of local zero to
+6.485294 m Ordnance Datum Newlyn, tied to six road samples beside the memorial;
+this is not a surveyed benchmark at the memorial. See
+[the whole-map migration](ELEVATION-MIGRATION.md) for coverage and outstanding work.
 
 Each geographic JSON file declares its datum, metric frame, height controls and
 surfaces. Controls carry a stable ID, height, evidence, status and uncertainty.
@@ -16,8 +19,12 @@ they do not decide ground ownership. The asset's polygons still own that job.
 existing pavement height instead of copying that control into another formula.
 
 Use multiple bounded segments for a curved road, with common controls at the
-joins. This first implementation has piecewise-linear profiles, not a general
-terrain interpolation or GIS system. Use a one-station profile for a level
+joins. Profiles are piecewise linear. A named surface can instead declare
+`type: "survey"`, a relative `terrain` metadata path, `bounds`, `grid_m` and
+`offset_m`. Its shared grid and diagonals are real mesh breaklines; use
+`lift_triangle()` and `edge_points()` rather than lifting a large polygon's
+corners. The raw survey is a reference, not an implicit walkable surface.
+Use a one-station profile for a level
 court. Keep bridge decks and the ground beneath them as separate named surfaces,
 even where their XY extents overlap. Do not ask for an implicit town-wide height.
 
@@ -79,3 +86,8 @@ The Eastbank pilot's publication check verifies exported triangle planes,
 identical ground across all three levels, two support heights at the bridge and
 download budgets. See [EASTBANK-STREET.md](EASTBANK-STREET.md) for observed geometry
 and the important limits of its estimated heights.
+
+Survey surfaces may declare `offset_profile` using the existing profile schema
+(axis, stations and named relative-height controls). The combined surface splits
+at terrain and profile breaks; use it to retain explicit dropped kerbs/ramps.
+Relative offset controls must not be mistaken for absolute ODN survey heights.

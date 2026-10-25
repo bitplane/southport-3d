@@ -54,12 +54,10 @@ mats['parking']=material('Inset grey block parking',(.26,.28,.26),'parking')
 mats['junction-tactile']=material('Junction buff tactile',(.48,.45,.35),'junction-tactile')
 rows=[]
 verticals=[]
-def grade(y):
- g=D['grade']
- t=max(0,min(1,(y-g['start_y'])/(g['top_y']-g['start_y'])))
- return g['start_z']+t*(g['top_z']-g['start_z'])
+from datum import SURFACE
+def grade(y,x=0):return SURFACE.height(x,y)
 def level(road=False):
-    return lambda x,y:grade(y)-(.12 if road else 0)
+    return lambda x,y:grade(y,x)-(.12 if road else 0)
 def ccw(p):
  p=[tuple(v) for v in p]
  return p if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(p,p[1:]+p[:1]))>0 else list(reversed(p))
@@ -191,7 +189,7 @@ for side in [-1,1]:
  ea,eb=ca+side*ha,cb+side*hb
  def landing(x,y,side=side):
   c,h,_,_=station(y);distance=(x-(c+side*h))*side
-  return grade(y)-.12*max(0,min(1,1-distance/1.3))
+  return grade(y,x)-.12*max(0,min(1,1-distance/1.3))
  for aa,bb in zip(ys,ys[1:]):
   if aa<ya or bb>yb:continue
   ca,ha,_,_=station(aa);cb,hb,_,_=station(bb)
@@ -273,7 +271,7 @@ for side in [-1,1]:
  inner=-18.02+side*4
  outer=inner+side*2
  def ramp(x,y,inner=inner,outer=outer):
-     return grade(y)-.12+.12*max(0,min(1,(x-inner)/(outer-inner)))
+     return grade(y,x)-.12+.12*max(0,min(1,(x-inner)/(outer-inner)))
  quad('Nevill dropped landing',min(inner,outer),246.8,max(inner,outer),249.3,'paving',200,ramp)
  ta=inner+side*.7
  tb=inner+side*1.5
@@ -300,7 +298,7 @@ for point,other in [(start,end),(end,start)]:
  vx,vy=-uy,ux
  corners=[(point[0]+u*ux+v*vx,point[1]+u*uy+v*vy) for u,v in [(-1,-1.25),(1,-1.25),(1,1.25),(-1,1.25)]]
  def ramp(x,y,p=point,ux=ux,uy=uy):
-     return grade(y)-.12*max(0,min(1,((x-p[0])*ux+(y-p[1])*uy+1)/2))
+     return grade(y,x)-.12*max(0,min(1,((x-p[0])*ux+(y-p[1])*uy+1)/2))
  surface('Promenade dropped landing',corners,'tactile',260,ramp)
 # Visible upper give-way line, with no invented words or live signal state.
 for x in [-25+i*.8 for i in range(12)]:
@@ -367,7 +365,9 @@ for index,(name,poly,mat,priority,zfun) in enumerate(rows):
    if len(p)<3 or area(p)<1e-7:
        continue
    mesh=compiled.setdefault((part,mat),Mesh('Surface '+part+' '+mat))
-   mesh.add([(x,y,zfun(x,y)) for x,y in p],[tuple(range(len(p)))])
+   for k in range(1,len(p)-1):
+    for lifted in SURFACE.lift_triangle([p[0],p[k],p[k+1]]):
+     mesh.add([(x,y,zfun(x,y)) for x,y,z in lifted],[(0,1,2)])
 for a,b in verticals:
  for part,ya,yb in zip(parts,bounds,bounds[1:]):
   low,high=sorted([a[1],b[1]])
@@ -384,7 +384,9 @@ for a,b in verticals:
   aa=[a[i]+(b[i]-a[i])*t0 for i in [0,1]]
   bb=[a[i]+(b[i]-a[i])*t1 for i in [0,1]]
   mesh=compiled.setdefault((part,'vertical'),Mesh('Kerb '+part))
-  mesh.add([(aa[0],aa[1],grade(aa[1])-.12),(bb[0],bb[1],grade(bb[1])-.12),(bb[0],bb[1],grade(bb[1])),(aa[0],aa[1],grade(aa[1]))],[(0,1,2,3)])
+  edge=list(SURFACE.edge_points(aa,bb))
+  for va,vb in zip(edge,edge[1:]):
+   mesh.add([(va[0],va[1],va[2]-.12),(vb[0],vb[1],vb[2]-.12),vb,va],[(0,1,2,3)])
 from southport3d.conform import conform
 compiled,conform_report=conform(compiled)
 (ROOT/'research/conform.json').write_text(json.dumps(conform_report,indent=2))

@@ -41,3 +41,17 @@ class SelectivePublicationTests(unittest.TestCase):
                 publish_viewer.publish(SimpleNamespace(asset=['draft']),lambda:{'draft':(Path(temporary),{})},None,None)
 
 if __name__=='__main__':unittest.main()
+
+
+def test_package_only_does_not_take_catalog_lock_or_retain_live_entries(tmp_path):
+    source=tmp_path/'selected';source.mkdir();(source/'publication.json').write_text('{}')
+    (tmp_path/'dist').mkdir();catalog=tmp_path/'dist/catalog.json'
+    catalog.write_text('{"assets":[{"id":"unrelated"}]}');before=catalog.read_bytes()
+    locks=[]
+    def lock(root,key):
+        locks.append(key);return nullcontext()
+    with patch.object(publish_viewer,'ROOT',tmp_path),patch('build_lock.asset_lock',side_effect=lock),patch.object(publish_viewer,'_publish') as run:
+        publish_viewer.publish(SimpleNamespace(asset=['selected'],package_only=True),lambda:{'selected':(source,{})},None,None)
+        assert locks==['selected']
+        assert run.call_args.args[4]==[]
+    assert catalog.read_bytes()==before

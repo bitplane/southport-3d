@@ -15,10 +15,11 @@ from .planar import area, halfplane
 class Elevations:
     def __init__(self, path):
         self.controls, self.surfaces, self.files = {}, {}, []
+        self.surface_paths, self._instances = {}, {}
         self.datum = None
         self._load(Path(path).resolve(), set())
         for name, spec in self.surfaces.items():
-            Surface(self, name, spec)  # fail early, including unused bad profiles
+            self.surface(name)  # fail early, including unused bad profiles
 
     def _load(self, path, active):
         if path in active:
@@ -39,10 +40,26 @@ class Elevations:
                 if key in target:
                     raise ValueError('Duplicate elevation identifier: ' + key)
                 target[key] = value
+                if field == 'surfaces':
+                    self.surface_paths[key] = path.parent
         self.files.append(path)
 
     def surface(self, name):
-        return Surface(self, name, self.surfaces[name])
+        if name not in self._instances:
+            spec = self.surfaces[name]
+            if spec.get('type') == 'survey':
+                from .survey_surface import SurveySurface
+                self._instances[name] = SurveySurface(
+                    self.surface_paths[name]/spec['terrain'], name, spec['bounds'],
+                    spec.get('grid_m', 5.), spec.get('offset_m', 0.), spec.get('refinements', []))
+                if 'offset_profile' in spec:
+                    profile=Surface(self,name+' offset',dict(spec['offset_profile'],bounds=spec['bounds']))
+                    self._instances[name]=OffsetSurface(self._instances[name],profile)
+            elif spec.get('type', 'profile') == 'profile':
+                self._instances[name] = Surface(self, name, spec)
+            else:
+                raise ValueError('Unknown elevation surface type: '+name)
+        return self._instances[name]
 
     def control_height(self, name):
         record = self.controls[name]
@@ -139,3 +156,27 @@ class Surface:
                 tri = [polygon[0],polygon[i],polygon[i+1]]
                 if area(tri) > 1e-10:
                     yield [(x,y,self.height(x,y)) for x,y in tri]
+
+
+class OffsetSurface:
+    """An authored ramp/offset above survey terrain, split at both sets of breaks."""
+    def __init__(self,base,profile):
+        self.base,self.profile=base,profile
+        self.name,self.bounds=base.name,base.bounds
+        self.terrain=base.terrain
+
+    def contains(self,x,y,tolerance=1e-7):
+        return self.base.contains(x,y,tolerance)
+
+    def height(self,x,y):
+        return self.base.height(x,y)+self.profile.height(x,y)
+
+    def lift_triangle(self,triangle):
+        for tri in self.base.lift_triangle(triangle):
+            for piece in self.profile.lift_triangle([p[:2]for p in tri]):
+                yield [(x,y,self.height(x,y))for x,y,z in piece]
+
+    def edge_points(self,a,b):
+        points={tuple(p[:2])for surface in [self.base,self.profile]for p in surface.edge_points(a,b)}
+        for x,y in sorted(points,key=lambda p:(p[0]-a[0])**2+(p[1]-a[1])**2):
+            yield x,y,self.height(x,y)

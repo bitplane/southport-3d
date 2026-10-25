@@ -1098,9 +1098,10 @@
     }
   ],
   "budgets": {
-    "triangles_per_level": 22000,
-    "download_bytes_per_level": 2500000,
-    "gpu_bytes_per_level": 8000000
+    "triangles_per_level": 100000,
+    "download_bytes_per_level": 14000000,
+    "gpu_bytes_per_level": 18000000,
+    "terrain_basis": "Fixed 5 m measured lattice with local refinements, shared across LoDs; independent of architectural detail."
   },
   "limits": "Provisional ground and private yards, 1\u20133 m plan uncertainty; dated markings, not a current regulation inventory. Existing boundary levels retained, interior grade estimated. No furniture or tree survey.",
   "south_lake_handover": {
@@ -1112,5 +1113,7 @@
       8
     ],
     "basis": "Snag a996ab166e984318922eac83b3b68781: exact shared mapped road and parking ownership replaces former generic court at existing tile boundary. Geometry checked in actual3D; property detail remains provisional."
-  }
+  },
+  "elevation_plan": "regions/southport/elevation/west-street.json",
+  "elevation_surface": "west-street-pavement"
 }

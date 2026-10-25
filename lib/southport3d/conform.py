@@ -12,15 +12,26 @@ import numpy as np
 GRID=.0001  # 0.1 mm, far below the uncertainty of the street reconstruction
 TOLERANCE=.0002
 
-def conform(meshes):
+def conform(meshes, preserve_triangles=False, weld_distance=0.):
     vertices=[]
     lookup={}
     polygons=[]
+    weld_cells=defaultdict(list)
     def index(point):
+        if weld_distance:
+            cell=tuple(math.floor(float(v)/weld_distance) for v in point)
+            for dx in (-1,0,1):
+                for dy in (-1,0,1):
+                    for dz in (-1,0,1):
+                        for i in weld_cells[(cell[0]+dx,cell[1]+dy,cell[2]+dz)]:
+                            if sum((float(point[j])-vertices[i][j])**2 for j in range(3)) <= weld_distance**2:
+                                return i
         key=tuple(round(float(v)/GRID) for v in point)
         if key not in lookup:
             lookup[key]=len(vertices)
             vertices.append(tuple(float(v) for v in np.asarray([v*GRID for v in key],dtype=np.float32)))
+            if weld_distance:
+                weld_cells[tuple(math.floor(v/weld_distance) for v in vertices[-1])].append(lookup[key])
         return lookup[key]
     for key,mesh in meshes.items():
         for face in mesh.faces:
@@ -68,6 +79,17 @@ def conform(meshes):
             edge=edge_cache[tuple(sorted((a,b)))]
             edge=edge if edge[0]==a else list(reversed(edge))
             boundary.extend(edge[:-1])
+        if preserve_triangles and len(boundary)==3:
+            # A triangle with no inserted edge junction needs no centroid fan.
+            # Keep the default for legacy recipes with fixed topology checks.
+            tri=[vertices[i] for i in boundary]
+            u=[tri[1][j]-tri[0][j] for j in range(3)]
+            v=[tri[2][j]-tri[0][j] for j in range(3)]
+            cross=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]]
+            if sum(x*x for x in cross)>=1e-18:
+                result[key].add(tri,[(0,1,2)])
+            else:removed+=1
+            continue
         centre=tuple(float(v) for v in np.asarray([sum(vertices[i][j] for i in ids)/len(ids) for j in range(3)],dtype=np.float32))
         for a,b in zip(boundary,boundary[1:]+boundary[:1]):
             if a==b:
