@@ -2,7 +2,9 @@
 import json,math
 from pathlib import Path
 from geometry import Faces
-from features import add_features,shelter_gap,SHELTERS
+from kiosk import add_kiosk
+from pavilion import add_head
+from features import add_features,shelter_gap,SHELTERS,RAILGAPS
 BAY=15.25
 Z=3.208
 WIDTH=7.951
@@ -34,7 +36,7 @@ def create(config,coarse=False):
     strips=[(-WIDTH/2,-1.34,'plank-long'),(-1.34,-1.28,'yellow'),(-1.28,-.499,'plank-cross'),(-.499,-.477,'dark'),(-.477,-.437,'rail'),(-.437,.437,'plank-cross'),(.437,.477,'rail'),(.477,.499,'dark'),(.499,1.28,'plank-cross'),(1.28,1.34,'yellow'),(1.34,WIDTH/2,'plank-long')]
     for a,b,mat in strips:
         # Keep crossfall zero. Draw four station breaks for precise shared seams.
-        cuts=sorted({lo,hi,*[v for v in [7.174,57,75,500,710] if lo<v<hi]})
+        cuts=sorted({lo,hi,*[v for v in [7.174,57,75,478.6,492,494,496.2,500,710] if lo<v<hi]})
         for i,(s,S) in enumerate(zip(cuts,cuts[1:])):
             A=edge(s,-1) if a==-WIDTH/2 else a;AA=edge(S,-1) if a==-WIDTH/2 else a
             B=edge(s,1) if b==WIDTH/2 else b;BB=edge(S,1) if b==WIDTH/2 else b
@@ -67,7 +69,13 @@ def create(config,coarse=False):
     ts=[TRUSSES[0],TRUSSES[-1]] if coarse else TRUSSES
     for j,t in enumerate(ts):
         for k,(begin,end) in enumerate(intervals):
-            for z in [Z-.29,Z-1.08]:beam(f'chord {j} {z} {k}',(begin,t,z),(end,t,z),.09,.09,cap=False,cage=.12)
+            # Fixed station end planes join exactly even where the centreline turns.
+            breaks=sorted({begin,end,*[v for v in [75,500,710]if begin<v<end]})
+            for q,(a,b) in enumerate(zip(breaks,breaks[1:])):
+                for z in [Z-.29,Z-1.08]:
+                    local=Faces();local.box(f'chord {j} {z} {k} {q}',(a,t-.045,z-.045),(b,t+.045,z+.045),omit=('start','end'),cage=.12)
+                    for face in local.items:
+                        face['vertices']=[p(*v)for v in face['vertices']];f.items.append(face)
         panel=BAY/(8 if coarse else 16)
         for n in range(math.floor(lo/panel),math.ceil(hi/panel)):
             s,S=max(lo,n*panel),min(hi,(n+1)*panel)
@@ -96,7 +104,7 @@ def create(config,coarse=False):
         # North has three blue bars; south over the lake matches, further out pickets.
         horizontal=side<0 or hi<=180
         levels=[.15,.59,1.12] if coarse else ([.20,.44,.70,1.12] if horizontal else [.15,.77,1.12])
-        railcuts=sorted(set(cuts+[s for a,b,sign in SHELTERS if sign==side for s in [a-.2,b+.2] if lo<s<hi]))
+        railcuts=sorted(set(cuts+[s for a,b,sign in RAILGAPS if sign==side for s in [a-.2,b+.2] if lo<s<hi]))
         for z in levels:
             for i,(a,b) in enumerate(zip(railcuts,railcuts[1:])):
                 if shelter_gap((a+b)/2,side):continue
@@ -108,7 +116,7 @@ def create(config,coarse=False):
                 if min(s%1.8,1.8-s%1.8)<.07:continue
                 tube(f'fine picket {n}',(s,t,Z+.19),(s,t,Z+.73),.011,'blue',segments=4,cap=False,cage=.03)
     # Distinctive paired arches cross in plan, with lantern and crown at the apex.
-    for st in [60+n*30.5 for n in range(33) if lo<=60+n*30.5<hi and (not bridge or not bridge[0]<60+n*30.5<bridge[1])]:
+    for st in [60+n*30.5 for n in range(33) if lo<=60+n*30.5<min(hi,950) and (not bridge or not bridge[0]<60+n*30.5<bridge[1])]:
         for sign in [-1,1]:
             seg=12 if coarse else 32
             pts=[]
@@ -139,4 +147,6 @@ def create(config,coarse=False):
             for side in [-1,1]:
                 box(f'bridge bearing {st} {side}',(st-.35,side*3.1-.4,-1.8),(st+.35,side*3.1+.4,Z-.36),'stone','structure',cage=.15)
     add_features(f,config,coarse,p,edge,Z)
+    add_kiosk(f,config,coarse,p,Z)
+    add_head(f,config,coarse,p,Z)
     return f

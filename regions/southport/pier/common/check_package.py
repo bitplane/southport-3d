@@ -11,6 +11,9 @@ def run(package,recipe,repo):
     assembly=json.loads((package/'assembly.json').read_text());report=[]
     for level in ['detail','walk','district']:
         files=[package/r['path']for r in assembly['files']if r['level']==level]
+        if not files:
+            assert all(p.get('fixed_level') for p in json.loads(recipe.read_text())['parts']), ('missing level',level)
+            continue
         infos=[inspect_glb(f)for f in files];count=sum(i['triangles']for i in infos)
         assert count<({'detail':160000,'walk':100000,'district':10200}[level]),(level,count)
         tris=np.concatenate([t for f in files for t,_ in primitives(f,{'rotationY':0,'position':[0,0,0]})])

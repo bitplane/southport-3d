@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 256
+      "texture_size": 512
     }
   },
   "parts": [
@@ -83,22 +83,22 @@
     "generator": "district:surfaces",
     "reason": "Station-driven envelope, six fixed bays per section, two outer trusses, coarse columns, reduced post cadence and angular arches; never derived from detailed topology.",
     "max_bytes": 4000000,
-    "max_gpu_bytes": 5000000,
+    "max_gpu_bytes": 10000000,
     "parts": {
       "deck": {
         "atlas": [
           256,
           256
         ],
-        "max_triangles": 200,
+        "max_triangles": 400,
         "cage_m": 0.12
       },
       "structure": {
         "atlas": [
-          256,
-          256
+          512,
+          512
         ],
-        "max_triangles": 5000,
+        "max_triangles": 7500,
         "cage_m": 0.16
       },
       "fittings": {

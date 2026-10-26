@@ -1,12 +1,18 @@
 """Observed pier furnishings and cream glazed wind shelters."""
 import math
-SHELTERS=[(281.2,297.9,-1),(692.0,709.5,-1),(951.5,966.5,1)]
+from geometry import Faces
+SHELTERS=[(281.2,297.9,-1),(692.0,709.5,-1)]
 
-def shelter_gap(s,side):return any(a-.2<=s<=b+.2 and sign==side for a,b,sign in SHELTERS)
+RAILGAPS=SHELTERS+[(478.6,496.2,1),(951.5,974.5,1),(974.5,1021.,1),(1028.,1044.,1),(1028.,1044.,-1)]
+
+def shelter_gap(s,side):return any(a-.2<=s<=b+.2 and sign==side for a,b,sign in RAILGAPS)
 
 def add_features(f,config,coarse,p,edge,Z):
     lo,hi=config['stations']
-    def box(name,a,b,mat='blue',part='fittings',**kw):f.box(name,p(*a),p(*b),mat,part,**kw)
+    def box(name,a,b,mat='blue',part='fittings',**kw):
+        local=Faces();local.box(name,a,b,mat,part,**kw)
+        for face in local.items:
+            face['vertices']=[p(*v) for v in face['vertices']];f.items.append(face)
     def tube(name,a,b,r,mat='blue',part='fittings',**kw):f.tube(name,p(*a),p(*b),r,mat,part,**kw)
     def beam(name,a,b,w,d,mat='ivory',part='fittings',**kw):f.beam(name,p(*a),p(*b),w,d,mat,part,**kw)
     def bench(st,t,side,length=1.9):

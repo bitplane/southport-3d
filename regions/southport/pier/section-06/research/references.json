@@ -59,11 +59,18 @@
       "observations": "Provisional geographic registration and widening positions, checked against aerial imagery. Not treated as architectural measurements."
     },
     {
-      "id": "shelter-street",
-      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=UolPccnQ0s6q74L-X5S5SQ&heading=305&pitch=0&fov=90",
-      "capture_date": "2011-05",
+      "id": "maps-head-3d",
+      "url": "https://www.google.com/maps/@53.6554955,-3.01808,192a,35y,265.5h,47.07t/data=!3m1!1e3",
       "accessed": "2026-10-26",
-      "observations": "Landward north shelter: cream window frames, central glazed spine, back-to-back timber benches, shallow hipped metal roof and serrated cream valance. Scale estimated against mapped platform and railing."
+      "observations": "Textured 3D orbited around pavilion: rectangular shallow curved roof, paired roof cowls, T-shaped head with rounded central nose, utility cabin on narrow side platform before pavilion. Confirms third side extension is a utility cabin, not another seating shelter."
+    },
+    {
+      "id": "kiosk-2022",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65291,-3.01448&heading=155&pitch=0&fov=90",
+      "capture_date": "2022-05",
+      "accessed": "2026-10-26",
+      "attribution": "Marian Vasas, Google Maps place panorama",
+      "observations": "Cream kiosk with blue edge trim and hipped metal roof, broad menu wall; picnic tables opposite it. Adjacent access stair belongs to pier forecourt, with estimated level/riser count."
     }
   ],
   "missing_coverage": [

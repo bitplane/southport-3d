@@ -2258,7 +2258,7 @@
     },
     {
       "id": "way-721692670",
-      "name": "Provisional building 721692670",
+      "name": "Pier kiosk",
       "osm_way": "721692670",
       "footprint": [
         [
@@ -2287,7 +2287,7 @@
         "OSM-seed"
       ],
       "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
-      "replace_with": null
+      "replace_with": "southport.pier.section-06"
     },
     {
       "id": "way-727542450",

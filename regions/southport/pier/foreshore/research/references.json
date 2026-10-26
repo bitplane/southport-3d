@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "represented_appearance": "Open pier, using May 2011 Street View and pre-closure architect photography for appearance; 2023/2024 engineering reports for retained structural dimensions. Decay and closure works are not reconstructed.",
+  "sources": [
+    {
+      "id": "steelwork",
+      "url": "https://www.sefton.gov.uk/media/seep2jxa/may-2024-southport-pier-final-report-for-sefton-metropolitan-borough-council.pdf",
+      "accessed": "2026-10-26",
+      "attribution": "Thomasons / Sefton Council, May 2024",
+      "observations": "Figure 2-4, page 8: four trusses spaced 2.386/2.265/2.288 m, north cantilever 1.012 m, typical bays 15.25 m, generally 178 mm cast-iron columns. Pages 54-55 distinguish four railing types. Report photos supply underside and bearing evidence."
+    },
+    {
+      "id": "decking",
+      "url": "https://www.sefton.gov.uk/media/g5zoow41/southport-pier-decking-report.pdf",
+      "accessed": "2026-10-26",
+      "attribution": "Thomasons / Sefton Council, 2023",
+      "observations": "Longitudinal outer decking, transverse central boards; separate above-deck trusses at Marine Drive with transverse boards throughout. Southern entrance widening has transverse boards."
+    },
+    {
+      "id": "architect",
+      "url": "https://www.shedkm.co.uk/work/southport-pier/",
+      "accessed": "2026-10-26",
+      "attribution": "shedkm; photographs linked only",
+      "observations": "Pavilion completed 2002, 585 square metres, 45 m southwest glass wall. Photos 03/05 show inclined walls, exposed V-columns, blue cladding, rolled roof edge, entrance recess; 06/08 show glass wall and underside columns; 07 shows rail and boarding arrangement."
+    },
+    {
+      "id": "street-entrance",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.650629,-3.008255&heading=328&pitch=0&fov=90",
+      "capture_date": "2011-05",
+      "accessed": "2026-10-26",
+      "attribution": "Google Street View",
+      "observations": "Level entrance beside Funland, flared southern deck, blue and ivory railings, yellow track boundary strips. Walked along pier with separate panoramas."
+    },
+    {
+      "id": "street-lake",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65115,-3.00968&heading=328&pitch=0&fov=90",
+      "capture_date": "2011-05",
+      "accessed": "2026-10-26",
+      "observations": "Crossing ivory arch pairs, crown motif and hanging blue lantern; horizontal rails both sides over lake; adjacent Marine Way Bridge provides relative clearance check."
+    },
+    {
+      "id": "street-seaward",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65420,-3.01799&heading=328&pitch=0&fov=90",
+      "capture_date": "2011-05",
+      "accessed": "2026-10-26",
+      "observations": "Arches continue seaward, north diamond rail posts, south pickets and wind panels; regular bins, benches and small floodlights."
+    },
+    {
+      "id": "maps-3d",
+      "url": "https://www.google.com/maps/@53.6527853,-3.0070167,349a,35y,275.5h,51.51t/data=!3m1!1e3",
+      "accessed": "2026-10-26",
+      "observations": "Actual textured Google 3D orbited around pier, Marine Drive crossing and Ocean Plaza. Confirms long straight deck, bridge trusses, side kiosks and pavilion widening; fine rail/column geometry below imagery resolution."
+    },
+    {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/720543128",
+      "accessed": "2026-10-26",
+      "attribution": "OpenStreetMap contributors, ODbL 1.0",
+      "observations": "Provisional geographic registration and widening positions, checked against aerial imagery. Not treated as architectural measurements."
+    },
+    {
+      "id": "maps-head-3d",
+      "url": "https://www.google.com/maps/@53.6554955,-3.01808,192a,35y,265.5h,47.07t/data=!3m1!1e3",
+      "accessed": "2026-10-26",
+      "observations": "Textured 3D orbited around pavilion: rectangular shallow curved roof, paired roof cowls, T-shaped head with rounded central nose, utility cabin on narrow side platform before pavilion. Confirms third side extension is a utility cabin, not another seating shelter."
+    },
+    {
+      "id": "kiosk-2022",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65291,-3.01448&heading=155&pitch=0&fov=90",
+      "capture_date": "2022-05",
+      "accessed": "2026-10-26",
+      "attribution": "Marian Vasas, Google Maps place panorama",
+      "observations": "Cream kiosk with blue edge trim and hipped metal roof, broad menu wall; picnic tables opposite it. Adjacent access stair belongs to pier forecourt, with estimated level/riser count."
+    }
+  ],
+  "missing_coverage": [
+    "Below-water foundations are omitted.",
+    "Absolute deck datum and exact historic entrance stair risers are not surveyed.",
+    "Some furniture has changed between reference dates; use a coherent open-pier appearance rather than closure works."
+  ]
+}

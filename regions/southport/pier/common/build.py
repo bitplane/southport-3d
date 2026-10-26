@@ -13,12 +13,12 @@ def run(root):
     cols={}
     for part in ['deck','structure','fittings']:
         c=bpy.data.collections.new(part);scene.collection.children.link(c);cols[part]=c
-    colours={'glass':(.28,.40,.43),'roof':(.25,.31,.29),'gold':(.45,.31,.08),'stone':(.42,.40,.34),'blue':(.035,.07,.12),'ivory':(.78,.76,.62),'yellow':(.70,.57,.08),'dark':(.028,.025,.022),'rail':(.25,.19,.13),'timber':(.20,.18,.14),'plank-long':(.33,.30,.24),'plank-cross':(.35,.31,.25)}
+    colours={'pavilion-sign':(.035,.16,.34),'pavilion-blue':(.035,.16,.34),'pale-panel':(.66,.69,.68),'silver':(.63,.68,.71),'trim':(.20,.46,.48),'kiosk-sign':(.70,.68,.48),'glass':(.28,.40,.43),'roof':(.25,.31,.29),'gold':(.45,.31,.08),'stone':(.42,.40,.34),'blue':(.035,.07,.12),'ivory':(.78,.76,.62),'yellow':(.70,.57,.08),'dark':(.028,.025,.022),'rail':(.25,.19,.13),'timber':(.20,.18,.14),'plank-long':(.33,.30,.24),'plank-cross':(.35,.31,.25)}
     mats={}
     for key,col in colours.items():
         m=bpy.data.materials.new('Pier '+key);m.diffuse_color=(*col,1);m.use_nodes=True;p=m.node_tree.nodes['Principled BSDF'];p.inputs['Base Color'].default_value=(*col,1);p.inputs['Roughness'].default_value=.8;mats[key]=m
-        if key.startswith('plank'):
-            n=m.node_tree.nodes.new('ShaderNodeTexImage');n.image=bpy.data.images.load(str(root/'textures/deck.png'));n.image.pack();m.node_tree.links.new(n.outputs['Color'],p.inputs['Base Color'])
+        if key.startswith('plank') or key=='pavilion-sign':
+            n=m.node_tree.nodes.new('ShaderNodeTexImage');n.image=bpy.data.images.load(str(root/'textures'/('pavilion-sign.png' if key=='pavilion-sign' else 'deck.png')));n.image.pack();m.node_tree.links.new(n.outputs['Color'],p.inputs['Base Color'])
     groups={}
     for row in create(config).items:
         cat='fine' if row['name'].startswith('fine ') else row['name'].split()[0]
@@ -31,7 +31,9 @@ def run(root):
             axis=max(range(3),key=lambda i:abs(face.normal[i]));axes=[i for i in range(3) if i!=axis]
             for li in face.loop_indices:
                 v=ob.data.vertices[ob.data.loops[li].vertex_index].co
-                if mat=='plank-long':uv.data[li].uv=(v.y/1.2,v.x/2.4)
+                if mat=='pavilion-sign':
+                    points=[ob.data.vertices[j].co for j in face.vertices];xx=min(q.x for q in points);XX=max(q.x for q in points);zz=min(q.z for q in points);ZZ=max(q.z for q in points);uv.data[li].uv=((v.x-xx)/max(XX-xx,1e-6),(v.z-zz)/max(ZZ-zz,1e-6))
+                elif mat=='plank-long':uv.data[li].uv=(v.y/1.2,v.x/2.4)
                 elif mat=='plank-cross':uv.data[li].uv=(v.x/1.2,v.y/2.4)
                 else:uv.data[li].uv=(v[axes[0]],v[axes[1]])
     scene.render.engine='CYCLES';scene.cycles.samples=16;scene.cycles.use_denoising=True

@@ -1,0 +1,13 @@
+{
+  "bounds": [
+    -600,
+    -100,
+    930,
+    1500
+  ],
+  "intermediate_y": 1100,
+  "intermediate_height_m": -1.4,
+  "far_height_m": -1.8,
+  "near_boundary": "Match south-mainland rough ground including paving offset, only along shared Y930 edge.",
+  "status": "Estimated low-tide sand context; simple planar grades, not a detailed terrain reconstruction."
+}

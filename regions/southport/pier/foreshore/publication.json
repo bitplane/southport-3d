@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/foreshore.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Pier foreshore",
+  "status": "Simple estimated low-tide context; not surveyed terrain.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "sand-0-0",
+      "name": "sand-0-0",
+      "collection": "sand-0-0",
+      "ground": true,
+      "support_surface": "pier-foreshore",
+      "fixed_level": "district"
+    },
+    {
+      "id": "sand-0-1",
+      "name": "sand-0-1",
+      "collection": "sand-0-1",
+      "ground": true,
+      "support_surface": "pier-foreshore",
+      "fixed_level": "district"
+    },
+    {
+      "id": "sand-1-0",
+      "name": "sand-1-0",
+      "collection": "sand-1-0",
+      "ground": true,
+      "support_surface": "pier-foreshore",
+      "fixed_level": "district"
+    },
+    {
+      "id": "sand-1-1",
+      "name": "sand-1-1",
+      "collection": "sand-1-1",
+      "ground": true,
+      "support_surface": "pier-foreshore",
+      "fixed_level": "district"
+    },
+    {
+      "id": "sand-2-0",
+      "name": "sand-2-0",
+      "collection": "sand-2-0",
+      "ground": true,
+      "support_surface": "pier-foreshore",
+      "fixed_level": "district"
+    },
+    {
+      "id": "sand-2-1",
+      "name": "sand-2-1",
+      "collection": "sand-2-1",
+      "ground": true,
+      "support_surface": "pier-foreshore",
+      "fixed_level": "district"
+    }
+  ],
+  "views": [
+    {
+      "name": "Foreshore",
+      "position": [
+        -300,
+        600,
+        -1100
+      ],
+      "target": [
+        -300,
+        -1,
+        -1200
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "simple-sand",
+      "match": ".*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Already an independent fixed coarse canvas."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Forty planar ground triangles need no further simplification."
+      }
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -300,
+      0.3,
+      -1200
+    ],
+    "target": [
+      -300,
+      0.3,
+      -1210
+    ]
+  }
+}

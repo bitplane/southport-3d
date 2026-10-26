@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "southport.pier.foreshore",
+  "name": "Pier foreshore \u2014 rough low-tide context",
+  "region": "southport",
+  "area": "pier",
+  "status": "estimated-simple-ground-canvas",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "sand-0-0",
+    "sand-0-1",
+    "sand-1-0",
+    "sand-1-1",
+    "sand-2-0",
+    "sand-2-1"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Simple bounded sand extension beyond existing Y930 shore ownership. Estimated low-tide height, no raster detail.",
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/marine-lake-south.json",
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
+}
