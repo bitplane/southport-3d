@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "southport.corporation-street.former-bhs",
+  "name": "Former BHS / Hugo Lounge, 17\u201323 Chapel Street",
+  "region": "southport",
+  "area": "corporation-street",
+  "status": "provisional-massing",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "chapel-front",
+    "arcade-wing",
+    "corporation-gables"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Provisional massing only; dimensions and construction status under investigation.",
+  "licensing": "Authored geometry. Place registration derives from OpenStreetMap contributors, ODbL. Reference imagery private.",
+  "build_inputs": {
+    "validate": [
+      "regions/southport/lord-street/christ-church-approach/research/layout.json",
+      "regions/southport/corporation-street/former-bhs/scripts/check_package.py"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ]
+}

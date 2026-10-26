@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/canopy.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Cambridge Arcade",
+  "status": "Estimated BHS-side glazed canopy section",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 128
+    },
+    "district": {
+      "texture_size": 128
+    }
+  },
+  "parts": [
+    {
+      "id": "arcade-canopy",
+      "name": "Cambridge Arcade glazing",
+      "collection": "canopy"
+    }
+  ],
+  "rules": [
+    {
+      "id": "frame-and-glazing",
+      "match": "^(Architecture|Glazing) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain pedestrian canopy glazing, ribs and open passage."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Fixed simple glass planes and rafters retain the open silhouette."
+      }
+    },
+    {
+      "id": "iron-ornament",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Iron ties are visible within the arcade at pedestrian distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Small scrolls are subpixel at district distance; structural rafters remain."
+      }
+    }
+  ],
+  "views": [
+    {
+      "name": "Cambridge Arcade",
+      "position": [
+        -165,
+        3,
+        112
+      ],
+      "target": [
+        -162,
+        6,
+        94
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -165,
+      2.48,
+      110
+    ],
+    "target": [
+      -163,
+      3,
+      98
+    ]
+  }
+}

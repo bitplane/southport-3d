@@ -1,0 +1,26 @@
+{
+  "status": "provisional, to be compared before detail",
+  "origin": [
+    -160.832,
+    -122.754,
+    0.7845
+  ],
+  "width": 28.4,
+  "length": 46.8,
+  "front_depth": 21.0,
+  "arcade_wing_width": 14.0,
+  "corp_range_width": 8.5,
+  "front_eave": 15.0,
+  "wing_eave": 13.8,
+  "wing_ridge": 17.3,
+  "range_eave": 5.5,
+  "range_ridge": 8.0,
+  "uncertainty": "Initial bounds inherited provisional OSM block plan, not measured. Height and subdivisions rough hypotheses to compare; verify front, courtyard and ridges.",
+  "registration": "Bilinear interpolation of four plan corners; mapped trapezoid remains provisional OSM-derived registration. Rearward wing widens to match visible roof proportions; dimensions not surveyed.",
+  "measurements": {
+    "method": "Registered four mapped corners, camera-bearing comparisons and unrectified ratios from private Google 3D and dated photos; not a measured survey.",
+    "observed": "Five parallel gables, long pitched arcade range, projecting round tower, flat and mansard Chapel roofs, covered arcade and canopy.",
+    "estimates": "Front rectangle 28.4 \u00d7 21m, arcade wing width 14m, gabled range width 8.5m, central court width 5.9m, low roof eaves 5.5m and ridges 8m, wing eaves 13.8m and ridge 17.3m, corner eaves 12.8m and roof 16.5m. Heights \u00b11\u20132m; obscured joins and aspect perspective cause larger uncertainty.",
+    "crosscheck": "28.4 \u00d7 46.8 = 1329.12 m\u00b2 gross rectangle compared with Sefton 1340m\u00b2 site; neither implies surveyed footprint; an open court reduces occupied area."
+  }
+}

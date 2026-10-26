@@ -1,0 +1,62 @@
+{
+  "scope": "17\u201323 Chapel Street, former BHS/Hugo Lounge; linked Chapel Street corner, Cambridge Arcade wing and Corporation Street gabled service frontage. Date of represented appearance remains to be selected after current work is verified.",
+  "investigated_utc": "2026-10-26",
+  "imagery": [
+    {
+      "source": "Google Maps 3D globe/satellite",
+      "date": "capture date not supplied",
+      "bearings_degrees": [
+        0,
+        77.62,
+        155.25,
+        232.87
+      ],
+      "tilt_degrees": 39.45,
+      "private_captures": "/home/gaz/tmp/3d/output/terra-building-trial/building-c2a1-high/orbit0.png through orbit3.png",
+      "observations": "Observed long pitched wing parallel to Cambridge Arcade, stepped higher Chapel corner, low row of parallel gables on Corporation Street, and open narrow space between gabled range and taller wing. Photogrammetry distorts fine detail and roof edges."
+    },
+    {
+      "source": "https://www.google.com/maps/@53.6472201,-3.0046749,3a,75y,260h,90t/data=!3m7!1e1!3m5!1sMusM1ocveqnRAs3oLMeS3g!2e0!7i13312!8i6656",
+      "date": "May 2011",
+      "elevation": "Corporation Street",
+      "observations": "Five half-timbered gables above dark louvres, red brick base, service door and windows; curved pale stair tower behind. BHS signage is historic."
+    },
+    {
+      "source": "https://www.google.com/maps/@53.6468868,-3.0046203,3a,75y,300h,90t/data=!3m7!1e1!3m5!1sPBpe8cXe_FaAdgsabAa4Xg!2e0!7i13312!8i6656",
+      "date": "May 2011",
+      "elevation": "Chapel Street",
+      "observations": "Pale upper bays, projecting cornices and deep canopy with iron edge; BHS glazing is historic."
+    },
+    {
+      "source": "https://www.google.com/maps/@53.6470438,-3.0050842,3a,75y,320h,90t/data=!3m7!1e1!3m5!1sZOHgRHBx6BaHkLxy-Oy8TA!2e0!7i13312!8i6656",
+      "date": "May 2011",
+      "elevation": "Cambridge Arcade",
+      "observations": "Long pale upper wall and glazed ground frontage, beneath an independent pitched glazed arcade canopy. 2011 tenant signs not current. October 2015 alternative image listed."
+    },
+    {
+      "source": "https://www.qlocal.co.uk/southport/news_list/Former_BHS_building_development_plan_with_new_owner_APG-55072644.htm",
+      "date": "2025-01-19 publication",
+      "elevation": "Corporation Street and Chapel corner",
+      "observations": "Actual photos viewed: brick and black timber gables retained with works visible; corner has two rounded bay windows, lower tall arches and upper colonnade continuing along Corporation Street, with red mansard and projecting dormers. Images show appearance during works, not completed scheme."
+    },
+    {
+      "source": "https://www.google.com/maps/@53.6472,-3.0047,3a,75y,195h,90t/data=!3m6!1e1!3m4!1s!2e0!7i13312!8i6656",
+      "date": "May 2011",
+      "elevation": "Corporation Street lower return and service interface",
+      "observations": "Loaded panorama: long framed display glazing below a pale fascia, a recessed paired service door and a roller shutter immediately before the half-timbered range. Tenant and works may have changed; present arrangement is a structural historic reconstruction."
+    }
+  ],
+  "current_status": [
+    {
+      "source": "https://southport.thelead.uk/p/southport-bhs-unsafe-building-shops-forced-to-close",
+      "date": "2026-02-08",
+      "observation": "Upper-floor conversion underway, with ground-floor closures. Article photo inspected: blue mesh and scaffolding mask upper facade; historic canopy remains but its underside is partly stripped. This does not prove proposed finish completed."
+    },
+    {
+      "source": "https://www.sefton.gov.uk/media/iftbmtu2/appx-1a-large-sites-included-in-seftons-housing-supply.pdf",
+      "date": "2025 assessment",
+      "observation": "17\u201323 Chapel Street site area 0.134 ha, useful plausibility check rather than a footprint survey."
+    }
+  ],
+  "unresolved": "Need current elevation imagery and conversion status; roof-edge parallax, individual roof heights, court width, concealed joins and ground support remain estimates. Investigate Mapillary and all accessible returns. Historic Street View and proposal renderings cannot establish current completion."
+}

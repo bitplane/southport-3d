@@ -5,6 +5,7 @@ import numpy as np
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT'])
 sys.path[:0]=[str(REPO/'lib'),str(ROOT/'scripts'),str(REPO/'regions/southport/lord-street/corridor-public-realm/scripts')]
 from southport3d.geometry import Mesh
+from southport3d.elevation import Elevations
 from southport3d.road import parallel
 from southport3d.street import furniture
 from plan_geometry import Plan
@@ -24,10 +25,13 @@ for name in ['court-ground','passage-ground','court-furniture','passage-furnitur
 def rect(x0,x1,y0,y1):return [(x0,y0),(x1,y0),(x1,y1),(x0,y1)]
 def ribbon(points,width):return parallel(points,-width/2)+list(reversed(parallel(points,width/2)))
 P=Plan();x0,x1,y0,y1=D['bounds']
-region=P.polygons([rect(x0,x1,y0,y1),G['approach_handover_polygon']])
-cutters=[CH['mapped_footprint'],*ST['ground_polygons']]
-for path in D['block_plans']:cutters += [b['footprint']for b in json.loads((REPO/path).read_text())['blocks']]
-available=P.difference(region,P.polygons(cutters))
+region=P.polygons([rect(x0,x1,y0,y1),G['approach_handover_polygon'],D['former_bhs_court'],D['former_bhs_arcade']])
+clip_x0=min(x0,min(x for x,y in D['former_bhs_court']),min(x for x,y in D['former_bhs_arcade']))
+cutters=[CH['mapped_footprint']]
+for path in D['block_plans']:cutters += [b['footprint']for b in json.loads((REPO/path).read_text())['blocks'] if b['id'] not in ('hugo-frontage','hugo-rear-range')]
+cutters += D['former_bhs_occupied']
+station_claim=P.intersection(P.polygons(ST['ground_polygons']),P.polygons([rect(*ST['bounds'])]))
+available=P.difference(P.difference(region,P.polygons(cutters)),station_claim)
 lawn=P.intersection(available,P.polygons([D['lawn']]))
 brick=P.difference(P.intersection(available,P.polygons([D['brick_court']])),lawn)
 remaining=P.difference(P.difference(available,lawn),brick)
@@ -58,9 +62,9 @@ for part,lo,hi in [('court',D['split_y'],-18.0),('passage',y0,D['split_y'])]:
                     cell=P.polygons([rect(x,x+1,aa,bb)])
                     for tri in P.triangles(P.intersection(g,cell)):m.add([(x,y,0)for x,y in tri],[(0,1,2)])
         else:
-            cuts=[lo,*[v for v in [-36]if lo<v<hi],hi]
+            cuts=[lo,*[v for v in [-95,-93,-36]if lo<v<hi],hi]
             for a,b in zip(cuts,cuts[1:]):
-                cell=P.polygons([rect(x0,x1,a,b)])
+                cell=P.polygons([rect(clip_x0,x1,a,b)])
                 for tri in P.triangles(P.intersection(g,cell)):m.add([(x,y,0)for x,y in tri],[(0,1,2)])
         if m.faces:compiled[(part,mat)]=m
 P.close()
@@ -69,7 +73,26 @@ import southport3d.conform as cf
 cf.GRID=1e-4;cf.TOLERANCE=2e-4
 for m in compiled.values():m.vertices=np.asarray(m.vertices,dtype=np.float32).tolist()
 compiled,report=cf.conform(compiled)
-for (part,mat),m in compiled.items():m.vertices=[(x,y,grade(x,y)+(rise(x,y)if mat=='grass'else 0))for x,y,z in m.vertices]
+# Blend the bounded arcade support to the retained rough station surface at
+# its actual y=-95 edge over two metres; elsewhere preserve approach grade.
+station=Elevations(REPO/'regions/southport/elevation/station-approach.json').surface('chapel-pedestrian')
+def support_grade(x,y):
+ if -168<=x<=-158 and -95.0001<=y<-93:
+  f=max(0,min(1,(y+95)/2));return (1-f)*station.height(x,-95)+f*grade(x,y)
+ return grade(x,y)
+for (part,mat),m in compiled.items():m.vertices=[(x,y,support_grade(x,y)+(rise(x,y)if mat=='grass'else 0))for x,y,z in m.vertices]
+# Frontage transition owns its bounded patch; its outer edge follows the existing
+# rough station surface including control-grid break points, and inner edge meets
+# the level architectural datum. It is an estimate, not a terrain refinement.
+threshold=Mesh('Surface passage threshold');innerL,innerR,outerR,outerL=D['former_bhs_threshold']
+station=Elevations(REPO/'regions/southport/elevation/station-approach.json').surface('chapel-pedestrian')
+outer=list(station.edge_points(outerL,outerR));dx=outerR[0]-outerL[0];dy=outerR[1]-outerL[1];den=dx*dx+dy*dy
+for a,b in zip(outer,outer[1:]):
+ def inside(p):
+  t=((p[0]-outerL[0])*dx+(p[1]-outerL[1])*dy)/den
+  return (innerL[0]+t*(innerR[0]-innerL[0]),innerL[1]+t*(innerR[1]-innerL[1]),.7845)
+ ia,ib=inside(a),inside(b);threshold.add([a,b,ib,ia],[(0,1,2),(0,2,3)])
+compiled[('passage','threshold')]=threshold
 # The turf has a small physical edge inside this owner's paved footprint.
 # Ownership cuts remain separate from the photographed lawn boundaries.
 edge=Mesh('Surface court lawn edging')
@@ -88,7 +111,7 @@ def material(name,colour,texture=None):
                 im.colorspace_settings.name='Non-Color';n=m.node_tree.nodes.new('ShaderNodeNormalMap');m.node_tree.links.new(t.outputs['Color'],n.inputs['Color']);m.node_tree.links.new(n.outputs['Normal'],p.inputs['Normal'])
             else:m.node_tree.links.new(t.outputs['Color'],p.inputs['Base Color'])
     return m
-mats={'paving':material('Pale passage slabs',(.56,.54,.48),'paving'),'strip':material('Dark longitudinal slab bands',(.21,.23,.23)),'brick':material('Church court brick pavers',(.44,.30,.23),'brick'),'grass':material('Estimated raised lawn',(.24,.31,.12)),'edging':material('Low garden stone edge',(.42,.41,.35))}
+mats={'paving':material('Pale passage slabs',(.56,.54,.48),'paving'),'strip':material('Dark longitudinal slab bands',(.21,.23,.23)),'brick':material('Church court brick pavers',(.44,.30,.23),'brick'),'grass':material('Estimated raised lawn',(.24,.31,.12)),'edging':material('Low garden stone edge',(.42,.41,.35)),'threshold':material('Estimated frontage threshold',(.56,.54,.48),'paving')}
 wallm=[material('Observed red-brick boundary',(.39,.23,.17),'wallbrick'),material('Pale stone coping',(.45,.44,.37),'stone')]
 fm=[material('Approach furnishing '+str(i),c)for i,c in enumerate([(.025,.033,.031),(.45,.48,.47),(.53,.56,.50),(.8,.48,.015),(.14,.008,.008),(.16,.075,.005),(.004,.10,.035),(.25,.20,.13),(.006,.008,.008)])]
 fol=[material('Planting bark',(.14,.11,.075)),material('Foliage dark',(.075,.13,.035)),material('Foliage green',(.14,.23,.07)),material('Foliage light',(.19,.27,.085))]

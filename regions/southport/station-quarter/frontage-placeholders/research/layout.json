@@ -148,9 +148,9 @@
         ]
       ],
       "height_m": 11.5,
-      "replace_with": null,
+      "replace_with": "southport.corporation-street.former-bhs",
       "source_way": "371199519",
-      "evidence": "Aerial external walls and Cambridge/Corporation passages retained; height estimated from storeys."
+      "evidence": "Aerial external walls and Cambridge/Corporation passages retained; height estimated from storeys. Replacement is registered to these block corners with an open court; original polygon is retained for station-area exclusion."
     },
     {
       "id": "hugo-rear-range",
@@ -173,9 +173,9 @@
         ]
       ],
       "height_m": 9,
-      "replace_with": null,
+      "replace_with": "southport.corporation-street.former-bhs",
       "source_way": "371199519",
-      "evidence": "Rear roof range adjacent to existing Town Hall placeholder; no duplicate Town Hall volume."
+      "evidence": "Rear roof range adjacent to existing Town Hall placeholder; no duplicate Town Hall volume. Replacement is registered to these block corners with an open court; original polygon is retained for station-area exclusion."
     },
     {
       "id": "station-london-retail",

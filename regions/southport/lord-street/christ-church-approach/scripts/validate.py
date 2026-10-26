@@ -41,6 +41,26 @@ for x,y in [(-116,-45),(-117,-55),(-121,-62),(-125,-68),(-123,-65)]:
 for x,y in [(-123,-37),(-123.5,-49),(-123.8,-29.2)]:
  z,name=one(x,y);assert 'grass'in name and .07<=z-grade(x,y)<=.451,(x,y,z,name)
 for x,y in [(-125,-17.99),(-130,-125),(-108,-40),(-100,-90)]:assert not hits(x,y),(x,y,'adjacent owner or building floor duplicated')
+# Transition joins the actual outer station surface and the level threshold.
+from southport3d.elevation import Elevations
+station=Elevations(REPO/'regions/southport/elevation/station-approach.json').surface('chapel-pedestrian')
+innerL,innerR,outerR,outerL=D['former_bhs_threshold']
+for t in [.13,.37,.63,.87]:
+ for f in [.05,.95]:
+  x=(1-f)*(outerL[0]+t*(outerR[0]-outerL[0]))+f*(innerL[0]+t*(innerR[0]-innerL[0]));y=(1-f)*(outerL[1]+t*(outerR[1]-outerL[1]))+f*(innerL[1]+t*(innerR[1]-innerL[1]));z,name=one(x,y)
+  assert 'threshold' in name,(x,y,z,name)
+  ox=outerL[0]+t*(outerR[0]-outerL[0]);oy=outerL[1]+t*(outerR[1]-outerL[1]);expected=(1-f)*station.height(ox,oy)+f*.7845
+  # A pair of planar triangles approximates the bilinear interpolation;
+  # within 10 mm at the interior probes and exact at shared edge vertices.
+  assert abs(z-expected)<.01,(x,y,z,expected)
+# Bounded former BHS court uses the retained constant approach grade.
+z,name=one(-143.2,-88.2);assert abs(z-grade(-143.2,-88.2))<3e-5,(z,name)
+# Covered arcade support remains continuous through the estimated passage.
+for x,y in [(-162.5,-92),(-162.3,-88),(-162.0,-84)]:
+ z,name=one(x,y);assert abs(z-grade(x,y))<3e-5,(x,y,z,name)
+# Arcade joins the retained station height at the shared boundary.
+for x in [-164,-163,-162]:
+ z,name=one(x,-94.999);expected=station.height(x,-95);assert abs(z-expected)<.002,(x,z,expected)
 # Retained cross-approach is paved and clear; neither lawn nor wall closes it.
 for x in [-127.3,-125,-122,-119]:
  z,name=one(x,-22.4);assert 'grass'not in name,(x,name)
@@ -49,14 +69,23 @@ assert max(y for x,y in D['lawn'])<=-26,'raised lawn blocks cross-path'
 # Footprint and station surface exclusions are exact, not hidden lower layers.
 from mathutils.geometry import tessellate_polygon
 polygons=[json.loads((REPO/D['building_source']).read_text())['mapped_footprint']]
-for path in D['block_plans']:polygons += [b['footprint']for b in json.loads((REPO/path).read_text())['blocks']]
-polygons += json.loads((REPO/D['station_ground_source']).read_text())['ground_polygons']
+for path in D['block_plans']:polygons += [b['footprint']for b in json.loads((REPO/path).read_text())['blocks'] if b['id'] not in ('hugo-frontage','hugo-rear-range')]
+polygons += D['former_bhs_occupied']
+# Station ground is clipped to its declared bounds; outside that extent the
+# approach may own bounded support even if a source ground polygon extends there.
 exclusions=0
 for q in polygons:
  pts=[Vector((x,y,0))for x,y in q]
  for tri in tessellate_polygon([pts]):
   tri=[pts[i]if isinstance(i,int)else i for i in tri];x=sum(p.x for p in tri)/3;y=sum(p.y for p in tri)/3
   assert not hits(x,y),(x,y,'excluded footprint has floor');exclusions+=1
+# Station ownership is only claimed inside the generator's clipped bounds.
+st=json.loads((REPO/D['station_ground_source']).read_text());sx0,sx1,sy0,sy1=st['bounds']
+for q in st['ground_polygons']:
+ pts=[Vector((x,y,0)) for x,y in q]
+ for tri in tessellate_polygon([pts]):
+  tri=[pts[i] if isinstance(i,int) else i for i in tri];x=sum(p.x for p in tri)/3;y=sum(p.y for p in tri)/3
+  if sx0<x<sx1 and sy0<y<sy1:assert not hits(x,y),(x,y,'station-owned floor')
 # Bases meet their declared ground; trees/benches on raised turf use its level.
 for row in R['placements']:
  x,y=row['xy'];h=hits(x,y)

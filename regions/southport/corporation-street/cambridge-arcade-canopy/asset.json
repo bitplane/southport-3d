@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "southport.corporation-street.cambridge-arcade-canopy",
+  "name": "Cambridge Arcade glazed canopy, BHS section",
+  "region": "southport",
+  "area": "corporation-street",
+  "status": "researched-provisional-exterior",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "pitched-glazing",
+    "rafters",
+    "iron-ties"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Independent estimated roof above the former BHS side of Cambridge Arcade; continuation toward Lord Street remains outside this asset.",
+  "licensing": "Authored geometry; registered to OSM-derived block plan. Images remain private.",
+  "build_inputs": {
+    "validate": [
+      "regions/southport/corporation-street/cambridge-arcade-canopy/scripts/check_package.py"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ]
+}

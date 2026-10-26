@@ -1,0 +1,22 @@
+{
+  "origin": [
+    -160.832,
+    -122.754,
+    0.7845
+  ],
+  "building_width": 28.4,
+  "length": 46.8,
+  "width": 5.2,
+  "eave": 6.25,
+  "ridge": 7.85,
+  "rib_spacing": 1.3,
+  "uncertainty": "5.2m width and roof heights are unrectified visual estimates; continuity and adjoining buildings require checked scene review. Section over BHS only; opposite facade and beyond-Town-Hall continuation are separate.",
+  "budgets": {
+    "detail_triangles": 12000,
+    "walk_triangles": 12000,
+    "district_triangles": 1500,
+    "max_glb_bytes_per_level": 2000000,
+    "max_gpu_bytes_per_level": 2000000,
+    "basis": "District explicitly retains fixed structural rafters and two transparent panes; ornaments are omitted. Added fine ornament cannot change District structure."
+  }
+}

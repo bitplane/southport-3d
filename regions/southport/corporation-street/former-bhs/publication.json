@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/former-bhs.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Corporation Street",
+  "status": "Provisional construction-stage exterior under review",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "frontage",
+      "name": "Chapel and Corporation frontages",
+      "collection": "frontage"
+    },
+    {
+      "id": "rear",
+      "name": "Arcade and court",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "Roof",
+      "collection": "roof"
+    }
+  ],
+  "views": [
+    {
+      "name": "Corporation Street",
+      "position": [
+        -115,
+        14,
+        100
+      ],
+      "target": [
+        -145,
+        7,
+        100
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -120,
+      2.48,
+      100
+    ],
+    "target": [
+      -145,
+      7,
+      100
+    ]
+  },
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^(Shell|Architecture|Glazing) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain principal silhouette and openings at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replaced by independent fixed envelope."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Small louvres and railing uprights are below walking transition resolution."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Fine details are baked or omitted."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Independent authored roof cutouts, gallery recesses, major arches, curved bays and open court; detail changes do not alter receiver dimensions.",
+    "max_bytes": 3000000,
+    "max_gpu_bytes": 11000000,
+    "parts": {
+      "frontage": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 1600,
+        "cage_m": 1.2
+      },
+      "rear": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 1600,
+        "cage_m": 1.0,
+        "source_parts": [
+          "rear",
+          "frontage"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 1600,
+        "cage_m": 1.2,
+        "source_parts": [
+          "roof",
+          "frontage",
+          "rear"
+        ]
+      }
+    }
+  }
+}

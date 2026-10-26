@@ -30,7 +30,7 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Broad layout checked against actualGoogle3D and registered aerial. Local pedestrian panoramas are May2011, so current exact furniture inventory is unverified. Plan±1–3m, wall height±.15m, lawn rise±.15m. No architecture changes, text invention or precise species claims.",
+  "scope": "Broad layout checked against actualGoogle3D and registered aerial. Local pedestrian panoramas are May2011, so current exact furniture inventory is unverified. Plan\u00b11\u20133m, wall height\u00b1.15m, lawn rise\u00b1.15m. No architecture changes, text invention or precise species claims.",
   "build_inputs": {
     "master": [
       "regions/southport/lord-street/church-gardens/research/layout.json",
@@ -38,7 +38,9 @@
       "regions/southport/station-quarter/public-realm/research/layout.json",
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
       "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
-      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",
+      "regions/southport/elevation/station-approach.json",
+      "regions/southport/elevation/ground-controls.json"
     ],
     "validate": [
       "regions/southport/lord-street/church-gardens/research/layout.json",
@@ -46,7 +48,9 @@
       "regions/southport/station-quarter/public-realm/research/layout.json",
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
       "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
-      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py"
+      "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",
+      "regions/southport/elevation/station-approach.json",
+      "regions/southport/elevation/ground-controls.json"
     ]
   },
   "licensing": "Reference links only. Retained footprint exclusions from existing OSM-derived plans: OpenStreetMap contributors, ODbL1.0. No image pixels published.",

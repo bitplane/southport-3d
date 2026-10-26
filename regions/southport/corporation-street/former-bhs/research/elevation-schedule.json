@@ -1,0 +1,99 @@
+{
+  "purpose": "Revision 01 measured composition. Sizes are estimated from ratios in oblique photographs, not a survey; registration is an independent inherited block estimate.",
+  "state": "Retained unobscured historic fabric in Qlocal photographs published January 2025; temporary conversion scaffolding omitted. Publication date is not a confirmed capture date.",
+  "reference": "https://www.qlocal.co.uk/southport/news_list/Former_BHS_building_development_plan_with_new_owner_APG-55072644.htm",
+  "measurements": [
+    {
+      "feature": "Chapel ornate corner relative to older range",
+      "inputs": "qlocal-2.jpg (1920x1440): boundary of projecting left bay approximately x=800; corner bay x=1570\u20131850; reference is strongly oblique, so apparent horizontal pixel widths cannot be used directly as metric frontage lengths.",
+      "adopted": "The ornate right subrange starts at local u\u224814 m of a provisional 28.4 m frontage. Two projecting rounded bays bracket two principal arches; the second rounds the physical corner.",
+      "uncertainty": "horizontal subrange boundary \u00b11.5 m and projection \u00b10.5 m; facade registration inherited, not measured"
+    },
+    {
+      "feature": "Principal arch proportions",
+      "inputs": "qlocal-2.jpg: first tall lower arch inner edges approximately x=1030 and 1170; crown y\u2248730, sill y\u2248940, giving height/width \u22481.5 in this oblique image. Occlusion by canopy crest and converging perspective limit a direct measurement.",
+      "adopted": "2.4 m opening width; 4.0 m sill-to-crown height, spring 1.2 m below crown (semicircular head); lower floor 4.2\u20138.2 m above base.",
+      "uncertainty": "width \u00b10.4 m, floor/height \u00b10.6 m; compare matching viewpoints before ornament"
+    },
+    {
+      "feature": "Gallery and bowed bays",
+      "inputs": "qlocal-1.jpg and qlocal-2.jpg: clear shadowed colonnade behind forward columns, soffit aligns with curved bay top; the gallery has two broad rear windows in the Chapel photograph. Rounded bays have continuous horizontal masonry bands, divided glazing and a curved spandrel at each level.",
+      "adopted": "Gallery sill 8.55 m, soffit 12.35 m, recessed rear wall 1.25 m from column line; first bay centred u=15.5 m and corner bay turns through 90 degrees. Bay radius \u22481.45 m, outward projection \u22481.1 m.",
+      "uncertainty": "recess and radius \u00b10.4 m; projection and corner join need oblique render comparison"
+    },
+    {
+      "feature": "Corporation return",
+      "inputs": "qlocal-1.jpg: tall lower arches below a repeated colonnade and distinct dormers above; photo perspective and cropping prevent exact count near the distant end.",
+      "adopted": "six lower arched bays across 21 m return; gallery sill and soffit align with Chapel levels; rear plane inset 1.25 m; first bay at the curved street corner.",
+      "uncertainty": "bay count and spacing estimated; distant return obstructed and should be revisited"
+    },
+    {
+      "feature": "Dormer silhouette",
+      "inputs": "qlocal-2.jpg: left range has several dark-framed grouped forms; right range has a broad pale surround with two large lights flanked by smaller dark-framed dormers. qlocal-1.jpg shows pale framed groups along return. Different camera depths preclude reading precise widths from pixels.",
+      "adopted": "Chapel positions u\u22483, 6.5, 10, 15.5, 21, 26 m; grouped broad pale dormer at u\u224821 m; narrow dark dormers flank it. Return has one narrow and three broader groups spaced along 21 m. Apertures cut through actual host planes with exposed cheeks and window faces.",
+      "uncertainty": "each width \u00b10.5 m, height \u00b10.5 m; roof junction hidden in imagery"
+    },
+    {
+      "feature": "Return dormer widths after camera comparison",
+      "inputs": "qlocal-1.jpg near pale dormer is approximately 245 px wide by 220 px high in an oblique view; corner-matched-prototype.png first pale dormer is approximately 95 px wide by 150 px high. Both views are perspective affected and the photos are not a survey.",
+      "adopted": "Pale return dormer widths increased from 2.3\u20132.6 m to 3.25\u20133.35 m while retaining centers, distinct dark dormer, exposed cheeks and roof cuts.",
+      "uncertainty": "Approximate camera alignment and foreshortening; widths remain \u00b10.5 m and must be checked in the updated render."
+    }
+  ],
+  "dormers": {
+    "chapel": [
+      [
+        3.4,
+        1.8,
+        "dark"
+      ],
+      [
+        6.5,
+        2.4,
+        "dark"
+      ],
+      [
+        9.7,
+        2.5,
+        "dark"
+      ],
+      [
+        15.5,
+        1.5,
+        "dark"
+      ],
+      [
+        21.0,
+        3.8,
+        "light"
+      ],
+      [
+        25.2,
+        1.5,
+        "dark"
+      ]
+    ],
+    "corporation": [
+      [
+        5.0,
+        3.25,
+        "light"
+      ],
+      [
+        8.7,
+        3.35,
+        "light"
+      ],
+      [
+        13.5,
+        3.35,
+        "light"
+      ],
+      [
+        18.0,
+        2.3,
+        "dark"
+      ]
+    ]
+  }
+}

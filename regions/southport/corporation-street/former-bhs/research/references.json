@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "url": "https://southport.thelead.uk/p/southport-bhs-unsafe-building-shops-forced-to-close",
+      "date": "2026-02-08",
+      "role": "Construction status and Chapel Street photograph"
+    },
+    {
+      "url": "https://www.sefton.gov.uk/media/iftbmtu2/appx-1a-large-sites-included-in-seftons-housing-supply.pdf",
+      "date": "2025",
+      "role": "0.134 ha planning site area, not survey footprint"
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6472201,-3.0046749,3a,75y,260h,90t/data=!3m7!1e1!3m5!1sMusM1ocveqnRAs3oLMeS3g!2e0!7i13312!8i6656",
+      "date": "2011-05",
+      "role": "Corporation facade historic Street View"
+    },
+    {
+      "url": "https://www.qlocal.co.uk/southport/news_list/Former_BHS_building_development_plan_with_new_owner_APG-55072644.htm",
+      "date": "2025-01-19",
+      "role": "Actual photographs of Corporation return and Chapel corner; proposal imagery distinct."
+    }
+  ]
+}
