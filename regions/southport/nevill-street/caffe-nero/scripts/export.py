@@ -1,0 +1,7 @@
+from pathlib import Path
+import bpy
+R=Path(__file__).resolve().parents[1]
+bpy.ops.wm.open_mainfile(filepath=str(R/'models/caffe-nero.blend'))
+bpy.ops.object.select_all(action='DESELECT')
+for o in bpy.context.scene.objects:o.select_set(o.type=='MESH')
+bpy.ops.export_scene.gltf(filepath=str(R/'models/caffe-nero.glb'),export_format='GLB',use_selection=True,export_tangents=True)

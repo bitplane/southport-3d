@@ -79,6 +79,11 @@
       "id": "occulo-rear-infill",
       "name": "Occulo rear infill \u2014 placeholder",
       "collection": "occulo-rear-infill"
+    },
+    {
+      "id": "west-lord-rear-remnant",
+      "name": "West Lord rear remnant \u2014 placeholder",
+      "collection": "west-lord-rear-remnant"
     }
   ],
   "views": [

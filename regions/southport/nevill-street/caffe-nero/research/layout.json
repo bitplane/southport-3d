@@ -1,0 +1,19 @@
+{
+  "width": 5.85,
+  "x": -46.443,
+  "y": 46.2735213684,
+  "shear_x": 0.0135,
+  "shear_y": 0.02101397911356,
+  "base_z": 1.403143,
+  "main_depth": 8.9,
+  "eaves": 13.3,
+  "ridge": 17.25,
+  "balcony_floor": 11.6,
+  "balcony_front": -0.65,
+  "balcony_back": 1.0,
+  "rear_depth": 18.9,
+  "rear_height": 7.1,
+  "low_depth": 33.0,
+  "low_height": 3.45,
+  "phase": "detail"
+}

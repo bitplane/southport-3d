@@ -270,16 +270,8 @@
       "osm_way": "375534421",
       "footprint": [
         [
-          -40.593,
-          46.396453146
-        ],
-        [
-          -45.754,
-          46.288
-        ],
-        [
-          -45.827,
-          59.47
+          -46.264882274,
+          59.467427025
         ],
         [
           -50.422,
@@ -310,24 +302,8 @@
           78.396
         ],
         [
-          -30.161867,
-          78.542834
-        ],
-        [
-          -30.253487,
-          71.756161
-        ],
-        [
-          -33.253475,
-          71.693551
-        ],
-        [
-          -33.1772,
-          77.343551
-        ],
-        [
-          -40.1772,
-          77.196453146
+          -46.009093694,
+          78.414729252
         ]
       ],
       "height_m": 12,
@@ -338,7 +314,7 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Residual combined block after individual 355\u2013357 Lord Street extraction. Lakeland footprint estimated from four-angle Google 3D, frontage registered at preserved Parkinson passage. Other parcels remain placeholders.",
+      "footprint_confidence": "Residual provisional block after measured 5.85 m Caffe Nero plot extraction; retained neighbours remain approximate.",
       "replace_with": null,
       "original_combined_footprint": [
         [
@@ -598,12 +574,102 @@
           -30.253487,
           71.756161
         ]
+      ],
+      "footprint_before_caffe_nero_extraction": [
+        [
+          -40.593,
+          46.396453146
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -30.161867,
+          78.542834
+        ],
+        [
+          -30.253487,
+          71.756161
+        ],
+        [
+          -33.253475,
+          71.693551
+        ],
+        [
+          -33.1772,
+          77.343551
+        ],
+        [
+          -40.1772,
+          77.196453146
+        ]
       ]
     },
     {
       "id": "lord-block-infill",
       "osm_way": "267014392",
       "footprint": [
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -46.442859194,
+          46.283951415
+        ],
+        [
+          -46.264882274,
+          59.467427025
+        ],
+        [
+          -50.422,
+          59.443
+        ]
+      ],
+      "height_m": 10,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Residual provisional block after measured 5.85 m Caffe Nero plot extraction; retained neighbours remain approximate.",
+      "replace_with": null,
+      "footprint_before_caffe_nero_extraction": [
         [
           -50.348,
           46.261
@@ -620,17 +686,7 @@
           -50.422,
           59.443
         ]
-      ],
-      "height_m": 10,
-      "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
-      "evidence": [
-        "google-3d-orbit",
-        "google-plan-comparison",
-        "osm-seed"
-      ],
-      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      ]
     },
     {
       "id": "west-cable-corner",
@@ -1254,6 +1310,336 @@
       ],
       "footprint_confidence": "Seven-metre individual frontage. Rear envelope estimated; existing Parkinson access reservation unchanged.",
       "replace_with": "southport.nevill-street.lakeland-leather"
+    },
+    {
+      "id": "west-lord-rear-remnant",
+      "osm_way": "375534421",
+      "footprint": [
+        [
+          -40.158455211,
+          78.462024251
+        ],
+        [
+          -30.161867,
+          78.542834
+        ],
+        [
+          -30.253487,
+          71.756161
+        ],
+        [
+          -33.253475,
+          71.693551
+        ],
+        [
+          -33.1772,
+          77.343551
+        ],
+        [
+          -40.17553995,
+          77.19648803
+        ]
+      ],
+      "height_m": 12,
+      "height_uncertainty_m": 3,
+      "status": "placeholder-massing",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Rear residual beyond Lakeland and Coffee King; preserved rather than extending Nero into neighbouring yards.",
+      "replace_with": null,
+      "original_combined_footprint": [
+        [
+          -9.452,
+          90.309
+        ],
+        [
+          -21.403,
+          90.192
+        ],
+        [
+          -21.482,
+          78.613
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -10.043,
+          47.035
+        ]
+      ],
+      "replaced_corner_asset": "southport.nevill-street.occulo-lounge",
+      "before_coffee_king_footprint": [
+        [
+          -9.452,
+          90.309
+        ],
+        [
+          -21.403,
+          90.192
+        ],
+        [
+          -21.482,
+          78.613
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -24.803,
+          46.727
+        ],
+        [
+          -24.722,
+          52.727
+        ],
+        [
+          -20.222,
+          52.821
+        ],
+        [
+          -20.0762,
+          63.620915
+        ],
+        [
+          -9.8162,
+          63.835956
+        ]
+      ],
+      "foundation_z_max_m": -0.8,
+      "foundation_basis": "Extend below the provisional -0.73 m Parkinson Books passage datum; retain the independently estimated roof height.",
+      "before_nevill_3_9_footprint": [
+        [
+          -9.452,
+          90.309
+        ],
+        [
+          -21.403,
+          90.192
+        ],
+        [
+          -21.482,
+          78.613
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -33.593,
+          46.543551
+        ],
+        [
+          -33.253475,
+          71.693551
+        ],
+        [
+          -24.463475,
+          71.876999
+        ],
+        [
+          -24.722,
+          52.727
+        ],
+        [
+          -20.222,
+          52.821
+        ],
+        [
+          -20.0762,
+          63.620915
+        ],
+        [
+          -9.8162,
+          63.835956
+        ]
+      ],
+      "before_lakeland_footprint": [
+        [
+          -33.253475,
+          71.693551
+        ],
+        [
+          -33.593,
+          46.543551
+        ],
+        [
+          -45.754,
+          46.288
+        ],
+        [
+          -45.827,
+          59.47
+        ],
+        [
+          -50.422,
+          59.443
+        ],
+        [
+          -50.348,
+          46.261
+        ],
+        [
+          -81.841,
+          46.238
+        ],
+        [
+          -81.119,
+          69.78
+        ],
+        [
+          -68.968,
+          69.523
+        ],
+        [
+          -69.289,
+          78.334
+        ],
+        [
+          -48.326,
+          78.396
+        ],
+        [
+          -30.161867,
+          78.542834
+        ],
+        [
+          -30.253487,
+          71.756161
+        ]
+      ]
+    },
+    {
+      "id": "caffe-nero-353",
+      "footprint": [
+        [
+          -46.443,
+          46.2735213684
+        ],
+        [
+          -40.592999999999996,
+          46.39645314621432
+        ],
+        [
+          -40.147499999999994,
+          79.39645314621433
+        ],
+        [
+          -45.997499999999995,
+          79.2735213684
+        ]
+      ],
+      "height_m": 17.25,
+      "height_uncertainty_m": 0.7,
+      "status": "replaced-researched-exterior",
+      "evidence": [
+        "allsop-measured-frontage-and-depth",
+        "google-3d-four-angle-roof",
+        "street-view-and-place-photos"
+      ],
+      "footprint_confidence": "Measured frontage and overall depth; shared Lakeland party line, estimated rear extent.",
+      "replace_with": "southport.nevill-street.caffe-nero"
     }
   ],
   "policy": "Google 3D multi-angle shape and aerial comparison govern interpretation. OSM is a seed, not authority. Flat tops are placeholder height bounds, not asserted flat roofs. Joined mapped ranges are not individual legal parcels.",

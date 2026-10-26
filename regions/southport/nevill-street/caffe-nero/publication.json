@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/caffe-nero.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "Measured frontage; photographed gallery/shop; estimated concealed rear.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 1024
+    },
+    "district": {
+      "texture_size": 1024
+    }
+  },
+  "parts": [
+    {
+      "id": "shell",
+      "name": "shell",
+      "collection": "shell"
+    },
+    {
+      "id": "frontage",
+      "name": "frontage",
+      "collection": "frontage"
+    },
+    {
+      "id": "gallery",
+      "name": "gallery",
+      "collection": "gallery"
+    },
+    {
+      "id": "verandah",
+      "name": "verandah",
+      "collection": "verandah"
+    }
+  ],
+  "views": [
+    {
+      "name": "Lord Street",
+      "position": [
+        -43.5,
+        12,
+        -20
+      ],
+      "target": [
+        -43.5,
+        9,
+        -46
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine (?!gable branching)",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Omit mortar, collars, fine fretwork and slate joints; retain structural openings and characteristic gallery."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Baked onto independent fixed envelope."
+      }
+    },
+    {
+      "id": "gable-pattern",
+      "match": "^Fine gable branching",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Diagonal timber pattern is a defining feature, visible across the street; keep at Walk."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Baked onto the independent gable plane."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain gable, open gallery, three upper windows, canted oriel, recessed cafe and slender canopy."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent replacement topology and bounded atlases."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed stepped roof envelope, real gallery void and recessed entrance; carvings and joinery baked; balusters reduced to fixed fourteen.",
+    "max_bytes": 2500000,
+    "max_gpu_bytes": 20000000,
+    "parts": {
+      "shell": {
+        "atlas": [
+          512,
+          1024
+        ],
+        "max_triangles": 200,
+        "cage_m": 0.4,
+        "source_parts": [
+          "shell",
+          "frontage"
+        ]
+      },
+      "frontage": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 100,
+        "cage_m": 0.35,
+        "source_parts": [
+          "frontage",
+          "shell"
+        ]
+      },
+      "gallery": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.25,
+        "source_parts": [
+          "gallery"
+        ]
+      },
+      "verandah": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 70,
+        "cage_m": 0.22,
+        "source_parts": [
+          "verandah",
+          "frontage"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      -43.5,
+      3,
+      42
+    ],
+    "target": [
+      -43.5,
+      5,
+      47
+    ]
+  }
+}

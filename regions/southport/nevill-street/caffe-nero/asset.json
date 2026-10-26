@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.caffe-nero",
+  "name": "Caff\u00e8 Nero,353 Lord Street",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "researched-exterior-estimated-rear",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "gable-gallery",
+    "oriel",
+    "cafe-frontage",
+    "verandah",
+    "rear-envelope"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Current photographed frontage, roof from rotated3D; hidden rear remains provisional.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
+}

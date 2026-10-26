@@ -1,0 +1,48 @@
+{
+  "units": "metres",
+  "dimensions": [
+    {
+      "name": "gross frontage",
+      "value": 5.85,
+      "uncertainty": 0.1,
+      "basis": "Allsop auction particulars; replaces OSM-derived 5.16 m width, retains Lakeland party line."
+    },
+    {
+      "name": "shop depth",
+      "value": 19.3,
+      "uncertainty": 0.3,
+      "basis": "Allsop metric figure. Imperial conversion printed in PDF disagrees, metric retained."
+    },
+    {
+      "name": "built depth",
+      "value": 33,
+      "uncertainty": 0.5,
+      "basis": "Allsop metric figure and aerial long plot; imperial figure disagrees."
+    },
+    {
+      "name": "gable ridge above threshold",
+      "value": 17.25,
+      "uncertainty": 0.7,
+      "basis": "Street View gable apex slightly above Lakeland 16.3 m parapet; perspective and ground slope limit precision."
+    },
+    {
+      "name": "main roof depth",
+      "value": 8.9,
+      "uncertainty": 1.2,
+      "basis": "Four Google3D views: short tall gabled front volume with lower rear range."
+    },
+    {
+      "name": "rear two-storey depth",
+      "value": 18.9,
+      "uncertainty": 2,
+      "basis": "Aerial roof break, partially screened by adjoining roofs."
+    }
+  ],
+  "coverage": {
+    "front": "2019 panoramas from two positions; 2017 auction photograph; May 2026 Arthur Belgrove shopfront photo. Main openings and gallery visible, carved motifs partly obscured.",
+    "roof": "Google3D headings 0,89.5,179,268.5 degrees plus near-plan, inspected 2026-10-26. Ridge and long lower rear range visible; minor vents not reliable.",
+    "sides": "Party walls; exposed upper gable sides seen in3D, no invented side openings.",
+    "rear": "Aerial only; concealed courtyard/windows deferred. No street-level rear photograph obtained.",
+    "footprint": "Measured frontage/depth against registered Lakeland boundary. Last metres of rear plot approximate, no claim of cadastral survey."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "asset": "southport.nevill-street.caffe-nero",
+  "reviewed": "2026-10-26",
+  "sources": [
+    {
+      "id": "allsop",
+      "url": "https://www.allsop.co.uk/api/file/eb634c32-43f9-11e9-9d46-0242ac110002",
+      "capture_date": "2017",
+      "observed": "Measured 5.85m frontage, 19.30m shop depth,33m built depth. Street photo and plan. Metric/imperial inconsistency retained in measurement notes.",
+      "rights": "Reference only; no pixels published."
+    },
+    {
+      "id": "heritage",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379644",
+      "observed": "1882 E.W.Johnson Albany Buildings; this is right outer bay with elaborately carved gallery and projecting half-timbered gable.",
+      "rights": "Paraphrased evidence only."
+    },
+    {
+      "id": "street-2019-ne",
+      "url": "https://www.google.com/maps/@53.648576,-3.0051117,3a,45y,265h,110t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDa3aHWxQE!2e10",
+      "capture_date": "2019-07",
+      "author": "VR360TV",
+      "observed": "Upper windows, oriel, projecting gallery, timber gable and facade proportions."
+    },
+    {
+      "id": "street-2019-sw",
+      "url": "https://www.google.com/maps/@53.6484415,-3.0053454,8a,90y,315h,100t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgIDa_fu3NA!2e10",
+      "capture_date": "2019-07",
+      "observed": "Second position shows facade divisions and shopfront; tree obscures gable."
+    },
+    {
+      "id": "shop-2026",
+      "url": "https://www.google.com/maps/place/Caff%C3%A8+Nero/@53.6485829,-3.0050563,3a,75y,90t/data=!3m4!1e2!3m2!1sCIABIhCHNVtAlvG0ymBmNhxYI_Zc!2e10",
+      "capture_date": "2026-05",
+      "author": "Arthur Belgrove",
+      "observed": "Blue fascia, grey-green framing, slanted glazing leading to recessed central doorway, white verandah fascia.",
+      "rights": "Reference only, not texture."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6487963,-3.0062962,108a,35y,89.5h,39.56t/data=!3m1!1e3",
+      "capture_date": null,
+      "observed": "Actually rotated through 0,89.5,179,268.5degrees and plan. Short tall gabled front, lower long rear roof ranges; side openings not resolved.",
+      "private_captures": "../references/nero-3d-*.png, nero-roof-plan.png"
+    },
+    {
+      "id": "mapillary",
+      "url": "https://www.mapillary.com/app/?lat=53.64869&lng=-3.00523&z=18",
+      "observed": "Coverage map loads, selection attempt did not open a photograph; no additional architecture inferred."
+    }
+  ],
+  "limitations": [
+    "Rear elevations hidden; restrained blank rear walls instead of invented windows.",
+    "Small carvings reconstructed as simplified relief; no photogrammetric ornament claim.",
+    "Adjacent Albany Buildings units remain placeholders."
+  ]
+}
