@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.lord-street-409-421",
+  "name": "409\u2013421 Lord Street \u2014 Saltrock, Covet & Crave and Connard",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "photo-researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "front",
+    "rear",
+    "roof",
+    "canopy"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "409\u2013421 Lord Street \u2014 Saltrock, Covet & Crave and Connard; private interiors excluded; dimensions estimated from registered footprint and multi-view imagery",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/lord-corridor.json",
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/lord-corridor.json",
+      "regions/southport/elevation/ground-controls.json",
+      "regions/southport/lord-street/lord-street-409-421/scripts/check_package.py"
+    ]
+  },
+  "licensing": "Reference links only; procedural materials. Retained footprint registration derives from OpenStreetMap contributors, ODbL1.0. No reference imagery embedded.",
+  "publication_checks": [
+    "check_package.py"
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "phase": "detail",
+  "origin": [
+    53.6486555,
+    -3.0043401
+  ],
+  "front_shear": 0.009,
+  "side_shear": -0.00658,
+  "foundation_z": 0.5,
+  "canopy": {
+    "projection": 3.18,
+    "wall_z": 4.34,
+    "spring_z": 3.62,
+    "arch_rise": 0.48
+  },
+  "ground_surface": "lord-corridor-pavement",
+  "uncertainty_m": {
+    "frontage": 0.5,
+    "roof": 1.0,
+    "rear": 1.5,
+    "openings": 0.3
+  },
+  "kind": "red",
+  "front_origin": [
+    60.07300356696527,
+    45.66045790801408
+  ],
+  "front_width": 20.85,
+  "floor_z": 0.79,
+  "front_eaves": 12.0,
+  "front_ridge": 14.9,
+  "rear_eaves": 10.3,
+  "main_depth": 8.65,
+  "ridge_y": 3.9,
+  "bay_centres": [
+    2.6,
+    7.8,
+    13.0,
+    18.23
+  ],
+  "bay_edges": [
+    0,
+    5.2,
+    10.4,
+    15.6,
+    20.85
+  ],
+  "wings": [
+    {
+      "id": "saltrock-gallery",
+      "x0": 0,
+      "x1": 10.48,
+      "end": 25.98,
+      "eaves": 9.3,
+      "ridge": 12.0
+    },
+    {
+      "id": "middle-wing",
+      "x0": 10.48,
+      "x1": 16.1,
+      "end": 15.6,
+      "eaves": 10.3,
+      "ridge": 12.8
+    }
+  ],
+  "courts": [
+    [
+      17.9,
+      13.0
+    ],
+    [
+      12.2,
+      21
+    ],
+    [
+      5.2,
+      18
+    ]
+  ],
+  "chimneys": [
+    {
+      "x": 0.8,
+      "y": 2.3,
+      "base": 13,
+      "top": 16.5,
+      "w": 0.85,
+      "d": 1.25
+    },
+    {
+      "x": 10.5,
+      "y": 3.8,
+      "base": 14,
+      "top": 16.0,
+      "w": 0.72,
+      "d": 1.1
+    }
+  ],
+  "canopy_posts": [
+    4.7,
+    10.2,
+    15.4,
+    20.7
+  ],
+  "lightwell": {
+    "x0": 2.4,
+    "x1": 8.0,
+    "y0": 11.7,
+    "y1": 23.2,
+    "floor": 3.5
+  }
+}

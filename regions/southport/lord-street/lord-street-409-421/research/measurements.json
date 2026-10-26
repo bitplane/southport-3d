@@ -1,0 +1,64 @@
+{
+  "units": "metres",
+  "status": "All metric architecture estimated, not survey",
+  "inputs": [
+    {
+      "reference": "osm-block-plan",
+      "landmarks": "Burlington party line x60.073,y45.660; northern party x97.324,y45.995",
+      "calculation": "37.251m total frontage retained. Bank rear hall seed spans x80.905\u201397.867, corroborating approximately16.4m bank frontage; red range takes remaining20.85m.",
+      "uncertainty_m": 0.6
+    },
+    {
+      "reference": "front-winter",
+      "landmarks_px": {
+        "red_SW": [
+          298,
+          550
+        ],
+        "red_NE": [
+          865,
+          550
+        ],
+        "roof_eaves_y": 300,
+        "canopy_wall_y": 550,
+        "first_sill_y": 532,
+        "first_head_y": 444,
+        "second_sill_y": 409,
+        "second_head_y": 338
+      },
+      "calculation": "Near-frontal red range 567px /20.85m=27.19px/m; eave rises250px/27.19=9.19m above canopy. Perspective makes conservative adopted eave12.0m (canopy4.34m), roof ridge14.9m after 3D ratio check. Four main window axes at2.6,7.8,13.0,18.23m; heights adjusted for tilted camera.",
+      "uncertainty_m": 1.0
+    },
+    {
+      "reference": "bank-current",
+      "landmarks_px": {
+        "tower_left": [
+          477,
+          530
+        ],
+        "bank_NE": [
+          1041,
+          530
+        ],
+        "ground_y": 675,
+        "eave_y": 370,
+        "tower_top_y": 260,
+        "gable_top_y": 306
+      },
+      "calculation": "564px /16.401m=34.39px/m; canopy4.2m; main eave8.87m; gables10.73m; tower12.07m. Adopt8.65m eave,11.2m ridge,12.2m southwest tower top.",
+      "uncertainty_m": 0.9
+    },
+    {
+      "reference": "roof-orbits",
+      "landmarks": "Bank front8.51m depth vs ~8m open court, hall21.4m depth; rear lantern roughly10.5x9m in16.5x21.4 hall. Red front8.65m; rear west wing end26m and middle15.6m from facade.",
+      "calculation": "Ratios traced against registered footprint spans; parallax excluded by comparing all4 headings.",
+      "uncertainty_m": 1.5
+    }
+  ],
+  "ground_anchor": {
+    "red_floor_m": 0.79,
+    "bank_floor_m": 0.88,
+    "support": "lord-corridor-pavement control grid",
+    "note": "Thresholds connect locally; neither building tilts with road. No raster terrain refinement."
+  }
+}

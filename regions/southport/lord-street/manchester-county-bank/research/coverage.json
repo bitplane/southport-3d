@@ -1,0 +1,55 @@
+{
+  "represented_date": "2026-07 frontage, older undated photogrammetry roof with current street corroboration",
+  "front": {
+    "sources": [
+      "front-current",
+      "bank-current",
+      "front-winter"
+    ],
+    "confidence": "high layout; metric estimate",
+    "missing": "Trees partly obscure stone carving and upper central openings; leaf-off view reduces obstruction."
+  },
+  "roof": {
+    "sources": [
+      "roof-orbits"
+    ],
+    "confidence": "medium",
+    "missing": "Photogrammetry softens roof edges; small flashings approximate."
+  },
+  "southwest_side": {
+    "sources": [
+      "roof-orbits"
+    ],
+    "confidence": "medium",
+    "missing": "Party walls mostly hidden; no invented openings."
+  },
+  "northeast_side": {
+    "sources": [
+      "roof-orbits"
+    ],
+    "confidence": "medium",
+    "missing": "Party walls mostly hidden."
+  },
+  "rear": {
+    "sources": [
+      "roof-orbits",
+      "stanley-approach"
+    ],
+    "confidence": "medium-low",
+    "missing": "Private court not reachable in Street View. Bank rear paired top windows observed in photogrammetry; lower openings partly occluded. Hidden details omitted."
+  },
+  "footprint_ground": {
+    "sources": [
+      "roof-orbits",
+      "osm-block-plan",
+      "stanley-approach"
+    ],
+    "confidence": "medium",
+    "method": "Preserve registered frontage party lines; remove joined placeholder, split red range/bank at x80.923; retain bank court and separate hall. Shared rough road control surface; level floor and individual canopy support heights."
+  },
+  "access_notes": [
+    "Default browser Maps 3D unavailable; documented GPU GL/EGL browser then Layers/Globe/Satellite/3D successfully loaded and inspected.",
+    "Web search used bank heritage entry and current local BID source. Search for exact red-range address group yielded no useful measured drawings.",
+    "Mapillary map opened at target on2026-10-26 after declining optional cookies; rendered basemap but no image tracks/photos appeared, console errors present. No additional rear evidence obtained. Supplemental image search returned unrelated buildings; not used."
+  ]
+}

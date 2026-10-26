@@ -2654,14 +2654,18 @@
       ],
       "height_m": 12,
       "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
+      "status": "replaced-researched-exterior",
       "evidence": [
         "google-3d-orbit",
         "google-plan-comparison",
         "osm-seed"
       ],
       "footprint_confidence": "Original OSM envelope retained northeast of the researched Burlington party-line. Burlington is separately replaced with its actual wing/court footprint.",
-      "replace_with": null
+      "replace_with": [
+        "southport.lord-street.lord-street-409-421",
+        "southport.lord-street.manchester-county-bank"
+      ],
+      "replacement_note": "Snag c5ee: surveyed-by-imagery front divisions, rear lightwell and bank lantern hall; open bank court retained."
     },
     {
       "id": "way-375534419",

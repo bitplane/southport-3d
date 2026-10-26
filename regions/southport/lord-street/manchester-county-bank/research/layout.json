@@ -1,0 +1,110 @@
+{
+  "phase": "detail",
+  "origin": [
+    53.6486555,
+    -3.0043401
+  ],
+  "front_shear": 0.009,
+  "side_shear": -0.00658,
+  "foundation_z": 0.5,
+  "canopy": {
+    "projection": 3.18,
+    "wall_z": 4.34,
+    "spring_z": 3.62,
+    "arch_rise": 0.48
+  },
+  "ground_surface": "lord-corridor-pavement",
+  "uncertainty_m": {
+    "frontage": 0.5,
+    "roof": 1.0,
+    "rear": 1.5,
+    "openings": 0.3
+  },
+  "kind": "bank",
+  "front_origin": [
+    80.92300356696526,
+    45.84810790801408
+  ],
+  "front_width": 16.401,
+  "floor_z": 0.88,
+  "front_eaves": 8.65,
+  "front_ridge": 11.2,
+  "rear_eaves": 8.65,
+  "main_depth": 8.51,
+  "ridge_y": 3.7,
+  "bay_centres": [
+    1.95,
+    6.0,
+    10.15,
+    14.25
+  ],
+  "bay_edges": [
+    0,
+    3.9,
+    8.05,
+    12.2,
+    16.401
+  ],
+  "wings": [],
+  "courts": [
+    [
+      8,
+      12
+    ],
+    [
+      13,
+      12
+    ]
+  ],
+  "hall": {
+    "x0": 0.04,
+    "x1": 16.52,
+    "y0": 17.05,
+    "y1": 38.45,
+    "eaves": 7.4,
+    "ridge": 9.65,
+    "ridge_y": 34.8,
+    "registered_footprint": [
+      [
+        80.905,
+        62.252
+      ],
+      [
+        97.414,
+        62.923
+      ],
+      [
+        97.867,
+        84.218
+      ],
+      [
+        81.336,
+        84.291
+      ]
+    ]
+  },
+  "chimneys": [
+    {
+      "x": 0.7,
+      "y": 36,
+      "base": 9,
+      "top": 10.9,
+      "w": 0.6,
+      "d": 0.8
+    },
+    {
+      "x": 15.8,
+      "y": 36,
+      "base": 9,
+      "top": 10.9,
+      "w": 0.6,
+      "d": 0.8
+    }
+  ],
+  "canopy_posts": [
+    3.75,
+    7.95,
+    12.1,
+    16.25
+  ]
+}

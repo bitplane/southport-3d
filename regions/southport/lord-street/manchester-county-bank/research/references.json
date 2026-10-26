@@ -1,0 +1,51 @@
+{
+  "accessed": "2026-10-26",
+  "sources": [
+    {
+      "id": "front-current",
+      "url": "https://www.google.com/maps/@53.6492849,-3.0037494,3a,75y,320.25h,100t/data=!3m4!1e1!3m2!1seHDJkaur_RohmMorhKg4xw!2e0",
+      "capture_date": "2026-07",
+      "observed": "Current Saltrock, Covet & Crave, Connard & Son shopfronts; red terrace four major axes with projecting bays at ends."
+    },
+    {
+      "id": "bank-current",
+      "url": "https://www.google.com/maps/@53.6493484,-3.0036344,3a,75y,321.34h,100t/data=!3m4!1e1!3m2!1sHSQBEBZaTgc11murmDsa5g!2e0",
+      "capture_date": "2026-07",
+      "observed": "Bank southwest oriel tower, three lower gabled canted bays, Wine & Words and vacant east unit."
+    },
+    {
+      "id": "front-winter",
+      "url": "https://www.google.com/maps/@53.6492685,-3.0037822,3a,75y,320.25h,100t/data=!3m4!1e1!3m2!1snFdnRgooFj7tYElsrwu4Rg!2e0",
+      "capture_date": "2015-11",
+      "observed": "Leaf-off corroboration of upper window rhythm, ornate brick gable and central rooflets. Historical retail signs not used."
+    },
+    {
+      "id": "roof-orbits",
+      "url": "https://www.google.com/maps/@53.649006,-3.0039132,78a,35y,39.58t/data=!3m1!1e3",
+      "capture_date": null,
+      "observed": "Loaded photogrammetry inspected at headings 0,84.75,171.75,258.75. Red front ridge and unequal rear wings; bank short frontage roof and detached high hall with rectangular hipped lantern across an open court."
+    },
+    {
+      "id": "stanley-approach",
+      "url": "https://www.google.com/maps/@53.6497786,-3.004578,3a,75y,94.25h,100t/data=!3m4!1e1!3m2!1sta7TyDBgWav2Buhfe2meFw!2e0",
+      "capture_date": "2026-07",
+      "observed": "Rear hall visible above wall/gated court; most courtyard elevations obstructed. No access into private courtyard."
+    },
+    {
+      "id": "bank-heritage",
+      "url": "https://www.heritageopendays.org.uk/submission-event/wine-words-by-watson.html",
+      "observed": "Venue identifies former Manchester & County Bank entrance and stone coat of arms; 423\u2013427 Lord Street."
+    },
+    {
+      "id": "bank-current-tenant",
+      "url": "https://www.yoursouthport.com/blog/wine-words-writes-a-new-chapter-on-lord-street",
+      "observed": "Southport BID identifies 2025 opening and address 423\u2013425 next to Connard."
+    },
+    {
+      "id": "osm-block-plan",
+      "url": "../corridor-placeholders/research/footprints-osm.json",
+      "observed": "375389847 is joined range, not individual building; Stanley 375391233 is rear bank hall."
+    }
+  ],
+  "rights": "Reference pixels private only, no imagery embedded. OSM footprint seed attribution OpenStreetMap contributors ODbL 1.0. Authored geometry and procedural textures."
+}

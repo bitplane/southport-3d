@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/building.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Manchester & County Bank \u2014 423\u2013429 Lord Street and rear hall",
+  "status": "Research-based exterior reconstruction with estimated metric dimensions and restrained hidden surfaces",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "front",
+      "name": "front",
+      "collection": "front"
+    },
+    {
+      "id": "rear",
+      "name": "rear",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "roof",
+      "collection": "roof"
+    },
+    {
+      "id": "canopy",
+      "name": "canopy",
+      "collection": "canopy"
+    }
+  ],
+  "views": [
+    {
+      "name": "manchester-county-bank",
+      "position": [
+        60.58878,
+        23,
+        -65.62163
+      ],
+      "target": [
+        28.21869,
+        7,
+        -99.69768
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Thin valance and shutter slats fade at walking distances; physical major frame and shutter remain."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Fixed envelope bakes appearance without carrying fine topology."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain real facade openings, unequal wings, roof valleys, shop recesses and open verandah."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replaced by independent dimension-driven receiver surfaces."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed physical bay, roof, canopy and courtyard envelope, independent of ornament. Hidden detail omitted.",
+    "max_bytes": 2400000,
+    "max_gpu_bytes": 5800000,
+    "parts": {
+      "front": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.75,
+        "source_parts": [
+          "front"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 500,
+        "cage_m": 0.4,
+        "source_parts": [
+          "rear"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 650,
+        "cage_m": 0.28,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "canopy": {
+        "atlas": [
+          256,
+          128
+        ],
+        "max_triangles": 350,
+        "cage_m": 0.18,
+        "source_parts": [
+          "canopy"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      37.17212,
+      0.88,
+      -90.27239
+    ],
+    "target": [
+      33.03977,
+      1,
+      -94.62252
+    ]
+  }
+}

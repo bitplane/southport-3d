@@ -1,0 +1,16 @@
+{
+  "detail": "Physical recessed openings, bay projections, mouldings and roof section geometry; observed signs and canopy. No invented rear decoration.",
+  "walk": "Keep architectural openings, roofs and bays; omit fine valance and small carving/shingles.",
+  "district": "Independent fixed receiver surfaces with preserved bay/tower/lantern/court silhouette and open canopy. One atlas per facade/rear/roof/canopy; fixed geometry independent of ornament.",
+  "budgets": {
+    "triangles": 2000,
+    "download_bytes": 2400000,
+    "gpu_bytes": 5800000
+  },
+  "omissions": [
+    "Interiors",
+    "Exact hidden court opening positions",
+    "Unresolved red gable inscription",
+    "Small stone carving represented as restrained relief, not facsimile"
+  ]
+}

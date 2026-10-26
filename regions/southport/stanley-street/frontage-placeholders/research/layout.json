@@ -96,9 +96,11 @@
         ]
       ],
       "height_m": 8,
-      "replace_with": null,
+      "replace_with": "southport.lord-street.manchester-county-bank",
       "source_way": "375391233",
-      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented."
+      "evidence": "External OSM seed checked against registered Google aerial overlay; broad height bound estimated from dated Street View storeys. Existing Lord/Nevill ownership subtracted where shared attached ranges were already represented.",
+      "status": "replaced-researched-exterior",
+      "replacement_note": "Snag c5ee: surveyed-by-imagery front divisions, rear lightwell and bank lantern hall; open bank court retained."
     },
     {
       "id": "way-375391234-south",
