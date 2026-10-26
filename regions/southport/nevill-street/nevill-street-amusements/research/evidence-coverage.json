@@ -1,0 +1,27 @@
+{
+  "front": "high: two Aug2024 street panoramas; four hall bays and Bath corner",
+  "bath_side": "high: Aug2024 panorama; ground shutter pattern and upper windows",
+  "party_side": "attached Embassy, unexposed below roof; preserve registered boundary",
+  "rear": "medium roof/massing from four3D headings; low for exact openings, no accessible court panorama; unknown surfaces restrained",
+  "roof": "medium: four actualGoogle3D headings and overhead; no survey",
+  "ground": "Level floor1.0m anchored near frontage midpoint; rough existing pavement0.787\u20131.187m along Nevill and1.368m at rear Bath, \u00b1.2\u2013.37m threshold uncertainty. Foundation extends to.4m. No terrain edit.",
+  "measurements": {
+    "plan": "Private /tmp/88e0-plan.png: hall roof front approx(635,482)-(830,408), Bath wing approx(850,410)-(965,670). Bath registered depth36.61m projects284px =>7.76px/m; hall apparent front209px=>26.9m includes skew/parallax. Registered hall width22.3m plus Bath strip8.475 retained; imagery confirms large height/roof split. Hall roof depth from(635,482)-(667,548):73px=>9.4m, adopt9.0\u00b11m.",
+    "elevation": "Private street-front2: hall pavement y655,eave390,ribbon450; adjacent corner cornice245; ratio hall/corner approx265/410=.646. Adopt hall7.65m,corner11.6m (.659), \u00b1.8m. Opening width about200px divided ~7.65m/265=.0289m/px =>5.8m; four bays fit22.3m with brick piers. Bath sash height~48px over wall290px=>1.92m at11.6m, adopt1.9m \u00b1.3m.",
+    "uncertainty": "All metric dimensions visual estimates, not surveyed; footprint registered to existing block plan; roof parallax and panoramas not orthographic.",
+    "partition_correction": {
+      "source": "GoogleMaps place photo Delta Charlie Dec2023, private88e0-place-exterior.png; corroborating overhead88e0-plan.png",
+      "landmarks": "Corner front image x526\u2013750\u2248224px; immediately adjoining first hall bay x750\u2013991\u2248241px. Perspective uncertain but ratio\u2248.93, substantially less than inherited8.475/5.575=1.52. Overhead hall-front endpoints635,482\u2013830,408\u2248209px; Bath strip width\u224854px, ratio3.87.",
+      "calculation": "Fixed totalfront30.775m. Four hall bays plus corner~.9bay => bay6.28m,corner5.65m. Adopt hall25.2m / four6.3m bays, corner5.575m. Overhead hall/Bath ratio4.52 versusimage3.87; roofparallax\u00b11m. This supersedes inherited22.3/8.475 internal split.",
+      "uncertainty_m": 1.0,
+      "context": "Outer Bath/pavement/Embassy lines unchanged. Only internal court edge shifts2.9m toward Bath, no new ground surfaces or adjacent parcel overlap."
+    }
+  },
+  "budgets": {
+    "district_triangles": 900,
+    "district_glb_bytes": 2000000,
+    "district_gpu_bytes": 8500000,
+    "atlases": "frontage512x512,bath512x256,roof256x256: three-map floor7.34MB. Geometry independently authored; topology unaffected by ornament."
+  },
+  "footprint_alignment": "x9.555936,y116.86 exactly equals Embassy world(u11.6,v0); shared local shear preserves party line. Existing placeholder outline differed15.9mm at start; corrected to actual neighbouring model boundary."
+}

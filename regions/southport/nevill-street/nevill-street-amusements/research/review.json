@@ -1,0 +1,6 @@
+{
+  "massing_review": "Inspected front/Bath oblique and overhead renders against actualGoogle3D headings82.8/248.4 and plan. Agreed L-shaped tall Bath range, four-bay low hall and two felt-roof bands; open rear court preserved. Roof-band proportions remain estimates. Added missing Bath front gable after massing review. Detail phase now enabled.",
+  "remaining": "Final rendered/exported comparisons and neighbourhood seams pending.",
+  "detail_review": "Inspected front/Bath/corner/rear/overhead renders against Aug2024 front and Bath Street panoramas and fourGoogle3D directions. Corrected hall mullions to six lights, brown joinery, blue AMUSEMENTS, italic cream-parlour fascia, dark recessed shops, Bath entrance return and projecting bay side returns. Slate UVs aligned to roof courses. Long Bath cornice and end pediments retained. Exact carved motifs, branded script shapes, hidden court joinery and temporary forecourt furniture unresolved; no fictional arcade interior.",
+  "surface_review": "Master all-mesh double and float32 coplanar checks; exported preliminary Detail/Walk neighbour check caught concave party polygon and buried fascia/pier backs, subsequently fixed using convex panels and bounded piers. Final actual exported audit pending."
+}

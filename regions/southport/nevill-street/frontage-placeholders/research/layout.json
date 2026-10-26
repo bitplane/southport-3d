@@ -889,36 +889,28 @@
       "osm_way": "375393549",
       "footprint": [
         [
-          9.540029,
-          116.860099
+          9.555936,
+          116.86
         ],
         [
-          9.739,
+          9.754743,
           147.635
         ],
         [
-          46.35,
-          147.404
+          46.364742,
+          147.406187
         ],
         [
-          46.297,
-          139.071
+          46.328728,
+          141.831187
         ],
         [
-          32.877,
-          139.152
+          32.918728,
+          141.915
         ],
         [
-          32.746,
-          116.844
-        ],
-        [
-          42.332,
-          116.781
-        ],
-        [
-          42.331294,
-          116.655154
+          32.755936,
+          116.715
         ]
       ],
       "height_m": 10.5,
@@ -929,8 +921,8 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "Remaining Flavours/amusement block after Embassy street/roof registration. Embassy reserved on checked chamfer and stepped service range; other architecture remains provisional.",
-      "replace_with": null,
+      "footprint_confidence": "Detailed Silcocks exterior registered to Embassy party and Bath outer edge. Internal Bath strip corrected from2023 place-photo ratio and3D roof; ground consumers recut court edge. Dimensions estimated.",
+      "replace_with": "southport.nevill-street.nevill-street-amusements",
       "before_embassy_footprint": [
         [
           46.297,
@@ -1132,7 +1124,7 @@
         "osm-seed"
       ],
       "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      "replace_with": "southport.nevill-street.funland"
     },
     {
       "id": "coffee-king",

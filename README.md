@@ -84,3 +84,7 @@ shared bridge paths and the separate lower promenade support level.
 The [south Marine Lake and seaward quarter plan](docs/MARINE-LAKE-SOUTH.md) completes
 the lake outline and connects the southern Promenade, Kings Gardens, Princes Park
 and west Ocean Plaza with provisional buildings, roads, paths and bounded grades.
+
+[Silcock’s Nevill Street Amusements and Flavours](docs/NEVILL-STREET-AMUSEMENTS.md)
+replace the block beside Embassy with the low arcade frontage, narrow Bath corner,
+long bay-windowed return and separate roof bands around an open rear court.

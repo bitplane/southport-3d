@@ -51,19 +51,9 @@
       "collection": "west-middle-terrace"
     },
     {
-      "id": "east-amusement-block",
-      "name": "East Amusement Block \u2014 placeholder",
-      "collection": "east-amusement-block"
-    },
-    {
       "id": "east-upper-terrace-baths",
       "name": "East Upper Terrace Baths \u2014 placeholder",
       "collection": "east-upper-terrace-baths"
-    },
-    {
-      "id": "funland",
-      "name": "Funland \u2014 placeholder",
-      "collection": "funland"
     },
     {
       "id": "occulo-rear-infill",

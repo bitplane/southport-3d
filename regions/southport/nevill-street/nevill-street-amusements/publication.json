@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/nevill-street-amusements.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "Aug2024 researched exterior with estimated dimensions; private court details unresolved; no interiors.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "frontage",
+      "name": "Frontage",
+      "collection": "frontage"
+    },
+    {
+      "id": "rear",
+      "name": "Rear",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "Roof",
+      "collection": "roof"
+    }
+  ],
+  "views": [
+    {
+      "name": "Corner",
+      "position": [
+        -15,
+        18,
+        -90
+      ],
+      "target": [
+        18,
+        6,
+        -115
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -74,
+      1.83,
+      -83
+    ],
+    "target": [
+      -65,
+      5,
+      -90
+    ]
+  },
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^(Shell|Architecture|Glazing) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain actual apertures, stone profiles, roof silhouette and modest shop joinery."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent bounded receivers replace these source meshes."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Fine glazing bars, individual soldier bricks and small drainpipes are subpixel at walking transition; principal frames, signs and diamond pattern silhouettes remain."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Bake fine appearance, omit tiny projected fittings."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Independent hall roof bands and Bath range; no topology inherited from ornament.",
+    "max_bytes": 2000000,
+    "max_gpu_bytes": 8500000,
+    "parts": {
+      "frontage": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.8
+      },
+      "rear": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.8,
+        "source_parts": [
+          "rear",
+          "frontage"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.8,
+        "source_parts": [
+          "roof",
+          "frontage",
+          "rear"
+        ]
+      }
+    }
+  }
+}

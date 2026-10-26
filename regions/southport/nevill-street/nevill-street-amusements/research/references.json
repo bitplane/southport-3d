@@ -1,0 +1,62 @@
+{
+  "accessed": "2026-10-26",
+  "represented_appearance": "Aug2024 Street View, corroborated operator July2024 photos; imagery composite dates unknown",
+  "rights": "Reference captures remain /tmp/88e0-* outside Git; procedural materials only.",
+  "sources": [
+    {
+      "id": "front",
+      "url": "https://www.google.com/maps/@53.6495391,-3.0057557,3a,90y,48h,98t/data=!3m4!1e1!3m2!1ssx40fj93WMNgY-1w9zR1wg!2e0",
+      "date": "2024-08",
+      "observed": "Four low red brick ribbon-window bays, cream continuous fascia, open dark entrances; tall corner has white two-storey oriel and classical pediment."
+    },
+    {
+      "id": "flavours",
+      "url": "https://www.google.com/maps/@53.6494065,-3.0055312,3a,90y,48h,99t/data=!3m4!1e1!3m2!1s-s43mJCXYVAoXsOuzmWDNA!2e0",
+      "date": "2024-08",
+      "observed": "Flavours cream frontage against Embassy party line; brown mullions, two narrow pale horizontal tubes under ribbon windows."
+    },
+    {
+      "id": "bath",
+      "url": "https://www.google.com/maps/@53.6499563,-3.0057077,3a,90y,130h,100t/data=!3m4!1e1!3m2!1sJ3V_qKQm9CMijqBXAKuWEA!2e0",
+      "date": "2024-08",
+      "observed": "Long three-storey red-brick range, broad cornice, three white projecting paired-storey bays, narrow sashes, boarded ground and service entrance, rearward pediment. Car park in front owned by ground asset."
+    },
+    {
+      "id": "3d",
+      "url": "https://www.google.com/maps/@53.6496072,-3.0054574,193a,35y,248.4h/data=!3m1!1e3",
+      "observed": "Actually rendered photogrammetry at headings0,82.8,165.6,248.4 and overhead. Low hall pitched roof front, two lower roof bands behind, tall Bath wing with long narrow pitched roof, open rear court. Rear openings and staircase partly visible, insufficient for accurate joinery."
+    },
+    {
+      "id": "operator",
+      "url": "https://www.silcock-leisure.co.uk/ice-creams/flavours-ice-cream-parlour-coffee-bar-nevill-st-southport/",
+      "observed": "Confirms identity and current operator; July2024 photo URLs retrieved."
+    },
+    {
+      "id": "operator-address",
+      "url": "https://www.silcock-leisure.co.uk/contact-us/",
+      "observed": "Operator gives32-34 Nevill Street; map directories vary36-40. Model covers entire remaining east-amusement-block, not a guessed address parcel."
+    },
+    {
+      "id": "rear-access",
+      "url": "https://www.google.com/maps/@53.6495328,-3.0050239,3a,90y,310h,98t/data=!3m4!1e1!3m2!1s6QkYXsOZWQNw82f5lJYdKQ!2e0",
+      "observed": "Attempted court viewpoint snaps to Stanley outside Embassy. No court panorama available from this attempt."
+    },
+    {
+      "id": "supplementary-search",
+      "url": "https://commons.wikimedia.org/wiki/Category:Nevill_Street,_Southport",
+      "observed": "Commons category found older street photos. Indexed Mapillary query yielded no useful matching image. Heritage/cinema query found no reliable building history; no invented historic attribution."
+    },
+    {
+      "id": "operator-exterior-photo",
+      "url": "https://www.silcock-leisure.co.uk/wp-content/uploads/2024/07/Flavours-ice-cream-3-768x516.jpg",
+      "observed": "Image actually inspected: cream fascia, large red italic text with pale/orange edging, dark open shop bays. Companion image1 is interior and was not modelled."
+    },
+    {
+      "id": "place-photo-front",
+      "url": "https://www.google.com/maps/place/Silcock%27s+Amusements+Nevill+Street/",
+      "credit": "Delta Charlie",
+      "date": "2023-12",
+      "observed": "Actually inspected exterior photo with corner and hall bays; clarified width ratio and fascia. Interior photos also loaded but not modelled."
+    }
+  ]
+}

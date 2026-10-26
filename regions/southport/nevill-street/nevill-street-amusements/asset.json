@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.nevill-street-amusements",
+  "name": "Silcocks Nevill Street Amusements and Flavours",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "four-bay-hall",
+    "bath-street-range",
+    "pitched-and-flat-roofs"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Aug2024 researched exterior with estimated dimensions; private court details unresolved; no interiors.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
+}

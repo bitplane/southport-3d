@@ -1,0 +1,22 @@
+{
+  "x": 9.555936,
+  "y": 116.86,
+  "base_z": 1.0,
+  "width": 30.775,
+  "depth": 36.61,
+  "hall_width": 25.2,
+  "hall_depth": 23.2,
+  "hall_eave": 7.65,
+  "hall_ridge": 9.0,
+  "bath_eave": 11.6,
+  "bath_ridge": 13.0,
+  "phase": "detail",
+  "ground_anchor": {
+    "site_xy": [
+      9.628,
+      128.01
+    ],
+    "status": "level floor at rough frontage midpoint, \u00b1.2m threshold uncertainty; ground unchanged",
+    "foundation_bottom_m": 0.4
+  }
+}
