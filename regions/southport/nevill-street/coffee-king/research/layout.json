@@ -3,7 +3,7 @@
   "width": 7.24,
   "x": -32.043,
   "y": 46.5759,
-  "base_z": -0.73,
+  "base_z": 1.0123,
   "shear_x": 0.0135,
   "shear_y": 0.02087,
   "front_height": 14.98,
@@ -28,5 +28,15 @@
     4.675,
     6.86
   ],
-  "basis": "A002/A003 survey drawings dated 2025, checked against April/May 2026 exterior photos and saved multi-angle Maps 3D. Rear finishes awaiting owner photographs."
+  "basis": "A002/A003 survey drawings dated 2025, checked against April/May 2026 exterior photos and saved multi-angle Maps 3D. Rear finishes awaiting owner photographs.",
+  "ground_anchor": {
+    "site_xy": [
+      -28.423,
+      46.6514494
+    ],
+    "paving_offset_m": 0.12,
+    "threshold_allowance_m": 0.02,
+    "evidence": "Rough shared street plane at main entrance; level building retained. Updated after street height migration.",
+    "previous_floor_m": -0.73
+  }
 }

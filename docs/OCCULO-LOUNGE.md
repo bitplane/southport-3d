@@ -103,3 +103,9 @@ in the busy scene; the production budget remains 256 MiB. At the reported
 flicker camera, the replacement streaming fix held Walk continuously for 40
 samples after settling, without additional downloads. Browser lifecycle
 regressions cover replacement admission and reserved-memory accounting.
+
+The level building floor is registered to the rough street height at the main
+entrance. `research/layout.json` records the site anchor and threshold allowance;
+this is a town-model placement, not a surveyed floor level. Building proportions
+remain unchanged. Small local entrance transitions remain separate from the
+broad street slope.

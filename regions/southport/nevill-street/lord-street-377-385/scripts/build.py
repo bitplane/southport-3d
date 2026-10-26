@@ -202,7 +202,13 @@ for name,frame,end in [('Lord',F,W),('Nevill',S,L)]:
   u=R+(end-R)*j/n;tube('Canopy glazing bar '+name,[(u,4.57,.12),(u,4.04,3.08)],.025,iron,'canopy',4,frame)
   box('Canopy vertical frieze bar',(u,3.69,3.055),(.045,.70,.065),iron,'canopy',frame)
  for u in D['canopy_posts_front' if name=='Lord' else 'canopy_posts_side']:
-  m=Mesh('Canopy cast iron post '+name);m.lathe((u,-3.05),[(0,.13),(.10,.13),(.14,.10),(.35,.10),(.46,.07),(.52,.07),(2.78,.047),(2.88,.065),(3.02,.085),(3.15,.085)],16);m.vertices=[(x,z,-y) for x,y,z in m.vertices];finish(m,'canopy',iron,frame)
+  from southport3d.terrain import GroundControls
+  ground=GroundControls(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/ground-controls.json')
+  local=(u,-3.05,0) if name=='Lord' else (-3.05,u,0)
+  p=T@Vector(local);foot=ground.height(p.x,p.y)+.12-D['base_z']
+  profile=[(0,.13),(.10,.13),(.14,.10),(.35,.10),(.46,.07),(.52,.07),(2.78,.047),(2.88,.065),(3.02,.085),(3.15,.085)]
+  profile=[(foot+z*(.52-foot)/.52 if z<.52 else z,r) for z,r in profile]
+  m=Mesh('Canopy cast iron post '+name);m.lathe((u,-3.05),profile,16);m.vertices=[(x,z,-y) for x,y,z in m.vertices];finish(m,'canopy',iron,frame)
   tube('Canopy structural bracket '+name,[(u,3.05,3.03),(u,4.45,.32)],.043,iron,'canopy',8,frame)
   if DETAIL:
    for phase in (0,math.tau/3,2*math.tau/3):

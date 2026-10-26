@@ -1,9 +1,11 @@
-"""Post contact with the existing named Nevill pavement grade; no new ground."""
-import json,os
+"""Canopy feet use the same rough paving controls as the street."""
+import os
 from pathlib import Path
-
+from functools import lru_cache
+from southport3d.terrain import GroundControls
+@lru_cache(maxsize=1)
+def ground():
+ return GroundControls(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/ground-controls.json')
 def post_base(d,x):
- g=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/nevill-street/public-realm/research/layout.json').read_text())['grade']
- y=d['y']+d['shear_y']*x-2.40
- t=max(0,min(1,(y-g['start_y'])/(g['top_y']-g['start_y'])))
- return g['start_z']+t*(g['top_z']-g['start_z'])-d['base_z']
+ y=-2.40
+ return ground().height(d['x']+x+d['shear_x']*y,d['y']+y+d['shear_y']*x)+.12-d['base_z']

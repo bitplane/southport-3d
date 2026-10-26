@@ -11,7 +11,7 @@
   "front_width": 25.884,
   "front_shear": 0.009,
   "side_shear": -0.00658,
-  "floor_z": -0.68,
+  "floor_z": 0.6448,
   "foundation_z": -1.05,
   "front_eaves": 12.45,
   "front_ridge": 15.8,
@@ -131,5 +131,15 @@
       "top": 14.9,
       "pots": 0
     }
-  ]
+  ],
+  "ground_anchor": {
+    "site_xy": [
+      47.131,
+      45.544478
+    ],
+    "paving_offset_m": 0.12,
+    "threshold_allowance_m": 0.02,
+    "evidence": "Rough shared street plane at main entrance; level building retained. Updated after street height migration.",
+    "previous_floor_m": -0.68
+  }
 }

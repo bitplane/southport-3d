@@ -33,5 +33,13 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "2026 exterior; image-derived dimensions. No interior. Photographic links only; relief is independently authored interpretation."
+  "scope": "2026 exterior; image-derived dimensions. No interior. Photographic links only; relief is independently authored interpretation.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
 }

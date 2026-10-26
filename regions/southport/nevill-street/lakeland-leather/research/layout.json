@@ -3,7 +3,7 @@
   "width": 7.0,
   "x": -40.593,
   "y": 46.39645314620508,
-  "base_z": -0.73,
+  "base_z": 1.2368,
   "shear_x": 0.0135,
   "shear_y": 0.021013979113560087,
   "front_height": 16.3,
@@ -25,5 +25,15 @@
   "canopy_depth": 2.5,
   "canopy_front_height": 3.65,
   "canopy_back_height": 4.32,
-  "basis": "7.00 m Allsop frontage; elevation ratios against surveyed 365 Lord Street; actual Google 3D four-angle roof inspection 2026-10-25. Roof and rear dimensions remain estimates."
+  "basis": "7.00 m Allsop frontage; elevation ratios against surveyed 365 Lord Street; actual Google 3D four-angle roof inspection 2026-10-25. Roof and rear dimensions remain estimates.",
+  "ground_anchor": {
+    "site_xy": [
+      -37.093,
+      46.47000207310254
+    ],
+    "paving_offset_m": 0.12,
+    "threshold_allowance_m": 0.02,
+    "evidence": "Rough shared street plane at main entrance; level building retained. Updated after street height migration.",
+    "previous_floor_m": -0.73
+  }
 }

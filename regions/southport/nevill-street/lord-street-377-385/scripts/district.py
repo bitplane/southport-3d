@@ -1,5 +1,7 @@
 """Bounded corner envelope: six curved facets, coarse columns and open canopy."""
-import json,math
+import json,math,os
+from pathlib import Path
+from southport3d.terrain import GroundControls
 from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 from blender_envelope import Surfaces
@@ -92,9 +94,11 @@ def surfaces(asset):
    s.quad(f'roof {j} {k}',[v(aa,3.05,4.02),v(bb,3.05,4.02),v(bb,.12,4.55),v(aa,.12,4.55)],cage=.30)
    s.quad(f'soffit {j} {k}',[v(aa,.12,4.53),v(bb,.12,4.53),v(bb,3.05,4.00),v(aa,3.05,4.00)],cage=.30,weight=.6)
    s.quad(f'fascia {j} {k}',[v(aa,3.05,3.15),v(bb,3.05,3.15),v(bb,3.05,3.35),v(aa,3.05,3.35)],cage=.15,weight=.6)
+ ground=GroundControls(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/ground-controls.json')
  for side,positions in [('front',d['canopy_posts_front']),('side',d['canopy_posts_side'])]:
   for k,u in enumerate(positions):
+   X,Y,_=T((u,-3.05,0) if side=='front' else (-3.05,u,0));foot=ground.height(X,Y)+.12-d['base_z']
    for j in range(6):
     a=math.tau*j/6;b=math.tau*(j+1)/6
-    face(f'{side} post {k} {j}',[(u+.065*math.cos(a),0,3.05-.065*math.sin(a)),(u+.065*math.cos(b),0,3.05-.065*math.sin(b)),(u+.065*math.cos(b),3.15,3.05-.065*math.sin(b)),(u+.065*math.cos(a),3.15,3.05-.065*math.sin(a))],side,cage=.14,weight=.6)
+    face(f'{side} post {k} {j}',[(u+.065*math.cos(a),foot,3.05-.065*math.sin(a)),(u+.065*math.cos(b),foot,3.05-.065*math.sin(b)),(u+.065*math.cos(b),3.15,3.05-.065*math.sin(b)),(u+.065*math.cos(a),3.15,3.05-.065*math.sin(a))],side,cage=.14,weight=.6)
  return s.result

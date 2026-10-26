@@ -34,10 +34,12 @@
   "scope": "September 2025 frontage appearance; actual four-angle Google 3D roof study. Hidden courtyard details deferred.",
   "build_inputs": {
     "master": [
-      "regions/southport/nevill-street/public-realm/research/layout.json"
+      "regions/southport/nevill-street/public-realm/research/layout.json",
+      "regions/southport/elevation/ground-controls.json"
     ],
     "validate": [
-      "regions/southport/nevill-street/public-realm/research/layout.json"
+      "regions/southport/nevill-street/public-realm/research/layout.json",
+      "regions/southport/elevation/ground-controls.json"
     ]
   }
 }

@@ -2,226 +2,33 @@
   "schema_version": 1,
   "datum": "southport-memorial-estimated-local-zero",
   "frame": "Memorial site XY metres; yaw from east43.5293 degrees",
-  "controls": {
-    "burlington-front-approach-0": {
-      "height_m": -0.735371,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-front-approach-1": {
-      "height_m": -0.738468,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-front-approach-2": {
-      "height_m": -0.748008,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-front-approach-3": {
-      "height_m": -0.754723,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-front-approach-4": {
-      "height_m": -0.758663,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-front-approach-5": {
-      "height_m": -0.769813,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-front-approach-6": {
-      "height_m": -0.775019,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-front-approach-7": {
-      "height_m": -0.783441,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-front-approach-8": {
-      "height_m": -0.7995,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-canopy-support-0": {
-      "height_m": -0.781477,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-canopy-support-1": {
-      "height_m": -0.784742,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-canopy-support-2": {
-      "height_m": -0.794404,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-canopy-support-3": {
-      "height_m": -0.7995,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-canopy-support-4": {
-      "height_m": -0.7995,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-canopy-support-5": {
-      "height_m": -0.7995,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-canopy-support-6": {
-      "height_m": -0.7995,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-canopy-support-7": {
-      "height_m": -0.7995,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    },
-    "burlington-canopy-support-8": {
-      "height_m": -0.7995,
-      "uncertainty_m": 0.15,
-      "status": "legacy-interface-estimate-preserved",
-      "evidence": "Barycentric height probe of regenerated Lord corridor paving after precise Burlington footprint exclusion. Local estimated datum, not a survey. Southwest party-line value extrapolated 1.25m from adjacent surface where Willow footprint masks direct probe."
-    }
-  },
+  "controls": {},
   "surfaces": {
     "burlington-front-approach": {
+      "type": "control_grid",
+      "terrain": "ground-controls.json",
+      "grid_m": 100,
+      "offset_m": 0.12,
       "bounds": [
         34.0,
         60.3,
         44.8,
         46.2
       ],
-      "axis_origin": [
-        34.189,
-        45.428
-      ],
-      "axis_direction": [
-        1,
-        0.009
-      ],
-      "profile": [
-        {
-          "distance_m": 0.0,
-          "control": "burlington-front-approach-0"
-        },
-        {
-          "distance_m": 1.2500506239748852,
-          "control": "burlington-front-approach-1"
-        },
-        {
-          "distance_m": 5.100206545817531,
-          "control": "burlington-front-approach-2"
-        },
-        {
-          "distance_m": 7.810316298595082,
-          "control": "burlington-front-approach-3"
-        },
-        {
-          "distance_m": 9.400380692291137,
-          "control": "burlington-front-approach-4"
-        },
-        {
-          "distance_m": 13.900562938600723,
-          "control": "burlington-front-approach-5"
-        },
-        {
-          "distance_m": 16.001648027377712,
-          "control": "burlington-front-approach-6"
-        },
-        {
-          "distance_m": 19.400785684090216,
-          "control": "burlington-front-approach-7"
-        },
-        {
-          "distance_m": 25.885048280772743,
-          "control": "burlington-front-approach-8"
-        }
-      ],
-      "description": "Narrow bounded building threshold interface. Approximate existing paving along facade. Building floor remains level at -0.68m; foundations extend below approach. Not a replacement ground owner or town-wide terrain profile."
+      "evidence": "Shared rough street height for entrance ramps and canopy feet; level floor independent."
     },
     "burlington-canopy-support": {
+      "type": "control_grid",
+      "terrain": "ground-controls.json",
+      "grid_m": 100,
+      "offset_m": 0.12,
       "bounds": [
         34,
         60.3,
         41.8,
         42.6
       ],
-      "axis_origin": [
-        34.21,
-        42.248
-      ],
-      "axis_direction": [
-        1,
-        0.009
-      ],
-      "profile": [
-        {
-          "distance_m": 0.0,
-          "control": "burlington-canopy-support-0"
-        },
-        {
-          "distance_m": 1.2500506239748852,
-          "control": "burlington-canopy-support-1"
-        },
-        {
-          "distance_m": 5.100206545817531,
-          "control": "burlington-canopy-support-2"
-        },
-        {
-          "distance_m": 7.810316298595082,
-          "control": "burlington-canopy-support-3"
-        },
-        {
-          "distance_m": 9.400380692291137,
-          "control": "burlington-canopy-support-4"
-        },
-        {
-          "distance_m": 13.900562938600723,
-          "control": "burlington-canopy-support-5"
-        },
-        {
-          "distance_m": 16.001648027377712,
-          "control": "burlington-canopy-support-6"
-        },
-        {
-          "distance_m": 19.400785684090216,
-          "control": "burlington-canopy-support-7"
-        },
-        {
-          "distance_m": 25.885048280772743,
-          "control": "burlington-canopy-support-8"
-        }
-      ],
-      "description": "Narrow outer verandah support line; building floor remains level and each post extends down to this named surface."
+      "evidence": "Shared rough street height for entrance ramps and canopy feet; level floor independent."
     }
   }
 }

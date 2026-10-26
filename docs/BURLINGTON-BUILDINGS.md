@@ -91,3 +91,9 @@ Scene revision: `6c67d6bfd2251913f1ba18af1a09e0c77d264fff0a13e93c624e4805bea3f08
 Final Detail/Walk/District counts are 31,088 / 25,880 / 494 triangles; downloads
 are 4,473,812 / 3,544,240 / 402,400 bytes. Ground, main envelope and neighbour
 footprints retain their documented estimates; this pass corrects the inscription.
+
+The level building floor is registered to the rough street height at the main
+entrance. `research/layout.json` records the site anchor and threshold allowance;
+this is a town-model placement, not a surveyed floor level. Building proportions
+remain unchanged. Small local entrance transitions remain separate from the
+broad street slope.

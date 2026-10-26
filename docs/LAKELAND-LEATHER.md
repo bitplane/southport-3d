@@ -100,3 +100,9 @@ District intentionally softens fine masonry and closes small perforations.
 The passage remains open, adjoining placeholder seams are flush, and the four
 posts meet the sloping shared pavement. The glass remains opaque: interiors and
 fine concealed courtyard details have not been reconstructed.
+
+The level building floor is registered to the rough street height at the main
+entrance. `research/layout.json` records the site anchor and threshold allowance;
+this is a town-model placement, not a surveyed floor level. Building proportions
+remain unchanged. Small local entrance transitions remain separate from the
+broad street slope.

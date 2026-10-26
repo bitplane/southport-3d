@@ -6,7 +6,7 @@
   "depth": 24.319,
   "shear_x": -0.00658,
   "shear_y": 0.03223,
-  "base_z": -0.75,
+  "base_z": 0.3509,
   "radius": 3.1,
   "roof_z": 13.85,
   "cornice_z": 13.05,
@@ -92,5 +92,15 @@
     10.9,
     16.7,
     23.8
-  ]
+  ],
+  "ground_anchor": {
+    "site_xy": [
+      10.184420000000001,
+      45.887229999999995
+    ],
+    "paving_offset_m": 0.12,
+    "threshold_allowance_m": 0.02,
+    "evidence": "Rough shared street plane at main entrance; level building retained. Updated after street height migration.",
+    "previous_floor_m": -0.75
+  }
 }

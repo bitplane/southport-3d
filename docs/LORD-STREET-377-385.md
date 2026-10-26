@@ -31,3 +31,9 @@ The envelope preflight has 808 triangles and no sampled projection misses. This 
 The initial massing comparison used corner, Lord Street, Nevill Street and roof renders against the research views. It corrected the canopy’s outer-band depth, upper pane proportions, Ionic shaft diameter and a coincident parapet skin. The wall and principal roof surfaces pass the coplanar overlap guard; the aperture probes verify visible glazing and an open pavement space below the canopy. A separate whole-source float32 GLB audit also identified coincident edge strips on the original roof slab, shopfront ends and lightwell floor; those were removed. Remaining frame-junction and buried parapet-bottom candidates are not claimed as a zero-overlap solid model.
 
 Published costs (all four parts, decimal MB): Detail 75,100 triangles / 9.15 MB download / 9.12 MB estimated GPU; Walk 28,076 / 2.62 MB / 2.60 MB; District 808 / 0.328 MB / 12.68 MB. The District texture allocation exceeds the untextured Walk mesh allocation despite its much lower triangle and download costs. All four parts were loaded at each actual level in the viewer without asset errors. The corner overview and entrance close-up confirm the independent neighbouring volumes, canopy supports on the pavement and filled chamfer paving. District retains the main silhouette but shows faceting and atlas seams when forced at close range; its intended use is distant viewing. Hidden rear finishes, exact roof-service interfaces, height survey and current Saucy Bird external signage remain opportunities for better photographs.
+
+The level building floor is registered to the rough street height at the main
+entrance. `research/layout.json` records the site anchor and threshold allowance;
+this is a town-model placement, not a surveyed floor level. Building proportions
+remain unchanged. Small local entrance transitions remain separate from the
+broad street slope.

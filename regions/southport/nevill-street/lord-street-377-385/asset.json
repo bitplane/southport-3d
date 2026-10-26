@@ -31,5 +31,13 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "July 2026 observed exterior of the former Bistrot Pierre, incoming Saucy Bird. Neighbouring Papa\u2019s/Willow Grove building excluded. Hidden rear finishes provisional."
+  "scope": "July 2026 observed exterior of the former Bistrot Pierre, incoming Saucy Bird. Neighbouring Papa\u2019s/Willow Grove building excluded. Hidden rear finishes provisional.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
 }

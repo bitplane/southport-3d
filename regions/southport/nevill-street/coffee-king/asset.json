@@ -31,5 +31,13 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "2026 exterior; 2025 survey drawings scaled and compared with photos. Rear courtyard details deferred."
+  "scope": "2026 exterior; 2025 survey drawings scaled and compared with photos. Rear courtyard details deferred.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
 }

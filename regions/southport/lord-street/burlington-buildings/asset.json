@@ -33,10 +33,12 @@
   "scope": "Coherent Burlington block from Willow Grove to the separate gabled range. Hidden rear details restrained and estimated; interiors excluded.",
   "build_inputs": {
     "master": [
-      "regions/southport/elevation/lord-burlington.json"
+      "regions/southport/elevation/lord-burlington.json",
+      "regions/southport/elevation/ground-controls.json"
     ],
     "validate": [
-      "regions/southport/elevation/lord-burlington.json"
+      "regions/southport/elevation/lord-burlington.json",
+      "regions/southport/elevation/ground-controls.json"
     ]
   },
   "publication_checks": [

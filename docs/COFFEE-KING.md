@@ -118,3 +118,9 @@ the alley mouth were inspected from separate viewpoints. The District review
 caught inverted pedestal-profile normals; their winding is corrected and the
 rebaked bases now retain their granite colour. A repeat publication reuses the
 checked package. Private screenshots are in ../output/coffee-king-*.png.
+
+The level building floor is registered to the rough street height at the main
+entrance. `research/layout.json` records the site anchor and threshold allowance;
+this is a town-model placement, not a surveyed floor level. Building proportions
+remain unchanged. Small local entrance transitions remain separate from the
+broad street slope.

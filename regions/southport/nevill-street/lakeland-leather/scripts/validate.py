@@ -4,7 +4,7 @@ from pathlib import Path
 from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1];D=json.loads((ROOT/'research/layout.json').read_text())
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/lakeland-leather.blend'));bpy.context.view_layer.update()
-sys.path.insert(0,str(ROOT/'scripts'));from ground_contact import post_base
+sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')];from ground_contact import post_base
 obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];deps=bpy.context.evaluated_depsgraph_get();triangles=0
 for o in obs:
  assert o.data.polygons and o.data.uv_layers,o.name
