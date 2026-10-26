@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.maritime-court",
+  "name": "Maritime Court, Promenade and Nevill Street",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "eight-storey-l-plan",
+    "projecting-brick-piers",
+    "glazed-stacks",
+    "open-rear-undercroft",
+    "flat-roof-and-lift"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py",
+    "geometry": "build.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "July2026 Promenade / August2024 rear / persistent Nevill architecture checked against May2011. Estimated dimensions; private interiors deferred.",
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "build_inputs": {
+    "validate": [
+      "regions/southport/nevill-street/maritime-court/scripts/check_package.py"
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/maritime-court.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "Researched exterior; measured visual estimates, private undercroft interiors deferred.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Maritime Court",
+      "collection": "architecture"
+    }
+  ],
+  "views": [
+    {
+      "name": "Promenade",
+      "position": [
+        -67.525,
+        24.2,
+        -298.2
+      ],
+      "target": [
+        -51.595,
+        15.2,
+        -224.911
+      ]
+    },
+    {
+      "name": "Rear court",
+      "position": [
+        -83.717,
+        37.2,
+        -151.412
+      ],
+      "target": [
+        -49.471,
+        14.2,
+        -215.139
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -41.738,
+      4.4,
+      -245.474
+    ],
+    "target": [
+      -40.039,
+      5.7,
+      -237.656
+    ]
+  },
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^(Shell|Architecture) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep actual apertures, projecting brick piers, silhouettes and inexpensive frames."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replaced by independent bounded whole-building envelope."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Thin opening lights, Juliet bars and small lettering are subpixel at transition."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Fine appearance projected onto bounded receivers."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Independent L-plan, major projecting piers, open undercroft and lift overrun; windows change appearance only.",
+    "max_bytes": 1500000,
+    "max_gpu_bytes": 5000000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 500,
+        "cage_m": 1.3
+      }
+    }
+  }
+}

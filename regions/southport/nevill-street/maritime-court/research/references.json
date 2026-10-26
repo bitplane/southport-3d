@@ -1,0 +1,12 @@
+{
+ "accessed":"2026-10-26",
+ "sources":[
+ {"id":"maps-3d","url":"https://www.google.com/maps/@53.6486436,-3.0071116,160a,35y,39.5t/data=!3m1!1e3","credit":"Google / imagery providers","use":"Four actual displayed GPU-browser obliques, headings 0,81.6,163.2,244.8 degrees. L-shaped roof, repeated piers, central lift overrun, rear open court; no photograph pixels in model."},
+ {"id":"promenade-2026","url":"https://www.google.com/maps/@53.6500289,-3.0076921,3a,80y,135h,105t/data=!3m4!1e1!3m2!1sJq4y3Hhrj1pOamVW3FnLbA!2e0","date":"July 2026","credit":"Google Street View","use":"Buff brick, eight residential rows, four tall window stacks, grey top infill, entrance and lettering, band courses."},
+ {"id":"nevill-2011","url":"https://www.google.com/maps/@53.6500145,-3.0069056,3a,110y,218h,115t/data=!3m4!1e1!3m2!1swsOlQWV-I8AfMIMe9gyjZg!2e0","date":"May 2011","credit":"Google Street View","use":"Recessed lower windows, projecting tall stacks with sills and occasional Juliet railings. Older view used only for persistent architecture; checked against current 3D."},
+ {"id":"rear-2024","url":"https://www.google.com/maps/@53.6495173,-3.006599,3a,85y,305h,105t/data=!3m4!1e1!3m2!1sOD0lWLgarYSR8cLBHcTnXQ!2e0","date":"August 2024","credit":"Google Street View","use":"Both rear wings and northeast end, eight window rows above open parking undercroft, pale bands, stair windows, narrow slot adjacent inner corner."},
+ {"id":"estate-agent","url":"https://www.ajestateagents.co.uk/property-for-sale/maritime-court-promenade-southport-pr8-1sp","credit":"Anthony James Estate Agents","use":"Listing establishes identity and residential use; photographs not used as texture sources."},
+ {"id":"osm","url":"https://www.openstreetmap.org/way/30141910","credit":"OpenStreetMap contributors, ODbL","use":"Metric six-corner plan inherited from block layout, compared against Google 3D."}
+ ],
+ "failed_or_unhelpful":["Google Street View GPU browser displayed black; normal offscreen browser rendered panoramas correctly.","API viewpoint on pedestrian Nevill initially selected unavailable August 2019 VR360 imagery; retried nearby car panorama successfully.","Web query Maritime Court Southport Mapillary returned no useful building imagery; 3D and actual rear Street View provide stronger coverage.","Wikimedia Promenade category search did not identify target-specific close detail."]
+}

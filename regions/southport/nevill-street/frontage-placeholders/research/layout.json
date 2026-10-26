@@ -1009,14 +1009,14 @@
       ],
       "height_m": 26,
       "height_uncertainty_m": 4,
-      "status": "placeholder-massing",
+      "status": "replaced-by-detailed-asset",
       "evidence": [
         "google-3d-orbit",
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      "footprint_confidence": "Six-corner L-plan checked in Google 3D four-direction orbit 2026-10-26. Maritime Court orthogonal fit retains plan within .06m; observed pier projections explicit in detailed asset. Approximate metric uncertainty .8m.",
+      "replace_with": "southport.nevill-street.maritime-court"
     },
     {
       "id": "east-upper-terrace-baths",

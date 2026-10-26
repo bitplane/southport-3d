@@ -1,0 +1,19 @@
+{
+  "origin_site": [-31.244,239.568],
+  "u_axis": [-0.977184,-0.212394],
+  "v_axis": [0.212394,-0.977184],
+  "width": 47.555,
+  "depth": 41.473,
+  "wing": 16.96,
+  "base": 2.2,
+  "podium": 2.25,
+  "floor": 2.85,
+  "storeys": 8,
+  "roof": 25.05,
+  "parapet": 25.65,
+  "lift_top": 27.65,
+  "source_placeholder": "southport.nevill-street.frontage-placeholders/promenade-apartments",
+  "osm_way": "30141910",
+  "uncertainty_m": {"plan":0.8,"height":1.5,"detail":0.25},
+  "notes": "Local u follows Promenade southwest, v follows Nevill southeast. Orthogonal fit to six mapped wall corners: max residual about .05m before observed pier projections. Eight window rows above open rear undercroft counted in 2024/2026 Street View. Rough ground controls retained; base chosen below minimum adjacent pavement, no terrain drape."
+}
