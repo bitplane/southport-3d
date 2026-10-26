@@ -1,11 +1,11 @@
 # Waterfront height reconstruction
 
-The waterfront migration is staged in the separate elevation review. It is not
-ready to replace the main town or establish the pier datum. The reference is the
+The waterfront migration is integrated into the main town for ordinary snag
+review. It does not establish the pier datum or certify every ground height. The reference is the
 EA terrain/last-return surface survey, with the provisional memorial tie described
 in [the elevation migration](ELEVATION-MIGRATION.md).
 
-## Raster-derived staged surfaces
+## Raster-derived surfaces
 
 Southern-lake ground uses the common 5 m terrain lattice, with sixteen bounded
 refinements selected from actual owned-road errors: twelve at 2.5 m and four at
@@ -31,7 +31,7 @@ End controls join the measured approach pavement. The provisional 0.30 m structu
 depth and 1.10 m rail height are still estimates. Decorative bridge detail is deferred.
 
 Marine Way's measured **reference** profile excludes stations 95–105 m around the
-pylon/crosshead, interpolating between clean neighbouring deck samples. It now drives the isolated structural and road packages. Abutments and the
+pylon/crosshead, interpolating between clean neighbouring deck samples. It now drives the published structural and road packages. Abutments and the
 western retaining base meet the measured mainland. All three exported ground
 levels pass 123 upper/lower support and lateral promenade checks; the three
 structural levels pass exported coplanar checks. Approach centreline differences

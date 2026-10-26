@@ -31,14 +31,13 @@ metric dimensions, **not an engineering survey**. Hidden foundations, reinforcem
 bearing internals, unreadable inscriptions and north-side underside fittings
 remain unmodelled.
 
-The isolated elevation-migration package uses the EA DSM centre-strip deck
+The integrated elevation-migration package uses the EA DSM centre-strip deck
 profile, excluding pylon-contaminated stations. The road crown reaches about
 4.96 m local; the walking strip carries the explicit 0.12 m pavement allowance.
 The mainland follows the shared terrain and the lower promenade remains a
 separate support below the deck. See [waterfront heights](WATERFRONT-HEIGHTS.md)
 for provenance, provisional water level and remaining retaining/landing work.
-These measured packages are staged in the elevation review; the main town still
-uses the preserved baseline. Ground is identical at all three viewing levels.
+These raster-derived packages are integrated in the main town for snag review. Ground is identical at all three viewing levels.
 
 Detail contains 36,538 triangles; Walk retains 29,842, omitting fine wires,
 curved parapet brackets and sleeve collars. District is a separately authored
@@ -69,8 +68,8 @@ identified long paving fan residue at site (-63.919, 588.858), about 0.118 mm wi
 is recorded explicitly alongside the pre-existing numerical seam residues.
 
 The measured isolated package passes 123 exported upper/lower support checks
-with `scripts/check_scene.py --packages`. Full neighbouring seam and interactive
-walking acceptance must be repeated before the migration replaces the town.
+with `scripts/check_scene.py --packages`. Remaining neighbouring seam and
+interactive walking defects are now handled in the main viewer through snags.
 The earlier baseline passed 99 neighbouring seam samples. In that baseline,
 actual Walk mode remained on the lower promenade through a
 District switch and staged tileset replacement; upper walking follows the bridge

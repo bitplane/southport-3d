@@ -1,10 +1,12 @@
 # Measured elevation migration
 
-The whole published map is being moved from estimated grades to a common
-measured reference before the pier is modelled. The existing town publication
-remains the baseline until connected ground, foundations, furniture and bridge
-approaches have been checked together. The separate terrain review does not
-mean the town migration is complete.
+The raster-derived regional ground and placeholder packages are now integrated
+through the ordinary town publication. Use the main viewer and snag queue for
+remaining corrections; the separate elevation-review application is retired.
+This integration does not certify the terrain as an as-built survey. Detailed
+building thresholds, Eastbank/Tulketh layers and waterfront sharp breaks remain
+open work. Waterfront correction is assigned to a background task; pier detail
+remains deferred until its support levels are understood.
 
 ## Reference and datum
 
@@ -95,12 +97,12 @@ placeholder foundations are the first isolated migration pilot, sharing
 the measured grid and paving is offset above it. This is not a kerb survey.
 Hoghton, Leicester, Stanley, West Street, the Lord Street corridor, Nevill and
 Chapel/Station ground and placeholder foundations have now been built and checked
-as isolated packages. The first five have exported triangle-plane and ground-LoD
+and published as connected regional packages. The first five have exported triangle-plane and ground-LoD
 equality checks; Nevill retains its crossing, parking-recess and ownership probes,
 and Chapel retains entrance-ramp and furniture-contact checks. Nevill upper-street
 and Promenade renders have been inspected. These checks do not complete the
-assembled-neighbourhood or detailed-building attachment review. Remaining regions,
-waterfront level breaks and bridge corrections are pending. Pier modelling remains
+assembled-neighbourhood or detailed-building attachment review. Use ordinary
+snags for remaining regions, waterfront level breaks and bridge corrections. Pier modelling remains
 deferred.
 
 For acquisition, use WCS 2.0.1 `GetCoverage`, the service and coverage ID in the
@@ -111,21 +113,16 @@ directory. Ordinary builds need neither PROJ nor network downloads.
 ```sh
 python3 tools/audit_elevation.py
 python3 tools/prepare_terrain.py
-python3 tools/create_elevation_review.py
 /usr/bin/python3 -m pytest -q tests/test_terrain.py tests/test_elevation.py
 ```
 
-The disposable local review is `/reviews/elevation/`: a toggle for the isolated
-migrated region packages, measured terrain, optional
-published-ground points, actual/exaggerated height scales and road orientation
-guides. It is not the migrated town. Recreate it after publication if needed.
-
-Use `python3 tools/project.py publish --package-only --asset <id>` to build and
-check all three LoDs without changing the live catalog. Publish the connected
-group normally only once its neighbours and detailed model attachments agree.
+Review changes in the main viewer and record defects through its snag collector.
+`publish --package-only --asset <id>` remains available for intermediate checks;
+then publish corrected connected assets together with repeated `--asset` options.
+The private baseline remains available for comparison, not as the active scene.
 
 
-## Waterfront staging
+## Waterfront integration
 
 Marine Drive mainland ground and placeholder foundations use the measured field.
 Nine bounded 1.25 m refinements resolve sharp shore gradients that a uniform 5 m
@@ -135,8 +132,8 @@ and a fixed 360,000-triangle regional budget. The current build has 355,097
 triangles. The existing ownership audit records sub-millimetre numerical residues
 separately; it does not certify every non-coplanar intersection.
 
-Marine Drive and the southern lake are now included in the separate migration
-review, together with measured bridge profiles. The main town is unchanged.
+Marine Drive and the southern lake are included in the main town, together with
+the raster-derived bridge profiles.
 See [waterfront heights](WATERFRONT-HEIGHTS.md) for deck evidence, provisional
 water and the unresolved sharp retaining edges and Funland landing geometry.
 
@@ -155,12 +152,12 @@ Remaining connected migrations: Eastbank and Tulketh railway layers,
 waterfront retaining breaks and landings, then all detailed
 building foundations and entrances. Check neighbouring exported seams together,
 followed by measured bridge deck/approach and underside-clearance corrections.
-No main-catalog elevation switch or pier modelling has been performed.
+The regional elevation switch is published; pier modelling remains deferred.
 
-## London Square and Glebe Place staging
+## London Square and Glebe Place integration
 
 London Square and Glebe Place now have isolated measured-ground packages in the
-review, making nine connected inland regions staged. The square preserves its
+main town, making nine connected inland regions migrated. The square preserves its
 explicit dropped kerbs, crossing ramps, planting offsets and upright furniture.
 The reflecting pools remain level and cut through underlying road bases, rather
 than letting the rising terrain emerge through their water. Long garden returns
@@ -189,7 +186,7 @@ triangles per level against their declared planes. Overview and garden renders
 are also reviewed because numerical height checks alone missed the old road
 under the newly level pools.
 
-The main town still uses its preserved baseline. Eastbank/railway, the remaining
+The integrated main town now uses these regional packages. Eastbank/railway, the remaining
 waterfront layers, detailed building attachments and bridges are outstanding.
 
 
