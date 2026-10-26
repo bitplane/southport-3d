@@ -46,9 +46,12 @@ against neighbouring exported meshes. No inscription has been read.
 
 ## Status
 
-The first ground correction replaces the broad provisional lawn inside the
-bounded civic area with paving. It does **not** yet reconstruct the fountain,
-checkerwork, pavilions, stonework, planting, or street furniture. It must not be
+The ground correction replaces the broad provisional lawn inside the
+bounded civic area with paving. A simplified checker strip uses estimated 2 by
+1 m cells on the garden axis; it is cut out of the underlying paving and
+reserves a 10 m radius around the fountain for later reconstruction. It does
+**not** yet reconstruct the fountain, pavilions, stonework, planting, or street
+furniture. It must not be
 presented as completing the snag. Ground, accessibility, the two placeholder
 buildings and all three assembled viewer levels still require detailed work and
 visual review.

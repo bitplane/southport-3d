@@ -20,7 +20,7 @@ BLOCKS=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/D['block_plan']).read
 D['building_cutouts'] += [{'id':b['id'],'polygon':b['footprint']} for b in BLOCKS['blocks']]
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
-colours={'paving':(.48,.46,.41),'asphalt':(.085,.092,.093),'lawn':(.16,.25,.10),'kerb':(.40,.40,.37)}
+colours={'paving':(.48,.46,.41),'asphalt':(.085,.092,.093),'lawn':(.16,.25,.10),'kerb':(.40,.40,.37),'pattern':(.32,.37,.34)}
 mats={}
 for name,c in colours.items():
  m=bpy.data.materials.new('Provisional '+name);m.use_nodes=True;m.diffuse_color=(*c,1)
@@ -104,13 +104,22 @@ green=plan.difference(green,plan.polygons([rect(-245,-136,-25,25)]))
 paths=plan.polygons([p for p,mat,pr,_ in rows if mat=='paving'])
 green=plan.difference(plan.difference(green,road),paths)
 paved=plan.difference(plan.difference(available,road),green)
+# Historic checkerwork on the longitudinal axis, conservatively simplified.
+# The circular fountain zone is reserved for its independently modelled tiers.
+checker=[]
+for i in range(32):
+ for j in range(4):
+  if (i+j)%2==0:checker.append(rect(-220+2*i,-218+2*i,-3+j,-2+j))
+ring=[(-186.7+10*math.cos(i*math.tau/48),-1+10*math.sin(i*math.tau/48)) for i in range(48)]
+pattern=plan.intersection(paved,plan.difference(plan.polygons(checker),plan.polygons([ring])))
+paved=plan.difference(paved,pattern)
 compiled={};collections={};cuts=D['tile_cuts']
 for ti,(lo,hi) in enumerate(zip(cuts,cuts[1:])):
  name=f'section-{ti:02d}';c=bpy.data.collections.new(name);s.collection.children.link(c);collections[name]=c
  # A grade break is a shared geometric edge, not two independently tilted faces.
  for ya,yb in zip([ymin,36,41,ymax],[36,41,ymax]):
   cell=plan.polygons([rect(lo,hi,ya,yb)])
-  for mat,g in [('asphalt',road),('lawn',green),('paving',paved)]:
+  for mat,g in [('asphalt',road),('lawn',green),('paving',paved),('pattern',pattern)]:
    m=compiled.setdefault((name,mat),Mesh('Ground '+name+' '+mat))
    for p in plan.triangles(plan.intersection(g,cell)):
     for lifted in SURFACE.lift_triangle(p):m.add([(x,y,0) for x,y,z in lifted],[(0,1,2)])
