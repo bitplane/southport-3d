@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "aerial",
+      "url": "https://www.google.com/maps/@53.65268,-3.01172,190m/data=!3m1!1e3",
+      "accessed": "2026-10-26",
+      "note": "Loaded satellite, parcel and access; Earth 3D not available in browser."
+    },
+    {
+      "id": "front",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65280,-3.01152&heading=215&pitch=0",
+      "date": "2019-03",
+      "note": "Loaded Street View: entry, curved canopy and sign."
+    },
+    {
+      "id": "rear",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65245,-3.01165&heading=350&pitch=5",
+      "date": "2018-08",
+      "note": "Loaded service elevation and roof profile."
+    },
+    {
+      "id": "road",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65265,-3.0120&heading=75&pitch=5",
+      "date": "2024-08",
+      "note": "Loaded road side glazing and roof."
+    },
+    {
+      "id": "news",
+      "url": "https://www.southportvisiter.co.uk/whats-on/food-drink-news/chain-restaurants-southport-you-can-12279871",
+      "date": "2016",
+      "note": "Photograph showing entrance return and roof."
+    },
+    {
+      "id": "gpu-3d",
+      "url": "https://www.google.com/maps/@53.6529228,-3.0127123,81a,35y,110.25h,39.55t/data=!3m1!1e3",
+      "accessed": "2026-10-26",
+      "note": "Loaded GPU-enabled photogrammetry from opposing close orbits; recessed roof and plant."
+    }
+  ]
+}

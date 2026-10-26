@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/pizza-hut.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Ocean Plaza",
+  "status": "Provisional exterior, roof and fourth elevation estimated",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "walls",
+      "name": "Walls",
+      "collection": "walls"
+    },
+    {
+      "id": "roof",
+      "name": "Roof",
+      "collection": "roof"
+    },
+    {
+      "id": "joinery",
+      "name": "Joinery",
+      "collection": "joinery"
+    }
+  ],
+  "views": [
+    {
+      "name": "Entrance",
+      "position": [
+        -41,
+        12,
+        -690
+      ],
+      "target": [
+        -45,
+        4,
+        -660
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "architecture",
+      "match": ".*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve facade openings and roof profile at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed envelope."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Bounded independent hipped and raised roof envelope; canopy simplified.",
+    "max_bytes": 1500000,
+    "max_gpu_bytes": 13000000,
+    "parts": {
+      "walls": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 40,
+        "cage_m": 0.5,
+        "source_parts": [
+          "walls",
+          "joinery"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 60,
+        "cage_m": 0.6,
+        "source_parts": [
+          "roof",
+          "joinery"
+        ]
+      },
+      "joinery": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 8,
+        "cage_m": 0.5,
+        "source_parts": [
+          "roof"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      -40,
+      1,
+      -680
+    ],
+    "target": [
+      -45,
+      3,
+      -660
+    ]
+  }
+}

@@ -646,7 +646,7 @@
         "OSM-seed"
       ],
       "footprint_confidence": "Broad OSM wall outline checked in Google3D/aerial context; roof parallax and obscured rear walls \u00b11\u20133m. Height envelope is an estimate, not detailed architecture.",
-      "replace_with": null,
+      "replace_with": "southport.marine-drive.pizza-hut",
       "osm_way": "52902208"
     },
     {
