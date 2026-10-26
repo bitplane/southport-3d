@@ -19,7 +19,7 @@ for o in obs:
  assert o.data.uv_layers,o.name
  trees.append((o.name,BVHTree.FromPolygons([v.co for v in o.data.vertices],[list(t.vertices) for t in o.data.loop_triangles],all_triangles=True)))
 assert triangles<D['budgets']['triangles_per_level'],triangles
-probes=[(-136.01,26,'asphalt'),(218.01,26,'asphalt'),(-701.3,31.9,'asphalt'),(390,24,'asphalt'),(-745.9,17.1,'lawn'),(546,19,'lawn'),(-180,40,'paving'),(280,40,'paving')]
+probes=[(-220,0,'paving'),(-210,12,'paving'),(-180,0,'paving'),(-150,-12,'paving'),(-136.01,26,'asphalt'),(218.01,26,'asphalt'),(-701.3,31.9,'asphalt'),(390,24,'asphalt'),(-745.9,17.1,'lawn'),(546,19,'lawn'),(-180,40,'paving'),(280,40,'paving')]
 for x,y,kind in probes:
  hits=[name for name,tree in trees if 'kerb' not in name and tree.ray_cast(Vector((x,y,20)),Vector((0,0,-1)),100)[0] is not None]
  assert len(hits)==1 and kind in hits[0],(x,y,kind,hits)

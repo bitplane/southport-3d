@@ -97,6 +97,10 @@ excluded=plan.polygons([p for p,_ in cutters]);available=plan.difference(outer,e
 # not survive as thousands of tiny slivers in the published street mesh.
 road=plan.intersection(available,plan.polygons([p for p,mat,pr,_ in rows if mat=='asphalt']))
 green=plan.intersection(available,plan.polygons([p for p,mat,pr,_ in rows if mat=='lawn']))
+# Town Hall Gardens is a paved civic plaza, not the broad OSM landscape lawn.
+# This bounded correction is provisional; garden furnishings and patterned
+# surfaces are reconstructed separately after their positions are checked.
+green=plan.difference(green,plan.polygons([rect(-245,-136,-25,25)]))
 paths=plan.polygons([p for p,mat,pr,_ in rows if mat=='paving'])
 green=plan.difference(plan.difference(green,road),paths)
 paved=plan.difference(plan.difference(available,road),green)
