@@ -62,6 +62,26 @@ current height; an overhead bridge or ground far below is not a substitute.
 Switching Orbit → Walk still drops onto the first loaded ground below the camera.
 This remains an inspection navigator, not wall collision or falling physics.
 
+## Raster evidence is not ground acceptance
+
+DTM removes classified objects and interpolates gaps; it can retain artefacts or
+smooth away walls and steps. DSM includes buildings, trees and bridge decks.
+Neither is an as-built ground survey. DTM/DSM agreement is not independent
+corroboration, and their difference alone cannot classify the correct surface.
+Before changing an asset's ground or foundation, inspect its footprint and
+neighbourhood in imagery, identify the intended support layer, and record which
+samples are exposed ground, obscured/interpolated, or unresolved. Avoid roof,
+canopy, bridge-edge and water samples as automatic ground controls.
+
+Keep two acceptance questions separate: (1) does the chosen height represent the
+intended real surface, supported by evidence; (2) does the mesh reproduce that
+height consistently? Native-raster error, triangle-plane and seam checks answer
+only the second question. A finer mesh can reproduce an artefact more precisely.
+Use explicit bounded controls at independently established landings and retaining
+breaks. Do not smooth a suspected bridge return into ground or translate a building
+to satisfy a suspect sample. Preserve the staged scene until these conflicts have
+been reviewed.
+
 ## Build and review contract
 
 Declare geographic records under `build_inputs.master` and `validate` where

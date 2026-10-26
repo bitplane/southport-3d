@@ -173,9 +173,62 @@ def run(reference_dir, output):
     print(json.dumps({k: report[k] for k in ['odn_at_local_zero_m', 'anchor_offset_spread_m', 'projection_fit_max_error_m']}, indent=2))
 
 
+def audit_waterfront_reference(reference_dir, output):
+    """Flag source ambiguity; agreement is not proof of a ground observation."""
+    metadata = json.loads((ROOT/'regions/southport/elevation/survey/terrain.json').read_text())
+    recipe = json.loads((ROOT/'regions/southport/elevation/survey/waterfront-review.json').read_text())
+    matrix = np.asarray(metadata['site_xy_to_bng_affine'])
+    datum = metadata['local_zero_odn_m']
+    dtm = Raster(reference_dir/'southport-dtm-1m.tif')
+    dsm = Raster(reference_dir/'southport-dsm-1m.tif')
+    output.mkdir(parents=True, exist_ok=True)
+    rows = []
+    image = Image.new('RGB', (1100, 280*len(recipe['transects'])), 'white')
+    draw = ImageDraw.Draw(image)
+    for number, line in enumerate(recipe['transects']):
+        xy = np.linspace(line['start_xy'], line['end_xy'], line['samples'])
+        bng = xy@matrix[:2]+matrix[2]
+        ground, objects = dtm.sample(bng)-datum, dsm.sample(bng)-datum
+        if not np.isfinite([ground, objects]).all():
+            raise ValueError('Missing raster coverage in '+line['id'])
+        probes = []
+        for i, (point, a, b) in enumerate(zip(xy, ground, objects)):
+            flags = []
+            if abs(b-a) >= 1:
+                flags.append('surface-separation-review')
+            if i and abs(a-ground[i-1])/float(np.linalg.norm(point-xy[i-1])) > .25:
+                flags.append('steep-dtm-transition-review')
+            probes.append({'xy': point.tolist(), 'dtm_local_m': float(a),
+                           'dsm_local_m': float(b), 'flags': flags})
+        rows.append({'id': line['id'], 'context': line['context'], 'probes': probes})
+        top = 280*number
+        draw.text((15, top+12), line['id']+' : blue DTM, red DSM; local metres', fill='black')
+        lo, hi = min(ground.min(), objects.min())-1, max(ground.max(), objects.max())+1
+        for value in range(math.ceil(lo), math.floor(hi)+1):
+            y = top+245-(value-lo)/(hi-lo)*200
+            draw.line((55,y,1060,y), fill='#dddddd')
+            draw.text((15,y-5), str(value), fill='black')
+        for values, colour in [(ground,'#2255aa'),(objects,'#b03030')]:
+            points = [(55+i/(len(values)-1)*1005, top+245-(v-lo)/(hi-lo)*200)
+                      for i,v in enumerate(values)]
+            draw.line(points, fill=colour, width=2)
+        draw.text((55,top+257), str(line['start_xy'])+' -> '+str(line['end_xy']), fill='black')
+    report = {'status': 'diagnostic-not-ground-acceptance',
+              'limitations': recipe['limitations'], 'local_zero_odn_m': datum,
+              'sources': {r.path.name: hashlib.sha256(r.path.read_bytes()).hexdigest()
+                          for r in [dtm,dsm]}, 'transects': rows}
+    (output/'waterfront-reference-review.json').write_text(json.dumps(report,indent=2)+'\n')
+    image.save(output/'waterfront-reference-review.png')
+    print('Waterfront reference probes:', sum(len(r['probes']) for r in rows),
+          'flagged:', sum(bool(p['flags']) for r in rows for p in r['probes']))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--reference-dir', type=Path, default=ROOT.parent/'references/elevation')
     parser.add_argument('--output', type=Path, default=ROOT.parent/'output/elevation')
+    parser.add_argument('--waterfront-reference', action='store_true',
+                        help='Compare native DTM/DSM on recorded waterfront transects; no mesh acceptance')
     args = parser.parse_args()
-    run(args.reference_dir.resolve(), args.output.resolve())
+    action = audit_waterfront_reference if args.waterfront_reference else run
+    action(args.reference_dir.resolve(), args.output.resolve())

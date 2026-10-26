@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "status": "research-review-not-height-controls",
+  "limitations": "DTM is classified/interpolated terrain, DSM contains objects. Their agreement is not independent confirmation; separation does not identify which return is ground. Transects flag review locations only. No automatic height replacement, smoothing or building translation is authorised by this diagnostic.",
+  "transects": [
+    {
+      "id": "funland-x-40",
+      "start_xy": [
+        -40,
+        280
+      ],
+      "end_xy": [
+        -40,
+        390
+      ],
+      "samples": 111,
+      "context": "Western forecourt/building-edge and pier-side transition; footprint registration provisional."
+    },
+    {
+      "id": "funland-x-20",
+      "start_xy": [
+        -20,
+        280
+      ],
+      "end_xy": [
+        -20,
+        390
+      ],
+      "samples": 111,
+      "context": "Forecourt, Funland roof footprint, then Marine Way vicinity. DTM beneath the building is interpolation, not a floor survey."
+    },
+    {
+      "id": "funland-x0",
+      "start_xy": [
+        0,
+        280
+      ],
+      "end_xy": [
+        0,
+        390
+      ],
+      "samples": 111,
+      "context": "Open side of Funland and bridge approach; upper and lower surfaces must remain distinct."
+    },
+    {
+      "id": "funland-x20",
+      "start_xy": [
+        20,
+        280
+      ],
+      "end_xy": [
+        20,
+        390
+      ],
+      "samples": 111,
+      "context": "Promenade-side ground toward the bridge/lower promenade transition."
+    }
+  ],
+  "imagery": [
+    {
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6505773,-3.0081655&heading=135&pitch=-12",
+      "capture_date": "2011-05",
+      "review_date": "2026-10-26",
+      "observed": "Paved forecourt and arcade door thresholds; views rotated to 40, 135 and 235 degrees. Pier entrance joins the forecourt. Kiosk hides the lower stair flight; no reliable stair count or absolute height obtained.",
+      "private_captures": [
+        "funland-landing-street.png",
+        "funland-landing-south.png",
+        "funland-steps-west.png"
+      ]
+    },
+    {
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65045,-3.00835&heading=45&pitch=0",
+      "review_date": "2026-10-26",
+      "result": "No Street View imagery available here."
+    }
+  ]
+}

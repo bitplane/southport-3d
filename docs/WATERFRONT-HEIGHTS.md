@@ -5,7 +5,7 @@ ready to replace the main town or establish the pier datum. The reference is the
 EA terrain/last-return surface survey, with the provisional memorial tie described
 in [the elevation migration](ELEVATION-MIGRATION.md).
 
-## Measured surfaces
+## Raster-derived staged surfaces
 
 Southern-lake ground uses the common 5 m terrain lattice, with sixteen bounded
 refinements selected from actual owned-road errors: twelve at 2.5 m and four at
@@ -64,3 +64,27 @@ explicitly provisional control with 0.5 m uncertainty. Do not derive ground, dec
 heights or pier geometry from it. The previous 0.6 m local water estimate is retained
 in the superseded controls for comparison. A current level survey or suitable
 shoreline reference is still needed to establish the water plane confidently.
+
+
+## Funland source review
+
+`python3 tools/audit_elevation.py --waterfront-reference` compares native DTM and
+DSM along four recorded 110 m transects at 1 m intervals. Recipe, imagery links
+and limitations are in `elevation/survey/waterfront-review.json`; generated JSON
+and profile charts stay in `../output/elevation`. The 444 probes flag 122 sample
+positions for review (surface separation of at least 1 m or an adjacent DTM
+slope above 25%). These are triage flags, not 122 confirmed ground defects.
+
+At site (-20, 340), DTM is about 3.33 m local and DSM about 10.20 m: this is within
+the provisional Funland footprint. Neither establishes the building's floor.
+At (0, 380), DTM is about -0.67 m and DSM 3.30 m, demonstrating competing levels
+near the crossing; the lower value must not be substituted for the upper deck.
+The open forecourt samples near (0, 300) agree around 3.22 m, which is a candidate
+ground observation, not independent verification of its absolute elevation.
+
+May 2011 Street View was inspected facing the arcade, forecourt and pier entrance.
+It confirms their accessible paved connection, but the kiosk obscures the stairs.
+A lower-side query returned no imagery. Stair count, lower landing registration
+and current alterations remain unresolved. No ground or building was moved based
+on these diagnostic flags. See the elevation guidance for separate evidence and
+mesh-consistency acceptance.
