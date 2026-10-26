@@ -1,0 +1,15 @@
+{
+  "phase": "detail",
+  "origin": [
+    -10.256,
+    113.366,
+    0.95
+  ],
+  "width": 10.3,
+  "depth": 10.35,
+  "main_depth": 7.3,
+  "eave": 5.35,
+  "ridge": 6.55,
+  "dimension_uncertainty_m": 1.0,
+  "basis": "Corner and depth inherited from registered provisional block; party join estimated from 2026 frontage and Google 3D, requiring visual review. Ground rises approximately 0.25 m along Cable; origin approximates pavement."
+}

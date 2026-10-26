@@ -805,12 +805,12 @@
           174.193
         ],
         [
-          -10.256,
-          113.366
+          -10.835,
+          123.666
         ],
         [
-          -20.615,
-          113.641
+          -21.195,
+          123.666
         ],
         [
           -21.201,
@@ -881,8 +881,9 @@
         "google-plan-comparison",
         "osm-seed"
       ],
-      "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      "footprint_confidence": "Remaining provisional terrace after approximate Jacksons 21\u201323 corner split; party datum at y=123.666 m pending image comparison.",
+      "replace_with": null,
+      "notes": "Corner parcel now owned by southport.nevill-street.jacksons; remaining terrace is provisional."
     },
     {
       "id": "east-amusement-block",
@@ -1578,6 +1579,42 @@
       ],
       "footprint_confidence": "Measured frontage and overall depth; shared Lakeland party line, estimated rear extent.",
       "replace_with": "southport.nevill-street.caffe-nero"
+    },
+    {
+      "id": "jacksons-footprint",
+      "osm_way": "376047286",
+      "footprint": [
+        [
+          -10.312,
+          114.366
+        ],
+        [
+          -10.8328,
+          123.666
+        ],
+        [
+          -21.1828,
+          123.666
+        ],
+        [
+          -20.606,
+          113.366
+        ],
+        [
+          -11.256,
+          113.366
+        ]
+      ],
+      "height_m": 6.55,
+      "height_uncertainty_m": 1.0,
+      "status": "replaced-researched-exterior",
+      "evidence": [
+        "google-3d-orbit",
+        "google-plan-comparison",
+        "osm-seed"
+      ],
+      "footprint_confidence": "Approximate 21\u201323 Nevill split and splayed entrance; party line estimated within 1 m. Ground cutter agrees with Jacksons recipe.",
+      "replace_with": "southport.nevill-street.jacksons"
     }
   ],
   "policy": "Google 3D multi-angle shape and aerial comparison govern interpretation. OSM is a seed, not authority. Flat tops are placeholder height bounds, not asserted flat roofs. Joined mapped ranges are not individual legal parcels.",

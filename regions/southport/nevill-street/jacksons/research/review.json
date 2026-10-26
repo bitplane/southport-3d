@@ -1,0 +1,11 @@
+{
+  "state": "Locally published provisional exterior; awaiting independent visual acceptance.",
+  "comparisons": {
+    "street_reference": "May 2026 Google Maps place photo; private browser capture page-2026-10-26T23-27-39-455Z.png",
+    "cable_reference": "November 2020 Street View; private browser capture page-2026-10-26T23-28-26-447Z.png",
+    "roof_reference": "Google Maps 3D opposing orbits /tmp/fish-oblique1.png, fish-oblique2.png and fish-oblique3.png",
+    "model": "Detail, Walk and District forced in local viewer after publication. Walk and District settled without failed loads; Detail resident with one unrelated request pending. Private session captures page-2026-10-26T23-42-32-961Z.png, page-2026-10-26T23-43-04-058Z.png and page-2026-10-26T23-43-27-803Z.png; roof/join page-2026-10-26T23-41-35-037Z.png.",
+    "assessment": "Correct two-storey corner, chamfered door and broad Jacksons fascia; upper bay proportions, tile texture, joinery and roof finish are simplified. Party datum and rear service outline remain approximate. 3D roof and photo facade do not establish exact survey dimensions."
+  },
+  "known_limits": ["Rear facade and extractor arrangements obscured; no interior reconstructed.", "Corner ground wedge was visible in first assembled view; correcting it with a new registered footprint and public-realm rebuild requires reinspection.", "LoD same-facing coplanar check covers authored meshes, not all neighbouring depth conflicts. Roof is single-sided."]
+}

@@ -1,0 +1,10 @@
+{
+  "represented_appearance": "May 2026 Google place photo for signage and glazing; November 2020 Google Street View for Cable Street, checked against the 2026 photo. 3D mesh is undated.",
+  "front": "May 2026 corner photo shows black joinery, white Jacksons fascia, red brick stallriser, door and projected white upper bays. Alignment and exact shop division remain visually estimated.",
+  "cable": "November 2020 close panorama shows cream wall, ground floor window, chamfered door and upper window. Side further toward the rear is less clear.",
+  "roof": "Google 3D opposing orbits show low hipped corner roof and lower Cable/rear ranges; ridge positions estimated from distorted mesh, with no survey.",
+  "rear": "Google 3D shows broad roof/volumetric context; rear walls and equipment are obscured. Restrained surfaces, no invented extractor or interior.",
+  "footprint": "OSM-seeded block has front corner (-10.256, 113.366) and Cable side (-20.615, 113.641) in site coordinates. Its front edge trends 0.056 m in x per 1 m of frontage. Approximate party line at y=123.666 follows observed shopfront division; uncertainty at least 1 m. Remainder of block remains provisional.",
+  "measurements": "Frontage 10.3 m chosen by proportion and provisional footprint, not surveyed. Door assumed approximately 2.5 m high including transom; eaves 5.35 m and ridge 6.55 m follow facade ratios, uncertain by approximately 1 m. Main depth 7.3 m and low range 3.05 m are rough 3D estimates. Terrain 0.92–1.18 m along street edges from regional editable controls; origin 0.95 m.",
+  "searches": "Google Maps place photo, Street View and 3D explored; web search found Sefton licensing record for 21–23. A Mapillary web search returned no useful specific imagery; individual rear views not found."
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/jacksons.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "May 2026 frontage and 2020 Cable return; dimensions, party split, roof and rear estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "frontage",
+      "name": "Frontage",
+      "collection": "frontage"
+    },
+    {
+      "id": "rear",
+      "name": "Rear",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "Roof",
+      "collection": "roof"
+    }
+  ],
+  "views": [
+    {
+      "name": "Corner",
+      "position": [
+        4,
+        10,
+        -106
+      ],
+      "target": [
+        -15,
+        4,
+        -119
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -5,
+        28,
+        -119
+      ],
+      "target": [
+        -15,
+        4,
+        -119
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^(Shell|Architecture|Glazing) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain corner silhouette and openings."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed envelope."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Independent fixed envelope of corner, return and roof.",
+    "max_bytes": 1000000,
+    "max_gpu_bytes": 7000000,
+    "parts": {
+      "frontage": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 150,
+        "cage_m": 0.8
+      },
+      "rear": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 150,
+        "cage_m": 0.8
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 150,
+        "cage_m": 0.8
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      -5,
+      1.7,
+      -119
+    ],
+    "target": [
+      -10,
+      3,
+      -119
+    ]
+  }
+}
