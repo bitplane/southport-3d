@@ -1,0 +1,91 @@
+{
+  "reviewed": "2026-10-26",
+  "represented_appearance": "Persistent cream exterior with Aug2024 front/north/rear signage; pier-side structural features checked May2011 and Google3D. No historical Hall of Mirrors advertising copied.",
+  "sources": [
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6508014,-3.0080718,241a,35y,253.8h/data=!3m1!1e3",
+      "date": "imagery capture date not displayed; copyright2026 is not capture date",
+      "observations": "Displayed textured 3D at headings0,84.6,169.2,253.8, pitch39.48; then overhead. Front shallow cross-roof, broad middle roof, rear raised pier-side roof and raised small pier-side box. Service strip behind, parking north, pier south."
+    },
+    {
+      "id": "front2024",
+      "url": "https://www.google.com/maps/@53.6508033,-3.0072008,3a,75y,250.12h,90t/data=!3m4!1e1!3m2!1sQvLInRVG-bRL7UItp-UjRA!2e0",
+      "date": "August2024",
+      "observations": "Cream frontage, scalloped parapet, eight arches, brick piers/red glazing, Silcocks FUNLAND/SOUTHPORT PIER sign, white carousel roof offset pierwards."
+    },
+    {
+      "id": "north2024",
+      "url": "https://www.google.com/maps/@53.6510656,-3.0077529,3a,75y,218h,94t/data=!3m4!1e1!3m2!1smwE11imJx0OAZz1XUiz_ew!2e0",
+      "date": "August2024",
+      "observations": "North elevation cream upper panels, white horizontal lower cladding, two doors beneath shallow fascia; blank middle upright panel, scattered vents, red/blue lettering."
+    },
+    {
+      "id": "rear2024",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65113,-3.00881&heading=135&pitch=5&fov=90",
+      "date": "August2024",
+      "observations": "Rear cream wall and Silcocks FUNLAND sign; lower rear service strip screened by wall. Hidden contents omitted."
+    },
+    {
+      "id": "front2011",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65053,-3.00726&heading=305&pitch=4&fov=75",
+      "date": "May2011",
+      "observations": "Near frontal measured ratios; eight scallops above four broad shopfront divisions, main centre door. Modern blue sub-sign absent; not copied historical advertising."
+    },
+    {
+      "id": "pier2011",
+      "url": "https://www.google.com/maps/@53.6505773,-3.0081655,3a,90y,35h,96t/data=!3m4!1e1!3m2!1snc8891yWE4kh-YnBlDGoKw!2e0",
+      "date": "May2011",
+      "observations": "Pier-side raised box, five small upper windows plus door/balcony landing, low glazed linking range. Recessed panels; Hall of Mirrors sign is historic and omitted."
+    },
+    {
+      "id": "pier-rear2011",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65084,-3.00868&heading=50&pitch=5&fov=90",
+      "date": "May2011",
+      "observations": "Rear hall pier side has repeated vertical ribs and FUNLAND & PIER lettering above low screened service walkway."
+    },
+    {
+      "id": "pier2017",
+      "url": "https://www.google.com/maps/@53.6505525,-3.008133,3a,75y,35h,96t/data=!3m4!1e1!3m2!1sCIHM0ogKEICAgID486O4iQE!2e10",
+      "date": "May2017, Jomo",
+      "observations": "Low linking shopfront corroborated, several tiles blurred/unavailable, unsuitable for fine measurement."
+    },
+    {
+      "id": "mapillary",
+      "url": "https://www.mapillary.com/app/?pKey=4962497493845430&focus=photo",
+      "date": "29July2019, davidsong, date from existing catalogue",
+      "observations": "Front and offset carousel displayed, corroborates roof silhouette; map panel failed, photograph eventually displayed."
+    },
+    {
+      "id": "official",
+      "url": "https://www.silcock-leisure.co.uk/amusements/funland/",
+      "image_url": "https://www.silcock-leisure.co.uk/wp-content/uploads/2024/07/Funland-hero-1-768x516.jpg",
+      "date": "upload path July2024; capture date unknown",
+      "observations": "Close exterior photo actually displayed: ribbed cream cladding, gold/cream arch profiles with lamp dots, red/cream letter faces and blue sub-sign, red glazing/brick base."
+    },
+    {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/way/29090007",
+      "observations": "Existing block-plan footprint seed; OSM contributors ODbL1.0, checked against fresh displayed plan."
+    }
+  ],
+  "coverage": {
+    "front": "good 2024/official and 2011 measured frontal",
+    "north": "good Aug2024; trees/cars obscure base locally",
+    "rear": "oblique Aug2024 and3D; screened service contents unknown",
+    "pier_side": "2011 close and2017 partial; current state not fully established, restrained persistent geometry only",
+    "roof": "four real3D rotations and overhead, no close roof survey",
+    "ground": "existing named rough nevill-pavement controls; level3.33 floor, corners3.10\u20133.33; terrain retained"
+  },
+  "access_failures": [
+    "Two north/rear API queries initially selected VR360TV July2019 and displayed a panorama with No Street View imagery warning; switched through dates to fully displayed Aug2024 Google panorama.",
+    "Pier2017 photo has missing/blurred tiles. No modern close rear-service coverage obtained."
+  ],
+  "limits": [
+    "No private interior invented. Glass uses dark opaque surfaces.",
+    "Carousel deliberately provisional, no horses/ride reconstruction.",
+    "Pier/restaurant terrace stairs and lower concourse connection explicitly deferred by user, untouched.",
+    "Advertising not legible/current in references omitted instead of invented."
+  ],
+  "rights": "Reference captures private ../references/funland, excluded from Git; no source-photo pixels used in textures."
+}

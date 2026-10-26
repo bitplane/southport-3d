@@ -1,0 +1,29 @@
+{
+  "massing_review": {
+    "date": "2026-10-26",
+    "compared": [
+      "renders/context.png versus Google3D front and rear orbits",
+      "renders/roof.png versus Google overhead plan",
+      "front proportions versus May2011 frontal and official photo"
+    ],
+    "findings": "29\u00d759 elongated envelope, cross-front roof, rear raised hall, small pier-side box and offset carousel agree in broad proportions. Initial massing incorrectly retained tall wall behind pier linking shopfront: corrected to low3.7m linking strip and3.8m screened rear strip, backed by higher hall. Roof render widened to avoid crop.",
+    "limitations": "Roof falls not measurable in photogrammetry: flat shallow roof planes are estimates; ground remains separate rough controls."
+  },
+  "detail_review": {
+    "date": "2026-10-26",
+    "comparisons": [
+      "front render versus official2024 exterior photo and front2011",
+      "pier render versus pier-side2011 close/Google3D",
+      "north/rear renders versus August2024 StreetView",
+      "roof/context renders versus four Google3D headings"
+    ],
+    "results": "Eight arch composition, four shopfront divisions, red frames/brick piers, scalloped parapet and distinct low/high roof volumes retained. Lettering widths enlarged after first render to match characteristic broad sign. Street camera reduced to eye height to avoid orthographic overexposure of rear roofs.",
+    "remaining_estimates": [
+      "Font is a locally available serif/italic approximation, not a traced exact commercial logo. Small bulb spacing is sampled rather than surveyed.",
+      "Rear roof shallow falls represented by level roof plates; underside and screened service contents deferred.",
+      "Pier-side detail based on older close coverage; current advertising omitted.",
+      "Carousel is an intentionally plain pavilion placeholder, not detailed ride."
+    ],
+    "surface_ownership": "All source meshes audited, including mouldings/frames, lettering and both parts. Repeated arch endpoint lamp duplication removed; compact triangle lamp faces avoid quad triangulation residue. Sign widths checked not to overlap."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.funland",
+  "name": "Silcocks Funland and provisional carousel pavilion",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "funland",
+    "provisional-carousel"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Funland researched exterior with8-scallop facade and distinct roof volumes; separate expressly provisional carousel. Interiors, restaurant terrace connections and lower promenade excluded.",
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/nevill.json",
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/nevill.json",
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
+}

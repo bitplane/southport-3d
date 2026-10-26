@@ -1,0 +1,91 @@
+{
+  "method": "Measurements from displayed imagery, not survey",
+  "plan": {
+    "private_capture": "funland-plan.png 1400x1000",
+    "front_corners_pixels": [
+      [
+        456,
+        541
+      ],
+      [
+        586,
+        685
+      ]
+    ],
+    "rear_roof_corners_pixels": [
+      [
+        755,
+        283
+      ],
+      [
+        879,
+        425
+      ]
+    ],
+    "front_pixel_length": 194.0,
+    "length_pixel_length": 395.0,
+    "reference_seed_width_m": 29.08702454703815,
+    "derived_depth_m": 59.22,
+    "retained_depth_m": 59,
+    "reason": "Plan ratio2.04 matches seed 59/29.09=2.03; roof/parallax uncertainty\u00b11m. Retain registered footprint instead of translating ground.",
+    "carousel_centre_pixels": [
+      350,
+      582
+    ],
+    "carousel_radius_pixels": 66,
+    "derived_carousel_radius_m": 9.9,
+    "derived_centre_local_m": [
+      -6,
+      -16
+    ]
+  },
+  "front": {
+    "private_capture": "funland-front-south.png May2011 1440x1000",
+    "width_pixels_approx": 690,
+    "wall_base_y": 591,
+    "main_eave_y": 407,
+    "peak_y": 385,
+    "arch_top_y": 490,
+    "fascia_bottom_y": 540,
+    "derived_eave_m": 7.76,
+    "derived_peak_m": 8.68,
+    "adopted_eave_m": 8.05,
+    "adopted_peak_m": 8.65,
+    "arch_count": 8,
+    "shopfront_divisions": 4,
+    "uncertainty": "\u00b10.8m perspective at end, image resolution; shopfront height2.5m estimated using centre ratios"
+  },
+  "roof_controls": {
+    "rear_raised_hall": "Pier half width\u224813m, rear half depth\u224830m from plan; top\u22488.15m estimated from obliques",
+    "small_pier_box": "\u22485.6\u00d711m, upper9m; plan and pier window proportions",
+    "front_crossroof": "\u22485.6m deep, front parapet8.05\u20138.65m; lower linking roof7.55m"
+  },
+  "ground": {
+    "surface": "nevill-pavement",
+    "samples_site_xyz": [
+      [
+        -25.848,
+        308.863,
+        3.327381
+      ],
+      [
+        2.273,
+        316.297,
+        3.266563
+      ],
+      [
+        -41.083,
+        365.358,
+        3.123926
+      ],
+      [
+        -12.828,
+        373.402,
+        3.099794
+      ]
+    ],
+    "floor_m": 3.33,
+    "foundation_bottom_m": 2.98,
+    "status": "rough editable control tie, not measured floor; max front difference0.064m, no steps invented"
+  }
+}

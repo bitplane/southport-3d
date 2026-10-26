@@ -1,0 +1,47 @@
+{
+  "origin_site": [
+    -25.848,
+    308.863
+  ],
+  "u_axis": [
+    0.9667884714204458,
+    0.25557787761955814
+  ],
+  "v_axis": [
+    -0.25557787761955814,
+    0.9667884714204458
+  ],
+  "width": 29.08702454703815,
+  "depth": 59.0,
+  "base": 3.33,
+  "footing": -0.35,
+  "roof": 7.55,
+  "front_eave": 8.05,
+  "parapet_peak": 8.65,
+  "rear_hall": [
+    1.1,
+    14.0,
+    29.0,
+    58.8,
+    8.15
+  ],
+  "service": [
+    0,
+    5.6,
+    18,
+    29,
+    9.0
+  ],
+  "carousel": {
+    "centre": [
+      -6,
+      -16
+    ],
+    "radius": 9.8,
+    "eave": 3.8,
+    "peak": 10.0,
+    "status": "explicit provisional canopy/enclosure volume; ride and ornament deferred"
+  },
+  "detail": true,
+  "uncertainty": "Plan \u00b11m, roof extents \u00b11.5m, heights \u00b10.8m; carousel \u00b12m. Floor ties rough editable forecourt, not survey."
+}

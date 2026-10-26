@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/funland.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "Researched exterior with estimated dimensions; carousel explicitly provisional.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Silcocks Funland",
+      "collection": "architecture"
+    },
+    {
+      "id": "carousel",
+      "name": "Carousel \u2014 provisional pavilion",
+      "collection": "carousel"
+    }
+  ],
+  "views": [
+    {
+      "name": "Funland frontage",
+      "position": [
+        -4,
+        24,
+        -255
+      ],
+      "target": [
+        -20,
+        8,
+        -333
+      ]
+    },
+    {
+      "name": "Funland roof",
+      "position": [
+        -20,
+        105,
+        -330
+      ],
+      "target": [
+        -20,
+        8,
+        -330
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -20,
+      5,
+      -295
+    ],
+    "target": [
+      -20,
+      7,
+      -320
+    ]
+  },
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^(Shell|Architecture|Placeholder) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve openings, scalloped frontage, roofs and provisional carousel shape."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Appearance projected onto independent bounded envelope."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Subpixel panel seams, small vent slats and lamp beads."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Baked onto bounded receiver surfaces."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed roof partitions/scalloped silhouette and separate provisional tent; added ornament changes only atlas.",
+    "max_bytes": 1800000,
+    "max_gpu_bytes": 6000000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 600,
+        "cage_m": 0.45
+      },
+      "carousel": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 200,
+        "cage_m": 0.2
+      }
+    }
+  }
+}
