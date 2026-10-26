@@ -30,17 +30,17 @@
   },
   "surfaces": {
     "chapel-pedestrian": {
-      "type": "survey",
-      "terrain": "survey/terrain.json",
+      "type": "control_grid",
+      "terrain": "ground-controls.json",
       "bounds": [
         -280,
         10,
         -235,
         -60
       ],
-      "grid_m": 5,
+      "grid_m": 100,
       "offset_m": 0.12,
-      "evidence": "EA 2022 DTM; acquisition and provisional datum in survey/terrain.json. Former constant estimate superseded. Entrance kerb treatment requires local attachment review.",
+      "evidence": "Shared rough editable ground-controls.json; simple planes, no raster refinements.",
       "offset_profile": {
         "axis_origin": [
           0,
@@ -60,7 +60,8 @@
             "control": "chapel-entrance-drop"
           }
         ]
-      }
+      },
+      "refinements": []
     }
   },
   "superseded_surfaces": {

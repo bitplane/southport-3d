@@ -5,29 +5,18 @@
   "controls": {},
   "surfaces": {
     "london-square-pavement": {
-      "type": "survey",
-      "terrain": "survey/terrain.json",
+      "type": "control_grid",
+      "terrain": "ground-controls.json",
       "bounds": [
         -170,
         280,
         -180,
         80
       ],
-      "grid_m": 5,
+      "grid_m": 100,
       "offset_m": 0.12,
-      "refinements": [
-        {
-          "bounds": [
-            20,
-            40,
-            -75,
-            -30
-          ],
-          "grid_m": 0.625,
-          "reason": "Resolve the measured rear service-lane depression; the 5 m lattice missed native DTM by up to 0.64 m at owned road probes."
-        }
-      ],
-      "evidence": "EA 2022 DTM; acquisition and datum tie in survey/terrain.json. Carriageway follows measured grid; authored 0.12 m kerb remains explicit, not inferred from raster."
+      "refinements": [],
+      "evidence": "Shared rough editable ground-controls.json; simple planes, no raster refinements."
     }
   }
 }

@@ -9,6 +9,13 @@ terrain reference now supplies a provisional conversion of local zero to
 this is not a surveyed benchmark at the memorial. See
 [the whole-map migration](ELEVATION-MIGRATION.md) for coverage and outstanding work.
 
+The default ground is now a **rough editable control grid**, not the survey mesh.
+See [rough town ground heights](ELEVATION-MIGRATION.md). Regional surfaces use
+`type: "control_grid"`, `terrain: "ground-controls.json"`, `grid_m: 100`, bounds
+and an optional paving offset. These generate simple planar slopes from explicit
+source values, without raster reads or refinements. Keep ordinary modelling
+moving; add local level platforms and named landing profiles only where needed.
+
 Each geographic JSON file declares its datum, metric frame, height controls and
 surfaces. Controls carry a stable ID, height, evidence, status and uncertainty.
 A surface declares XY query bounds, a straight profile axis, ordered distances

@@ -34,7 +34,7 @@ def hits(x,y):
   hit=o.ray_cast(Vector((x,y,80)),Vector((0,0,-1)))
   if hit[0]:out.append((o.name,hit[1].z))
  return out
-count=0;survey_errors=[]
+count=0;control_errors=[]
 for r in D['roads']:
  for a,b in zip(r['points'],r['points'][1:]):
   n=max(1,int(math.dist(a,b)/2))
@@ -43,8 +43,8 @@ for r in D['roads']:
    if not owned(x,y):continue
    h=hits(x,y);assert len(h)==1,(r['name'],x,y,h)
    assert abs(h[0][1]-(grade(x,y)-.12))<2e-5,(r['name'],x,y,h)
-   error=abs(h[0][1]-SURFACE.terrain.height(x,y));survey_errors.append(error)
-   assert error<.25,(r['name'],x,y,'terrain approximation exceeds 25 cm',error)
+   error=abs(h[0][1]-SURFACE.terrain.height(x,y));control_errors.append(error)
+   assert error<.0001,(r['name'],x,y,'editable ground plane mismatch',error)
    count+=1
 footprint_samples=0
 for p in buildings:
@@ -67,5 +67,5 @@ residues=overlaps(triangles,labels)
 # Same 1e-5 m² reporting threshold used for the neighbouring corridor's
 # float32 boundary audit; preserve smaller findings in the report.
 assert not [r for r in residues if r[2]>1e-5],residues
-report={'triangles':tris,'objects':len(obs),'road_samples':count,'survey_max_road_error_m':max(survey_errors),'footprint_exclusion_samples':footprint_samples,'tile_seam_samples':seams,'float32_overlap_residues':residues,'overlap_area_limit_m2':1e-5,'checks':'Unique road floor, building exclusions, tile seams, finite nondegenerate float32 geometry, coplanar overlap; triangle interiors preserve the shared terrain planes and owned road probes remain within 25 cm of native DTM.','limitations':D['limits']}
+report={'triangles':tris,'objects':len(obs),'road_samples':count,'control_max_road_error_m':max(control_errors),'footprint_exclusion_samples':footprint_samples,'tile_seam_samples':seams,'float32_overlap_residues':residues,'overlap_area_limit_m2':1e-5,'checks':'Unique road floor, building exclusions, tile seams, finite nondegenerate float32 geometry, coplanar overlap; triangle interiors preserve the shared terrain planes and owned road probes match the editable control planes.','limitations':D['limits']}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

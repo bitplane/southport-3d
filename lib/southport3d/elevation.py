@@ -47,11 +47,12 @@ class Elevations:
     def surface(self, name):
         if name not in self._instances:
             spec = self.surfaces[name]
-            if spec.get('type') == 'survey':
+            if spec.get('type') in ('survey', 'control_grid'):
                 from .survey_surface import SurveySurface
                 self._instances[name] = SurveySurface(
                     self.surface_paths[name]/spec['terrain'], name, spec['bounds'],
-                    spec.get('grid_m', 5.), spec.get('offset_m', 0.), spec.get('refinements', []))
+                    spec.get('grid_m', 5.), spec.get('offset_m', 0.), spec.get('refinements', []),
+                    controlled=spec.get('type') == 'control_grid')
                 if 'offset_profile' in spec:
                     profile=Surface(self,name+' offset',dict(spec['offset_profile'],bounds=spec['bounds']))
                     self._instances[name]=OffsetSurface(self._instances[name],profile)

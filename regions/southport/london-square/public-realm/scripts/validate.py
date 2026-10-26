@@ -382,7 +382,7 @@ print('Nevill junction corner coverage, shared seam and dropped crossing landing
 # Measured-road interiors, rigid placement anchors and level pools are independent
 # of the retained plan/marking regressions above.
 road_materials={'Authored asphalt','Authored reddish carriageway','Authored dark service road blocks','Faded yellow road marking','Worn white road marking'}
-road_triangles=0;max_plane_error=0.;max_native_error=0.
+road_triangles=0;max_plane_error=0.;max_control_error=0.
 for ob in meshes:
  if not ob.data.materials:continue
  material=ob.data.materials[0].name
@@ -401,15 +401,15 @@ for ob in meshes:
   error=abs(z-(SURFACE.height(x,y)-.12))
   assert error<1e-4,(ob.name,tri.index,'terrain plane lost',error)
   max_plane_error=max(max_plane_error,error);road_triangles+=1
-  native_error=abs(SURFACE.height(x,y)-.12-SURFACE.terrain.height(x,y))
-  assert native_error<.25,(ob.name,x,y,native_error,'native terrain approximation')
-  max_native_error=max(max_native_error,native_error)
+  control_error=abs(SURFACE.height(x,y)-.12-SURFACE.terrain.height(x,y))
+  assert control_error<.0001,(ob.name,x,y,control_error,'control terrain approximation')
+  max_control_error=max(max_control_error,control_error)
 for i,record in enumerate(layout['furniture']):
  x,y=record['xy'];ob=bpy.data.objects[f"Furniture {record['kind']} {i:03d}"]
  expected=grade(y,x=x)+(.0075 if record['part']=='island-furniture'else 0)
  assert abs(ob.location.z-expected)<1e-6,(ob.name,'anchor off pavement')
 report=json.loads((ROOT/'research/validation.json').read_text())
-report.update(measured_road_triangles=road_triangles,max_road_plane_error_m=max_plane_error,max_native_road_error_m=max_native_error,
+report.update(measured_road_triangles=road_triangles,max_road_plane_error_m=max_plane_error,max_control_road_error_m=max_control_error,
               elevation='EA survey field with authored kerbs, ramps and landscape offsets; detailed building attachments still pending')
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print('Measured road planes, rigid furniture anchors and level pool faces checked',road_triangles,max_plane_error)

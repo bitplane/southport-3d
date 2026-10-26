@@ -12689,6 +12689,7 @@
   "elevation_plan": "regions/southport/elevation/marine-drive.json",
   "elevation_surface": "marine-mainland",
   "elevation_surfaces_by_node": {
-    " bridge ": "marine-bridge-measured-reference"
+    " bridge ": "marine-bridge-measured-reference",
+    " lower ": "marine-lower-promenade"
   }
 }

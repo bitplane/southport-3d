@@ -23,4 +23,6 @@ def stations():
  ss.update(s for s in GRADE.stations if 0<s<150)
  return sorted(ss)
 
-def ground(s,t):return E.surface('marine-mainland').height(*xy(s,t))
+def ground(s,t):
+ p=xy(s,t);lower=E.surface('marine-lower-promenade')
+ return (lower if lower.contains(*p) else E.surface('marine-mainland')).height(*p)

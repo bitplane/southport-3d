@@ -18,30 +18,31 @@
   },
   "surfaces": {
     "glebe-road": {
-      "type": "survey",
-      "terrain": "survey/terrain.json",
+      "type": "control_grid",
+      "terrain": "ground-controls.json",
       "bounds": [
         -60,
         0,
         -90,
         -35
       ],
-      "grid_m": 5,
+      "grid_m": 100,
       "offset_m": 0,
-      "evidence": "EA 2022 composite DTM with acquisition/datum in survey/terrain.json; existing material ownership and raised throat retained."
+      "evidence": "Shared rough editable ground-controls.json; simple planes, no raster refinements.",
+      "refinements": []
     },
     "glebe-mouth": {
-      "type": "survey",
-      "terrain": "survey/terrain.json",
+      "type": "control_grid",
+      "terrain": "ground-controls.json",
       "bounds": [
         -60,
         0,
         -90,
         -35
       ],
-      "grid_m": 5,
+      "grid_m": 100,
       "offset_m": 0,
-      "evidence": "EA 2022 composite DTM with acquisition/datum in survey/terrain.json; existing material ownership and raised throat retained.",
+      "evidence": "Shared rough editable ground-controls.json; simple planes, no raster refinements.",
       "offset_profile": {
         "axis_origin": [
           0,
@@ -69,7 +70,8 @@
             "control": "glebe-flush"
           }
         ]
-      }
+      },
+      "refinements": []
     }
   }
 }

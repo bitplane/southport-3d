@@ -5,18 +5,18 @@
   "controls": {},
   "surfaces": {
     "leicester-quarter-pavement": {
-      "type": "survey",
-      "terrain": "survey/terrain.json",
+      "type": "control_grid",
+      "terrain": "ground-controls.json",
       "bounds": [
         -15,
         705,
         15,
         425
       ],
-      "grid_m": 5,
+      "grid_m": 100,
       "offset_m": 0.12,
       "refinements": [],
-      "evidence": "EA 2022 DTM; acquisition and datum tie in survey/terrain.json. Carriageway follows measured grid; authored 0.12 m kerb remains explicit, not inferred from raster."
+      "evidence": "Shared rough editable ground-controls.json; simple planes, no raster refinements."
     }
   }
 }

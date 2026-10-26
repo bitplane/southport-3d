@@ -6,7 +6,7 @@ np.seterr(invalid="ignore")
 REPO=Path(__file__).resolve().parents[5];sys.path.insert(0,str(REPO/'tools'));sys.path.insert(0,str(REPO/'lib'))
 from audit_published_coplanar import primitives
 from southport3d.elevation import Elevations
-D=json.load(open(Path(__file__).resolve().parents[1]/'research/layout.json'));E=Elevations(REPO/'regions/southport/elevation/marine-drive.json');grade=E.surface('marine-bridge-measured-reference');cat=json.load(open(REPO/'dist/catalog.json'));ground=E.surface('marine-mainland');out=REPO.parent/'output/marine-way-bridge';out.mkdir(exist_ok=True,parents=True)
+D=json.load(open(Path(__file__).resolve().parents[1]/'research/layout.json'));E=Elevations(REPO/'regions/southport/elevation/marine-drive.json');grade=E.surface('marine-bridge-measured-reference');cat=json.load(open(REPO/'dist/catalog.json'));ground=E.surface('marine-lower-promenade');out=REPO.parent/'output/marine-way-bridge';out.mkdir(exist_ok=True,parents=True)
 u=np.array(D['axis']);u/=np.linalg.norm(u);n=np.array([-u[1],u[0]]);c=math.cos(math.radians(43.5293));s=math.sin(math.radians(43.5293))
 if '--packages' in sys.argv:
  package=REPO/'build/southport.marine-drive.public-realm/package'

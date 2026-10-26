@@ -5,29 +5,18 @@
   "controls": {},
   "surfaces": {
     "west-street-pavement": {
-      "type": "survey",
-      "terrain": "survey/terrain.json",
+      "type": "control_grid",
+      "terrain": "ground-controls.json",
       "bounds": [
         -450,
         15,
         55,
         270
       ],
-      "grid_m": 5,
+      "grid_m": 100,
       "offset_m": 0.12,
-      "refinements": [
-        {
-          "bounds": [
-            -60,
-            -30,
-            160,
-            185
-          ],
-          "grid_m": 1.25,
-          "evidence": "Bounded refinement at road samples whose 5 m interpolation differed from native DTM by over 0.20 m. Transition edge conforms to shared coarse lattice."
-        }
-      ],
-      "evidence": "EA 2022 DTM; acquisition and datum tie in survey/terrain.json. Carriageway follows measured grid; authored 0.12 m kerb remains explicit, not inferred from raster."
+      "refinements": [],
+      "evidence": "Shared rough editable ground-controls.json; simple planes, no raster refinements."
     }
   }
 }

@@ -31,5 +31,13 @@
   },
   "source_catalog": "research/references.json",
   "scope": "Bounded extension northeast from Funland crossing X22 to X85; Marine Parade mouth to Y310. Estimated widths and flat grade; no buildings or furniture.",
-  "licensing": "OSM-derived layout, OpenStreetMap contributors ODbL 1.0; photographic reference links only, all maps procedurally authored."
+  "licensing": "OSM-derived layout, OpenStreetMap contributors ODbL 1.0; photographic reference links only, all maps procedurally authored.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
 }

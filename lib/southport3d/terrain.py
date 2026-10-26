@@ -69,3 +69,26 @@ class Terrain:
 
     def height(self, x, y):
         return self.height_odn(x, y)-self.datum
+
+
+class GroundControls:
+    """Editable coarse site heights, independent of the reference raster at build time."""
+    def __init__(self, path):
+        self.spec = json.loads(Path(path).read_text())
+        if self.spec.get('schema_version') != 1:
+            raise ValueError('Unsupported ground controls')
+        self.spacing = self.spec['grid_m']
+        self.nodes = self.spec['heights_m']
+        if self.spacing <= 0 or not all(math.isfinite(v) for v in self.nodes.values()):
+            raise ValueError('Invalid ground controls')
+
+    def height(self, x, y):
+        gx, gy = x/self.spacing, y/self.spacing
+        i, j = math.floor(gx), math.floor(gy)
+        u, v = gx-i, gy-j
+        def node(a,b):
+            try: return self.nodes[f'{a},{b}']
+            except KeyError: raise ValueError(f'Missing ground control {(a,b)}') from None
+        if u+v <= 1:
+            return sum(w*node(a,b) for a,b,w in [(i,j,1-u-v),(i+1,j,u),(i,j+1,v)] if w>1e-12)
+        return sum(w*node(a,b) for a,b,w in [(i+1,j+1,u+v-1),(i,j+1,1-u),(i+1,j,1-v)] if w>1e-12)

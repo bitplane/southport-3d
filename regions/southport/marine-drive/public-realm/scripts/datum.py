@@ -6,3 +6,5 @@ SURFACES=Elevations(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/e
 PAVEMENT=SURFACES.surface('marine-mainland')
 BRIDGE=SURFACES.surface('marine-bridge-measured-reference')
 def grade(x,y):return PAVEMENT.height(x,y)
+
+LOWER=SURFACES.surface('marine-lower-promenade')

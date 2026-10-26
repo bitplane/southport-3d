@@ -253,6 +253,26 @@ for a,b in verticals:
   bb=[a[i]+(b[i]-a[i])*t1 for i in [0,1]]
   mesh=compiled.setdefault((part,'vertical'),Mesh('Kerb '+part))
   mesh.add([(aa[0],aa[1],grade(aa[1])-.12),(bb[0],bb[1],grade(bb[1])-.12),(bb[0],bb[1],grade(bb[1])),(aa[0],aa[1],grade(aa[1]))],[(0,1,2,3)])
+# Lift the old flat arrangement onto the shared rough planes, retaining kerb drops.
+from southport3d.survey_surface import SurveySurface
+FIELD=SurveySurface(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/ground-controls.json','promenade',[20,90,200,400],100,.12,controlled=True)
+for key,old in list(compiled.items()):
+ replacement=Mesh(old.name)
+ for face in old.faces:
+  verts=[old.vertices[i] for i in face]
+  if key[1]=='vertical':
+   a,b=verts[:2]
+   edge=list(FIELD.edge_points(a,b))
+   for aa,bb in zip(edge,edge[1:]):
+    replacement.add([(aa[0],aa[1],aa[2]-.12),(bb[0],bb[1],bb[2]-.12),bb,aa],[(0,1,2,3)])
+  else:
+   vectors=[Vector(v) for v in verts]
+   for tri in tessellate_polygon([vectors]):
+    points=[verts[v] if isinstance(v,int) else tuple(v) for v in tri]
+    offset=points[0][2]-2.2
+    for lifted in FIELD.lift_triangle([(v[0],v[1]) for v in points]):
+     replacement.add([(x,y,z+offset) for x,y,z in lifted],[(0,1,2)])
+ compiled[key]=replacement
 from southport3d.conform import conform
 compiled,conform_report=conform(compiled)
 (ROOT/'research/conform.json').write_text(json.dumps(conform_report,indent=2))

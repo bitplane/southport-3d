@@ -332,113 +332,28 @@
       "uncertainty_m": 0.2,
       "status": "lidar-dsm-deck-reference",
       "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-lower-walk": {
+      "height_m": 0.3,
+      "status": "rough-landing-estimate",
+      "uncertainty_m": 0.5,
+      "evidence": "Separate lower promenade below elevated Marine Way road. Rounded rough lower-path estimate; preserve clear space, refine landings when modelling steps."
     }
   },
   "surfaces": {
     "marine-mainland": {
-      "type": "survey",
-      "terrain": "survey/terrain.json",
+      "type": "control_grid",
+      "terrain": "ground-controls.json",
       "bounds": [
         -300,
         1500,
         175,
         1000
       ],
-      "grid_m": 5,
+      "grid_m": 100,
       "offset_m": 0.12,
-      "evidence": "EA 2022 composite DTM, acquisition 2018/2019; see survey/terrain.json. Bridge deck and lake remain independent. MLEC ground changed after the survey and requires current construction reference.",
-      "refinements": [
-        {
-          "bounds": [
-            -50,
-            -25,
-            495,
-            520
-          ],
-          "grid_m": 1.25,
-          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
-        },
-        {
-          "bounds": [
-            170,
-            215,
-            845,
-            870
-          ],
-          "grid_m": 1.25,
-          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
-        },
-        {
-          "bounds": [
-            -5,
-            25,
-            360,
-            390
-          ],
-          "grid_m": 1.25,
-          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
-        },
-        {
-          "bounds": [
-            1220,
-            1255,
-            645,
-            680
-          ],
-          "grid_m": 1.25,
-          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
-        },
-        {
-          "bounds": [
-            1175,
-            1210,
-            650,
-            700
-          ],
-          "grid_m": 1.25,
-          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
-        },
-        {
-          "bounds": [
-            1095,
-            1120,
-            530,
-            555
-          ],
-          "grid_m": 1.25,
-          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
-        },
-        {
-          "bounds": [
-            495,
-            525,
-            825,
-            850
-          ],
-          "grid_m": 1.25,
-          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
-        },
-        {
-          "bounds": [
-            1110,
-            1135,
-            500,
-            525
-          ],
-          "grid_m": 1.25,
-          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
-        },
-        {
-          "bounds": [
-            1055,
-            1085,
-            555,
-            585
-          ],
-          "grid_m": 1.25,
-          "evidence": "Road centreline probes exceeded 0.20 m error against native DTM near sharp shore gradients. Bounded refinement, coarse-aligned outer edge."
-        }
-      ]
+      "evidence": "Shared rough editable ground-controls.json; simple planes, no raster refinements.",
+      "refinements": []
     },
     "marine-road": {
       "bounds": [
@@ -794,6 +709,28 @@
         }
       ],
       "offset_m": 0
+    },
+    "marine-lower-promenade": {
+      "bounds": [
+        -90,
+        45,
+        376.9,
+        410
+      ],
+      "axis_origin": [
+        0,
+        0
+      ],
+      "axis_direction": [
+        0,
+        1
+      ],
+      "profile": [
+        {
+          "distance_m": 0,
+          "control": "marine-lower-walk"
+        }
+      ]
     }
   },
   "superseded_surfaces": {

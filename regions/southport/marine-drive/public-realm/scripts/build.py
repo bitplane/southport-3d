@@ -8,7 +8,7 @@ sys.path[:0]=[str(REPO/'lib'),str(ROOT/'scripts'),str(REPO/'regions/southport/lo
 from southport3d.geometry import Mesh
 from southport3d.road import parallel
 from plan_geometry import Plan
-from datum import grade,SURFACES,PAVEMENT,BRIDGE
+from datum import grade,SURFACES,PAVEMENT,BRIDGE,LOWER
 D=json.loads((ROOT/'research/layout.json').read_text());bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
 def rect(a,b,c,d):return [(a,c),(b,c),(b,d),(a,d)]
@@ -99,13 +99,16 @@ for name,col in colours.items():
 collections={}
 for name in [*[f'section-{i}-ground'for i in range(8)],'lake-water','lower-promenade-ground','shore-walls']:
  c=bpy.data.collections.new(name);s.collection.children.link(c);collections[name]=c
+lower_zone=P.polygons([rect(-90,45,376.9,410)])
 compiled={};surfaces={}
 for i,(lo,hi)in enumerate(zip(D['tile_cuts'],D['tile_cuts'][1:])):
  name=f'section-{i}-ground';cell=P.polygons([rect(lo,hi,D['bounds'][2],930)])
  for mat,g in [('asphalt',asphalt),('paving',foot_plain),('cycle',cycle),('separator',separator),('drain',drain),('courts',courts),('construction',construction),('green',green),('parking',parking),('yellow',yellow),('white',white)]:
   g=P.intersection(g,cell)
-  for region,surface in [('main',PAVEMENT),('bridge',BRIDGE)]:
+  for region,surface in [('main',PAVEMENT),('bridge',BRIDGE),('lower',LOWER)]:
    part=P.intersection(g,bridge_zone)if region=='bridge'else P.difference(g,bridge_zone)
+   if region=='main':part=P.difference(part,lower_zone)
+   elif region=='lower':part=P.intersection(part,lower_zone)
    m=Mesh('Ground '+name+' '+region+' '+mat)
    for tri in P.triangles(part):
     for lifted in surface.lift_triangle(tri):m.add([(x,y,0)for x,y,z in lifted],[(0,1,2)])
@@ -113,9 +116,9 @@ for i,(lo,hi)in enumerate(zip(D['tile_cuts'],D['tile_cuts'][1:])):
 lower=P.intersection(P.intersection(land,bridge_deck),P.polygons([rect(-90,45,376.9,410)]))
 m=Mesh('Ground lower-promenade-ground lower paving')
 for tri in P.triangles(lower):
- for lifted in PAVEMENT.lift_triangle(tri):m.add([(x,y,0)for x,y,z in lifted],[(0,1,2)])
+ for lifted in LOWER.lift_triangle(tri):m.add([(x,y,0)for x,y,z in lifted],[(0,1,2)])
 if m.faces:
- compiled[('lower-promenade-ground','lower','paving')]=m;surfaces[('lower-promenade-ground','lower','paving')]=PAVEMENT
+ compiled[('lower-promenade-ground','lower','paving')]=m;surfaces[('lower-promenade-ground','lower','paving')]=LOWER
 import southport3d.conform as cf
 cf.GRID=1/8192;cf.TOLERANCE=.00019
 for m in compiled.values():m.vertices=np.asarray(m.vertices,dtype=np.float32).tolist()

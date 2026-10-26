@@ -2,15 +2,20 @@
 from pathlib import Path
 import bpy,json,math,os
 from mathutils import Vector
+import sys
+sys.path.insert(0,str(Path(os.environ["SOUTHPORT_REPO_ROOT"])/"lib"))
+from southport3d.survey_surface import SurveySurface
+FIELD=SurveySurface(Path(os.environ["SOUTHPORT_REPO_ROOT"])/"regions/southport/elevation/ground-controls.json","promenade",[20,90,200,400],100,.12,controlled=True)
 ROOT=Path(__file__).resolve().parents[1];bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 meshes=[o for o in bpy.context.scene.objects if o.type=='MESH'];assert meshes
 recipe=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/promenade/marine-parade-junction/publication.json').read_text());assert all(p.get('ground') is True for p in recipe['parts'])
 points=[v.co for o in meshes for v in o.data.vertices];assert all(math.isfinite(c) for v in points for c in v)
 assert min(v.x for v in points)>=22-.0002 and max(v.x for v in points)<=85+.0002
-assert min(v.z for v in points)>=2.08-.0002 and max(v.z for v in points)<=2.2+.0002
+assert all(abs(v.z-FIELD.height(v.x,v.y))<.121 for v in points)
 assert all(o.data.uv_layers for o in meshes);assert all(i.packed_file for i in bpy.data.images if i.source=='FILE')
 bpy.context.view_layer.update();deps=bpy.context.evaluated_depsgraph_get()
 def ground(x,y,z):
+ z=FIELD.height(x,y)+(z-2.2)
  hit,p,*_=bpy.context.scene.ray_cast(deps,Vector((x,y,20)),Vector((0,0,-1)),distance=30)
  assert hit,(x,y,'ground hole');assert abs(p.z-z)<.001,(x,y,p.z,z)
 # An exact boundary column must match the earlier Nevill tile's road height.

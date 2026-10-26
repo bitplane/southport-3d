@@ -167,3 +167,21 @@ def test_survey_ramp_retains_grid_and_landing_breaks(tmp_path):
         assert centre[2]==pytest.approx(surface.height(*centre[:2]),abs=1e-9)
     edge=list(surface.edge_points((1,3),(7,3)))
     assert {3.1,4.1} <= {p[0]for p in edge}
+
+
+def test_editable_ground_controls_are_planar_and_shared(tmp_path):
+    path=tmp_path/'controls.json'
+    def write(crest):
+        path.write_text(json.dumps({'schema_version':1,'grid_m':100,
+            'heights_m':{'0,0':0,'1,0':crest,'0,1':0,'1,1':crest}}))
+    write(2)
+    left=SurveySurface(path,'left',[0,50,0,100],100,.12,controlled=True)
+    right=SurveySurface(path,'right',[50,100,0,100],100,.12,controlled=True)
+    for y in [0,25,50,75,100]:
+        assert left.height(50,y)==pytest.approx(right.height(50,y))
+        assert left.height(25,y)==pytest.approx(.62)
+    write(4)
+    edited=SurveySurface(path,'edited',[0,100,0,100],100,.12,controlled=True)
+    assert edited.height(25,25)==pytest.approx(1.12)
+    with pytest.raises(ValueError,match='Missing ground control'):
+        edited.terrain.height(200,200)

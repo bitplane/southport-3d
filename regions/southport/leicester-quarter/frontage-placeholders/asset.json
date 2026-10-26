@@ -93,19 +93,11 @@
       "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",
       "regions/southport/leicester-quarter/public-realm/research/layout.json",
       "regions/southport/elevation/leicester-quarter.json",
-      "regions/southport/elevation/survey/terrain.json",
-      "regions/southport/elevation/survey/dtm-333000-417000.npz",
-      "regions/southport/elevation/survey/dtm-333000-418000.npz",
-      "regions/southport/elevation/survey/dtm-334000-417000.npz",
-      "regions/southport/elevation/survey/dtm-334000-418000.npz"
+      "regions/southport/elevation/ground-controls.json"
     ],
     "master": [
       "regions/southport/elevation/leicester-quarter.json",
-      "regions/southport/elevation/survey/terrain.json",
-      "regions/southport/elevation/survey/dtm-333000-417000.npz",
-      "regions/southport/elevation/survey/dtm-333000-418000.npz",
-      "regions/southport/elevation/survey/dtm-334000-417000.npz",
-      "regions/southport/elevation/survey/dtm-334000-418000.npz"
+      "regions/southport/elevation/ground-controls.json"
     ]
   }
 }

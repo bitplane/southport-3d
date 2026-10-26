@@ -8,12 +8,14 @@ from functools import lru_cache
 import math
 
 from .planar import area, halfplane
-from .terrain import Terrain
+from .terrain import Terrain, GroundControls
 
 
 class SurveySurface:
-    def __init__(self, terrain_path, name, bounds, grid_m=5., offset_m=0., refinements=()):
-        self.terrain = Terrain(terrain_path)
+    def __init__(self, terrain_path, name, bounds, grid_m=5., offset_m=0., refinements=(), controlled=False):
+        self.terrain = GroundControls(terrain_path) if controlled else Terrain(terrain_path)
+        if controlled and (refinements or grid_m != self.terrain.spacing):
+            raise ValueError("Control surfaces use the shared coarse grid without refinements")
         self.name, self.bounds, self.spacing, self.offset = name, bounds, grid_m, offset_m
         if len(bounds) != 4 or not all(math.isfinite(v) for v in (*bounds, grid_m, offset_m)):
             raise ValueError('Invalid survey surface bounds')
@@ -62,8 +64,8 @@ class SurveySurface:
         i, j = math.floor(gx), math.floor(gy)
         u, v = gx-i, gy-j
         if u+v <= 1:
-            return self.node(i, j)*(1-u-v)+self.node(i+1, j)*u+self.node(i, j+1)*v
-        return self.node(i+1, j+1)*(u+v-1)+self.node(i, j+1)*(1-u)+self.node(i+1, j)*(1-v)
+            return sum(w*self.node(a,b) for a,b,w in [(i,j,1-u-v),(i+1,j,u),(i,j+1,v)] if w>1e-12)
+        return sum(w*self.node(a,b) for a,b,w in [(i+1,j+1,u+v-1),(i,j+1,1-u),(i+1,j,1-v)] if w>1e-12)
 
     def lift_triangle(self, triangle):
         for x, y in triangle:

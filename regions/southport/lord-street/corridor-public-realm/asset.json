@@ -46,23 +46,11 @@
     "master": [
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
       "regions/southport/elevation/lord-corridor.json",
-      "regions/southport/elevation/survey/terrain.json",
-      "regions/southport/elevation/survey/dtm-332000-416000.npz",
-      "regions/southport/elevation/survey/dtm-332000-417000.npz",
-      "regions/southport/elevation/survey/dtm-333000-416000.npz",
-      "regions/southport/elevation/survey/dtm-333000-417000.npz",
-      "regions/southport/elevation/survey/dtm-334000-416000.npz",
-      "regions/southport/elevation/survey/dtm-334000-417000.npz"
+      "regions/southport/elevation/ground-controls.json"
     ],
     "validate": [
       "regions/southport/elevation/lord-corridor.json",
-      "regions/southport/elevation/survey/terrain.json",
-      "regions/southport/elevation/survey/dtm-332000-416000.npz",
-      "regions/southport/elevation/survey/dtm-332000-417000.npz",
-      "regions/southport/elevation/survey/dtm-333000-416000.npz",
-      "regions/southport/elevation/survey/dtm-333000-417000.npz",
-      "regions/southport/elevation/survey/dtm-334000-416000.npz",
-      "regions/southport/elevation/survey/dtm-334000-417000.npz"
+      "regions/southport/elevation/ground-controls.json"
     ]
   },
   "publication_checks": [

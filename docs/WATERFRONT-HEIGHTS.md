@@ -7,12 +7,13 @@ in [the elevation migration](ELEVATION-MIGRATION.md).
 
 ## Raster-derived surfaces
 
-Southern-lake ground uses the common 5 m terrain lattice, with sixteen bounded
-refinements selected from actual owned-road errors: twelve at 2.5 m and four at
-1.25 m. The old region-wide plateau and manually estimated parking access planes
-are removed. All three LoDs retain the same ground. Public realm uses an explicit
-0.12 m pavement offset; that remains an authored kerb allowance, not a kerb survey.
-Placeholders retain level roofs and buried level footings.
+Waterfront ground now uses the shared 100 m editable controls described in
+[rough town ground heights](ELEVATION-MIGRATION.md). Fine survey refinements are
+removed. Roads and concrete areas use broad planar slopes; the old native-raster
+error threshold is no longer a design target. Paving retains an authored 0.12 m
+kerb allowance. Placeholder roofs stay level, with footings below the local grade.
+The lower Marine Way promenade has its own rough 0.3 m local landing control,
+separate from the elevated road; it must not inherit the upper road's broad plane.
 
 Ground smooth normals allow the GLB exporter to share terrain vertices. Kerbs and
 retaining faces remain separate hard-edged meshes. This reduces download/GPU cost
@@ -52,11 +53,11 @@ relationships; they do not establish a stair count.
 
 [Historic England's garden description](https://historicengland.org.uk/listing/the-list/list-entry/1001535)
 identifies a roughly 1.2 m drop from Marine Walk to the lido, retaining walls beside
-the raised Esplanade and access beneath the pier. Those sharp breaks need explicit
-geometry rather than the smoothed slope of a 1 m terrain raster. The measured
-regional mesh is a foundation for that work, not a completed retaining-wall survey.
-Funland's landing levels, stair count, thresholds and under-pier clearance remain
-outstanding. Reconcile these before starting the pier model.
+the raised Esplanade and access beneath the pier. Those sharp breaks can receive explicit
+landing/step geometry when those features are modelled. The rough base is sufficient
+for continued town mapping; a detailed terrain reconstruction is not required.
+Funland landing levels, stair count, thresholds and under-pier clearance remain
+estimates to check during the corresponding detailed work.
 
 The working lake plane is 4.15 m ODN, consistent with interpolated raster values
 over the lake. This is **not a measured operating water level**. It is a separate,
