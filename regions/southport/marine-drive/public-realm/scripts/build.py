@@ -135,6 +135,8 @@ for key,m in compiled.items():m.vertices=[(x,y,surfaces[key].height(x,y)-(.12 if
 compiled.update(curbs)
 def finish(m,mat,collection):
  ob=m.finish([mats[mat]],collections[collection]);bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7);bmesh.ops.triangulate(bm,faces=list(bm.faces));bmesh.ops.delete(bm,geom=[f for f in bm.faces if f.calc_area()<1e-9],context='FACES_ONLY');bm.to_mesh(ob.data);bm.free()
+ if m.name.startswith('Ground ')and 'kerb'not in m.name:
+  for face in ob.data.polygons:face.use_smooth=True
  uv=ob.data.uv_layers.new(name='Metric ground')
  for poly in ob.data.polygons:
   for li in poly.loop_indices:

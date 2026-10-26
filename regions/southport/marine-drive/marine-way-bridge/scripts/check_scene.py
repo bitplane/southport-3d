@@ -6,8 +6,16 @@ np.seterr(invalid="ignore")
 REPO=Path(__file__).resolve().parents[5];sys.path.insert(0,str(REPO/'tools'));sys.path.insert(0,str(REPO/'lib'))
 from audit_published_coplanar import primitives
 from southport3d.elevation import Elevations
-D=json.load(open(Path(__file__).resolve().parents[1]/'research/layout.json'));E=Elevations(REPO/'regions/southport/elevation/marine-drive.json');grade=E.surface('marine-bridge');cat=json.load(open(REPO/'dist/catalog.json'));out=REPO.parent/'output/marine-way-bridge';out.mkdir(exist_ok=True,parents=True)
+D=json.load(open(Path(__file__).resolve().parents[1]/'research/layout.json'));E=Elevations(REPO/'regions/southport/elevation/marine-drive.json');grade=E.surface('marine-bridge-measured-reference');cat=json.load(open(REPO/'dist/catalog.json'));ground=E.surface('marine-mainland');out=REPO.parent/'output/marine-way-bridge';out.mkdir(exist_ok=True,parents=True)
 u=np.array(D['axis']);u/=np.linalg.norm(u);n=np.array([-u[1],u[0]]);c=math.cos(math.radians(43.5293));s=math.sin(math.radians(43.5293))
+if '--packages' in sys.argv:
+ package=REPO/'build/southport.marine-drive.public-realm/package'
+ manifest=json.loads((package/'manifest.json').read_text())
+ recipe=json.loads((REPO/'regions/southport/marine-drive/public-realm/publication.json').read_text())
+ parts=[]
+ for part in recipe['parts']:
+  parts.append(dict(part,levels={item['level']:{'uri':str(package/item['path'])}for item in manifest['files']if item['part']==part['id']}))
+ cat={'revision':'isolated-'+manifest['build_signature'],'assets':[{'id':'southport.marine-drive.public-realm','rotationY':0,'position':[0,0,0],'parts':parts}]};c=1.;s=0.
 def xy(st,t):return np.array(D['origin'])+u*st+n*t
 def world(p):x,y=p;return np.array([c*x-s*y,-s*x-c*y])
 rows=[]
@@ -34,14 +42,14 @@ for level in ['detail','walk','district']:
  for st in [4.3,8.3,12.3,16.3]:
   h=hits(st,.17)
   if any(owner=='lower-promenade-ground'for owner,z in h):
-   assert any(abs(z-2.2)<.001 for owner,z in h),(level,h);assert max(z for _,z in h)>5,(level,h);lower.append(st)
+   expected=ground.height(*xy(st,.17));assert any(abs(z-expected)<.001 for owner,z in h),(level,h,expected);assert max(z for _,z in h)-expected>2.8,(level,h,'insufficient layered clearance');lower.append(st)
  assert lower,(level,'no layered lower support')
  # Crossing the rail boundary below the deck must retain the mainland level.
  seams=[]
  for st in lower:
   for side in [-1,1]:
    inner=hits(st,side*7.99);outer=hits(st,side*8.01)
-   if any(abs(z-2.2)<.001 for _,z in inner)and any(abs(z-2.2)<.001 for _,z in outer):seams.append([st,side])
+   if any(abs(z-ground.height(*xy(st,side*7.99)))<.001 for _,z in inner)and any(abs(z-ground.height(*xy(st,side*8.01)))<.001 for _,z in outer):seams.append([st,side])
  assert seams,(level,'no lower promenade lateral seam')
  rows.append({'level':level,'layered_stations':lower,'lower_seams':seams})
 (out/'support-check.json').write_text(json.dumps({'catalog':cat['revision'],'checks':rows},indent=2)+'\n');print('Bridge upper/lower support and float32 ground checks passed:',len(rows))

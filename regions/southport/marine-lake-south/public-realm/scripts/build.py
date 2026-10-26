@@ -35,6 +35,10 @@ study=P.difference(P.difference(P.polygons(D['study_polygons']),P.polygons(D['ol
 lake_outer=P.polygons([D['lake_outline']]);islands=P.polygons(D['lake_islands']);lake=P.difference(lake_outer,islands)
 blocks=[b for f in [D['block_plan'],*D['existing_block_plans']]for b in json.loads((REPO/f).read_text())['blocks']if not b.get('base_clearance_m')]
 land=P.difference(P.difference(study,lake),P.polygons([b['footprint']for b in blocks]))
+# Keep the deck continuous across the islands; only its dry-shore approaches
+# replace underlying paving. Island ground remains a separate layer below it.
+bridge=P.intersection(study,line(D['venetian_axis'],D['venetian_width_m']))
+land=P.difference(land,P.difference(bridge,lake_outer))
 # Preserve the registered incoming WestStreet tangent and width at X−172.
 road_geometries=[];foot_geometries=[]
 for r in D['roads']:
@@ -70,11 +74,9 @@ for r in D['roads']:
    white_rows.append(P.polygons([parallel([aa,bb],-.05)+list(reversed(parallel([aa,bb],.05)))]))
 white=P.intersection(P.difference(union(white_rows),yellow),road)
 asphalt=P.difference(P.difference(road,yellow),white)
-# Raised Esplanade segment follows named knots; retained boundary is a wall,
-# with access at the ends where the raised profile rejoins the park plateau.
-esplanade=P.polygons([D['esplanade_inland_polygon']])
-ramp=line(D['esplanade_access_ramp']['points'],D['esplanade_access_ramp']['width'])
-regions=[('lido',lido,SURFACES.surface('south-lido')),*[(r['id'],P.polygons([r['polygon']]),SURFACES.surface(r['surface']))for r in D['parking_ramp_planes']],('access-ramp',ramp,SURFACES.surface('south-esplanade-access-ramp')),('esplanade',esplanade,SURFACES.surface('south-esplanade')),('return',P.polygons([rect(-81.84,85,65,930)]),SURFACES.surface('south-nevill-return')),('blend',P.polygons([rect(-97.84,-81.84,65,930)]),SURFACES.surface('south-west-blend'))]
+# The old regional plateau and hand-built access planes are superseded by
+# measured terrain. Distinct bridge/water layers remain explicit below.
+regions=[]
 colours={'asphalt':(.085,.09,.095),'paving':(.54,.52,.47),'courts':(.35,.34,.31),'green':(.19,.27,.12),'parking':(.18,.19,.19),'yellow':(.8,.62,.13),'white':(.8,.8,.76),'kerb':(.43,.43,.4),'structure':(.35,.36,.34),'sand':(.54,.48,.36),'water':(.08,.23,.29)}
 mats={}
 for name,col in colours.items():
@@ -88,7 +90,7 @@ for ix,(lo,hi)in enumerate(zip(D['tile_cuts'],D['tile_cuts'][1:])):
   name=f'cell-{ix*4+iy:02d}-ground';cell=P.polygons([rect(lo,hi,bottom,top)])
   for mat,g in [('asphalt',asphalt),('paving',foot),('courts',courts),('green',green),('sand',sand),('parking',parking),('yellow',yellow),('white',white)]:
    rest=P.intersection(g,cell)
-   active_regions=([('bank-apron',P.polygons([rect(-207,-197,65,67)]),SURFACES.surface('south-bank-apron'))]if mat in road_mats else [])+regions
+   active_regions=[]
    for region,zone,surface in [*active_regions,('main',None,PAVEMENT)]:
     part=P.intersection(rest,zone)if zone else rest
     if zone:rest=P.difference(rest,zone)
@@ -97,14 +99,14 @@ for ix,(lo,hi)in enumerate(zip(D['tile_cuts'],D['tile_cuts'][1:])):
      for lifted in surface.lift_triangle(tri):m.add([(x,y,0)for x,y,z in lifted],[(0,1,2)])
     if m.faces:compiled[(name,region,mat)]=m;surfaces[(name,region,mat)]=surface
 # The Venetian bridge is a separate walkable surface above nonwalkable water.
-bridge=P.intersection(study,line(D['venetian_axis'],D['venetian_width_m']));bridge=P.intersection(bridge,lake)
 bridge_mesh=Mesh('Ground Venetian bridge top')
-for tri in P.triangles(bridge):bridge_mesh.add([(x,y,0)for x,y in tri],[(0,1,2)])
+for tri in P.triangles(bridge):
+ for lifted in BRIDGE.lift_triangle(tri):bridge_mesh.add([(x,y,0)for x,y,z in lifted],[(0,1,2)])
 if bridge_mesh.faces:compiled[('venetian-ground','bridge','paving')]=bridge_mesh;surfaces[('venetian-ground','bridge','paving')]=BRIDGE
 import southport3d.conform as cf
 cf.GRID=1/8192;cf.TOLERANCE=.00019
 for m in compiled.values():m.vertices=np.asarray(m.vertices,dtype=np.float32).tolist()
-compiled,report=cf.conform(compiled)
+compiled,report=cf.conform(compiled,preserve_triangles=True,weld_distance=5e-5)
 def h(key,p):return surfaces[key].height(*p[:2])-(.12 if key[2]in road_mats else 0)
 edges=defaultdict(list)
 for key,m in compiled.items():
@@ -115,6 +117,9 @@ verticals={}
 for hits in edges.values():
  if len(hits)!=2:continue
  (ka,a,b),(kb,_,_)=hits
+ # The elevated deck owns its shallow fascia. Do not fill its open underside
+ # with a terrain retaining wall or duplicate the fascia at shore approaches.
+ if 'bridge'in (ka[1],kb[1]):continue
  za,zb=h(ka,a),h(ka,b);zc,zd=h(kb,a),h(kb,b)
  if max(abs(za-zc),abs(zb-zd))<1e-5:continue
  # One owner for every material/profile boundary face, including lido and
@@ -125,6 +130,11 @@ for hits in edges.values():
 for key,m in compiled.items():m.vertices=[(x,y,h(key,(x,y)))for x,y,z in m.vertices]
 def finish(m,mat,collection):
  ob=m.finish([mats[mat]],collections[collection]);bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7);bmesh.ops.triangulate(bm,faces=list(bm.faces));bmesh.ops.delete(bm,geom=[f for f in bm.faces if f.calc_area()<1e-9],context='FACES_ONLY');bm.to_mesh(ob.data);bm.free()
+ # Terrain triangles share vertices and smooth normals. Flat per-face normals
+ # made the exporter duplicate nearly every corner, tripling transfer size.
+ # Keep vertical kerbs/retaining faces in their separate hard-edged objects.
+ if m.name.startswith('Ground ')and 'boundary'not in m.name:
+  for face in ob.data.polygons:face.use_smooth=True
  uv=ob.data.uv_layers.new(name='Metric surface')
  for poly in ob.data.polygons:
   for li in poly.loop_indices:
@@ -138,7 +148,7 @@ for tri in P.triangles(P.intersection(study,lake)):
 finish(m,'water','lake-water')
 # Waterline facade is unique: the lido owns its top and this strip its exposed
 # vertical edge. No fabricated cap is laid over the walkable paving.
-lido_surface=SURFACES.surface('south-lido');m=Mesh('Structure formal water edge')
+lido_surface=PAVEMENT;m=Mesh('Structure formal water edge')
 def clipped_segments(a,b):
  raw=P.own(P.read(P.context,P.reader,('LINESTRING ('+','.join(f'{x} {y}'for x,y in [a,b])+')').encode()))
  g=_intersection(raw,study);out=[]
@@ -154,19 +164,28 @@ def clipped_segments(a,b):
 for a,b in zip(D['formal_shoreline'],D['formal_shoreline'][1:]):
  for start,end in clipped_segments(a,b):
   points=list(lido_surface.edge_points(start,end))
-  for aa,bb in zip(points,points[1:]):m.add([(aa[0],aa[1],.6),(bb[0],bb[1],.6),bb,aa],[(0,1,2,3)])
+  for aa,bb in zip(points,points[1:]):m.add([(aa[0],aa[1],water.height(*aa[:2])),(bb[0],bb[1],water.height(*bb[:2])),bb,aa],[(0,1,2,3)])
 finish(m,'structure','shore-walls')
 # Footbridge underside and edge faces, top remains the separate support part.
 m=Mesh('Structure Venetian underside')
-for tri in P.triangles(bridge):m.add([(x,y,1.9)for x,y in tri],[(2,1,0)])
+for tri in P.triangles(bridge):
+ for lifted in BRIDGE.lift_triangle(tri):m.add([(x,y,z-.3)for x,y,z in lifted],[(2,1,0)])
+for side in [-1,1]:
+ edge=parallel(D['venetian_axis'],side*D['venetian_width_m']/2)
+ for a,b in zip(edge,edge[1:]):
+  points=list(BRIDGE.edge_points(a,b))
+  for aa,bb in zip(points,points[1:]):m.add([(aa[0],aa[1],aa[2]-.3),(bb[0],bb[1],bb[2]-.3),bb,aa],[(0,1,2,3)]if side>0 else[(3,2,1,0)])
 finish(m,'structure','shore-walls')
 # Low rails preserve bridge outline; ornamental balustrade details deferred.
 for side in [-1,1]:
  edge=parallel(D['venetian_axis'],side*(D['venetian_width_m']/2-.05))
  outline=parallel(edge,-.05)+list(reversed(parallel(edge,.05)))
  m=Mesh('Structure Venetian rail envelope '+str(side))
- for tri in P.triangles(P.polygons([outline])):m.add([(x,y,3.3)for x,y in tri],[(0,1,2)])
- for a,b in zip(outline,outline[1:]+outline[:1]):m.add([(a[0],a[1],2.2),(b[0],b[1],2.2),(b[0],b[1],3.3),(a[0],a[1],3.3)],[(0,1,2,3)])
+ for tri in P.triangles(P.polygons([outline])):
+  for lifted in BRIDGE.lift_triangle(tri):m.add([(x,y,z+1.1)for x,y,z in lifted],[(0,1,2)])
+ for a,b in zip(outline,outline[1:]+outline[:1]):
+  points=list(BRIDGE.edge_points(a,b))
+  for aa,bb in zip(points,points[1:]):m.add([aa,bb,(bb[0],bb[1],bb[2]+1.1),(aa[0],aa[1],aa[2]+1.1)],[(0,1,2,3)])
  finish(m,'structure','shore-walls')
 # Continuous coarse sea-wall strip; its shared end exactly matches the prior
 # north segment. Caps are unique and vertical faces stand on mainland grade.
@@ -174,7 +193,8 @@ edge=D['coast_wall_centres'];outline=parallel(edge,-.16)+list(reversed(parallel(
 wall=P.polygons([outline])
 # Terminal interface is mitred to the existing strip at its original start.
 m=Mesh('Structure coastal sea wall envelope')
-for tri in P.triangles(wall):m.add([(x,y,3.0)for x,y in tri],[(0,1,2)])
+for tri in P.triangles(wall):
+ for lifted in PAVEMENT.lift_triangle(tri):m.add([(x,y,z+.8)for x,y,z in lifted],[(0,1,2)])
 # Boundary extraction avoids internal fragment caps.
 def rings(g):
  out=[]
@@ -188,7 +208,9 @@ def rings(g):
    for i in range(P.count(P.context,o)):visit(P.child(P.context,o,i))
  visit(g);return out
 for outline in rings(wall):
- for a,b in zip(outline,outline[1:]+outline[:1]):m.add([(a[0],a[1],2.2),(b[0],b[1],2.2),(b[0],b[1],3.0),(a[0],a[1],3.0)],[(0,1,2,3)])
+ for a,b in zip(outline,outline[1:]+outline[:1]):
+  points=list(PAVEMENT.edge_points(a,b))
+  for aa,bb in zip(points,points[1:]):m.add([aa,bb,(bb[0],bb[1],bb[2]+.8),(aa[0],aa[1],aa[2]+.8)],[(0,1,2,3)])
 finish(m,'structure','shore-walls')
 P.close();(ROOT/'research/conform.json').write_text(json.dumps(report,indent=2)+'\n')
 s.render.engine='CYCLES';s.cycles.samples=12;s.cycles.use_denoising=True;s.world=s.world or bpy.data.worlds.new('World');s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs['Color'].default_value=(.65,.7,.75,1)

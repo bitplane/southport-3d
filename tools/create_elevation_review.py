@@ -65,16 +65,18 @@ def main():
                        ('nevill-street',['public-realm','frontage-placeholders']),
                        ('station-quarter',['public-realm','frontage-placeholders']),
                        ('glebe-place',['public-realm']),
-                       ('london-square',['public-realm'])]:
+                       ('london-square',['public-realm']),
+                       ('marine-lake-south',['public-realm','frontage-placeholders']),
+                       ('marine-drive',['public-realm','frontage-placeholders','marine-way-bridge'])]:
         for kind in kinds:
             asset=f'southport.{area}.{kind}';package=ROOT/'build'/asset/'package'
             manifest=package/'manifest.json'
             if not manifest.exists():continue
             # Only terrain packages checked in this migration are included.
             recipe=ROOT/'regions/southport'/area/kind/'research/layout.json'
-            if area in {'glebe-place','london-square'}:
-                check=package/'terrain-check.json'
-                if not check.is_file():continue
+            if area in {'glebe-place','london-square','marine-lake-south','marine-drive'}:
+                if kind=='public-realm' and not (package/'terrain-check.json').is_file():continue
+                if kind=='marine-way-bridge' and not (package/'bridge-export-check.json').is_file():continue
                 state=json.loads((package.parent/'build-state.json').read_text())
                 metadata=json.loads(manifest.read_text())
                 if 'validate' not in state['nodes'] or metadata['source_fingerprint']!=state['nodes']['master']['key']:

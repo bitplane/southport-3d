@@ -26,20 +26,23 @@ The retained road axis is extended to the measured western terrace end. Deck
 width including fascias is estimated at 18.5 m, with 16 m between the rail lines
 and a 6.4 m carriageway. The pylon is stationed about 104 m from the eastern end,
 with an approximately 80 m main span to the eastern pier. Pylon tip is 56.6 m in
-the project datum, about 56 m above estimated water. These are reconstructed
+the project datum; its vertical registration remains an older estimate. These are reconstructed
 metric dimensions, **not an engineering survey**. Hidden foundations, reinforcement,
 bearing internals, unreadable inscriptions and north-side underside fittings
 remain unmodelled.
 
-The bridge profile now rises to an estimated 6.2 m, preserving the existing
-2.2 m mainland and 0.6 m water controls. Heights remain relative to the memorial's
-estimated local zero, not sea level. The lower promenade at 2.2 m continues below
-the raised deck; its named support layer prevents walking from snapping to the
-road overhead. Ground geometry is identical at all three viewing levels.
+The isolated elevation-migration package uses the EA DSM centre-strip deck
+profile, excluding pylon-contaminated stations. The road crown reaches about
+4.96 m local; the walking strip carries the explicit 0.12 m pavement allowance.
+The mainland follows the shared terrain and the lower promenade remains a
+separate support below the deck. See [waterfront heights](WATERFRONT-HEIGHTS.md)
+for provenance, provisional water level and remaining retaining/landing work.
+These measured packages are staged in the elevation review; the main town still
+uses the preserved baseline. Ground is identical at all three viewing levels.
 
-Detail contains 37,612 triangles; Walk retains 30,372, omitting fine wires,
+Detail contains 36,538 triangles; Walk retains 29,842, omitting fine wires,
 curved parapet brackets and sleeve collars. District is a separately authored
-3,768-triangle structural envelope. It retains the open A-frame, separate caps,
+3,366-triangle structural envelope. It retains the open A-frame, separate caps,
 18 cables, deck profile, anchor masses, piers and pierced main-post/rail silhouette;
 fine pickets, lantern cages and small fittings are omitted. Three fixed 512×512
 atlases bake onto those receivers. Added detail cannot grow this topology or
@@ -48,9 +51,9 @@ main posts receive greater atlas weight, and visual review remains necessary.
 
 | Level | Triangles | GLB bytes | Estimated GPU bytes |
 | --- | ---: | ---: | ---: |
-| Detail | 37,612 | 4,369,484 | 4,942,490 |
-| Walk | 30,372 | 3,321,540 | 3,897,722 |
-| District | 3,768 | 951,188 | 13,080,066 |
+| Detail | 36,538 | 4,205,580 | 4,778,486 |
+| Walk | 29,842 | 3,238,612 | 3,814,694 |
+| District | 3,366 | 882,568 | 13,014,095 |
 
 District texture memory exceeds Detail's because the coarse model carries three
 colour/normal/roughness atlas sets. It remains within its declared 6,000 triangle,
@@ -65,8 +68,11 @@ seam checker retains the complete neighbouring overlap review queue. A narrowly
 identified long paving fan residue at site (-63.919, 588.858), about 0.118 mm wide,
 is recorded explicitly alongside the pre-existing numerical seam residues.
 
-Final review passed 123 exported upper/lower support samples and 99 neighbouring
-seam samples. Actual Walk mode remained on the lower promenade through a
+The measured isolated package passes 123 exported upper/lower support checks
+with `scripts/check_scene.py --packages`. Full neighbouring seam and interactive
+walking acceptance must be repeated before the migration replaces the town.
+The earlier baseline passed 99 neighbouring seam samples. In that baseline,
+actual Walk mode remained on the lower promenade through a
 District switch and staged tileset replacement; upper walking follows the bridge
 profile. Forced Detail, Walk and District were inspected in the assembled viewer.
 The selected cross-asset audit retains 664 numerical/older-neighbour candidate

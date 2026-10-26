@@ -17,7 +17,10 @@ def check(package, recipe):
     if config['coordinates']['frame']!='site':
         raise ValueError('Terrain package checker expects site coordinates')
     layout=json.loads((recipe.parent/'research/layout.json').read_text())
-    surface=Elevations(ROOT/layout['elevation_plan']).surface(layout['elevation_surface'])
+    plan=Elevations(ROOT/layout['elevation_plan'])
+    default_surface=plan.surface(layout['elevation_surface'])
+    part_surfaces={key:plan.surface(name)for key,name in layout.get('elevation_surfaces_by_part',{}).items()}
+    node_surfaces={key:plan.surface(name)for key,name in layout.get('elevation_surfaces_by_node',{}).items()}
     manifest=json.loads((package/'manifest.json').read_text())
     ground={p['id']for p in config['parts']if p.get('ground')}
     baseline={};rows=[]
@@ -32,15 +35,17 @@ def check(package, recipe):
         checked=0;max_error=0.
         for f in files:
             if f['part']not in ground:continue
+            surface=part_surfaces.get(f['part'],default_surface)
             chunks=[]
             for tri,source in primitives(package/f['path'],{'rotationY':0,'position':[0,0,0]}):
+                field=next((value for key,value in node_surfaces.items()if key in source['node']),surface)
                 xyz=tri[:,:,[0,2,1]]*np.array([1,-1,1]);chunks.append(xyz)
                 normal=np.cross(xyz[:,1]-xyz[:,0],xyz[:,2]-xyz[:,0])
                 use=abs(normal[:,2])>.7*np.linalg.norm(normal,axis=1)
                 centres=xyz[use].mean(axis=1)
                 road=any(source['material'].lower().endswith(' '+m)for m in ['asphalt','yellow','white','parking'])
                 for x,y,z in centres:
-                    err=abs(z-(surface.height(float(x),float(y))-(.12 if road else 0)))
+                    err=abs(z-(field.height(float(x),float(y))-(.12 if road else 0)))
                     assert err<1e-4,(level,f['part'],source['node'],x,y,z,err)
                     max_error=max(max_error,err);checked+=1
             values=np.concatenate(chunks)

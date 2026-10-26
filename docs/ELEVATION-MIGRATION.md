@@ -131,14 +131,14 @@ Marine Drive mainland ground and placeholder foundations use the measured field.
 Nine bounded 1.25 m refinements resolve sharp shore gradients that a uniform 5 m
 lattice missed. The full ground validator checks 9,696 owned mainland road probes
 against native pixels (maximum difference 0.2496 m), triangle planes, ownership
-and a fixed 360,000-triangle regional budget. The current build has 351,499
+and a fixed 360,000-triangle regional budget. The current build has 355,097
 triangles. The existing ownership audit records sub-millimetre numerical residues
 separately; it does not certify every non-coplanar intersection.
 
-This region is **not** in the published migration review or the main town yet:
-its lake plane and bridge/approach profiles still have old levels. Those layers
-must be reconciled before assembled review. Do not interpret a successful isolated
-ground build as a usable waterfront publication.
+Marine Drive and the southern lake are now included in the separate migration
+review, together with measured bridge profiles. The main town is unchanged.
+See [waterfront heights](WATERFRONT-HEIGHTS.md) for deck evidence, provisional
+water and the unresolved sharp retaining edges and Funland landing geometry.
 
 The survey predates work at the Marine Lake Events Centre. Sefton's
 [August 2025 earthworks update](https://www.sefton.gov.uk/mysefton-news/latest-news/marine-lake-events-centre-construction-moves-into-earthworks-stage/)
@@ -151,8 +151,8 @@ report for DC/2022/01391 identifies AECOM's 17 June 2022 flood risk assessment
 underlying reports have not yet been obtained. Lake water remains an independent
 level, not an automatic interpretation of DTM interpolation over water.
 
-Next connected migrations: London Square and its gardens/approaches, Glebe Place,
-Eastbank and Tulketh railway layers, southern lake/park/esplanade, then all detailed
+Remaining connected migrations: Eastbank and Tulketh railway layers,
+waterfront retaining breaks and landings, then all detailed
 building foundations and entrances. Check neighbouring exported seams together,
 followed by measured bridge deck/approach and underside-clearance corrections.
 No main-catalog elevation switch or pier modelling has been performed.
@@ -191,3 +191,21 @@ under the newly level pools.
 
 The main town still uses its preserved baseline. Eastbank/railway, the remaining
 waterfront layers, detailed building attachments and bridges are outstanding.
+
+
+## Waterfront package checks
+
+Southern-lake public realm and placeholder foundations now use the common field.
+Sixteen bounded refinements retain the 0.25 m native-road approximation limit.
+Its 542,415-triangle package is about 21.74 MB per level; shared ground normals
+reduce duplicate export vertices without altering terrain positions. This is
+still a regional ground mesh, not the eventual simplified distant regional LoD.
+All 517,267 checked exported ground triangles per level follow their named planes,
+and ground arrays match exactly between levels. The Venetian deck is continuous
+across both islands, with its measured central hump and independent terrain below.
+
+Marine Drive's 355,097-triangle package is about 15.51 MB per level. Its 322,225
+exported ground-plane checks per level pass within 0.000025 m. The structural
+Marine Way exports pass all three coplanar checks, and 123 upper/lower road and
+promenade support checks pass. These numerical results do not certify the sharp
+shore retaining edges, every full-width approach join or Funland's stair count.

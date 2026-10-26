@@ -32,12 +32,38 @@
   "scope": "Visible 150 m asymmetric cable-stayed bridge, shared ground separately owned by Marine public realm. Below-water foundations and concealed bearing internals omitted. Dimensions estimated from imagery, not surveyed.",
   "build_inputs": {
     "master": [
-      "regions/southport/elevation/marine-drive.json"
+      "regions/southport/elevation/marine-drive.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-332000-416000.npz",
+      "regions/southport/elevation/survey/dtm-332000-417000.npz",
+      "regions/southport/elevation/survey/dtm-332000-418000.npz",
+      "regions/southport/elevation/survey/dtm-332000-419000.npz",
+      "regions/southport/elevation/survey/dtm-333000-416000.npz",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-333000-418000.npz",
+      "regions/southport/elevation/survey/dtm-333000-419000.npz",
+      "regions/southport/elevation/survey/dtm-334000-416000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-418000.npz",
+      "regions/southport/elevation/survey/dtm-334000-419000.npz"
     ],
     "validate": [
       "regions/southport/elevation/marine-drive.json",
       "regions/southport/marine-drive/public-realm/scripts/check_mesh_ownership.py",
-      "tools/coplanar_scan.cpp"
+      "tools/coplanar_scan.cpp",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-332000-416000.npz",
+      "regions/southport/elevation/survey/dtm-332000-417000.npz",
+      "regions/southport/elevation/survey/dtm-332000-418000.npz",
+      "regions/southport/elevation/survey/dtm-332000-419000.npz",
+      "regions/southport/elevation/survey/dtm-333000-416000.npz",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-333000-418000.npz",
+      "regions/southport/elevation/survey/dtm-333000-419000.npz",
+      "regions/southport/elevation/survey/dtm-334000-416000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-418000.npz",
+      "regions/southport/elevation/survey/dtm-334000-419000.npz"
     ]
   },
   "publication_checks": [

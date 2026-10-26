@@ -8,7 +8,7 @@ D=json.loads((ROOT/'research/layout.json').read_text())
 
 obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];assert len(obs)==sum(not b['replace_with'] for b in D['blocks'])
 sys.path[:0]=[str(ROOT/'scripts'),str(REPO/'lib')]
-from datum import grade
+from datum import grade,PAVEMENT
 triangles=0
 for block in D['blocks']:
  if block['replace_with']:continue
@@ -19,7 +19,8 @@ for block in D['blocks']:
  for x,y in block['footprint']:
   matches=[v for v in o.data.vertices if abs(v.co.x-x)<1e-4 and abs(v.co.y-y)<1e-4]
   assert len(matches)==2,(o.name,'footprint changed',x,y)
-  assert abs(min(v.co.z for v in matches)-grade(x,y)-block.get('base_clearance_m',0))<1e-4,(o.name,'floating base')
+  expected=min(p[2]for a,b in zip(block['footprint'],block['footprint'][1:]+block['footprint'][:1])for p in PAVEMENT.edge_points(a,b))-.05+block.get('base_clearance_m',0)
+  assert abs(min(v.co.z for v in matches)-expected)<1e-4,(o.name,'buried level footing')
  o.data.calc_loop_triangles();triangles+=len(o.data.loop_triangles)
  for t in o.data.loop_triangles:
   a,b,c=(o.data.vertices[i].co for i in t.vertices);assert (b-a).cross(c-a).length>1e-9

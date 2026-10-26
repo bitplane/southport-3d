@@ -52,7 +52,7 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Provisional block plan from Duke Street and West Street through Kings Gardens, the southern Marine Lake, Princes Park and west Ocean Plaza. Widths ±1–2 m, footprints ±1–3 m and heights ±2–3 m; no surveyed levels. Flat building tops are height bounds. Pier, ride equipment, detailed balustrades and small garden features are deferred.",
+  "scope": "Provisional block plan from Duke Street and West Street through Kings Gardens, the southern Marine Lake, Princes Park and west Ocean Plaza. Widths \u00b11\u20132 m, footprints \u00b11\u20133 m and heights \u00b12\u20133 m; no surveyed levels. Flat building tops are height bounds. Pier, ride equipment, detailed balustrades and small garden features are deferred.",
   "licensing": "OSM contributor geometry under ODbL1.0; reference photographs linked only.",
   "build_inputs": {
     "master": [
@@ -62,7 +62,20 @@
       "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
       "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
       "regions/southport/marine-drive/frontage-placeholders/research/layout.json",
-      "regions/southport/marine-lake-south/frontage-placeholders/research/layout.json"
+      "regions/southport/marine-lake-south/frontage-placeholders/research/layout.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-332000-416000.npz",
+      "regions/southport/elevation/survey/dtm-332000-417000.npz",
+      "regions/southport/elevation/survey/dtm-332000-418000.npz",
+      "regions/southport/elevation/survey/dtm-332000-419000.npz",
+      "regions/southport/elevation/survey/dtm-333000-416000.npz",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-333000-418000.npz",
+      "regions/southport/elevation/survey/dtm-333000-419000.npz",
+      "regions/southport/elevation/survey/dtm-334000-416000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-418000.npz",
+      "regions/southport/elevation/survey/dtm-334000-419000.npz"
     ],
     "validate": [
       "regions/southport/elevation/marine-lake-south.json",
@@ -71,10 +84,26 @@
       "regions/southport/west-street/frontage-placeholders/research/layout.json",
       "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
       "regions/southport/stanley-street/frontage-placeholders/research/layout.json",
-      "regions/southport/marine-drive/frontage-placeholders/research/layout.json"
+      "regions/southport/marine-drive/frontage-placeholders/research/layout.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-332000-416000.npz",
+      "regions/southport/elevation/survey/dtm-332000-417000.npz",
+      "regions/southport/elevation/survey/dtm-332000-418000.npz",
+      "regions/southport/elevation/survey/dtm-332000-419000.npz",
+      "regions/southport/elevation/survey/dtm-333000-416000.npz",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz",
+      "regions/southport/elevation/survey/dtm-333000-418000.npz",
+      "regions/southport/elevation/survey/dtm-333000-419000.npz",
+      "regions/southport/elevation/survey/dtm-334000-416000.npz",
+      "regions/southport/elevation/survey/dtm-334000-417000.npz",
+      "regions/southport/elevation/survey/dtm-334000-418000.npz",
+      "regions/southport/elevation/survey/dtm-334000-419000.npz"
     ]
   },
   "validation_checks": [
     "check_ground_routes.py"
+  ],
+  "publication_checks": [
+    "check_package.py"
   ]
 }

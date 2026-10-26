@@ -69,5 +69,8 @@
       "regions/southport/elevation/survey/dtm-334000-418000.npz",
       "regions/southport/elevation/survey/dtm-334000-419000.npz"
     ]
-  }
+  },
+  "publication_checks": [
+    "check_package.py"
+  ]
 }

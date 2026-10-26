@@ -12137,7 +12137,7 @@
   "walls": [],
   "budgets": {
     "triangles_per_level": 360000,
-    "download_bytes_per_level": 10000000,
+    "download_bytes_per_level": 16000000,
     "gpu_bytes_per_level": 30000000,
     "ground_triangles_per_level": 355000,
     "structure_triangles_per_level": 30000,
@@ -12685,5 +12685,10 @@
       ]
     ]
   ],
-  "neighbour_exclusion_basis": "Exact existing MarineParade/Promenade ground polygons: pavement extends beyond roadY310 toY312 and reachesY314.43 atX85. New canvas yields that ownership, including paint/kerbs, instead of copying a rectangular cap."
+  "neighbour_exclusion_basis": "Exact existing MarineParade/Promenade ground polygons: pavement extends beyond roadY310 toY312 and reachesY314.43 atX85. New canvas yields that ownership, including paint/kerbs, instead of copying a rectangular cap.",
+  "elevation_plan": "regions/southport/elevation/marine-drive.json",
+  "elevation_surface": "marine-mainland",
+  "elevation_surfaces_by_node": {
+    " bridge ": "marine-bridge-measured-reference"
+  }
 }

@@ -1,6 +1,6 @@
 """Explicit independently authored structural surfaces."""
 import math
-from bridge_alignment import D,U,N,E,GRADE,xy,transform,grade,width,stations
+from bridge_alignment import D,U,N,E,GRADE,xy,transform,grade,width,stations,ground
 
 class Faces:
  def __init__(self):self.items=[]
@@ -18,8 +18,8 @@ class Faces:
   if cap:
    self.face(name+' start',list(reversed(A)),mat,part,cage,weight);self.face(name+' end',B,mat,part,cage,weight)
  def leg(self,side,segments=32,fine=True):
-  d=D;top=d['pylon_top_z'];zs=[d['pylon_base_z'],54.4]
-  if fine:zs=[d['pylon_base_z'],*range(4,53,4),54.4]
+  d=D;top=d['pylon_top_z'];cutoff=d['pylon_visible_cutoff_z'];zs=[cutoff,54.4]
+  if fine:zs=[cutoff,d['pylon_base_z'],*range(4,53,4),54.4]
   def ring(z,r=1):
    t=side*(d['pylon_base_offset']+(d['pylon_top_offset']-d['pylon_base_offset'])*(z-d['pylon_base_z'])/(54.4-d['pylon_base_z']))
    return [(d['pylon_station']+d['pylon_radius_along']*r*math.cos(i*math.tau/segments),t+d['pylon_radius_across']*r*math.sin(i*math.tau/segments),z)for i in range(segments)]
@@ -58,16 +58,17 @@ class Faces:
   for k,(a,b)in enumerate(zip(west,west[1:])):
    for side in [-1,1]:
     ta,tb=side*(width(a)+.95),side*(width(b)+.95)
-    p=[(a,ta,1.7),(b,tb,1.7),(b,tb,grade(b,side*width(b))-1.05),(a,ta,grade(a,side*width(a))-1.05)]
+    za=grade(a,side*width(a))-1.05;zb=grade(b,side*width(b))-1.05
+    p=[(a,ta,min(ground(a,ta)-.2,za-.2)),(b,tb,min(ground(b,tb)-.2,zb-.2)),(b,tb,zb),(a,ta,za)]
     if side>0:p.reverse()
     self.face(f'west retaining {side} {k}',p,cage=.16)
   for st in [0.,150.]:
-   w=width(st)+.95;p=[(st,-w,1.7),(st,w,1.7),(st,w,grade(st,width(st))-1.05),(st,-w,grade(st,-width(st))-1.05)]
+   w=width(st)+.95;z=grade(st)-1.05;p=[(st,-w,min(ground(st,-w)-.2,z-.2)),(st,w,min(ground(st,w)-.2,z-.2)),(st,w,z),(st,-w,z)]
    if st==150:p.reverse()
    self.face('abutment closure '+str(st),p,cage=.16)
   # Two observed circular support shafts at the eastern lower promenade.
   for side in [-1,1]:
-   st=D['main_pier_station'];t=side*5.9;self.tube('east pier '+str(side),(st,t,1.8),(st,t,grade(st,t)-1.05),.72,'concrete','deck',8 if coarse else 24,False,.16,1)
+   st=D['main_pier_station'];t=side*5.9;self.tube('east pier '+str(side),(st,t,min(ground(st,t)-.15,grade(st,t)-1.3)),(st,t,grade(st,t)-1.05),.72,'concrete','deck',8 if coarse else 24,False,.16,1)
   # Main stays carry regular transverse ribs; underside geometry stops below slab.
   if not coarse:
    for st in D['fore_stations']:

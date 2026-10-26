@@ -52,5 +52,7 @@
   "rail_post_pitch": 3.0,
   "rail_picket_pitch": 0.14,
   "lamp_pitch": 9.0,
-  "limits": "Dimensions are a reconstruction, not an engineering survey. Below-water foundations, inaccessible bearing internals and unreadable plates omitted. Main current appearance follows August 2024 Street View; structural photos are older architect photographs."
+  "limits": "Dimensions are a reconstruction, not an engineering survey. Below-water foundations, inaccessible bearing internals and unreadable plates omitted. Main current appearance follows August 2024 Street View; structural photos are older architect photographs.",
+  "pylon_visible_cutoff_z": -3.5,
+  "pylon_visible_cutoff_note": "Authored hidden shaft cutoff, not a surveyed footing or lakebed. Existing inclined shaft continues below the provisional lake plane; original above-water alignment and estimated tip remain unchanged."
 }

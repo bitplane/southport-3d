@@ -34,10 +34,10 @@
       "evidence": "Marine Way Bridge primary architect southport05 visible east pier/soffit above preserved lower promenade; 2024 Street View and actual 3D. Shared bridge reconstruction, no survey."
     },
     "marine-lake": {
-      "height_m": 0.6,
-      "uncertainty_m": 1,
-      "status": "visual-estimate",
-      "evidence": "Visual lake level beneath raised shoreline; no surveyed level."
+      "height_m": -2.335294235795085,
+      "uncertainty_m": 0.5,
+      "status": "provisional-water-level-not-surveyed",
+      "evidence": "Working water plane 4.15 m ODN, consistent with interpolated EA raster over the lake; raster interpolation does not establish operating water level. Must be checked against current shoreline photographs or a level survey. Kept independent from ground and deck profiles."
     },
     "marine-stanley-175": {
       "height_m": 0.7938983677017434,
@@ -56,6 +56,282 @@
       "uncertainty_m": 1.0,
       "status": "visual-estimate",
       "evidence": "Marine Way Bridge primary architect southport05 visible east pier/soffit above preserved lower promenade; 2024 Street View and actual 3D. Shared bridge reconstruction, no survey."
+    },
+    "marine-deck-survey--60": {
+      "height_m": 3.041,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--55": {
+      "height_m": 3.019,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--50": {
+      "height_m": 2.991,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--45": {
+      "height_m": 2.99,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--40": {
+      "height_m": 2.997,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--35": {
+      "height_m": 3.018,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--30": {
+      "height_m": 3.079,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--25": {
+      "height_m": 3.146,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--20": {
+      "height_m": 3.18,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--15": {
+      "height_m": 3.251,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--10": {
+      "height_m": 3.339,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey--5": {
+      "height_m": 3.381,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-0": {
+      "height_m": 3.469,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-5": {
+      "height_m": 3.621,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-10": {
+      "height_m": 3.835,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-15": {
+      "height_m": 4.068,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-20": {
+      "height_m": 4.295,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-25": {
+      "height_m": 4.474,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-30": {
+      "height_m": 4.62,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-35": {
+      "height_m": 4.753,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-40": {
+      "height_m": 4.873,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-45": {
+      "height_m": 4.958,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-50": {
+      "height_m": 5.006,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-55": {
+      "height_m": 5.066,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-60": {
+      "height_m": 5.076,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-65": {
+      "height_m": 5.085,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-70": {
+      "height_m": 5.059,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-75": {
+      "height_m": 5.008,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-80": {
+      "height_m": 4.928,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-85": {
+      "height_m": 4.835,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-90": {
+      "height_m": 4.7,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-110": {
+      "height_m": 3.953,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-115": {
+      "height_m": 3.701,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-120": {
+      "height_m": 3.458,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-125": {
+      "height_m": 3.255,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-130": {
+      "height_m": 3.075,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-135": {
+      "height_m": 2.923,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-140": {
+      "height_m": 2.78,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-145": {
+      "height_m": 2.714,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-150": {
+      "height_m": 2.624,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-155": {
+      "height_m": 2.502,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-160": {
+      "height_m": 2.449,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-165": {
+      "height_m": 2.361,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-170": {
+      "height_m": 2.286,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-175": {
+      "height_m": 2.205,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
+    },
+    "marine-deck-survey-180": {
+      "height_m": 2.136,
+      "uncertainty_m": 0.2,
+      "status": "lidar-dsm-deck-reference",
+      "evidence": "EA 2022 composite 1 m last-return DSM; median of seven transverse road probes at offsets -3..3 m, plus authored 0.12 m kerb. Pylon-contaminated stations 95\u2013105 m excluded. Raw probes in survey/waterfront-decks.json."
     }
   },
   "surfaces": {
@@ -315,6 +591,209 @@
         }
       ],
       "offset_m": 0
+    },
+    "marine-bridge-measured-reference": {
+      "bounds": [
+        -300,
+        1500,
+        175,
+        1000
+      ],
+      "axis_origin": [
+        9.305,
+        376.9
+      ],
+      "axis_direction": [
+        -0.325551,
+        0.945524
+      ],
+      "profile": [
+        {
+          "distance_m": -60,
+          "control": "marine-deck-survey--60"
+        },
+        {
+          "distance_m": -55,
+          "control": "marine-deck-survey--55"
+        },
+        {
+          "distance_m": -50,
+          "control": "marine-deck-survey--50"
+        },
+        {
+          "distance_m": -45,
+          "control": "marine-deck-survey--45"
+        },
+        {
+          "distance_m": -40,
+          "control": "marine-deck-survey--40"
+        },
+        {
+          "distance_m": -35,
+          "control": "marine-deck-survey--35"
+        },
+        {
+          "distance_m": -30,
+          "control": "marine-deck-survey--30"
+        },
+        {
+          "distance_m": -25,
+          "control": "marine-deck-survey--25"
+        },
+        {
+          "distance_m": -20,
+          "control": "marine-deck-survey--20"
+        },
+        {
+          "distance_m": -15,
+          "control": "marine-deck-survey--15"
+        },
+        {
+          "distance_m": -10,
+          "control": "marine-deck-survey--10"
+        },
+        {
+          "distance_m": -5,
+          "control": "marine-deck-survey--5"
+        },
+        {
+          "distance_m": 0,
+          "control": "marine-deck-survey-0"
+        },
+        {
+          "distance_m": 5,
+          "control": "marine-deck-survey-5"
+        },
+        {
+          "distance_m": 10,
+          "control": "marine-deck-survey-10"
+        },
+        {
+          "distance_m": 15,
+          "control": "marine-deck-survey-15"
+        },
+        {
+          "distance_m": 20,
+          "control": "marine-deck-survey-20"
+        },
+        {
+          "distance_m": 25,
+          "control": "marine-deck-survey-25"
+        },
+        {
+          "distance_m": 30,
+          "control": "marine-deck-survey-30"
+        },
+        {
+          "distance_m": 35,
+          "control": "marine-deck-survey-35"
+        },
+        {
+          "distance_m": 40,
+          "control": "marine-deck-survey-40"
+        },
+        {
+          "distance_m": 45,
+          "control": "marine-deck-survey-45"
+        },
+        {
+          "distance_m": 50,
+          "control": "marine-deck-survey-50"
+        },
+        {
+          "distance_m": 55,
+          "control": "marine-deck-survey-55"
+        },
+        {
+          "distance_m": 60,
+          "control": "marine-deck-survey-60"
+        },
+        {
+          "distance_m": 65,
+          "control": "marine-deck-survey-65"
+        },
+        {
+          "distance_m": 70,
+          "control": "marine-deck-survey-70"
+        },
+        {
+          "distance_m": 75,
+          "control": "marine-deck-survey-75"
+        },
+        {
+          "distance_m": 80,
+          "control": "marine-deck-survey-80"
+        },
+        {
+          "distance_m": 85,
+          "control": "marine-deck-survey-85"
+        },
+        {
+          "distance_m": 90,
+          "control": "marine-deck-survey-90"
+        },
+        {
+          "distance_m": 110,
+          "control": "marine-deck-survey-110"
+        },
+        {
+          "distance_m": 115,
+          "control": "marine-deck-survey-115"
+        },
+        {
+          "distance_m": 120,
+          "control": "marine-deck-survey-120"
+        },
+        {
+          "distance_m": 125,
+          "control": "marine-deck-survey-125"
+        },
+        {
+          "distance_m": 130,
+          "control": "marine-deck-survey-130"
+        },
+        {
+          "distance_m": 135,
+          "control": "marine-deck-survey-135"
+        },
+        {
+          "distance_m": 140,
+          "control": "marine-deck-survey-140"
+        },
+        {
+          "distance_m": 145,
+          "control": "marine-deck-survey-145"
+        },
+        {
+          "distance_m": 150,
+          "control": "marine-deck-survey-150"
+        },
+        {
+          "distance_m": 155,
+          "control": "marine-deck-survey-155"
+        },
+        {
+          "distance_m": 160,
+          "control": "marine-deck-survey-160"
+        },
+        {
+          "distance_m": 165,
+          "control": "marine-deck-survey-165"
+        },
+        {
+          "distance_m": 170,
+          "control": "marine-deck-survey-170"
+        },
+        {
+          "distance_m": 175,
+          "control": "marine-deck-survey-175"
+        },
+        {
+          "distance_m": 180,
+          "control": "marine-deck-survey-180"
+        }
+      ],
+      "offset_m": 0
     }
   },
   "superseded_surfaces": {
@@ -352,6 +831,14 @@
         }
       ],
       "offset_m": 0
+    }
+  },
+  "superseded_controls": {
+    "marine-lake": {
+      "height_m": 0.6,
+      "uncertainty_m": 1,
+      "status": "visual-estimate",
+      "evidence": "Visual lake level beneath raised shoreline; no surveyed level."
     }
   }
 }
