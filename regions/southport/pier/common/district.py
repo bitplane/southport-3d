@@ -1,5 +1,5 @@
 """Fixed-budget section envelope, authored separately from the detailed mesh."""
-import json
+import json,math
 from blender_envelope import Surfaces
 from shapes import create
 
@@ -11,4 +11,11 @@ def surfaces(asset):
         if len(v)==4:s.quad(row['name'],v,**kw)
         else:
             for i in range(1,len(v)-1):s.triangle(row['name']+' cap '+str(i),[v[0],v[i],v[i+1]],**kw)
+    # Repeated posts, columns and truss faces share one sampled appearance.
+    # Geometry congruence is checked again by the shared baker before reuse.
+    for part,faces in s.result.items():
+        for face in faces:
+            v=face['vertices'];shape=tuple(round(math.dist(v[i],v[j]),6) for i in range(4) for j in range(i))
+            family=face['name'].split()[0]
+            face['atlas_key']=str((family,shape)) if max(shape)<10 else face['name']
     return s.result

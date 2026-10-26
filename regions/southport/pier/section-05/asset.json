@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "southport.pier.section-05",
+  "name": "Southport Pier \u2014 section 05",
+  "region": "southport",
+  "area": "pier",
+  "status": "open-pier-reconstruction-estimated-registration",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.65236794186742,
+    -3.0129530698170157
+  ],
+  "site_rotation_from_east_degrees": 148.06834026980724,
+  "components": [
+    "deck",
+    "structure",
+    "fittings"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Pier stations 366.0\u2013457.5 m; level deck, four-truss bays, railings and crossed lamp arches. Furniture and side kiosks added after the connected structural pass.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/pier/common/prepare.py",
+      "regions/southport/pier/common/shapes.py",
+      "regions/southport/pier/common/geometry.py",
+      "regions/southport/pier/common/build.py",
+      "regions/southport/pier/common/research/alignment.json"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "stations": [
+    457.5,
+    549
+  ],
+  "column_base_z": -3.4,
+  "scope": "Pier stations 457.5\u2013549 m; research-led open pier reconstruction.",
+  "road_bridge": [
+    500,
+    524
+  ]
+}

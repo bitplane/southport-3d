@@ -13,7 +13,7 @@ def run(root):
     cols={}
     for part in ['deck','structure','fittings']:
         c=bpy.data.collections.new(part);scene.collection.children.link(c);cols[part]=c
-    colours={'blue':(.035,.07,.12),'ivory':(.78,.76,.62),'yellow':(.70,.57,.08),'dark':(.028,.025,.022),'rail':(.25,.19,.13),'timber':(.20,.18,.14),'plank-long':(.33,.30,.24),'plank-cross':(.35,.31,.25)}
+    colours={'glass':(.28,.40,.43),'roof':(.25,.31,.29),'gold':(.45,.31,.08),'stone':(.42,.40,.34),'blue':(.035,.07,.12),'ivory':(.78,.76,.62),'yellow':(.70,.57,.08),'dark':(.028,.025,.022),'rail':(.25,.19,.13),'timber':(.20,.18,.14),'plank-long':(.33,.30,.24),'plank-cross':(.35,.31,.25)}
     mats={}
     for key,col in colours.items():
         m=bpy.data.materials.new('Pier '+key);m.diffuse_color=(*col,1);m.use_nodes=True;p=m.node_tree.nodes['Principled BSDF'];p.inputs['Base Color'].default_value=(*col,1);p.inputs['Roughness'].default_value=.8;mats[key]=m

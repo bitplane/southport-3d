@@ -7,7 +7,7 @@
     "elevation_m": 0
   },
   "area_name": "Southport Pier",
-  "status": "Prototype bay geometry; entrance connection pending",
+  "status": "First open-pier section; furniture and adjoining lower terrace continue in later increments.",
   "levels": {
     "detail": {
       "texture_size": null
@@ -16,7 +16,7 @@
       "texture_size": 512
     },
     "district": {
-      "texture_size": 512
+      "texture_size": 256
     }
   },
   "parts": [
@@ -83,28 +83,28 @@
     "generator": "district:surfaces",
     "reason": "Station-driven envelope, six fixed bays per section, two outer trusses, coarse columns, reduced post cadence and angular arches; never derived from detailed topology.",
     "max_bytes": 4000000,
-    "max_gpu_bytes": 16000000,
+    "max_gpu_bytes": 5000000,
     "parts": {
       "deck": {
         "atlas": [
-          512,
-          512
+          256,
+          256
         ],
         "max_triangles": 200,
         "cage_m": 0.12
       },
       "structure": {
         "atlas": [
-          512,
-          512
+          256,
+          256
         ],
         "max_triangles": 5000,
         "cage_m": 0.16
       },
       "fittings": {
         "atlas": [
-          512,
-          512
+          256,
+          256
         ],
         "max_triangles": 5000,
         "cage_m": 0.16
