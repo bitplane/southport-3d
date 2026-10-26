@@ -51,6 +51,11 @@ foot=P.difference(P.intersection(foot_full,available),road)
 remaining=P.difference(P.difference(available,road),foot)
 green=P.intersection(remaining,P.polygons([p['polygon'] for p in D['landscaped_reservations']]))
 courts=P.difference(remaining,green)
+# Restore the ground of the former solid Cable Mews placeholder as a
+# bounded court surface: the new flats have an open parking undercroft.
+blocks=json.loads((REPO/D['block_plan']).read_text())['blocks']
+undercroft=next(b['footprint'] for b in blocks if b['id']==D['undercroft_fill']['block_id'])
+courts=union([courts,P.polygons([undercroft])])
 # Paint offsets the continuous road boundary BEFORE ownership/tile clipping.
 # Yellow lines are confined to observed junction approaches; parked lengths
 # retain white bay edges rather than inventing continuous restrictions.

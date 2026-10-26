@@ -1,0 +1,6 @@
+{
+  "method": "West Street block-plan roof trace registered using three Google aerial coordinate controls recorded in frontage-placeholders/research/measurements.json, 2026-10-24. Wall-base displacement and photogrammetry parallax estimated to 1–2 m. Coordinates are site metres, yaw 43.5293 degrees from east.",
+  "plan": "Retained approximate traced outer extents: site x -78.44 to -62.41 (16.03 m), y 104.22 to 121.08 (16.86 m). The curved tower centre and main edge simplify the original roof polygon, with tower radius estimated 1.65 m. Adjoining court and access gap remain outside the envelope.",
+  "heights": "Three approximately 2.6 m residential floor intervals and roughly 2.8 m covered parking from 2020 street photo and 2004 minutes. Working wall top 11.4 m and tower cap 11.7 m above estimated 2.448 m project datum; ±1–2 m, not surveyed. White upper band starts 9.0 m. Flat roofs inferred from loaded obliques and aerial.",
+  "reference_inputs": "Street photo: visible tower spans about 110 px of 500 px facade height; gives ~2.6 m diameter if 11.7 m high, before perspective. Adopted 3.3 m diameter to account for nearer position and traced footprint uncertainty. Photo pixels are not texture source."
+}

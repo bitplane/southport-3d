@@ -24,8 +24,12 @@ def contains(p,x,y):
  for a,b in zip(p,p[1:]+p[:1]):
   if (a[1]>y)!=(b[1]>y) and x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0]:inside=not inside
  return inside
-buildings=list(D['extra_building_cutouts'])
-for path in [D['block_plan'],*D['existing_block_plans']]:buildings += [b['footprint'] for b in json.loads((REPO/path).read_text())['blocks']]
+buildings=list(D['extra_building_cutouts']);undercroft=None
+for path in [D['block_plan'],*D['existing_block_plans']]:
+ for b in json.loads((REPO/path).read_text())['blocks']:
+  if path==D['block_plan'] and b['id']==D['undercroft_fill']['block_id']:undercroft=b['footprint']
+  else:buildings.append(b['footprint'])
+assert undercroft
 def owned(x,y):return contains(D['outer'],x,y) and not any(contains(p,x,y) for p in [*D['existing_ground_exclusions'],*buildings])
 def hits(x,y):
  out=[]
@@ -63,6 +67,10 @@ for p in buildings:
  for tri in tessellate_polygon([points]):
   tri=[points[v] if isinstance(v,int) else v for v in tri];x=sum(v.x for v in tri)/3;y=sum(v.y for v in tri)/3
   assert not hits(x,y),(x,y,'floor beneath building');footprint_samples+=1
+# The restored parking court is a single support surface within its boundary.
+for tri in tessellate_polygon([[Vector((x,y,0)) for x,y in undercroft]]):
+ points=[Vector((x,y,0)) for x,y in undercroft];tri=[points[v] if isinstance(v,int) else v for v in tri]
+ x=sum(v.x for v in tri)/3;y=sum(v.y for v in tri)/3;h=hits(x,y);assert len(h)==1,(x,y,'undercroft ground missing or doubled',h)
 # New street and pavement have no holes at tile cuts.
 seams=0
 for x in D['tile_cuts'][1:-1]:

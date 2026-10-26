@@ -1,0 +1,23 @@
+{
+  "sources": [
+    {
+      "id": "street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=qc6zNSKbb1fYiF706RY1gg&heading=235",
+      "accessed": "2026-10-26",
+      "capture_date": "2020-11",
+      "use": "Street approach showing front, tower, undercroft and upper material."
+    },
+    {
+      "id": "aerial",
+      "url": "https://www.google.com/maps/@53.64896,-3.00627,177m/data=!3m1!1e3",
+      "accessed": "2026-10-26",
+      "use": "Overhead roof plan and neighbour gaps; imagery date unspecified."
+    },
+    {
+      "id": "planning",
+      "url": "https://modgov.sefton.gov.uk/CeConvert2PDF.aspx?A=0&F=Minutes.pdf&MID=791&R=0",
+      "accessed": "2026-10-26",
+      "use": "2004 planning minutes: three residential storeys over parking on site adjoining 11 and 16 Cable Street."
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/cable-mews.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Cable Street",
+  "status": "Cable Mews exterior, November 2020 and undated 3D evidence; dimensions estimated.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 256
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "building",
+      "name": "Cable Mews",
+      "collection": "building"
+    }
+  ],
+  "views": [
+    {
+      "name": "Street",
+      "position": [
+        -60,
+        8,
+        -110
+      ],
+      "target": [
+        -125,
+        6,
+        -35
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -120,
+        35,
+        -30
+      ],
+      "target": [
+        -125,
+        6,
+        -35
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -110,
+      1.7,
+      -30
+    ],
+    "target": [
+      -125,
+      5,
+      -35
+    ]
+  },
+  "rules": [
+    {
+      "id": "building",
+      "match": "^(Shell|Architecture|Glazing) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain silhouette, apertures and undercroft."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Independent bounded massing and undercroft.",
+    "max_bytes": 1200000,
+    "max_gpu_bytes": 4000000,
+    "parts": {
+      "building": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 500,
+        "cage_m": 1.0
+      }
+    }
+  }
+}

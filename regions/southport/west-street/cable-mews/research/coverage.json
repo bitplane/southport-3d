@@ -1,0 +1,10 @@
+{
+  "represented_appearance": "November 2020 street view; undated Google 3D",
+  "street_and_entrance": "Cable Street panorama qc6zNSKbb1fYiF706RY1gg, heading 235, Nov 2020: red brick, white clad upper storey, round white stair tower with glazed band, and open undercroft. Gate and precise entrance position partly concealed; entrance position estimated.",
+  "roof": "2026-10-26 Google 3D orbit at headings 0, 96.52, 217.35, 313.88, tilt 39.5; two connected flat white roof wings, curved tower termination, setbacks, and no visible pitched roof. Photogrammetry not a survey.",
+  "parking_elevation": "Google 3D 96.52 heading: brick below, white top with long glazing, court recess. Small windows and balcony recess visible but distorted.",
+  "garden_elevation": "Google 3D 313.88 heading: mainly brick end wall, white upper edge; trees obscure lower wall.",
+  "rear": "Google 3D 0 and 96.52 headings: stepped arrangement and windows visible at low resolution; individual sash counts and private rear details uncertain.",
+  "searches": "Web and image searches for Cable Mews and Cable Street, Mapillary and Wikimedia: no additional verified exterior coverage found. Sefton 2004 planning minutes corroborate three-storey apartments above covered parking.",
+  "limitations": "No interior, reliable access to the court, close rear elevation, precise balcony, services, joinery, or survey heights. Approximate pane pattern and sheltered entrance are provisional. Google 3D 2026 imagery date unspecified; do not use photographs as textures."
+}

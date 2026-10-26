@@ -165,7 +165,7 @@
         ]
       ],
       "height_m": 12,
-      "replace_with": null,
+      "replace_with": "southport.west-street.cable-mews",
       "source_way": null,
       "evidence": "Calibrated Google flat aerial roof-edge trace checked in 3D. Wall-base position inferred within approximately 2 m; Cable Court four-storey envelope corroborated by November 2020 Street View. Hidden undercroft remains open-space detail for a later pass."
     },

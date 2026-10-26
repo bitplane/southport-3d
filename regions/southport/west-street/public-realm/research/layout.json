@@ -1115,5 +1115,9 @@
     "basis": "Snag a996ab166e984318922eac83b3b68781: exact shared mapped road and parking ownership replaces former generic court at existing tile boundary. Geometry checked in actual3D; property detail remains provisional."
   },
   "elevation_plan": "regions/southport/elevation/west-street.json",
-  "elevation_surface": "west-street-pavement"
+  "elevation_surface": "west-street-pavement",
+  "undercroft_fill": {
+    "block_id": "cable-court-apartments",
+    "basis": "Cable Mews: 2020 street panorama and 2004 Sefton planning minutes show covered parking beneath flats. Reuse former roof trace to bound the ground patch; portions under solid walls are buried."
+  }
 }
