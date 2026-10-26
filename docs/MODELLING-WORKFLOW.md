@@ -177,3 +177,22 @@ handoff, retain automated technical checks, and leave visual acceptance to them.
 For ground-height work, establish the bounded elevation plan and evidence before
 detailing surfaces. Follow [ELEVATION.md](ELEVATION.md), including profile-break,
 entrance/support, neighbouring-seam and multi-level walking checks.
+
+## Independent review of delegated modelling
+
+When the user delegates implementation and asks the foreground agent to review,
+the implementation agent delivers a reviewable model, not its own final acceptance.
+The reviewer inspects the actual exported target at a confirmed LoD and compares
+matched views with source images. Review composition, proportions, projection
+depths and roof silhouette before ornament. A successful build, low triangle count
+or long source list is not visual acceptance. Black reference captures, clipped
+camera views and screenshots of an unloaded model cannot count as verified views.
+
+Save a concise asset-specific brief under `docs/reviews/`: observed discrepancy,
+reference, required correction, priority, and an explicit visual acceptance view.
+Mark uncertainty instead of inventing dimensions. The implementer addresses the
+brief, reports remaining mismatches and returns comparisons for another independent
+pass. Keep the snag open until that review passes. Use massing renders to settle
+shape before expensive full LoD bakes; freeze inputs during packaging. Record
+elapsed time and rework separately for each pass so implementation and review
+costs can be assessed honestly.
