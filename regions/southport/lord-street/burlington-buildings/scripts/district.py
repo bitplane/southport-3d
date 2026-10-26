@@ -45,8 +45,8 @@ def surfaces(asset):
    s.box('pot '+str(i)+' '+str(j),(xx-.12,yy-.12,top+.14),(xx+.12,yy+.12,top+.57),cage=.12,weight=.4)
  s.part='canopy';p=canopy_profile(d,5)
  for j,((a,z),(b,Z)) in enumerate(zip(p,p[1:])):
-  s.quad('curved canopy top '+str(j),[(0,-a,z),(w,-a,z),(w,-b,Z),(0,-b,Z)],cage=.14)
-  s.quad('curved canopy underside '+str(j),[(0,-b,Z-.035),(w,-b,Z-.035),(w,-a,z-.035),(0,-a,z-.035)],cage=.14,weight=.6)
+  s.quad('curved canopy top '+str(j),[(0,-b,Z),(w,-b,Z),(w,-a,z),(0,-a,z)],cage=.14)
+  s.quad('curved canopy underside '+str(j),[(0,-a,z-.035),(w,-a,z-.035),(w,-b,Z-.035),(0,-b,Z-.035)],cage=.14,weight=.6)
  s.box('street beam',(0,-3.23,3.46),(w,-3.13,3.62),cage=.16)
  from southport3d.elevation import Elevations
  plan=Elevations(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/lord-burlington.json').surface('burlington-canopy-support')

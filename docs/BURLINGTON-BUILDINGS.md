@@ -97,3 +97,26 @@ entrance. `research/layout.json` records the site anchor and threshold allowance
 this is a town-model placement, not a surveyed floor level. Building proportions
 remain unchanged. Small local entrance transitions remain separate from the
 broad street slope.
+
+The middle rear wing is approximately 4.4 m wide (local x 10.5–14.9), with
+photographic uncertainty around 0.6 m. Rear and near-overhead Google 3D views
+show an eaves-width ratio of about 0.64 against the neighbouring Works wing;
+`research/measurements.json` records the sampled pixels. Its ridge height and
+length are retained, producing a roughly 39° roof pitch. Both adjoining courts
+remain open. Hidden rear openings remain provisional pending better photographs.
+The verandah's paired skins face outward at every level, including the baked
+District receiver. Export checks cover the widened wing edges and court gaps;
+the master validator also checks canopy face direction.
+
+Validation of the widened envelope: full master build, rear/roof renders and
+all three exported LoDs pass. Counts remain 31,088 / 25,880 / 494 triangles;
+District downloads total 385,232 bytes. A native scan of Burlington with Willow
+Grove, 409–421, both neighbouring public-realm assets and both placeholder sets
+finds no cross-asset coplanar candidates touching Burlington. Remaining internal
+candidates are shared-edge float32 residues: 13 pairs per Detail/Walk, each below
+0.000007 m², and one District roof-edge pair of 0.00000191 m². This is a scoped
+geometric check, not a claim that every building on the map is conflict-free.
+The published rear was compared in the assembled viewer with Burlington actually
+resident at Detail, Walk and District; the wider wing and clear yards persist
+through all three levels. Private comparison captures are
+`../output/burlington-wing-{detail,walk,district}.png`.

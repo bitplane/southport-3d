@@ -83,6 +83,40 @@
         "parapet_coping": 286
       },
       "height_method": "Scale against frontage and adjacent13.35m Willow parapet; upper lights about2.4m and storey interval4.0m. Roof heights estimated independently from multiple3D orbits."
+    },
+    {
+      "source": "google-roof",
+      "inspection_date": "2026-10-26",
+      "private_capture": "../references/lord-street-393/thin-wing-plan-3d.png",
+      "viewport_px": [
+        1440,
+        1000
+      ],
+      "wing_eaves_endpoints_px": {
+        "works": [
+          [
+            724,
+            400
+          ],
+          [
+            811,
+            375
+          ]
+        ],
+        "middle": [
+          [
+            660,
+            426
+          ],
+          [
+            715,
+            407
+          ]
+        ]
+      },
+      "calculation": "Middle 58.2px / works 90.5px = 0.643. Against retained 6.8m works wing this gives 4.37m; adopt 4.4m, replacing unsupported 3.0m. Rear oblique independently shows the same relative widths. Local middle bounds 10.5..14.9m retain clear courts and its approximate centre.",
+      "uncertainty_m": 0.6,
+      "limitations": "Photogrammetric eaves, not a survey. Neighbour width is an existing estimate; absolute scale and exact private rear openings remain uncertain. Ridge height retained, yielding approximately 39-degree slopes instead of 50 degrees."
     }
   ],
   "status": "All dimensions are reconstruction estimates, not measured building survey.",

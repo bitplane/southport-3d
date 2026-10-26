@@ -32,6 +32,11 @@ for name,selected in selections.items():
    names={a,b};trim=next((v for v in names if v.startswith('Trim ')), '')
    assert 'Shell front main' in names and trim.endswith((' sill',' lintel')) and area<1e-5,(a,b,area)
 
+# Outward canopy normals: paired skins must face the air, not each other.
+for ob in selections['canopy_top_and_underside']:
+ sign=1 if ' top ' in ob.name else -1
+ assert all(sign*(ob.matrix_world.to_3x3()@poly.normal).z>0 for poly in ob.data.polygons),('canopy normal',ob.name)
+
 # Every open upper courtyard stays open. Low additions remain separate footprints.
 deps=bpy.context.evaluated_depsgraph_get()
 for x,y in [(10,18),(16.5,18),(16.5,25),(10,26)]:

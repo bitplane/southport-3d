@@ -3495,20 +3495,20 @@
       "name": "Burlington Buildings middle",
       "footprint": [
         [
-          45.10346,
-          58.527
+          44.60346,
+          58.5225
         ],
         [
-          48.10346,
-          58.554
+          49.00346,
+          58.5621
         ],
         [
-          48.041608,
-          67.954
+          48.941608,
+          67.9621
         ],
         [
-          45.041608,
-          67.927
+          44.541608,
+          67.9225
         ]
       ],
       "height_m": 13.6,
@@ -3519,7 +3519,7 @@
         "2019 cafe plan",
         "July 2026 Street View"
       ],
-      "footprint_confidence": "Researched reconstruction; rear plan \u00b11.2m; open courts preserved.",
+      "footprint_confidence": "Rear eaves width revised from 3.0m to 4.4m using relative Google 3D roof measurements; photographic uncertainty about 0.6m, open courts retained.",
       "replace_with": "southport.lord-street.burlington-buildings"
     },
     {

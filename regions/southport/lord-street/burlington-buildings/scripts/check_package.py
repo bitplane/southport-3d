@@ -20,12 +20,12 @@ for level in ['detail','walk','district']:
  ts=np.concatenate([t for t,_ in exported]);assert np.isfinite(ts).all()
  # Export axes are x,up,-y. Test projected triangle containment at four court centres.
  court_hits=[]
- for x,y in [(10,18),(16.5,18),(16.5,25),(10,26)]:
+ for x,y,occupied in [(10,18,False),(16.5,18,False),(16.5,25,False),(10,26,False),(10.7,18,True),(14.7,18,True)]:
   X,Y,Z=transform(layout,(x,y,.5));v=ts[:,:,[0,2]];q=np.array([X,-Y]);a=v[:,0];b=v[:,1];c=v[:,2]
   def cross(a,b):return a[:,0]*b[:,1]-a[:,1]*b[:,0]
   den=cross(b-a,c-a);good=np.abs(den)>1e-9;u=np.zeros(len(ts));v0=u.copy();u[good]=cross(np.broadcast_to(q,a.shape)-a,c-a)[good]/den[good];v0[good]=cross(b-a,np.broadcast_to(q,a.shape)-a)[good]/den[good]
   height=ts[:,0,1]+u*(ts[:,1,1]-ts[:,0,1])+v0*(ts[:,2,1]-ts[:,0,1]);hit=good&(u>=0)&(v0>=0)&(u+v0<=1)&(height>Z)
-  assert not hit.any(),(level,'court obstructed',x,y)
-  court_hits.append(0)
+  assert bool(hit.any())==occupied,(level,'wing extent or court clearance',x,y)
+  if not occupied:court_hits.append(0)
  rows.append({'level':level,'triangles':triangles,'bytes':download,'gpu_bytes':gpu,'open_courts':len(court_hits)})
 (args.package/'burlington-export-check.json').write_text(json.dumps(rows,indent=2)+'\n');print(rows)

@@ -132,8 +132,8 @@ for a,b in zip(D['bay_edges'],D['bay_edges'][1:]):
 # Canopy profile: paired skins separate top and underside, open air below.
 profile=canopy_profile(D,12)
 for j,((p,z),(q,zz)) in enumerate(zip(profile,profile[1:])):
- plane('Canopy glass top '+str(j),[(0,-p,z),(W,-p,z),(W,-q,zz),(0,-q,zz)],roofglass,'canopy',None)
- plane('Canopy glass underside '+str(j),[(0,-q,zz-.035),(W,-q,zz-.035),(W,-p,z-.035),(0,-p,z-.035)],roofglass,'canopy',None)
+ plane('Canopy glass top '+str(j),[(0,-q,zz),(W,-q,zz),(W,-p,z),(0,-p,z)],roofglass,'canopy',None)
+ plane('Canopy glass underside '+str(j),[(0,-p,z-.035),(W,-p,z-.035),(W,-q,zz-.035),(0,-q,zz-.035)],roofglass,'canopy',None)
 support=Elevations(REPO/'regions/southport/elevation/lord-burlington.json').surface('burlington-canopy-support')
 def post_base(x):
  p=transform(D,(x,-D['canopy']['projection'],0));return support.height(p[0],p[1])-D['floor_z']
