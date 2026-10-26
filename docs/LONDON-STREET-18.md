@@ -4,9 +4,9 @@ The asset continues the existing block immediately south of Betfred at 14–16 L
 
 Source lives under `regions/southport/london-street/london-street-18/`. The common origin is 53.6486555, −3.0043401 with the project's 43.5293° site yaw. A small additional 1.385° block alignment matches the neighbouring Betfred recipe. The shared boundary is local Y = −80.25 before that alignment; 18 extends to −88.35. The estimated 8.10 m frontage and 12.1 m main depth are consistent with the brochure's approximate 98.4 m² second-floor area, but neither is a survey measurement.
 
-Evidence is linked in `research/references.json`: the [Acuitus 2020 brochure](https://www.acuitus.co.uk/uploads/82-3880/16.pdf?dt=20200622130125), Google aerial imagery and November 2020 Glebe Place Street View captured by the adjacent-building worker. The Google references were visually inspected as saved captures. This worker's fresh browser reached consent and then stalled; fresh interactive exploration was unavailable. Original captures remain outside Git.
+Evidence is linked in `research/references.json`: the [Acuitus 2020 brochure](https://www.acuitus.co.uk/uploads/82-3880/16.pdf?dt=20200622130125), Google aerial imagery and November 2020 Glebe Place Street View captured by the adjacent-building worker. The Google references were visually inspected as saved captures. Fresh interactive exploration was unavailable during that research; the retained captures are the evidence. Original captures remain outside Git.
 
-The pitched main roof and deeper narrow rear wing are reconstructed from aerial evidence. The main roof now continues across the boundary into20, with the northern hip owned by18 and the southern hip owned by20; matching ridge/eaves coordinates avoid an invented party-line valley. Roof pitch, exact parcel division, rear heights and the service door remain estimates. Rear upper windows were not sufficiently visible to assert their pattern, so that elevation remains deliberately unfinished. Branding follows the dated reference and does not assert present occupancy. This needs another rear-reference pass, not cosmetic invented detail.
+The pitched main roof and deeper narrow rear wing are reconstructed from aerial evidence. The main roof now continues across the boundary into 20, with the northern hip owned by 18 and the southern hip owned by 20; matching ridge/eaves coordinates avoid an invented party-line valley. Roof pitch, exact parcel division, rear heights and the service door remain estimates. Rear upper windows were not sufficiently visible to assert their pattern, so that elevation remains deliberately unfinished. Branding follows the dated reference and does not assert present occupancy. This needs another rear-reference pass, not cosmetic invented detail.
 
 ## Viewing levels
 
@@ -20,14 +20,15 @@ The package has twelve classified part/level GLBs. Earlier exported front, obliq
 
 The source uses four streaming parts. Textures include authored brick/slate and baked sign/windows; no downloaded photographic pixels are embedded.
 
-Independent paired audit with 20 on 22 October 2026 removed coplanar party-wall end caps from the outer rear-wall plane. The former black rear junction stripes disappear in rebuilt all-level combined renders. The roof seam, ridge cap, frontage and parcel registration are unchanged; see the independent audit in [20 London Street](LONDON-STREET-20.md).
+At the shared rear boundary with 20, party walls stop at the inner rear-wall
+face, avoiding coplanar end caps on the exterior. Shared authored roof vertices
+and ridge-cap corners are checked across both assets; see [20 London Street](LONDON-STREET-20.md).
 
-The first local viewer snag exposed gaps above the fascia and beside the recessed
-entrance. The shopfront now has a continuous fascia infill, closed side returns
-and soffit, and the narrow right sidelight visible in the same 2020 auction
-photograph. Stone end piers meet the head cladding. Detail and Walk retain these closure surfaces; District projects them onto its entrance receiver; no interior room was added. A grid of exterior rays checks the
-opening within the front half-metre so missing panels cannot pass by hitting a
-remote rear wall. Exported views are checked from the report's saved camera.
+The shopfront has continuous fascia infill, closed side returns and soffit, and
+the narrow right sidelight visible in the 2020 auction photograph. Stone end
+piers meet the head cladding. Detail and Walk retain these surfaces; District
+projects them onto its entrance receiver. Exterior rays test the front half-metre
+of the opening so a missing panel cannot pass by hitting a remote rear wall.
 
 ## Current District envelope
 

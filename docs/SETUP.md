@@ -4,7 +4,7 @@ The current master was developed with Blender 5.0.1, Python 3.14, NumPy 2.4.6, P
 
 Blender runs in background mode through its Python API. A Blender MCP is not needed. SSH without X forwarding is sufficient for model building and software rendering. Outputs are under build/<asset-id>/; view PNGs locally or with `chafa path/to/render.png` over SSH. Build logs identify the failing script if a command exits unsuccessfully.
 
-The runner copies source into an ignored runtime tree. Rebuilding clears that asset's previous models/textures/renders; it does not maintain checkpoints. Export, validate and render stages require a matching source fingerprint from a successful geometry build. Run stages sequentially. `--stage render --views 43_obelisk_wwii` selects view 43; omit --views to render all views. See the renderer's named view list for other choices.
+The runner copies source into an ignored runtime tree. Rebuilding clears that asset's previous models/textures/renders; it does not maintain checkpoints. Export, validate and render stages require a matching source fingerprint from a successful geometry build. Run stages sequentially for the same asset. Different agents may each run one Blender process concurrently; there is no global Blender slot. See [concurrency policy](MODELLING-WORKFLOW.md#build-and-inspect). `--stage render --views 43_obelisk_wwii` selects view 43; omit --views to render all views. See the renderer's named view list for other choices.
 
 ## Optional reference browser MCP
 

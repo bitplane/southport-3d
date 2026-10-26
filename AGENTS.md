@@ -1,10 +1,12 @@
 # Agent instructions
 
-Read README.md and the relevant asset.json before changing a building. Use the model-southport skill for research/modelling work. CLAUDE.md points to these same instructions.
+Read the target asset.json and its research records before changing a building. Read README.md for initial project orientation, not on every task. Use the model-southport skill for research/modelling work. CLAUDE.md points to these same instructions. Follow the task-specific references below; do not preload every asset document, historical plan or review brief.
 
 Use metres and retain each asset's documented coordinate origin and orientation. Keep construction source under regions/<town>/<area>/<asset>/; move reusable primitives into lib/southport3d only when their interface is useful independently of one building. The memorial currently uses a compatibility shim for geometry imports.
 
 Use tools/project.py for ordinary builds. It copies inputs into build/ so report-writing scripts cannot overwrite source recipes. Build/export/render operations write the same Blender file: the runner locks each asset against competing writers. Direct scripts bypass these locks; run them sequentially for a given asset. Blender commands must use --python-exit-code 1 so script failures propagate.
+
+Run at most one Blender process **per agent**, normally with `--threads 4`. Different agents may build/render/bake different assets concurrently; there is no global single-Blender slot. Keep per-asset writer locks and the catalog publication lock. A review checkpoint for one asset does not stop independent work by other agents. See [concurrency details](docs/MODELLING-WORKFLOW.md#build-and-inspect).
 
 Do not commit downloaded reference images, page captures, browser profiles, credentials, generated textures, Blender files or GLBs. Keep source links, attribution, dates and uncertainty in the asset's research records. Numeric relief source surfaces are intentional source assets, not licence-free substitutes for the works they depict; see RIGHTS.md.
 
@@ -33,3 +35,5 @@ user authorization does not override runtime restrictions. Avoid duplicate revie
 when the user has already started one.
 
 Browser sessions expire after five idle minutes, including research browsers launched through MCP code. Prefer existing tabs; use browser_close when finished. After expiry, reopen the URL, recreate page variables and continue. See docs/SETUP.md for lifecycle details.
+
+Keep documentation as current-state reference, not a work diary. Preserve source capture dates, measurements, uncertainty, design decisions and reproducible checks; put chronological repair narratives in commits and transient logs/screenshots in ignored output. Update existing sections instead of appending another pass. Read `docs/reviews/` briefs only for their assigned task; they are not general onboarding. See [documentation policy](docs/MODELLING-WORKFLOW.md#documentation-maintenance).

@@ -85,7 +85,9 @@ Give each feature a reasoned keep, omit, replacement, generator or selective-dec
 
 Use `tools/project.py` for builds, renders, LoD baking and local publication. Its POSIX file locks allow different assets to build concurrently and reject a second writer to the same asset. Publication takes the catalog lock and all asset locks before building or copying packages. Retry after the competing operation finishes; do not delete lock files. Direct Blender invocations bypass these protections.
 
-The owner permits one Blender session per agent, concurrent across agents. On
+Run at most one Blender process per agent, normally with `--threads 4`.
+Different agents may build, render and bake distinct assets concurrently. There
+is no global single-Blender slot, and waiting for a review does not reserve one. On
 Brett's machine, user-1001.slice has aggregate MemoryHigh=56G, MemoryMax=64G and
 MemorySwapMax=2G; these are shared user limits, not per-job allowances. OOM failure
 is an accepted tradeoff for concurrency. If a job is killed, report the failure
@@ -196,3 +198,29 @@ pass. Keep the snag open until that review passes. Use massing renders to settle
 shape before expensive full LoD bakes; freeze inputs during packaging. Record
 elapsed time and rework separately for each pass so implementation and review
 costs can be assessed honestly.
+
+## Documentation maintenance
+
+Read the target manifest, evidence records and task brief, then the references
+needed for the operation: this workflow for modelling, LOD-PIPELINE for receivers
+and baking, VIEWER for publication, PUBLIC-REALM/ELEVATION for ground, SNAGS for
+queue work, SETUP for environment troubleshooting. Do not read every building
+document or historical review as onboarding.
+
+Asset notes describe current geometry, evidence, estimates, ownership, LoD
+decisions, unresolved limitations and how to reproduce checks. Replace outdated
+sections instead of appending dated repair passes. Keep source capture dates and
+measurement provenance: those are evidence, not diary clutter. Retain concise
+validation scope and limitations, not a chronological list of successful runs,
+old triangle counts or temporary browser failures presented as current blockers.
+
+Use commits for change history and ignored output for transient logs/screenshots.
+Task-specific review briefs belong in `docs/reviews/` and are read only by their
+implementer/reviewer; they must not silently become global policy. When a task
+finishes, reconcile durable decisions into its current asset notes. Keep general
+rules in their owning workflow document and link to them from short entry points.
+
+Coordinators process review checkpoints promptly, return actionable findings, and
+release accepted stages for packaging/publication. Workers continue independent
+research, components or checks while awaiting review; they stop only dependent
+work. A successful worker turn or build is not final visual acceptance.

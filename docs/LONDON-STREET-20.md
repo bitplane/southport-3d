@@ -6,35 +6,29 @@ The complete frontage is visible in the retained May 2011 Google Street View cap
 
 Coordinates use the existing site origin and yaw, plus the neighbouring block's small 1.385° alignment. The shared edge with 18 is Y = −88.35 before that alignment; the estimated southern edge is −95.85. Width, depths and heights are visually calibrated estimates, not measured dimensions.
 
-Aerial evidence indicates a continuous hipped main roof across 18 and 20. Each asset owns its half, with matching ridge/eaves coordinates at the party line. This replaces the isolated southern hip previously used for 18 and avoids an invented valley between neighbours. The northern hip belongs to 18 and the southern hip to 20. Roof pitch and rear service-range dimensions remain estimated. Rear upper windows are not confidently identifiable in retained images and have not been invented.
+Aerial evidence indicates a continuous hipped main roof across 18 and 20. Each asset owns its half, with matching ridge/eaves coordinates at the party line. The northern hip belongs to 18 and the southern hip to 20. Roof pitch and rear service-range dimensions remain estimated. Rear upper windows are not confidently identifiable in retained images and have not been invented.
 
 ## Viewing levels and checks
 
-Detail retains physical sash joinery. Walk bakes that shallow repeated joinery at512px while retaining the cornice's small dentils and door fittings. District omits those small fittings/dentils and bakes the four shared sash sizes at 256 px, retaining actual wall openings, moulding profiles, shopfront recesses and the complete roof silhouette. There is no indiscriminate decimation.
+Detail retains physical sash joinery. Walk bakes shallow repeated joinery at
+512 px while retaining the cornice dentils and door fittings. District uses the
+independent envelope below; there is no global decimation.
 
-Build and validation use `python3 tools/project.py build southport.london-street.london-street-20`. The validator checks eight unobscured sash apertures, closed roof geometry, finite UVs, packed authored maps and the asset's bounds. The ordinary render stage produces front, oblique, roof, rear and shop views. Combined exported-GLB comparisons with 18 are required before completion. Fresh browser exploration stalled at consent, so live viewer review remains unavailable in this session.
+Build with `python3 tools/project.py build southport.london-street.london-street-20`.
+Validation covers eight unobscured sash apertures, closed roof geometry, finite
+UVs, packed authored maps and bounds. Render views cover front, oblique, roof,
+rear and shop; inspect the combined exported scene with 18 at all three levels.
 
-Combined exported-GLB front, oblique and rear comparisons with18 were inspected at Detail, Walk and District. The roof/ridge is continuous across the interface; paired central sashes and cornice profiles survive the reduced levels.
+The cream infill between the bank entrance and flats pier closes the shop
+aperture; exterior rays check that brick behind it cannot appear through a gap.
+At the shared rear boundary, side walls stop at the inner rear-wall face so their
+end caps do not overlap the exterior. Validation compares the actual six roof
+section vertices and ridge-cap corners across both assets.
 
-| Level | Placed triangles | GLB bytes, including textures | Embedded image bytes |
-| --- | ---: | ---: | ---: |
-| detail | 3,044 | 1,577,048 | 1,163,348 |
-| walk | 2,292 | 1,592,828 | 1,220,093 |
-| district | 1,692 | 558,920 | 294,787 |
-
-## Independent audit, 22 October 2026
-
-Compared the retained May 2011 panorama and 2020 Acuitus frontage against the three exported levels. The narrow strip between the bank entrance and flats pier was missing: a cream infill now closes it, with a ray check ensuring that the shop aperture cannot expose brick behind it.
-
-Combined rear renders revealed black vertical stripes at the 18/20 wall junction. The rear walls met correctly, but the party-wall end caps overlapped their outer faces. Both assets now stop those side walls at the inner rear-wall face. Rebuilt exported renders confirm the stripes are gone. The common roof's six section vertices and ridge-cap corners match across both assets; validation now checks the actual authored roof section, rather than only matching layout parameters. No roof silhouette or frontage registration changed.
-
-Full builds, validation and all 24 GLBs across both assets passed. Combined front, oblique and rear renders were reviewed at Detail, Walk and District. Review images are generated locally under `output/london-street-20-audit/`, outside Git. Rear architecture and frontage dimensions retain the stated estimation limits.
-
-The cornice, frieze and end pilasters are united with the rendered frontage as
-one closed masonry surface. This removes overlapping end caps beside the taller
-neighbour while preserving the stepped profile at every LoD. Dentils remain
-separate for the District omission rule. Validation checks shell closure and
-rays against the two upper cornice courses, including their ends.
+The cornice, frieze and end pilasters form one closed masonry surface. Dentils
+remain separate for LoD omission. Shell and ray checks cover both upper cornice
+courses and their ends. Retained combined export comparisons cover the previous
+front/rear construction; the current District rollout uses owner-led acceptance.
 
 ## Fixed-budget District envelope
 
@@ -46,12 +40,10 @@ the rear rooflight remains a small geometric mass. Atlases are 256×256
 architecture and 256×128 roof/shopfront/rear. The existing geographic rotation
 and architectural estimates are retained.
 
-This replaces the historical per-feature District policies described above.
-Detail and Walk retain their recipes. The owner handles visual acceptance;
+The owner handles visual acceptance;
 automated geometry, projection, atlas and publication checks remain required.
 
 Checked District export: **68 triangles, 178,652 bytes including textures
-and 2,628,685 bytes estimated GPU memory**, down from 2,318 triangles,
-525,976 bytes and 4,689,873 GPU bytes. Receiver overlap and sampled
+and 2,628,685 bytes estimated GPU memory**. Receiver overlap and sampled
 projection checks pass, as do actual bake coverage, normals and export budgets.
 Visual acceptance remains with the owner.
