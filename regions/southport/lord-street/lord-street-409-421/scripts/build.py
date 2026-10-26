@@ -5,7 +5,7 @@ from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path[:0]=[str(ROOT/'scripts'),str(REPO/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
 from southport3d.conform import conform
-from shapes import rect,cuts,transform,roofs,exterior,canopy_profile,bays
+from shapes import rect,cuts,transform,roofs,exterior,canopy_profile,bays,box_bays
 D=json.loads((ROOT/'research/layout.json').read_text());W=D['front_width'];DETAIL=D['phase']=='detail'
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False);s=bpy.context.scene;s.unit_settings.system='METRIC'
 C={}
@@ -87,7 +87,7 @@ sand=mat('Weathered pink sandstone',(.49,.31,.24),tex='stone');sandlight=mat('Sa
 holes=[];flat=[]
 if D['kind']=='red':
  for i,cx in enumerate(D['bay_centres'][1:3]):
-  flat.append((f'centre first {i}',cx,4.7,3.05,2.5))
+  holes.append(rect(cx-1.6,4.4,cx+1.6,8.0))
   for j,dx in enumerate([-.72,.72]):flat.append((f'centre second {i} {j}',cx+dx,9.0,1.05,2.4))
 else:
  for i,cx in enumerate(D['bay_centres'][1:]):flat.append((f'bank second {i}',cx,8.0,1.28,1.5))
@@ -132,14 +132,43 @@ for bi,(cx,ww,z0,z1,proj) in enumerate(bays(D)):
    for j in range(max(1,int(L/.23))):
     t=(j+.5)/max(1,int(L/.23));x=a[0]+t*dx;y=a[1]+t*dy
     tube('Fine bay tile scallop',[(x-.07,y-.018,7.85),(x,y-.026,7.77),(x+.07,y-.018,7.85)],.015,tile,'front',None,n=5)
+# Central first-floor box oriels have real projection, tile skirts and roofs.
+for cx,faces in box_bays(D):
+ for name,poly in faces:
+  if name=='front':
+   M=face_matrix((0,-.65,0),(0,-1,0))
+   wall('box bay face',rect(cx-1.6,4.8,cx+1.6,7.4),[rect(cx-1.51,4.87,cx+1.51,7.30)],white,'front',M)
+   window('shop first box bay',cx,4.87,3.02,2.43,M,'front',out=.205,divide=3)
+  else:plane('Bay box '+name,poly,tile if name in ('roof','skirt')else brick if name=='bottom'else white,'front',None)
+ # Dark fascia beneath the red tile roof; side return is deliberately narrow.
+ box('Bay box fascia',(cx,-.69,7.36),(3.30,.10,.08),iron,'front',None)
+ if DETAIL:
+  for j in range(1,9):
+   t=j/9;y=-.65*(1-t);z=7.4+.6*t
+   tube('Fine box roof tile course',[(cx-1.58,y-.006,z+.009),(cx+1.58,y-.006,z+.009)],.008,lead,'front',None,n=4)
 # Main upper fronts, parapet gables, bank dormer faces and prominent oriel tower.
 if D['kind']=='red':
  cx=W/2;poly=[(cx-2.75,12.0),(cx+2.75,12.0),(cx+2.75,12.55),(cx+2.15,12.85),(cx,14.8),(cx-2.15,12.85),(cx-2.75,12.55)]
  wall('central gable parapet',poly,[],brick)
  if DETAIL:
   tube('Trim central gable coping',[(x,-.04,z+.08)for x,z in poly[2:]+poly[:1]],.10,TR,'front',None,n=8)
-  box('Trim unresolved name tablet',(cx,13.3,.12),(2.5,.62,.22),TR)
-  # Unreadable plaque deliberately carries no invented inscription.
+  # Two-line inscription and arched crest are legible in the user's photograph.
+  plaque=mat('Weathered inscription stone',(.43,.43,.32));letter=mat('Incised lettering shadow',(.23,.25,.20))
+  outline=[(cx-1.60,12.78),(cx+1.60,12.78),(cx+1.60,13.68),(cx+.73,13.68)]
+  outline += [(cx+.73*math.cos(t),13.68+.61*math.sin(t))for t in [i*math.pi/20 for i in range(1,21)]]
+  outline += [(cx-1.60,13.68)]
+  inner=[(cx+(x-cx)*.96,13.35+(z-13.35)*.94)for x,z in outline]
+  plane('Tablet inset face',[(x,z,.18)for x,z in inner],plaque)
+  for i,a in enumerate(outline):
+   j=(i+1)%len(outline)
+   plane('Tablet border',[(x,z,.20)for x,z in [a,outline[j],inner[j],inner[i]]],plaque)
+  for a,b in zip(outline,outline[1:]+outline[:1]):plane('Tablet edge',[(*a,.02),(*b,.02),(*b,.20),(*a,.20)],plaque)
+  for a,b in zip(inner,inner[1:]+inner[:1]):plane('Tablet inset edge',[(*a,.18),(*b,.18),(*b,.20),(*a,.20)],plaque)
+  font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf')
+  for body,z in [('MASONIC',13.44),('BUILDING',13.02)]:
+   ob=text_object('Inscription '+body,body,(cx,z,.183),(0,0,1),.32,2.85,font,letter,extrude=.0005,collection=C['front'])
+   bpy.ops.object.select_all(action='DESELECT');ob.select_set(True);bpy.context.view_layer.objects.active=ob;bpy.ops.object.convert(target='MESH');ob.data.transform(T@F@ob.matrix_world);ob.matrix_world=Matrix.Identity(4);ob.select_set(False)
+
 else:
  for i,cx in enumerate(D['bay_centres'][1:]):
   a,c=cx-1.65,cx+1.65;poly=[(a,8.65),(a,9.35),(cx,10.95),(c,9.35),(c,8.65)]
@@ -272,11 +301,6 @@ if DETAIL:
   xx=min(W-.14,max(.14,x));height=D['front_eaves']-4.55
   box('Trim facade pier',(xx,4.55+height/2,.045),(.28,height,.09),BM)
   for z in [4.53,D['front_eaves']-.25]:box('Trim pier collar',(xx,z,.12),(.37,.18,.24),TR)
- if D['kind']=='red':
-  for cx in D['bay_centres'][1:3]:
-   # Small pitched tile roofs shelter the projecting central first-floor windows.
-   plane('Roof window hood',[(cx-1.7,-.07,7.98),(cx+1.7,-.07,7.98),(cx+1.7,-.55,7.50),(cx-1.7,-.55,7.50)],tile,'front',None)
-   for xx in [cx-1.6,cx+1.6]:tube('Trim window hood bracket',[(xx,-.1,7.0),(xx,-.5,7.48)],.045,cream,'front',None,n=8)
  for i,ch in enumerate(D['chimneys']):
   x,y,base,top,w,depth=[ch[k]for k in ['x','y','base','top','w','d']]
   box('Roof chimney '+str(i),(x,y,(base+top)/2),(w,depth,top-base),brick,'roof',None)

@@ -41,7 +41,6 @@ def surfaces(asset):
  for name,p in exterior(d):face(name,p,cage=.40)
  s.part='roof'
  for name,p in roofs(d):face(name,p,cage=.28)
- if d['kind']=='bank':face('tower cap',[(0,0,12.05),(3.9,0,12.05),(3.9,.22,12.05),(0,.22,12.05)],cage=.28)
  for i,ch in enumerate(d['chimneys']):
   x,y,b,t,ww,dep=[ch[k]for k in ['x','y','base','top','w','d']]
   s.box('chimney '+str(i),(x-ww/2,y-dep/2,b),(x+ww/2,y+dep/2,t+.16),cage=.22)

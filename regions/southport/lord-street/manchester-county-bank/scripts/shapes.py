@@ -36,6 +36,20 @@ def roofs(d):
    a,c=cx-1.65,cx+1.65;h=10.95;ey=8.65;end=(h-E)*r/(H-E);hs.append([(a,0),(c,0),(cx,end)])
    out += [('bay roof west',[(a,-.68,ey),(cx,-.68,h),(cx,end,h),(a,0,ey)]),('bay roof east',[(cx,-.68,h),(c,-.68,ey),(c,0,ey),(cx,end,h)])]
   out=out[1:]+[('main front '+str(i),[(x,y,E+(H-E)*y/r) for x,y in p])for i,p in enumerate(cuts(rect(0,0,w,r),hs))]
+  # The entry is a square tower, not a thin applied parapet. Remove the
+  # lower range roof under it, retaining true junctions on all four sides.
+  t=d['tower'];tw,td,te,tt=[t[k]for k in ['width','depth','eaves','top']];inset=t['top_inset']
+  revised=[]
+  for name,poly in out:
+   if name.startswith('main front') or name.startswith('main rear'):
+    for j,q in enumerate(cuts([(x,y)for x,y,z in poly],[rect(0,0,tw,td)])):
+     revised.append((name+' tower cut '+str(j),[(x,y,E+(H-E)*y/r if y<=r else H+(B-H)*(y-r)/(b-r))for x,y in q]))
+   else:revised.append((name,poly))
+  out=revised
+  base=[(0,0,te),(tw,0,te),(tw,td,te),(0,td,te)]
+  top=[(inset,inset,tt),(tw-inset,inset,tt),(tw-inset,td-inset,tt),(inset,td-inset,tt)]
+  for i in range(4):out.append(('tower hip '+str(i),[base[i],base[(i+1)%4],top[(i+1)%4],top[i]]))
+  out.append(('tower flat crown',top))
   # Low secondary roof between front range and hall is deliberately not invented.
   h=d['hall'];a,c,y,end=h['x0'],h['x1'],h['y0'],h['y1'];ry=h['ridge_y'];e=h['eaves'];top=h['ridge']
   # Hall roof: large hipped lantern with slate apron; transverse rear gable strip.
@@ -59,6 +73,11 @@ def exterior(d):
   a,c,end,e,h=v['x0'],v['x1'],v['end'],v['eaves'],v['ridge'];m=(a+c)/2
   out += [(v['id']+' west wall',[(a,end,lo),(a,b,lo),(a,b,B),(a,end,e)]),(v['id']+' east wall',[(c,b,lo),(c,end,lo),(c,end,e),(c,b,B)]),(v['id']+' rear gable',[(c,end,lo),(a,end,lo),(a,end,e),(m,end,h),(c,end,e)])]
  if d['kind']=='bank':
+  t=d['tower'];tw,td,te=t['width'],t['depth'],t['eaves']
+  rear=H+(B-H)*(td-r)/(b-r)
+  out += [('tower left return',[(0,0,E),(0,r,H),(0,td,rear),(0,td,te),(0,0,te)]),
+          ('tower right return',[(tw,td,rear),(tw,r,H),(tw,0,E),(tw,0,te),(tw,td,te)]),
+          ('tower rear return',[(0,td,rear),(tw,td,rear),(tw,td,te),(0,td,te)])]
   h=d['hall'];a,c,y,end=h['x0'],h['x1'],h['y0'],h['y1'];ry=h['ridge_y'];e=h['eaves'];top=h['ridge']
   out += [('hall front',[(a,y,lo),(c,y,lo),(c,y,e),(a,y,e)]),('hall rear',[(c,end,lo),(a,end,lo),(a,end,e),(c,end,e)]),('hall west',[(a,end,lo),(a,y,lo),(a,y,e),(a,ry-2,e),(a,ry,top),(a,end,e)]),('hall east',[(c,y,lo),(c,end,lo),(c,end,e),(c,ry,top),(c,ry-2,e),(c,y,e)])]
  return out

@@ -155,10 +155,6 @@ else:
  # Higher southwest bay over the former bank entry, including its corbelled oriel.
  x0,x1=0,3.9
  wall('bank tower',rect(x0,8.65,x1,12.05),[rect(.65,8.65,3.25,10)],sand)
- plane('Roof tower cap',[(0,0,12.05),(3.9,0,12.05),(3.9,.22,12.05),(0,.22,12.05)],lead,'roof',None)
- plane('Shell tower parapet back',[(3.9,.22,8.65),(0,.22,8.65),(0,.22,12.05),(3.9,.22,12.05)],sand,'front',None)
- for xx,rev in [(0,True),(3.9,False)]:
-  plane('Shell tower parapet edge',[(xx,0,8.65),(xx,.22,8.65),(xx,.22,12.05),(xx,0,12.05)][::-1]if rev else [(xx,0,8.65),(xx,.22,8.65),(xx,.22,12.05),(xx,0,12.05)],sand,'front',None)
  for a,b in [(0,3.9)]:
   if DETAIL:box('Trim tower cornice',((a+b)/2,11.8,.16),(b-a,.32,.32),TR)
  if DETAIL:

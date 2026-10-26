@@ -1,0 +1,15 @@
+{
+  "accessed": "2026-10-26",
+  "snags": [
+    "c06856e5bc824aa88aa9fb7150f40887",
+    "9d1c6996650640dda6ee972dd781852d"
+  ],
+  "evidence": [
+    "User supplied Street View/3D screenshots in private snag attachments.",
+    "Root opened July 2026 Street View and actual Google 3D from two directions, private captures ../output/lord-street-snags/."
+  ],
+  "maps_3d": "https://www.google.com/maps/@53.6491698,-3.0047135,73a,35y,56.25h,39.58t/data=!3m1!1e3",
+  "observed": "Two central first-floor rectangular projecting box bays, three-light white joinery with high transoms, pitched tiled hoods and sloped tiled skirts. Gable plaque reads MASONIC / BUILDING with a raised semicircular crest and stepped rectangular shoulders.",
+  "estimated": "Box width 3.2 m, projection 0.65 m, hood rise 0.6 m, glazing 2.43 m tall; current floor heights retained. Plaque 3.2 m wide; silhouette and lettering reconstructed, fine crest carving not sufficiently resolved and remains omitted.",
+  "acceptance": "Pending final exported viewer review. Full source coplanar checks retained; exported ray checks enforce tower height or box-bay projection in all levels."
+}

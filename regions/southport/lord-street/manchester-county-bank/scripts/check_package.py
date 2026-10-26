@@ -24,6 +24,18 @@ for level in ['detail','walk','district']:
   envelope=a==b=='District roof'
   assert (shell_trim or slate or envelope)and area<1e-5,(level,a,b,area)
 
+ # Physical regression: the tower crown and box bays must survive all LoDs.
+ def first_hit(origin, direction):
+  direction=np.asarray(direction,dtype=float);direction/=np.linalg.norm(direction)
+  e1=ts[:,1]-ts[:,0];e2=ts[:,2]-ts[:,0];h=np.cross(np.broadcast_to(direction,e2.shape),e2)
+  det=np.einsum('ij,ij->i',e1,h);ok=np.abs(det)>1e-9;inv=np.zeros_like(det);inv[ok]=1/det[ok]
+  delta=np.asarray(origin)-ts[:,0];u=inv*np.einsum('ij,ij->i',delta,h);q=np.cross(delta,e1)
+  v=inv*np.einsum('j,ij->i',direction,q);t=inv*np.einsum('ij,ij->i',e2,q)
+  hits=t[ok&(u>=-1e-6)&(v>=-1e-6)&(u+v<=1+1e-6)&(t>1e-6)]
+  assert len(hits),'missing architectural surface'
+  return float(hits.min())
+ X,Y,Z=transform(layout,(1.95,1.95,20))
+ assert abs(first_hit((X,Z,-Y),(0,-1,0))-(20-layout['tower']['top']))<.025, (level,'tower crown absent')
  # Export axes are x,up,-y. Test projected triangle containment at four court centres.
  court_hits=[]
  for x,y in layout['courts']:
