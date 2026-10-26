@@ -1229,14 +1229,14 @@
       ],
       "height_m": 5,
       "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
+      "status": "replaced-research-in-progress",
       "evidence": [
         "google-3d-orbit",
         "google-plan-comparison",
         "osm-seed"
       ],
       "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
-      "replace_with": null
+      "replace_with": "southport.lord-street.town-hall-gardens-pavilions"
     },
     {
       "id": "way-371196093",
@@ -3369,14 +3369,14 @@
       ],
       "height_m": 5,
       "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
+      "status": "replaced-research-in-progress",
       "evidence": [
         "google-3d-orbit",
         "google-plan-comparison",
         "osm-seed"
       ],
       "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
-      "replace_with": null
+      "replace_with": "southport.lord-street.town-hall-gardens-pavilions"
     },
     {
       "id": "shelbourne-corner",

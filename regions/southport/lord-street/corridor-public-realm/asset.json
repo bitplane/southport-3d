@@ -25,7 +25,8 @@
     "section-11",
     "section-12",
     "section-13",
-    "section-14"
+    "section-14",
+    "garden-furniture"
   ],
   "lods": [
     "detail",
@@ -50,7 +51,8 @@
     ],
     "validate": [
       "regions/southport/elevation/lord-corridor.json",
-      "regions/southport/elevation/ground-controls.json"
+      "regions/southport/elevation/ground-controls.json",
+      "regions/southport/lord-street/corridor-public-realm/scripts/check_package.py"
     ]
   },
   "publication_checks": [

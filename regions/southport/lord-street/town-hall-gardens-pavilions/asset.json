@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.town-hall-gardens-pavilions",
+  "name": "Town Hall Gardens pavilions",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "research-in-progress",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "north",
+    "south"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Two provisional pavilion exteriors; estimated proportions, no interiors or tenant signs.",
+  "licensing": "Authored procedural geometry. OSM footprint seeds: OpenStreetMap contributors, ODbL 1.0.",
+  "build_inputs": {
+    "validate": [
+      "regions/southport/elevation/lord-corridor.json",
+      "regions/southport/elevation/ground-controls.json",
+      "regions/southport/lord-street/town-hall-gardens-pavilions/scripts/check_package.py"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ]
+}

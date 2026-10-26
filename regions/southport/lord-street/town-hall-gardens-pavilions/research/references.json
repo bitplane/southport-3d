@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "north-2008",
+      "url": "https://www.geograph.org.uk/photo/1077067",
+      "attribution": "Stephen McKay, 2008",
+      "observed": "Pale low panels and spandrels, arched radial fanlights, dark structural framing and projected roof with ironwork."
+    },
+    {
+      "id": "south-2025",
+      "url": "https://standupforsouthport.com/southport-fc-and-southport-fc-foundation-open-new-coffee-shop-in-former-pavilion-cafe-building/",
+      "observed": "South pavilion pale lower panels, arched fanlights, framed doors and canopy brackets."
+    },
+    {
+      "id": "panorama-2017",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6475958,-3.0061926&heading=34&pitch=0",
+      "observed": "North pavilion garden-facing front and roof; obscured lower bays."
+    },
+    {
+      "id": "south-street-2026",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.64718,-3.00715&heading=100&pitch=0",
+      "attribution": "Google Street View, July 2026",
+      "observed": "Long shallow hipped roof with faceted ends, glazed side and dark framing."
+    }
+  ],
+  "limitations": [
+    "Both footprints are OSM-derived seeds with 1\u20133m uncertainty, heights and bay counts estimated. Roof, hidden ends, rear and doors require further comparison.",
+    "Temporary tenant signage omitted."
+  ]
+}

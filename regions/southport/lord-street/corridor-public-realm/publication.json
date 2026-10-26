@@ -103,6 +103,11 @@
       "name": "Leicester Street roundabout",
       "collection": "section-14",
       "ground": true
+    },
+    {
+      "id": "garden-furniture",
+      "name": "Town Hall Gardens furniture",
+      "collection": "garden-furniture"
     }
   ],
   "views": [
@@ -148,7 +153,7 @@
   "rules": [
     {
       "id": "provisional-ground",
-      "match": "^Ground ",
+      "match": "^(Ground|Fountain) ",
       "walk": {
         "strategy": "keep",
         "reason": "Already minimal untextured provisional geometry."
@@ -156,6 +161,136 @@
       "district": {
         "strategy": "keep",
         "reason": "Fixed-budget block-plan geometry has no decorative detail. Detailed replacements require independent bounded District envelopes."
+      }
+    },
+    {
+      "id": "garden-bench",
+      "match": "^Garden bench ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep the observed form while simplifying radial/profile detail."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "bench",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Fixed geometry per placed feature; retain silhouette and balustrade openings while omitting small profile detail."
+      }
+    },
+    {
+      "id": "garden-balustrade",
+      "match": "^Garden balustrade ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "balustrade",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep the observed form while simplifying radial/profile detail."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "balustrade",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Fixed geometry per placed feature; retain silhouette and balustrade openings while omitting small profile detail."
+      }
+    },
+    {
+      "id": "garden-globe",
+      "match": "^Garden globe ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "globe",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep the observed form while simplifying radial/profile detail."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "globe",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Fixed geometry per placed feature; retain silhouette and balustrade openings while omitting small profile detail."
+      }
+    },
+    {
+      "id": "garden-column",
+      "match": "^Garden column ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "column",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Keep the observed form while simplifying radial/profile detail."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "column",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Fixed geometry per placed feature; retain silhouette and balustrade openings while omitting small profile detail."
+      }
+    },
+    {
+      "id": "garden-tree",
+      "match": "^Garden tree ",
+      "walk": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "tree",
+          "level": "walk"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Retain tree canopy groups with reduced crown sampling."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "garden_components:build_lod",
+        "settings": {
+          "kind": "tree",
+          "level": "district"
+        },
+        "uv": "smart",
+        "bake": false,
+        "reason": "Fixed low-sided crown and trunk; omit fine branches."
       }
     }
   ]

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/pavilions.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Town Hall Gardens",
+  "status": "Research in progress; estimates not surveyed.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 256
+    }
+  },
+  "parts": [
+    {
+      "id": "north",
+      "name": "North pavilion",
+      "collection": "north"
+    },
+    {
+      "id": "south",
+      "name": "South pavilion",
+      "collection": "south"
+    }
+  ],
+  "views": [
+    {
+      "name": "Town Hall Gardens axis",
+      "position": [
+        -155.191,
+        2,
+        148.801
+      ],
+      "target": [
+        -108.065,
+        2,
+        104.034
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -155.191,
+      1.6,
+      148.801
+    ],
+    "target": [
+      -108.065,
+      1.6,
+      104.034
+    ]
+  },
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^Architecture ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep framed glazed openings and roof form."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed pavilion envelopes replace detailed surfaces."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep fanlight framing visible at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Project fine framing onto independent envelope."
+      }
+    },
+    {
+      "id": "ornament",
+      "match": "^Ornament ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Roof seams, crest finials and delicate canopy brackets fall below walking-scale resolution; principal canopy posts and fanlight framing stay."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed envelope receives the roof appearance."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed coarse walls and faceted roofs, with imagery projected from each pavilion separately.",
+    "max_bytes": 1800000,
+    "max_gpu_bytes": 4000000,
+    "parts": {
+      "north": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 220,
+        "cage_m": 0.75
+      },
+      "south": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 220,
+        "cage_m": 0.75
+      }
+    }
+  }
+}

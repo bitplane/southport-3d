@@ -20,11 +20,16 @@ BLOCKS=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/D['block_plan']).read
 D['building_cutouts'] += [{'id':b['id'],'polygon':b['footprint']} for b in BLOCKS['blocks']]
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
-colours={'paving':(.48,.46,.41),'asphalt':(.085,.092,.093),'lawn':(.16,.25,.10),'kerb':(.40,.40,.37),'pattern':(.32,.37,.34)}
+colours={'paving':(.48,.46,.41),'asphalt':(.085,.092,.093),'lawn':(.16,.25,.10),'kerb':(.40,.40,.37),'pattern':(.32,.37,.34),'pattern-light':(.70,.68,.61),'garden-paving':(.53,.49,.42),'fountain-stone':(.57,.54,.47),'water':(.19,.32,.32)}
 mats={}
 for name,c in colours.items():
  m=bpy.data.materials.new('Provisional '+name);m.use_nodes=True;m.diffuse_color=(*c,1)
  m.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(*c,1);m.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value=.9;mats[name]=m
+
+# Sandstone flag repeat is authored, not projected photographic imagery.
+tex=mats['garden-paving'].node_tree.nodes.new('ShaderNodeTexImage')
+tex.image=bpy.data.images.load(str(ROOT/'textures/garden-paving.png'));tex.extension='REPEAT'
+mats['garden-paving'].node_tree.links.new(tex.outputs['Color'],mats['garden-paving'].node_tree.nodes['Principled BSDF'].inputs['Base Color'])
 
 def rect(x0,x1,y0,y1):return [(x0,y0),(x1,y0),(x1,y1),(x0,y1)]
 def clean(p):
@@ -103,23 +108,63 @@ green=plan.intersection(available,plan.polygons([p for p,mat,pr,_ in rows if mat
 green=plan.difference(green,plan.polygons([rect(-245,-136,-25,25)]))
 paths=plan.polygons([p for p,mat,pr,_ in rows if mat=='paving'])
 green=plan.difference(plan.difference(green,road),paths)
+# Bounded planted beds behind the Lord Street bench row, visually estimated
+# from the 2017 panorama; keep the central side entrance clear.
+beds=plan.polygons([rect(-218,-199,12.5,15.8),rect(-174,-158,12.5,15.8)])
+green=plan.intersection(available,plan.polygons([*plan.triangles(green),*plan.triangles(plan.difference(beds,road))]))
 paved=plan.difference(plan.difference(available,road),green)
-# Historic checkerwork on the longitudinal axis, conservatively simplified.
-# The circular fountain zone is reserved for its independently modelled tiers.
-checker=[]
-for i in range(32):
+# Civic paving is cut into the ground, not placed on top of it.  Four
+# approximately square cells across the axis and four narrow framing stripes
+# at each side are image estimates (2017 photosphere and 2018 photograph).
+# The outer radial rings are flush paving; the inner fountain remains a separate
+# construction phase.  Circle and longitudinal axis share the same centre.
+def circle(radius):
+ return [(-186.7+radius*math.cos(i*math.tau/96),-1+radius*math.sin(i*math.tau/96)) for i in range(96)]
+outer=plan.polygons([circle(11.5)]); inner=plan.polygons([circle(7.2)])
+axis=plan.polygons([rect(-220,-154,-3.8,1.8)])
+axis=plan.difference(axis,outer)
+black=[]
+for i in range(74):
  for j in range(4):
-  if (i+j)%2==0:checker.append(rect(-220+2*i,-218+2*i,-3+j,-2+j))
-ring=[(-186.7+10*math.cos(i*math.tau/48),-1+10*math.sin(i*math.tau/48)) for i in range(48)]
-pattern=plan.intersection(paved,plan.difference(plan.polygons(checker),plan.polygons([ring])))
-paved=plan.difference(paved,pattern)
+  if (i+j)%2==0:
+   black.append(rect(-220+i*.9,-220+(i+1)*.9,-2.8+j*.9,-2.8+(j+1)*.9))
+# Four framing stripes on each side.  These are separately owned flush paving.
+for ya in [-3.8,-3.3,.8,1.3]:black.append(rect(-220,-154,ya,ya+.25))
+axis_dark=plan.intersection(axis,plan.polygons(black))
+axis_light=plan.difference(axis,axis_dark)
+ring_dark=[];ring_light=[]
+for i in range(8):
+ band=plan.difference(plan.polygons([circle(7.2+(i+1)*.5375)]),plan.polygons([circle(7.2+i*.5375)]))
+ (ring_dark if i%2==0 else ring_light).extend(plan.triangles(band))
+# A bounded pedestrian connection rises gently from the axial paving to the
+# pool platform. Its placement is an interpretation of the visible radial
+# approach, not a surveyed accessibility assessment.
+ramp=plan.polygons([rect(-187.7,-185.7,-13.6,-4.2)])
+pattern=plan.difference(plan.intersection(paved,plan.polygons([*plan.triangles(axis_dark),*ring_dark])),ramp)
+pattern_light=plan.difference(plan.intersection(paved,plan.polygons([*plan.triangles(axis_light),*ring_light])),ramp)
+paved=plan.difference(plan.difference(plan.difference(plan.difference(paved,pattern),pattern_light),inner),ramp)
+garden_paved=plan.intersection(paved,plan.polygons([rect(-245,-136,-19,18)]))
+paved=plan.difference(paved,garden_paved)
+# Disk is removed from the ordinary ground.  Three horizontal tiers and a
+# horizontal pool own the centre; an outer collar meets the bounded grade.
+def disc(r):return plan.polygons([circle(r)])
+def annulus(ri,ro):return plan.difference(disc(ro),disc(ri))
+fountain_shapes={
+ 'collar':plan.triangles(plan.difference(annulus(6.9,7.2),ramp)),
+ 'lower':plan.triangles(plan.difference(annulus(6.2,6.9),ramp)),
+ 'middle':plan.triangles(plan.difference(annulus(5.4,6.2),ramp)),
+ 'upper':plan.triangles(plan.difference(annulus(4.6,5.4),ramp)),
+ 'platform':plan.triangles(plan.difference(annulus(3.2,4.6),ramp)),
+ 'ramp':plan.triangles(plan.intersection(ramp,available)),
+ 'pool':plan.triangles(disc(3.2)),
+}
 compiled={};collections={};cuts=D['tile_cuts']
 for ti,(lo,hi) in enumerate(zip(cuts,cuts[1:])):
  name=f'section-{ti:02d}';c=bpy.data.collections.new(name);s.collection.children.link(c);collections[name]=c
  # A grade break is a shared geometric edge, not two independently tilted faces.
  for ya,yb in zip([ymin,36,41,ymax],[36,41,ymax]):
   cell=plan.polygons([rect(lo,hi,ya,yb)])
-  for mat,g in [('asphalt',road),('lawn',green),('paving',paved),('pattern',pattern)]:
+  for mat,g in [('asphalt',road),('lawn',green),('paving',paved),('garden-paving',garden_paved),('pattern',pattern),('pattern-light',pattern_light)]:
    m=compiled.setdefault((name,mat),Mesh('Ground '+name+' '+mat))
    for p in plan.triangles(plan.intersection(g,cell)):
     for lifted in SURFACE.lift_triangle(p):m.add([(x,y,0) for x,y,z in lifted],[(0,1,2)])
@@ -156,8 +201,106 @@ for (name,mat),m in compiled.items():
  uv=ob.data.uv_layers.new(name='Metric ground UV')
  for poly in ob.data.polygons:
   for li in poly.loop_indices:
-   v=ob.data.vertices[ob.data.loops[li].vertex_index].co;uv.data[li].uv=(v.x,v.y)
+   v=ob.data.vertices[ob.data.loops[li].vertex_index].co;uv.data[li].uv=(v.x/4,v.y/4) if mat=='garden-paving' else (v.x,v.y)
  count+=len(ob.data.polygons)
+# Furniture is separately streamed and is never classified as walking ground.
+from garden_components import make as garden_component, clean as clean_furniture
+furniture_collection=bpy.data.collections.new('garden-furniture');s.collection.children.link(furniture_collection)
+furniture_mats=[]
+for name,colour in [('iron',(.10,.10,.09)),('metal',(.27,.27,.25)),('edge',(.65,.64,.57)),('yellow',(.5,.4,.1)),('red',(.4,.1,.1)),('amber',(.5,.3,.1)),('green',(.1,.3,.1)),('timber',(.26,.16,.10)),('glass',(.25,.3,.3))]:
+ m=bpy.data.materials.new('Garden furniture '+name);m.use_nodes=True;m.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(*colour,1);furniture_mats.append(m)
+stone=mats['fountain-stone'];dark=furniture_mats[0];opal=mats['pattern-light']
+tree_mats=[]
+for name,colour in [('bark',(.20,.16,.12)),('deep foliage',(.13,.24,.10)),('foliage',(.18,.31,.12)),('light foliage',(.24,.36,.15))]:
+ m=bpy.data.materials.new('Garden '+name);m.use_nodes=True;m.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(*colour,1);tree_mats.append(m)
+def fixture(kind,x,y,angle=0):
+ ob=garden_component(kind,'detail','Garden '+kind+' '+str(x)+' '+str(y)).finish(furniture_mats if kind=='bench' else tree_mats if kind=='tree' else [stone,dark,opal],furniture_collection)
+ clean_furniture(ob);ob.location=(x,y,grade(x,y));ob.rotation_euler.z=angle
+ uv=ob.data.uv_layers.new(name='Furniture metric UV')
+ for poly in ob.data.polygons:
+  for li in poly.loop_indices:
+   v=ob.data.vertices[ob.data.loops[li].vertex_index].co;uv.data[li].uv=(v.x,v.z)
+# Four canopy groups on photographed planted edges; individual species and
+# exact trunk stations are unknown.
+for x in [-215,-204,-173,-162]:fixture('tree',x,14.1)
+# Bench backs face the beds or service edge, so seats face the plaza.
+for x in [-216,-213.8,-211.6,-209.4,-207.2,-205,-202.8,-200.6,-172,-169.8,-167.6,-165.4,-163.2,-161]:fixture('bench',x,11.4)
+for x in [-217,-214.8,-212.6,-210.4,-208.2,-206,-203.8,-201.6,-178,-175.8,-173.6,-171.4,-169.2,-167,-164.8,-162.6]:fixture('bench',x,-13.8,math.pi)
+# Short open runs and gaps represent the observed entrance rhythm. Exact pier
+# stations are visual estimates rather than a measured inventory.
+for x in [-218,-214,-210,-206,-202,-174,-170,-166,-162]:fixture('balustrade',x,16.4)
+for x in [-219,-215,-211,-207,-203,-199,-175,-171,-167,-163]:fixture('balustrade',x,-16.4)
+for x,y in [(-220,16.4),(-198,16.4),(-176,16.4),(-158,16.4),(-221,-16.4),(-197,-16.4),(-177,-16.4),(-159,-16.4)]:fixture('globe',x,y)
+for x in [-194,-178]:
+ for y in [15.5,18.2]:fixture('column',x,y)
+# The fountain's footprint is wholly in section-06. Its pool and treads are
+# level, not projected onto the street lattice. The small outer collar provides
+# a deliberate transition to the surrounding rough grade. Dimensions are image
+# estimates and the radial ramp is an estimated connection, not a surveyed feature.
+base=max(grade(*p) for p in circle(7.2))
+levels={'lower':base,'middle':base+.14,'upper':base+.28,'platform':base+.42,'pool':base+.42}
+fountain={name:Mesh('Fountain '+name) for name in fountain_shapes}
+for name,polys in fountain_shapes.items():
+ for tri in polys:
+  # Grade profile split points preserve the road-surface edge at the collar.
+  for lifted in SURFACE.lift_triangle(tri):
+   points=[]
+   for x,y,_ in lifted:
+    if name=='collar':
+     r=math.hypot(x+186.7,y+1);t=max(0,min(1,(7.2-r)/.3));z=grade(x,y)*(1-t)+base*t
+    elif name=='ramp':
+     t=max(0,min(1,(y+13.6)/9.4));z=grade(x,-13.6)*(1-t)+(base+.42)*t
+    else:z=levels[name]
+    points.append((x,y,z))
+   fountain[name].add(points,[(0,1,2)])
+for r,lo,hi in [(6.2,base,base+.14),(5.4,base+.14,base+.28),(4.6,base+.28,base+.42)]:
+ ring=circle(r)
+ for a,b in zip(ring,ring[1:]+ring[:1]):
+  ts=[0.,1.]
+  if abs(b[0]-a[0])>1e-10:
+   for x in (-187.7,-185.7):
+    t=(x-a[0])/(b[0]-a[0])
+    if 0<t<1:ts.append(t)
+  ts.sort()
+  for t0,t1 in zip(ts,ts[1:]):
+   aa=(a[0]+(b[0]-a[0])*t0,a[1]+(b[1]-a[1])*t0);bb=(a[0]+(b[0]-a[0])*t1,a[1]+(b[1]-a[1])*t1)
+   mid=((aa[0]+bb[0])/2,(aa[1]+bb[1])/2)
+   if mid[1]<-1 and -187.7<mid[0]<-185.7:continue
+   fountain['upper'].add([(aa[0],aa[1],lo),(bb[0],bb[1],lo),(bb[0],bb[1],hi),(aa[0],aa[1],hi)],[(0,1,2,3)])
+# Close the vertical interfaces at both sides of the radial approach. These
+# retain the neighbouring stepped heights while the centre rises continuously.
+def ramp_height(x,y):
+ t=max(0,min(1,(y+13.6)/9.4));return grade(x,-13.6)*(1-t)+(base+.42)*t
+for x in (-187.7,-185.7):
+ cuts=[-13.6,-4.2]
+ for radius in (7.2,6.9,6.2,5.4,4.6,3.2):
+  poly=circle(radius)
+  for a,b in zip(poly,poly[1:]+poly[:1]):
+   if (a[0]-x)*(b[0]-x)<0:
+    t=(x-a[0])/(b[0]-a[0]);y=a[1]+t*(b[1]-a[1])
+    if y < -1 and -13.6<y<-4.2:cuts.append(y)
+ cuts=sorted(cuts)
+ for y0,y1 in zip(cuts,cuts[1:]):
+  r=math.hypot(x+186.7,(y0+y1)/2+1)
+  if r>=7.2:target=lambda y:grade(x,y)
+  elif r>=6.9:target=lambda y:grade(x,y)*(1-max(0,min(1,(7.2-math.hypot(x+186.7,y+1))/.3)))+base*max(0,min(1,(7.2-math.hypot(x+186.7,y+1))/.3))
+  elif r>=6.2:target=lambda y:base
+  elif r>=5.4:target=lambda y:base+.14
+  elif r>=4.6:target=lambda y:base+.28
+  else:target=lambda y:base+.42
+  ys=sorted(set([y0,y1]+[v[1] for v in SURFACE.edge_points((x,y0),(x,y1))]))
+  for a,b in zip(ys,ys[1:]):
+   d0=ramp_height(x,a)-target(a);d1=ramp_height(x,b)-target(b);segments=[a,b]
+   if d0*d1<0:segments.insert(1,a+(b-a)*(-d0)/(d1-d0))
+   for u,v in zip(segments,segments[1:]):
+    fountain['ramp'].add([(x,u,target(u)),(x,v,target(v)),(x,v,ramp_height(x,v)),(x,u,ramp_height(x,u))],[(0,1,2,3)])
+for name,m in fountain.items():
+ ob=m.finish([mats['water' if name=='pool' else 'fountain-stone']],collections['section-06'])
+ bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.triangulate(bm,faces=list(bm.faces));bad=[f for f in bm.faces if f.calc_area()<1e-10];bmesh.ops.delete(bm,geom=bad,context='FACES_ONLY');bm.to_mesh(ob.data);bm.free();ob.data.update()
+ uv=ob.data.uv_layers.new(name='Fountain metric UV')
+ for poly in ob.data.polygons:
+  for li in poly.loop_indices:
+   v=ob.data.vertices[ob.data.loops[li].vertex_index].co;uv.data[li].uv=(v.x,v.y)
 (ROOT/'research/conform.json').write_text(json.dumps(report,indent=2)+'\n')
 s.render.engine='CYCLES';s.cycles.samples=12;s.cycles.use_denoising=True
 s.world=s.world or bpy.data.worlds.new('World');s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs['Color'].default_value=(.65,.7,.75,1)

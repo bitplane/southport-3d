@@ -128,3 +128,73 @@ canopy brackets and open entrance door. The close view confirms similarities
 with the north pavilion but does not establish identical footprints or plans.
 The July 2026 street view supplies the roof and streetward end. Private capture:
 `../output/diana-massing/reference-south-2025.png`.
+
+## Current construction and remaining review
+
+The source ground now owns a framed checker strip, four cells across at an
+estimated 0.9 m cell width, with two narrow dark bands on each side. Eight
+alternating radial bands occupy the 7.2–11.5 m radii. These are flush surfaces
+cut into the pavement; the raised fountain has three estimated 0.14 m risers,
+a level platform and a horizontal 3.2 m radius water surface. The inner platform
+is cut out of the ordinary pavement and its outer collar joins the road datum.
+The estimated 2 m wide, approximately 1:16–1:19 rising connection is on the
+Atkinson side and breaks the risers there. Its exact location and geometry
+are an interpretation, not an observation or a statement of regulatory
+compliance, and need independent review. The 2025 photograph suggests a break in the steps, but does not establish
+this ramp's surveyed station, existence or grade.
+
+The two bounded Lord Street planting beds, four proxy tree canopies, bench rows,
+open balustrade runs, globe piers and paired entrance columns are estimated
+from the 2017 and 2019 views; exact inventories, species, stations and planting
+are not measured. There is no claim that the regular temporary 2025 planters
+were present in 2017. Furniture streams separately from the walking ground;
+blender checks cover every face of each pavilion, representative garden
+prototypes, adjacent balustrade modules and the bounded ground surfaces.
+
+The new separately owned pavilion asset uses the original polygonal seeds for
+registration. Its entrances, eave/roof heights and bay schedule are provisional.
+Close views support their arched fanlights, pale lower panels, structural posts,
+projecting canopies and cresting, but not all rear faces or door positions.
+No tenant sign is included. The former placeholder volumes are marked for
+replacement in the same future publication. The integrated ground, pavilions and placeholder removal are published locally;
+independent final acceptance and snag resolution remain pending.
+
+The checked ground package currently measures 85,506 / 54,258 / 25,314
+placed triangles and 9.30 / 6.28 / 3.31 MB for Detail / Walk / District,
+including the wider corridor, not just this garden. The District pavilion
+preflight has 136 and 154 receiver triangles for the north and south respectively,
+with no sampled projection misses. Actual package and viewer checks are recorded
+below. The ground package check covers horizontal water,
+unchanged ground at all three levels and exported representative furniture
+surfaces; it does not certify access or visual equivalence.
+
+Work before this review comprised roughly 7 minutes of initial evidence and
+prototype work (20:26–20:33 UTC) and about 85 minutes of the resumed construction
+and review pass (21:35–23:00 UTC), including coordination waits, pavilion
+roof/post overlap rework, package-check fixes and the District bake correction. The gap between sessions was not
+active work. These are wall-clock approximations, not token measurements.
+
+## Local publication and review (26 October 2026)
+
+The ground, two replacements and placeholder removal were published together.
+Actual pavilion totals, north plus south, are 29,921 / 25,993 / 290 triangles
+and 3.76 / 3.30 / 0.136 MB for Detail / Walk / District. The District GPU
+estimate is 2.13 MB for the two bounded 256 px atlases and geometry. The
+package checker verifies actual exported budgets, silhouettes and coplanar
+exterior contacts. The assembled exported audit checks garden sections 05–07,
+pavilions, Town Hall, Christ Church approach and Eastbank ground at all three
+levels; it found no same-facing cross-part overlaps. These checks do not prove
+that every approach is surveyed or visually correct.
+
+The live viewer showed the actual Detail, Walk and District pavilion and
+furniture tiles. Ground is identical across levels; its collapsed tile was
+labelled Walk when District was forced. A short axial Walk movement followed
+the ground. Opposite southern and rear northern pavilion views and nearby
+ground joins were inspected. A first District view exposed inward receiver
+normals on the north pavilion, producing a dark blank facade despite complete
+projection coverage. Corrected normals and a direction regression restored
+its window appearance in the republished District view. Top-down tread edges
+show intermittent fine dark pixels, and the north garden boundary has an
+abrupt paving material change; these remain visible review limitations.
+Private captures are in `../output/diana-assembled-review/viewer-*.png`.
+The snag remains in progress pending independent final acceptance.
