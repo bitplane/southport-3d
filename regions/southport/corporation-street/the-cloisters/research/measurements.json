@@ -1,0 +1,42 @@
+{
+  "method": "Google aerial scale-bar and oblique ratios, then registration to agreed church court and Corporation pavement; estimates not survey. Roof parallax explicitly corrected using ground context.",
+  "plan_input": {
+    "private_image": "/tmp/cloisters/plan.png",
+    "scale_bar": "20m approximately148px",
+    "roof_front_pixels": [
+      [
+        694,
+        508
+      ],
+      [
+        771,
+        590
+      ]
+    ],
+    "roof_depth_pixels": [
+      [
+        694,
+        508
+      ],
+      [
+        779,
+        420
+      ]
+    ],
+    "calculations": "roof front112.5px/148*20=15.2m; depth122.3/148*20=16.5m. Roof corners displaced from ground; include parapet/overhang and perspective uncertainty. Adopt16.3x18.3m ground bounding rectangle (~298m2); internal advertised lower floor270.76m2 supports ~0.4m walls.",
+    "registration": "Corporation front x=-123.759662; north wall y=-71.74 inherited court seam, not independent metric survey.",
+    "uncertainty_m": 1.2
+  },
+  "elevation": {
+    "bay_ratio": "four equal broad bays, each pair of upper windows; widths~4.075m",
+    "ground_m": 5.45,
+    "upper_window_bottom_m": 6.1,
+    "upper_window_top_m": 9.45,
+    "eave_m": 11.4,
+    "ridge_m": 14.35,
+    "dormer_top_m": 15.0,
+    "height_uncertainty_m": 1.0,
+    "pinnacles": "Current Fitton front and 3D silhouette place intermediate caps below gable apex; corrected first render over-tall shafts. Estimated corner top12.75m and inner tops14.10m, vs15.0m gables."
+  },
+  "ground": "The actual Corporation Street / church court owner is christ-church-approach, whose retained bounded legacy grade is0.7845m here. Station-quarter rough-control surface lies farther south and is not the school entrance support. Preserve floor0.7845 and court heights; no terrain changes. Nearby rough grid0.294\u20130.424m was investigated but explicitly rejected as a support layer for this entrance."
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "x": -123.759662,
+  "y": -71.74,
+  "width": 16.3,
+  "depth": 18.3,
+  "base_z": 0.7845,
+  "eave": 11.4,
+  "ridge": 14.35,
+  "phase": "detail",
+  "uncertainty_m": 1.2,
+  "pinnacle_cap_base": [
+    12.15,
+    13.5,
+    13.5,
+    13.5,
+    12.15
+  ]
+}

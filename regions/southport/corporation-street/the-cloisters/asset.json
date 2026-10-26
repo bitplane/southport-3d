@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "id": "southport.corporation-street.the-cloisters",
+  "name": "The Cloisters / former Christ Church Higher Grade School",
+  "region": "southport",
+  "area": "corporation-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "four-bay-gothic-front",
+    "church-court",
+    "parallel-roofs"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Current researched exterior,2025 frontage; estimated metric geometry and partly unseen rear.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/lord-street/christ-church-approach/scripts/datum.py"
+    ],
+    "validate": [
+      "regions/southport/lord-street/christ-church-approach/scripts/datum.py",
+      "regions/southport/corporation-street/the-cloisters/scripts/check_package.py"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "licensing": "Authored exterior geometry and procedural textures. Registration uses the OSM-derived station-quarter block plan (OpenStreetMap contributors, ODbL1.0); photographic references private."
+}

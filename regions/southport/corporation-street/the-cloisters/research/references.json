@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "id": "maps-3d",
+      "url": "https://www.google.com/maps/@53.6473886,-3.0065876,151a,35y,90h,39.52t/data=!3m1!1e3",
+      "accessed": "2026-10-26",
+      "observed": "Actual loaded 3D orbits at headings 0,90,180,270; parallel roof bands, lower rear roof, separate neighbouring retail."
+    },
+    {
+      "id": "street",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.64739,-3.00502&heading=49&pitch=20&fov=100",
+      "capture": "May 2011",
+      "observed": "Front and church-side entrance, porch carving, stained glass and upper brick arches."
+    },
+    {
+      "id": "fitton",
+      "url": "https://www.fittonestates.com/property-details/2598/merseyside/southport/corporation-street",
+      "date": "2025-09-29",
+      "observed": "Current front photo and property brochure, Techedia porch and shuttered three shop bays; lower ground internal area270.76m2."
+    },
+    {
+      "id": "auction",
+      "url": "https://www.otsnews.co.uk/historic-southport-building-go-auction/",
+      "date": "2019-11-15",
+      "observed": "Former Christ Church Higher Grade School, opened1898; detached red brick; historic rooftop playground."
+    }
+  ],
+  "rights": "References remain private. Source geometry and procedural texture pixels are authored, no photo pixels redistributed."
+}

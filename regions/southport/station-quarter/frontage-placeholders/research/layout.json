@@ -106,22 +106,26 @@
           -94.139
         ],
         [
-          -123.759662,
+          -104,
+          -94.139
+        ],
+        [
+          -104,
           -71.74
         ],
         [
-          -88.0,
+          -88,
           -71.74
         ],
         [
-          -88.0,
+          -88,
           -126.084752
         ]
       ],
       "height_m": 13,
       "replace_with": null,
       "source_way": "371203985",
-      "evidence": "Aerial footprint adjoining Christ Church rear; multiple roof heights represented by an upper bound, not a reconstructed roof."
+      "evidence": "Cloisters school separated using four actual Maps3D orbits2026-10-26; retain provisional Boots retail range, free the observed side/service access. Rear retail join unresolved1\u20132m."
     },
     {
       "id": "hugo-frontage",
@@ -555,6 +559,31 @@
       "replace_with": null,
       "source_way": "371730196",
       "evidence": "Rear shopping roofs and court cutouts retained from aerial-checked outline; no tenant subdivision claim."
+    },
+    {
+      "id": "cloisters-school",
+      "footprint": [
+        [
+          -123.759662,
+          -71.74
+        ],
+        [
+          -123.759662,
+          -88.04
+        ],
+        [
+          -105.459662,
+          -88.04
+        ],
+        [
+          -105.459662,
+          -71.74
+        ]
+      ],
+      "height_m": 15,
+      "replace_with": "southport.corporation-street.the-cloisters",
+      "source_way": "371203985",
+      "evidence": "Researched detached former school, carved out of formerly merged chapel-boots-range. See new asset research/measurements.json."
     }
   ],
   "limits": "External outlines checked against calibrated north-up Google aerials. 3D Earth unavailable on this host (NVIDIA driver unavailable); all heights are provisional bounds. Internal block divisions denote visible roof ranges, not legal property boundaries.",

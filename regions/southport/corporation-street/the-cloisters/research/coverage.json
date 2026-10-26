@@ -1,0 +1,44 @@
+{
+  "front": {
+    "sources": [
+      "street",
+      "fitton"
+    ],
+    "confidence": "high composition, estimated dimensions",
+    "observed": "4 bays,8 tall first-floor lights,2 central gabled dormers with4 lights each; octagonal pinnacles; broad carved pointed porch left,3 shop apertures right. Current Techedia sign. Fitton image19 gives close-up amber paired lancets and circular middle bands in the stained glass; procedural pattern authored from this evidence."
+  },
+  "church_side": {
+    "sources": [
+      "street",
+      "maps-3d"
+    ],
+    "confidence": "medium",
+    "observed": "Tall paired windows and pilaster rhythm down church court; low rear block, multiple roof heights."
+  },
+  "boots_side": {
+    "sources": [
+      "maps-3d"
+    ],
+    "confidence": "medium shape; low detail",
+    "observed": "Largely blank wall with one small high light, distinct narrow separation from adjoining retail."
+  },
+  "rear": {
+    "sources": [
+      "maps-3d"
+    ],
+    "confidence": "medium volume; low openings",
+    "missing": "Street View requests at53.64753,-3.00465 snap to front pano QMcpQM5UDyne6ZjXCzKt_g; private rear not covered. Retain restrained visible openings only."
+  },
+  "roof": {
+    "sources": [
+      "maps-3d"
+    ],
+    "confidence": "medium",
+    "observed": "Parallel slate roof ridges across frontage, a long rooflight on central slope, rear reduced-height flat recess and pitched short corner."
+  },
+  "searches": {
+    "Maps": "Actual 3D all quadrants and Street View loaded. Place identity Techedia.",
+    "Mapillary": "Web query Corporation Street Southport Cloisters returned no useful street imagery.",
+    "supplementary": "Fitton2025 front photographs; OTS2019 sale; LBN2023 current occupancy. Historic England search returned wrong Crosby school: excluded."
+  }
+}
