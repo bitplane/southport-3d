@@ -1,0 +1,45 @@
+{
+  "accessed": "2026-10-26",
+  "sources": [
+    {
+      "id": "maps-orbit",
+      "url": "https://www.google.com/maps/place/Southport+Town+Hall/@53.6487962,-3.0060191,180a,35y,161.55h,39.47t/",
+      "observed": "Actual 3D loaded and orbited at 0,261,162 degrees; horseshoe/courtyard ring, front transverse range, long side roofs, rear cross range, glazed lantern. Overhead inspected at 234m altitude."
+    },
+    {
+      "id": "heritage",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379678",
+      "observed": "1852-53 Palladian front, seven windows 1:2:1:2:1; rustication, paired pilasters, Doric porch, Ionic upper centre, pediment sculpture, sashes, rear additions."
+    },
+    {
+      "id": "trail",
+      "url": "https://www.southporttownscape.org.uk/wp-content/uploads/2023/07/Southport-Lord-Street-trail.pdf",
+      "observed": "Portico documented as 5.5m high; metric height reference."
+    },
+    {
+      "id": "place-front",
+      "url": "https://www.google.com/maps/search/Southport+Town+Hall/",
+      "author": "Mark Wellstern",
+      "capture": "August 2023",
+      "observed": "Maps place photo: clear whole front, double lateral flights, balustrades, two fluted Doric columns, tall pilasters, central figurative relief, two globe lamps. Scaffold on adjacent Atkinson."
+    },
+    {
+      "id": "street-front",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=qOi8w4CaOrBx5utpGdLRAQ&heading=175&pitch=15&fov=90",
+      "capture": "May 2011",
+      "observed": "Actual rendered full front and north approach, basement, stairs and floor divisions."
+    },
+    {
+      "id": "street-north",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=BelKnhHpZFt494goy8DD1g&heading=235&pitch=10&fov=90",
+      "capture": "May 2011",
+      "observed": "Actual rendered red brick/terracotta Corporation side, grouped arch windows, rectangular upper sashes, rainwater pipe."
+    },
+    {
+      "id": "commons",
+      "url": "https://commons.wikimedia.org/wiki/Category:Southport_Town_Hall,_Merseyside",
+      "observed": "Category searched; useful frontal photos by Alexander P Kapp (2009) and Gerald England (2002); no modern rear photo found."
+    }
+  ],
+  "rights": "Private reference captures outside repository. Links only; procedural reconstruction. OSM footprint seed: OpenStreetMap contributors ODbL 1.0."
+}

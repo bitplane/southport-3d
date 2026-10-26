@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/building.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Southport Town Hall",
+  "status": "Research-based Palladian exterior and rear ranges; dimensions estimated",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "front",
+      "name": "front",
+      "collection": "front"
+    },
+    {
+      "id": "rear",
+      "name": "rear",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "roof",
+      "collection": "roof"
+    },
+    {
+      "id": "porch",
+      "name": "porch",
+      "collection": "porch"
+    },
+    {
+      "id": "steps",
+      "name": "Entrance steps and landing",
+      "collection": "steps",
+      "ground": true,
+      "support_surface": "town-hall-entrance"
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Fine rustication grooves and dentils fade; major cornices retained."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Appearance on bounded envelope."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep physically open porch, courtyard, stairs, roof silhouettes and deep sash recesses."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed receiver replaces detailed topology."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed courtyard ring and physically open columned portico, independent of ornament; fine balusters and sculpture baked, shared arcade canopy omitted.",
+    "max_bytes": 3500000,
+    "max_gpu_bytes": 12000000,
+    "parts": {
+      "front": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.55,
+        "source_parts": [
+          "front"
+        ]
+      },
+      "rear": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.6,
+        "source_parts": [
+          "rear"
+        ]
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.3,
+        "source_parts": [
+          "roof"
+        ]
+      },
+      "porch": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 600,
+        "cage_m": 0.3,
+        "source_parts": [
+          "porch"
+        ]
+      },
+      "steps": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 300,
+        "cage_m": 0.3,
+        "source_parts": [
+          "steps"
+        ]
+      }
+    }
+  },
+  "views": [
+    {
+      "name": "Town Hall front",
+      "position": [
+        -116,
+        14,
+        88
+      ],
+      "target": [
+        -88,
+        7,
+        120
+      ]
+    },
+    {
+      "name": "Town Hall roof",
+      "position": [
+        -50,
+        58,
+        135
+      ],
+      "target": [
+        -70,
+        7,
+        139
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -100,
+      1.65,
+      108
+    ],
+    "target": [
+      -88,
+      5,
+      120
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-26",
+  "district": {
+    "independent_generator": "scripts/district.py",
+    "max_triangles": 1800,
+    "max_glb_bytes": 3500000,
+    "max_gpu_bytes": 12000000,
+    "atlas_dimensions": {
+      "front": [
+        512,
+        512
+      ],
+      "rear": [
+        512,
+        512
+      ],
+      "roof": [
+        256,
+        256
+      ],
+      "porch": [
+        256,
+        256
+      ],
+      "steps": [
+        128,
+        128
+      ]
+    },
+    "three_map_memory_floor_bytes": 10747904,
+    "source_projection": "Each receiver part samples only same-named source part;front0.55m,rear0.6m,roof0.3m,porch0.3m max cage. Per-face narrower cages for lantern and column shafts. Separate128\u00b2 steps atlas supports physical walking landings without exposing porch roofs as walkable ground.",
+    "preserved": [
+      "external footprint",
+      "open courtyard",
+      "hip roof ring",
+      "lantern silhouette",
+      "free-standing porch columns",
+      "double lateral stair flights"
+    ],
+    "omitted": [
+      "fine baluster negative spaces",
+      "sculpture physical depth",
+      "thin rustication grooves",
+      "small fittings",
+      "shared Cambridge Arcade roof outside asset"
+    ],
+    "topology_independence": "Generator consumes authored main dimensions and fixed16-step flights; no fine-mesh traversal or decorative-object enumeration."
+  },
+  "walk": "Omit Fine-prefixed groove/dentil objects; keep structural and recessed opening geometry."
+}

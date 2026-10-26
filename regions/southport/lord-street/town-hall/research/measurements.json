@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-26",
+  "plan_inputs": {
+    "osm_way": 42083657,
+    "front_edge_m": [
+      [
+        -132.718,
+        -26.222
+      ],
+      [
+        -160.905,
+        -26.684
+      ]
+    ],
+    "rear_edge_m": [
+      [
+        -131.928,
+        -75.276
+      ],
+      [
+        -158.643,
+        -75.97
+      ]
+    ],
+    "front_length_calculation": "hypot(28.187,0.462)=28.191m",
+    "depth_calculation": "side lengths49.06m and49.34m; use49.1m bilinear registration",
+    "overhead_private_capture": "maps-overhead.png, 1600x1000",
+    "image_landmarks_px": {
+      "front_left": [
+        835,
+        622
+      ],
+      "front_right": [
+        1028,
+        552
+      ],
+      "rear_left": [
+        697,
+        326
+      ],
+      "rear_right": [
+        870,
+        259
+      ],
+      "court_front_left": [
+        810,
+        481
+      ],
+      "court_front_right": [
+        864,
+        458
+      ],
+      "court_rear_left": [
+        769,
+        395
+      ],
+      "court_rear_right": [
+        826,
+        367
+      ]
+    },
+    "ratios": "Front range ~15/49 of depth; central court ~10/28 width and22/49 depth. Roof parallax and perspective give1\u20131.5m uncertainty; not survey.",
+    "correction": "Replace solid placeholder with open courtyard ring; retain registered external footprint.",
+    "refined_court_roof_edge_px": {
+      "front_north": [
+        847,
+        478
+      ],
+      "front_south": [
+        888,
+        459
+      ],
+      "rear_north": [
+        801,
+        397
+      ],
+      "rear_south": [
+        846,
+        378
+      ]
+    },
+    "affine_calculation": "Image axes from front_north(835,622): width vector(193,-70), depth vector(-138,-296). Solve2x2 for each courtyard roof edge; metric results(9.89,19.81),(16.12,20.40),(8.86,33.67),(15.59,34.05). Adopt courtx9.0\u201316.2,y20\u201334m with1.5m uncertainty. Initial rough9.8x22.5m court was too long and was corrected after registered overhead comparison."
+  },
+  "elevation_inputs": {
+    "source": "Mark Wellstern August2023 Maps place photograph, front photo examined at1600x1000",
+    "metric_anchor": "Heritage trail explicitly gives porch height5.5m",
+    "observed_proportions": "Porch floor to beam top about240px; building pavement to eaves about560px in central plane =>12.8m; pediment top adds~2m. Perspective uncertainty~1m.",
+    "front_bays": "Seven windows grouped1:2:1:2:1. Approximate centres as width fractions. Centre narrower visible upper window between Ionic columns.",
+    "levels_m": {
+      "entrance": 2.8,
+      "lower_window_sill": 3.15,
+      "lower_window_top": 6.65,
+      "floor_cornice": 7.65,
+      "upper_sill": 8.5,
+      "upper_window_top": 11.7,
+      "main_cornice": 12.7,
+      "parapet_top": 13.9,
+      "pediment_top": 15.4
+    },
+    "roof_ridge_estimate_m": 15,
+    "north_side": "May2011 panorama shows2-storey front stucco return,3-storey red terracotta middle, and rear two-level white oriel below3 arch windows. Counts and metric spacing are estimated where perspective/trees conceal bays."
+  },
+  "ground": "Existing lord-corridor-pavement at front corners\u22120.070/\u22120.067m; rear corners+0.308/+0.259m. Level architectural datum\u22120.07m; foundations extend below support and entrance stair toe follows sampled support. No ground refinement. Corporation-side approach is a separate retained grade0.7845m (christ-church-approach); north door threshold is0.89m absolute, about0.105m above that path. No shared ground changes."
+}

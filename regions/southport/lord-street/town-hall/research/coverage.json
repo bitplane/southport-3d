@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-26",
+  "appearance": "Historic exterior as evidenced by2011 Street View and2023 place photo; no temporary adjacent scaffolding. Current2026 changes not established.",
+  "front": {
+    "coverage": "good",
+    "sources": [
+      "place-front",
+      "street-front",
+      "heritage"
+    ],
+    "observed": "Seven windows, basement, paired pilasters, rustication, two column porch, lateral double stairs, balustrades, two globe lamps, pediment relief",
+    "uncertainty": "Metric depths and carved anatomy estimated; unreadable noticeboard contents omitted"
+  },
+  "north": {
+    "coverage": "good but narrow passage",
+    "sources": [
+      "street-north",
+      "maps-orbit"
+    ],
+    "observed": "Stucco front return, red brick/terracotta three-storey extension, white rear oriel, rainwater pipes",
+    "uncertainty": "Tree-screened front return and perspective-distorted bay spacing"
+  },
+  "south": {
+    "coverage": "public arcade panorama plus3D",
+    "sources": [
+      "https://www.google.com/maps/@?api=1&map_action=pano&pano=CIHM0ogKEICAgIDEyOrFYw&heading=65&pitch=12&fov=90",
+      "maps-orbit"
+    ],
+    "capture": "June2017, Antony John / Local Exposure NW",
+    "observed": "Left arcade edge has pale shop piers, council double doors and small framed shopfronts; upper red-brick sash rows from3D. Shared glazed roof spans beyond Town Hall footprint.",
+    "uncertainty": "2017 tenant signage omitted to avoid mixing with2023 front appearance; shared glass arcade roof belongs to future arcade/Atkinson asset."
+  },
+  "rear": {
+    "coverage": "partial",
+    "sources": [
+      "maps-orbit"
+    ],
+    "observed": "Cross range hip roof abuts next block; roof and upper corners visible",
+    "uncertainty": "No direct public rear elevation view; restrained walls, no invented unseen openings"
+  },
+  "court": {
+    "coverage": "roof-oblique only",
+    "sources": [
+      "maps-orbit"
+    ],
+    "observed": "Open central court, white internal elevations and lower roof below",
+    "uncertainty": "Hidden court fittings/openings not reconstructed"
+  },
+  "roof": {
+    "coverage": "good for main form",
+    "sources": [
+      "maps-orbit"
+    ],
+    "observed": "Continuous hipped ring, unequal front/rear heights, front glazed pyramidal lantern, limited roof vents",
+    "uncertainty": "Flashing and rooflight dimensions estimated"
+  },
+  "searches": {
+    "Mapillary": "Web search Southport town hall Mapillary returned no useful local coverage",
+    "Wikimedia": "Category inspected; frontal heritage views available, no useful modern rear",
+    "StreetView": "May2011 public panoramas actually displayed; first direct front attempt rendered black until reload; rear coordinate snapped to tattoo-shop interior, rejected as irrelevant"
+  }
+}

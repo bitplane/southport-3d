@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.town-hall",
+  "name": "Southport Town Hall",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "front",
+    "rear",
+    "roof",
+    "porch",
+    "steps"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Historic Town Hall front and rear courtyard ring; no interiors; metric estimates and hidden elevations documented.",
+  "licensing": "Procedural exterior; references linked only. OSM footprint OpenStreetMap contributors ODbL1.0.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/lord-corridor.json",
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ]
+}

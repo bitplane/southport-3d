@@ -6461,6 +6461,44 @@
       ],
       "source": "regions/southport/london-square/public-realm/scripts/block_ground.py",
       "basis": "Exact existing road and outer footway ribbon. Existing core clips the west side at X218; new exclusion preserves the complete union."
+    },
+    {
+      "id": "town-hall-entrance-steps",
+      "polygon": [
+        [
+          -137.13738545467942,
+          -20.49372530306063
+        ],
+        [
+          -156.84613593024923,
+          -20.79573701873163
+        ],
+        [
+          -156.7349259473647,
+          -23.483957772144066
+        ],
+        [
+          -150.71565603827386,
+          -23.38876277225605
+        ],
+        [
+          -150.60609613338062,
+          -26.51519545938276
+        ],
+        [
+          -143.01690386661937,
+          -26.390804540617243
+        ],
+        [
+          -143.10127960327395,
+          -23.268341097397713
+        ],
+        [
+          -137.0820096941831,
+          -23.1731460975097
+        ]
+      ],
+      "reason": "Town Hall tread and landing support owns this bounded area; preserve surrounding rough grade."
     }
   ],
   "elevation_plan": "regions/southport/elevation/lord-corridor.json",

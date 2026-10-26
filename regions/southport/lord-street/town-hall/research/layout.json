@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "phase": "detail",
+  "front_width": 28.19,
+  "depth": 49.1,
+  "footprint": [
+    [
+      -132.718,
+      -26.222
+    ],
+    [
+      -160.905,
+      -26.684
+    ],
+    [
+      -158.643,
+      -75.97
+    ],
+    [
+      -131.928,
+      -75.276
+    ]
+  ],
+  "floor_z": -0.07,
+  "foundation_z": -0.22,
+  "eaves": 12.7,
+  "ridge": 14.2,
+  "front_range_depth": 20,
+  "court": [
+    9.0,
+    20.0,
+    16.2,
+    34.0
+  ],
+  "rear_eaves": 11.6,
+  "rear_ridge": 13.7,
+  "front_bays": [
+    2.3,
+    6.25,
+    9.25,
+    14.095,
+    18.94,
+    21.94,
+    25.89
+  ],
+  "ground_surface": "lord-corridor-pavement",
+  "porch": {
+    "x0": 10.3,
+    "x1": 17.89,
+    "projection": 3.1,
+    "floor": 2.8,
+    "ceiling": 7.6,
+    "top": 8.3
+  },
+  "stair": {
+    "x0": 4.3,
+    "x1": 23.89,
+    "front": 5.8,
+    "back": 3.12,
+    "steps": 16
+  },
+  "uncertainty_m": {
+    "footprint": 1,
+    "height": 1,
+    "roof": 1.5,
+    "court": 1.5
+  }
+}
