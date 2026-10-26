@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from southport3d.geometry import Mesh,face_matrix
 from southport3d.conform import conform
+from southport3d.terrain import GroundControls
 from components import rect,cuts,arch,ring
 from roof_controls import chimney_bounds
 D=json.loads((ROOT/'research/layout.json').read_text());A=D['front_left'];W=A+D['front_width'];B=D['back'];Y=D['wing_start'];Z=D['wing_end'];R=D['rear_strip_left'];DETAIL=D['phase']=='detail'
@@ -279,6 +280,7 @@ tube('Courtyard exhaust',[(16.2,Z+.30,.5),(16.2,Z+.30,6.8),(16.2,Z+.20,7.4)],.15
 tube('Courtyard downpipe',[(13.05,Z+.08,.5),(13.05,Z+.08,13.8)],.045,iron,'rear',None,8)
 # Check attachment/joinery prototypes before repeating them in exports.
 # Canopies remain open, with cast-iron posts and scroll brackets.
+ground=GroundControls(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/ground-controls.json')
 for name,M,width in [('Lord',F,D['front_width']),('Nevill',N,NW)]:
  depth=3.02;inner=4.58;outer=3.68 if name=='Lord' else 4.00;fascia=outer-.17 if name=='Lord' else 3.25;positions=[.25,4.20,8.80,width-.22] if name=='Lord' else [.28,width-.28]
  m=Mesh('Canopy glazing '+name);m.add([(0,outer,depth),(width,outer,depth),(width,inner,.10),(0,inner,.10)],[(0,1,2,3)]);m.add([(0,inner-.035,.10),(width,inner-.035,.10),(width,outer-.035,depth),(0,outer-.035,depth)],[(0,1,2,3)]);finish(m,'canopy',cglass,M)
@@ -289,7 +291,8 @@ for name,M,width in [('Lord',F,D['front_width']),('Nevill',N,NW)]:
  if name=='Nevill':
   for j in range(n+1):box('Canopy frieze bars',(width*j/n,(3.38+outer)/2,depth),(.04,outer-3.38,.065),iron,'canopy',M)
  for u in positions:
-  column('Canopy vase post',u,0,fascia-.08,.065,depth,iron,'canopy',M)
+  p=T@M@Vector((u,0,depth));foot=ground.height(p.x,p.y)+.12-D['base_z']
+  column('Canopy vase post',u,foot,fascia-.08,.065,depth,iron,'canopy',M)
   for side in (-1,1):
    tube('Canopy structural bracket',[(u,outer-.45,depth),(u+side*.75,outer-.04,depth)],.026,iron,'canopy',M)
    if DETAIL:

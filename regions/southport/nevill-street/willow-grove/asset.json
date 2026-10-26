@@ -37,7 +37,11 @@
   ],
   "build_inputs": {
     "validate": [
-      "regions/southport/nevill-street/willow-grove/scripts/check_package.py"
+      "regions/southport/nevill-street/willow-grove/scripts/check_package.py",
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
     ]
   }
 }

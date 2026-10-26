@@ -1,5 +1,7 @@
 """Fixed-budget T-shaped envelope sharing dimensions, never detailed topology."""
-import json,math
+import json,math,os
+from pathlib import Path
+from southport3d.terrain import GroundControls
 from blender_envelope import Surfaces
 from roof_controls import chimney_bounds
 
@@ -53,6 +55,7 @@ def surfaces(asset):
  # Only major rooftop plant, not every grille or pipe.
  s.box('link plant',(17,16.5,10.1),(19,19.5,11.3),cage=.20,weight=.6)
  for i,y in enumerate((28,30,32)):s.box('cooler '+str(i),(2.5,y-.575,16.1),(3.5,y+.575,17.1),cage=.20,weight=.5)
+ ground=GroundControls(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/ground-controls.json')
  s.part='canopy'
  for side,width,positions in [('lord',d['front_width'],[.25,4.20,8.80,d['front_width']-.22]),('nevill',Z-Y,[.28,Z-Y-.28])]:
   n=3
@@ -63,7 +66,8 @@ def surfaces(asset):
    face(f'{side} underside {j}',[(a,4.545,.10),(b,4.545,.10),(b,outer-.035,3.02),(a,outer-.035,3.02)],side,cage=.15,weight=.5)
    panel(f'{side} fascia {j}',a,b,fascia-.13,fascia+.13,3.02,side,cage=.15,weight=.5)
   for i,u in enumerate(positions):
+   X,Q,_=T((A+u,-3.02,0) if side=='lord' else (-3.02,Y+u,0));foot=ground.height(X,Q)+.12-d['base_z']
    for j in range(6):
     a=math.tau*j/6;b=math.tau*(j+1)/6
-    face(f'{side} post {i} {j}',[(u+.07*math.cos(a),0,3.02+.07*math.sin(a)),(u+.07*math.cos(b),0,3.02+.07*math.sin(b)),(u+.07*math.cos(b),fascia-.08,3.02+.07*math.sin(b)),(u+.07*math.cos(a),fascia-.08,3.02+.07*math.sin(a))],side,cage=.16,weight=.5)
+    face(f'{side} post {i} {j}',[(u+.07*math.cos(a),foot,3.02+.07*math.sin(a)),(u+.07*math.cos(b),foot,3.02+.07*math.sin(b)),(u+.07*math.cos(b),fascia-.08,3.02+.07*math.sin(b)),(u+.07*math.cos(a),fascia-.08,3.02+.07*math.sin(a))],side,cage=.16,weight=.5)
  return s.result

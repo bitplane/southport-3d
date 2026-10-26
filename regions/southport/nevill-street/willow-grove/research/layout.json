@@ -8,7 +8,7 @@
   "y": 44.855,
   "shear_x": -0.00658,
   "shear_y": 0.03223,
-  "base_z": -0.75,
+  "base_z": 0.4908,
   "front_left": 12.505,
   "front_width": 12.493,
   "back": 51.28,
@@ -67,5 +67,15 @@
     "plan": 0.8,
     "elevations": 0.8,
     "hidden_roofs": 1.2
+  },
+  "ground_anchor": {
+    "site_xy": [
+      27.942500000000003,
+      45.459360845
+    ],
+    "paving_offset_m": 0.12,
+    "threshold_allowance_m": 0.02,
+    "evidence": "Rough shared street plane at main Lord Street entrance; level building retained.",
+    "previous_floor_m": -0.75
   }
 }

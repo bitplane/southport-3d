@@ -38,7 +38,7 @@ roof_at_outer=D['front_eaves']+(D['front_ridge']-D['front_eaves'])*.05/2.6
 for y in (6.3,6.9,7.5):
  hit,at,normal,i,o,m=s.ray_cast(deps,T@Vector((right+.5,y,roof_at_outer+.08)),(T.to_3x3()@Vector((-1,0,0))).normalized(),distance=1.5)
  assert hit and o.name=='Architecture roof',('detached chimney',y,o.name if hit else None)
-sys.path.insert(0,str(ROOT/'scripts'))
+sys.path[:0]=[str(ROOT/'scripts'),str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib')]
 from roof_controls import chimney_bounds
 lo,hi=chimney_bounds(D)
 assert lo[2]<roof_at_outer and hi[2]==16.75

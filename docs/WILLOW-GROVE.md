@@ -45,3 +45,5 @@ District scan also flags four pre-existing roof self-contacts in the unchanged
 roof receiver (export-local X26.060–33.958, Y13.5–15.23, Z−80.761–−80.506;
 three approximately 0.04482 m² and one 0.00399 m²). These are outside the repaired
 rear receiver and are not represented as cleared by the courtyard regression.
+
+The level floor is registered to the rough street plane at the Lord Street entrance. The layout records its anchor and threshold allowance. Canopy feet follow the shared paving controls independently; the building and canopy roofs remain level.
