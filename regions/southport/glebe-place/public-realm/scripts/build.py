@@ -18,7 +18,10 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib'),str(ROOT/'scripts')]
 from southport3d.geometry import Mesh
 from southport3d.planar import subtract,area,halfplane
-from southport3d.conform import conform
+import southport3d.conform as conforming
+conforming.GRID=1e-5
+conforming.TOLERANCE=2e-5
+conform=conforming.conform
 from southport3d.road import marking_segments,parallel
 from southport3d.landscape import capped_wall
 from southport3d.street import furniture
@@ -32,6 +35,7 @@ for name in ['lane-ground','court-ground','furniture']:
     s.collection.children.link(C[name])
 PAVING=.7845
 ROAD=.6645
+from datum import ROAD as TERRAIN, MOUTH
 
 
 def material(name,colour,texture=None):
@@ -157,15 +161,50 @@ for i,(name,poly,mat,priority,z,part) in enumerate(rows):
     for piece in pieces:
         if area(piece)<1e-7:
             continue
-        mesh=compiled.setdefault((part,mat),Mesh('Surface '+part+' '+mat))
-        mesh.add([(x,y,z(x,y) if callable(z) else z) for x,y in piece],[tuple(range(len(piece)))])
+        # Resolve shared XY junctions before adding terrain. Snapping graded
+        # faces independently shifts their plane and creates overlapping slivers.
+        key=(part,mat,callable(z),0 if callable(z) else z-ROAD)
+        mesh=compiled.setdefault(key,Mesh('Surface '+part+' '+mat))
+        mesh.add([(x,y,0)for x,y in piece],[tuple(range(len(piece)))])
+compiled,report=conform(compiled,preserve_triangles=True,weld_distance=5e-5)
+flat=compiled;compiled={}
+for (part,mat,is_mouth,offset),mesh in flat.items():
+    target=compiled.setdefault((part,mat),Mesh(mesh.name))
+    field=MOUTH if is_mouth else TERRAIN
+    for face in mesh.faces:
+        for tri in field.lift_triangle([mesh.vertices[i][:2]for i in face]):
+            target.add([(x,y,z+offset)for x,y,z in tri],[(0,1,2)])
 for a,b in verticals:
     mesh=compiled.setdefault(('lane-ground','kerb'),Mesh('Surface lane-ground kerb'))
     za,zb=throat_grade(*a),throat_grade(*b)
     if abs(za-PAVING)<1e-7 and abs(zb-PAVING)<1e-7:
         continue
-    mesh.add([(a[0],a[1],za),(b[0],b[1],zb),(b[0],b[1],PAVING),(a[0],a[1],PAVING)],[(0,1,2,3)])
-compiled,report=conform(compiled)
+    points=list(MOUTH.edge_points(a,b))
+    for a,b in zip(points,points[1:]):
+        topa=TERRAIN.height(*a[:2])+.12;topb=TERRAIN.height(*b[:2])+.12
+        if abs(topa-a[2])+abs(topb-b[2])<1e-7:continue
+        mesh.add([a,b,(b[0],b[1],topb),(a[0],a[1],topa)],[(0,1,2,3)])
+# Merge float32-equivalent split intersections, including zero-height kerb ends.
+def prune_collapsed(meshes):
+    # Clipping can leave slivers narrower than the 0.05 mm junction weld.
+    # Drop these before conformance can turn them into doubled-back fans.
+    count=0
+    for mesh in meshes.values():
+        kept=[]
+        for face in mesh.faces:
+            if len(face)==3:
+                a,b,c=[Vector(mesh.vertices[i])for i in face]
+                longest=max((b-a).length,(c-a).length,(c-b).length)
+                if longest==0 or (b-a).cross(c-a).length/longest<5e-5:
+                    count+=1;continue
+            kept.append(face)
+        mesh.faces=kept
+    return count
+report['collapsed_split_slivers']=prune_collapsed(compiled)
+conforming.GRID=1e-6
+compiled,lifted_report=conform(compiled,preserve_triangles=True,weld_distance=5e-5)
+report['lifted']=lifted_report
+report['collapsed_float32_slivers']=prune_collapsed(compiled)
 (ROOT/'research/conform.json').write_text(json.dumps(report,indent=2)+'\n')
 
 
@@ -191,42 +230,45 @@ for (part,mat),mesh in compiled.items():
 # Low rendered boundary wall is distinct from the Halifax building. Aerial and
 # Nov2020 views show a walkable ~0.9m passage behind it to the rear yard gate,
 # with the wall running on to meet the timber enclosure.
-wall=capped_wall([(-30.935,-44.2,ROAD),(-30.935,-61.2,ROAD)],1.45,.27,'Wall rear parking boundary')
+wall_points=list(TERRAIN.edge_points((-30.935,-44.2),(-30.935,-61.2)))
+wall=capped_wall(wall_points,1.45,.27,'Wall rear parking boundary')
 finish(wall,'render')
 cap=Mesh('Wall rear coping')
-cap.box((-30.935,-52.7,ROAD+1.48),(.34,17.0,.09))
+for a,b in zip(wall_points,wall_points[1:]):
+    cap.add([(p[0]+side*.17,p[1],p[2]+z)for z in [1.435,1.525]for p,side in [(a,-1),(b,-1),(b,1),(a,1)]],[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
 finish(cap,'iron')
 # The passage is closed at the lane by a taller rendered panel and brick pier,
 # flush with the enclosure front. Heights scaled against the enclosure.
 m=Mesh('Wall passage lane closure')
-m.box((-30.76,-64.065,ROAD+1.05),(.62,.27,2.1))
+m.box((-30.76,-64.065,TERRAIN.height(-30.76,-64.065)+1.05),(.62,.27,2.1))
 finish(m,'render')
 m=Mesh('Wall passage lane pier')
-m.box((-30.175,-64.06,ROAD+1.125),(.55,.42,2.25))
+m.box((-30.175,-64.06,TERRAIN.height(-30.175,-64.06)+1.125),(.55,.42,2.25))
 finish(m,'brick')
 m=Mesh('Wall passage closure copings')
-m.box((-30.76,-64.065,ROAD+2.13),(.66,.33,.06))
-m.box((-30.175,-64.06,ROAD+2.28),(.61,.48,.06))
+m.box((-30.76,-64.065,TERRAIN.height(-30.76,-64.065)+2.13),(.66,.33,.06))
+m.box((-30.175,-64.06,TERRAIN.height(-30.175,-64.06)+2.28),(.61,.48,.06))
 finish(m,'iron')
 # Timber utility enclosure observed at the end of the north parking row; its
 # east side forms the passage edge. No service internals are fabricated.
+enclosure_base=min(TERRAIN.height(x,y)for x in [-35.05,-31.07]for y in [-64.2,-61.2])-.03
 wood=Mesh('Envelope timber utility enclosure')
-wood.box((-33.06,-62.7,ROAD+1.2),(3.98,3.0,2.4))
+wood.box((-33.06,-62.7,enclosure_base+1.2),(3.98,3.0,2.4))
 finish(wood,'wood')
 boards=Mesh('Fine utility board joints')
 for i in range(22):
-    boards.box((-35.06,-64.15+i*.135,ROAD+1.2),(.018,.014,2.4))
+    boards.box((-35.06,-64.15+i*.135,enclosure_base+1.2),(.018,.014,2.4))
 finish(boards,'iron')
 rails=Mesh('Fixture utility door ironwork')
 for y in [-63.1,-62.35]:
     for h in [.55,1.55]:
-        rails.box((-35.08,y,ROAD+h),(.035,.52,.07))
+        rails.box((-35.08,y,enclosure_base+h),(.035,.52,.07))
 finish(rails,'metal')
 # Ribbed black bollards at both sides of the throat are visible in 2020.
 fm=[mats['dark'],mats['metal'],mats['white'],mats['dark'],mats['dark'],mats['dark']]
 for i,(x,y) in enumerate([(-9.4,-63.55),(-9.4,-69.25)]):
     obj=furniture('bollard','detail','Furniture bollard '+str(i)).finish(fm,C['furniture'])
-    obj.location=(x,y,PAVING)
+    obj.location=(x,y,TERRAIN.height(x,y)+.12)
     uv=obj.data.uv_layers.new(name='Furniture UV')
     for loop in obj.data.loops:
         v=obj.data.vertices[loop.vertex_index].co

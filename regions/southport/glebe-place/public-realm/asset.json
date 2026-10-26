@@ -31,5 +31,20 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Ground, marked parking, low walls and furnishings behind London Street and Lord Street. Building assets own the service elevations; court ground reaches BHF and the modelled restaurant annex."
+  "scope": "Ground, marked parking, low walls and furnishings behind London Street and Lord Street. Building assets own the service elevations; court ground reaches BHF and the modelled restaurant annex.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/glebe.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz"
+    ],
+    "validate": [
+      "regions/southport/elevation/glebe.json",
+      "regions/southport/elevation/survey/terrain.json",
+      "regions/southport/elevation/survey/dtm-333000-417000.npz"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ]
 }

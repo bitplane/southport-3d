@@ -43,7 +43,8 @@ def rail_points(d,key):
         points.extend([(a[0]+(b[0]-a[0])*j/count,a[1]+(b[1]-a[1])*j/count) for j in range(count)])
     points.append(offset[-1])
     points.insert(0,(cross['x0']+3.9 if side<0 else cross['x1']-3.9,cross['edge_y']+.45))
-    return [(x,y,-.0075-.022*min(36,y)+max(0,y-41)*.014485) for x,y in points]
+    from datum import grade
+    return [(x,y,grade(y,x=x)) for x,y in points]
 
 
 def build_lod(name,settings,asset_dir):
@@ -106,7 +107,7 @@ def build_junction(ctx):
         for kind,x,y,yaw in [('offset-pedestrian',side*5.65,44.55,90 if side<0 else -90),
                               ('pedestrian',(lo+hi)/2+side*1.9,cross['edge_y']+.7,0)]:
             ob=furniture(kind,'detail','Furniture '+kind+' extension junction '+key).finish(fm,C['sw-furniture' if side<0 else 'ne-furniture'])
-            ob.location=(x,y,grade(min(y,41))+max(0,y-41)*.014485);ob.rotation_euler.z=math.radians(yaw)
+            ob.location=(x,y,grade(y,x=x));ob.rotation_euler.z=math.radians(yaw)
         y=cross['edge_y']
         ob=rect('Tactile junction '+key,lo,y-.025,hi,y+1.25,pad,'perimeter',.012)
         ob['junction_landing']=[lo,hi,y]
@@ -137,11 +138,11 @@ def build_junction(ctx):
     rect('Tactile junction refuge',23.1,refuge_y-.62,25.9,refuge_y+.62,pad,'roads',-.105)
     for i,(kind,x,y,yaw) in enumerate([('signal',16.1,refuge_y,90),('pedestrian',22.65,refuge_y,180),('pedestrian',26.35,refuge_y,0)]):
         ob=furniture(kind,'detail','Furniture '+kind+' extension junction refuge '+str(i)).finish(fm,C['ne-furniture'])
-        ob.location=(x,y,grade(y));ob.rotation_euler.z=math.radians(yaw)
+        ob.location=(x,y,grade(y,x=x));ob.rotation_euler.z=math.radians(yaw)
     # The characteristic Lord Street lamp family, behind each railing run.
     for side,x,y in [(-1,-17.8,39.1),(1,17.1,36.8)]:
         ob=furniture('lord-street-lamp','detail','Furniture lord-street-lamp extension junction '+str(side)).finish(fm,C['sw-furniture' if side<0 else 'ne-furniture'])
-        ob.location=(x,y,grade(y))
+        ob.location=(x,y,grade(y,x=x))
     # Explicitly subtract both footways from the new asphalt. This avoids a
     # second hidden floor at the new corner bulges and their shared tile edge.
     cutters=[]
@@ -187,14 +188,14 @@ def drop_landings(ctx):
             x,y=v.co.x,v.co.y
             if y<31:continue
             if ob.name.startswith(('Surface junction','Tactile junction')):
-                v.co.z=ctx['grade'](y)
+                v.co.z=ctx['grade'](y,x=x)
             for c in d['lord_crossings']:
                 if c['x0']-.001<=x<=c['x1']+.001 and c['edge_y']-.04<=y<=c['edge_y']+1.251:
-                    v.co.z=ctx['grade'](y)-.12*max(0,min(1,1-(y-c['edge_y'])/1.25))
+                    v.co.z=ctx['grade'](y,x=x)-.12*max(0,min(1,1-(y-c['edge_y'])/1.25))
 
     for part in ['ne-ground','sw-ground','roads']:
         for ob in ctx['collections'][part].objects:
             if ob.name.startswith('Tactile junction south'):
-                for v in ob.data.vertices:v.co.z=ctx['grade'](v.co.y)-.12*max(0,min(1,(v.co.y-19.75)/1.25))
+                for v in ob.data.vertices:v.co.z=ctx['grade'](v.co.y,x=v.co.x)-.12*max(0,min(1,(v.co.y-19.75)/1.25))
             elif ob.name.startswith('Tactile junction refuge'):
-                for v in ob.data.vertices:v.co.z=ctx['grade'](v.co.y)-.12
+                for v in ob.data.vertices:v.co.z=ctx['grade'](v.co.y,x=v.co.x)-.12

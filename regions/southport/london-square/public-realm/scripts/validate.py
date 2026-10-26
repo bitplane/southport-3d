@@ -39,6 +39,7 @@ print('Furniture pavement containment and crossing clearance validated')
 # Extension coverage, open seams, and bounded longitudinal grade.
 sys.path.insert(0,str(ROOT/'scripts'))
 from extensions import PARTS
+from datum import grade,SURFACE
 assert all(bpy.data.collections.get(n) and len(bpy.data.collections[n].objects) for n in PARTS)
 from landscape_lod import tree
 counts=[sum(len(f)-2 for f in tree(level).faces) for level in ['detail','walk','district']]
@@ -57,7 +58,7 @@ for level in ['detail','walk','district']:
 assert len([o for o in meshes if o.name.startswith('Tree ')])==sum(len(v) for v in json.loads((ROOT/'research/streets.json').read_text())['trees'].values())
 for name in ['london-1-ground','london-2-ground','london-3-ground']:
  vertices=[v.co.z for o in bpy.data.collections[name].objects for v in o.data.vertices]
- assert max(vertices)-min(vertices)<.3,(name,'Unbounded grade or furniture in ground')
+ assert all(-.121<=v.co.z-SURFACE.height(v.co.x,v.co.y)<=.04 for o in bpy.data.collections[name].objects for v in o.data.vertices),(name,'Unbounded relative grade or furniture in ground')
 print('Extended areas, tree LODs and bounded road grades validated')
 
 # The SW return replaces underlying asphalt even though its construction
@@ -136,7 +137,7 @@ for station in [-41,41]:
   assert left and right,(station,y,'uncovered seam')
   assert 'Faded yellow road marking' in [m.name for m in left.data.materials],(station,y,left.name)
   assert 'Faded yellow road marking' in [m.name for m in right.data.materials],(station,y,right.name)
-  assert abs(lp.z-rp.z)<.0005,(station,y,'paint step')
+  assert abs((lp.z-grade(y,x=station-.015))-(rp.z-grade(y,x=station+.015)))<.0005,(station,y,'paint step')
 for station in [-76,-116]:
  for x in [-4.12,-3.94,3.94,4.12]:
   before,p=ground_hit(x,station-.015)
@@ -144,7 +145,7 @@ for station in [-76,-116]:
   assert before and after
   assert 'Faded yellow road marking' in [m.name for m in before.data.materials]
   assert 'Faded yellow road marking' in [m.name for m in after.data.materials]
-  assert abs(p.z-q.z)<.0005
+  assert abs((p.z-grade(station-.015,x=x))-(q.z-grade(station+.015,x=x)))<.0005
 ob,p=ground_hit(-7,-66.5)
 assert ob is None,'London Square still overlaps the detailed Glebe throat'
 print('Exportable yellow-line seams and single Glebe ownership validated')
@@ -154,7 +155,7 @@ print('Exportable yellow-line seams and single Glebe ownership validated')
 for x,y in [(6.3,-23.0),(7.5,-21.4),(10,-21),(20,-21),(29,-21),(5.3,-30),(5.3,-40)]:
  ob,p=ground_hit(x,y)
  assert ob and any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(x,y,ob.name if ob else None,'NatWest apron is not paving')
- assert abs(p.z-(-.0075-.022*max(-36,min(36,y))))<.005
+ assert abs(p.z-grade(y,x=x))<.005
 # The red mouth continues across the old Y=-23 rectangle seam to London Street.
 for x,y in [(-4,-24),(-4,-26),(3,-24),(3,-26)]:
  ob,p=ground_hit(x,y)
@@ -191,7 +192,7 @@ print('Post Office / Anchor connection and new frontage paving validated')
 for y in [-79.18,-79.36,-87.82,-87.64]:
  left,lp=ground_hit(24.985,y);right,rp=ground_hit(25.015,y)
  assert left and right and all(any(m.name=='Faded yellow road marking' for m in o.data.materials) for o in [left,right]),(y,'Anchor yellow pair does not meet across ownership seam')
- assert abs(lp.z-rp.z)<.0005
+ assert abs((lp.z-grade(y,x=24.985))-(rp.z-grade(y,x=25.015)))<.0005
 print('Anchor Street ownership seam has continuous road-edge paint')
 
 assert all(f.area>=1e-8 for o in bpy.data.collections['rear-streets-ground'].objects for f in o.data.polygons),'Degenerate corridor faces'
@@ -255,7 +256,7 @@ assert bpy.data.objects.get('Garden curved return')
 for x,y in [(151,-91),(151,-93),(218,-60),(223.9,-95.7),(224.3,-59.3),(231,-59.4),(220,-10),(180,-75),(210,-70)]:
  ob,p=ground_hit(x,y)
  assert ob and any(m.name=='Authored asphalt' for m in ob.data.materials),(x,y,'Blocked block circulation',ob.name if ob else None)
- assert abs(p.z-(layout['grade']['origin_z']+layout['grade']['dz_dy']*max(-36,min(36,y))-.12))<.002,(x,y,'Road grade mismatch')
+ assert abs(p.z-(grade(y,x=x)-.12))<.002,(x,y,'Road grade mismatch')
 placeholders=[o for o in meshes if o.name.startswith('Placeholder OSM ')]
 assert len(placeholders)==1,'Missing mapped provisional volumes'
 assert not any(o.name.startswith('Placeholder OSM 371742618 ') for o in meshes),'Detailed Bijou still has placeholder'
@@ -271,7 +272,7 @@ print('Block junctions, parking entrance and mapped placeholder shells validated
 for x,y in [(31,-38),(31,-58),(32,-74)]:
  ob,p=ground_hit(x,y)
  assert ob and any(m.name=='Authored asphalt' for m in ob.data.materials),(x,y,'Wrong service-lane surface')
- expected=layout['grade']['origin_z']+layout['grade']['dz_dy']*max(-36,min(36,y))-.12
+ expected=grade(y,x=x)-.12
  assert abs(p.z-expected)<.002,(x,y,'Service lane not flush',p.z,expected,ob.name)
 assert bpy.data.objects.get('Street Posting lane gate')
 print('Posting House service-lane surface, grade and entrance gate verified')
@@ -317,14 +318,14 @@ print('Posting footway seam and mitred wall contact verified')
 
 # The side gate meets Myers directly; the former free-standing pier left a slot.
 gate=bpy.data.objects["Street Posting lane gate"]
-hit,point,normal,index=gate.ray_cast(Vector((27.2,-80,1.3)),Vector((0,1,0)))
+hit,point,normal,index=gate.ray_cast(Vector((27.2,-80,grade(-78,x=27.2)+.5155)),Vector((0,1,0)))
 assert hit and point.y>-78.0,"Myers side-gate contact missing"
 
 # Garden entrance asphalt stops inside the registered garden, not over its kerb.
 for x in (67,68,69,115.5,116.5,117.5):
     y=-13.6+(x-64)*1.4/44 if x<108 else -12.2+(x-108)*1.5/35
     ob,p=ground_hit(x,y-.55)
-    assert ob and p and p.z<layout['grade']['origin_z']+layout['grade']['dz_dy']*y-.10,('Garden path spills onto service road',x,y,ob.name if ob else None)
+    assert ob and p and p.z<grade(y-.55,x=x)-.10,('Garden path spills onto service road',x,y,ob.name if ob else None)
 # Offset strips remain present on both sides of each rounded mouth corner.
 from southport3d.road import parallel
 for x,west in ((66.154,True),(70.154,False)):
@@ -357,7 +358,7 @@ for south in (True,False):
         for distance in (.02,.5,.98):
             y=edge+direction*distance
             ob,p=ground_hit(x,y)
-            expected=layout['grade']['origin_z']+layout['grade']['dz_dy']*y-.12*(1-distance)
+            expected=grade(y,x=x)-.12*(1-distance)
             assert ob and p and abs(p.z-expected)<.001,(south,x,distance,'Raised crossing remnant',p.z if p else None,expected)
 print('Sloping crossing edges meet road and footway without raised wedges')
 
@@ -370,10 +371,54 @@ for x,y,paving in [(-10.3,39.8,True),(8.1,38.2,True),(-3.17,39.8,False),(2.17,40
  assert ('Authored mixed rectangular paving' in materials)==paving,(x,y,materials)
 for x,edge in [(-22.1,36.37),(24.3,33.76)]:
  ob,p=ground_hit(x,edge+.03)
- expected=-.0075-.022*min(36,edge+.03)-.12*(1-.03/1.25)
+ expected=grade(edge+.03,x=x)-.12*(1-.03/1.25)
  assert ob and abs(p.z-expected)<.003,(x,'northern dropped landing',p)
  ob,p=ground_hit(x,20.98)
- assert ob and abs(p.z-(-.0075-.022*20.98-.12*(20.98-19.75)/1.25))<.003,(x,'memorial dropped landing',p)
+ assert ob and abs(p.z-(grade(20.98,x=x)-.12*(20.98-19.75)/1.25))<.003,(x,'memorial dropped landing',p)
 ob,p=ground_hit(24.33,26.11)
-assert ob and abs(p.z-(-.0075-.022*26.11-.12))<.003,'Refuge passage must be flush'
+assert ob and abs(p.z-(grade(26.11,x=24.33)-.12))<.003,'Refuge passage must be flush'
 print('Nevill junction corner coverage, shared seam and dropped crossing landings validated')
+
+# Measured-road interiors, rigid placement anchors and level pools are independent
+# of the retained plan/marking regressions above.
+road_materials={'Authored asphalt','Authored reddish carriageway','Authored dark service road blocks','Faded yellow road marking','Worn white road marking'}
+road_triangles=0;max_plane_error=0.;max_native_error=0.
+for ob in meshes:
+ if not ob.data.materials:continue
+ material=ob.data.materials[0].name
+ if material not in road_materials and material!='Still dark pool water':continue
+ ob.data.calc_loop_triangles()
+ for tri in ob.data.loop_triangles:
+  points=[ob.matrix_world@ob.data.vertices[i].co for i in tri.vertices]
+  a,b,c=points;normal=(b-a).cross(c-a)
+  if abs(normal.z)<.7*normal.length:continue
+  if material=='Still dark pool water':
+   assert max(p.z for p in points)-min(p.z for p in points)<1e-6,(ob.name,'tilted pool')
+   continue
+  # Only ground: gate paints and furnishings can use the same palette.
+  if any(col.name.endswith('-furniture')for col in ob.users_collection):continue
+  x,y,z=[sum(float(p[k])for p in points)/3 for k in range(3)]
+  error=abs(z-(SURFACE.height(x,y)-.12))
+  assert error<1e-4,(ob.name,tri.index,'terrain plane lost',error)
+  max_plane_error=max(max_plane_error,error);road_triangles+=1
+  native_error=abs(SURFACE.height(x,y)-.12-SURFACE.terrain.height(x,y))
+  assert native_error<.25,(ob.name,x,y,native_error,'native terrain approximation')
+  max_native_error=max(max_native_error,native_error)
+for i,record in enumerate(layout['furniture']):
+ x,y=record['xy'];ob=bpy.data.objects[f"Furniture {record['kind']} {i:03d}"]
+ expected=grade(y,x=x)+(.0075 if record['part']=='island-furniture'else 0)
+ assert abs(ob.location.z-expected)<1e-6,(ob.name,'anchor off pavement')
+report=json.loads((ROOT/'research/validation.json').read_text())
+report.update(measured_road_triangles=road_triangles,max_road_plane_error_m=max_plane_error,max_native_road_error_m=max_native_error,
+              elevation='EA survey field with authored kerbs, ramps and landscape offsets; detailed building attachments still pending')
+(ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n')
+print('Measured road planes, rigid furniture anchors and level pool faces checked',road_triangles,max_plane_error)
+
+# Level water must remain visible across each basin: underlying road bases must
+# be cut out even where their terrain rises above the horizontal water plane.
+for side in [-1,1]:
+ for x in [45,49,53,57,60]:
+  for y in [-2,0,2]:
+   ob,p=ground_hit(side*x,y)
+   assert ob and any(m.name=='Still dark pool water'for m in ob.data.materials),(side*x,y,'ground intrudes into pool',ob.name if ob else None)
+print('Reflecting pool openings exclude underlying carriageway throughout')

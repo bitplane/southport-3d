@@ -29,14 +29,15 @@ roadpavers=mat('Authored dark service road blocks',(.25,.26,.25),'service-road')
 asphalt=mat('Authored asphalt',(.08,.08,.08),'asphalt');redroad=mat('Authored reddish carriageway',(.22,.11,.09),'red-road');kerb=mat('Pale granite kerb',(.40,.40,.36));yellow=mat('Faded yellow road marking',(.65,.47,.10));white=mat('Worn white road marking',(.69,.68,.60));tactile=mat('Buff tactile paving',(.48,.34,.19));iron=mat('Access covers',(.075,.08,.08),metal=.25)
 fm=[mat('Painted dark iron',(.025,.033,.031),metal=.35),mat('Galvanised metal',(.45,.48,.47),metal=.65),mat('Pale backing',(.65,.65,.59)),mat('Push button edging',(.8,.48,.015)),mat('Unlit red lens',(.14,.008,.008)),mat('Unlit amber lens',(.16,.075,.005)),mat('Unlit green lens',(.004,.10,.035)),mat('Weathered bench slats',(.25,.20,.13)),mat('Dark opening',(.006,.008,.008))]
 
-def grade(y,road=False):return D['grade']['origin_z']+D['grade']['dz_dy']*max(-36,min(36,y))-(D['grade']['road_drop'] if road else 0)
+from datum import grade,SURFACE
+
 def finish(m,material,part,slope=True):
  o=m.finish([material],collections[part]);uv=o.data.uv_layers.new(name='Metric repeat')
  for f in o.data.polygons:
   for i in f.loop_indices:
    v=o.data.vertices[o.data.loops[i].vertex_index].co;uv.data[i].uv=(v.x/3.6,v.y/3.6)
  if slope:
-  for v in o.data.vertices:v.co.z+=grade(v.co.y)
+  for v in o.data.vertices:v.co.z+=grade(v.co.y,x=v.co.x)
  o['placement_status']='Authored from photographic observations; metric dimensions estimated';return o
 
 def polygon(name,pts,material,part,z=0):
@@ -212,11 +213,11 @@ for i,record in enumerate(D['furniture']):
   ob=furniture(kind,'detail',name).finish(fm,collections[record['part']]);prototypes[kind]=ob
  else:
   ob=prototypes[kind].copy();ob.data=prototypes[kind].data;collections[record['part']].objects.link(ob);ob.name=name
- ob.location=(x,y,grade(y)+(.0075 if record['part']=='island-furniture' else 0));ob.rotation_euler.z=math.radians(record['yaw']);ob['source']=record['source'];ob['placement_uncertainty_m']=1.5
+ ob.location=(x,y,grade(y,x=x)+(.0075 if record['part']=='island-furniture' else 0));ob.rotation_euler.z=math.radians(record['yaw']);ob['source']=record['source'];ob['placement_uncertainty_m']=1.5
 for side in [-1,1]:
- pts=[(side*6.95,y,grade(y)+.0075) for y in [-10,-7.5,-5,-2.5,0,2.5,5,7.5,10]]
+ pts=[(side*6.95,y,grade(y,x=side*6.95)+.0075) for y in [-10,-7.5,-5,-2.5,0,2.5,5,7.5,10]]
  m=sagging_chain(pts);m.name='Chain island '+str(side);m.finish(fm,collections['island-furniture'])
- label='ne' if side>0 else 'sw';pts=[(side*x,y,grade(y)) for x,y in [(14.2,17),(15.5,19),(18,20),(19.5,20)]]
+ label='ne' if side>0 else 'sw';pts=[(side*x,y,grade(y,x=side*x)) for x,y in [(14.2,17),(15.5,19),(18,20),(19.5,20)]]
  m=guardrail(pts);m.name='Guardrail '+label;m.finish(fm,collections[label+'-furniture'])
 build_extensions(globals())
 from nevill_junction import build_junction, drop_landings
@@ -233,7 +234,7 @@ for part,collection in collections.items():
  for o in list(collection.objects):
   for face in o.data.polygons:
    points=[tuple(o.data.vertices[i].co) for i in face.vertices]
-   offsets=[p[2]-grade(p[1]) for p in points]
+   offsets=[p[2]-grade(p[1],x=p[0]) for p in points]
    if max(offsets)-min(offsets)>1e-5:continue  # vertical kerb face
    xy=[(p[0],p[1]) for p in points]
    # Earlier road/footway clipping can retain repeated boundary corners. A
@@ -265,7 +266,10 @@ for part,collection in collections.items():
    priority=(3 if 'slots' in o.name else 2)+z if drainage else (1+z if both_road and o.data.materials[0] in [yellow,white] else z)
    other_priority=(3 if 'slots' in other.name else 2)+oz if other_drainage else (1+oz if both_road and other.data.materials[0] in [yellow,white] else oz)
    if other_priority<priority-1e-6:continue
-   if oz-z>.04 and not both_road:continue
+   # A level pool needs a real opening through every lower ground layer.
+   # Otherwise the old road base emerges through the water on rising terrain.
+   pool_cutter=other.data.materials[0].name=='Still dark pool water'
+   if oz-z>.04 and not both_road and not pool_cutter:continue
    if abs(other_priority-priority)<=1e-6 and order[(other,otherindex)]<=order[(o,index)]:continue
    for cutter in cutters:
     fragments=[piece for frag in fragments for piece in subtract(frag,cutter)]
@@ -275,7 +279,7 @@ for part,collection in collections.items():
   for face in o.data.polygons:
    if (o,face.index) in replacements:
     z,fragments=replacements[(o,face.index)]
-    for poly in fragments:m.add([(x,y,grade(y)+z) for x,y in poly],[tuple(range(len(poly)))])
+    for poly in fragments:m.add([(x,y,grade(y,x=x)+z) for x,y in poly],[tuple(range(len(poly)))])
    else:
     pts=[tuple(o.data.vertices[i].co) for i in face.vertices];m.add(pts,[tuple(range(len(pts)))])
   if not m.faces:bpy.data.objects.remove(o,do_unlink=True);continue
@@ -292,10 +296,10 @@ for part,collection in collections.items():
  for ob in collection.objects:
   if ob.data.materials and ob.data.materials[0] in [mixed,pale,dark,kerb]:
    for vertex in ob.data.vertices:
-    if abs(vertex.co.z-grade(vertex.co.y))<.04:vertex.co.z=grade(vertex.co.y)
+    if abs(vertex.co.z-grade(vertex.co.y,x=vertex.co.x))<.04:vertex.co.z=grade(vertex.co.y,x=vertex.co.x)
   if ob.name.startswith('Marking drainage') or (ob.data.materials and ob.data.materials[0] in [asphalt,redroad,roadpavers,yellow,white]):
    for vertex in ob.data.vertices:
-    vertex.co.z=grade(vertex.co.y)-.12
+    vertex.co.z=grade(vertex.co.y,x=vertex.co.x)-.12
 
 # Tactile crossing at the mapped Sainsbury's path: drop the pavement to the
 # carriageway at each kerb while retaining the higher rear landing.
@@ -307,7 +311,7 @@ for ob in collections['ne-garden-ground'].objects:
    edge=y0+(y1-y0)*(vertex.co.x-116.8)/2.4
    distance=(vertex.co.y-edge)*direction
    fraction=1-max(0,min(1,distance))
-   vertex.co.z=grade(vertex.co.y)-.12*fraction
+   vertex.co.z=grade(vertex.co.y,x=vertex.co.x)-.12*fraction
 
 # Drop the London Street landing edge to road level; keep adjoining footway level.
 for o in collections['london-3-ground'].objects:
@@ -321,8 +325,9 @@ drop_landings(globals())
 # Do this after the plan cutouts, so the lawn cannot fill the basin at its high end.
 for o in bpy.data.objects:
  if o.type=='MESH' and o.data.materials and o.data.materials[0].name=='Still dark pool water':
-  ys=[v.co.y for v in o.data.vertices];zs=[v.co.z-grade(v.co.y) for v in o.data.vertices]
-  water_z=grade((min(ys)+max(ys))/2)+sum(zs)/len(zs)
+  ys=[v.co.y for v in o.data.vertices];zs=[v.co.z-grade(v.co.y,x=v.co.x) for v in o.data.vertices]
+  xs=[v.co.x for v in o.data.vertices]
+  water_z=grade((min(ys)+max(ys))/2,x=(min(xs)+max(xs))/2)+sum(zs)/len(zs)
   for v in o.data.vertices:v.co.z=water_z
 
 # Batch authored surface pieces by policy/material within each spatial part.
@@ -357,11 +362,15 @@ for part,collection in collections.items():
    # Triangulate first: the conformer expects convex faces, and this asset also
    # contains concave arrows and rounded court outlines.
    for tri in tessellate_polygon([[Vector(p) for p in pts]]):
-    mesh.add([pts[v] if isinstance(v,int) else tuple(v) for v in tri],[(0,1,2)])
+    source=[pts[v] if isinstance(v,int) else tuple(v) for v in tri]
+    if any(m.name=='Still dark pool water' for m in ob.data.materials):mesh.add(source,[(0,1,2)])
+    else:
+     from terrain_mesh import lift_relative_triangle
+     for lifted in lift_relative_triangle(source,SURFACE):mesh.add(lifted,[(0,1,2)])
   compiled[ob.name]=mesh
 import numpy as np
 for mesh in compiled.values():mesh.vertices=np.asarray(mesh.vertices,dtype=np.float32).tolist()
-compiled,report=conform(compiled)
+compiled,report=conform(compiled,preserve_triangles=True)
 for name,mesh in compiled.items():
  ob=bpy.data.objects[name]
  ob.data.clear_geometry()

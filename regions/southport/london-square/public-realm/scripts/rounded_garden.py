@@ -7,7 +7,7 @@ from southport3d.geometry import Mesh
 from southport3d.road import parallel
 
 
-def grade(y):return -.0075-.022*max(-36,min(36,y))
+from datum import grade,SURFACE
 
 
 def kerb_curve():
@@ -25,7 +25,7 @@ def curved_wall(level='detail',name='Garden curved return'):
         left=parallel(path,width/2);right=parallel(path,-width/2)
         verts=[]
         for a,b in zip(left,right):
-            verts.extend([(a[0],a[1],grade(a[1])+lo),(b[0],b[1],grade(b[1])+lo),(a[0],a[1],grade(a[1])+hi),(b[0],b[1],grade(b[1])+hi)])
+            verts.extend([(a[0],a[1],grade(a[1],x=a[0])+lo),(b[0],b[1],grade(b[1],x=b[0])+lo),(a[0],a[1],grade(a[1],x=a[0])+hi),(b[0],b[1],grade(b[1],x=b[0])+hi)])
         faces=[]
         for i in range(len(path)-1):
             k=4*i;j=k+4;faces.extend([(k,j,j+1,k+1),(k+2,k+3,j+3,j+2),(k,k+2,j+2,j),(k+1,j+1,j+3,k+3)])
@@ -44,9 +44,9 @@ def curved_wall(level='detail',name='Garden curved return'):
     for i in range(1,int(total/.43)):
         t=i*total/int(total/.43)
         if min(abs(t-p) for p in [0]+piers)<.30:continue
-        x,y=at(t);m.lathe((x,y),[(grade(y)+z,r) for z,r in profile],{'detail':16,'walk':8,'district':4}[level])
+        x,y=at(t);m.lathe((x,y),[(grade(y,x=x)+z,r) for z,r in profile],{'detail':16,'walk':8,'district':4}[level])
     for t in piers:
-        x,y=at(t);m.box((x,y,grade(y)+.53),(.38,.46,1.06));m.box((x,y,grade(y)+1.10),(.47,.50,.08))
+        x,y=at(t);m.box((x,y,grade(y,x=x)+.53),(.38,.46,1.06));m.box((x,y,grade(y,x=x)+1.10),(.47,.50,.08))
     return m
 
 
@@ -55,7 +55,7 @@ def shrubs(level='detail',name='Garden corner shrubs'):
     for x,y in [(-58.5,-11.2),(-60.2,-11.0),(-61.7,-10.0),(-62.3,-8.2),(-62.3,-6.3)]:
         for dx,dy,h,r in [(0,0,1.0,1.05),(.30,-.12,1.55,.55),(-.3,.18,1.43,.55)]:
             if level=='district' and dx:continue
-            q=Mesh('foliage');q.ellipsoid((x+dx,y+dy,grade(y)+h),(r,r*.75,r*.70),segments=n,rings=rings)
+            q=Mesh('foliage');q.ellipsoid((x+dx,y+dy,grade(y,x=x)+h),(r,r*.75,r*.70),segments=n,rings=rings)
             # Shared ellipsoid winding is inward; correct this closed foliage shell.
             q.faces=[tuple(reversed(f)) for f in q.faces]
             m.add(q.vertices,q.faces,0 if dx==0 else 1)
@@ -81,12 +81,12 @@ def build_corner(ctx,materials):
     green=[ctx['mat']('Corner shrub dark',(.075,.14,.035)),ctx['mat']('Corner shrub leaf',(.16,.25,.07))]
     shrubs().finish(green,C[fp])
     from garden_front import globe_lamp
-    ob=globe_lamp(name='Garden globe lamp curved return').finish(materials,C[fp]);ob.location=(-63.5,-5.3,grade(-5.3)+1.14)
+    ob=globe_lamp(name='Garden globe lamp curved return').finish(materials,C[fp]);ob.location=(-63.5,-5.3,grade(-5.3,x=-63.5)+1.14)
     # Low wall and planter bowls continue along the side of the garden.
     from southport3d.landscape import capped_wall
-    capped_wall([(-63.5,-5.3,grade(-5.3)),(-63.5,17.8,grade(17.8))],.42,.34,'Wall low garden return').finish([materials[0]],C[fp])
+    capped_wall(list(SURFACE.edge_points((-63.5,-5.3),(-63.5,17.8))),.42,.34,'Wall low garden return').finish([materials[0]],C[fp])
     for y in [0,12]:
-        m=Mesh('Street return planter bowl');z=grade(y)+.42
+        m=Mesh('Street return planter bowl');z=grade(y,x=-63.5)+.42
         m.lathe((-63.5,y),[(z,.16),(z+.15,.20),(z+.25,.40),(z+.48,.57),(z+.52,.56),(z+.46,.48),(z+.30,.31)],24)
         m.finish([materials[0]],C[fp])
 

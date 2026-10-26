@@ -1,3 +1,4 @@
+from datum import SURFACE
 """Mapped St George's block ground; architectural placeholders remain explicit."""
 import json
 import math
@@ -100,7 +101,7 @@ def build_block(ctx, existing_roads, anchor_outer):
     from southport3d.landscape import capped_wall
     # Meet the mapped rear facade with a mitred end, not a square end which
     # leaves a triangular daylight slot beside the oblique building wall.
-    m=capped_wall([(36.4,-78.23,grade(-78.23)),(38.7,-76.5,grade(-76.5))],height=2.25,width=.28,name='Wall Posting lane gate return')
+    m=capped_wall([(36.4,-78.23,grade(-78.23,x=36.4)),(38.7,-76.5,grade(-76.5,x=38.7))],height=2.25,width=.28,name='Wall Posting lane gate return')
     wall_a=(36.69,-76.447);wall_b=(65.499,-76.96)
     slope=(wall_b[1]-wall_a[1])/(wall_b[0]-wall_a[0])
     # Reach past the modern range end at X38.40 in its coarse envelope.
@@ -118,7 +119,7 @@ def build_block(ctx, existing_roads, anchor_outer):
     clipped('Surface Bijou entrance passage',cinema_path,ctx['pale'],reserve+buildings)
     # South low boundary is visible along the approach; northern boundary is
     # the windowed access range owned by the cinema asset.
-    m=capped_wall([(79.5,-56.6,grade(-56.6)),(88.9,-56.6,grade(-56.6))],height=1.65,width=.24,name='Wall Bijou passage south')
+    m=capped_wall(list(SURFACE.edge_points((79.5,-56.6),(88.9,-56.6))),height=1.65,width=.24,name='Wall Bijou passage south')
     passage_brick=ctx['mat']('Bijou passage brick courses',(.42,.23,.14),'junction-brick')
     ob=m.finish([passage_brick,ctx['kerb']],ctx['collections']['block-furniture'])
     uv=ob.data.uv_layers.new(name='Metric wall brick')
@@ -127,7 +128,7 @@ def build_block(ctx, existing_roads, anchor_outer):
             v=ob.data.vertices[ob.data.loops[li].vertex_index].co
             uv.data[li].uv=(v.x/4.05,v.z/2.70)
     # Closed iron entrance leaves and spear finials are visible in August 2024.
-    m=Mesh('Street Bijou entrance gate');gx=71.12;gy0=-56.43;gy1=-54.0;base=grade(-55)
+    m=Mesh('Street Bijou entrance gate');gx=71.12;gy0=-56.43;gy1=-54.0;base=grade(-55,x=gx)
     for z in (.35,1.25):m.box((gx,(gy0+gy1)/2,base+z),(.065,gy1-gy0,.055))
     for y in (gy0,(gy0+gy1)/2,gy1):m.box((gx,y,base+.77),(.075,.075,1.54))
     for i in range(13):
@@ -160,7 +161,7 @@ def build_block(ctx, existing_roads, anchor_outer):
         points=ways[key]['xy'][:-1]
         if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(points,points[1:]+points[:1]))<0:points.reverse()
         m=Mesh('Placeholder OSM '+key+' estimated height')
-        base=grade(-60)-.03;n=len(points)
+        base=min(p[2]for a,b in zip(points,points[1:]+points[:1])for p in SURFACE.edge_points(a,b))-.03;n=len(points)
         m.add([(x,y,z) for z in (base,base+height) for x,y in points],
               [tuple(range(n-1,-1,-1)),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)])
         ob=m.finish([material],ctx['collections']['block-furniture'])
@@ -169,11 +170,11 @@ def build_block(ctx, existing_roads, anchor_outer):
     from furniture_lod import furniture
     for i,(kind,x,y,yaw) in enumerate([('bollard',180,-28,0),('bollard',183,-28,0),('bollard',186,-28,0),('bin',181,-31,0),('bench',183,-24,180)]):
         ob=furniture(kind,'detail','Block '+kind+' '+str(i)).finish(ctx['fm'],ctx['collections']['block-furniture'])
-        ob.location=(x,y,grade(y));ob.rotation_euler.z=math.radians(yaw)
+        ob.location=(x,y,grade(y,x=x));ob.rotation_euler.z=math.radians(yaw)
 
     # Low brick boundary behind the church-side building, with pedestrian gaps.
     from southport3d.landscape import capped_wall
     wallmat=ctx['mat']('Block red boundary brick',(.33,.15,.10))
     for i,points in enumerate([[(180,-26),(187,-26)],[(204,-26),(216,-26)]]):
-        m=capped_wall([(x,y,grade(y)) for x,y in points],height=.55,width=.28,name='Wall block parking boundary '+str(i))
+        m=capped_wall([p for a,b in zip(points,points[1:])for p in SURFACE.edge_points(a,b)],height=.55,width=.28,name='Wall block parking boundary '+str(i))
         m.finish([wallmat,ctx['kerb']],ctx['collections']['block-furniture'])

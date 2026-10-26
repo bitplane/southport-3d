@@ -43,11 +43,13 @@ def build_extensions(ctx):
             ob=furniture(kind,'detail',name).finish(fm,C[part]);prototypes[kind]=ob
         else:
             ob=prototypes[kind].copy();ob.data=prototypes[kind].data;ob.name=name;C[part].objects.link(ob)
-        ob.location=(x,y,grade(y));ob.rotation_euler.z=math.radians(yaw);ob['source']=source
+        ob.location=(x,y,grade(y,x=x));ob.rotation_euler.z=math.radians(yaw);ob['source']=source
         return ob
 
     def wall(points,part,height=.35,width=.28,name='garden edging'):
-        m=capped_wall([(x,y,grade(y)) for x,y in points],height,width,'Wall '+name)
+        from datum import SURFACE
+        expanded=[p for a,b in zip(points,points[1:]) for p in list(SURFACE.edge_points(a,b))[:-1]]+[(*points[-1],grade(points[-1][1],x=points[-1][0]))]
+        m=capped_wall(expanded,height,width,'Wall '+name)
         return m.finish([stone],C[part])
 
     def curb(points,part,inside=-1):
@@ -195,15 +197,15 @@ def build_extensions(ctx):
         for node_id,node in osm['nodes'].items():
             x,y=node['xy']
             if node['tags'].get('highway')=='bus_stop' and x0<x<x1 and 18<y<36:
-                m=Mesh('Street bus stop pole '+node_id);m.lathe((x,y),[(grade(y),.035),(grade(y)+2.7,.035)],10)
-                m.box((x,y,grade(y)+2.4),(.34,.06,.48));m.finish([kerb],C[fp])
+                m=Mesh('Street bus stop pole '+node_id);m.lathe((x,y),[(grade(y,x=x),.035),(grade(y,x=x)+2.7,.035)],10)
+                m.box((x,y,grade(y,x=x)+2.4),(.34,.06,.48));m.finish([kerb],C[fp])
         for i,record in enumerate(recipe['trees'][label]):
             x,y,scale=record;name=f'Tree {label} {i:02d}'
             if tree_prototype is None:
                 ob=tree('detail',name).finish(tm,C[fp]);tree_prototype=ob
             else:
                 ob=tree_prototype.copy();ob.data=tree_prototype.data;ob.name=name;C[fp].objects.link(ob)
-            ob.location=(x,y,grade(y));ob.scale=(scale,scale,scale);ob.rotation_euler.z=i*1.73
+            ob.location=(x,y,grade(y,x=x));ob.scale=(scale,scale,scale);ob.rotation_euler.z=i*1.73
             ob['source']='Canopy grouping estimated from Google satellite; generic species/shape'
     # White parking-bay edges follow the shop kerb; the garden row stays clear.
     for start,end,y in [(-64,-18,-19.1)]:
@@ -249,8 +251,8 @@ def build_extensions(ctx):
             ob=balustrade(name='Garden balustrade segment').finish(garden_materials,C[fp]);template=ob
         else:
             ob=template.copy();ob.data=template.data;C[fp].objects.link(ob)
-        ob.location=(x,y,grade(y));ob['source']='user-street-2024; calibrated repeat spacing'
-    m=Mesh('Wall balustrade end pier');m.box((end,y,grade(y)+.505),(.36,.46,1.01));m.box((end,y,grade(y)+1.045),(.46,.49,.07));m.finish([garden_materials[0]],C[fp])
+        ob.location=(x,y,grade(y,x=x));ob['source']='user-street-2024; calibrated repeat spacing'
+    m=Mesh('Wall balustrade end pier');m.box((end,y,grade(y,x=end)+.505),(.36,.46,1.01));m.box((end,y,grade(y,x=end)+1.045),(.46,.49,.07));m.finish([garden_materials[0]],C[fp])
     template=None
     for x in [-58,-46]:
         if template is None:
@@ -258,7 +260,7 @@ def build_extensions(ctx):
             for face in ob.data.polygons:face.use_smooth=True
         else:
             ob=template.copy();ob.data=template.data;C[fp].objects.link(ob)
-        ob.location=(x,y,grade(y)+1.08);ob['source']='user-street-2024; pier placement estimated'
+        ob.location=(x,y,grade(y,x=x)+1.08);ob['source']='user-street-2024; pier placement estimated'
     from rounded_garden import build_corner
     build_corner(ctx,garden_materials)
     # Photographed return opposite St George's: open stone balusters, globe
@@ -266,12 +268,12 @@ def build_extensions(ctx):
     fp='ne-garden-furniture'
     for y in range(-10,18,4):
         ob=balustrade(name='Garden balustrade St Georges return').finish(garden_materials,C[fp])
-        ob.location=(144.8,y,grade(y));ob.rotation_euler.z=math.pi/2
+        ob.location=(144.8,y,grade(y,x=144.8));ob.rotation_euler.z=math.pi/2
     for y in [-10,18]:
         ob=globe_lamp(name='Garden globe lamp St Georges').finish(garden_materials,C[fp])
-        ob.location=(144.8,y,grade(y)+1.08)
+        ob.location=(144.8,y,grade(y,x=144.8)+1.08)
         bowl=Mesh('Street garden planter bowl')
-        bowl.lathe((142.8,y),[(grade(y),.20),(grade(y)+.25,.24),(grade(y)+.37,.55),(grade(y)+.62,.68),(grade(y)+.68,.64),(grade(y)+.61,.57),(grade(y)+.46,.42)],16)
+        bowl.lathe((142.8,y),[(grade(y,x=142.8),.20),(grade(y,x=142.8)+.25,.24),(grade(y,x=142.8)+.37,.55),(grade(y,x=142.8)+.62,.68),(grade(y,x=142.8)+.68,.64),(grade(y,x=142.8)+.61,.57),(grade(y,x=142.8)+.46,.42)],16)
         bowl.finish([garden_materials[0]],C[fp])
     # Round fountain site: retain pool and surrounding path; sculpture deferred.
     part='ne-garden-ground';fp='ne-garden-furniture';x,y=117.87,2.02

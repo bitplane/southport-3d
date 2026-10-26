@@ -156,3 +156,38 @@ Eastbank and Tulketh railway layers, southern lake/park/esplanade, then all deta
 building foundations and entrances. Check neighbouring exported seams together,
 followed by measured bridge deck/approach and underside-clearance corrections.
 No main-catalog elevation switch or pier modelling has been performed.
+
+## London Square and Glebe Place staging
+
+London Square and Glebe Place now have isolated measured-ground packages in the
+review, making nine connected inland regions staged. The square preserves its
+explicit dropped kerbs, crossing ramps, planting offsets and upright furniture.
+The reflecting pools remain level and cut through underlying road bases, rather
+than letting the rising terrain emerge through their water. Long garden returns
+and parking walls follow terrain breakpoints. Detailed neighbouring building
+thresholds and the memorial foundation remain to be reconciled.
+
+A bounded 20 × 45 m refinement behind the bank/Posting House resolves the service
+lane depression. It samples the existing 1 m raster on a 0.625 m mesh; this adds
+no survey information, but keeps interpolation error below the 0.25 m allowance.
+The square's road-centroid maximum difference from native DTM is 0.2280 m.
+All three exported levels retain identical ground. The current district package
+is 122,502 triangles including furniture; regional aggregation is still separate.
+
+Glebe's throat retains its explicit 0.12 m rise and fall, with ground and bollards
+on the shared field. Its planar surface boundaries are conformed before lifting,
+then float32 junctions welded within 0.05 mm. Collapsed split slivers below that
+width are removed before they can become doubled-back triangle fans. The scoped
+ground overlap validator passes without raising its overlap-area tolerance.
+
+`python3 tools/check_elevation_seams.py` checks actual exported road surfaces on
+both sides of the Glebe mouth and Nevill junction. All 21 pairs across three LoDs
+agree within 0.000039 m after accounting for the real gradient and throat ramp.
+This samples those seams; it does not certify every neighbouring asset boundary.
+Package validators independently check 6,429 Glebe and 52,242 square road/ground
+triangles per level against their declared planes. Overview and garden renders
+are also reviewed because numerical height checks alone missed the old road
+under the newly level pools.
+
+The main town still uses its preserved baseline. Eastbank/railway, the remaining
+waterfront layers, detailed building attachments and bridges are outstanding.

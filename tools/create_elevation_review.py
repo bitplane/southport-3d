@@ -63,14 +63,23 @@ def main():
                        ('west-street',['public-realm','frontage-placeholders']),
                        ('lord-street',['corridor-public-realm','corridor-placeholders']),
                        ('nevill-street',['public-realm','frontage-placeholders']),
-                       ('station-quarter',['public-realm','frontage-placeholders'])]:
+                       ('station-quarter',['public-realm','frontage-placeholders']),
+                       ('glebe-place',['public-realm']),
+                       ('london-square',['public-realm'])]:
         for kind in kinds:
             asset=f'southport.{area}.{kind}';package=ROOT/'build'/asset/'package'
             manifest=package/'manifest.json'
             if not manifest.exists():continue
             # Only terrain packages checked in this migration are included.
             recipe=ROOT/'regions/southport'/area/kind/'research/layout.json'
-            if 'elevation_plan' not in json.loads(recipe.read_text()):continue
+            if area in {'glebe-place','london-square'}:
+                check=package/'terrain-check.json'
+                if not check.is_file():continue
+                state=json.loads((package.parent/'build-state.json').read_text())
+                metadata=json.loads(manifest.read_text())
+                if 'validate' not in state['nodes'] or metadata['source_fingerprint']!=state['nodes']['master']['key']:
+                    raise ValueError('Unvalidated or stale terrain package: '+asset)
+            elif not recipe.is_file() or 'elevation_plan' not in json.loads(recipe.read_text()):continue
             for item in json.loads(manifest.read_text())['files']:
                 if item['level']!='district':continue
                 destination=Path('models')/asset/Path(item['path']).name

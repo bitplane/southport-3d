@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "datum": "southport-memorial-estimated-local-zero",
+  "frame": "Memorial site XY metres; yaw 43.5293 degrees from east",
+  "controls": {
+    "glebe-flush": {
+      "height_m": 0,
+      "uncertainty_m": 0.03,
+      "status": "authored-relative-offset",
+      "evidence": "Existing raised sett throat; retain 0.12 m rise and ramp extents over measured terrain, not a LiDAR kerb measurement."
+    },
+    "glebe-raised": {
+      "height_m": 0.12,
+      "uncertainty_m": 0.03,
+      "status": "authored-relative-offset",
+      "evidence": "Existing raised sett throat; retain 0.12 m rise and ramp extents over measured terrain, not a LiDAR kerb measurement."
+    }
+  },
+  "surfaces": {
+    "glebe-road": {
+      "type": "survey",
+      "terrain": "survey/terrain.json",
+      "bounds": [
+        -60,
+        0,
+        -90,
+        -35
+      ],
+      "grid_m": 5,
+      "offset_m": 0,
+      "evidence": "EA 2022 composite DTM with acquisition/datum in survey/terrain.json; existing material ownership and raised throat retained."
+    },
+    "glebe-mouth": {
+      "type": "survey",
+      "terrain": "survey/terrain.json",
+      "bounds": [
+        -60,
+        0,
+        -90,
+        -35
+      ],
+      "grid_m": 5,
+      "offset_m": 0,
+      "evidence": "EA 2022 composite DTM with acquisition/datum in survey/terrain.json; existing material ownership and raised throat retained.",
+      "offset_profile": {
+        "axis_origin": [
+          0,
+          0
+        ],
+        "axis_direction": [
+          1,
+          0
+        ],
+        "profile": [
+          {
+            "distance_m": -10.6,
+            "control": "glebe-flush"
+          },
+          {
+            "distance_m": -9.0,
+            "control": "glebe-raised"
+          },
+          {
+            "distance_m": -5.1,
+            "control": "glebe-raised"
+          },
+          {
+            "distance_m": -4.3,
+            "control": "glebe-flush"
+          }
+        ]
+      }
+    }
+  }
+}
