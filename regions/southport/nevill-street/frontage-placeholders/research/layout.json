@@ -719,14 +719,14 @@
       ],
       "height_m": 10.5,
       "height_uncertainty_m": 3,
-      "status": "placeholder-massing",
+      "status": "replaced-researched-exterior",
       "evidence": [
         "google-3d-orbit",
         "google-plan-comparison",
         "osm-seed"
       ],
       "footprint_confidence": "medium; main external extent compared with Google imagery, exact wall/roof offsets and internal parcel splits unresolved",
-      "replace_with": null
+      "replace_with": "southport.nevill-street.nevill-street-15"
     },
     {
       "id": "cable-rear-range",
@@ -1350,60 +1350,6 @@
       ],
       "footprint_confidence": "Rear residual beyond Lakeland and Coffee King; preserved rather than extending Nero into neighbouring yards.",
       "replace_with": null,
-      "original_combined_footprint": [
-        [
-          -9.452,
-          90.309
-        ],
-        [
-          -21.403,
-          90.192
-        ],
-        [
-          -21.482,
-          78.613
-        ],
-        [
-          -48.326,
-          78.396
-        ],
-        [
-          -69.289,
-          78.334
-        ],
-        [
-          -68.968,
-          69.523
-        ],
-        [
-          -81.119,
-          69.78
-        ],
-        [
-          -81.841,
-          46.238
-        ],
-        [
-          -50.348,
-          46.261
-        ],
-        [
-          -50.422,
-          59.443
-        ],
-        [
-          -45.827,
-          59.47
-        ],
-        [
-          -45.754,
-          46.288
-        ],
-        [
-          -10.043,
-          47.035
-        ]
-      ],
       "replaced_corner_asset": "southport.nevill-street.occulo-lounge",
       "before_coffee_king_footprint": [
         [

@@ -1,0 +1,19 @@
+{
+  "method": "Registered block footprint checked against Google 3D orbit. Heights and window proportions estimated from Street View; not a measured survey. Three tall Empire storeys versus two small storeys here provides an independent gross scale check.",
+  "inputs": {
+    "footprint_m": {
+      "front": 13.0,
+      "body_depth": 9.43,
+      "main_roof_depth": 7.1,
+      "rear_wing_depth": 15.64
+    },
+    "front_proportions": "July 2026 image: three projecting upper windows, middle wider than end bays; small inset opening between left and middle bays. Three shop divisions roughly 4.6, 4.25 and 4.15 m.",
+    "height_estimate": "2.65 m shop opening and 0.9 m fascia, 1.25 m upper windows, 5.35 m eave, 6.65 m ridge. Roof pitch approximately 20 degrees, not the former 10.5 m massing.",
+    "ground": "Existing rough Nevill paving at front endpoints 0.737 and 0.825 m local; floor 0.85 m, level walls and shallow threshold. Rear ground 1.07\u20131.14 m intersects buried foundation; no terrain edits."
+  },
+  "uncertainties": [
+    "Metric dimensions approximately \u00b10.6 m; small fittings \u00b10.15 m.",
+    "Rear roof valleys and concealed wall openings have incomplete evidence.",
+    "Retain registered neighbouring access gap rather than inventing an extension into it."
+  ]
+}

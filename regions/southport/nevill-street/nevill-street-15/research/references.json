@@ -1,0 +1,71 @@
+{
+  "sources": [
+    {
+      "id": "front-2026",
+      "url": "https://www.google.com/maps/@53.6493251,-3.0053583,3a,75y,220h,95t/data=!3m4!1e1!3m2!1sqxeLYpBGbEczPT7s13RMkg!2e0",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-26",
+      "credit": "Google / attributed contributors",
+      "use": "Current Salaars, Antonio\u2019s and Southport Rock signage, three upper bays, small inset window, striped awnings and open shop counters."
+    },
+    {
+      "id": "front-2023",
+      "url": "https://www.google.com/maps/@53.6493561,-3.0054365,3a,90y,195h,95t/data=!3m4!1e1!3m2!1sI__cjQy-5ULN43ThPqEpHQ!2e0",
+      "capture_date": "2023-03",
+      "accessed": "2026-10-26",
+      "credit": "Google / attributed contributors",
+      "use": "Closed shutters clarify storefront divisions and unoccluded geometry; historical signs are not copied."
+    },
+    {
+      "id": "cable-side",
+      "url": "https://www.google.com/maps/@53.6493317,-3.0055636,3a,85y,155h,98t/data=!3m4!1e1!3m2!1sJ1mal_jMtOE4mnvD1nWi5w!2e0",
+      "capture_date": "2020-11",
+      "accessed": "2026-10-26",
+      "credit": "Google / attributed contributors",
+      "use": "Cable Street gable, small upper window, corner shutter, two access doors and adjacent low lean-to. Latest available in Cable Street timeline."
+    },
+    {
+      "id": "google-3d",
+      "url": "https://www.google.com/maps/@53.6497347,-3.0062036,80a,35y,140h,39.58t/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed": "2026-10-26",
+      "credit": "Google / attributed contributors",
+      "use": "Actual 3D orbit headings 0, 70 and 140 degrees: shallow street roof, lower rear roof portions and courtyard wing; imagery date unavailable."
+    },
+    {
+      "id": "address",
+      "url": "https://www.yell.com/biz/southport-food-centre-southport-9452565/",
+      "capture_date": null,
+      "accessed": "2026-10-26",
+      "credit": "Linked publisher",
+      "use": "15 Nevill Street address, former Southport Food Centre; not current signage evidence."
+    },
+    {
+      "id": "rock-address",
+      "url": "https://www.bizseek.co.uk/southport-rock-shop_3J",
+      "capture_date": null,
+      "accessed": "2026-10-26",
+      "credit": "Linked publisher",
+      "use": "Southport Rock Shop also listed at 15 Nevill Street; supports combined asset scope."
+    },
+    {
+      "id": "supplement",
+      "url": "https://www.southportreporter.com/591/591-3.shtml",
+      "capture_date": "2013-02-14",
+      "accessed": "2026-10-26",
+      "credit": "Linked publisher",
+      "use": "Historical report links SFC and Southport Rock exterior alterations; not used for present geometry."
+    }
+  ],
+  "access_notes": [
+    {
+      "source": "Mapillary",
+      "url": "https://www.mapillary.com/app/?lat=53.6493&lng=-3.0055&z=18",
+      "result": "Consent dismissed; app remained blank with console errors. No image geometry used."
+    },
+    {
+      "source": "Google place photos / supplementary search",
+      "result": "Search found old Southport Food Centre listings and traveller images. Current July 2026 panorama provides clearer complete frontage; old photographs not substituted for current signs."
+    }
+  ]
+}

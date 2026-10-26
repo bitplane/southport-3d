@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "southport.nevill-street.nevill-street-15",
+  "name": "15 Nevill Street \u2014 Salaars, Antonio\u2019s and Southport Rock",
+  "region": "southport",
+  "area": "nevill-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "three-shopfronts",
+    "upper-bay-windows",
+    "Cable-gable",
+    "shallow-slate-roof",
+    "rear-wing"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "15 Nevill Street, present frontage and Cable return. Rear lower detail obscured; dimensions estimated."
+}

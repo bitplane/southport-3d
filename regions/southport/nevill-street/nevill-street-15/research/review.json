@@ -1,0 +1,62 @@
+{
+  "status": "reviewed-and-published",
+  "comparisons": [
+    {
+      "stage": "massing",
+      "views": [
+        "corner.png",
+        "nevill15-roof-south.png",
+        "nevill15-side-elevation.png"
+      ],
+      "finding": "Shallow front gable and subordinate L-shaped rear roof match the observed large form. Initial render exposed a rear-wall strip extending above the falling wing roof; wall profile corrected before detail. Registered footprint retained.",
+      "limits": "Rear wing junction approximate; lower rear surfaces obscured."
+    },
+    {
+      "stage": "detailed renders",
+      "views": [
+        "front.png",
+        "corner.png",
+        "rear.png",
+        "roof.png"
+      ],
+      "finding": "Front compared with July 2026 panorama: three bays, small intermediate window, distinct shop widths and current colour bands retained. Raised bay sill to clear fascia lettering; closed canopy corner with a radial wrap. Rear render confirms falling wing roofs and no wall strip projecting above them.",
+      "limits": "Lettering and shop display artwork are authored approximations; rear lower windows unknown. Roof metric dimensions and secondary junction remain estimated."
+    },
+    {
+      "stage": "exported architecture and neighbours",
+      "findings": "Native scanner run over Detail, Walk and District with Empire, 16\u201322, Nevill/Stanley/West public realm and placeholders (retiring own placeholder excluded): zero findings touching this asset at all three levels. Actual package integrity/bake coverage and budgets passed.",
+      "private_report": "build/nevill15-overlap/report.md",
+      "costs": {
+        "detail": {
+          "triangles": 4655,
+          "bytes": 1642660,
+          "gpuBytesEstimate": 13086013
+        },
+        "walk": {
+          "triangles": 3815,
+          "bytes": 1558952,
+          "gpuBytesEstimate": 8795898
+        },
+        "district": {
+          "triangles": 62,
+          "bytes": 202616,
+          "gpuBytesEstimate": 6298466
+        }
+      }
+    },
+    {
+      "stage": "assembled live viewer",
+      "findings": "Actual Detail, Walk and District tiles verified for this asset in the live viewer, then Detail from Cable Street rear. Correctly low building beside Empire, foundation meets Nevill paving, Cable awning wraps the corner, and separate rear placeholder/access gap retained. District colours and signs remain recognisable without a new colour shift. All own tiles loaded with failed=0; global forced-level streaming continued elsewhere and was not claimed settled.",
+      "private_captures": [
+        "../output/nevill15-detail-published.png",
+        "../output/nevill15-walk-published.png",
+        "../output/nevill15-district-published.png",
+        "../output/nevill15-rear-published.png"
+      ],
+      "limitations": "Rear wing partially occluded by retained placeholder, as expected; isolated rear and roof renders reviewed separately. Lower hidden rear openings, precise valley intersections and current Cable return lettering remain documented estimates."
+    }
+  ],
+  "outstanding": [
+    "Concealed rear openings need future photographs, not invented detail."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "phase": "detail",
+  "origin": [
+    -9.775,
+    92.642,
+    0.85
+  ],
+  "width": 13.0,
+  "depth": 9.43,
+  "main_depth": 7.1,
+  "wing_width": 4.35,
+  "wing_depth": 15.64,
+  "eave": 5.35,
+  "ridge": 6.65,
+  "ridge_v": 3.6,
+  "bays": [
+    [
+      1.45,
+      2.0,
+      0.34
+    ],
+    [
+      7.05,
+      2.45,
+      0.28
+    ],
+    [
+      11.3,
+      1.95,
+      0.38
+    ]
+  ],
+  "upper_bottom": 3.85,
+  "upper_top": 5.1,
+  "footprint_source": "west-cable-corner; Google 3D compared with registered OSM seed, wall and eave offsets estimated",
+  "dimension_uncertainty_m": 0.6
+}

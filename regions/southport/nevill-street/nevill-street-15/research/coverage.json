@@ -1,0 +1,37 @@
+{
+  "front": {
+    "status": "observed",
+    "sources": [
+      "front-2026",
+      "front-2023"
+    ],
+    "features": "Three bay windows, small opening, render, downpipes, fascia and canopy colours, open counters."
+  },
+  "cable_side": {
+    "status": "observed-older-imagery",
+    "sources": [
+      "cable-side",
+      "google-3d"
+    ],
+    "features": "Gable, upper window, access doors and corner retail return; current return signage inferred from matching front business."
+  },
+  "rear": {
+    "status": "partially-observed",
+    "sources": [
+      "google-3d"
+    ],
+    "missing": "Lower elevations and courtyard access obscured. Plain weathered wall treatment; no invented rear windows."
+  },
+  "roof": {
+    "status": "observed-with-estimated-intersections",
+    "sources": [
+      "google-3d",
+      "cable-side"
+    ],
+    "features": "Parallel street ridge, shallow pitches, Cable gable, lower rear wing roofs, low capped stump visible above front roof; no tall chimney invented."
+  },
+  "ground": {
+    "status": "rough-control-fit",
+    "features": "Retain existing paving and street ownership; no pavement props outside asset footprint."
+  }
+}

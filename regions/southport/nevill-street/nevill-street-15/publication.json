@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/nevill-street-15.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Nevill Street",
+  "status": "July 2026 street frontage; Cable side from 2020 and undated 3D, rear details limited. Estimated metric dimensions.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "frontage",
+      "name": "Painted bays and three shopfronts",
+      "collection": "frontage"
+    },
+    {
+      "id": "rear",
+      "name": "Cable gable and rear wing",
+      "collection": "rear"
+    },
+    {
+      "id": "roof",
+      "name": "Shallow slate pitches",
+      "collection": "roof"
+    }
+  ],
+  "views": [
+    {
+      "name": "Front",
+      "position": [
+        15,
+        9,
+        -99
+      ],
+      "target": [
+        -10,
+        4,
+        -99
+      ]
+    },
+    {
+      "name": "Corner",
+      "position": [
+        7,
+        15,
+        -122
+      ],
+      "target": [
+        -16,
+        4,
+        -99
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -5,
+      1.7,
+      -99
+    ],
+    "target": [
+      -10,
+      4,
+      -99
+    ]
+  },
+  "rules": [
+    {
+      "id": "architecture",
+      "match": "^(Shell|Architecture|Glazing) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Compact real openings, bay projections, shop partitions and roof."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replaced with independent authored receivers."
+      }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Tiny aerial rods and gutter brackets do not earn geometry at Walk distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Below district pixel budget."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed facade with baked bay appearance, shop canopies and gable/wing roof topology; fine detail projected into shared part atlases.",
+    "max_bytes": 1000000,
+    "max_gpu_bytes": 7000000,
+    "parts": {
+      "frontage": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 250,
+        "cage_m": 0.8
+      },
+      "rear": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 180,
+        "cage_m": 0.55
+      },
+      "roof": {
+        "atlas": [
+          256,
+          256
+        ],
+        "max_triangles": 120,
+        "cage_m": 0.5
+      }
+    }
+  }
+}
