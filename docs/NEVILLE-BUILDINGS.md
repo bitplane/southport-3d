@@ -86,3 +86,5 @@ Actual exported Detail, Walk and District were inspected from front and rear
 views after the close-orbit roof correction. Private review captures are in
 `../output/nevill-empire/final-*.png`; the isolated comparison is served at
 `/reviews/southport.nevill-street.nevill-street-11-13/index.html`.
+
+The level floor is registered to the rough street height at the frontage anchor in `research/layout.json`; 12 cm paving and 2 cm threshold allowances are retained. This is an editable town-model datum, not a surveyed floor level.

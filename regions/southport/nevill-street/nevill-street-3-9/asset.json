@@ -31,5 +31,13 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "3\u20139 Nevill architectural range adjoining Occulo, including Silcock\u2019s Jackpot. Empire/Neville Buildings remains a separate placeholder. Metric dimensions and rear finishes estimated."
+  "scope": "3\u20139 Nevill architectural range adjoining Occulo, including Silcock\u2019s Jackpot. Empire/Neville Buildings remains a separate placeholder. Metric dimensions and rear finishes estimated.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
 }

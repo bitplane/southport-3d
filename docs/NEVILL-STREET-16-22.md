@@ -144,3 +144,5 @@ snag camera and an oblique with Willow, Embassy, placeholders and both Nevill
 and Stanley ground loaded. The bent run clears the fascia in each view; adjoining
 pavement and yard seams remain supported. Private captures are retained outside
 Git under /tmp/queued-duct-* and the disposable local review page.
+
+The level building floor uses the rough street height at the frontage anchor recorded in `research/layout.json`, with a 12 cm paving allowance and 2 cm threshold allowance. These are editable town-model controls, not a surveyed floor datum.

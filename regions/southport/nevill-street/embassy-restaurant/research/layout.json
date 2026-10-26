@@ -1,7 +1,7 @@
 {
   "x": 9.481,
   "y": 105.26,
-  "base_z": 0.13,
+  "base_z": 0.7314,
   "width": 11.6,
   "depth": 17.6,
   "rear_depth": 35.9,
@@ -10,5 +10,15 @@
   "chamfer_u": 1.4,
   "chamfer_v": 1.4,
   "rear_height": 9.4,
-  "phase": "detail"
+  "phase": "detail",
+  "ground_anchor": {
+    "site_xy": [
+      9.518468,
+      111.06
+    ],
+    "paving_offset_m": 0.12,
+    "threshold_allowance_m": 0.02,
+    "previous_floor_m": 0.13,
+    "evidence": "Rough shared street plane at main frontage; level floor, not a surveyed datum."
+  }
 }

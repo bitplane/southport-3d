@@ -2,7 +2,7 @@
   "phase": "detail",
   "x": 8.89,
   "y": 96.684,
-  "base_z": -0.24,
+  "base_z": 0.5527,
   "width": 16.732,
   "depth": 11.35,
   "chamfer": 1.18,
@@ -35,5 +35,15 @@
     "hidden_rear_openings": 1.0
   },
   "placeholder": "east-stanley-corner",
-  "block_plan": "regions/southport/nevill-street/frontage-placeholders/research/layout.json"
+  "block_plan": "regions/southport/nevill-street/frontage-placeholders/research/layout.json",
+  "ground_anchor": {
+    "site_xy": [
+      8.8874902,
+      88.318
+    ],
+    "paving_offset_m": 0.12,
+    "threshold_allowance_m": 0.02,
+    "previous_floor_m": -0.24,
+    "evidence": "Rough shared street plane at main frontage; level floor, not a surveyed datum."
+  }
 }

@@ -6,6 +6,7 @@ from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path[:0]=[str(ROOT/'scripts'),str(REPO/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
 from southport3d.conform import conform
+from southport3d.terrain import GroundControls
 from components import rect,cut,arch,ring,profile
 from plan import world,outline,roof
 D=json.loads((ROOT/'research/layout.json').read_text());W=D['width'];L=D['depth'];H=D['parapet'];DETAIL=D['phase']=='detail'
@@ -26,7 +27,8 @@ def finish(m,part='frontage',material=stone,frame=None):
  for p in ob.data.polygons:
   axes=sorted(sorted(range(3),key=lambda i:abs(p.normal[i]))[:2])
   for li in p.loop_indices:
-   v=ob.data.vertices[ob.data.loops[li].vertex_index].co;uv.data[li].uv=(v[axes[0]]/1.8,v[axes[1]]/(1.8 if material==slate else .6))
+   v=ob.data.vertices[ob.data.loops[li].vertex_index].co
+   uv.data[li].uv=(v[axes[0]]/4,v[axes[1]]/4) if material.name=='Dark charcoal shallow roof covering' else (v[axes[0]]/1.8,v[axes[1]]/(1.8 if material==slate else .6))
  ob.data.transform(frame if frame is not None else T);return ob
 def box(name,c,size,material=stone,part='frontage',frame=F):
  m=Mesh(name);m.box(c,size);return finish(m,part,material,frame)
@@ -106,7 +108,7 @@ for u in (2.0,5.4,9.0,12.5,15.1):
   box('Architecture rear sill',(u,z-.06,.06),(1.02,.11,.20),stone,'rear',BACK)
 wall('party',[(0,0),(L,0),(L,D['rear_eave']),(D['ridge_v'],D['ridge']),(0,D['front_eave'])],[],PARTY,brick,'rear')
 # Aerial review shows a dark charcoal shallow covering, not pale sheet metal.
-membrane=mat('Dark charcoal shallow roof covering',(.065,.070,.075),rough=.92)
+membrane=mat('Dark charcoal shallow roof covering',(.065,.070,.075),rough=.92,texture='covering')
 # Coordinated roof boundary; slate rear and hip, shallow membrane front.
 for name,p in roof(D):
  m=Mesh('Shell roof '+name);m.add(p,[tuple(range(len(p)))]);finish(m,'roof',membrane if name=='front' else slate)
@@ -175,7 +177,8 @@ for u in (a,b):
  m=Mesh('Architecture canopy end');m.tube([(u,0,zi),(u,v,zo)],.045,sides=6);finish(m,'roof',iron)
 for vv,zz in [(0,zi),(v,zo)]:box('Architecture canopy fascia',((a+b)/2,vv,zz),(b-a,.12,.20),rust,'roof',T)
 for u in (3.4,9.0,15.7):
- m=Mesh('Architecture canopy post');m.tube([(u,v,0),(u,v,zo)],.045,sides=8);finish(m,'roof',iron)
+ p=T@Vector((u,v,0));foot=GroundControls(REPO/'regions/southport/elevation/ground-controls.json').height(p.x,p.y)+.12-D['base_z']
+ m=Mesh('Architecture canopy post');m.tube([(u,v,foot),(u,v,zo)],.045,sides=8);finish(m,'roof',iron)
 if DETAIL:
  for j in range(33):
   u=a+(b-a)*j/32;m=Mesh('Fine canopy glazing bar');m.tube([(u,0,zi+.025),(u,v,zo+.025)],.018,sides=5);finish(m,'roof',iron)

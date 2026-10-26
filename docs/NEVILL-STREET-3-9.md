@@ -11,3 +11,5 @@ The existing west block placeholder is split around this range and its open rear
 Detail and Walk preserve apertures and modest architectural geometry. District is an independently authored 84-triangle envelope retaining the hip, terminal bay, wings and court. It bakes frontage to 512² and rear/roof to 256² atlases, with fixed per-part topology budgets and a total 2 MB download / 7 MB GPU budget. The current Walk mesh intentionally matches Detail; a future reduction can omit fine capitals, guards and lettering without changing District complexity.
 
 Validation checks float32 triangles, closed outward roof slabs, 17 unobscured upper windows, packed textures and scoped coplanar shell overlap. Exported Detail, Walk and District are reviewed alongside front/rear/roof renders and assembled street views. Private reference images and review captures stay outside Git.
+
+The level building floor uses the rough street height at the frontage anchor recorded in `research/layout.json`, with a 12 cm paving allowance and 2 cm threshold allowance. These are editable town-model controls, not a surveyed floor datum.

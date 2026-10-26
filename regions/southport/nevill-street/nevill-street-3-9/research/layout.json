@@ -3,7 +3,7 @@
   "origin": [
     -9.8162,
     63.835956,
-    -0.47
+    0.6535
   ],
   "width": 16.8,
   "depth": 9.0,
@@ -48,5 +48,15 @@
     5.6,
     7.25
   ],
-  "base_policy": "Shared Occulo party line and Nevill pavement datum retained; metric dimensions estimated from frontal ratios and roof comparison, not a measured survey."
+  "base_policy": "Shared Occulo party line and Nevill pavement datum retained; metric dimensions estimated from frontal ratios and roof comparison, not a measured survey.",
+  "ground_anchor": {
+    "site_xy": [
+      -9.7028,
+      72.235956
+    ],
+    "paving_offset_m": 0.12,
+    "threshold_allowance_m": 0.02,
+    "previous_floor_m": -0.47,
+    "evidence": "Rough shared street plane at main frontage; level floor, not a surveyed datum."
+  }
 }

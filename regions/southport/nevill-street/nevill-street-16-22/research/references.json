@@ -57,6 +57,13 @@
       "accessed": "2026-10-25",
       "capture_date": null,
       "observations": "Loaded flat aerial shows the broad shallow roof as dark charcoal against the adjacent lighter flat roofs and slate hip. Previous uniform pale lead appearance was incorrect. Colour corrected independently of the existing measured roof shape. Exact covering composition cannot be established from these pixels; described as covering rather than asserting lead or bitumen."
+    },
+    {
+      "id": "roof-covering-snag-review",
+      "url": "https://www.google.com/maps/@53.6486546,-3.0053752,74a,35y,39.58t/data=!3m1!1e3",
+      "accessed": "2026-10-26",
+      "capture_date": null,
+      "observations": "Loaded actual 3D view: broad shallow covering is mottled charcoal grey, distinct from regular slate rows on the rear pitch. Added independently generated subtle weathering texture; exact covering material and seam spacing remain unresolved, so no invented tile grid or sheet joints."
     }
   ]
 }

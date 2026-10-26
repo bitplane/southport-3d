@@ -33,3 +33,13 @@ Image.fromarray(np.uint8(np.clip(slate, 0, 255))).save(out / 'slate.png')
 granite=np.array([139,119,111])+rng.normal(0,15,(n,n,1))
 granite+=rng.normal(0,4,(n,n,3))
 Image.fromarray(np.uint8(np.clip(granite,0,255))).save(out/"granite.png")
+
+# Independently authored restrained weathering for the broad charcoal covering.
+# Imagery does not resolve its exact material or sheet joint spacing.
+weather = rng.normal(0,1.0,(n,n))
+for k in range(28):
+ fx,fy=rng.integers(-5,6,2)
+ if fx==fy==0:continue
+ weather += 2.8*np.cos(2*np.pi*(fx*x+fy*y)/n+rng.uniform(0,2*np.pi))/(1+.2*(fx*fx+fy*fy))
+cover=np.array([72,75,78])+weather[:,:,None]
+Image.fromarray(np.uint8(np.clip(cover,0,255))).save(out/'covering.png')

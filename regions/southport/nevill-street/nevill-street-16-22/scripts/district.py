@@ -1,5 +1,7 @@
 """Independent fixed District receivers; no topology from decorative source."""
-import json
+import json,os
+from pathlib import Path
+from southport3d.terrain import GroundControls
 from blender_envelope import Surfaces
 from plan import world,roof
 def surfaces(asset):
@@ -18,7 +20,10 @@ def surfaces(asset):
  q=d['canopy'];a,b=q['start'],q['end'];v=-q['depth'];zi,zo=q['inner_z'],q['outer_z']
  s.quad('glazed canopy',[(a,0,zi),(a,v,zo),(b,v,zo),(b,0,zi)])
  s.quad('canopy underside',[(b,0,zi-.015),(b,v,zo-.015),(a,v,zo-.015),(a,0,zi-.015)])
- for u in (3.4,9.0,15.7):s.box('canopy post',(u-.045,v-.045,0),(u+.045,v+.045,zo),weight=.15,cage=.08)
+ ground=GroundControls(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/ground-controls.json')
+ for u in (3.4,9.0,15.7):
+  X,Y,_=world(d,(u,v,0));foot=ground.height(X,Y)+.12-d['base_z']
+  s.box('canopy post',(u-.045,v-.045,foot),(u+.045,v+.045,zo),weight=.15,cage=.08)
  from courtyard import district
  district(s)
  return s.result

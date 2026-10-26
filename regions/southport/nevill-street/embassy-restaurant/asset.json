@@ -31,5 +31,13 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "May\u2013July2026 observed exterior. Private rear court partly occluded; metric dimensions estimated."
+  "scope": "May\u2013July2026 observed exterior. Private rear court partly occluded; metric dimensions estimated.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
 }

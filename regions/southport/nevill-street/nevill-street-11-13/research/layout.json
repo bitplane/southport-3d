@@ -3,7 +3,7 @@
   "origin": [
     -9.5894,
     80.635956,
-    -0.47
+    0.715
   ],
   "width": 9.67,
   "depth": 11.1,
@@ -88,5 +88,15 @@
       0.82,
       0.8
     ]
-  ]
+  ],
+  "ground_anchor": {
+    "site_xy": [
+      -9.524127499999999,
+      85.47095599999999
+    ],
+    "paving_offset_m": 0.12,
+    "threshold_allowance_m": 0.02,
+    "previous_floor_m": -0.47,
+    "evidence": "Rough shared street plane at main frontage; level floor, not a surveyed datum."
+  }
 }

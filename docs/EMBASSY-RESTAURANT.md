@@ -26,3 +26,5 @@ Final exported Detail, Walk and District have been inspected from the corner, wi
 | District | 68 | 404,456 | 7,348,137 |
 
 The first assembled export audit caught a 16 mm residual placeholder skin across the frontage and a fascia-end contact. Both were removed and the affected assets republished together, including Stanley ground's dependency refresh. Repeated mesh categories are consolidated before baking: this preserves geometry while avoiding hundreds of individually processed source objects.
+
+The level building floor uses the rough street height at the frontage anchor recorded in `research/layout.json`, with a 12 cm paving allowance and 2 cm threshold allowance. These are editable town-model controls, not a surveyed floor datum.

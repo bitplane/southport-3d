@@ -38,7 +38,11 @@
   ],
   "build_inputs": {
     "validate": [
-      "regions/southport/nevill-street/nevill-street-16-22/scripts/check_package.py"
+      "regions/southport/nevill-street/nevill-street-16-22/scripts/check_package.py",
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
     ]
   }
 }

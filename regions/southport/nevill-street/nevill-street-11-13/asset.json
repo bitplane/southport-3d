@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "southport.nevill-street.nevill-street-11-13",
-  "name": "11–13 Nevill Street — Neville Buildings / Empire",
+  "name": "11\u201313 Nevill Street \u2014 Neville Buildings / Empire",
   "region": "southport",
   "area": "nevill-street",
   "status": "researched-exterior-estimated-dimensions",
@@ -32,5 +32,13 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Empire Restaurant / Neville Buildings only, adjoining 3–9 Nevill Street. Current exterior, estimated metric dimensions; concealed rear ground details deferred."
+  "scope": "Empire Restaurant / Neville Buildings only, adjoining 3\u20139 Nevill Street. Current exterior, estimated metric dimensions; concealed rear ground details deferred.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
 }
