@@ -7,6 +7,8 @@ from pathlib import Path
 import bpy
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib'),str(ROOT/'scripts')]
+from southport3d.elevation import Elevations
+FIELD=Elevations(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/london-square.json').surface('london-square-pavement')
 from components import hedge,lantern
 from southport3d.landscape import tree
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
@@ -55,9 +57,9 @@ def ground_height(x,y):
     assert len(hits)==1,(x,y,hits)
     return hits[0]
 for x,y in [(-85,0),(-115,0)]:
-    z,name=ground_height(x,y);assert 'grass' in name and abs(z-(-.0075-.022*y+.45))<.002
+    z,name=ground_height(x,y);assert 'grass' in name and abs(z-(FIELD.height(x,y)+.45))<.002
 for x,y in [(-82,-24.5),(-91,-28.5),(-80,-20.4)]:
-    z,name=ground_height(x,y);assert 'grass' not in name and abs(z-(-.0075-.022*y))<.002
+    z,name=ground_height(x,y);assert 'grass' not in name and abs(z-FIELD.height(x,y))<.002
 
 # Raised grass must remain behind the west retaining wall, not protrude through
 # its exposed outside face. Check exported surfaces at several wall stations.

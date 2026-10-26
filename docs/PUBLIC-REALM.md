@@ -318,3 +318,5 @@ streaming ownership through to Eastbank Street.
 Use [ELEVATION.md](ELEVATION.md) for new slopes, bridge levels and height-rule
 migrations. Existing areas keep their current grades until deliberately migrated;
 do not extrapolate the memorial slope into new streets.
+
+Church-garden ground and rigid furniture anchors share the rough `london-square-pavement` control surface with neighbouring roads. Ground triangles split only at the coarse control breaks. `tools/check_elevation_seams.py` checks all four garden/core/corridor boundaries at road and pavement stations in every published LoD.

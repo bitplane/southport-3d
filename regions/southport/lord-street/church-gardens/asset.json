@@ -44,5 +44,15 @@
   },
   "source_catalog": "research/references.json",
   "scope": "Christ Church lawns and pedestrian forecourt to town-hall access, Lord Street carriageway and pavements, St George\u2019s garden and church approach; Sainsbury\u2019s adjoining frontage belongs to London Square. Church architecture deferred.",
-  "licensing": "See RIGHTS.md. OSM-derived layout attribution retained; no reference imagery embedded."
+  "licensing": "See RIGHTS.md. OSM-derived layout attribution retained; no reference imagery embedded.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/elevation/london-square.json",
+      "regions/southport/elevation/ground-controls.json"
+    ],
+    "validate": [
+      "regions/southport/elevation/london-square.json",
+      "regions/southport/elevation/ground-controls.json"
+    ]
+  }
 }

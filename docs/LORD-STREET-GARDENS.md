@@ -119,3 +119,5 @@ behind the original garden bound. This garden subtracts that exact polygon from
 all surface layers. The older wall, church frontage, roads and other garden
 remain in their existing ownership. A source regression checks that no previous
 paving or grass survives beneath the new owner.
+
+Ground now uses the same rough `london-square-pavement` control surface as its neighbours, split at coarse control breaks. Rigid furniture is anchored to that surface; lawn rises and kerb drops remain relative. All four garden/core/corridor road and pavement seams are covered by exported checks in `tools/check_elevation_seams.py`.

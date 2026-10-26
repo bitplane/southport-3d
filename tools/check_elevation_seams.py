@@ -60,7 +60,20 @@ def main():
                 error=abs((za-field.height(*a))-(zb-field.height(*b))-expected)
                 assert error<.001,(level,name,a,b,za,zb,error)
                 results.append(dict(level=level,seam=name,a=a,b=b,height_a=za,height_b=zb,residual_m=error))
-    out=ROOT.parent/'output/elevation/connected-seams.json';out.parent.mkdir(parents=True,exist_ok=True)
+    # Gardens retain separate ownership but must share the surrounding rough datum.
+    gardens='southport.lord-street.church-gardens'
+    corridor='southport.lord-street.corridor-public-realm'
+    for level in ['detail','walk','district']:
+        garden_tri=triangles(gardens,level)
+        neighbours={key:triangles(key,level) for key in [square,corridor]}
+        for name,x,other,side in [('Christ west',-136,corridor,-1),('Christ east',-73,square,1),('George west',154,square,-1),('George east',218,corridor,1)]:
+            for y in [27,30,38]:
+                a=(x-side*.005,y);b=(x+side*.005,y)
+                za,zb=height(garden_tri,*a),height(neighbours[other],*b)
+                error=abs((za-field.height(*a))-(zb-field.height(*b)))
+                assert error<.001,(level,name,a,b,za,zb,error)
+                results.append(dict(level=level,seam=name,a=a,b=b,height_a=za,height_b=zb,residual_m=error))
+    out=ROOT.parent/'output/elevation/connected-seams.json' ;out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(results,indent=2)+'\n')
     print(f'{len(results)} actual exported seam pairs passed; maximum residual {max(r["residual_m"]for r in results):.8f} m')
 

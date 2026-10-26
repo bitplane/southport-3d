@@ -75,8 +75,10 @@ tm = [material('Tree bark',(.14,.11,.075)), *foliage]
 rows, verticals, placements, walls = [], [], [], []
 
 
-def grade(y):
-    return D['grade']['origin_z'] + D['grade']['dz_dy'] * max(-36,min(36,y))
+from southport3d.elevation import Elevations
+FIELD=Elevations(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/london-square.json').surface('london-square-pavement')
+def grade(x,y):
+    return FIELD.height(x,y)
 
 
 def surface(place, points, mat, priority=0, drop=0):
@@ -124,7 +126,7 @@ def paint(place, points, side, bounds=None):
 
 def wall(place, points, height=.70, brick=False, washed=False):
     factory=continuous_wall if washed else capped_wall
-    mesh=factory([(x,y,grade(y)) for x,y in points],height,.32,'Wall '+place+' boundary')
+    mesh=factory([(x,y,grade(x,y)) for x,y in points],height,.32,'Wall '+place+' boundary')
     ob=mesh.finish([mats['washedbrick' if washed else 'wallbrick' if brick else 'stone']],collections[place+'-furniture'])
     # Vertical masonry uses metres, not a stretched facade atlas.
     uv=ob.data.uv_layers.new(name='Masonry metric repeat')
@@ -150,7 +152,7 @@ def item(place, kind,x,y,yaw=0,scale=(1,1,1)):
         ob=prototypes[kind].copy()
         ob.data=prototypes[kind].data
         collections[place+'-furniture'].objects.link(ob)
-    ob.location=(x,y,grade(y)+(.45 if place=='christ' and kind=='tree' else 0))
+    ob.location=(x,y,grade(x,y)+(.45 if place=='christ' and kind=='tree' else 0))
     ob.rotation_euler.z=math.radians(yaw)
     ob.scale=scale
     ob['evidence']='Street View family; placement/dimensions visually estimated'
@@ -250,7 +252,7 @@ for x,y,yaw in D['lord_street_lamps']['george']:item('george','streetlight',x,y,
 # White flagpole is visible beside the church entrance; neither flag nor text
 # is invented where the reference does not establish it.
 flag=Mesh('Street St George flagpole')
-flag.lathe((163,-5),[(grade(-5),.055),(grade(-5)+7.2,.025)],12)
+flag.lathe((163,-5),[(grade(163,-5),.055),(grade(163,-5)+7.2,.025)],12)
 flag.finish([mats['paving']],collections['george-furniture'])
 
 # Hill Street runs along the eastern garden boundary. The adjacent block owns
@@ -274,11 +276,16 @@ for i,(place,poly,mat,priority,drop) in enumerate(rows):
     mesh=compiled.setdefault((place,mat),Mesh('Surface '+place+' '+mat))
     for poly in fragments:
         if area(poly)>1e-7:
-            mesh.add([(x,y,grade(y)+(drop(x,y) if callable(drop) else drop)) for x,y in poly],[tuple(range(len(poly)))])
+            for tri in tessellate_polygon([[Vector((x,y,0)) for x,y in poly]]):
+                points=[poly[v] if isinstance(v,int) else (v.x,v.y) for v in tri]
+                for lifted in FIELD.lift_triangle(points):
+                    mesh.add([(x,y,z+(drop(x,y) if callable(drop) else drop)) for x,y,z in lifted],[(0,1,2)])
 for place,a,b in verticals:
     mesh=compiled.setdefault((place,'kerb'),Mesh('Surface '+place+' kerb'))
-    mesh.add([(a[0],a[1],grade(a[1])-.12),(b[0],b[1],grade(b[1])-.12),(b[0],b[1],grade(b[1])),(a[0],a[1],grade(a[1]))],[(0,1,2,3)])
-compiled,report=conform(compiled)
+    points=list(FIELD.edge_points(a,b))
+    for a3,b3 in zip(points,points[1:]):
+        mesh.add([(a3[0],a3[1],a3[2]-.12),(b3[0],b3[1],b3[2]-.12),b3,a3],[(0,1,2,3)])
+compiled,report=conform(compiled,preserve_triangles=True)
 for (place,mat),mesh in compiled.items():
     if not mesh.faces:continue
     ob=mesh.finish([mats[mat]],collections[place+'-ground'])

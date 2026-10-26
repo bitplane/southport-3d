@@ -22,7 +22,7 @@
     "origin_z": -0.0075,
     "dz_dy": -0.022,
     "road_drop": 0.12,
-    "status": "Inherited estimated grade; not surveyed."
+    "status": "Legacy recipe datum; replaced for generated surfaces and rigid furniture anchors by the shared london-square-pavement rough control grid."
   },
   "churches": "Christ Church southwest; St George\u2019s United Reformed Church northeast beside Sainsbury\u2019s. Buildings outside this asset.",
   "uncertainty": "OSM gives paths and park envelopes. Widths, furniture spacing, levels, planting and wall heights are visually estimated, usually 1\u20133 m positional uncertainty. Tree forms are canopy proxies. No text invented on unreadable signs.",
@@ -352,5 +352,6 @@
       ]
     ]
   },
-  "lamp_placement_evidence": "July 2026 Street View at 317 and 497 A565, looking both directions: twin unequal swan-neck fittings on both footways, black bases and pale shafts. Positions estimated against church entrances, frontage bays, bus stops and crossings; 2\u20133 m uncertainty, foliage obscures some smaller arms. Tall arm faces carriageway on each side. Existing London Square/extension lamps already use this family; do not change London Street side-road fittings."
+  "lamp_placement_evidence": "July 2026 Street View at 317 and 497 A565, looking both directions: twin unequal swan-neck fittings on both footways, black bases and pale shafts. Positions estimated against church entrances, frontage bays, bus stops and crossings; 2\u20133 m uncertainty, foliage obscures some smaller arms. Tall arm faces carriageway on each side. Existing London Square/extension lamps already use this family; do not change London Street side-road fittings.",
+  "ground_surface": "regions/southport/elevation/london-square.json#london-square-pavement"
 }
