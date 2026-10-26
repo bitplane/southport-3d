@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "southport.pier.section-01",
+  "name": "Southport Pier \u2014 entrance and lake approach",
+  "region": "southport",
+  "area": "pier",
+  "status": "open-pier-reconstruction-estimated-registration",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6506289,
+    -3.0082552
+  ],
+  "site_rotation_from_east_degrees": 148.06834026980724,
+  "components": [
+    "deck",
+    "structure",
+    "fittings"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Pier station 0\u201391.5 m: widened timber entrance and lake approach, structural bays, rails and arches. Nearby restaurant terrace and lower stairs are separate local work; absolute heights remain provisional.",
+  "build_inputs": {
+    "master": [
+      "regions/southport/pier/common/prepare.py",
+      "regions/southport/pier/common/shapes.py",
+      "regions/southport/pier/common/geometry.py",
+      "regions/southport/pier/common/build.py",
+      "regions/southport/pier/common/research/alignment.json"
+    ]
+  },
+  "publication_checks": [
+    "check_package.py"
+  ]
+}

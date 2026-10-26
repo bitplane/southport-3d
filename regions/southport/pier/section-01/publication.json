@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/pier.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 148.06834026980724,
+    "elevation_m": 0
+  },
+  "area_name": "Southport Pier",
+  "status": "Prototype bay geometry; entrance connection pending",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "deck",
+      "name": "Walking deck",
+      "collection": "deck",
+      "ground": true,
+      "support_surface": "southport-pier-deck"
+    },
+    {
+      "id": "structure",
+      "name": "Open pier structure",
+      "collection": "structure"
+    },
+    {
+      "id": "fittings",
+      "name": "Railings and arches",
+      "collection": "fittings"
+    }
+  ],
+  "views": [
+    {
+      "name": "Pier entrance",
+      "position": [
+        45,
+        30,
+        50
+      ],
+      "target": [
+        45,
+        3,
+        0
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Pier .* fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Omit tiny post diamonds, collars, pickets and crown loops; retain primary rail and arch silhouette."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Separate fixed-budget structure."
+      }
+    },
+    {
+      "id": "main",
+      "match": "^(?!Pier .* fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Primary bay dimensions, open trusses, rail bars, deck and crossed arches retained."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent coarse bay receivers and reduced rail/arch topology."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Station-driven envelope, six fixed bays per section, two outer trusses, coarse columns, reduced post cadence and angular arches; never derived from detailed topology.",
+    "max_bytes": 4000000,
+    "max_gpu_bytes": 16000000,
+    "parts": {
+      "deck": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 200,
+        "cage_m": 0.12
+      },
+      "structure": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 5000,
+        "cage_m": 0.16
+      },
+      "fittings": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 5000,
+        "cage_m": 0.16
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      15,
+      4.91,
+      0
+    ],
+    "target": [
+      40,
+      4.91,
+      0
+    ]
+  }
+}
