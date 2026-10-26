@@ -55,3 +55,76 @@ furniture. It must not be
 presented as completing the snag. Ground, accessibility, the two placeholder
 buildings and all three assembled viewer levels still require detailed work and
 visual review.
+
+## Follow-up evidence and provisional metric schedule (26 October 2026)
+
+An actual Google Maps satellite image was inspected at 19z, centred at
+53.64743, -3.0064. The displayed 20 m scale bar is approximately 93 image
+pixels. The broad outer circular motif spans approximately 108 pixels,
+corresponding to 23 m (uncertainty at least 2 m from edge identification and
+screen measurement). The central blue pool spans approximately 29 pixels,
+about 6.2 m (uncertainty at least 1 m). The patterned axial strip appears about
+25–28 pixels wide, roughly 5–6 m; its cells are considerably smaller than the
+present 2 m provisional cells. These measurements describe the image rather
+than a ground survey. The screenshot, including the scale bar, is held privately
+at `../output/diana-massing/reference-satellite.png`.
+
+Stephen Craven's 22 September 2025 photograph was actually inspected. It shows
+at least two low risers around the circular fountain platform and a radial
+break/approach; the much larger surrounding ornament is paving, not an outer
+raised wall. The temporary timber planters are a later layer. The pool surface
+is horizontal and its platform, landing and approaches need a designed connection
+to the sloping road datum, which varies by several tenths of a metre across this
+area. No precise riser heights or compliant ramp gradient have yet been measured.
+
+Actual Street View July 2026, from Eastbank Street, shows the southern pavilion's
+long shallow hipped/faceted roof, dark slender structural framing, arched glazed
+bays and pale low plinth. Actual July 2019 imagery from Lord Street shows rows of
+benches and pale entrance columns and balustrade. The north pavilion and its
+far elevations need closer views. The [Southport Civic Society heritage
+trail](https://www.southporttownscape.org.uk/wp-content/uploads/2023/07/Southport-Lord-Street-trail.pdf)
+describes a cast-iron and glass former Tourist Information pavilion and a
+later complementary pavilion in front of Town Gardens Café. The trail places
+the former across Eastbank Street, so it must not be assumed to identify the
+south pavilion within this snag. The adjacent older
+[classical pavilion](https://britishlistedbuildings.co.uk/101379671-pavilion-in-municipal-gardens-dukes-ward)
+is a separate structure and is not assumed to be either polygonal shelter.
+
+The browser session opened Google 3D but displayed “3D Earth view is not
+available”; actual satellite and street panoramas did display. Alternate
+obliques and the far elevations remain to be investigated. An initial private
+massing prototype is in `../output/diana-massing/` (plan, opposing obliques and
+axial view). It is not a completed or published asset: the prototype disc is
+lifted to remain visible above the existing grade and has no physical edge or
+cutout, the pavilion bodies are solid masses, the old checker is still wrong,
+and Town Hall is absent from that prototype context. These are explicit visual
+comparison limitations, not intended final geometry.
+
+A May 2017 Google Maps photosphere by Jomo, entered at 53.6475958,
+-3.0061926, was inspected in several headings. The north-looking frame shows
+the Town Gardens Café pavilion's pale arched glazed bays, dark posts, shallow
+faceted roof and forecourt; furniture obscures some lower openings. The
+southwest-facing frame shows three shallow fountain risers, a dark inner pool,
+multiple flush concentric bands and the axial checker with narrow alternating
+parallel borders. Another heading shows a long bench row along the Lord Street
+edge, with planted bed behind it and a balustrade interrupted by an entrance.
+These are strong composition evidence, but the photographs do not measure the
+riser heights, unseen ends or rear elevation. Private captures are
+`../output/diana-massing/reference-panorama-2017-{fountain,edge,north}.png`.
+
+Stephen McKay's [2008 Town Gardens Café photograph](https://www.geograph.org.uk/photo/1077067)
+shows the north shelter obliquely at close range. Its pale wall has fan-shaped
+arched glazing above rectangular glazed lower panels, dark narrow structural
+posts, a projecting roof/canopy with dark decorative eaves, and separate
+external canopy posts. The current isolated prototype does not yet capture the
+pale spandrels, individual mullions, canopy supports or doors. The photographed
+sign and café furniture are tenant-period details, not reliable permanent
+features. Private capture: `../output/diana-massing/reference-north-2008.png`.
+
+The [November 2025 Pavilion café photograph](https://standupforsouthport.com/southport-fc-and-southport-fc-foundation-open-new-coffee-shop-in-former-pavilion-cafe-building/)
+shows part of the south pavilion at close range: pale panelled plinth, full-height
+rectangular glazing below semicircular fanlights, dark external posts, scrolling
+canopy brackets and open entrance door. The close view confirms similarities
+with the north pavilion but does not establish identical footprints or plans.
+The July 2026 street view supplies the roof and streetward end. Private capture:
+`../output/diana-massing/reference-south-2025.png`.
