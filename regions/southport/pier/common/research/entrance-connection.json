@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "status": "research-complete-for-plan; elevation-and-tread-count-unresolved; not-published",
+  "scope": "Restaurant terrace and lower promenade beside Silcocks, separate from the timber pier deck.",
+  "observed": [
+    "Broad straight stair flight beside the restaurant, divided by handrails; copper/green ornamental column stands on a circular brick plinth beside its foot.",
+    "An asphalt access ramp runs beside the staircase from the lower parking/concourse toward the promenade. This ramp is observed, not a proposed patch.",
+    "The three apparent low steps in the distant June 2021 view are not established as a separate flight; the closer May 2017 panorama shows a brick plinth. Do not build an invented 20-plus-3 stair arrangement.",
+    "Restaurant has an occupied lower frontage below its upper terrace. Existing neutral placeholder has no modelled lower arcade."
+  ],
+  "sources": [
+    {
+      "id": "terrace-close-2017",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6501659,-3.0086389&heading=15&pitch=0&fov=75",
+      "panoid": "CIHM0ogKEICAgID4876PHg",
+      "capture_date": "2017-05",
+      "attribution": "Jomo, Google Maps user panorama",
+      "coverage": "Close oblique stair, circular plinth, actual access ramp, lower restaurant frontage. People and rails obscure portions of treads."
+    },
+    {
+      "id": "terrace-wide-2021",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.6504947,-3.0089961&heading=75&pitch=4&fov=70",
+      "panoid": "CIHM0ogKEICAgIC2x8u8KA",
+      "capture_date": "2021-06",
+      "attribution": "Images In 360, Google Maps; upload April 2022",
+      "coverage": "Lower concourse, main stair and upper terrace context. Distant, partly occluded."
+    },
+    {
+      "id": "terrace-plan-21z",
+      "url": "https://www.google.com/maps/@53.65026,-3.0084,21z/data=!3m1!1e3",
+      "capture_date": null,
+      "accessed_date": "2026-10-26",
+      "attribution": "Google Maps aerial, Airbus/Maxar imagery",
+      "coverage": "Stair and ramp footprint, circular plinths, restaurant relationship. Right-click geographic points registered from this close view; earlier broader screenshot clicks discarded."
+    }
+  ],
+  "registration": {
+    "frame": "Memorial site XY; yaw 43.5293 degrees from east; estimated aerial wall/roof parallax uncertainty 1 m",
+    "stair_upper_north": [
+      -67.875,
+      318.624
+    ],
+    "stair_upper_south": [
+      -63.318,
+      305.084
+    ],
+    "stair_lower_south": [
+      -68.274,
+      304.572
+    ],
+    "stair_lower_north": [
+      -72.878,
+      317.39
+    ],
+    "western_column": [
+      -73.329,
+      316.436
+    ],
+    "eastern_column": [
+      -63.774,
+      288.476
+    ],
+    "ramp_lower_reference": [
+      -79.367,
+      313.729
+    ],
+    "ramp_upper_reference": [
+      -64.072,
+      290.755
+    ]
+  },
+  "height_evidence": {
+    "current_upper_terrace_local_m": "approximately 3.4 from existing rough ground, not measured",
+    "existing_marine_way_lower_promenade_local_m": 0.3,
+    "existing_lower_control_status": "rough-landing-estimate; uncertainty 0.5 m",
+    "candidate_rise_m": 3.1,
+    "tread_count": "Approximately 18–22 visible/inferred; exact count not established because people, railings and plinth obscure the lower/upper edges. Do not label 20 as measured.",
+    "candidate_riser_range_m": [
+      0.141,
+      0.172
+    ]
+  },
+  "ownership": {
+    "ground_owner": "southport.marine-lake-south.public-realm, with neighbouring Nevill/Marine public-realm boundaries",
+    "restaurant_placeholder": "southport.marine-lake-south.frontage-placeholders/way-167319677",
+    "current_defect": "The generic south-mainland control grid places upper terrace AND lower concourse at roughly 3.3–3.45m. Lowering only the stair footprint would produce a pit and leave the lower frontage and approaching paths at the upper level.",
+    "required_change": "Separate bounded upper terrace, actual ramp, lower concourse and stair footprint. Cut former ground exactly; lower restaurant foundations/arcade ownership must follow the local lower surface. Connect the lower promenade under the pier to the existing marine-lower-promenade level without altering the independent pier deck."
+  },
+  "missing_evidence_blocker": [
+    "A clear view permitting the complete tread count, including the partly hidden first/last tread. Current count is a range, and the earlier supposed extra lower flight was disproved by closer imagery.",
+    "A reliable lower-concourse/upper-terrace height difference or one measured riser and verified count. The existing 0.3 m lower control and 3.4 m upper grid are both estimates; their difference is not an independent observation.",
+    "A confirmed bounded tie to adjacent lower park/path levels: current coarse ground elsewhere around the concourse also follows the elevated road, so a rectangular low patch would create unsupported cliffs or require invented transition slopes. This must be an explicit local ground-ownership repair, not hidden by a ramp or a detailed raster reconstruction."
+  ],
+  "next_action": "Obtain a clear stair photograph/count and one height reference or locally measured riser. Then author simple named landings and the observed access ramp, adjust only their bounded adjoining lower route, and check above/below-pier walking and neighbouring seams. Full pier remains published separately."
+}
