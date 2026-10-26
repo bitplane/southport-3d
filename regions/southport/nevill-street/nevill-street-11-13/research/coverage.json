@@ -22,7 +22,7 @@
       "street-current",
       "google-3d"
     ],
-    "observed": "Party wall abuts 3–9 Nevill; main roof rises above neighbour.",
+    "observed": "Party wall abuts 3\u20139 Nevill; main roof rises above neighbour.",
     "missing": "Concealed construction not represented."
   },
   "rear": {
@@ -56,5 +56,15 @@
     "Mapillary nearby image faces opposite; no usable Empire rear coverage found.",
     "Cable panorama resolved to different private courtyard; not used as Empire evidence.",
     "Your Southport current restaurant article found; image CDN download rejected, no unseen photograph used."
-  ]
+  ],
+  "roof_junction_recheck": {
+    "date": "2026-10-26",
+    "sources": [
+      "street-gable-close",
+      "google-3d-close",
+      "roof-junction-recheck"
+    ],
+    "observed": "Current July2026 Street View displayed and inspected. Actual 3D roof viewed from rear and passage-side obliques; saved close orbit views cover both sides, front, rear and overhead. Front dormer height ratios and roof endpoint estimates recorded in measurements.json.",
+    "missing": "No survey of roof falls or concealed valley/flashings; Street View cannot see rear dormer joints. Photogrammetry is too coarse for exact sheet/tile seams."
+  }
 }

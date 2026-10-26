@@ -56,6 +56,63 @@ for u,w,bottom,height,cols in windows:
       hit,point,n,i,o,M=bpy.context.scene.ray_cast(deps,p,direction,distance=1)
      assert hit and o.name.startswith('Glazing '),(u,zz,q,o.name if o else None,o.data.materials[o.data.polygons[i].material_index].name if o else None,list(point))
      probes+=1
+# The previous closed-slab/coplanar tests accepted warped roofs and arbitrary
+# pentagonal back caps. Check the actual interface contract as well as solidity.
+from plan import attachments,attachment_faces,attachment_cheeks,roof_height,world,hip_ridge_segments
+from mathutils.bvhtree import BVHTree
+junctions=[]
+for spec in attachments(d):
+ name,centre,half,front,eave,peak,fall=spec
+ ob=bpy.data.objects['Shell roof '+('central gable hood' if name=='central gable' else name)]
+ tree=BVHTree.FromObject(ob,deps);contacts=[]
+ for label,points in attachment_faces(d,spec):
+  a,b,c=map(Vector,points[:3]);normal=(b-a).cross(c-a).normalized()
+  assert max(abs((Vector(p)-a).dot(normal)) for p in points)<1e-5,(label,'warped roof plane')
+  for P,Q in zip(points,points[1:]+points[:1]):
+   if all(abs(p[2]-.07-roof_height(d,p[0],p[1]))<1e-7 for p in (P,Q)):
+    for t in (0.,.25,.5,.75,1.):
+     p=tuple(P[k]+t*(Q[k]-P[k]) for k in range(3))
+     assert abs(p[2]-.07-roof_height(d,p[0],p[1]))<1e-7,(label,'valley leaves hip')
+     for dz in (0.,-.07):
+      q=Vector(world(d,(p[0],p[1],p[2]+dz)));hit=tree.find_nearest(q)
+      assert hit[0] is not None and hit[3]<.0002,(label,'export-source roof does not meet hip',hit[3])
+     contacts.append(p)
+  assert all(p[2]-.07>=roof_height(d,p[0],p[1])-1e-7 for p in points),(label,'roof penetrates exposed hip')
+ assert contacts and max(p[1] for p in contacts)>front+.5,(name,'missing return into hip')
+ assert any(p[0]<centre-.05 for p in contacts) and any(p[0]>centre+.05 for p in contacts),(name,'missing side valley')
+ for label,points in attachment_cheeks(d,spec):
+  for p in points:
+   lower=roof_height(d,p[0],p[1]);upper=eave-fall*(p[1]-front)-.07
+   assert upper>=lower-1e-7,(label,'inverted cheek')
+   assert min(abs(p[2]-lower),abs(p[2]-upper))<1e-7,(label,'detached cheek boundary')
+ junctions.append({'name':name,'contact_samples':len(contacts),'rear_contact_m':max(p[1] for p in contacts)})
+
+for A,B in hip_ridge_segments(d):
+ for t in (.01,.25,.5,.75,.99):
+  u,v,z=(A[k]+t*(B[k]-A[k]) for k in range(3))
+  for name,c,h,v0,e,peak,fall in attachments(d):
+   if c-h<=u<=c+h and v>=v0:
+    roof=peak-abs(u-c)*(peak-e)/h-fall*(v-v0)
+    assert roof<z-.10,(name,'hip cap crosses dormer junction')
+
+# Independent District receivers must meet the cheeks at the omitted slab's
+# underside; using the detailed top surface here opened visible 7 cm slots.
+from district import surfaces
+from mathutils import Matrix
+ox,oy,oz=d['origin']
+inverse=Matrix(((.0135,-1,0,ox),(1,-.02087,0,oy),(0,0,1,oz),(0,0,0,1))).inverted()
+receivers=surfaces(ROOT)['roof']
+for name,c,h,v0,e,peak,fall in attachments(d):
+ returns=[f for f in receivers if f['name'].startswith(name+' stone front return ')]
+ assert len(returns)==4,(name,'District missing front depth returns')
+ pitches=[f for f in receivers if f['name'].startswith(name+' ') and ' pitch ' in f['name']]
+ assert pitches,(name,'District missing roof')
+ for face in pitches:
+  for point in face['vertices']:
+   p=inverse@Vector(point)
+   expected=peak-abs(p.x-c)*(peak-e)/h-fall*(p.y-v0)-.07
+   assert abs(p.z-expected)<.00003,(name,'District roof detached from cheek plane')
+
 assert all(im.packed_file for im in bpy.data.images if im.source=='FILE')
-report={'triangles':triangles,'window_probes':probes,'checks':['finite float32 geometry','nondegenerate triangles','closed outward hip roof','real street window apertures','all architectural meshes and non-iron ornament overlap regression','packed authored textures'],'limitations':['Decorative iron-loop welds remain subject to the exported audit; three tiny self-overlap groups are recorded in review.json. Other architecture and ornament are checked together.']}
+report={'triangles':triangles,'roof_junctions':junctions,'window_probes':probes,'checks':['finite float32 geometry','nondegenerate triangles','closed outward hip roof','planar dormer pitches and sampled actual mesh to hip valley contacts','District roof/cheek attachment and front depth returns','hip caps stop at dormer junctions','real street window apertures','all architectural meshes and non-iron ornament overlap regression','packed authored textures'],'limitations':['Decorative iron-loop welds remain subject to the exported audit; three tiny self-overlap groups are recorded in review.json. Other architecture and ornament are checked together.']}
 (ROOT/'research/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(report)

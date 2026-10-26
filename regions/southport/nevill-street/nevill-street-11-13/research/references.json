@@ -7,7 +7,7 @@
       "capture_date": "2026-07",
       "accessed": "2026-10-25",
       "credit": "Google",
-      "use": "Current front, rounded corner, windows, signage and neighbour gap; heading 218–245 degrees."
+      "use": "Current front, rounded corner, windows, signage and neighbour gap; heading 218\u2013245 degrees."
     },
     {
       "id": "street-2019",
@@ -53,7 +53,7 @@
       "capture_date": null,
       "accessed": "2026-10-25",
       "credit": "Food Standards Agency",
-      "use": "Current address 11–13 Nevill Street; not geometric evidence."
+      "use": "Current address 11\u201313 Nevill Street; not geometric evidence."
     },
     {
       "id": "sefton",
@@ -62,7 +62,7 @@
       "capture_date": null,
       "accessed": "2026-10-25",
       "credit": "Sefton Council",
-      "use": "11–13 Nevill Street identified as Neville Buildings."
+      "use": "11\u201313 Nevill Street identified as Neville Buildings."
     },
     {
       "id": "mapillary-context",
@@ -99,6 +99,15 @@
       "accessed": "2026-10-25",
       "credit": "Google imagery",
       "use": "Four close oblique headings resolve small hip plateau, long front pitched hood, four capped stacks, two side rooflights, five rear roof windows and pale rear masonry. Wider block orbit was insufficient for these details."
+    },
+    {
+      "id": "roof-junction-recheck",
+      "url": "https://www.google.com/maps/@53.6492081,-3.0064092,85a,35y,81.6h,39.57t/data=!3m1!1e3",
+      "title": "Actual 3D roof recheck from rear and passage side",
+      "capture_date": null,
+      "accessed": "2026-10-26",
+      "credit": "Google imagery",
+      "use": "Actual GPU-rendered imagery inspected and orbited; confirms hip/plateau and returning roof arrangement. Close prior orbit/overhead captures re-examined for ridge endpoints. Zoom controls repeatedly entered Street View at 85a, so finer junction measurements use saved close captures; no claim that current 85a imagery resolves flashing."
     }
   ],
   "rights": "Links and descriptive observations only. Captures private outside Git. Textures and geometry independently authored; source imagery is not redistributed."

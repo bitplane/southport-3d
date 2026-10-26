@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_RO
 from southport3d.geometry import Mesh,face_matrix,text_object
 from southport3d.conform import conform
 from components import rect,cut,arch,ring,profile,leaf
-from plan import world,front_line,footprint,roof_faces,gable_profile,roof_height,hood_faces,hood_cheeks
+from plan import world,front_line,footprint,roof_faces,gable_profile,roof_height,hood_faces,hood_cheeks,attachments,attachment_faces,attachment_cheeks,hip_ridge_segments
 D=json.loads((ROOT/'research/layout.json').read_text());W=D['width'];L=D['depth'];E=D['cornice'];DETAIL=D['phase']=='detail'
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC';C={}
@@ -181,6 +181,22 @@ party=T@face_matrix((0,L,0),(-1,0,0));skin('shared south party',0,L,0,D['roof_ea
 # solid brick silhouette, not as coplanar plates on top of the roof.
 def slab(name,faces,material=tile):
  m=Mesh('Shell roof '+name);edges={}
+ # Insert exact clipping junctions before slab construction. Unlike ground
+ # conforming, no grid snap may move a roof/cheek contact off its plane.
+ vertices=list({tuple(p) for f in faces for p in f});joined=[]
+ for f in faces:
+  boundary=[]
+  for A,B in zip(f,f[1:]+f[:1]):
+   a,b=Vector(A),Vector(B);delta=b-a;length=delta.length_squared;hits=[(0,A)]
+   for P in vertices:
+    t=(Vector(P)-a).dot(delta)/length
+    if 1e-8<t<1-1e-8 and (Vector(P)-a-t*delta).length<1e-7:hits.append((t,P))
+   boundary.extend(p for _,p in sorted(hits))
+  if len(boundary)==len(f):joined.append(f)
+  else:
+   centre=tuple(sum(p[k] for p in f)/len(f) for k in range(3))
+   joined.extend([centre,A,B] for A,B in zip(boundary,boundary[1:]+boundary[:1]))
+ faces=joined
  for f in faces:
   m.add(f,[tuple(range(len(f)))]);m.add([(x,y,z-.07) for x,y,z in f],[tuple(reversed(range(len(f))))])
   for A,B in zip(f,f[1:]+f[:1]):edges.setdefault(tuple(sorted((A,B))),[]).append((A,B))
@@ -200,12 +216,16 @@ slab('central gable hood',[points for _,points in hood_faces(D)])
 for name,points in hood_cheeks(D,underside=True):
  m=Mesh('Architecture '+name);m.add(points,[tuple(range(len(points)))]);finish(m,'roof',brick)
 for u in (1.25,7.35):
- p=[(u-.48,12.03),(u+.48,12.03),(u+.48,12.88),(u,13.18),(u-.48,12.88)]
- poly('Architecture small dormer',p,.025,stone,'roof',F,.80)
+ p=[(u-.48,12.03),(u+.48,12.03),(u+.48,13.40),(u,13.75),(u-.48,13.40)]
+ poly('Architecture small dormer front',p,.025,stone,'roof',F,.34)
+ spec=attachments(D)[1 if u==1.25 else 2]
+ slab(spec[0],[points for _,points in attachment_faces(D,spec)],tile)
+ for name,points in attachment_cheeks(D,spec):
+  m=Mesh('Architecture '+name);m.add(points,[tuple(range(len(points)))]);finish(m,'roof',tile)
  # Dark glazing sits in a visible projected frame; detail gable recessed below.
- box('Architecture dormer glazing',(u,12.47,.045),(.65,.48,.025),glass,'roof')
- for q in (-1,1):box('Architecture dormer sash',(u+q*.31,12.47,.08),(.045,.48,.04),white,'roof')
- for zz in (12.25,12.47,12.70):box('Architecture dormer rail',(u,zz,.08),(.575,.035,.04),white,'roof')
+ box('Architecture dormer glazing',(u,12.70,.045),(.65,.94,.025),glass,'roof')
+ for q in (-1,1):box('Architecture dormer sash',(u+q*.31,12.70,.08),(.045,.94,.04),white,'roof')
+ for zz in (12.25,12.70,13.15):box('Architecture dormer rail',(u,zz,.08),(.575,.035,.04),white,'roof')
 # Large opening in the main front gable is represented as a recessed panel in
 # detail phase; the massing retains its height for the first comparison.
 box('Architecture high gable window',(c,12.91,-.145),(.94,.48,.035),glass,'roof')
@@ -285,7 +305,7 @@ if DETAIL:
  box('Architecture gable keystone',(c,13.81,.21),(.28,.29,.31),stone,'roof')
  m=Mesh('Fine gable peak ball');m.lathe((c,0),[(15.44,.015),(15.49,.065),(15.56,.070),(15.62,.01)],segments=12);finish(m,'roof',stone)
  # Gable cap with stepped raking cornice; current gable has no chimney/spire.
- for u,zpeak,half,base,part in [(c,15.45,1.10,14.66,'roof'),(1.25,13.18,.53,12.87,'roof'),(7.35,13.18,.53,12.87,'roof')]:
+ for u,zpeak,half,base,part in [(c,15.45,1.10,14.66,'roof'),(1.25,13.75,.53,13.39,'roof'),(7.35,13.75,.53,13.39,'roof')]:
   for A,B in [((u-half,base),(u,zpeak)),((u,zpeak),(u+half,base))]:
    du=B[0]-A[0];dz=B[1]-A[1];ln=math.hypot(du,dz);ox=-dz/ln*.06;oz=du/ln*.06
    pp=[(A[0]-ox,A[1]-oz),(B[0]-ox,B[1]-oz),(B[0]+ox,B[1]+oz),(A[0]+ox,A[1]+oz)];from southport3d.planar import halfplane;pp=halfplane(pp,(u,-100),(u,100),inside=A[0]<u);poly('Architecture gable raking moulding',pp,.24,clean,part,thickness=.20)
@@ -391,7 +411,7 @@ if DETAIL:
   finish(m,'roof',lead)
  # Narrow capped ridge strips identify the real hip boundaries.
  m=Mesh('Fine tiled hip ridges')
- for a,b in [((0,0,e),(i,i,t)),((W-.2343,.2343,e+(t-e)*.2343/i),(W-i,i,t)),((W,L,e),(W-i,L-i,t)),((0,L,e),(i,L-i,t))]:m.tube([(a[0],a[1],a[2]+.04),(b[0],b[1],b[2]+.04)],.065,sides=8)
+ for a,b in hip_ridge_segments(D):m.tube([(a[0],a[1],a[2]+.04),(b[0],b[1],b[2]+.04)],.065,sides=8)
  finish(m,'roof',tile)
 
 # Capped stacks are visible in the close 48 m orbit, though hidden from the

@@ -54,7 +54,7 @@
   "front": {
     "source": "street-current",
     "private_capture": "../references/nevill-empire/front-2026-centred.png",
-    "method": "Rectified composition from archive drawing cross-checked against current oblique photograph. Shared lower balcony level aligns neighbouring 3–9 first windows; five upper centres spread across flat 8.87 m wall.",
+    "method": "Rectified composition from archive drawing cross-checked against current oblique photograph. Shared lower balcony level aligns neighbouring 3\u20139 first windows; five upper centres spread across flat 8.87 m wall.",
     "dimensions_m": {
       "lower_sill": 4.35,
       "lower_head": 6.93,
@@ -117,6 +117,68 @@
         ]
       ],
       "uncertainty_m": 0.6
+    },
+    "junction_correction": {
+      "date": "2026-10-26",
+      "snag": "ad6d72781b9344aca5e8ba0dc6a5fc1e",
+      "current_street_capture": "../references/empire-roof-street-current.png",
+      "front_pixel_inputs": {
+        "central_ridge": [
+          342,
+          260
+        ],
+        "central_cornice_height_px": 445,
+        "small_north_ridge": [
+          619,
+          355
+        ],
+        "small_north_cornice_height_px": 445
+      },
+      "height_calculation": "(445-355)/(445-260) = 0.486. Applied to retained 3.30 m central peak above cornice gives 1.60 m small peak above cornice: adopted 13.75 m versus old 13.18 m. Panorama perspective and moulding edges limit precision; not surveyed dimensions.",
+      "height_uncertainty_m": 0.3,
+      "overhead_capture": "../references/nevill-empire/roof-plan-close.png",
+      "overhead_inputs": {
+        "front_south": [
+          647,
+          175
+        ],
+        "front_north": [
+          398,
+          398
+        ],
+        "rear_south": [
+          883,
+          430
+        ],
+        "central_front_ridge": [
+          531,
+          250
+        ],
+        "central_rear_ridge": [
+          619,
+          351
+        ],
+        "north_small_front_ridge": [
+          456,
+          346
+        ],
+        "north_small_rear_ridge": [
+          500,
+          390
+        ],
+        "south_small_front_ridge": [
+          615,
+          201
+        ],
+        "south_small_rear_ridge": [
+          643,
+          251
+        ]
+      },
+      "overhead_calculation": "Using the recorded 9.67 m frontage and 11.10 m depth affine basis, central rear=(u4.05,v3.59), north small rear=(u7.35,v1.98), south small rear=(u1.58,v1.72). Elevated ridges shift relative to eaves, so retain observed facade centres u4.35,7.35,1.25 and allow approximately 0.6 m uncertainty. No forced centring of the large hood.",
+      "plan_uncertainty_m": 0.6,
+      "construction": "Planar tiled roofs, shallow stone fronts, tiled side cheeks. Constant transverse pitches; inferred longitudinal falls join each different host-hip height. Central fall 0.18968 m/m; small south 0.49, north 0.18. Analytic intersections give central rear3.90m, south small2.116m, north small2.045m. Seven-centimetre vertical roof assembly thickness. Hidden flashings and exact structural roof build-up unresolved.",
+      "observed_vs_inferred": "Tiled returning roofs and relative front silhouettes are observed. Precise falls, cheek material at obscured patches, underside construction and the analytic junction shape are coherent estimates constrained by those observations. Photogrammetry does not resolve flashing detail."
     }
   },
   "registration": {
@@ -125,6 +187,6 @@
       80.635956,
       -0.47
     ],
-    "basis": "Exact terminal frontage datum of neighbouring 3–9 Nevill. Shared affine shear retained."
+    "basis": "Exact terminal frontage datum of neighbouring 3\u20139 Nevill. Shared affine shear retained."
   }
 }

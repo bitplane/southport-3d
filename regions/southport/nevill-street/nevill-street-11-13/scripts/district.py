@@ -1,7 +1,7 @@
 """Bounded exterior receivers: architecture appearance is baked, never copied."""
 import json
 from blender_envelope import Surfaces
-from plan import world,front_line,roof_faces,gable_profile,hood_faces,hood_cheeks
+from plan import world,front_line,roof_faces,gable_profile,hood_faces,hood_cheeks,attachments,attachment_faces,attachment_cheeks
 
 def surfaces(asset):
  d=json.loads((asset/'research/layout.json').read_text());w=d['width'];l=d['depth'];r=d['corner_radius'];e=d['roof_eave'];s=Surfaces(['frontage','rear','roof'],lambda p:world(d,p));s.part='frontage'
@@ -17,18 +17,27 @@ def surfaces(asset):
  c=d['gable_centre'];a=c-1.05;b=c+1.05
  s.quad('central gable front',[(a,0,d['cornice']),(b,0,d['cornice']),(b,0,14.65),(a,0,14.65)],weight=2)
  s.triangle('central gable peak',[(a,0,14.65),(b,0,14.65),(c,0,15.45)],weight=2)
- for name,points in hood_faces(d)+hood_cheeks(d):
-  (s.triangle if len(points)==3 else s.quad)(name,points)
+ attachment(s,d,attachments(d)[0])
  for u,v,z0,z1,ww,ll in d['stacks']:
   s.box('capped chimney',(u-ww/2-.09,v-ll/2-.09,z0),(u+ww/2+.09,v+ll/2+.09,z1+.18))
  for u in (1.25,7.35):
-  s.quad('dormer front',[(u-.48,0,d['cornice']),(u+.48,0,d['cornice']),(u+.48,0,12.88),(u-.48,0,12.88)])
-  s.triangle('dormer peak',[(u-.48,0,12.88),(u+.48,0,12.88),(u,0,13.18)])
-  v=.775;z=e+(d['roof_top']-e)*v/d['roof_inset']
-  s.quad('dormer left cheek',[(u-.48,v,z),(u-.48,0,d['cornice']),(u-.48,0,12.88),(u-.48,v,12.88)])
-  s.quad('dormer right cheek',[(u+.48,0,d['cornice']),(u+.48,v,z),(u+.48,v,12.88),(u+.48,0,12.88)])
-  s.quad('dormer back',[(u+.48,v,z),(u-.48,v,z),(u-.48,v,12.88),(u+.48,v,12.88)])
-  s.triangle('dormer back peak',[(u+.48,v,12.88),(u-.48,v,12.88),(u,v,13.18)])
-  s.quad('dormer left rake',[(u-.48,0,12.88),(u,0,13.18),(u,v,13.18),(u-.48,v,12.88)])
-  s.quad('dormer right rake',[(u,0,13.18),(u+.48,0,12.88),(u+.48,v,12.88),(u,v,13.18)])
+  s.quad('dormer front',[(u-.48,0,d['cornice']),(u+.48,0,d['cornice']),(u+.48,0,13.40),(u-.48,0,13.40)])
+  s.triangle('dormer peak',[(u-.48,0,13.40),(u+.48,0,13.40),(u,0,13.75)])
+  spec=attachments(d)[1 if u==1.25 else 2]
+  attachment(s,d,spec)
  return s.result
+
+def attachment(s,d,spec):
+ # The distant roof is a single sheet at the detailed slab underside. This
+ # joins the same cheek and hip endpoints without a floating 7 cm gap; the
+ # atlas projects the tiled outer surface across that omitted thickness.
+ for name,points in attachment_faces(d,spec):
+  points=[(x,y,z-.07) for x,y,z in points]
+  for k in range(1,len(points)-1):s.triangle(name+' '+str(k),[points[0],points[k],points[k+1]])
+ for name,points in attachment_cheeks(d,spec):
+  for k in range(1,len(points)-1):s.triangle(name+' '+str(k),[points[0],points[k],points[k+1]])
+ name,c,h,v0,eave,peak,fall=spec
+ profile=[(c+h,d['cornice']),(c+h,eave),(c,peak),(c-h,eave),(c-h,d['cornice'])]
+ for i,(a,b) in enumerate(zip(profile,profile[1:])):
+  def back(p):return(p[0],v0,p[1]-(.07 if p[1]>d['cornice'] else 0))
+  s.quad(name+' stone front return '+str(i),[(a[0],0,a[1]),back(a),back(b),(b[0],0,b[1])])

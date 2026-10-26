@@ -74,13 +74,14 @@ runtime checks and their limitations.
 
 ## Published review
 
-The current Detail and Walk exports each contain 49,035 triangles and total
-7,399,048 bytes, with 12,765,442 bytes estimated GPU storage. District contains
-198 triangles, totals 500,008 bytes, and uses an estimated 6,316,755 GPU bytes.
+The current Detail and Walk exports each contain 49,177 triangles and total
+7,433,232 bytes, with 12,796,278 bytes estimated GPU storage. District contains
+374 triangles, totals 543,212 bytes, and uses an estimated 6,343,350 GPU bytes.
 The source validator passes. The complete exported native overlap scan across
 this asset, 3–9 Nevill, the remaining placeholders and both adjoining ground
 assets finds no cross-asset overlaps involving Empire. Only the documented
-iron-loop weld group and four float32 District gable-edge slivers remain.
+iron-loop weld group remains in the 2026-10-26 scan; District has no findings
+touching Empire.
 
 Actual exported Detail, Walk and District were inspected from front and rear
 views after the close-orbit roof correction. Private review captures are in
@@ -88,3 +89,49 @@ views after the close-orbit roof correction. Private review captures are in
 `/reviews/southport.nevill-street.nevill-street-11-13/index.html`.
 
 The level floor is registered to the rough street height at the frontage anchor in `research/layout.json`; 12 cm paving and 2 cm threshold allowances are retained. This is an editable town-model datum, not a surveyed floor level.
+
+## Roof junction correction — 26 October 2026
+
+Snag `ad6d72781b9344aca5e8ba0dc6a5fc1e` exposed construction errors that the
+old closed-slab checks missed. The central hood had warped quadrilateral pitches,
+and the small dormers were short solid pentagonal blocks. The hip caps also
+continued through their roof junctions.
+
+July 2026 Street View was revisited, actual Google 3D orbited from rear and
+passage-side directions, and the saved close overhead and four obliques were
+re-examined. Pixel inputs and affine calculations are retained in
+`research/measurements.json`. The small ridge/cornice height ratio is about 0.49
+of the central gable, versus 0.31 in the previous model: the small peaks are now
+13.75 m, with 13.40 m shoulders and taller sash fronts. This remains an estimate
+with about 0.3 m height uncertainty. The overhead ridge returns suggest roughly
+1.7–2.0 m depth, with about 0.6 m uncertainty from parallax and photogrammetry.
+
+All three returning roofs now use planar pitches, shallow fronts and separate
+cheeks. Their undersides intersect the actual hip planes, retaining asymmetric
+valleys and the observed offset central gable. Small roof returns are tiled.
+The different longitudinal falls are inferred to join the different host-hip
+heights; they are not measurements of concealed structure. Main hip, footprint,
+central facade position and the corrected floor datum are retained. Hidden
+flashing details remain unresolved.
+
+New regressions check plane flatness, both valley sides against the actual roof
+mesh, cheek boundary attachment and ridge-cap clearance. The final master passes
+all 1,101 glazing probes, closed-shell and architecture/non-iron overlap checks.
+Front-left, front-right, rear roof, overhead and overview renders were inspected.
+The published native audit under `build/empire-junction-audit/` checks all three
+levels together with 3–9 Nevill, adjoining ground and placeholders. No cross-asset
+findings touch Empire; District has no Empire findings. The unchanged decorative
+iron welds account for 41 triangle pairs, summed pair area 0.000409 m², in each
+of Detail and Walk. These results do not constitute a whole-town overlap audit.
+
+The final assembled viewer was checked at the saved snag camera, from both front
+roof obliques and from a low street position. Private captures are
+`../references/empire-junction-final-*.png`. Detail and forced Walk use identical
+export hashes and share the runtime tile labelled Detail; the separate District
+tile was verified as loaded. District uses a single roof sheet at the detailed
+slab underside, plus front depth returns, to keep its cheeks and roof connected;
+its former thin slots were caught and repaired during this review. The 374-triangle
+envelope remains within the original fixed budgets and atlas sizes. Close District
+textures remain deliberately coarse, and concealed flashing/structural details
+and precise roof falls remain estimates. The native scan was repeated after the
+District repair with the same Empire findings described above.
