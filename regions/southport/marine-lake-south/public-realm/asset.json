@@ -36,7 +36,9 @@
     "cell-21-ground",
     "cell-22-ground",
     "venetian-ground",
+    "venetian-lower-ground",
     "lake-water",
+    "venetian-structure",
     "shore-walls"
   ],
   "lods": [
@@ -52,7 +54,7 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Provisional block plan from Duke Street and West Street through Kings Gardens, the southern Marine Lake, Princes Park and west Ocean Plaza. Widths \u00b11\u20132 m, footprints \u00b11\u20133 m and heights \u00b12\u20133 m; no surveyed levels. Flat building tops are height bounds. Pier, ride equipment, detailed balustrades and small garden features are deferred.",
+  "scope": "Provisional south Marine Lake and seaward block plan with a researched Venetian Bridge and two island landforms. Footprints, gates, bridge levels and planting remain estimates; exact lamp fittings and hidden structure are incompletely documented.",
   "licensing": "OSM contributor geometry under ODbL1.0; reference photographs linked only.",
   "build_inputs": {
     "master": [

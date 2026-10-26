@@ -5,6 +5,7 @@ import numpy as np
 R=Path(__file__).resolve().parents[5];sys.path[:0]=[str(R/'tools'),str(R/'regions/southport/lord-street/corridor-public-realm/scripts')]
 from audit_published_coplanar import primitives
 from plan_geometry import Plan
+from southport3d.elevation import Elevations
 D=json.load(open(R/'regions/southport/marine-lake-south/public-realm/research/layout.json'));cat=json.load(open(R/'dist/catalog.json'));P=Plan()
 def area(g):return sum(abs(sum(x*y2-x2*y for (x,y),(x2,y2)in zip(t,t[1:]+t[:1])))/2 for t in P.triangles(g))
 expected=area(P.difference(P.polygons([D['lake_outline']]),P.polygons(D['lake_islands'])))
@@ -23,7 +24,8 @@ for level in ['detail','walk','district']:
     assert not part.get('ground')
     for t,meta in primitives(R/'dist'/part['levels'][level]['uri'],a):rows.append(t)
  t=np.concatenate(rows);xy=np.stack([t[:,:,0]*c-t[:,:,2]*s,-t[:,:,0]*s-t[:,:,2]*c],axis=2);u=xy[:,1]-xy[:,0];v=xy[:,2]-xy[:,0];det=u[:,0]*v[:,1]-u[:,1]*v[:,0];actual=float(abs(det).sum()/2);assert abs(actual-expected)<.5,(expected,actual)
- assert float(abs(t[:,:,1]-.6).max())<1e-5
+ water=Elevations(R/'regions/southport/elevation/marine-lake-south.json').surface('south-water').height(-300,400)
+ assert float(abs(t[:,:,1]-water).max())<1e-5
  count=0
  for x in np.arange(-515,1390,10):
   for y in np.arange(325,930,10):

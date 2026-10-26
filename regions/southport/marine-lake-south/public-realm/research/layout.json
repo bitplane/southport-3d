@@ -19588,14 +19588,14 @@
     ]
   ],
   "budgets": {
-    "triangles_per_level": 600000,
-    "download_bytes_per_level": 30000000,
-    "gpu_bytes_per_level": 50000000,
+    "triangles_per_level": 650000,
+    "download_bytes_per_level": 60000000,
+    "gpu_bytes_per_level": 85000000,
     "ground_triangles_per_level": 590000,
-    "structure_triangles_per_level": 40000,
+    "structure_triangles_per_level": 500000,
     "terrain_basis": "Measured 5 m regional lattice, twelve 2.5 m and four 1.25 m bounded refinements selected by a 0.25 m native-road error ceiling. Fixed geography budget independent of building detail; measured terrain costs more than the old planar estimates."
   },
-  "limits": "Measured EA ground represented on a bounded mesh; map footprint positions remain provisional. Water level, sharp retaining-wall breaks, Funland steps and building thresholds remain to be reconciled. Venetian deck follows DSM samples, with estimated 0.30 m structural depth and 1.10 m rail height; detailed balustrades deferred.",
+  "limits": "Rough editable ground controls, fixed shared water datum, bounded estimated Venetian shore transitions and an independently profiled bridge. The two islands, bank planting, supports, gate location and lamp states remain visual estimates; exact levels and hidden structure are not surveyed.",
   "formal_shoreline": [
     [
       64.457,
@@ -20098,5 +20098,13 @@
   "elevation_surface": "south-mainland",
   "elevation_surfaces_by_part": {
     "venetian-ground": "south-venetian"
+  },
+  "venetian_structure_budgets": {
+    "detail_triangles": 450000,
+    "walk_triangles": 210000,
+    "district_triangles": 30000,
+    "district_download_bytes": 4000000,
+    "district_gpu_bytes": 8000000,
+    "note": "Open fixed-count District posts, rails and principal supports; no photographic atlas."
   }
 }

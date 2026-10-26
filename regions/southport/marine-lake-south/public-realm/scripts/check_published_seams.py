@@ -21,8 +21,9 @@ for level in ['detail','walk','district']:
      tris.append(tri);labels.extend([(asset['id'],part['id'],meta['node'])]*len(tri))
    if asset['id']in own:
     values=np.concatenate(values)
-    if level=='detail':baseline[(asset['id'],part['id'])]=values
-    else:assert np.array_equal(values,baseline[(asset['id'],part['id'])]),(level,asset['id'],part['id'],'differentgeometry')
+    if part.get('ground'):
+     if level=='detail':baseline[(asset['id'],part['id'])]=values
+     else:assert np.array_equal(values,baseline[(asset['id'],part['id'])]),(level,asset['id'],part['id'],'different ground geometry')
     data=part['levels'][level];metrics['triangles']+=data['triangles'];metrics['bytes']+=data['bytes'];metrics['gpu_bytes']+=data['gpuBytesEstimate'];metrics['parts']+=1
  t=np.concatenate(tris);xy=np.stack([t[:,:,0]*c-t[:,:,2]*s,-t[:,:,0]*s-t[:,:,2]*c],axis=2);u=xy[:,1]-xy[:,0];v=xy[:,2]-xy[:,0];det=u[:,0]*v[:,1]-u[:,1]*v[:,0];valid=abs(det)>1e-8
  def height(x,y):

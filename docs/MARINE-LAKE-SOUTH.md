@@ -64,8 +64,7 @@ the Princes Park bank keeps its irregular planted boundary and mapped path.
 The lido top, exposed waterline face and upper retaining face have separate
 owners. End ramp reservations connect the estimated levels. The Venetian bridge
 is a separate support part above non-walkable water, continuing over the islands.
-Its narrow rail envelopes preserve the boundary; decorative balusters, piers
-and exact abutments are deferred.
+The later [Venetian Bridge and islands reconstruction](VENETIAN-BRIDGE.md) replaces its former rail envelopes with detailed open balustrades and bounded shore connections; precise abutments and levels remain estimated.
 
 `regions/southport/elevation/marine-lake-south.json` includes the existing Marine
 water control and owns bounded mainland, West/Nevill return, lido, Esplanade,
@@ -97,9 +96,7 @@ publish 102 parts and 306 part/level files. Ordinary ground shares
 `southport/south-seaward-ground`; bridge support uses
 `southport/south-venetian`. Water and wall parts are not walkable.
 
-All three levels deliberately retain the same bounded canvas and placeholder
-geometry. This is the fixed District envelope, independent of future detailed
-replacement buildings. It has no photographic images or atlas. Declared per-level
+The bounded canvas and placeholder buildings remain deliberately coarse. The Venetian Bridge now has separate Detail, Walk and District fitting geometry; see its reconstruction record. It has no photographic images or atlas. Declared per-level
 budgets are 150,000 public-realm triangles (120,000 ground and 30,000 structure),
 20,000 placeholder triangles,21 MB combined download and 45 MB estimated GPU data.
 Added detailed architecture must replace a placeholder with its own independently

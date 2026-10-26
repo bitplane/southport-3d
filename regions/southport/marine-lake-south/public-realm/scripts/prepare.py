@@ -9,3 +9,8 @@ rng=np.random.default_rng(813);colour=np.array([108,96,83])[None,None,:]+rng.nor
 Image.fromarray(np.uint8(np.clip(colour,0,255))).save(out/'paving.png')
 height=np.where(joint,0,.001);dy,dx=np.gradient(height,1.2/n);normal=np.stack([-dx,-dy,np.ones_like(dx)],2);normal/=np.linalg.norm(normal,axis=2,keepdims=True)
 Image.fromarray(np.uint8(np.clip((normal+1)*127.5,0,255))).save(out/'paving-normal.png')
+# Restrained authored transverse timber joints, repeating every metre along deck.
+yy,xx=np.mgrid[:256,:256];rng=np.random.default_rng(3431)
+base=np.array([123,113,100])[None,None,:]+rng.normal(0,1,(256,256,1))
+joint=(yy%37<2);base[joint]*=.72
+Image.fromarray(np.uint8(np.clip(base,0,255))).save(out/'venetian-deck.png')

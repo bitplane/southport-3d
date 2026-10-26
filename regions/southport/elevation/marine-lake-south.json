@@ -211,10 +211,82 @@
       "evidence": "Endpoint joins the measured approach pavement. Central deck retains independent DSM samples; this reconciles the authored 0.12 m pavement offset at the shore."
     },
     "venetian-shore-end": {
-      "height_m": 0.7818664594702855,
+      "height_m": 0.089,
       "uncertainty_m": 0.2,
-      "status": "survey-ground-join",
-      "evidence": "Endpoint joins the measured approach pavement. Central deck retains independent DSM samples; this reconciles the authored 0.12 m pavement offset at the shore."
+      "status": "rough-ground-join-revised",
+      "evidence": "Reconciled with current mainland control grid at the bridge endpoint; bounded estimate, not survey."
+    },
+    "venetian-profile-8": {
+      "height_m": -0.25,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-flat-a": {
+      "height_m": -0.25,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-65": {
+      "height_m": -0.12,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-70": {
+      "height_m": 0.3,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-75": {
+      "height_m": 0.64,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-80": {
+      "height_m": 0.85,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-85": {
+      "height_m": 0.64,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-90": {
+      "height_m": 0.3,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-95": {
+      "height_m": -0.12,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-flat-b": {
+      "height_m": -0.15,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded bridge profile estimated from side images and fixed lake datum; not surveyed. Flat spans and raised central deck; shore endpoints retain existing terrain joins."
+    },
+    "venetian-profile-155": {
+      "height_m": 0.25,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded shore-to-span transition, reconciling lower path clearance and rough mainland endpoint; not surveyed."
+    },
+    "venetian-profile-145": {
+      "height_m": 0.35,
+      "uncertainty_m": 0.6,
+      "status": "visual-ratio-estimate",
+      "evidence": "Bounded shore-to-span transition, reconciling lower path clearance and rough mainland endpoint; not surveyed."
     }
   },
   "surfaces": {
@@ -256,10 +328,10 @@
     },
     "south-venetian": {
       "bounds": [
-        -350,
+        -370,
         -200,
-        300,
-        520
+        270,
+        530
       ],
       "axis_origin": [
         -280.1,
@@ -275,138 +347,67 @@
           "control": "venetian-shore-start"
         },
         {
-          "distance_m": 5,
-          "control": "venetian-deck-survey-5"
-        },
-        {
-          "distance_m": 10,
-          "control": "venetian-deck-survey-10"
-        },
-        {
-          "distance_m": 15,
-          "control": "venetian-deck-survey-15"
-        },
-        {
-          "distance_m": 20,
-          "control": "venetian-deck-survey-20"
-        },
-        {
-          "distance_m": 25,
-          "control": "venetian-deck-survey-25"
-        },
-        {
-          "distance_m": 30,
-          "control": "venetian-deck-survey-30"
-        },
-        {
-          "distance_m": 35,
-          "control": "venetian-deck-survey-35"
-        },
-        {
-          "distance_m": 40,
-          "control": "venetian-deck-survey-40"
+          "distance_m": 8,
+          "control": "venetian-profile-8"
         },
         {
           "distance_m": 45,
-          "control": "venetian-deck-survey-45"
-        },
-        {
-          "distance_m": 50,
-          "control": "venetian-deck-survey-50"
-        },
-        {
-          "distance_m": 55,
-          "control": "venetian-deck-survey-55"
+          "control": "venetian-profile-flat-a"
         },
         {
           "distance_m": 60,
-          "control": "venetian-deck-survey-60"
+          "control": "venetian-profile-flat-a"
         },
         {
           "distance_m": 65,
-          "control": "venetian-deck-survey-65"
+          "control": "venetian-profile-65"
         },
         {
           "distance_m": 70,
-          "control": "venetian-deck-survey-70"
+          "control": "venetian-profile-70"
         },
         {
           "distance_m": 75,
-          "control": "venetian-deck-survey-75"
+          "control": "venetian-profile-75"
         },
         {
           "distance_m": 80,
-          "control": "venetian-deck-survey-80"
+          "control": "venetian-profile-80"
         },
         {
           "distance_m": 85,
-          "control": "venetian-deck-survey-85"
+          "control": "venetian-profile-85"
         },
         {
           "distance_m": 90,
-          "control": "venetian-deck-survey-90"
+          "control": "venetian-profile-90"
         },
         {
           "distance_m": 95,
-          "control": "venetian-deck-survey-95"
+          "control": "venetian-profile-95"
         },
         {
           "distance_m": 100,
-          "control": "venetian-deck-survey-100"
-        },
-        {
-          "distance_m": 105,
-          "control": "venetian-deck-survey-105"
-        },
-        {
-          "distance_m": 110,
-          "control": "venetian-deck-survey-110"
-        },
-        {
-          "distance_m": 115,
-          "control": "venetian-deck-survey-115"
-        },
-        {
-          "distance_m": 120,
-          "control": "venetian-deck-survey-120"
+          "control": "venetian-profile-flat-b"
         },
         {
           "distance_m": 125,
-          "control": "venetian-deck-survey-125"
-        },
-        {
-          "distance_m": 130,
-          "control": "venetian-deck-survey-130"
-        },
-        {
-          "distance_m": 135,
-          "control": "venetian-deck-survey-135"
-        },
-        {
-          "distance_m": 140,
-          "control": "venetian-deck-survey-140"
+          "control": "venetian-profile-flat-b"
         },
         {
           "distance_m": 145,
-          "control": "venetian-deck-survey-145"
-        },
-        {
-          "distance_m": 150,
-          "control": "venetian-deck-survey-150"
+          "control": "venetian-profile-145"
         },
         {
           "distance_m": 155,
-          "control": "venetian-deck-survey-155"
-        },
-        {
-          "distance_m": 160,
-          "control": "venetian-deck-survey-160"
+          "control": "venetian-profile-155"
         },
         {
           "distance_m": 162.62044766879717,
           "control": "venetian-shore-end"
         }
-      ]
+      ],
+      "evidence": "Purposeful bounded linear sections from photographed flat spans and central rise; no fine raster drape. Shore endpoint controls retain existing shared ground joins."
     }
   }
 }

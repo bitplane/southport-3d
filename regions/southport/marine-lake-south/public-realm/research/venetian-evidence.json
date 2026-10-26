@@ -1,0 +1,236 @@
+{
+  "date": "2026-10-26",
+  "scope": "Venetian Bridge, two adjacent islands and bounded shore approaches; independent of Marine Way Bridge and pier.",
+  "imagery": [
+    {
+      "url": "https://www.google.com/maps/@53.6495,-3.0121,18z",
+      "kind": "actual satellite overhead and opposing textured 3D views",
+      "observation": "Two distinct elongated irregular islands; bridge runs through both. Vegetation obscures exact waterline. Captures private; imagery date not established."
+    },
+    {
+      "url": "https://www.geograph.org.uk/photo/7531530",
+      "date": "2023-06-26",
+      "observation": "Transverse decking, cream turned balusters and square piers, green columns with varied apparent lamp fittings, one side gate and central rise."
+    },
+    {
+      "url": "https://www.geograph.org.uk/photo/7531531",
+      "date": "2023-06-26",
+      "observation": "Side view shows arch over central water, flat approach spans on discrete narrow supports, and low vegetated island with rocky bank."
+    },
+    {
+      "url": "https://www.sefton.gov.uk/media/3068/bridge_close_up.jpg",
+      "date": "unknown",
+      "observation": "Central arched underside, open spandrel details, balustrade and green globe columns; image date and current fitting condition uncertain."
+    },
+    {
+      "url": "https://www.sefton.gov.uk/media/3066/venetian_bridge.jpg",
+      "date": "unknown, restoration-era appearance",
+      "observation": "Side photograph shows flat outer spans supported on narrow piers, central arched span and rocky vegetated island banks."
+    },
+    {
+      "url": "https://tmpdmsmedia.newmindmedia.com/wsimgs/Kings-Gardens-52_1079120730.jpg",
+      "date": "unknown",
+      "observation": "Side photograph resolves a near-side span and piers; deck-to-water clearance approximately 1.8\u20132.3 railing heights, subject to perspective and lake level."
+    },
+    {
+      "url": "https://www.independent.co.uk/news/uk/southport-merseyside-police-police-b2690372.html",
+      "date": "2025-02-01 publication, image date not confirmed",
+      "observation": "Oblique view shows narrow piers, transverse decking and mixture of globe-topped and bare green posts."
+    }
+  ],
+  "station_frame": {
+    "origin": [
+      -280.1,
+      329
+    ],
+    "end": [
+      -303,
+      490
+    ],
+    "length_m": 162.62,
+    "units": "metres",
+    "note": "Existing registered centreline; projected along shore-to-shore line. Existing irregular island outlines retained pending sharper toe evidence."
+  },
+  "islands": [
+    {
+      "station_extent_m": [
+        44.86,
+        66.66
+      ],
+      "transverse_extent_m": [
+        -34.79,
+        26.43
+      ],
+      "status": "existing outline assessed against aerial; vegetation makes toe uncertain by several metres"
+    },
+    {
+      "station_extent_m": [
+        93.63,
+        112.56
+      ],
+      "transverse_extent_m": [
+        -26.46,
+        33.88
+      ],
+      "status": "existing distinct outline assessed against aerial; vegetation makes toe uncertain by several metres"
+    }
+  ],
+  "station_table": [
+    {
+      "station_m": 0,
+      "deck_top_m": 0.446,
+      "function": "shore join; existing rough terrain"
+    },
+    {
+      "station_m": 8,
+      "deck_top_m": -0.25,
+      "function": "shore transition"
+    },
+    {
+      "station_m": 45,
+      "deck_top_m": -0.25,
+      "function": "first island and flat-span end"
+    },
+    {
+      "station_m": 60,
+      "deck_top_m": -0.25,
+      "function": "first island; arch approach"
+    },
+    {
+      "station_m": 65,
+      "deck_top_m": -0.12,
+      "arch_underside_m": -0.8,
+      "function": "arch springing"
+    },
+    {
+      "station_m": 70,
+      "deck_top_m": 0.3,
+      "arch_underside_m": -0.22,
+      "function": "rising deck and parapet"
+    },
+    {
+      "station_m": 75,
+      "deck_top_m": 0.64,
+      "arch_underside_m": 0.13,
+      "function": "rising deck and parapet"
+    },
+    {
+      "station_m": 80,
+      "deck_top_m": 0.85,
+      "arch_underside_m": 0.25,
+      "function": "arch crown"
+    },
+    {
+      "station_m": 85,
+      "deck_top_m": 0.64,
+      "arch_underside_m": 0.13,
+      "function": "falling deck and parapet"
+    },
+    {
+      "station_m": 90,
+      "deck_top_m": 0.3,
+      "arch_underside_m": -0.22,
+      "function": "falling deck and parapet"
+    },
+    {
+      "station_m": 95,
+      "deck_top_m": -0.12,
+      "arch_underside_m": -0.8,
+      "function": "arch springing"
+    },
+    {
+      "station_m": 100,
+      "deck_top_m": -0.15,
+      "function": "second island and flat-span start"
+    },
+    {
+      "station_m": 145,
+      "deck_top_m": 0.35,
+      "function": "lower path approach transition"
+    },
+    {
+      "station_m": 155,
+      "deck_top_m": 0.25,
+      "function": "shore transition"
+    },
+    {
+      "station_m": 162.62,
+      "deck_top_m": 0.089,
+      "function": "Princes Park shore rough-grid join"
+    }
+  ],
+  "limits": [
+    "Deck width 5.2 +/- 0.8 m remains an aerial estimate, not surveyed clear width.",
+    "Mainland rough road interpolation at the islands rose above the bridge and is not island evidence. Island crown, bank width and height are bounded provisional massing estimates.",
+    "Underside, detailed support layout, gate locations and present-day lamp head state require additional coverage. Do not infer multiple globe fittings from the one 2023 foreground lamp.",
+    "Shared water datum is held fixed. Photographic clearance ratios informed bounded bridge and island estimates; perspective, water fluctuations, exact crown and shore grade remain uncertain."
+  ],
+  "district_budget_proposal": {
+    "bridge_triangles_max": 12000,
+    "bridge_download_bytes_max": 1500000,
+    "bridge_gpu_bytes_max": 3000000,
+    "texture_atlas": "none; fixed mesh and material budget independent of Detail fittings",
+    "status": "proposed before envelope construction"
+  },
+  "ratio_evidence": [
+    {
+      "source": "https://tmpdmsmedia.newmindmedia.com/wsimgs/Kings-Gardens-52_1079120730.jpg",
+      "image_px": [
+        1050,
+        700
+      ],
+      "near_pier_approx_px": {
+        "rail_top_y": 351,
+        "deck_y": 399,
+        "waterline_y": 490
+      },
+      "interpretation": "Deck-to-water about 91/48 = 1.9 rail heights at near pier; perspective and water level uncorrected, estimate 1.8\u20132.3."
+    },
+    {
+      "source": "https://www.sefton.gov.uk/media/3068/bridge_close_up.jpg",
+      "image_px": [
+        650,
+        500
+      ],
+      "interpretation": "Central deck rises approximately one rail height above its flanking approaches; sloped rail follows deck, arch intrados curves separately."
+    }
+  ],
+  "structure_estimates": {
+    "water_m": -2.335294,
+    "rail_above_deck_m": 1.1,
+    "flat_deck_to_water_m": [
+      2.085,
+      2.185
+    ],
+    "flat_deck_to_water_in_rail_heights": [
+      1.9,
+      1.99
+    ],
+    "island_toe_m": -2.335294,
+    "island_crown_m": -0.785294,
+    "bank_inset_m": 3,
+    "flat_span_pier_stations_m": [
+      13,
+      25,
+      37,
+      122,
+      135,
+      148
+    ],
+    "note": "Estimated massing from the referenced photos; deck joints, pier count and bank profiles remain to be reviewed."
+  },
+  "shore_connections": {
+    "lake_boundary_stations_m": [
+      14.8,
+      143.6
+    ],
+    "kings_gardens": "A bounded grade blends the deck endpoint to the surrounding rough grid; no lake-level edit.",
+    "princes_park": "A separately owned lower lakeside path crosses the deck near station 151; inferred 11 risers link it to a single photographed green side gate. Location and grade are provisional.",
+    "lower_path_m": -1.8,
+    "soffit_clearance_m": 1.79,
+    "sources": [
+      "https://www.geograph.org.uk/photo/7531530",
+      "https://www.google.com/maps/@53.64962,-3.01203,19z"
+    ]
+  }
+}

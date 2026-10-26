@@ -7,7 +7,7 @@
     "elevation_m": 0
   },
   "area_name": "South Marine Lake and seaward quarter",
-  "status": "Provisional block plan from Duke Street and West Street through Kings Gardens, the southern Marine Lake, Princes Park and west Ocean Plaza. Widths ±1–2 m, footprints ±1–3 m and heights ±2–3 m; no surveyed levels. Flat building tops are height bounds. Pier, ride equipment, detailed balustrades and small garden features are deferred.",
+  "status": "Provisional south Marine Lake and seaward block plan with a researched Venetian Bridge, two island landforms and estimated gate and shore connections. Other buildings remain placeholders.",
   "levels": {
     "detail": {
       "texture_size": null
@@ -189,9 +189,21 @@
       "support_surface": "southport/south-venetian"
     },
     {
+      "id": "venetian-lower-ground",
+      "name": "Venetian lower lakeside path and bank",
+      "collection": "venetian-lower-ground",
+      "ground": true,
+      "support_surface": "southport/venetian-lower-path"
+    },
+    {
       "id": "lake-water",
       "name": "Remaining Marine Lake water",
       "collection": "lake-water"
+    },
+    {
+      "id": "venetian-structure",
+      "name": "Venetian Bridge structure and fittings",
+      "collection": "venetian-structure"
     },
     {
       "id": "shore-walls",
@@ -241,6 +253,56 @@
   },
   "rules": [
     {
+      "id": "venetian-balusters",
+      "match": "^Fitting Venetian balusters",
+      "walk": {
+        "strategy": "generator",
+        "generator": "venetian_fittings:build_lod",
+        "settings": {
+          "level": "walk"
+        },
+        "uv": "box",
+        "bake": false,
+        "reason": "Reduced turned profile preserves open balustrade rhythm."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "venetian_fittings:build_lod",
+        "settings": {
+          "level": "district"
+        },
+        "uv": "box",
+        "bake": false,
+        "reason": "Fixed half-density open posts preserve silhouette without a solid panel."
+      }
+    },
+    {
+      "id": "venetian-lamps",
+      "match": "^Structure Venetian green lamp columns",
+      "walk": {
+        "strategy": "generator",
+        "generator": "venetian_fittings:build_lod",
+        "settings": {
+          "kind": "lamps",
+          "level": "walk"
+        },
+        "uv": "box",
+        "bake": false,
+        "reason": "Preserve the green standard silhouette while simplifying its mouldings."
+      },
+      "district": {
+        "strategy": "generator",
+        "generator": "venetian_fittings:build_lod",
+        "settings": {
+          "kind": "lamps",
+          "level": "district"
+        },
+        "uv": "box",
+        "bake": false,
+        "reason": "Fixed low-sided standards preserve principal lamp silhouettes."
+      }
+    },
+    {
       "id": "ground",
       "match": "^Ground ",
       "walk": {
@@ -254,7 +316,7 @@
     },
     {
       "id": "structure",
-      "match": "^Structure ",
+      "match": "^Structure (?!Venetian green lamp columns)",
       "walk": {
         "strategy": "keep",
         "reason": "Already bounded schematic structure."
