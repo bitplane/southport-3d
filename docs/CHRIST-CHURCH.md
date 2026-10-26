@@ -22,9 +22,7 @@ deterministically authored materials.
 Detail retains the full architectural source. Walk retains the structural
 geometry with fewer Gothic curve samples and omits fine leadwork and fittings.
 District uses the independent fixed-budget envelope described below, preserving
-major silhouettes and entrances while baking surface appearance. Historical
-District review notes later in this document describe the previous recipe;
-they do not constitute visual acceptance of the replacement.
+major silhouettes and entrances while baking surface appearance.
 
 Build and render:
 
@@ -36,39 +34,20 @@ python3 tools/project.py build southport.lord-street.christ-church --stage rende
 The geometry validator checks all four tower walls have actual window openings,
 eight belfry windows, three roundel windows, an open main doorway in the masonry, a closed
 tower roof deck, five tall modern side windows, finite UV meshes and site bounds.
-Fresh isolated-browser inspection checked August 2024 cafe-side Street View, May 2011 south garden Street View and satellite roof coverage. It corrected the initially inferred annex hip to stepped flat roofs. Google 3D Earth was unavailable, and no direct rear elevation was obtained. Global publication and combined-viewer placement are coordinated by the root agent during parallel work.
+Evidence includes August 2024 cafe-side Street View, May 2011 south-garden
+Street View, aerials and supplied rear photographs. Later three-direction 3D
+views resolve the cafe/porch relationship, without establishing hidden joints.
+The cafe sign uses DejaVu Sans to ensure glyph coverage. Checks cover cafe wall
+closure and the stepped flat roofs/rooflights. Tower merlons begin at the parapet
+base top, avoiding duplicate coplanar outer faces. Fine tracery and weathering
+remain interpreted rather than surveyed.
 
-The standalone streaming package preflight classifies every mesh for all three
-levels. Exported front and oblique renders were inspected at Detail, Walk and
-District: openings, battlements, roundel windows, stepped roof silhouette and material
-colours remain consistent. The package is approximately 70k / 43k / 34k placed
-triangles and 4.8 / 3.3 / 3.0 MB (embedded textures included). These are building
-levels for the current viewer, not a town-distance proxy; a later regional bake
-can reduce the still-geometric Gothic window tracery further.
-
-Fresh browser setup also exposed two issues fixed before handoff: the cafe sign
-needed an explicit installed font to avoid missing-glyph boxes, and the old high
-annex gutter had to be removed after replacing its pitched roof. Cafe side-wall
-closure and three flat-roof/15-rooflight checks protect the revised silhouette.
-The sign uses DejaVu Sans from the existing system font installation.
-
-## Independent reference audit
-
-Front and side photographs were compared with exported Detail and District views.
-The retained facade, paired belfry openings, bell tower and rebuilt hall remain
-recognisable across levels. An actual rendering defect was found at the tower
-crenellations: merlons overlapped the parapet base with coplanar external faces,
-producing black horizontal marks. Merlons now begin at the base top without
-changing their upper silhouette. Fine tracery and stone weathering remain
-interpreted; photographs do not establish surveyed heights or hidden roofs.
-
-## Café 1821 snag reconstruction
+## Café 1821 and porch
 
 Private report 233407 supplies a mapped aerial and a clear May 2026 frontage
 photo. They establish the quarter-round corner, buff lower brickwork, weathered
 vertical metal fascia, full-height white-framed glazing with opening top lights,
-central paired doors and the two-line café/1821 sign. The previous broad box and
-three separate windows have been replaced. The small porch stands separately
+central paired doors and the two-line café/1821 sign. The small porch stands separately
 beside the round corner, with its ridge below the café cap. August 2024 Street
 View and the 10m scale in the aerial support an estimated 2.9m-wide, 4.9m-deep
 porch: a long ridge towards the recessed doors, a timber gable towards the garden,
@@ -90,12 +69,10 @@ District uses its own coarse curved frontage and porch receiver; fine trim and
 lettering bake into the shared atlases. Validation checks clear
 glazing rays, separated cafe/porch roofs and closure of the exposed hall return.
 
-## Supplied facade photographs (reports 87c169 / 53ae49)
+## Historic frontage and rear hall
 
 Four private reference captures show the front, side-door tracery and cafe-side
-stair (one capture labelled June 2018). The stair has been moved to positive site
-X, with its separate octagonal slate cap; the unsupported turret on the opposite
-side is removed. The diamond features contain four-spoke round windows, not
+stair (one capture labelled June 2018). The stair is on positive site X, with a separate octagonal slate cap. The diamond features contain four-spoke round windows, not
 clocks. They now have actual circular wall apertures and recessed glazing.
 Burgundy door leaves, upper side-door glazing, blind gable tracery, inner-window
 stone aprons, sloping battlements and buttress weatherings/niches follow those
@@ -103,20 +80,16 @@ photos. Fine spandrels, lights and crocket buds are interpreted exterior relief,
 not scans; metric sizes and hidden rear features remain estimates. The authored
 rubble texture uses irregular narrow courses; no reference pixels are published.
 
-Roundel curves regenerate with fewer segments at Walk/District; wall openings,
-stair silhouette, doors and major stone relief survive. Small lights and leading
-are Detail-only, while crocket/spandrel relief simplifies at Walk and disappears
-at District. Earlier package-size figures above describe the original build.
-
+Walk reduces roundel curve sampling while retaining openings, doors and major
+relief; fine leading/lights are Detail-only. District follows the independent
+envelope below.
 
 The rear modern range is transverse and gabled: its ridge meets the main hall
 ridge at a T junction. A closed roof union preserves the valleys at every LoD.
 The west gable has a circular cross-mullioned light, tall glazed entrance, two
 narrow slots, pale coping and capped brick piers. Six recessed rear windows and
 two pale string courses follow the supplied photographs. Exact heights, hidden
-east-end treatment and small dimensions remain estimates. These simple roof,
-wall-opening and frame meshes stay geometric at Walk and District; fine fittings
-retain the existing omission policy. Source captures remain in the private snag
+east-end treatment and small dimensions remain estimates. Walk retains these roof and opening meshes; District uses its own envelope. Source captures remain in the private snag
 queue, with provenance recorded in the asset research catalogue.
 
 The annex-facing hall side and transverse gable form one wall whose top follows
@@ -156,11 +129,9 @@ overlaps. It casts through the masonry apertures and checks that the
 door stile reaches its pointed head. This is scoped protection of the affected
 features, not a claim that every old tower ornament is overlap-free.
 
-Actual Detail and Walk exports were compared with the close photos from private
-snag 87c1696b1a404712a447b59ec406298a. Oblique views of both wings confirmed the
-elongated tracery, connected leading, full-height door stile and lower panels.
-The repaired masonry no longer shows diagonal fragment-cap lines beneath the
-windows. Roof, footprint, tower-window family and ground are unchanged.
+Retained Detail/Walk comparisons with the supplied wing close-ups cover elongated
+tracery, connected leading, door stiles and lower panels. Scoped overlap checks
+cover the repaired wings; they are not a whole-asset certification.
 
 ## Fixed-budget District envelope
 
@@ -187,9 +158,6 @@ are the two pre-existing downward-facing tower-buttress foundation contacts at
 site elevation 0.58 m (approximately 0.0374 m² per side), buried at ground level.
 Other older church components remain outside this snag's cleanup scope; the
 full generated report is in `build/christ-wing-audit/`, not source control.
-The assembled town was inspected at the saved snag camera with the new Detail
-tile loaded, zero failed loads and the streamer settled. Moving outward loaded
-Walk at about 66 m and District at about 239 m; both retained the church in its
-block, and the distant view settled with no failed loads. Fine carving, glazing
-colour/patterns beyond the observed diamond leading, and metric dimensions
-remain interpreted rather than surveyed.
+Assembled viewer review covered the saved wing-snag viewpoint and all three
+resident levels without failed loads. Fine carving, glazing beyond observed
+leading and metric dimensions remain interpreted rather than surveyed.

@@ -41,26 +41,25 @@ The core paving identity and furniture families are evidenced. Most kerb offsets
 
 Use `python3 tools/project.py publish` to build and stream both assets. Render the area alone with `python3 tools/project.py build southport.london-square.public-realm --stage render`; then inspect the combined browser view for foundation contact, overlap, scale and LOD changes. Do not infer that an area is surveyed merely because its surfaces now join up.
 
-## Validation and initial budgets (2026-10-22)
+## Validation
 
-| Level | Placed triangles | GLBs including maps | Embedded maps |
-| --- | ---: | ---: | ---: |
-| Detail | 70,149 | 3.81 MB | 2.17 MB |
-| Walk | 19,285 | 3.44 MB | 2.17 MB |
-| District | 9,029 | 0.77 MB | 0.10 MB |
+Clip underlying surfaces out beneath paving motifs and paint rather than using
+depth offsets. Tests cover cutout areas, repeated subtraction, upward winding,
+nonzero triangles and shared boundaries. Furniture bases must meet their assigned
+pavement and crossing openings must remain clear. Review the exported assembled
+scene at every level for ground contacts, road paint and walking height.
+Generated publication reports provide current costs; historical scene totals
+are not budgets for future extensions.
 
-All 24 part/level GLBs passed publication inspection. All 104 mesh objects are classified; the model contains 76 furniture placements. Furniture generators have checked decreasing triangle counts. Surface batching reduced object count from hundreds of separate paint/paving pieces to a few groups per material. Polygon clipping removes underlying faces beneath motifs/paint rather than relying on small depth offsets; unit checks cover cutout areas and repeated subtraction. The viewer also enables logarithmic depth to support the scene's scale range; see the [Three.js renderer options](https://threejs.org/docs/pages/WebGLRenderer.html). Its fragment-depth cost needs testing on users' hardware.
-
-The complete memorial rebuild and existing validators passed. Eleven host-Python tests passed, including a regression preventing a failed full build from leaving a reusable source stamp. Browser review loaded both assets (12 streaming parts), checked the combined overview and close paving/foundation contacts, and exercised automatic ground Detail selection and walking-height adjustment without asset load errors. Placement checks also require furniture bases to lie on their assigned pavement and keep the crossing openings clear. Browser screenshots and the Blender area overview are local build artifacts. Agent-browser performance is limited and is not a desktop GPU benchmark.
-
-## Street and garden extension (2026-10-22)
+## Streets, gardens and ownership
 
 The area now continues along London Street to the Chapel Street/Hoghton Street
 junction (site Y = -144 m), with a short continuation to -154 m. Wright Street
 and the station frontage farther along are outside this pass. Short mouths mark
 Glebe Place, Anchor Street, Chapel Street and Hoghton Street for future adjoining
-assets. Lord Street runs from site X = -104 to +154 m, including the two gardens
-behind the colonnades and St George’s Place around the north-east garden.
+assets. Lord Street extends northeast to site X=+154 m. Ground southwest of X=-73
+belongs to the church-garden asset; London Square retains the memorial-side
+garden and St George’s Place around the northeast garden.
 
 `research/streets-osm.json` retains the selected OSM ways and furnishing nodes in
 the shared metric frame, with attribution. `research/streets.json` records the
@@ -95,34 +94,9 @@ and trees share master mesh data. Fine tree leaves are not generated, and no
 photographic foliage is baked. The existing street furniture LOD policies apply
 to the extension. A regional texture bake is still unnecessary at this scale.
 
-Use the **Gardens**, **London Street** and **Area bounds** bookmarks on the
-public-realm site. Local render artifacts are `renders/overview.png`,
-`renders/gardens.png`, `renders/london-street.png` and
-`renders/crossing-landing.png` beneath the public-realm build directory.
-
-The expanded public realm has 18 independently streamed parts (54 GLBs) and 241
-classified mesh objects. Its measured publication budgets, including embedded
-maps, are:
-
-| Level | Placed triangles | GLB bytes | Embedded image bytes |
-| --- | ---: | ---: | ---: |
-| Detail | 147,488 | 8,279,688 | 4,835,767 |
-| Walk | 51,696 | 8,289,296 | 4,835,767 |
-| District | 22,680 | 1,885,472 | 215,217 |
-
-Walk has fewer placed triangles but similar download size because shared maps
-and export representation dominate this small area. These figures exclude the
-memorial. All 54 GLBs passed publication inspection. The full memorial rebuild
-and validators also passed after the shared library change. Eleven host-Python
-tests and the viewer policy tests passed. Render review covers the expanded
-overview, garden paths, London Street and the dropped crossing landing. Coplanar
-path overlaps are clipped in stable order, and round joins close wedges at bends.
-
-Browser review loaded all 22 combined scene parts without errors at forced
-District and Walk, then verified automatic Detail selection for London Street
-sections 2/3 at close range. Combined overview and garden screenshots are retained
-locally as `renders/combined-overview.png` and `renders/combined-gardens.png`;
-`renders/combined-london-detail.png` records the close automatic-level check.
+Area renders include overview, gardens, london-street and crossing-landing
+views. Check neighbouring assets in the assembled viewer; standalone renders
+cannot establish ownership seams.
 
 ## Prezzo integration
 
@@ -130,8 +104,6 @@ Adding 128 Lord Street exposed a gap between the estimated pavement edge and the
 mapped building corner. Its approach now follows an estimated kerb around that
 corner; the west London Street footway extends to site X = -10 m, meeting the
 wall rather than leaving an uncovered strip. The building owns no walkable ground.
-The revised public-realm totals are 147,705 / 51,913 / 22,897 triangles and
-8,297,184 / 8,306,792 / 1,902,968 GLB bytes for Detail / Walk / District.
 
 ## 118–122 Lord Street approach
 
@@ -162,24 +134,15 @@ Six open balustrade modules replace the low provisional edging on the observed
 retain the globe, material bands and open baluster spacing at every level;
 Walk and District reduce radial/profile samples. No solid wall proxy fills the
 balustrade openings. The rest of the garden boundary remains provisional.
-The new **Lord Street furniture** viewer bookmark and `lord-street-furniture.png`
-and `garden-globe.png` renders expose this pass. No reference pixels are included
+The `lord-street-furniture.png` and `garden-globe.png` renders show these features. No reference pixels are included
 in the published model or Git sources.
 
-## Screenshot correction pass publication budgets
-
-| Level | Placed triangles | GLB bytes including textures | Embedded image bytes |
-| --- | ---: | ---: | ---: |
-| detail | 179,221 | 8,537,132 | 4,835,767 |
-| walk | 58,973 | 8,450,560 | 4,835,767 |
-| district | 25,093 | 1,956,300 | 215,217 |
-
-## Church gardens and corrected street seams
+## Church gardens and street seams
 
 The [church-garden pass](LORD-STREET-GARDENS.md) transfers the ground west of
 X=-73 to a new bounded asset and continues beyond St George’s Place to the other
 church garden. London Square now owns only the memorial-side southwest garden;
-the older X=-104 bound above describes the previous build. Its Sainsbury’s
+ Its Sainsbury’s
 crossing, service-road paving, parking/taxi bay edges and garden return furniture
 have been refined from actual August 2024 and July 2026 Street View imagery.
 
@@ -214,7 +177,7 @@ carriageway/pavement widths and grades remain estimates from retained aerials.
 The junction cuts pavements out of the carriageway rather than layering them.
 No kerb or paint crosses either open route or the outer ownership cut.
 
-London Street footways extend to the registered frontages at14–20. The old
+London Street footways extend to the registered frontages at 14–20. The old
 St George’s Place placeholder cut through the new Mansions/Sainsbury’s frontage;
 its shop apron and opposite garden edge now follow those mapped elevations.
 The garden’s south lawn/edging moves behind the corrected service-road footway.
@@ -223,8 +186,7 @@ and additional street furniture are deferred rather than invented. Private rear
 yards are outside this ground pass.
 
 All levels retain the low-poly street outlines and physical kerbs; Walk/District
-reduce texture resolution through the existing pipeline. `New street coverage`
-is the viewer overview bookmark. No reference imagery is published.
+reduce texture resolution through the existing pipeline. No reference imagery is published.
 
 Canopy meshes use an asset-local correction in `landscape_lod.py`: foliage
 ellipsoids face outward and their pole caps are triangles without coincident
@@ -244,7 +206,7 @@ classify the entire remaining polygon as both inside and outside, duplicating
 pavement fragments. Sampled Anchor Street footway rays guard against this
 overlap after triangulation and batching.
 
-## Signal and Lord Street lamp snag pass
+## Signals and Lord Street lamps
 
 The London Square signals now use circular open-bottom visors, dark pedestrian
 lenses with distinct standing/striding silhouettes, housing brackets and yellow

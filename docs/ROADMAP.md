@@ -1,20 +1,34 @@
 # Roadmap
 
-Implemented foundations:
+## Implemented foundations
 
-- Source-only geographic asset layout, shared primitives and isolated master builds.
-- Reasoned component LOD recipes: omit, replace, parameterise or selectively decimate.
-- Shared-prototype baking and complete memorial streaming assembly, preserving explicit architectural envelopes.
-- Local publication with content-addressed GLBs, source signatures, resource measurements and a discoverable catalog.
-- Browser orbit/walking inspection, per-part Detail/Walk/District switching, manual comparison controls and a bounded inactive-resource cache.
+- Geographic source assets, shared helpers, dependency-aware incremental builds
+  and isolated master inputs.
+- Detail/Walk geometry and independent fixed-budget District envelopes, with
+  shared-atlas baking, mesh checks and resource budgets.
+- Local publication of content-addressed models into a spatial streaming tree,
+  with merged distant proxies and live viewer updates.
+- Orbit/walking navigation, persisted camera state and a camera/photo snag queue.
+- Rough editable ground heights, bounded road profiles and distinct bridge and
+  lower-route support surfaces.
 
-Next work is driven by inspection in the viewer:
+## Next work
 
-1. Tune the three levels and switching bands against visible differences, performance and transfer size. Correct seams, silhouettes and texture density before adding more reduction.
-2. Add a second building using its manifest and publication recipe, without special-casing the viewer. Improve shared generator interfaces where that creates a useful second consumer.
-3. Add compressed geometry/textures, shared facade atlases and better prototype batching. Establish target device budgets and validate on ordinary phones and slower links.
-4. Improve navigation with collision geometry, accessible/touch walking controls, saved viewpoints and selection. Tune visibility/request scheduling as asset count grows.
-5. Deploy the static viewer and asset packages through a trusted release pipeline after selecting code/asset licences and resolving distribution provenance.
-6. When there are hundreds of buildings, add geographic tile aggregation and region-level baked textures for very distant views. These are deliberately not prerequisites for the current viewer.
+1. Expand mapped streets and footprints before detailed architecture. Review
+   building proportions, evidence gaps, ground contacts and all viewing levels.
+2. Improve reconstruction throughput through specific briefs, parallel asset
+   work and prompt independent review; measure rework and resource costs.
+3. Tune streaming, texture density and LoD transitions on ordinary devices and
+   slower connections. Investigate geometry/texture compression and further
+   resource sharing where measurements justify it.
+4. Improve walking, collision handling and touch navigation without losing
+   useful inspection controls.
+5. Choose public hosting and a release pipeline after resolving code/asset
+   licensing and distribution provenance. Local publication is not deployment.
+6. Add separately baked geographic region textures/envelopes when distant town
+   coverage warrants them; the current merged proxies are not that final design.
 
-CI runs cheap source and policy tests. Heavy Blender builds need a controlled worker: never automatically execute untrusted fork PR code on a contributor's always-on desktop. Reference photographs remain outside Git.
+CI runs cheap source and policy checks. Heavy Blender jobs require controlled
+workers; do not execute untrusted fork PR code on a contributor's desktop.
+Reference photographs remain outside Git. Current task status belongs in the
+snag queue, not a second roadmap checklist.

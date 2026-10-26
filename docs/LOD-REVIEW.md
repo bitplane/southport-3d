@@ -1,4 +1,8 @@
-# LOD pilot review — 2026-10-22
+# Historical component LoD experiment — 2026-10-22
+
+This is retained experimental evidence, not the current publication contract or
+an onboarding requirement. See [LOD-PIPELINE.md](LOD-PIPELINE.md) for current
+practice and [MEMORIAL-DISTRICT.md](MEMORIAL-DISTRICT.md) for the assembled envelope.
 
 The recipe was built with Blender 5.0.1 and all eight emitted GLBs passed independent checks for geometry counts, coordinate transforms, UV/normal/tangent attributes, opaque PBR materials, embedded image dimensions and file hashes. The omitted fixture produces no GLB or texture. Front and 25-degree oblique comparisons were generated.
 
@@ -21,7 +25,7 @@ These are per-prototype component results, not totals for the full memorial. One
 - The pedestal box preserves its mass and silhouette, with shallow joints in the baked surface. At 512px some fine joints soften and procedural microtexture remains visible.
 - The small cornice light is deliberately omitted at both tested reduced levels; this is a reasoned omission, not a bake failure.
 
-## Limits and next steps
+## Limits at the time of the experiment
 
 The sample-distance metric is not a conservative bound, and no screen-space switching thresholds have been calibrated. Review views show intended approximations; they do not certify appearance at arbitrary distance or grazing angle. Full colonnade/obelisk proxy assembly, merged facade atlases, repeated-instance sharing, metal/glass adapters, compression and viewer integration remain outstanding. The pilot establishes the contract and tested mechanisms; it does not mark whole-memorial LOD coverage complete.
 

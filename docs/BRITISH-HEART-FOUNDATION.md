@@ -1,10 +1,9 @@
 # British Heart Foundation, 116 Lord Street
 
-## Current District envelope pilot
+## District envelope
 
-District now uses `scripts/district.py`: a separate fixed-topology envelope,
-not a reduction of the detailed mesh. Detail and Walk remain unchanged. The
-historical District policies/measurements below describe the superseded models.
+District uses `scripts/district.py`: a separate fixed-topology envelope,
+not a reduction of the detailed mesh. Detail and Walk remain unchanged.
 
 The 316-triangle envelope retains the two recessed entrances, display facets,
 access ramp/steps, stepped parapets, roof recess and major rooftop masses. Four
@@ -14,10 +13,9 @@ colour, tangent-space normals and roughness: 512×256 architecture, 256×256 roo
 and 512×128 shopfront. Bakes run at four times each dimension then area-downsample;
 this preserves thin window bars more consistently. No reference photos are baked.
 
-| District version | Triangles | GLB bytes including textures | Estimated GPU bytes |
-| --- | ---: | ---: | ---: |
-| Previous | 4,056 | 1,038,008 | 11,939,306 |
-| Envelope pilot | 316 | 221,044 | 4,226,651 |
+Recorded District export: 316 triangles, 221,044 download bytes including
+textures and 4,226,651 estimated GPU bytes. Consult generated package reports
+for current measurements after changes.
 
 Hard publication budgets are 430 triangles across three parts, 800,000 download
 bytes and 5 MiB estimated GPU bytes. The actual meshes/embedded images are checked.
@@ -26,31 +24,16 @@ the envelope geometry does not change. Major footprint/roof changes still requir
 an explicit envelope review. Projection coverage checks are useful heuristics,
 not proof of correspondence; matching-camera visual inspection remains required.
 
-Reviewed exported Detail/new District at matching front and roof/rear viewpoints,
-and at 70 m frontal distance. Main shapes and openings persist; close views expose
-soft lettering, simplified frames and omitted small fittings, deliberately. The
-user accepted the initial pilot visually. Supersampling then improved thin bars;
-matching 70 m comparisons were inspected afterward. The full final build/export/
-validate/package run took 3m10s with peak child RSS about 925 MiB (GNU time), not a
-claim about peak aggregate host memory. Screenshots and old GLBs remain private
-under `../output/bhf-district-pilot/`.
+Matching front, roof/rear and 70 m comparisons established the pilot's visual
+acceptance. Close views deliberately lose fine lettering, frames and fittings.
+Private baseline/comparison artifacts live under `../output/bhf-district-pilot/`;
+`tools/create_lod_review.py` can generate a separate comparison page. This is a
+review tool, not an additional town LoD.
 
-Generate the disposable browser comparison (same camera across all four versions):
-
-```sh
-python3 tools/create_lod_review.py --asset southport.london-square.lord-street-116 \
-  --baseline ../output/bhf-district-pilot/before
-```
-
-Open `/reviews/southport.london-square.lord-street-116/index.html` on the local
-viewer. It includes Detail, Walk, previous District, new District, wireframe and
-normal-map switches. This generated review page is independent of the town's
-memory scheduler; it is not an additional published LoD.
-
-## Building evidence and earlier passes
+## Building evidence and geometry
 
 The building continues the Lord Street frontage from 118–122 towards Christ
-Church. Select **116 Lord Street — British Heart Foundation** in the viewer.
+Church.
 Source lives in `regions/southport/london-square/lord-street-116/`.
 
 The exterior includes the white cladding surround, thirteen repeated window
@@ -68,14 +51,12 @@ reference photographs are distributed or used in generated maps.
 
 All metric dimensions are visually calibrated estimates. The site frame is the
 same as the memorial and adjoining terrace. The front spans site X -50.8 to
--76.68; the southwest edge is registered against the OSM church boundary. The thirteen-module count is established by the user-supplied unobscured Street View screenshots, correcting the earlier count of fourteen. The rear envelope and church-side attachment still need a measured survey; no Chapel Street elevation is implied. Roof feature positions are now calibrated from close Google/ Airbus satellite views within the existing estimated envelope.
+-76.68; the southwest edge is registered against the OSM church boundary. The thirteen-module count is established by the user-supplied unobscured Street View screenshots. The rear envelope and church-side attachment still need a measured survey; no Chapel Street elevation is implied. Roof feature positions are now calibrated from close Google/ Airbus satellite views within the existing estimated envelope.
 
-Architecture, roof and shopfront stream separately. Walk keeps the inexpensive
-window grid and entrance geometry and bakes lettering/emblems to 512-pixel
-panels. District replaces repeated window/spandrel modules with one shared
-256-pixel baked prototype and omits handles/downlights. Detail alone carries tiny threshold grout geometry; Walk retains the stepped envelope. Wall openings, red
-piers, entrance recess and roof silhouette remain physical. No global
-mesh-decimation ratio is used.
+Architecture, roof and shopfront are separate parts. Walk keeps the inexpensive
+window grid and entrance geometry, baking lettering/emblems to 512-pixel panels.
+Detail alone carries tiny threshold joints. District uses the independent
+envelope above; no global decimation ratio is used.
 
 The public-realm asset owns the widened pavement approach through X -77,
 tapering at X -80 towards the church. The building owns its entrance steps, raised access ramp and retaining cheek. Ground and building dimensions remain unsurveyed.
@@ -94,27 +75,7 @@ visible window modules, unobscured sign centres, recessed doors and two central 
 Publication checks full-panel window bake coverage as well as ordinary GLB
 validation. Rear geometry is explicitly provisional.
 
-Measurements after the facade and rooftop passes:
-
-| Level | Placed triangles | GLB bytes including maps | Embedded image bytes |
-| --- | ---: | ---: | ---: |
-| detail | 33,790 | 4,529,656 | 1,479,745 |
-| walk | 12,542 | 2,646,348 | 1,655,586 |
-| district | 1,798 | 640,816 | 366,066 |
-
-The initial pass passed all nine GLBs and window bake checks. Its browser review covered Walk and
-District front/oblique views and automatic Detail at the entrance; all 31 scene
-parts loaded without errors. Twelve Python checks and viewer policy tests passed at that point.
-
-The 2026-10-22 exterior review used the archived full facade, close BID entrance, Geograph and aerial captures. It corrected tile aspect/scale, glazing reveals/seals, panel retainers, the single welcome board, circular downlights and smaller door fittings; smoothed the hand-authored pulse emblem; and removed unsupported roof boxes. Fresh master validation and front/oblique/entrance/upper-window renders passed. Combined-viewer and reduced-level review passed in the coordinated publication pass. The thirteen upper modules are now visible in the supplied full-front screenshots; opaque glazing and the church-side/rear envelope remain deliberate limitations.
-
-The coordinated three-building publication passed all nine GLBs for this asset
-and its bake checks. Browser review covered automatic close-up Detail and forced
-Walk/District front and oblique views. All 31 combined scene parts loaded without
-asset errors. Thirteen Python tests and the viewer policy test pass.
-
-The rooftop pass uses the close satellite view and elevated panorama together.
-It replaces the featureless slab with stepped brick parapets and coping, three
+Close satellite and elevated panorama evidence support stepped brick parapets and coping, three
 capped edge housings, a shallow external walled recess, an elongated pitched
 rooflight/vent and the rear plant platform. Four circular-top condensers sit
 alongside the larger pale cabinet, perimeter steelwork and a small terminal.
@@ -128,19 +89,10 @@ no doors, ladders or stairs have been invented. The rectangular recess's depth,
 rooflight/vent function, equipment heights and railing construction remain
 interpretations. Rear ownership boundaries and dimensions are not surveyed.
 
-Walk retains the coarse housings, parapets, recess and plant cabinets plus fan
-rims, rails and vents. District keeps the low-cost roof envelopes and cabinet
-silhouettes but omits the rails, fan rims and small vents. Fine fan guards and
-cabinet seams are Detail-only, as are the tiny threshold joints. The recess is
-an actual opening in four disjoint roof fields with a lower external floor;
-a validation ray checks it has not been filled by the former slab. Roof rear,
-roof plant and plan renders support top-down and oblique review; the viewer
-has **Roof plant** and **Roof rear** presets.
-
-The terminal-bay/rooftop publication pass passed master validation, fresh
-renders, all declared GLBs and bake coverage checks. Browser roof review
-covered Walk and District; thirteen Python tests and the viewer policy test
-also passed.
+Walk retains housings, parapets, plant cabinets, fan rims, rails and vents.
+Detail adds fan guards and cabinet seams. The roof recess is a real opening in
+four disjoint fields with a lower floor, verified by a downward ray. The plan and
+roof/rear renders expose its construction; District simplifications are above.
 
 The user-supplied Street View screenshots received on 2026-10-22 supersede the
 older distant frontage interpretation. They establish TWO entrances: a narrow
@@ -150,7 +102,7 @@ walking surface, black retaining cheek and red rail. The central threshold has
 two dark tiled risers and a deep landing; the right display has a separate pale
 stepped apron. Two distinct welcome panels and their visible text are retained.
 The upper elevation now has thirteen modules, with procedural small green mosaic
-tiles rather than aggregate noise. The completed rooftop geometry is unchanged.
+tiles rather than aggregate noise.
 
 The building-owned ramp reaches local Y -22.06; the public-realm pavement is its
 underlying approach. These raised surfaces must not be replaced with duplicate
@@ -160,7 +112,7 @@ not asserted. Private filenames and observations are recorded alongside a Google
 Maps location link; none of the screenshots are committed or used as textures.
 The recess/projection topology and step count are observed, while metric sizes,
 ramp slope and some door subdivisions remain estimated. Both recesses and the
-ramp/railing remain physical at all three LODs. Fine hardware and threshold grout
+ramp remain physical at all three LoDs; District omits fine rails. Fine hardware and threshold grout
 continue to follow their existing omission rules.
 
 The access ramp and retaining cheek use outward mesh winding. A raised infill
@@ -168,32 +120,12 @@ closes the small gap between the ramp and recessed left doorway. Walking surface
 use separate matte dark tiles; the polished vertical shop plinth is preserved.
 These surfaces remain physical at every LOD.
 
-## Screenshot correction pass publication budgets
+## Surface checks and rear coverage
 
-| Level | Placed triangles | GLB bytes including textures | Embedded image bytes |
-| --- | ---: | ---: | ---: |
-| detail | 44,386 | 5,356,664 | 1,349,971 |
-| walk | 13,216 | 2,736,580 | 1,584,140 |
-| district | 2,706 | 812,620 | 381,086 |
-
-## Independent mesh audit
-
-The retained user frontage screenshots and close roof satellite view were
-compared with Detail, Walk and District exports. The thirteen upper modules,
-two recessed entrances, left ramp, three edge housings and four-fan plant
-arrangement remain consistent with those references. Heights and hidden rear
-openings remain estimates; no access stair or door was inferred from the aerial.
-
-The shallow rooflight/vent had both pitch faces and end caps wound inward.
-Their winding is corrected, and validation now requires both sloping faces to
-point upward. Double-sided rendering had concealed the error. Roof shape and
-all three LoD policies are unchanged.
-
-Full builds and validators passed after the audit. Re-published Detail, Walk
-and District GLBs were rendered from front, close and roof/rear viewpoints;
-colour and major silhouettes remain stable. A combined Walk comparison with
-public-realm ground checked the frontage and entrance approaches. Live browser
-inspection was unavailable; these checks used imported exported GLBs.
+Rooflight pitch faces must point upward; double-sided materials must not hide
+inward winding. Checks also cover entrance closures, visible lenses and bake
+coverage. Retained exported-model reviews cover front, close, roof/rear and
+combined pavement approaches; they do not establish surveyed dimensions.
 
 The Glebe Place court-facing side follows the private photos attached to snag
 9648072a74f14fbfac2ad9c4483b92d7 (the close Street View frame is dated November
