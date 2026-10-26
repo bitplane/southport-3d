@@ -44,17 +44,7 @@ def roofs(d):
  else:
   # Low glazed service covers evidenced in the rear court.
   out += [('low glass west',[(10.6,16.5,3.5),(15.8,16.5,3.5),(15.8,22.5,3.5),(10.6,22.5,3.5)])]
- if d['kind']=='red' and 'lightwell'in d:
-  well=d['lightwell'];hole=rect(well['x0'],well['y0'],well['x1'],well['y1']);new=[]
-  from mathutils import Vector
-  for name,p in out:
-   if not name.startswith('saltrock-gallery'):
-    new.append((name,p));continue
-   for ti,tri in enumerate([(p[0],p[i],p[i+1])for i in range(1,len(p)-1)]):
-    a,b,c=map(Vector,tri);normal=(b-a).cross(c-a)
-    for i,poly in enumerate(cuts([(v[0],v[1])for v in tri],[hole])):
-     new.append((name+str(ti)+' '+str(i),[(x,y,a.z-(normal.x*(x-a.x)+normal.y*(y-a.y))/normal.z)for x,y in poly]))
-  new.append(('low lightwell glass',[(x,y,well['floor'])for x,y in hole]));out=new
+ if d.get('cafe'):out=cafe_roofs(d,out)
  return out
 
 def exterior(d):
@@ -70,13 +60,7 @@ def exterior(d):
  if d['kind']=='bank':
   h=d['hall'];a,c,y,end=h['x0'],h['x1'],h['y0'],h['y1'];ry=h['ridge_y'];e=h['eaves'];top=h['ridge']
   out += [('hall front',[(a,y,lo),(c,y,lo),(c,y,e),(a,y,e)]),('hall rear',[(c,end,lo),(a,end,lo),(a,end,e),(c,end,e)]),('hall west',[(a,end,lo),(a,y,lo),(a,y,e),(a,ry-2,e),(a,ry,top),(a,end,e)]),('hall east',[(c,y,lo),(c,end,lo),(c,end,e),(c,ry,top),(c,ry-2,e),(c,y,e)])]
- if d['kind']=='red' and 'lightwell'in d:
-  q=d['lightwell']
-  for name,poly in roofs(d):
-   if not name.startswith('saltrock-gallery'):continue
-   for i,(a,b)in enumerate(zip(poly,poly[1:]+poly[:1])):
-    boundary=any(abs(a[k]-edge)<1e-6 and abs(b[k]-edge)<1e-6 for k,edge in [(0,q['x0']),(0,q['x1']),(1,q['y0']),(1,q['y1'])])
-    if boundary:out.append(('lightwell inward '+name+str(i),[(a[0],a[1],q['floor']),(b[0],b[1],q['floor']),b,a]))
+ if d.get('cafe'):out=cafe_exterior(d,out)
  return out
 
 def bays(d):
@@ -94,3 +78,47 @@ def box_bays(d):
    ('right',[(b,-.43,4.4),(b,0,4.4),(b,0,8.0),(b,-.65,7.4),(b,-.65,4.8)]),
    ('roof',[(a,-.65,7.4),(b,-.65,7.4),(b,0,8.0),(a,0,8.0)]),
    ('bottom',[(a,0,4.4),(b,0,4.4),(b,-.43,4.4),(a,-.43,4.4)])]
+
+
+def facade_x(d,x):
+ c=d.get('cafe',{}).get('width',0)
+ return c+x*(d['front_width']-c)/d['front_width']
+
+def cafe_roofs(d,out):
+ c=d['cafe'];w=c['width'];b=d['main_depth'];r=d['ridge_y'];E=d['front_eaves'];H=d['front_ridge'];B=d['rear_eaves']
+ end=(c['gable_top']-E)*r/(H-E)
+ updated=[]
+ for name,p in out:
+  if name=='main front':
+   for i,q in enumerate(cuts(rect(0,0,d['front_width'],r),[[(0,0),(w,0),(w/2,end)]])):
+    updated.append(('main front '+str(i),[(x,y,E+(H-E)*y/r)for x,y in q]))
+  elif name.startswith('main rear'):
+   join=r+(H-c['strip_ridge'])*(b-r)/(H-B)
+   for i,q in enumerate(cuts([(x,y)for x,y,z in p],[[(0,b),(c['rear_strip_width']/2,join),(c['rear_strip_width'],b)]])):
+    updated.append((name+' cafe join '+str(i),[(x,y,H+(B-H)*(y-r)/(b-r))for x,y in q]))
+  else:updated.append((name,p))
+ updated += [('cafe front gable left',[(0,0,E),(w/2,0,c['gable_top']),(w/2,end,c['gable_top'])]),('cafe front gable right',[(w/2,0,c['gable_top']),(w,0,E),(w/2,end,c['gable_top'])])]
+ a=c['rear_strip_width'];ys=c['rear_arm_start'];ye=c['rear_arm_end'];aw=c['rear_arm_width'];e=c['rear_eaves'];sr=c['strip_ridge'];ar=c['arm_ridge'];ym=(ys+ye)/2
+ join=r+(H-sr)*(b-r)/(H-B);vj=ys+(sr-e)*(ym-ys)/(ar-e)
+ updated += [('cafe strip west',[(0,b,B),(a/2,join,sr),(a/2,vj,sr),(0,ys,e)]),('cafe strip east',[(a/2,join,sr),(a,b,B),(a,ys,e),(a/2,vj,sr)])]
+ for i,q in enumerate(cuts(rect(0,ys,aw,ym),[[(0,ys),(a,ys),(a/2,vj)]])):
+  updated.append(('cafe rear arm front '+str(i),[(x,y,e+(ar-e)*(y-ys)/(ym-ys))for x,y in q]))
+ updated += [('cafe rear arm back',[(0,ym,ar),(aw,ym,ar),(aw,ye,e),(0,ye,e)]),('cafe court low glass',[(a,b,3.5),(10.3,b,3.5),(10.3,ys,3.5),(a,ys,3.5)])]
+ return updated
+
+def cafe_exterior(d,out):
+ c=d['cafe'];a=c['rear_strip_width'];b=d['main_depth'];B=d['rear_eaves'];ys=c['rear_arm_start'];ye=c['rear_arm_end'];aw=c['rear_arm_width'];e=c['rear_eaves'];ar=c['arm_ridge'];lo=d['foundation_z']-d['floor_z'];new=[]
+ for name,p in out:
+  if name=='rear front range':
+   # The narrow cafe wing shares the main-range wall at y=b.
+   for q in cuts([(x,z)for x,y,z in p],[rect(0,lo,a,B)]):new.append((name,[(x,b,z)for x,z in q]))
+  else:new.append((name,p))
+ new += [('cafe strip west wall',[(0,ys,lo),(0,b,lo),(0,b,B),(0,ys,e)]),('cafe strip east wall',[(a,b,lo),(a,ys,lo),(a,ys,e),(a,b,B)]),('cafe rear arm front wall',[(a,ys,lo),(aw,ys,lo),(aw,ys,e),(a,ys,e)]),('cafe rear arm back wall',[(aw,ye,lo),(0,ye,lo),(0,ye,e),(aw,ye,e)]),('cafe rear arm west gable',[(0,ye,lo),(0,ys,lo),(0,ys,e),(0,(ys+ye)/2,ar),(0,ye,e)]),('cafe rear arm east gable',[(aw,ys,lo),(aw,ye,lo),(aw,ye,e),(aw,(ys+ye)/2,ar),(aw,ys,e)])]
+ return new
+
+def cafe_front_envelope(d):
+ c=d['cafe'];w=c['width'];a=(w-c['bay_width'])/2;b=w-a;p=c['projection'];lo=4.45;hi=11.65
+ out=[]
+ for poly in cuts(rect(0,0,w,d['front_eaves']),[rect(a,lo,b,hi)]):out.append(('wall',[(x,0,z)for x,z in poly]))
+ out += [('bay front',[(a,-p,lo),(b,-p,lo),(b,-p,hi),(a,-p,hi)]),('bay left',[(a,0,lo),(a,-p,lo),(a,-p,hi),(a,0,hi)]),('bay right',[(b,-p,lo),(b,0,lo),(b,0,hi),(b,-p,hi)]),('bay top',[(a,-p,hi),(b,-p,hi),(b,0,hi),(a,0,hi)]),('bay bottom',[(a,0,lo),(b,0,lo),(b,-p,lo),(a,-p,lo)]),('gable',[(0,0,d['front_eaves']),(w,0,d['front_eaves']),(w/2,0,c['gable_top'])])]
+ return out

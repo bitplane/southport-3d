@@ -1,0 +1,124 @@
+{
+  "snag": "7a0b626b970f4dffa5c3300e66df95e7",
+  "accessed": "2026-10-26",
+  "sources": [
+    {
+      "url": "https://www.yoursouthport.com/business-directory/caffe-dolce",
+      "observed": "BID identifies cafe at 409 Lord Street."
+    },
+    {
+      "url": "https://modgov.sefton.gov.uk/documents/s94176/Annex%201%20Numbers%20determined%20Licensing%20Act%202003.pdf",
+      "observed": "Council licensing record lists Caffe Dolce at 409/411."
+    },
+    {
+      "url": "https://tustin.co.uk/wp-content/uploads/2019/06/405-407-Lord-Street-Brochure-Details.pdf",
+      "observed": "Front photograph marks the adjacent 405\u2013407 cafe bay within Burlington, excluding the missing gabled frontage. Floor plan belongs to 405\u2013407 and is not borrowed as a measured plan for 409\u2013411."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6491576,-3.0039782,3a,75y,315h,100t/data=!3m4!1e1!3m2!1sYt6QpKjGHI_fQNNfah9QIg!2e0",
+      "capture_date": "2026-07",
+      "observed": "Gabled bay between Burlington and Masonic, pale two-storey rectangular bay with large white spandrel, dark cafe shopfront and continuous curved verandah."
+    },
+    {
+      "url": "https://www.google.com/maps/@53.6492808,-3.0051769,85a,35y,86.4h,39.57t/data=!3m1!1e3",
+      "capture_date": null,
+      "observed": "Actual loaded 3D front and rear obliques: narrow southwest rear range turns across back; distinct central roof volume, low covered court and open access, not one high ring with a hole."
+    }
+  ],
+  "local_frame": "Same site origin/rotation as parent; coordinates below relative to front_origin [60.07300356696527,45.66045790801408], including existing shear.",
+  "footprint_parts": {
+    "cafe_front": [
+      [
+        0,
+        0
+      ],
+      [
+        4.4,
+        0
+      ],
+      [
+        4.4,
+        8.65
+      ],
+      [
+        0,
+        8.65
+      ]
+    ],
+    "masonic_front": [
+      [
+        4.4,
+        0
+      ],
+      [
+        20.85,
+        0
+      ],
+      [
+        20.85,
+        8.65
+      ],
+      [
+        4.4,
+        8.65
+      ]
+    ],
+    "cafe_rear_strip": [
+      [
+        0,
+        8.65
+      ],
+      [
+        2.4,
+        8.65
+      ],
+      [
+        2.4,
+        22
+      ],
+      [
+        0,
+        22
+      ]
+    ],
+    "rear_return": [
+      [
+        0,
+        22
+      ],
+      [
+        7.8,
+        22
+      ],
+      [
+        7.8,
+        26
+      ],
+      [
+        0,
+        26
+      ]
+    ],
+    "separate_middle_range": [
+      [
+        10.48,
+        8.65
+      ],
+      [
+        16.1,
+        8.65
+      ],
+      [
+        16.1,
+        15.6
+      ],
+      [
+        10.48,
+        15.6
+      ]
+    ]
+  },
+  "neighbour_effect": "Burlington east edge and bank west edge unchanged. Four-axis facade remapped into 16.45m. Whole 20.85m canopy remains one owner. Cafe and Masonic rear volumes separate at open court; no high east side closes former ring.",
+  "uncertainty": "Front division \u00b10.7m, rear boundaries \u00b11.5m and heights \u00b11m. Functional/legal ownership of rear arm cannot be established from roof imagery. Rear fenestration, fine gable carving and service fittings remain unresolved. Wider roof review is still open; this establishes separate footprints rather than certifying all roof pitches.",
+  "private_captures": "../output/lord-street-snags/missing-plan.png, missing-oblique.png, missing-rear-orbit.png, cafe-current-front.png; snag attachments remain outside git."
+}

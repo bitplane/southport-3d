@@ -5,7 +5,7 @@ from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path[:0]=[str(ROOT/'scripts'),str(REPO/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
 from southport3d.conform import conform
-from shapes import rect,cuts,transform,roofs,exterior,canopy_profile,bays,box_bays
+from shapes import rect,cuts,transform,roofs,exterior,canopy_profile,bays,box_bays,facade_x
 D=json.loads((ROOT/'research/layout.json').read_text());W=D['front_width'];DETAIL=D['phase']=='detail'
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False);s=bpy.context.scene;s.unit_settings.system='METRIC'
 C={}
@@ -13,6 +13,8 @@ for p in ['front','rear','roof','canopy']:
  C[p]=bpy.data.collections.new(p);s.collection.children.link(C[p])
 T=Matrix(((1,D['side_shear'],0,D['front_origin'][0]),(D['front_shear'],1,0,D['front_origin'][1]),(0,0,1,D['floor_z']),(0,0,0,1)))
 F=face_matrix((0,0,0),(0,-1,0))
+NEW_CAFE=False
+FM=Matrix.Translation((D['cafe']['width'],0,0)) @ Matrix.Diagonal(((W-D['cafe']['width'])/W,1,1,1))
 def mat(name,rgb,rough=.8,tex=False):
  m=bpy.data.materials.new(name);m.diffuse_color=(*rgb,1);m.use_nodes=True;nt=m.node_tree;p=nt.nodes['Principled BSDF'];p.inputs['Base Color'].default_value=(*rgb,1);p.inputs['Roughness'].default_value=rough
  if tex:
@@ -28,20 +30,21 @@ def finish(m,part,material,M=None):
   axes=sorted(sorted(range(3),key=lambda i:abs(f.normal[i]))[:2])
   for li in f.loop_indices:
    v=ob.data.vertices[ob.data.loops[li].vertex_index].co;uv.data[li].uv=(v[axes[0]]/1.0,v[axes[1]]/1.2)
- ob.data.transform(T@(M if M is not None else Matrix.Identity(4)));return ob
+ ob.data.transform(T@(FM if part=='front' and not NEW_CAFE else Matrix.Identity(4))@(M if M is not None else Matrix.Identity(4)));return ob
 
 def box(name,c,sz,material=cream,part='front',M=F):
+ bound=D['cafe']['width'] if NEW_CAFE else W
  if M is F and name.startswith('Trim'):
-  a=max(0,c[0]-sz[0]/2);b=min(W,c[0]+sz[0]/2);c=((a+b)/2,c[1],c[2]);sz=(b-a,sz[1],sz[2])
+  a=max(0,c[0]-sz[0]/2);b=min(bound,c[0]+sz[0]/2);c=((a+b)/2,c[1],c[2]);sz=(b-a,sz[1],sz[2])
  m=Mesh(name);m.box(c,sz)
  if name.startswith('Trim') and M is not None:
   # Attached dressings own the outward skin; their buried back is the wall's surface.
   m.faces.pop(0);m.indices.pop(0)
  if M is F and name.startswith('Shop pier'):
-  m.faces=[f for f in m.faces if not any(all(abs(m.vertices[i][0]-edge)<1e-8 for i in f)for edge in (0,W)) and not all(abs(m.vertices[i][1]-4.34)<1e-8 for i in f)];m.indices=[0]*len(m.faces)
+  m.faces=[f for f in m.faces if not any(all(abs(m.vertices[i][0]-edge)<1e-8 for i in f)for edge in (0,bound)) and not all(abs(m.vertices[i][1]-4.34)<1e-8 for i in f)];m.indices=[0]*len(m.faces)
  if (M is F and name.startswith('Trim')) or (name in ('Canopy longitudinal beam','Canopy beam') and abs(c[1])<1e-8):
   # Shared party-line end skin belongs to the structural wall, not attached trim.
-  m.faces=[f for f in m.faces if not any(all(abs(m.vertices[i][0]-edge)<1e-8 for i in f) for edge in (0,W))];m.indices=[0]*len(m.faces)
+  m.faces=[f for f in m.faces if not any(all(abs(m.vertices[i][0]-edge)<1e-8 for i in f) for edge in (0,bound))];m.indices=[0]*len(m.faces)
  return finish(m,part,material,M)
 def plane(name,p,material,part='front',M=F):
  from mathutils.geometry import tessellate_polygon
@@ -167,7 +170,7 @@ if D['kind']=='red':
   font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf')
   for body,z in [('MASONIC',13.44),('BUILDING',13.02)]:
    ob=text_object('Inscription '+body,body,(cx,z,.183),(0,0,1),.32,2.85,font,letter,extrude=.0005,collection=C['front'])
-   bpy.ops.object.select_all(action='DESELECT');ob.select_set(True);bpy.context.view_layer.objects.active=ob;bpy.ops.object.convert(target='MESH');ob.data.transform(T@F@ob.matrix_world);ob.matrix_world=Matrix.Identity(4);ob.select_set(False)
+   bpy.ops.object.select_all(action='DESELECT');ob.select_set(True);bpy.context.view_layer.objects.active=ob;bpy.ops.object.convert(target='MESH');ob.data.transform(T@FM@F@ob.matrix_world);ob.matrix_world=Matrix.Identity(4);ob.select_set(False)
 
 else:
  for i,cx in enumerate(D['bay_centres'][1:]):
@@ -225,12 +228,6 @@ for name,p in exterior(D):
   for i,(x,z,w,h)in enumerate(ws):window('rear observed '+str(i),x,z,w,h,M,'rear',divide=1)
  else:plane('Shell '+name,p,brick,'rear',None)
 for name,p in roofs(D):plane('Roof '+name,p,roofglass if 'glass'in name or 'lantern'in name else slate,'roof',None)
-if DETAIL and D['kind']=='red':
- for a,c,y,end in [(2.4,8,11.7,23.2),(10.6,15.8,16.5,22.5)]:
-  count=max(2,round((end-y)/.65))
-  for i in range(count+1):
-   yy=y+(end-y)*i/count;tube('Roof low rooflight bar',[(a+.04,yy,3.535),(c-.04,yy,3.535)],.025,cream,'roof',None,n=6)
-  for xx in [a,(a+c)/2,c]:tube('Roof low rooflight rail',[(xx,y+.04,3.54),(xx,end-.04,3.54)],.03,lead,'roof',None,n=6)
 # Distinctive hall lantern mullions follow its four real slopes, leaving no tiled clutter.
 if DETAIL and D['kind']=='bank':
  seen_hips=set()
@@ -311,7 +308,11 @@ if DETAIL:
  font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf')
  for name,a,b,material in shops:
   if name=='vacant':continue
-  ob=text_object('Shop lettering '+name,name.upper(),((a+b)/2,3.24,.15),(0,0,1),.22,b-a-.45,font,cream,collection=C['front']);bpy.context.view_layer.objects.active=ob;ob.select_set(True);bpy.ops.object.convert(target='MESH');ob.data.transform(T@F@ob.matrix_world);ob.matrix_world=Matrix.Identity(4);ob.select_set(False)
+  ob=text_object('Shop lettering '+name,name.upper(),((a+b)/2,3.24,.15),(0,0,1),.22,b-a-.45,font,cream,collection=C['front']);bpy.context.view_layer.objects.active=ob;ob.select_set(True);bpy.ops.object.convert(target='MESH');ob.data.transform(T@FM@F@ob.matrix_world);ob.matrix_world=Matrix.Identity(4);ob.select_set(False)
+NEW_CAFE=True
+from cafe import build_cafe
+build_cafe(globals())
+NEW_CAFE=False
 # Keep semantic mesh groups for validation while eliminating bake traversal overhead.
 for part,col in C.items():
  groups={}

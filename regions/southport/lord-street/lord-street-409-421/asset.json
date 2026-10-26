@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "southport.lord-street.lord-street-409-421",
-  "name": "409\u2013421 Lord Street \u2014 Saltrock, Covet & Crave and Connard",
+  "name": "409\u2013421 Lord Street \u2014 Caffe Dolce and Masonic Building",
   "region": "southport",
   "area": "lord-street",
   "status": "photo-researched-exterior-estimated-dimensions",
@@ -30,7 +30,7 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "409\u2013421 Lord Street \u2014 Saltrock, Covet & Crave and Connard; private interiors excluded; dimensions estimated from registered footprint and multi-view imagery",
+  "scope": "Caffe Dolce at 409\u2013411 and Masonic frontage 413\u2013421, with separately mapped rear wings and low covered court; private interiors excluded.",
   "build_inputs": {
     "master": [
       "regions/southport/elevation/lord-corridor.json",

@@ -60,5 +60,14 @@
     "bank_floor_m": 0.88,
     "support": "lord-corridor-pavement control grid",
     "note": "Thresholds connect locally; neither building tilts with road. No raster terrain refinement."
+  },
+  "current_frontage_partition": {
+    "supersedes": "The initial 20.85 m/four-axis red facade assignment omitted 409\u2013411. That width covers cafe plus Masonic frontage.",
+    "cafe_m": 4.4,
+    "masonic_m": 16.45,
+    "combined_m": 20.85,
+    "method": "Frontage rhythm in user attached view and July 2026 panorama: one narrow gabled cafe bay precedes four Masonic axes. Approximately one fifth of the combined interval is the cafe. Existing outer registered endpoints retained; no neighbour translation.",
+    "uncertainty_m": 0.7,
+    "limitation": "Image proportion estimate, not survey; original window dimensions are normalized into the corrected Masonic span."
   }
 }

@@ -6,7 +6,7 @@ p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);
 repo=args.recipe.resolve().parents[4];sys.path[:0]=[str(repo/'tools'),str(args.recipe.parent/'scripts')]
 from publication import inspect_glb
 from audit_published_coplanar import primitives
-from shapes import transform
+from shapes import transform,facade_x
 from coplanar import overlaps
 layout=json.loads((args.recipe.parent/'research/layout.json').read_text());assembly=json.loads((args.package/'assembly.json').read_text());rows=[]
 for level in ['detail','walk','district']:
@@ -35,9 +35,11 @@ for level in ['detail','walk','district']:
   assert len(hits),'missing architectural surface'
   return float(hits.min())
  for cx in layout['bay_centres'][1:3]:
-  X,Y,Z=transform(layout,(cx,-2,6.1))
+  X,Y,Z=transform(layout,(facade_x(layout,cx),-2,6.1))
   distance=first_hit((X,Z,-Y),(layout['side_shear'],0,-1))
   assert 1.1<distance<1.5,(level,'box bay lost projection',distance)
+ X,Y,Z=transform(layout,(layout['cafe']['width']/2,-2,6.1))
+ assert 1.2<first_hit((X,Z,-Y),(layout['side_shear'],0,-1))<1.6,(level,'missing cafe bay')
  # Export axes are x,up,-y. Test projected triangle containment at four court centres.
  court_hits=[]
  for x,y in layout['courts']:

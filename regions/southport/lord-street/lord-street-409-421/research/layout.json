@@ -47,14 +47,6 @@
   ],
   "wings": [
     {
-      "id": "saltrock-gallery",
-      "x0": 0,
-      "x1": 10.48,
-      "end": 25.98,
-      "eaves": 9.3,
-      "ridge": 12.0
-    },
-    {
       "id": "middle-wing",
       "x0": 10.48,
       "x1": 16.1,
@@ -66,7 +58,7 @@
   "courts": [
     [
       17.9,
-      13.0
+      13
     ],
     [
       12.2,
@@ -75,6 +67,10 @@
     [
       5.2,
       18
+    ],
+    [
+      9,
+      24
     ]
   ],
   "chimneys": [
@@ -96,16 +92,23 @@
     }
   ],
   "canopy_posts": [
-    4.7,
-    10.2,
-    15.4,
+    4.25,
+    8.55,
+    12.65,
+    16.75,
     20.7
   ],
-  "lightwell": {
-    "x0": 2.4,
-    "x1": 8.0,
-    "y0": 11.7,
-    "y1": 23.2,
-    "floor": 3.5
+  "cafe": {
+    "width": 4.4,
+    "bay_width": 3.0,
+    "projection": 0.55,
+    "gable_top": 14.4,
+    "rear_strip_width": 2.4,
+    "rear_arm_start": 22.0,
+    "rear_arm_end": 26.0,
+    "rear_arm_width": 7.8,
+    "rear_eaves": 9.3,
+    "strip_ridge": 10.5,
+    "arm_ridge": 11.3
   }
 }

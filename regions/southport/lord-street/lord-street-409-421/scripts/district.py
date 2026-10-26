@@ -2,11 +2,13 @@
 import json,math,os
 from pathlib import Path
 from blender_envelope import Surfaces
-from shapes import transform,roofs,exterior,bays,rect,cuts,canopy_profile,box_bays
+from shapes import transform,roofs,exterior,bays,rect,cuts,canopy_profile,box_bays,facade_x,cafe_front_envelope
 
 def surfaces(asset):
  d=json.loads((asset/'research/layout.json').read_text());w=d['front_width'];s=Surfaces(['front','rear','roof','canopy'],lambda p:transform(d,p))
+ map_front=True
  def face(name,p,**kw):
+  if s.part=='front' and map_front:p=[(facade_x(d,x),y,z)for x,y,z in p]
   from mathutils import Vector
   p=[Vector(v)for v in p]
   changed=True
@@ -39,10 +41,34 @@ def surfaces(asset):
   for i,cx in enumerate(d['bay_centres'][1:]):
    a,c=cx-1.65,cx+1.65;p=[(a,8.65),(a,9.35),(cx,10.95),(c,9.35),(c,8.65)]
    face('gable '+str(i),[(x,-.68,z)for x,z in p[::-1]],cage=.45)
+ map_front=False
+ for name,p in cafe_front_envelope(d):face('cafe '+name,p,cage=.3)
  s.part='rear'
- for name,p in exterior(d):face(name,p,cage=.40)
+ for name,p in exterior(d):
+  # Burlington completely hides this shared party wall, including its roof.
+  if name=='southwest party':continue
+  face(name,p,cage=.40)
  s.part='roof'
- for name,p in roofs(d):face(name,p,cage=.28)
+ roof_faces=roofs(d)
+ from mathutils import Vector
+ points=[Vector(v)for name,p in roof_faces for v in p]
+ for name,p in roof_faces:
+  if not name.startswith(('main rear','cafe rear arm front')):
+   face(name,p,cage=.28);continue
+  boundary=[];inserted=False
+  for av,bv in zip(p,p[1:]+p[:1]):
+   a,b=Vector(av),Vector(bv);edge=b-a;hits={0.0:a}
+   if edge.length_squared<1e-12:continue
+   for q in points:
+    t=(q-a).dot(edge)/edge.length_squared
+    if 1e-7<t<1-1e-7 and (q-a-t*edge).length<1e-5:
+     hits[round(t,9)]=q;inserted=True
+   boundary.extend(hits[t]for t in sorted(hits))
+  if inserted:
+   centre=sum(map(Vector,p),Vector())/len(p)
+   for i,(a,b)in enumerate(zip(boundary,boundary[1:]+boundary[:1])):
+    if (a-centre).cross(b-centre).length>1e-8:face(name+' conform '+str(i),[centre,a,b],cage=.28)
+  else:face(name,p,cage=.28)
  if d['kind']=='bank':face('tower cap',[(0,0,12.05),(3.9,0,12.05),(3.9,.22,12.05),(0,.22,12.05)],cage=.28)
  for i,ch in enumerate(d['chimneys']):
   x,y,b,t,ww,dep=[ch[k]for k in ['x','y','base','top','w','d']]
