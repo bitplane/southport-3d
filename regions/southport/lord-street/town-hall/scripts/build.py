@@ -6,6 +6,7 @@ ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_RO
 from southport3d.geometry import Mesh,face_matrix,text_object
 from southport3d.conform import conform
 from shapes import rect,cuts,transform,roofs,elevations
+from staircase import flight,baluster_points
 D=json.loads((ROOT/'research/layout.json').read_text());W=D['front_width'];DETAIL=D['phase']=='detail';F=face_matrix((0,0,0),(0,-1,0))
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False);s=bpy.context.scene;s.unit_settings.system='METRIC'
 C={}
@@ -28,7 +29,7 @@ def finish(m,part,material,M=None):
 def box(n,c,sz,ma=trim,part='front',M=F):
  if n in ['Porch landing','Stair central retaining wall','Stair tread']:part='steps'
  m=Mesh(n);m.box(c,sz)
- if M is not None and n.startswith(('Trim','Pilaster','Cornice','Fine','Rear stringcourse','Terracotta')):
+ if M is not None and n.startswith(('Trim','Pilaster','Cornice','Fine','Rear stringcourse','Terracotta','Registrar')):
   omit={0,1,3} if n=='Pilaster shaft' else {0}
   m.faces=[f for i,f in enumerate(m.faces) if i not in omit];m.indices=[0]*len(m.faces)
  return finish(m,part,ma,M)
@@ -60,21 +61,22 @@ def wall(n,p,holes,ma,part='front',M=F):
  return finish(m,part,ma,M)
 def frame(n,x,z,w,h,arched=False,part='front',M=F,ma=white):
  p=arch(x,z,w,h)if arched else rect(x-w/2,z,x+w/2,z+h)
- plane('Glazing '+n,[(*v,-.23)for v in p],dark if n=='north ground 30' else glass,part,M)
+ is_door=n in ('north ground 30','north registrar door')
+ plane('Glazing '+n,[(*v,-.23)for v in p],dark if is_door else glass,part,M)
  # Ribbon frame has one front skin and no coplanar overlay at the opening.
  inner=arch(x,z+.065,w-.13,h-.13)if arched else rect(x-w/2+.065,z+.065,x+w/2-.065,z+h-.065)
  m=Mesh('Joinery '+n)
  for q in cuts(p,[inner]):m.add([(*v,-.10)for v in q],[tuple(range(len(q)))])
  finish(m,part,ma,M)
  spring=z+h-(.7 if w>3 else w/2) if arched else z+h
- if n!='north ground 30':
-  divisions=3 if arched and w>3 else 2
+ if not is_door:
+  divisions=1 if n.startswith('north return') else 3 if arched and w>3 else 2
   for i in range(1,divisions):box('Joinery '+n+' central bar',(x-w/2+w*i/divisions,(z+spring)/2,-.11),(.055,spring-z-.13,.12),ma,part,M)
   for i in range(divisions):
    xx=x-w/2+w*(i+.5)/divisions;ww=w/divisions-.055-(.0375 if i in [0,divisions-1] else 0)
    box('Joinery '+n+' sash rail',(xx,z+(spring-z)*.52,-.11),(ww,.075,.12),ma,part,M)
    if arched:box('Joinery '+n+' spring rail',(xx,spring,-.11),(ww,.055,.12),ma,part,M)
- if DETAIL:
+ if DETAIL and not is_door:
   box('Trim '+n+' sill',(x,z-.08,.17),(w+.25,.16,.34),trim if ma==white else ma,part,M)
   outer=arch(x,z-.08,w+.36,h+.26)if arched else rect(x-w/2-.18,z-.12,x+w/2+.18,z+h+.18)
   m=Mesh('Trim '+n+' architrave')
@@ -152,37 +154,55 @@ if DETAIL:
   lathe('Ionic upper semi column',x,-.10,8.40,[(0,.25),(.18,.25),(.3,.20),(3.35,.18),(3.47,.25),(3.58,.30)],trim,sides=40)
   for dx in [-.23,.23]:
    pts=[(x+dx+.13*math.cos(t),-.32,12.04+.13*math.sin(t))for t in [math.tau*k/32 for k in range(33)]];tube('Ionic volute',pts,.045,trim)
-# Parallel lateral flights, central landing wall and balustrades.
+# Parallel lateral flights. Each has eight risers, a short landing, then eight
+# more risers. The solid side cheek, spindle seats and rail share this profile.
 st=D['stair'];z0=-.02;h=2.8;N=st['steps'];left=(st['x0'],x0);right=(x1,st['x1']);yf=-st['front'];yb=-st['back']
 box('Stair central retaining wall',(cx,(yf+yb)/2,1.325),(x1-x0,yb-yf,2.95),cream,'porch',None)
 for a,b,rise_right in [(left[0],left[1],True),(right[0],right[1],False)]:
- for i in range(N):
-  xx=a+(i+.5)*(b-a)/N;top=z0+(h-z0)*(i+1 if rise_right else N-i)/N
-  # Separate step slabs meet without overlapping exposed surfaces.
-  box('Stair tread',(xx,(yf+yb)/2,(top-.16)/2),((b-a)/N,yb-yf,top+.16),stone,'porch',None)
+ treads,segments=flight(st,a,b,rise_right,z0,h)
+ for xa,xb,top in treads:
+  lo,hi=sorted((xa,xb))
+  box('Stair tread',((lo+hi)/2,(yf+yb)/2,(top-.16)/2),(hi-lo,yb-yf,top+.16),stone,'porch',None)
  if DETAIL:
   for yy in [yf,yb]:
-   za=h if not rise_right else z0;zb=h if rise_right else z0
-   tube('Stair handrail',[(a,yy,za+1.15),(b,yy,zb+1.15)],.10,stone,'porch',sides=8)
-   for j in range(1,12):
-    t=j/12;x=a+(b-a)*t;z=za+(zb-za)*t
-    lathe('Baluster stair',x,yy,z+.2,[(0,.13),(.12,.13),(.25,.07),(.43,.13),(.58,.10),(.70,.06),(.85,.10)],stone,'porch',sides=16)
+   # Offset the cheek outside the walking treads. Its top surface is a real
+   # continuous stone seat for every spindle, including the flat landing.
+   outer=yy+(-.22 if yy==yf else .22);mid=(outer+yy)/2
+   for (xa,za),(xb,zb) in segments:
+    if xa>xb:xa,xb,za,zb=xb,xa,zb,za
+    za+=.09;zb+=.09
+    side=[(xa,outer,-.16),(xb,outer,-.16),(xb,outer,zb),(xa,outer,za)]
+    plane('Stair cheek side',side if outer<yy else side[::-1],cream,'porch',None)
+    seat=[(xa,outer,za),(xb,outer,zb),(xb,yy,zb),(xa,yy,za)]
+    plane('Stair cheek seat',seat if outer<yy else seat[::-1],stone,'porch',None)
+    # A rectangular rail has a defined underside rather than a round tube.
+    for edge in [outer,yy]:
+     side=[(xa,edge,za+.85),(xb,edge,zb+.85),(xb,edge,zb+1.02),(xa,edge,za+1.02)]
+     plane('Stair handrail side',side if edge==min(outer,yy) else side[::-1],stone,'porch',None)
+    bottom=[(xa,outer,za+.85),(xb,outer,zb+.85),(xb,yy,zb+.85),(xa,yy,za+.85)]
+    top=[(xa,outer,za+1.02),(xb,outer,zb+1.02),(xb,yy,zb+1.02),(xa,yy,za+1.02)]
+    plane('Stair handrail bottom',bottom[::-1] if outer<yy else bottom,stone,'porch',None)
+    plane('Stair handrail top',top if outer<yy else top[::-1],stone,'porch',None)
+   for x,z in baluster_points(st,segments):
+    lathe('Baluster stair',x,mid,z,[(0,.105),(.12,.105),(.25,.055),(.43,.105),(.58,.08),(.70,.055),(.85,.085)],stone,'porch',sides=16)
 for x in [st['x0'],x0,x1,st['x1']]:
  z=h if x in [x0,x1]else z0
  box('Stair balustrade pier',(x,yf,z+.55),(.6,.64,1.15),stone,'porch',None)
  box('Stair pier cap',(x,yf,z+1.2),(.77,.8,.15),stone,'porch',None)
  lathe('Stair finial',x,yf,z+1.275,[(0,.17),(.12,.22),(.25,.18),(.34,0)],stone,'porch',sides=20)
 for yy in [yf]:
- box('Balcony rail',(cx,yy,h+1.10),(x1-x0,.24,.18),stone,'porch',None)
+ box('Balcony rail',(cx,yy,h+.95),(x1-x0,.24,.20),stone,'porch',None)
  if DETAIL:
-  for j in range(1,19):lathe('Baluster landing',x0+j*(x1-x0)/19,yy,h+.12,[(0,.12),(.15,.12),(.3,.065),(.48,.12),(.62,.075),(.85,.11)],stone,'porch',sides=16)
+  for j in range(1,st['landing_balusters']+1):lathe('Baluster landing',x0+j*(x1-x0)/(st['landing_balusters']+1),yy,h,[(0,.12),(.15,.12),(.3,.065),(.48,.12),(.62,.075),(.85,.11)],stone,'porch',sides=16)
 # Upper balcony railing same robust architectural form.
 for yy in [-3.29]:
+ box('Porch balcony base',(cx,yy,8.285),(x1-x0+.5,.30,.05),trim,'porch',None)
  box('Porch balcony rail',(cx,yy,9.12),(x1-x0+.5,.30,.18),trim,'porch',None)
  if DETAIL:
   for j in range(1,20):lathe('Baluster porch',x0+j*(x1-x0)/20,yy,8.31,[(0,.11),(.15,.11),(.3,.06),(.48,.105),(.60,.06),(.72,.10)],trim,'porch',sides=16)
 for x in [x0-.1,x1+.1]:box('Porch balcony pier',(x,-3.29,8.72),(.52,.48,.85),trim,'porch',None)
 for x in [x0-.1,x1+.1]:
+ box('Porch balcony return base',(x,-1.57,8.285),(.30,3.14,.05),trim,'porch',None)
  box('Porch balcony return rail',(x,-1.57,9.12),(.30,3.14,.18),trim,'porch',None)
  if DETAIL:
   for j in range(1,9):lathe('Baluster porch return',x,-3.29+j*3.29/9,8.31,[(0,.11),(.15,.11),(.3,.06),(.48,.105),(.60,.06),(.72,.10)],trim,'porch',sides=16)
@@ -193,8 +213,13 @@ for n,a,b,ha,hb in elevations(D):
  M=Matrix(((tx,0,ty,a[0]),(ty,0,-tx,a[1]),(0,1,0,0),(0,0,0,1)))
  wins=[]
  if n=='north':
-  for yy in [4.0,8.1]:
-   for zz,hh in [(1.0,1.4),(3.3,3.0),(8.5,2.7)]:wins.append((f'{n} front {yy} {zz}',L-yy,zz,1.4,hh,False,white))
+  side=D['north_return']
+  for yy in side['lower_windows_m']:wins.append((f'north return lower {yy}',L-yy,.55,1.1,1.75,False,white))
+  for yy in side['middle_windows_m']:wins.append((f'north return middle {yy}',L-yy,3.4,1.1,2.5,False,white))
+  for yy in side['upper_windows_m']:
+   small=abs(yy-side['door_depth_m'])<.2
+   wins.append((f'north return upper {yy}',L-yy,9.05 if small else 8.5,.85 if small else 1.1,1.45 if small else 2.1,False,white))
+  wins.append(('north registrar door',L-side['door_depth_m'],side['door_threshold_m'],1.25,2.22,False,white))
   for yy in [15.5,18.4,21.3,25.0,28.0,31.0,34.5]:
    for zz,hh in [(5.2,2.15),(9.1,1.5)]:wins.append((f'{n} red {yy} {zz}',L-yy,zz,1.25,hh,zz==1.0,terra))
   for yy,ww,zz,hh in [(16,3.4,1,3.0),(24,1.25,1,2.8),(27,1.25,1,3.5),(30,1.25,.96,2.84),(35,3.4,1,3.0)]:wins.append((f'north ground {yy}',L-yy,zz,ww,hh,True,terra))
@@ -216,6 +241,20 @@ for n,a,b,ha,hb in elevations(D):
   for zz in [4.3,7.8,11.45]:box('Rear stringcourse '+n,(courseL/2,zz,.10),(courseL,.18,.20),terra,'rear',M)
   if n=='north':
    for zz in [7.75,12.55]:box('Rear stringcourse white return',(L-6,zz,.12),(12,.24,.24),trim,'rear',M)
+   # The white return is rusticated to first-floor level; the registrar's
+   # ground-level doorway is recessed, with projecting pilasters and lintel.
+   for zz in [.45,1.0,1.55,2.1,2.65,3.2,3.75,4.3,4.85,5.4,5.95,6.5,7.05]:
+    for q in cuts(rect(L-12,zz,L,zz+.016),[h for h,v in zip(hs,wins) if v[1]>=L-12]):
+     plane('Fine north return joint',[(*v,.012) for v in q],stone,'rear',M)
+   door=L-D['north_return']['door_depth_m'];threshold=D['north_return']['door_threshold_m']
+   for xx in [door-.78,door+.78]:
+    box('Registrar entrance jamb',(xx,threshold+1.11,.17),(.31,2.22,.34),trim,'rear',M)
+    box('Registrar entrance capital',(xx,threshold+2.10,.22),(.43,.18,.44),trim,'rear',M)
+   box('Registrar entrance lintel',(door,threshold+2.41,.18),(1.9,.38,.36),cream,'rear',M)
+   box('Registrar entrance cap',(door,threshold+2.66,.23),(2.1,.12,.46),trim,'rear',M)
+   box('Registrar sign blank',(door+1.3,threshold+1.65,.035),(.64,.56,.07),mat('Registrar sign blue',(.06,.10,.25)),'rear',M)
+   plane('Registrar door leaf',[(door-.48,threshold+.03,-.16),(door+.48,threshold+.03,-.16),(door+.48,threshold+2.15,-.16),(door-.48,threshold+2.15,-.16)],mat('Registrar door timber',(.075,.065,.055)),'rear',M)
+   box('Registrar door pull',(door+.32,threshold+1.02,-.12),(.045,.24,.035),gold,'rear',M)
   for yy in [12,23,35,48]:box('Rear downpipe '+n,(yy,5.6,.21),(.11,11.2,.12),iron,'rear',M)
   if n=='north':
    # Stucco front return is clipped at12m and owns its outward skin.

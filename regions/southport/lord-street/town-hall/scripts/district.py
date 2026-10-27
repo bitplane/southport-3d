@@ -2,6 +2,7 @@
 import json,math
 from blender_envelope import Surfaces
 from shapes import transform,roofs,elevations
+from staircase import flight
 
 def surfaces(asset):
  d=json.loads((asset/'research/layout.json').read_text());w=d['front_width'];s=Surfaces(['front','rear','roof','porch','steps'],lambda p:transform(d,p))
@@ -26,20 +27,31 @@ def surfaces(asset):
    a,b=math.tau*i/8,math.tau*(i+1)/8
    s.quad('Doric shaft',[(x+.34*math.cos(a),-2.73+.34*math.sin(a),2.8),(x+.34*math.cos(b),-2.73+.34*math.sin(b),2.8),(x+.31*math.cos(b),-2.73+.31*math.sin(b),7.47),(x+.31*math.cos(a),-2.73+.31*math.sin(a),7.47)],cage=.17)
   s.box('abacus',(x-.46,-3.19,7.47),(x+.46,-2.27,7.60),omit=('bottom',),cage=.12)
- # Steps preserve the two physical flights. Fixed16 treads, independent of trim.
+ # Fixed physical treads and the two intermediate landings use the same
+ # dimensions as Detail; the envelope remains independent of fine ornament.
  s.part='steps'
- st=d['stair'];yf=-st['front'];yb=-st['back'];N=16
+ st=d['stair'];yf=-st['front'];yb=-st['back'];N=st['steps']
  s.box('central stair wall',(x0,yf,-.15),(x1,yb,2.8),omit=('bottom',),cage=.25)
  for a,b,r in [(st['x0'],x0,True),(x1,st['x1'],False)]:
-  for i in range(N):
-   xx=a+i*(b-a)/N;XX=a+(i+1)*(b-a)/N;z=-.02+(2.82)*(i+1 if r else N-i)/N
+  treads,segments=flight(st,a,b,r)
+  for i,(xa,xb,z) in enumerate(treads):
+   xx,XX=sorted((xa,xb))
    s.quad('tread',[(xx,yf,z),(XX,yf,z),(XX,yb,z),(xx,yb,z)],cage=.12)
-   edge=xx if r else XX;lo=z-2.82/N
+   if i==N:continue # The landing has no extra riser.
+   edge=xa;lo=z-2.82/N
    pts=[(edge,yf,lo),(edge,yb,lo),(edge,yb,z),(edge,yf,z)]
    s.quad('riser',pts if r else pts[::-1],cage=.12)
-  # Outer stair cheek slopes receive the source's stepped wall appearance.
-  za=-.02 if r else 2.8;zb=2.8 if r else -.02
-  s.quad('flight cheek',[(a,yf,-.16),(b,yf,-.16),(b,yf,zb),(a,yf,za)],cage=.25)
+  # Cheek and rail belong to the porch source projection, not the walking
+  # treads. Keep the flat change of slope legible at district distance.
+  s.part='porch'
+  for (xa,za),(xb,zb) in segments:
+   if xa>xb:xa,xb,za,zb=xb,xa,zb,za
+   za+=.09;zb+=.09
+   s.quad('flight cheek',[(xa,yf-.22,-.16),(xb,yf-.22,-.16),(xb,yf-.22,zb),(xa,yf-.22,za)],cage=.25)
+   s.quad('flight seat',[(xa,yf-.22,za),(xb,yf-.22,zb),(xb,yf,zb),(xa,yf,za)],cage=.25)
+   s.quad('flight rail',[(xa,yf-.22,za+.85),(xb,yf-.22,zb+.85),(xb,yf-.22,zb+1.02),(xa,yf-.22,za+1.02)],cage=.25)
+   s.quad('flight rail top',[(xa,yf-.22,za+1.02),(xb,yf-.22,zb+1.02),(xb,yf,zb+1.02),(xa,yf,za+1.02)],cage=.25)
+  s.part='steps'
  # Coarse low rail strips carry baluster appearance; open portico volume retained.
  s.part='porch'
  for yy,z in [(yf,3.8),(-3.29,8.95)]:s.box('balustrade rail',(x0,yy-.12,z),(x1,yy+.12,z+.2),omit=('bottom',),cage=.25)

@@ -5,6 +5,7 @@ ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT/'scripts'),str(P
 from shapes import transform
 D=json.loads((ROOT/'research/layout.json').read_text());bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/building.blend'));s=bpy.context.scene
 views=[('front',(14,-100,10),(14,0,7.5),36),('oblique',(-55,-65,45),(14,18,7),65),('roof',(-25,80,90),(14,24,7),65),('north',(-100,26,12),(0,26,6),56),('arcade',(110,26,15),(28,26,6),56),('porch',(14,-35,7),(14,-1,5),15)]
+views += [('north-return',(-30,6,5),(0,6,5),16),('stair-left',(7,-25,5),(7,-4,2),12)]
 selected=sys.argv[sys.argv.index('--final')+1:]if'--final'in sys.argv else[]
 for n,pos,targ,scale in views:
  if selected and n not in selected:continue

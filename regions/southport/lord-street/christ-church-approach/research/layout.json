@@ -7,6 +7,12 @@
     -29.72
   ],
   "split_y": -70,
+  "town_hall_handover": {
+    "boundary_y": -29.72,
+    "rough_plane_through_y": -35,
+    "retained_grade_from_y": -45,
+    "basis": "The May 2011 Corporation Street panorama shows a continuous paved path and an exposed ground-level registrar doorway at the white Town Hall return. Match the adjoining church-garden rough plane at the handover, then interpolate to the retained approach grade; metres are approximate, not a survey."
+  },
   "garden_handover_source": "regions/southport/lord-street/church-gardens/research/layout.json",
   "building_source": "regions/southport/lord-street/christ-church/research/layout.json",
   "block_plans": [

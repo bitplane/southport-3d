@@ -35,7 +35,7 @@
       "hip roof ring",
       "lantern silhouette",
       "free-standing porch columns",
-      "double lateral stair flights"
+      "double lateral stair flights, with intermediate landings"
     ],
     "omitted": [
       "fine baluster negative spaces",
@@ -44,7 +44,7 @@
       "small fittings",
       "shared Cambridge Arcade roof outside asset"
     ],
-    "topology_independence": "Generator consumes authored main dimensions and fixed16-step flights; no fine-mesh traversal or decorative-object enumeration."
+    "topology_independence": "Generator consumes authored main dimensions, fixed16-step flights and the intermediate landing; no fine-mesh traversal or decorative-object enumeration. The cheek and rails project from the porch source, the treads and landings from the steps source."
   },
   "walk": "Omit Fine-prefixed groove/dentil objects; keep structural and recessed opening geometry."
 }

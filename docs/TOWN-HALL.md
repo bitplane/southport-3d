@@ -24,9 +24,11 @@ was lowered after comparison with frontal references so it does not project abov
 the pediment. Metric heights, hidden courtyard surfaces and carved anatomy remain
 estimates; no interior or unreadable inscription has been invented.
 
-The architecture uses a level−0.07m datum and foundations below existing rough
-control-grid support. Front pavement is approximately−0.07m and rear support
-+0.26–0.31m. No terrain refinement or ground surface replacement is included.
+The architecture uses a level−0.07m datum and foundations below rough control-grid
+support. Front pavement is approximately−0.07m and rear support +0.26–0.31m.
+The white Corporation Street return has three lower windows and the recessed
+ground-level registrar entrance, four middle windows and an upper row. Its
+window spacings and small upper opening remain estimates from close views.
 
 Detail and Walk retain open courtyard/porch geometry and cut sash recesses.
 District is independently authored from main dimensions, with five bounded
@@ -35,10 +37,14 @@ GLB download and12MB estimated GPU storage; adding fine ornament does not alter
 receiver topology or atlas sizes. Fine balusters and relief depth are omitted at
 District. The porch's principal free-standing columns remain physical.
 
-The Corporation Street path is owned by `christ-church-approach`, whose retained
-0.7845m datum differs from the rough corridor grid. The north door uses a local
-0.89m threshold to meet that path. The front stair remains on the separate Lord
-Street forecourt. Source geometry joins repetitive members by semantic family
+The Corporation Street path is owned by `christ-church-approach`. Its bounded
+Town Hall transition matches the adjoining church-garden rough plane before
+joining the retained approach grade farther south. The registrar threshold is
+0.05m absolute; the front stair remains on the separate Lord Street forecourt.
+Each lateral flight has eight estimated risers below and eight above a short
+intermediate landing. A 3/2/3 spindle rhythm rests on continuous masonry cheeks
+and meets rails sharing the same profile; the upper-flight risers are partly
+obscured in the available photograph. Source geometry joins repetitive members by semantic family
 before baking; this retains the shaped surfaces while avoiding thousands of
 individual selected-to-active bake sources. Member names remain recorded on each
 Blender object for investigation.
@@ -48,13 +54,11 @@ The final registered overhead comparison reduced the initial courtyard to about
 The entrance steps/landing have their own named walk-support part; porch roofs
 remain excluded from walking support.
 
-Review on 26 October 2026 inspected the published Detail, Walk and District
-levels in the assembled viewer, with settled tile state confirming each actual
-level. Front, Corporation Street, open courtyard and lantern were compared with
-private references and final front/north/oblique/porch/roof renders. The independent
-District keeps the roof and porch silhouette but intentionally loses baluster
-openings and carved depth. Its 336 triangles use 226,844 downloaded bytes and
-10,791,034 estimated GPU bytes, including bounded atlas allocation.
+The independent District keeps the roof and porch silhouette and the changes of
+stair slope, but intentionally loses baluster openings and carved depth. Current
+Detail / Walk / District totals are 66,614 / 63,328 / 384 triangles; downloads
+are 8,942,732 / 8,523,148 / 240,520 bytes and estimated GPU storage is 8,878,760 /
+8,464,292 / 10,797,179 bytes. The District figure includes bounded atlas allocation.
 
 The exported all-surface checks include ornament and neighbouring published
 assets. Only named rear shell/trim float32 sill/reveal residues below 0.00003m²
@@ -65,9 +69,9 @@ removed from the walking part. All surrounding rough ground controls remain
 unchanged. The separate Corporation Street path and north doorway were inspected
 in the assembled scene.
 
-After the support correction, actual keyboard walking climbed the full flight
-from pavement to the 2.73m landing in all three forced levels; each ended at
-camera height 4.43m (1.70m eye offset). Screenshots and actual tile identities
-were recorded privately. Final exported counts are 69,651 / 66,449 / 336
-triangles for Detail / Walk / District. Both model and corridor packages passed
-their checks and were republished together.
+The 27 October side and staircase review used matched native and assembled views.
+Forty-three source-surface probes verify that the flight and landing spindles
+meet their seats and rails. The exported package checks full surface ownership,
+the open courtyard, neighbours and all level budgets. This correction took about
+25 minutes; substantive rework replaced the white return, split both stair
+profiles and reconciled the adjacent path rather than translating the building.

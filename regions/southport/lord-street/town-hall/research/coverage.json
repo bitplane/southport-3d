@@ -12,13 +12,15 @@
     "uncertainty": "Metric depths and carved anatomy estimated; unreadable noticeboard contents omitted"
   },
   "north": {
-    "coverage": "good but narrow passage",
+    "coverage": "good but narrow passage; white return confirmed by close and corner panoramas",
     "sources": [
       "street-north",
-      "maps-orbit"
+      "maps-orbit",
+      "street-return",
+      "street-corner"
     ],
-    "observed": "Stucco front return, red brick/terracotta three-storey extension, white rear oriel, rainwater pipes",
-    "uncertainty": "Tree-screened front return and perspective-distorted bay spacing"
+    "observed": "White return has three lower windows, registrar doorway, four middle windows, an upper row and horizontal joints; red brick/terracotta three-storey extension, white rear oriel and rainwater pipes",
+    "uncertainty": "Upper return count and spacing are estimated from close, perspective-distorted views; exact stone dimensions and terrain heights are not surveyed"
   },
   "south": {
     "coverage": "public arcade panorama plus3D",
@@ -57,6 +59,6 @@
   "searches": {
     "Mapillary": "Web search Southport town hall Mapillary returned no useful local coverage",
     "Wikimedia": "Category inspected; frontal heritage views available, no useful modern rear",
-    "StreetView": "May2011 public panoramas actually displayed; first direct front attempt rendered black until reload; rear coordinate snapped to tattoo-shop interior, rejected as irrelevant"
+    "StreetView": "May2011 public panoramas actually displayed; first direct front attempt rendered black until reload; rear coordinate snapped to tattoo-shop interior, rejected as irrelevant. On 27 October the prior loaded overhead and opposite 3D captures were re-examined; the new browser loaded overhead imagery but reported that 3D Earth view was unavailable."
   }
 }

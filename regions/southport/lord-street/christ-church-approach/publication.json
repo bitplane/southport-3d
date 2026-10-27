@@ -213,6 +213,18 @@
       }
     },
     {
+      "id": "sloped-hedge",
+      "match": "^Furniture sloped-hedge ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain the few locally sheared hedge bases where the bounded pavement transition changes slope."
+      },
+      "district": {
+        "strategy": "keep",
+        "reason": "Preserve these bounded ground contacts when the other hedges use simplified families."
+      }
+    },
+    {
       "id": "hedge",
       "match": "^Furniture hedge ",
       "walk": {

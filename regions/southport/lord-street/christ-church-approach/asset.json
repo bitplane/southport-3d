@@ -40,6 +40,7 @@
       "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",
       "regions/southport/elevation/station-approach.json",
+      "regions/southport/elevation/london-square.json",
       "regions/southport/elevation/ground-controls.json"
     ],
     "validate": [
@@ -50,6 +51,7 @@
       "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",
       "regions/southport/elevation/station-approach.json",
+      "regions/southport/elevation/london-square.json",
       "regions/southport/elevation/ground-controls.json"
     ]
   },

@@ -26,7 +26,10 @@ A continuous mitred wall begins at Y=-26 m, leaving the existing northern
 cross-path and the side-court mouth open. The wall is estimated at 0.85 m high and 0.28 m wide,
 with a pale projecting coping. The lawn rises to an estimated 0.45 m plateau and
 falls toward 0.07 m edges; the cross-path remains flat paving between this lawn and the existing garden.
-The inherited grade meets the station’s 0.7845 m datum south of Y=-36 m.
+The path matches the adjoining church-garden rough plane through Y=-35 m, then
+slopes over a bounded 10 m transition to the inherited 0.7845 m approach datum
+at Y=-45 m. This preserves the photographed exposed Town Hall ground-floor
+entrance and removes the abrupt handover. Both height estimates remain rough.
 
 Two benches, a bin and the slim access posts reuse the existing metric furniture
 families. Tree and hedge proxies retain controlled sampling at each level. A
@@ -49,25 +52,24 @@ regression requiring the handed-over polygon to be empty. Exported neighbour
 and seam checks complement the source checks; detailed architecture and current
 furniture replacement variants remain outside this pass.
 
-## Published review, 25 October 2026
+## Published review
 
-The final package uses 13,377 / 5,385 / 2,797 placed triangles and 887,764 /
-493,852 / 240,052 download bytes at Detail / Walk / District. The measured GPU
-estimates are 4.74 / 1.42 / 0.44 MB. Texture caps of 256 / 128 / 64 pixels keep
-this bounded area below its declared limits.
+The current package uses 13,639 / 6,343 / 4,195 placed triangles and 1,050,496 /
+656,600 / 402,960 download bytes at Detail / Walk / District. Estimated GPU
+storage is 4,886,918 / 1,570,473 / 595,675 bytes. Texture caps of 256 / 128 /
+64 pixels keep this bounded area below its declared limits. A few hedge meshes
+retain their sheared bases in the lower levels to follow the local slope.
 
-All 79 source access samples, 553 excluded-surface samples and 40 bench/hedge
+All 79 source access samples, 554 excluded-surface samples and 40 bench/hedge
 support samples pass. The repeated coarse bench retains the existing family’s
 outer shape; one union timber cross-section removes overlapping seat/back end
 skins found only in the exported District representation. All three bench
 prototypes now have explicit coplanar regressions.
 
-The final exported audit has no finding touching this asset or the changed
-Christ Church ground at any level. Other retained architecture/furniture
-findings remain in the private report for separate review. All 57 exported
-boundary probes pass. The assembled GPU viewer loaded all four new parts at
-each requested level with no pending downloads or asset failures; pedestrian
-views check the wall, cross-path opening, floor handovers and ground following.
-Private comparison captures and complete audit outputs remain in the trial
-output directory. These checks do not establish surveyed or current furniture
-positions; the older pedestrian evidence and estimated levels remain limits.
+Forty-eight exported garden and internal boundary probes pass across the three
+levels, including the Town Hall handover. The broader published seam script
+also reports a pre-existing height difference of roughly 0.295 m at the separate
+station junction around Y=-105; that junction is outside the Town Hall correction
+and remains unresolved. These checks do not establish surveyed or current
+furniture positions; the older pedestrian evidence and estimated levels remain
+limits.

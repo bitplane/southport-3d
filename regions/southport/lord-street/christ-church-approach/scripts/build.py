@@ -62,7 +62,7 @@ for part,lo,hi in [('court',D['split_y'],-18.0),('passage',y0,D['split_y'])]:
                     cell=P.polygons([rect(x,x+1,aa,bb)])
                     for tri in P.triangles(P.intersection(g,cell)):m.add([(x,y,0)for x,y in tri],[(0,1,2)])
         else:
-            cuts=[lo,*[v for v in [-95,-93,-36]if lo<v<hi],hi]
+            cuts=[lo,*[v for v in [-95,-93,-45,-36,-35,-29.72]if lo<v<hi],hi]
             for a,b in zip(cuts,cuts[1:]):
                 cell=P.polygons([rect(clip_x0,x1,a,b)])
                 for tri in P.triangles(P.intersection(g,cell)):m.add([(x,y,0)for x,y in tri],[(0,1,2)])
@@ -138,7 +138,12 @@ def turf_contact(x,y):
     assert heights,(x,y,'no authored turf beneath furniture')
     return max(heights)
 
-w=D['wall'];points=[(x,y,grade(x,y))for x,y in w['xy']];mesh=continuous_wall(points,w['height_m'],w['width_m'],'Wall continuous side garden')
+w=D['wall'];wall_xy=[]
+for a,b in zip(w['xy'],w['xy'][1:]):
+    wall_xy.append(a)
+    for y in sorted([v for v in [-45,-35] if min(a[1],b[1])<v<max(a[1],b[1])],reverse=b[1]<a[1]):
+        t=(y-a[1])/(b[1]-a[1]);wall_xy.append((a[0]+t*(b[0]-a[0]),y))
+wall_xy.append(w['xy'][-1]);points=[(x,y,grade(x,y))for x,y in wall_xy];mesh=continuous_wall(points,w['height_m'],w['width_m'],'Wall continuous side garden')
 for i in range(2,len(mesh.faces)):mesh.indices[i]=1 if (i-2)%8 in [2,3,4,5,6]else 0
 finish(mesh,wallm,'court-furniture',2.4)
 placements=[];prototypes={}
@@ -152,6 +157,14 @@ def item(kind,x,y,yaw=0,scale=(1,1,1),grass=False):
     else:
         ob=prototypes[kind].copy();ob.data=prototypes[kind].data;cols[part+'-furniture'].objects.link(ob);ob.name=name
     ob.location=(x,y,turf_contact(x,y)if grass else grade(x,y));ob.rotation_euler.z=math.radians(yaw);ob.scale=scale
+    if kind=='hedge':
+        # Shear the prototype along the ground slope. Adjacent segments keep
+        # vertical end faces instead of overlapping when their slopes differ.
+        t=math.radians(yaw);dx=math.cos(t)*scale[0]/2;dy=math.sin(t)*scale[0]/2
+        rise=grade(x+dx,y+dy)-grade(x-dx,y-dy)
+        if abs(rise)>.025:
+            ob.data=ob.data.copy();ob.name=name.replace('Furniture hedge ','Furniture sloped-hedge ')
+            for v in ob.data.vertices:v.co.z+=rise*v.co.x/scale[2]
     ob['evidence']='Photographed family; estimated placement, May2011 pedestrian inventory';placements.append({'kind':kind,'xy':[x,y],'grass':grass,'scale':scale,'rotation_degrees':yaw})
 for row in D['placements']:item(row['kind'],*row['xy'],row['rotation_degrees'],grass=row['surface']=='grass')
 for row in D['bollard_rows']:

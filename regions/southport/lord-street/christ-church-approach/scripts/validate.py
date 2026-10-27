@@ -4,7 +4,7 @@ from pathlib import Path
 import bpy,bmesh
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path[:0]=[str(ROOT/'scripts'),str(REPO/'tools'),str(REPO/'lib')]
-from datum import grade
+from datum import grade,legacy_grade,FIELD
 from coplanar import check_blender
 from components import tree,hedge,bench
 from southport3d.street import furniture
@@ -41,6 +41,13 @@ for x,y in [(-116,-45),(-117,-55),(-121,-62),(-125,-68),(-123,-65)]:
 for x,y in [(-123,-37),(-123.5,-49),(-123.8,-29.2)]:
  z,name=one(x,y);assert 'grass'in name and .07<=z-grade(x,y)<=.451,(x,y,z,name)
 for x,y in [(-125,-17.99),(-130,-125),(-108,-40),(-100,-90)]:assert not hits(x,y),(x,y,'adjacent owner or building floor duplicated')
+# The Town Hall corner meets the retained church-garden ground on all exposed
+# handover edges, while the southern approach keeps its former grade.
+for x in [-135,-133.2,-130.4,-116.5,-100]:
+ assert abs(grade(x,-29.72)-FIELD.height(x,-29.72))<1e-8
+for y in [-28,-25,-20]:
+ for x in [-127.9,-117.4]:assert abs(grade(x,y)-FIELD.height(x,y))<1e-8
+for x in [-133,-125,-110]:assert abs(grade(x,-45)-legacy_grade(x,-45))<1e-8
 # Transition joins the actual outer station surface and the level threshold.
 from southport3d.elevation import Elevations
 station=Elevations(REPO/'regions/southport/elevation/station-approach.json').surface('chapel-pedestrian')
@@ -94,14 +101,23 @@ for row in R['placements']:
   assert row['kind']=='bin' and -136<x<-127.9 and -29.72<y<-17.8,row
   z,name=grade(x,y),'adjoining church-gardens paving'
  else:z,name=one(x,y)
- matches=[o for o in obs if o.name.startswith('Furniture '+row['kind']+' ')and abs(o.location.x-x)<1e-4 and abs(o.location.y-y)<1e-4]
+ names=('Furniture hedge ','Furniture sloped-hedge ') if row['kind']=='hedge' else ('Furniture '+row['kind']+' ',)
+ matches=[o for o in obs if o.name.startswith(names)and abs(o.location.x-x)<1e-4 and abs(o.location.y-y)<1e-4]
  assert len(matches)==1,(row,matches)
  assert abs(matches[0].location.z-z)<.025,(row,z,matches[0].location.z)
 # Check support footprints as well as origins: a hedge on a sloping margin
 # can have a correct centre while its outer base visibly floats.
 support_samples=0
 for ob in obs:
- if ob.name.startswith('Furniture hedge '):supports=[(x,y,0)for x in [-.5,.5]for y in [-.375,.375]]
+ if ob.name.startswith(('Furniture hedge ','Furniture sloped-hedge ')):
+  # Read the actual (potentially sheared) bottom corners rather than assuming
+  # they are still at local z=0 after the ground-following correction.
+  supports=[]
+  for x in [-.5,.5]:
+   for y in [-.375,.375]:
+    vertices=[v.co for v in ob.data.vertices if abs(v.co.x-x)<1e-5 and abs(v.co.y-y)<1e-5]
+    assert vertices,(ob.name,x,y,'missing hedge base corner')
+    supports.append(min(vertices,key=lambda v:v.z).copy())
  elif ob.name.startswith('Furniture bench '):supports=[(x,y,0)for x in [-.72,.72]for y in [-.275,.275]]
  else:continue
  for local in supports:

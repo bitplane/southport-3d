@@ -57,7 +57,19 @@
     "x1": 23.89,
     "front": 5.8,
     "back": 3.12,
-    "steps": 16
+    "steps": 16,
+    "middle_landing_m": 0.85,
+    "slope_balusters_per_segment": 3,
+    "middle_balusters": 2,
+    "landing_balusters": 11
+  },
+  "north_return": {
+    "depth_m": 12.0,
+    "lower_windows_m": [2.45, 9.0, 10.65],
+    "middle_windows_m": [2.45, 4.05, 8.95, 10.55],
+    "upper_windows_m": [2.9, 6.5, 10.0],
+    "door_depth_m": 6.45,
+    "door_threshold_m": 0.12
   },
   "uncertainty_m": {
     "footprint": 1,

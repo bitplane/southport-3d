@@ -36,6 +36,20 @@
       "observed": "Actual rendered red brick/terracotta Corporation side, grouped arch windows, rectangular upper sashes, rainwater pipe."
     },
     {
+      "id": "street-return",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=KRzK6Ppeai_h48yjhkEa-A&heading=235&pitch=0&fov=90",
+      "capture": "May 2011",
+      "accessed": "2026-10-27",
+      "observed": "Loaded close to the white Corporation Street return: three lower windows, recessed registrar doorway with projecting piers and lintel, four middle sashes in two pairs, rusticated courses, sign to the front of the doorway, and a drainpipe at the front corner. Upper view shows another row with a smaller centre window. The side paving reaches the door. The user-supplied reference photograph shows the same lower composition."
+    },
+    {
+      "id": "street-corner",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&pano=xblOwKB3T_a7ldR6VDIUlA&heading=175&pitch=25&fov=90",
+      "capture": "May 2011",
+      "accessed": "2026-10-27",
+      "observed": "Loaded oblique view of the white return, its exposed lower level, front basement windows and an apparently continuous pavement around the corner."
+    },
+    {
       "id": "commons",
       "url": "https://commons.wikimedia.org/wiki/Category:Southport_Town_Hall,_Merseyside",
       "observed": "Category searched; useful frontal photos by Alexander P Kapp (2009) and Gerald England (2002); no modern rear photo found."
