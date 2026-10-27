@@ -3,7 +3,7 @@
 The Venetian Bridge crosses the south Marine Lake between Kings Gardens and
 Princes Park. This reconstruction replaces the former solid parapet envelopes
 with open cream balustrades, green island guardrails, panelled piers, green columns, transverse timber deck,
-a central arch and flatter supported end spans. Two separately outlined islands
+a pierced central arch and flatter end spans on piers with flared haunches. Two separately outlined islands
 have low crowns, sloping rock-coloured banks and estimated planting masses. The
 water is a separate non-walkable surface, cut around the same island outlines.
 
@@ -30,7 +30,7 @@ Pier caps align with the outer deck edge, plinth bases follow the grade and the
 base rails meet the deck; terminal piers bound the approach rails. Green metal
 rail sections across the islands follow the oblique view, with transition
 stations and head locations estimated. The central deck and rail rise about 1.1 m above the flat
-spans; the arch soffit is a separate curve. The fixed lake datum is unchanged.
+spans; the arch soffit is a separate curve whose spring is now estimated at -2.10 m from the close side photograph. Three openings near each springing, including a tapered inner opening, a cream fascia and small moulding blocks follow that view. The pier haunches span about 0.4 of the estimated pier spacing; dimensions and the concealed structure remain estimates. The fixed lake datum is unchanged.
 Pixel ratios in the side image suggested about 1.8–2.3 rail heights between
 flat deck and water; the authored model uses about 1.9–2.0. The station table,
 image coverage, assumptions and fixed budgets are in
@@ -45,13 +45,12 @@ estimated 1.79 m, not a verified measured clearance or accessibility claim.
 Additional island gate locations and concealed structure remain unverified.
 
 The bridge deck, lower path, island ground and lake water have separate ownership.
-Detail retains turned balusters; Walk uses reduced turned profiles; District uses
-fewer open posts rather than a solid wall. Coarse topology does not grow with
+Detail retains turned balusters and fascia moulding blocks; Walk uses reduced turned profiles and keeps the moulding blocks. District omits the small blocks and uses fewer open posts rather than a solid wall; the pierced arch and pier silhouettes remain open and explicit. Coarse topology does not grow with
 fine baluster detail. The single green-gate/stair connection is retained across
 levels. The main build and its complete coplanar audit passed. Native checks include
 3,578 deck, rail and plinth contacts plus an unobstructed Kings approach. Each
-published level passed 1,964 bridge contact probes and 3,363 water-coverage
-probes. The scoped exported overlap scan found no cross-asset groups; the seven
+published level passed 1,964 bridge contact probes, 28 arch opening and taper
+probes, 8 pier-profile probes and 3,363 water-coverage probes. The scoped exported overlap scan found no cross-asset groups; the seven
 deck fan-seam residues were at most 0.12 mm wide. In the current viewer, walking
 advanced above and below the bridge at District and switching the lower view to
 Walk and Detail preserved its support height. The earlier reconstruction also

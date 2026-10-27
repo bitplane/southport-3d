@@ -120,3 +120,32 @@ from venetian_ground import U
 hit,point,_,_=wall.ray_cast(Vector((x,y,z)),Vector((U[0],U[1],0)),distance=10)
 assert not hit,('Shore wall blocks bridge approach',tuple(point))
 print('Kings approach wall clearance: checked')
+
+# Openings and flared capitals are tested on the actual native mesh: the side
+# walls must let a ray through each opening while their lower web remains, and
+# the pier must be wider near its head than at water level.
+spandrel=bpy.data.objects['Structure Venetian pierced arch spandrels']
+piers=bpy.data.objects['Structure Venetian flat span piers']
+for t in (66.3,67.5,68.7,91.3,92.5,93.7):
+ q=(t-80)/15;soffit=-2.10+2.35*(1-q*q);top=BRIDGE.height(*at(t))-.3
+ for side in (-1,1):
+  x,y=at(t,side*2.65);direction=Vector((-side*V[0],-side*V[1],0))
+  hole=(soffit+top)/2;hit,point,_,_=spandrel.ray_cast(Vector((x,y,hole)),direction,distance=.7)
+  assert not hit,('Filled spandrel opening',t,side,tuple(point))
+  hit,point,_,_=spandrel.ray_cast(Vector((x,y,soffit+.05)),direction,distance=.7)
+  assert hit,('Missing lower arch web',t,side)
+# A ray that passed through the larger middle opening is blocked by the lower
+# web near the innermost tip, confirming a taper rather than a rectangle.
+for t in (69.2,90.8):
+ q=(t-80)/15;soffit=-2.10+2.35*(1-q*q);top=BRIDGE.height(*at(t))-.3
+ for side in (-1,1):
+  x,y=at(t,side*2.65);direction=Vector((-side*V[0],-side*V[1],0))
+  assert spandrel.ray_cast(Vector((x,y,(soffit+top)/2)),direction,distance=.7)[0],('Untapered arch opening',t,side)
+for side in (-1,1):
+ direction=Vector((V[0],V[1],0));top=BRIDGE.height(*at(13))-.3
+ for t,depth in ((13.8,.05),(14.8,.01)):
+  x,y=at(t,side*2.05-.7)
+  high=piers.ray_cast(Vector((x,y,top-depth)),direction,distance=1.4)[0]
+  low=piers.ray_cast(Vector((x,y,-2.335294+.5)),direction,distance=1.4)[0]
+  assert high and not low,('Flat-span pier haunch silhouette',t,side,high,low)
+print('Venetian pierced arch and flared pier profiles: checked')

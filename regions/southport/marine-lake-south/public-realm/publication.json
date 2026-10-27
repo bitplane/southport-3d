@@ -303,6 +303,18 @@
       }
     },
     {
+      "id": "venetian-fascia-dentils",
+      "match": "^Structure Venetian fascia dentils",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain the photographed moulding blocks at pedestrian distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Small moulding blocks are omitted while the pierced arch and structural silhouette stay explicit."
+      }
+    },
+    {
       "id": "ground",
       "match": "^Ground ",
       "walk": {
@@ -316,7 +328,7 @@
     },
     {
       "id": "structure",
-      "match": "^Structure (?!Venetian green lamp columns)",
+      "match": "^Structure (?!Venetian (?:green lamp columns|fascia dentils))",
       "walk": {
         "strategy": "keep",
         "reason": "Already bounded schematic structure."

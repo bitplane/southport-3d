@@ -99,19 +99,19 @@
     {
       "station_m": 65,
       "deck_top_m": -0.12,
-      "arch_underside_m": -0.8,
+      "arch_underside_m": -2.1,
       "function": "arch springing"
     },
     {
       "station_m": 70,
       "deck_top_m": 0.3,
-      "arch_underside_m": -0.22,
+      "arch_underside_m": -0.794,
       "function": "rising deck and parapet"
     },
     {
       "station_m": 75,
       "deck_top_m": 0.64,
-      "arch_underside_m": 0.13,
+      "arch_underside_m": -0.011,
       "function": "rising deck and parapet"
     },
     {
@@ -123,19 +123,19 @@
     {
       "station_m": 85,
       "deck_top_m": 0.64,
-      "arch_underside_m": 0.13,
+      "arch_underside_m": -0.011,
       "function": "falling deck and parapet"
     },
     {
       "station_m": 90,
       "deck_top_m": 0.3,
-      "arch_underside_m": -0.22,
+      "arch_underside_m": -0.794,
       "function": "falling deck and parapet"
     },
     {
       "station_m": 95,
       "deck_top_m": -0.12,
-      "arch_underside_m": -0.8,
+      "arch_underside_m": -2.1,
       "function": "arch springing"
     },
     {
@@ -252,5 +252,16 @@
     "observation": "The oblique view shows green open metal guardrail sections at island crossings, with multiple globe-topped and some bare green standards. The model uses estimated green sections at stations 45.19\u201364.81 and 95.19\u2013114.81 m, retaining open cream balustrades elsewhere.",
     "lights": "Several identifiable globes in the first-island view are shown at estimated station locations. The separately observed side-mounted globe in the dated 2023 view is retained; this is a representative combination of dated and undated evidence, not a claim of exact simultaneous lamp condition.",
     "limits": "Precise section ends, post spacings, individual heads and any additional island gates are unresolved. No island paths or detailed terrain are inferred from the photograph."
+  },
+  "structure_fidelity_review": {
+    "reviewed_on": "2026-10-27",
+    "sources": [
+      "https://www.sefton.gov.uk/media/3068/bridge_close_up.jpg",
+      "https://www.sefton.gov.uk/media/3066/venetian_bridge.jpg"
+    ],
+    "observations": "The close side image shows a deep central arch with pierced spandrel openings and a small moulding-block row; the wide view shows narrow piers flaring into curved haunches at the flat span.",
+    "decision": "Represent three openings at each springing on both side walls, with the innermost tapering to a triangular tip, shaded vault, cream fascia, moulding blocks and flared pier haunches. Lower the estimated arch spring to -2.10 m while retaining the 0.25 m crown, bridge deck profile and lake datum.",
+    "limits": "Exact soffit, opening and pier dimensions are not measured; the deepened arch spring is a photographic estimate, partly obscured by the island, and the detail does not claim hidden structural construction.",
+    "haunch_ratio": "In the side crop the curved pier head spans roughly 0.35\u20130.45 of its adjacent pier spacing, and its depth is roughly 0.6\u20130.8 of the visible straight stem. The model uses a smooth 4.8 m head (0.40 of an estimated 12 m spacing) and a 0.70 m depth over approximately 1.1 m of visible stem; image perspective and occlusion limit precision."
   }
 }

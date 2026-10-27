@@ -223,18 +223,20 @@ for a,b in zip(D['formal_shoreline'],D['formal_shoreline'][1:]):
   points=list(lido_surface.edge_points(start,end))
   for aa,bb in zip(points,points[1:]):m.add([(aa[0],aa[1],water.height(*aa[:2])),(bb[0],bb[1],water.height(*bb[:2])),bb,aa],[(0,1,2,3)])
 finish(m,'structure','shore-walls')
-# Footbridge underside and edge faces, top remains the separate support part.
+# The shaded soffit and the cream side fascia have separate surface owners;
+# the walkable deck remains in its own support part.
 m=Mesh('Structure Venetian underside')
 for tri in P.triangles(bridge):
  for lifted in BRIDGE.lift_triangle(tri):m.add([(x,y,z-.3)for x,y,z in lifted],[(2,1,0)])
+finish(m,'structure','venetian-structure')
+m=Mesh('Structure Venetian deck fascia')
 for side in [-1,1]:
  edge=[at(0,side*HALF_WIDTH),at(L,side*HALF_WIDTH)]
  for a,b in zip(edge,edge[1:]):
   points=list(BRIDGE.edge_points(a,b))
-  for aa,bb in zip(points,points[1:]):m.add([(aa[0],aa[1],aa[2]-.3),(bb[0],bb[1],bb[2]-.3),bb,aa],[(0,1,2,3)]if side>0 else[(3,2,1,0)])
-finish(m,'structure','venetian-structure')
-# Preliminary structural massing: central arched fascia and discrete piers.
-# The island/arch reference constrains silhouette; dimensions remain estimated.
+  for aa,bb in zip(points,points[1:]):m.add([(aa[0],aa[1],aa[2]-.3),(bb[0],bb[1],bb[2]-.3),bb,aa],[(3,2,1,0)]if side>0 else[(0,1,2,3)])
+finish(m,'cream','venetian-structure')
+# Photographed arch and pier silhouettes; dimensions remain estimates.
 station=at
 def top(t):return BRIDGE.height(*station(t))-.3
 # Shore-side access stair from the bridge to the separate lower lakeside path.
@@ -257,32 +259,81 @@ for end in (146,157):
   lo0=lower_surface.height(*p0);lo1=lower_surface.height(*p1);hi=top(end)
   m.add([(p0[0],p0[1],lo0),(p1[0],p1[1],lo1),(p1[0],p1[1],hi),(p0[0],p0[1],hi)],[(0,1,2,3)] if end==146 else [(3,2,1,0)])
 finish(m,'structure','venetian-structure')
-m=Mesh('Structure Venetian central arch massing')
-# Face edges share the deck underside boundary; no coincident top face.
-steps=24
-for j in range(steps):
- t0=65+30*j/steps;t1=65+30*(j+1)/steps
- def arch(t):
-  q=(t-80)/15;return -0.80+1.05*max(0,1-q*q)
- for side in [-1,1]:
-  p0=station(t0,side*2.4);p1=station(t1,side*2.4)
-  m.add([(p0[0],p0[1],arch(t0)),(p1[0],p1[1],arch(t1)),(p1[0],p1[1],top(t1)),(p0[0],p0[1],top(t0))],[(0,1,2,3)] if side>0 else [(3,2,1,0)])
- # underside of the arch vault
+# The bridge's exposed spandrels are pierced near the springings in the Sefton
+# close view. Each outer and inner face has real openings and four returns;
+# the grey curved intrados remains a separate surface beneath the deck.
+def arch(t):
+ q=(t-80)/15
+ return -2.10+2.35*max(0,1-q*q)
+# The opening nearest the crown tapers to a triangular tip, unlike the two
+# taller apertures nearest the abutment. Direction indicates the tip station.
+openings=[(65.9,66.7,0),(67.1,67.9,0),(68.3,69.3,1),
+          (90.7,91.7,-1),(92.1,92.9,0),(93.3,94.1,0)]
+cuts=sorted({65.,95.,*[65+j*.625 for j in range(49)],*[v for lo,hi,_ in openings for v in (lo,hi)],*[v for v in BRIDGE.stations if 65<v<95]})
+spandrel=Mesh('Structure Venetian pierced arch spandrels')
+vault=Mesh('Structure Venetian curved arch soffit')
+def opening_floor(t,lo,hi,tip):
+ low=arch(t)+.15;high=top(t)-.15
+ f=(t-lo)/(hi-lo) if tip>0 else (hi-t)/(hi-lo) if tip<0 else 0
+ return low+f*(high-low)
+def arch_face(t0,t1,low0,low1,high0,high1,offset,reverse):
+ p0=station(t0,offset);p1=station(t1,offset)
+ spandrel.add([(p0[0],p0[1],low0),(p1[0],p1[1],low1),(p1[0],p1[1],high1),(p0[0],p0[1],high0)],[(3,2,1,0)] if reverse else [(0,1,2,3)])
+for t0,t1 in zip(cuts,cuts[1:]):
+ mid=(t0+t1)/2;opening=next((o for o in openings if o[0]<mid<o[1]),None)
+ for side in (-1,1):
+  for offset,reverse in ((side*2.4,side>0),(side*2.2,side<0)):
+   if opening:
+    arch_face(t0,t1,arch(t0),arch(t1),opening_floor(t0,*opening),opening_floor(t1,*opening),offset,reverse)
+    arch_face(t0,t1,top(t0)-.15,top(t1)-.15,top(t0),top(t1),offset,reverse)
+   else:arch_face(t0,t1,arch(t0),arch(t1),top(t0),top(t1),offset,reverse)
  l0=station(t0,-2.4);r0=station(t0,2.4);l1=station(t1,-2.4);r1=station(t1,2.4)
- m.add([(l0[0],l0[1],arch(t0)),(l1[0],l1[1],arch(t1)),(r1[0],r1[1],arch(t1)),(r0[0],r0[1],arch(t0))],[(3,2,1,0)])
-finish(m,'structure','venetian-structure')
-# Preliminary paired piers under flatter spans, grounded at the common lake
-# level. Their positions are proportional estimates from side photographs.
+ vault.add([(l0[0],l0[1],arch(t0)),(l1[0],l1[1],arch(t1)),(r1[0],r1[1],arch(t1)),(r0[0],r0[1],arch(t0))],[(3,2,1,0)])
+for side in (-1,1):
+ for lo,hi,tip in openings:
+  points=[t for t in cuts if lo<=t<=hi]
+  rim=[(t,opening_floor(t,lo,hi,tip)) for t in points]+[(t,top(t)-.15) for t in reversed(points)]
+  for a,b in zip(rim,rim[1:]+rim[:1]):
+   if math.dist(a,b)<1e-8:continue
+   outer0=station(a[0],side*2.4);outer1=station(b[0],side*2.4)
+   inner0=station(a[0],side*2.2);inner1=station(b[0],side*2.2)
+   spandrel.add([(outer0[0],outer0[1],a[1]),(outer1[0],outer1[1],b[1]),(inner1[0],inner1[1],b[1]),(inner0[0],inner0[1],a[1])],[(3,2,1,0)] if side>0 else [(0,1,2,3)])
+finish(spandrel,'cream','venetian-structure');finish(vault,'structure','venetian-structure')
+# The flat-span piers flare into shallow curved haunches under the deck rather
+# than stopping as simple square columns. Their station positions are estimates.
 m=Mesh('Structure Venetian flat span piers')
 for t in (13,25,37,122,135,148):
  for side in (-1,1):
-  z0=water.height(*station(t));z1=top(t);half=.24;off=side*2.05
+  z0=water.height(*station(t));off=side*2.05
+  # A quarter-ellipse blends a .48 m stem into a 4.8 m head over .70 m;
+  # this is about .40 of the estimated 12 m pier spacing. The local deck
+  # profile drives every top point, including the gently graded approach.
+  right=[];left=[]
+  for j in range(13):
+   theta=(math.pi/2)*j/12;dt=.24+2.16*(1-math.cos(theta));drop=.70*(1-math.sin(theta))
+   right.append((dt,top(t+dt)-drop));left.append((-dt,top(t-dt)-drop))
+  outline=[(-.24,z0),(.24,z0),*right,*reversed(left)]
   verts=[]
-  for z in (z0,z1):
-   for dt,do in ((-half,-half),(half,-half),(half,half),(-half,half)):
-    x,y=station(t+dt,off+do);verts.append((x,y,z))
-  m.add(verts,[(3,2,1,0),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7),(4,5,6,7)])
-finish(m,'structure','venetian-structure')
+  for o in (off-.24,off+.24):
+   for dt,z in outline:
+    x,y=station(t+dt,o);verts.append((x,y,z))
+  n=len(outline);faces=[tuple(range(n)),tuple(reversed(range(n,2*n)))]
+  faces.extend((i+n,(i+1)%n+n,(i+1)%n,i) for i in range(n))
+  m.add(verts,faces)
+finish(m,'cream','venetian-structure')
+# The close side reference shows a row of small moulding blocks below the
+# coping. These repeated details share one mesh and are omitted at District.
+dentils=Mesh('Structure Venetian fascia dentils')
+for side in (-1,1):
+ for t in np.arange(13.25,149.5,.48):
+  if green_at(t):continue
+  z=BRIDGE.height(*station(t))
+  vertices=[]
+  for o in (side*HALF_WIDTH,side*(HALF_WIDTH+.045)):
+   for dt,h in ((-.05,-.26),(.05,-.26),(.05,-.17),(-.05,-.17)):
+    x,y=station(t+dt,o);vertices.append((x,y,z+h))
+  dentils.add(vertices,[(0,1,2,3),(7,6,5,4),(4,5,1,0),(5,6,2,1),(6,7,3,2),(7,4,0,3)] if side>0 else [(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
+finish(dentils,'cream','venetian-structure')
 def rings(g):
  out=[]
  def visit(o):

@@ -67,6 +67,12 @@ for level in ('detail','walk','district'):
  def contact(tris,t,o,offset=0):
   xy=at(t,o);z=bridge.height(*xy)+offset;found=probe(tris,xy)
   assert found and min(abs(h-z) for h in found)<.001,(level,t,o,offset,found,z)
+ def ray_distance(tris,origin,direction,limit):
+  origin=np.asarray(origin);direction=np.asarray(direction)
+  e1=tris[:,1]-tris[:,0];e2=tris[:,2]-tris[:,0];pv=np.cross(direction,e2);det=np.einsum('ij,ij->i',e1,pv);valid=abs(det)>1e-10
+  inv=np.divide(1,det,out=np.zeros_like(det),where=valid);tv=origin-tris[:,0];u1=np.einsum('ij,ij->i',tv,pv)*inv;q=np.cross(tv,e1);v1=np.einsum('ij,j->i',q,direction)*inv;distance=np.einsum('ij,ij->i',e2,q)*inv
+  hit=valid&(u1>=-1e-6)&(v1>=-1e-6)&(u1+v1<=1+1e-6)&(distance>=0)&(distance<limit)
+  return float(distance[hit].min()) if hit.any() else None
  contacts=0
  for t in np.linspace(.25,L-.25,81):
   for side in (-1,1):
@@ -85,11 +91,9 @@ for level in ('detail','walk','district'):
    contact(layers['deck'],t,side*RAIL_OFFSET)
    obj=greenrails if green_at(t) else rails;half=.0275 if green_at(t) else .08
    contact(obj,t,side*RAIL_OFFSET,.055 if green_at(t) else .16)
-   x,y=at(t,side*RAIL_OFFSET-.2);origin=np.array([x,y,bridge.height(x,y)+.002]);direction=np.array([*V,0])
-   e1=obj[:,1]-obj[:,0];e2=obj[:,2]-obj[:,0];pv=np.cross(direction,e2);det=np.einsum('ij,ij->i',e1,pv);valid=abs(det)>1e-10
-   inv=np.divide(1,det,out=np.zeros_like(det),where=valid);tv=origin-obj[:,0];u1=np.einsum('ij,ij->i',tv,pv)*inv;q=np.cross(tv,e1);v1=q@direction*inv;distance=np.einsum('ij,ij->i',e2,q)*inv
-   hit=valid&(u1>=-1e-6)&(v1>=-1e-6)&(u1+v1<=1+1e-6)&(distance>=0)&(distance<.4)
-   assert hit.any() and abs(float(distance[hit].min())-(.2-half))<.002,(level,t,side,'rail foot shell')
+   x,y=at(t,side*RAIL_OFFSET-.2);origin=[x,y,bridge.height(x,y)+.002]
+   distance=ray_distance(obj,origin,[*V,0],.4)
+   assert distance is not None and abs(distance-(.2-half))<.002,(level,t,side,'rail foot shell')
    contacts+=3
  # Restrict each expensive spindle query to nearby exported triangles.
  centres=balusters.mean(axis=1);a=np.asarray(at(0,0));u=np.asarray(U)
@@ -103,6 +107,29 @@ for level in ('detail','walk','district'):
    if side==-1 and 150.24<t<151.76:continue
    contact(near,t,side*RAIL_OFFSET,.16);contact(rails,t,side*RAIL_OFFSET,.16);contacts+=2
  totals['bridge_contact_probes']=contacts
+ # Confirm real openings and flared supports in the exported mesh, not only
+ # in its source recipe. The centre datum and deck/lower path stay unchanged.
+ arch=structure['Structure Venetian pierced arch spandrels']
+ piers=structure['Structure Venetian flat span piers']
+ for t in (66.3,67.5,68.7,91.3,92.5,93.7):
+  q=(t-80)/15;soffit=-2.10+2.35*(1-q*q);top=bridge.height(*at(t))-.3
+  for side in (-1,1):
+   x,y=at(t,side*2.65);direction=[-side*V[0],-side*V[1],0]
+   assert ray_distance(arch,[x,y,(soffit+top)/2],direction,.7) is None,(level,t,side,'filled arch opening')
+   assert ray_distance(arch,[x,y,soffit+.05],direction,.7) is not None,(level,t,side,'missing arch web')
+ for t in (69.2,90.8):
+  q=(t-80)/15;soffit=-2.10+2.35*(1-q*q);top=bridge.height(*at(t))-.3
+  for side in (-1,1):
+   x,y=at(t,side*2.65);direction=[-side*V[0],-side*V[1],0]
+   assert ray_distance(arch,[x,y,(soffit+top)/2],direction,.7) is not None,(level,t,side,'untapered arch opening')
+ for side in (-1,1):
+  direction=[*V,0];top=bridge.height(*at(13))-.3
+  for t,depth in ((13.8,.05),(14.8,.01)):
+   x,y=at(t,side*2.05-.7)
+   assert ray_distance(piers,[x,y,top-depth],direction,1.4) is not None,(level,t,side,'missing pier haunch')
+   assert ray_distance(piers,[x,y,-2.335294+.5],direction,1.4) is None,(level,t,side,'oversized pier stem')
+ assert ('Structure Venetian fascia dentils' in structure)==(level!='district'),(level,'fascia LoD')
+ totals['arch_opening_probes']=28;totals['pier_haunch_probes']=8
  deck_z=probe(layers['deck'],at(151,0));lower_z=probe(layers['lower'],at(151,0))
  assert deck_z and lower_z and min(deck_z)-.3-max(lower_z)>1.7,(level,deck_z,lower_z,'underpass clearance')
  for j in range(11):assert probe(layers['stairs'],at(151,-2.6-(j+.5)*3.6/11)),(level,j,'missing stair tread')
