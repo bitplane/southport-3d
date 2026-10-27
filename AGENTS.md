@@ -58,6 +58,10 @@ not the full documentation or historical review directory.
 
 ## Reviews and documentation
 
+For newly delegated modelling or snag tasks, use GPT-6.1 Terra with **max**
+reasoning unless the user specifies otherwise. Existing workers can finish at
+their original setting; do not restart them solely to change reasoning effort.
+
 Process worker checkpoints promptly; release accepted stages and give specific
 corrections. Workers continue independent work while awaiting review. Keep asset
 notes about current evidence, decisions, limitations and reproducible checks;

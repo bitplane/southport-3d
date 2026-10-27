@@ -1,7 +1,8 @@
 # Terra high building batch: execution contract
 
 Root writes each task plan, independently reviews evidence/model comparisons and
-accepts the final result. Workers use GPT-6.1 Terra with high reasoning. The
+accepts the final result. New workers use GPT-6.1 Terra with max reasoning;
+already-running high-reasoning workers may finish without restarting. The
 user authorizes scoped commits and local publication, not pushes. Five workers
 may run concurrently; each runs at most one Blender process, threads4. Preserve
 per-asset and catalog locks. Prefer package-only work before short final publication
