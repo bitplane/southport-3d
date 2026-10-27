@@ -1,0 +1,13 @@
+{
+  "represented_appearance": "Bridge-facing appearance documented 2017–2025: cream panels, dark plinth, green fascia and lettering, glazed entry/cylindrical kiosk. Roof 3D date not available.",
+  "coverage": [
+    {"face":"bridge-front (local +Y)","sources":["maps-centre","maps-cafe","sphere-front"],"observations":"Two broad wings, shallow rising convex roof with green rim, central higher translucent barrel entrance canopy, panel joints, small paired square vents, green central entry and service kiosk, one outer green utility door.","confidence":"high pattern; dimensions estimated"},
+    {"face":"northeast long end (local +X)","sources":["sphere-side","maps-cafe"],"observations":"Cream rectangular cladding grid, dark plinth, low eaves, single green door towards bridge, simple gutter/fascia.","confidence":"moderate"},
+    {"face":"southwest long end (local -X)","sources":["maps-3d","maps-cafe"],"observations":"Cladding grid and single narrow dark/green door visible on one oblique; high sunlight and depth foreshortening limit layout.","confidence":"low–moderate"},
+    {"face":"rear and cylindrical drum (local -Y)","sources":["maps-3d","mapillary"],"observations":"Opposing actual 3D shows smooth light cylindrical wall, round flat blue-grey roof and connection to raised canopy. Mapillary rear path imagery faces away; no close rear elevation found. Do not assert rear windows or lettering.","confidence":"low, drum silhouette moderate"},
+    {"face":"roof", "sources":["maps-3d","sphere-side","maps-cafe"],"observations":"Wing roofs slope gently outward from central spine, flat-round drum roof, translucent curved/ribbed canopy; roof weathering/blue patch varies by date.","confidence":"moderate"},
+    {"face":"ground and neighbours", "sources":["maps-3d","sphere-front","sphere-side"],"observations":"Rectangular paved approach to entry joins the loop path and Venetian bridge axial approach. Loop lawn and bridge approach remain in separate public-realm owner.","confidence":"moderate; shared grade is rough"}
+  ],
+  "searches": "Maps Heritage Centre and Cafe galleries, actual satellite/3D, available photospheres and nearby Mapillary 2019 sequence, Google/web/image searches and local heritage sources. No closer rear photograph found. No attached user photographs.",
+  "unresolved": ["Rear drum and rear wing openings and service equipment", "Exact panel dimensions, colours and ground thresholds", "Precise roof and canopy structure where seen only in photogrammetry", "Blue roof patch age and nature"]
+}

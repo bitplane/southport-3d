@@ -36,7 +36,14 @@ def neighbour_geometry():
 study=P.difference(P.difference(P.polygons(D['study_polygons']),P.polygons(D['old_marine_study'])),neighbour_geometry())
 lake_outer=P.polygons([D['lake_outline']]);islands=P.polygons(D['lake_islands']);lake=P.difference(lake_outer,islands)
 blocks=[b for f in [D['block_plan'],*D['existing_block_plans']]for b in json.loads((REPO/f).read_text())['blocks']if not b.get('base_clearance_m')]
-land=P.difference(P.difference(P.difference(study,lake),P.polygons([b['footprint']for b in blocks])), P.polygons(D['lake_islands'][:2]))
+# The cafe's measured wall/drum footprint replaces its old OSM roof outline
+# for ground clipping; its canopy and entrance apron remain open to the ground.
+ground_blocks=[b['footprint'] for b in blocks if b.get('replace_with')!='southport.marine-lake-south.heritage-centre']
+land=P.difference(P.difference(P.difference(study,lake),P.polygons(ground_blocks+[D['heritage_centre_ground_cutout']])), P.polygons(D['lake_islands'][:2]))
+# The entry apron is open to the sky under the shallow cafe canopy; the
+# source footprint includes that projection, so restore only this bounded area.
+apron=P.intersection(study,P.polygons([D['heritage_centre_apron']]))
+land=union([land,apron])
 # Keep the deck continuous across the islands; only its dry-shore approaches
 # replace underlying paving. Island ground remains a separate layer below it.
 bridge=P.intersection(study,P.polygons([polygon(0,L,-HALF_WIDTH,HALF_WIDTH)]))
@@ -58,7 +65,7 @@ road_full=P.difference(road_full,P.intersection(west_patch,raw_west));road_full=
 foot_full=P.difference(foot_full,P.intersection(west_patch,raw_west));foot_full=union([foot_full,P.intersection(west_patch,line(new_west,9.8))])
 road=P.intersection(land,road_full)
 parking=P.difference(P.intersection(land,P.polygons(D['parking_polygons'])),road)
-paths=union([line(r['points'],r['width'])for r in D['paths']if not r['bridge']])
+paths=union([line(r['points'],r['width'])for r in D['paths']if not r['bridge']]+[apron])
 # Formal path bands follow the actual boundary. The other lake bank stays soft.
 shore=line(D['formal_shoreline'],2*D['lido_width_m']);lido=P.intersection(land,P.difference(shore,lake_outer))
 upper=P.intersection(land,P.difference(buffer(shore,D['upper_walk_width_m']),shore))

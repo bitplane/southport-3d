@@ -747,14 +747,14 @@
       ],
       "height_m": 5.0,
       "height_uncertainty_m": 2,
-      "status": "placeholder-massing",
+      "status": "replaced-footprint-retained-for-ground",
       "evidence": [
         "google3d-south-orbits",
         "registered-aerial",
         "OSM-seed"
       ],
       "footprint_confidence": "Metric OSM seed compared with actual textured3D orbits; wall/roof-parallax uncertainty1–3m; flat top is approximate maximum height, no reconstructed roofs/facades.",
-      "replace_with": null
+      "replace_with": "southport.marine-lake-south.heritage-centre"
     },
     {
       "id": "way-232168485",

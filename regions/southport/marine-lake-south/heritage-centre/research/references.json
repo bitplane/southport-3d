@@ -1,0 +1,15 @@
+{
+  "date_accessed": "2026-10-27",
+  "sources": [
+    {"id":"osm-170138154", "url":"https://www.openstreetmap.org/way/170138154", "role":"footprint seed; ODbL contributors; compare with imagery, not evidence for architectural detail"},
+    {"id":"maps-cafe", "url":"https://www.google.com/maps/place/Heritage+Centre+Cafe/@53.6501259,-3.0132157,18z", "role":"Google Maps label and photo gallery, Princes Park; Tilly's Home Videos Oct 2025 close entry and side; Colin Paul Sept 2022 distant front; Mr Sloth Aug 2021 close entry"},
+    {"id":"maps-centre", "url":"https://www.google.com/maps/place/Heritage+Centre/@53.6502022,-3.0131299,18z", "role":"Google Maps Heritage Centre photo gallery; Jomo Jun 2017 front and entry"},
+    {"id":"maps-3d", "url":"https://www.google.com/maps/@53.65021,-3.01326,18z", "role":"Google satellite with globe/3D enabled: overhead and opposing orbits, viewed 2026-10-27; imagery capture date not exposed"},
+    {"id":"sphere-side", "url":"https://www.google.com/maps/@53.6502897,-3.0125234,3a,48.9y,263.15h,90t/data=!3m8!1e1!3m6!1sCIHM0ogKEICAgID8tfewCQ!2e10!3e11!7i11264!8i5632", "role":"Scott Spencer July 2020 photo sphere, bridge-facing end and northeast long elevation"},
+    {"id":"sphere-front", "url":"https://www.google.com/maps/@53.6500192,-3.012817,3a,75y,300.55h,90t/data=!3m8!1e1!3m6!1sCIHM0ogKEICAgIDE0Ma14gE!2e10!3e11!7i5660!8i2830", "role":"Matt Vickery Feb 2017 photo sphere from bridge approach"},
+    {"id":"mapillary", "url":"https://www.mapillary.com/app/?lat=53.6503453321279&lng=-3.0132650984799056&z=17.7747&pKey=1983016178520517", "role":"davidsong 7 Sept 2019 path sequence inspected; cameras face away from back elevation, so do not establish rear details"},
+    {"id":"heritage-cafe", "url":"https://www.tripadvisor.co.uk/Restaurant_Review-g191255-d8499434-Reviews-Heritage_Centre_Cafe-Southport_Merseyside_England.html", "role":"Heritage Centre Cafe at Princes Park; identity corroboration and a close photograph"},
+    {"id":"marine-lake-cafe", "url":"https://www.visitnorthwest.com/sights/kings-gardens/", "role":"identifies the separate Marine Lake Cafe and King's Gardens Tea Rooms at the northern end of King's Gardens"}
+  ],
+  "rights": "Reference captures are private inspection material; no source photographs are used as textures or distributed."
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "southport.marine-lake-south.heritage-centre",
+  "name": "Heritage Centre Café, Princes Park",
+  "region": "southport",
+  "area": "marine-lake-south",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [53.6486555, -3.0043401],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": ["panelled-wings", "curved-roof-and-canopy", "round-rear-drum", "entrance-kiosk"],
+  "lods": ["detail", "walk", "district"],
+  "build": {"prepare":"prepare.py", "geometry":"build.py", "export":"export.py", "validate":"validate.py", "render":"render.py"},
+  "source_catalog": "research/references.json",
+  "scope": "Bridge-facing Heritage Centre Café in Princes Park, distinct from Marine Lake Café. Exterior researched 2017–2025, dimensions estimated. No invented interior or rear openings.",
+  "build_inputs": {"master": ["regions/southport/elevation/marine-lake-south.json", "regions/southport/elevation/ground-controls.json"], "validate": ["tools/coplanar_scan.cpp"]}
+}

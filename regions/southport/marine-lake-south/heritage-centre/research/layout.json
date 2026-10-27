@@ -1,0 +1,13 @@
+{
+  "frame": "Memorial site XY metres; yaw 43.5293 degrees east. Building-local X follows width, Y points towards the bridge.",
+  "origin_site_xy": [-306.95, 529.7],
+  "x_axis_site": [0.989273, 0.146078],
+  "y_axis_site": [0.146078, -0.989273],
+  "footprint_main": [-10.84, 11.5, -6.0, 6.5],
+  "front_entrance": [-2.73, 2.87, 6.5, 8.85],
+  "rear_drum": [0.0, -9.5, 4.05],
+  "front_kiosk": [0.0, 7.5, 1.1],
+  "ground_datum_m": -0.439,
+  "heights_above_ground_m": {"plinth": 0.25, "wing_eaves": 2.68, "wing_centre": 3.8, "barrel_eaves": 4.12, "barrel_crown": 4.65, "rear_drum": 4.18, "kiosk": 2.05},
+  "dimension_confidence": "OSM way 170138154 transformed to building-local X/Y: width 22.34 m; front-to-rear main rectangle 12.1–13.1 m, rear projection 7.9 m; wall/roof parallax ±1 m. Photos supply height ratios only; heights ±0.5 m, kiosk and canopy ±0.3–0.5 m. Datum follows rough south-mainland control plane, not a survey."
+}

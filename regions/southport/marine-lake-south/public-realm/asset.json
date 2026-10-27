@@ -79,7 +79,8 @@
     ]
   },
   "validation_checks": [
-    "check_ground_routes.py"
+    "check_ground_routes.py",
+    "check_heritage_apron.py"
   ],
   "publication_checks": [
     "check_package.py"

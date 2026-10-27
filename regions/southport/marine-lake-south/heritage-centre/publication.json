@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/heritage-centre.blend",
+  "coordinates": {"frame":"site", "yaw_from_east_degrees":43.5293, "elevation_m":0},
+  "area_name": "Princes Park",
+  "status": "Heritage Centre Café exterior, 2017–2025; dimensions and rear detail estimated.",
+  "levels": {"detail":{"texture_size":null}, "walk":{"texture_size":512}, "district":{"texture_size":512}},
+  "parts": [{"id":"building", "name":"Heritage Centre Café", "collection":"building"}],
+  "views": [
+    {"name":"Bridge front", "position":[-569,7,-157], "target":[-587,2,-178]},
+    {"name":"Roof and rear", "position":[-610,22,-195], "target":[-587,2,-178]}
+  ],
+  "walk_spawn": {"position":[-570,1.7,-160], "target":[-587,2,-178]},
+  "rules": [
+    {"id":"structure", "match":"^(Shell|Roof|Glazing|Joinery|Kiosk) ", "walk":{"strategy":"keep","reason":"Retain the curved wing profile, separate raised canopy, rear drum, entry glazing, small kiosk and door."}, "district":{"strategy":"omit","reason":"Independent fixed topology and atlas replace source detail."}},
+    {"id":"fine", "match":"^Fine ", "walk":{"strategy":"omit","reason":"Individual vent slats are too small at walking distance."}, "district":{"strategy":"omit","reason":"Independent envelope samples the surface."}},
+    {"id":"sign", "match":"^Sign ", "walk":{"strategy":"keep","reason":"Keep the short permanent sign and readable glyphs in the walking view."}, "district":{"strategy":"omit","reason":"Independent envelope samples the sign panel."}}
+  ],
+  "district_envelope": {
+    "generator":"district:surfaces",
+    "reason":"Independently bounded front and rear walls, eased wing roofs, elevated barrel, round drum, entry and small kiosk; source detailing does not change the topology or atlas size.",
+    "max_bytes":3000000,
+    "max_gpu_bytes":12000000,
+    "parts":{"building":{"atlas":[512,512], "max_triangles":1200, "cage_m":0.8}}
+  }
+}
