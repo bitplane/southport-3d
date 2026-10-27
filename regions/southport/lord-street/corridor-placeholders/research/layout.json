@@ -318,7 +318,7 @@
         "osm-seed"
       ],
       "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
-      "replace_with": null
+      "replace_with": "southport.lord-street.regent-court"
     },
     {
       "id": "way-120114010",
@@ -1811,7 +1811,7 @@
         "osm-seed"
       ],
       "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
-      "replace_with": null
+      "replace_with": "southport.lord-street.regent-court"
     },
     {
       "id": "way-372310681",

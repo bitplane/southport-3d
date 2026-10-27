@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.regent-court",
+  "name": "Regent Court and Farmfoods",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "provisional-evidence-backed-exterior",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [53.6486555, -3.0043401],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": ["tower", "roof"],
+  "lods": ["detail", "walk", "district"],
+  "build": {"prepare":"prepare.py", "geometry":"build.py", "export":"export.py", "validate":"validate.py", "render":"render.py"},
+  "source_catalog": "research/references.json",
+  "scope": "Regent Court tower, Farmfoods frontage and adjoining service range; dimensions and roof details estimated from imagery.",
+  "build_inputs": {"master": ["regions/southport/elevation/lord-corridor.json", "regions/southport/elevation/ground-controls.json", "regions/southport/lord-street/corridor-placeholders/scripts/datum.py"], "validate": ["regions/southport/elevation/lord-corridor.json", "regions/southport/elevation/ground-controls.json"]}
+}

@@ -1,0 +1,17 @@
+{
+ "schema_version":1,
+ "source_blend":"models/regent-court.blend",
+ "coordinates":{"frame":"site","yaw_from_east_degrees":43.5293,"elevation_m":0},
+ "area_name":"Lord Street",
+ "status":"Evidence-led working exterior; end recess and roof service structures estimated.",
+ "levels":{"detail":{"texture_size":null},"walk":{"texture_size":512},"district":{"texture_size":512}},
+ "parts":[{"id":"tower","name":"Regent Court and Farmfoods","collection":"tower"},{"id":"roof","name":"Roofs","collection":"roof"}],
+ "views":[{"name":"Street frontage","position":[338,16,-365],"target":[365,13,-325]}],
+ "rules":[
+  {"id":"fine","match":"^Fine ","walk":{"strategy":"omit","reason":"Small bars and narrow service louvres disappear at walking distance; major rail frames remain."},"district":{"strategy":"omit","reason":"Fixed envelope bakes appearance."}},
+  {"id":"architecture","match":"^(?!Fine ).*","walk":{"strategy":"keep","reason":"Preserve the recessed openings, balcony slabs, roof silhouette, retail frontage and access."},"district":{"strategy":"omit","reason":"Independently authored envelope carries facade appearance."}}
+ ],
+ "district_envelope":{"generator":"district:surfaces","reason":"Fixed wing, recessed end and centre, podium, service and roof surfaces with fixed balcony slabs.","max_bytes":2500000,"max_gpu_bytes":12000000,
+  "parts":{"tower":{"atlas":[512,512],"max_triangles":700,"cage_m":0.6,"source_parts":["tower"]},"roof":{"atlas":[512,512],"max_triangles":160,"cage_m":0.6,"source_parts":["roof"]}}},
+ "walk_spawn":{"position":[345,1,-352],"target":[365,4,-325]}
+}
