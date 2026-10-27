@@ -37,14 +37,14 @@ def skin(name,polygon,holes,frame,part,mat=wall):
  return finish('Shell '+name,verts,faces,part,mat,frame)
 def box(name,centre,size,frame,part,mat):
  mesh=Mesh(('Fine ' if name in ('fascia rib','door handle') else 'Architecture ')+name);mesh.box(centre,size);return finish(mesh.name,mesh.vertices,mesh.faces,part,mat,frame)
-def glazing(name,a,b,c,d,frame,part,material=dark,columns=2):
+def glazing(name,a,b,c,d,frame,part,material=dark,columns=2,transom=.72):
  finish('Glazing '+name,[(a,b,-.11),(c,b,-.11),(c,d,-.11),(a,d,-.11)],[(0,1,2,3)],part,glass,frame)
  t=.055
  for z in (b,d-t):box(name+' rail',((a+c)/2,z+t/2,-.03),(c-a,t,.12),frame,part,material)
  for x in [a,c-t]+[a+(c-a)*i/columns-t/2 for i in range(1,columns)]:box(name+' post',(x+t/2,(b+d)/2,-.03),(t,d-b-2*t,.12),frame,part,material)
  for i in range(columns):
   aa=a+t if i==0 else a+(c-a)*i/columns+t/2;bb=c-t if i==columns-1 else a+(c-a)*(i+1)/columns-t/2
-  box(name+' transom',((aa+bb)/2,b+(d-b)*.72,-.03),(bb-aa,.045,.12),frame,part,material)
+  box(name+' transom',((aa+bb)/2,b+(d-b)*transom,-.03),(bb-aa,.045,.12),frame,part,material)
 def bay_slab(name,line,lo,hi,mat):
  # The slab follows the angled bay, with an explicit outer fascia and back edge.
  poly=[(line[0][0],0),line[1],line[2],(line[3][0],0)];n=len(poly)
@@ -67,13 +67,13 @@ for a,b in bays:
  bay_slab('sill',line,3.56,3.64,white)
  bay_slab('cap',line,5.14,5.25,dark)
 for a,b in [(0.20,5.65),(7.25,9.10)]:
- glazing('shop glazing',a,.86,b,2.56,F,'frontage',dark,3)
+ glazing('shop glazing',a,.86,b,2.56,F,'frontage',dark,3,.84)
  box('brick stallriser',((a+b)/2,.295,-.07),(b-a,.99,.13),F,'frontage',brick)
 glazing('front door',5.90,.05,7.02,2.56,F,'frontage',dark,2)
 # Recessed square shop window on Cable return and upper lights.
 sideholes=[rect(2.4,-.2,5.65,2.56),rect(2.55,3.75,4.7,5.1)]
 skin('Cable return',rect(0,-.2,m-1,e),sideholes,S,'rear')
-glazing('Cable shop',2.4,.86,5.65,2.56,S,'rear',dark,3);box('Cable tiled stallriser',(4.025,.295,-.07),(3.25,.99,.13),S,'rear',tan)
+glazing('Cable shop',2.4,.86,5.65,2.56,S,'rear',dark,3,.84);box('Cable tiled stallriser',(4.025,.295,-.07),(3.25,.99,.13),S,'rear',tan)
 glazing('Cable upper',2.55,3.75,4.7,5.1,S,'rear',white,2)
 # Corner shop door, with tile pilasters and sign; no interior detail.
 L=math.sqrt(2);skin('splayed corner lower',rect(0,-.2,L,3.55),[rect(.16,.04,L-.16,2.55)],K,'frontage',tan)
@@ -111,8 +111,8 @@ def sign_material(name):
 side_sign=sign_material('side-fascia');award=sign_material('award');fish_sign=sign_material('fish-sign')
 signage(F,'frontage',.15,front-.15);signage(S,'rear',2.32,5.83,side_sign)
 # Award panel above corner door, framed in dark joinery, distinct from the main fascia.
-box('corner sign board',(L/2,3.02,.08),(L-.17,.94,.14),K,'frontage',dark)
-signage(K,'frontage',.13,L-.13,award,2.60,3.42,.155)
+box('corner sign board',(L/2,3.10,.08),(1.00,1.10,.14),K,'frontage',dark)
+signage(K,'frontage',(L-.90)/2,(L+.90)/2,award,2.59,3.59,.155)
 # Square projecting sign at the front edge of the corner, visible from both directions.
 box('projecting sign support',(.18,3.05,.46),(.07,.07,.90),F,'projecting-sign',dark)
 P=F@Matrix(((0,0,-1,.18),(0,1,0,0),(1,0,0,.85),(0,0,0,1)))
@@ -120,9 +120,10 @@ box('projecting sign board',(0,3.15,0),(.70,.70,.09),P,'projecting-sign',dark)
 signage(P,'projecting-sign',-.31,.31,fish_sign,2.84,3.46,.046)
 Pback=P@Matrix(((-1,0,0,0),(0,1,0,0),(0,0,-1,0),(0,0,0,1)));signage(Pback,'projecting-sign',-.31,.31,fish_sign,2.84,3.46,.046)
 # Vertically ribbed cap of the sign fascia. Fine strips are removed at Walk.
+rib=material('Fascia rib highlight',(.12,.13,.13))
 for frame,part,a,b in [(F,'frontage',0,front),(S,'rear',2.25,5.9)]:
- for j in range(1,int((b-a)/.20)):
-  x=a+j*.20;box('fascia rib',(x,3.36,.265),(.018,.13,.012),frame,part,dark)
+ for j in range(1,int((b-a)/.13)):
+  x=a+j*.13;box('fascia rib',(x,3.36,.265),(.018,.13,.012),frame,part,rib)
 
 for im in bpy.data.images:
  if im.source=='FILE':im.pack()

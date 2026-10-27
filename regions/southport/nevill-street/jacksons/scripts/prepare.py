@@ -6,11 +6,12 @@ P=Path(__file__).resolve().parents[1]/'textures';P.mkdir(exist_ok=True)
 script='/usr/share/fonts/opentype/urw-base35/Z003-MediumItalic.otf';serif='/usr/share/fonts/truetype/liberation2/LiberationSerif-Italic.ttf';bold='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 def font(path,size):return ImageFont.truetype(path,size)
 def centered(d,xy,text,f,fill='#161616'):d.text(xy,text,font=f,fill=fill,anchor='mm')
-im=Image.new('RGB',(2048,256),'#f0eee8');d=ImageDraw.Draw(im);d.text((28,25),'Jacksons',font=font(script,172),fill='#181818');d.text((650,48),'Traditional Fish And Chips',font=font(script,115),fill='#181818');centered(d,(340,202),'Restaurant',font(serif,35));centered(d,(1250,202),'Takeaway',font(serif,35));im.save(P/'fascia.png')
-im=Image.new('RGB',(1024,256),'#f0eee8');d=ImageDraw.Draw(im);centered(d,(512,88),'Jacksons',font(script,160));centered(d,(512,205),'Traditional Fish And Chips  Restaurant',font(serif,43));im.save(P/'side-fascia.png')
-im=Image.new('RGB',(512,640),'#f0eee8');d=ImageDraw.Draw(im);centered(d,(256,78),'Jacksons',font(script,116));
-for y,t in [(220,'Award Winning'),(290,'Traditional'),(360,'Fish & Chips'),(430,'5 Star Rated')]:centered(d,(256,y),t,font(bold,38))
-centered(d,(256,532),'★ ★ ★ ★ ★',font('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',48));im.save(P/'award.png')
+# Raster aspect ratios match their physical sign planes, preserving glyph proportions.
+im=Image.new('RGB',(2048,107),'#f0eee8');d=ImageDraw.Draw(im);d.text((200,2),'Jacksons',font=font(script,105),fill='#181818');d.text((575,8),'Traditional Fish And Chips',font=font(script,94),fill='#181818');centered(d,(355,94),'Restaurant',font(serif,19));centered(d,(1470,94),'Takeaway',font(serif,19));im.save(P/'fascia.png')
+im=Image.new('RGB',(1024,137),'#f0eee8');d=ImageDraw.Draw(im);centered(d,(512,47),'Jacksons',font(script,100));centered(d,(512,114),'Traditional Fish And Chips  Restaurant',font(serif,25));im.save(P/'side-fascia.png')
+im=Image.new('RGB',(576,640),'#f0eee8');d=ImageDraw.Draw(im);centered(d,(288,78),'Jacksons',font(script,116));
+for y,t in [(220,'Award Winning'),(290,'Traditional'),(360,'Fish & Chips'),(430,'5 Star Rated')]:centered(d,(288,y),t,font(bold,48))
+centered(d,(288,532),'★ ★ ★ ★ ★',font('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',48));im.save(P/'award.png')
 im=Image.new('RGB',(512,512),'#f3f2ea');d=ImageDraw.Draw(im)
 for y,t in [(98,'FISH'),(250,'&'),(402,'CHIPS')]:centered(d,(256,y),t,font(bold,126))
 im.save(P/'fish-sign.png')
