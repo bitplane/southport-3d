@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/lloyds-bank.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "London Street",
+  "status": "August 2024 bank exterior, roof and junction; dimensions and concealed rear estimates await independent visual review.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Lloyds bank",
+      "collection": "architecture"
+    }
+  ],
+  "views": [
+    {
+      "name": "Overview",
+      "position": [
+        -10,
+        20,
+        110
+      ],
+      "target": [
+        20,
+        5,
+        91
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "structure",
+      "match": "^(Envelope|Roof|Shop|Trim) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain wall openings, roof and usable entrance geometry."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed-budget envelope."
+      }
+    },
+    {
+      "id": "sashes",
+      "match": "^Window ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain the shallow sash glazing and fanlights at pedestrian distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Project sashes to independent facade receivers."
+      }
+    },
+    {
+      "id": "cornice-brackets",
+      "match": "^Fine cornice bracket",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Small cornice brackets read as shadow at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Project bracket appearance to envelope."
+      }
+    },
+    {
+      "id": "service-gate",
+      "match": "^Fine gate",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain the open vertical gate silhouette."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Project the gate to the rear receiver."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed, independently authored envelope preserves rounded corner, main roof, recessed banking entrance and raised rear bay; appearance projects to a shared atlas.",
+    "max_bytes": 1500000,
+    "max_gpu_bytes": 6000000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 700,
+        "cage_m": 0.6,
+        "source_parts": [
+          "architecture"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      -3,
+      2.6,
+      90
+    ],
+    "target": [
+      8,
+      2.6,
+      90
+    ]
+  }
+}

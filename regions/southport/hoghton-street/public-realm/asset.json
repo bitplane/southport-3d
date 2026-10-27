@@ -41,14 +41,16 @@
       "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",
       "regions/southport/elevation/hoghton.json",
-      "regions/southport/elevation/ground-controls.json"
+      "regions/southport/elevation/ground-controls.json",
+      "regions/southport/london-street/lloyds-bank/research/layout.json"
     ],
     "validate": [
       "regions/southport/hoghton-street/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
       "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
       "regions/southport/elevation/hoghton.json",
-      "regions/southport/elevation/ground-controls.json"
+      "regions/southport/elevation/ground-controls.json",
+      "regions/southport/london-street/lloyds-bank/research/layout.json"
     ]
   },
   "publication_checks": [

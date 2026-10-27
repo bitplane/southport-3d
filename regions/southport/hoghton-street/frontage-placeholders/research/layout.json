@@ -2475,35 +2475,31 @@
       "source_way": "371900482",
       "footprint": [
         [
+          7.956,
+          -95.496
+        ],
+        [
+          26.0,
+          -96.578
+        ],
+        [
+          26.0,
+          -136.758
+        ],
+        [
           7.89,
           -135.947
-        ],
-        [
-          7.972,
-          -85.679
-        ],
-        [
-          26.0,
-          -86.761011
-        ],
-        [
-          26.0,
-          -136.757887
         ]
       ],
       "height_m": 15,
       "replace_with": null,
-      "evidence": "Calibrated aerial and 3D orbit show this previously unmodelled frontage. Existing core research retained its outline but did not publish a building. Tall London office and low rear ranges split approximately; detailed roof/elevation survey deferred."
+      "evidence": "Remainder of the coarse 371900482 outline after subtracting the estimated 23 London Street main parcel and narrow Anchor Street service strip. Nearby Nationwide and other premises remain provisional; bank cut uses the measured plan in southport.london-street.lloyds-bank/research/layout.json, not a legal boundary."
     },
     {
       "id": "way-371900482-rear",
       "name": "Hoghton/London frontage 371900482-rear",
       "source_way": "371900482",
       "footprint": [
-        [
-          48.293,
-          -88.099
-        ],
         [
           47.909,
           -98.39
@@ -2518,16 +2514,36 @@
         ],
         [
           26.0,
-          -136.757887
+          -136.758
         ],
         [
           26.0,
-          -86.761011
+          -96.578
+        ],
+        [
+          28.947,
+          -96.754
+        ],
+        [
+          29.294,
+          -90.965
+        ],
+        [
+          36.281,
+          -91.384
+        ],
+        [
+          36.521,
+          -87.392
+        ],
+        [
+          48.293,
+          -88.099
         ]
       ],
       "height_m": 7.5,
       "replace_with": null,
-      "evidence": "Calibrated aerial and 3D orbit show this previously unmodelled frontage. Existing core research retained its outline but did not publish a building. Tall London office and low rear ranges split approximately; detailed roof/elevation survey deferred."
+      "evidence": "Remainder of the coarse 371900482 outline after subtracting the estimated 23 London Street main parcel and narrow Anchor Street service strip. Nearby Nationwide and other premises remain provisional; bank cut uses the measured plan in southport.london-street.lloyds-bank/research/layout.json, not a legal boundary."
     },
     {
       "id": "way-371902025-front",

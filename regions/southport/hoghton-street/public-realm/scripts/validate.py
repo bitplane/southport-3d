@@ -25,7 +25,8 @@ def contains(p,x,y):
  for a,b in zip(p,p[1:]+p[:1]):
   if (a[1]>y)!=(b[1]>y) and x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0]:inside=not inside
  return inside
-buildings=list(D['extra_building_cutouts'])
+from bank_footprint import bank_cutouts
+buildings=list(D['extra_building_cutouts'])+bank_cutouts(REPO)
 for path in [D['block_plan'],*D['existing_block_plans']]:buildings += [b['footprint'] for b in json.loads((REPO/path).read_text())['blocks']]
 def owned(x,y):return contains(D['outer'],x,y) and not any(contains(p,x,y) for p in [*D['existing_ground_exclusions'],*buildings])
 def hits(x,y):

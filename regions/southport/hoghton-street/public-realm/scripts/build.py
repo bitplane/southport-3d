@@ -34,7 +34,8 @@ def union(gs):
  return P.polygons([t for g in gs for t in P.triangles(g)])
 road_full=P.polygons([ribbon(r['points'],r['width']) for r in D['roads']])
 road_full=buffer(buffer(road_full,D['junction_radius_m']),-D['junction_radius_m'])
-cutters=list(D['existing_ground_exclusions'])+D['extra_building_cutouts']
+from bank_footprint import bank_cutouts
+cutters=list(D['existing_ground_exclusions'])+D['extra_building_cutouts']+bank_cutouts(REPO)
 for path in [D['block_plan'],*D['existing_block_plans']]:
  cutters += [b['footprint'] for b in json.loads((REPO/path).read_text())['blocks']]
 available=P.difference(P.polygons([D['outer']]),P.polygons(cutters))

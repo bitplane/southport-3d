@@ -8,16 +8,17 @@ def build_rear_streets(ctx):
     polygon=ctx['polygon'];part='rear-streets-ground'
     # Ownership starts at the existing Anchor stub X25 and front strip Y-27.
     # Anchor widens to the nine-metre stub, then follows mapped centreline bends.
-    anchor=[(25,-83.5),(26,-83.5),(49.817,-85.631),(67.658,-87.563),(83,-88.984),(104,-90.929),(116,-92.041),(150.579,-95.244),(159.105,-96.894),(223.91,-95.688),(234,-95.5)]
+    anchor=[(25,-83.5),(26,-83.5),(36.5,-84.3),(49.817,-85.631),(67.658,-87.563),(83,-88.984),(104,-90.929),(116,-92.041),(150.579,-95.244),(159.105,-96.894),(223.91,-95.688),(234,-95.5)]
     avenue=[(68.154,-27),(68.0803,-36),(67.658,-87.563)]
     an=parallel(anchor,4);aso=parallel(anchor,-4)
     # Calibrated Anchor shopfront section: the mapped road line lies only
     # about 3.4m from the shop bays. A symmetric 8m ribbon cut into 15–21.
     # Keep south ownership fixed; trace the north kerb about 1.3m off the bays.
-    for i,width in ((4,2.9),(5,1.75),(6,3.0)):
+    for i,width in ((5,2.9),(6,1.75),(7,3.0)):
         an[i]=parallel(anchor,width)[i]
-    an[0]=(25,-79);aso[0]=(25,-88)
-    an[1]=(26,-79);aso[1]=(26,-88)
+    an[0]=(25,-79);aso[0]=(25,-85.4)
+    an[1]=(26,-79);aso[1]=(26,-85.4)
+    aso[2]=(36.5,-86.1)
     aw=parallel(avenue,-2);ae=parallel(avenue,2)
     roads=[an+list(reversed(aso)),aw+list(reversed(ae))]
     for name,pts in zip(['Anchor Street','Post Office Avenue'],roads):
@@ -29,7 +30,7 @@ def build_rear_streets(ctx):
     roads.append([(147.5,-86),(154.5,-86),(154.5,-96),(147.5,-96)])
     roads.append([(106,-70),(121,-70),(121,-96),(106,-96)])
     anchor_outer=parallel(anchor,6.5)
-    for i,width in ((4,4.2),(5,3.05),(6,4.6)):
+    for i,width in ((5,4.2),(6,3.05),(7,4.6)):
         anchor_outer[i]=parallel(anchor,width)[i]
     anchor_outer[0]=(25,-76)
     # Footways are genuinely cut out at the T-junction, not layered over roads.
@@ -37,7 +38,9 @@ def build_rear_streets(ctx):
         ('Anchor north',an,anchor_outer),('Anchor south',aso,parallel(anchor,-6.5)),
         ('Avenue west',aw,parallel(avenue,-3.8)),('Avenue east',ae,parallel(avenue,3.1))]:
         if name.startswith('Anchor'):
-            outer[0]=(25,-76 if name.endswith('north') else -91)
+            outer[0]=(25,-76 if name.endswith('north') else -86.70)
+            if name.endswith('south'):
+                outer[1]=(26,-86.76);outer[2]=(36.5,-87.40)
         pieces=[[edge[i],edge[i+1],outer[i+1],outer[i]] for i in range(len(edge)-1)]
         for road in roads:
             # Road ribbons have bends; use per-segment convex cutters.
@@ -50,8 +53,8 @@ def build_rear_streets(ctx):
         for p in pieces:
             if len(p)>2:polygon('Surface '+name+' footway',p,ctx['mixed'],part)
     # Split kerbs and paint at the junction: no transverse edge across either road.
-    curves=[('Anchor north into Avenue west',an[:3]+[(65.69,-83.3),aw[1],aw[0]],1),
-            ('Avenue east into Anchor north',[ae[0],ae[1],(69.69,-83.7)]+an[4:],1),
+    curves=[('Anchor north into Avenue west',an[:4]+[(65.69,-83.3),aw[1],aw[0]],1),
+            ('Avenue east into Anchor north',[ae[0],ae[1],(69.69,-83.7)]+an[5:],1),
             ('Anchor south',aso,-1)]
     for name,curve,side in curves:
         # This pass ends the Anchor kerb at the Hill Street junction mouth.

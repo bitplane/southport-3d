@@ -1,0 +1,14 @@
+{
+  "state": "Implementation for independent review; do not resolve snag until acceptance.",
+  "sources": "coverage.json records loaded 2024 street panoramas, actual 3D orbits, scale-bar measurements and missing coverage. Reference images remain private.",
+  "plan": "Main body approximately 9.8 m across by 21.6 m deep, turned to the Anchor Street edge. Seven metre rear strip is only four metres wide and is uncertain. The raised rear bay, its flat top and all heights are visual estimates, not surveyed.",
+  "architecture": "Three real arched front apertures with four-column sash, radial fanlights, stepped surrounds and keystones; profiled cornice and shaped corbels; green fascia, recessed entrance, display glazing and ATM; rounded corner and coursed Anchor Street walls, side sash and service gate. Raised rear bay and rooflights are estimated; concealed faces are plain.",
+  "ground": "Anchor junction narrows onto a continuous curve shared by kerb and yellow paint, preserving through traffic and a narrow bank-side pavement. Bank main and service footprints are cut from Hoghton ground and the two coarse neighbouring placeholder volumes, which remain present. Existing elevation controls agree at sampled seam points.",
+  "lod_policy": "Walk retains structure, apertures, sashes and gate; it omits small cornice brackets. District is a fixed independently authored envelope with rounded corner, recessed banking frontage, roof, service strip and raised rear bay; appearance projects to a shared 512-pixel atlas.",
+  "checks": "Master/exterior coplanar selections, upward roof/outward curved corner, finite UV geometry, London Square junction/seam/through-road and Hoghton bank exclusions are checked. Exported levels, mixed LoDs and assembled visual inspection still required.",
+  "limitations": [
+    "3D and panorama image dates differ; signage is the August 2024 state.",
+    "Exact heights, rear boundary and rooflight positions are estimates; roof and hidden party walls are not a measured survey.",
+    "Some shallow carved stone and storefront fittings are simplified. No interior or unreadable lettering is invented."
+  ]
+}

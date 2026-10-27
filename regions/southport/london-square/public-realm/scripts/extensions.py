@@ -296,7 +296,7 @@ def build_extensions(ctx):
             rect('Surface London Street carriageway',-10,south,8.5,-150,asphalt,part,-.12)
             rect('Surface London Street carriageway',-4.3,-150,8.5,-138,asphalt,part,-.12)
             rect('Surface London Street carriageway',-10,-138,8.5,north,asphalt,part,-.12)
-        else:rect('Surface London Street carriageway',-10,south,8.5,north,asphalt,part,-.12)
+        else:rect('Surface London Street carriageway',-10,south,4.3,north,asphalt,part,-.12)
         for side in [-1,1]:
             # split at side roads and final crossroads, preserving contiguous road mouths
             gaps=([(-69.4,-63.4)] if side==-1 else [(-88,-79)])+[(-150,-138)]
@@ -308,11 +308,12 @@ def build_extensions(ctx):
                 a,b=-134.5,-132
                 polygon('Surface crossing ramp',[(side*4.3,a),(side*5.4,a),(side*5.4,b),(side*4.3,b)],mixed,part)
                 polygon('Surface crossing back landing',[(side*5.4,a),(side*(12.5 if side<0 else 11.5),a),(side*(12.5 if side<0 else 11.5),b),(side*5.4,b)],mixed,part)
-            ranges=[(lo,hi) for a,b in ranges for lo,hi in zip(sorted({a,b,*[y for y in [-46] if a<y<b]})[:-1],sorted({a,b,*[y for y in [-46] if a<y<b]})[1:])]
+            ranges=[(lo,hi) for a,b in ranges for lo,hi in zip(sorted({a,b,*[y for y in [-46,-95.496] if a<y<b]})[:-1],sorted({a,b,*[y for y in [-46,-95.496] if a<y<b]})[1:])]
             for a,b in ranges:
                 if b<=a:continue
                 def inner(y):return 4.3+(max(0,min(1,(y+46)/10))*1.9 if side<0 else 0)
-                points=[(side*inner(a),a),(side*(12.5 if side<0 else 11.5),a),(side*(12.5 if side<0 else 11.5),b),(side*inner(b),b)]
+                outer=7.97 if i==2 and side==1 and -95.496<=(a+b)/2<=-88 else (12.5 if side<0 else 11.5)
+                points=[(side*inner(a),a),(side*outer,a),(side*outer,b),(side*inner(b),b)]
                 polygon('Surface London Street footway',points,mixed,part)
                 curb([(side*inner(a),a),(side*inner(b),b)],part,-side)
                 paint_edge('London yellow edge',ctx['london_kerb'](side),side,part,(-10,a,8.5,b))
@@ -330,7 +331,7 @@ def build_extensions(ctx):
         for yy,side in [(-74,1),(-94,-1),(-113,1),(-130,-1),(-153,1)]:
             if south<=yy<north:furnishing('stainless-bin' if int(abs(yy))%2==0 else 'bollard',side*5.4,yy,0,fp)
         # Short junction stubs establish future road/building ownership boundaries.
-        for cy,side,width in [(-83.5,1,9),(-144,1,12)]:
+        for cy,side,width in [(-144,1,12)]:
             if south<cy<north:
                 a,b=sorted([side*(10 if side<0 else 8.5),side*25]);rect('Surface side road mouth',a,cy-width/2,b,cy+width/2,asphalt,part,-.12)
                 for yy in [cy-width/2,cy+width/2]:
@@ -339,6 +340,25 @@ def build_extensions(ctx):
                     curve=[(ka,yy),(kb,yy)];inside=1 if yy>cy else -1
                     curb(curve,part,inside)
                     paint_edge('Side road throat',curve,-inside,part)
+        if i==2:
+            # August 2024 Anchor mouth: the bank occupies the south-east corner.
+            # One sampled kerb controls the asphalt, apron and yellow markings;
+            # the x=25 endpoint is shared with rear_streets.py.
+            south_curve=[(4.3,-88.0),(4.5,-86.8),(5.1,-85.7),(6.1,-84.9),
+                         (7.3,-84.4),(8.5,-84.3),(24,-85.4),(25,-85.4)]
+            polygon('Surface Anchor mouth',[(4.3,-79),(25,-79)]+list(reversed(south_curve)),asphalt,part,-.12)
+            # Match the bank's .70 m curved shell rather than cutting a square
+            # hole which leaves a conspicuous sky-coloured wedge at the foot.
+            bx,by,r,angle=7.972,-85.679,.70,-.0599
+            def bank_point(X,Y):
+                return (bx+math.cos(angle)*(X-bx)-math.sin(angle)*(Y-by),
+                        by+math.sin(angle)*(X-bx)+math.cos(angle)*(Y-by))
+            arc=[bank_point(bx+r+r*math.cos(math.pi-j*math.pi/16),by-r+r*math.sin(math.pi-j*math.pi/16)) for j in range(9)]
+            apron=[(4.3,-88),(7.97,-88)]+arc+[(25,-86.70),(25,-85.4)]+list(reversed(south_curve[:-1]))
+            polygon('Surface Anchor bank apron',apron,mixed,part)
+            curb(south_curve,part,-1);paint_edge('Anchor bank south return',south_curve,1,part)
+            north_curve=[(4.3,-79),(25,-79)]
+            curb(north_curve,part,1);paint_edge('Anchor north return',north_curve,-1,part)
         # Pedestrian crossing near Chapel/Hoghton: estimated studs and landing pads.
         if i==3:
             for yy in [-134.5,-132]:

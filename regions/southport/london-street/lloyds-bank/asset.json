@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "southport.london-street.lloyds-bank",
+  "name": "Lloyds Bank, 23 London Street",
+  "region": "southport",
+  "area": "london-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "architecture"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Exterior of 23 London Street in its August 2024 state; footprint, height and hidden rear remain estimated. The frontage has an inset banking entrance; no interior is modelled. Ground remains in separate public-realm assets."
+}

@@ -189,9 +189,9 @@ for x,y in [(40,-79),(80,-83.5),(80,-94.4),(65.1,-40),(70.8,-45),(-11,-80),(-11,
  assert ob and any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(x,y,ob.name if ob else None,'New frontage pavement missing')
 print('Post Office / Anchor connection and new frontage paving validated')
 
-for y in [-79.18,-79.36,-87.82,-87.64]:
+for y in [-79.18,-79.36,-85.22,-85.04]:
  left,lp=ground_hit(24.985,y);right,rp=ground_hit(25.015,y)
- assert left and right and all(any(m.name=='Faded yellow road marking' for m in o.data.materials) for o in [left,right]),(y,'Anchor yellow pair does not meet across ownership seam')
+ assert left and right and all(any(m.name=='Faded yellow road marking' for m in o.data.materials) for o in [left,right]),(y,'Anchor yellow pair does not meet across ownership seam',left.name if left else None,right.name if right else None)
  assert abs((lp.z-grade(y,x=24.985))-(rp.z-grade(y,x=25.015)))<.0005
 print('Anchor Street ownership seam has continuous road-edge paint')
 
@@ -422,3 +422,27 @@ for side in [-1,1]:
    ob,p=ground_hit(side*x,y)
    assert ob and any(m.name=='Still dark pool water'for m in ob.data.materials),(side*x,y,'ground intrudes into pool',ob.name if ob else None)
 print('Reflecting pool openings exclude underlying carriageway throughout')
+
+# Lloyds bank cuts the former Anchor junction rectangle; the south kerb and
+# its two yellow lines meet across the x=25 ownership seam. Footways stay clear
+# of the bank footprint and the junction remains navigable asphalt.
+for x,y in [(10,-90),(20,-90),(24,-90)]:
+ ob,p=ground_hit(x,y)
+ assert ob is None,(x,y,'Ground intrudes into bank parcel',ob.name if ob else None)
+for x,y in [(10,-82),(20,-82),(24,-82),(26,-82),(35,-83)]:
+ ob,p=ground_hit(x,y)
+ assert ob and any(m.name=='Authored asphalt' for m in ob.data.materials),(x,y,'Anchor carriageway blocked',ob.name if ob else None)
+print('Lloyds frontage exclusion and Anchor through route checked')
+
+# The square bank corner was cut away too far when the new facade rounded it.
+# A sample between that former square and the true arc must be paving.
+ob,p=ground_hit(8.05,-85.86)
+assert ob and any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(ob.name if ob else None,'Missing rounded-bank corner paving')
+print('Rounded bank corner has continuous pavement')
+
+# Frontage and rounded-corner apron meet at y=-88 with no sky gap.
+for x in (4.8,5.5,6.25,7.0,7.7):
+ for y in (-88.002,-87.998):
+  ob,p=ground_hit(x,y)
+  assert ob and any(m.name=='Authored mixed rectangular paving' for m in ob.data.materials),(x,y,'Frontage apron seam gap',ob.name if ob else None)
+print('Bank frontage/apron seam is continuously paved')

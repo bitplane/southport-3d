@@ -1,0 +1,14 @@
+{
+  "base_z": 1.01,
+  "front_x": 7.972,
+  "side_y": -85.679,
+  "width_m": 9.8,
+  "main_depth_m": 21.6,
+  "upper_height_m": 10.4,
+  "service_depth_m": 7.0,
+  "service_height_m": 3.6,
+  "registration_angle_rad": -0.0599,
+  "uncertainty": "Main footprint estimated from Google overhead scale bar, \u00b11 m frontage and \u00b12 m depth. Rotation matches adjacent Anchor Street edge. The service extension is estimated and not yet geometrically separated from neighbouring premises. Heights visually estimated \u00b11.5 m. See coverage.json. The rear service strip is restricted to 4 m along Anchor Street: actual depth and party boundary are not established.",
+  "ground_datum_note": "Approximate entrance pavement control at (7.97,-85.68): hoghton-pavement 1.0103 m; other frontage end is 1.1181 m. A level building threshold and separate buried foundation remain to be modelled and seam checked.",
+  "service_width_m": 4.0
+}

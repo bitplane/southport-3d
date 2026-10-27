@@ -1,0 +1,5 @@
+{
+  "sources": [
+    {"id": "coverage", "path": "research/coverage.json", "use": "Evidence views, source URLs, observations, measurements and limitations."}
+  ]
+}
