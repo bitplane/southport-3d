@@ -1,4 +1,4 @@
-"""Fixed independent envelope; omitted canopy curvature and joinery."""
+"""Fixed independent envelope; curved canopy and recessed entrance."""
 import math,os,sys
 from pathlib import Path
 from blender_envelope import Surfaces
@@ -13,7 +13,7 @@ def surfaces(asset):
  # Reversed to account for the reflected local plan frame.
  for name,p in [('rear',[(W,D,0),(0,D,0),(0,D,3.25),(W,D,3.25)]),('left',[(0,D,0),(0,0,0),(0,0,3.25),(0,D,3.25)]),('right',[(W,0,0),(W,D,0),(W,D,3.25),(W,0,3.25)])]:s.quad(name,list(reversed(p)))
  # Doorway recess is modelled in the independent envelope rather than only painted.
- for name,p in [('front left',[(0,0,0),(7.1,0,0),(7.1,0,3.25),(0,0,3.25)]),('front right',[(8.3,0,0),(W,0,0),(W,0,3.25),(8.3,0,3.25)]),('front sill',[(7.1,0,0),(8.3,0,0),(8.3,0,.2),(7.1,0,.2)]),('front head',[(7.1,0,2.56),(8.3,0,2.56),(8.3,0,3.25),(7.1,0,3.25)]),('door recessed',[(7.1,.12,.2),(8.3,.12,.2),(8.3,.12,2.56),(7.1,.12,2.56)]),('door left',[(7.1,0,.2),(7.1,.12,.2),(7.1,.12,2.56),(7.1,0,2.56)]),('door right',[(8.3,.12,.2),(8.3,0,.2),(8.3,0,2.56),(8.3,.12,2.56)]),('door soffit',[(7.1,0,2.56),(7.1,.12,2.56),(8.3,.12,2.56),(8.3,0,2.56)]),('door threshold',[(7.1,0,.2),(8.3,0,.2),(8.3,.12,.2),(7.1,.12,.2)])]:s.quad(name,list(reversed(p)))
+ for name,p in [('front left',[(0,0,0),(7.1,0,0),(7.1,0,3.25),(0,0,3.25)]),('front right',[(10.5,0,0),(W,0,0),(W,0,3.25),(10.5,0,3.25)]),('front sill',[(7.1,0,0),(10.5,0,0),(10.5,0,.2),(7.1,0,.2)]),('front head',[(7.1,0,2.56),(10.5,0,2.56),(10.5,0,3.25),(7.1,0,3.25)]),('door recessed',[(7.1,.12,.2),(10.5,.12,.2),(10.5,.12,2.56),(7.1,.12,2.56)]),('door left',[(7.1,0,.2),(7.1,.12,.2),(7.1,.12,2.56),(7.1,0,2.56)]),('door right',[(10.5,.12,.2),(10.5,0,.2),(10.5,0,2.56),(10.5,.12,2.56)]),('door soffit',[(7.1,0,2.56),(7.1,.12,2.56),(10.5,.12,2.56),(10.5,0,2.56)]),('door threshold',[(7.1,0,.2),(10.5,0,.2),(10.5,.12,.2),(7.1,.12,.2)])]:s.quad(name,list(reversed(p)))
  s.part='roof'
  outer=[(-.5,-.5,3.45),(W+.5,-.5,3.45),(W+.5,D+.5,3.45),(-.5,D+.5,3.45)];inner=[(3.4,3.5,4.25),(14,3.5,4.25),(14,17.3,4.25),(3.4,17.3,4.25)];top=[(4,4.1,5.75),(13.4,4.1,5.75),(13.4,16.7,5.75),(4,16.7,5.75)]
  for i in range(4):
@@ -30,4 +30,5 @@ def surfaces(asset):
   x=4.1+6.4*i/4; xx=4.1+6.4*(i+1)/4
   z=3.37+.48*math.sin(math.pi*i/4); zz=3.37+.48*math.sin(math.pi*(i+1)/4)
   s.quad('canopy '+str(i),list(reversed([(x,-1.25,z),(xx,-1.25,zz),(xx,0,zz),(x,0,z)])),cage=.15)
+  s.quad('canopy face '+str(i),list(reversed([(x,-1.25,3.15),(xx,-1.25,3.15),(xx,-1.25,zz),(x,-1.25,z)])),cage=.08)
  return s.result

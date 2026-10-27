@@ -37,7 +37,7 @@ def wall_front(name,y,segments):
  for i,(a,b,lo,hi,material) in enumerate(segments):
   yy=y+.12 if name=='front' and material==glass else (y-.10 if name=='rear' and material==frame else y)
   quad('Wall '+name+str(i),[(a,yy,lo),(b,yy,lo),(b,yy,hi),(a,yy,hi)],'walls',material)
-wall_front('front',0,[(0,.8,0,H,stone),(.8,4.1,2.8,H,stone),(4.1,10.5,2.8,H,wood),(10.5,13.7,2.8,H,stone),(13.7,W,0,H,stone),(.8,6.2,0,.2,stone),(8.3,13.7,0,.2,stone),(.8,6.2,.2,2.8,glass),(6.2,7.1,0,2.8,wood),(7.1,8.3,2.56,2.8,glass),(8.3,13.7,.2,2.8,glass)])
+wall_front('front',0,[(0,.8,0,H,stone),(.8,4.1,2.8,H,stone),(4.1,10.5,2.8,H,wood),(10.5,13.7,2.8,H,stone),(13.7,W,0,H,stone),(.8,6.2,0,.2,stone),(10.5,13.7,0,.2,stone),(.8,6.2,.2,2.8,glass),(6.2,7.1,0,2.8,wood),(7.1,8.3,2.56,2.8,glass),(8.3,10.5,2.56,2.8,glass),(10.5,13.7,.2,2.8,glass)])
 wall_front('rear',D,[(0,6.3,0,H,stone),(6.3,7.4,2.2,H,stone),(7.4,14.9,0,H,stone),(14.9,16,2.2,H,stone),(16,W,0,H,stone),(6.3,7.4,0,2.2,frame),(14.9,16,0,2.2,frame)])
 # Return elevations, including broad street glazing on south-west and service door on opposite side.
 for side in (0,W):
@@ -57,18 +57,20 @@ for a,b in [(8.7,10),(17.8,18.65),(19,20.1)]:
 quad('Side door jamb 8.7 lower',[(0,8.7,0),(.12,8.7,0),(.12,8.7,.3),(0,8.7,.3)],'joinery',stone)
 for a,b in [(6.3,7.4),(14.9,16)]:
  for x in (a,b):quad('Rear door jamb '+str(x),[(x,D,0),(x,D-.10,0),(x,D-.10,2.2),(x,D,2.2)],'joinery',stone)
-# Detailed glazed entrance: metal perimeter, single door, transom and threshold.
-for x in (.8,3,6.2,7.1,8.3,13.7):box('Frame front vertical '+str(x),(x,-.025,1.5),(.08,.10,2.52),'joinery',frame)
+# Detailed glazed entrance: metal perimeter, asymmetric double leaves, sidelight, transom and threshold.
+for x in (.8,3,6.2,7.1,8.3,9.45,10.5,13.7):box('Frame front vertical '+str(x),(x,-.025,1.5),(.08,.10,2.52),'joinery',frame)
 for z in (.2,2.8):box('Frame front horizontal '+str(z),(7.25,-.025,z),(12.9,.10,.08),'joinery',frame)
-quad('Entrance door',[(7.1,.12,.2),(8.3,.12,.2),(8.3,.12,2.56),(7.1,.12,2.56)],'joinery',glass)
-for x in (7.17,8.23):box('Entrance leaf stile '+str(x),(x,.065,1.36),(.055,.08,2.24),'joinery',frame)
-for z in (.28,2.48):box('Entrance leaf rail '+str(z),(7.7,.065,z),(1.06,.08,.055),'joinery',frame)
-box('Entrance pull handle',(7.32,-.005,1.15),(.035,.06,.52),'joinery',white)
-box('Entrance threshold',(7.7,-.04,.195),(1.20,.24,.045),'joinery',frame)
+for a,b in ((7.1,8.3),(8.3,9.45),(9.45,10.5)):
+ quad('Entrance glazed leaf '+str(a),[(a,.12,.2),(b,.12,.2),(b,.12,2.56),(a,.12,2.56)],'joinery',glass)
+for x in (7.17,8.23,8.37,9.38,9.52,10.43):box('Entrance leaf stile '+str(x),(x,.065,1.36),(.055,.08,2.24),'joinery',frame)
+for a,b in ((7.17,8.23),(8.37,9.38),(9.52,10.43)):
+ for z in (.28,2.48):box('Entrance leaf rail '+str(a)+' '+str(z),((a+b)/2,.065,z),(b-a,.08,.055),'joinery',frame)
+for x in (7.32,9.24):box('Entrance pull handle '+str(x),(x,-.005,1.15),(.035,.06,.52),'joinery',white)
+box('Entrance threshold',(8.8,-.04,.195),(3.40,.24,.045),'joinery',frame)
 # Fixed glazing has a shallow horizontal transom and a raised sill.
 for x in (1.6,4.5,11.2):
  for lo,hi in ((.29,2.3425),(2.3775,2.69)):box('Frame front intermediate '+str(x)+' '+str(lo),(x,-.025,(lo+hi)/2),(.045,.08,hi-lo),'joinery',frame)
-for a,b in [(.8,6.2),(8.3,13.7)]:box('Frame front transom '+str(a),((a+b)/2,-.025,2.36),(b-a,.08,.035),'joinery',frame)
+for a,b in [(.8,6.2),(10.5,13.7)]:box('Frame front transom '+str(a),((a+b)/2,-.025,2.36),(b-a,.08,.035),'joinery',frame)
 for y in (.4,2.8,5.3,8.7):box('Frame side '+str(y),(-.025,y,1.55),(.10,.08,2.42),'joinery',frame)
 for z in (.3,2.8):box('Frame side rail '+str(z),(-.025,4.55,z),(.10,8.3,.075),'joinery',frame)
 for y in (8.7,10):box('Road door stile '+str(y),(-.025,y,1.17),(.10,.07,2.25),'joinery',frame)
@@ -145,6 +147,10 @@ for i in range(17):
  x=4.1+i*6.4/16;z=3.37+.48*math.sin(math.pi*i/16);pts.append((x,z))
 for i,((x,z),(x2,z2)) in enumerate(zip(pts,pts[1:])):
  quad('Canopy '+str(i),[(x,-1.25,z),(x2,-1.25,z2),(x2,.0,z2),(x,0,z)],'roof',roof)
+ # Solid timber face fills the arch below its dark perimeter fascia.
+ if i==0: quad('Canopy front infill '+str(i),[(x,-1.25,3.17),(x2,-1.25,3.17),(x2,-1.25,z2-.20)],'roof',wood)
+ elif i==15: quad('Canopy front infill '+str(i),[(x,-1.25,3.17),(x2,-1.25,3.17),(x,-1.25,z-.20)],'roof',wood)
+ else: quad('Canopy front infill '+str(i),[(x,-1.25,3.17),(x2,-1.25,3.17),(x2,-1.25,z2-.20),(x,-1.25,z-.20)],'roof',wood)
  quad('Canopy fascia '+str(i),[(x,-1.25,z-.20),(x2,-1.25,z2-.20),(x2,-1.25,z2),(x,-1.25,z)],'roof',fascia)
  quad('Canopy timber soffit '+str(i),[(x,-1.25,z-.20),(x,0,z-.20),(x2,0,z2-.20),(x2,-1.25,z2-.20)],'roof',wood)
  quad('Canopy red trim '+str(i),[(x,-1.258,z-.045),(x2,-1.258,z2-.045),(x2,-1.258,z2-.012),(x,-1.258,z-.012)],'joinery',red)

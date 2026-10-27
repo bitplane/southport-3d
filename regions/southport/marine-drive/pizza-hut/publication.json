@@ -111,7 +111,7 @@
           128,
           128
         ],
-        "max_triangles": 8,
+        "max_triangles": 16,
         "cage_m": 0.5,
         "source_parts": [
           "joinery"
