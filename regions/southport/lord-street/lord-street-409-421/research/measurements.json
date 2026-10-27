@@ -5,7 +5,7 @@
     {
       "reference": "osm-block-plan",
       "landmarks": "Burlington party line x60.073,y45.660; northern party x97.324,y45.995",
-      "calculation": "37.251m total frontage retained. Bank rear hall seed spans x80.905\u201397.867, corroborating approximately16.4m bank frontage; red range takes remaining20.85m.",
+      "calculation": "37.251m total frontage retained. Bank rear hall seed spans x80.905–97.867, corroborating approximately16.4m bank frontage; red range takes remaining20.85m.",
       "uncertainty_m": 0.6
     },
     {
@@ -49,10 +49,83 @@
       "uncertainty_m": 0.9
     },
     {
-      "reference": "roof-orbits",
-      "landmarks": "Bank front8.51m depth vs ~8m open court, hall21.4m depth; rear lantern roughly10.5x9m in16.5x21.4 hall. Red front8.65m; rear west wing end26m and middle15.6m from facade.",
-      "calculation": "Ratios traced against registered footprint spans; parallax excluded by comparing all4 headings.",
-      "uncertainty_m": 1.5
+      "reference": "roof-2026-10-27",
+      "capture": "Google Maps 3D, loaded globe and near-overhead plus 116.75° and 250.5° rear obliques; photogrammetry date not exposed",
+      "image_landmarks_px": {
+        "image_size": [
+          1440,
+          1000
+        ],
+        "registered_front_left": [
+          467,
+          840
+        ],
+        "bank_party_line": [
+          890,
+          840
+        ],
+        "long_range": [
+          555,
+          607,
+          403,
+          672
+        ],
+        "return": [
+          555,
+          705,
+          403,
+          475
+        ],
+        "hip": [
+          709,
+          831,
+          568,
+          730
+        ],
+        "central_glazing": [
+          607,
+          707,
+          523,
+          660
+        ],
+        "second_glazing": [
+          755,
+          831,
+          405,
+          550
+        ]
+      },
+      "calculation": "423 px / accepted 20.85 m frontage ≈20.3 px/m. Convert x from 467 px and depth from y=840 px; roofs overhang and photogrammetric parallax mean points are approximate, not a measured survey. Adopt A x4.4–6.9/y8.65–21.5, B x4.4–11.8/y18–21.5, D x11.8–17.8/y6.1–13.35, C1 x6.9–11.8/y8.65–15.7, C2 x14.3–18/y14.4–21.1. Hip and frontage slopes intersect analytically; no competing roof skin underneath.",
+      "height_estimate": "Retained frontage eaves/ridge 12.0/14.9 m above floor; rear eaves 10.3 m; A/B ridge 11.3 m; D ridge 12.8 m; C1 eaves/ridge 5.0/5.5 m, C2 4.8/5.35 m. Roof elevations are inference from soft 3D form, not measured heights.",
+      "uncertainty_m": 2.0
+    },
+    {
+      "reference": "roof-2026-10-27",
+      "capture": "Google 3D close bank-facing view, heading 250.75°, tilt 57.66°",
+      "image_landmarks_px": {
+        "view_size": [
+          1440,
+          1000
+        ],
+        "band_approx_screen_box": [
+          650,
+          456,
+          729,
+          492
+        ],
+        "hip_wall_top_edge_approx": [
+          [
+            589,
+            417
+          ],
+          [
+            715,
+            405
+          ]
+        ]
+      },
+      "calculation": "Opening band roughly 60–70% of the visually exposed 4.7 m side. Adopt 3.1 m wide, 1.25 m high at local y9.4–12.5, z6.2–7.45 above floor; perspective and the photogrammetric mesh preclude survey accuracy. Several pale vertical elements are visible, but their exact number and profiles are not resolved; two simple indicative divisions are not a claim of an exact count.",
+      "uncertainty_m": 0.8
     }
   ],
   "ground_anchor": {
@@ -62,7 +135,7 @@
     "note": "Thresholds connect locally; neither building tilts with road. No raster terrain refinement."
   },
   "current_frontage_partition": {
-    "supersedes": "The initial 20.85 m/four-axis red facade assignment omitted 409\u2013411. That width covers cafe plus Masonic frontage.",
+    "supersedes": "The initial 20.85 m/four-axis red facade assignment omitted 409–411. That width covers cafe plus Masonic frontage.",
     "cafe_m": 4.4,
     "masonic_m": 16.45,
     "combined_m": 20.85,

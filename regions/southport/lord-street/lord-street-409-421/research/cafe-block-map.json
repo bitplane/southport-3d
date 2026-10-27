@@ -12,7 +12,7 @@
     },
     {
       "url": "https://tustin.co.uk/wp-content/uploads/2019/06/405-407-Lord-Street-Brochure-Details.pdf",
-      "observed": "Front photograph marks the adjacent 405\u2013407 cafe bay within Burlington, excluding the missing gabled frontage. Floor plan belongs to 405\u2013407 and is not borrowed as a measured plan for 409\u2013411."
+      "observed": "Front photograph marks the adjacent 405–407 cafe bay within Burlington, excluding the missing gabled frontage. Floor plan belongs to 405–407 and is not borrowed as a measured plan for 409–411."
     },
     {
       "url": "https://www.google.com/maps/@53.6491576,-3.0039782,3a,75y,315h,100t/data=!3m4!1e1!3m2!1sYt6QpKjGHI_fQNNfah9QIg!2e0",
@@ -63,62 +63,98 @@
         8.65
       ]
     ],
-    "cafe_rear_strip": [
+    "long_range": [
       [
-        0,
+        4.4,
         8.65
       ],
       [
-        2.4,
+        6.9,
         8.65
       ],
       [
-        2.4,
-        22
+        6.9,
+        18
       ],
       [
-        0,
-        22
+        4.4,
+        18
       ]
     ],
     "rear_return": [
       [
-        0,
-        22
+        4.4,
+        18
       ],
       [
-        7.8,
-        22
+        11.8,
+        18
       ],
       [
-        7.8,
-        26
+        11.8,
+        21.5
       ],
       [
-        0,
-        26
+        4.4,
+        21.5
       ]
     ],
-    "separate_middle_range": [
+    "middle_hip": [
       [
-        10.48,
+        11.8,
         8.65
       ],
       [
-        16.1,
+        17.8,
         8.65
       ],
       [
-        16.1,
-        15.6
+        17.8,
+        13.35
       ],
       [
-        10.48,
-        15.6
+        11.8,
+        13.35
+      ]
+    ],
+    "court_cover": [
+      [
+        6.9,
+        8.65
+      ],
+      [
+        11.8,
+        8.65
+      ],
+      [
+        11.8,
+        15.7
+      ],
+      [
+        6.9,
+        15.7
+      ]
+    ],
+    "service_cover": [
+      [
+        14.3,
+        14.4
+      ],
+      [
+        18,
+        14.4
+      ],
+      [
+        18,
+        21.1
+      ],
+      [
+        14.3,
+        21.1
       ]
     ]
   },
-  "neighbour_effect": "Burlington east edge and bank west edge unchanged. Four-axis facade remapped into 16.45m. Whole 20.85m canopy remains one owner. Cafe and Masonic rear volumes separate at open court; no high east side closes former ring.",
-  "uncertainty": "Front division \u00b10.7m, rear boundaries \u00b11.5m and heights \u00b11m. Functional/legal ownership of rear arm cannot be established from roof imagery. Rear fenestration, fine gable carving and service fittings remain unresolved. Wider roof review is still open; this establishes separate footprints rather than certifying all roof pitches.",
+  "neighbour_effect": "Frontage and bank party line unchanged. Long rear range begins at the cafe/Masonic frontage division rather than the Burlington boundary. Distinct low covers leave service gaps; placement is geometric asset coverage, not a legal ownership assertion.",
+  "uncertainty": "Front division ±0.7 m; rear traces ±1.5–2 m and heights ±1–2 m. Photogrammetry does not establish legal ownership, transparent cover construction or hidden fenestration. Source pixels remain private.",
   "private_captures": "../output/lord-street-snags/missing-plan.png, missing-oblique.png, missing-rear-orbit.png, cafe-current-front.png; snag attachments remain outside git."
 }

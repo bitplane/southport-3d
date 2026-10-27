@@ -30,7 +30,7 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Caffe Dolce at 409\u2013411 and Masonic frontage 413\u2013421, with separately mapped rear wings and low covered court; private interiors excluded.",
+  "scope": "Caffe Dolce at 409\u2013411 and Masonic frontage 413\u2013421, with separate rear ranges, two low rooflight proxies and open service gaps; private interiors excluded.",
   "build_inputs": {
     "master": [
       "regions/southport/elevation/lord-corridor.json",

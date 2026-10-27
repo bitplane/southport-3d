@@ -1,16 +1,17 @@
 {
-  "detail": "Physical recessed openings, bay projections, mouldings and roof section geometry; observed signs and canopy. No invented rear decoration.",
-  "walk": "Keep architectural openings, roofs and bays; omit fine valance and small carving/shingles.",
-  "district": "Independent fixed receiver surfaces with preserved bay/tower/lantern/court silhouette and open canopy. One atlas per facade/rear/roof/canopy; fixed geometry independent of ornament.",
+  "detail": "Preserve street facade; independently meshed long and return roofs, clipped frontage valleys, compact hip, and two low rooflight proxies with physical bars. An observed recessed opening band appears on the bank-facing hip wall; hidden rear openings omitted.",
+  "walk": "Retain the roof volumes, both low pitched covers and their major bars, street facade and canopy; omit fine valance and small carving.",
+  "district": "Independent fixed-budget receiver repeats roof planes, lightwell shapes and gaps; appearance of rooflight bars is baked. Geometry and atlas dimensions remain independent of ornament.",
   "budgets": {
     "triangles": 2000,
     "download_bytes": 2400000,
     "gpu_bytes": 5800000
   },
   "omissions": [
-    "Interiors",
-    "Exact hidden court opening positions",
-    "Unresolved red gable inscription",
-    "Small stone carving represented as restrained relief, not facsimile"
+    "Private interiors",
+    "Unverified lower courtyard window and door locations",
+    "Exact glass transparency, rooflight framing and hidden lower structure",
+    "Fine crest carving",
+    "Exact subdivisions and profiles within the observed hip-side grouped opening"
   ]
 }

@@ -47,14 +47,23 @@ def surfaces(asset):
  for name,p in exterior(d):
   # Burlington completely hides this shared party wall, including its roof.
   if name=='southwest party':continue
+  if name=='middle hip east wall':
+   hip=d['rear_ranges']['hip'];op=hip['opening'];a,c,z0,z1=[op[k]for k in ('y0','y1','z0','z1')]
+   x=hip['x1'];lo=d['foundation_z']-d['floor_z'];hole=rect(a,z0,c,z1)
+   for i,q in enumerate(cuts(rect(d['main_depth'],lo,hip['y1'],d['rear_eaves']),[hole])):
+    face('hip wall around opening '+str(i),[(x,y,z)for y,z in q],cage=.35)
+   face('hip opening glass',[(x-.205,y,z)for y,z in hole],cage=.12)
+   for i,(v0,v1) in enumerate(zip(hole,hole[1:]+hole[:1])):
+    face('hip opening reveal '+str(i),[(x,v0[0],v0[1]),(x,v1[0],v1[1]),(x-.22,v1[0],v1[1]),(x-.22,v0[0],v0[1])],cage=.12)
+   continue
   face(name,p,cage=.40)
  s.part='roof'
  roof_faces=roofs(d)
  from mathutils import Vector
  points=[Vector(v)for name,p in roof_faces for v in p]
  for name,p in roof_faces:
-  if not name.startswith(('main rear','cafe rear arm front')):
-   face(name,p,cage=.28);continue
+  # Conform each polygon against all adjoining roof-edge vertices. The low
+  # covers and independent hipped returns introduce additional T junctions.
   boundary=[];inserted=False
   for av,bv in zip(p,p[1:]+p[:1]):
    a,b=Vector(av),Vector(bv);edge=b-a;hits={0.0:a}

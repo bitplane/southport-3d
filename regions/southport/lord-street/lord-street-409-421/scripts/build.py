@@ -1,4 +1,4 @@
-"""Burlington Buildings: four unequal front divisions and cross-gabled rear wings."""
+"""Caffe Dolce/Masonic frontage and independently modelled rear ranges."""
 from pathlib import Path
 import bpy,bmesh,json,math,os,sys
 from mathutils import Matrix,Vector
@@ -21,6 +21,7 @@ def mat(name,rgb,rough=.8,tex=False):
   uv=nt.nodes.new('ShaderNodeTexCoord');im=nt.nodes.new('ShaderNodeTexImage');im.image=bpy.data.images.load(str(ROOT/'textures'/('slate.png' if tex=='slate' else 'stone.png' if tex=='stone' else 'brick.png')));im.extension='REPEAT';nt.links.new(uv.outputs['UV'],im.inputs['Vector']);nt.links.new(im.outputs['Color'],p.inputs['Base Color'])
  return m
 brick=mat('Warm red brick',(.33,.13,.075),tex=True);cream=mat('Pale painted dressings',(.79,.77,.67));infill=mat('Modern pale infill',(.66,.67,.63));glass=mat('Muted window glass',(.17,.23,.26),.26);white=mat('White joinery',(.84,.85,.81),.45);slate=mat('Grey slate',(.16,.18,.20),tex='slate');lead=mat('Dark membrane and flashing',(.14,.15,.16));iron=mat('Dark iron',(.035,.055,.046),.48);roofglass=mat('Opaque canopy glass',(.34,.40,.39),.3);black=mat('Dark shop joinery',(.035,.045,.047));green=mat('The Works green',(.09,.30,.12));brown=mat('Cafe dark joinery',(.075,.07,.06));stone=mat('Foundation stone',(.33,.31,.28));pot=mat('Chimney terracotta',(.38,.17,.09));gold=mat('Muted lettering',(.63,.54,.29))
+rooflight=mat('Muted rooflight glazing',(.10,.17,.20),.35)
 def finish(m,part,material,M=None):
  if not m.faces:return
  if m.name.startswith('Shell'):m=conform({'m':m})[0]['m']
@@ -219,7 +220,18 @@ for name,a,b in doors:
  plane('Entrance threshold '+name,pp,stone,'front',None)
 # Plain uncertain walls; only confidently observed rear-window groups are added.
 for name,p in exterior(D):
- if D['kind']=='bank' and name=='rear front range':
+ if name=='middle hip east wall':
+  # The bank-facing side has a grouped pale opening band in 3D imagery.
+  # Its position is estimated; a few broad divisions only indicate its rhythm.
+  hip=D['rear_ranges']['hip'];op=hip['opening'];a,c,z0,z1=[op[k]for k in ('y0','y1','z0','z1')]
+  M=face_matrix((hip['x1'],0,0),(1,0,0));lo=D['foundation_z']-D['floor_z']
+  wall(name,rect(D['main_depth'],lo,hip['y1'],D['rear_eaves']),[rect(a,z0,c,z1)],brick,'rear',M)
+  plane('Glass hip opening band',[(a,z0,-.205),(c,z0,-.205),(c,z1,-.205),(a,z1,-.205)],glass,'rear',M)
+  t=.065
+  for z in (z0+t/2,z1-t/2):box('Joinery hip band rail',((a+c)/2,z,-.115),(c-a,t,.15),white,'rear',M)
+  for u in (a+t/2,c-t/2):box('Joinery hip band jamb',(u,(z0+z1)/2,-.115),(t,z1-z0-2*t,.15),white,'rear',M)
+  for i in (1,2):box('Joinery hip band indicative division',(a+(c-a)*i/3,(z0+z1)/2,-.115),(.055,z1-z0-2*t,.15),white,'rear',M)
+ elif D['kind']=='bank' and name=='rear front range':
   M=face_matrix((W,D['main_depth'],0),(0,1,0));poly=[(W-x,z)for x,y,z in p]
   ws=[]
   for i in range(8):ws.append((1.0+i*1.98,6.8,.9,1.5))
@@ -227,7 +239,18 @@ for name,p in exterior(D):
   wall(name,poly,[rect(x-w/2,z,x+w/2,z+h)for x,z,w,h in ws],brick,'rear',M)
   for i,(x,z,w,h)in enumerate(ws):window('rear observed '+str(i),x,z,w,h,M,'rear',divide=1)
  else:plane('Shell '+name,p,brick,'rear',None)
-for name,p in roofs(D):plane('Roof '+name,p,roofglass if 'glass'in name or 'lantern'in name else slate,'roof',None)
+for name,p in roofs(D):plane('Roof '+name,p,rooflight if 'glass'in name else slate,'roof',None)
+# One semantic mesh holds the real, regularly spaced rooflight bars on each
+# low cover. The softly coloured skin is an opaque proxy for uncertain glazing.
+bars=Mesh('Roof low glazing bars')
+for cover in D['rear_ranges']['covers']:
+ a,c,y0,y1,z,top=[cover[k]for k in ('x0','x1','y0','y1','eaves','ridge')];mid=(a+c)/2
+ count=round((y1-y0)/.65)
+ for i in range(count+1):
+  y=y0+(y1-y0)*i/count
+  end_z=z+(top-z)*.03/(mid-a)+.05
+  bars.tube([(a+.03,y,end_z),(mid,y,top+.05),(c-.03,y,end_z)],.045,sides=6)
+finish(bars,'roof',white)
 # Distinctive hall lantern mullions follow its four real slopes, leaving no tiled clutter.
 if DETAIL and D['kind']=='bank':
  seen_hips=set()

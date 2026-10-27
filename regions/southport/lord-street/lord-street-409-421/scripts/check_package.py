@@ -6,7 +6,7 @@ p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);
 repo=args.recipe.resolve().parents[4];sys.path[:0]=[str(repo/'tools'),str(args.recipe.parent/'scripts')]
 from publication import inspect_glb
 from audit_published_coplanar import primitives
-from shapes import transform,facade_x
+from shapes import transform,facade_x,roof_probes
 from coplanar import overlaps
 layout=json.loads((args.recipe.parent/'research/layout.json').read_text());assembly=json.loads((args.package/'assembly.json').read_text());rows=[]
 for level in ['detail','walk','district']:
@@ -40,6 +40,8 @@ for level in ['detail','walk','district']:
   assert 1.1<distance<1.5,(level,'box bay lost projection',distance)
  X,Y,Z=transform(layout,(layout['cafe']['width']/2,-2,6.1))
  assert 1.2<first_hit((X,Z,-Y),(layout['side_shear'],0,-1))<1.6,(level,'missing cafe bay')
+ hip=layout['rear_ranges']['hip'];op=hip['opening'];X,Y,Z=transform(layout,(hip['x1']+2,op['y0']+.4,(op['z0']+op['z1'])/2))
+ assert 2.15<first_hit((X,Z,-Y),(-1,0,layout['front_shear']))<2.25,(level,'hip band lost recess')
  # Export axes are x,up,-y. Test projected triangle containment at four court centres.
  court_hits=[]
  for x,y in layout['courts']:
@@ -49,5 +51,22 @@ for level in ['detail','walk','district']:
   height=ts[:,0,1]+u*(ts[:,1,1]-ts[:,0,1])+v0*(ts[:,2,1]-ts[:,0,1]);hit=good&(u>=0)&(v0>=0)&(u+v0<=1)&(height>Z)
   assert not hit.any(),(level,'court obstructed',x,y)
   court_hits.append(0)
- rows.append({'level':level,'triangles':triangles,'bytes':download,'gpu_bytes':gpu,'open_courts':len(court_hits),'numeric_edge_residuals':len(residual)})
+ # Test exported roof receivers and both valleys at every level. Bars and
+ # chimney furniture are excluded from these vertical silhouette probes.
+ roof_file=next(args.package/f['path']for f in assembly['files']if f['level']==level and f['part']=='roof')
+ roof_prim=primitives(roof_file,{'rotationY':0,'position':[0,0,0]})
+ roof_ts=np.concatenate([t for t,o in roof_prim if level=='district' or o['node'] in ('Roof roof Grey slate','Roof roof Muted rooflight glazing')])
+ for name,x,y,bounds in roof_probes():
+  X,Y,_=transform(layout,(x,y,0));q=np.array([X,-Y]);v=roof_ts[:,:,[0,2]];a,b,c=v[:,0],v[:,1],v[:,2]
+  def cross2(u,v):return u[:,0]*v[:,1]-u[:,1]*v[:,0]
+  den=cross2(b-a,c-a);good=np.abs(den)>1e-9;u=np.zeros(len(a));v0=u.copy()
+  u[good]=cross2(np.broadcast_to(q,a.shape)-a,c-a)[good]/den[good];v0[good]=cross2(b-a,np.broadcast_to(q,a.shape)-a)[good]/den[good]
+  mask=good&(u>=-1e-7)&(v0>=-1e-7)&(u+v0<=1+1e-7)
+  height=roof_ts[:,0,1]+u*(roof_ts[:,1,1]-roof_ts[:,0,1])+v0*(roof_ts[:,2,1]-roof_ts[:,0,1])-layout['floor_z']
+  unique=[]
+  for z in height[mask]:
+   if not any(abs(z-v)<1e-4 for v in unique):unique.append(z)
+  if bounds is None:assert not unique,(level,name,unique)
+  else:assert len(unique)==1 and bounds[0]<unique[0]<bounds[1],(level,name,unique)
+ rows.append({'level':level,'triangles':triangles,'bytes':download,'gpu_bytes':gpu,'open_courts':len(court_hits),'roof_probes':len(roof_probes()),'numeric_edge_residuals':len(residual)})
 (args.package/'building-export-check.json').write_text(json.dumps(rows,indent=2)+'\n');print(rows)

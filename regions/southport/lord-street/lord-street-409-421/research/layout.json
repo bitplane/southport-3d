@@ -45,32 +45,22 @@
     15.6,
     20.85
   ],
-  "wings": [
-    {
-      "id": "middle-wing",
-      "x0": 10.48,
-      "x1": 16.1,
-      "end": 15.6,
-      "eaves": 10.3,
-      "ridge": 12.8
-    }
-  ],
   "courts": [
     [
-      17.9,
-      13
+      9.0,
+      16.8
     ],
     [
-      12.2,
-      21
+      12.8,
+      19.4
     ],
     [
-      5.2,
-      18
+      19.0,
+      13.7
     ],
     [
-      9,
-      24
+      19.4,
+      18.2
     ]
   ],
   "chimneys": [
@@ -102,13 +92,51 @@
     "width": 4.4,
     "bay_width": 3.0,
     "projection": 0.55,
-    "gable_top": 14.4,
-    "rear_strip_width": 2.4,
-    "rear_arm_start": 22.0,
-    "rear_arm_end": 26.0,
-    "rear_arm_width": 7.8,
-    "rear_eaves": 9.3,
-    "strip_ridge": 10.5,
-    "arm_ridge": 11.3
+    "gable_top": 14.4
+  },
+  "rear_ranges": {
+    "long_range": {
+      "x0": 4.4,
+      "x1": 6.9,
+      "ridge": 11.3
+    },
+    "return": {
+      "y0": 18.0,
+      "y1": 21.5,
+      "x1": 11.8
+    },
+    "hip": {
+      "x0": 11.8,
+      "x1": 17.8,
+      "y1": 13.35,
+      "ridge_end": 10.4,
+      "ridge": 12.8,
+      "opening": {
+        "y0": 9.4,
+        "y1": 12.5,
+        "z0": 6.2,
+        "z1": 7.45
+      }
+    },
+    "covers": [
+      {
+        "id": "court cover",
+        "x0": 6.9,
+        "x1": 11.8,
+        "y0": 8.65,
+        "y1": 15.7,
+        "eaves": 5.0,
+        "ridge": 5.5
+      },
+      {
+        "id": "service cover",
+        "x0": 14.3,
+        "x1": 18.0,
+        "y0": 14.4,
+        "y1": 21.1,
+        "eaves": 4.8,
+        "ridge": 5.35
+      }
+    ]
   }
 }

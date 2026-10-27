@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-27",
+  "snag": "88c7bd5fab074348a879e5c58e88d1fd",
+  "reference_views": [
+    "Google 3D near overhead 318.75°",
+    "Google 3D rear quarter 116.75°",
+    "Google 3D opposing rear quarter 250.5°",
+    "Google Street View 22 Stanley Street July 2026",
+    "user snag photo"
+  ],
+  "feature_schedule": [
+    {
+      "feature": "Frontage roof and cafe gable",
+      "observation": "Long frontage roof with smaller cafe gable; preserve established dimensions and silhouette.",
+      "geometry": "Retain front roof and clip cafe gable junction; preserve frontage, box bays and inscription."
+    },
+    {
+      "feature": "A long rear range and B transverse return",
+      "observation": "Lower continuous L at southwest side, not attached to outer Burlington party line.",
+      "geometry": "Long 2.5 m range and 7.4 m return, each with independent roof faces and mitred junction; no retained skin beneath."
+    },
+    {
+      "feature": "D central compact hip",
+      "observation": "Broad hipped cross roof rises behind street range and runs less deep than the return.",
+      "geometry": "6 m wide hip with front valley cut into main roof; rear hip and continuous wall below, no rear gable."
+    },
+    {
+      "feature": "C1 and C2 rooflights",
+      "observation": "Two separate lower covers show repeated pale bars; transparency, exact pitch and lower structure unresolved.",
+      "geometry": "Two shallow pitched opaque glazing proxies and repeated physical bars. Keep intervening gaps; no invented courtyard windows."
+    },
+    {
+      "feature": "Hip bank-facing opening band",
+      "observation": "Close 250.75° 3D view shows a pale grouped opening just below the blank upper wall, about 60–70% of the 4.7 m side; several vertical light elements are visible but individual joinery is blurred.",
+      "geometry": "3.1 × 1.25 m recessed glazed band at y9.4–12.5, z6.2–7.45 m above floor. Pale perimeter and two indicative divisions; exact count, frame profiles and lower openings remain unknown."
+    },
+    {
+      "feature": "Exposed rear/party faces",
+      "observation": "Rear Street View is blocked; roof mesh does not establish legal or window ownership.",
+      "geometry": "Plain hidden walls with one surface owner. Existing bank boundary unchanged; only model geometry within assigned coverage. No invented hidden openings."
+    }
+  ],
+  "ownership": "Street rear roof has two clipped triangular valleys. A/B share a mitred roof junction; D owns its hip. C1 uses surrounding high walls and its low end wall, C2 owns four low walls; bank hall and tower remain separate. No rights over hidden spaces are implied.",
+  "comparison_status": "Native overhead/opposing rear views and the grouped opening were reviewed against loaded 3D; actual resident Detail/Walk/District street and roof views were inspected with zero tile failures. The bank party overlap was removed by the bank owner and the expanded three-level neighbour scan found no cross-asset overlaps touching this asset. Root accepted the correction; snag closure remains the root reviewer’s responsibility."
+}

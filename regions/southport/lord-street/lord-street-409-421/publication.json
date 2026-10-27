@@ -74,7 +74,7 @@
       "match": "^(?!Fine ).*",
       "walk": {
         "strategy": "keep",
-        "reason": "Retain real facade openings, unequal wings, roof valleys, shop recesses and open verandah."
+        "reason": "Retain facade openings, independent hipped and pitched roof volumes, rooflight bars, service gaps, shop recesses and open verandah."
       },
       "district": {
         "strategy": "omit",
@@ -84,7 +84,7 @@
   ],
   "district_envelope": {
     "generator": "district:surfaces",
-    "reason": "Fixed physical bay, roof, canopy and courtyard envelope, independent of ornament. Hidden detail omitted.",
+    "reason": "Fixed physical bay, separately clipped roof ranges, rooflights, service gaps and canopy envelope, independent of ornament.",
     "max_bytes": 2400000,
     "max_gpu_bytes": 5800000,
     "parts": {

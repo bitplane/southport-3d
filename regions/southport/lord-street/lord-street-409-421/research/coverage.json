@@ -11,24 +11,25 @@
   },
   "roof": {
     "sources": [
+      "roof-2026-10-27",
       "roof-orbits"
     ],
-    "confidence": "medium",
-    "missing": "Photogrammetry softens roof edges; small flashings approximate."
+    "confidence": "medium shape, low metric and transparency",
+    "missing": "Loaded 3D overhead and opposing rear quarters show individual roofs and two lower glazed strips. Photogrammetry softens eaves, pitch, exact cover height and bar spacing; lower structure and whether glass survives everywhere are unresolved."
   },
   "southwest_side": {
     "sources": [
       "roof-orbits"
     ],
     "confidence": "medium",
-    "missing": "Party walls mostly hidden; no invented openings."
+    "missing": "Long roof/range and return visible obliquely; party boundaries and lower openings hidden. No inferred legal ownership or invented openings."
   },
   "northeast_side": {
     "sources": [
       "roof-orbits"
     ],
     "confidence": "medium",
-    "missing": "Party walls mostly hidden."
+    "missing": "Bank-facing hip side displays a pale grouped opening band in the 250.75° oblique; its height/width are estimated and fine mullion count is blurred. Remaining lower walls, exact openings and legal ownership are hidden; bank remains its own geometric owner."
   },
   "rear": {
     "sources": [
@@ -36,7 +37,7 @@
       "stanley-approach"
     ],
     "confidence": "medium-low",
-    "missing": "Private court not reachable in Street View. Bank rear paired top windows observed in photogrammetry; lower openings partly occluded. Hidden details omitted."
+    "missing": "Stanley Street July 2026 view reaches bank hall above a wall and gate, not the private Masonic court. Photogrammetry gives roof outlines only; lower elevations and openings not evidenced."
   },
   "footprint_ground": {
     "sources": [
@@ -50,6 +51,7 @@
   "access_notes": [
     "Default browser Maps 3D unavailable; documented GPU GL/EGL browser then Layers/Globe/Satellite/3D successfully loaded and inspected.",
     "Web search used bank heritage entry and current local BID source. Search for exact red-range address group yielded no useful measured drawings.",
-    "Mapillary map opened at target on2026-10-26 after declining optional cookies; rendered basemap but no image tracks/photos appeared, console errors present. No additional rear evidence obtained. Supplemental image search returned unrelated buildings; not used."
+    "Mapillary map opened at target on2026-10-26 after declining optional cookies; rendered basemap but no image tracks/photos appeared, console errors present. No additional rear evidence obtained. Supplemental image search returned unrelated buildings; not used.",
+    "2026-10-27: loaded GPU-backed Maps globe, overhead and opposite rear orbits; Stanley Street panorama confirmed court occlusion. Searches for Masonic roof and 409–411 did not reveal measured rear plans; Food Standards Agency corroborates cafe address only. Prior Mapillary failure remains the extent of coverage."
   ]
 }

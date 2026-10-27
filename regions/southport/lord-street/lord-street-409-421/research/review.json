@@ -1,54 +1,67 @@
 {
   "massing_review": {
-    "date": "2026-10-26",
-    "model_views": [
-      "front",
-      "roof"
-    ],
+    "date": "2026-10-27",
     "references": [
-      "front-current",
-      "front-winter",
-      "bank-current",
-      "roof-orbits"
+      "roof-2026-10-27",
+      "stanley-approach",
+      "owner snag photograph"
     ],
-    "observed": "Four-axis red facade and bank tower/three gables checked against street photographs. Two unequal red rear wings and bank open court/separate hall checked against rotated 3D. Corrected western red wing to retain glazed lightwell after roof render comparison; reduced bank tower to thin high parapet rather than a deep arbitrary cap.",
-    "remaining": "Metric dimensions estimated; bank upper carving simplified, private rear details restrained."
+    "model_views": [
+      "current published snag camera",
+      "corrected native overhead",
+      "corrected native opposing rear quarters",
+      "corrected native hip-side opening"
+    ],
+    "observed": "Original high ring and provisional cafe-side rear strip replaced by a lower registered L range, compact hipped wing, two rooflight proxies and open service gaps. Analytic valley clipping avoids a buried competing frontage roof. A grouped recessed band is included on the bank-facing hip side. Root reviewed shape and close-band comparisons before package.",
+    "remaining": "Rear traces ±1.5–2 m, heights ±1–2 m; transparency, fine band divisions and hidden lower fenestration are unknown."
   },
   "final_review": {
-    "date": "2026-10-26",
+    "date": "2026-10-27",
+    "status": "locally published, root-reviewed; snag acceptance pending",
     "views": [
-      "standalone street",
-      "standalone roof",
-      "assembled front Detail",
-      "assembled front Walk",
-      "assembled front District",
-      "assembled rear Detail"
+      "native overhead and two rear quarters",
+      "native hip-side opening",
+      "assembled Detail, Walk and District roof and street",
+      "assembled opposite rear Detail",
+      "assembled automatic Detail/Walk/District transition and bank party seam"
     ],
-    "result": "Frontage joins and level grounds checked in assembled viewer; courts remain open and rear hall retains registered footprint. Actual Detail/Walk/District tiles loaded with zero failures. District canopy outward skin normals corrected after visual review. Final same-geometry publication rechecked.",
-    "limitations": "Metric dimensions remain estimates. Private rear fenestration restrained; sculptural relief simplified and unresolved red tablet blank. District intentionally softens fine relief and lettering."
+    "result": "Resident levels confirmed with zero failed tiles. L range, compact hip, two low covers and open gaps remain legible in all three levels. The opening band and preserved facade were inspected; District bakes bars and softens small detail. Root independently accepted the shape and band.",
+    "limitations": "Metric estimates are not surveyed. Private rear lower fenestration, legal ownership, exact glass transparency, band subdivisions and lower rooflight construction are not established."
   },
   "export_audit": {
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "levels": [
       "detail",
       "walk",
       "district"
     ],
-    "neighbours": [
+    "scope": [
+      "409–421",
+      "Manchester County Bank",
       "Burlington Buildings",
-      "retained Lord Street corridor placeholders",
-      "retained Stanley Street placeholders"
+      "adjacent Stanley and Nevill placeholders",
+      "corridor and Stanley ground"
     ],
-    "cross_asset_findings": 0,
-    "corrected": [
-      "Bay reveal corners trimmed to avoid overlapping jamb/sill returns",
-      "Mitred continuous bay bands replace intersecting box caps",
-      "Shop piers and canopy wall-beam ownership separated",
-      "Door reveals end at frame face",
-      "Lantern hips emitted once; closed eave tube uses periodic topology",
-      "Cornice dentils stop clear of end pier collars"
-    ],
-    "accepted_numeric_residual": "All remaining new-asset candidates are <0.00001m\u00b2 per triangle pair at shared float32 slate/sill edges. Exact class and threshold regressions in master/export validators; no blanket asset exemption.",
-    "report": "build/c5ee-audit/report.md (private generated audit)"
+    "cross_asset_findings_touching_target": 0,
+    "same_asset_numeric_residuals": "Two Detail/Walk slate edge pairs: 0.000004699 and 0.000003289 m²; one District roof edge pair: 0.000003664 m². These are float32/shared-edge tolerance candidates, not broad exemptions.",
+    "report_private": "../output/masonic-rear-ranges/audit/report.md",
+    "package_costs": {
+      "detail": {
+        "triangles": 27652,
+        "download_bytes": 3356260,
+        "gpu_bytes": 8878485
+      },
+      "walk": {
+        "triangles": 24020,
+        "download_bytes": 2876316,
+        "gpu_bytes": 8402565
+      },
+      "district": {
+        "triangles": 660,
+        "download_bytes": 435468,
+        "gpu_bytes": 4806187
+      }
+    },
+    "limitations": "Uniform-level coplanar scan excludes opposite-facing interfaces and non-coplanar intersections; mixed levels were additionally inspected in the viewer."
   }
 }

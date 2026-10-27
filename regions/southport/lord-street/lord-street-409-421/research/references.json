@@ -34,17 +34,30 @@
     {
       "id": "bank-heritage",
       "url": "https://www.heritageopendays.org.uk/submission-event/wine-words-by-watson.html",
-      "observed": "Venue identifies former Manchester & County Bank entrance and stone coat of arms; 423\u2013427 Lord Street."
+      "observed": "Venue identifies former Manchester & County Bank entrance and stone coat of arms; 423–427 Lord Street."
     },
     {
       "id": "bank-current-tenant",
       "url": "https://www.yoursouthport.com/blog/wine-words-writes-a-new-chapter-on-lord-street",
-      "observed": "Southport BID identifies 2025 opening and address 423\u2013425 next to Connard."
+      "observed": "Southport BID identifies 2025 opening and address 423–425 next to Connard."
     },
     {
       "id": "osm-block-plan",
       "url": "../corridor-placeholders/research/footprints-osm.json",
       "observed": "375389847 is joined range, not individual building; Stanley 375391233 is rear bank hall."
+    },
+    {
+      "id": "roof-2026-10-27",
+      "url": "https://www.google.com/maps/@53.6495231,-3.0042351,110a,35y,318.75h/data=!3m1!1e3",
+      "accessed": "2026-10-27",
+      "capture_date": null,
+      "observed": "Loaded globe and satellite 3D from near overhead and opposite rear headings 116.75 and 250.5 degrees. Low strip, transverse return, compact hip, two rooflights and gaps are separable; exact elevations, transparent construction and legal ownership remain uncertain."
+    },
+    {
+      "id": "cafe-fsa-address",
+      "url": "https://ratings.food.gov.uk/business/1155024/caffe-dolce-southport/online-ratings",
+      "accessed": "2026-10-27",
+      "observed": "Food Standards Agency records Caffe Dolce at 409/411 Lord Street; does not describe rear ownership or roof."
     }
   ],
   "rights": "Reference pixels private only, no imagery embedded. OSM footprint seed attribution OpenStreetMap contributors ODbL 1.0. Authored geometry and procedural textures."
