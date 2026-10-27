@@ -5,8 +5,9 @@ from mathutils import Matrix,Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path[:0]=[str(ROOT/'scripts'),str(REPO/'lib')]
 from southport3d.geometry import Mesh,face_matrix,text_object
 from southport3d.conform import conform
-from shapes import rect,cuts,transform,roofs,exterior,canopy_profile,bays
+from shapes import rect,cuts,transform,roofs,exterior,canopy_profile,bays,tower_upstand,tower_oculus
 D=json.loads((ROOT/'research/layout.json').read_text());W=D['front_width'];DETAIL=D['phase']=='detail'
+PARTY_ROOF=json.loads((REPO/'regions/southport/lord-street/lord-street-409-421/research/layout.json').read_text())if D['kind']=='bank'else None
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False);s=bpy.context.scene;s.unit_settings.system='METRIC'
 C={}
 for p in ['front','rear','roof','canopy']:
@@ -109,7 +110,7 @@ for bi,(cx,ww,z0,z1,proj) in enumerate(bays(D)):
   wall(f'bay {bi} face {si}',rect(0,z0,length,z1),hs,BM,'front',M)
   for li,(lo,hi) in enumerate(levels):window(f'bay {bi} {si} {li}',length/2,lo+.12,length-.40,hi-lo-.24,M,'front',material=white,divide=4 if si==1 and bi>0 else 3 if si==1 else 1)
 
- for zz,rev in [(z0,True),(z1,False)]:plane('Bay cap '+str(bi),[(x,y,zz)for x,y in chain][::-1]if rev else[(x,y,zz)for x,y in chain],lead if zz==z1 else BM,'front',None)
+ for zz,rev in [(z0,True),(z1,False)]:plane('Bay cap '+str(bi),[(x,y,zz)for x,y in chain][::-1]if rev else[(x,y,zz)for x,y in chain],lead if zz==z1 and not(D['kind']=='bank' and bi==0)else BM,'front',None)
  if DETAIL:
   # One continuous mitred band owns each bay corner: no overlapping cap boxes.
   ns=[]
@@ -153,10 +154,26 @@ else:
    tube('Trim bank gable coping',[(a,-.74,9.35),(cx,-.74,11.03),(c,-.74,9.35)],.095,TR,'front',None,n=8)
    for xx in (a+.12,c-.12):box('Trim bank gable shoulder',(xx,9.12,.79),(.26,.3,.22),TR)
  # Higher southwest bay over the former bank entry, including its corbelled oriel.
- x0,x1=0,3.9
- wall('bank tower',rect(x0,8.65,x1,12.05),[rect(.65,8.65,3.25,10)],sand)
+ t=D['tower'];x0,x1=0,t['width'];oc=tower_oculus(D)
+ wall('bank tower',rect(x0,8.65,x1,t['eaves']),[rect(.65,8.65,3.25,10),oc],sand)
+ # The open circular window belongs to the front wall, not a painted disc.
+ plane('Glass tower oculus',[(x,z,-.205)for x,z in oc],glass,'front',F)
+ oc_closed=oc+[oc[0]]
+ tube('Trim tower oculus ring',[(x,-.035,z)for x,z in oc_closed],.045,sandlight,'front',None,n=8)
+ cx,cz,rad=x1/2,t['oculus_z'],t['oculus_radius']
+ for points in [[(cx-rad+.05,-.055,cz),(cx+rad-.05,-.055,cz)],[(cx,-.055,cz-rad+.05),(cx,-.055,cz+rad-.05)]]:
+  tube('Trim tower oculus glazing bar',points,.025,white,'front',None,n=6)
+ # This shallow sandstone pediment stands in front of the pavilion roof.
+ # Its back ends at the roof eave; no roof skin continues through the stone.
+ up=tower_upstand(D);dep=t['pediment_depth']
+ plane('Shell tower pediment front',[(x,-dep,z)for x,z in up],sand,'front',None)
+ plane('Shell tower pediment back',[(x,0,z)for x,z in up[::-1]],sand,'front',None)
+ for i,(a,b)in enumerate(zip(up,up[1:]+up[:1])):
+  plane('Shell tower pediment edge '+str(i),[(a[0],-dep,a[1]),(b[0],-dep,b[1]),(b[0],0,b[1]),(a[0],0,a[1])],sand,'front',None)
+ if DETAIL:
+  tube('Trim tower pediment coping',[(x,-dep-.025,z+.04)for x,z in up[1:4]],.075,sandlight,'front',None,n=8)
  for a,b in [(0,3.9)]:
-  if DETAIL:box('Trim tower cornice',((a+b)/2,11.8,.16),(b-a,.32,.32),TR)
+  if DETAIL:box('Trim tower cornice',((a+b)/2,12.15,.16),(b-a,.30,.32),TR)
  if DETAIL:
   # The observed large stepped corbel and shield are restrained authored relief.
   for j in range(6):
@@ -186,7 +203,7 @@ for name,a,b in doors:
   X,Y,_=transform(D,(x,y,0));z=support.height(X,Y)-D['floor_z']if y==0 else 0;pp.append((x,y,z))
  plane('Entrance threshold '+name,pp,stone,'front',None)
 # Plain uncertain walls; only confidently observed rear-window groups are added.
-for name,p in exterior(D):
+for name,p in exterior(D,PARTY_ROOF):
  if D['kind']=='bank' and name=='rear front range':
   M=face_matrix((W,D['main_depth'],0),(0,1,0));poly=[(W-x,z)for x,y,z in p]
   ws=[]
@@ -194,8 +211,16 @@ for name,p in exterior(D):
   for i in [0,2,4,6]:ws.append((1.0+i*1.98,3.8,.82,1.25))
   wall(name,poly,[rect(x-w/2,z,x+w/2,z+h)for x,z,w,h in ws],brick,'rear',M)
   for i,(x,z,w,h)in enumerate(ws):window('rear observed '+str(i),x,z,w,h,M,'rear',divide=1)
- else:plane('Shell '+name,p,brick,'rear',None)
-for name,p in roofs(D):plane('Roof '+name,p,roofglass if 'glass'in name or 'lantern'in name else slate,'roof',None)
+ else:plane('Shell '+name,p,sandlight if 'parapet coping'in name else sand if name.startswith('tower')else brick,'rear',None)
+for name,p in roofs(D):plane('Roof '+name,p,glass if 'rooflight glazing'in name else brick if 'front chimney'in name else roofglass if 'glass'in name or 'lantern'in name else slate,'roof',None)
+if D['kind']=='bank':
+ # The image and listing show a light crest with finials over the crown.
+ # Keep these small independent objects in all levels, including District.
+ t=D['tower'];x=t['width']/2;z=t['top']+t['crown_rise'];a=t['top_inset']+t['crown_inset']+.10;b=t['depth']-a
+ for y in (a,b):
+  tube('Tower crest finial',[(x,y,z),(x,y,z+.50)],.028,iron,'roof',None,n=6)
+  m=Mesh('Tower crest terminal');m.lathe((x,y),[(z+.50,.035),(z+.56,.07),(z+.64,.01)],8);finish(m,'roof',iron)
+ tube('Tower crest rail',[(x,a,z+.27),(x,b,z+.27)],.023,iron,'roof',None,n=6)
 if DETAIL and D['kind']=='red':
  for a,c,y,end in [(2.4,8,11.7,23.2),(10.6,15.8,16.5,22.5)]:
   count=max(2,round((end-y)/.65))
@@ -253,7 +278,7 @@ if DETAIL:
   for xx in [.18,3.72]:
    box('Trim tower pilaster',(xx,8.18,.13),(.32,7.6,.26),sandlight)
    for z in [5.2,6.1,10.4,11.65]:box('Trim tower capital',(xx,z,.23),(.46,.22,.46),sandlight)
-  for z,ww in [(10.45,2.95),(10.62,3.15),(11.45,3.40)]:box('Trim tower band',(1.95,z,.18),(ww,.16,.36),sandlight)
+  for z,ww in [(10.45,2.95),(10.62,3.15)]:box('Trim tower band',(1.95,z,.18),(ww,.16,.36),sandlight)
   for xx in [.78,3.12]:
    pts=[(xx+.18*math.cos(t),-.27,5.5+.25*math.sin(t))for t in [i*math.tau/24 for i in range(25)]]
    tube('Fine bank relief scroll',pts,.037,sandlight,'front',None,n=6)

@@ -1,54 +1,27 @@
 {
   "massing_review": {
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "model_views": [
-      "front",
-      "roof"
+      "tower-front-ne",
+      "tower-front-sw",
+      "tower-rear-ne",
+      "tower-elevation",
+      "adjoining-roof"
     ],
     "references": [
-      "front-current",
-      "front-winter",
+      "bank-tower-3d-2026-10-27",
+      "bank-tower-photo-2021",
+      "bank-list-entry",
       "bank-current",
-      "roof-orbits"
+      "bank-winter"
     ],
-    "observed": "Four-axis red facade and bank tower/three gables checked against street photographs. Two unequal red rear wings and bank open court/separate hall checked against rotated 3D. Corrected western red wing to retain glazed lightwell after roof render comparison; reduced bank tower to thin high parapet rather than a deep arbitrary cap.",
-    "remaining": "Metric dimensions estimated; bank upper carving simplified, private rear details restrained."
+    "observed": "Compared native pavilion mass, front upstand, crown and side return to opposing loaded 3D orbits and a clearer street photograph. Retained the approximate primary rise; replaced the blank tower front and exposed brick side with a pediment, circular opening and substantial raised sandstone return. The adjoining roof has a steep-to-shallow break, clipped dormer valleys, rooflights and stack footprints. The stepped return has a visibly projecting cap, modelled as a continuous separate owner. The red neighbour owns the common party skin; the bank keeps only the exposed wedge above that roof, using its declared layout input.",
+    "remaining": "Roof and ornament dimensions are image estimates; the cap and crest are simplified. The exact neighbouring side and private court remain partially hidden."
   },
   "final_review": {
-    "date": "2026-10-26",
-    "views": [
-      "standalone street",
-      "standalone roof",
-      "assembled front Detail",
-      "assembled front Walk",
-      "assembled front District",
-      "assembled rear Detail"
-    ],
-    "result": "Frontage joins and level grounds checked in assembled viewer; courts remain open and rear hall retains registered footprint. Actual Detail/Walk/District tiles loaded with zero failures. District canopy outward skin normals corrected after visual review. Final same-geometry publication rechecked.",
-    "limitations": "Metric dimensions remain estimates. Private rear fenestration restrained; sculptural relief simplified and unresolved red tablet blank. District intentionally softens fine relief and lettering."
+    "record": "See docs/MANCHESTER-COUNTY-BANK.md for package, export and assembled-viewer review."
   },
   "export_audit": {
-    "date": "2026-10-26",
-    "levels": [
-      "detail",
-      "walk",
-      "district"
-    ],
-    "neighbours": [
-      "Burlington Buildings",
-      "retained Lord Street corridor placeholders",
-      "retained Stanley Street placeholders"
-    ],
-    "cross_asset_findings": 0,
-    "corrected": [
-      "Bay reveal corners trimmed to avoid overlapping jamb/sill returns",
-      "Mitred continuous bay bands replace intersecting box caps",
-      "Shop piers and canopy wall-beam ownership separated",
-      "Door reveals end at frame face",
-      "Lantern hips emitted once; closed eave tube uses periodic topology",
-      "Cornice dentils stop clear of end pier collars"
-    ],
-    "accepted_numeric_residual": "All remaining new-asset candidates are <0.00001m\u00b2 per triangle pair at shared float32 slate/sill edges. Exact class and threshold regressions in master/export validators; no blanket asset exemption.",
-    "report": "build/c5ee-audit/report.md (private generated audit)"
+    "record": "See docs/MANCHESTER-COUNTY-BANK.md for the checked level and neighbouring-asset audit."
   }
 }

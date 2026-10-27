@@ -5,7 +5,7 @@
     {
       "reference": "osm-block-plan",
       "landmarks": "Burlington party line x60.073,y45.660; northern party x97.324,y45.995",
-      "calculation": "37.251m total frontage retained. Bank rear hall seed spans x80.905\u201397.867, corroborating approximately16.4m bank frontage; red range takes remaining20.85m.",
+      "calculation": "37.251m total frontage retained. Bank rear hall seed spans x80.905–97.867, corroborating approximately16.4m bank frontage; red range takes remaining20.85m.",
       "uncertainty_m": 0.6
     },
     {
@@ -53,6 +53,64 @@
       "landmarks": "Bank front8.51m depth vs ~8m open court, hall21.4m depth; rear lantern roughly10.5x9m in16.5x21.4 hall. Red front8.65m; rear west wing end26m and middle15.6m from facade.",
       "calculation": "Ratios traced against registered footprint spans; parallax excluded by comparing all4 headings.",
       "uncertainty_m": 1.5
+    },
+    {
+      "reference": "bank-tower-3d-2026-10-27",
+      "landmarks_px": {
+        "viewport": [
+          1600,
+          1000
+        ],
+        "heading_degrees": 273.38,
+        "tilt_degrees": 58.16,
+        "approx_front_roof_eave_endpoints": [
+          [
+            543,
+            251
+          ],
+          [
+            643,
+            225
+          ]
+        ],
+        "approx_front_crown_endpoints": [
+          [
+            569,
+            152
+          ],
+          [
+            618,
+            164
+          ]
+        ]
+      },
+      "calculation": "Projected lengths are about 103.3 px and 50.4 px: crown/eave edge ratio 0.49. The image is perspective and photogrammetry, so this is not an orthographic width measurement. Adopt 3.9 m tower frontage and approximate 3.9 m depth; primary hip top inset 1.12 m each side gives 1.66/3.9 = 0.43, within the visual uncertainty. Shallow raised crown is separately estimated at 0.32 m; no measured survey is available.",
+      "uncertainty_m": 0.8
+    },
+    {
+      "reference": "bank-tower-photo-2021",
+      "landmarks_px": {
+        "viewport": "1200 x 1000, displayed 2x",
+        "approx_tower_outer_edges_x": [
+          145,
+          435
+        ],
+        "primary_crown_edge_y": 125,
+        "eave_near_return_y": [
+          250,
+          290
+        ],
+        "pediment_peak_y": 175,
+        "oculus_centre_y": 310
+      },
+      "calculation": "The roughly 290 px apparent tower width represents about 3.9 m; the primary crown-to-eave separation is 125–165 px or 0.43–0.57 of that projected width. Perspective, masking by the pediment and tall return, and uncertain eave landmarks prevent interpreting this as a precise vertical height. Retain eaves 12.05 m and primary crown 14.65 m above floor, with a shallow cap to 14.97 m; front pediment peak estimated at 13.55 m and return parapet top at 12.80 m. The roof crest is thin and approximated, not reconstructed from the blurred 3D mesh.",
+      "uncertainty_m": 0.9
+    },
+    {
+      "reference": "bank-tower-3d-2026-10-27",
+      "landmarks": "Front roof changes pitch before the broad upper roof; three small dark rectangular rooflights and two low masonry stacks are visible from the high/rear quarter. The three gabled dormers cut into its front slope.",
+      "calculation": "Estimated front break at y=1.65 m, z=10.50 m; front eave z=8.65 m and ridge y=3.70 m, z=11.20 m give approximately 48° lower and 19° upper pitches. Rooflight centres x=6.00, 10.15, 14.25 m, rear-slope y=6.05–6.90 m; stacks centred x=8.05 and 12.20 m. These coordinates are visual estimates, not measured openings.",
+      "uncertainty_m": 1.0
     }
   ],
   "ground_anchor": {

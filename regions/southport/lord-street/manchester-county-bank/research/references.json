@@ -1,5 +1,5 @@
 {
-  "accessed": "2026-10-26",
+  "accessed": "2026-10-27",
   "sources": [
     {
       "id": "front-current",
@@ -34,17 +34,40 @@
     {
       "id": "bank-heritage",
       "url": "https://www.heritageopendays.org.uk/submission-event/wine-words-by-watson.html",
-      "observed": "Venue identifies former Manchester & County Bank entrance and stone coat of arms; 423\u2013427 Lord Street."
+      "observed": "Venue identifies former Manchester & County Bank entrance and stone coat of arms; 423–427 Lord Street."
     },
     {
       "id": "bank-current-tenant",
       "url": "https://www.yoursouthport.com/blog/wine-words-writes-a-new-chapter-on-lord-street",
-      "observed": "Southport BID identifies 2025 opening and address 423\u2013425 next to Connard."
+      "observed": "Southport BID identifies 2025 opening and address 423–425 next to Connard."
     },
     {
       "id": "osm-block-plan",
       "url": "../corridor-placeholders/research/footprints-osm.json",
       "observed": "375389847 is joined range, not individual building; Stanley 375391233 is rear bank hall."
+    },
+    {
+      "id": "bank-tower-3d-2026-10-27",
+      "url": "https://www.google.com/maps/@53.6495282,-3.0029194,40a,35y,273.38h,58.16t/data=!3m1!1e3",
+      "capture_date": null,
+      "observed": "Loaded GPU photogrammetry after enabling Globe, Satellite and 3D. Front-right quarter and opposing front-left/rear orbits show a steep truncated pavilion roof, a returning raised stone wall beside it, lower roof sections, several rooflights and two short stacks. Photogrammetry distorts sharp profiles and may lose thin cresting."
+    },
+    {
+      "id": "bank-tower-photo-2021",
+      "url": "https://britishlistedbuildings.co.uk/101379653-former-bank-with-attached-verandah-and-former-banking-hall-dukes-ward/photos/274489",
+      "capture_date": null,
+      "observed": "Photograph uploaded by David on 19 October 2021. Clearer frontal view of pediment over a circular oculus, steep slate pavilion roof, crown crest/finials and substantial sandstone side return; also corroborates the mansard and dormers. Photograph kept private."
+    },
+    {
+      "id": "bank-list-entry",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379653",
+      "observed": "Historic England list entry identifies the first bay as a tower, with a pedimented oculus upstand, steep pavilion roof, cresting and finials, and describes the main range as a green-slate mansard."
+    },
+    {
+      "id": "bank-winter",
+      "url": "https://www.google.com/maps/@53.649333,-3.0036561,9a,75y,321.34h,100t/data=!3m8!1e1!3m6!1s-WefrsQSfRQJCJNi0Rpc5Q!2e0!5s20151101T000000",
+      "capture_date": "2015-11",
+      "observed": "Bank-centred leaf-off panorama checked against July 2026; tree branches still partly obscure the tower roof."
     }
   ],
   "rights": "Reference pixels private only, no imagery embedded. OSM footprint seed attribution OpenStreetMap contributors ODbL 1.0. Authored geometry and procedural textures."

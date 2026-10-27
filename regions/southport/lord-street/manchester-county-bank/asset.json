@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "southport.lord-street.manchester-county-bank",
-  "name": "Manchester & County Bank \u2014 423\u2013429 Lord Street and rear hall",
+  "name": "Manchester & County Bank — 423–429 Lord Street and rear hall",
   "region": "southport",
   "area": "lord-street",
   "status": "photo-researched-exterior-estimated-dimensions",
@@ -30,11 +30,12 @@
     "render": "render.py"
   },
   "source_catalog": "research/references.json",
-  "scope": "Manchester & County Bank \u2014 423\u2013429 Lord Street and rear hall; private interiors excluded; dimensions estimated from registered footprint and multi-view imagery",
+  "scope": "Manchester & County Bank — 423–429 Lord Street and rear hall; private interiors excluded; dimensions estimated from registered footprint and multi-view imagery",
   "build_inputs": {
     "master": [
       "regions/southport/elevation/lord-corridor.json",
-      "regions/southport/elevation/ground-controls.json"
+      "regions/southport/elevation/ground-controls.json",
+      "regions/southport/lord-street/lord-street-409-421/research/layout.json"
     ],
     "validate": [
       "regions/southport/elevation/lord-corridor.json",

@@ -4,31 +4,40 @@
     "sources": [
       "front-current",
       "bank-current",
-      "front-winter"
+      "front-winter",
+      "bank-winter",
+      "bank-tower-photo-2021",
+      "bank-list-entry"
     ],
     "confidence": "high layout; metric estimate",
     "missing": "Trees partly obscure stone carving and upper central openings; leaf-off view reduces obstruction."
   },
   "roof": {
     "sources": [
+      "bank-tower-3d-2026-10-27",
+      "bank-tower-photo-2021",
+      "bank-list-entry",
       "roof-orbits"
     ],
-    "confidence": "medium",
-    "missing": "Photogrammetry softens roof edges; small flashings approximate."
+    "confidence": "medium for massing; low for exact pitch breaks, skylight dimensions and crown detail",
+    "missing": "Photogrammetric top and eave edges are warped; the frontal photograph masks part of the roof. Pavilion depth, cap pitch, crest geometry, rooflight and stack positions remain estimates. No private imagery is embedded."
   },
   "southwest_side": {
     "sources": [
-      "roof-orbits"
+      "roof-orbits",
+      "bank-tower-3d-2026-10-27"
     ],
     "confidence": "medium",
     "missing": "Party walls mostly hidden; no invented openings."
   },
   "northeast_side": {
     "sources": [
-      "roof-orbits"
+      "roof-orbits",
+      "bank-tower-3d-2026-10-27",
+      "bank-tower-photo-2021"
     ],
     "confidence": "medium",
-    "missing": "Party walls mostly hidden."
+    "missing": "Raised stone return beside the pavilion is visible in the photo and obliques; its thickness and exact stepped profile remain estimated. Neighbouring party wall is mostly hidden."
   },
   "rear": {
     "sources": [
@@ -50,6 +59,7 @@
   "access_notes": [
     "Default browser Maps 3D unavailable; documented GPU GL/EGL browser then Layers/Globe/Satellite/3D successfully loaded and inspected.",
     "Web search used bank heritage entry and current local BID source. Search for exact red-range address group yielded no useful measured drawings.",
-    "Mapillary map opened at target on2026-10-26 after declining optional cookies; rendered basemap but no image tracks/photos appeared, console errors present. No additional rear evidence obtained. Supplemental image search returned unrelated buildings; not used."
+    "Mapillary map opened at target on2026-10-26 after declining optional cookies; rendered basemap but no image tracks/photos appeared, console errors present. No additional rear evidence obtained. Supplemental image search returned unrelated buildings; not used.",
+    "On 2026-10-27, ordinary 3D Maps loaded in a GPU/GL-EGL browser after enabling Globe and Satellite. Inspected opposite front quarters and rear, plus current and leaf-off bank panoramas. The 2021 frontal photo and Historic England listing independently resolve the pediment, oculus and crest; both current and winter panoramas have tree obstruction."
   ]
 }

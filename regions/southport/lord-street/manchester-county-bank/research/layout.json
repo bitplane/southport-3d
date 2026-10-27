@@ -112,6 +112,81 @@
     "depth": 3.9,
     "eaves": 12.05,
     "top": 14.65,
-    "top_inset": 1.12
-  }
+    "top_inset": 1.12,
+    "crown_inset": 0.25,
+    "crown_rise": 0.32,
+    "return_thickness": 0.14,
+    "return_profile": [
+      [
+        0,
+        12.05
+      ],
+      [
+        0.3,
+        12.05
+      ],
+      [
+        0.55,
+        12.3
+      ],
+      [
+        0.85,
+        12.3
+      ],
+      [
+        1.15,
+        12.8
+      ],
+      [
+        3.9,
+        12.8
+      ]
+    ],
+    "pediment_inset": 0.55,
+    "pediment_shoulder": 12.62,
+    "pediment_peak": 13.55,
+    "pediment_depth": 0.16,
+    "oculus_z": 11.52,
+    "oculus_radius": 0.27,
+    "return_coping_projection": 0.1,
+    "return_coping_height": 0.12
+  },
+  "front_roof_break_y": 1.65,
+  "front_roof_break_height": 10.5,
+  "front_rooflights": [
+    {
+      "x": 6.0,
+      "y0": 6.05,
+      "y1": 6.9,
+      "width": 0.68
+    },
+    {
+      "x": 10.15,
+      "y0": 6.05,
+      "y1": 6.9,
+      "width": 0.68
+    },
+    {
+      "x": 14.25,
+      "y0": 6.05,
+      "y1": 6.9,
+      "width": 0.68
+    }
+  ],
+  "front_roof_stacks": [
+    {
+      "x": 8.05,
+      "y0": 4.35,
+      "y1": 5.0,
+      "width": 0.55,
+      "top": 12.05
+    },
+    {
+      "x": 12.2,
+      "y0": 4.35,
+      "y1": 5.0,
+      "width": 0.55,
+      "top": 12.05
+    }
+  ]
 }

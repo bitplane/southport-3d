@@ -1,14 +1,15 @@
 {
-  "accessed": "2026-10-26",
+  "accessed": "2026-10-27",
   "snags": [
     "b3c1a7e7a20d491fbaf51387eb37f90b"
   ],
   "evidence": [
-    "User supplied Street View/3D screenshots in private snag attachments.",
-    "Root opened July 2026 Street View and actual Google 3D from two directions, private captures ../output/lord-street-snags/."
+    "Private user-supplied Google 3D snag photo and saved camera/normalized box.",
+    "Loaded GPU Google 3D in opposing front and rear quarters; current and winter Street View checked.",
+    "Independent 2021 frontal photograph and Historic England list entry show the tower pediment, oculus and crest."
   ],
   "maps_3d": "https://www.google.com/maps/@53.6491698,-3.0047135,73a,35y,56.25h,39.58t/data=!3m1!1e3",
-  "observed": "Square entry tower with a steep truncated hipped roof, missing from the former thin parapet model.",
-  "estimated": "Tower 3.9 m square, roof eaves 12.05 m, crown 14.65 m above floor; plan from existing frontage width and 3D image proportions, not survey. Crown details indistinct.",
-  "acceptance": "Pending final exported viewer review. Full source coplanar checks retained; exported ray checks enforce tower height or box-bay projection in all levels."
+  "observed": "Steep hipped pavilion roof with shallow crown, pedimented oculus upstand, crest and substantial stepped sandstone return above the adjacent mansard roof.",
+  "estimated": "Primary pavilion 3.9 m square, eaves 12.05 m and top 14.65 m above floor; shallow crown rises to 14.97 m. Return, pediment and lower roof break are image-estimated. See measurements.json for ratios and uncertainty.",
+  "acceptance": "Snag remains in progress for root review; package and viewer verification are recorded in docs/MANCHESTER-COUNTY-BANK.md."
 }

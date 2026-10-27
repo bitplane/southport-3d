@@ -2,7 +2,7 @@
 import json,math,os
 from pathlib import Path
 from blender_envelope import Surfaces
-from shapes import transform,roofs,exterior,bays,rect,cuts,canopy_profile
+from shapes import transform,roofs,exterior,bays,rect,cuts,canopy_profile,tower_upstand,tower_oculus
 
 def surfaces(asset):
  d=json.loads((asset/'research/layout.json').read_text());w=d['front_width'];s=Surfaces(['front','rear','roof','canopy'],lambda p:transform(d,p))
@@ -33,14 +33,30 @@ def surfaces(asset):
   cx=w/2;p=[(cx-2.75,12),(cx+2.75,12),(cx+2.75,12.55),(cx+2.15,12.85),(cx,14.8),(cx-2.15,12.85),(cx-2.75,12.55)]
   face('central gable',[(x,0,z)for x,z in p],cage=.35);face('gable back',[(x,.22,z)for x,z in p[::-1]],cage=.35)
  else:
-  face('tower',[(0,0,8.65),(3.9,0,8.65),(3.9,0,12.05),(0,0,12.05)],cage=.65)
+  t=d['tower'];oc=tower_oculus(d);up=tower_upstand(d);dep=t['pediment_depth']
+  for i,p in enumerate(cuts(rect(0,8.65,t['width'],t['eaves']),[rect(.65,8.65,3.25,10),oc])):
+   face('tower '+str(i),[(x,0,z)for x,z in p],cage=.65)
+  face('tower oculus glass',[(x,.205,z)for x,z in oc],cage=.08)
+  face('tower pediment front',[(x,-dep,z)for x,z in up],cage=.35)
+  face('tower pediment back',[(x,0,z)for x,z in up[::-1]],cage=.35)
+  for i,(a,b)in enumerate(zip(up,up[1:]+up[:1])):
+   face('tower pediment edge '+str(i),[(a[0],-dep,a[1]),(b[0],-dep,b[1]),(b[0],0,b[1]),(a[0],0,a[1])],cage=.20)
   for i,cx in enumerate(d['bay_centres'][1:]):
    a,c=cx-1.65,cx+1.65;p=[(a,7.55),(a,9.35),(cx,10.95),(c,9.35),(c,7.55)]
    face('gable '+str(i),[(x,-.68,z)for x,z in p[::-1]],cage=.45)
  s.part='rear'
- for name,p in exterior(d):face(name,p,cage=.40)
+ party=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/lord-street/lord-street-409-421/research/layout.json').read_text())if d['kind']=='bank'else None
+ for name,p in exterior(d,party):face(name,p,cage=.40)
  s.part='roof'
  for name,p in roofs(d):face(name,p,cage=.28)
+ if d['kind']=='bank':
+  # The District envelope replaces source meshes, including kept Detail/Walk
+  # crest objects, so preserve their silhouette with a few fixed receivers.
+  t=d['tower'];x=t['width']/2;z=t['top']+t['crown_rise'];a=t['top_inset']+t['crown_inset']+.10;b=t['depth']-a
+  for i,y in enumerate((a,b)):
+   s.box('tower crest finial '+str(i),(x-.028,y-.028,z),(x+.028,y+.028,z+.50),cage=.10,weight=.25)
+   s.box('tower crest terminal '+str(i),(x-.06,y-.06,z+.50),(x+.06,y+.06,z+.64),cage=.10,weight=.25)
+  s.box('tower crest rail',(x-.023,a,z+.247),(x+.023,b,z+.293),cage=.10,weight=.25)
  for i,ch in enumerate(d['chimneys']):
   x,y,b,t,ww,dep=[ch[k]for k in ['x','y','base','top','w','d']]
   s.box('chimney '+str(i),(x-ww/2,y-dep/2,b),(x+ww/2,y+dep/2,t+.16),cage=.22)

@@ -70,8 +70,20 @@
       }
     },
     {
+      "id": "tower-crest",
+      "match": "^Tower ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain the small evidenced crown crest and finials in the silhouette."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "The independent District envelope recreates the light crest with fixed-budget receiver geometry."
+      }
+    },
+    {
       "id": "architecture",
-      "match": "^(?!Fine ).*",
+      "match": "^(?!Fine |Tower ).*",
       "walk": {
         "strategy": "keep",
         "reason": "Retain real facade openings, unequal wings, roof valleys, shop recesses and open verandah."
