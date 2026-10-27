@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/westminster-chambers.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "Lord Street",
+  "status": "Evidence-based Westminster Buildings exterior; dimensions and rear roof junctions are approximate.",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "architecture",
+      "name": "Westminster Chambers",
+      "collection": "architecture"
+    }
+  ],
+  "views": [
+    {
+      "name": "Corner",
+      "position": [
+        -245,
+        28,
+        -4
+      ],
+      "target": [
+        -276,
+        9,
+        36
+      ]
+    },
+    {
+      "name": "Roof",
+      "position": [
+        -272,
+        45,
+        35
+      ],
+      "target": [
+        -276,
+        5,
+        36
+      ]
+    }
+  ],
+  "walk_spawn": {
+    "position": [
+      -276,
+      1.8,
+      1
+    ],
+    "target": [
+      -276,
+      1.8,
+      25
+    ]
+  },
+  "rules": [
+    {
+      "id": "structure",
+      "match": "^(Envelope|Roof) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep the masonry shell, mansard roof and turret silhouette."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "The independent fixed envelope projects exterior appearance."
+      }
+    },
+    {
+      "id": "openings",
+      "match": "^(Window|Shop) ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep the recessed glazing, entrances and shopfront at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "The independent fixed envelope projects exterior appearance."
+      }
+    },
+    {
+      "id": "architectural-trim",
+      "match": "^Trim ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep the mouldings, glazing divisions and oriels that define the street facade."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "The independent fixed envelope projects exterior appearance."
+      }
+    },
+    {
+      "id": "veranda",
+      "match": "^Veranda ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep the open canopy, columns and cast decoration at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "The independent fixed envelope projects exterior appearance."
+      }
+    },
+    {
+      "id": "balconies",
+      "match": "^Balcony ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep the balconies, supports and railings at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "The independent fixed envelope projects exterior appearance."
+      }
+    },
+    {
+      "id": "signs",
+      "match": "^Sign ",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Keep the evidenced lettering on the shop fascia and pediment."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "The independent fixed envelope projects exterior appearance."
+      }
+    },
+    {
+      "id": "small-relief",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Omit the small panel relief at walking distance; retain its coloured backing."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "The fixed envelope projects exterior appearance."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Fixed coarse independent envelope for walls and roofs; details project into one bounded atlas.",
+    "max_bytes": 2000000,
+    "max_gpu_bytes": 5000000,
+    "parts": {
+      "architecture": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 500,
+        "cage_m": 2.5,
+        "source_parts": [
+          "architecture"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.westminster-chambers",
+  "name": "Westminster Chambers, 106\u2013108 Lord Street",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "evidence-based-exterior",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "corner-block"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Reconstruction of Westminster Buildings corner exterior and attached veranda; interior and unsurveyed rear details are omitted. Dimensions and roof junctions are estimated."
+}

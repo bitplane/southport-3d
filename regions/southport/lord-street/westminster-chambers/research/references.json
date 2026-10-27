@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "id": "florist-contact",
+      "url": "https://www.junetheflorist.co.uk/store-opening-hours/",
+      "accessed": "2026-10-26",
+      "role": "Current address"
+    },
+    {
+      "id": "maps-street",
+      "url": "https://www.google.com/maps/search/108+Lord+Street+Southport",
+      "accessed": "2026-10-26",
+      "role": "August 2024 Lord Street panorama and 3D roof"
+    },
+    {
+      "id": "eastbank",
+      "url": "https://www.google.com/maps/search/2+Eastbank+Street+Southport",
+      "accessed": "2026-10-26",
+      "role": "July 2026 Eastbank return"
+    },
+    {
+      "id": "listing",
+      "url": "https://www.loopnet.com/Listing/106-108-Lord-St-Southport/18963651/",
+      "accessed": "2026-10-26",
+      "role": "Building name and adjacency"
+    },
+    {
+      "id": "historic-england-1379607",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1379607",
+      "accessed": "2026-10-26",
+      "role": "Official building identity, plan, roof, storeys, facade and veranda description"
+    },
+    {
+      "id": "listed-buildings-photo",
+      "url": "https://britishlistedbuildings.co.uk/101379607-westminster-buildings-westminster-mansions-with-attached-verandah-dukes-ward",
+      "accessed": "2026-10-26",
+      "role": "Frontal photo of turret, two attic levels, and veranda; reference only"
+    }
+  ]
+}
