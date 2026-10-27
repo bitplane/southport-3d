@@ -9,7 +9,8 @@ from southport3d.geometry import Mesh
 from southport3d.road import parallel
 from plan_geometry import Plan
 from datum import SURFACES,PAVEMENT,BRIDGE
-from venetian_ground import Transition,polygon
+from venetian_ground import Transition,polygon,at,local,L,WIDTH,HALF_WIDTH,RAIL_OFFSET,PIERS,RAIL_START,RAIL_END,assert_frame,GREEN_SECTIONS,GREEN_STANDARDS,green_at
+assert_frame(BRIDGE)
 D=json.loads((ROOT/'research/layout.json').read_text());bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
 P=Plan();fn=P.lib.GEOSBuffer_r;fn.restype=C.c_void_p;fn.argtypes=[C.c_void_p,C.c_void_p,C.c_double,C.c_int]
@@ -38,7 +39,7 @@ blocks=[b for f in [D['block_plan'],*D['existing_block_plans']]for b in json.loa
 land=P.difference(P.difference(P.difference(study,lake),P.polygons([b['footprint']for b in blocks])), P.polygons(D['lake_islands'][:2]))
 # Keep the deck continuous across the islands; only its dry-shore approaches
 # replace underlying paving. Island ground remains a separate layer below it.
-bridge=P.intersection(study,line(D['venetian_axis'],D['venetian_width_m']))
+bridge=P.intersection(study,P.polygons([polygon(0,L,-HALF_WIDTH,HALF_WIDTH)]))
 lower_underpass=P.polygons([polygon(146,157,-3,3)])
 land=P.difference(land,P.difference(P.difference(bridge,lake_outer),lower_underpass))
 landing_zone=P.polygons([polygon(-35,25,-20,20)]);lower_zone=P.polygons([polygon(138,164,-26,26)])
@@ -155,8 +156,7 @@ def finish(m,mat,collection):
   for li in poly.loop_indices:
    v=ob.data.vertices[ob.data.loops[li].vertex_index].co
    if m.name=='Ground Venetian bridge top':
-    from venetian_ground import local
-    t,o=local(v.x,v.y);uv.data[li].uv=(o/5.2,t)
+    t,o=local(v.x,v.y);uv.data[li].uv=(o/WIDTH,t)
    else:uv.data[li].uv=(v.x,v.y)
  return ob
 for(name,region,mat),m in compiled.items():finish(m,mat,name)
@@ -181,7 +181,6 @@ for ix,ring in enumerate(D['lake_islands'][:2]):
   if m.faces:finish(m,mat,'cell-13-ground')
 # Low, irregular planted masses are inferred from the 2023 and 2025 views;
 # their individual positions are estimates, not surveyed trees.
-from venetian_ground import local
 rng=np.random.default_rng(2157);bushes=Mesh('Structure Venetian island planting')
 def in_ring(x,y,ring):
  hit=False
@@ -204,7 +203,9 @@ for tri in P.triangles(P.intersection(study,lake)):
 finish(m,'water','lake-water')
 # Waterline facade is unique: the lido owns its top and this strip its exposed
 # vertical edge. No fabricated cap is laid over the walkable paving.
-lido_surface=PAVEMENT;m=Mesh('Structure formal water edge')
+# The exposed shore wall must follow the bounded bridge landing grade. Using
+# the unmodified rough mainland here sent the wall above the deck at the join.
+lido_surface=landing_surface;m=Mesh('Structure formal water edge')
 def clipped_segments(a,b):
  raw=P.own(P.read(P.context,P.reader,('LINESTRING ('+','.join(f'{x} {y}'for x,y in [a,b])+')').encode()))
  g=_intersection(raw,study);out=[]
@@ -227,19 +228,18 @@ m=Mesh('Structure Venetian underside')
 for tri in P.triangles(bridge):
  for lifted in BRIDGE.lift_triangle(tri):m.add([(x,y,z-.3)for x,y,z in lifted],[(2,1,0)])
 for side in [-1,1]:
- edge=parallel(D['venetian_axis'],side*D['venetian_width_m']/2)
+ edge=[at(0,side*HALF_WIDTH),at(L,side*HALF_WIDTH)]
  for a,b in zip(edge,edge[1:]):
   points=list(BRIDGE.edge_points(a,b))
   for aa,bb in zip(points,points[1:]):m.add([(aa[0],aa[1],aa[2]-.3),(bb[0],bb[1],bb[2]-.3),bb,aa],[(0,1,2,3)]if side>0 else[(3,2,1,0)])
 finish(m,'structure','venetian-structure')
 # Preliminary structural massing: central arched fascia and discrete piers.
 # The island/arch reference constrains silhouette; dimensions remain estimated.
-a,b=D['venetian_axis'][0],D['venetian_axis'][-1];length=math.dist(a,b);ux,uy=(b[0]-a[0])/length,(b[1]-a[1])/length;vx,vy=-uy,ux
-def station(t,o=0):return (a[0]+ux*t+vx*o,a[1]+uy*t+vy*o)
+station=at
 def top(t):return BRIDGE.height(*station(t))-.3
 # Shore-side access stair from the bridge to the separate lower lakeside path.
 # Location and run are estimates from the 2023 ground view and close 3D image.
-t=151;side=-1;start=2.6;run=3.6;n=11
+t=151;side=-1;start=HALF_WIDTH;run=3.6;n=11
 zupper=BRIDGE.height(*station(t,side*start));zlower=lower_surface.height(*station(t,side*(start+run)))
 m=Mesh('Ground Venetian lower access steps')
 for j in range(n):
@@ -298,40 +298,77 @@ def rings(g):
 # piers. The same station profile drives deck, handrail and the coarser LoDs.
 from venetian_fittings import make_balusters,panel_prototype
 balusters=make_balusters('detail',BRIDGE);finish(balusters,'cream','venetian-structure')
-piers=[5+10*i for i in range(16)]+[80]
+piers=PIERS
 rails=Mesh('Structure Venetian open handrails and base rails')
-def railbeam(t0,t1,o,zlo,zhi,width):
+def railbeam(target,t0,t1,o,zlo,zhi,width):
  z0=BRIDGE.height(*station(t0,o));z1=BRIDGE.height(*station(t1,o));verts=[]
  for zz0,zz1 in ((zlo,zlo),(zhi,zhi)):
   for tt,oo,zz in ((t0,o-width/2,z0+zz0),(t1,o-width/2,z1+zz1),(t1,o+width/2,z1+zz1),(t0,o+width/2,z0+zz0)):
    x,y=station(tt,oo);verts.append((x,y,zz))
- rails.add(verts,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
+ # The deck owns the contact surface below a base rail; avoid a duplicate
+ # downward face where the rail enters a pier or an island lamp footing.
+ faces=[(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
+ if zlo!=0:faces.insert(0,(3,2,1,0))
+ target.add(verts,faces)
 for side in (-1,1):
  # Short pieces follow deliberate deck-profile breaks. Pier and gate gaps are
  # cut before creating rails, so there are no hidden solid parapet duplicates.
- cuts=sorted(set([0,160,150.3,151.7]+list(range(0,161,2))+[p+d for p in piers for d in (-.24,.24) if 0<p+d<160]+[65,70,75,80,85,90,95,100,125,145,155]))
+ cuts=sorted(set([RAIL_START,RAIL_END,150.3,151.7]+[float(q) for q in range(0,int(L)+1,2) if RAIL_START<q<RAIL_END]+[p+d for p in piers for d in (-.19,.19) if RAIL_START<p+d<RAIL_END]+[8,45,60,65,70,75,80,85,90,95,100,125,145,155]+[x for span in GREEN_SECTIONS for x in span]))
  for a0,a1 in zip(cuts,cuts[1:]):
   mid=(a0+a1)/2
-  if a1-a0<1e-5 or any(abs(mid-p)<.24 for p in piers) or (side==-1 and 150.3<mid<151.7):continue
-  railbeam(a0,a1,side*2.48,.05,.16,.16);railbeam(a0,a1,side*2.48,.92,1.04,.20)
+  if a1-a0<1e-5 or any(abs(mid-p)<.19 for p in piers) or green_at(mid) or (side==-1 and 150.3<mid<151.7):continue
+  railbeam(rails,a0,a1,side*RAIL_OFFSET,0,.16,.16);railbeam(rails,a0,a1,side*RAIL_OFFSET,.92,1.04,.20)
 finish(rails,'cream','venetian-structure')
+# Low, open green metal island railings seen in the oblique photograph.
+# All repeated pickets are collected in one mesh for efficient export.
+greenrails=Mesh('Structure Venetian island metal railings')
+for side in (-1,1):
+ for lo,hi in GREEN_SECTIONS:
+  cuts=sorted({lo,hi,*[q for q in BRIDGE.stations if lo<q<hi]})
+  for a0,a1 in zip(cuts,cuts[1:]):
+   railbeam(greenrails,a0,a1,side*RAIL_OFFSET,0,.055,.055)
+   railbeam(greenrails,a0,a1,side*RAIL_OFFSET,.95,1.0,.055)
+  count=math.floor((hi-lo)/.22)
+  for i in range(1,count):
+   tt=lo+(hi-lo)*i/count
+   if any(abs(tt-p)<.20 for p in GREEN_STANDARDS):continue
+   railbeam(greenrails,tt-.014,tt+.014,side*RAIL_OFFSET,.055,.95,.028)
+finish(greenrails,'gate-green','venetian-structure')
 prototypes=panel_prototype();post_mesh=prototypes['pier'];column_mesh=prototypes['column']
 pier_mesh=Mesh('Structure Venetian panelled piers');lamps=Mesh('Structure Venetian green lamp columns')
 for side in (-1,1):
  for t in piers:
-  if t>160:continue
-  z=BRIDGE.height(*station(t,side*2.48))
+  z=BRIDGE.height(*station(t,side*RAIL_OFFSET))
   for source,target in ((post_mesh,pier_mesh),(column_mesh,lamps)):
    vv=[]
    for x,y,h in source.vertices:
-    xx,yy=station(t+x,side*2.48+y);vv.append((xx,yy,z+h))
+    xx,yy=station(t+x,side*RAIL_OFFSET+y)
+    # Split base follows the profile, while mouldings and columns stay upright.
+    base=BRIDGE.height(xx,yy) if source is post_mesh and abs(h)<1e-9 else z
+    vv.append((xx,yy,base+h))
    target.add(vv,source.faces)
+for side in (-1,1):
+ for t in GREEN_STANDARDS:
+  z=BRIDGE.height(*station(t,side*RAIL_OFFSET));vv=[]
+  for x,y,h in column_mesh.vertices:
+   xx,yy=station(t+x,side*RAIL_OFFSET+y);vv.append((xx,yy,z+(h-1.07)*2.65/1.58))
+  lamps.add(vv,column_mesh.faces)
 finish(pier_mesh,'cream','venetian-structure');finish(lamps,'gate-green','venetian-structure')
-# The single side-mounted globe follows the clearly visible 2023 foreground
-# lamp; other head states are unresolved and are not inferred from that one.
-globes=Mesh('Structure Venetian observed globe');t=155;side=-1;x,y=station(t,side*2.72);z=BRIDGE.height(*station(t,side*2.48))+2.57
+# The side-mounted globe follows the clearly visible 2023 foreground lamp.
+globes=Mesh('Structure Venetian observed globe');t=155;side=-1;x,y=station(t,side*(RAIL_OFFSET+.24));z=BRIDGE.height(*station(t,side*RAIL_OFFSET))+2.57
 profile=[(z-.16,.005),(z-.14,.08),(z-.10,.13),(z,.16),(z+.10,.13),(z+.14,.08),(z+.16,.005)]
-globes.lathe((x,y),profile,segments=16);finish(globes,'globe','venetian-structure')
+globes.lathe((x,y),profile,segments=16)
+# The published oblique shows several centred globes and bare standards. These
+# approximate stations cover only the clearly visible first-island approach.
+for side,stations in ((1,(25,35,45,55,65)),(-1,(25,45,55,65))):
+ for t in stations:
+  x,y=station(t,side*RAIL_OFFSET);z=BRIDGE.height(x,y)+2.80
+  globes.lathe((x,y),[(z-.16,.005),(z-.14,.08),(z-.10,.13),(z,.16),(z+.10,.13),(z+.14,.08),(z+.16,.005)],segments=16)
+finish(globes,'globe','venetian-structure')
+socket=Mesh('Structure Venetian observed globe socket')
+p0=station(155,-RAIL_OFFSET);p1=station(155,-RAIL_OFFSET-.12);z=BRIDGE.height(*p0)+2.57
+socket.tube([(p0[0],p0[1],z),(p1[0],p1[1],z)],.045,sides=8)
+finish(socket,'socket','venetian-structure')
 # One observed green side gate at the Princes Park shore (2023 photograph).
 # Its 1.4m location and stair connection are estimates from the loaded 3D view.
 gate=Mesh('Structure Venetian shore side gate')
@@ -339,17 +376,17 @@ def gatebeam(t0,z0,t1,z1,w=.035):
  dx=t1-t0;dz=z1-z0;ln=math.hypot(dx,dz);nx=-dz/ln*w/2;nz=dx/ln*w/2
  corners=[(t0+nx,z0+nz),(t1+nx,z1+nz),(t1-nx,z1-nz),(t0-nx,z0-nz)]
  verts=[]
- for off in (-2.59,-2.53):
+ for off in (-RAIL_OFFSET-.03,-RAIL_OFFSET+.03):
   for tt,zz in corners:
    x,y=station(tt,off);verts.append((x,y,zz))
  gate.add(verts,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
-z=BRIDGE.height(*station(151,-2.56))
+z=BRIDGE.height(*station(151,-RAIL_OFFSET))
 for t0,z0,t1,z1 in [(150.34,z+.05,151.66,z+.05),(150.34,z+1.02,151.66,z+1.02),(150.34,z+.05,150.34,z+1.02),(151.66,z+.05,151.66,z+1.02),(150.4,z+.12,151.6,z+.95),(150.4,z+.95,151.6,z+.12)]:gatebeam(t0,z0,t1,z1)
 for k in range(1,6):
  tt=150.34+k*1.32/6;gatebeam(tt,z+.08,tt,z+.99,.022)
 # Small hinge knuckles and latch make the single leaf legible at close range.
 for zz in (.22,.80):
- x,y=station(150.35,-2.56);gate.lathe((x,y),[(z+zz,.027),(z+zz+.09,.027)],segments=12)
+ x,y=station(150.35,-RAIL_OFFSET);gate.lathe((x,y),[(z+zz,.027),(z+zz+.09,.027)],segments=12)
 gatebeam(151.55,z+.53,151.70,z+.53,.025)
 finish(gate,'gate-green','venetian-structure')
 # Estimated green side handrails descend with the access steps; support posts
@@ -363,9 +400,9 @@ def stairbeam(tt,o0,z0,o1,z1,w=.035):
    x,y=station(tt+dt,oo);verts.append((x,y,zz))
  rail.add(verts,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
 for tt in (150.3,151.7):
- stairbeam(tt,-2.65,zupper+.82,-6.15,zlower+.82)
+ stairbeam(tt,-HALF_WIDTH-.05,zupper+.82,-HALF_WIDTH-3.55,zlower+.82)
  for f in (.06,.35,.65,.96):
-  oo=-2.6-3.6*f;zz=zupper+(zlower-zupper)*f;stairbeam(tt,oo,zz,oo,zz+.82,.025)
+  oo=-HALF_WIDTH-3.6*f;zz=zupper+(zlower-zupper)*f;stairbeam(tt,oo,zz,oo,zz+.82,.025)
 finish(rail,'gate-green','venetian-structure')
 # Continuous coarse sea-wall strip; its shared end exactly matches the prior
 # north segment. Caps are unique and vertical faces stand on mainland grade.

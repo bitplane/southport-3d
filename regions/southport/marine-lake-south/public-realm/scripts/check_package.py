@@ -1,5 +1,5 @@
 """Check actual exported ground, Venetian layers and fixed package budgets."""
-import json,sys
+import json,math,sys
 from pathlib import Path
 import numpy as np
 recipe=Path(sys.argv[sys.argv.index('--recipe')+1]).resolve()
@@ -8,9 +8,10 @@ repo=recipe.parents[4]
 sys.path[:0]=[str(repo/'tools'),str(repo/'lib'),str(recipe.parent/'scripts')]
 from audit_published_coplanar import primitives
 from southport3d.elevation import Elevations
-from venetian_ground import Transition,at
+from venetian_ground import Transition,at,local,U,V,L,HALF_WIDTH,RAIL_OFFSET,PIERS,RAIL_START,RAIL_END,assert_frame,green_at
 config=json.loads(recipe.read_text());layout=json.loads((recipe.parent/'research/layout.json').read_text())
 plan=Elevations(repo/layout['elevation_plan']);base=plan.surface('south-mainland');bridge=plan.surface('south-venetian');water=plan.surface('south-water')
+assert_frame(bridge)
 landing=Transition(base,bridge,'landing');lower=Transition(base,bridge,'lower')
 manifest=json.loads((package/'manifest.json').read_text());ground={p['id']for p in config['parts']if p.get('ground')};baseline={};rows=[]
 for level in ('detail','walk','district'):
@@ -50,6 +51,58 @@ for level in ('detail','walk','district'):
   a=np.divide(q[:,0]*v[:,1]-q[:,1]*v[:,0],det,out=np.zeros_like(det),where=valid);b=np.divide(u[:,0]*q[:,1]-u[:,1]*q[:,0],det,out=np.zeros_like(det),where=valid)
   hit=valid&(a>=-1e-6)&(b>=-1e-6)&(a+b<=1+1e-6)
   return list(tris[hit,0,2]+a[hit]*(tris[hit,1,2]-tris[hit,0,2])+b[hit]*(tris[hit,2,2]-tris[hit,0,2]))
+ # Recheck the actual exported meshes at each quality level. The deck's
+ # outer probes catch a bent centreline, while contact rays catch floating or
+ # outboard bases that ordinary terrain-height checks cannot see.
+ structure={}
+ for f in bridge_files:
+  for tri,source in primitives(package/f['path'],{'rotationY':0,'position':[0,0,0]}):
+   xyz=tri[:,:,[0,2,1]]*np.array([1,-1,1])
+   structure.setdefault(source['node'],[]).append(xyz)
+ for name in structure:structure[name]=np.concatenate(structure[name])
+ rails=structure['Structure Venetian open handrails and base rails']
+ greenrails=structure['Structure Venetian island metal railings']
+ posts=structure['Structure Venetian panelled piers']
+ balusters=structure['Fitting Venetian balusters']
+ def contact(tris,t,o,offset=0):
+  xy=at(t,o);z=bridge.height(*xy)+offset;found=probe(tris,xy)
+  assert found and min(abs(h-z) for h in found)<.001,(level,t,o,offset,found,z)
+ contacts=0
+ for t in np.linspace(.25,L-.25,81):
+  for side in (-1,1):
+   contact(layers['deck'],t,side*(HALF_WIDTH-.02));contacts+=1
+   assert not probe(layers['deck'],at(t,side*(HALF_WIDTH+.025))),(level,t,side,'deck exceeds shared width')
+ for t in PIERS:
+  for side in (-1,1):
+   for dt in (-.19,0,.19):
+    for do in (-.19,0,.19):
+     contact(layers['deck'],t+dt,side*RAIL_OFFSET+do)
+     contact(posts,t+dt,side*RAIL_OFFSET+do);contacts+=2
+ for t in np.linspace(RAIL_START+.03,RAIL_END-.03,201):
+  if any(abs(t-p)<.25 for p in PIERS):continue
+  for side in (-1,1):
+   if side==-1 and 150.27<t<151.73:continue
+   contact(layers['deck'],t,side*RAIL_OFFSET)
+   obj=greenrails if green_at(t) else rails;half=.0275 if green_at(t) else .08
+   contact(obj,t,side*RAIL_OFFSET,.055 if green_at(t) else .16)
+   x,y=at(t,side*RAIL_OFFSET-.2);origin=np.array([x,y,bridge.height(x,y)+.002]);direction=np.array([*V,0])
+   e1=obj[:,1]-obj[:,0];e2=obj[:,2]-obj[:,0];pv=np.cross(direction,e2);det=np.einsum('ij,ij->i',e1,pv);valid=abs(det)>1e-10
+   inv=np.divide(1,det,out=np.zeros_like(det),where=valid);tv=origin-obj[:,0];u1=np.einsum('ij,ij->i',tv,pv)*inv;q=np.cross(tv,e1);v1=q@direction*inv;distance=np.einsum('ij,ij->i',e2,q)*inv
+   hit=valid&(u1>=-1e-6)&(v1>=-1e-6)&(u1+v1<=1+1e-6)&(distance>=0)&(distance<.4)
+   assert hit.any() and abs(float(distance[hit].min())-(.2-half))<.002,(level,t,side,'rail foot shell')
+   contacts+=3
+ # Restrict each expensive spindle query to nearby exported triangles.
+ centres=balusters.mean(axis=1);a=np.asarray(at(0,0));u=np.asarray(U)
+ stations=(centres[:,:2]-a)@u
+ for i in range(40,math.ceil(L/.19),40):
+  if level=='district' and i%2:continue
+  t=i*.19
+  if not RAIL_START<t<RAIL_END or green_at(t) or any(abs(t-p)<.29 for p in PIERS):continue
+  near=balusters[np.abs(stations-t)<.15]
+  for side in (-1,1):
+   if side==-1 and 150.24<t<151.76:continue
+   contact(near,t,side*RAIL_OFFSET,.16);contact(rails,t,side*RAIL_OFFSET,.16);contacts+=2
+ totals['bridge_contact_probes']=contacts
  deck_z=probe(layers['deck'],at(151,0));lower_z=probe(layers['lower'],at(151,0))
  assert deck_z and lower_z and min(deck_z)-.3-max(lower_z)>1.7,(level,deck_z,lower_z,'underpass clearance')
  for j in range(11):assert probe(layers['stairs'],at(151,-2.6-(j+.5)*3.6/11)),(level,j,'missing stair tread')

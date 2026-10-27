@@ -4,14 +4,33 @@ The surrounding rough road grid is not a surveyed lake-edge level. These
 small transition surfaces blend to that grid at their boundaries, while the
 bridge deck and the lower path remain independent support layers.
 """
-import math
+import json,math
+from pathlib import Path
 from southport3d.planar import halfplane,area
 
-A=(-280.1,329.0);B=(-303.0,490.0);L=math.dist(A,B)
+# One authored frame for the floor, fascia, fittings, stairs and UVs. The two
+# endpoints and width live in the layout; the elevation profile must use the
+# same axis. The cap of a .45 m pier just reaches the outer edge of the deck.
+LAYOUT=json.loads((Path(__file__).resolve().parents[1]/'research/layout.json').read_text())
+assert len(LAYOUT['venetian_axis'])==2, 'Venetian centreline must be straight'
+A,B=map(tuple,LAYOUT['venetian_axis']);L=math.dist(A,B)
+WIDTH=LAYOUT['venetian_width_m'];HALF_WIDTH=WIDTH/2
+RAIL_OFFSET=HALF_WIDTH-.225
+# The oblique reference shows green metal railings where the deck crosses the
+# islands; their exact station limits and lamp registration remain estimates.
+GREEN_SECTIONS=((45.19,64.81),(95.19,114.81))
+GREEN_STANDARDS=(55,105)
+PIERS=tuple(sorted([.23,L-.23,80]+[5+10*i for i in range(16) if 5+10*i not in GREEN_STANDARDS]))
+RAIL_START=PIERS[0]+.19;RAIL_END=PIERS[-1]-.19
+def green_at(t):return any(lo<t<hi for lo,hi in GREEN_SECTIONS)
 U=((B[0]-A[0])/L,(B[1]-A[1])/L);V=(-U[1],U[0])
-def at(t,o):return (A[0]+U[0]*t+V[0]*o,A[1]+U[1]*t+V[1]*o)
+def at(t,o=0):return (A[0]+U[0]*t+V[0]*o,A[1]+U[1]*t+V[1]*o)
 def local(x,y):
  dx=x-A[0];dy=y-A[1];return dx*U[0]+dy*U[1],dx*V[0]+dy*V[1]
+def assert_frame(bridge):
+ assert math.dist(bridge.origin,A)<1e-8 and math.dist(bridge.axis,U)<1e-8, 'Deck profile and Venetian centreline differ'
+ assert abs(bridge.stations[0])<1e-8 and abs(bridge.stations[-1]-L)<1e-8, 'Deck profile does not cover the full Venetian axis'
+ assert abs(bridge.crossfall)<1e-12, 'Rail contacts assume zero bridge crossfall'
 def polygon(t0,t1,o0,o1):return [at(t0,o0),at(t1,o0),at(t1,o1),at(t0,o1)]
 def clamp(v):return max(0.,min(1.,v))
 class Transition:
@@ -23,6 +42,7 @@ class Transition:
   t,o=local(x,y);natural=self.base.height(x,y)
   if self.kind=='landing':
    alpha=clamp((t+35)/35)*clamp((25-t)/10)*clamp((20-abs(o))/17)
+   if alpha==0:return natural
    target=self.bridge.height(x,y)
   else:
    alpha=clamp((t-138)/11)*clamp((164-t)/11)*clamp((26-abs(o))/23)

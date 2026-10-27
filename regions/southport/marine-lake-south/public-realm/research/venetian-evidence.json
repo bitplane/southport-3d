@@ -49,7 +49,7 @@
     ],
     "length_m": 162.62,
     "units": "metres",
-    "note": "Existing registered centreline; projected along shore-to-shore line. Existing irregular island outlines retained pending sharper toe evidence."
+    "note": "One straight shore-to-shore axis, used by deck, profile, UVs, fascia, plinths and rails; island outlines retained pending sharper toe evidence."
   },
   "islands": [
     {
@@ -232,5 +232,25 @@
       "https://www.geograph.org.uk/photo/7531530",
       "https://www.google.com/maps/@53.64962,-3.01203,19z"
     ]
+  },
+  "alignment_review": {
+    "reviewed_on": "2026-10-27",
+    "evidence": [
+      "https://www.google.com/maps/@53.6495,-3.0121,18z",
+      "https://www.geograph.org.uk/photo/7531530",
+      "https://www.independent.co.uk/news/uk/southport-merseyside-police-police-b2690372.html"
+    ],
+    "observation": "The retained overhead and oblique references show a straight deck, with transverse boards reaching the longitudinal rail/plinth line. The previously used six-point floor polyline diverged from the straight elevation and fitting axis by up to 0.63 m.",
+    "decision": "Keep the original endpoints and the estimated 5.2 m overall width. Use one rectangle and straight station frame; place the 0.45 m pier cap flush to its outside edge, with base rail on the deck and plinth base following profile breaks. Continue the rails to end piers and align the shore gate and stairs.",
+    "approach": "The Kings Gardens shore wall follows the existing bounded landing profile instead of the unmodified rough grid; the bridge surface and lower path remain independent.",
+    "limits": "Widths, station placement, pier spacing, approach levels and green railing transitions remain visual estimates, not measured as-built dimensions."
+  },
+  "island_fittings_review": {
+    "reviewed_on": "2026-10-27",
+    "source": "https://www.independent.co.uk/news/uk/southport-merseyside-police-police-b2690372.html",
+    "source_date": "2025 publication; photograph date not established",
+    "observation": "The oblique view shows green open metal guardrail sections at island crossings, with multiple globe-topped and some bare green standards. The model uses estimated green sections at stations 45.19\u201364.81 and 95.19\u2013114.81 m, retaining open cream balustrades elsewhere.",
+    "lights": "Several identifiable globes in the first-island view are shown at estimated station locations. The separately observed side-mounted globe in the dated 2023 view is retained; this is a representative combination of dated and undated evidence, not a claim of exact simultaneous lamp condition.",
+    "limits": "Precise section ends, post spacings, individual heads and any additional island gates are unresolved. No island paths or detailed terrain are inferred from the photograph."
   }
 }

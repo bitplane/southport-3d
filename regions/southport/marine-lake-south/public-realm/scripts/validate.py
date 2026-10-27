@@ -4,7 +4,8 @@ from pathlib import Path
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT']);sys.path[:0]=[str(ROOT/'scripts'),str(REPO/'lib'),str(REPO/'tools')]
 from datum import SURFACES,PAVEMENT,BRIDGE
-from venetian_ground import Transition
+from venetian_ground import Transition,at,L,HALF_WIDTH,RAIL_OFFSET,PIERS,RAIL_START,RAIL_END,assert_frame,green_at,V,local
+assert_frame(BRIDGE)
 LANDING=Transition(PAVEMENT,BRIDGE,'landing');LOWER=Transition(PAVEMENT,BRIDGE,'lower')
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 D=json.loads((ROOT/'research/layout.json').read_text());obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];ground=[o for o in obs if o.name.startswith('Ground ')and 'boundary'not in o.name];count=0;control_count=0;control_worst=0.
@@ -56,7 +57,6 @@ print('Continuous bridge support across both islands and shore approaches')
 
 # Bounded Venetian transitions: at the Kings Gardens side the local mainland
 # agrees with the deck edge, and the Princes Park path remains below the deck.
-from venetian_ground import at
 for t in (1,5,10,13):
  for side in (-1,1):
   inner=hits(*at(t,side*2.0));outer=hits(*at(t,side*3.2))
@@ -74,3 +74,49 @@ for j in range(11):
  stair=[z for name,z in hits(*at(151,o)) if name=='Ground Venetian lower access steps']
  assert stair,(j,o,'stair tread absent')
 print('Venetian landing edges and distinct lower support: checked; underside clearance',round(deck[0]-.3-lower[0],3),'m')
+
+# Check the actual authored mesh at both edges, piers and intervening rails.
+# These rays use the independent elevation profile and include every pier,
+# profile knot and both approaches; they do not merely test the generator.
+deck=bpy.data.objects['Ground Venetian bridge top']
+rails=bpy.data.objects['Structure Venetian open handrails and base rails']
+greenrails=bpy.data.objects['Structure Venetian island metal railings']
+posts=bpy.data.objects['Structure Venetian panelled piers']
+def up_contact(obj,t,o,offset=0):
+ x,y=at(t,o);z=BRIDGE.height(x,y)+offset
+ hit,point,_,_=obj.ray_cast(Vector((x,y,z-.4)),Vector((0,0,1)))
+ assert hit and abs(point.z-z)<.001,(obj.name,t,o,tuple(point) if hit else None,z)
+ return point.z
+probes=0
+for t in [i*L/160 for i in range(1,160)]+[s for s in BRIDGE.stations if .25<s<L-.25]:
+ for side in (-1,1):
+  for off in (0,HALF_WIDTH-.02):
+   up_contact(deck,t,side*off);probes+=1
+for t in PIERS:
+ for side in (-1,1):
+  for dt in (-.20,0,.20):
+   for do in (-.20,0,.20):
+    up_contact(deck,t+dt,side*RAIL_OFFSET+do)
+    up_contact(posts,t+dt,side*RAIL_OFFSET+do);probes+=2
+for j in range(1,400):
+ t=RAIL_START+j*(RAIL_END-RAIL_START)/400
+ if any(abs(t-p)<.25 for p in PIERS):continue
+ for side in (-1,1):
+  if side==-1 and 150.27<t<151.73:continue
+  up_contact(deck,t,side*RAIL_OFFSET)
+  obj=greenrails if green_at(t) else rails;half=.0275 if green_at(t) else .08
+  up_contact(obj,t,side*RAIL_OFFSET,.055 if green_at(t) else .16)
+  x,y=at(t,side*RAIL_OFFSET-.2);z=BRIDGE.height(x,y)+.002
+  hit,point,_,_=obj.ray_cast(Vector((x,y,z)),Vector((V[0],V[1],0)),distance=.4)
+  assert hit and abs(local(point.x,point.y)[1]-(side*RAIL_OFFSET-half))<.002,(obj.name,t,side,tuple(point) if hit else None)
+  probes+=3
+print('Venetian deck, plinth and rail base contacts:',probes,'native mesh probes')
+
+# On the flat Kings approach, test the horizontal route through the shoreline
+# wall. A vertical ground ray cannot see a vertical wall blocking the deck.
+wall=bpy.data.objects['Structure formal water edge']
+x,y=at(10,0);z=BRIDGE.height(x,y)+.2
+from venetian_ground import U
+hit,point,_,_=wall.ray_cast(Vector((x,y,z)),Vector((U[0],U[1],0)),distance=10)
+assert not hit,('Shore wall blocks bridge approach',tuple(point))
+print('Kings approach wall clearance: checked')

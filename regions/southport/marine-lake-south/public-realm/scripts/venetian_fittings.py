@@ -39,7 +39,19 @@ def panel_prototype(length=3.0, count=17):
         turned.rect_profile((x,0),[(.16,.13,.13),(.22,.13,.13)])
         turned.lathe((x,0),[(.22+z*(.70/.82),r) for z,r in BALUSTER],segments=24)
     pier=Mesh('Venetian prototype pier')
-    pier.rect_profile((0,0),[(0,.43,.43),(.06,.43,.43),(.08,.38,.38)])
+    # Two quads per cap add a station break at the centre. Bottom vertices
+    # can then follow a profile knot without a raised corner or buried base.
+    rings=[(0,.43,.43),(.06,.43,.43),(.08,.38,.38)]
+    verts=[]
+    for z,w,d in rings:
+        verts.extend([(-w/2,-d/2,z),(0,-d/2,z),(w/2,-d/2,z),
+                      (w/2,d/2,z),(0,d/2,z),(-w/2,d/2,z)])
+    faces=[(5,4,1,0),(4,3,2,1)]
+    for j in range(len(rings)-1):
+        for i in range(6):
+            a=j*6+i;b=j*6+(i+1)%6;faces.append((a,b,b+6,a+6))
+    faces.extend([(12,13,16,17),(13,14,15,16)])
+    pier.add(verts,faces)
     # Four recessed faces and their borders are one surface each: no flat
     # duplicate wall lies behind the shallow inset panel.
     half=.19;inside=.135;lo=.13;hi=.90;z0=.08;z1=.95;depth=.008
@@ -64,18 +76,19 @@ def panel_prototype(length=3.0, count=17):
 # Fixed, source-independent District topology: half of the spindles are shown
 # as narrow open posts. Walk uses a smaller turned profile. No solid wall bake.
 def make_balusters(level, bridge):
-    from venetian_ground import at
+    from venetian_ground import at,L,RAIL_OFFSET,PIERS,RAIL_START,RAIL_END,assert_frame,green_at
+    assert_frame(bridge)
     m=Mesh('Fitting Venetian balusters')
-    piers=[5+10*i for i in range(16)]+[80]
+    piers=PIERS
     profile=[(.16,.065),(.22,.052),(.28,.068),(.34,.07),(.40,.048),
              (.45,.038),(.50,.048),(.56,.071),(.62,.070),(.68,.049),(.74,.044),(.81,.06),(.92,.065)]
     for side in (-1,1):
-        for i in range(1,842):
+        for i in range(1,math.ceil(L/.19)):
             t=i*.19
-            if t>160 or any(abs(t-p)<.29 for p in piers):continue
+            if not RAIL_START<t<RAIL_END or green_at(t) or any(abs(t-p)<.29 for p in piers):continue
             if side==-1 and 150.24<t<151.76:continue
             if level=='district' and i%2:continue
-            x,y=at(t,side*2.48);z=bridge.height(x,y)
+            x,y=at(t,side*RAIL_OFFSET);z=bridge.height(x,y)
             if level=='district':m.box((x,y,z+.54),(.075,.075,.76))
             else:
                 chosen=profile if level=='detail' else profile[::2]+[profile[-1]]
@@ -90,12 +103,17 @@ def build_lod(name,settings,asset_dir):
     bridge=Elevations(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/elevation/marine-lake-south.json').surface('south-venetian')
     level=settings['level']
     if settings.get('kind')=='lamps':
-        from venetian_ground import at
+        from venetian_ground import at,RAIL_OFFSET,PIERS,GREEN_STANDARDS
         mesh=Mesh(name)
         for side in (-1,1):
-            for t in [5+10*i for i in range(16)]+[80]:
-                x,y=at(t,side*2.48);z=bridge.height(x,y)+1.07
+            for t in PIERS:
+                x,y=at(t,side*RAIL_OFFSET);z=bridge.height(x,y)+1.07
                 profile=[(z,.16),(z+.08,.18),(z+.22,.14),(z+.34,.074),(z+1.28,.066),(z+1.4,.12),(z+1.50,.09),(z+1.58,.05)]
+                mesh.lathe((x,y),profile,segments=8)
+            for t in GREEN_STANDARDS:
+                x,y=at(t,side*RAIL_OFFSET);z=bridge.height(x,y)
+                scale=2.65/1.58
+                profile=[(z+h*scale,r) for h,r in [(0,.16),(.08,.18),(.22,.14),(.34,.074),(1.28,.066),(1.4,.12),(1.50,.09),(1.58,.05)]]
                 mesh.lathe((x,y),profile,segments=8)
     else:mesh=make_balusters(level,bridge);mesh.name=name
     return mesh.finish([])
