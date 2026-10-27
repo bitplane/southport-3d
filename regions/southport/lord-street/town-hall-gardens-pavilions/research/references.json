@@ -22,10 +22,15 @@
       "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.64718,-3.00715&heading=100&pitch=0",
       "attribution": "Google Street View, July 2026",
       "observed": "Long shallow hipped roof with faceted ends, glazed side and dark framing."
+    },
+    {
+      "id": "registered-plan-3d-2026",
+      "url": "https://www.google.com/maps/@53.64749,-3.006354,21z/data=!3m1!1e3",
+      "observed": "Native satellite, map coordinate readout and actual opposing 3D views used to check pavilion axes and garden approaches. Tree cover, roof overhang and image parallax remain limiting."
     }
   ],
   "limitations": [
-    "Both footprints are OSM-derived seeds with 1\u20133m uncertainty, heights and bay counts estimated. Roof, hidden ends, rear and doors require further comparison.",
+    "Footprints retain OSM outline shapes, translated to the garden axis with 1–2 m plan uncertainty; heights and bay counts remain estimated. Parts of the roof, hidden ends, rear and doors need closer evidence.",
     "Temporary tenant signage omitted."
   ]
 }

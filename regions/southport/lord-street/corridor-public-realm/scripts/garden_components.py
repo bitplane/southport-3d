@@ -37,9 +37,25 @@ def make(kind,level,name):
   m.lathe((0,0),[(2.12,.08),(2.20,.11),(2.27,.10)],n,1)
   m.ellipsoid((0,0,2.52),(.24,.24,.24),2,n,max(4,n//2))
  elif kind=='column':
-  m.rect_profile((0,0),[(0,.70,.70),(.12,.70,.70),(.17,.58,.58),(.39,.58,.58),(.44,.42,.42)])
-  m.lathe((0,0),[(.44,.21),(.51,.21),(.59,.16),(2.93,.14),(3.0,.20),(3.08,.24)],n,0)
-  m.rect_profile((0,0),[(3.08,.48,.48),(3.15,.48,.48),(3.20,.56,.56),(3.27,.56,.56)])
+  # Both photographed entrances have three shafts on a broad masonry base,
+  # carrying one layered entablature. Capitals are restrained at distance.
+  m.rect_profile((0,0),[(0,2.05,.72),(.12,2.05,.72),(.18,1.95,.64),(.65,1.95,.64),(.72,2.02,.70)])
+  for x in (-.66,0,.66):
+   m.lathe((x,0),[(.72,.21),(.80,.21),(.88,.16),(3.03,.14),(3.10,.19),(3.18,.23)],n,0)
+   if level!='district':
+    # Shallow panel frames and the paired scrolls visible on the entrance
+    # capitals. Coarse level keeps only the shaft and entablature silhouette.
+    for y in (-.33,.33):
+     m.tube([(x-.23,y,.23),(x+.23,y,.23),(x+.23,y,.58),(x-.23,y,.58),(x-.23,y,.23)],.012,0,4)
+    for y in (-.25,.25):
+     for side in (-1,1):
+      centre=x+side*.18
+      pts=[]
+      for j in range(25):
+       t=math.tau*1.4*j/24;r=.12-.08*j/24
+       pts.append((centre+r*math.cos(t),y,3.10+r*math.sin(t)))
+      m.tube(pts,.012,0,6)
+  m.rect_profile((0,0),[(3.18,2.02,.66),(3.25,2.02,.66),(3.30,1.93,.62),(3.51,1.93,.62),(3.56,2.08,.72),(3.66,2.08,.72)])
  else:raise ValueError(kind)
  return m
 

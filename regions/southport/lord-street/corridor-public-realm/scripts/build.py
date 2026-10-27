@@ -9,18 +9,25 @@ sys.path[:0]=[str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'lib'),str(ROOT/'scrip
 from southport3d.geometry import Mesh
 from southport3d.planar import subtract,halfplane,area
 import southport3d.conform as conforming
-# GEOS has already snapped/noded boundaries before float32 export. Do not pull nearby
-# distinct edges into the same edge: that creates skinny overlapping fans.
-conforming.TOLERANCE=1e-7
+# GEOS nodes boundaries in double precision; a 10-micrometre edge tolerance
+# also captures junctions displaced by float32 rounding at the garden circle.
+# Larger tolerances can pull genuinely distinct nearby edges into skinny fans.
+conforming.TOLERANCE=1e-5
 conforming.GRID=1e-6
 conform=conforming.conform
 from datum import grade,SURFACE
+import garden_plan as garden
 D=json.loads((ROOT/'research/layout.json').read_text())
 BLOCKS=json.loads((Path(os.environ['SOUTHPORT_REPO_ROOT'])/D['block_plan']).read_text())
-D['building_cutouts'] += [{'id':b['id'],'polygon':b['footprint']} for b in BLOCKS['blocks']]
+# The garden pavilions replace two seed volumes. Their authoritative adjusted
+# footprints also own their ground cutouts, so no old hole or buried paving is
+# left when the architecture is registered to the measured garden axis.
+pavilion_path=Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/lord-street/town-hall-gardens-pavilions/research/layout.json'
+pavilion_cuts={b['source_way']:b['footprint'] for b in json.loads(pavilion_path.read_text())['pavilions']}
+D['building_cutouts'] += [{'id':b['id'],'polygon':pavilion_cuts.get(b['id'],b['footprint'])} for b in BLOCKS['blocks']]
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
-colours={'paving':(.48,.46,.41),'asphalt':(.085,.092,.093),'lawn':(.16,.25,.10),'kerb':(.40,.40,.37),'pattern':(.32,.37,.34),'pattern-light':(.70,.68,.61),'garden-paving':(.53,.49,.42),'fountain-stone':(.57,.54,.47),'water':(.19,.32,.32)}
+colours={'paving':(.48,.46,.41),'asphalt':(.085,.092,.093),'lawn':(.16,.25,.10),'kerb':(.40,.40,.37),'pattern':(.18,.22,.22),'pattern-light':(.74,.73,.66),'garden-paving':(.53,.49,.42),'fountain-stone':(.57,.54,.47),'water':(.19,.32,.32)}
 mats={}
 for name,c in colours.items():
  m=bpy.data.materials.new('Provisional '+name);m.use_nodes=True;m.diffuse_color=(*c,1)
@@ -110,39 +117,24 @@ paths=plan.polygons([p for p,mat,pr,_ in rows if mat=='paving'])
 green=plan.difference(plan.difference(green,road),paths)
 # Bounded planted beds behind the Lord Street bench row, visually estimated
 # from the 2017 panorama; keep the central side entrance clear.
-beds=plan.polygons([rect(-218,-199,12.5,15.8),rect(-174,-158,12.5,15.8)])
+beds=plan.difference(plan.polygons([rect(-218,-199,12.5,15.8),rect(-174,-158,12.5,15.8)]),
+                     plan.polygons(garden.path_rectangles()))
 green=plan.intersection(available,plan.polygons([*plan.triangles(green),*plan.triangles(plan.difference(beds,road))]))
 paved=plan.difference(plan.difference(available,road),green)
-# Civic paving is cut into the ground, not placed on top of it.  Four
-# approximately square cells across the axis and four narrow framing stripes
-# at each side are image estimates (2017 photosphere and 2018 photograph).
-# The outer radial rings are flush paving; the inner fountain remains a separate
-# construction phase.  Circle and longitudinal axis share the same centre.
-def circle(radius):
- return [(-186.7+radius*math.cos(i*math.tau/96),-1+radius*math.sin(i*math.tau/96)) for i in range(96)]
-outer=plan.polygons([circle(11.5)]); inner=plan.polygons([circle(7.2)])
-axis=plan.polygons([rect(-220,-154,-3.8,1.8)])
-axis=plan.difference(axis,outer)
-black=[]
-for i in range(74):
- for j in range(4):
-  if (i+j)%2==0:
-   black.append(rect(-220+i*.9,-220+(i+1)*.9,-2.8+j*.9,-2.8+(j+1)*.9))
-# Four framing stripes on each side.  These are separately owned flush paving.
-for ya in [-3.8,-3.3,.8,1.3]:black.append(rect(-220,-154,ya,ya+.25))
-axis_dark=plan.intersection(axis,plan.polygons(black))
-axis_light=plan.difference(axis,axis_dark)
-ring_dark=[];ring_light=[]
-for i in range(8):
- band=plan.difference(plan.polygons([circle(7.2+(i+1)*.5375)]),plan.polygons([circle(7.2+i*.5375)]))
- (ring_dark if i%2==0 else ring_light).extend(plan.triangles(band))
-# A bounded pedestrian connection rises gently from the axial paving to the
-# pool platform. Its placement is an interpretation of the visible radial
-# approach, not a surveyed accessibility assessment.
-ramp=plan.polygons([rect(-187.7,-185.7,-13.6,-4.2)])
-pattern=plan.difference(plan.intersection(paved,plan.polygons([*plan.triangles(axis_dark),*ring_dark])),ramp)
-pattern_light=plan.difference(plan.intersection(paved,plan.polygons([*plan.triangles(axis_light),*ring_light])),ramp)
-paved=plan.difference(plan.difference(plan.difference(plan.difference(paved,pattern),pattern_light),inner),ramp)
+# The observed axial strip, both end cross paths and the fountain approaches are
+# cut into the pavement. The central ring is divided into outlined panels.
+cx,cy=garden.CENTRE
+circle=garden.circle
+inner=plan.polygons([circle(garden.RING_INNER)])
+dark,light=garden.surfaces(plan)
+# A wide raised tongue and shallow treads replace the former invented ramp.
+# Their exact heights and the final joining tread need a ground survey.
+tongue=plan.polygons([rect(cx-2.4,cx+2.4,cy-9.4,cy)])
+approach=plan.polygons([rect(cx-2.4,cx+2.4,cy-12.4,cy-9.4)])
+fountain_cut=plan.polygons([*plan.triangles(inner),*plan.triangles(tongue),*plan.triangles(approach)])
+pattern=plan.difference(plan.intersection(paved,dark),fountain_cut)
+pattern_light=plan.difference(plan.intersection(paved,light),fountain_cut)
+paved=plan.difference(plan.difference(plan.difference(paved,pattern),pattern_light),fountain_cut)
 garden_paved=plan.intersection(paved,plan.polygons([rect(-245,-136,-19,18)]))
 paved=plan.difference(paved,garden_paved)
 # Disk is removed from the ordinary ground.  Three horizontal tiers and a
@@ -150,14 +142,16 @@ paved=plan.difference(paved,garden_paved)
 def disc(r):return plan.polygons([circle(r)])
 def annulus(ri,ro):return plan.difference(disc(ro),disc(ri))
 fountain_shapes={
- 'collar':plan.triangles(plan.difference(annulus(6.9,7.2),ramp)),
- 'lower':plan.triangles(plan.difference(annulus(6.2,6.9),ramp)),
- 'middle':plan.triangles(plan.difference(annulus(5.4,6.2),ramp)),
- 'upper':plan.triangles(plan.difference(annulus(4.6,5.4),ramp)),
- 'platform':plan.triangles(plan.difference(annulus(3.2,4.6),ramp)),
- 'ramp':plan.triangles(plan.intersection(ramp,available)),
- 'pool':plan.triangles(disc(3.2)),
+ 'collar':plan.triangles(plan.difference(annulus(6.3,6.4),tongue)),
+ 'lower':plan.triangles(plan.difference(annulus(6.2,6.3),tongue)),
+ 'middle':plan.triangles(plan.difference(annulus(5.4,6.2),tongue)),
+ 'upper':plan.triangles(plan.difference(annulus(4.6,5.4),tongue)),
+ 'platform':plan.triangles(plan.difference(annulus(garden.POOL_RADIUS,4.6),tongue)),
+ 'tongue':plan.triangles(plan.difference(tongue,disc(garden.POOL_RADIUS))),
+ 'pool':plan.triangles(disc(garden.POOL_RADIUS)),
 }
+for i in range(3):
+ fountain_shapes['approach-'+str(i)]=plan.triangles(plan.polygons([rect(cx-2.4,cx+2.4,cy-12.4+i,cy-11.4+i)]))
 compiled={};collections={};cuts=D['tile_cuts']
 for ti,(lo,hi) in enumerate(zip(cuts,cuts[1:])):
  name=f'section-{ti:02d}';c=bpy.data.collections.new(name);s.collection.children.link(c);collections[name]=c
@@ -220,25 +214,35 @@ def fixture(kind,x,y,angle=0):
  for poly in ob.data.polygons:
   for li in poly.loop_indices:
    v=ob.data.vertices[ob.data.loops[li].vertex_index].co;uv.data[li].uv=(v.x,v.z)
-# Four canopy groups on photographed planted edges; individual species and
-# exact trunk stations are unknown.
-for x in [-215,-204,-173,-162]:fixture('tree',x,14.1)
+# Remove only provisional furniture which obstructs the observed terminal
+# routes; leave the other previously estimated placements alone.
+def crosses_terminal(a,b):
+ return any(a<x+garden.HALF_WIDTH and b>x-garden.HALF_WIDTH for x in garden.END_STATIONS)
+gates=[x+d for x in garden.END_STATIONS for d in (-3.5,3.5)]
+def crosses_gate(a,b):return any(a<x+1.04 and b>x-1.04 for x in gates)
+for x in [-215,-204,-173,-162]:
+ if not crosses_terminal(x-1,x+1):fixture('tree',x,14.1)
 # Bench backs face the beds or service edge, so seats face the plaza.
-for x in [-216,-213.8,-211.6,-209.4,-207.2,-205,-202.8,-200.6,-172,-169.8,-167.6,-165.4,-163.2,-161]:fixture('bench',x,11.4)
-for x in [-217,-214.8,-212.6,-210.4,-208.2,-206,-203.8,-201.6,-178,-175.8,-173.6,-171.4,-169.2,-167,-164.8,-162.6]:fixture('bench',x,-13.8,math.pi)
+for x in [-216,-213.8,-211.6,-209.4,-207.2,-205,-202.8,-200.6,-172,-169.8,-167.6,-165.4,-163.2,-161]:
+ if not crosses_terminal(x-.95,x+.95):fixture('bench',x,11.4)
+for x in [-217,-214.8,-212.6,-210.4,-208.2,-206,-203.8,-201.6,-178,-175.8,-173.6,-171.4,-169.2,-167,-164.8,-162.6]:
+ if not crosses_terminal(x-.95,x+.95):fixture('bench',x,-13.8,math.pi)
 # Short open runs and gaps represent the observed entrance rhythm. Exact pier
 # stations are visual estimates rather than a measured inventory.
-for x in [-218,-214,-210,-206,-202,-174,-170,-166,-162]:fixture('balustrade',x,16.4)
-for x in [-219,-215,-211,-207,-203,-199,-175,-171,-167,-163]:fixture('balustrade',x,-16.4)
-for x,y in [(-220,16.4),(-198,16.4),(-176,16.4),(-158,16.4),(-221,-16.4),(-197,-16.4),(-177,-16.4),(-159,-16.4)]:fixture('globe',x,y)
-for x in [-194,-178]:
- for y in [15.5,18.2]:fixture('column',x,y)
-# The fountain's footprint is wholly in section-06. Its pool and treads are
-# level, not projected onto the street lattice. The small outer collar provides
-# a deliberate transition to the surrounding rough grade. Dimensions are image
-# estimates and the radial ramp is an estimated connection, not a surveyed feature.
-base=max(grade(*p) for p in circle(7.2))
-levels={'lower':base,'middle':base+.14,'upper':base+.28,'platform':base+.42,'pool':base+.42}
+for x in [-218,-214,-210,-206,-202,-174,-170,-166,-162]:
+ if not crosses_terminal(x,x+4) and not crosses_gate(x,x+4):fixture('balustrade',x,16.4)
+for x in [-219,-215,-211,-207,-203,-199,-175,-171,-167,-163]:
+ if not crosses_terminal(x,x+4):fixture('balustrade',x,-16.4)
+for x,y in [(-220,16.4),(-198,16.4),(-176,16.4),(-158,16.4),(-221,-16.4),(-197,-16.4),(-177,-16.4),(-159,-16.4)]:
+ if not crosses_terminal(x-.3,x+.3) and (y<0 or not crosses_gate(x-.3,x+.3)):fixture('globe',x,y)
+# Both photographed Lord Street gateways have a pair of triple-column groups.
+for x in gates:fixture('column',x,16.4)
+# The fountain's pool and platform stay level. The collar meets the terrain;
+# the photographed broad break is represented as a raised tongue, with three
+# shallow treads connecting it to the provisional surrounding grade.
+base=max(grade(*p) for p in circle(garden.RING_INNER))
+levels={'lower':base,'middle':base+.14,'upper':base+.28,'platform':base+.42,'tongue':base+.42,'pool':base+.42,
+        **{'approach-'+str(i):base+i*.14 for i in range(3)}}
 fountain={name:Mesh('Fountain '+name) for name in fountain_shapes}
 for name,polys in fountain_shapes.items():
  for tri in polys:
@@ -247,9 +251,7 @@ for name,polys in fountain_shapes.items():
    points=[]
    for x,y,_ in lifted:
     if name=='collar':
-     r=math.hypot(x+186.7,y+1);t=max(0,min(1,(7.2-r)/.3));z=grade(x,y)*(1-t)+base*t
-    elif name=='ramp':
-     t=max(0,min(1,(y+13.6)/9.4));z=grade(x,-13.6)*(1-t)+(base+.42)*t
+     r=math.hypot(x-cx,y-cy);t=max(0,min(1,(6.4-r)/.1));z=grade(x,y)*(1-t)+base*t
     else:z=levels[name]
     points.append((x,y,z))
    fountain[name].add(points,[(0,1,2)])
@@ -258,42 +260,52 @@ for r,lo,hi in [(6.2,base,base+.14),(5.4,base+.14,base+.28),(4.6,base+.28,base+.
  for a,b in zip(ring,ring[1:]+ring[:1]):
   ts=[0.,1.]
   if abs(b[0]-a[0])>1e-10:
-   for x in (-187.7,-185.7):
+   for x in (cx-2.4,cx+2.4):
     t=(x-a[0])/(b[0]-a[0])
     if 0<t<1:ts.append(t)
   ts.sort()
   for t0,t1 in zip(ts,ts[1:]):
    aa=(a[0]+(b[0]-a[0])*t0,a[1]+(b[1]-a[1])*t0);bb=(a[0]+(b[0]-a[0])*t1,a[1]+(b[1]-a[1])*t1)
    mid=((aa[0]+bb[0])/2,(aa[1]+bb[1])/2)
-   if mid[1]<-1 and -187.7<mid[0]<-185.7:continue
+   if mid[1]<cy and cx-2.4<mid[0]<cx+2.4:continue
    fountain['upper'].add([(aa[0],aa[1],lo),(bb[0],bb[1],lo),(bb[0],bb[1],hi),(aa[0],aa[1],hi)],[(0,1,2,3)])
-# Close the vertical interfaces at both sides of the radial approach. These
-# retain the neighbouring stepped heights while the centre rises continuously.
-def ramp_height(x,y):
- t=max(0,min(1,(y+13.6)/9.4));return grade(x,-13.6)*(1-t)+(base+.42)*t
-for x in (-187.7,-185.7):
- cuts=[-13.6,-4.2]
- for radius in (7.2,6.9,6.2,5.4,4.6,3.2):
+# Close the vertical interfaces at the sides of the tongue and the three treads.
+for x in (cx-2.4,cx+2.4):
+ cuts=[cy-9.4,cy]
+ for radius in (6.4,6.3,6.2,5.4,4.6,garden.POOL_RADIUS):
   poly=circle(radius)
   for a,b in zip(poly,poly[1:]+poly[:1]):
    if (a[0]-x)*(b[0]-x)<0:
     t=(x-a[0])/(b[0]-a[0]);y=a[1]+t*(b[1]-a[1])
-    if y < -1 and -13.6<y<-4.2:cuts.append(y)
+    if y < cy and cy-9.4<y<cy:cuts.append(y)
  cuts=sorted(cuts)
  for y0,y1 in zip(cuts,cuts[1:]):
-  r=math.hypot(x+186.7,(y0+y1)/2+1)
-  if r>=7.2:target=lambda y:grade(x,y)
-  elif r>=6.9:target=lambda y:grade(x,y)*(1-max(0,min(1,(7.2-math.hypot(x+186.7,y+1))/.3)))+base*max(0,min(1,(7.2-math.hypot(x+186.7,y+1))/.3))
+  r=math.hypot(x-cx,(y0+y1)/2-cy)
+  if r>=6.4:target=lambda y:grade(x,y)
+  elif r>=6.3:target=lambda y:grade(x,y)*(1-max(0,min(1,(6.4-math.hypot(x-cx,y-cy))/.1)))+base*max(0,min(1,(6.4-math.hypot(x-cx,y-cy))/.1))
   elif r>=6.2:target=lambda y:base
   elif r>=5.4:target=lambda y:base+.14
   elif r>=4.6:target=lambda y:base+.28
   else:target=lambda y:base+.42
   ys=sorted(set([y0,y1]+[v[1] for v in SURFACE.edge_points((x,y0),(x,y1))]))
   for a,b in zip(ys,ys[1:]):
-   d0=ramp_height(x,a)-target(a);d1=ramp_height(x,b)-target(b);segments=[a,b]
+   d0=base+.42-target(a);d1=base+.42-target(b);segments=[a,b]
    if d0*d1<0:segments.insert(1,a+(b-a)*(-d0)/(d1-d0))
    for u,v in zip(segments,segments[1:]):
-    fountain['ramp'].add([(x,u,target(u)),(x,v,target(v)),(x,v,ramp_height(x,v)),(x,u,ramp_height(x,u))],[(0,1,2,3)])
+    fountain['tongue'].add([(x,u,target(u)),(x,v,target(v)),(x,v,base+.42),(x,u,base+.42)],[(0,1,2,3)])
+ for i in range(3):
+  a,b=cy-12.4+i,cy-11.4+i;z=base+i*.14
+  ys=[v[1] for v in SURFACE.edge_points((x,a),(x,b))]
+  for u,v in zip(ys,ys[1:]):
+   fountain['approach-'+str(i)].add([(x,u,grade(x,u)),(x,v,grade(x,v)),(x,v,z),(x,u,z)],[(0,1,2,3)])
+# Straight risers follow the observed wide break, not a narrow accessibility ramp.
+for i in range(3):
+ y=cy-11.4+i;lo=base+i*.14;hi=base+(i+1)*.14
+ fountain['approach-'+str(i)].add([(cx-2.4,y,lo),(cx+2.4,y,lo),(cx+2.4,y,hi),(cx-2.4,y,hi)],[(0,1,2,3)])
+y=cy-12.4
+edge=list(SURFACE.edge_points((cx-2.4,y),(cx+2.4,y)))
+for a,b in zip(edge,edge[1:]):
+ fountain['approach-0'].add([(a[0],y,grade(a[0],y)),(b[0],y,grade(b[0],y)),(b[0],y,base),(a[0],y,base)],[(0,1,2,3)])
 for name,m in fountain.items():
  ob=m.finish([mats['water' if name=='pool' else 'fountain-stone']],collections['section-06'])
  bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.triangulate(bm,faces=list(bm.faces));bad=[f for f in bm.faces if f.calc_area()<1e-10];bmesh.ops.delete(bm,geom=bad,context='FACES_ONLY');bm.to_mesh(ob.data);bm.free();ob.data.update()

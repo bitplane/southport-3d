@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "southport.lord-street.corridor-public-realm",
-  "name": "Lord Street \u2014 provisional roads and open spaces",
+  "name": "Lord Street — provisional roads and open spaces",
   "region": "southport",
   "area": "lord-street",
   "status": "provisional-block-plan",
@@ -47,7 +47,8 @@
     "master": [
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
       "regions/southport/elevation/lord-corridor.json",
-      "regions/southport/elevation/ground-controls.json"
+      "regions/southport/elevation/ground-controls.json",
+      "regions/southport/lord-street/town-hall-gardens-pavilions/research/layout.json"
     ],
     "validate": [
       "regions/southport/elevation/lord-corridor.json",
