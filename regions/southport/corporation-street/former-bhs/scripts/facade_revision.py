@@ -22,7 +22,7 @@ for u in [19.1,22.8]:chapel_holes.append(arch(u,4.2,7.0,1.2,1.2))
 chapel_open=[rect(14.05,4.2,16.95,12.35),rect(17.0,8.55,26.9,12.35),rect(27.0,4.2,W,12.35)]
 chapel_holes += chapel_open
 wall('Chapel revised face',W,12.8,chapel_holes,'x',0,'frontage',pale,chapel_open+chapel_door_holes)
-face('Chapel arcade side',[(0,0,0),(0,F,0),(0,F,12.8),(0,0,12.8)],'rear',pale)
+exec(compile((ROOT/'scripts'/'arcade_side_revision.py').read_text(),str(ROOT/'scripts'/'arcade_side_revision.py'),'exec'),globals())
 # The corner return has a second recessed gallery and tall lower arches.
 corp_open=[rect(.2,.15,F-.2,3.5),rect(0,4.2,1.45,12.35),rect(1.45,8.55,F,12.35)]
 corp_holes=list(corp_open)
@@ -30,6 +30,10 @@ for u in [3.4,6.8,10.2,13.6,17.0,20.0]:corp_holes.append(arch(u,4.2,7.0,1.05,1.0
 wall('Corporation revised face',F,12.8,corp_holes,'y',W,'frontage',pale,corp_open)
 face('Corporation display glazing',[(W-.18,.2,.15),(W-.18,F-6.0,.15),(W-.18,F-6.0,2.75),(W-.18,.2,2.75)],'frontage',glass)
 face('Chapel rear',[(0,F,0),(W,F,0),(W,F,12.8),(0,F,12.8)],'rear',pale)
+# Close the exposed court-side end between the rear wall and the flat roof.
+# Its plain finish is provisional; the round circulation tower masks part of
+# the junction and the concealed construction is not visible in the references.
+face('Chapel rear roof closure',[(A,F,12.8),(W,F,12.8),(W-2.3,F,16.5),(A,F,16.5)],'rear',pale)
 
 def gallery_wall(name,a,b,z0,z1,openings,axis,fixed):
  def point(u,z,depth=0):return (u,fixed+depth,z) if axis=='x' else (fixed-depth,u,z)

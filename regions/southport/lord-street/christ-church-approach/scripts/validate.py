@@ -8,6 +8,8 @@ from datum import grade,legacy_grade,FIELD
 from coplanar import check_blender
 from components import tree,hedge,bench
 from southport3d.street import furniture
+sys.path.insert(0,str(REPO/'regions/southport/station-quarter/public-realm/scripts'))
+from bhs_arcade_support import wall_x
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 D=json.loads((ROOT/'research/layout.json').read_text());R=json.loads((ROOT/'research/geometry-report.json').read_text())
 obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];ground=[o for o in obs if o.name.startswith('Surface ')];vertical=[o for o in ground if 'edging'in o.name]
@@ -51,6 +53,7 @@ for x in [-133,-125,-110]:assert abs(grade(x,-45)-legacy_grade(x,-45))<1e-8
 # Transition joins the actual outer station surface and the level threshold.
 from southport3d.elevation import Elevations
 station=Elevations(REPO/'regions/southport/elevation/station-approach.json').surface('chapel-pedestrian')
+arcade=json.loads((REPO/'regions/southport/corporation-street/former-bhs/research/arcade-support.json').read_text())
 innerL,innerR,outerR,outerL=D['former_bhs_threshold']
 for t in [.13,.37,.63,.87]:
  for f in [.05,.95]:
@@ -68,6 +71,18 @@ for x,y in [(-162.5,-92),(-162.3,-88),(-162.0,-84)]:
 # Arcade joins the retained station height at the shared boundary.
 for x in [-164,-163,-162]:
  z,name=one(x,-94.999);expected=station.height(x,-95);assert abs(z-expected)<.002,(x,z,expected)
+# The BHS-side continuation meets the raised station ramp and keeps the wall
+# and entrance on the level building datum throughout the handover.
+for y in [-94.9,-94.,-93.1]:
+ x=wall_x(arcade,y)-.01;z,name=one(x,y)
+ assert 'arcade-transition' in name and abs(z-arcade['building_grade_m'])<.004,(x,y,z,name)
+# The opposite narrow approach-owned strip follows the station's west edge.
+# Sample just outside the station polygon, avoiding shared-edge ray ambiguity.
+st=json.loads((REPO/D['station_ground_source']).read_text())
+west0,west1=st['ground_polygons'][3][0],st['ground_polygons'][3][3]
+for y in [-115.,-110.,-105.,-100.,-95.01]:
+ x=west0[0]+(y-west0[1])*(west1[0]-west0[0])/(west1[1]-west0[1])-.01
+ z,name=one(x,y);assert 'arcade-west' in name and abs(z-station.height(x,y))<.002,(x,y,z,name)
 # Retained cross-approach is paved and clear; neither lawn nor wall closes it.
 for x in [-127.3,-125,-122,-119]:
  z,name=one(x,-22.4);assert 'grass'not in name,(x,name)

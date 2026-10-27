@@ -12,10 +12,14 @@ from plan_geometry import Plan
 from components import tree,hedge
 from boundary import continuous_wall
 from datum import grade
+sys.path.insert(0,str(REPO/'regions/southport/station-quarter/public-realm/scripts'))
+from bhs_arcade_support import approach_polygon,approach_mesh,outer_x
 D=json.loads((ROOT/'research/layout.json').read_text())
 G=json.loads((REPO/D['garden_handover_source']).read_text())
 CH=json.loads((REPO/D['building_source']).read_text())
 ST=json.loads((REPO/D['station_ground_source']).read_text())
+arcade=json.loads((REPO/'regions/southport/corporation-street/former-bhs/research/arcade-support.json').read_text())
+station=Elevations(REPO/'regions/southport/elevation/station-approach.json').surface('chapel-pedestrian')
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC';cols={}
 for name in ['court-ground','passage-ground','court-furniture','passage-furniture']:
@@ -32,6 +36,19 @@ for path in D['block_plans']:cutters += [b['footprint']for b in json.loads((REPO
 cutters += D['former_bhs_occupied']
 station_claim=P.intersection(P.polygons(ST['ground_polygons']),P.polygons([rect(*ST['bounds'])]))
 available=P.difference(P.difference(region,P.polygons(cutters)),station_claim)
+arcade_shape=P.polygons([approach_polygon(arcade)])
+arcade_clip=P.intersection(available,arcade_shape)
+arcade_tris=P.triangles(arcade_clip)
+arcade_area=sum(abs((b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]))/2 for a,b,c in arcade_tris)
+assert abs(arcade_area-arcade['width_m']*(arcade['approach_end_y']-arcade['wall_station_edge'][1]))<.0001,arcade_area
+available=P.difference(available,arcade_shape)
+# West of the station's clipped arcade floor, this owner's narrow strip must
+# follow the same rough surface along their shared edge. It previously retained
+# the higher approach datum and made a visible step in the passage.
+south=arcade['wall_south'];north=arcade['wall_station_edge']
+west_shape=P.polygons([rect(south[0]-8,south[0]-1,south[1]-.5,north[1])])
+arcade_west=P.intersection(available,west_shape)
+available=P.difference(available,west_shape)
 lawn=P.intersection(available,P.polygons([D['lawn']]))
 brick=P.difference(P.intersection(available,P.polygons([D['brick_court']])),lawn)
 remaining=P.difference(P.difference(available,lawn),brick)
@@ -67,20 +84,44 @@ for part,lo,hi in [('court',D['split_y'],-18.0),('passage',y0,D['split_y'])]:
                 cell=P.polygons([rect(clip_x0,x1,a,b)])
                 for tri in P.triangles(P.intersection(g,cell)):m.add([(x,y,0)for x,y in tri],[(0,1,2)])
         if m.faces:compiled[(part,mat)]=m
+arcade_ground=Mesh('Surface passage arcade-transition');approach_mesh(arcade_ground,station,arcade)
+# Conform all owners in plan; restore the authored ramp heights below.
+arcade_ground.vertices=[(x,y,0) for x,y,z in arcade_ground.vertices]
+compiled[('passage','arcade-transition')]=arcade_ground
+west_ground=Mesh('Surface passage arcade-west')
+for tri in P.triangles(arcade_west):
+ for lifted in station.lift_triangle(tri):west_ground.add([(x,y,0)for x,y,z in lifted],[(0,1,2)])
+if west_ground.faces:compiled[('passage','arcade-west')]=west_ground
 P.close()
 # Shared slab, grass and ownership vertices are conformed on the plan first.
 import southport3d.conform as cf
 cf.GRID=1e-4;cf.TOLERANCE=2e-4
 for m in compiled.values():m.vertices=np.asarray(m.vertices,dtype=np.float32).tolist()
 compiled,report=cf.conform(compiled)
+# The station ground retains a finer plan grid. Re-project the west handover
+# vertices to that shared source edge after the approach's coarser conformance,
+# so float32 exports meet without a microscopic overlapping strip.
+west0,west1=ST['ground_polygons'][3][0],ST['ground_polygons'][3][3]
+def west_edge(y):return west0[0]+(y-west0[1])*(west1[0]-west0[0])/(west1[1]-west0[1])
+west=compiled.get(('passage','arcade-west'))
+if west:
+ west.vertices=[(float(np.float32(west_edge(y))) if abs(x-west_edge(y))<.00011 else x,y,z)for x,y,z in west.vertices]
 # Blend the bounded arcade support to the retained rough station surface at
 # its actual y=-95 edge over two metres; elsewhere preserve approach grade.
-station=Elevations(REPO/'regions/southport/elevation/station-approach.json').surface('chapel-pedestrian')
 def support_grade(x,y):
  if -168<=x<=-158 and -95.0001<=y<-93:
-  f=max(0,min(1,(y+95)/2));return (1-f)*station.height(x,-95)+f*grade(x,y)
+  f=max(0,min(1,(y+95)/2))
+  # Keep the edge beside the new BHS transition linear on the same seam.
+  slope=(arcade['wall_station_edge'][0]-arcade['wall_south'][0])/(arcade['wall_station_edge'][1]-arcade['wall_south'][1])
+  return (1-f)*station.height(x-slope*(y+95),-95)+f*grade(x,y)
  return grade(x,y)
-for (part,mat),m in compiled.items():m.vertices=[(x,y,support_grade(x,y)+(rise(x,y)if mat=='grass'else 0))for x,y,z in m.vertices]
+def arcade_grade(x,y):
+ y0=arcade['wall_station_edge'][1];y1=arcade['approach_end_y']
+ u=max(0,min(1,(x-outer_x(arcade,y))/arcade['width_m']));v=max(0,min(1,(y-y0)/(y1-y0)))
+ base=station.height(outer_x(arcade,y0),y0)
+ return base+max(u,v)*(arcade['building_grade_m']-base)
+for (part,mat),m in compiled.items():
+ m.vertices=[(x,y,arcade_grade(x,y) if mat=='arcade-transition' else station.height(x,y) if mat=='arcade-west' else support_grade(x,y)+(rise(x,y)if mat=='grass'else 0))for x,y,z in m.vertices]
 # Frontage transition owns its bounded patch; its outer edge follows the existing
 # rough station surface including control-grid break points, and inner edge meets
 # the level architectural datum. It is an estimate, not a terrain refinement.
@@ -112,6 +153,8 @@ def material(name,colour,texture=None):
             else:m.node_tree.links.new(t.outputs['Color'],p.inputs['Base Color'])
     return m
 mats={'paving':material('Pale passage slabs',(.56,.54,.48),'paving'),'strip':material('Dark longitudinal slab bands',(.21,.23,.23)),'brick':material('Church court brick pavers',(.44,.30,.23),'brick'),'grass':material('Estimated raised lawn',(.24,.31,.12)),'edging':material('Low garden stone edge',(.42,.41,.35)),'threshold':material('Estimated frontage threshold',(.56,.54,.48),'paving')}
+mats['arcade-transition']=mats['paving']
+mats['arcade-west']=mats['paving']
 wallm=[material('Observed red-brick boundary',(.39,.23,.17),'wallbrick'),material('Pale stone coping',(.45,.44,.37),'stone')]
 fm=[material('Approach furnishing '+str(i),c)for i,c in enumerate([(.025,.033,.031),(.45,.48,.47),(.53,.56,.50),(.8,.48,.015),(.14,.008,.008),(.16,.075,.005),(.004,.10,.035),(.25,.20,.13),(.006,.008,.008)])]
 fol=[material('Planting bark',(.14,.11,.075)),material('Foliage dark',(.075,.13,.035)),material('Foliage green',(.14,.23,.07)),material('Foliage light',(.19,.27,.085))]

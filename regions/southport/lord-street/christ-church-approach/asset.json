@@ -33,6 +33,8 @@
   "scope": "Broad layout checked against actualGoogle3D and registered aerial. Local pedestrian panoramas are May2011, so current exact furniture inventory is unverified. Plan\u00b11\u20133m, wall height\u00b1.15m, lawn rise\u00b1.15m. No architecture changes, text invention or precise species claims.",
   "build_inputs": {
     "master": [
+      "regions/southport/corporation-street/former-bhs/research/arcade-support.json",
+      "regions/southport/station-quarter/public-realm/scripts/bhs_arcade_support.py",
       "regions/southport/lord-street/church-gardens/research/layout.json",
       "regions/southport/lord-street/christ-church/research/layout.json",
       "regions/southport/station-quarter/public-realm/research/layout.json",
@@ -44,6 +46,8 @@
       "regions/southport/elevation/ground-controls.json"
     ],
     "validate": [
+      "regions/southport/corporation-street/former-bhs/research/arcade-support.json",
+      "regions/southport/station-quarter/public-realm/scripts/bhs_arcade_support.py",
       "regions/southport/lord-street/church-gardens/research/layout.json",
       "regions/southport/lord-street/christ-church/research/layout.json",
       "regions/southport/station-quarter/public-realm/research/layout.json",

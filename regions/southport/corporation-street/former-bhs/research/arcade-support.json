@@ -1,0 +1,9 @@
+{
+  "wall_south": [-160.832, -119.892],
+  "wall_station_edge": [-159.591424, -95.0],
+  "front_threshold_outer": [-160.916192, -121.581308],
+  "width_m": 2.0,
+  "building_grade_m": 0.7845,
+  "approach_end_y": -93.0,
+  "basis": "Estimated local transition from the retained station paving to the BHS arcade facade and entrance threshold. The 2011 arcade panorama shows a continuous floor; dimensions and ground heights are not surveyed. The south fan shares the Chapel threshold edge, and the north edge meets the approach-owned floor."
+}

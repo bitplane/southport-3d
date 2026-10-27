@@ -36,12 +36,14 @@
   "licensing": "Retained OSM seed geometry: OpenStreetMap contributors, ODbL 1.0. Photographic reference links only.",
   "build_inputs": {
     "validate": [
+      "regions/southport/corporation-street/former-bhs/research/arcade-support.json",
       "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
       "regions/southport/elevation/station-approach.json",
       "regions/southport/elevation/ground-controls.json"
     ],
     "master": [
+      "regions/southport/corporation-street/former-bhs/research/arcade-support.json",
       "regions/southport/station-quarter/frontage-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-placeholders/research/layout.json",
       "regions/southport/lord-street/corridor-public-realm/scripts/plan_geometry.py",

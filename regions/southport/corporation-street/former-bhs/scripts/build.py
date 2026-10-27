@@ -127,16 +127,21 @@ for c in collections.values():
   bm=bmesh.new();bm.from_mesh(o.data);bmesh.ops.triangulate(bm,faces=list(bm.faces));bad=[f for f in bm.faces if f.calc_area()<1e-10 or (len(f.verts)==3 and (f.verts[1].co-f.verts[0].co).cross(f.verts[2].co-f.verts[0].co).length<1e-10)]
   if bad:bmesh.ops.delete(bm,geom=bad,context='FACES_ONLY')
   bm.to_mesh(o.data);bm.free()
-# Batch repeated pieces to keep baking and draw-call costs bounded.
+# Batch repeated pieces before projection, retaining material and UV ownership.
 for part,c in collections.items():
  groups={}
  for ob in list(c.objects):
-  if ob.type=='MESH' and not ob.name.startswith('Shell '):groups.setdefault(ob.name.split('.')[0],[]).append(ob)
- for name,obs in groups.items():
+  if ob.type!='MESH':continue
+  name=ob.name.split('.')[0]
+  # Shell boxes may have been partitioned and use a different UV layer; never
+  # join meshes whose active texture coordinates or material slots differ.
+  key=(name,tuple(m.name if m else None for m in ob.data.materials),tuple(u.name for u in ob.data.uv_layers)) if name.startswith('Shell ') else (name,)
+  groups.setdefault(key,[]).append(ob)
+ for key,obs in groups.items():
   if len(obs)<2:continue
   bpy.ops.object.select_all(action='DESELECT')
   for ob in obs:ob.select_set(True)
-  bpy.context.view_layer.objects.active=obs[0];bpy.ops.object.join();obs[0].name=name
+  bpy.context.view_layer.objects.active=obs[0];bpy.ops.object.join();obs[0].name=key[0]
 for im in bpy.data.images:
  if im.source=='FILE':im.pack()
 s.render.engine='CYCLES';s.cycles.samples=16;s.cycles.use_denoising=True;s.world=s.world or bpy.data.worlds.new('World');s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs['Strength'].default_value=1.25;s.world.node_tree.nodes['Background'].inputs['Color'].default_value=(.65,.70,.75,1)

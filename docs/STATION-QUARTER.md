@@ -65,6 +65,11 @@ are explicit build dependencies. Furniture is separate from ground ray casting;
 its local generators reduce curved sampling and small fittings for Walk and
 District. No whole-town ground mesh or shared architectural style is imposed.
 
+At the former BHS arcade frontage, a bounded 2 m transition connects the rough
+station surface to the higher building and entrance datum. It joins the separate
+Chapel threshold and approach ground; its width and grades are estimates, not a
+survey. The transition replaces the station surface in that strip.
+
 The validators check closed positive placeholder volumes, exact retained plan
 vertices, nondegenerate float32 triangles, coplanar overlaps, continuous walking
 routes, station/arcade access, furniture contact and London ownership exclusions.

@@ -38,6 +38,12 @@
       "inputs": "qlocal-1.jpg near pale dormer is approximately 245 px wide by 220 px high in an oblique view; corner-matched-prototype.png first pale dormer is approximately 95 px wide by 150 px high. Both views are perspective affected and the photos are not a survey.",
       "adopted": "Pale return dormer widths increased from 2.3\u20132.6 m to 3.25\u20133.35 m while retaining centers, distinct dark dormer, exposed cheeks and roof cuts.",
       "uncertainty": "Approximate camera alignment and foreshortening; widths remain \u00b10.5 m and must be checked in the updated render."
+    },
+    {
+      "feature": "Cambridge Arcade Chapel-side window and fascia composition",
+      "inputs": "Southport Lead photograph published 19 January 2025, 4000\u00d73000: two nearest framed openings lie roughly at x=1250\u20131505 pixels and read approximately 100\u2013120 pixels wide by 300 pixels high; this perspective-compressed oblique is not a metric survey. Five window bays are visible in whole or part, and their heads nearly meet the canopy eave. Elliptical grilles occupy approximately the top third of each opening.",
+      "adopted": "Five paired bays on the first 14 m of the 21 m Chapel-side run; 1.65 m estimated width, 4.18 m sill and 6.16 m head, with slender frames, elliptical transom grilles, projecting piers, a framed blank end panel, restrained relief outlines and BHS fascia. Pale infill is provisional because the photograph shows damaged or covered panels.",
+      "uncertainty": "Each opening width, position and height uncertain at least \u00b10.5 m; the hidden continuation, infill and exact relief are not established."
     }
   ],
   "dormers": {
@@ -94,6 +100,83 @@
         2.3,
         "dark"
       ]
+    ]
+  },
+  "arcade_chapel": {
+    "centres_m": [
+      2.45,
+      4.55,
+      8.0,
+      11.45,
+      13.55
+    ],
+    "width_m": 1.65,
+    "sill_m": 4.18,
+    "head_m": 6.16,
+    "transom_rails_m": [
+      5.25,
+      5.38
+    ],
+    "pier_centres_m": [
+      1.3925,
+      3.5,
+      5.75,
+      7.02,
+      9.15,
+      10.4,
+      12.5,
+      14.61
+    ],
+    "panels_m": [
+      [
+        0.22,
+        1.16
+      ],
+      [
+        6.14,
+        6.86
+      ],
+      [
+        9.48,
+        10.18
+      ]
+    ],
+    "shop_bays_m": [
+      [
+        0.25,
+        3.8
+      ],
+      [
+        4.0,
+        7.5
+      ],
+      [
+        7.7,
+        11.2
+      ],
+      [
+        11.4,
+        14.9
+      ],
+      [
+        15.1,
+        18.3
+      ],
+      [
+        18.5,
+        20.8
+      ]
+    ],
+    "eave_m": 6.25,
+    "pier_widths_m": [
+      0.34,
+      0.34,
+      0.34,
+      0.24,
+      0.34,
+      0.34,
+      0.34,
+      0.34
     ]
   }
 }

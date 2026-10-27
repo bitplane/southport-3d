@@ -4,10 +4,13 @@ from pathlib import Path
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];REPO=Path(os.environ['SOUTHPORT_REPO_ROOT'])
 sys.path.insert(0,str(REPO/'lib'))
+sys.path.insert(0,str(ROOT/'scripts'))
 from southport3d.elevation import Elevations
+from bhs_arcade_support import wall_x
 surface=Elevations(REPO/'regions/southport/elevation/station-approach.json').surface('chapel-pedestrian')
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/'models/public-realm.blend'))
 D=json.loads((ROOT/'research/layout.json').read_text());obs=[o for o in bpy.context.scene.objects if o.type=='MESH'];ground=[o for o in obs if o.name.startswith('Ground ')]
+arcade=json.loads((REPO/'regions/southport/corporation-street/former-bhs/research/arcade-support.json').read_text())
 assert obs and ground
 for o in obs:
  assert o.data.uv_layers and all(math.isfinite(c) for v in o.data.vertices for c in v.co)
@@ -25,6 +28,16 @@ for a,b in zip(D['centreline'],D['centreline'][1:]):
  for i in range(20):
   t=(i+.5)/20;sample(a[0]*(1-t)+b[0]*t,a[1]*(1-t)+b[1]*t)
 for p in [(-55,-160),(-55,-175),(-128,-110),(-162,-100),(-164,-168),(-5,-144)]:sample(*p)
+# Probe both sides of the owned strip: the wall meets the building datum and
+# the outer edge preserves the surrounding station ground. Interior values are
+# linearly interpolated, not a second overlapping ground skin.
+for y in [-119.0,-115.0,-110.0,-105.0,-100.0,-95.01]:
+ wall=wall_x(arcade,y);width=arcade['width_m'];datum=arcade['building_grade_m']
+ for offset in [.01,width/2,width-.01]:
+  x=wall-offset;h=hits(x,y);assert len(h)==1,(x,y,h)
+  expected=(1-offset/width)*datum+(offset/width)*surface.height(wall-width,y)
+  assert abs(h[0][1][1].z-expected)<.01,(x,y,h[0][1][1].z,expected)
+ sample(wall-width-.01,y)
 for i,row in enumerate(D['placements']):
  sample(*row['xy'])
  ob=bpy.data.objects[f"Furniture {row['kind']} {i:02d}"];assert abs(ob.location.z-surface.height(*row['xy']))<1e-6

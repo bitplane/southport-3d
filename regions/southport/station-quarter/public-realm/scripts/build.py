@@ -8,7 +8,9 @@ from southport3d.geometry import Mesh
 from southport3d.elevation import Elevations
 from plan_geometry import Plan
 from furniture_lod import furniture,finish
+from bhs_arcade_support import station_polygon,station_mesh
 D=json.loads((ROOT/'research/layout.json').read_text());B=json.loads((REPO/D['block_plan']).read_text());OLD=json.loads((REPO/D['existing_block_plan']).read_text())
+arcade=json.loads((REPO/'regions/southport/corporation-street/former-bhs/research/arcade-support.json').read_text())
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.unit_settings.system='METRIC'
 surface=Elevations(REPO/D['elevation_plan']).surface('chapel-pedestrian')
@@ -44,6 +46,7 @@ def ribbon(points,width,offset=0):
  return edge(offset-width/2)+list(reversed(edge(offset+width/2)))
 P=Plan();available=P.polygons(D['ground_polygons'])
 cutters=list(D['exclusions'])+[b['footprint'] for b in B['blocks'] if not b.get('clearance_above_ground_m')]+[b['footprint'] for b in OLD['blocks']]
+cutters.append(station_polygon(arcade))
 available=P.difference(available,P.polygons(cutters))
 route=P.intersection(available,P.polygons([ribbon(D['centreline'],D['route_width_m'])]))
 strips=P.intersection(available,P.polygons([ribbon(D['centreline'],D['furniture_strip_width_m'],side*D['furniture_strip_offset_m']) for side in [-1,1]]))
@@ -62,6 +65,9 @@ for name,lo,hi in zip(['west','middle','east'],D['tile_cuts'],D['tile_cuts'][1:]
     for lifted in surface.lift_triangle(tri):m.add(lifted,[(0,1,2)])
   if m.faces:compiled[(name,mat)]=m
 P.close()
+# The station floor is lower than the BHS entrance. This bounded ramp shares
+# the building edge, the Chapel threshold and the approach's north seam.
+station_mesh(compiled[('middle','paving')],surface,arcade)
 # Noded ground boundaries remain exact after float32 conversion.
 import southport3d.conform as cf
 cf.GRID=1e-6;cf.TOLERANCE=1e-7

@@ -112,6 +112,7 @@ def surfaces(asset):
  repeated_boxes('Canopy post',[((u-.045,-2.75,0),(u+.045,-2.66,3.72))for u in [1,8,15,22,27.5]],'canopy-post',.25)
  s.part='rear'
  quad('Arcade wall',(0,F),(0,L),0,E);quad('Court wall',(A,L),(A,F),0,E);quad('Wing end',(0,L),(A,L),0,E);quad('Low court',(B,L),(B,F),0,Q);quad('Low end',(B,L),(W,L),0,Q);quad('Chapel rear',(0,F),(W,F),0,12.8);quad('Chapel arcade return',(0,F),(0,0),0,12.8)
+ s.quad('Chapel rear roof closure',[(A,F,12.8),(W,F,12.8),(W-2.3,F,16.5),(A,F,16.5)])
  s.triangle('Wing gable',[(0,L,E),(A,L,E),(A/2,L,R)])
  cx,cy,r=A+2.1,F+1.5,1.8
  for i in range(8):

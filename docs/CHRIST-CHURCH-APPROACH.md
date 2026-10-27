@@ -31,6 +31,13 @@ slopes over a bounded 10 m transition to the inherited 0.7845 m approach datum
 at Y=-45 m. This preserves the photographed exposed Town Hall ground-floor
 entrance and removes the abrupt handover. Both height estimates remain rough.
 
+The former BHS arcade floor is a separate bounded extension of this owner. Its
+station handover includes a small two-metre continuation of the BHS-side ramp,
+meeting the building's estimated level datum while preserving the surrounding
+station paving. The narrow strip on the other side follows that station floor
+at the shared edge. See `FORMER-BHS.md` for its separate Chapel threshold and
+limits.
+
 Two benches, a bin and the slim access posts reuse the existing metric furniture
 families. Tree and hedge proxies retain controlled sampling at each level. A
 restrained notice-board silhouette carries a blank panel because its lettering
@@ -54,9 +61,9 @@ furniture replacement variants remain outside this pass.
 
 ## Published review
 
-The current package uses 13,639 / 6,343 / 4,195 placed triangles and 1,050,496 /
-656,600 / 402,960 download bytes at Detail / Walk / District. Estimated GPU
-storage is 4,886,918 / 1,570,473 / 595,675 bytes. Texture caps of 256 / 128 /
+The current package uses 13,663 / 6,367 / 4,219 placed triangles and 1,053,200 /
+659,292 / 405,652 download bytes at Detail / Walk / District. Estimated GPU
+storage is 4,887,734 / 1,571,289 / 596,491 bytes. Texture caps of 256 / 128 /
 64 pixels keep this bounded area below its declared limits. A few hedge meshes
 retain their sheared bases in the lower levels to follow the local slope.
 

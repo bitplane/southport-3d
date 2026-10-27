@@ -87,7 +87,7 @@ for i in range(5):
   a,b=y0+.45,y0+1.7
   box('Architecture service door',W-.16,a,.05,W-.10,b,3.0,'frontage',timber)
   for v in [a+.1,b-.1]:box('Architecture door stile',W-.09,v-.045,.1,W-.02,v+.045,2.9,'frontage',dark)
-  for z in [.28,1.2,2.5,2.85]:box('Architecture door rail',W-.09,a+.1,z,W-.02,b-.1,z+.06,'frontage',dark)
+  for z in [.28,1.2,2.5,2.85]:box('Architecture door rail',W-.09,a+.145,z,W-.02,b-.145,z+.06,'frontage',dark)
  else:
   a,b=(y0+y1)/2-1.0,(y0+y1)/2+1.0
   for v in [a,b,(a+b)/2]:box('Architecture brick window frame',W-.12,v-.045,.65,W-.025,v+.045,2.9,'frontage',timber)
@@ -116,12 +116,17 @@ for u,w in chapel_doors:
  for x in [u-w/2,u+w/2]:
   box('Architecture shop entrance return',x-.04,0,.12,x+.04,.58,2.95,'frontage',cream)
  for x in [u-w/2,u+w/2,u]:box('Architecture door stile',x-.045,.45,.12,x+.045,.55,2.95,'frontage',dark)
- for z in [.12,2.3,2.9]:box('Architecture door rail',u-w/2,.45,z,u+w/2,.55,z+.06,'frontage',dark)
+ for z in [.12,2.3,2.9]:
+  # The vertical stiles own their front faces; split each horizontal rail at
+  # the three stiles so coincident end pieces cannot shimmer after batching.
+  for a,b in [(u-w/2+.045,u-.045),(u+.045,u+w/2-.045)]:
+   box('Architecture door rail',a,.45,z,b,.55,z+.06,'frontage',dark)
  box('Architecture entrance threshold',u-w/2,0,.04,u+w/2,.58,.12,'frontage',cream)
  m=Mesh('Architecture door handle');m.tube([(u+.16,.42,1.0),(u+.16,.42,1.55)],.022,sides=8);finish(m,'frontage',cream)
 # Sign treatment records the visible 2025 tenants, rather than inventing stores.
 font=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf')
 serif=bpy.data.fonts.load('/usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf')
+arcade_side_sign(serif)
 def inscription(body,u,z,width,height,material,out=.25,facefont=None):
  ob=text_object('Architecture sign '+body,body,(X+u,Y-out,Z+z),(0,-1,0),height,width,facefont or font,material,extrude=.003,collection=collections['frontage'],fit_bounds=True)
  bpy.ops.object.select_all(action='DESELECT');ob.select_set(True);bpy.context.view_layer.objects.active=ob;bpy.ops.object.convert(target='MESH');ob.select_set(False)

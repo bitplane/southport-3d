@@ -73,3 +73,26 @@ for v,width,kind in schedule['dormers']['corporation']:
  hit,loc,norm,index,ob,m=first_ray(world(W-1.4,v,25),world(W-1.4,v,10))
  assert hit and 'dormer cap' in ob.name.lower(),(v,ob.name if hit else 'miss')
 print('Dormer cap coverage rays passed')
+# Looking from the court, the exposed rear of the mansard must close against
+# the flat roof, not reveal the sky through the formerly unmodelled upper wall.
+for u,z in [(20.6,14.8),(22.8,16.2),(25.0,15.5)]:
+ hit,loc,norm,index,ob,m=first_ray(world(u,F+2,z),world(u,F-2,z))
+ assert hit and 'Chapel rear roof closure' in ob.name,(u,z,ob.name if hit else 'miss')
+print('Court-side roof closure rays passed')
+# Arcade-side windows have genuine recesses, thin metal grilles and a visible
+# ground display band; the closest head nearly meets the independent eave.
+arcade=schedule['arcade_chapel'];assert 0<arcade['eave_m']-arcade['head_m']<.12
+for v,z,expected in [(2.10,4.7,'Architecture arcade pale infill'),
+                      (2.2,1.5,'Glazing chapel arcade display'),
+                      (3.5,5.0,'Shell Architecture arcade stone pier'),
+                      (2.2875,5.76,'Architecture arcade oval grille')]:
+ hit,loc,norm,index,ob,m=first_ray(world(-1,v,z),world(1,v,z))
+ assert hit and expected in ob.name,(v,z,expected,ob.name if hit else 'miss')
+print('Arcade openings, grilles, piers and eave clearance passed')
+# The near arcade wall is viewed from negative X. Its source normals must agree
+# with the District receiver or the baked tangent normal flips and shades black.
+for ob in bpy.context.scene.objects:
+ if ob.type!='MESH' or not ob.name.startswith(('Shell Chapel arcade side','Architecture arcade pale infill','Glazing chapel arcade display')):continue
+ front=[p.normal.x for p in ob.data.polygons if abs(p.normal.x)>.8]
+ assert front and max(front)<-.8,(ob.name,min(front,default=0),max(front,default=0))
+print('Arcade exterior source normals passed')
