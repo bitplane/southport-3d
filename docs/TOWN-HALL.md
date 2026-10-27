@@ -54,11 +54,12 @@ The final registered overhead comparison reduced the initial courtyard to about
 The entrance steps/landing have their own named walk-support part; porch roofs
 remain excluded from walking support.
 
-The independent District keeps the roof and porch silhouette and the changes of
-stair slope, but intentionally loses baluster openings and carved depth. Current
-Detail / Walk / District totals are 66,614 / 63,328 / 384 triangles; downloads
-are 8,942,732 / 8,523,148 / 240,520 bytes and estimated GPU storage is 8,878,760 /
-8,464,292 / 10,797,179 bytes. The District figure includes bounded atlas allocation.
+The independent District keeps the roof and porch silhouette, stair slopes and
+fixed coarse rail supports while omitting fine baluster profiles and carved depth.
+Current Detail / Walk / District totals are 66,614 / 63,328 / 592 triangles;
+downloads are 8,942,732 / 8,523,148 / 285,572 bytes and estimated GPU storage
+is 8,878,760 / 8,464,292 / 10,821,564 bytes. The District figure includes
+bounded atlas allocation.
 
 The exported all-surface checks include ornament and neighbouring published
 assets. Only named rear shell/trim float32 sill/reveal residues below 0.00003m²
@@ -72,6 +73,8 @@ in the assembled scene.
 The 27 October side and staircase review used matched native and assembled views.
 Forty-three source-surface probes verify that the flight and landing spindles
 meet their seats and rails. The exported package checks full surface ownership,
-the open courtyard, neighbours and all level budgets. This correction took about
-25 minutes; substantive rework replaced the white return, split both stair
-profiles and reconciled the adjacent path rather than translating the building.
+the open courtyard, neighbours, 34 walking-tread probes per level and all level
+budgets. This correction and the District follow-up took about 45 minutes;
+substantive rework replaced the white return, split both stair profiles, added
+coarse rail supports and reconciled the adjacent path without translating the
+building.

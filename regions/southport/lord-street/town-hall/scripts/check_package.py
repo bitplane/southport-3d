@@ -8,6 +8,7 @@ from publication import inspect_glb
 from audit_published_coplanar import primitives
 from coplanar import overlaps
 from shapes import transform
+from staircase import flight
 D=json.loads((args.recipe.parent/'research/layout.json').read_text());A=json.loads((args.package/'assembly.json').read_text());results=[]
 identity={'rotationY':0,'position':[0,0,0]};yaw=math.radians(43.5293);world={'rotationY':yaw,'position':[0,0,0]};catalog=json.loads((repo/'dist/catalog.json').read_text())
 for level in ['detail','walk','district']:
@@ -25,6 +26,16 @@ for level in ['detail','walk','district']:
   X,Y,Z=transform(D,(x,y,5));v=ts[:,:,[0,2]];q=np.array([X,-Y]);a=v[:,0];b=v[:,1];c=v[:,2]
   def cross(a,b):return a[:,0]*b[:,1]-a[:,1]*b[:,0]
   den=cross(b-a,c-a);good=np.abs(den)>1e-9;u=np.zeros(len(ts));v0=u.copy();u[good]=cross(q-a,c-a)[good]/den[good];v0[good]=cross(b-a,q-a)[good]/den[good];z=ts[:,0,1]+u*(ts[:,1,1]-ts[:,0,1])+v0*(ts[:,2,1]-ts[:,0,1]);assert not np.any(good&(u>=0)&(v0>=0)&(u+v0<=1)&(z>Z)),(level,'court blocked')
+ # Test the actual exported walking part, including both middle landings.
+ steps_file=next(args.package/f['path'] for f in A['files'] if f['level']==level and f['part']=='steps')
+ steps=np.concatenate([t for t,o in primitives(steps_file,identity)]);v=steps[:,:,[0,2]];a=v[:,0];b=v[:,1];c=v[:,2];den=cross(b-a,c-a);good=np.abs(den)>1e-9;st=D['stair'];tread_probes=0
+ for lo,hi,r in [(st['x0'],D['porch']['x0'],True),(D['porch']['x1'],st['x1'],False)]:
+  treads,_=flight(st,lo,hi,r)
+  for xa,xb,expected in treads:
+   X,Y,Z=transform(D,(xa+.37*(xb-xa),-st['front']+.41*(st['front']-st['back']),expected));q=np.array([X,-Y]);u=np.zeros(len(steps));v0=u.copy()
+   u[good]=cross(q-a,c-a)[good]/den[good];v0[good]=cross(b-a,q-a)[good]/den[good]
+   hits0=good&(u>=0)&(v0>=0)&(u+v0<=1);z=steps[:,0,1]+u*(steps[:,1,1]-steps[:,0,1])+v0*(steps[:,2,1]-steps[:,0,1])
+   assert np.any(hits0&(abs(z-Z)<.005)),(level,'missing walking tread',xa,xb,expected);tread_probes+=1
  own=[(t,o)for f in files for t,o in primitives(f,world)];owntri=np.concatenate([t for t,o in own]);lo=owntri.min((0,1))-.1;hi=owntri.max((0,1))+.1;near=[];neighbours=[]
  for asset in catalog['assets']:
   if asset['id']=='southport.lord-street.town-hall':continue
@@ -41,5 +52,5 @@ for level in ['detail','walk','district']:
  merged=[owntri]+[t for t,n in near];labels=['town-hall']*len(owntri)+[n for t,n in near for _ in t]
  contact=overlaps(np.concatenate(merged),labels);cross_asset=[(a,b,area)for a,b,area in contact if (a=='town-hall')!=(b=='town-hall')]
  assert not cross_asset,(level,'neighbour surface conflict',cross_asset[:10])
- results.append({'level':level,'triangles':count,'bytes':download,'gpu_bytes':gpu,'tested_surfaces':[o['node']for t,o in selected],'numeric_edge_residues':hits,'open_court_probes':2,'neighbours':neighbours,'cross_asset_overlaps':cross_asset,'limits':'Same-facing coplanarity; does not detect every noncoplanar intersection or mixed-LoD rendering artefact. Full trim and sculpture appearance reviewed visually.'})
+ results.append({'level':level,'triangles':count,'bytes':download,'gpu_bytes':gpu,'tested_surfaces':[o['node']for t,o in selected],'numeric_edge_residues':hits,'open_court_probes':2,'walking_tread_probes':tread_probes,'neighbours':neighbours,'cross_asset_overlaps':cross_asset,'limits':'Same-facing coplanarity; does not detect every noncoplanar intersection or mixed-LoD rendering artefact. Full trim and sculpture appearance reviewed visually.'})
 (args.package/'town-hall-export-check.json').write_text(json.dumps(results,indent=2)+'\n');print([{k:r[k]for k in ['level','triangles','bytes','gpu_bytes']}for r in results])

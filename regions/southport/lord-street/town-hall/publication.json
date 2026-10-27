@@ -76,7 +76,7 @@
   ],
   "district_envelope": {
     "generator": "district:surfaces",
-    "reason": "Fixed courtyard ring and physically open columned portico, independent of ornament; fine balusters and sculpture baked, shared arcade canopy omitted.",
+    "reason": "Fixed courtyard ring and physically open columned portico, independent of ornament; coarse spindle supports retain the stair rails while fine profiles and sculpture are baked; shared arcade canopy omitted.",
     "max_bytes": 3500000,
     "max_gpu_bytes": 12000000,
     "parts": {

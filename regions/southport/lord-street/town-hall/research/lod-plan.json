@@ -38,13 +38,13 @@
       "double lateral stair flights, with intermediate landings"
     ],
     "omitted": [
-      "fine baluster negative spaces",
+      "fine baluster profiles and most individual members (bounded coarse supports remain)",
       "sculpture physical depth",
       "thin rustication grooves",
       "small fittings",
       "shared Cambridge Arcade roof outside asset"
     ],
-    "topology_independence": "Generator consumes authored main dimensions, fixed16-step flights and the intermediate landing; no fine-mesh traversal or decorative-object enumeration. The cheek and rails project from the porch source, the treads and landings from the steps source."
+    "topology_independence": "Generator consumes authored main dimensions, fixed16-step flights and the intermediate landing; no fine-mesh traversal or decorative-object enumeration. Eight fixed coarse supports per outer flight, five on the landing and five on the upper balcony do not depend on the detailed ornament count. The cheek, rails and coarse supports project from the porch source, the treads and landings from the steps source."
   },
   "walk": "Omit Fine-prefixed groove/dentil objects; keep structural and recessed opening geometry."
 }

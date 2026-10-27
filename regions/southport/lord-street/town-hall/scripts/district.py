@@ -2,7 +2,7 @@
 import json,math
 from blender_envelope import Surfaces
 from shapes import transform,roofs,elevations
-from staircase import flight
+from staircase import flight,baluster_points
 
 def surfaces(asset):
  d=json.loads((asset/'research/layout.json').read_text());w=d['front_width'];s=Surfaces(['front','rear','roof','porch','steps'],lambda p:transform(d,p))
@@ -51,8 +51,19 @@ def surfaces(asset):
    s.quad('flight seat',[(xa,yf-.22,za),(xb,yf-.22,zb),(xb,yf,zb),(xa,yf,za)],cage=.25)
    s.quad('flight rail',[(xa,yf-.22,za+.85),(xb,yf-.22,zb+.85),(xb,yf-.22,zb+1.02),(xa,yf-.22,za+1.02)],cage=.25)
    s.quad('flight rail top',[(xa,yf-.22,za+1.02),(xb,yf-.22,zb+1.02),(xb,yf,zb+1.02),(xa,yf,za+1.02)],cage=.25)
+  # A small, fixed number of uprights keeps the simplified rail physically
+  # supported. Detailed lathe profiles remain a Detail/Walk feature.
+  coarse={'slope_balusters_per_segment':3,'middle_balusters':2}
+  for x,z in baluster_points(coarse,segments):
+   s.box('coarse stair spindle',(x-.075,yf-.20,z),(x+.075,yf,z+.85),omit=('top','bottom'),cage=.18)
   s.part='steps'
  # Coarse low rail strips carry baluster appearance; open portico volume retained.
  s.part='porch'
- for yy,z in [(yf,3.8),(-3.29,8.95)]:s.box('balustrade rail',(x0,yy-.12,z),(x1,yy+.12,z+.2),omit=('bottom',),cage=.25)
+ for yy,z in [(yf,3.65),(-3.29,9.03)]:s.box('balustrade rail',(x0,yy-.12,z),(x1,yy+.12,z+.2),omit=('bottom',),cage=.25)
+ for j in [2,4,6,8,10]:
+  x=x0+j*(x1-x0)/12
+  s.box('coarse landing spindle',(x-.075,yf-.10,2.8),(x+.075,yf+.10,3.65),omit=('top','bottom'),cage=.18)
+ for j in [3,6,10,14,17]:
+  x=x0+j*(x1-x0)/20
+  s.box('coarse balcony spindle',(x-.075,-3.39,8.31),(x+.075,-3.19,9.03),omit=('top','bottom'),cage=.18)
  return s.result
