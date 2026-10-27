@@ -12,8 +12,9 @@
       "street",
       "maps-3d"
     ],
-    "confidence": "medium",
-    "observed": "Tall paired windows and pilaster rhythm down church court; low rear block, multiple roof heights."
+    "confidence": "low opening schedule; medium gabled composition",
+    "observed": "2026-10-27 GPU-backed Maps 3D close view from the church side shows three gabled sections and groups of multiple openings at upper and lower levels. May 2011 Street View at the court mouth shows a long pilastered brick wall, but its grazing angle obscures the rest. The previous paired-window claim is not a reliable bay schedule.",
+    "missing": "3D facade texture is dark and blurred; neither exact light counts in each bay, pilaster axes, frame divisions nor sill/head heights can be measured confidently. The model uses generic singles and is not verified. Obtain a clear court-side elevation photograph or measured drawing before correcting openings."
   },
   "boots_side": {
     "sources": [
@@ -39,6 +40,6 @@
   "searches": {
     "Maps": "Actual 3D all quadrants and Street View loaded. Place identity Techedia.",
     "Mapillary": "Web query Corporation Street Southport Cloisters returned no useful street imagery.",
-    "supplementary": "Fitton2025 front photographs; OTS2019 sale; LBN2023 current occupancy. Historic England search returned wrong Crosby school: excluded."
+    "supplementary": "Fitton 2025 brochure pages 3\u20136 show interiors and floor plan, not a court elevation. Geograph 7531464 (Stephen Craven, 2023, CC BY-SA 2.0) shows frontage and opposite side, not court. Web and image searches did not produce a usable court view."
   }
 }
