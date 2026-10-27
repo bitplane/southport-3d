@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "source_blend": "models/building.blend",
+  "coordinates": {
+    "frame": "site",
+    "yaw_from_east_degrees": 43.5293,
+    "elevation_m": 0
+  },
+  "area_name": "188 Lord Street",
+  "status": "Research-based three-block exterior reconstruction with estimated dimensions and obscured service windows",
+  "levels": {
+    "detail": {
+      "texture_size": null
+    },
+    "walk": {
+      "texture_size": 512
+    },
+    "district": {
+      "texture_size": 512
+    }
+  },
+  "parts": [
+    {
+      "id": "front-tower",
+      "name": "Court Road front tower",
+      "collection": "front-tower"
+    },
+    {
+      "id": "middle-tower",
+      "name": "Courtyard tower",
+      "collection": "middle-tower"
+    },
+    {
+      "id": "rear-block",
+      "name": "Rear garden block",
+      "collection": "rear-block"
+    }
+  ],
+  "views": [
+    {
+      "name": "Court Road",
+      "position": [
+        340,
+        18,
+        -295
+      ],
+      "target": [
+        340,
+        10,
+        -320
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Small glass-block courses and narrow stone strings fall below walking detail."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Fixed receiver carries appearance."
+      }
+    },
+    {
+      "id": "building",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Retain openings, balconies, joinery and roof silhouette."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Replace by authored fixed-budget envelope."
+      }
+    }
+  ],
+  "district_envelope": {
+    "generator": "district:surfaces",
+    "reason": "Independent three-block receivers and major balcony silhouettes retain open courtyard and roof steps.",
+    "max_bytes": 3000000,
+    "max_gpu_bytes": 13107200,
+    "source_omissions": [
+      {
+        "match": "^(Balcony|Entrance) batch Balcony glass",
+        "reason": "Transparent materials unsupported by baker; preserve major balcony projection as geometry and bake opaque surroundings."
+      }
+    ],
+    "parts": {
+      "front-tower": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 600,
+        "cage_m": 1.8,
+        "source_parts": [
+          "front-tower"
+        ]
+      },
+      "middle-tower": {
+        "atlas": [
+          512,
+          512
+        ],
+        "max_triangles": 600,
+        "cage_m": 1.8,
+        "source_parts": [
+          "middle-tower"
+        ]
+      },
+      "rear-block": {
+        "atlas": [
+          512,
+          256
+        ],
+        "max_triangles": 600,
+        "cage_m": 1.6,
+        "source_parts": [
+          "rear-block"
+        ]
+      }
+    }
+  },
+  "walk_spawn": {
+    "position": [
+      320,
+      1.7,
+      -301
+    ],
+    "target": [
+      335,
+      7,
+      -318
+    ]
+  }
+}

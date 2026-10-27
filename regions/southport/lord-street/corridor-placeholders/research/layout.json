@@ -1745,7 +1745,7 @@
         "osm-seed"
       ],
       "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
-      "replace_with": null
+      "replace_with": "southport.lord-street.lord-street-188"
     },
     {
       "id": "way-372055263",
@@ -1778,7 +1778,7 @@
         "osm-seed"
       ],
       "footprint_confidence": "Block-scale imagery comparison; 1\u20133 m offsets and joined-range subdivisions remain unresolved. Not surveyed.",
-      "replace_with": null
+      "replace_with": "southport.lord-street.lord-street-188"
     },
     {
       "id": "way-372055265",

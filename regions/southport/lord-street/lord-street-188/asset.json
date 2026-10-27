@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "southport.lord-street.lord-street-188",
+  "name": "188 Lord Street apartment complex",
+  "region": "southport",
+  "area": "lord-street",
+  "status": "researched-exterior-estimated-dimensions",
+  "units": "metres",
+  "origin_wgs84_lat_lon": [
+    53.6486555,
+    -3.0043401
+  ],
+  "site_rotation_from_east_degrees": 43.5293,
+  "components": [
+    "front-tower",
+    "middle-tower",
+    "rear-block"
+  ],
+  "lods": [
+    "detail",
+    "walk",
+    "district"
+  ],
+  "build": {
+    "prepare": "prepare.py",
+    "geometry": "build.py",
+    "export": "export.py",
+    "validate": "validate.py",
+    "render": "render.py"
+  },
+  "source_catalog": "research/references.json",
+  "scope": "Two Court Road apartment towers and separate rear garden block; Regent Court excluded. Hidden elevations and shared ramp remain estimates.",
+  "licensing": "Reference imagery private; OSM seed geometry, OpenStreetMap contributors ODbL 1.0.",
+  "publication_checks": [
+    "check_package.py"
+  ],
+  "build_inputs": {
+    "validate": [
+      "regions/southport/lord-street/lord-street-188/scripts/check_package.py"
+    ]
+  }
+}

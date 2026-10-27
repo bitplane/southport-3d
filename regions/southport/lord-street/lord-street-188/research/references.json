@@ -1,0 +1,36 @@
+{
+  "accessed": "2026-10-27",
+  "sources": [
+    {
+      "id": "maro",
+      "url": "https://marodev.co.uk/development/188-lord-street-southport/",
+      "observed": "Developer identifies two courtyard buildings and separate rear block."
+    },
+    {
+      "id": "front",
+      "url": "https://www.rightmove.co.uk/properties/161935595",
+      "observed": "Street end facade and set-back top storey."
+    },
+    {
+      "id": "rear",
+      "url": "https://propertyauctions.io/listings/19bed3e1fdf2b4fa38c4b878e5536bf6",
+      "observed": "Rear garden facade and entrance."
+    },
+    {
+      "id": "street",
+      "url": "https://www.google.com/maps/@53.6513843,-2.999475,10a,90y,120h,105t/data=!3m7!1e1!3m5!1syyx_mkeL681mEez5P5DpWg!2e0!7i16384!8i8192",
+      "observed": "August 2024 balconies, entrance and materials."
+    },
+    {
+      "id": "3d",
+      "url": "https://www.google.com/maps/@53.6511673,-2.9988207,177m/data=!3m1!1e3",
+      "observed": "Globe and tilted GPU 3D: opposing orbits show two towers and rear hipped-roof block."
+    },
+    {
+      "id": "entrance-close",
+      "url": "https://www.zoopla.co.uk/for-sale/details/64559631/",
+      "observed": "Close view of blue door, pale frame, glass-block side and lintel surround, thin glass canopy and supporting rods."
+    }
+  ],
+  "rights": "Reference images not distributed; OSM seed OpenStreetMap contributors ODbL 1.0."
+}

@@ -1899,7 +1899,7 @@
         ]
       ],
       "height_m": 4.5,
-      "replace_with": null,
+      "replace_with": "southport.lord-street.lord-street-188",
       "source_way": "1041189125",
       "evidence": "OSM seed checked against calibrated Google top-down and four 3D directions. Storey/roof height bounds estimated; this is not detailed architecture. Existing canonical outlines subtracted."
     },
