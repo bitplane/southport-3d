@@ -34,6 +34,11 @@
       "id": "roof",
       "name": "Roof",
       "collection": "roof"
+    },
+    {
+      "id": "projecting-sign",
+      "name": "Projecting fish-and-chips sign",
+      "collection": "projecting-sign"
     }
   ],
   "views": [
@@ -76,11 +81,23 @@
         "strategy": "omit",
         "reason": "Independent fixed envelope."
       }
+    },
+    {
+      "id": "fine-fittings",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Narrow fascia ribbing and handles do not affect Walk silhouette."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Projected into the fixed envelope."
+      }
     }
   ],
   "district_envelope": {
     "generator": "district:surfaces",
-    "reason": "Independent fixed envelope of corner, return and roof.",
+    "reason": "Independent fixed corner, return and roof surfaces with separate projecting-sign bake group.",
     "max_bytes": 1000000,
     "max_gpu_bytes": 7000000,
     "parts": {
@@ -107,6 +124,14 @@
         ],
         "max_triangles": 150,
         "cage_m": 0.8
+      },
+      "projecting-sign": {
+        "atlas": [
+          128,
+          128
+        ],
+        "max_triangles": 4,
+        "cage_m": 0.25
       }
     }
   },

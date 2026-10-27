@@ -1,34 +1,34 @@
 {
-  "state": "Locally published provisional exterior; awaiting independent visual acceptance.",
+  "state": "Detailed revision published locally; independent final visual acceptance pending.",
   "comparisons": {
     "street_reference": "May 2026 Google Maps place photo; private browser capture page-2026-10-26T23-27-39-455Z.png",
     "cable_reference": "November 2020 Street View; private browser capture page-2026-10-26T23-28-26-447Z.png",
     "roof_reference": "Google Maps 3D opposing orbits /tmp/fish-oblique1.png, fish-oblique2.png and fish-oblique3.png",
-    "model": "Detail, Walk and District forced in local viewer after publication. Walk and District settled without failed loads; Detail resident with one unrelated request pending. Private session captures page-2026-10-26T23-42-32-961Z.png, page-2026-10-26T23-43-04-058Z.png and page-2026-10-26T23-43-27-803Z.png; roof/join page-2026-10-26T23-41-35-037Z.png.",
-    "assessment": "Correct two-storey corner, chamfered door and broad Jacksons fascia; upper bay proportions, tile texture, joinery and roof finish are simplified. Party datum and rear service outline remain approximate. 3D roof and photo facade do not establish exact survey dimensions."
+    "model": "Street-height native street.png and roof.png, then assembled Detail, Walk and District at matched street view. Walk and District settled; Detail settled in roof view, with zero failed loads. Private captures page-2026-10-27T00-37-56-707Z.png, page-2026-10-27T00-38-37-097Z.png, page-2026-10-27T00-36-48-779Z.png and page-2026-10-27T00-39-03-885Z.png.",
+    "assessment": "The scheduled outward bay projections, entrance divisions, tile and brick, fascia labels, award panel, projecting sign, slate roof, eaves and gutter are present. Separate sign projection group corrected a duplicated District sign. Dimensions and precise party line remain estimated; unseen rear equipment is deferred."
   },
   "known_limits": [
     "Rear facade and extractor arrangements obscured; no interior reconstructed.",
-    "Corner ground wedge was corrected by registering the splayed footprint; the updated ground and Detail tile were resident together without failed loads while the wider scene was still streaming.",
-    "LoD same-facing coplanar check covers authored meshes, not all neighbouring depth conflicts. Roof is single-sided."
+    "The nearest adjoining terrace remains provisional.",
+    "Targeted exported coplanar scan included Jacksons, adjacent 15, retained terrace and middle ground at all levels; no Jacksons or cross-asset hits. Four small existing ground-only groups remain in /tmp/jackson-audit-final/report.md. Mixed-LoD and noncoplanar intersections are not covered by the scan."
   ],
   "metrics": {
-    "elapsed_minutes_approx": 20,
+    "elapsed_minutes_approx": 22,
     "triangles": {
-      "detail": 1354,
-      "walk": 1354,
-      "district": 40
+      "detail": 2748,
+      "walk": 1980,
+      "district": 44
     },
     "download_bytes": {
-      "detail": 283284,
-      "walk": 283116,
-      "district": 42404
+      "detail": 606520,
+      "walk": 460796,
+      "district": 118504
     },
     "estimated_gpu_bytes": {
-      "detail": 1880026,
-      "walk": 569308,
-      "district": 3150679
+      "detail": 13208400,
+      "walk": 8825511,
+      "district": 3413235
     },
-    "substantial_rework": "Corrected reversed rear receiver and mismatched extension slopes for District bake; registered splayed footprint and rebuilt ground to close corner gap."
+    "substantial_rework": "Reversed inward bay geometry; moved shop entrance and revised joinery/signs; separated the projecting sign from fascia projection after District review."
   }
 }

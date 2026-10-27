@@ -1,0 +1,18 @@
+# Jacksons observed feature schedule
+
+Appearance: Google Maps place photograph, May 2026, checked against November 2020 Cable Street panorama and Google 3D opposing orbits (sources in references.json). Dimensions are estimates in metres; the 10.3 m Nevill frontage is an approximate registered parcel split, not a survey. Reference capture `page-2026-10-26T23-27-39-455Z.png` and Cable panorama `page-2026-10-26T23-28-26-447Z.png` are private browser output.
+
+| Feature | Observation / approximate proportions | Detail implementation and uncertainty |
+|---|---|---|
+| Nevill upper storey | Two projecting white multi-face bays, broad centre pane and narrower angled returns, horizontal sash divisions, black caps and white sills. Corner bay visually relates to chamfer window. | Real wall apertures and returns, outward bay faces and separate frames/sills/caps. Bay projection ~0.32 m; frame sizes estimated. |
+| Cable upper storey | White painted wall with plain divided window behind the corner. | Cut aperture, recessed glass and white sash; position estimated. |
+| Corner entrance | Splayed glazed dark door with lower solid panel and horizontal transom, terracotta tiled piers and an award panel above. Upper splayed window is white framed. | Door recessed behind tiled piers, glazing, transom, kick panel and threshold; readable award sign. Exact awards and small text restricted to what is legible. |
+| Nevill shop | Red brick stallrisers, broad dark glazed bays divided by narrow mullions and a dark recessed entrance with lower panels; shallow sill projects below glass. | Wall apertures, recessed glazing, division rails, door and threshold; authored brick bond and separate sills. Exact setting-out estimated from photograph. |
+| Cable shop | Three-light black-framed window and small toplights, tiled stallriser, cream wall farther back; fascia is shorter than side wall. | Recessed glazing, transoms and tiled lower panel, short white fascia. Unknown far rear is restrained. |
+| Signage | White long main fascia reads Jacksons Traditional Fish And Chips, with small Restaurant / Takeaway labels. Cable fascia Jacksons; white perpendicular square reads FISH & CHIPS. Corner award panel has Jacksons, Award Winning, Traditional Fish & Chips, 5 Star Rated and five stars. | Individually authored sign textures and solid signboards; proportions estimated from photograph. Unreadable stickers and interior lettering omitted. |
+| Roof/eaves | Shallow hipped grey slate main roof, dark gutter and narrow eaves. Oblique 3D shows lower rear range; small roof hardware is not sufficiently resolved. | Hipped planes with authored slate courses, ridge seams and eaves/gutter; retain existing estimated roof footprint. No speculative flues or extractors. |
+| Ground / neighbours | Chamfered entrance meets paved corner; 25 Nevill joins the far end. | Street ground separately clips registered splayed footprint. Retained neighbour stays provisional; no interior or rear equipment inferred. |
+
+Walk retains significant openings, major frames, signs, cap and gutters, omitting small fittings. District uses the independent fixed-budget envelope and atlas. Verify representative bay and shop window at close scale before repeating; check exact surface ownership, roof/ground seams and assembled levels.
+
+The listed observed features have been implemented and checked in the street-height native comparison and assembled representations. District projects the separately grouped hanging sign onto its own fixed receiver. Metric dimensions and the unseen rear remain estimates; root acceptance is pending.
