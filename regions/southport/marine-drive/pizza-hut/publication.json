@@ -7,7 +7,7 @@
     "elevation_m": 0
   },
   "area_name": "Ocean Plaza",
-  "status": "Provisional exterior, roof and fourth elevation estimated",
+  "status": "Evidence-led 2019/2024 exterior; unseen fourth face and roof plant estimates",
   "levels": {
     "detail": {
       "texture_size": null
@@ -53,28 +53,40 @@
   ],
   "rules": [
     {
-      "id": "architecture",
-      "match": ".*",
+      "id": "fine",
+      "match": "^Fine ",
       "walk": {
-        "strategy": "keep",
-        "reason": "Preserve facade openings and roof profile at walking distance."
+        "strategy": "omit",
+        "reason": "Fine timber grooves, roof ribs and canopy bulbs disappear at street distance; building envelope and sign remain."
       },
       "district": {
         "strategy": "omit",
-        "reason": "Independent fixed envelope."
+        "reason": "Independent fixed envelope projects the roof and facade appearance."
+      }
+    },
+    {
+      "id": "architecture",
+      "match": "^(?!Fine ).*",
+      "walk": {
+        "strategy": "keep",
+        "reason": "Preserve recessed doors, glazing, canopy, signs, services and the roof silhouette."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Independent fixed envelope retains the door recess and silhouette."
       }
     }
   ],
   "district_envelope": {
     "generator": "district:surfaces",
     "reason": "Bounded independent hipped and raised roof envelope; canopy simplified.",
-    "max_bytes": 1500000,
-    "max_gpu_bytes": 13000000,
+    "max_bytes": 2000000,
+    "max_gpu_bytes": 24000000,
     "parts": {
       "walls": {
         "atlas": [
-          256,
-          256
+          512,
+          512
         ],
         "max_triangles": 40,
         "cage_m": 0.5,
@@ -85,14 +97,13 @@
       },
       "roof": {
         "atlas": [
-          256,
-          256
+          512,
+          512
         ],
         "max_triangles": 60,
         "cage_m": 0.6,
         "source_parts": [
-          "roof",
-          "joinery"
+          "roof"
         ]
       },
       "joinery": {
@@ -103,7 +114,7 @@
         "max_triangles": 8,
         "cage_m": 0.5,
         "source_parts": [
-          "roof"
+          "joinery"
         ]
       }
     }

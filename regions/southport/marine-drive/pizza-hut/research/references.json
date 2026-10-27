@@ -36,6 +36,19 @@
       "url": "https://www.google.com/maps/@53.6529228,-3.0127123,81a,35y,110.25h,39.55t/data=!3m1!1e3",
       "accessed": "2026-10-26",
       "note": "Loaded GPU-enabled photogrammetry from opposing close orbits; recessed roof and plant."
+    },
+    {
+      "id": "logo-vector",
+      "url": "https://commons.wikimedia.org/wiki/File:Pizza_Hut.svg",
+      "accessed": "2026-10-27",
+      "creator": "Landor Associates",
+      "note": "1999 wordmark outlines; Commons describes PD-textlogo and notes trademark. Letter shapes extracted and two source lines rearranged into the visible horizontal sign."
+    },
+    {
+      "id": "road-side-2024",
+      "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.65260,-3.01198&heading=75&pitch=0",
+      "date": "2024-08",
+      "note": "Unobstructed road-facing glazing, red awning, masonry and doors."
     }
   ]
 }

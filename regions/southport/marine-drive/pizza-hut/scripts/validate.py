@@ -14,4 +14,5 @@ from coplanar import check_blender
 check_blender([o for o in obs if o.name.startswith('Wall ')])
 check_blender([o for o in obs if o.name.startswith('Frame front ')])
 check_blender([o for o in obs if o.name.startswith(('Frame side ', 'Side reveal '))])
-print('Checked finite geometry, triangles, wall ownership and front and side frames with side reveals; roof interfaces and remaining joinery require visual review.')
+check_blender([o for o in obs if o.name.startswith(('Canopy ', 'Fine lower roof', 'Fine upper band'))])
+print('Checked finite geometry, triangles, wall ownership and front and side frames, side reveals, canopy and repeated roof seams; remaining joinery and roof interfaces require visual review.')

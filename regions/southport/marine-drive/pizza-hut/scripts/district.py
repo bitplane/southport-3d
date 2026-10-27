@@ -1,5 +1,5 @@
 """Fixed independent envelope; omitted canopy curvature and joinery."""
-import os,sys
+import math,os,sys
 from pathlib import Path
 from blender_envelope import Surfaces
 sys.path.insert(0,str(Path(os.environ['SOUTHPORT_REPO_ROOT'])/'regions/southport/marine-drive/frontage-placeholders/scripts'))
@@ -17,10 +17,17 @@ def surfaces(asset):
  s.part='roof'
  outer=[(-.5,-.5,3.45),(W+.5,-.5,3.45),(W+.5,D+.5,3.45),(-.5,D+.5,3.45)];inner=[(3.4,3.5,4.25),(14,3.5,4.25),(14,17.3,4.25),(3.4,17.3,4.25)];top=[(4,4.1,5.75),(13.4,4.1,5.75),(13.4,16.7,5.75),(4,16.7,5.75)]
  for i in range(4):
-  j=(i+1)%4;s.quad('lower '+str(i),list(reversed([outer[i],outer[j],inner[j],inner[i]])));s.quad('raised '+str(i),list(reversed([inner[i],inner[j],top[j],top[i]])))
+  j=(i+1)%4
+  a,b=outer[i],outer[j];s.quad('fascia '+str(i),list(reversed([(a[0],a[1],3.12),(b[0],b[1],3.12),b,a])),cage=.08)
+  s.quad('lower '+str(i),list(reversed([outer[i],outer[j],inner[j],inner[i]])),cage=.06);s.quad('raised '+str(i),list(reversed([inner[i],inner[j],top[j],top[i]])))
  inside=[(4.28,4.38,5.75),(13.12,4.38,5.75),(13.12,16.42,5.75),(4.28,16.42,5.75)];low=[(4.28,4.38,4.55),(13.12,4.38,4.55),(13.12,16.42,4.55),(4.28,16.42,4.55)]
  for i in range(4):
   j=(i+1)%4;s.quad('cap '+str(i),list(reversed([top[i],top[j],inside[j],inside[i]])));s.quad('inside '+str(i),list(reversed([inside[i],inside[j],low[j],low[i]])))
  s.quad('plant deck',list(reversed(low)))
- s.part='joinery';s.quad('canopy',list(reversed([(4.1,-1.25,3.45),(10.5,-1.25,3.45),(10.5,0,3.45),(4.1,0,3.45)])))
+ s.part='joinery'
+ # Four strips follow the shallow barrel rather than crossing the hipped roof.
+ for i in range(4):
+  x=4.1+6.4*i/4; xx=4.1+6.4*(i+1)/4
+  z=3.37+.48*math.sin(math.pi*i/4); zz=3.37+.48*math.sin(math.pi*(i+1)/4)
+  s.quad('canopy '+str(i),list(reversed([(x,-1.25,z),(xx,-1.25,zz),(xx,0,zz),(x,0,z)])),cage=.15)
  return s.result
