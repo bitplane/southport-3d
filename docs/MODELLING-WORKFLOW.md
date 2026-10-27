@@ -224,3 +224,40 @@ Coordinators process review checkpoints promptly, return actionable findings, an
 release accepted stages for packaging/publication. Workers continue independent
 research, components or checks while awaiting review; they stop only dependent
 work. A successful worker turn or build is not final visual acceptance.
+
+## Detail completion criteria for delegated buildings
+
+A recognisable massing model is a checkpoint, not a finished Detail asset. Before
+implementation, make an elevation-by-elevation feature schedule from inspected
+images: observed feature, source/view, dimensions or ratios, intended geometry,
+and uncertainty. Cover roof/attic silhouette, bay order and projections, opening
+counts/divisions, reveals/sills/lintels, entrances/thresholds, parapets/coping,
+canopies/supports, balconies/rails, visible services and immediate boundary gates.
+Do not reduce a complex building to a generic box because its shop occupies one
+ground-floor unit. Resolve the architectural unit first.
+
+For Detail, construct clearly visible depth and silhouette: recesses with returns,
+window and door subdivisions, shaped moulding profiles, roof seams/flashings,
+visible cladding joints and supports. Use authored textures for surface grain,
+not to excuse absent architecture. Match a representative repeated component
+before instancing it. Check at normal pedestrian height and close reference scale,
+not only from a flattering overhead camera. Accuracy takes priority over adding
+noise, arbitrary ornament or polygons. There is no minimum triangle count.
+
+Before final handoff, compare each exposed elevation and roof against references
+and reconcile every scheduled feature. A visible omitted gate, generic joinery,
+wrong balcony, reversed entrance, unresolved roof seam or missing distinct roof
+form is remaining work, not an acceptable blanket 'simplified' limitation. Correct
+evidenced discrepancies before handoff. Reserve uncertainty for genuinely missing
+evidence or explicitly agreed scope. Do not invent fine features to tick a box.
+
+Design Detail for close inspection; reduce Walk per feature and build District
+independently. A District budget must not constrain the detailed source. Identical
+Detail/Walk may be justified for a simple finished asset, but do not use that as
+permission to stop at a blockout. Publication can expose a labelled work-in-progress
+increment; it never substitutes for reference fidelity or independent acceptance.
+
+Complete native shape/winding and component comparisons before expensive bakes.
+Freeze inputs while packaging; if a parent is interrupted, its child may still
+run. Identify and stop only the owned stale process or await its exit; never
+remove a live lock or edit a package's inputs and then accept its output.

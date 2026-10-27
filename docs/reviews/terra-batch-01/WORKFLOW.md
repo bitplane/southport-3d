@@ -49,5 +49,17 @@ work; commit only explicitly owned paths. Keep asset docs current-state concise.
 
 Record elapsed time, substantial rework and final triangles/download/GPU sizes.
 Token telemetry is not exposed; do not invent it. Close owned browsers after use.
-Root checks progress about every ten minutes without routine status messages;
-messages are for findings, ownership conflicts, blockers and review checkpoints.
+The in-session ten-minute timer emits reminders only; it is not a durable
+scheduler and does not guarantee a new root turn after a final response. Root
+must actively process reviews and refill the queue. Worker messages are for
+findings, ownership conflicts, blockers and review checkpoints.
+
+## Required level of detail
+
+Follow [Detail completion criteria](../../MODELLING-WORKFLOW.md#detail-completion-criteria-for-delegated-buildings).
+Make the feature schedule before further detail work and audit it before handoff.
+Clearly evidenced omissions and generic substitutes must be fixed, not relegated
+to a 'simplified' caveat. Provide matched street-height and close views for windows,
+entrances, roof edges and identifying features. A technically valid published
+blockout is still unfinished. Preserve uncertainty only where evidence is absent.
+Root reviews fidelity, not just checks passing or a low triangle count.
