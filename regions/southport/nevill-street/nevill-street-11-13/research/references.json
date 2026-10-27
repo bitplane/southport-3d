@@ -108,6 +108,15 @@
       "accessed": "2026-10-26",
       "credit": "Google imagery",
       "use": "Actual GPU-rendered imagery inspected and orbited; confirms hip/plateau and returning roof arrangement. Close prior orbit/overhead captures re-examined for ridge endpoints. Zoom controls repeatedly entered Street View at 85a, so finer junction measurements use saved close captures; no claim that current 85a imagery resolves flashing."
+    },
+    {
+      "id": "passage-gate-2026",
+      "url": "https://www.google.com/maps/@53.6492323,-3.0052505,3a,25y,234h,100t/data=!3m4!1e1!3m2!1s2Gv0y7_5CwiDS9PNJWxWvA!2e0",
+      "title": "Google Street View, close passage gate",
+      "capture_date": "2026-07",
+      "accessed": "2026-10-26",
+      "credit": "Google",
+      "use": "Closed weathered double gate, mesh panels and upper vertical metal grille; proportions estimated."
     }
   ],
   "rights": "Links and descriptive observations only. Captures private outside Git. Textures and geometry independently authored; source imagery is not redistributed."

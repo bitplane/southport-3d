@@ -24,6 +24,11 @@ building. Heights, carved depths and rear openings are estimates. The separate
 `west-nevill-empire` placeholder is replaced, and both dependent ground assets
 are rebuilt to preserve the rounded corner and narrow passage beside Salaars.
 
+July 2026 close Street View shows a weathered double gate with mesh panels
+and a taller metal grille in the passage to Salaars. The roughly 2.15 m width,
+3 m overall height and setback are estimates fitted to the registered neighbours;
+the exact mesh and the obscured space behind it remain unresolved.
+
 The current front is well covered. The side and rear are available only in
 coarse photogrammetry: paired upper openings are approximate and hidden doors,
 private yard fittings, drainage and plant are deferred. A nearby Mapillary image
@@ -44,6 +49,10 @@ Text and the visible Chinese fascia characters use authored fonts; small
 unreadable advertising print is omitted. Carvings and the buffet logotype are
 approximations, not scans or reproductions of photographic pixels. Brick, roof
 and granite maps are procedurally authored.
+
+The passage gate belongs to Empire: Detail and Walk use framed leaves and
+vertical bars suggesting mesh; District retains a sparse open frame and grille
+rather than an opaque receiver across the opening.
 
 District is a separate surface envelope. Its 512-square front atlas and
 256-square rear/roof atlases bake colour, normal and roughness. Budgets are 400
@@ -74,9 +83,9 @@ runtime checks and their limitations.
 
 ## Published review
 
-The current Detail and Walk exports each contain 49,177 triangles and total
-7,433,232 bytes, with 12,796,278 bytes estimated GPU storage. District contains
-374 triangles, totals 543,212 bytes, and uses an estimated 6,343,350 GPU bytes.
+The current Detail and Walk exports each contain 50,173 triangles and total
+7,559,456 bytes, with 12,920,174 bytes estimated GPU storage. District contains
+398 triangles, totals 543,676 bytes, and uses an estimated 6,345,894 GPU bytes.
 The source validator passes. The complete exported native overlap scan across
 this asset, 3–9 Nevill, the remaining placeholders and both adjoining ground
 assets finds no cross-asset overlaps involving Empire. Only the documented
@@ -87,6 +96,11 @@ Actual exported Detail, Walk and District were inspected from front and rear
 views after the close-orbit roof correction. Private review captures are in
 `../output/nevill-empire/final-*.png`; the isolated comparison is served at
 `/reviews/southport.nevill-street.nevill-street-11-13/index.html`.
+
+The gate was checked against the close reference and in the live assembled viewer
+at the snag camera in Detail, Walk and District; it meets the paving and retains
+the passage opening. The exported overlap scan covers Empire, both neighbours,
+Nevill placeholders and ground, with no cross-asset findings touching Empire.
 
 The level floor is registered to the rough street height at the frontage anchor in `research/layout.json`; 12 cm paving and 2 cm threshold allowances are retained. This is an editable town-model datum, not a surveyed floor level.
 

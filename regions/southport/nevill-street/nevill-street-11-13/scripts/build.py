@@ -422,6 +422,29 @@ for u,v,z0,z1,ww,ll in D['stacks']:
  if DETAIL:
   box('Fine chimney neck band',(u,v,z1-.13),(ww+.09,ll+.09,.12),brick,'roof',T)
 
+# Passage gate, observed in July 2026 Street View.  Endpoints and inset are
+# estimated against the two independently registered building footprints.
+# Frame rails meet without overlapping; thin vertical bars suggest the mesh.
+gatewood=mat('Weathered gate frame',(.32,.29,.25))
+gatemetal=mat('Passage gate metal',(.19,.19,.17))
+a,b=9.72,11.87; mid=(a+b)/2; out=-.46
+m=Mesh('Architecture passage gate frame')
+for u in (a+.055,mid,b-.055): m.box((u,1.08,out),(.11,2.16,.10))
+for left,right in ((a+.11,mid-.055),(mid+.055,b-.11)):
+ for z in (.055,1.10,2.105):m.box(((left+right)/2,z,out),(right-left,.11,.10))
+finish(m,'frontage',gatewood,F)
+m=Mesh('Fine passage grille')
+for left,right in ((a+.11,mid-.055),(mid+.055,b-.11)):
+ for i in range(1,13):
+  u=left+(right-left)*i/13
+  for low,high in ((.11,1.045),(1.155,2.05)):
+   m.box((u,(low+high)/2,out),(.012,high-low,.018))
+# Upper security grille is recessed to avoid overpainting the gate frame.
+for i in range(1,25):
+ u=a+(b-a)*i/25;m.box((u,2.61,out),(.015,.75,.025))
+for z in (2.22,3.00):m.box(((a+b)/2,z,out),(b-a,.025,.025))
+finish(m,'frontage',gatemetal,F)
+
 for part in C:
  groups={}
  for ob in list(C[part].objects):

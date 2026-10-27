@@ -8,6 +8,15 @@ def surfaces(asset):
  line=front_line(d)
  for k,(A,B) in enumerate(zip(line,line[1:])):
   h=d['cornice'] if k==0 else 12.55;s.quad('street and curved corner '+str(k),[(*A,0),(*B,0),(*B,h),(*A,h)],weight=2)
+ # Coarse open gate frame: individual receivers preserve the passage openings.
+ a,b=9.72,11.87;mid=(a+b)/2
+ def gate_quad(name,x0,x1,z0,z1):
+  s.quad(name,[(x0,.46,z0),(x1,.46,z0),(x1,.46,z1),(x0,.46,z1)])
+ for i,u in enumerate((a+.055,mid,b-.055)):gate_quad('gate upright '+str(i),u-.055,u+.055,0,2.16)
+ for i,(left,right) in enumerate(((a+.11,mid-.055),(mid+.055,b-.11))):
+  for j,z in enumerate((.055,1.10,2.105)):gate_quad('gate rail '+str(i)+' '+str(j),left,right,z-.055,z+.055)
+ for i,z in enumerate((2.22,3.0)):gate_quad('grille rail '+str(i),a,b,z-.0125,z+.0125)
+ u=a+(b-a)*12/25;gate_quad('grille bar',u-.0075,u+.0075,2.235,2.985)
  s.part='rear'
  for name,A,B in [('passage',(w,r),(w,l)),('rear',(w,l),(0,l)),('party',(0,l),(0,0))]:s.quad(name,[(*A,0),(*B,0),(*B,e),(*A,e)])
  s.part='roof'
