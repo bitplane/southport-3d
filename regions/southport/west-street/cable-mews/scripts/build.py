@@ -27,7 +27,7 @@ def rect(a,b,c,d):return [(a,b),(c,b),(c,d),(a,d)]
 def face_point(a,dx,dy,normal,u,z,offset=0):return (a[0]+dx*u+normal[0]*offset,a[1]+dy*u+normal[1]*offset,height+z)
 for i,(a,b) in enumerate(zip(p,p[1:]+p[:1])):
  dx=b[0]-a[0];dy=b[1]-a[1];L=math.hypot(dx,dy);dx/=L;dy/=L;normal=(-dy,dx)
- lo=D['brick_base'] if i in (0,1,7,8) else 0
+ lo=D['brick_base'] if i in (0,1,6,7,8) else 0
  windows=[]
  for f,w in window_layout.get(i,[]):
   u=L*f;w=min(w,L*(.55 if i==2 else (.4 if i==0 else .24)))
@@ -35,26 +35,26 @@ for i,(a,b) in enumerate(zip(p,p[1:]+p[:1])):
   if i not in (5,6):windows.append((u-w/2,9.45,u+w/2,10.75))
  if i in (5,6):windows.append((.12*L,9.35,.88*L,10.85))
  for z0,z1,material in [(lo,D['clad_base'],brick),(D['clad_base'],D['wall_top'],white)]:
-  setback=-.8 if i in (5,6) and z0>=D['clad_base'] else 0
+  setback=(-1.0 if i==2 else -.8) if i in (2,5,6) and z0>=D['clad_base'] else 0
   if setback:z1-=.08 # recessed wall meets the roof slab underside
   holes=[rect(x0,y0,x1,y1) for x0,y0,x1,y1 in windows if z0<=y0 and y1<=z1]
   parts=[rect(0,z0,L,z1)]
-  panel=rect(.76*L,3.5,L,8.35) if i==8 and z0<D['clad_base'] else None
-  if panel:parts=[q for part in parts for q in subtract(part,panel)]
+  panels=[rect(.76*L,3.5,L,5.55),rect(.76*L,6.1,L,8.15)] if i==8 and z0<D['clad_base'] else []
+  for panel in panels:parts=[q for part in parts for q in subtract(part,panel)]
   for hole in holes:parts=[q for part in parts for q in subtract(part,hole)]
   m=Mesh('Shell wall '+str(i))
   for q in parts:m.add([face_point(a,dx,dy,normal,u,z,setback) for u,z in q],[tuple(reversed(range(len(q))))])
   for h in holes:
    for A,B in zip(h,h[1:]+h[:1]):m.add([face_point(a,dx,dy,normal,*A,setback),face_point(a,dx,dy,normal,*B,setback),face_point(a,dx,dy,normal,*B,setback-.16),face_point(a,dx,dy,normal,*A,setback-.16)],[(0,1,2,3)])
   finish(m,material)
-  if panel:
+  for panel in panels:
    panelparts=[panel]
    for hole in holes:panelparts=[q for part in panelparts for q in subtract(part,hole)]
    pm=Mesh('Architecture white corner panel')
    for q in panelparts:pm.add([face_point(a,dx,dy,normal,u,z) for u,z in q],[tuple(reversed(range(len(q))))])
    finish(pm,white)
  for j,(x0,z0,x1,z1) in enumerate(windows):
-  off=-.8 if i in (5,6) and z0>=D['clad_base'] else 0
+  off=(-1.0 if i==2 else -.8) if i in (2,5,6) and z0>=D['clad_base'] else 0
   m=Mesh('Glazing window');q=rect(x0,z0,x1,z1);m.add([face_point(a,dx,dy,normal,u,z,off-.16) for u,z in q],[(3,2,1,0)]);finish(m,glass)
   # One planar frame; separate pane apertures ensure no duplicate surface ownership.
   outer=rect(x0,z0,x1,z1);cols=5 if z0>9 and i in (5,6) else (3 if i==0 else (1 if i in (1,8) else 2));rows=2 if i in (0,2,8) and z0<9 else 1;inner=[rect(x0+.055+k*(x1-x0-.11)/cols+.025,z0+.055+j*(z1-z0-.11)/rows+.02,x0+.055+(k+1)*(x1-x0-.11)/cols-.025,z0+.055+(j+1)*(z1-z0-.11)/rows-.02) for k in range(cols) for j in range(rows)];parts=[outer]
@@ -68,7 +68,7 @@ for i,(a,b) in enumerate(zip(p,p[1:]+p[:1])):
   m.add(corners,[(0,1,5,4),(4,5,6,7),(7,6,2,3),(0,4,7,3),(1,2,6,5)]);finish(m,frame)
  # Fine metal standing seams on the opaque parts of the upper cladding. The
  # strips stop at the openings and sit on, rather than duplicate, the wall.
- if i not in (5,6):
+ if i not in (2,5,6):
   m=Mesh('Fine cladding seams');num=max(1,int(L/.13))
   for k in range(1,num):
    u=L*k/num;intervals=[(D['clad_base']+.015,D['wall_top']-.04)]
@@ -78,6 +78,15 @@ for i,(a,b) in enumerate(zip(p,p[1:]+p[:1])):
    for a0,b0 in intervals:
     q=rect(u-.006,a0,u+.006,b0);m.add([face_point(a,dx,dy,normal,uu,zz,.007) for uu,zz in q],[(3,2,1,0)])
   finish(m,joint)
+# Street left upper storey is set behind the roof terrace, with a low rail.
+a,b=p[2],p[3];dx=b[0]-a[0];dy=b[1]-a[1];L=math.hypot(dx,dy);dx/=L;dy/=L;normal=(-dy,dx)
+A=(a[0]-normal[0],a[1]-normal[1]);B=(b[0]-normal[0],b[1]-normal[1]);terrace_cut=[A,B,b,a]
+m=Mesh('Architecture street terrace floor');m.add([(a[0],a[1],height+9),(b[0],b[1],height+9),(B[0],B[1],height+9),(A[0],A[1],height+9)],[(0,1,2,3)]);finish(m,roof)
+for u in [j*L/8 for j in range(9)]:
+ m=Mesh('Architecture terrace baluster');m.box(face_point(a,dx,dy,normal,u,9.48,.02),(.035,.035,.9));finish(m,frame)
+m=Mesh('Architecture terrace rail');m.add([face_point(a,dx,dy,normal,u,z,.025) for u,z in [(0,9.88),(L,9.88),(L,9.94),(0,9.94)]],[(3,2,1,0)]);finish(m,frame)
+for aa,bb in [(a,A),(B,b)]:
+ m=Mesh('Shell street terrace return');m.add([(aa[0],aa[1],height+9),(bb[0],bb[1],height+9),(bb[0],bb[1],height+11.32),(aa[0],aa[1],height+11.32)],[(0,1,2,3)]);finish(m,white)
 # Recess the upper court-facing walls behind a narrow balcony. Parallel
 # offsets are joined with short returns at each end and the internal corner.
 insets=[]
@@ -98,13 +107,19 @@ for a,b in [(p[5],insets[0][0]),(insets[0][1],insets[1][0]),(insets[1][1],p[7])]
  m=Mesh('Shell upper balcony return');m.add([(a[0],a[1],height+9),(b[0],b[1],height+9),(b[0],b[1],height+D['wall_top']-.08),(a[0],a[1],height+D['wall_top']-.08)],[(0,1,2,3)]);finish(m,white)
 v=[Vector((x,y,0)) for x,y in p];m=Mesh('Shell roof')
 for tri in tessellate_polygon([v]):
- q=[v[k] if isinstance(k,int) else k for k in tri];order=(0,1,2) if (q[1]-q[0]).cross(q[2]-q[0]).z>0 else (2,1,0);m.add([(a.x,a.y,height+D['wall_top']) for a in q],[order])
+ q=[v[k] if isinstance(k,int) else k for k in tri]; pieces=subtract([(a.x,a.y) for a in q],terrace_cut);
+ for part in pieces:
+  if sum(u[0]*w[1]-w[0]*u[1] for u,w in zip(part,part[1:]+part[:1]))<0:part=list(reversed(part))
+  m.add([(x,y,height+D['wall_top']) for x,y in part],[tuple(range(len(part)))])
 m=conform({'roof':m})[0]['roof'];finish(m,roof)
 # The 80 mm slab underside owns the sheltered balcony ceiling; return walls
 # stop here instead of crossing the top plane and shimmering at grazing angles.
 m=Mesh('Architecture roof underside')
 for tri in tessellate_polygon([v]):
- q=[v[k] if isinstance(k,int) else k for k in tri];order=(2,1,0) if (q[1]-q[0]).cross(q[2]-q[0]).z>0 else (0,1,2);m.add([(a.x,a.y,height+D['wall_top']-.08) for a in q],[order])
+ q=[v[k] if isinstance(k,int) else k for k in tri];pieces=subtract([(a.x,a.y) for a in q],terrace_cut);
+ for part in pieces:
+  if sum(u[0]*w[1]-w[0]*u[1] for u,w in zip(part,part[1:]+part[:1]))<0:part=list(reversed(part))
+  m.add([(x,y,height+D['wall_top']-.08) for x,y in part],[tuple(reversed(range(len(part))))])
 m=conform({'underside':m})[0]['underside'];finish(m,roof)
 x,y,r=D['tower'];n=48
 for z0,z1,material in [(0,3.3,white),(3.3,4.4,white),(4.4,9.35,white),(9.35,10.65,glass),(10.65,11.7,white)]:
@@ -116,7 +131,14 @@ for z0,z1,material in [(0,3.3,white),(3.3,4.4,white),(4.4,9.35,white),(9.35,10.6
  finish(m,material)
 m=Mesh('Architecture tower upper mullions')
 for i in range(0,n,4):
- a=2*math.pi*i/n;d=.012;m.add([(x+(r+.014)*math.cos(a-d),y+(r+.014)*math.sin(a-d),height+9.35),(x+(r+.014)*math.cos(a+d),y+(r+.014)*math.sin(a+d),height+9.35),(x+(r+.014)*math.cos(a+d),y+(r+.014)*math.sin(a+d),height+10.65),(x+(r+.014)*math.cos(a-d),y+(r+.014)*math.sin(a-d),height+10.65)],[(0,1,2,3)])
+ a=2*math.pi*i/n;d=.025;m.add([(x+(r+.014)*math.cos(a-d),y+(r+.014)*math.sin(a-d),height+9.35),(x+(r+.014)*math.cos(a+d),y+(r+.014)*math.sin(a+d),height+9.35),(x+(r+.014)*math.cos(a+d),y+(r+.014)*math.sin(a+d),height+10.65),(x+(r+.014)*math.cos(a-d),y+(r+.014)*math.sin(a-d),height+10.65)],[(0,1,2,3)])
+finish(m,frame)
+# Curved horizontal frame edges and transom follow the glazing circumference.
+m=Mesh('Architecture tower glazing rails')
+for z in (9.38,10.0,10.62):
+ for i in range(n):
+  a=2*math.pi*i/n;b=2*math.pi*(i+1)/n
+  m.add([(x+(r+.022)*math.cos(t),y+(r+.022)*math.sin(t),height+zz) for t,zz in [(a,z-.028),(b,z-.028),(b,z+.028),(a,z+.028)]],[(0,1,2,3)])
 finish(m,frame)
 # Corrugated drum cap, legible at street level; ribs terminate before coping.
 m=Mesh('Fine curved cap seams')
@@ -125,8 +147,14 @@ for i in range(n):
  m.add([(x+(r+.009)*math.cos(a-d),y+(r+.009)*math.sin(a-d),height+10.68),(x+(r+.009)*math.cos(a+d),y+(r+.009)*math.sin(a+d),height+10.68),(x+(r+.009)*math.cos(a+d),y+(r+.009)*math.sin(a+d),height+11.66),(x+(r+.009)*math.cos(a-d),y+(r+.009)*math.sin(a-d),height+11.66)],[(0,1,2,3)])
 finish(m,joint)
 m=Mesh('Glazing stair tower lower window');a=-math.pi/12;b=math.pi/12;m.add([(x+r*math.cos(a)-.06,y+r*math.sin(a),height+3.3),(x+r*math.cos(b)-.06,y+r*math.sin(b),height+3.3),(x+r*math.cos(b)-.06,y+r*math.sin(b),height+4.4),(x+r*math.cos(a)-.06,y+r*math.sin(a),height+4.4)],[(0,1,2,3)]);finish(m,glass)
-m=Mesh('Architecture tower window trim');out=rect(-.45,3.26,.45,4.44);hole=rect(-.39,3.32,.39,4.38)
-for q in subtract(out,hole):m.add([(x+r*.966-.025,y+u,height+z) for u,z in q],[tuple(range(len(q)))])
+m=Mesh('Architecture tower window trim')
+for u,z,du,dz in [(-.445,3.85,.07,1.25),(.445,3.85,.07,1.25),(0,3.26,.82,.07),(0,4.44,.82,.07)]:
+ m.box((x+r+.025,y+u,height+z),(.07,du,dz))
+finish(m,frame)
+# Reveal returns link the inset glass to the opening's curved wall edges.
+m=Mesh('Architecture tower window reveal');edge=r*math.sin(math.pi/12);outer_x=x+r*math.cos(math.pi/12);inner_x=outer_x-.06
+m.add([(outer_x,y-edge,height+3.3),(inner_x,y-edge,height+3.3),(inner_x,y-edge,height+4.4),(outer_x,y-edge,height+4.4)],[(0,1,2,3)])
+m.add([(inner_x,y+edge,height+3.3),(outer_x,y+edge,height+3.3),(outer_x,y+edge,height+4.4),(inner_x,y+edge,height+4.4)],[(0,1,2,3)])
 finish(m,frame)
 m=Mesh('Architecture tower roof');m.add([(x,y,height+11.7)]+[(x+r*math.cos(2*math.pi*i/n),y+r*math.sin(2*math.pi*i/n),height+11.7) for i in range(n)],[(0,1+i,1+(i+1)%n) for i in range(n)]);finish(m,roof)
 m=Mesh('Fine roof coping')
@@ -136,6 +164,7 @@ def mitre(i,offset):
  n0=Vector((-u.y,u.x));n1=Vector((-w.y,w.x));delta=(n0+n1)*offset/max(.1,(n0+n1).dot(n1))
  return (v[0]+delta.x,v[1]+delta.y,height+11.405)
 for i in range(len(p)):
+ if i==2:continue # terrace edge is open
  j=(i+1)%len(p);m.add([mitre(i,.055),mitre(j,.055),mitre(j,-.055),mitre(i,-.055)],[(0,1,2,3)])
 finish(m,cope)
 m=Mesh('Fine tower rim')

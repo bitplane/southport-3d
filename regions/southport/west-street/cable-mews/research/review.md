@@ -10,7 +10,7 @@ plan and are estimates, not a survey; photographs are private references only.
 Street Detail now includes the black boundary railings and double vehicle gate,
 slender posts and rails, white undercroft beam and columns, two four-light left
 windows, narrow middle windows and the divided corner glazing, inset reveals and
-sills. The attic and curved tower cap carry standing seams and dark roof coping.
+sills. The middle and right attic and curved tower cap carry standing seams and dark roof coping; the left upper wall is set back behind a shallow terrace and railing. The tower has outlined curved glazing and a surrounded lower aperture. Separate pale bay panels preserve the intervening brick band, and the undercroft remains open across the centre-right.
 The known public-realm cutout is now filled by a separately owned concrete court.
 The shared entrance behind the shelter is obscured; the open approach remains
 rather than an invented door. The gate is fixed closed; the viewer has no
