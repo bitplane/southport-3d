@@ -21,7 +21,15 @@ def validate():
  check_blender([bpy.data.objects['Roof front wing']])
  turret=[o for o in bpy.context.scene.objects if o.type=='MESH' and o.name.startswith(('Envelope turret facet','Window turret glazing','Trim turret band'))]
  check_blender(turret)
- check_blender([bpy.data.objects['Roof turret crown']])
+ crown=bpy.data.objects['Roof turret crown']
+ check_blender([crown])
+ # Every cap facet must face up and outward, otherwise the District bake
+ # encodes inverted tangent normals even when coverage is complete.
+ from mathutils import Vector
+ centre=Vector((-266.24-1.2-.0367*1.2,-25.45-1.2,0))
+ for face in crown.data.polygons:
+  radial=face.center-centre;radial.z=0
+  assert face.normal.z>0 and face.normal.dot(radial)>0, ('Inward turret crown face',face.index)
  check_blender([bpy.data.objects['Veranda openwork brackets']])
  veranda=[o for o in bpy.context.scene.objects if o.type=='MESH' and o.name.startswith('Veranda ')]
  check_blender(veranda)

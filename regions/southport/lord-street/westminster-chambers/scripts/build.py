@@ -261,10 +261,10 @@ roofmesh=Mesh('Roof turret crown');cx,cy=x1-1.2,y1-1.2
 rings=[[(cx+(x-cx)*scale,cy+(y-cy)*scale,base+height) for x,y in turret] for scale,height in ((1,14.65),(.55,15.8),(.24,16.35),(.14,16.63))]
 for lower,upper in zip(rings,rings[1:]):
  for i in range(len(turret)):
-  j=(i+1)%len(turret);roofmesh.add([lower[i],lower[j],upper[j],upper[i]],[(0,1,2,3)])
+  j=(i+1)%len(turret);roofmesh.add([lower[i],lower[j],upper[j],upper[i]],[(3,2,1,0)])
 apex=(cx,cy,base+16.82)
 for i in range(len(turret)):
- j=(i+1)%len(turret);roofmesh.add([rings[-1][i],rings[-1][j],apex],[(0,1,2)])
+ j=(i+1)%len(turret);roofmesh.add([rings[-1][i],rings[-1][j],apex],[(2,1,0)])
 finish(roofmesh,slate)
 for dx in (-.16,.16):
  box('Roof turret crest upright',(cx+dx,cy,base+17.12),(.035,.035,.65),iron)
