@@ -10,5 +10,5 @@ for o in obs:
  o.data.calc_loop_triangles()
  for t in o.data.loop_triangles:
   a,b,c=[o.matrix_world@o.data.vertices[i].co for i in t.vertices];assert (b-a).cross(c-a).length>1e-10,o.name
-check_blender([o for o in obs if o.name.startswith(('Shell ','Architecture ','Glazing '))])
-print('checked shell, architecture and glazing for same-facing coplanar overlap; finite and nondegenerate meshes')
+check_blender([o for o in obs if o.name.startswith(('Shell ','Architecture ','Glazing ','Fine '))])
+print('checked shell, architecture, fine trim and glazing for same-facing coplanar overlap; finite and nondegenerate meshes')

@@ -13,6 +13,14 @@ def surfaces(asset):
  for i,tri in enumerate(tessellate_polygon([vv])):
   q=[vv[k] if isinstance(k,int) else k for k in tri];q=q if (q[1]-q[0]).cross(q[2]-q[0]).z>0 else list(reversed(q));s.triangle('roof '+str(i),[(v.x,v.y,d['wall_top']) for v in q])
  for j,(x,y) in enumerate([(-63.,120.2),(-64.,115.2)]):s.box('parking column '+str(j),(x-.12,y-.12,0),(x+.12,y+.12,2.8))
+ # Fixed coarse gate preserves its silhouette independently of bar count.
+ gx=-59.;gy=[104.65,107.,109.85,112.7,114.75];gz=2.14157-2.448
+ for j,y in enumerate(gy):s.box('gate post '+str(j),(gx-.05,y-.05,gz-.12),(gx+.05,y+.05,gz+1.92))
+ for j,(lo,hi) in enumerate(zip(gy,gy[1:])):
+  lo+=.05;hi-=.05
+  for k,z in enumerate((.07,1.8)):s.box('gate rail '+str(j)+' '+str(k),(gx-.018,lo,gz+z-.018),(gx+.018,hi,gz+z+.018))
+  for k,t in enumerate((1/3,2/3)):
+   y=lo+(hi-lo)*t;s.box('gate bar '+str(j)+' '+str(k),(gx-.018,y-.016,gz+.088),(gx+.018,y+.016,gz+1.782))
  x,y,r=d['tower'];n=12
  for i in range(n):
   a=2*math.pi*i/n;b=2*math.pi*(i+1)/n

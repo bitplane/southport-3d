@@ -78,6 +78,18 @@
         "strategy": "omit",
         "reason": "Independent fixed-budget envelope."
       }
+    },
+    {
+      "id": "fine",
+      "match": "^Fine ",
+      "walk": {
+        "strategy": "omit",
+        "reason": "Tiny cladding seam and coping strokes omitted at walking distance."
+      },
+      "district": {
+        "strategy": "omit",
+        "reason": "Atlas carries cladding appearance; fixed receivers retain silhouette."
+      }
     }
   ],
   "district_envelope": {

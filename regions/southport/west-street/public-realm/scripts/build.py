@@ -55,7 +55,7 @@ courts=P.difference(remaining,green)
 # bounded court surface: the new flats have an open parking undercroft.
 blocks=json.loads((REPO/D['block_plan']).read_text())['blocks']
 undercroft=next(b['footprint'] for b in blocks if b['id']==D['undercroft_fill']['block_id'])
-courts=union([courts,P.polygons([undercroft])])
+undercroft_ground=P.polygons([undercroft])
 # Paint offsets the continuous road boundary BEFORE ownership/tile clipping.
 # Yellow lines are confined to observed junction approaches; parked lengths
 # retain white bay edges rather than inventing continuous restrictions.
@@ -71,7 +71,7 @@ for park in D['parking_courts']:
  white_rows+=P.triangles(P.intersection(P.polygons(rows),P.polygons([poly])))
 white=P.difference(P.intersection(P.polygons(white_rows),road),yellow)
 asphalt=P.difference(P.difference(road,yellow),white)
-materials={'asphalt':(.085,.092,.093),'paving':(.30,.27,.23),'courts':(.36,.35,.33),'green':(.16,.23,.10),'yellow':(.75,.57,.12),'white':(.72,.73,.69),'kerb':(.40,.40,.37)}
+materials={'asphalt':(.085,.092,.093),'paving':(.30,.27,.23),'courts':(.36,.35,.33),'green':(.16,.23,.10),'yellow':(.75,.57,.12),'white':(.72,.73,.69),'kerb':(.40,.40,.37),'undercroft':(.36,.36,.35)}
 mats={}
 for name,colour in materials.items():
  m=bpy.data.materials.new('West Street '+name);m.use_nodes=True;m.diffuse_color=(*colour,1)
@@ -82,6 +82,8 @@ for name,colour in materials.items():
    if normal:
     im.colorspace_settings.name='Non-Color';n=m.node_tree.nodes.new('ShaderNodeNormalMap');m.node_tree.links.new(t.outputs['Color'],n.inputs['Color']);m.node_tree.links.new(n.outputs['Normal'],p.inputs['Normal'])
    else:m.node_tree.links.new(t.outputs['Color'],p.inputs['Base Color'])
+ if name=='undercroft':
+  im=bpy.data.images.load(str(ROOT/'textures'/'undercroft-concrete.png'));im.pack();t=m.node_tree.nodes.new('ShaderNodeTexImage');t.image=im;m.node_tree.links.new(t.outputs['Color'],p.inputs['Base Color'])
  mats[name]=m
 compiled={};collections={}
 for ti,(lo,hi) in enumerate(zip(D['tile_cuts'],D['tile_cuts'][1:])):
@@ -91,7 +93,7 @@ for ti,(lo,hi) in enumerate(zip(D['tile_cuts'],D['tile_cuts'][1:])):
  for a,b in zip(cuts,cuts[1:]):
   for ya,yb in [(D['bounds'][2],D['bounds'][3])]:
    cell=P.polygons([rect(a,b,ya,yb)])
-   for mat,g in [('asphalt',asphalt),('paving',foot),('courts',courts),('green',green),('yellow',yellow),('white',white)]:
+   for mat,g in [('asphalt',asphalt),('paving',foot),('courts',courts),('undercroft',undercroft_ground),('green',green),('yellow',yellow),('white',white)]:
     m=compiled.setdefault((name,mat),Mesh('Ground '+name+' '+mat))
     for tri in P.triangles(P.intersection(g,cell)):
      for lifted in SURFACE.lift_triangle(tri):m.add([(x,y,0) for x,y,z in lifted],[(0,1,2)])

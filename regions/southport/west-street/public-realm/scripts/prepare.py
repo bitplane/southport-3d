@@ -9,3 +9,6 @@ rng=np.random.default_rng(813);colour=np.array([143,139,129])[None,None,:]+rng.n
 Image.fromarray(np.uint8(np.clip(colour,0,255))).save(out/'paving.png')
 height=np.where(joint,0,.001);dy,dx=np.gradient(height,1.2/n);normal=np.stack([-dx,-dy,np.ones_like(dx)],2);normal/=np.linalg.norm(normal,axis=2,keepdims=True)
 Image.fromarray(np.uint8(np.clip((normal+1)*127.5,0,255))).save(out/'paving-normal.png')
+# Authored grey concrete slabs for the sheltered Cable Mews forecourt.
+slab=np.array([133,132,127])[None,None,:]+rng.normal(0,3.0,(n,n,1));slab[joint]*=.76
+Image.fromarray(np.uint8(np.clip(slab,0,255))).save(out/'undercroft-concrete.png')

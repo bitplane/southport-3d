@@ -1,45 +1,28 @@
 # Cable Mews review record
 
-The snag box selects the small articulated white-roofed block beside the green
-court, not the long rear range. November 2020 Street View and loaded Google 3D
-orbits on 26 October 2026 show a red-brick building, two flat-roofed wings,
-white upper level and projecting cylindrical white stair tower. The Street View
-shows a sheltered car park below the flats; 2004 Sefton planning minutes describe
-three residential storeys above covered parking. Private captures are in
-`../references/cable-mews/`; no photograph is distributed in the model.
+The selected building is the articulated two-wing block by the open green court,
+not the long rear range. November 2020 Cable Street Street View and the loaded
+Google 3D orbits identify its flat roof, red brick, pale upper cladding, curved
+stair tower and parking undercroft. The feature schedule records observations,
+viewpoints, intended geometry and coverage. Dimensions use the registered block
+plan and are estimates, not a survey; photographs are private references only.
 
-The roof footprint traces and elevation datum are estimates. The first comparison
-of neutral massing with the street and orbit showed the general two-wing and
-tower arrangement; the detailed shell adds recessed panes, a glazed upper tower
-band and parking soffit. The source retains site coordinates, with parking and
-garden ground left to the public-realm asset. The openings are approximate where
-photogrammetry does not resolve them. The tower glazing division, undercroft entry
-location, balcony depth, and rear joinery need better close imagery. No interior
-or roof service has been invented.
+Street Detail now includes the black boundary railings and double vehicle gate,
+slender posts and rails, white undercroft beam and columns, two four-light left
+windows, narrow middle windows and the divided corner glazing, inset reveals and
+sills. The attic and curved tower cap carry standing seams and dark roof coping.
+The known public-realm cutout is now filled by a separately owned concrete court.
+The shared entrance behind the shelter is obscured; the open approach remains
+rather than an invented door. The gate is fixed closed; the viewer has no
+collision physics. Rear individual window counts and exact balcony depth remain
+estimates from low-resolution 3D. Unseen services and interiors are not invented.
 
-Detail and Walk keep the real window apertures and undercroft. District is an
-independently generated, fixed topology envelope with a 256 px atlas and a 500
-triangle budget; small joinery and individual window depth are baked. Exact
-surface and exported-level inspection are necessary before visual acceptance.
-
-The assembled viewer loaded the actual Detail, Walk and District tiles. Street
-and roof views confirmed the parking gap and the ground patch, which is owned by
-the West Street public-realm asset. The roof view shows a dotted diagonal line
-along one triangulation seam; its visibility under camera motion remains for
-independent review. The street-view corner glazing uses a three-light return and a white
-vertical panel; exact depths remain estimated. The gate is not yet reconstructed. The unobserved undercroft entry
-is indicative only. These are open visual-review issues, not certified matches.
-
-Master validation checks finite and nondegenerate triangles and scoped
-same-facing coplanar overlap across shell, architecture and glazing. A separate
-exported overlap scan of this asset, West Street placeholders and West Street
-ground found no same-facing overlaps at each level; it does not test all
-non-coplanar intersections or mixed-LoD artefacts. The ground validator checks
-unique undercroft support and the ordinary road, footprint and seam samples.
-
-The fixed District budget is 500 triangles and a 256 px atlas. Package
-metrics are in the generated package manifest. Initial work and comparison
-took approximately 20 minutes as of 23:46 UTC on 26 October 2026; rework
-included the recessed balcony, roof cap, wall normals, parking ground patch,
-corner glazing and a repeat bake after an input changed during packaging.
-The snag remains in progress for independent visual acceptance.
+The close perspective comparison uses the recorded approximate Street View camera
+and a 90-degree field. It excludes neighbouring buildings, so compare placement and
+occlusion in the assembled viewer too. The roof slab has an 80 mm underside and conformed triangles; recessed
+walls meet the underside rather than the top. Check the previous dotted diagonal
+during viewer motion. Detail retains
+all visible work, Walk omits only narrow cladding and coping strokes, and District
+uses an independent fixed-budget envelope with a coarse gate. Normal close and
+roof comparisons, actual loaded levels and final exported audit are required for
+independent acceptance. The snag remains in progress.
