@@ -26,8 +26,8 @@ The assembled viewer loaded the actual Detail, Walk and District tiles. Street
 and roof views confirmed the parking gap and the ground patch, which is owned by
 the West Street public-realm asset. The roof view shows a dotted diagonal line
 along one triangulation seam; its visibility under camera motion remains for
-independent review. The street-view corner glazing is simplified relative to the
-reference and the gate is not yet reconstructed. The unobserved undercroft entry
+independent review. The street-view corner glazing uses a three-light return and a white
+vertical panel; exact depths remain estimated. The gate is not yet reconstructed. The unobserved undercroft entry
 is indicative only. These are open visual-review issues, not certified matches.
 
 Master validation checks finite and nondegenerate triangles and scoped
@@ -37,10 +37,9 @@ ground found no same-facing overlaps at each level; it does not test all
 non-coplanar intersections or mixed-LoD artefacts. The ground validator checks
 unique undercroft support and the ordinary road, footprint and seam samples.
 
-Latest package sizes, Detail / Walk / District: 1,361 / 1,361 / 176 triangles;
-429,528 / 280,140 / 78,412 download bytes; 1,531,436 / 482,857 / 1,070,853
-estimated GPU bytes. Fixed District budget is 500 triangles and 256 px atlas.
-Initial work and comparison took approximately 20 minutes as of 23:46 UTC on
-26 October 2026; rework included the recessed balcony, roof cap, wall normals,
-parking floor patch and a repeat bake after an input changed during packaging.
+The fixed District budget is 500 triangles and a 256 px atlas. Package
+metrics are in the generated package manifest. Initial work and comparison
+took approximately 20 minutes as of 23:46 UTC on 26 October 2026; rework
+included the recessed balcony, roof cap, wall normals, parking ground patch,
+corner glazing and a repeat bake after an input changed during packaging.
 The snag remains in progress for independent visual acceptance.

@@ -21,7 +21,7 @@ def finish(m,material):
  return ob
 # Facade apertures: restrained patterns from Street View and low-resolution 3D.
 # Each opening is cut through its wall skin, with returns and inset glazing.
-window_layout={0:[(.30,1.05),(.73,1.05)],1:[(.20,1.25),(.78,.64)],2:[(.45,1.1)],5:[(.32,1.1),(.72,1.1)],6:[(.23,.65),(.60,1.05)],7:[(.25,.55),(.65,.55)],8:[(.54,1.3)]}
+window_layout={0:[(.22,1.8)],1:[(.20,1.25),(.78,.64)],2:[(.45,1.1)],5:[(.32,1.1),(.72,1.1)],6:[(.23,.65),(.60,1.05)],7:[(.25,.55),(.65,.55)],8:[(.88,.95)]}
 def rect(a,b,c,d):return [(a,b),(c,b),(c,d),(a,d)]
 def face_point(a,dx,dy,normal,u,z,offset=0):return (a[0]+dx*u+normal[0]*offset,a[1]+dy*u+normal[1]*offset,height+z)
 for i,(a,b) in enumerate(zip(p,p[1:]+p[:1])):
@@ -29,7 +29,7 @@ for i,(a,b) in enumerate(zip(p,p[1:]+p[:1])):
  lo=D['brick_base'] if i in (0,1,7,8) else 0
  windows=[]
  for f,w in window_layout.get(i,[]):
-  u=L*f;w=min(w,L*.24)
+  u=L*f;w=min(w,L*(.4 if i==0 else .24))
   for z in (3.8,6.4):windows.append((u-w/2,z,u+w/2,z+1.55))
   if i not in (5,6):windows.append((u-w/2,9.45,u+w/2,10.75))
  if i in (5,6):windows.append((.12*L,9.35,.88*L,10.85))
@@ -37,17 +37,25 @@ for i,(a,b) in enumerate(zip(p,p[1:]+p[:1])):
   setback=-.8 if i in (5,6) and z0>=D['clad_base'] else 0
   holes=[rect(x0,y0,x1,y1) for x0,y0,x1,y1 in windows if z0<=y0 and y1<=z1]
   parts=[rect(0,z0,L,z1)]
+  panel=rect(.76*L,3.5,L,8.35) if i==8 and z0<D['clad_base'] else None
+  if panel:parts=[q for part in parts for q in subtract(part,panel)]
   for hole in holes:parts=[q for part in parts for q in subtract(part,hole)]
   m=Mesh('Shell wall '+str(i))
   for q in parts:m.add([face_point(a,dx,dy,normal,u,z,setback) for u,z in q],[tuple(reversed(range(len(q))))])
   for h in holes:
    for A,B in zip(h,h[1:]+h[:1]):m.add([face_point(a,dx,dy,normal,*A,setback),face_point(a,dx,dy,normal,*B,setback),face_point(a,dx,dy,normal,*B,setback-.16),face_point(a,dx,dy,normal,*A,setback-.16)],[(0,1,2,3)])
   finish(m,material)
+  if panel:
+   panelparts=[panel]
+   for hole in holes:panelparts=[q for part in panelparts for q in subtract(part,hole)]
+   pm=Mesh('Architecture white corner panel')
+   for q in panelparts:pm.add([face_point(a,dx,dy,normal,u,z) for u,z in q],[tuple(reversed(range(len(q))))])
+   finish(pm,white)
  for j,(x0,z0,x1,z1) in enumerate(windows):
   off=-.8 if i in (5,6) and z0>=D['clad_base'] else 0
   m=Mesh('Glazing window');q=rect(x0,z0,x1,z1);m.add([face_point(a,dx,dy,normal,u,z,off-.16) for u,z in q],[(3,2,1,0)]);finish(m,glass)
   # One planar frame; separate pane apertures ensure no duplicate surface ownership.
-  outer=rect(x0,z0,x1,z1);cols=5 if z0>9 and i in (5,6) else 2;inner=[rect(x0+.055+k*(x1-x0-.11)/cols+.025,z0+.06,x0+.055+(k+1)*(x1-x0-.11)/cols-.025,z1-.06) for k in range(cols)];parts=[outer]
+  outer=rect(x0,z0,x1,z1);cols=5 if z0>9 and i in (5,6) else (3 if i==0 else (1 if i==8 else 2));rows=2 if i in (0,8) and z0<9 else 1;inner=[rect(x0+.055+k*(x1-x0-.11)/cols+.025,z0+.055+j*(z1-z0-.11)/rows+.02,x0+.055+(k+1)*(x1-x0-.11)/cols-.025,z0+.055+(j+1)*(z1-z0-.11)/rows-.02) for k in range(cols) for j in range(rows)];parts=[outer]
   for h in inner:parts=[q for part in parts for q in subtract(part,h)]
   m=Mesh('Architecture window frame')
   for q in parts:m.add([face_point(a,dx,dy,normal,u,z,off-.045) for u,z in q],[tuple(reversed(range(len(q))))])
